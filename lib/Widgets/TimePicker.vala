@@ -18,7 +18,7 @@
 using Gtk;
 using Gdk;
 
-namespace Maya.Widgets {
+namespace Granite.Widgets {
 
     public class TimePicker : SpinButton {
     
