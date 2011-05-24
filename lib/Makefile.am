@@ -55,6 +55,7 @@ libgranite_la_VALASOURCES = \
 	Widgets/AppMenu.vala \
 	Widgets/DatePicker.vala \
 	Widgets/Entries.vala \
+	Widgets/FlowBox.vala \
 	Widgets/TimePicker.vala \
 	Widgets/ToolButtonWithMenu.vala \
 	$(NULL)
