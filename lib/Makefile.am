@@ -44,7 +44,7 @@ libgranite_la_LIBADD = \
 
 libgranite_la_VALASOURCES = \
     Application.vala \
-    Factory.vala \
+    AppFactory.vala \
 	Drawing/Color.vala \
 	Drawing/Utilities.vala \
 	Drawing/BufferSurface.vala \

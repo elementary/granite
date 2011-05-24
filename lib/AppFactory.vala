@@ -17,7 +17,7 @@
 
 namespace Granite {
 
-	public class Factory : GLib.Object	{
+	public class AppFactory : GLib.Object	{
 	
 		public static Granite.Application app;
 		
