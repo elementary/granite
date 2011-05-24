@@ -37,7 +37,7 @@ namespace Granite.Widgets {
         }
         
         public DatePicker () {
-            this.with_format (_("%A %e, %Y"));
+            this.with_format (_("%B %e, %Y"));
         }
 
         public DatePicker.with_format (string format) {
