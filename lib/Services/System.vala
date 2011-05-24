@@ -35,6 +35,19 @@ namespace Granite.Services {
 			launch_with_files (app, new File[] {});
 		}
 		
+		public static bool execute_command (string command) {
+		
+			try {
+				var info = AppInfo.create_from_commandline (command, "", 0);
+				if (info.launch (null, null))
+					return true;
+			} catch (GLib.Error e) {
+				warning ("Failed to execute external '%s' command", command);
+			}
+			
+			return true;
+		}
+		
 		public static void launch_with_files (File? app, File[] files) {
 		
 			if (app != null && !app.query_exists ()) {
