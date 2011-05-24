@@ -17,10 +17,9 @@
 
 using Gee;
 
-namespace Granite.Services
-{
-	public enum LogLevel
-	{
+namespace Granite.Services {
+
+	public enum LogLevel {
 		DEBUG,
 		INFO,
 		NOTIFY,
@@ -29,8 +28,7 @@ namespace Granite.Services
 		FATAL,
 	}
 	
-	enum ConsoleColor
-	{
+	enum ConsoleColor {
 		BLACK,
 		RED,
 		GREEN,
@@ -41,18 +39,18 @@ namespace Granite.Services
 		WHITE,
 	}
 	
-	public class Logger : GLib.Object
-	{
-		class LogMessage : GLib.Object
-		{
+	public class Logger : GLib.Object {
+	
+		class LogMessage : GLib.Object {
+		
 			public LogLevel Level { get; private set; }
 			public string Message { get; private set; }
 			
-			public LogMessage (LogLevel level, string message)
-			{
+			public LogMessage (LogLevel level, string message) {
 				Level = level;
 				Message = message;
 			}
+			
 		}
 		
 		public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
@@ -66,8 +64,8 @@ namespace Granite.Services
 		
 		static Regex re;
 		
-		public static void initialize (string app_name)
-		{
+		public static void initialize (string app_name) {
+		
 			AppName = app_name;
 			is_writing = false;
 			log_queue = new ArrayList<LogMessage> ();
@@ -78,8 +76,8 @@ namespace Granite.Services
 			Log.set_default_handler (glib_log_func);
 		}
 		
-		static string format_message (string msg)
-		{
+		static string format_message (string msg) {
+		
 			if (re != null && re.match (msg)) {
 				var parts = re.split (msg);
 				return "[%s%s] %s".printf (parts[1], parts[2], parts[3]);
@@ -87,19 +85,18 @@ namespace Granite.Services
 			return msg;
 		}
 		
-		public static void notification (string msg)
-		{
+		public static void notification (string msg) {
 			write (LogLevel.NOTIFY, format_message (msg));
 		}
 		
-		static string get_time ()
-		{
+		static string get_time () {
+		
 			var now = new DateTime.now_local ();
 			return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
 		}
 		
-		static void write (LogLevel level, string msg)
-		{
+		static void write (LogLevel level, string msg) {
+		
 			if (level < DisplayLevel)
 				return;
 			
@@ -124,8 +121,8 @@ namespace Granite.Services
 			}
 		}
 		
-		static void print_log (LogMessage log)
-		{
+		static void print_log (LogMessage log) {
+		
 			set_color_for_level (log.Level);
 			stdout.printf ("[%s %s]", log.Level.to_string ().substring (25), get_time ());
 			
@@ -133,56 +130,52 @@ namespace Granite.Services
 			stdout.printf (" %s\n", log.Message);
 		}
 		
-		static void set_color_for_level (LogLevel level)
-		{
+		static void set_color_for_level (LogLevel level) {
+		
 			switch (level) {
-			case LogLevel.DEBUG:
-				set_foreground (ConsoleColor.GREEN);
-				break;
-			case LogLevel.INFO:
-				set_foreground (ConsoleColor.BLUE);
-				break;
-			case LogLevel.NOTIFY:
-				set_foreground (ConsoleColor.MAGENTA);
-				break;
-			case LogLevel.WARN:
-				set_foreground (ConsoleColor.YELLOW);
-				break;
-			case LogLevel.ERROR:
-				set_foreground (ConsoleColor.RED);
-				break;
-			case LogLevel.FATAL:
-				set_background (ConsoleColor.RED);
-				set_foreground (ConsoleColor.WHITE);
-				break;
+				case LogLevel.DEBUG:
+					set_foreground (ConsoleColor.GREEN);
+					break;
+				case LogLevel.INFO:
+					set_foreground (ConsoleColor.BLUE);
+					break;
+				case LogLevel.NOTIFY:
+					set_foreground (ConsoleColor.MAGENTA);
+					break;
+				case LogLevel.WARN:
+					set_foreground (ConsoleColor.YELLOW);
+					break;
+				case LogLevel.ERROR:
+					set_foreground (ConsoleColor.RED);
+					break;
+				case LogLevel.FATAL:
+					set_background (ConsoleColor.RED);
+					set_foreground (ConsoleColor.WHITE);
+					break;
 			}
 		}
 		
-		static void reset_color ()
-		{
+		static void reset_color () {
 			stdout.printf ("\x001b[0m");
 		}
 		
-		static void set_foreground (ConsoleColor color)
-		{
+		static void set_foreground (ConsoleColor color) {
 			set_color (color, true);
 		}
 		
-		static void set_background (ConsoleColor color)
-		{
+		static void set_background (ConsoleColor color) {
 			set_color (color, false);
 		}
 		
-		static void set_color (ConsoleColor color, bool isForeground)
-		{
+		static void set_color (ConsoleColor color, bool isForeground) {
+		
 			var color_code = color + 30 + 60;
 			if (!isForeground)
 				color_code += 10;
 			stdout.printf ("\x001b[%dm", color_code);
 		}
 		
-		static void glib_log_func (string? d, LogLevelFlags flags, string msg)
-		{
+		static void glib_log_func (string? d, LogLevelFlags flags, string msg) {
 			var domain = "";
 			if (d != null)
 				domain = "[%s] ".printf (d);
@@ -191,29 +184,32 @@ namespace Granite.Services
 			message = "%s%s".printf (domain, message);
 			
 			switch (flags) {
-			case LogLevelFlags.LEVEL_CRITICAL:
-				write (LogLevel.FATAL, format_message (message));
-				write (LogLevel.FATAL, format_message (AppName + " will not function properly."));
-				break;
-			
-			case LogLevelFlags.LEVEL_ERROR:
-				write (LogLevel.ERROR, format_message (message));
-				break;
-			
-			case LogLevelFlags.LEVEL_INFO:
-			case LogLevelFlags.LEVEL_MESSAGE:
-				write (LogLevel.INFO, format_message (message));
-				break;
-			
-			case LogLevelFlags.LEVEL_DEBUG:
-				write (LogLevel.DEBUG, format_message (message));
-				break;
-			
-			case LogLevelFlags.LEVEL_WARNING:
-			default:
-				write (LogLevel.WARN, format_message (message));
-				break;
+				case LogLevelFlags.LEVEL_CRITICAL:
+					write (LogLevel.FATAL, format_message (message));
+					write (LogLevel.FATAL, format_message (AppName + " will not function properly."));
+					break;
+				
+				case LogLevelFlags.LEVEL_ERROR:
+					write (LogLevel.ERROR, format_message (message));
+					break;
+				
+				case LogLevelFlags.LEVEL_INFO:
+				case LogLevelFlags.LEVEL_MESSAGE:
+					write (LogLevel.INFO, format_message (message));
+					break;
+				
+				case LogLevelFlags.LEVEL_DEBUG:
+					write (LogLevel.DEBUG, format_message (message));
+					break;
+				
+				case LogLevelFlags.LEVEL_WARNING:
+				default:
+					write (LogLevel.WARN, format_message (message));
+					break;
 			}
 		}
+		
 	}
+	
 }
+

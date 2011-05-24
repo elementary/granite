@@ -15,33 +15,31 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Granite.Services
-{
-	public interface PrefsSerializable : GLib.Object
-	{
+namespace Granite.Services {
+
+	public interface PrefsSerializable : GLib.Object {
+	
 		public abstract string prefs_serialize ();
 		public abstract void prefs_deserialize (string s);
 	}
 	
-	public abstract class Preferences : GLib.Object
-	{
+	public abstract class Preferences : GLib.Object {
+	
 		[Signal (no_recurse = true, run = "first", action = true, no_hooks = true, detailed = true)]
 		public signal void changed ();
 		
 		public signal void deleted ();
 		
-		public Preferences ()
-		{
+		public Preferences () {
 			notify.connect (handle_notify);
 		}
 		
-		~Preferences ()
-		{
+		~Preferences () {
 			stop_monitor ();
 		}
 		
-		void handle_notify (Object sender, ParamSpec property)
-		{
+		void handle_notify (Object sender, ParamSpec property) {
+		
 			notify.disconnect (handle_notify);
 			call_verify (property.name);
 			notify.connect (handle_notify);
@@ -50,24 +48,23 @@ namespace Granite.Services
 				save_prefs ();
 		}
 		
-		void handle_verify_notify (Object sender, ParamSpec property)
-		{
+		void handle_verify_notify (Object sender, ParamSpec property) {
+		
 			warning ("Key '%s' failed verification in preferences file '%s', changing value", property.name, backing_file.get_path ());
 			
 			if (backing_file != null)
 				save_prefs ();
 		}
 		
-		private void call_verify (string prop)
-		{
+		private void call_verify (string prop) {
+		
 			notify.connect (handle_verify_notify);
 			verify (prop);
 			changed[prop] ();
 			notify.disconnect (handle_verify_notify);
 		}
 		
-		protected virtual void verify (string prop)
-		{
+		protected virtual void verify (string prop)	{
 			// do nothing, this isnt abstract because we dont
 			// want to force subclasses to implement this
 		}
@@ -75,13 +72,12 @@ namespace Granite.Services
 		File backing_file;
 		FileMonitor backing_monitor;
 		
-		public Preferences.with_file (string filename)
-		{
+		public Preferences.with_file (string filename) {
 			init_from_file (filename);
 		}
 		
-		protected void init_from_file (string filename)
-		{
+		protected void init_from_file (string filename) {
+		
 			backing_file = Paths.user_config_folder.get_child (filename);
 			
 			// ensure the preferences file exists
@@ -94,15 +90,15 @@ namespace Granite.Services
 			start_monitor ();
 		}
 		
-		public void delete ()
-		{
+		public void delete () {
+		
 			try {
 				backing_file.delete ();
 			} catch { }
 		}
 		
-		void stop_monitor ()
-		{
+		void stop_monitor () {
+		
 			if (backing_monitor == null)
 				return;
 			
@@ -111,8 +107,8 @@ namespace Granite.Services
 			backing_monitor = null;
 		}
 		
-		void start_monitor ()
-		{
+		void start_monitor () {
+		
 			if (backing_monitor != null)
 				return;
 			
@@ -124,8 +120,8 @@ namespace Granite.Services
 			}
 		}
 		
-		void backing_file_changed (File f, File? other, FileMonitorEvent event)
-		{
+		void backing_file_changed (File f, File? other, FileMonitorEvent event) {
+		
 			// only watch for change or delete events
 			if ((event & FileMonitorEvent.CHANGES_DONE_HINT) != FileMonitorEvent.CHANGES_DONE_HINT &&
 				(event & FileMonitorEvent.DELETED) != FileMonitorEvent.DELETED)
@@ -137,8 +133,8 @@ namespace Granite.Services
 				load_prefs ();
 		}
 		
-		void load_prefs ()
-		{
+		void load_prefs () {
+		
 			debug ("Loading preferences from file '%s'", backing_file.get_path ());
 			
 			var missing_keys = false;
@@ -194,8 +190,8 @@ namespace Granite.Services
 				save_prefs ();
 		}
 		
-		void save_prefs ()
-		{
+		void save_prefs () {
+		
 			stop_monitor ();
 			
 			var file = new KeyFile ();
@@ -253,5 +249,8 @@ namespace Granite.Services
 			
 			start_monitor ();
 		}
+		
 	}
+	
 }
+

@@ -18,251 +18,235 @@
 using Gtk;
 using Gdk;
 
-namespace Granite.Widgets
-{
-    public class ModeButton : Gtk.EventBox
-    {    
-        public signal void mode_added(int index, Widget widget);
-        public signal void mode_removed(int index, Widget widget);
-        public signal void mode_changed(Widget widget);
+namespace Granite.Widgets {
 
-        private int _selected = -1;
-        private int _hovered = -1;
-        private HBox box;
+	public class ModeButton : Gtk.EventBox {  
+	  
+		public signal void mode_added (int index, Widget widget);
+		public signal void mode_removed (int index, Widget widget);
+		public signal void mode_changed (Widget widget);
 
-        public ModeButton ()
-        {
-            events |= Gdk.EventMask.BUTTON_PRESS_MASK
-            //       |  EventMask.VISIBILITY_NOTIFY_MASK
-                   | Gdk.EventMask.POINTER_MOTION_MASK
-                   | Gdk.EventMask.LEAVE_NOTIFY_MASK; 
-            //       |  EventMask.SCROLL_MASK;
+		private int _selected = -1;
+		public int selected {
+			get {
+				return _selected;
+			}
+			set {
+				if (value == _selected || value < 0 || value >= box.get_children().length())
+					return;
 
-            box = new HBox (true, 1);
-            box.border_width = 0;
-            add (box);
-            box.show ();
-            set_visible_window (false);
-            
-            set_size_request(-1, 24);
+				if (_selected >= 0)
+					box.get_children ().nth_data (_selected).set_state (StateType.NORMAL);
 
-            leave_notify_event.connect(on_leave_notify_event);
-            button_press_event.connect(on_button_press_event);
-            motion_notify_event.connect(on_motion_notify_event);
-            scroll_event.connect(on_scroll_event);	
+				_selected = value;
+				box.get_children ().nth_data (_selected).set_state (StateType.SELECTED);
+				queue_draw ();
 
-            draw.connect(on_draw);
-        }
+				Widget selectedItem = (value >= 0) ? box.get_children ().nth_data (value) : null;
+				mode_changed (selectedItem);
+			}
+		}
+		
+		private int _hovered = -1;
+		public int hovered {
+			get {
+				return _hovered;
+			}
+			set {
+				if (value == _hovered || value <= -1 || value >= box.get_children().length())
+					return;
 
-        public int selected {
-            get {
-                return this._selected;
-            }
-            set {
-                if (value < 0 || value >= box.get_children().length())
-                    return;
-                if (value == _selected)
-                    return;
+				_hovered = value;
+				queue_draw ();
+			}
+		}
 
-                if (_selected >= 0)
-                    box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
+		private HBox box;
 
-                _selected = value;
-                box.get_children().nth_data(_selected).set_state(StateType.SELECTED);
-                queue_draw ();
+		public ModeButton () {
+		
+			events |= Gdk.EventMask.BUTTON_PRESS_MASK
+			//	   |  EventMask.VISIBILITY_NOTIFY_MASK
+				   | Gdk.EventMask.POINTER_MOTION_MASK
+				   | Gdk.EventMask.LEAVE_NOTIFY_MASK; 
+			//	   |  EventMask.SCROLL_MASK;
 
-                Widget selectedItem = value >= 0 ? box.get_children().nth_data(value) : null;
-                mode_changed (selectedItem);
-            }
-        }
+			box = new HBox (true, 1);
+			box.border_width = 0;
+			add (box);
+			box.show ();
+			set_visible_window (false);
+			
+			set_size_request(-1, 24);
+		}
+		
+		public void append (Widget widget) {
+		
+			box.pack_start (widget, true, true, 3);
+			int index = (int) box.get_children ().length () - 2;
+			mode_added (index, widget);
+		}
 
-        public int hovered {
-            get {
-                return _hovered;
-            }
-            set {
-                //stdout.printf ("hovered %d _h %d length %u\n", value, _hovered, box.get_children().length());
-                if (value <= -1 || value >= box.get_children().length())
-                    return;
-                if (value == _hovered)
-                    return;
+		public new void remove (int index) {
+		
+			Widget child = box.get_children ().nth_data (index);
+			box.remove (child);
+			if (_selected == index)
+				_selected = -1;
+			else if (_selected >= index)
+				_selected--;
+			if (_hovered >= index)
+				_hovered--;
+			mode_removed (index, child);
+			queue_draw ();
+		}
 
-                _hovered = value;
-                //stdout.printf ("queue draw\n");
-                queue_draw ();
-            }
-        }
+		public new void focus (Widget widget) {
+		
+			int select = box.get_children ().index (widget);
 
-        public void append (Widget widget)
-        {
-            box.pack_start (widget, true, true, 3);
-            int index = (int) box.get_children().length() - 2;
-            mode_added (index, widget);
-        }
+			if (_selected >= 0)
+				box.get_children ().nth_data (_selected).set_state (StateType.NORMAL);
 
-        public new void remove (int index)
-        {
-            Widget child = box.get_children().nth_data(index);
-            box.remove (child);
-            if (_selected == index)
-                _selected = -1;
-            else if (_selected >= index)
-                _selected--;
-            if (_hovered >= index)
-                _hovered--;
-            this.mode_removed (index, child);
-            this.queue_draw ();
-        }
+			_selected = select;
+			widget.set_state (StateType.SELECTED);
+			queue_draw ();
+		}
 
-        public new void focus(Widget widget){
-            int select = box.get_children().index(widget);
+		protected override bool scroll_event (EventScroll evnt) {
+		
+			switch (evnt.direction) {
+				case ScrollDirection.UP:
+					if (selected < box.get_children().length() - 1)
+						selected++;
+					break;
+				case ScrollDirection.DOWN:
+					if (selected > 0)
+						selected--;
+					break;
+			}
 
-            if (_selected >= 0)
-                box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
+			return true;	
+		}
 
-            _selected = select;
-            widget.set_state(StateType.SELECTED);
-            queue_draw ();
-        }
+		protected override bool button_press_event (EventButton ev) {
+		
+			int n_children = (int) box.get_children ().length ();
+			if (n_children < 1)
+				return false;
 
-        protected bool on_scroll_event(EventScroll evnt){
-            switch(evnt.direction){
-            case ScrollDirection.UP:
-                if (selected < box.get_children().length() - 1)
-                    selected++;
-                break;
-            case ScrollDirection.DOWN:
-                if (selected > 0)
-                    selected--;
-                break;
-            }
+			Allocation allocation;
+			get_allocation (out allocation);	
 
-            return true;	
-        }
+			double child_size = allocation.width / n_children;
+			int i = -1;
 
-        protected bool on_button_press_event(EventButton ev)
-        {
-            //stdout.printf ("on_button_press _hovered %d _selected %d\n", _hovered, _selected);
-            int n_children = (int) box.get_children().length();
-            if (n_children < 1)
-                return false;
+			if (child_size > 0)
+				i = (int) (ev.x / child_size);
+			hovered = i;
+			
+			if (ev.button != 3) {
+				selected = _hovered;
+				return true;
+			}
 
-            Allocation allocation;
-            get_allocation(out allocation);	
+			return false;
+		}
 
-            double child_size = allocation.width / n_children;
-            int i = -1;
+		protected override bool leave_notify_event (EventCrossing ev) {
+			
+			_hovered = -1;
+			queue_draw ();
 
-            if (child_size > 0)
-                i = (int) (ev.x / child_size);
-            hovered = i;
-            
-            if (ev.button != 3)
-            {
-                selected = _hovered;
-                return true;
-            }
+			return true;
+		}
 
-            return false;
-        }
+		protected override bool motion_notify_event (EventMotion evnt) {
+		
+			int n_children = (int) box.get_children ().length ();
+			if (n_children < 1)
+				return false;
 
-        protected bool on_leave_notify_event(Gdk.EventCrossing ev)
-        {
-            //stdout.printf ("on_leave_notify_event\n");
-            _hovered = -1;
-            queue_draw();
+			Allocation allocation;
+			get_allocation (out allocation);	
 
-            return true;
-        }
+			double child_size = allocation.width / n_children;
+			int i = -1;
 
-        protected bool on_motion_notify_event(EventMotion evnt)
-        {
-            int n_children = (int) box.get_children().length();
-            if (n_children < 1)
-                return false;
+			if (child_size > 0)
+				i = (int) (evnt.x / child_size);
+			hovered = i;
 
-            Allocation allocation;
-            get_allocation(out allocation);	
+			return true;
+		}
 
-            double child_size = allocation.width / n_children;
-            int i = -1;
+		protected override bool draw (Cairo.Context cr) {
+		
+			int width, height;
+			float item_x, item_width;
 
-            if (child_size > 0)
-                i = (int) (evnt.x / child_size);
-            hovered = i;
+			width = get_allocated_width ();
+			height = get_allocated_height ();
 
-            return true;
-        }
+			var n_children = (int) box.get_children ().length ();
 
-        protected bool on_draw(Cairo.Context cr)
-        {
-            int width, height;
-            float item_x, item_width;
+			style.draw_box (cr, StateType.NORMAL, ShadowType.ETCHED_OUT, this, "button", 0, 0, width, height);
+			if (_selected >= 0) {
+				if (n_children > 1) {
+					item_width = width / n_children;
+					item_x = (item_width * _selected) + 1;
+				} else {
+					item_x = 0;
+					item_width = width;
+				}
 
-            width = get_allocated_width();
-            height = get_allocated_height();
+				cr.move_to (item_x, 0);
+				cr.line_to (item_x, height);
+				cr.line_to (item_x+item_width, height);
+				cr.line_to (item_x+item_width, 0);
+				cr.clip ();
 
-            var n_children = (int) box.get_children().length();
+				style.draw_box (cr, StateType.SELECTED,
+								ShadowType.IN, this, "button",
+								0, 0,
+								width, height);
+			}
 
-            //style.draw_box (cr, StateType.NORMAL, ShadowType.IN, this, "button", 0, 0, width, height);
-            style.draw_box (cr, StateType.NORMAL, ShadowType.ETCHED_OUT, this, "button", 0, 0, width, height);
-            if (_selected >= 0) {
-                if (n_children > 1) {
-                    item_width = width / n_children;
-                    item_x = (item_width * _selected) + 1;
-                }
-                else {
-                    item_x = 0;
-                    item_width = width;
-                }
+			cr.restore();
+			cr.save();
 
-                cr.move_to(item_x, 0);
-                cr.line_to(item_x, height);
-                cr.line_to(item_x+item_width, height);
-                cr.line_to(item_x+item_width, 0);
-                cr.clip();
+			if (hovered >= 0 && selected != hovered) {
+				if (n_children > 1) {
+					item_width = width / n_children;
+					if (hovered == 0)
+						item_x = 0;
+					else
+						item_x = item_width * hovered + 1;
+				} else {
+					item_x = 0;
+					item_width = width;
+				}
 
-                style.draw_box (cr, StateType.SELECTED,
-                                //ShadowType.ETCHED_OUT, this, "button",
-                                ShadowType.IN, this, "button",
-                                0, 0,
-                                width, height);
-            }
+				cr.move_to(item_x, 0);
+				cr.line_to(item_x, height);
+				cr.line_to(item_x+item_width, height);
+				cr.line_to(item_x+item_width, 0);
+				cr.clip();
 
-            cr.restore();
-            cr.save();
+				style.draw_box (cr, StateType.PRELIGHT,
+								ShadowType.ETCHED_OUT, this, "button",
+								0, 0,
+								width, height);
+			}
 
-            if (hovered >= 0 && selected != hovered) {
-                if (n_children > 1) {
-                    item_width = width / n_children;
-                    if (hovered == 0)
-                        item_x = 0;
-                    else
-                        item_x = item_width * hovered + 1;
-                }
-                else {
-                    item_x = 0;
-                    item_width = width;
-                }
+			cr.restore();
 
-                cr.move_to(item_x, 0);
-                cr.line_to(item_x, height);
-                cr.line_to(item_x+item_width, height);
-                cr.line_to(item_x+item_width, 0);
-                cr.clip();
+			propagate_draw (box, cr);
 
-                style.draw_box (cr, StateType.PRELIGHT,
-                                //ShadowType.IN, this, "button",
-                                ShadowType.ETCHED_OUT, this, "button",
-                                0, 0,
-                                width, height);
-            }
-
-            cr.restore();
-
-            propagate_draw (box, cr);
-
-            return true;
-        }
-    }
+			return true;
+		}
+		
+	}
+	
 }
+

@@ -18,10 +18,10 @@
 using Cairo;
 using Posix;
 
-namespace Granite.Drawing
-{
-	public class BufferSurface : GLib.Object
-	{
+namespace Granite.Drawing {
+
+	public class BufferSurface : GLib.Object {
+	
 		private Surface _surface;
 		public Surface surface {
 			get {
@@ -33,7 +33,6 @@ namespace Granite.Drawing
 		}
 		
 		public int width { get; private set; }
-		
 		public int height { get; private set; }
 		
 		private Context _context;
@@ -45,28 +44,28 @@ namespace Granite.Drawing
 			}
 		}
 		
-		public BufferSurface (int width, int height)
-		{
+		public BufferSurface (int width, int height) {
+		
 			this.width = width;
 			this.height = height;
 		}
 		
-		public BufferSurface.with_surface (int width, int height, Surface model)
-		{
+		public BufferSurface.with_surface (int width, int height, Surface model) {
+		
 			this (width, height);
 			if (model != null)
 				surface = new Surface.similar (model, Content.COLOR_ALPHA, width, height);
 		}
 
-		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model)
-		{
+		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) {
+		
 			this (width, height);
 			if (model != null)
 				surface = new Surface.similar (model.surface, Content.COLOR_ALPHA, width, height);
 		}
 		
-		public void clear ()
-		{
+		public void clear () {
+		
 			context.save ();
 			
 			_context.set_source_rgba (0, 0, 0, 0);
@@ -76,8 +75,8 @@ namespace Granite.Drawing
 			_context.restore ();
 		}
 		
-		public Gdk.Pixbuf load_to_pixbuf ()
-		{
+		public Gdk.Pixbuf load_to_pixbuf () {
+		
 			var image_surface = new ImageSurface (Format.ARGB32, width, height);
 			var cr = new Cairo.Context (image_surface);
 			
@@ -123,8 +122,8 @@ namespace Granite.Drawing
 			return pb;
 		}
 		
-		public Drawing.Color average_color ()
-		{
+		public Drawing.Color average_color () {
+		
 			var bTotal = 0.0;
 			var gTotal = 0.0;
 			var rTotal = 0.0;
@@ -167,8 +166,8 @@ namespace Granite.Drawing
 							 1).set_val (0.8).multiply_sat (1.15);
 		}
 		
-		public void fast_blur (int radius, int process_count = 1)
-		{
+		public void fast_blur (int radius, int process_count = 1) {
+		
 			if (radius < 1 || process_count < 1)
 				return;
 			
@@ -298,8 +297,8 @@ namespace Granite.Drawing
 		const int AlphaPrecision = 16;
 		const int ParamPrecision = 7;
 		
-		public void exponential_blur (int radius)
-		{
+		public void exponential_blur (int radius) {
+		
 			if (radius < 1)
 				return;
 			
@@ -346,8 +345,8 @@ namespace Granite.Drawing
 			context.set_operator (Operator.OVER);
 		}
 		
-		void exponential_blur_columns (uint8* pixels, int width, int height, int startCol, int endCol, int startY, int endY, int alpha)
-		{
+		void exponential_blur_columns (uint8* pixels, int width, int height, int startCol, int endCol, int startY, int endY, int alpha) {
+		
 			for (var columnIndex = startCol; columnIndex < endCol; columnIndex++) {
 				// blur columns
 				uint8 *column = pixels + columnIndex * 4;
@@ -367,8 +366,8 @@ namespace Granite.Drawing
 			}
 		}
 		
-		void exponential_blur_rows (uint8* pixels, int width, int height, int startRow, int endRow, int startX, int endX, int alpha)
-		{
+		void exponential_blur_rows (uint8* pixels, int width, int height, int startRow, int endRow, int startX, int endX, int alpha) {
+		
 			for (var rowIndex = startRow; rowIndex < endRow; rowIndex++) {
 				// Get a pointer to our current row
 				uint8* row = pixels + rowIndex * width * 4;
@@ -388,8 +387,8 @@ namespace Granite.Drawing
 			}
 		}
 		
-		private static inline void exponential_blur_inner (uint8* pixel, ref int zA, ref int zR, ref int zG, ref int zB, int alpha)
-		{
+		private static inline void exponential_blur_inner (uint8* pixel, ref int zA, ref int zR, ref int zG, ref int zB, int alpha) {
+		
 			zA += (alpha * ((pixel[0] << ParamPrecision) - zA)) >> AlphaPrecision;
 			zR += (alpha * ((pixel[1] << ParamPrecision) - zR)) >> AlphaPrecision;
 			zG += (alpha * ((pixel[2] << ParamPrecision) - zG)) >> AlphaPrecision;
@@ -402,8 +401,8 @@ namespace Granite.Drawing
 		}
 		
 		// Note: This method is wickedly slow
-		public void gaussian_blur (int radius)
-		{
+		public void gaussian_blur (int radius) {
+		
 			var gausswidth = radius * 2 + 1;
 			var kernel = build_gaussian_kernel (gausswidth);
 			
@@ -487,8 +486,8 @@ namespace Granite.Drawing
 			context.set_operator (Operator.OVER);
 		}
 
-		void gaussian_blur_horizontal (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startRow, int endRow, int[,] shift)
-		{
+		void gaussian_blur_horizontal (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startRow, int endRow, int[,] shift) {
+		
 			uint32 cur_pixel = startRow * width * 4;
 			
 			for (var y = startRow; y < endRow; y++) {
@@ -507,8 +506,8 @@ namespace Granite.Drawing
 			}
 		}
 		
-		void gaussian_blur_vertical (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startCol, int endCol, int[,] shift)
-		{
+		void gaussian_blur_vertical (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startCol, int endCol, int[,] shift) {
+		
 			uint32 cur_pixel = startCol * 4;
 			
 			for (var y = 0; y < height; y++) {
@@ -528,9 +527,8 @@ namespace Granite.Drawing
 			}
 		}
 		
-		static double[] build_gaussian_kernel (int gausswidth)
-			requires (gausswidth % 2 == 1)
-		{
+		static double[] build_gaussian_kernel (int gausswidth) requires (gausswidth % 2 == 1) {
+			
 			var kernel = new double[gausswidth];
 			
 			// Maximum value of curve
@@ -555,5 +553,8 @@ namespace Granite.Drawing
 			
 			return kernel;
 		}
+		
 	}
+	
 }
+

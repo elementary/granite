@@ -18,17 +18,18 @@
 using Gtk;
 
 namespace Granite.Widgets {
-    
-    public class AppMenu : ToolButtonWithMenu
-    {
-        public AppMenu.from_stock (string stock_image, IconSize size, string label, Menu menu)
-        {
-            base.from_stock(stock_image, size, label, menu);
-        }
+	
+	public class AppMenu : ToolButtonWithMenu {
+	
+		public AppMenu.from_stock (string stock_image, IconSize size, string label, Menu menu) {
+			base.from_stock(stock_image, size, label, menu);
+		}
 
-        public AppMenu (Image image, string label, Menu menu)
-        {
-            base (image, label, menu);
-        }
-    }
+		public AppMenu (Image image, string label, Menu menu) {
+			base (image, label, menu);
+		}
+		
+	}
+	
 }
+

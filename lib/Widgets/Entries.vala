@@ -65,6 +65,7 @@ namespace Granite.Widgets {
         
         
         private void grey_out () {
+        
             Gdk.Color gray;
             Gdk.Color.parse ("#999", out gray);
             
@@ -116,7 +117,6 @@ namespace Granite.Widgets {
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
             icon_press.connect (on_icon_press);
-            
         }
 
         protected new void hint () {
@@ -172,3 +172,4 @@ namespace Granite.Widgets {
     }
 
 }
+

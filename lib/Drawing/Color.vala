@@ -19,34 +19,33 @@ using Gdk;
 
 using Granite.Services;
 
-namespace Granite.Drawing
-{
-	public class Color : GLib.Object, PrefsSerializable
-	{
+namespace Granite.Drawing {
+
+	public class Color : GLib.Object, PrefsSerializable {
+	
 		public double R;
 		public double G;
 		public double B;
 		public double A;
 		
-		public Color (double R, double G, double B, double A)
-		{
+		public Color (double R, double G, double B, double A) {
+		
 			this.R = R;
 			this.G = G;
 			this.B = B;
 			this.A = A;
 		}
 		
-		public Color.from_gdk (Gdk.Color color)
-		{
+		public Color.from_gdk (Gdk.Color color) {
+		
 			R = color.red / (double) uint16.MAX;
 			G = color.green / (double) uint16.MAX;
 			B = color.blue / (double) uint16.MAX;
 			A = 1.0;
 		}
 		
-		public Color set_hue (double hue)
-			requires (hue >= 0 && hue <= 360)
-		{
+		public Color set_hue (double hue) requires (hue >= 0 && hue <= 360) {
+			
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			h = hue;
@@ -55,9 +54,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_sat (double sat)
-			requires (sat >= 0 && sat <= 1)
-		{
+		public Color set_sat (double sat) requires (sat >= 0 && sat <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			s = sat;
@@ -66,9 +64,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_val (double val)
-			requires (val >= 0 && val <= 1)
-		{
+		public Color set_val (double val) requires (val >= 0 && val <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = val;
@@ -77,36 +74,35 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_alpha (double alpha)
-			requires (alpha >= 0 && alpha <= 1)
-		{
+		public Color set_alpha (double alpha) requires (alpha >= 0 && alpha <= 1) {
+		
 			A = alpha;
 			return this;
 		}
 		
-		public double get_hue ()
-		{
+		public double get_hue () {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			return h;
 		}
 
-		public double get_sat ()
-		{
+		public double get_sat () {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			return s;
 		}
 
-		public double get_val ()
-		{
+		public double get_val () {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			return v;
 		}
 		
-		public Color add_hue (double val)
-		{
+		public Color add_hue (double val) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			h = (((h + val) % 360) + 360) % 360;
@@ -115,9 +111,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_min_sat (double sat)
-			requires (sat >= 0 && sat <= 1)
-		{
+		public Color set_min_sat (double sat) requires (sat >= 0 && sat <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			s = double.max (s, sat);
@@ -126,9 +121,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_min_value (double val)
-			requires (val >= 0 && val <= 1)
-		{
+		public Color set_min_value (double val) requires (val >= 0 && val <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = double.max (v, val);
@@ -137,9 +131,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color set_max_sat (double sat)
-			requires (sat >= 0 && sat <= 1)
-		{
+		public Color set_max_sat (double sat) requires (sat >= 0 && sat <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			s = double.min (s, sat);
@@ -148,9 +141,8 @@ namespace Granite.Drawing
 			return this;
 		}
 
-		public Color set_max_val (double val)
-			requires (val >= 0 && val <= 1)
-		{
+		public Color set_max_val (double val) requires (val >= 0 && val <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = double.min (v, val);
@@ -159,9 +151,7 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color multiply_sat (double amount)
-			requires (amount >= 0)
-		{
+		public Color multiply_sat (double amount) requires (amount >= 0) {
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			s = double.min (1, s * amount);
@@ -170,9 +160,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color brighten_val (double amount)
-			requires (amount >= 0 && amount <= 1)
-		{
+		public Color brighten_val (double amount) requires (amount >= 0 && amount <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = double.min (1, v + (1 - v) * amount);
@@ -181,9 +170,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color darken_val (double amount)
-			requires (amount >= 0 && amount <= 1)
-		{
+		public Color darken_val (double amount) requires (amount >= 0 && amount <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = double.max (0, v - (1 - v) * amount);
@@ -192,9 +180,8 @@ namespace Granite.Drawing
 			return this;
 		}
 		
-		public Color darken_by_sat (double amount)
-			requires (amount >= 0 && amount <= 1)
-		{
+		public Color darken_by_sat (double amount) requires (amount >= 0 && amount <= 1) {
+		
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
 			v = double.max (0, v - amount * s);
@@ -305,16 +292,16 @@ namespace Granite.Drawing
 			}
 		}
 		
-		public string prefs_serialize ()
-		{
+		public string prefs_serialize () {
+		
 			return "%d;;%d;;%d;;%d".printf ((int) (R * uint8.MAX),
 				(int) (G * uint8.MAX),
 				(int) (B * uint8.MAX),
 				(int) (A * uint8.MAX));
 		}
 		
-		public void prefs_deserialize (string s)
-		{
+		public void prefs_deserialize (string s) {
+		
 			var parts = s.split (";;");
 			
 			R = double.min (uint8.MAX, double.max (0, int.parse(parts [0]))) / uint8.MAX;
@@ -322,5 +309,8 @@ namespace Granite.Drawing
 			B = double.min (uint8.MAX, double.max (0, int.parse(parts [2]))) / uint8.MAX;
 			A = double.min (uint8.MAX, double.max (0, int.parse(parts [3]))) / uint8.MAX;
 		}
+		
 	}
+	
 }
+

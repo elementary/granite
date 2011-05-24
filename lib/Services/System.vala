@@ -15,32 +15,28 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-namespace Granite.Services
-{
-	public class System : GLib.Object
-	{
-		public static void open_uri (string uri)
-		{
+namespace Granite.Services {
+
+	public class System : GLib.Object {
+	
+		public static void open_uri (string uri) {
 			open (File.new_for_uri (uri));
 		}
 		
-		public static void open (File file)
-		{
+		public static void open (File file) {
 			launch_with_files (null, { file });
 		}
 		
-		public static void open_files (File[] files)
-		{
+		public static void open_files (File[] files) {
 			launch_with_files (null, files);
 		}
 		
-		public static void launch (File app)
-		{
+		public static void launch (File app) {
 			launch_with_files (app, new File[] {});
 		}
 		
-		public static void launch_with_files (File? app, File[] files)
-		{
+		public static void launch_with_files (File? app, File[] files) {
+		
 			if (app != null && !app.query_exists ()) {
 				warning ("Application '%s' doesn't exist", app.get_path ());
 				return;
@@ -67,8 +63,8 @@ namespace Granite.Services
 				internal_launch (app, mounted_files);
 		}
 		
-		static bool path_is_mounted (string path)
-		{
+		static bool path_is_mounted (string path) {
+		
 			foreach (var m in VolumeMonitor.get ().get_mounts ())
 				if (m.get_root () != null && m.get_root ().get_path () != null && path.contains (m.get_root ().get_path ()))
 					return true;
@@ -76,8 +72,8 @@ namespace Granite.Services
 			return false;
 		}
 		
-		static void internal_launch (File? app, GLib.List<File> files)
-		{
+		static void internal_launch (File? app, GLib.List<File> files) {
+		
 			if (app == null && files.length () == 0)
 				return;
 			
@@ -116,5 +112,8 @@ namespace Granite.Services
 				error (e.message);
 			}
 		}
+		
 	}
+	
 }
+

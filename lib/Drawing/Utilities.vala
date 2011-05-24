@@ -22,21 +22,21 @@ using Gtk;
 
 using Granite.Services;
 
-namespace Granite.Drawing
-{
-	public class Utilities : GLib.Object
-	{
-	    public static void draw_rounded_rectangle (Cairo.Context context, double radius, double offset, Gdk.Rectangle size)
-	    {
-		    context.move_to (size.x + radius + offset, size.y + offset);
-		    context.arc (size.x + size.width - radius - offset, size.y + radius + offset, radius, Math.PI * 1.5, Math.PI * 2);
-		    context.arc (size.x + size.width - radius - offset, size.y + size.height - radius - offset, radius, 0, Math.PI * 0.5);
-		    context.arc (size.x + radius + offset, size.y + size.height - radius - offset, radius, Math.PI * 0.5, Math.PI);
-		    context.arc (size.x + radius + offset, size.y + radius + offset, radius, Math.PI, Math.PI * 1.5);
-        }
-        
-		public static Drawing.Color average_color (Pixbuf source)
-		{
+namespace Granite.Drawing {
+
+	public class Utilities : GLib.Object {
+	
+		public static void draw_rounded_rectangle (Cairo.Context context, double radius, double offset, Gdk.Rectangle size) {
+		
+			context.move_to (size.x + radius + offset, size.y + offset);
+			context.arc (size.x + size.width - radius - offset, size.y + radius + offset, radius, Math.PI * 1.5, Math.PI * 2);
+			context.arc (size.x + size.width - radius - offset, size.y + size.height - radius - offset, radius, 0, Math.PI * 0.5);
+			context.arc (size.x + radius + offset, size.y + size.height - radius - offset, radius, Math.PI * 0.5, Math.PI);
+			context.arc (size.x + radius + offset, size.y + radius + offset, radius, Math.PI, Math.PI * 1.5);
+		}
+		
+		public static Drawing.Color average_color (Pixbuf source) {
+		
 			var rTotal = 0.0;
 			var gTotal = 0.0;
 			var bTotal = 0.0;
@@ -68,5 +68,8 @@ namespace Granite.Drawing
 							 bTotal / uint8.MAX / pixels,
 							 1).set_val (0.8).multiply_sat (1.15);
 		}
+		
 	}
+	
 }
+
