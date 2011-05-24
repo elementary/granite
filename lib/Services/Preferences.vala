@@ -82,7 +82,7 @@ namespace Granite.Services
 		
 		protected void init_from_file (string filename)
 		{
-			backing_file = Paths.UserConfigFolder.get_child (filename);
+			backing_file = Paths.user_config_folder.get_child (filename);
 			
 			// ensure the preferences file exists
 			Paths.ensure_directory_exists (backing_file.get_parent ());

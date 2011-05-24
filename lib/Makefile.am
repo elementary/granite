@@ -43,6 +43,8 @@ libgranite_la_LIBADD = \
 	$(NULL)
 
 libgranite_la_VALASOURCES = \
+    Application.vala \
+    Factory.vala \
 	Drawing/Color.vala \
 	Drawing/Utilities.vala \
 	Drawing/BufferSurface.vala \
