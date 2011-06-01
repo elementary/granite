@@ -16,126 +16,138 @@
 // 
 
 using Gtk;
+
 using Granite.Services;
 
 namespace Granite {
-    
-    public struct utsname {
-    
-        char sysname [65];
-        char nodename [65];
-        char release [65];
-        char version [65];
-        char machine [65];
-        char domainname [65];
-    }
-    
-    public abstract class Application : Gtk.Application {
-    
-        public string build_data_dir;
-        public string build_pkg_data_dir;
-        public string build_release_name;
-        public string build_version;
-        public string build_version_info;
-        
-        public string program_name;
-        public string exec_name;
-        
-        public string app_copyright;
-        public string app_icon;
-        public string app_launcher;
+	
+	public struct utsname {
+	
+		char sysname [65];
+		char nodename [65];
+		char release [65];
+		char version [65];
+		char machine [65];
+		char domainname [65];
+	}
+	
+	public abstract class Application : Gtk.Application {
+	
+		public string build_data_dir;
+		public string build_pkg_data_dir;
+		public string build_release_name;
+		public string build_version;
+		public string build_version_info;
+		
+		public string program_name;
+		public string exec_name;
+		
+		public string app_copyright;
+		public string app_icon;
+		public string app_launcher;
 
-        public string main_url;
-        public string help_url;
-        public string translate_url;
-        
-        public string[] about_authors;
-        public string[] about_documenters;
-        public string[] about_artists;
-        public string about_translators;
-        
-        protected virtual int start (string[] args) {
-            
-            // set program name
-            prctl (15, exec_name, 0, 0, 0);
-            Environment.set_prgname (exec_name);
-            
-            Logger.initialize (program_name);
-            Logger.DisplayLevel = LogLevel.INFO;
-            message ("%s version: %s", program_name, build_version);
-            var un = utsname ();
-            uname (un);
-            message ("Kernel version: %s", (string) un.release);
-            Logger.DisplayLevel = LogLevel.WARN;
-            
-            // parse commandline options
-            var context = new OptionContext ("");
-            
-            context.add_main_entries (options, null);
-            context.add_group (Gtk.get_option_group (false));
-            
-            try {
-                context.parse (ref args);
-            } catch { }
-            
-            Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
-            
-            if (!Thread.supported ())
-                error ("Problem initializing thread support.");
-            Gdk.threads_init ();
-            
-            set_options ();
-            
-            Paths.initialize (exec_name, build_pkg_data_dir);
-            
-            return run (args);
-        }
-        
-        [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
-        protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
-        
-        [CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
-        protected extern static int uname (utsname buf);
-        
-        protected static bool DEBUG = false;
-        
-        protected const OptionEntry[] options = {
-            { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
-            { null }
-        };
-        
-        protected virtual void set_options () {
-        
-            if (DEBUG)
-                Logger.DisplayLevel = LogLevel.DEBUG;
-        }
-        
-        public virtual void show_about () {
-        
-            var dlg = new AboutDialog ();
-            
-            dlg.set_program_name (program_name);
-            dlg.set_version (build_version + "\n" + build_version_info);
-            dlg.set_logo_icon_name (app_icon);
-            
-            dlg.set_comments (program_name + ". " + build_release_name);
-            dlg.set_copyright ("Copyright © %s %s Developers".printf (app_copyright, program_name));
-            dlg.set_website (main_url);
-            dlg.set_website_label ("Website");
-            
-            dlg.set_authors (about_authors);
-            dlg.set_documenters (about_documenters);
-            dlg.set_artists (about_artists);
-            dlg.set_translator_credits (about_translators);
-            
-            dlg.show_all ();
-            dlg.response.connect (() => {
-                dlg.hide ();
-                dlg.destroy ();
-            });
-        }
-        
-    }
-    
+		public string main_url;
+		public string help_url;
+		public string translate_url;
+		
+		public string[] about_authors;
+		public string[] about_documenters;
+		public string[] about_artists;
+		public string about_translators;
+		
+		protected virtual int start (string[] args) {
+			
+			// set program name
+			prctl (15, exec_name, 0, 0, 0);
+			Environment.set_prgname (exec_name);
+			
+			Logger.initialize (program_name);
+			Logger.DisplayLevel = LogLevel.INFO;
+			message ("%s version: %s", program_name, build_version);
+			var un = utsname ();
+			uname (un);
+			message ("Kernel version: %s", (string) un.release);
+			Logger.DisplayLevel = LogLevel.WARN;
+			
+			// parse commandline options
+			var context = new OptionContext ("");
+			
+			context.add_main_entries (options, null);
+			context.add_group (Gtk.get_option_group (false));
+			
+			try {
+				context.parse (ref args);
+			} catch { }
+			
+			Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
+			
+			if (!Thread.supported ())
+				error ("Problem initializing thread support.");
+			Gdk.threads_init ();
+			
+			set_options ();
+			
+			Paths.initialize (exec_name, build_pkg_data_dir);
+			
+			return run (args);
+		}
+		
+		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
+		protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
+		
+		[CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
+		protected extern static int uname (utsname buf);
+		
+		protected static bool DEBUG = false;
+		
+		protected const OptionEntry[] options = {
+			{ "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
+			{ null }
+		};
+		
+		protected virtual void set_options () {
+		
+			if (DEBUG)
+				Logger.DisplayLevel = LogLevel.DEBUG;
+		}
+		
+		protected AboutDialog about_dlg;
+		
+		public virtual void show_about () {
+		
+			if (about_dlg != null) {
+				about_dlg.get_window ().raise ();
+				return;
+			}
+			
+			about_dlg = new AboutDialog ();
+			
+			about_dlg.set_program_name (exec_name);
+			about_dlg.set_version (build_version + "\n" + build_version_info);
+			about_dlg.set_logo_icon_name (app_icon);
+			
+			about_dlg.set_comments (program_name + ". " + build_release_name);
+			about_dlg.set_copyright ("Copyright © %s %s Developers".printf (app_copyright, program_name));
+			about_dlg.set_website (main_url);
+			about_dlg.set_website_label ("Website");
+			
+			about_dlg.set_authors (about_authors);
+			about_dlg.set_documenters (about_documenters);
+			about_dlg.set_artists (about_artists);
+			about_dlg.set_translator_credits (about_translators);
+			
+			about_dlg.response.connect (() => {
+				about_dlg.hide ();
+			});
+			about_dlg.hide.connect (() => {
+				about_dlg.destroy ();
+				about_dlg = null;
+			});
+			
+			about_dlg.show_all ();
+		}
+		
+	}
+	
 }
 

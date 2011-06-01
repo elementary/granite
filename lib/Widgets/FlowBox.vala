@@ -70,7 +70,7 @@ namespace Granite.Widgets {
 			}
 		}
 
-		public override void size_allocate (Gdk.Rectangle allocation) {
+		public override void size_allocate (Gtk.Allocation allocation) {
 		
 			int width = 0;
 			int row_count = 1;
@@ -108,7 +108,7 @@ namespace Granite.Widgets {
 						width = child_size.width;
 					}
 
-					var child_allocation = Gdk.Rectangle ();
+					var child_allocation = Gtk.Allocation ();
 					child_allocation.width = child_size.width;
 					child_allocation.height = row_height;
 					child_allocation.x = allocation.x + width - child_size.width;
