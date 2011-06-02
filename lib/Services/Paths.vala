@@ -48,7 +48,7 @@ namespace Granite.Services {
 		public static File user_config_folder { get; protected set; }
 		
 		// defaults to xdg_data_home_folder/app_name
-		public static File UserDataFolder { get; protected set; }
+		public static File user_data_folder { get; protected set; }
 		
 		// defaults to xdg_cache_home_folder/app_name
 		public static File user_cache_folder { get; protected set; }
@@ -94,12 +94,12 @@ namespace Granite.Services {
 			
 			// set the XDG Base Directory specified directories to use
 			user_config_folder = xdg_config_home_folder.get_child (app_name);
-			UserDataFolder   = xdg_data_home_folder.get_child (app_name);
+			user_data_folder   = xdg_data_home_folder.get_child (app_name);
 			user_cache_folder  = xdg_cache_home_folder.get_child (app_name);
 			
 			// ensure all writable directories exist
 			ensure_directory_exists (user_config_folder);
-			ensure_directory_exists (UserDataFolder);
+			ensure_directory_exists (user_data_folder);
 			ensure_directory_exists (user_cache_folder);
 		}
 		

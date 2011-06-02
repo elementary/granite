@@ -33,29 +33,29 @@ namespace Granite {
 	
 	public abstract class Application : Gtk.Application {
 	
-		public string build_data_dir;
-		public string build_pkg_data_dir;
-		public string build_release_name;
-		public string build_version;
-		public string build_version_info;
+		public static string build_data_dir;
+		public static string build_pkg_data_dir;
+		public static string build_release_name;
+		public static string build_version;
+		public static string build_version_info;
 		
-		public string program_name;
-		public string exec_name;
+		public static string program_name;
+		public static string exec_name;
 		
-		public string app_copyright;
-		public string app_icon;
-		public string app_launcher;
+		public static string app_copyright;
+		public static string app_icon;
+		public static string app_launcher;
 
-		public string main_url;
-		public string help_url;
-		public string translate_url;
+		public static string main_url;
+		public static string help_url;
+		public static string translate_url;
 		
-		public string[] about_authors;
-		public string[] about_documenters;
-		public string[] about_artists;
-		public string about_translators;
+		public static string[] about_authors;
+		public static string[] about_documenters;
+		public static string[] about_artists;
+		public static string about_translators;
 		
-		protected virtual int start (string[] args) {
+		protected virtual void start (string[] args) {
 			
 			// set program name
 			prctl (15, exec_name, 0, 0, 0);
@@ -88,8 +88,6 @@ namespace Granite {
 			set_options ();
 			
 			Paths.initialize (exec_name, build_pkg_data_dir);
-			
-			return run (args);
 		}
 		
 		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
