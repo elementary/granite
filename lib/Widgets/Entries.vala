@@ -66,20 +66,20 @@ namespace Granite.Widgets {
         
         private void grey_out () {
         
-            Gdk.Color gray;
+            /*Gdk.Color gray;
             Gdk.Color.parse ("#999", out gray);
             
-            modify_text (Gtk.StateType.NORMAL, gray);
-            modify_font (Pango.FontDescription.from_string ("italic"));
+            modify_text (Gtk.StateType.NORMAL, gray);*/
+            override_font (Pango.FontDescription.from_string ("italic"));
         }
         
         private void reset_font () {
         
-            Gdk.Color black;
+            /*Gdk.Color black;
             Gdk.Color.parse ("#444", out black);
             
-            modify_text (Gtk.StateType.NORMAL, black);
-            modify_font (Pango.FontDescription.from_string ("normal"));
+            modify_text (Gtk.StateType.NORMAL, black);*/
+            override_font (Pango.FontDescription.from_string ("normal"));
         }
         
         public new string get_text () {
