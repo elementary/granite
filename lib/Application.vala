@@ -55,8 +55,8 @@ namespace Granite {
 		public string[] about_artists;
 		public string about_translators;
 		
-		protected virtual void start (string[] args) {
-			
+		public Application () {
+		
 			// set program name
 			prctl (15, exec_name, 0, 0, 0);
 			Environment.set_prgname (exec_name);
@@ -68,6 +68,9 @@ namespace Granite {
 			uname (un);
 			message ("Kernel version: %s", (string) un.release);
 			Logger.DisplayLevel = LogLevel.WARN;
+		}
+		
+		protected virtual void start (string[] args) {
 			
 			// parse commandline options
 			var context = new OptionContext ("");
@@ -86,8 +89,6 @@ namespace Granite {
 			Gdk.threads_init ();
 			
 			set_options ();
-			
-			Paths.initialize (exec_name, build_pkg_data_dir);
 		}
 		
 		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
