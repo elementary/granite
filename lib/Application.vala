@@ -47,6 +47,7 @@ namespace Granite {
 		public string app_launcher;
 
 		public string main_url;
+		public string bug_url;
 		public string help_url;
 		public string translate_url;
 		
