@@ -69,27 +69,12 @@ namespace Granite {
 			uname (un);
 			message ("Kernel version: %s", (string) un.release);
 			Logger.DisplayLevel = LogLevel.WARN;
-		}
-		
-		protected virtual void start (string[] args) {
-			
-			// parse commandline options
-			var context = new OptionContext ("");
-			
-			context.add_main_entries (options, null);
-			context.add_group (Gtk.get_option_group (false));
-			
-			try {
-				context.parse (ref args);
-			} catch { }
 			
 			Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 			
 			if (!Thread.supported ())
 				error ("Problem initializing thread support.");
 			Gdk.threads_init ();
-			
-			set_options ();
 		}
 		
 		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
@@ -97,19 +82,6 @@ namespace Granite {
 		
 		[CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
 		protected extern static int uname (utsname buf);
-		
-		protected static bool DEBUG = false;
-		
-		protected const OptionEntry[] options = {
-			{ "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
-			{ null }
-		};
-		
-		protected virtual void set_options () {
-		
-			if (DEBUG)
-				Logger.DisplayLevel = LogLevel.DEBUG;
-		}
 		
 		protected AboutDialog about_dlg;
 		
