@@ -15,8 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using Gee;
-
 namespace Granite.Services {
 
 	// This class follows the XDG Base Directory specification:
@@ -41,7 +39,7 @@ namespace Granite.Services {
 		public static File xdg_cache_home_folder { get; protected set; }
 		
 		// $XDG_DATA_DIRS - defaults to /usr/local/share/:/usr/share/
-		public static ArrayList<File> xdg_data_dir_folders { get; protected set; }
+		public static List<File> xdg_data_dir_folders { get; protected owned set; }
 		
 		
 		// defaults to xdg_config_home_folder/app_name
@@ -82,15 +80,15 @@ namespace Granite.Services {
 			else
 				xdg_cache_home_folder = File.new_for_path (xdg_cache_home);
 			
-			var dirs = new ArrayList<File> ();
+			var dirs = new List<File> ();
 			if (xdg_data_dirs == null || xdg_data_dirs.length == 0) {
-				dirs.add (File.new_for_path ("/usr/local/share"));
-				dirs.add (File.new_for_path ("/usr/share"));
+				dirs.append (File.new_for_path ("/usr/local/share"));
+				dirs.append (File.new_for_path ("/usr/share"));
 			} else {
 				foreach (var path in xdg_data_dirs.split (":"))
-					dirs.add (File.new_for_path (path));
+					dirs.append (File.new_for_path (path));
 			}
-			xdg_data_dir_folders = dirs;			
+			xdg_data_dir_folders = dirs.copy ();			
 			
 			// set the XDG Base Directory specified directories to use
 			user_config_folder = xdg_config_home_folder.get_child (app_name);

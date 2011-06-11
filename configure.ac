@@ -65,12 +65,10 @@ PKG_CHECK_MODULES(GRANITE_CORE, gobject-2.0 >= $GLIB_MIN_VERSION
                               gio-unix-2.0 >= $GLIB_MIN_VERSION
                               gio-unix-2.0 >= $GLIB_MIN_VERSION
                               gtk+-3.0 >= $GTK_MIN_VERSION
-                              gee-1.0
 )
 
 GRANITE_CORE_VALA_PKGS="--pkg gtk+-3.0 \
                       --pkg gio-unix-2.0 \
-                      --pkg gee-1.0 \
                       --pkg posix"
 AC_SUBST(GRANITE_CORE_VALA_PKGS)
 

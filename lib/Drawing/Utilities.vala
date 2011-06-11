@@ -17,7 +17,6 @@
 
 using Cairo;
 using Gdk;
-using Gee;
 using Gtk;
 
 using Granite.Services;

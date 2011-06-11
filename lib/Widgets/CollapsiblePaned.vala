@@ -30,7 +30,7 @@ namespace Granite {
 
 namespace Granite.Widgets {
 
-    public class CollapsablePaned : HPaned {
+    public class CollapsiblePaned : HPaned {
     
         private int saved_state = 10;
         private uint last_click_time = 0;
@@ -39,7 +39,7 @@ namespace Granite.Widgets {
         //public signal void shrink(); //TODO: Make the default action overwriteable
         //public new signal void expand(int saved_state); //TODO same
 
-        public CollapsablePaned (Orientation o) {
+        public CollapsiblePaned (Orientation o) {
             //events |= EventMask.BUTTON_PRESS_MASK;
             set_orientation (o);
 
