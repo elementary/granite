@@ -50,7 +50,7 @@ libgranite_la_VALASOURCES = \
 	Drawing/BufferSurface.vala \
 	Services/Logger.vala \
 	Services/Paths.vala \
-	Services/Preferences.vala \
+	Services/Settings.vala \
 	Services/System.vala \
 	Widgets/AppMenu.vala \
 	Widgets/DatePicker.vala \
