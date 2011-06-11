@@ -76,16 +76,14 @@ namespace Granite.Services {
 			call_verify (property.name);
 			notify.connect (handle_notify);
 			
-			if (schema != null)
-				save_prefs ();
+			save_prefs ();
 		}
 		
 		void handle_verify_notify (Object sender, ParamSpec property) {
 		
 			warning ("Key '%s' failed verification in schema '%s', changing value", property.name, schema.schema);
 			
-			if (schema != null)
-				save_prefs ();
+			save_prefs ();
 		}
 		
 		private void call_verify (string key) {
