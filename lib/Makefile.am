@@ -14,7 +14,7 @@ vapidir = $(datadir)/vala/vapi
 dist_vapi_DATA = granite.vapi
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libgranite.pc
+pkgconfig_DATA = granite.pc
 
 libgranitedir = $(libdir)
 
@@ -79,6 +79,6 @@ DISTCLEANFILES = \
 
 EXTRA_DIST = \
 	$(libgranite_la_VALASOURCES) \
-	libgranite.pc.in \
+	granite.pc.in \
 	$(NULL)
 

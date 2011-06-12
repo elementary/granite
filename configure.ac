@@ -115,7 +115,7 @@ dnl }}}
 AC_CONFIG_FILES([
 Makefile
 lib/Makefile
-lib/libgranite.pc
+lib/granite.pc
 m4/Makefile
 po/Makefile.in
 vapi/Makefile
