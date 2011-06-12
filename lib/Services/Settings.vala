@@ -83,14 +83,14 @@ namespace Granite.Services {
 			call_verify (property.name);
 			notify.connect (handle_notify);
 			
-			save_prefs ();
+			save_key (property.name);
 		}
 		
 		void handle_verify_notify (Object sender, ParamSpec property) {
 		
 			warning ("Key '%s' failed verification in schema '%s', changing value", property.name, schema.schema);
 			
-			save_prefs ();
+			save_key (property.name);
 		}
 		
 		private void call_verify (string key) {
@@ -128,6 +128,7 @@ namespace Granite.Services {
 				val.set_enum (schema.get_enum (key));
 			else {
 				debug ("Unsupported settings type '%s' for key '%' in schema '%s'", type.name (), key, schema.schema);
+				notify.connect (handle_notify);
 				return;
 			}
 			
@@ -137,33 +138,29 @@ namespace Granite.Services {
 			notify.connect (handle_notify);
 		}
 		
-		void save_prefs () {
+		void save_key (string key) {
 		
 			stop_monitor ();
 			
 			var obj_class = (ObjectClass) get_type ().class_ref ();
-			var properties = obj_class.list_properties ();
-			foreach (var prop in properties) {
+			var prop = obj_class.find_property (key);
 				
-				var type = prop.value_type;
-				var val = Value (type);
-				get_property (prop.name, ref val);
-				
-				if (type == typeof (int))
-					schema.set_int (prop.name, val.get_int ());
-				else if (type == typeof (double))
-					schema.set_double (prop.name, val.get_double ());
-				else if (type == typeof (string))
-					schema.set_string (prop.name, val.get_string ());
-				else if (type == typeof (bool))
-					schema.set_boolean (prop.name, val.get_boolean ());
-				else if (type.is_enum ())
-					schema.set_enum (prop.name, val.get_enum ());
-				else {
-					debug ("Unsupported settings type '%s' for key '%' in schema '%s'", type.name (), prop.name, schema);
-					continue;
-				}
-			}
+			var type = prop.value_type;
+			var val = Value (type);
+			get_property (prop.name, ref val);
+			
+			if (type == typeof (int))
+				schema.set_int (prop.name, val.get_int ());
+			else if (type == typeof (double))
+				schema.set_double (prop.name, val.get_double ());
+			else if (type == typeof (string))
+				schema.set_string (prop.name, val.get_string ());
+			else if (type == typeof (bool))
+				schema.set_boolean (prop.name, val.get_boolean ());
+			else if (type.is_enum ())
+				schema.set_enum (prop.name, val.get_enum ());
+			else
+				debug ("Unsupported settings type '%s' for key '%' in schema '%s'", type.name (), prop.name, schema);
 			
 			start_monitor ();
 		}
