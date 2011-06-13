@@ -33,28 +33,28 @@ namespace Granite {
 	
 	public abstract class Application : Gtk.Application {
 	
-		public string build_data_dir;
-		public string build_pkg_data_dir;
-		public string build_release_name;
-		public string build_version;
-		public string build_version_info;
+		public string build_data_dir { construct set; get; }
+		public string build_pkg_data_dir { construct set; get; }
+		public string build_release_name { construct set; get; }
+		public string build_version { construct set; get; }
+		public string build_version_info { construct set; get; }
 		
-		public string program_name;
-		public string exec_name;
+		public string program_name { construct set; get; }
+		public string exec_name { construct set; get; }
 		
-		public string app_copyright;
-		public string app_icon;
-		public string app_launcher;
+		public string app_copyright { construct set; get; }
+		public string app_icon { construct set; get; }
+		public string app_launcher { construct set; get; }
 
-		public string main_url;
-		public string bug_url;
-		public string help_url;
-		public string translate_url;
+		public string main_url { construct set; get; }
+		public string bug_url { construct set; get; }
+		public string help_url { construct set; get; }
+		public string translate_url { construct set; get; }
 		
-		public string[] about_authors;
-		public string[] about_documenters;
-		public string[] about_artists;
-		public string about_translators;
+		public string[] about_authors { construct set; get; }
+		public string[] about_documenters { construct set; get; }
+		public string[] about_artists { construct set; get; }
+		public string about_translators { construct set; get; }
 		
 		public Application () {
 		
