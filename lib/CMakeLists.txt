@@ -53,6 +53,7 @@ vala_precompile(VALA_C
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
+    config.vapi
 PACKAGES
     ${PKG_DEPS}
     posix
