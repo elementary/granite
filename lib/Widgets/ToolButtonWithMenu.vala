@@ -229,11 +229,14 @@ namespace Granite.Widgets {
             menu.select_first (true);
 
             try {
-                menu.popup (null,
-                            null,
-                            get_menu_position,
-                            (ev == null) ? 0 : ev.button,
-                            (ev == null) ? get_current_event_time() : ev.time);
+						    for (int i = 0; i < 2; i++) {
+							      // Update the menu's size, then show it
+                    menu.popup (null,
+                                null,
+                                get_menu_position,
+                                (ev == null) ? 0 : ev.button,
+                                (ev == null) ? get_current_event_time() : ev.time);
+                 }
             } finally {
                 // Highlight the parent
                 if (menu.attach_widget != null)
@@ -269,6 +272,8 @@ namespace Granite.Widgets {
             menu.attach_widget.get_window().get_origin (out x, out y);
             Allocation allocation;
             menu.attach_widget.get_allocation(out allocation);
+            Allocation menu_allocation;
+            menu.get_allocation(out menu_allocation);
 
             x += allocation.x;
 
@@ -276,8 +281,12 @@ namespace Granite.Widgets {
                 x += allocation.width;
                 x -= menu_width;
             }
+            else{
+						    x += allocation.width / 2;
+                x -= menu_allocation.width / 2;
+            }
 
-            y += allocation.y;
+            y += allocation.y + 4;
 
             int width, height;
             menu.get_size_request(out width, out height);
