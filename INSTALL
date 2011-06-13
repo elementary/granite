@@ -4,17 +4,11 @@
 • Build Granite
 
   bzr branch lp:granite
-  cd maya
+  cd granite
   mkdir build; cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
   sudo make install
-  
-  Alternatively, you could run
-  
-  ./install.sh
-  
-  in the project root to install Granite.
 
 • Bugs
 
