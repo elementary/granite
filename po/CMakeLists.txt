@@ -5,7 +5,7 @@ foreach (GRANITE_PO_INPUT ${GRANITE_PO_FILES})
     set (GRANITE_MO_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${GRANITE_PO_INPUT_BASE}.mo)
     add_custom_command (TARGET i18n COMMAND msgfmt -o ${GRANITE_MO_OUTPUT} ${GRANITE_PO_INPUT})
 
-    install (FILES ${GRANITE_MO_OUTPUT} DESTINATION share/locale-langpack/${GRANITE_PO_INPUT_BASE}/LC_MESSAGES RENAME ${GETTEXT_PACKAGE}.mo)
+    install (FILES ${GRANITE_MO_OUTPUT} DESTINATION share/locale-langpack/${GRANITE_PO_INPUT_BASE}/LC_MESSAGES RENAME granite.mo)
 endforeach (GRANITE_PO_INPUT ${GRANITE_PO_FILES})
 
 add_custom_target (catalog COMMENT “Building catalog.”)
