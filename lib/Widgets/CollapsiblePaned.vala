@@ -90,7 +90,7 @@ namespace Granite.Widgets {
         
     }
 
-    public class HCollapsablePaned : CollapsablePaned {
+    public class HCollapsablePaned : CollapsiblePaned {
     
         public HCollapsablePaned () {
             base (Orientation.HORIZONTAL);
@@ -98,7 +98,7 @@ namespace Granite.Widgets {
         
     }
 
-    public class VCollapsablePaned : CollapsablePaned {
+    public class VCollapsablePaned : CollapsiblePaned {
     
         public VCollapsablePaned () {
             base (Orientation.VERTICAL);
