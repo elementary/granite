@@ -11,3 +11,4 @@ set(GETTEXT_PACKAGE GRANITE)
 configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h)
 
 add_subdirectory (lib)
+add_subdirectory (po)

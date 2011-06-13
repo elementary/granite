@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-12 19:44+0200\n"
+"POT-Creation-Date: 2011-06-13 12:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../lib/Widgets/DatePicker.vala:40
+#: /home/xapantu/Dev/granite/po/../lib/Widgets/DatePicker.vala:40
 msgid "%B %e, %Y"
 msgstr ""
 
-#: ../lib/Widgets/TimePicker.vala:30
+#: /home/xapantu/Dev/granite/po/../lib/Widgets/TimePicker.vala:30
 msgid "%l:%M %p"
 msgstr ""
