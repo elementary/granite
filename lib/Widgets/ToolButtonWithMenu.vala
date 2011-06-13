@@ -112,7 +112,7 @@ namespace Granite.Widgets {
 			menu.deactivate.connect(popdown_menu);
 		}
 
-		public ToolButtonWithMenu (Image image, string label, Menu _menu, PositionType _menu_orientation = PositionType.LEFT) {
+		public ToolButtonWithMenu (Image image, string label, Menu _menu, Gtk.PositionType _menu_orientation = Gtk.PositionType.LEFT) {
 			
 			this.menu_orientation = _menu_orientation;
 
