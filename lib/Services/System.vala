@@ -17,24 +17,54 @@
 
 namespace Granite.Services {
 
+	/**
+	 * Utility class for frequently-used system-related functions, such as opening files, launching
+	 * applications, or executing terminal commands.
+	 */
 	public class System : GLib.Object {
 	
+		/**
+		 * Opens the specified URI with the default application.  This can be used for opening websites
+		 * with the default browser, etc.
+		 *
+		 * @param uri the URI to open
+		 */
 		public static void open_uri (string uri) {
 			open (File.new_for_uri (uri));
 		}
 		
+		/**
+		 * Opens the specified file with the default application.
+		 *
+		 * @param file the {@GLib.File} to open
+		 */
 		public static void open (File file) {
 			launch_with_files (null, { file });
 		}
 		
+		/**
+		 * Opens the specified files with the default application.
+		 *
+		 * @param files an array of {@GLib.File} to open
+		 */
 		public static void open_files (File[] files) {
 			launch_with_files (null, files);
 		}
 		
+		/**
+		 * Launches the specified application.
+		 *
+		 * @param app the {@GLib.File} representing the application to launch
+		 */
 		public static void launch (File app) {
 			launch_with_files (app, new File[] {});
 		}
 		
+		/**
+		 * Executes the specified command.
+		 *
+		 * @param command the command to execute
+		 */
 		public static bool execute_command (string command) {
 		
 			try {
@@ -48,6 +78,12 @@ namespace Granite.Services {
 			return true;
 		}
 		
+		/**
+		 * Launches the supplied files with the specified application.
+		 *
+		 * @param app the {@GLib.File} representing the application to launch
+		 * @param files an array of {@GLib.File} to open
+		 */
 		public static void launch_with_files (File? app, File[] files) {
 		
 			if (app != null && !app.query_exists ()) {

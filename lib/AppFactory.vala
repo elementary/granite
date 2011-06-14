@@ -17,10 +17,24 @@
 
 namespace Granite {
 
+	/**
+	 * Class for interacting with the properties of a {@link Granite.Application} without
+	 * re-instantiating the application.  This class is commonly used to show the about dialog
+	 * generated for the {@link Granite.Application} or access other publicly-accessible properties.
+	 */
 	public class AppFactory : GLib.Object	{
 	
+		/**
+		 * The {@link Granite.Application} to interact with.
+		 */
 		public static Granite.Application app;
 		
+		/**
+		 * Initializes the {@link Granite.AppFactory} for the supplied {@link Granite.Application}.
+		 * This method must be invoked first before using the {@link Granite.Application.app} property.
+		 *
+		 * @param app_class The {@link Granite.Application} to interact with
+		 */
 		public static void init (Granite.Application app_class) {
 			app = app_class;
 		}
