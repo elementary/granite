@@ -21,13 +21,36 @@ using Granite.Services;
 
 namespace Granite.Drawing {
 
-	public class Color : GLib.Object, PrefsSerializable {
+	/**
+	 * A class containing an RGBA color and methods for more powerful color manipulation.
+	 */
+	public class Color : GLib.Object, SettingsSerializable {
 	
+		/**
+		 * The value of the red channel, with 0 being the lowest value and 1.0 being the greatest value.
+		 */
 		public double R;
+		/**
+		 * The value of the green channel, with 0 being the lowest value and 1.0 being the greatest value.
+		 */
 		public double G;
+		/**
+		 * The value of the blue channel, with 0 being the lowest value and 1.0 being the greatest value.
+		 */
 		public double B;
+		/**
+		 * The value of the alpha channel, with 0 being the lowest value and 1.0 being the greatest value.
+		 */
 		public double A;
 		
+		/**
+		 * Constructs a new {@link Granite.Drawing.Color} with the supplied values.
+		 *
+		 * @param R the value of the red channel as a double
+		 * @param G the value of the green channel as a double
+		 * @param B the value of the blue channel as a double
+		 * @param A the value of the alpha channel as a double
+		 */
 		public Color (double R, double G, double B, double A) {
 		
 			this.R = R;
@@ -36,6 +59,11 @@ namespace Granite.Drawing {
 			this.A = A;
 		}
 		
+		/**
+		 * Constructs a new {@link Granite.Drawing.Color} from a {@link Gdk.Color}.
+		 *
+		 * @param color the {@link Gdk.Color}
+		 */
 		public Color.from_gdk (Gdk.Color color) {
 		
 			R = color.red / (double) uint16.MAX;
@@ -44,6 +72,13 @@ namespace Granite.Drawing {
 			A = 1.0;
 		}
 		
+		/**
+		 * Changes the hue of this color to the supplied one.
+		 *
+		 * @param hue the hue to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_hue (double hue) requires (hue >= 0 && hue <= 360) {
 			
 			double h, s, v;
@@ -54,6 +89,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes the saturation of this color to the supplied one.
+		 *
+		 * @param sat the saturation to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_sat (double sat) requires (sat >= 0 && sat <= 1) {
 		
 			double h, s, v;
@@ -64,6 +106,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes the value of this color to the supplied one.
+		 *
+		 * @param val the value to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_val (double val) requires (val >= 0 && val <= 1) {
 		
 			double h, s, v;
@@ -74,12 +123,22 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes the value of the alpha channel.
+		 *
+		 * @param alpha the value of the alpha channel
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_alpha (double alpha) requires (alpha >= 0 && alpha <= 1) {
 		
 			A = alpha;
 			return this;
 		}
 		
+		/** 
+		 * @return the hue of this color, as a double value
+		 */
 		public double get_hue () {
 		
 			double h, s, v;
@@ -87,6 +146,9 @@ namespace Granite.Drawing {
 			return h;
 		}
 
+		/** 
+		 * @return the saturation of this color, as a double value
+		 */
 		public double get_sat () {
 		
 			double h, s, v;
@@ -94,6 +156,9 @@ namespace Granite.Drawing {
 			return s;
 		}
 
+		/** 
+		 * @return the value of this color, as a double value
+		 */
 		public double get_val () {
 		
 			double h, s, v;
@@ -101,6 +166,13 @@ namespace Granite.Drawing {
 			return v;
 		}
 		
+		/**
+		 * Adds the supplied hue value to this color's hue value.
+		 *
+		 * @param hue the hue to add to this color's hue
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color add_hue (double val) {
 		
 			double h, s, v;
@@ -111,6 +183,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes this color's saturation to the supplied saturation, if it is greater than this color's saturation.
+		 *
+		 * @param sat the saturation to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_min_sat (double sat) requires (sat >= 0 && sat <= 1) {
 		
 			double h, s, v;
@@ -121,6 +200,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes this color's value to the supplied value, if it is greater than this color's value.
+		 *
+		 * @param val the value to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_min_value (double val) requires (val >= 0 && val <= 1) {
 		
 			double h, s, v;
@@ -131,6 +217,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Changes this color's saturation to the supplied saturation, if it is smaller than this color's saturation.
+		 *
+		 * @param sat the hue to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_max_sat (double sat) requires (sat >= 0 && sat <= 1) {
 		
 			double h, s, v;
@@ -141,6 +234,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 
+		/**
+		 * Changes this color's value to the supplied value, if it is smaller than this color's value.
+		 *
+		 * @param val the value to change this color to
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color set_max_val (double val) requires (val >= 0 && val <= 1) {
 		
 			double h, s, v;
@@ -151,6 +251,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Multiplies this color's saturation by the supplied amount.
+		 *
+		 * @param amount the amount to multiply the saturation by
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color multiply_sat (double amount) requires (amount >= 0) {
 			double h, s, v;
 			rgb_to_hsv (R, G, B, out h, out s, out v);
@@ -160,6 +267,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Brightens this color's value by the supplied amount.
+		 *
+		 * @param amount the amount to brighten the value by
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color brighten_val (double amount) requires (amount >= 0 && amount <= 1) {
 		
 			double h, s, v;
@@ -170,6 +284,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Darkens this color's value by the supplied amount.
+		 *
+		 * @param amount the amount to darken the value by
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color darken_val (double amount) requires (amount >= 0 && amount <= 1) {
 		
 			double h, s, v;
@@ -180,6 +301,13 @@ namespace Granite.Drawing {
 			return this;
 		}
 		
+		/**
+		 * Darkens this color's value by the supplied amount * color's saturation.
+		 *
+		 * @param amount the amount to darken the value by
+		 * 
+		 * @return the new {@link Granite.Drawing.Color}
+		 */
 		public Color darken_by_sat (double amount) requires (amount >= 0 && amount <= 1) {
 		
 			double h, s, v;
@@ -292,15 +420,21 @@ namespace Granite.Drawing {
 			}
 		}
 		
-		public string prefs_serialize () {
+		/**
+		 * {@inheritDoc}
+		 */
+		public string settings_serialize () {
 		
 			return "%d;;%d;;%d;;%d".printf ((int) (R * uint8.MAX),
 				(int) (G * uint8.MAX),
 				(int) (B * uint8.MAX),
 				(int) (A * uint8.MAX));
 		}
-		
-		public void prefs_deserialize (string s) {
+
+		/**
+		 * {@inheritDoc}
+		 */
+		public void settings_deserialize (string s) {
 		
 			var parts = s.split (";;");
 			

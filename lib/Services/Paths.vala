@@ -16,42 +16,66 @@
 // 
 
 namespace Granite.Services {
-
-	// This class follows the XDG Base Directory specification:
-	//   http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+	
+	/**
+	 * A class for interacting with frequently-used directories, following the
+	 * XDG Base Directory specification: http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+	 */
 	public class Paths : GLib.Object {
 	
-		// User's home folder - $HOME
+		/**
+		 * User's home folder - $HOME
+		 */
 		public static File home_folder { get; protected set; }
 		
-		// path passed in to initialize method
-		// should be Build.PKGDATADIR
+		/**
+		 * Path passed in to initialize method; should be Build.PKGDATADIR.
+		 */
 		public static File data_folder { get; protected set; }
 		
 		
-		// $XDG_CONFIG_HOME - defaults to $HOME/.config
+		/**
+		 * $XDG_CONFIG_HOME - defaults to $HOME/.config
+		 */
 		public static File xdg_config_home_folder { get; protected set; }
 		
-		// $XDG_DATA_HOME - defaults to $HOME/.local/share
+		/**
+		 * $XDG_DATA_HOME - defaults to $HOME/.local/share
+		 */
 		public static File xdg_data_home_folder { get; protected set; }
 		
-		// $XDG_CACHE_HOME - defaults to $HOME/.cache
+		/** 
+		 * $XDG_CACHE_HOME - defaults to $HOME/.cache
+		 */
 		public static File xdg_cache_home_folder { get; protected set; }
 		
-		// $XDG_DATA_DIRS - defaults to /usr/local/share/:/usr/share/
+		/**
+		 * $XDG_DATA_DIRS - defaults to /usr/local/share/:/usr/share/
+		 */
 		public static List<File> xdg_data_dir_folders { get; protected owned set; }
 		
 		
-		// defaults to xdg_config_home_folder/app_name
+		/**
+		 * defaults to xdg_config_home_folder/app_name
+		 */
 		public static File user_config_folder { get; protected set; }
 		
-		// defaults to xdg_data_home_folder/app_name
+		/**
+		 * defaults to xdg_data_home_folder/app_name
+		 */
 		public static File user_data_folder { get; protected set; }
 		
-		// defaults to xdg_cache_home_folder/app_name
+		/**
+		 * defaults to xdg_cache_home_folder/app_name
+		 */
 		public static File user_cache_folder { get; protected set; }
 		
-		
+		/**
+		 * Initialize all the paths using the supplied app name and path to the app's data folder.
+		 *
+		 * @param app_name the name of the application
+		 * @param data_folder_path the path to the application's data folder
+		 */
 		public static void initialize (string app_name, string data_folder_path) {
 			
 			// get environment-based settings
@@ -101,6 +125,13 @@ namespace Granite.Services {
 			ensure_directory_exists (user_cache_folder);
 		}
 		
+		/**
+		 * Ensure the directory exists, by creating it if it does not.
+		 *
+		 * @param dir the directory in question
+		 *
+		 * @return `true` is the directory exists, `false` if it does not
+		 */
 		public static bool ensure_directory_exists (File dir) {
 			
 			if (!dir.query_exists ())

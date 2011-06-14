@@ -20,9 +20,17 @@ using Posix;
 
 namespace Granite.Drawing {
 
+	/**
+	 * A buffer containing an internal Cairo-usable surface and context, designed
+	 * for usage with large, rarely updated draw operations.
+	 */
 	public class BufferSurface : GLib.Object {
 	
 		private Surface _surface;
+		/**
+		 * The {@link Cairo.Surface} which will store the results of all drawing operations
+		 * made with {@link Granite.Drawing.BufferSurface.context}.
+		 */
 		public Surface surface {
 			get {
 				if (_surface == null)
@@ -32,10 +40,20 @@ namespace Granite.Drawing {
 			private set { _surface = value; }
 		}
 		
+		/**
+		 * The width of the {@link Granite.Drawing.BufferSurface}, in pixels.
+		 */
 		public int width { get; private set; }
+		/**
+		 * The height of the BufferSurface, in pixels.
+		 */
 		public int height { get; private set; }
 		
 		private Context _context;
+		/**
+		 * The {@link Cairo.Context} for the internal surface.  All drawing operations done on this
+		 * {@link Granite.Drawing.BufferSurface} should use this context.
+		 */
 		public Cairo.Context context {
 			get {
 				if (_context == null)
@@ -44,26 +62,49 @@ namespace Granite.Drawing {
 			}
 		}
 		
-		public BufferSurface (int width, int height) {
+		/**
+		 * Constructs a new, empty {@link Granite.Drawing.BufferSurface} with the supplied dimensions.
+		 *
+		 * @param width the width of {@link Granite.Drawing.BufferSurface}, in pixels
+		 * @param height the height of the {@link Granite.Drawing.BufferSurface}, in pixels
+		 */
+		public BufferSurface (int width, int height) requires (width >= 0 && height >= 0) {
 		
 			this.width = width;
 			this.height = height;
 		}
-		
-		public BufferSurface.with_surface (int width, int height, Surface model) {
+
+		/**
+		 * Constructs a new, empty {@link Granite.Drawing.BufferSurface} with the supplied dimensions, using
+		 * the supplied {@link Cairo.Surface} as a model.
+		 *
+		 * @param width the width of the new {@link Granite.Drawing.BufferSurface}, in pixels
+		 * @param height the height of the new {@link Granite.Drawing.BufferSurface}, in pixels
+		 * @param model the {@link Cairo.Surface} to use as a model for the internal {@link Cairo.Surface}
+		 */
+		public BufferSurface.with_surface (int width, int height, Surface model) requires (model != null) {
 		
 			this (width, height);
-			if (model != null)
-				surface = new Surface.similar (model, Content.COLOR_ALPHA, width, height);
+			surface = new Surface.similar (model, Content.COLOR_ALPHA, width, height);
 		}
 
-		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) {
+		/**
+		 * Constructs a new, empty {@link Granite.Drawing.BufferSurface} with the supplied dimensions, using
+		 * the supplied {@link Granite.Drawing.BufferSurface} as a model.
+		 *
+		 * @param width the width of the new {@link Granite.Drawing.BufferSurface}, in pixels
+		 * @param height the height of the new {@link Granite.Drawing.BufferSurface}, in pixels
+		 * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.SurfaceSurface}
+		 */
+		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) requires (model != null) {
 		
 			this (width, height);
-			if (model != null)
-				surface = new Surface.similar (model.surface, Content.COLOR_ALPHA, width, height);
+			surface = new Surface.similar (model.surface, Content.COLOR_ALPHA, width, height);
 		}
 		
+		/**
+		 * Clears the internal {@link Cairo.Surface}, making all pixels fully transparent.
+		 */
 		public void clear () {
 		
 			context.save ();
@@ -75,6 +116,11 @@ namespace Granite.Drawing {
 			_context.restore ();
 		}
 		
+		/**
+		 * Creates a {@link Gdk.Pixbuf} from internal {@link Cairo.Surface}.
+		 *
+		 * @return the {@link Gdk.Pixbuf}
+		 */
 		public Gdk.Pixbuf load_to_pixbuf () {
 		
 			var image_surface = new ImageSurface (Format.ARGB32, width, height);
@@ -122,6 +168,11 @@ namespace Granite.Drawing {
 			return pb;
 		}
 		
+		/**
+		 * Averages all the colors in the internal {@link Cairo.Surface}.
+		 *
+		 * @return the {@link Granite.Drawing.Color} with the averaged color
+		 */
 		public Drawing.Color average_color () {
 		
 			var bTotal = 0.0;
@@ -165,7 +216,14 @@ namespace Granite.Drawing {
 							 bTotal / uint8.MAX / length,
 							 1).set_val (0.8).multiply_sat (1.15);
 		}
-		
+
+		/**
+		 * Performs a blur operation on the internal {@link Cairo.Surface}, using the
+		 * fast-blur algorithm found here http://incubator.quasimondo.com/processing/superfastblur.pde.
+		 *
+		 * @param radius the blur radius
+		 * @param process_count the number of times to perform the operation
+		 */
 		public void fast_blur (int radius, int process_count = 1) {
 		
 			if (radius < 1 || process_count < 1)
@@ -297,6 +355,13 @@ namespace Granite.Drawing {
 		const int AlphaPrecision = 16;
 		const int ParamPrecision = 7;
 		
+		/**
+		 * Performs a blur operation on the internal {@link Cairo.Surface}, using an
+		 * exponential blurring algorithm.  This method is usually the fastest
+		 * and produces good-looking results (though not quite as good as gaussian's).
+		 *
+		 * @param radius the blur radius
+		 */
 		public void exponential_blur (int radius) {
 		
 			if (radius < 1)
@@ -402,7 +467,14 @@ namespace Granite.Drawing {
 			pixel[3] = (uint8) (zB >> ParamPrecision);
 		}
 		
-		// Note: This method is wickedly slow
+		/**
+		 * Performs a blur operation on the internal {@link Cairo.Surface}, using a
+		 * gaussian blurring algorithm.  This method is very slow, albeit producing
+		 * debatably the best-looking results, and in most cases developers should
+		 * use the exponential blurring algorithm instead.
+		 *
+		 * @param radius the blur radius
+		 */
 		public void gaussian_blur (int radius) {
 		
 			var gausswidth = radius * 2 + 1;

@@ -37,6 +37,9 @@ namespace Granite.Services {
 		WHITE,
 	}
 	
+	/**
+	 * An enhanced GLib logger which all {@link Granite.Application}s use.
+	 */
 	public class Logger : GLib.Object {
 	
 		class LogMessage : GLib.Object {
@@ -62,6 +65,11 @@ namespace Granite.Services {
 		
 		static Regex re;
 		
+		/**
+		 * Initializes the logger with the supplied application name.
+		 *
+		 * @param app_name the name of the app to display in the logs
+		 */
 		public static void initialize (string app_name) {
 		
 			AppName = app_name;
@@ -83,6 +91,11 @@ namespace Granite.Services {
 			return msg;
 		}
 		
+		/**
+		 * Convenience method to write a message with LogLevel.NOTIFY.
+		 *
+		 * @param msg the message to write to the log
+		 */
 		public static void notification (string msg) {
 			write (LogLevel.NOTIFY, format_message (msg));
 		}

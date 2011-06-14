@@ -23,17 +23,35 @@ using Granite.Services;
 
 namespace Granite.Drawing {
 
+	/**
+	 * A utility class for frequently-performed drawing operations.
+	 */
 	public class Utilities : GLib.Object {
 	
-		public static void draw_rounded_rectangle (Cairo.Context context, double radius, double offset, Gdk.Rectangle size) {
+		/**
+		 * Draws a rounded rectangle with the supplied {@link Cairo.Context}.
+		 *
+		 * @param context the {@link Cairo.Context} to use to perform the operation
+		 * @param radius the radius of the desired rounded rectangle
+		 * @param padding the space surrounding the rounded rectangle on all sides, in pixels
+		 * @param size the dimensions of the rounded rectangle
+		 */
+		public static void draw_rounded_rectangle (ref Cairo.Context context, double radius, double padding, Gdk.Rectangle size) {
 		
-			context.move_to (size.x + radius + offset, size.y + offset);
-			context.arc (size.x + size.width - radius - offset, size.y + radius + offset, radius, Math.PI * 1.5, Math.PI * 2);
-			context.arc (size.x + size.width - radius - offset, size.y + size.height - radius - offset, radius, 0, Math.PI * 0.5);
-			context.arc (size.x + radius + offset, size.y + size.height - radius - offset, radius, Math.PI * 0.5, Math.PI);
-			context.arc (size.x + radius + offset, size.y + radius + offset, radius, Math.PI, Math.PI * 1.5);
+			context.move_to (size.x + radius + padding, size.y + padding);
+			context.arc (size.x + size.width - radius - padding, size.y + radius + padding, radius, Math.PI * 1.5, Math.PI * 2);
+			context.arc (size.x + size.width - radius - padding, size.y + size.height - radius - padding, radius, 0, Math.PI * 0.5);
+			context.arc (size.x + radius + padding, size.y + size.height - radius - padding, radius, Math.PI * 0.5, Math.PI);
+			context.arc (size.x + radius + padding, size.y + radius + padding, radius, Math.PI, Math.PI * 1.5);
 		}
 		
+		/**
+		 * Averages the colors in the {@link Gdk.Pixbuf} and returns it.
+		 *
+		 * @param source the {@link Gdk.Pixbuf}
+		 * 
+		 * @return the {@link Granite.Drawing.Color} containing the averaged color
+		 */
 		public static Drawing.Color average_color (Pixbuf source) {
 		
 			var rTotal = 0.0;
