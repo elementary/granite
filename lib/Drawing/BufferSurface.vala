@@ -51,7 +51,7 @@ namespace Granite.Drawing {
 		
 		private Context _context;
 		/**
-		 * The {@link Cairo.Context} for the internal surface.  All drawing operations done on this
+		 * The {@link Cairo.Context} for the internal surface. All drawing operations done on this
 		 * {@link Granite.Drawing.BufferSurface} should use this context.
 		 */
 		public Cairo.Context context {
@@ -219,7 +219,7 @@ namespace Granite.Drawing {
 
 		/**
 		 * Performs a blur operation on the internal {@link Cairo.Surface}, using the
-		 * fast-blur algorithm found here http://incubator.quasimondo.com/processing/superfastblur.pde.
+		 * fast-blur algorithm found here [[http://incubator.quasimondo.com/processing/superfastblur.pde]].
 		 *
 		 * @param radius the blur radius
 		 * @param process_count the number of times to perform the operation
@@ -357,7 +357,7 @@ namespace Granite.Drawing {
 		
 		/**
 		 * Performs a blur operation on the internal {@link Cairo.Surface}, using an
-		 * exponential blurring algorithm.  This method is usually the fastest
+		 * exponential blurring algorithm. This method is usually the fastest
 		 * and produces good-looking results (though not quite as good as gaussian's).
 		 *
 		 * @param radius the blur radius
@@ -469,7 +469,7 @@ namespace Granite.Drawing {
 		
 		/**
 		 * Performs a blur operation on the internal {@link Cairo.Surface}, using a
-		 * gaussian blurring algorithm.  This method is very slow, albeit producing
+		 * gaussian blurring algorithm. This method is very slow, albeit producing
 		 * debatably the best-looking results, and in most cases developers should
 		 * use the exponential blurring algorithm instead.
 		 *

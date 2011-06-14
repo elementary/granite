@@ -137,6 +137,7 @@ namespace Granite.Drawing {
 		}
 		
 		/** 
+		 * Get the value.
 		 * @return the hue of this color, as a double value
 		 */
 		public double get_hue () {
@@ -147,6 +148,7 @@ namespace Granite.Drawing {
 		}
 
 		/** 
+		 * Get the value.
 		 * @return the saturation of this color, as a double value
 		 */
 		public double get_sat () {
@@ -157,6 +159,8 @@ namespace Granite.Drawing {
 		}
 
 		/** 
+		 * Get the value.
+		 * 
 		 * @return the value of this color, as a double value
 		 */
 		public double get_val () {
