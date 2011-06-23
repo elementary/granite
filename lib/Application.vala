@@ -33,30 +33,30 @@ namespace Granite {
 	
 	public abstract class Application : Gtk.Application {
 	
-		public string build_data_dir { construct set; get; }
-		public string build_pkg_data_dir { construct set; get; }
-		public string build_release_name { construct set; get; }
-		public string build_version { construct set; get; }
-		public string build_version_info { construct set; get; }
+		public string build_data_dir;
+		public string build_pkg_data_dir;
+		public string build_release_name;
+		public string build_version;
+		public string build_version_info;
 		
-		public string program_name { construct set; get; }
-		public string exec_name { construct set; get; }
+		public string program_name;
+		public string exec_name;
 		
-		public string app_copyright { construct set; get; }
-		public string app_icon { construct set; get; }
-		public string app_launcher { construct set; get; }
+		public string app_copyright;
+		public string app_icon;
+		public string app_launcher;
 
-		public string main_url { construct set; get; }
-		public string bug_url { construct set; get; }
-		public string help_url { construct set; get; }
-		public string translate_url { construct set; get; }
+		public string main_url;
+		public string bug_url;
+		public string help_url;
+		public string translate_url;
 		
-		public string[] about_authors { construct set; get; }
-		public string[] about_documenters { construct set; get; }
-		public string[] about_artists { construct set; get; }
-		public string about_translators { construct set; get; }
+		public string[] about_authors;
+		public string[] about_documenters;
+		public string[] about_artists;
+		public string about_translators;
 		
-		public Application () {
+		public Application (string[] args) {
 		
 			// set program name
 			prctl (15, exec_name, 0, 0, 0);
@@ -70,11 +70,23 @@ namespace Granite {
 			message ("Kernel version: %s", (string) un.release);
 			Logger.DisplayLevel = LogLevel.WARN;
 			
+			// parse commandline options
+			var context = new OptionContext ("");
+			
+			context.add_main_entries (options, null);
+			context.add_group (Gtk.get_option_group (false));
+			
+			try {
+				context.parse (ref args);
+			} catch { }
+			
 			Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 			
 			if (!Thread.supported ())
 				error ("Problem initializing thread support.");
 			Gdk.threads_init ();
+			
+			set_options ();
 		}
 		
 		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
@@ -82,6 +94,19 @@ namespace Granite {
 		
 		[CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
 		protected extern static int uname (utsname buf);
+		
+		protected static bool DEBUG = false;
+		
+		protected const OptionEntry[] options = {
+			{ "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
+			{ null }
+		};
+		
+		protected virtual void set_options () {
+			
+			if (DEBUG)
+				Logger.DisplayLevel = LogLevel.DEBUG;
+		}
 		
 		protected AboutDialog about_dlg;
 		
