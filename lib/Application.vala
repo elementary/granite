@@ -56,11 +56,14 @@ namespace Granite {
 		public string[] about_artists;
 		public string about_translators;
 		
-		public Application (string[] args) {
+		public Application () {
 		
 			// set program name
 			prctl (15, exec_name, 0, 0, 0);
 			Environment.set_prgname (exec_name);
+			
+			Posix.signal (Posix.SIGINT, sig_handler);
+			Posix.signal (Posix.SIGTERM, sig_handler);
 			
 			Logger.initialize (program_name);
 			Logger.DisplayLevel = LogLevel.INFO;
@@ -69,6 +72,25 @@ namespace Granite {
 			uname (un);
 			message ("Kernel version: %s", (string) un.release);
 			Logger.DisplayLevel = LogLevel.WARN;
+			
+			Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
+			
+			if (!Thread.supported ())
+				error ("Problem initializing thread support.");
+			Gdk.threads_init ();
+			
+			set_options ();
+			
+			AppFactory.init (this);
+		}
+		
+		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
+		protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
+		
+		[CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
+		protected extern static int uname (utsname buf);
+		
+		public new int run (string[] args) {
 			
 			// parse commandline options
 			var context = new OptionContext ("");
@@ -80,20 +102,10 @@ namespace Granite {
 				context.parse (ref args);
 			} catch { }
 			
-			Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
-			
-			if (!Thread.supported ())
-				error ("Problem initializing thread support.");
-			Gdk.threads_init ();
-			
 			set_options ();
+			
+			return base.run (args);
 		}
-		
-		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
-		protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
-		
-		[CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
-		protected extern static int uname (utsname buf);
 		
 		protected static bool DEBUG = false;
 		
@@ -101,6 +113,11 @@ namespace Granite {
 			{ "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
 			{ null }
 		};
+		
+		protected static void sig_handler (int sig) {
+			warning ("Caught signal (%d), exiting", sig);
+			AppFactory.app.quit_mainloop ();
+		}
 		
 		protected virtual void set_options () {
 			
