@@ -79,8 +79,6 @@ namespace Granite {
 				error ("Problem initializing thread support.");
 			Gdk.threads_init ();
 			
-			set_options ();
-			
 			AppFactory.init (this);
 		}
 		
