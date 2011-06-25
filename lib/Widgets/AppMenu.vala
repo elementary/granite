@@ -17,19 +17,36 @@
 
 using Gtk;
 
+using Granite.Services;
+
 namespace Granite.Widgets {
 	
 	public class AppMenu : ToolButtonWithMenu {
 	
-		public AppMenu.from_stock (string stock_image, IconSize size, string label, Menu menu) {
-			base.from_stock(stock_image, size, label, menu);
-		}
-
-		public AppMenu (Image image, string label, Menu menu) {
-			base (image, label, menu);
+		public AppMenu (Menu menu) {
+			
+			var help_item = new MenuItem.with_label (_("Get Help Online..."));
+			var translate_item = new MenuItem.with_label (_("Translate This Application..."));
+			var report_item = new MenuItem.with_label (_("Report a Problem..."));
+			var about_item = new MenuItem.with_label (_("About"));
+			
+			menu.append (new SeparatorMenuItem ());
+			menu.append (help_item);
+			menu.append (translate_item);
+			menu.append (report_item);
+			menu.append (new SeparatorMenuItem ());
+			menu.append (about_item);
+			
+			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+			
+			help_item.activate.connect(() => System.open_uri (AppFactory.app.help_url));
+			translate_item.activate.connect(() => System.open_uri (AppFactory.app.translate_url));
+			report_item.activate.connect(() => System.open_uri (AppFactory.app.bug_url));
+			about_item.activate.connect (AppFactory.app.show_about);
 		}
 		
 	}
 	
 }
+
 
