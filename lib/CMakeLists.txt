@@ -1,7 +1,7 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1) # increase when you broke the API
-set (${PKGNAME_}_SOVERSION 0) # Increase when you add a functionality
+set (${PKGNAME_}_VERSION 0.1.1) # increase when you break the API
+set (${PKGNAME_}_SOVERSION 0) # Increase when you add functionality
 #
 # granite.pc
 #
@@ -93,8 +93,8 @@ install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
-add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CURRENT_BINARY_DIR}/granite.h ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=granite --package-version=0.1 --doclet=gtkdoc)
+add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CURRENT_BINARY_DIR}/granite.h ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=granite --package-version=0.1.1 --doclet=gtkdoc)
 
 add_custom_target (valadocs)
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_vala -R -f)
-add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1 --force)
+add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --force)
