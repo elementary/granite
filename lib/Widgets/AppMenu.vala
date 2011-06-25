@@ -30,7 +30,8 @@ namespace Granite.Widgets {
 			var report_item = new MenuItem.with_label (_("Report a Problem..."));
 			var about_item = new MenuItem.with_label (_("About"));
 			
-			menu.append (new SeparatorMenuItem ());
+			if (menu.get_children ().length () > 0)
+				menu.append (new SeparatorMenuItem ());
 			menu.append (help_item);
 			menu.append (translate_item);
 			menu.append (report_item);
