@@ -1,0 +1,23 @@
+Source: granite
+Priority: extra
+Maintainer: xapantu <xapantu@gmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cmake, valac, libvala-0.14-dev, build-essential, pkg-config, libgtk-3-dev
+Standards-Version: 3.9.1
+Section: libs
+Homepage: http://launchpad.net/granite
+#Vcs-Git: git://git.debian.org/collab-maint/granite.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/granite.git;a=summary
+
+Package: libgranite-dev
+Section: libdevel
+Architecture: any
+Depends: libgranite (= ${binary:Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: libgranite
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

@@ -1,0 +1,11 @@
+granite (0.0.1~bzr35~natty3~0-1ubuntu1) natty; urgency=low
+
+  * Fix build-deps
+
+ -- Lucas Baudin <xapantu@gmail.com>  Fri, 24 Jun 2011 10:23:44 +0200
+
+granite (0.0.1~bzr35~oneiric0-1) oneiric; urgency=low
+
+  * Initial release
+
+ -- Lucas Baudin <xapantu@gmail.com>  Mon, 13 Jun 2011 17:10:08 +0200
