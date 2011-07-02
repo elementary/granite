@@ -11,11 +11,11 @@ Homepage: http://launchpad.net/granite
 Package: libgranite-dev
 Section: libdevel
 Architecture: any
-Depends: libgranite (= ${binary:Version})
+Depends: libgranite0 (= ${binary:Version})
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
 
-Package: libgranite
+Package: libgranite0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
