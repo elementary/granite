@@ -75,6 +75,17 @@ namespace Granite.Services {
 	 * }}}
 	 *
 	 * Keep in mind that the developer must define his/her enums to match the schema's.
+	 * 
+	 * The following is a simplified explanation of how this library works:
+	 *  1. Any subclass looks at all properties it contains, and loads their initial values from the keys they represent.
+	 *     Because Vala properties are stored as GLib properties, the string representation of a property replaces underscores with
+	 *     hyphens (i.e. property_name becomes "property-name"). This is how this library knows which keys to load from. If the key
+	 *     does not exist, it will result in a fatal error.
+	 *  1. When a property of the subclass changes, the library will first verify the data before emitting a changed signal. If necessary,
+	 *     the library will change the value of the property while verifying.
+	 *     This is why developers should only act upon emissions of the changed () signal and never the native {@link GLib.Object.notify()} signal.
+	 *  1. When the corresponding key of one of the properties of the subclass changes, it will also verify the data and change it, if necessary,
+	 *     before loading it into as the corresponding property's value.
 	 */
 	public abstract class Settings : GLib.Object {
 	
@@ -157,6 +168,29 @@ namespace Granite.Services {
 		
 		~Settings () {
 			stop_monitor ();
+		}
+		
+		/**
+		 * Create a binding between the //key// and the property //property// of //object//.
+		 * 
+		 * The binding uses the default GIO mapping functions to map between the settings and property values. These functions handle booleans,
+		 * numeric types and string types in a straightforward way. Use {@link GLib.Settings.bind_with_mapping()} if you need a custom
+		 * mapping, or map between types that are not supported by the default mapping functions.
+		 *
+		 * Unless the flags include {@link GLib.SettingsBindFlags.NO_SENSITIVITY}, this method also establishes a binding between the
+		 * writability of //key// and the "sensitive" property of object (if object has a boolean property by that name).
+		 * See {@link GLib.Settings.bind_writable()} for more details about writable bindings.
+		 *
+		 * Note that the lifecycle of the binding is tied to the object, and that you can have only one binding per object property. If you
+		 * bind the same property twice on the same object, the second binding overrides the first one.
+		 *
+		 * @param key the key to bind
+		 * @param object the object containing //property//
+		 * @param property the name of the property to bind (see notes above about the GLib naming style for properties)
+		 * @param flags the flags for the binding
+		 */
+		public void bind (string key, void* object, string property, SettingsBindFlags flags = SettingsBindFlags.DEFAULT) {
+			schema.bind (key, object, property, flags);			
 		}
 		
 		private void stop_monitor () {
