@@ -189,7 +189,7 @@ namespace Granite.Services {
 		 * @param property the name of the property to bind (see notes above about the GLib naming style for properties)
 		 * @param flags the flags for the binding
 		 */
-		public void bind (string key, void* object, string property, SettingsBindFlags flags = SettingsBindFlags.DEFAULT) {
+		public void bind (string key, void* object, string property, SettingsBindFlags flags = GLib.SettingsBindFlags.DEFAULT) {
 			schema.bind (key, object, property, flags);			
 		}
 		
