@@ -10,6 +10,14 @@ set(RESOURCES_DIR ${CMAKE_INSTALL_PREFIX}/share/granite/)
 set(GETTEXT_PACKAGE GRANITE)
 configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h)
 
+set(CPACK_PACKAGE_VERSION "0.1.1")
+set(CPACK_SOURCE_GENERATOR "TBZ2")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}")
+set(CPACK_SOURCE_IGNORE_FILES "/build/;/.bzr/;/.bzrignore;~$;${CPACK_SOURCE_IGNORE_FILES}")
+include(CPack)
+
+add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
+
 add_subdirectory (lib)
 add_subdirectory (po)
 add_subdirectory (data)
