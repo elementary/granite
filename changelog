@@ -1,16 +1,4 @@
-granite (0.0.1-1ubuntu2) natty; urgency=low
-
-  * Fix vapi, it wasn't in the package
-
- -- xapantu <xapantu@pc-bas>  Sat, 02 Jul 2011 15:14:02 +0200
-
-granite (0.0.1~bzr35~natty3~0-1ubuntu1) natty; urgency=low
-
-  * Fix build-deps
-
- -- Lucas Baudin <xapantu@gmail.com>  Fri, 24 Jun 2011 10:23:44 +0200
-
-granite (0.0.1~bzr35~oneiric0-1) oneiric; urgency=low
+granite (0.0.1-1) oneiric; urgency=low
 
   * Initial release
 

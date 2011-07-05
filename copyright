@@ -1,6 +1,6 @@
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: granite
-Source: <url://example.com>
+Source: http://launchpad.net/granite
 
 Files: *
 Copyright: <years> <put author's name and email here>
@@ -11,8 +11,6 @@ License: <special license>
  .
  <Including paragraphs>
 
-# If you want to use GPL v2 or later for the /debian/* files use 
-# the following clauses, or change it to suit. Delete these two lines
 Files: debian/*
 Copyright: 2011 xapantu <xapantu@gmail.com>
 License: GPL-2+
