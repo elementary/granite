@@ -101,7 +101,7 @@ namespace Granite.Services {
 		[Signal (no_recurse = true, run = "first", action = true, no_hooks = true, detailed = true)]
 		public signal void changed ();
 	
-		private GLib.Settings schema;
+		public GLib.Settings schema { get; construct; }
 		
 		/**
 		 * Creates a new {@link Granite.Services.Settings} object for the supplied schema.
@@ -109,8 +109,7 @@ namespace Granite.Services {
 		 * @param schema the name of the schema to interact with
 		 */
 		public Settings (string schema) {
-			this.schema = new GLib.Settings (schema);
-			init ();
+			Object (schema: new GLib.Settings (schema));
 		}
 		
 		/**
@@ -120,8 +119,7 @@ namespace Granite.Services {
 		 * @param backend the desired backend to use
 		 */
 		public Settings.with_backend (string schema, SettingsBackend backend) {
-			this.schema = new GLib.Settings.with_backend (schema, backend);
-			init ();
+			Object (schema: new GLib.Settings.with_backend (schema, backend));
 		}
 		
 		/**
@@ -134,8 +132,7 @@ namespace Granite.Services {
 		 * @param path the path to use
 		 */
 		public Settings.with_backend_and_path (string schema, SettingsBackend backend, string path) {
-			this.schema = new GLib.Settings.with_backend_and_path (schema, backend, path);
-			init ();
+			Object (schema: new GLib.Settings.with_backend_and_path (schema, backend, path));
 		}
 		
 		/**
@@ -150,11 +147,10 @@ namespace Granite.Services {
 		 * @param path the path to use
 		 */
 		public Settings.with_path (string schema, string path) {
-			this.schema = new GLib.Settings.with_path (schema, path);
-			init ();
+			Object (schema: new GLib.Settings.with_path (schema, path));
 		}
 		
-		private void init () {
+		construct {
 		
 			debug ("Loading settings from schema '%s'", schema.schema);
 			
@@ -168,29 +164,6 @@ namespace Granite.Services {
 		
 		~Settings () {
 			stop_monitor ();
-		}
-		
-		/**
-		 * Create a binding between the //key// and the property //property// of //object//.
-		 * 
-		 * The binding uses the default GIO mapping functions to map between the settings and property values. These functions handle booleans,
-		 * numeric types and string types in a straightforward way. Use {@link GLib.Settings.bind_with_mapping()} if you need a custom
-		 * mapping, or map between types that are not supported by the default mapping functions.
-		 *
-		 * Unless the flags include {@link GLib.SettingsBindFlags.NO_SENSITIVITY}, this method also establishes a binding between the
-		 * writability of //key// and the "sensitive" property of object (if object has a boolean property by that name).
-		 * See {@link GLib.Settings.bind_writable()} for more details about writable bindings.
-		 *
-		 * Note that the lifecycle of the binding is tied to the object, and that you can have only one binding per object property. If you
-		 * bind the same property twice on the same object, the second binding overrides the first one.
-		 *
-		 * @param key the key to bind
-		 * @param object the object containing //property//
-		 * @param property the name of the property to bind (see notes above about the GLib naming style for properties)
-		 * @param flags the flags for the binding
-		 */
-		public void bind (string key, void* object, string property, SettingsBindFlags flags = GLib.SettingsBindFlags.DEFAULT) {
-			schema.bind (key, object, property, flags);			
 		}
 		
 		private void stop_monitor () {
@@ -258,18 +231,18 @@ namespace Granite.Services {
 			else if (type.is_enum ())
 				val.set_enum (schema.get_enum (key));
 			else if (type.is_a (typeof (SettingsSerializable))) {
-				get_property (prop.name, ref val);
+				get_property (key, ref val);
 				(val.get_object () as SettingsSerializable).settings_deserialize (schema.get_string (key));
 				notify.connect (handle_notify);
 				return;
 			} else {
-				debug ("Unsupported settings type '%s' for key '%' in schema '%s'", type.name (), key, schema.schema);
+				debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema);
 				notify.connect (handle_notify);
 				return;
 			}
 			
 			set_property (prop.name, val);
-			call_verify (prop.name);
+			call_verify (key);
 			
 			notify.connect (handle_notify);
 		}
@@ -280,25 +253,29 @@ namespace Granite.Services {
 			
 			var obj_class = (ObjectClass) get_type ().class_ref ();
 			var prop = obj_class.find_property (key);
+			bool success = true;
 				
 			var type = prop.value_type;
 			var val = Value (type);
 			get_property (prop.name, ref val);
 			
 			if (type == typeof (int))
-				schema.set_int (prop.name, val.get_int ());
+				success = schema.set_int (key, val.get_int ());
 			else if (type == typeof (double))
-				schema.set_double (prop.name, val.get_double ());
+				success = schema.set_double (key, val.get_double ());
 			else if (type == typeof (string))
-				schema.set_string (prop.name, val.get_string ());
+				success = schema.set_string (key, val.get_string ());
 			else if (type == typeof (bool))
-				schema.set_boolean (prop.name, val.get_boolean ());
+				success = schema.set_boolean (key, val.get_boolean ());
 			else if (type.is_enum ())
-				schema.set_enum (prop.name, val.get_enum ());
+				success = schema.set_enum (key, val.get_enum ());
 			else if (type.is_a (typeof (SettingsSerializable)))
-				schema.set_string (prop.name, (val.get_object () as SettingsSerializable).settings_serialize ());
+				success = schema.set_string (key, (val.get_object () as SettingsSerializable).settings_serialize ());
 			else
-				debug ("Unsupported settings type '%s' for key '%' in schema '%s'", type.name (), prop.name, schema);
+				debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema);
+				
+			if (!success)
+				warning ("Key '%s' could not be written to.", key);
 			
 			start_monitor ();
 		}
