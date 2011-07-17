@@ -36,34 +36,35 @@ ensure_vala_version("0.12.0" MINIMUM)
 
 include(ValaPrecompile)
 vala_precompile(VALA_C
-    Widgets/ModeButton.vala
-    Widgets/DatePicker.vala
-    Widgets/Entries.vala
-    Widgets/TimePicker.vala
-    Widgets/CollapsiblePaned.vala
-    Widgets/CompositedWindow.vala
-    Widgets/AppMenu.vala
-    Widgets/Welcome.vala
-    Widgets/ToolButtonWithMenu.vala
-    Services/Settings.vala
-    Services/Logger.vala
-    Services/Paths.vala
-    Services/System.vala
-    AppFactory.vala
-    Application.vala
-    Drawing/Color.vala
-    Drawing/BufferSurface.vala
-    Drawing/Utilities.vala
-    config.vapi
+	Animation.vala
+	AppFactory.vala
+	Application.vala
+	Drawing/Color.vala
+	Drawing/BufferSurface.vala
+	Drawing/Utilities.vala
+	Services/Settings.vala
+	Services/Logger.vala
+	Services/Paths.vala
+	Services/System.vala
+	Widgets/ModeButton.vala
+	Widgets/DatePicker.vala
+	Widgets/Entries.vala
+	Widgets/TimePicker.vala
+	Widgets/CollapsiblePaned.vala
+	Widgets/CompositedWindow.vala
+	Widgets/AppMenu.vala
+	Widgets/Welcome.vala
+	Widgets/ToolButtonWithMenu.vala
+	config.vapi
 PACKAGES
-    ${PKG_DEPS}
-    posix
+	${PKG_DEPS}
+	posix
 OPTIONS
-    --thread
+	--thread
 GENERATE_VAPI
-    granite
+	granite
 GENERATE_HEADER
-    granite
+	granite
 )
 
 
@@ -72,7 +73,7 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite.deps DESTINATION ${CMAKE_INST
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
 
 add_library (${PKGNAME} SHARED
-    ${VALA_C}
+	${VALA_C}
 )
 
 if(BUILD_STATIC MATCHES "Yes")
@@ -84,9 +85,9 @@ install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATIC MATCHES "Yes")
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${GRANITE_VERSION}
-    SOVERSION ${GRANITE_SOVERSION}
-                       )
+	VERSION ${GRANITE_VERSION}
+	SOVERSION ${GRANITE_SOVERSION}
+					   )
 
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
