@@ -314,7 +314,6 @@ namespace Granite {
 					tween.end.copy (ref value);
 		}
 		
-		[Signal (run = "first")]
 		/**
 		 * Move the object properties to the next position in the animation.
 		 *
@@ -336,8 +335,12 @@ namespace Granite {
 			}
 			
 			// Flush any outstanding events to the graphics server (in the case of X)
-			//if (target is Widget && (Gdk.Window window = ((Widget) target).get_parent_window ()) != null)
-				//awindow.flush ();
+			if (target is Widget) {
+				
+				var window = ((Widget) target).get_parent_window ();
+				if (window != null)
+					window.flush ();
+			}
 				
 			return (offset < 1.0);
 		}
