@@ -161,27 +161,48 @@ namespace Granite {
 			Value value;
 			ParamSpec pspec;
 			Widget parent;
-			ObjectClass klass = target.get_class (), pklass;
-			Type type = target.get_type (), ptype;
+			Type type = target.get_type ();
 			
 			while ((name = args.arg ()) != null) {
 			
-				value = args.arg ();
-				if (&value == null) {
-					warning ("No value specified for '%s' property", name);
-					break;
-				}
+				warning ("class name = %s", target.get_class ().get_type ().name ());
 				
-				if ((pspec = klass.find_property (name)) == null) {
+				if ((pspec = target.get_class ().find_property (name)) == null) {
 					if (!type.is_a (typeof (Widget)))
 						critical ("Failed to find property %s in %s", name, type.name ());
 					if ((parent = (target as Widget).get_parent ()) == null)
 						critical ("Failed to find property %s in %s", name, type.name ());
-					pklass = parent.get_class ();
-					ptype = parent.get_type ();
-					if ((pspec = Container.class_find_child_property (pklass, name)) == null)
-						critical ("Failed to find property %s in %s or parent %s", name, type.name (), ptype.name ());
+					if ((pspec = Container.class_find_child_property (parent.get_class (), name)) == null)
+						critical ("Failed to find property %s in %s or parent %s", name, type.name (), parent.get_type ().name ());
 				}
+				
+				// Parse the value for the pspec
+				value = Value (pspec.value_type);
+				type = value.type ();
+				if (type == typeof (bool))
+					value.set_boolean (args.arg<bool> ());
+				else if (type == typeof (string))
+					value.set_string (args.arg<string> ());
+				else if (type == typeof (char))
+					value.set_char (args.arg<char> ());
+				else if (type == typeof (uchar))
+					value.set_uchar (args.arg<uchar> ());
+				else if (type == typeof (int))
+					value.set_int (args.arg<int> ());
+				else if (type == typeof (uint))
+					value.set_uint (args.arg<uint> ());
+				else if (type == typeof (long))
+					value.set_long (args.arg<long> ());
+				else if (type == typeof (ulong))
+					value.set_ulong (args.arg<ulong> ());
+				else if (type == typeof (int64))
+					value.set_int64 (args.arg<int64> ());
+				else if (type == typeof (float))
+					value.set_float (args.arg<float> ());
+				else if (type == typeof (double))
+					value.set_double (args.arg<double> ());
+				else
+					value.set_object (args.arg<Object> ());
 				
 				anim.tweens.append (Tween (target, pspec, value));
 			}

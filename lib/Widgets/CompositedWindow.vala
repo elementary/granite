@@ -20,11 +20,11 @@ using Gdk;
 
 namespace Granite.Widgets {
 
-	public class CompositedWindow : Gtk.Window {
+	public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 	
 		private CssProvider style_provider;
 		
-		public CompositedWindow () {
+		construct {
 			
 			// Set up css provider
 			style_provider = new CssProvider ();
@@ -35,9 +35,9 @@ namespace Granite.Widgets {
 			}
 			
 			// Window properties
-            set_visual (get_screen ().get_rgba_visual());
-            get_style_context ().add_provider (style_provider, 600);
-            app_paintable = true;
+			set_visual (get_screen ().get_rgba_visual());
+			get_style_context ().add_provider (style_provider, 600);
+			app_paintable = true;
 			decorated = false;
 			resizable = false;
 		}
