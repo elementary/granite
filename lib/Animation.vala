@@ -146,48 +146,16 @@ namespace Granite {
 			}
 		}
 		
-		/**
-		 * Constructs a new {@link Granite.Animation} for the specified target using the default options.
-		 *
-		 * @param target the object that is to be animated
-		 */
-		public Animation.simple (Object target, ...) {
-		
-			Object (target: target);
-			
-			va_list args = va_list (); // have to define variable for some vala bug
-			this.tweens = parse_properties (args);
+		protected Animation () {
+			// blank. only reason we're not using this is because of a Vala bug with
+			// varargs in the constructor. :-/
 		}
 		
-		/**
-		 * Constructs a new {@link Granite.Animation} for the specified target using the specified options.
-		 *
-		 * @param target the object that is to be animated
-		 * @param duration the duration of the animation
-		 * @param easing_mode the easing mode of the animation
-		 */
-		public Animation.advanced (Object target, uint duration, EasingMode easing_mode, ...) {
+		protected static Animation create (Object target, va_list args) {
 		
-			Object (target: target, duration: duration, easing_mode: easing_mode);
-			
-			va_list args = va_list ();
-			this.tweens = parse_properties (args);
-		}
-		
-		~Animation () {
-			debug ("Rendered %u frames in %u milliseconds for target %s", frame_count, duration, target.get_class ().get_type ().name ());
-		}
-		
-		/**
-		 * Converts a va_list of properties and their values into a {@link GLib.List} containing {@link Granite.Animation.Tween}'s.
-		 *
-		 * @param args the list of arguments to parse
-		 * 
-		 * @return the {@link GLib.List} containing {@link Granite.Animation.Tween}'s
-		 */
-		protected List<Tween?> parse_properties (va_list args) {
-			
-			var tweens = new List<Tween?> ();
+			var anim = new Animation ();
+			anim.target = target;
+			anim.tweens = new List<Tween?> ();
 			
 			string name;
 			Value value;
@@ -215,10 +183,46 @@ namespace Granite {
 						critical ("Failed to find property %s in %s or parent %s", name, type.name (), ptype.name ());
 				}
 				
-				tweens.append (Tween (target, pspec, value));
+				anim.tweens.append (Tween (target, pspec, value));
 			}
 			
-			return tweens;
+			return anim;
+		}
+		
+		/**
+		 * Creates a new {@link Granite.Animation} for the specified target using the default options.
+		 *
+		 * @param target the object that is to be animated
+		 * 
+		 * @return the {@link Granite.Animation}
+		 */
+		public static Animation create_simple (Object target, ...) {
+						
+			va_list args = va_list (); // have to define variable for some vala bug
+			return create (target, args);
+		}
+		
+		/**
+		 * Constructs a new {@link Granite.Animation} for the specified target using the specified options.
+		 *
+		 * @param target the object that is to be animated
+		 * @param duration the duration of the animation
+		 * @param easing_mode the easing mode of the animation
+		 *
+		 * @return the {@link Granite.Animation}
+		 */
+		public static Animation create_advanced (Object target, uint duration, EasingMode easing_mode, ...) {
+		
+			va_list args = va_list ();
+			var anim = create (target, args);
+			anim.duration = duration;
+			anim.easing_mode = easing_mode;
+			
+			return anim;
+		}
+		
+		~Animation () {
+			debug ("Rendered %u frames in %u milliseconds for target %s", frame_count, duration, target.get_class ().get_type ().name ());
 		}
 		
 		protected inline uint64 timeval_to_msec (TimeVal t) {
