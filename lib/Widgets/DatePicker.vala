@@ -20,9 +20,9 @@ using Gdk;
 	
 namespace Granite.Widgets {
 
-	public class DatePicker : Gtk.Entry {
+	public class DatePicker : Gtk.Entry, Gtk.Buildable {
 	
-		string format;
+		public string format { get; construct; default = _("%B %e, %Y"); }
 	
 		protected Gtk.Window dropdown;
 		protected Calendar calendar;
@@ -36,13 +36,7 @@ namespace Granite.Widgets {
 			}
 		}
 		
-		public DatePicker () {
-			this.with_format (_("%B %e, %Y"));
-		}
-
-		public DatePicker.with_format (string format) {
-		
-			this.format = format;
+		construct {
 			
 			dropdown = new Gtk.Window (Gtk.WindowType.POPUP);
 			calendar = new Calendar ();		
@@ -62,6 +56,10 @@ namespace Granite.Widgets {
 			calendar.day_selected_double_click.connect (on_calendar_day_selected);
 			dropdown.button_press_event.connect (on_dropdown_button_press);
 			dropdown.delete_event.connect (on_dropdown_delete_event);
+		}
+
+		public DatePicker.with_format (string format) {
+			Object (format: format);
 		}
 
 		private void on_icon_press (EntryIconPosition position) {

@@ -20,7 +20,7 @@ using Gdk;
 
 namespace Granite.Widgets {
 
-	public class ModeButton : Gtk.EventBox {  
+	public class ModeButton : Gtk.EventBox, Gtk.Buildable {  
 	  
 		public signal void mode_added (int index, Widget widget);
 		public signal void mode_removed (int index, Widget widget);
@@ -63,13 +63,11 @@ namespace Granite.Widgets {
 
 		private HBox box;
 
-		public ModeButton () {
+		construct {
 		
-			events |= Gdk.EventMask.BUTTON_PRESS_MASK
-			//	   |  EventMask.VISIBILITY_NOTIFY_MASK
-				   | Gdk.EventMask.POINTER_MOTION_MASK
-				   | Gdk.EventMask.LEAVE_NOTIFY_MASK; 
-			//	   |  EventMask.SCROLL_MASK;
+			events |= EventMask.BUTTON_PRESS_MASK
+				   |  EventMask.POINTER_MOTION_MASK
+				   |  EventMask.LEAVE_NOTIFY_MASK; 
 
 			box = new HBox (true, 1);
 			box.border_width = 0;
@@ -78,6 +76,11 @@ namespace Granite.Widgets {
 			set_visible_window (false);
 			
 			set_size_request(-1, 24);
+		}
+		
+		private void add_child (Builder builder, Object child, string? type) {
+			
+			append (child as Widget);
 		}
 		
 		public void append (Widget widget) {

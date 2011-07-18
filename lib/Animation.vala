@@ -181,10 +181,6 @@ namespace Granite {
 					value.set_boolean (args.arg<bool> ());
 				else if (type == typeof (string))
 					value.set_string (args.arg<string> ());
-				else if (type == typeof (char))
-					value.set_char (args.arg<char> ());
-				else if (type == typeof (uchar))
-					value.set_uchar (args.arg<uchar> ());
 				else if (type == typeof (int))
 					value.set_int (args.arg<int> ());
 				else if (type == typeof (uint))
@@ -195,8 +191,6 @@ namespace Granite {
 					value.set_ulong (args.arg<ulong> ());
 				else if (type == typeof (int64))
 					value.set_int64 (args.arg<int64> ());
-				else if (type == typeof (float))
-					value.set_float (args.arg<float> ());
 				else if (type == typeof (double))
 					value.set_double (args.arg<double> ());
 				else
@@ -253,21 +247,20 @@ namespace Granite {
 		 */
 		protected void load_begin_values () {
 			
-			foreach (var tween in tweens) {
+			// Vala's foreach loop isn't working here for some reason. No biggie.
+			tweens.foreach ((tween) => {
 				
 				tween.begin.reset ();
 				if (tween.is_child)
 					((Container) ((Widget) target).get_parent ()).child_get_property ((Widget) target, tween.pspec.name, tween.begin);
 				else
-					target.get_property (tween.pspec.name, ref tween.begin);
-					
-			}
+					target.get_property (tween.pspec.name, ref tween.begin);				
+			});
 		}
 		
 		protected void unload_begin_values () {
 		
-			foreach (var tween in tweens)
-				tween.begin.reset ();
+			tweens.foreach ((tween) => tween.begin.reset ());
 		}
 		
 		/**
@@ -325,15 +318,15 @@ namespace Granite {
 			frame_count++;
 			
 			// Update property values
-			foreach (var tween in tweens) {
-				
+			tweens.foreach ((tween) => {
+			
 				var value = Value (tween.pspec.value_type);
 				get_value_at_offset (easing_mode.transform (offset), tween, ref value);
 				if (tween.is_child)
 					update_child_property (target, tween, value);
 				else
 					update_property (target, tween, value);
-			}
+			});
 			
 			// Flush any outstanding events to the graphics server (in the case of X)
 			if (target is Widget) {

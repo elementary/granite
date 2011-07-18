@@ -20,19 +20,13 @@ using Gdk;
 
 namespace Granite.Widgets {
 
-	public class TimePicker : SpinButton {
+	public class TimePicker : SpinButton, Gtk.Buildable {
 	
-		protected string format;
+		public string format { get; construct; default = _("%l:%M %p"); }
 		
 		public DateTime time { get; protected set; }
 		
-		public TimePicker () {
-			this.with_format ( _("%l:%M %p"));
-		}
-
-		public TimePicker.with_format (string format) {
-		
-			this.format = format;
+		construct {
 			
 			time = new DateTime.now_local ();
 			int starting_time = time.get_hour () * 60 + 30; // start at this hour : 30
@@ -46,6 +40,10 @@ namespace Granite.Widgets {
 			digits = 0;
 			numeric = false; // so the text can be set
 			wrap = true;
+		}
+
+		public TimePicker.with_format (string format) {
+			Object (format: format);
 		}
 		
 		protected override bool output () {		
