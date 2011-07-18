@@ -57,7 +57,7 @@ namespace Granite {
 	}
 	
 	[CCode (has_target = false)]
-	public delegate void TweenFunc (Value begin, Value end, double offset, Value value);
+	public delegate void TweenFunc (Value begin, Value end, double offset, ref Value value);
 
 	public class Animation : GLib.Object {
 	
@@ -90,11 +90,11 @@ namespace Granite {
 			tween_funcs = new HashTable<Type, TweenFunc> (null, null);
 			
 			// Add sensible default TweenFunc's. I really wish I had a macro for this.
-			tween_funcs.insert (typeof (int), (b, e, o, v) => { var x = b.get_int (), y = e.get_int (); v.set_int (x + (y - x) * (int) o); });
-			tween_funcs.insert (typeof (uint), (b, e, o, v) => { var x = b.get_uint (), y = e.get_uint (); v.set_uint (x + (y - x) * (uint) o); });
-			tween_funcs.insert (typeof (long), (b, e, o, v) => { var x = b.get_long (), y = e.get_long (); v.set_long (x + (y - x) * (long) o); });
-			tween_funcs.insert (typeof (ulong), (b, e, o, v) => { var x = b.get_ulong (), y = e.get_ulong (); v.set_ulong (x + (y - x) * (ulong) o); });
-			tween_funcs.insert (typeof (float), (b, e, o, v) => { var x = b.get_float (), y = e.get_float (); v.set_float (x + (y - x) * (float) o); });
+			tween_funcs.insert (typeof (int), (b, e, o, v) => { var x = b.get_int (), y = e.get_int (); v.set_int ((int) (x + (y - x) * o)); });
+			tween_funcs.insert (typeof (uint), (b, e, o, v) => { var x = b.get_uint (), y = e.get_uint (); v.set_uint ((uint) (x + (y - x) * o)); });
+			tween_funcs.insert (typeof (long), (b, e, o, v) => { var x = b.get_long (), y = e.get_long (); v.set_long ((long) (x + (y - x) * o)); });
+			tween_funcs.insert (typeof (ulong), (b, e, o, v) => { var x = b.get_ulong (), y = e.get_ulong (); v.set_ulong ((ulong) (x + (y - x) * o)); });
+			tween_funcs.insert (typeof (float), (b, e, o, v) => { var x = b.get_float (), y = e.get_float (); v.set_float ((float) (x + (y - x) * o)); });
 			tween_funcs.insert (typeof (double), (b, e, o, v) => { var x = b.get_double (), y = e.get_double (); v.set_double (x + (y - x) * o); });
 		}
 		
@@ -165,8 +165,6 @@ namespace Granite {
 			
 			while ((name = args.arg ()) != null) {
 			
-				warning ("class name = %s", target.get_class ().get_type ().name ());
-				
 				if ((pspec = target.get_class ().find_property (name)) == null) {
 					if (!type.is_a (typeof (Widget)))
 						critical ("Failed to find property %s in %s", name, type.name ());
@@ -304,14 +302,17 @@ namespace Granite {
 		protected void get_value_at_offset (double offset, Tween tween, ref Value value) {
 			
 			return_if_fail (offset >= 0.0 && offset <= 1.0);
-			return_if_fail (value.get_gtype () == tween.pspec.value_type);
+			return_if_fail (value.holds (tween.pspec.value_type));
 			
-			var tween_func = tween_funcs.lookup (value.get_gtype ());
-			if (tween_func != null)
-				tween_func (tween.begin, tween.end, offset, value);
-			else
+			var tween_func = tween_funcs.lookup (value.type ());
+			if (tween_func != null) {
+				tween_func (tween.begin, tween.end, offset, ref value);
+			} else {
+				warning ("No tween function found for type '%s'", value.type ().name ());
+				
 				if (offset >= 1.0)
 					tween.end.copy (ref value);
+			}
 		}
 		
 		/**
@@ -329,9 +330,9 @@ namespace Granite {
 				var value = Value (tween.pspec.value_type);
 				get_value_at_offset (easing_mode.transform (offset), tween, ref value);
 				if (tween.is_child)
-					update_property (target, tween, value);
-				else
 					update_child_property (target, tween, value);
+				else
+					update_property (target, tween, value);
 			}
 			
 			// Flush any outstanding events to the graphics server (in the case of X)
