@@ -211,6 +211,9 @@ namespace Granite.Services {
 		}
 		
 		void load_key (string key) {
+			
+			if (key == "schema")
+				return;
 		
 			notify.disconnect (handle_notify);
 		
@@ -248,6 +251,9 @@ namespace Granite.Services {
 		}
 		
 		void save_key (string key) {
+			
+			if (key == "schema")
+				return;
 		
 			stop_monitor ();
 			
