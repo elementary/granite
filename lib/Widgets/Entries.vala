@@ -23,10 +23,14 @@ namespace Granite.Widgets {
 	public class HintedEntry : Gtk.Entry {
 
 		public string hint_string;
+		Gdk.RGBA normal_color;
+		Gdk.RGBA insensitive_color;
 
 		public HintedEntry (string hint_string) {
 		
 			this.hint_string = hint_string;
+			normal_color = get_style_context().get_color(Gtk.StateFlags.NORMAL);
+			insensitive_color = get_style_context().get_color(Gtk.StateFlags.INSENSITIVE);
 			
 			hint ();
 			
@@ -65,21 +69,13 @@ namespace Granite.Widgets {
 		
 		
 		private void grey_out () {
-		
-			/*Gdk.Color gray;
-			Gdk.Color.parse ("#999", out gray);
-			
-			modify_text (Gtk.StateType.NORMAL, gray);*/
 			override_font (Pango.FontDescription.from_string ("italic"));
+			override_color(Gtk.StateFlags.NORMAL, insensitive_color);
 		}
 		
 		private void reset_font () {
-		
-			/*Gdk.Color black;
-			Gdk.Color.parse ("#444", out black);
-			
-			modify_text (Gtk.StateType.NORMAL, black);*/
 			override_font (Pango.FontDescription.from_string ("normal"));
+			override_color(Gtk.StateFlags.NORMAL, normal_color);
 		}
 		
 		public new string get_text () {
