@@ -40,8 +40,8 @@ namespace Granite.Services {
 	
 	/**
 	 * Class for interacting with an internal {@link GLib.Settings} using native Vala properties.
-	 * Clients of this class should not connect to the {@link GLib.Object.notify()} signal.
-	 * Instead, they should connect to the {@link Granite.Services.Settings.changed()} signal.
+	 * Clients of this class should not connect to the {@link GLib.Object.notify} signal.
+	 * Instead, they should connect to the {@link Granite.Services.Settings.changed} signal.
 	 *
 	 * For example, if a developer wanted to interact with desktop.Wallpaper's (http:/www.launchpad.net/pantheon-wallpaper) schema,
 	 * this is what his/her subclass might look like:
@@ -77,25 +77,26 @@ namespace Granite.Services {
 	 * Keep in mind that the developer must define his/her enums to match the schema's.
 	 * 
 	 * The following is a simplified explanation of how this library works:
+*
 	 *  1. Any subclass looks at all properties it contains, and loads their initial values from the keys they represent.
 	 *     Because Vala properties are stored as GLib properties, the string representation of a property replaces underscores with
 	 *     hyphens (i.e. property_name becomes "property-name"). This is how this library knows which keys to load from. If the key
 	 *     does not exist, it will result in a fatal error.
 	 *  1. When a property of the subclass changes, the library will first verify the data before emitting a changed signal. If necessary,
 	 *     the library will change the value of the property while verifying.
-	 *     This is why developers should only act upon emissions of the changed () signal and never the native {@link GLib.Object.notify()} signal.
+	 *     This is why developers should only act upon emissions of the changed () signal and never the native {@link GLib.Object.notify} signal.
 	 *  1. When the corresponding key of one of the properties of the subclass changes, it will also verify the data and change it, if necessary,
 	 *     before loading it into as the corresponding property's value.
 	 */
 	public abstract class Settings : GLib.Object {
 	
 		/**
-		 * This signal is to be used in place of the standard {@link GLib.Object.notify()} signal.
+		 * This signal is to be used in place of the standard {@link GLib.Object.notify} signal.
 		 *
 		 * This signal ''only'' emits after a property's value was verified.
 		 *
 		 * Note that in the case where a property was set to an invalid value,
-		 * (and thus, sanitized to a valid value), the {@link GLib.Object.notify()} signal will emit 
+		 * (and thus, sanitized to a valid value), the {@link GLib.Object.notify} signal will emit 
 		 * twice: once with the invalid value and once with the sanitized value.
 		 */
 		[Signal (no_recurse = true, run = "first", action = true, no_hooks = true, detailed = true)]
@@ -125,7 +126,6 @@ namespace Granite.Services {
 		/**
 		 * Creates a new {@link Granite.Services.Settings} object for the supplied schema, {@link GLib.SettingsBackend}, and path.
 		 * 
-		 * This is a mix of {@link Granite.Services.Settings.with_backend()} and {@link Granite.Services.Settings.with_path()}.
 		 *
 		 * @param schema the name of the schema to interact with
 		 * @param backend the desired backend to use

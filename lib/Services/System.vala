@@ -36,7 +36,7 @@ namespace Granite.Services {
 		/**
 		 * Opens the specified file with the default application.
 		 *
-		 * @param file the {@GLib.File} to open
+		 * @param file the {@link GLib.File} to open
 		 */
 		public static void open (File file) {
 			launch_with_files (null, { file });
@@ -45,7 +45,7 @@ namespace Granite.Services {
 		/**
 		 * Opens the specified files with the default application.
 		 *
-		 * @param files an array of {@GLib.File} to open
+		 * @param files an array of {@link GLib.File} to open
 		 */
 		public static void open_files (File[] files) {
 			launch_with_files (null, files);
@@ -54,7 +54,7 @@ namespace Granite.Services {
 		/**
 		 * Launches the specified application.
 		 *
-		 * @param app the {@GLib.File} representing the application to launch
+		 * @param app the {@link GLib.File} representing the application to launch
 		 */
 		public static void launch (File app) {
 			launch_with_files (app, new File[] {});
@@ -81,8 +81,8 @@ namespace Granite.Services {
 		/**
 		 * Launches the supplied files with the specified application.
 		 *
-		 * @param app the {@GLib.File} representing the application to launch
-		 * @param files an array of {@GLib.File} to open
+		 * @param app the {@link GLib.File} representing the application to launch
+		 * @param files an array of {@link GLib.File} to open
 		 */
 		public static void launch_with_files (File? app, File[] files) {
 		

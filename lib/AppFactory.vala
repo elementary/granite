@@ -31,7 +31,7 @@ namespace Granite {
 		
 		/**
 		 * Initializes the {@link Granite.AppFactory} for the supplied {@link Granite.Application}.
-		 * This method must be invoked first before using the {@link Granite.Application.app} property.
+		 * This method must be invoked first before using the {@link Granite.AppFactory.app} property.
 		 *
 		 * @param app_class The {@link Granite.Application} to interact with
 		 */

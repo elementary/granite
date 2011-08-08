@@ -98,7 +98,7 @@ add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CUR
 
 add_custom_target (valadocs)
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_vala -R -f)
-add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --force)
+add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --force)
 
 install( CODE "message(\"-- Generating gir...\")")
 install( CODE "execute_process(COMMAND g-ir-scanner  -I.. --quiet --namespace=Granite -L${CMAKE_CURRENT_BINARY_DIR} --nsversion=${GRANITE_VERSION} --pkg=gtk+-3.0 --pkg=gdk-3.0 --include=Gtk-3.0 --include=Gdk-3.0 --pkg-export=granite-${GRANITE_VERSION}  --library=granite ${VALA_C} ${CMAKE_CURRENT_BINARY_DIR}/granite.h --output ${CMAKE_CURRENT_BINARY_DIR}/Granite-${GRANITE_VERSION}.gir)"

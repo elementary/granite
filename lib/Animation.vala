@@ -79,8 +79,8 @@ namespace Granite {
 		
 		/**
 		 * Maps a {@link GLib.Type} with a {@link Granite.TweenFunc}.  {@link Granite.Animation.get_value_at_offset} uses this
-		 * to calculate new values for specific offsets.  However, the types {@link GLib.int}, {@link GLib.uint}, {@link GLib.long},
-		 * {@link GLib.ulong}, {@link GLib.float}, and {@link GLib.double} have been added by default for convenience, so it is rare
+		 * to calculate new values for specific offsets.  However, the types {@link int}, {@link uint}, {@link .long},
+		 * {@link ulong}, {@link float}, and {@link double} have been added by default for convenience, so it is rare
 		 * that you would have to add a {@link GLib.Type} here yourself.
 		 */
 		public static HashTable<Type, TweenFunc> tween_funcs { get; protected set; }
