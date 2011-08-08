@@ -94,7 +94,7 @@ namespace Granite.Drawing {
 		 *
 		 * @param width the width of the new {@link Granite.Drawing.BufferSurface}, in pixels
 		 * @param height the height of the new {@link Granite.Drawing.BufferSurface}, in pixels
-		 * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.Surface}
+		 * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.SurfaceSurface}
 		 */
 		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) requires (model != null) {
 		
@@ -392,6 +392,7 @@ namespace Granite.Drawing {
 				}, true);
 				
 				exponential_blur_rows (pixels, width, height, height / 2, height, 0, width, alpha);
+				th.join ();
 				
 				// Process Columns
 				th = Thread.create<void*> (() => {
@@ -400,6 +401,7 @@ namespace Granite.Drawing {
 				}, true);
 				
 				exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
+				th.join ();
 			} catch { }
 			
 			original.mark_dirty ();
@@ -522,6 +524,7 @@ namespace Granite.Drawing {
 				}, true);
 				
 				gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
+				th.join ();
 				
 				// Clear buffer
 				memset (abuffer, 0, sizeof(double) * size);
@@ -544,6 +547,7 @@ namespace Granite.Drawing {
 				}, true);
 				
 				gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
+				th.join ();
 			} catch {}
 			
 			// Save blurred image to original uint8[]
