@@ -12,6 +12,8 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INS
 
 # Check for the deps
 find_package(PkgConfig)
+find_package(GObjectIntrospection 0.9.12)
+include(GObjectIntrospectionMacros)
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
 pkg_check_modules(DEPS REQUIRED ${PKG_DEPS})
 
@@ -89,8 +91,39 @@ set_target_properties (${PKGNAME} PROPERTIES
 	SOVERSION ${GRANITE_SOVERSION}
 					   )
 
-
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+
+macro(_list_prefix _outvar _listvar _prefix)
+  set(${_outvar})
+  foreach(_item IN LISTS ${_listvar})
+    list(APPEND ${_outvar} ${_prefix}${_item})
+  endforeach()
+endmacro(_list_prefix)
+
+# GObject Introspection
+if (INTROSPECTION_FOUND)
+  include(GObjectIntrospectionMacros)
+  set(INTROSPECTION_GIRS)
+  set(INTROSPECTION_SCANNER_ARGS "--add-include-path=${CMAKE_CURRENT_SOURCE_DIR}")
+  set(INTROSPECTION_COMPILER_ARGS "--includedir=${CMAKE_CURRENT_SOURCE_DIR}")
+
+  set(introspection_files ${VALA_C} ${CMAKE_CURRENT_BINARY_DIR}/granite.h)
+  set(Granite_0_1_gir "granite")
+  set(Granite_0_1_gir_PACKAGES gtk+-3.0 gdk-3.0)
+  set(Granite_0_1_gir_INCLUDES Gtk-3.0 Gdk-3.0)
+  get_directory_property(_tmp_includes INCLUDE_DIRECTORIES)
+  _list_prefix(_includes _tmp_includes "-I")
+  set(Granite_0_1_gir_CFLAGS ${_includes})
+  set(Granite_0_1_gir_LIBS granite)
+  #  _list_prefix(_abs_introspection_files introspection_files "${CMAKE_CURRENT_SOURCE_DIR}/")
+  #  set(Granite_0_1_gir_FILES ${_abs_introspection_files})
+  set(Granite_0_1_gir_FILES ${introspection_files})
+
+  list(APPEND INTROSPECTION_GIRS Granite-0.1.gir)
+
+  gir_add_introspections(INTROSPECTION_GIRS)
+endif ()
+
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
@@ -98,14 +131,5 @@ add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CUR
 
 add_custom_target (valadocs)
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_vala -R -f)
-add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --force)
+add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --force --doclet=elementary)
 
-install( CODE "message(\"-- Generating gir...\")")
-install( CODE "execute_process(COMMAND g-ir-scanner  -I.. --quiet --namespace=Granite -L${CMAKE_CURRENT_BINARY_DIR} --nsversion=${GRANITE_VERSION} --pkg=gtk+-3.0 --pkg=gdk-3.0 --include=Gtk-3.0 --include=Gdk-3.0 --pkg-export=granite-${GRANITE_VERSION}  --library=granite ${VALA_C} ${CMAKE_CURRENT_BINARY_DIR}/granite.h --output ${CMAKE_CURRENT_BINARY_DIR}/Granite-${GRANITE_VERSION}.gir)"
-)
-install( CODE "message(\"-- Generating typelib...\")")
-install(CODE
-  "execute_process(COMMAND g-ir-compiler ${CMAKE_CURRENT_BINARY_DIR}/Granite-${GRANITE_VERSION}.gir -o ${CMAKE_CURRENT_BINARY_DIR}/Granite-1.0.typelib)"
-)
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/Granite-${GRANITE_VERSION}.gir DESTINATION /usr/share/gir-1.0/)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Granite-1.0.typelib DESTINATION /usr/lib/girepository-1.0/)
