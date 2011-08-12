@@ -43,7 +43,7 @@ namespace Granite.Widgets {
 			help_item.activate.connect(() => System.open_uri (AppFactory.app.help_url));
 			translate_item.activate.connect(() => System.open_uri (AppFactory.app.translate_url));
 			report_item.activate.connect(() => System.open_uri (AppFactory.app.bug_url));
-			about_item.activate.connect (AppFactory.app.show_about);
+			about_item.activate.connect (() => AppFactory.app.show_about (get_toplevel ()));
 		}
 		
 	}

@@ -125,7 +125,7 @@ namespace Granite {
 		
 		protected AboutDialog about_dlg;
 		
-		public virtual void show_about () {
+		public virtual void show_about (Gtk.Widget parent) {
 		
 			if (about_dlg != null) {
 				about_dlg.get_window ().raise ();
@@ -134,6 +134,10 @@ namespace Granite {
 			
 			about_dlg = new AboutDialog ();
 			
+			about_dlg.modal = true;
+			about_dlg.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+			about_dlg.transient_for = (Gtk.Window) parent;
+                			
 			about_dlg.set_program_name (exec_name);
 			about_dlg.set_version (build_version + "\n" + build_version_info);
 			about_dlg.set_logo_icon_name (app_icon);
