@@ -55,6 +55,7 @@ namespace Granite {
 		public string[] about_documenters;
 		public string[] about_artists;
 		public string about_translators;
+		public string about_license;
 		
 		public Application () {
 		
@@ -151,6 +152,7 @@ namespace Granite {
 			about_dlg.set_documenters (about_documenters);
 			about_dlg.set_artists (about_artists);
 			about_dlg.set_translator_credits (about_translators);
+			about_dlg.set_license (about_license);
 			
 			about_dlg.response.connect (() => {
 				about_dlg.hide ();
