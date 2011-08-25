@@ -39,7 +39,6 @@ ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
 	Animation.vala
-	AppFactory.vala
 	Application.vala
 	Drawing/Color.vala
 	Drawing/BufferSurface.vala

@@ -40,10 +40,10 @@ namespace Granite.Widgets {
 			
 			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
 			
-			help_item.activate.connect(() => System.open_uri (AppFactory.app.help_url));
-			translate_item.activate.connect(() => System.open_uri (AppFactory.app.translate_url));
-			report_item.activate.connect(() => System.open_uri (AppFactory.app.bug_url));
-			about_item.activate.connect (() => AppFactory.app.show_about (get_toplevel ()));
+			help_item.activate.connect(() => System.open_uri (Granite.app.help_url));
+			translate_item.activate.connect(() => System.open_uri (Granite.app.translate_url));
+			report_item.activate.connect(() => System.open_uri (Granite.app.bug_url));
+			about_item.activate.connect (() => Granite.app.show_about (get_toplevel ()));
 		}
 		
 	}

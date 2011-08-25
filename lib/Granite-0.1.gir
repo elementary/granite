@@ -16,6 +16,7 @@ and/or use gtk-doc annotations.  -->
   <include name="Gtk" version="3.0"/>
   <include name="Pango" version="1.0"/>
   <include name="cairo" version="1.0"/>
+  <include name="xlib" version="2.0"/>
   <package name="gdk-3.0"/>
   <package name="gtk+-3.0"/>
   <namespace name="Granite"
@@ -515,58 +516,6 @@ and/or use gtk-doc annotations.  -->
         </parameters>
       </method>
     </record>
-    <class name="AppFactory"
-           c:symbol-prefix="app_factory"
-           c:type="GraniteAppFactory"
-           parent="GObject.Object"
-           glib:type-name="GraniteAppFactory"
-           glib:get-type="granite_app_factory_get_type"
-           glib:type-struct="AppFactoryClass">
-      <constructor name="new" c:identifier="granite_app_factory_new">
-        <return-value transfer-ownership="full">
-          <type name="AppFactory" c:type="GraniteAppFactory*"/>
-        </return-value>
-      </constructor>
-      <function name="construct"
-                c:identifier="granite_app_factory_construct"
-                introspectable="0">
-        <return-value>
-          <type name="AppFactory" c:type="GraniteAppFactory*"/>
-        </return-value>
-        <parameters>
-          <parameter name="object_type" transfer-ownership="none">
-            <type name="GType" c:type="GType"/>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="init" c:identifier="granite_app_factory_init">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="app_class" transfer-ownership="none">
-            <type name="Application" c:type="GraniteApplication*"/>
-          </parameter>
-        </parameters>
-      </function>
-      <field name="parent_instance">
-        <type name="GObject.Object" c:type="GObject"/>
-      </field>
-      <field name="priv">
-        <type name="AppFactoryPrivate" c:type="GraniteAppFactoryPrivate*"/>
-      </field>
-    </class>
-    <record name="AppFactoryClass"
-            c:type="GraniteAppFactoryClass"
-            glib:is-gtype-struct-for="AppFactory">
-      <field name="parent_class">
-        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
-      </field>
-    </record>
-    <record name="AppFactoryPrivate"
-            c:type="GraniteAppFactoryPrivate"
-            disguised="1">
-    </record>
     <class name="Application"
            c:symbol-prefix="application"
            c:type="GraniteApplication"
@@ -608,6 +557,11 @@ and/or use gtk-doc annotations.  -->
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
+        <parameters>
+          <parameter name="parent" transfer-ownership="none">
+            <type name="Gtk.Widget" c:type="GtkWidget*"/>
+          </parameter>
+        </parameters>
       </virtual-method>
       <method name="run" c:identifier="granite_application_run">
         <return-value transfer-ownership="none">
@@ -632,6 +586,11 @@ and/or use gtk-doc annotations.  -->
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
+        <parameters>
+          <parameter name="parent" transfer-ownership="none">
+            <type name="Gtk.Widget" c:type="GtkWidget*"/>
+          </parameter>
+        </parameters>
       </method>
       <field name="parent_instance">
         <type name="Gtk.Application" c:type="GtkApplication"/>
@@ -702,6 +661,9 @@ and/or use gtk-doc annotations.  -->
       <field name="about_translators">
         <type name="utf8" c:type="gchar*"/>
       </field>
+      <field name="about_license">
+        <type name="utf8" c:type="gchar*"/>
+      </field>
       <field name="about_dlg">
         <type name="Gtk.AboutDialog" c:type="GtkAboutDialog*"/>
       </field>
@@ -732,6 +694,9 @@ and/or use gtk-doc annotations.  -->
           <parameters>
             <parameter name="self" transfer-ownership="none">
               <type name="Application" c:type="GraniteApplication*"/>
+            </parameter>
+            <parameter name="parent" transfer-ownership="none">
+              <type name="Gtk.Widget" c:type="GtkWidget*"/>
             </parameter>
           </parameters>
         </callback>
