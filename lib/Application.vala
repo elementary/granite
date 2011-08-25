@@ -18,6 +18,7 @@
 using Gtk;
 
 using Granite.Services;
+using Granite.Widgets;
 
 namespace Granite {
 	
@@ -86,7 +87,8 @@ namespace Granite {
 			if (!Thread.supported ())
 				error ("Problem initializing thread support.");
 			Gdk.threads_init ();
-			
+						
+			// Deprecated
 			Granite.app = this;
 			
 		}
@@ -123,13 +125,20 @@ namespace Granite {
 		
 		protected static void sig_handler (int sig) {
 			warning ("Caught signal (%d), exiting", sig);
-			Granite.app.quit_mainloop ();
 		}
 		
 		protected virtual void set_options () {
 			
 			if (DEBUG)
 				Logger.DisplayLevel = LogLevel.DEBUG;
+		}
+		
+		public AppMenu create_appmenu (Menu menu) {
+		
+		    AppMenu app_menu = new AppMenu.with_urls (menu, this.help_url, this.translate_url, this.bug_url);
+		    app_menu.show_about.connect ((parent) => this.show_about (parent));
+		    
+		    return app_menu;
 		}
 		
 		protected AboutDialog about_dlg;
