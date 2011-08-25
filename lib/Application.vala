@@ -31,6 +31,8 @@ namespace Granite {
 		char domainname [65];
 	}
 	
+	public static Granite.Application app;
+	
 	public abstract class Application : Gtk.Application {
 	
 		public string build_data_dir;
@@ -80,7 +82,8 @@ namespace Granite {
 				error ("Problem initializing thread support.");
 			Gdk.threads_init ();
 			
-			AppFactory.init (this);
+			Granite.app = this;
+			
 		}
 		
 		[CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
@@ -115,7 +118,7 @@ namespace Granite {
 		
 		protected static void sig_handler (int sig) {
 			warning ("Caught signal (%d), exiting", sig);
-			AppFactory.app.quit_mainloop ();
+			Granite.app.quit_mainloop ();
 		}
 		
 		protected virtual void set_options () {
@@ -125,7 +128,7 @@ namespace Granite {
 		}
 		
 		protected AboutDialog about_dlg;
-		
+			
 		public virtual void show_about (Gtk.Widget parent) {
 		
 			if (about_dlg != null) {
