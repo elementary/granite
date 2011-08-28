@@ -125,6 +125,7 @@ namespace Granite {
 		
 		protected static void sig_handler (int sig) {
 			warning ("Caught signal (%d), exiting", sig);
+			Granite.app.quit_mainloop ();
 		}
 		
 		protected virtual void set_options () {
