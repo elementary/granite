@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-25 08:16-0500\n"
+"POT-Creation-Date: 2011-08-30 14:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../lib/Widgets/DatePicker.vala:40
-msgid "%B %e, %Y"
-msgstr ""
-
-#: ../lib/Widgets/TimePicker.vala:30
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//TimePicker.vala:25
 msgid "%l:%M %p"
 msgstr ""
 
-#: ../lib/Widgets/AppMenu.vala:31
-msgid "About"
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//DatePicker.vala:25
+msgid "%B %e, %Y"
 msgstr ""
 
-#: ../lib/Widgets/AppMenu.vala:28
-msgid "Get Help Online..."
-msgstr ""
-
-#: ../lib/Widgets/AppMenu.vala:40
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:38
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:52
 msgid "Menu"
 msgstr ""
 
-#: ../lib/Widgets/AppMenu.vala:30
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:64
+msgid "Get Help Online..."
+msgstr ""
+
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:65
+msgid "Translate This Application..."
+msgstr ""
+
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:66
 msgid "Report a Problem..."
 msgstr ""
 
-#: ../lib/Widgets/AppMenu.vala:29
-msgid "Translate This Application..."
+#: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:67
+msgid "About"
 msgstr ""
