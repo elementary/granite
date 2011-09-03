@@ -1,3 +1,23 @@
+/*
+ * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>, Jaap Broekhuizen <jaapz.b@gmail.com>
+ *
+ * This is a free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this program; see the file COPYING.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ */
+
 using Granite.Widgets;
 
 public class Granite.Demo : Granite.Application
@@ -17,6 +37,7 @@ public class Granite.Demo : Granite.Application
         welcome.append("gtk-open", "Open", "Open a file");
         welcome.append("gtk-save", "Save", "Save with a much longer description");
         
+        /* modebutton */
         var mode_button = new ModeButton();
         mode_button.valign = Gtk.Align.CENTER;
         mode_button.halign = Gtk.Align.CENTER;
@@ -37,6 +58,20 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("a"));
         vbox.pack_start(mode_button);
         notebook.append_page(vbox, new Gtk.Label("ModeButton"));
+        
+        /* static notebook */
+        var staticbox = new Gtk.VBox (false, 5);
+        var staticnotebook = new StaticNotebook ();
+        
+        staticnotebook.append_page (new Gtk.Label("Page 1"), new Gtk.Label("Page 1"));
+        staticnotebook.append_page (new Gtk.Label("Page 2"), new Gtk.Label("Page 2"));
+        staticnotebook.append_page (new Gtk.Label("Page 3"), new Gtk.Label("Page 3"));
+        
+        staticbox.add (staticnotebook);
+        
+        notebook.append_page (staticbox, new Gtk.Label ("Static Notebook"));
+        
+        /* window properties */
         win.show_all();
         win.resize(800, 600);
     }
@@ -51,3 +86,4 @@ public class Granite.Demo : Granite.Application
         return 0;
     }
 }
+
