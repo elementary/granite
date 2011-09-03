@@ -76,6 +76,8 @@ namespace Granite.Widgets {
 			set_visible_window (false);
 			
 			set_size_request(-1, 24);
+			
+			get_style_context().add_class("button");
 		}
 		
 		private void add_child (Builder builder, Object child, string? type) {
@@ -88,6 +90,11 @@ namespace Granite.Widgets {
 			box.pack_start (widget, true, true, 3);
 			int index = (int) box.get_children ().length () - 2;
 			mode_added (index, widget);
+			int height;
+			widget.set_margin_right(3);
+			widget.set_margin_left(3);
+			widget.set_margin_top(3);
+			widget.set_margin_bottom(3);
 		}
 
 		public new void remove (int index) {
@@ -184,7 +191,7 @@ namespace Granite.Widgets {
 		}
 
 		protected override bool draw (Cairo.Context cr) {
-		
+			StyleContext context = get_style_context();
 			int width, height;
 			float item_x, item_width;
 
@@ -193,38 +200,14 @@ namespace Granite.Widgets {
 
 			var n_children = (int) box.get_children ().length ();
 
-			style.draw_box (cr, StateType.NORMAL, ShadowType.ETCHED_OUT, this, "button", 0, 0, width, height);
-			if (_selected >= 0) {
-				if (n_children > 1) {
-					item_width = width / n_children;
-					item_x = (item_width * _selected) + 1;
-				} else {
-					item_x = 0;
-					item_width = width;
-				}
-
-				cr.move_to (item_x, 0);
-				cr.line_to (item_x, height);
-				cr.line_to (item_x+item_width, height);
-				cr.line_to (item_x+item_width, 0);
-				cr.clip ();
-
-				style.draw_box (cr, StateType.SELECTED,
-								ShadowType.IN, this, "button",
-								0, 0,
-								width, height);
-			}
-
-			cr.restore();
-			cr.save();
+			context.set_state(Gtk.StateFlags.NORMAL);
+			Gtk.render_background(context, cr, 0, 0, width, height);
+			Gtk.render_frame(context, cr, 0, 0, width, height);
 
 			if (hovered >= 0 && selected != hovered) {
 				if (n_children > 1) {
 					item_width = width / n_children;
-					if (hovered == 0)
-						item_x = 0;
-					else
-						item_x = item_width * hovered + 1;
+					item_x = hovered * width/n_children;
 				} else {
 					item_x = 0;
 					item_width = width;
@@ -232,17 +215,44 @@ namespace Granite.Widgets {
 
 				cr.move_to(item_x, 0);
 				cr.line_to(item_x, height);
-				cr.line_to(item_x+item_width, height);
-				cr.line_to(item_x+item_width, 0);
+				cr.line_to(item_x+item_width + 1, height);
+				cr.line_to(item_x+item_width + 1, 0);
 				cr.clip();
 
-				style.draw_box (cr, StateType.PRELIGHT,
-								ShadowType.ETCHED_OUT, this, "button",
-								0, 0,
-								width, height);
+				context.set_state(Gtk.StateFlags.PRELIGHT);
+				Gtk.render_background(context, cr, 0, 0, width, height);
+				Gtk.render_frame(context, cr, 0, 0, width, height);
 			}
 
 			cr.restore();
+			cr.save();
+			if (_selected >= 0) {
+				if (n_children > 1) {
+					item_width = width / n_children;
+					item_x = _selected * width / n_children;
+				} else {
+					item_x = 0;
+					item_width = width;
+				}
+				
+				cr.move_to (item_x, 0);
+				cr.line_to (item_x, height);
+				cr.line_to (item_x+item_width + 1, height);
+				cr.line_to (item_x+item_width + 1, 0);
+				cr.clip ();
+
+				context.set_state(Gtk.StateFlags.ACTIVE);
+				Gtk.render_background(context, cr, 0, 0, width, height);
+				Gtk.render_frame(context, cr, 0, 0, width, height);
+			}
+
+			cr.restore();
+
+			context.set_state(Gtk.StateFlags.NORMAL);
+			for(int i = 1; i < n_children; i++)
+			{
+				Gtk.render_line(context, cr, i*width/n_children, 2, i*width/n_children, height - 2);
+			}
 
 			propagate_draw (box, cr);
 
