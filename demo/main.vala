@@ -63,9 +63,13 @@ public class Granite.Demo : Granite.Application
         var staticbox = new Gtk.VBox (false, 5);
         var staticnotebook = new StaticNotebook ();
         
-        staticnotebook.append_page (new Gtk.Label("Page 1"), new Gtk.Label("Page 1"));
+        var pageone = new Gtk.Label("Page 1");
+        
+        staticnotebook.append_page (new Gtk.Label("Page 1"), pageone);
         staticnotebook.append_page (new Gtk.Label("Page 2"), new Gtk.Label("Page 2"));
         staticnotebook.append_page (new Gtk.Label("Page 3"), new Gtk.Label("Page 3"));
+        
+        staticnotebook.page_changed.connect(() => pageone.set_text("Page changed"));
         
         staticbox.add (staticnotebook);
         

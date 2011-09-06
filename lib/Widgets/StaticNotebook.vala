@@ -20,7 +20,7 @@
 
 namespace Granite.Widgets {
     public class StaticNotebook : Gtk.VBox
-    {
+    {   
         Gtk.Notebook notebook;
         ModeButton switcher;
         
@@ -28,6 +28,8 @@ namespace Granite.Widgets {
             set { switcher.selected = value; notebook.page = value; }
             get { return notebook.page; }
         }
+        
+        public signal void page_changed (int index); 
         
         public StaticNotebook()
         {
@@ -59,6 +61,7 @@ namespace Granite.Widgets {
         void on_mode_changed(Gtk.Widget widget)
         {
             notebook.page = switcher.selected;
+            page_changed(notebook.page);
         }
         
         public void remove_page(int number)
