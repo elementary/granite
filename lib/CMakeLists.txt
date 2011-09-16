@@ -1,6 +1,6 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1.1)
+set (${PKGNAME_}_VERSION 0.1.2)
 # increase when you break the API
 
 set (${PKGNAME_}_SOVERSION 0)
