@@ -142,7 +142,7 @@ namespace Granite {
 		    return app_menu;
 		}
 		
-		protected AboutDialog about_dlg;
+		protected Granite.Widgets.AboutDialog about_dlg;
 			
 		public virtual void show_about (Gtk.Widget parent) {
 		
@@ -151,7 +151,7 @@ namespace Granite {
 				return;
 			}
 			
-			about_dlg = new AboutDialog ();
+			about_dlg = new Granite.Widget.AboutDialog ();
 			
 			about_dlg.modal = true;
 			about_dlg.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;

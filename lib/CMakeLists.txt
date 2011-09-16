@@ -49,10 +49,12 @@ vala_precompile(VALA_C
 	Drawing/Color.vala
 	Drawing/BufferSurface.vala
 	Drawing/Utilities.vala
+	GtkPatch/AboutDialog.vala
 	Services/Settings.vala
 	Services/Logger.vala
 	Services/Paths.vala
 	Services/System.vala
+	Widgets/AboutDialog.vala
 	Widgets/ModeButton.vala
 	Widgets/DatePicker.vala
 	Widgets/Entries.vala

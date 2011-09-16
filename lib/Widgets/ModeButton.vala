@@ -22,9 +22,9 @@ namespace Granite.Widgets {
 
 	public class ModeButton : Gtk.EventBox, Gtk.Buildable {  
 	  
-		public signal void mode_added (int index, Widget widget);
-		public signal void mode_removed (int index, Widget widget);
-		public signal void mode_changed (Widget widget);
+		public signal void mode_added (int index, Gtk.Widget widget);
+		public signal void mode_removed (int index, Gtk.Widget widget);
+		public signal void mode_changed (Gtk.Widget widget);
 
 		private int _selected = -1;
 		public int selected {
@@ -42,7 +42,7 @@ namespace Granite.Widgets {
 				box.get_children ().nth_data (_selected).set_state (StateType.SELECTED);
 				queue_draw ();
 
-				Widget selectedItem = (value >= 0) ? box.get_children ().nth_data (value) : null;
+				Gtk.Widget selectedItem = (value >= 0) ? box.get_children ().nth_data (value) : null;
 				mode_changed (selectedItem);
 			}
 		}
@@ -82,10 +82,10 @@ namespace Granite.Widgets {
 		
 		private void add_child (Builder builder, Object child, string? type) {
 			
-			append (child as Widget);
+			append (child as Gtk.Widget);
 		}
 		
-		public void append (Widget widget) {
+		public void append (Gtk.Widget widget) {
 		
 			box.pack_start (widget, true, true, 3);
 			int index = (int) box.get_children ().length () - 2;
@@ -99,7 +99,7 @@ namespace Granite.Widgets {
 
 		public new void remove (int index) {
 		
-			Widget child = box.get_children ().nth_data (index);
+			Gtk.Widget child = box.get_children ().nth_data (index);
 			box.remove (child);
 			if (_selected == index)
 				_selected = -1;
@@ -111,7 +111,7 @@ namespace Granite.Widgets {
 			queue_draw ();
 		}
 
-		public new void focus (Widget widget) {
+		public new void focus (Gtk.Widget widget) {
 		
 			int select = box.get_children ().index (widget);
 

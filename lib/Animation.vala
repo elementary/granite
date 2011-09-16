@@ -160,15 +160,15 @@ namespace Granite {
 			string name;
 			Value value;
 			ParamSpec pspec;
-			Widget parent;
+			Gtk.Widget parent;
 			Type type = target.get_type ();
 			
 			while ((name = args.arg ()) != null) {
 			
 				if ((pspec = target.get_class ().find_property (name)) == null) {
-					if (!type.is_a (typeof (Widget)))
+					if (!type.is_a (typeof (Gtk.Widget)))
 						critical ("Failed to find property %s in %s", name, type.name ());
-					if ((parent = (target as Widget).get_parent ()) == null)
+					if ((parent = (target as Gtk.Widget).get_parent ()) == null)
 						critical ("Failed to find property %s in %s", name, type.name ());
 					if ((pspec = Container.class_find_child_property (parent.get_class (), name)) == null)
 						critical ("Failed to find property %s in %s or parent %s", name, type.name (), parent.get_type ().name ());
@@ -252,7 +252,7 @@ namespace Granite {
 				
 				tween.begin.reset ();
 				if (tween.is_child)
-					((Container) ((Widget) target).get_parent ()).child_get_property ((Widget) target, tween.pspec.name, tween.begin);
+					((Container) ((Gtk.Widget) target).get_parent ()).child_get_property ((Gtk.Widget) target, tween.pspec.name, tween.begin);
 				else
 					target.get_property (tween.pspec.name, ref tween.begin);				
 			});
@@ -282,7 +282,7 @@ namespace Granite {
 		 * @param value the new {@link GLib.Value} for the property
 		 */
 		protected virtual void update_child_property (Object target, Tween tween, Value value) {
-			((Container) ((Widget) target).get_parent ()).child_set_property ((Widget) target, tween.pspec.name, value);
+			((Container) ((Gtk.Widget) target).get_parent ()).child_set_property ((Gtk.Widget) target, tween.pspec.name, value);
 		}
 		
 		/**
@@ -329,9 +329,9 @@ namespace Granite {
 			});
 			
 			// Flush any outstanding events to the graphics server (in the case of X)
-			if (target is Widget) {
+			if (target is Gtk.Widget) {
 				
-				var window = ((Widget) target).get_parent_window ();
+				var window = ((Gtk.Widget) target).get_parent_window ();
 				if (window != null)
 					window.flush ();
 			}
