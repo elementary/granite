@@ -29,7 +29,7 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string help {
-		set { _help = value; update(); }
+		set { _help = value; }
 		get { return _help; }
 	}
 	string _help = "";
@@ -38,7 +38,7 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string translate {
-		set { _translate = value; update(); }
+		set { _translate = value; }
 		get { return _translate; }
 	}
 	string _translate = "";
@@ -47,7 +47,7 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string bug {
-		set { _bug = value; update(); }
+		set { _bug = value; }
 		get { return _bug; }
 	}
 	string _bug = "";
@@ -57,25 +57,28 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 */
 	public AboutDialog()
 	{
-		Button help;
-		Button translate;
-		Button report;
-		help = new Button.with_label(" ? ");
-		translate = new Button.with_label("Translate this app");
-		report = new Button.with_label("Report a problem");
-		action_hbox.pack_start(help);
-		action_hbox.reorder_child(help, 0);
-		action_homogeneous_hbox.pack_start(translate);
-		action_homogeneous_hbox.pack_start(report);
-		action_homogeneous_hbox.reorder_child(report, 0);
-		action_homogeneous_hbox.reorder_child(translate, 0);
-		help.show();
-		translate.show();
-		report.show();
-	}
-	
-	public void update()
-	{
+		// Creating the buttons
+		Button help_button;
+		Button translate_button;
+		Button bug_button;
+		help_button = new Button.with_label(" ? ");
+		help_button.pressed.connect(() => { activate_link(help); });
+		translate_button = new Button.with_label("Translate this app");
+		translate_button.pressed.connect(() => { activate_link(translate); });
+		bug_button = new Button.with_label("Report a problem");
+		bug_button.pressed.connect(() => { activate_link(bug); });
 		
+		// Pack
+		action_hbox.pack_start(help_button);
+		action_hbox.reorder_child(help_button, 0);
+		action_homogeneous_hbox.pack_start(translate_button);
+		action_homogeneous_hbox.pack_start(bug_button);
+		action_homogeneous_hbox.reorder_child(bug_button, 0);
+		action_homogeneous_hbox.reorder_child(translate_button, 0);
+		
+		// Show
+		help_button.show();
+		translate_button.show();
+		bug_button.show();
 	}
 }

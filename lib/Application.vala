@@ -172,6 +172,10 @@ namespace Granite {
 			about_dlg.translator_credits = about_translators;
 			about_dlg.license  = about_license;
 			
+			about_dlg.help = help_url;
+			about_dlg.translate = translate_url;
+			about_dlg.bug = bug_url;
+			
 			about_dlg.response.connect (() => {
 				about_dlg.hide ();
 			});
