@@ -167,7 +167,44 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 	bool _wrap_license = true;
 	
 	// Signals
-	public signal bool activate_link (string uri);
+	public virtual signal bool activate_link (string uri) {
+		Gtk.show_uri(get_screen(), uri, Gtk.get_current_event_time());
+		return true;
+	}
+	
+	/*
+	static gboolean
+gtk_about_dialog_activate_link (GtkAboutDialog *about,
+                                const gchar    *uri)
+{
+  GdkScreen *screen;
+  GError *error = NULL;
+
+  screen = gtk_widget_get_screen (GTK_WIDGET (about));
+
+  if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
+    {
+      GtkWidget *dialog;
+
+      dialog = gtk_message_dialog_new (GTK_WINDOW (about),
+                                       GTK_DIALOG_DESTROY_WITH_PARENT |
+                                       GTK_DIALOG_MODAL,
+                                       GTK_MESSAGE_ERROR,
+                                       GTK_BUTTONS_CLOSE,
+                                       "%s", _("Could not show link"));
+      gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                                                "%s", error->message);
+      g_error_free (error);
+
+      g_signal_connect (dialog, "response",
+                        G_CALLBACK (gtk_widget_destroy), NULL);
+
+      gtk_window_present (GTK_WINDOW (dialog));
+    }
+
+  return TRUE;
+}
+	*/
 	
 	// UI elements
 	Image logo_image;
