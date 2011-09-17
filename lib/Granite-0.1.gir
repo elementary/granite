@@ -381,12 +381,12 @@ and/or use gtk-doc annotations.  -->
       <field name="frame_count">
         <type name="guint" c:type="guint"/>
       </field>
-      <glib:signal name="completed">
+      <glib:signal name="completed" when="last">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
       </glib:signal>
-      <glib:signal name="tick">
+      <glib:signal name="tick" when="last">
         <return-value transfer-ownership="none">
           <type name="gboolean"/>
         </return-value>
@@ -563,6 +563,18 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </virtual-method>
+      <method name="create_appmenu"
+              c:identifier="granite_application_create_appmenu"
+              introspectable="0">
+        <return-value>
+          <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
+        </return-value>
+        <parameters>
+          <parameter name="menu" transfer-ownership="none">
+            <type name="Gtk.Menu" c:type="GtkMenu*"/>
+          </parameter>
+        </parameters>
+      </method>
       <method name="run" c:identifier="granite_application_run">
         <return-value transfer-ownership="none">
           <type name="gint" c:type="gint"/>
@@ -665,7 +677,7 @@ and/or use gtk-doc annotations.  -->
         <type name="utf8" c:type="gchar*"/>
       </field>
       <field name="about_dlg">
-        <type name="Gtk.AboutDialog" c:type="GtkAboutDialog*"/>
+        <type name="WidgetsAboutDialog" c:type="GraniteWidgetsAboutDialog*"/>
       </field>
     </class>
     <record name="ApplicationClass"
@@ -1349,7 +1361,452 @@ and/or use gtk-doc annotations.  -->
               value="4"
               c:identifier="GRANITE_EASING_MODE_EASE_IN_CUBIC"
               glib:nick="ease-in-cubic"/>
+      <function name="transform" c:identifier="granite_easing_mode_transform">
+        <return-value transfer-ownership="none">
+          <type name="gdouble" c:type="gdouble"/>
+        </return-value>
+        <parameters>
+          <parameter name="self" transfer-ownership="none">
+            <type name="EasingMode" c:type="GraniteEasingMode"/>
+          </parameter>
+          <parameter name="offset" transfer-ownership="none">
+            <type name="gdouble" c:type="gdouble"/>
+          </parameter>
+        </parameters>
+      </function>
     </enumeration>
+    <class name="GtkPatchAboutDialog"
+           c:symbol-prefix="gtk_patch_about_dialog"
+           c:type="GraniteGtkPatchAboutDialog"
+           parent="Gtk.Dialog"
+           glib:type-name="GraniteGtkPatchAboutDialog"
+           glib:get-type="granite_gtk_patch_about_dialog_get_type"
+           glib:type-struct="GtkPatchAboutDialogClass">
+      <implements name="Atk.ImplementorIface"/>
+      <implements name="Gtk.Buildable"/>
+      <constructor name="new"
+                   c:identifier="granite_gtk_patch_about_dialog_new">
+        <return-value transfer-ownership="none">
+          <type name="GtkPatchAboutDialog"
+                c:type="GraniteGtkPatchAboutDialog*"/>
+        </return-value>
+      </constructor>
+      <function name="construct"
+                c:identifier="granite_gtk_patch_about_dialog_construct"
+                introspectable="0">
+        <return-value>
+          <type name="GtkPatchAboutDialog"
+                c:type="GraniteGtkPatchAboutDialog*"/>
+        </return-value>
+        <parameters>
+          <parameter name="object_type" transfer-ownership="none">
+            <type name="GType" c:type="GType"/>
+          </parameter>
+        </parameters>
+      </function>
+      <virtual-method name="activate_link">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="uri" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <method name="get_artists"
+              c:identifier="granite_gtk_patch_about_dialog_get_artists"
+              introspectable="0">
+        <return-value>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <parameter name="result_length1" transfer-ownership="none">
+            <type name="gint" c:type="int*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_authors"
+              c:identifier="granite_gtk_patch_about_dialog_get_authors"
+              introspectable="0">
+        <return-value>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <parameter name="result_length1" transfer-ownership="none">
+            <type name="gint" c:type="int*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_comments"
+              c:identifier="granite_gtk_patch_about_dialog_get_comments">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_copyright"
+              c:identifier="granite_gtk_patch_about_dialog_get_copyright">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_documenters"
+              c:identifier="granite_gtk_patch_about_dialog_get_documenters"
+              introspectable="0">
+        <return-value>
+          <array c:type="gchar**">
+            <type name="utf8"/>
+          </array>
+        </return-value>
+        <parameters>
+          <parameter name="result_length1" transfer-ownership="none">
+            <type name="gint" c:type="int*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_license"
+              c:identifier="granite_gtk_patch_about_dialog_get_license">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_license_type"
+              c:identifier="granite_gtk_patch_about_dialog_get_license_type">
+        <return-value transfer-ownership="none">
+          <type name="Gtk.License" c:type="GtkLicense"/>
+        </return-value>
+      </method>
+      <method name="get_logo"
+              c:identifier="granite_gtk_patch_about_dialog_get_logo"
+              introspectable="0">
+        <return-value>
+          <type name="GdkPixbuf.Pixbuf" c:type="GdkPixbuf*"/>
+        </return-value>
+      </method>
+      <method name="get_logo_icon_name"
+              c:identifier="granite_gtk_patch_about_dialog_get_logo_icon_name">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_program_name"
+              c:identifier="granite_gtk_patch_about_dialog_get_program_name">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_translator_credits"
+              c:identifier="granite_gtk_patch_about_dialog_get_translator_credits">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_version"
+              c:identifier="granite_gtk_patch_about_dialog_get_version">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_website"
+              c:identifier="granite_gtk_patch_about_dialog_get_website">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_website_label"
+              c:identifier="granite_gtk_patch_about_dialog_get_website_label">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_wrap_license"
+              c:identifier="granite_gtk_patch_about_dialog_get_wrap_license">
+        <return-value transfer-ownership="none">
+          <type name="gboolean" c:type="gboolean"/>
+        </return-value>
+      </method>
+      <method name="set_artists"
+              c:identifier="granite_gtk_patch_about_dialog_set_artists">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar**"/>
+          </parameter>
+          <parameter name="value_length1" transfer-ownership="none">
+            <type name="gint" c:type="int"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_authors"
+              c:identifier="granite_gtk_patch_about_dialog_set_authors">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar**"/>
+          </parameter>
+          <parameter name="value_length1" transfer-ownership="none">
+            <type name="gint" c:type="int"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_comments"
+              c:identifier="granite_gtk_patch_about_dialog_set_comments">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_copyright"
+              c:identifier="granite_gtk_patch_about_dialog_set_copyright">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_documenters"
+              c:identifier="granite_gtk_patch_about_dialog_set_documenters">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar**"/>
+          </parameter>
+          <parameter name="value_length1" transfer-ownership="none">
+            <type name="gint" c:type="int"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_license"
+              c:identifier="granite_gtk_patch_about_dialog_set_license">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_license_type"
+              c:identifier="granite_gtk_patch_about_dialog_set_license_type">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="Gtk.License" c:type="GtkLicense"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_logo"
+              c:identifier="granite_gtk_patch_about_dialog_set_logo">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="GdkPixbuf.Pixbuf" c:type="GdkPixbuf*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_logo_icon_name"
+              c:identifier="granite_gtk_patch_about_dialog_set_logo_icon_name">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_program_name"
+              c:identifier="granite_gtk_patch_about_dialog_set_program_name">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_translator_credits"
+              c:identifier="granite_gtk_patch_about_dialog_set_translator_credits">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_version"
+              c:identifier="granite_gtk_patch_about_dialog_set_version">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_website"
+              c:identifier="granite_gtk_patch_about_dialog_set_website">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_website_label"
+              c:identifier="granite_gtk_patch_about_dialog_set_website_label">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_wrap_license"
+              c:identifier="granite_gtk_patch_about_dialog_set_wrap_license">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </parameter>
+        </parameters>
+      </method>
+      <property name="artists" writable="1" transfer-ownership="none">
+        <array>
+          <type name="utf8"/>
+        </array>
+      </property>
+      <property name="authors" writable="1" transfer-ownership="none">
+        <array>
+          <type name="utf8"/>
+        </array>
+      </property>
+      <property name="comments" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="copyright" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="documenters" writable="1" transfer-ownership="none">
+        <array>
+          <type name="utf8"/>
+        </array>
+      </property>
+      <property name="license" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="license-type" writable="1" transfer-ownership="none">
+        <type name="Gtk.License"/>
+      </property>
+      <property name="logo" writable="1" transfer-ownership="none">
+        <type name="GdkPixbuf.Pixbuf"/>
+      </property>
+      <property name="logo-icon-name" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="program-name" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="translator-credits"
+                writable="1"
+                transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="version" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="website" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="website-label" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="wrap-license" writable="1" transfer-ownership="none">
+        <type name="gboolean"/>
+      </property>
+      <field name="parent_instance">
+        <type name="Gtk.Dialog" c:type="GtkDialog"/>
+      </field>
+      <field name="priv">
+        <type name="GtkPatchAboutDialogPrivate"
+              c:type="GraniteGtkPatchAboutDialogPrivate*"/>
+      </field>
+      <field name="action_hbox">
+        <type name="Gtk.HBox" c:type="GtkHBox*"/>
+      </field>
+      <field name="action_homogeneous_hbox">
+        <type name="Gtk.HBox" c:type="GtkHBox*"/>
+      </field>
+      <glib:signal name="activate-link" when="last">
+        <return-value transfer-ownership="none">
+          <type name="gboolean"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="utf8"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="GtkPatchAboutDialogClass"
+            c:type="GraniteGtkPatchAboutDialogClass"
+            glib:is-gtype-struct-for="GtkPatchAboutDialog">
+      <field name="parent_class">
+        <type name="Gtk.DialogClass" c:type="GtkDialogClass"/>
+      </field>
+      <field name="activate_link">
+        <callback name="activate_link">
+          <return-value transfer-ownership="none">
+            <type name="gboolean" c:type="gboolean"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="GtkPatchAboutDialog"
+                    c:type="GraniteGtkPatchAboutDialog*"/>
+            </parameter>
+            <parameter name="uri" transfer-ownership="none">
+              <type name="utf8" c:type="gchar*"/>
+            </parameter>
+          </parameters>
+        </callback>
+      </field>
+    </record>
+    <record name="GtkPatchAboutDialogPrivate"
+            c:type="GraniteGtkPatchAboutDialogPrivate"
+            disguised="1">
+    </record>
     <enumeration name="ServicesLogLevel"
                  glib:type-name="GraniteServicesLogLevel"
                  glib:get-type="granite_services_log_level_get_type"
@@ -1653,7 +2110,8 @@ and/or use gtk-doc annotations.  -->
         </parameters>
       </function>
       <function name="set_xdg_data_dir_folders"
-                c:identifier="granite_services_paths_set_xdg_data_dir_folders">
+                c:identifier="granite_services_paths_set_xdg_data_dir_folders"
+                introspectable="0">
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
@@ -1815,7 +2273,12 @@ and/or use gtk-doc annotations.  -->
         <type name="ServicesSettingsPrivate"
               c:type="GraniteServicesSettingsPrivate*"/>
       </field>
-      <glib:signal name="changed">
+      <glib:signal name="changed"
+                   when="first"
+                   no-recurse="1"
+                   detailed="1"
+                   action="1"
+                   no-hooks="1">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -2058,6 +2521,117 @@ and/or use gtk-doc annotations.  -->
         </parameter>
       </parameters>
     </callback>
+    <class name="WidgetsAboutDialog"
+           c:symbol-prefix="widgets_about_dialog"
+           c:type="GraniteWidgetsAboutDialog"
+           parent="GtkPatchAboutDialog"
+           glib:type-name="GraniteWidgetsAboutDialog"
+           glib:get-type="granite_widgets_about_dialog_get_type"
+           glib:type-struct="WidgetsAboutDialogClass">
+      <implements name="Atk.ImplementorIface"/>
+      <implements name="Gtk.Buildable"/>
+      <constructor name="new" c:identifier="granite_widgets_about_dialog_new">
+        <return-value transfer-ownership="none">
+          <type name="WidgetsAboutDialog" c:type="GraniteWidgetsAboutDialog*"/>
+        </return-value>
+      </constructor>
+      <function name="construct"
+                c:identifier="granite_widgets_about_dialog_construct"
+                introspectable="0">
+        <return-value>
+          <type name="WidgetsAboutDialog" c:type="GraniteWidgetsAboutDialog*"/>
+        </return-value>
+        <parameters>
+          <parameter name="object_type" transfer-ownership="none">
+            <type name="GType" c:type="GType"/>
+          </parameter>
+        </parameters>
+      </function>
+      <method name="get_bug"
+              c:identifier="granite_widgets_about_dialog_get_bug">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_help"
+              c:identifier="granite_widgets_about_dialog_get_help">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="get_translate"
+              c:identifier="granite_widgets_about_dialog_get_translate">
+        <return-value transfer-ownership="none">
+          <type name="utf8" c:type="gchar*"/>
+        </return-value>
+      </method>
+      <method name="set_bug"
+              c:identifier="granite_widgets_about_dialog_set_bug">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_help"
+              c:identifier="granite_widgets_about_dialog_set_help">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_translate"
+              c:identifier="granite_widgets_about_dialog_set_translate">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="update" c:identifier="granite_widgets_about_dialog_update">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+      </method>
+      <property name="bug" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="help" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <property name="translate" writable="1" transfer-ownership="none">
+        <type name="utf8"/>
+      </property>
+      <field name="parent_instance">
+        <type name="GtkPatchAboutDialog" c:type="GraniteGtkPatchAboutDialog"/>
+      </field>
+      <field name="priv">
+        <type name="WidgetsAboutDialogPrivate"
+              c:type="GraniteWidgetsAboutDialogPrivate*"/>
+      </field>
+    </class>
+    <record name="WidgetsAboutDialogClass"
+            c:type="GraniteWidgetsAboutDialogClass"
+            glib:is-gtype-struct-for="WidgetsAboutDialog">
+      <field name="parent_class">
+        <type name="GtkPatchAboutDialogClass"
+              c:type="GraniteGtkPatchAboutDialogClass"/>
+      </field>
+    </record>
+    <record name="WidgetsAboutDialogPrivate"
+            c:type="GraniteWidgetsAboutDialogPrivate"
+            disguised="1">
+    </record>
     <class name="WidgetsAppMenu"
            c:symbol-prefix="widgets_app_menu"
            c:type="GraniteWidgetsAppMenu"
@@ -2078,6 +2652,26 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </constructor>
+      <constructor name="new_with_urls"
+                   c:identifier="granite_widgets_app_menu_new_with_urls">
+        <return-value transfer-ownership="none">
+          <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
+        </return-value>
+        <parameters>
+          <parameter name="menu" transfer-ownership="none">
+            <type name="Gtk.Menu" c:type="GtkMenu*"/>
+          </parameter>
+          <parameter name="help_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="translate_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="bug_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </constructor>
       <function name="construct"
                 c:identifier="granite_widgets_app_menu_construct"
                 introspectable="0">
@@ -2093,6 +2687,51 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </function>
+      <function name="construct_with_urls"
+                c:identifier="granite_widgets_app_menu_construct_with_urls"
+                introspectable="0">
+        <return-value>
+          <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
+        </return-value>
+        <parameters>
+          <parameter name="object_type" transfer-ownership="none">
+            <type name="GType" c:type="GType"/>
+          </parameter>
+          <parameter name="menu" transfer-ownership="none">
+            <type name="Gtk.Menu" c:type="GtkMenu*"/>
+          </parameter>
+          <parameter name="help_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="translate_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+          <parameter name="bug_url" transfer-ownership="none">
+            <type name="utf8" c:type="gchar*"/>
+          </parameter>
+        </parameters>
+      </function>
+      <virtual-method name="show_about">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="parent" transfer-ownership="none">
+            <type name="Gtk.Widget" c:type="GtkWidget*"/>
+          </parameter>
+        </parameters>
+      </virtual-method>
+      <method name="add_items"
+              c:identifier="granite_widgets_app_menu_add_items">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="menu" transfer-ownership="none">
+            <type name="Gtk.Menu" c:type="GtkMenu*"/>
+          </parameter>
+        </parameters>
+      </method>
       <field name="parent_instance">
         <type name="WidgetsToolButtonWithMenu"
               c:type="GraniteWidgetsToolButtonWithMenu"/>
@@ -2101,6 +2740,28 @@ and/or use gtk-doc annotations.  -->
         <type name="WidgetsAppMenuPrivate"
               c:type="GraniteWidgetsAppMenuPrivate*"/>
       </field>
+      <field name="help_item">
+        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
+      </field>
+      <field name="translate_item">
+        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
+      </field>
+      <field name="report_item">
+        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
+      </field>
+      <field name="about_item">
+        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
+      </field>
+      <glib:signal name="show-about" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="Gtk.Widget"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
     </class>
     <record name="WidgetsAppMenuClass"
             c:type="GraniteWidgetsAppMenuClass"
@@ -2108,6 +2769,21 @@ and/or use gtk-doc annotations.  -->
       <field name="parent_class">
         <type name="WidgetsToolButtonWithMenuClass"
               c:type="GraniteWidgetsToolButtonWithMenuClass"/>
+      </field>
+      <field name="show_about">
+        <callback name="show_about">
+          <return-value transfer-ownership="none">
+            <type name="none" c:type="void"/>
+          </return-value>
+          <parameters>
+            <parameter name="self" transfer-ownership="none">
+              <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
+            </parameter>
+            <parameter name="parent" transfer-ownership="none">
+              <type name="Gtk.Widget" c:type="GtkWidget*"/>
+            </parameter>
+          </parameters>
+        </callback>
       </field>
     </record>
     <record name="WidgetsAppMenuPrivate"
@@ -2618,7 +3294,7 @@ and/or use gtk-doc annotations.  -->
         <type name="WidgetsModeButtonPrivate"
               c:type="GraniteWidgetsModeButtonPrivate*"/>
       </field>
-      <glib:signal name="mode-added">
+      <glib:signal name="mode-added" when="last">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -2631,7 +3307,7 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </glib:signal>
-      <glib:signal name="mode-changed">
+      <glib:signal name="mode-changed" when="last">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -2641,7 +3317,7 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </glib:signal>
-      <glib:signal name="mode-removed">
+      <glib:signal name="mode-removed" when="last">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -2725,6 +3401,110 @@ and/or use gtk-doc annotations.  -->
     </record>
     <record name="WidgetsSearchBarPrivate"
             c:type="GraniteWidgetsSearchBarPrivate"
+            disguised="1">
+    </record>
+    <class name="WidgetsStaticNotebook"
+           c:symbol-prefix="widgets_static_notebook"
+           c:type="GraniteWidgetsStaticNotebook"
+           parent="Gtk.VBox"
+           glib:type-name="GraniteWidgetsStaticNotebook"
+           glib:get-type="granite_widgets_static_notebook_get_type"
+           glib:type-struct="WidgetsStaticNotebookClass">
+      <implements name="Atk.ImplementorIface"/>
+      <implements name="Gtk.Buildable"/>
+      <implements name="Gtk.Orientable"/>
+      <constructor name="new"
+                   c:identifier="granite_widgets_static_notebook_new">
+        <return-value transfer-ownership="none">
+          <type name="WidgetsStaticNotebook"
+                c:type="GraniteWidgetsStaticNotebook*"/>
+        </return-value>
+      </constructor>
+      <function name="construct"
+                c:identifier="granite_widgets_static_notebook_construct"
+                introspectable="0">
+        <return-value>
+          <type name="WidgetsStaticNotebook"
+                c:type="GraniteWidgetsStaticNotebook*"/>
+        </return-value>
+        <parameters>
+          <parameter name="object_type" transfer-ownership="none">
+            <type name="GType" c:type="GType"/>
+          </parameter>
+        </parameters>
+      </function>
+      <method name="append_page"
+              c:identifier="granite_widgets_static_notebook_append_page">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="widget" transfer-ownership="none">
+            <type name="Gtk.Widget" c:type="GtkWidget*"/>
+          </parameter>
+          <parameter name="label" transfer-ownership="none">
+            <type name="Gtk.Label" c:type="GtkLabel*"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="get_page"
+              c:identifier="granite_widgets_static_notebook_get_page">
+        <return-value transfer-ownership="none">
+          <type name="gint" c:type="gint"/>
+        </return-value>
+      </method>
+      <method name="remove_page"
+              c:identifier="granite_widgets_static_notebook_remove_page">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="number" transfer-ownership="none">
+            <type name="gint" c:type="gint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <method name="set_page"
+              c:identifier="granite_widgets_static_notebook_set_page">
+        <return-value transfer-ownership="none">
+          <type name="none" c:type="void"/>
+        </return-value>
+        <parameters>
+          <parameter name="value" transfer-ownership="none">
+            <type name="gint" c:type="gint"/>
+          </parameter>
+        </parameters>
+      </method>
+      <property name="page" writable="1" transfer-ownership="none">
+        <type name="gint"/>
+      </property>
+      <field name="parent_instance">
+        <type name="Gtk.VBox" c:type="GtkVBox"/>
+      </field>
+      <field name="priv">
+        <type name="WidgetsStaticNotebookPrivate"
+              c:type="GraniteWidgetsStaticNotebookPrivate*"/>
+      </field>
+      <glib:signal name="page-changed" when="last">
+        <return-value transfer-ownership="none">
+          <type name="none"/>
+        </return-value>
+        <parameters>
+          <parameter name="object" transfer-ownership="none">
+            <type name="gint"/>
+          </parameter>
+        </parameters>
+      </glib:signal>
+    </class>
+    <record name="WidgetsStaticNotebookClass"
+            c:type="GraniteWidgetsStaticNotebookClass"
+            glib:is-gtype-struct-for="WidgetsStaticNotebook">
+      <field name="parent_class">
+        <type name="Gtk.VBoxClass" c:type="GtkVBoxClass"/>
+      </field>
+    </record>
+    <record name="WidgetsStaticNotebookPrivate"
+            c:type="GraniteWidgetsStaticNotebookPrivate"
             disguised="1">
     </record>
     <class name="WidgetsTimePicker"
@@ -3187,7 +3967,7 @@ and/or use gtk-doc annotations.  -->
       <field name="options">
         <type name="Gtk.VBox" c:type="GtkVBox*"/>
       </field>
-      <glib:signal name="activated">
+      <glib:signal name="activated" when="last">
         <return-value transfer-ownership="none">
           <type name="none"/>
         </return-value>
@@ -3210,7 +3990,8 @@ and/or use gtk-doc annotations.  -->
             disguised="1">
     </record>
     <function name="easing_mode_transform"
-              c:identifier="granite_easing_mode_transform">
+              c:identifier="granite_easing_mode_transform"
+              moved-to="EasingMode.transform">
       <return-value transfer-ownership="none">
         <type name="gdouble" c:type="gdouble"/>
       </return-value>

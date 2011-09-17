@@ -151,26 +151,26 @@ namespace Granite {
 				return;
 			}
 			
-			about_dlg = new Granite.Widget.AboutDialog ();
+			about_dlg = new Granite.Widgets.AboutDialog ();
 			
 			about_dlg.modal = true;
 			about_dlg.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 			about_dlg.transient_for = (Gtk.Window) parent;
                 			
-			about_dlg.set_program_name (exec_name);
-			about_dlg.set_version (build_version + "\n" + build_version_info);
-			about_dlg.set_logo_icon_name (app_icon);
+			about_dlg.program_name = exec_name;
+			about_dlg.version = build_version + "\n" + build_version_info;
+			about_dlg.logo_icon_name = app_icon;
 			
-			about_dlg.set_comments (program_name + ". " + build_release_name);
-			about_dlg.set_copyright ("Copyright © %s %s Developers".printf (app_copyright, program_name));
-			about_dlg.set_website (main_url);
-			about_dlg.set_website_label ("Website");
+			about_dlg.comments = program_name + ". " + build_release_name;
+			about_dlg.copyright = "Copyright © %s %s Developers".printf (app_copyright, program_name);
+			about_dlg.website = main_url;
+			about_dlg.website_label = "Website";
 			
-			about_dlg.set_authors (about_authors);
-			about_dlg.set_documenters (about_documenters);
-			about_dlg.set_artists (about_artists);
-			about_dlg.set_translator_credits (about_translators);
-			about_dlg.set_license (about_license);
+			about_dlg.authors = about_authors;
+			about_dlg.documenters = about_documenters;
+			about_dlg.artists = about_artists;
+			about_dlg.translator_credits = about_translators;
+			about_dlg.license  = about_license;
 			
 			about_dlg.response.connect (() => {
 				about_dlg.hide ();
