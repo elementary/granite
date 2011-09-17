@@ -1,0 +1,31 @@
+.switcher:nth-child(last) {
+    border-radius: 0 0 3 3;
+    border-width: 0 1 1 1;
+}
+
+.switcher {
+    -GtkToolbar-button-relief:
+    border-radius: 0 0 0 0;
+    border-style: solid;
+    border-width: 1 0 1 1;
+
+    -unico-outer-stroke-width: 1 0 1 0;
+}
+
+.switcher:active,
+.switcher:insensitive {
+    -unico-outer-stroke-width: 1 0 1 0;
+}
+
+.switcher:nth-child(first) {
+    border-radius: 3 0 0 3;
+
+    -unico-outer-stroke-width: 1 0 1 1;
+}
+
+.switcher:nth-child(last) {
+    border-radius: 0 3 3 0;
+    border-width: 1;
+
+    -unico-outer-stroke-width: 1 1 1 0;
+}
