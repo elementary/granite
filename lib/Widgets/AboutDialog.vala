@@ -23,7 +23,7 @@
 
 using Gtk;
 
-public class Granite.Widget.AboutDialog : Granite.GtkPatch.AboutDialog
+public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 {
 	/**
 	 * The URL for the link to the website of the program.
