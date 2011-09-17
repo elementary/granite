@@ -16,7 +16,7 @@
 */
 
 .modebutton {
-    -GtkToolbar-button-relief: none;
+    -GtkToolbar-button-relief: normal;
     border-radius: 0 0 0 0;
     border-style: solid;
     border-width: 1 0 1 1;
