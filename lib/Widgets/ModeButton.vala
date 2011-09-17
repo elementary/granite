@@ -45,7 +45,7 @@ namespace Granite.Widgets {
 			{
 			    style_provider = new CssProvider ();
 			    try {
-				    style_provider.load_from_path (Build.RESOURCES_DIR + "/style/Switcher.css");
+				    style_provider.load_from_path (Build.RESOURCES_DIR + "/style/ModeButton.css");
 			    } catch (Error e) {
 				    warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
 			    }
@@ -67,7 +67,7 @@ namespace Granite.Widgets {
             button.add(w);
             //button.width_request = 30;
             button.can_focus = false;
-            button.get_style_context ().add_class ("switcher");
+            button.get_style_context ().add_class ("modebutton");
 			button.get_style_context ().add_provider (style_provider, 600);
  
             button.button_press_event.connect (() => {
