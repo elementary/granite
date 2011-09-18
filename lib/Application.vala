@@ -139,8 +139,8 @@ namespace Granite {
 		
 		public AppMenu create_appmenu (Menu menu) {
 		
-		    AppMenu app_menu = new AppMenu (menu);
-		    app_menu.show_about.connect ((parent) => this.show_about (parent));
+		    AppMenu app_menu = new AppMenu.with_app (this, menu);
+		    app_menu.show_about.connect (show_about);
 		    
 		    return app_menu;
 		}
@@ -148,17 +148,12 @@ namespace Granite {
 		protected Granite.Widgets.AboutDialog about_dlg;
 			
 		public virtual void show_about (Gtk.Widget parent) {
-		
-			if (about_dlg != null) {
-				about_dlg.get_window ().raise ();
-				return;
-			}
-			
+	
+            assert(parent is Gtk.Window);
 			about_dlg = new Granite.Widgets.AboutDialog ();
 			
 			about_dlg.modal = true;
-			about_dlg.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-			about_dlg.transient_for = (Gtk.Window) parent;
+			about_dlg.set_transient_for((Gtk.Window) parent);
                 			
 			about_dlg.program_name = program_name;
 			about_dlg.version = build_version;

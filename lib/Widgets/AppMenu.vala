@@ -39,16 +39,29 @@ namespace Granite.Widgets {
 //~ 			about_item.activate.connect (() => Granite.app.show_about (get_toplevel ()));
 //~ 		}
 		
-		public virtual signal void show_about (Gtk.Widget parent) { }
-		
+        public signal void show_about(Gtk.Widget w);
+
 		public AppMenu (Menu menu) {
+		
+			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+		}
+
+		public AppMenu.with_app (Granite.Application application, Gtk.Menu menu) {
 		
 			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
 			
 			this.add_items (menu);
 			
-			about_item.activate.connect (() => this.show_about (get_toplevel ()));
+			about_item.activate.connect (() => { show_about(get_toplevel()); });
 		}
+
+        /**
+         * @deprecated
+         **/
+        public AppMenu.with_urls (Menu menu, string help_url, string translate_url, string bug_url) {
+            critical("This is a deprecated creation method: AppMenu.with_urls");
+			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+        }
 		
 		public void add_items (Menu menu) {
 		    

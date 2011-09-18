@@ -262,7 +262,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 	 */
 	public AboutDialog()
 	{
-		set_title("");
 		has_resize_grip = false;
 		resizable = false;
 		set_default_response(ResponseType.CANCEL);
@@ -371,7 +370,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 		content_vbox.show();
 		logo_image.show();
 		
-		close_button.pressed.connect(() => { response(ResponseType.CANCEL); });
+		close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
+        close_button.grab_focus();
 	}
 	
 	private string set_string_from_string_array(string title, string[] list)

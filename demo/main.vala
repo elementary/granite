@@ -89,6 +89,7 @@ public class Granite.Demo : Granite.Application
         tool_mode.append(new Gtk.Label("4"));
         toolbutton.add(tool_mode);
         toolbar.insert(toolbutton, -1);
+        toolbar.insert(create_appmenu(new Gtk.Menu()), -1);
         vbox.pack_start(toolbar, false, false);toolbar = new Gtk.Toolbar();
         toolbar.get_style_context().add_class("inline-toolbar");
         toolbutton = new Gtk.ToolItem();
