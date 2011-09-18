@@ -22,9 +22,40 @@ using Granite.Widgets;
 
 public class Granite.Demo : Granite.Application
 {
+    construct
+    {
+		application_id = "demo.granite.org";
+		program_name = "Granite Demo";
+		app_years = "2011";
+		
+		build_version = "1.0";
+		app_icon = "text-editor";
+		main_url = "https://launchpad.net/granite";
+		bug_url = "https://bugs.launchpad.net/granite";
+		help_url = "https://answers.launchpad.net/granite";
+		translate_url = "https://translations.launchpad.net/granite";
+		about_authors = {"Kekun",
+						 null
+						 };
+		about_documenters = {"Valadoc",
+							 null
+							 };
+		about_artists = {"Daniel P. Fore",
+						 null
+						 };
+		
+		about_authors = {"Maxwell Barvian <mbarvian@gmail.com>",
+						 "Daniel Foré <bunny@go-docky.com>",
+						 "Avi Romanoff <aviromanoff@gmail.com>",
+						 null
+						 };
+
+		about_comments = "A demo of the Granite toolkit";
+		about_translators = "Launchpad Translators";
+		about_license_type = Gtk.License.GPL_3_0;
+    }
     public Demo()
     {
-        Object(application_id:"demo.granite.org");
         var win = new Gtk.Window();
         win.delete_event.connect( () => { Gtk.main_quit(); return false; });
         
@@ -74,6 +105,9 @@ public class Granite.Demo : Granite.Application
         staticbox.add (staticnotebook);
         
         notebook.append_page (staticbox, new Gtk.Label ("Static Notebook"));
+        var button_about = new Gtk.Button.with_label("show_about");
+        notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
+        button_about.clicked.connect(() => { show_about(win); } );
         
         /* window properties */
         win.show_all();
