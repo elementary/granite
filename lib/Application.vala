@@ -51,6 +51,7 @@ namespace Granite {
 		public string exec_name;
 		
 		public string app_copyright;
+		public string app_years;
 		public string app_icon;
 		public string app_launcher;
 
@@ -62,8 +63,10 @@ namespace Granite {
 		public string[] about_authors;
 		public string[] about_documenters;
 		public string[] about_artists;
+		public string about_comments;
 		public string about_translators;
 		public string about_license;
+		public License about_license_type;
 		
 		public Application () {
 		
@@ -136,13 +139,13 @@ namespace Granite {
 		
 		public AppMenu create_appmenu (Menu menu) {
 		
-		    AppMenu app_menu = new AppMenu.with_urls (menu, this.help_url, this.translate_url, this.bug_url);
+		    AppMenu app_menu = new AppMenu (menu);
 		    app_menu.show_about.connect ((parent) => this.show_about (parent));
 		    
 		    return app_menu;
 		}
 		
-		protected AboutDialog about_dlg;
+		protected Granite.Widgets.AboutDialog about_dlg;
 			
 		public virtual void show_about (Gtk.Widget parent) {
 		
@@ -151,26 +154,31 @@ namespace Granite {
 				return;
 			}
 			
-			about_dlg = new AboutDialog ();
+			about_dlg = new Granite.Widgets.AboutDialog ();
 			
 			about_dlg.modal = true;
 			about_dlg.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 			about_dlg.transient_for = (Gtk.Window) parent;
                 			
-			about_dlg.set_program_name (exec_name);
-			about_dlg.set_version (build_version + "\n" + build_version_info);
-			about_dlg.set_logo_icon_name (app_icon);
+			about_dlg.program_name = program_name;
+			about_dlg.version = build_version;
+			about_dlg.logo_icon_name = app_icon;
 			
-			about_dlg.set_comments (program_name + ". " + build_release_name);
-			about_dlg.set_copyright ("Copyright © %s %s Developers".printf (app_copyright, program_name));
-			about_dlg.set_website (main_url);
-			about_dlg.set_website_label ("Website");
+			about_dlg.comments = about_comments;
+			about_dlg.copyright = "%s %s Developers".printf (app_years, program_name);
+			about_dlg.website = main_url;
+			about_dlg.website_label = "Website";
 			
-			about_dlg.set_authors (about_authors);
-			about_dlg.set_documenters (about_documenters);
-			about_dlg.set_artists (about_artists);
-			about_dlg.set_translator_credits (about_translators);
-			about_dlg.set_license (about_license);
+			about_dlg.authors = about_authors;
+			about_dlg.documenters = about_documenters;
+			about_dlg.artists = about_artists;
+			about_dlg.translator_credits = about_translators;
+			about_dlg.license  = about_license;
+			about_dlg.license_type  = about_license_type;
+			
+			about_dlg.help = help_url;
+			about_dlg.translate = translate_url;
+			about_dlg.bug = bug_url;
 			
 			about_dlg.response.connect (() => {
 				about_dlg.hide ();
@@ -180,7 +188,7 @@ namespace Granite {
 				about_dlg = null;
 			});
 			
-			about_dlg.show_all ();
+			about_dlg.show ();
 		}
 		
 	}
