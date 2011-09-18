@@ -24,498 +24,6 @@ and/or use gtk-doc annotations.  -->
              shared-library="libgranite.so.0"
              c:identifier-prefixes="Granite"
              c:symbol-prefixes="granite">
-    <class name="Animation"
-           c:symbol-prefix="animation"
-           c:type="GraniteAnimation"
-           parent="GObject.Object"
-           glib:type-name="GraniteAnimation"
-           glib:get-type="granite_animation_get_type"
-           glib:type-struct="AnimationClass">
-      <constructor name="new" c:identifier="granite_animation_new">
-        <return-value transfer-ownership="full">
-          <type name="Animation" c:type="GraniteAnimation*"/>
-        </return-value>
-      </constructor>
-      <function name="construct"
-                c:identifier="granite_animation_construct"
-                introspectable="0">
-        <return-value>
-          <type name="Animation" c:type="GraniteAnimation*"/>
-        </return-value>
-        <parameters>
-          <parameter name="object_type" transfer-ownership="none">
-            <type name="GType" c:type="GType"/>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="create"
-                c:identifier="granite_animation_create"
-                introspectable="0">
-        <return-value>
-          <type name="Animation" c:type="GraniteAnimation*"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="args" transfer-ownership="none">
-            <type name="va_list" c:type="va_list"/>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="create_advanced"
-                c:identifier="granite_animation_create_advanced"
-                introspectable="0">
-        <return-value>
-          <type name="Animation" c:type="GraniteAnimation*"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="duration" transfer-ownership="none">
-            <type name="guint" c:type="guint"/>
-          </parameter>
-          <parameter name="easing_mode" transfer-ownership="none">
-            <type name="EasingMode" c:type="GraniteEasingMode"/>
-          </parameter>
-          <parameter transfer-ownership="none">
-            <varargs>
-            </varargs>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="create_simple"
-                c:identifier="granite_animation_create_simple"
-                introspectable="0">
-        <return-value>
-          <type name="Animation" c:type="GraniteAnimation*"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter transfer-ownership="none">
-            <varargs>
-            </varargs>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="get_tween_funcs"
-                c:identifier="granite_animation_get_tween_funcs"
-                introspectable="0">
-        <return-value>
-          <type name="GLib.HashTable" c:type="GHashTable*">
-            <type name="gpointer" c:type="gpointer"/>
-            <type name="gpointer" c:type="gpointer"/>
-          </type>
-        </return-value>
-      </function>
-      <function name="set_tween_funcs"
-                c:identifier="granite_animation_set_tween_funcs">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GLib.HashTable" c:type="GHashTable*">
-              <type name="gpointer" c:type="gpointer"/>
-              <type name="gpointer" c:type="gpointer"/>
-            </type>
-          </parameter>
-        </parameters>
-      </function>
-      <virtual-method name="tick">
-        <return-value transfer-ownership="none">
-          <type name="gboolean" c:type="gboolean"/>
-        </return-value>
-      </virtual-method>
-      <virtual-method name="update_child_property"
-                      invoker="update_child_property">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="tween" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </virtual-method>
-      <virtual-method name="update_property" invoker="update_property">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="tween" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </virtual-method>
-      <method name="get_duration"
-              c:identifier="granite_animation_get_duration">
-        <return-value transfer-ownership="none">
-          <type name="guint" c:type="guint"/>
-        </return-value>
-      </method>
-      <method name="get_easing_mode"
-              c:identifier="granite_animation_get_easing_mode">
-        <return-value transfer-ownership="none">
-          <type name="EasingMode" c:type="GraniteEasingMode"/>
-        </return-value>
-      </method>
-      <method name="get_frame_rate"
-              c:identifier="granite_animation_get_frame_rate">
-        <return-value transfer-ownership="none">
-          <type name="guint" c:type="guint"/>
-        </return-value>
-      </method>
-      <method name="get_is_running"
-              c:identifier="granite_animation_get_is_running">
-        <return-value transfer-ownership="none">
-          <type name="gboolean" c:type="gboolean"/>
-        </return-value>
-      </method>
-      <method name="get_offset" c:identifier="granite_animation_get_offset">
-        <return-value transfer-ownership="none">
-          <type name="gdouble" c:type="gdouble"/>
-        </return-value>
-      </method>
-      <method name="get_target"
-              c:identifier="granite_animation_get_target"
-              introspectable="0">
-        <return-value>
-          <type name="GObject.Object" c:type="GObject*"/>
-        </return-value>
-      </method>
-      <method name="get_value_at_offset"
-              c:identifier="granite_animation_get_value_at_offset">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="offset" transfer-ownership="none">
-            <type name="gdouble" c:type="gdouble"/>
-          </parameter>
-          <parameter name="tween" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="load_begin_values"
-              c:identifier="granite_animation_load_begin_values">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="set_duration"
-              c:identifier="granite_animation_set_duration">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="value" transfer-ownership="none">
-            <type name="guint" c:type="guint"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="set_easing_mode"
-              c:identifier="granite_animation_set_easing_mode">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="value" transfer-ownership="none">
-            <type name="EasingMode" c:type="GraniteEasingMode"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="set_frame_rate"
-              c:identifier="granite_animation_set_frame_rate">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="value" transfer-ownership="none">
-            <type name="guint" c:type="guint"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="set_target" c:identifier="granite_animation_set_target">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="start" c:identifier="granite_animation_start">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="stop" c:identifier="granite_animation_stop">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="timeout" c:identifier="granite_animation_timeout">
-        <return-value transfer-ownership="none">
-          <type name="gboolean" c:type="gboolean"/>
-        </return-value>
-      </method>
-      <method name="timeval_to_msec"
-              c:identifier="granite_animation_timeval_to_msec">
-        <return-value transfer-ownership="none">
-          <type name="guint64" c:type="guint64"/>
-        </return-value>
-        <parameters>
-          <parameter name="t" transfer-ownership="none">
-            <type name="GLib.TimeVal" c:type="GTimeVal*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="unload_begin_values"
-              c:identifier="granite_animation_unload_begin_values">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="update_child_property"
-              c:identifier="granite_animation_update_child_property">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="tween" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="update_property"
-              c:identifier="granite_animation_update_property">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="tween" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <property name="duration"
-                writable="1"
-                construct="1"
-                transfer-ownership="none">
-        <type name="guint"/>
-      </property>
-      <property name="easing-mode"
-                writable="1"
-                construct="1"
-                transfer-ownership="none">
-        <type name="EasingMode"/>
-      </property>
-      <property name="frame-rate"
-                writable="1"
-                construct="1"
-                transfer-ownership="none">
-        <type name="guint"/>
-      </property>
-      <property name="is-running" transfer-ownership="none">
-        <type name="gboolean"/>
-      </property>
-      <property name="offset" transfer-ownership="none">
-        <type name="gdouble"/>
-      </property>
-      <property name="target"
-                writable="1"
-                construct="1"
-                transfer-ownership="none">
-        <type name="GObject.Object"/>
-      </property>
-      <field name="parent_instance">
-        <type name="GObject.Object" c:type="GObject"/>
-      </field>
-      <field name="priv">
-        <type name="AnimationPrivate" c:type="GraniteAnimationPrivate*"/>
-      </field>
-      <field name="begin_msec">
-        <type name="guint64" c:type="guint64"/>
-      </field>
-      <field name="tween_handler">
-        <type name="guint" c:type="guint"/>
-      </field>
-      <field name="tweens">
-        <type name="GLib.List" c:type="GList*">
-          <type name="gpointer" c:type="gpointer"/>
-        </type>
-      </field>
-      <field name="frame_count">
-        <type name="guint" c:type="guint"/>
-      </field>
-      <glib:signal name="completed" when="last">
-        <return-value transfer-ownership="none">
-          <type name="none"/>
-        </return-value>
-      </glib:signal>
-      <glib:signal name="tick" when="last">
-        <return-value transfer-ownership="none">
-          <type name="gboolean"/>
-        </return-value>
-      </glib:signal>
-    </class>
-    <record name="AnimationClass"
-            c:type="GraniteAnimationClass"
-            glib:is-gtype-struct-for="Animation">
-      <field name="parent_class">
-        <type name="GObject.ObjectClass" c:type="GObjectClass"/>
-      </field>
-      <field name="update_property">
-        <callback name="update_property">
-          <return-value transfer-ownership="none">
-            <type name="none" c:type="void"/>
-          </return-value>
-          <parameters>
-            <parameter name="self" transfer-ownership="none">
-              <type name="Animation" c:type="GraniteAnimation*"/>
-            </parameter>
-            <parameter name="target" transfer-ownership="none">
-              <type name="GObject.Object" c:type="GObject*"/>
-            </parameter>
-            <parameter name="tween" transfer-ownership="none">
-              <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-            </parameter>
-            <parameter name="value" transfer-ownership="none">
-              <type name="GObject.Value" c:type="GValue*"/>
-            </parameter>
-          </parameters>
-        </callback>
-      </field>
-      <field name="update_child_property">
-        <callback name="update_child_property">
-          <return-value transfer-ownership="none">
-            <type name="none" c:type="void"/>
-          </return-value>
-          <parameters>
-            <parameter name="self" transfer-ownership="none">
-              <type name="Animation" c:type="GraniteAnimation*"/>
-            </parameter>
-            <parameter name="target" transfer-ownership="none">
-              <type name="GObject.Object" c:type="GObject*"/>
-            </parameter>
-            <parameter name="tween" transfer-ownership="none">
-              <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-            </parameter>
-            <parameter name="value" transfer-ownership="none">
-              <type name="GObject.Value" c:type="GValue*"/>
-            </parameter>
-          </parameters>
-        </callback>
-      </field>
-      <field name="tick">
-        <callback name="tick">
-          <return-value transfer-ownership="none">
-            <type name="gboolean" c:type="gboolean"/>
-          </return-value>
-          <parameters>
-            <parameter name="self" transfer-ownership="none">
-              <type name="Animation" c:type="GraniteAnimation*"/>
-            </parameter>
-          </parameters>
-        </callback>
-      </field>
-    </record>
-    <record name="AnimationPrivate"
-            c:type="GraniteAnimationPrivate"
-            disguised="1">
-    </record>
-    <record name="AnimationTween"
-            c:type="GraniteAnimationTween"
-            glib:type-name="GraniteAnimationTween"
-            glib:get-type="granite_animation_tween_get_type"
-            c:symbol-prefix="animation_tween">
-      <field name="is_child" writable="1">
-        <type name="gboolean" c:type="gboolean"/>
-      </field>
-      <field name="pspec" writable="1">
-        <type name="GObject.ParamSpec" c:type="GParamSpec*"/>
-      </field>
-      <field name="begin" writable="1">
-        <type name="GObject.Value" c:type="GValue"/>
-      </field>
-      <field name="end" writable="1">
-        <type name="GObject.Value" c:type="GValue"/>
-      </field>
-      <method name="copy" c:identifier="granite_animation_tween_copy">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="dest" transfer-ownership="none">
-            <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="destroy" c:identifier="granite_animation_tween_destroy">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="dup" c:identifier="granite_animation_tween_dup">
-        <return-value transfer-ownership="full">
-          <type name="AnimationTween" c:type="GraniteAnimationTween*"/>
-        </return-value>
-      </method>
-      <method name="free" c:identifier="granite_animation_tween_free">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
-      <method name="init" c:identifier="granite_animation_tween_init">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="target" transfer-ownership="none">
-            <type name="GObject.Object" c:type="GObject*"/>
-          </parameter>
-          <parameter name="pspec" transfer-ownership="none">
-            <type name="GObject.ParamSpec" c:type="GParamSpec*"/>
-          </parameter>
-          <parameter name="value" transfer-ownership="none">
-            <type name="GObject.Value" c:type="GValue*"/>
-          </parameter>
-        </parameters>
-      </method>
-    </record>
     <class name="Application"
            c:symbol-prefix="application"
            c:type="GraniteApplication"
@@ -634,6 +142,9 @@ and/or use gtk-doc annotations.  -->
       <field name="app_copyright">
         <type name="utf8" c:type="gchar*"/>
       </field>
+      <field name="app_years">
+        <type name="utf8" c:type="gchar*"/>
+      </field>
       <field name="app_icon">
         <type name="utf8" c:type="gchar*"/>
       </field>
@@ -670,11 +181,17 @@ and/or use gtk-doc annotations.  -->
       <field name="about_artists_length1">
         <type name="gint" c:type="gint"/>
       </field>
+      <field name="about_comments">
+        <type name="utf8" c:type="gchar*"/>
+      </field>
       <field name="about_translators">
         <type name="utf8" c:type="gchar*"/>
       </field>
       <field name="about_license">
         <type name="utf8" c:type="gchar*"/>
+      </field>
+      <field name="about_license_type">
+        <type name="Gtk.License" c:type="GtkLicense"/>
       </field>
       <field name="about_dlg">
         <type name="WidgetsAboutDialog" c:type="GraniteWidgetsAboutDialog*"/>
@@ -1337,44 +854,6 @@ and/or use gtk-doc annotations.  -->
             c:type="GraniteDrawingUtilitiesPrivate"
             disguised="1">
     </record>
-    <enumeration name="EasingMode"
-                 glib:type-name="GraniteEasingMode"
-                 glib:get-type="granite_easing_mode_get_type"
-                 c:type="GraniteEasingMode">
-      <member name="linear"
-              value="0"
-              c:identifier="GRANITE_EASING_MODE_LINEAR"
-              glib:nick="linear"/>
-      <member name="ease_in_quad"
-              value="1"
-              c:identifier="GRANITE_EASING_MODE_EASE_IN_QUAD"
-              glib:nick="ease-in-quad"/>
-      <member name="ease_out_quad"
-              value="2"
-              c:identifier="GRANITE_EASING_MODE_EASE_OUT_QUAD"
-              glib:nick="ease-out-quad"/>
-      <member name="ease_in_out_quad"
-              value="3"
-              c:identifier="GRANITE_EASING_MODE_EASE_IN_OUT_QUAD"
-              glib:nick="ease-in-out-quad"/>
-      <member name="ease_in_cubic"
-              value="4"
-              c:identifier="GRANITE_EASING_MODE_EASE_IN_CUBIC"
-              glib:nick="ease-in-cubic"/>
-      <function name="transform" c:identifier="granite_easing_mode_transform">
-        <return-value transfer-ownership="none">
-          <type name="gdouble" c:type="gdouble"/>
-        </return-value>
-        <parameters>
-          <parameter name="self" transfer-ownership="none">
-            <type name="EasingMode" c:type="GraniteEasingMode"/>
-          </parameter>
-          <parameter name="offset" transfer-ownership="none">
-            <type name="gdouble" c:type="gdouble"/>
-          </parameter>
-        </parameters>
-      </function>
-    </enumeration>
     <class name="GtkPatchAboutDialog"
            c:symbol-prefix="gtk_patch_about_dialog"
            c:type="GraniteGtkPatchAboutDialog"
@@ -2502,25 +1981,6 @@ and/or use gtk-doc annotations.  -->
             c:type="GraniteServicesSystemPrivate"
             disguised="1">
     </record>
-    <callback name="TweenFunc" c:type="GraniteTweenFunc">
-      <return-value transfer-ownership="none">
-        <type name="none" c:type="void"/>
-      </return-value>
-      <parameters>
-        <parameter name="begin" transfer-ownership="none">
-          <type name="GObject.Value" c:type="GValue*"/>
-        </parameter>
-        <parameter name="end" transfer-ownership="none">
-          <type name="GObject.Value" c:type="GValue*"/>
-        </parameter>
-        <parameter name="offset" transfer-ownership="none">
-          <type name="gdouble" c:type="gdouble"/>
-        </parameter>
-        <parameter name="value" transfer-ownership="none">
-          <type name="GObject.Value" c:type="GValue*"/>
-        </parameter>
-      </parameters>
-    </callback>
     <class name="WidgetsAboutDialog"
            c:symbol-prefix="widgets_about_dialog"
            c:type="GraniteWidgetsAboutDialog"
@@ -2598,11 +2058,6 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </method>
-      <method name="update" c:identifier="granite_widgets_about_dialog_update">
-        <return-value transfer-ownership="none">
-          <type name="none" c:type="void"/>
-        </return-value>
-      </method>
       <property name="bug" writable="1" transfer-ownership="none">
         <type name="utf8"/>
       </property>
@@ -2652,26 +2107,6 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </constructor>
-      <constructor name="new_with_urls"
-                   c:identifier="granite_widgets_app_menu_new_with_urls">
-        <return-value transfer-ownership="none">
-          <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
-        </return-value>
-        <parameters>
-          <parameter name="menu" transfer-ownership="none">
-            <type name="Gtk.Menu" c:type="GtkMenu*"/>
-          </parameter>
-          <parameter name="help_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
-          </parameter>
-          <parameter name="translate_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
-          </parameter>
-          <parameter name="bug_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
-          </parameter>
-        </parameters>
-      </constructor>
       <function name="construct"
                 c:identifier="granite_widgets_app_menu_construct"
                 introspectable="0">
@@ -2684,30 +2119,6 @@ and/or use gtk-doc annotations.  -->
           </parameter>
           <parameter name="menu" transfer-ownership="none">
             <type name="Gtk.Menu" c:type="GtkMenu*"/>
-          </parameter>
-        </parameters>
-      </function>
-      <function name="construct_with_urls"
-                c:identifier="granite_widgets_app_menu_construct_with_urls"
-                introspectable="0">
-        <return-value>
-          <type name="WidgetsAppMenu" c:type="GraniteWidgetsAppMenu*"/>
-        </return-value>
-        <parameters>
-          <parameter name="object_type" transfer-ownership="none">
-            <type name="GType" c:type="GType"/>
-          </parameter>
-          <parameter name="menu" transfer-ownership="none">
-            <type name="Gtk.Menu" c:type="GtkMenu*"/>
-          </parameter>
-          <parameter name="help_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
-          </parameter>
-          <parameter name="translate_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
-          </parameter>
-          <parameter name="bug_url" transfer-ownership="none">
-            <type name="utf8" c:type="gchar*"/>
           </parameter>
         </parameters>
       </function>
@@ -2739,15 +2150,6 @@ and/or use gtk-doc annotations.  -->
       <field name="priv">
         <type name="WidgetsAppMenuPrivate"
               c:type="GraniteWidgetsAppMenuPrivate*"/>
-      </field>
-      <field name="help_item">
-        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
-      </field>
-      <field name="translate_item">
-        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
-      </field>
-      <field name="report_item">
-        <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
       </field>
       <field name="about_item">
         <type name="Gtk.MenuItem" c:type="GtkMenuItem*"/>
@@ -3194,12 +2596,13 @@ and/or use gtk-doc annotations.  -->
     <class name="WidgetsModeButton"
            c:symbol-prefix="widgets_mode_button"
            c:type="GraniteWidgetsModeButton"
-           parent="Gtk.EventBox"
+           parent="Gtk.HBox"
            glib:type-name="GraniteWidgetsModeButton"
            glib:get-type="granite_widgets_mode_button_get_type"
            glib:type-struct="WidgetsModeButtonClass">
       <implements name="Atk.ImplementorIface"/>
       <implements name="Gtk.Buildable"/>
+      <implements name="Gtk.Orientable"/>
       <constructor name="new" c:identifier="granite_widgets_mode_button_new">
         <return-value transfer-ownership="none">
           <type name="WidgetsModeButton" c:type="GraniteWidgetsModeButton*"/>
@@ -3222,25 +2625,15 @@ and/or use gtk-doc annotations.  -->
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
-          <parameter name="widget" transfer-ownership="none">
+          <parameter name="w" transfer-ownership="none">
             <type name="Gtk.Widget" c:type="GtkWidget*"/>
           </parameter>
         </parameters>
       </method>
-      <method name="focus" c:identifier="granite_widgets_mode_button_focus">
+      <method name="clear_children"
+              c:identifier="granite_widgets_mode_button_clear_children">
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
-        </return-value>
-        <parameters>
-          <parameter name="widget" transfer-ownership="none">
-            <type name="Gtk.Widget" c:type="GtkWidget*"/>
-          </parameter>
-        </parameters>
-      </method>
-      <method name="get_hovered"
-              c:identifier="granite_widgets_mode_button_get_hovered">
-        <return-value transfer-ownership="none">
-          <type name="gint" c:type="gint"/>
         </return-value>
       </method>
       <method name="get_selected"
@@ -3254,18 +2647,18 @@ and/or use gtk-doc annotations.  -->
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
-          <parameter name="index" transfer-ownership="none">
+          <parameter name="number" transfer-ownership="none">
             <type name="gint" c:type="gint"/>
           </parameter>
         </parameters>
       </method>
-      <method name="set_hovered"
-              c:identifier="granite_widgets_mode_button_set_hovered">
+      <method name="set_active"
+              c:identifier="granite_widgets_mode_button_set_active">
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
         </return-value>
         <parameters>
-          <parameter name="value" transfer-ownership="none">
+          <parameter name="new_active" transfer-ownership="none">
             <type name="gint" c:type="gint"/>
           </parameter>
         </parameters>
@@ -3281,14 +2674,11 @@ and/or use gtk-doc annotations.  -->
           </parameter>
         </parameters>
       </method>
-      <property name="hovered" writable="1" transfer-ownership="none">
-        <type name="gint"/>
-      </property>
       <property name="selected" writable="1" transfer-ownership="none">
         <type name="gint"/>
       </property>
       <field name="parent_instance">
-        <type name="Gtk.EventBox" c:type="GtkEventBox"/>
+        <type name="Gtk.HBox" c:type="GtkHBox"/>
       </field>
       <field name="priv">
         <type name="WidgetsModeButtonPrivate"
@@ -3335,7 +2725,7 @@ and/or use gtk-doc annotations.  -->
             c:type="GraniteWidgetsModeButtonClass"
             glib:is-gtype-struct-for="WidgetsModeButton">
       <field name="parent_class">
-        <type name="Gtk.EventBoxClass" c:type="GtkEventBoxClass"/>
+        <type name="Gtk.HBoxClass" c:type="GtkHBoxClass"/>
       </field>
     </record>
     <record name="WidgetsModeButtonPrivate"
@@ -3989,21 +3379,6 @@ and/or use gtk-doc annotations.  -->
             c:type="GraniteWidgetsWelcomePrivate"
             disguised="1">
     </record>
-    <function name="easing_mode_transform"
-              c:identifier="granite_easing_mode_transform"
-              moved-to="EasingMode.transform">
-      <return-value transfer-ownership="none">
-        <type name="gdouble" c:type="gdouble"/>
-      </return-value>
-      <parameters>
-        <parameter name="self" transfer-ownership="none">
-          <type name="EasingMode" c:type="GraniteEasingMode"/>
-        </parameter>
-        <parameter name="offset" transfer-ownership="none">
-          <type name="gdouble" c:type="gdouble"/>
-        </parameter>
-      </parameters>
-    </function>
     <record name="utsname"
             c:type="Graniteutsname"
             glib:type-name="Graniteutsname"
