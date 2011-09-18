@@ -79,6 +79,27 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("Veruy very long \n with a line break"));
         
         var vbox = new Gtk.VBox(false, 0);
+        var toolbar = new Gtk.Toolbar();
+        toolbar.get_style_context().add_class("primary-toolbar");
+        var toolbutton = new Gtk.ToolItem();
+        var tool_mode = new ModeButton();
+        tool_mode.append(new Gtk.Label("1"));
+        tool_mode.append(new Gtk.Label("2"));
+        tool_mode.append(new Gtk.Label("3"));
+        tool_mode.append(new Gtk.Label("4"));
+        toolbutton.add(tool_mode);
+        toolbar.insert(toolbutton, -1);
+        vbox.pack_start(toolbar, false, false);toolbar = new Gtk.Toolbar();
+        toolbar.get_style_context().add_class("inline-toolbar");
+        toolbutton = new Gtk.ToolItem();
+        tool_mode = new ModeButton();
+        tool_mode.append(new Gtk.Label("1"));
+        tool_mode.append(new Gtk.Label("2"));
+        tool_mode.append(new Gtk.Label("3"));
+        tool_mode.append(new Gtk.Label("4"));
+        toolbutton.add(tool_mode);
+        toolbar.insert(toolbutton, -1);
+        vbox.pack_start(toolbar, false, false);
         
         vbox.pack_start(mode_button);
 
