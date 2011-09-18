@@ -29,7 +29,10 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string help {
-		set { _help = value; }
+		set {
+			_help = value;
+			help_button.sensitive = !(_help == null || _help == "");
+		}
 		get { return _help; }
 	}
 	string _help = "";
@@ -38,7 +41,10 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string translate {
-		set { _translate = value; }
+		set {
+			_translate = value;
+			translate_button.sensitive = !(_translate == null || _translate == "");
+		}
 		get { return _translate; }
 	}
 	string _translate = "";
@@ -47,10 +53,17 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	 * The URL for the link to the website of the program.
 	 */
 	public string bug {
-		set { _bug = value; }
+		set {
+			_bug = value;
+			bug_button.sensitive = !(_bug == null || _bug == "");
+		}
 		get { return _bug; }
 	}
 	string _bug = "";
+	
+	Button help_button;
+	Button translate_button;
+	Button bug_button;
 	
 	/**
 	 * Creates a new Granite.AboutDialog
@@ -58,13 +71,12 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	public AboutDialog()
 	{
 		// Creating the buttons
-		Button help_button;
-		Button translate_button;
-		Button bug_button;
 		help_button = new Button.with_label(" ? ");
 		help_button.pressed.connect(() => { activate_link(help); });
+		
 		translate_button = new Button.with_label("Translate this app");
 		translate_button.pressed.connect(() => { activate_link(translate); });
+		
 		bug_button = new Button.with_label("Report a problem");
 		bug_button.pressed.connect(() => { activate_link(bug); });
 		
