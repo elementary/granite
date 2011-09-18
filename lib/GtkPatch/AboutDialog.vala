@@ -262,6 +262,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 	 */
 	public AboutDialog()
 	{
+		set_title("");
 		has_resize_grip = false;
 		resizable = false;
 		set_default_response(ResponseType.CANCEL);
@@ -444,7 +445,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 	{
 		if (program_name != null && program_name != "")
 		{
-			set_title("About " + program_name);
 			name_label.set_text(program_name);
 			if (version != null && version != "")
 				name_label.set_text(name_label.get_text() + " " + version);
@@ -453,7 +453,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 		}
 		else
 			name_label.hide();
-			set_title("About");
 	}
 	
 	private void update_website()
