@@ -1,5 +1,6 @@
 //  
 //  Copyright (C) 2008 Christian Hergert <chris@dronelabs.com>
+//  Copyright (C) 2011 Giulio Collura
 // 
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,97 +20,104 @@ using Gtk;
 using Gdk;
 
 namespace Granite.Widgets {
-
-	public class ModeButton : Gtk.EventBox, Gtk.Buildable {  
+     
+    public class ModeButton : HBox {
 	  
 		public signal void mode_added (int index, Gtk.Widget widget);
 		public signal void mode_removed (int index, Gtk.Widget widget);
 		public signal void mode_changed (Gtk.Widget widget);
-
+		static CssProvider style_provider;
+ 
 		private int _selected = -1;
 		public int selected {
 			get {
 				return _selected;
 			}
 			set {
-				if (value == _selected || value < 0 || value >= box.get_children().length())
-					return;
-
-				if (_selected >= 0)
-					box.get_children ().nth_data (_selected).set_state (StateType.NORMAL);
-
-				_selected = value;
-				box.get_children ().nth_data (_selected).set_state (StateType.SELECTED);
-				queue_draw ();
-
-				Gtk.Widget selectedItem = (value >= 0) ? box.get_children ().nth_data (value) : null;
-				mode_changed (selectedItem);
+				set_active(value);
 			}
 		}
-		
-		private int _hovered = -1;
-		public int hovered {
-			get {
-				return _hovered;
+ 
+        public ModeButton () {
+        
+        
+			if(style_provider == null)
+			{
+			    style_provider = new CssProvider ();
+			    try {
+				    style_provider.load_from_path (Build.RESOURCES_DIR + "/style/Switcher.css");
+			    } catch (Error e) {
+				    warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+			    }
 			}
-			set {
-				if (value == _hovered || value <= -1 || value >= box.get_children().length())
-					return;
-
-				_hovered = value;
-				queue_draw ();
-			}
-		}
-
-		private HBox box;
-
-		construct {
-		
-			events |= EventMask.BUTTON_PRESS_MASK
-				   |  EventMask.POINTER_MOTION_MASK
-				   |  EventMask.LEAVE_NOTIFY_MASK; 
-
-			box = new HBox (true, 1);
-			box.border_width = 0;
-			add (box);
-			box.show ();
-			set_visible_window (false);
-			
-			set_size_request(-1, 24);
-			
-			get_style_context().add_class("button");
-		}
-		
-		private void add_child (Builder builder, Object child, string? type) {
-			
-			append (child as Gtk.Widget);
-		}
-		
-		public void append (Gtk.Widget widget) {
-		
-			box.pack_start (widget, true, true, 3);
-			int index = (int) box.get_children ().length () - 2;
-			mode_added (index, widget);
-			int height;
-			widget.set_margin_right(3);
-			widget.set_margin_left(3);
-			widget.set_margin_top(3);
-			widget.set_margin_bottom(3);
-		}
-
-		public new void remove (int index) {
-		
-			Gtk.Widget child = box.get_children ().nth_data (index);
-			box.remove (child);
-			if (_selected == index)
-				_selected = -1;
-			else if (_selected >= index)
-				_selected--;
-			if (_hovered >= index)
-				_hovered--;
-			mode_removed (index, child);
-			queue_draw ();
-		}
+ 
+            homogeneous = true;
+            spacing = 0;
+ 
+            app_paintable = true;
+            set_visual (get_screen ().get_rgba_visual());
+ 
+            can_focus = true;
+ 
+        }
+ 
+        public void append (Gtk.Widget w) {
+ 
+            var button = new ToggleButton ();
+            button.add(w);
+            //button.width_request = 30;
+            button.can_focus = false;
+            button.get_style_context ().add_class ("switcher");
+			button.get_style_context ().add_provider (style_provider, 600);
+ 
+            button.button_press_event.connect (() => {
+ 
+                int select = get_children ().index (button);
+                set_active (select);
+                return true;
+ 
+            });
+ 
+            add (button);
+            button.show_all ();
+            
+            mode_added((int)get_children ().length (), w);
+ 
+        }
+       
+        public void set_active (int new_active) {
+ 
+            if (new_active >= get_children ().length () || _selected == new_active)
+                return;
+ 
+            if (_selected >= 0)
+                ((ToggleButton) get_children ().nth_data (_selected)).set_active (false);
+ 
+            _selected = new_active;
+            ((ToggleButton) get_children ().nth_data (_selected)).set_active (true);
+            mode_changed(((ToggleButton) get_children ().nth_data (_selected)).get_child());
+ 
+        }
+        
+        public new void remove(int number)
+        {
+            mode_removed(number, null);
+            get_children ().nth_data (number).destroy();
+        }
+ 
+        public void clear_children () {
+ 
+            foreach (weak Widget button in get_children ()) {
+                button.hide ();
+                if (button.get_parent () != null)
+                    base.remove (button);
+            }
+            _selected = -1;
+ 
+        }
+    }
+#if 0
+	public class ModeButton : Gtk.EventBox, Gtk.Buildable {
 
 		public new void focus (Gtk.Widget widget) {
 		
@@ -260,6 +268,6 @@ namespace Granite.Widgets {
 		}
 		
 	}
-	
+#endif
 }
 

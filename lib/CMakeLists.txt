@@ -1,6 +1,6 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1.1)
+set (${PKGNAME_}_VERSION 0.1.2)
 # increase when you break the API
 
 set (${PKGNAME_}_SOVERSION 0)
@@ -44,7 +44,6 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-	Animation.vala
 	Application.vala
 	Drawing/Color.vala
 	Drawing/BufferSurface.vala
