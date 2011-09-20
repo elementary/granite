@@ -25,20 +25,6 @@ namespace Granite.Widgets {
 	
 	    public MenuItem about_item;
 	
-	    /**
-	     * Deprecated constructor
-	     *
-	     * @deprecated
-	     */
-//~ 		public AppMenu (Menu menu) {
-//~ 			
-//~ 			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
-//~ 			
-//~ 			this.add_items (menu);
-//~ 			
-//~ 			about_item.activate.connect (() => Granite.app.show_about (get_toplevel ()));
-//~ 		}
-		
         public signal void show_about(Gtk.Widget w);
 
 		public AppMenu (Menu menu) {
@@ -56,7 +42,9 @@ namespace Granite.Widgets {
 		}
 
         /**
-         * @deprecated
+         * Create a new AppMenu, parameters are unused now.
+         *
+         * @deprecated 0.1
          **/
         public AppMenu.with_urls (Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");

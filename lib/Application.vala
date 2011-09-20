@@ -35,7 +35,7 @@ namespace Granite {
     /**
      * Global deprecated object..
      *
-     * @deprecated
+     * @deprecated 0.1
      **/
 	public static Granite.Application app;
 	
