@@ -32,7 +32,7 @@ namespace Granite.Widgets {
 			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
 		}
 
-		public AppMenu.with_app (Granite.Application application, Gtk.Menu menu) {
+		public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
 		
 			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
 			
