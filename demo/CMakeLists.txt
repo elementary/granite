@@ -30,5 +30,3 @@ OPTIONS
 )
 add_executable(demo ${VALA_C})
 target_link_libraries(demo granite ${DEPS_LIBRARIES})
-
-install(TARGETS demo DESTINATION bin)
