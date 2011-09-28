@@ -1,6 +1,6 @@
 Source: granite
 Priority: extra
-Maintainer: xapantu <xapantu@gmail.com>
+Maintainer: Lucas Baudin <xapantu@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), 
  build-essential,
  pkg-config,
@@ -18,13 +18,11 @@ Package: libgranite-dev
 Section: libdevel
 Architecture: any
 Depends: libgranite0 (= ${binary:Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: A development library for elementary development.
 
 Package: libgranite0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Development files of Granite.
