@@ -22,8 +22,7 @@ public class Granite.Widgets.PopOver : Granite.Widgets.CompositedWindow
         hbox.set_margin_right(SHADOW);
         hbox.set_margin_bottom(SHADOW);
         hbox.set_margin_left(SHADOW);
-        area.get_style_context().add_class("menu");
-        menu.get_style_context().add_class("menu");
+        area.get_style_context().add_class("popover");
 
         focus_out_event.connect ( () => { hide(); return false; });
         size_allocate.connect(on_size_allocate);
