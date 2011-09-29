@@ -131,6 +131,18 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
         
+        
+        var popover_buttons = new Gtk.VBox(false, 0);
+        var hbox3 = new Gtk.HBox(false, 0);
+        hbox3.halign = Gtk.Align.END;
+        var popover1 = new Gtk.Button.with_label("PopOver 1");
+        popover1.halign = Gtk.Align.END;
+        hbox3.add(popover1);
+        popover1.clicked.connect( () => { var pop = new PopOver(popover1); pop.area.add(new Gtk.Entry()); pop.area.add(new Gtk.Label("Another label")); pop.show_all(); });
+        popover_buttons.pack_start(new Gtk.Label("Let's try the PopOvers!"), false, false);
+        popover_buttons.pack_start(hbox3, false, false);
+        notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
+        
         /* window properties */
         win.show_all();
         win.resize(800, 600);

@@ -64,6 +64,7 @@ vala_precompile(VALA_C
 	Widgets/AppMenu.vala
 	Widgets/Welcome.vala
 	Widgets/ToolButtonWithMenu.vala
+    Widgets/PopOver.vala
 	config.vapi
 PACKAGES
 	${PKG_DEPS}
