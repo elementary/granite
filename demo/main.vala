@@ -139,13 +139,13 @@ public class Granite.Demo : Granite.Application
         popover1.halign = Gtk.Align.END;
         hbox3.add(popover1);
         var pop = new PopOver(null);
-        pop.area.add(new HintedEntry("This is an HIntedEntry"));
-        pop.area.add(new Gtk.Label("Another label")); 
+        pop.hbox.add(new HintedEntry("This is an HIntedEntry"));
+        pop.hbox.add(new Gtk.Label("Another label")); 
         var mode_pop = new ModeButton();
         mode_pop.append(new Gtk.Label("ele"));
         mode_pop.append(new Gtk.Label("ment"));
         mode_pop.append(new Gtk.Label("tary"));
-        pop.area.add(mode_pop); 
+        pop.hbox.add(mode_pop); 
         popover1.clicked.connect( () => { pop.move_to(popover1); pop.show_all(); });
         popover_buttons.pack_start(new Gtk.Label("Let's try the PopOvers!"), false, false);
         popover_buttons.pack_start(hbox3, false, false);
