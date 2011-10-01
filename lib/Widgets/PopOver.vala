@@ -221,7 +221,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         cr_surf.set_source_rgba(0.4,0.4,0.4, 0.5);
         cr_surf.paint();
         blur_surf.flush();
-        fast_blur(ref blur_surf, 5);
+        fast_blur(ref blur_surf, 4);
+        fast_blur(ref blur_surf, 4);
         RADIUS = 5;
     }
 
@@ -230,7 +231,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         int w = get_allocated_width();
         int h = get_allocated_height();
         cr.set_source_surface(blur_surf, 0, 0);
-        cr.paint();
+        cr.paint_with_alpha(0.8);
 
         make_shape(cr);
         cr.clip();
