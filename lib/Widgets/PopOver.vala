@@ -19,8 +19,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 			app_paintable = true;
 			decorated = false;
 			resizable = false;
-        set_position(Gtk.WindowPosition.NONE);
-        set_type_hint(Gdk.WindowTypeHint.DIALOG);
+            set_position(Gtk.WindowPosition.NONE);
+            set_type_hint(Gdk.WindowTypeHint.NORMAL);
 		}
 		
 
@@ -33,7 +33,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     public Gtk.Box hbox;
     public PopOver(Gtk.Widget? w)
     {
-        modal = true;
         hbox = get_content_area() as Gtk.Box;
         hbox.set_margin_top(MARGIN + ARROW_HEIGHT + SHADOW);
         hbox.set_margin_left(MARGIN + SHADOW);
@@ -45,12 +44,27 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
         size_allocate.connect(on_size_allocate);
         if(w != null) move_to(w);
+
+        focus_out_event.connect_after((f) =>
+        {
+            foreach(Gtk.Window window in Gtk.Window.list_toplevels())
+            {
+                if(((int)window.type_hint) != 0 && window.visible)
+                {
+                    return false;
+                }
+            }
+            hide();
+
+            return false;
+        });
     }
 
     public void set_parent_pop(Gtk.Window win)
     {
-        set_transient_for(win);
-        win.configure_event.connect( () => { hide(); return true; });
+        //set_transient_for(win);
+        //win.focus_in_event.connect( () => { hide(); return false; });
+        //win.configure_event.connect( () => { hide(); return true; });
     }
 
     public void move_to(Gtk.Widget w)
