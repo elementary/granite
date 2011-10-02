@@ -29,20 +29,24 @@ namespace Granite.Drawing {
 	public class Utilities : GLib.Object {
 	
 		/**
-		 * Draws a rounded rectangle with the supplied {@link Cairo.Context}.
+		 * Adds a closed sub-path rounded rectangle of the given size and border radius to the current path
+		 * at position (x, y) in user-space coordinates.
 		 *
-		 * @param context the {@link Cairo.Context} to use to perform the operation
-		 * @param radius the radius of the desired rounded rectangle
-		 * @param padding the space surrounding the rounded rectangle on all sides, in pixels
-		 * @param size the dimensions of the rounded rectangle
+		 * @param cr a {@link Cairo.Context}
+		 * @param x the X coordinate of the top left corner of the rounded rectangle
+		 * @param y the Y coordinate to the top left corner of the rounded rectangle
+		 * @param width the width of the rounded rectangle
+		 * @param height the height of the rounded rectangle
+		 * @param radius the border radius of the rounded rectangle
 		 */
-		public static void draw_rounded_rectangle (ref Cairo.Context context, double radius, double padding, Gdk.Rectangle size) {
+		public static void cairo_rounded_rectangle (Cairo.Context cr, double x, double y, double width, double height, double radius) {
 		
-			context.move_to (size.x + radius + padding, size.y + padding);
-			context.arc (size.x + size.width - radius - padding, size.y + radius + padding, radius, Math.PI * 1.5, Math.PI * 2);
-			context.arc (size.x + size.width - radius - padding, size.y + size.height - radius - padding, radius, 0, Math.PI * 0.5);
-			context.arc (size.x + radius + padding, size.y + size.height - radius - padding, radius, Math.PI * 0.5, Math.PI);
-			context.arc (size.x + radius + padding, size.y + radius + padding, radius, Math.PI, Math.PI * 1.5);
+			cr.move_to (x + radius, y);
+			cr.arc (x + width - radius, y + radius, radius, Math.PI * 1.5, Math.PI * 2);
+			cr.arc (x + width - radius, y + height - radius, radius, 0, Math.PI * 0.5);
+			cr.arc (x + radius, y + height - radius, radius, Math.PI * 0.5, Math.PI);
+			cr.arc (x + radius, y + radius, radius, Math.PI, Math.PI * 1.5);
+			cr.close_path ();
 		}
 		
 		/**
