@@ -1,37 +1,36 @@
-using Gtk;
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
-		private CssProvider style_provider;
-		
-		construct {
-			
-			// Set up css provider
-			style_provider = new CssProvider ();
-			try {
-				style_provider.load_from_path (Build.RESOURCES_DIR + "/style/CompositedWindow.css");
-			} catch (Error e) {
-				warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
-			}
-			
-			// Window properties
-			set_visual (get_screen ().get_rgba_visual());
-			get_style_context ().add_provider (style_provider, 600);
-			app_paintable = true;
-			decorated = false;
-			resizable = false;
-            set_position(Gtk.WindowPosition.NONE);
-            set_type_hint(Gdk.WindowTypeHint.NORMAL);
-		}
-		
-
     const int ARROW_HEIGHT = 12;
     const int ARROW_WIDTH = 30;
     const int SHADOW = 20;
+    int RADIUS = 5;
     double offset = 10.0;
     const int MARGIN = 12;
     Gtk.Widget menu;
-    public Gtk.Box hbox;
-    public PopOver(Gtk.Widget? w)
+    Gtk.CssProvider style_provider;
+    Gtk.Box hbox;
+    
+    construct {
+        
+        // Set up css provider
+        style_provider = new Gtk.CssProvider ();
+        try {
+            style_provider.load_from_path (Build.RESOURCES_DIR + "/style/CompositedWindow.css");
+        } catch (Error e) {
+            warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+        }
+        
+        // Window properties
+        set_visual (get_screen ().get_rgba_visual());
+        get_style_context ().add_provider (style_provider, 600);
+        app_paintable = true;
+        decorated = false;
+        resizable = false;
+        set_position(Gtk.WindowPosition.NONE);
+        set_type_hint(Gdk.WindowTypeHint.NORMAL);
+    }
+
+    public PopOver()
     {
         hbox = get_content_area() as Gtk.Box;
         hbox.set_margin_top(MARGIN + ARROW_HEIGHT + SHADOW);
@@ -43,7 +42,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         menu.get_style_context().add_class("popover");
 
         size_allocate.connect(on_size_allocate);
-        if(w != null) move_to(w);
 
         focus_out_event.connect_after((f) =>
         {
@@ -54,20 +52,18 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
                     return false;
                 }
             }
-            hide();
+            hide ();
 
             return false;
         });
     }
 
-    public void set_parent_pop(Gtk.Window win)
+    public void set_parent_pop (Gtk.Window win)
     {
-        //set_transient_for(win);
-        //win.focus_in_event.connect( () => { hide(); return false; });
-        //win.configure_event.connect( () => { hide(); return true; });
+        win.configure_event.connect( () => { hide(); return true; });
     }
 
-    public void move_to(Gtk.Widget w)
+    public void move_to_widget (Gtk.Widget w)
     {
         int x, y, width, height;
         w.get_window().get_root_origin(out x, out y);
@@ -78,7 +74,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         y += alloc.y;
         height = alloc.height;
         y += height + SHADOW/2;
-        x += - (int)offset - SHADOW;
+        x += width/2 - (int)offset - SHADOW - ARROW_WIDTH/2;
         move(x, y);
         set_parent_pop(w.get_toplevel() as Gtk.Window);
     }
@@ -96,7 +92,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         move(x, y);
     }
 
-    public void fast_blur (ref Cairo.ImageSurface img, int radius)
+    void fast_blur (ref Cairo.ImageSurface img, int radius)
     {
         if (radius < 1){
             return;
@@ -177,7 +173,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     Cairo.ImageSurface blur_surf;
 
-    int RADIUS = 5;
     void make_shape(Cairo.Context cr_surf)
     {
         int w = get_allocated_width();
