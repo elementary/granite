@@ -131,6 +131,18 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
         
+
+        /* Contractor */
+        var contractor_tab = new Gtk.VBox (false, 0);
+        notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
+        var text_view = new Gtk.TextView ();
+        GLib.HashTable<string, string>[] hash_ = Contractor.get_contract("/.zip", "application/zip");
+        foreach(var hash in hash_)
+        {
+            text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";    
+        }
+        contractor_tab.add(text_view);
+
         /* window properties */
         win.show_all();
         win.resize(800, 600);
