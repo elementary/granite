@@ -1,3 +1,39 @@
+/*
+ * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+ *
+ * This is a free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * This is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this program; see the file COPYING.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ */
+
+
+/**
+ * PopOver widget. It is a Dialog you can attach to a widget, e.g. a button.
+ *
+ * It is a dialog you can attach to a widget, to make it look
+ * more consistent, and easier to understand. e.g. if you need to make a popup
+ * after clicking on a button as "Create a new document" to choose the type
+ * of the document, a popover is more adapted because you can see which button
+ * is related to the button, etc... It is also less agressive than a usual
+ * dialog because it doesn't hide a big part of the screen. And it is closed
+ * when it lose focus.
+ *
+ * {{images/popover.png}}
+ *
+ **/
+
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
     const int ARROW_HEIGHT = 12;
@@ -30,6 +66,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         set_type_hint(Gdk.WindowTypeHint.NORMAL);
     }
 
+    /**
+     * Create a new PopOver
+     **/
     public PopOver()
     {
         hbox = get_content_area() as Gtk.Box;
@@ -58,11 +97,24 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         });
     }
 
+    /**
+     * Set the parent window of the popover. It should not be needed, but it
+     * could solve some bugs on some window manager.
+     **/
     public void set_parent_pop (Gtk.Window win)
     {
+        set_transient_for(win);
         win.configure_event.connect( () => { hide(); return true; });
     }
 
+    /**
+     * Change the position of the popover, to display it under w.
+     *
+     * The arrow of the PopOver is moved at the bottom of the widget, and it is
+     * horizontally centered.
+     *
+     * @param w a normal Gtk.Widget, e.g. a button
+     **/
     public void move_to_widget (Gtk.Widget w)
     {
         int x, y, width, height;
@@ -79,14 +131,18 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         set_parent_pop(w.get_toplevel() as Gtk.Window);
     }
 
-    public void move_to_window(Gdk.Window win)
+    /**
+     * Move the popover to the Gdk.Window window. The recommand method is
+     * move_to_widget, but this one can be used when we don't know which widget
+     * triggered the action (e.g. with a Gtk.Action).
+     **/
+    public void move_to_window(Gdk.Window window)
     {
         int x,y,w,h;
-        win.get_root_origin(out x, out y);
-        win.get_origin(out x, out y);
-        x += win.get_width()/2 - MARGIN - SHADOW - (int)offset;
-        y += win.get_height() - SHADOW;
-        print("%d %d\n", x, y);
+        window.get_root_origin(out x, out y);
+        window.get_origin(out x, out y);
+        x += window.get_width()/2 - MARGIN - SHADOW - (int)offset;
+        y += window.get_height() - SHADOW;
         show_all();
         show_now();
         move(x, y);
