@@ -158,6 +158,12 @@ public class Granite.Demo : Granite.Application
         popover_buttons.pack_start(hbox3, false, false);
         notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
         
+        var calendar_button = new Gtk.HBox(false, 0);
+        var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
+        date_button.valign = date_button.halign = Gtk.Align.CENTER;
+        calendar_button.add(date_button);
+        notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
+        
         /* window properties */
         win.show_all();
         win.resize(800, 600);

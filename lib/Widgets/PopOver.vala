@@ -36,11 +36,11 @@
 
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
-    const int ARROW_HEIGHT = 12;
+    const int ARROW_HEIGHT = 17;
     const int ARROW_WIDTH = 30;
-    const int SHADOW = 20;
-    int RADIUS = 5;
-    double offset = 10.0;
+    const int SHADOW = 10;
+    int RADIUS = 10;
+    double offset = 15.0;
     const int MARGIN = 12;
     Gtk.Widget menu;
     Gtk.CssProvider style_provider;
@@ -64,6 +64,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         resizable = false;
         set_position(Gtk.WindowPosition.NONE);
         set_type_hint(Gdk.WindowTypeHint.NORMAL);
+        skip_pager_hint = true;
+        skip_pager_hint = true;
     }
 
     /**
@@ -117,18 +119,22 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public void move_to_widget (Gtk.Widget w)
     {
-        int x, y, width, height;
-        w.get_window().get_root_origin(out x, out y);
+        int x,y;
+        w.get_window ().get_origin(out x, out y);
         Gtk.Allocation alloc;
-        w.get_allocation(out alloc);
-        width = alloc.width;
-        x += alloc.x;
-        y += alloc.y;
-        height = alloc.height;
-        y += height + SHADOW/2;
-        x += width/2 - (int)offset - SHADOW - ARROW_WIDTH/2;
+        w.get_allocation (out alloc);
+        x += alloc.x + alloc.width/2 - SHADOW - (int)offset - ARROW_WIDTH/2;
+        y += alloc.y + alloc.height - SHADOW;
+        show_all();
         move(x, y);
         set_parent_pop(w.get_toplevel() as Gtk.Window);
+    }
+
+    public void move_to_coords (int x, int y)
+    {
+        x -= (int) offset + SHADOW + ARROW_WIDTH/2;
+        y -= SHADOW;
+        move(x, y);
     }
 
     /**
@@ -260,7 +266,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     void on_size_allocate(Gtk.Allocation alloc)
     {
-        RADIUS = 3;
+        RADIUS -= 2;
         int w = get_allocated_width();
         int h = get_allocated_height();
         blur_surf = new Cairo.ImageSurface(Cairo.Format.ARGB32, w, h);
@@ -274,7 +280,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         blur_surf.flush();
         fast_blur(ref blur_surf, 4);
         fast_blur(ref blur_surf, 4);
-        RADIUS = 5;
+        RADIUS += 2;
     }
 
     public override bool draw(Cairo.Context cr)
