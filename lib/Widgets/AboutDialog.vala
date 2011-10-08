@@ -72,6 +72,7 @@ public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 	{
 		// Creating the buttons
 		help_button = new Button.with_label(" ? ");
+        help_button.get_style_context ().add_class ("help_button");
 		help_button.pressed.connect(() => { activate_link(help); });
 		
 		translate_button = new Button.with_label("Translate this app");
