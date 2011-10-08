@@ -36,16 +36,51 @@
 
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
-    const int ARROW_HEIGHT = 17;
-    const int ARROW_WIDTH = 30;
-    const int SHADOW = 10;
-    int RADIUS = 10;
+    protected int BORDER_RADIUS;
+    protected int BORDER_WIDTH;
+    protected int SHADOW_SIZE;
+    protected int ARROW_HEIGHT;
+    protected int ARROW_WIDTH;
+    protected Gtk.Border PADDINGS;
     double offset = 15.0;
     const int MARGIN = 12;
     Gtk.Widget menu;
     Gtk.CssProvider style_provider;
     Gtk.Box hbox;
-    
+        protected bool arrow_up = true;
+            protected double arrow_offset = 35.0;
+    static construct {
+        
+        install_style_property (new GLib.ParamSpecInt ("border-radius",
+                                                       "Border radius",
+                                                       "Border radius of the popover",
+                                                       0, 50, 8,
+                                                       ParamFlags.READABLE));
+                                                       
+        install_style_property (new GLib.ParamSpecInt ("border-width",
+                                                       "Border width",
+                                                       "Width of the popover's outer border",
+                                                       0, 8, 1,
+                                                       ParamFlags.READABLE));
+        
+        install_style_property (new GLib.ParamSpecInt ("shadow-size",
+                                                       "Shadow size",
+                                                       "Size of the popover's shadow",
+                                                       4, 50, 20,
+                                                       ParamFlags.READABLE));
+        
+        install_style_property (new GLib.ParamSpecInt ("arrow-height",
+                                                       "Arrow height",
+                                                       "Height of the popover's arrow",
+                                                       0, 50, 14,
+                                                       ParamFlags.READABLE));
+        
+        install_style_property (new GLib.ParamSpecInt ("arrow-width",
+                                                       "Arrow width",
+                                                       "Width of the popover's arrow",
+                                                       0, 50, 30,
+                                                       ParamFlags.READABLE));
+    }    
     construct {
         
         // Set up css provider
@@ -74,12 +109,17 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     public PopOver()
     {
         hbox = get_content_area() as Gtk.Box;
-        hbox.set_margin_top(MARGIN + ARROW_HEIGHT + SHADOW);
-        hbox.set_margin_left(MARGIN + SHADOW);
-        hbox.set_margin_right(MARGIN + SHADOW);
-        hbox.set_margin_bottom(SHADOW);
         menu = new Gtk.Window();
-        get_style_context().add_class("popover");
+        get_style_context ().add_class ("popover");
+        style_get ("border-radius", out BORDER_RADIUS, "border-width", out BORDER_WIDTH,
+                   "shadow-size", out SHADOW_SIZE, "arrow-height", out ARROW_HEIGHT,
+                   "arrow_width", out ARROW_WIDTH, null);
+        PADDINGS = get_style_context ().get_margin (Gtk.StateFlags.NORMAL);
+        hbox.set_margin_top(MARGIN + ARROW_HEIGHT + SHADOW_SIZE);
+        hbox.set_margin_left(MARGIN + SHADOW_SIZE);
+        hbox.set_margin_right(MARGIN + SHADOW_SIZE);
+        hbox.set_margin_bottom(SHADOW_SIZE);
+        
         menu.get_style_context().add_class("popover");
 
         size_allocate.connect(on_size_allocate);
@@ -97,6 +137,13 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
             return false;
         });
+    }
+
+    protected Granite.Drawing.BufferSurface main_buffer;
+    
+    protected void reset_buffers () {
+        
+        main_buffer = null;
     }
 
     /**
@@ -123,8 +170,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         w.get_window ().get_origin(out x, out y);
         Gtk.Allocation alloc;
         w.get_allocation (out alloc);
-        x += alloc.x + alloc.width/2 - SHADOW - (int)offset - ARROW_WIDTH/2;
-        y += alloc.y + alloc.height - SHADOW;
+        x += alloc.x + alloc.width/2 - SHADOW_SIZE - (int)offset - ARROW_WIDTH/2;
+        y += alloc.y + alloc.height - SHADOW_SIZE;
         show_all();
         move(x, y);
         set_parent_pop(w.get_toplevel() as Gtk.Window);
@@ -132,8 +179,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     public void move_to_coords (int x, int y)
     {
-        x -= (int) offset + SHADOW + ARROW_WIDTH/2;
-        y -= SHADOW;
+        x -= (int) offset + SHADOW_SIZE + ARROW_WIDTH/2;
+        y -= SHADOW_SIZE;
         move(x, y);
     }
 
@@ -147,128 +194,37 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         int x,y,w,h;
         window.get_root_origin(out x, out y);
         window.get_origin(out x, out y);
-        x += window.get_width()/2 - MARGIN - SHADOW - (int)offset;
-        y += window.get_height() - SHADOW;
+        x += window.get_width()/2 - MARGIN - SHADOW_SIZE - (int)offset;
+        y += window.get_height() - SHADOW_SIZE;
         show_all();
         show_now();
         move(x, y);
     }
 
-    void fast_blur (ref Cairo.ImageSurface img, int radius)
-    {
-        if (radius < 1){
-            return;
-        }
+    protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height) {
+    
+        // Start with rounded rectangle as base
+        Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, x, (arrow_up) ? y + ARROW_HEIGHT : y,
+                                                           width, height - ARROW_HEIGHT, BORDER_RADIUS);
         
-        int w = img.get_width();
-        int h = img.get_height();
-        int wm = w-1;
-        int hm = h-1;
-        int wh = w*h;
-        int ch = 4;
-        int div = radius+radius+1;
-        int[] r = new int[wh];
-        int rsum,x,y,i,p,p1,p2,yp,yi,yw;
-        int max = int.max(w, h);
-        int[] vmin = new int[max];
-        int[] vmax = new int[int.max(w,h)];
-        unowned uchar[] pix=img.get_data ();
-        int[] dv=new int[256*div];
-
-        for (i=0;i<256*div;i++) {
-            dv[i]=(i/div); 
+        // Draw arrow
+        if (arrow_up) {
+            cr.move_to (arrow_offset, y + ARROW_HEIGHT);
+            cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
+            cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
+        } else {
+            cr.move_to (arrow_offset, y + height - ARROW_HEIGHT);
+            cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
+            cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
         }
-
-        yw=yi=0;
-
-        for (y=0;y<h;y++) {
-            rsum=0;
-            for(i=-radius;i<=radius;i++){
-              p = (yi+int.min(wm, int.max(i,0))) * ch;
-              rsum+=pix[p + 3];
-            }
-            for (x=0;x<w;x++) {
-
-                r[yi]=rsum/div;
-
-                if(y==0){
-                    vmin[x]=int.min(x+radius+1,wm);
-                    vmax[x]=int.max(x-radius,0);
-                } 
-                p1=(yw+vmin[x]) * ch;
-                p2=(yw+vmax[x]) * ch;
-
-                rsum+=pix[p1 + 3]-pix[p2 + 3];
-                yi++;
-            }
-            yw+=w;
-        }
-
-        for (x=0;x<w;x++) {
-            rsum=0;
-            yp=-radius*w;
-            for(i=-radius; i<=radius; i++) {
-                yi=int.max(0,yp)+x;
-                rsum+=r[yi];
-                yp+=w;
-            }
-            yi=x;
-            for (y=0;y<h;y++) {
-                p = yi * ch;
-                pix[p + 3] = (uchar)(rsum/div);
-                pix[p] = 0; // (uchar)(rsum/div);
-                pix[p + 1] = 0; // (uchar)(rsum/div);
-                pix[p + 2] = 0; // (uchar)(rsum/div);
-                if(x==0){
-                  vmin[y]=int.min(y+radius+1,hm)*w;
-                  vmax[y]=int.max(y-radius,0)*w;
-                }
-                p1=x+vmin[y];
-                p2=x+vmax[y];
-
-                rsum+=r[p1]-r[p2];
-
-                yi+=w;
-            }
-        }
-    }
-
-    Cairo.ImageSurface blur_surf;
-
-    void make_shape(Cairo.Context cr_surf)
-    {
-        int w = get_allocated_width();
-        int h = get_allocated_height();
-        cr_surf.move_to(SHADOW + RADIUS, SHADOW + ARROW_HEIGHT);
-        cr_surf.line_to(SHADOW + offset, SHADOW + ARROW_HEIGHT);
-        cr_surf.line_to(SHADOW + offset + ARROW_WIDTH/2, SHADOW);
-        cr_surf.line_to(SHADOW + offset + ARROW_WIDTH, SHADOW + ARROW_HEIGHT);
-        cr_surf.line_to(w - SHADOW - RADIUS, SHADOW + ARROW_HEIGHT);
-
-        cr_surf.curve_to(w - SHADOW, SHADOW + ARROW_HEIGHT,
-                         w - SHADOW, SHADOW + ARROW_HEIGHT + RADIUS,
-                         w - SHADOW, SHADOW + ARROW_HEIGHT + RADIUS);
-
-        cr_surf.line_to(w - SHADOW, h - SHADOW - RADIUS);
-        cr_surf.curve_to(w - SHADOW, h - SHADOW,
-                         w - SHADOW - RADIUS, h - SHADOW,
-                         w - SHADOW - RADIUS, h - SHADOW);
-        cr_surf.line_to(SHADOW + RADIUS, h - SHADOW);
-        cr_surf.curve_to(SHADOW, h - SHADOW,
-                         SHADOW, h - SHADOW - RADIUS,
-                         SHADOW, h - SHADOW - RADIUS);
-        cr_surf.line_to(SHADOW, SHADOW + ARROW_HEIGHT + RADIUS);
-        cr_surf.curve_to(SHADOW, SHADOW + ARROW_HEIGHT,
-                         SHADOW + RADIUS, SHADOW + ARROW_HEIGHT,
-                         SHADOW + RADIUS, SHADOW + ARROW_HEIGHT);
-        cr_surf.close_path();
+        cr.close_path ();  
     }
 
     void on_size_allocate(Gtk.Allocation alloc)
     {
-        RADIUS -= 2;
         int w = get_allocated_width();
         int h = get_allocated_height();
+        /*RADIUS -= 2;
         blur_surf = new Cairo.ImageSurface(Cairo.Format.ARGB32, w, h);
         Cairo.Context cr_surf = new Cairo.Context(blur_surf);
         cr_surf.set_source_rgba(0.4,0.4,0.4,0.0);
@@ -280,19 +236,40 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         blur_surf.flush();
         fast_blur(ref blur_surf, 4);
         fast_blur(ref blur_surf, 4);
-        RADIUS += 2;
+        RADIUS += 2;*/
+        reset_buffers ();
+        main_buffer = new Granite.Drawing.BufferSurface (w, h);
+        
+        // Shadow first
+        cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
+                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH);
+        main_buffer.context.set_source_rgba (0.0, 0.0, 0.0, 0.4);
+        main_buffer.context.fill_preserve ();
+        main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation 
+        
+        // Outer border
+        main_buffer.context.set_operator (Cairo.Operator.SOURCE);
+        main_buffer.context.set_line_width (BORDER_WIDTH);
+        Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
+        main_buffer.context.stroke_preserve ();
+        
+        // Background        
+        main_buffer.context.clip ();
+        Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
+
+        if (arrow_up) {
+            margin_top = PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT;
+            margin_bottom = PADDINGS.bottom + SHADOW_SIZE;
+        } else {
+            margin_top = PADDINGS.top + SHADOW_SIZE;
+            margin_bottom = PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT;
+        }
     }
 
     public override bool draw(Cairo.Context cr)
     {
-        int w = get_allocated_width();
-        int h = get_allocated_height();
-        cr.set_source_surface(blur_surf, 0, 0);
-        cr.paint_with_alpha(0.8);
-
-        make_shape(cr);
-        cr.clip();
-        Gtk.render_background(menu.get_style_context(), cr, SHADOW, SHADOW, get_allocated_width() - 2*SHADOW, get_allocated_height() - 2*SHADOW);
+        cr.set_source_surface(main_buffer.surface, 0, 0);
+        cr.paint_with_alpha(1.0);
         return base.draw(cr);
     }
 }
