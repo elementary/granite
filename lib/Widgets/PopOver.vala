@@ -47,8 +47,18 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     Gtk.Widget menu;
     Gtk.CssProvider style_provider;
     Gtk.Box hbox;
-        protected bool arrow_up = true;
-            protected double arrow_offset = 35.0;
+
+    public enum PopPosition
+    {
+        TOPLEFT,
+        TOPRIGHT,
+        BOTTOMLEFT,
+        BOTTOMRIGHT
+    }
+
+    PopPosition pos = PopPosition.TOPRIGHT;
+    protected bool arrow_up = false;
+    protected double arrow_offset = 35.0;
     static construct {
         
         install_style_property (new GLib.ParamSpecInt ("border-radius",
@@ -156,6 +166,69 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         win.configure_event.connect( () => { hide(); return true; });
     }
 
+    void compute_pop_position(Gdk.Screen screen, Gdk.Rectangle rect)
+    {
+        Gdk.Rectangle monitor_geo;
+        screen.get_monitor_geometry (screen.get_monitor_at_point (rect.x, rect.y), out monitor_geo);
+
+        if(rect.x > monitor_geo.x + monitor_geo.width/2)
+        {
+            /* left */
+            if(rect.y < monitor_geo.y + monitor_geo.height/2)
+            {
+                pos = PopPosition.TOPRIGHT;
+            }
+            else
+            {
+                pos = PopPosition.BOTTOMRIGHT;
+            }
+        }
+        else
+        {
+            if(rect.y < monitor_geo.y + monitor_geo.height/2)
+            {
+                pos = PopPosition.TOPLEFT;
+            }
+            else
+            {
+                pos = PopPosition.BOTTOMLEFT;
+            }
+        }
+
+
+        switch(pos)
+        {
+            case PopPosition.BOTTOMRIGHT:
+                arrow_up = false;
+                win_x = rect.x - get_allocated_width() + 2*SHADOW_SIZE + ARROW_WIDTH/2 + rect.width / 2;
+                win_y = rect.y  - get_allocated_height() + SHADOW_SIZE;
+                arrow_offset = get_allocated_width() - 2*SHADOW_SIZE - 30.0;
+                break;
+            case PopPosition.TOPRIGHT:
+                arrow_up = true;
+                win_x = rect.x - get_allocated_width() + 2*SHADOW_SIZE + ARROW_WIDTH/2 + rect.width / 2;
+                win_y = rect.y - SHADOW_SIZE + rect.height;
+                arrow_offset = get_allocated_width() -  2*SHADOW_SIZE - 30.0;
+                break;
+            case PopPosition.TOPLEFT:
+                arrow_up = true;
+                win_x = rect.x - 30 - SHADOW_SIZE - ARROW_WIDTH/2 + rect.width / 2;
+                win_y = rect.y - SHADOW_SIZE + rect.height;
+                arrow_offset = SHADOW_SIZE + 30.0;
+                break;
+            case PopPosition.BOTTOMLEFT:
+                arrow_up = false;
+                win_x = rect.x - 30 - SHADOW_SIZE - ARROW_WIDTH/2 + rect.width / 2;
+                win_y = rect.y  - get_allocated_height() + SHADOW_SIZE;
+                arrow_offset = SHADOW_SIZE + 30.0;
+                break;
+            default:
+                break;
+        }
+    }
+    int win_x;
+    int win_y;
+
     /**
      * Change the position of the popover, to display it under w.
      *
@@ -166,22 +239,37 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public void move_to_widget (Gtk.Widget w)
     {
-        int x,y;
+        int x, y;
+        Gdk.Rectangle rectangle = Gdk.Rectangle();
         w.get_window ().get_origin(out x, out y);
         Gtk.Allocation alloc;
         w.get_allocation (out alloc);
-        x += alloc.x + alloc.width/2 - SHADOW_SIZE - (int)offset - ARROW_WIDTH/2;
-        y += alloc.y + alloc.height - SHADOW_SIZE;
+        x += alloc.x;
+        y += alloc.y;
+        rectangle.x = x;
+        rectangle.y = y;
+        rectangle.width = alloc.width;
+        rectangle.height = alloc.height;
         show_all();
-        move(x, y);
+        compute_pop_position (w.get_screen (), rectangle);
+        move(win_x, win_y);
         set_parent_pop(w.get_toplevel() as Gtk.Window);
     }
 
     public void move_to_coords (int x, int y)
     {
-        x -= (int) offset + SHADOW_SIZE + ARROW_WIDTH/2;
-        y -= SHADOW_SIZE;
-        move(x, y);
+        //x -= (int) offset + SHADOW_SIZE + ARROW_WIDTH/2;
+        //y -= SHADOW_SIZE;
+
+        show_all();
+        Gdk.Rectangle rect = Gdk.Rectangle ();
+        rect.x = x;
+        rect.y = y;
+        rect.width = 1;
+        rect.height = 1;
+
+        compute_pop_position (get_screen (), rect);
+        move(win_x, win_y);
     }
 
     /**
@@ -224,19 +312,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     {
         int w = get_allocated_width();
         int h = get_allocated_height();
-        /*RADIUS -= 2;
-        blur_surf = new Cairo.ImageSurface(Cairo.Format.ARGB32, w, h);
-        Cairo.Context cr_surf = new Cairo.Context(blur_surf);
-        cr_surf.set_source_rgba(0.4,0.4,0.4,0.0);
-        cr_surf.paint();
-        make_shape(cr_surf);
-        cr_surf.clip();
-        cr_surf.set_source_rgba(0.4,0.4,0.4, 0.5);
-        cr_surf.paint();
-        blur_surf.flush();
-        fast_blur(ref blur_surf, 4);
-        fast_blur(ref blur_surf, 4);
-        RADIUS += 2;*/
         reset_buffers ();
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
         
@@ -268,7 +343,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     public override bool draw(Cairo.Context cr)
     {
-        cr.set_source_surface(main_buffer.surface, 0, 0);
+/*        cr.set_source_rgba(0,0,0, 0.5);
+        cr.paint();
+  */      cr.set_source_surface(main_buffer.surface, 0, 0);
         cr.paint_with_alpha(1.0);
         return base.draw(cr);
     }
