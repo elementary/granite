@@ -239,9 +239,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     Label website_url_label;
     Button close_button;
 
-    public HBox action_hbox;
-    public HBox action_homogeneous_hbox;
-
     string big_text_markup_start;
     string big_text_markup_end;
 
@@ -261,25 +258,21 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         // Set the default containers
         Box content_area = (Box)get_content_area();
         Box action_area = (Box)get_action_area();
-        action_area.realize();
+        action_area.set_border_width (5);
+
         var content_hbox = new HBox(false, 12);
         var content_scrolled = new ScrolledWindow(null, new Adjustment(0, 0, 100, 1, 10, 0));
-        //var content_scrolled = new ScrolledWindow(null, null);
         var content_vbox = new VBox(false, 0);
-        action_hbox = new HBox(false, action_area.spacing);
-        action_homogeneous_hbox = new HBox(true, action_area.spacing);
 
         content_scrolled.shadow_type = ShadowType.NONE;
         content_scrolled.hscrollbar_policy = PolicyType.NEVER;
         content_scrolled.vscrollbar_policy = PolicyType.AUTOMATIC;
         content_area.pack_start(content_hbox);
-        action_area.pack_start(action_hbox);
 
         logo_image = new Image();
 
         // Adjust sizes
         content_hbox.margin = 12;
-        action_hbox.margin = 6;
         content_hbox.height_request = 160;
         content_vbox.width_request = 288;
         logo_image.set_size_request(128, 128);
@@ -289,8 +282,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         name_label.set_line_wrap(true);
         name_label.set_selectable(true);
         name_label.use_markup = true;
-
-        close_button = new Button.from_stock(Stock.CLOSE);
 
         copyright_label = new Label("");
         copyright_label.set_selectable(true);
@@ -345,17 +336,17 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         content_vbox.pack_start(documenters_label);
         content_vbox.pack_start(translators_label);
 
-        action_hbox.pack_start(action_homogeneous_hbox);
-        action_homogeneous_hbox.pack_start(close_button);
+        close_button = new Button.from_stock(Stock.CLOSE);
+        close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
+        action_area.pack_end (close_button, false, false, 0);
 
-        action_area.show_all();
         content_area.show();
         content_hbox.show();
         content_scrolled.show();
         content_vbox.show();
         logo_image.show();
 
-        close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
+        action_area.show_all();
         close_button.grab_focus();
     }
 
