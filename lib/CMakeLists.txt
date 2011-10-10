@@ -53,6 +53,7 @@ vala_precompile(VALA_C
 	Services/Logger.vala
 	Services/Paths.vala
 	Services/System.vala
+    Widgets/WrapLabel.vala
 	Widgets/AboutDialog.vala
 	Widgets/ModeButton.vala
 	Widgets/DatePicker.vala
