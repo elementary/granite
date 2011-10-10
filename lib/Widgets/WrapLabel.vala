@@ -1,30 +1,34 @@
 using Gtk;
 
-/** Label with NORMAL wrapping. Thanks to VMWare team */
-public class Granite.WrapLabel : Label {
+/* Label with NORMAL wrapping. Thanks to VMWare team.
+ * TODO: check license, it comes from pino git repository. */
+
+/**
+ * This is a label which is automatically wrapped.
+ * If a line is too long, there will be a line break for instance.
+ **/
+public class Granite.Widgets.WrapLabel : Label {
 
     public int m_wrap_width = 0;
     public int m_wrap_height = 0;
 
-    public signal void link_activated(string prot, string uri);
-
-    public WrapLabel(string? str = null) {
+    /**
+     * Create a new WrapLabel.
+     *
+     * @param str the content of the label
+     **/
+    public WrapLabel(string? str = null) 
+    {
         wrap = true;
-        get_layout().set_wrap(Pango.WrapMode.WORD_CHAR);
+        wrap_mode = Pango.WrapMode.WORD_CHAR;
         set_alignment(0, 0);
 
         set_text(str);
         set_wrap_width(m_wrap_width);
-
-        activate_link.connect(link_clicked);
     }
 
-    private bool link_clicked(string url) {
-        link_activated(url.split("://")[0], url.split("://")[1]);
-        return true;
-    }
-
-    private void set_wrap_width(int width) {
+    private void set_wrap_width(int width) 
+    {
         if (width == 0) {
             return;
         }
@@ -45,13 +49,9 @@ public class Granite.WrapLabel : Label {
         minimum_width = natural_width = m_wrap_width;
     }
 
-    public override void size_allocate(Gtk.Allocation alloc) {
+    public override void size_allocate(Gtk.Allocation alloc) 
+    {
         base.size_allocate(alloc);
         set_wrap_width(alloc.width);
-    }
-
-    public void set_markup_plus(string txt) {
-        set_markup(txt);
-        set_wrap_width(m_wrap_width);
     }
 }

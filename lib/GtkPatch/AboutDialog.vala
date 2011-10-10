@@ -313,7 +313,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         translators_label.xalign = 0;
         translators_label.set_line_wrap(true);
 
-        license_label = new WrapLabel("");
+        license_label = new Widgets.WrapLabel("");
         license_label.set_selectable(true);
 
         website_url_label = new Label("");
