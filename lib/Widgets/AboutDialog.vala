@@ -25,73 +25,78 @@ using Gtk;
 
 public class Granite.Widgets.AboutDialog : Granite.GtkPatch.AboutDialog
 {
-	/**
-	 * The URL for the link to the website of the program.
-	 */
-	public string help {
-		set {
-			_help = value;
-			help_button.sensitive = !(_help == null || _help == "");
-		}
-		get { return _help; }
-	}
-	string _help = "";
-	
-	/**
-	 * The URL for the link to the website of the program.
-	 */
-	public string translate {
-		set {
-			_translate = value;
-			translate_button.sensitive = !(_translate == null || _translate == "");
-		}
-		get { return _translate; }
-	}
-	string _translate = "";
-	
-	/**
-	 * The URL for the link to the website of the program.
-	 */
-	public string bug {
-		set {
-			_bug = value;
-			bug_button.sensitive = !(_bug == null || _bug == "");
-		}
-		get { return _bug; }
-	}
-	string _bug = "";
-	
-	Button help_button;
-	Button translate_button;
-	Button bug_button;
-	
-	/**
-	 * Creates a new Granite.AboutDialog
-	 */
-	public AboutDialog()
-	{
-		// Creating the buttons
-		help_button = new Button.with_label(" ? ");
+    /**
+     * The URL for the link to the website of the program.
+     */
+    public string help {
+        set {
+            _help = value;
+            help_button.sensitive = !(_help == null || _help == "");
+        }
+        get { return _help; }
+    }
+    string _help = "";
+
+    /**
+     * The URL for the link to the website of the program.
+     */
+    public string translate {
+        set {
+            _translate = value;
+            translate_button.sensitive = !(_translate == null || _translate == "");
+        }
+        get { return _translate; }
+    }
+    string _translate = "";
+
+    /**
+     * The URL for the link to the website of the program.
+     */
+    public string bug {
+        set {
+            _bug = value;
+            bug_button.sensitive = !(_bug == null || _bug == "");
+        }
+        get { return _bug; }
+    }
+    string _bug = "";
+
+    Button help_button;
+    Button translate_button;
+    Button bug_button;
+
+    /**
+     * Creates a new Granite.AboutDialog
+     */
+    public AboutDialog()
+    {
+        Box action_area = (Box)get_action_area();
+
+        /* help button */
+        help_button = new Button.with_label(" ? ");
         help_button.get_style_context ().add_class ("help_button");
-		help_button.pressed.connect(() => { activate_link(help); });
-		
-		translate_button = new Button.with_label("Translate this app");
-		translate_button.pressed.connect(() => { activate_link(translate); });
-		
-		bug_button = new Button.with_label("Report a problem");
-		bug_button.pressed.connect(() => { activate_link(bug); });
-		
-		// Pack
-		action_hbox.pack_start(help_button);
-		action_hbox.reorder_child(help_button, 0);
-		action_homogeneous_hbox.pack_start(translate_button);
-		action_homogeneous_hbox.pack_start(bug_button);
-		action_homogeneous_hbox.reorder_child(bug_button, 0);
-		action_homogeneous_hbox.reorder_child(translate_button, 0);
-		
-		// Show
-		help_button.show();
-		translate_button.show();
-		bug_button.show();
-	}
+        help_button.halign = Gtk.Align.CENTER;
+        /* FIXME test & discuss and fix this ugly hack */
+        help_button.set_size_request (25, -1);
+        help_button.pressed.connect(() => { activate_link(help); });
+        action_area.pack_end (help_button, false, false, 0);
+        ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
+        ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
+
+        /* translate button */
+        translate_button = new Button.with_label("Translate this app");
+        translate_button.pressed.connect(() => { activate_link(translate); });
+        action_area.pack_start (translate_button, false, false, 0);
+
+        /* bug button */
+        bug_button = new Button.with_label("Report a problem");
+        bug_button.pressed.connect(() => { activate_link(bug); });
+        action_area.pack_start (bug_button, false, false, 0);
+
+        action_area.reorder_child(bug_button, 0);
+        action_area.reorder_child(translate_button, 0);
+
+        action_area.show_all();
+
+    }
 }
