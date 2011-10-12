@@ -39,6 +39,7 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 #VALA stuff
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
 find_package(Vala REQUIRED)
 include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
@@ -66,6 +67,8 @@ vala_precompile(VALA_C
 	Widgets/Welcome.vala
 	Widgets/ToolButtonWithMenu.vala
 	config.vapi
+CUSTOM_VAPIS
+    ${CMAKE_CURRENT_SOURCE_DIR}/GtkPatch/gtkpatch-utils.vapi
 PACKAGES
 	${PKG_DEPS}
 	posix
@@ -79,7 +82,10 @@ GENERATE_HEADER
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.vapi DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite.deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
 add_library (${PKGNAME} SHARED
+    GtkPatch/gtkpatch-utils.c
+    Widgets/widgets-utils.c
 	${VALA_C}
 )
 if(BUILD_STATIC MATCHES "Yes")
