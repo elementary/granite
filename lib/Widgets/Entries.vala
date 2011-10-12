@@ -184,7 +184,6 @@ namespace Granite.Widgets {
 
 		private void on_changed () {
 
-			Source.remove(timeout_id);
 			timeout_id = Timeout.add (pause_delay, emit_text_changed);
 
 		}
