@@ -184,7 +184,7 @@ namespace Granite.Widgets {
 
 		private void on_changed () {
 
-			timeout_id = Timeout.add (SEARCH_TIMEOUT, emit_text_changed);
+			timeout_id = Timeout.add (pause_delay, emit_text_changed);
 
 		}
 
