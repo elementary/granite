@@ -41,7 +41,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 artists_label.set_text("");
             }
             else {
-                artists_label.set_text(set_string_from_string_array("Designed by" + ":\n", _artists));
+                artists_label.set_markup(set_string_from_string_array("<span size=\"small\">Designed by" + ":</span>\n", _artists));
                 artists_label.show();
             }
         }
@@ -60,7 +60,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 authors_label.set_text("");
             }
             else {
-                authors_label.set_text(set_string_from_string_array("Written by" + ":\n", _authors));
+                authors_label.set_markup(set_string_from_string_array("<span size=\"small\">Written by" + ":</span>\n", _authors));
                 authors_label.show();
             }
         }
@@ -98,7 +98,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 copyright_label.set_text("");
             }
             else {
-                copyright_label.set_text("Copyright © " + _copyright + "\n");
+                copyright_label.set_markup("<span size=\"small\">Copyright © " + _copyright + "</span>\n");
                 copyright_label.show();
             }
         }
@@ -116,7 +116,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 documenters_label.hide();
             else {
                 documenters_label.show();
-                documenters_label.set_text(set_string_from_string_array("Documented by:\n", documenters));
+                documenters_label.set_markup(set_string_from_string_array("<span size=\"small\">Documented by:</span>\n", documenters));
             }
         }
         get { return _documenters; }
@@ -176,7 +176,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 translators_label.set_text("");
             }
             else {
-                translators_label.set_text("Translated by: " + _translator_credits + "\n");
+                translators_label.set_markup("<span size=\"small\">Translated by " + _translator_credits + "</span>\n");
                 translators_label.show();
             }
         }
@@ -281,7 +281,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         name_label.xalign = 0;
         name_label.set_line_wrap(true);
         name_label.set_selectable(true);
-        name_label.use_markup = true;
 
         copyright_label = new Label("");
         copyright_label.set_selectable(true);
@@ -350,11 +349,11 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         close_button.grab_focus();
     }
 
-    private string set_string_from_string_array(string title, string[] list)
+    private string set_string_from_string_array(string title, string[] peoples)
     {
         string text = title;
-        foreach (string i in list)
-            text += i + "\n";
+        text += add_credits_section (title, peoples);
+
         return text;
     }
 
@@ -380,25 +379,25 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     {
         switch (license_type) {
         case License.GPL_2_0:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "gpl-2.0");
             break;
         case License.GPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/gpl.html");
+            set_generic_license("http://www.gnu.org/licenses/gpl.html", "gpl");
             break;
         case License.LGPL_2_1:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "lgpl-2.1");
             break;
         case License.LGPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/lgpl.html");
+            set_generic_license("http://www.gnu.org/licenses/lgpl.html", "lgpl");
             break;
         case License.BSD:
-            set_generic_license("http://opensource.org/licenses/bsd-license.php");
+            set_generic_license("http://opensource.org/licenses/bsd-license.php", "bsd");
             break;
         case License.MIT_X11:
-            set_generic_license("http://opensource.org/licenses/mit-license.php");
+            set_generic_license("http://opensource.org/licenses/mit-license.php", "mit");
             break;
         case License.ARTISTIC:
-            set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php");
+            set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php", "artistic");
             break;
         default:
             if (license != null && license != "") {
@@ -411,9 +410,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         }
     }
 
-    private void set_generic_license(string url)
+    private void set_generic_license(string url, string license_type)
     {
-        license_label.set_markup("This program comes with ABSOLUTELY NO WARRANTY; for details, visit <a href=\"" + url + "\">" + url + "</a>\n");
+        license_label.set_markup("<span size=\"small\">This program is published under the terms of the " + license_type + " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit <a href=\"" + url + "\">" + url + "</a></span>\n");
         license_label.show();
     }
 
@@ -445,3 +444,4 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
             website_url_label.hide();
     }
 }
+
