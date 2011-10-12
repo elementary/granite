@@ -247,6 +247,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
      */
     public AboutDialog()
     {
+        title = "";
         has_resize_grip = false;
         resizable = false;
         set_default_response(ResponseType.CANCEL);
