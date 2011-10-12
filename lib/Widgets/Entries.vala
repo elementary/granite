@@ -101,6 +101,22 @@ namespace Granite.Widgets {
 	public class SearchBar : HintedEntry {
 
 		private bool is_searching = true;
+		private uint timeout_id = 0;
+
+		/**
+		 * This value handles how much time (in ms) should pass
+		 * after the user stops typing. By default it is set 
+		 * to 300 ms.
+		 **/
+		public int pause_delay { get; set; default = 300; }
+
+		/**
+		 * text_changed () signal is emitted after a short delay,
+		 * which depends on pause_delay.
+		 * If you need a synchronous signal without any delay,
+		 * use changed () method.
+		 **/
+		public signal void text_changed (string text);
 
 		public SearchBar (string hint_string) {
 		
@@ -110,6 +126,7 @@ namespace Granite.Widgets {
 			
 			// Signals and callbacks
 			changed.connect (manage_icon);
+			changed.connect_after (on_changed);            
 			focus_in_event.connect (on_focus_in);
 			focus_out_event.connect (on_focus_out);
 			icon_press.connect (on_icon_press);
@@ -164,7 +181,22 @@ namespace Granite.Widgets {
 				}
 			}
 		}
-		
+
+		private void on_changed () {
+
+			timeout_id = Timeout.add (SEARCH_TIMEOUT, emit_text_changed);
+
+		}
+
+		private bool emit_text_changed () {
+
+			var terms = get_text ();
+			text_changed (terms); // Emit signal
+
+			return Source.remove (timeout_id);
+
+		}
+
 	}
 
 }
