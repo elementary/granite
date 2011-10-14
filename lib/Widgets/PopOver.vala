@@ -47,6 +47,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     Gtk.Widget menu;
     Gtk.CssProvider style_provider;
     Gtk.Box hbox;
+    Gtk.Box abox;
 
     public enum PopPosition
     {
@@ -119,16 +120,19 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     public PopOver()
     {
         hbox = get_content_area() as Gtk.Box;
+        abox = get_action_area() as Gtk.Box;
         menu = new Gtk.Window();
         get_style_context ().add_class ("popover");
         style_get ("border-radius", out BORDER_RADIUS, "border-width", out BORDER_WIDTH,
                    "shadow-size", out SHADOW_SIZE, "arrow-height", out ARROW_HEIGHT,
                    "arrow_width", out ARROW_WIDTH, null);
         PADDINGS = get_style_context ().get_margin (Gtk.StateFlags.NORMAL);
-        hbox.set_margin_top(MARGIN + ARROW_HEIGHT + SHADOW_SIZE);
-        hbox.set_margin_left(MARGIN + SHADOW_SIZE);
-        hbox.set_margin_right(MARGIN + SHADOW_SIZE);
-        hbox.set_margin_bottom(SHADOW_SIZE);
+        hbox.set_margin_top(PADDINGS.top + ARROW_HEIGHT + SHADOW_SIZE);
+        hbox.set_margin_left(PADDINGS.left + SHADOW_SIZE);
+        hbox.set_margin_right(PADDINGS.right + SHADOW_SIZE);
+        abox.set_margin_left(PADDINGS.left + SHADOW_SIZE);
+        abox.set_margin_right(PADDINGS.right + SHADOW_SIZE);
+        abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE);
         
         menu.get_style_context().add_class("popover");
 
@@ -224,6 +228,13 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
                 break;
             default:
                 break;
+        }
+        if (arrow_up) {
+            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT);
+            abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE);
+        } else {
+            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE);
+            abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT);
         }
     }
     int win_x;
@@ -332,13 +343,13 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         main_buffer.context.clip ();
         Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
 
-        if (arrow_up) {
+        /*if (arrow_up) {
             margin_top = PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT;
             margin_bottom = PADDINGS.bottom + SHADOW_SIZE;
         } else {
             margin_top = PADDINGS.top + SHADOW_SIZE;
             margin_bottom = PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT;
-        }
+        }*/
     }
 
     public override bool draw(Cairo.Context cr)
