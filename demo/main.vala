@@ -19,6 +19,7 @@
  */
 
 using Granite.Widgets;
+using Granite.Services;
 
 public class Granite.Demo : Granite.Application
 {
@@ -131,7 +132,6 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
         
-        
         var popover_buttons = new Gtk.VBox(false, 0);
         var hbox3 = new Gtk.HBox(false, 0);
         hbox3.halign = Gtk.Align.END;
@@ -164,6 +164,17 @@ public class Granite.Demo : Granite.Application
         calendar_button.add(date_button);
         notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
         
+        /* Contractor */
+        var contractor_tab = new Gtk.VBox (false, 0);
+        notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
+        var text_view = new Gtk.TextView ();
+        GLib.HashTable<string, string>[] hash_ = Contractor.get_contract("/.zip", "application/zip");
+        foreach(var hash in hash_)
+        {
+            text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";    
+        }
+        contractor_tab.add(text_view);
+
         /* window properties */
         win.show_all();
         win.resize(800, 600);
