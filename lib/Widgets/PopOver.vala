@@ -283,10 +283,13 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         move(win_x, win_y);
     }
 
+    /**
+    * Move the popover to the coordinates of the given Gdk.Rectangle and
+    * position it taking acording to the width and height of the rectangle.
+    **/
     public void move_to_rect (Gdk.Rectangle rect)
     {
         show_all();
-
         compute_pop_position (get_screen (), rect);
         move(win_x, win_y);
     }
