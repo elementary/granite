@@ -284,6 +284,17 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     }
 
     /**
+    * Move the popover to the coordinates of the given Gdk.Rectangle and
+    * position it acording to the width and height of the rectangle.
+    **/
+    public void move_to_rect (Gdk.Rectangle rect)
+    {
+        show_all();
+        compute_pop_position (get_screen (), rect);
+        move(win_x, win_y);
+    }
+
+    /**
      * Move the popover to the Gdk.Window window. The recommand method is
      * move_to_widget, but this one can be used when we don't know which widget
      * triggered the action (e.g. with a Gtk.Action).
