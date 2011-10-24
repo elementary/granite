@@ -30,7 +30,7 @@ pkg_check_modules(DEPS REQUIRED gtk+-3.0 gio-unix-2.0)
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"GRANITE\"")
 set(LIBS
-	${DEP_LIBRARIES}
+    ${DEPS_LIBRARIES}
 )
 set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
@@ -88,7 +88,7 @@ add_library (${PKGNAME} SHARED
     Widgets/widgets-utils.c
 	${VALA_C}
 )
-target_link_libraries(granite ${LIBS})
+target_link_libraries(${PKGNAME} ${LIBS})
 if(BUILD_STATIC MATCHES "Yes")
 ADD_LIBRARY(${PKGNAME}-static STATIC ${VALA_C})
 target_link_libraries(${PKGNAME}-static ${LIBS})
