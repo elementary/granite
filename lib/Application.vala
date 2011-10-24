@@ -21,7 +21,6 @@ using Granite.Services;
 using Granite.Widgets;
 
 namespace Granite {
-
     public struct utsname {
 
         char sysname [65];

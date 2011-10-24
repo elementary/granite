@@ -24,7 +24,7 @@ find_package(PkgConfig)
 find_package(GObjectIntrospection 0.9.12)
 include(GObjectIntrospectionMacros)
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
-pkg_check_modules(DEPS REQUIRED ${PKG_DEPS})
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gio-unix-2.0)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -32,7 +32,6 @@ add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"GRANITE\"")
 set(LIBS
 	${DEP_LIBRARIES}
 )
-link_libraries(${LIBS})
 set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
@@ -89,8 +88,10 @@ add_library (${PKGNAME} SHARED
     Widgets/widgets-utils.c
 	${VALA_C}
 )
+target_link_libraries(granite ${LIBS})
 if(BUILD_STATIC MATCHES "Yes")
 ADD_LIBRARY(${PKGNAME}-static STATIC ${VALA_C})
+target_link_libraries(${PKGNAME}-static ${LIBS})
 # The library target "foo" already has a default OUTPUT_NAME of "foo", so we don't need to change it.
 
 # The library target "foo-static" has a default OUTPUT_NAME of "foo-static", so change it.
