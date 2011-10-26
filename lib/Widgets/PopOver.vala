@@ -129,12 +129,12 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
                    "shadow-size", out SHADOW_SIZE, "arrow-height", out ARROW_HEIGHT,
                    "arrow_width", out ARROW_WIDTH, null);
         PADDINGS = get_style_context ().get_margin (Gtk.StateFlags.NORMAL);
-        hbox.set_margin_top(PADDINGS.top + ARROW_HEIGHT + SHADOW_SIZE);
-        hbox.set_margin_left(PADDINGS.left + SHADOW_SIZE);
-        hbox.set_margin_right(PADDINGS.right + SHADOW_SIZE);
-        abox.set_margin_left(PADDINGS.left + SHADOW_SIZE);
-        abox.set_margin_right(PADDINGS.right + SHADOW_SIZE);
-        abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE);
+        hbox.set_margin_top(PADDINGS.top + ARROW_HEIGHT + SHADOW_SIZE + 5);
+        hbox.set_margin_left(PADDINGS.left + SHADOW_SIZE + 5);
+        hbox.set_margin_right(PADDINGS.right + SHADOW_SIZE + 5);
+        abox.set_margin_left(PADDINGS.left + SHADOW_SIZE + 5);
+        abox.set_margin_right(PADDINGS.right + SHADOW_SIZE + 5);
+        abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + 5);
         
         menu.get_style_context().add_class("popover_bg");
 
@@ -153,6 +153,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
             return false;
         });
+        
+        hide.connect( () => { response(Gtk.ResponseType.CANCEL); });
     }
 
     protected Granite.Drawing.BufferSurface main_buffer;
@@ -232,10 +234,10 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
                 break;
         }
         if (arrow_up) {
-            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT);
+            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT + 5);
             abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE);
         } else {
-            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE);
+            hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + 5);
             abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT);
         }
     }
