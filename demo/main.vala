@@ -132,7 +132,38 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
         
-
+        var popover_buttons = new Gtk.VBox(false, 0);
+        var hbox3 = new Gtk.HBox(false, 0);
+        hbox3.halign = Gtk.Align.END;
+        var popover1 = new Gtk.Button.with_label("PopOver 1");
+        popover1.halign = Gtk.Align.END;
+        hbox3.add(popover1);
+        popover1.clicked.connect( () => {
+            var pop = new PopOver();
+            var pop_hbox = (Gtk.Box)pop.get_content_area();
+            pop_hbox.add(new HintedEntry("This is an HIntedEntry"));
+            pop_hbox.add(new Gtk.Label("Another label")); 
+            var mode_pop = new ModeButton();
+            mode_pop.append(new Gtk.Label("ele"));
+            mode_pop.append(new Gtk.Label("ment"));
+            mode_pop.append(new Gtk.Label("tary"));
+            pop_hbox.add(mode_pop);
+            pop.set_parent_pop (win);
+            pop.move_to_widget(popover1);
+            pop.show_all();
+            pop.run ();
+            pop.destroy ();
+        });
+        popover_buttons.pack_start(new Gtk.Label("Let's try the PopOvers!"), false, false);
+        popover_buttons.pack_start(hbox3, false, false);
+        notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
+        
+        var calendar_button = new Gtk.HBox(false, 0);
+        var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
+        date_button.valign = date_button.halign = Gtk.Align.CENTER;
+        calendar_button.add(date_button);
+        notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
+        
         /* Contractor */
         var contractor_tab = new Gtk.VBox (false, 0);
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));

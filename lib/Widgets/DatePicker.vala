@@ -24,8 +24,10 @@ namespace Granite.Widgets {
 	
 		public string format { get; construct; default = _("%B %e, %Y"); }
 	
-		protected Gtk.Window dropdown;
+		protected Gtk.EventBox dropdown;
 		protected Calendar calendar;
+
+        PopOver popover;
 		
 		private DateTime _date;
 		public DateTime date {
@@ -38,7 +40,9 @@ namespace Granite.Widgets {
 		
 		construct {
 			
-			dropdown = new Gtk.Window (Gtk.WindowType.POPUP);
+			dropdown = new Gtk.EventBox();
+            popover = new PopOver();
+            ((Gtk.VBox)popover.get_content_area()).add(dropdown);
 			calendar = new Calendar ();		
 			date = new DateTime.now_local ();
 		
@@ -47,15 +51,12 @@ namespace Granite.Widgets {
 			editable = false; // user can't edit the entry directly
 			secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("office-calendar-symbolic");
 			
-			dropdown.set_type_hint (WindowTypeHint.COMBO);
 			dropdown.add_events (EventMask.FOCUS_CHANGE_MASK);
 			dropdown.add (calendar);
 			
 			// Signals and callbacks
-			icon_press.connect (on_icon_press);
+			icon_release.connect (on_icon_press);
 			calendar.day_selected_double_click.connect (on_calendar_day_selected);
-			dropdown.button_press_event.connect (on_dropdown_button_press);
-			dropdown.delete_event.connect (on_dropdown_delete_event);
 		}
 
 		public DatePicker.with_format (string format) {
@@ -66,17 +67,10 @@ namespace Granite.Widgets {
 		
 			int x, y;
 			position_dropdown (out x, out y);
-			
-			dropdown.move (x, y);
-			dropdown.show_all ();
+		
+			popover.show_all ();
+			popover.move_to_coords (x, y);
 			calendar.grab_focus ();
-			
-			grab_add (dropdown);
-			get_current_event_device ().grab (dropdown.get_window (), GrabOwnership.WINDOW, true,
-					EventMask.BUTTON_PRESS_MASK |
-					EventMask.BUTTON_RELEASE_MASK |
-					EventMask.POINTER_MOTION_MASK,
-					null, CURRENT_TIME);
 		}
 		
 		protected virtual void position_dropdown (out int x, out int y) {
@@ -88,11 +82,11 @@ namespace Granite.Widgets {
 			calendar.get_preferred_size (out calendar_size, null);
 			get_window ().get_origin (out x, out y);
 			
-			x += size.x - (calendar_size.width - size.width);
+			x += size.x + size.width - 10; //size.x - (calendar_size.width - size.width);
 			y += size.y + size.height;
 			
-			x = x.clamp (0, int.max (0, Screen.width () - calendar_size.width));
-			y = y.clamp (0, int.max (0, Screen.height () - calendar_size.height));
+			//x = x.clamp (0, int.max (0, Screen.width () - calendar_size.width));
+			//y = y.clamp (0, int.max (0, Screen.height () - calendar_size.height));
 		}
 		
 		private void on_calendar_day_selected () {
@@ -120,10 +114,7 @@ namespace Granite.Widgets {
 		
 		private void hide_dropdown () {
 		
-			dropdown.hide ();
-			
-			grab_remove (dropdown);
-			get_current_event_device ().ungrab (Gdk.CURRENT_TIME);
+			popover.hide ();
 		}
 				
 	}

@@ -1,6 +1,6 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1.2)
+set (${PKGNAME_}_VERSION 0.1.3)
 # increase when you break the API
 
 set (${PKGNAME_}_SOVERSION 0)
@@ -66,6 +66,7 @@ vala_precompile(VALA_C
 	Widgets/AppMenu.vala
 	Widgets/Welcome.vala
 	Widgets/ToolButtonWithMenu.vala
+    Widgets/PopOver.vala
 	config.vapi
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/GtkPatch/gtkpatch-utils.vapi
