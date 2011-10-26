@@ -136,7 +136,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         abox.set_margin_right(PADDINGS.right + SHADOW_SIZE);
         abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE);
         
-        menu.get_style_context().add_class("popover");
+        menu.get_style_context().add_class("popover_bg");
 
         size_allocate.connect(on_size_allocate);
 
