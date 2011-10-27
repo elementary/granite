@@ -334,10 +334,15 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         cr.close_path ();  
     }
 
+    int old_w = 0;
+    int old_h = 0;
+
     void on_size_allocate(Gtk.Allocation alloc)
     {
         int w = get_allocated_width();
         int h = get_allocated_height();
+        if(old_w == w && old_h == h)
+            return;
         reset_buffers ();
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
         
@@ -358,20 +363,13 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         main_buffer.context.clip ();
         Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
 
-        /*if (arrow_up) {
-            margin_top = PADDINGS.top + SHADOW_SIZE + ARROW_HEIGHT;
-            margin_bottom = PADDINGS.bottom + SHADOW_SIZE;
-        } else {
-            margin_top = PADDINGS.top + SHADOW_SIZE;
-            margin_bottom = PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT;
-        }*/
+        old_w = w;
+        old_h = h;
     }
 
     public override bool draw(Cairo.Context cr)
     {
-/*        cr.set_source_rgba(0,0,0, 0.5);
-        cr.paint();
-  */      cr.set_source_surface(main_buffer.surface, 0, 0);
+        cr.set_source_surface(main_buffer.surface, 0, 0);
         cr.paint_with_alpha(1.0);
         return base.draw(cr);
     }
