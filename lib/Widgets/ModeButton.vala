@@ -101,7 +101,7 @@ namespace Granite.Widgets {
         
         public new void remove(int number)
         {
-            mode_removed(number, null);
+            mode_removed(number, (get_children ().nth_data (number) as Gtk.Bin).get_child ());
             get_children ().nth_data (number).destroy();
         }
  
@@ -115,159 +115,17 @@ namespace Granite.Widgets {
             _selected = -1;
  
         }
+        
+        protected override bool scroll_event (EventScroll ev) {
+            if(ev.direction == Gdk.ScrollDirection.DOWN) {
+                selected ++;
+            }
+            else if (ev.direction == Gdk.ScrollDirection.UP) {
+                selected --;
+            }
+
+            return false;
+        }
     }
-#if 0
-	public class ModeButton : Gtk.EventBox, Gtk.Buildable {
-
-		public new void focus (Gtk.Widget widget) {
-		
-			int select = box.get_children ().index (widget);
-
-			if (_selected >= 0)
-				box.get_children ().nth_data (_selected).set_state (StateType.NORMAL);
-
-			_selected = select;
-			widget.set_state (StateType.SELECTED);
-			queue_draw ();
-		}
-
-		protected override bool scroll_event (EventScroll evnt) {
-		
-			switch (evnt.direction) {
-				case ScrollDirection.UP:
-					if (selected < box.get_children().length() - 1)
-						selected++;
-					break;
-				case ScrollDirection.DOWN:
-					if (selected > 0)
-						selected--;
-					break;
-			}
-
-			return true;	
-		}
-
-		protected override bool button_press_event (EventButton ev) {
-		
-			int n_children = (int) box.get_children ().length ();
-			if (n_children < 1)
-				return false;
-
-			Allocation allocation;
-			get_allocation (out allocation);	
-
-			double child_size = allocation.width / n_children;
-			int i = -1;
-
-			if (child_size > 0)
-				i = (int) (ev.x / child_size);
-			hovered = i;
-			
-			if (ev.button != 3) {
-				selected = _hovered;
-				return true;
-			}
-
-			return false;
-		}
-
-		protected override bool leave_notify_event (EventCrossing ev) {
-			
-			_hovered = -1;
-			queue_draw ();
-
-			return true;
-		}
-
-		protected override bool motion_notify_event (EventMotion evnt) {
-		
-			int n_children = (int) box.get_children ().length ();
-			if (n_children < 1)
-				return false;
-
-			Allocation allocation;
-			get_allocation (out allocation);	
-
-			double child_size = allocation.width / n_children;
-			int i = -1;
-
-			if (child_size > 0)
-				i = (int) (evnt.x / child_size);
-			hovered = i;
-
-			return true;
-		}
-
-		protected override bool draw (Cairo.Context cr) {
-			StyleContext context = get_style_context();
-			int width, height;
-			float item_x, item_width;
-
-			width = get_allocated_width ();
-			height = get_allocated_height ();
-
-			var n_children = (int) box.get_children ().length ();
-
-			context.set_state(Gtk.StateFlags.NORMAL);
-			Gtk.render_background(context, cr, 0, 0, width, height);
-			Gtk.render_frame(context, cr, 0, 0, width, height);
-
-			if (hovered >= 0 && selected != hovered) {
-				if (n_children > 1) {
-					item_width = width / n_children;
-					item_x = hovered * width/n_children;
-				} else {
-					item_x = 0;
-					item_width = width;
-				}
-
-				cr.move_to(item_x, 0);
-				cr.line_to(item_x, height);
-				cr.line_to(item_x+item_width + 1, height);
-				cr.line_to(item_x+item_width + 1, 0);
-				cr.clip();
-
-				context.set_state(Gtk.StateFlags.PRELIGHT);
-				Gtk.render_background(context, cr, 0, 0, width, height);
-				Gtk.render_frame(context, cr, 0, 0, width, height);
-			}
-
-			cr.restore();
-			cr.save();
-			if (_selected >= 0) {
-				if (n_children > 1) {
-					item_width = width / n_children;
-					item_x = _selected * width / n_children;
-				} else {
-					item_x = 0;
-					item_width = width;
-				}
-				
-				cr.move_to (item_x, 0);
-				cr.line_to (item_x, height);
-				cr.line_to (item_x+item_width + 1, height);
-				cr.line_to (item_x+item_width + 1, 0);
-				cr.clip ();
-
-				context.set_state(Gtk.StateFlags.ACTIVE);
-				Gtk.render_background(context, cr, 0, 0, width, height);
-				Gtk.render_frame(context, cr, 0, 0, width, height);
-			}
-
-			cr.restore();
-
-			context.set_state(Gtk.StateFlags.NORMAL);
-			for(int i = 1; i < n_children; i++)
-			{
-				Gtk.render_line(context, cr, i*width/n_children, 2, i*width/n_children, height - 2);
-			}
-
-			propagate_draw (box, cr);
-
-			return true;
-		}
-		
-	}
-#endif
 }
 
