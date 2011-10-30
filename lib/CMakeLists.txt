@@ -114,28 +114,8 @@ macro(_list_prefix _outvar _listvar _prefix)
 endmacro(_list_prefix)
 
 # GObject Introspection
-if (INTROSPECTION_FOUND)
-  include(GObjectIntrospectionMacros)
-  set(INTROSPECTION_GIRS)
-  set(INTROSPECTION_SCANNER_ARGS "--add-include-path=${CMAKE_CURRENT_SOURCE_DIR}")
-  set(INTROSPECTION_COMPILER_ARGS "--includedir=${CMAKE_CURRENT_SOURCE_DIR}")
-
-  set(introspection_files ${VALA_C} ${CMAKE_CURRENT_BINARY_DIR}/granite.h)
-  set(Granite_0_1_gir "granite")
-  set(Granite_0_1_gir_PACKAGES gtk+-3.0 gdk-3.0)
-  set(Granite_0_1_gir_INCLUDES Gtk-3.0 Gdk-3.0)
-  get_directory_property(_tmp_includes INCLUDE_DIRECTORIES)
-  _list_prefix(_includes _tmp_includes "-I")
-  set(Granite_0_1_gir_CFLAGS ${_includes})
-  set(Granite_0_1_gir_LIBS granite)
-  #  _list_prefix(_abs_introspection_files introspection_files "${CMAKE_CURRENT_SOURCE_DIR}/")
-  #  set(Granite_0_1_gir_FILES ${_abs_introspection_files})
-  set(Granite_0_1_gir_FILES ${introspection_files})
-
-  list(APPEND INTROSPECTION_GIRS Granite-0.1.gir)
-
-  gir_add_introspections(INTROSPECTION_GIRS)
-endif ()
+include(GObjectIntrospectionMacros)
+add_target_gir(granite Granite granite.h "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
