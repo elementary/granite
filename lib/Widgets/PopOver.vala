@@ -157,7 +157,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         hide.connect( () => { response(Gtk.ResponseType.CANCEL); });
     }
 
-    protected Granite.Drawing.BufferSurface main_buffer;
+    protected Granite.Drawing.BufferSurface? main_buffer = null;
     
     protected void reset_buffers () {
         
@@ -177,6 +177,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     void compute_pop_position(Gdk.Screen screen, Gdk.Rectangle rect)
     {
         Gdk.Rectangle monitor_geo;
+        var old_pos = pos;
         screen.get_monitor_geometry (screen.get_monitor_at_point (rect.x, rect.y), out monitor_geo);
 
         if(rect.x > monitor_geo.x + monitor_geo.width/2)
@@ -240,6 +241,10 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + 5);
             abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT);
         }
+        
+        if(old_pos != pos) {
+            compute_shadow (get_allocated_width (), get_allocated_height ());
+        }
     }
     int win_x;
     int win_y;
@@ -273,9 +278,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     public void move_to_coords (int x, int y)
     {
-        //x -= (int) offset + SHADOW_SIZE + ARROW_WIDTH/2;
-        //y -= SHADOW_SIZE;
-
         show_all();
         Gdk.Rectangle rect = Gdk.Rectangle ();
         rect.x = x;
@@ -336,14 +338,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     int old_w = 0;
     int old_h = 0;
-
-    void on_size_allocate(Gtk.Allocation alloc)
-    {
-        int w = get_allocated_width();
-        int h = get_allocated_height();
-        if(old_w == w && old_h == h)
-            return;
-        reset_buffers ();
+    
+    void compute_shadow (int w, int h) {
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
         
         // Shadow first
@@ -362,6 +358,17 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         // Background        
         main_buffer.context.clip ();
         Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
+    }
+
+    void on_size_allocate(Gtk.Allocation alloc)
+    {
+        int w = get_allocated_width();
+        int h = get_allocated_height();
+        if(old_w == w && old_h == h)
+            return;
+
+        compute_shadow (w, h);
+        
 
         old_w = w;
         old_h = h;
