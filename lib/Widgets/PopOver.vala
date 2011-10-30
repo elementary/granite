@@ -46,6 +46,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     protected Gtk.Border PADDINGS;
     double offset = 15.0;
     const int MARGIN = 12;
+    bool is_composited;
     Gtk.Widget menu;
     Gtk.CssProvider style_provider;
     Gtk.Box hbox;
@@ -96,24 +97,29 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     }    
     construct {
         
-        // Set up css provider
-        style_provider = new Gtk.CssProvider ();
-        try {
-            style_provider.load_from_path (Build.RESOURCES_DIR + "/style/CompositedWindow.css");
-        } catch (Error e) {
-            warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
-        }
+        /* Are we composited? */
+        is_composited = Gdk.Screen.get_default ().is_composited ();
         
-        // Window properties
-        set_visual (get_screen ().get_rgba_visual());
-        get_style_context ().add_provider (style_provider, 600);
+        if(is_composited) {
+            // Set up css provider
+            style_provider = new Gtk.CssProvider ();
+            try {
+                style_provider.load_from_path (Build.RESOURCES_DIR + "/style/CompositedWindow.css");
+            } catch (Error e) {
+                warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+            }
+            
+            // Window properties
+            set_visual (get_screen ().get_rgba_visual());
+            get_style_context ().add_provider (style_provider, 600);
+        }
         app_paintable = true;
         decorated = false;
         resizable = false;
         set_position(Gtk.WindowPosition.NONE);
         set_type_hint(Gdk.WindowTypeHint.NORMAL);
         skip_pager_hint = true;
-        skip_pager_hint = true;
+        skip_taskbar_hint = true;
     }
 
     /**
@@ -121,6 +127,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public PopOver()
     {
+    
         hbox = get_content_area() as Gtk.Box;
         abox = get_action_area() as Gtk.Box;
         menu = new Gtk.Window();
@@ -128,6 +135,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         style_get ("border-radius", out BORDER_RADIUS, "border-width", out BORDER_WIDTH,
                    "shadow-size", out SHADOW_SIZE, "arrow-height", out ARROW_HEIGHT,
                    "arrow_width", out ARROW_WIDTH, null);
+        if (!is_composited) {
+            SHADOW_SIZE = 0; /* we don't need an extra space for the shadow since we won't show it */
+        }
         PADDINGS = get_style_context ().get_margin (Gtk.StateFlags.NORMAL);
         hbox.set_margin_top(PADDINGS.top + ARROW_HEIGHT + SHADOW_SIZE + 5);
         hbox.set_margin_left(PADDINGS.left + SHADOW_SIZE + 5);
@@ -157,6 +167,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         hide.connect( () => { response(Gtk.ResponseType.CANCEL); });
     }
 
+    /* May be null if the screen is not composited */
     protected Granite.Drawing.BufferSurface? main_buffer = null;
     
     protected void reset_buffers () {
@@ -340,6 +351,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     int old_h = 0;
     
     void compute_shadow (int w, int h) {
+        if(!is_composited) {
+            return;
+        }
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
         
         // Shadow first
@@ -376,8 +390,16 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     public override bool draw(Cairo.Context cr)
     {
-        cr.set_source_surface(main_buffer.surface, 0, 0);
-        cr.paint_with_alpha(1.0);
+        if (is_composited) {
+            cr.set_source_surface(main_buffer.surface, 0, 0);
+            cr.paint_with_alpha(1.0);
+        }
+        else {
+            cr.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
+            cr.set_source_rgba (0, 0, 0, 0.3);
+            cr.set_line_width(1);
+            cr.stroke ();
+        }
         return base.draw(cr);
     }
 }
