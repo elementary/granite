@@ -135,7 +135,7 @@ namespace Granite.Services {
 		static void print_log (LogMessage log) {
 		
 			set_color_for_level (log.Level);
-			stdout.printf ("[%s %s]", log.Level.to_string ().substring (25), get_time ());
+			stdout.printf ("[%s %s]", log.Level.to_string ().substring (27), get_time ());
 			
 			reset_color ();
 			stdout.printf (" %s\n", log.Message);
