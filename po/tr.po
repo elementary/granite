@@ -1,4 +1,4 @@
-# English (Australia) translation for granite
+# Turkish translation for granite
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the granite package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-30 14:55+0200\n"
-"PO-Revision-Date: 2011-10-30 01:41+0000\n"
-"Last-Translator: Adam Brenecki <Unknown>\n"
-"Language-Team: English (Australia) <en_AU@li.org>\n"
+"PO-Revision-Date: 2011-10-30 19:03+0000\n"
+"Last-Translator: Mesut Yaver <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,20 +28,20 @@ msgstr ""
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:38
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:52
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menü"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:64
 msgid "Get Help Online..."
-msgstr "Get Help Online..."
+msgstr "Çevrimiçi Yardım Alın..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:65
 msgid "Translate This Application..."
-msgstr "Translate This Application..."
+msgstr "Bu Uygulamayı Tercüme Edin..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:66
 msgid "Report a Problem..."
-msgstr "Report a Problem..."
+msgstr "Bir Sorun Bildirin..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:67
 msgid "About"
-msgstr "About"
+msgstr "Hakkında"
