@@ -4,3 +4,4 @@ usr/lib/lib*.so
 usr/lib/pkgconfig/*
 usr/share/vala/vapi/*.vapi
 usr/share/vala/vapi/*.deps
+usr/share/gir-1.0/*.gir
