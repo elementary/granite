@@ -256,7 +256,17 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         if(old_pos != pos) {
             compute_shadow (get_allocated_width (), get_allocated_height ());
         }
+        if(is_composited) {
+            var w = get_allocated_width ();
+            var h = get_allocated_height ();
+            h -= 2* (PADDINGS.top + SHADOW_SIZE) + ARROW_HEIGHT;
+            w -= 2*(PADDINGS.right + SHADOW_SIZE);
+            get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w, h}),
+                    PADDINGS.right + SHADOW_SIZE,
+                    PADDINGS.top + SHADOW_SIZE + (arrow_up ? ARROW_HEIGHT : 0));
+        }
     }
+    
     int win_x;
     int win_y;
 
