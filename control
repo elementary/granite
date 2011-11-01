@@ -10,7 +10,9 @@ Build-Depends: debhelper (>= 7.0.50~),
  libgtk-3-dev,
  gobject-introspection,
  libgirepository1.0-dev,
- gir1.2-gtk-3.0
+ gir1.2-gtk-3.0,
+ gir1.2-glib-2.0,
+ libtool
 Standards-Version: 3.9.2
 Section: libs
 Homepage: http://launchpad.net/granite
