@@ -4,7 +4,8 @@ macro(add_target_gir TARGET_NAME GIR_NAME HEADER CFLAGS GRANITE_VERSION)
     foreach(PKG ${ARGN})
         set(PACKAGES ${PACKAGES} --include=${PKG})
     endforeach()
-    add_custom_command(TARGET ${TARGET_NAME}-gir COMMAND LD_LIBRARY_PATH=${CMAKE_CURRENT_BINARY_DIR}
+    add_custom_command(TARGET ${TARGET_NAME}-gir COMMAND
+        LD_LIBRARY_PATH=$ENV{LD_LIBRARY_PATH}:${CMAKE_CURRENT_BINARY_DIR}
         g-ir-scanner ${CFLAGS} -n ${GIR_NAME} --quiet --library ${PKGNAME} ${PACKAGES} -o ${GIR_NAME}-${GRANITE_VERSION}.gir --nsversion=${GRANITE_VERSION} ${HEADER}
         COMMENT "Generating ${GIR_NAME}-${GRANITE_VERSION}.gir")
     add_custom_command(TARGET ${TARGET_NAME}-gir COMMAND g-ir-compiler ${GIR_NAME}-${GRANITE_VERSION}.gir -o ${GIR_NAME}-${GRANITE_VERSION}.typelib
