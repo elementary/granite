@@ -36,6 +36,7 @@ namespace Granite.Widgets {
 			
 			// Window properties
 			set_visual (get_screen ().get_rgba_visual());
+			get_style_context().add_class("composited");
 			get_style_context ().add_provider (style_provider, 600);
 			app_paintable = true;
 			decorated = false;

@@ -48,7 +48,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     const int MARGIN = 12;
     bool is_composited;
     Gtk.Widget menu;
-    Gtk.CssProvider style_provider;
+    static Gtk.CssProvider style_provider;
     Gtk.Box hbox;
     Gtk.Box abox;
 
@@ -111,7 +111,10 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             
             // Window properties
             set_visual (get_screen ().get_rgba_visual());
-            get_style_context ().add_provider (style_provider, 600);
+            
+            get_style_context ().add_class ("popover");
+            get_style_context ().add_class ("composited");
+            get_style_context ().add_provider_for_screen (get_screen(), style_provider, 600);
         }
         app_paintable = true;
         decorated = false;
@@ -131,7 +134,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         hbox = get_content_area() as Gtk.Box;
         abox = get_action_area() as Gtk.Box;
         menu = new Gtk.Window();
-        get_style_context ().add_class ("popover");
         style_get ("border-radius", out BORDER_RADIUS, "border-width", out BORDER_WIDTH,
                    "shadow-size", out SHADOW_SIZE, "arrow-height", out ARROW_HEIGHT,
                    "arrow_width", out ARROW_WIDTH, null);
