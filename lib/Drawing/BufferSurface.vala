@@ -94,7 +94,7 @@ namespace Granite.Drawing {
 		 *
 		 * @param width the width of the new {@link Granite.Drawing.BufferSurface}, in pixels
 		 * @param height the height of the new {@link Granite.Drawing.BufferSurface}, in pixels
-		 * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.SurfaceSurface}
+		 * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.Surface}
 		 */
 		public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) requires (model != null) {
 		
