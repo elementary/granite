@@ -257,6 +257,8 @@ namespace Granite.Widgets {
 
         private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
         {
+            Allocation menu_allocation;
+            menu.get_allocation (out menu_allocation);
             if (menu.attach_widget == null ||
                 menu.attach_widget.get_window() == null) {
                 // Prevent null exception in weird cases
@@ -271,6 +273,8 @@ namespace Granite.Widgets {
             menu.attach_widget.get_allocation(out allocation);
 
             x += allocation.x;
+            x -= menu_allocation.width/2;
+            x += allocation.width/2;
             y += allocation.y;
 
             int width, height;
