@@ -19,8 +19,7 @@
  */
 
 namespace Granite {
-    public void init (ref unowned string[] args) {
-        Gtk.init (ref args);
+    public void init () {
         if (!Thread.supported ())
             error ("Problem initializing thread support.");
         Gdk.threads_init ();
