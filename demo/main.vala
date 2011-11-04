@@ -182,7 +182,7 @@ public class Granite.Demo : Granite.Application
 
     public static int main(string[] args)
     {
-        Gtk.init(ref args);
+        Granite.init(ref args);
         new Granite.Demo();
         
         Gtk.main();
