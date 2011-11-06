@@ -10,7 +10,7 @@ macro(add_target_gir TARGET_NAME GIR_NAME HEADER CFLAGS GRANITE_VERSION)
             --library ${PKGNAME} ${PACKAGES}
             -o ${CMAKE_CURRENT_BINARY_DIR}/${GIR_NAME}-${GRANITE_VERSION}.gir
             -L${CMAKE_CURRENT_BINARY_DIR}
-            --nsversion=${GRANITE_VERSION} ${HEADER})")
+            --nsversion=${GRANITE_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/${HEADER})")
     install(CODE "execute_process(COMMAND g-ir-compiler ${CMAKE_CURRENT_BINARY_DIR}/${GIR_NAME}-${GRANITE_VERSION}.gir -o ${CMAKE_CURRENT_BINARY_DIR}/${GIR_NAME}-${GRANITE_VERSION}.typelib)")
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${GIR_NAME}-${GRANITE_VERSION}.gir DESTINATION share/gir-1.0/)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${GIR_NAME}-${GRANITE_VERSION}.typelib DESTINATION lib/girepository-1.0/)
