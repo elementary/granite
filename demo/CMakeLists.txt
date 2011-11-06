@@ -28,5 +28,5 @@ PACKAGES
 OPTIONS
     --thread
 )
-add_executable(demo ${VALA_C})
-target_link_libraries(demo granite ${DEPS_LIBRARIES})
+add_executable(granite-demo ${VALA_C})
+target_link_libraries(granite-demo granite ${DEPS_LIBRARIES})
