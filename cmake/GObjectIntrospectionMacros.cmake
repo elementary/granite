@@ -3,8 +3,7 @@ macro(add_target_gir TARGET_NAME GIR_NAME HEADER CFLAGS GRANITE_VERSION)
     foreach(PKG ${ARGN})
         set(PACKAGES ${PACKAGES} --include=${PKG})
     endforeach()
-    install(CODE "message(${CMAKE_CURRENT_BINARY_DIR})
-    set(ENV{LD_LIBRARY_PATH} \"${CMAKE_CURRENT_BINARY_DIR}:\$ENV{LD_LIBRARY_PATH}\")
+    install(CODE "set(ENV{LD_LIBRARY_PATH} \"${CMAKE_CURRENT_BINARY_DIR}:\$ENV{LD_LIBRARY_PATH}\")
     execute_process(COMMAND g-ir-scanner ${CFLAGS} -n ${GIR_NAME}
             --quiet
             --library ${PKGNAME} ${PACKAGES}

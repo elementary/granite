@@ -30,3 +30,5 @@ OPTIONS
 )
 add_executable(granite-demo ${VALA_C})
 target_link_libraries(granite-demo granite ${DEPS_LIBRARIES})
+
+install (TARGETS granite-demo RUNTIME DESTINATION bin)
