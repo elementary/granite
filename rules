@@ -8,3 +8,8 @@ override_dh_auto_configure:
 %:
 	dh $@ 
 
+override_dh_strip:
+	dh_strip --dbg-package=libgranite0-dbg
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz

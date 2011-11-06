@@ -16,18 +16,26 @@ Build-Depends: debhelper (>= 7.0.50~),
 Standards-Version: 3.9.2
 Section: libs
 Homepage: http://launchpad.net/granite
-#Vcs-Git: git://git.debian.org/collab-maint/granite.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/granite.git;a=summary
 
 Package: libgranite-dev
 Section: libdevel
 Architecture: any
 Depends: libgranite0 (= ${binary:Version})
-Description: A development library for elementary development.
+Description: Development files of Granite.
 
 Package: libgranite0
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends}
-Description: Development files of Granite.
+Description: A development library for elementary development.
+
+Package: libgranite0-dbg
+Section: debug
+Architecture: any
+Depends: libgranite0 (= ${binary:Version}),
+ ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
+Enhances: libgranite0
+Description: Debugging symbols of granite
+
