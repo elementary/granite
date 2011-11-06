@@ -21,6 +21,7 @@ Package: libgranite-dev
 Section: libdevel
 Architecture: any
 Depends: libgranite0 (= ${binary:Version})
+Pre-Depends: dpkg (>= 1.15.6)
 Description: Development files of Granite.
 
 Package: libgranite0
@@ -28,6 +29,7 @@ Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
  ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
 Description: A development library for elementary development.
 
 Package: libgranite0-dbg
@@ -43,5 +45,6 @@ Package: libgranite-demo
 Section: libdevel
 Architecture: any
 Depends: libgranite0 (= ${binary:Version})
+Pre-Depends: dpkg (>= 1.15.6)
 Description: A small apps to show Granite Widgets.
 
