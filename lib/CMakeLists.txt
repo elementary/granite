@@ -67,6 +67,7 @@ vala_precompile(VALA_C
 	Widgets/Welcome.vala
 	Widgets/ToolButtonWithMenu.vala
     Widgets/PopOver.vala
+    Main.vala
 	config.vapi
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/GtkPatch/gtkpatch-utils.vapi

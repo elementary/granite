@@ -69,6 +69,8 @@ namespace Granite {
 
         public Application () {
 
+
+            Granite.init ();
             // set program name
             prctl (15, exec_name, 0, 0, 0);
             Environment.set_prgname (exec_name);
@@ -85,10 +87,6 @@ namespace Granite {
             Logger.DisplayLevel = LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
-
-            if (!Thread.supported ())
-                error ("Problem initializing thread support.");
-            Gdk.threads_init ();
 
             // Deprecated
             Granite.app = this;

@@ -57,6 +57,9 @@ public class Granite.Demo : Granite.Application
     }
     public Demo()
     {
+    }
+
+    public override void activate() {
         var win = new Gtk.Window();
         win.delete_event.connect( () => { Gtk.main_quit(); return false; });
         
@@ -182,8 +185,7 @@ public class Granite.Demo : Granite.Application
 
     public static int main(string[] args)
     {
-        Gtk.init(ref args);
-        new Granite.Demo();
+        new Granite.Demo().run(args);
         
         Gtk.main();
         
