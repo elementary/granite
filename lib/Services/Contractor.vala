@@ -18,12 +18,17 @@
 namespace Granite.Services {
 
     [DBus (name = "org.elementary.contractor")]
-        interface ContractorDBus : Object
-        {
-            public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
-            public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations)  throws IOError;
-        }
+    interface ContractorDBus : Object
+    {
+        public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
+        public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations)  throws IOError;
+    }
 
+    /**
+     * A way to handle contractor
+     * 
+     * /!\ Highly unstable API
+     **/
     public class Contractor : Object
     {
 
