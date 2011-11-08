@@ -42,7 +42,7 @@ namespace Granite.Widgets {
 			
 			dropdown = new Gtk.EventBox();
             popover = new PopOver();
-            ((Gtk.VBox)popover.get_content_area()).add(dropdown);
+            ((Gtk.Box)popover.get_content_area()).add(dropdown);
 			calendar = new Calendar ();		
 			date = new DateTime.now_local ();
 		

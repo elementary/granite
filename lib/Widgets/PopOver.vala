@@ -120,7 +120,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         decorated = false;
         resizable = false;
         set_position(Gtk.WindowPosition.NONE);
-        set_type_hint(Gdk.WindowTypeHint.NORMAL);
+        set_type_hint(Gdk.WindowTypeHint.MENU);
         skip_pager_hint = true;
         skip_taskbar_hint = true;
     }
@@ -156,7 +156,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         {
             foreach(Gtk.Window window in Gtk.Window.list_toplevels())
             {
-                if(((int)window.type_hint) != 0 && window.visible)
+                if(((int)window.type_hint) != 0 && window.visible && window != this)
                 {
                     return false;
                 }
@@ -387,9 +387,10 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         if(is_composited) {
             h -= 2* (PADDINGS.top + SHADOW_SIZE) + ARROW_HEIGHT;
             w -= 2*(PADDINGS.right + SHADOW_SIZE);
-            get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w, h}),
-                    PADDINGS.right + SHADOW_SIZE,
-                    PADDINGS.top + SHADOW_SIZE + (arrow_up ? ARROW_HEIGHT : 0));
+            if(get_window () != null)
+                get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w, h}),
+                        PADDINGS.right + SHADOW_SIZE,
+                        PADDINGS.top + SHADOW_SIZE + (arrow_up ? ARROW_HEIGHT : 0));
         }
     }
 
