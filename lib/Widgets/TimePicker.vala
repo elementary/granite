@@ -20,45 +20,45 @@ using Gdk;
 
 namespace Granite.Widgets {
 
-	public class TimePicker : SpinButton, Gtk.Buildable {
-	
-		public string format { get; construct; default = _("%l:%M %p"); }
-		
-		public DateTime time { get; protected set; }
-		
-		construct {
-			
-			time = new DateTime.now_local ();
-			int starting_time = time.get_hour () * 60 + 30; // start at this hour : 30
-			set_minutes (starting_time);
-		
-			// SpinButton properties
-			can_focus = false;
-			editable = false; // user can't edit the entry directly
-			adjustment = new Adjustment (starting_time, 0, 1440, 30, 300, 0);
-			climb_rate = 0;
-			digits = 0;
-			numeric = false; // so the text can be set
-			wrap = true;
-		}
+    public class TimePicker : SpinButton, Gtk.Buildable {
+    
+        public string format { get; construct; default = _("%l:%M %p"); }
+        
+        public DateTime time { get; protected set; }
+        
+        construct {
+            
+            time = new DateTime.now_local ();
+            int starting_time = time.get_hour () * 60 + 30; // start at this hour : 30
+            set_minutes (starting_time);
+        
+            // SpinButton properties
+            can_focus = false;
+            editable = false; // user can't edit the entry directly
+            adjustment = new Adjustment (starting_time, 0, 1440, 30, 300, 0);
+            climb_rate = 0;
+            digits = 0;
+            numeric = false; // so the text can be set
+            wrap = true;
+        }
 
-		public TimePicker.with_format (string format) {
-			Object (format: format);
-		}
-		
-		protected override bool output () {		
-			set_minutes ((int) this.value);
-			return true;		   
-		}
-		
-		protected virtual void set_minutes (int minutes) {
-		
-			time = time.add_full (0, 0, 0, minutes / 60 - time.get_hour (),
-					minutes % 60 - time.get_minute (), 0);
-			text = time.format (format);
-		}
-		
-	}
+        public TimePicker.with_format (string format) {
+            Object (format: format);
+        }
+        
+        protected override bool output () {        
+            set_minutes ((int) this.value);
+            return true;           
+        }
+        
+        protected virtual void set_minutes (int minutes) {
+        
+            time = time.add_full (0, 0, 0, minutes / 60 - time.get_hour (),
+                    minutes % 60 - time.get_minute (), 0);
+            text = time.format (format);
+        }
+        
+    }
 
 }
 

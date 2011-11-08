@@ -20,26 +20,26 @@ using Gtk;
 using Granite.Services;
 
 namespace Granite.Widgets {
-	
-	public class AppMenu : ToolButtonWithMenu {
-	
-	    public MenuItem about_item;
-	
+    
+    public class AppMenu : ToolButtonWithMenu {
+    
+        public MenuItem about_item;
+    
         public signal void show_about(Gtk.Widget w);
 
-		public AppMenu (Menu menu) {
-		
-			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
-		}
+        public AppMenu (Menu menu) {
+        
+            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+        }
 
-		public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
-		
-			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
-			
-			this.add_items (menu);
-			
-			about_item.activate.connect (() => { show_about(get_toplevel()); });
-		}
+        public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
+        
+            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+            
+            this.add_items (menu);
+            
+            about_item.activate.connect (() => { show_about(get_toplevel()); });
+        }
 
         /**
          * Create a new AppMenu, parameters are unused now.
@@ -48,20 +48,20 @@ namespace Granite.Widgets {
          **/
         public AppMenu.with_urls (Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");
-			base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
         }
-		
-		public void add_items (Menu menu) {
-		    
-			about_item = new MenuItem.with_label (_("About"));
-			
-			if (menu.get_children ().length () > 0)
-				menu.append (new SeparatorMenuItem ());
-			menu.append (about_item);
-		}
-		
-	}
-	
+        
+        public void add_items (Menu menu) {
+            
+            about_item = new MenuItem.with_label (_("About"));
+            
+            if (menu.get_children ().length () > 0)
+                menu.append (new SeparatorMenuItem ());
+            menu.append (about_item);
+        }
+        
+    }
+    
 }
 
 

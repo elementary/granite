@@ -33,7 +33,7 @@ set(LIBS
     ${DEPS_LIBRARIES}
 )
 set(LIB_PATHS
-	${DEPS_LIBRARY_DIRS}
+    ${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
 #VALA stuff
@@ -44,42 +44,42 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-	Application.vala
-	Drawing/Color.vala
-	Drawing/BufferSurface.vala
-	Drawing/Utilities.vala
-	GtkPatch/AboutDialog.vala
-	Services/Settings.vala
-	Services/Logger.vala
-	Services/Paths.vala
-	Services/System.vala
+    Application.vala
+    Drawing/Color.vala
+    Drawing/BufferSurface.vala
+    Drawing/Utilities.vala
+    GtkPatch/AboutDialog.vala
+    Services/Settings.vala
+    Services/Logger.vala
+    Services/Paths.vala
+    Services/System.vala
     Services/Contractor.vala
     Widgets/WrapLabel.vala
-	Widgets/AboutDialog.vala
-	Widgets/ModeButton.vala
-	Widgets/DatePicker.vala
-	Widgets/Entries.vala
-	Widgets/TimePicker.vala
-	Widgets/CollapsiblePaned.vala
+    Widgets/AboutDialog.vala
+    Widgets/ModeButton.vala
+    Widgets/DatePicker.vala
+    Widgets/Entries.vala
+    Widgets/TimePicker.vala
+    Widgets/CollapsiblePaned.vala
     Widgets/StaticNotebook.vala
-	Widgets/CompositedWindow.vala
-	Widgets/AppMenu.vala
-	Widgets/Welcome.vala
-	Widgets/ToolButtonWithMenu.vala
+    Widgets/CompositedWindow.vala
+    Widgets/AppMenu.vala
+    Widgets/Welcome.vala
+    Widgets/ToolButtonWithMenu.vala
     Widgets/PopOver.vala
     Main.vala
-	config.vapi
+    config.vapi
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/GtkPatch/gtkpatch-utils.vapi
 PACKAGES
-	${PKG_DEPS}
-	posix
+    ${PKG_DEPS}
+    posix
 OPTIONS
-	--thread
+    --thread
 GENERATE_VAPI
-	granite
+    granite
 GENERATE_HEADER
-	granite
+    granite
 )
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.vapi DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite.deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
@@ -88,7 +88,7 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION $
 add_library (${PKGNAME} SHARED
     GtkPatch/gtkpatch-utils.c
     Widgets/widgets-utils.c
-	${VALA_C}
+    ${VALA_C}
 )
 target_link_libraries(${PKGNAME} ${LIBS})
 if(BUILD_STATIC MATCHES "Yes")
@@ -102,9 +102,9 @@ SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATIC MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
-	VERSION ${GRANITE_VERSION}
-	SOVERSION ${GRANITE_SOVERSION}
-					   )
+    VERSION ${GRANITE_VERSION}
+    SOVERSION ${GRANITE_SOVERSION}
+                       )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 
 macro(_list_prefix _outvar _listvar _prefix)

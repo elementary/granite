@@ -22,34 +22,34 @@ using Gdk;
 namespace Granite.Widgets {
      
     public class ModeButton : HBox {
-	  
-		public signal void mode_added (int index, Gtk.Widget widget);
-		public signal void mode_removed (int index, Gtk.Widget widget);
-		public signal void mode_changed (Gtk.Widget widget);
-		static CssProvider style_provider;
+      
+        public signal void mode_added (int index, Gtk.Widget widget);
+        public signal void mode_removed (int index, Gtk.Widget widget);
+        public signal void mode_changed (Gtk.Widget widget);
+        static CssProvider style_provider;
  
-		private int _selected = -1;
-		public int selected {
-			get {
-				return _selected;
-			}
-			set {
-				set_active(value);
-			}
-		}
+        private int _selected = -1;
+        public int selected {
+            get {
+                return _selected;
+            }
+            set {
+                set_active(value);
+            }
+        }
  
         public ModeButton () {
         
         
-			if(style_provider == null)
-			{
-			    style_provider = new CssProvider ();
-			    try {
-				    style_provider.load_from_path (Build.RESOURCES_DIR + "/style/ModeButton.css");
-			    } catch (Error e) {
-				    warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
-			    }
-			}
+            if(style_provider == null)
+            {
+                style_provider = new CssProvider ();
+                try {
+                    style_provider.load_from_path (Build.RESOURCES_DIR + "/style/ModeButton.css");
+                } catch (Error e) {
+                    warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+                }
+            }
  
             homogeneous = true;
             spacing = 0;
@@ -68,7 +68,7 @@ namespace Granite.Widgets {
             //button.width_request = 30;
             button.can_focus = false;
             button.get_style_context ().add_class ("modebutton");
-			button.get_style_context ().add_provider (style_provider, 600);
+            button.get_style_context ().add_provider (style_provider, 600);
  
             button.button_press_event.connect (() => {
  
