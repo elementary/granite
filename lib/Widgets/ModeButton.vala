@@ -68,6 +68,7 @@ namespace Granite.Widgets {
             //button.width_request = 30;
             button.can_focus = false;
             button.get_style_context ().add_class ("modebutton");
+            button.get_style_context ().add_class ("raised");
             button.get_style_context ().add_provider (style_provider, 600);
  
             button.button_press_event.connect (() => {
