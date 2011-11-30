@@ -1,0 +1,2584 @@
+/*
+Authors:	elementary web team (khampal, cassidyjames, and more!)
+Year:		2011
+Notice:		You may not use this stylesheet without the elementary web team's
+			permission, except for your personal use only.
+*/
+/*
+Import Fonts
+*/
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Vollkorn);
+@media screen {
+@font-face {
+  font-family: 'URW Gothic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('URW Gothic'), url('../fonts/urw_gothic_l_book.ttf') format('truetype');
+}
+}
+
+/*
+Fun with animations (Not :P)
+*/
+
+/*
+@-webkit-keyframes Notify-OSD {
+	100%{
+		opacity:0;
+	}
+}
+*/
+
+
+/*
+Lets reset it all!
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display:block;
+}
+body {
+	line-height:1;
+}
+ol, ul {
+	list-style:none;
+}
+blockquote, q {
+	quotes:none;
+	padding-left:2em;
+	font-family:"Vollkorn",sans-serif;
+}
+	blockquote p, q p {
+		font-size:14px!important;
+	}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:'';
+	content:none;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+/*
+Main
+*/
+body{
+	background:#E1E1E1 url("http://elementaryos.org/sites/all/themes/elementary/img/noise.png");
+	color:#666;
+	font-size:14px;
+	font-family:'Droid Sans',arial,sans-serif;
+	overflow-y:scroll;
+}
+a{
+	text-decoration:none;
+	color:#08c;
+}
+a:hover{
+	color:#333;
+}
+h1, h1 a{
+	color:#4d4d4d;
+	font-size:32px;
+	font-weight:bold;
+	padding: 0 0 5px;
+	line-height: 32px;
+}
+h2, h2 a{
+	font-size:22px;
+	font-weight:bold;
+	color:#999;
+	margin-bottom:10px;
+}
+h3, h3 a{
+	color:#999;
+	font-size:16px;
+	font-weight:bold;
+	padding: 5px 0;
+}
+h4, h4 a{
+	color: #4D4D4D;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+em, i{
+	font-style:italic;
+}
+strong, b{
+	font-weight:bold;
+}
+pre{
+	background:#F2F2F2;
+	color: #000;
+	border:dashed 1px #CCC;
+	padding:10px;
+	font-family:Lucida Console, "Courier New", monospace;
+}
+table{
+	width:100%;
+	font-size: 9pt;
+}
+thead th{
+	border-bottom:1px solid #E4E4E4;
+}
+hr{
+	height: 1px;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #CCC;
+	clear: both;
+}
+/*
+Pseudos
+*/
+:focus{
+	outline:0;
+}
+/*
+Containers
+*/
+#container{
+	width:940px;
+	margin:0 auto;
+	padding-top:30px;
+	position:relative;
+}
+/*
+For our dear IE users
+*/
+.ie-alert {
+	width:100%;
+	padding:10px 0;
+	background:#FAA;
+	border:solid 1px #FF5656;
+	text-align:center;
+}
+/*
+Global
+*/
+ul.links li {
+	display:inline;
+	list-style-type:none;
+	padding:0;
+}
+/*
+Generic Node Styles
+*/
+.node-unpublished {
+	background-color:#fff4f4;
+	outline:dashed 2px #fcc;
+}
+/*
+Header
+*/
+#logo{
+	font-size:22px;
+	line-height:40px;
+	height:40px;
+	padding-left:42px;
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/logo.png") no-repeat 0 4px;
+	float:left;
+	display:inline-block;
+	margin-left: 5px;
+}
+#logo  span{
+	color:#999;
+	text-shadow:1px 1px 0 #FDFDFD;
+}
+#user-box{
+	float:right;
+	text-align:right;
+	height:40px;
+	line-height:40px;
+	padding-right:10px;
+}
+/*
+New Navigation/Breadcrumbs
+*/
+#ncont {
+	width: 944px;
+	height: 68px;
+	clear: both;
+	margin: 0 0 4px -2px;
+}
+#ncont-l, #ncont-r {
+	width: 11px;
+	height: 68px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/navbreadsprite.png");
+	float: left;
+}
+#ncont-r {
+	background-position: 0 -68px;
+}
+#ncont-c {
+	width: 922px;
+	height: 68px;
+	float: left;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/navbreadsprite.png") 0 -136px;
+}
+#nav-sect {
+	height: 38px;
+	overflow: hidden;
+}
+#bc-sect {
+	height: 30px;
+}
+#nav-sect li{
+	float:left;
+	line-height:42px;
+	padding:0 10px;
+}
+#nav-sect li.first{
+	padding: 0 10px 0 0;
+}
+#nav-sect #nav-search{
+	padding: 2px 0 0 0;
+	float:right;
+	/*width: 190px; commented for granite docs*/
+}
+#nav-sect a{
+	color:#5E5E5E;
+	text-shadow:#F0F0F0 0 1px 0;
+}
+#nav-sect a:hover{
+	color:#333;
+}
+#nav-sect a.active, #nav-c .active-trail a{
+	color:#0088cc;
+}
+#bc-sect {
+	height: 30px;
+}
+.breadcrumb li, .breadcrumb li a{
+	float:left;
+	font-size:12px;
+	line-height:23px;
+	color: #5E5E5E;
+	text-shadow: 0 1px #D2D2D2;
+}
+.breadcrumb li a img{
+	vertical-align:top;
+}
+.breadcrumb li{
+	padding:0 15px 0 5px;
+	max-width: 250px;
+	overflow: hidden;
+	max-height: 24px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/navbarsep.png") right no-repeat;
+}
+.breadcrumb li.last{
+	background: none;
+}
+.breadcrumb li#breadcrumbs_home{
+	padding: 0 10px 0 0;
+}
+.breadcrumb li#breadcrumbs_home img{
+	padding:3px;
+}
+/*
+Search
+*/
+#nav-search .search-left{
+	float:left;
+	height:26px;
+	width:4px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png);
+	margin-top:6px;
+}
+#nav-search .search-right{
+	float:right;
+	height:26px;
+	padding-right:4px;
+	margin-top:6px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png) right no-repeat;
+}
+#nav-search #edit-search-theme-form-1-wrapper{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img//search/entry-center.png) 0 -1px;
+	height:17px;
+	padding:4px 0 5px;
+	display:inline-block;
+	margin-top:1px;
+	float: left;
+}
+#nav-search #edit-search-theme-form-1-wrapper input[name="search_theme_form"]{
+	height:17px;
+	width:160px;
+	padding:0 0 0 22px;
+	border:0;
+	margin:0;
+	background:none;
+	display:block;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img//search/icon-search.png) no-repeat scroll 4px 0 transparent;
+}
+#nav-search #edit-search-theme-form-1-wrapper input[name="search_theme_form"].default-search{
+	font-style:italic;
+	color:#A1A1A1;
+}
+#nav-search{
+	line-height:1;
+}
+#nav-search label{
+	display: none;
+}
+/*
+Searchpage
+*/
+.page-search .content-wrap .search-form #edit-submit{
+	background: none;
+}
+.page-search .content-wrap .search-form #edit-submit input{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/support-page/submit-ask.png") 0 0;
+	width: 105px;
+	height: 26px;
+	line-height: 26px;
+	margin: 0;
+	text-shadow: 0 -1px 0 #276B9E;
+}
+.page-search .content-wrap .search-form #edit-submit input:active{
+	background-position: 0 -26px;
+}
+.page-search .content-wrap .search-form #edit-submit .rightbutton{
+	display: none;
+}
+.page-search .content-wrap .search-form  #edit-keys-wrapper input{
+	background: url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-center.png) repeat-x;
+	height: 26px;
+	float: left;
+	line-height: 26px;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-style: italic;
+	color: #A1A1A1;
+	padding-left: 5px;
+	width: 280px;
+}
+.page-search .content-wrap .search-form  #edit-keys-wrapper {
+	background: url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png) no-repeat;
+	height: 26px;
+	display: inline-block;
+	padding: 0 0 0 4px;
+	margin: 0;
+	border: 0;
+}
+.page-search .content-wrap .search-form .form-item {
+	margin: 0;
+}
+.page-search .content-wrap .search-form .search-advanced .form-item {
+	margin: 1em 0;
+}
+.page-search .content-wrap .search-form {
+	float: right;
+}
+/*
+Sidebar
+*/
+.content-sidebar{
+	width:200px;
+	float:left;
+	position:relative;
+	margin:-3px 7px 0 -3px;
+}
+.content-sidebar.s-right{
+	float:right;
+	position:relative;
+	margin:-3px -3px 0 7px;
+	width:250px;
+	clear: right;
+}
+.content-sidebar ul, .content-sidebar li{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.content-sidebar ul.menu li{
+	margin-left:-4px;
+	position:relative;
+	z-index:2;
+}
+.content-sidebar ul ul li{
+	margin-left:0!important;
+	padding-left:0!important;
+}
+.content-sidebar li a.active, .content-sidebar li a:hover, .content-sidebar li a.active:hover {
+	color:#fff;
+	text-shadow:#107088 1px 0 0;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/sidebar-selector.png) repeat-x;;
+}
+.content-sidebar.s-right li a {
+	margin-left: -17px;
+	position: relative;
+	z-index: 4;
+	padding: 0 4px 0 17px !important;
+}
+.content-sidebar.s-right li a:hover .blog-comment-count {
+	color: #FFF;
+}
+.content-sidebar.s-right li a.active {
+	color: #FFF;
+}
+.content-sidebar.s-right li {
+	padding-left: 13px;
+}
+.content-sidebar li a {
+	height: 21px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden
+}
+.content-sidebar a{
+	color:#fff;
+	font-size:12px;
+	font-weight:bold;
+	line-height:21px;
+	min-height:21px;
+	display:inline-block;
+}
+.content-sidebar.s-right a{
+	font-weight: normal;
+}
+.content-sidebar ul a{
+	padding-left:13px;
+	width:168px;
+}
+.content-sidebar ul ul a{
+	color:#fff;
+	text-shadow:none;
+	display:inline-block;
+	padding-left:13px;
+}
+.content-sidebar ul ul ul a{
+	padding-left:26px;
+	width:155px;
+	font-weight:normal;
+}
+.content-sidebar ul ul ul ul a{
+	padding-left:39px;
+	width:142px;
+}
+.content-sidebar ul ul ul ul ul a{
+	padding-left:52px;
+	width:129px;
+}
+div.content-sidebar div.content-sidebar_center{
+	background:#303030;
+	width:174px;
+	margin:13px;
+}
+.content-sidebar.s-right  div.content-sidebar_center{
+	width:224px;
+	padding: 2px 0;
+}
+div.content-sidebar div.content-sidebar_top_end,
+div.content-sidebar div.content-sidebar_bottom_end,
+div.content-sidebar div.content-sidebar_bottom_start,
+div.content-sidebar div.content-sidebar_top_start
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content-sidebar/corners.png);
+	position:absolute;
+	height:13px;
+	width:13px;
+}
+div.content-sidebar div.content-sidebar_bottom_middle,
+div.content-sidebar div.content-sidebar_top_middle
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content-sidebar/topbot.png);
+	position:absolute;
+	height:13px;
+}
+div.content-sidebar div.content-sidebar_right,
+div.content-sidebar div.content-sidebar_left
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content-sidebar/leftright.png);
+	position:absolute;
+	width:13px;
+}
+div.content-sidebar div.content-sidebar_top_start{
+	top:0;
+	left:0;
+}
+div.content-sidebar div.content-sidebar_top_middle{
+	top:0;
+	left:13px;
+	right:13px;
+}
+div.content-sidebar div.content-sidebar_top_end{
+	top:0;
+	right:0;
+	background-position:13px 0;
+}
+div.content-sidebar div.content-sidebar_left{
+	top:13px;
+	bottom:13px;
+	left:0;
+}
+div.content-sidebar div.content-sidebar_right{
+	top:13px;
+	bottom:13px;
+	right:0;
+	z-index:1;
+	background-position:13px 0;
+}
+div.content-sidebar div.content-sidebar_bottom_start{
+	bottom:0;
+	left:0;
+	background-position:0 13px;
+}
+div.content-sidebar div.content-sidebar_bottom_middle{
+	bottom:0;
+	left:13px;
+	right:13px;
+	background-position:0 13px;
+}
+div.content-sidebar div.content-sidebar_bottom_end{
+	bottom:0;
+	right:0;
+	background-position:13px 13px;
+}
+#content_moderation .info{
+	background: none;
+	color: #FFF;
+	margin: 10px 5px;
+	font-size: 10pt;
+	padding: 0;
+}
+#content_moderation h4{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/sidebar-blog-heading.png");
+	height: 21px;
+	line-height: 21px;
+	color: white;
+	text-shadow: #107088 1px 0 0;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: none;
+	margin-left: -4px;
+	padding-left: 13px;
+	width: 168px;
+	position: relative;
+	z-index: 9;
+}
+#content_moderation .info .details {
+	color: #FFF;
+	font-size: .8em;
+	line-height: .9em;
+	margin: 0 0 0 3px;
+}
+#content_moderation .info a {
+	color: #FFF;
+	height: auto;
+	min-height: 0
+}
+.t_viewicon {
+	background-image: url("http://elementaryos.org/sites/all/themes/elementary/img/rev-view.png");
+}
+.t_changestateicon {
+	background-image: url("http://elementaryos.org/sites/all/themes/elementary/img/rev-next.png");
+}
+/*
+Content
+*/
+.content-wrap{
+	width:940px;
+	position:relative;
+	padding:5px 0;
+}
+.content-wrap.content-small{
+	width:733px;
+	float:right;
+}
+.content-wrap.content-small-l{
+	width:683px;
+	float:left;
+}
+.content-wrap p, .content-wrap li{
+	padding:5px 0;
+	line-height:19px;
+	font-size:13px;
+}
+.content-wrap li{
+	padding:2px 0;
+}
+.content-wrap.content-small .content_center{
+	width:633px;
+}
+.content-wrap.content-small-l .content_center{
+	width:583px;
+}
+.content_center{
+	width:840px;
+	padding:40px;
+	background:#fafafa;
+	margin:0 10px;
+	display:inline-block;
+	font-size:13px;
+	line-height:17px;
+}
+.content_center ul, .content_center ol {
+	padding-left:30px;
+}
+.content_center ul li, .content_center ul{
+	list-style:disc;
+}
+.content_center ol li, .content_center oll{
+	list-style:decimal;
+}
+.content_center table li{
+	list-style-type:none;
+}
+div#content{
+	margin:10px 0;
+}
+div.content-wrap div.content_top_end,
+div.content-wrap div.content_bottom_end,
+div.content-wrap div.content_bottom_start,
+div.content-wrap div.content_top_start
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content/corners.png);
+	position:absolute;
+	height:10px;
+	width:10px;
+}
+div.content-wrap div.content_bottom_middle,
+div.content-wrap div.content_top_middle
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content/topbot.png);
+	position:absolute;
+	height:10px;
+}
+div.content-wrap div.content_right,
+div.content-wrap div.content_left
+{
+	background-image:url(http://elementaryos.org/sites/all/themes/elementary/img/content/leftright.png);
+	position:absolute;
+	width:10px;
+}
+div.content-wrap{
+	position:relative;
+	margin-bottom:10px;
+}
+div.content-wrap div.content_top_start{
+	top:0;
+	left:0;
+}
+div.content-wrap div.content_top_middle{
+	top:0;
+	left:10px;
+	right:10px;
+}
+div.content-wrap div.content_top_end{
+	top:0;
+	right:0;
+	background-position:10px 0;
+}
+div.content-wrap div.content_left{
+	top:10px;
+	bottom:10px;
+	left:0;
+}
+div.content-wrap div.content_center div.content_container{
+	margin:0;
+	padding-top:40px;
+	padding-bottom:40px;
+	background-color:#fafafa;
+}
+div.content-wrap div.content_center div.content_container.app{
+	text-align: center;
+}
+#discover-content-start {
+	text-align: left;
+}
+div.content-wrap div.content_right{
+	top:10px;
+	bottom:10px;
+	right:0;
+	z-index:1;
+	background-position:10px 0;
+}
+div.content-wrap div.content_bottom_start{
+	bottom:0;
+	left:0;
+	background-position:0 10px;
+}
+div.content-wrap div.content_bottom_middle{
+	bottom:0;
+	left:10px;
+	right:10px;
+	background-position:0 10px;
+}
+div.content-wrap div.content_bottom_end{
+	bottom:0;
+	right:0;
+	background-position:10px 10px;
+}
+/*
+View Tables
+*/
+table.views-table{
+	width:100%;
+}
+/*
+Journal
+*/
+.node-type-journal #comments .box h2 {
+	clear: both;
+	display: none;
+}
+.view-blog p{
+	text-align:justify;
+}
+.content_center .view-blog .view-content .views-row{
+	margin-bottom:36px;
+}
+.view-blog h2{
+	font-size:20px;
+	margin:.2em 0;
+	display: inline-block;
+}
+.view-blog img{
+	max-width:583px;
+}
+.content-sidebar.s-right li a{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	width:210px;
+}
+.content-sidebar.s-right iframe{
+	background: #FAFAFA;
+}
+span.submitted {
+	color: #999;
+	display: inline-block;
+}
+span.submitted a{
+	color: #777;
+}
+span.submitted a:hover{
+	text-decoration: underline;
+}
+/* Reset each ul a from previous */
+.content-sidebar.s-right .view-blog  ul a, .content-sidebar.s-right .view-blog  ul ul a, .content-sidebar.s-right .view-blog  ul ul ul a{
+	padding:0;
+}
+.content-sidebar.s-right .content {
+	margin-bottom:10px;
+}
+.content-sidebar.s-right .view-blog .views-field-comment-count{
+	float:none;
+	margin-right:0;
+}
+.content-sidebar.s-right .view-blog li{
+	margin:0;
+	list-style:none;
+}
+.content-sidebar.s-right h2{
+	font-size:13px;
+	font-weight:bold;
+	padding-left:13px;
+	line-height:21px;
+	/*width:218px;
+	height:21px;
+	background-image:url(../img/sidebar-blog-heading.png);
+	text-shadow:#107088 1px 0 0;
+	margin-left:-4px;
+	position:relative;
+	z-index:2;
+	margin-left: -4px;*/
+	color:#FFF;
+	margin:0;
+}
+.blog .view-blog .views-row{
+	margin-bottom: 30px;
+}
+.view-blog .item-list .views-row{
+	margin-bottom:0!important;
+	padding-left:13px;
+}
+#block-views-blog-block_1 .view-blog .item-list .views-row{
+	padding-left:0;
+}
+.view-blog .views-field-comment-count{
+	float:left;
+	margin-right:10px;
+	font-style: italic;
+}
+.views-field-view-node{
+	float: right;
+}
+.blog-comment-count{
+	font-size:12px;
+	color:#72ccff;
+	font-weight:bold;
+	display:block;
+	float:left;
+	width:20px;
+	text-align:right;
+	margin-right:6px;
+}
+
+body.node-type-journal.sidebar-right div.content img,
+body.node-type-book.sidebar-left div.content img,
+body.node-type-internal.sidebar-left div.content img{
+	max-width:575px;
+	margin:2em auto;
+	text-align:justify;
+	display:block;
+}
+
+body.node-type-journal.sidebar-right pre,
+body.node-type-book.sidebar-left pre,
+body.node-type-internal.sidebar-left pre {
+	overflow-x:auto;
+	width:613px;
+}
+
+body.node-type-journal.sidebar-right div.content p img {
+	border:4px solid #fff;
+	box-shadow:0 0 8px rgba(0,0,0,.75);
+}
+
+body.node-type-journal.sidebar-right div.content p img.borderless,
+body.node-type-book.sidebar-left div.content img.borderless,
+body.node-type-internal.sidebar-left div.content img.borderless{
+	border:none;
+	box-shadow:none;
+	max-width:583px;
+}
+
+body.node-type-journal .terms a {
+	background:#3298da;
+	height:23px;
+	display:block;
+	color:#fff;
+	font-weight:bold;
+	width:auto;
+	line-height:23px;
+	opacity:0.75;
+	-webkit-transition:opacity;
+	-webkit-transition-timing-function:ease-out;
+	-webkit-transition-duration:500ms;
+	-moz-transition:opacity;
+	-moz-transition-timing-function:ease-out;
+	-moz-transition-duration:500ms;
+}
+body.node-type-journal .terms a:hover {
+	opacity:1;
+}
+body.node-type-journal .terms a:before {
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/tag.png");
+	width:13px;
+	height:23px;
+	left:-13px;
+	position:relative;
+	display:block;
+	content:" ";
+	float:left;
+}
+body.node-type-journal .terms a:after {
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/tag.png") -13px 0;
+	width:4px;
+	height:23px;
+	right:-4px;
+	position:relative;
+	display:block;
+	content:" ";
+	float:right;
+}
+body.node-type-journal .links .comment_add a{
+	display:block;
+	margin-top:5px;
+	background:#999;
+	opacity:.75;
+	color:#fff;
+	height:23px;
+	line-height:23px;
+	border-radius:3px;
+	-moz-border-radius:5px;
+	padding:0 5px;
+	-webkit-transition:opacity;
+	-webkit-transition-timing-function:ease-out;
+	-webkit-transition-duration:500ms;
+	-moz-transition:opacity;
+	-moz-transition-timing-function:ease-out;
+	-moz-transition-duration:500ms;
+}
+body.node-type-journal .links .comment_add a:hover{
+	opacity: 1;
+}
+body.node-type-journal .terms li {
+	float: left;
+	margin: 5px 10px;
+}
+body.node-type-journal .content p {
+	text-align:justify;
+}
+
+div#addthis_1{
+    float:left;
+}
+
+div#addthis_2{
+    padding-bottom: 10px;
+    float:left;
+    width:242px;
+	margin:10px 0;
+}
+
+/*
+Footer
+*/
+#footer-message, #footer-message a{
+	text-align:center;
+	color:#999;
+	font-size:10px;
+	height:10px;
+	width:940px;
+	line-height:10px;
+	margin:0 auto 10px;
+	clear:both;
+}
+#footer-message span{
+	display:inline-block;
+}
+/*
+System Tabs Overrides
+*/
+ul.tabs.primary li a{
+	background:none;
+	font-size:7pt;
+	border-left:solid 1px #DDD;
+	color:#001D33;
+	display:inline-block;
+	margin:0;
+	border:0;
+	padding:9px 10px 7px;
+}
+ul.tabs.primary li{
+	display: inline;
+	padding: 0;
+	line-height: 1;
+}
+ul.tabs.primary {
+	position:absolute;
+	right:5px;
+	top:4px;
+	padding:0 10px;
+	margin:0;
+	background:#eee;
+	background:-webkit-gradient( linear, left bottom, left top, color-stop(0, #DEDEDE), color-stop(1, #FEFEFE) );
+	background:-moz-linear-gradient( center bottom, #DEDEDE 0%, #FEFEFE 100% );
+	border-radius:0 3px;
+	-moz-border-radius:0 3px;
+	border-bottom:solid 1px #CCC;
+	z-index:2;
+	text-shadow:#fff 0 1px 0px;
+	border-left:solid 1px #ccc;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+ul.tabs.primary li a:hover{
+	color: #08C;
+}
+ul.tabs.primary li.active a:hover{
+	color: #666;
+}
+ul.primary li.active a{
+	background: none !important;
+	border: 0;
+	color: #666;
+}
+/*
+books (Overrides)
+*/
+.book-navigation .page-links{
+	border-top:solid 1px #d5d5d5;
+	border-bottom:0!important;
+	width:690px;
+	margin-left:-28px;
+	padding:15px 0 5px;
+	margin-top:20px;
+}
+.book-navigation  ul.menu{
+	display:none;
+}
+.book-navigation .page-links a{
+	font-size:12px;
+	font-weight:bold;
+	color:#999;
+}
+.book-navigation .page-links a:hover{
+	color:#555;
+}
+.node-type-internal ul.links.inline, .node-type-book ul.links.inline{
+	position:absolute;
+	top:45px;
+	right:40px;
+	text-align:right;
+}
+.node-type-book h4, .node-type-internal h4 {
+	padding-top: 10px;
+}
+.node-type-internal  .content_center .clear-block, .node-type-book .content_center .clear-block {
+	float: left;
+	clear: both;
+}
+.clear-block::after {
+	display: none;
+}
+.page-admin .clear-block::after {
+	display: block;
+}
+.node-type-internal ul.links.inline .book_printer a,
+.node-type-book ul.links.inline .book_printer a{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/book-print.png) no-repeat;
+	height:16px;
+	width:0;
+	overflow:hidden;
+	padding-left:16px;
+	display:inline-block;
+}
+.node-type-internal ul.links.inline li.book_add_child  a,
+.node-type-book ul.links.inline li.book_add_child  a{
+	color:#999;
+	vertical-align:top;
+	font-size:8pt;
+}
+.node-type-internal .content-wrap .content ul,
+.node-type-book .content-wrap .content ul,
+.node-type-internal .content-wrap .content ol,
+.node-type-book .content-wrap .content ol{
+	padding: 0 15px;
+}
+.node-type-internal .content-wrap .content ul li,
+.node-type-book .content-wrap .content ul li{
+	list-style: disc;
+}
+.node-type-internal .content-wrap .content ol li,
+.node-type-book .content-wrap .content ol li{
+	list-style: decimal;
+	padding: 0 0 10px 0;
+}
+.node-type-internal .content_center, .node-type-book .content_center{
+	padding-bottom: 45px;
+}
+.node-type-book .content_center .page-links, .node-type-internal .content_center .page-links {
+	position: absolute;
+	bottom: 15px;
+}
+/*
+Add Table
+*/
+.node-type-list dt{
+	margin-top:10px;
+}
+.node-type-list dt  a{
+	font-size:15px;
+}
+.node-type-list dd{
+	font-size:13px;
+	padding:5px 0;
+}
+/*
+Answers & Think Tank
+*/
+.support-comment{
+	font-style:italic;
+	float:left;
+	height:26px;
+	line-height:26px;
+	color:#999;
+	margin: 10px 0 0;
+	width:200px;
+}
+body .action-button.saindq{
+	margin: 5px 0 0 0;
+}
+.support-answer .support-answer-mid .support-answer-mid-arrow{
+	width:24px;
+	height:24px;
+	float:left;
+	margin:1px 3px 1px 0;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/arrow.png);
+}
+.block-width-half{
+	float:left;
+	width:573px;
+	height:auto;
+	display:none;
+}
+.view-id-Questions .views-row{
+	display:inline-block;
+	margin-bottom:10px;
+	margin-left:0;
+}
+.node-type-journal .view-id-Questions .views-row, .journal .view-id-Questions .views-row{
+	margin:0;
+}
+.support-vote{
+	float:left;
+	width:60px;
+	height:80px;
+}
+.support-q-info{
+	float:left;
+	width: 493px;
+	margin-left:20px;
+	position:relative;
+}
+.node-type-question #comment-form-content{
+	display: none;
+}
+.support-q-info ul.links.inline {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#comments .support-q-info{
+	clear: both;
+	margin: 5px 0 5px 94px;
+}
+#comments .support-q-info .vud-widget-elementupdown{
+	position: relative;
+	left: -94px;
+	margin-right: -73px;
+}
+.support-q-info h2{
+	font-size:16px;
+}
+.support-corners{
+	position:absolute;
+	height:9px;
+	width:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-corners.png);
+}
+.support-topbot{
+	position:absolute;
+	height:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-topbot.png);
+	left:9px;
+	right:9px;
+}
+.support-leftright{
+	position:absolute;
+	width:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-leftright.png);
+	top:9px;
+	bottom:9px;
+}
+.support-top-left{
+	top:0;
+	left:0;
+}
+.support-top-right{
+	top:0;
+	right:0;
+	background-position:9px 0;
+}
+.support-bot-left{
+	bottom:0;
+	left:0;
+	background-position:0 9px;
+}
+.support-bot-right{
+	bottom:0;
+	right:0;
+	background-position:9px 9px;
+}
+.support-center{
+	margin:9px;
+	background:#F8F8F8;
+	padding:0 5px;
+	display:inline-block;
+	width: 465px;
+	overflow: hidden;
+}
+.support-top{
+	top:0;
+}
+.support-left{
+	right:0;
+	background-position:9px 0;
+}
+.support-bot{
+	bottom:0;
+	background-position:0 9px;
+}
+.support-right{
+	left:0;
+}
+.s-button-container{
+	width:298px;
+	height:26px;
+	margin:0 auto 15px;
+	padding:0 271px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/divider.png) repeat-x 0 12px;
+	margin-top:20px;
+}
+.think-tank .s-button-container{
+	width: 396px;
+	padding: 0 222px;
+}
+.s-button{
+	width:100px;
+	height:26px;
+	float:left;
+	text-align:center;
+	cursor:pointer;
+	color:#333;
+	text-shadow:0 1px 0 #fff;
+}
+.s-negmargin{
+	margin:0 -1px;
+}
+.s-question-block{
+	position:absolute;
+	right:50px;
+	top:47px;
+}
+.s-center,
+.s-straight-left,
+.s-straight-right,
+.s-curved-left,
+.s-curved-right{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/s-button-sprite.png);
+}
+.s-center{
+	background-position:0 52px;
+	width:92px;
+	height:26px;
+	line-height:26px;
+	float:left;
+}
+.pressed .s-center,.s-button:active .s-center{
+	background-position:0 26px;
+}
+.s-straight-left{
+	background-position:12px 0;
+	width:4px;
+	height:26px;
+	float:left;
+}
+.pressed .s-straight-left,.s-button:active .s-straight-left{
+	background-position:12px 78px;
+}
+.s-straight-right{
+	background-position:8px 0;
+	width:4px;
+	height:26px;
+	float:left;
+}
+.pressed .s-straight-right,.s-button:active .s-straight-right{
+	background-position:8px 78px;
+}
+.s-curved-left{
+	width:4px;
+	height:26px;
+	float:left;
+}
+.pressed .s-curved-left,.s-button:active .s-curved-left{
+	background-position:0 78px;
+}
+.s-curved-right{
+	background-position:4px 0;
+	width:4px;
+	height:26px;
+	float:left;
+}
+.pressed .s-curved-right,.s-button:active .s-curved-right{
+	background-position:4px 78px;
+}
+.support-date{
+	position:absolute;
+	top:7px;
+	right:15px;
+	color:#319ED5;
+	font-size:10px;
+}
+.support-date em{
+	font-style:normal;
+}
+.s-question-block form{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png) no-repeat;
+	height:26px;
+	display:inline-block;
+	padding:0 0 0 4px;
+	margin:0;
+	border:0;
+	clear: both;
+	float: right;
+}
+.s-question-block input[type=text]{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/search/entry-center.png) repeat-x;
+	height:26px;
+	float:left;
+	line-height:26px;
+	display:inline-block;
+	padding:0;
+	margin:0;
+	border:0;
+	font-style:italic;
+	color:#A1A1A1;
+	padding-left:5px;
+	width:280px;
+}
+.s-question-block input[type=submit]{
+	height:26px;
+	line-height:26px;
+	display:inline-block;
+	padding:0;
+	margin:0;
+	border:0;
+	color:#fff;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/submit-ask.png) no-repeat;
+	width:105px;
+	cursor:pointer;
+	text-shadow:0 -1px 0 #276B9E;
+}
+.s-question-block input[type=submit]:active{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/submit-ask.png) 0 -26px no-repeat;
+}
+.support-body, .support-body p{
+	display:inline-block;
+	width:465px!important;
+}
+.support-body img{
+	max-width:362px;
+}
+.unitalic{
+	font-style:normal!important;
+	color:#666!important;
+}
+.question hr {
+	margin: 10px 0;
+	clear: both;
+}
+.question .support-date{
+	float: right;
+	color:#319ED5;
+	font-size:10px;
+	right: 50px;
+	top: 150px;
+}
+.question .support-asked-by{
+	font-style:italic;
+	font-size:12px;
+	color:#808080;
+	clear:both;
+	float:left;
+	margin-top: 10px;
+}
+.question .support-asked-by a{
+	color:#808080;
+}
+.question h4{
+	width: 89%;
+}
+.support-q-info h4,
+.support-q-info h4 a {
+	width: 370px;
+	margin-bottom: 0;
+}
+.question .vud-widget-elementupdown{
+	float:left;
+	margin-bottom:10px;
+}
+.question .non-vote-cont {
+	float:left;
+	margin-left:20px;
+	width:756px;
+}
+ .question .field-field-status{
+	float:right;
+	border:solid 1px #ccc;
+	border-radius:3px;
+	padding:5px;
+ }
+.s-question-block .stat-box {
+	font-size: 16px;
+	float: right;
+	clear: both;
+	padding: 0 0 10px;
+	color: #999;
+ }
+ .node-type-question #comments .box h2, .node-type-question #comments .box h2 a {
+	/*font-weight: normal;
+	font-size: 10pt;
+	color: #666;
+	margin-top: 10px;*/
+	display: none;
+}
+.comment-info {
+	margin-top: 10px;
+	font-style: italic;
+	clear: both;
+}
+.answer-empty {
+	margin-bottom: 10px;
+}
+.question-title-block hr{
+	margin: 20px 0;
+}
+.answer-ad {
+	margin: 0 auto;
+	text-align: center;
+	width: 728px;
+	height: 90px;
+}
+/*
+Misc
+*/
+.bltabs ul.tabs.primary {
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+	top: auto;
+	border-radius: 5px 5px 0 0;
+	background: rgba(0, 0, 0, 0.8);
+	border: solid 1px #FFF;
+	border-bottom: 0;
+}
+.bltabs  ul.tabs.primary li a {
+	color: white;
+	text-shadow: none;
+}
+.item-list ul {
+	padding:0;
+}
+/*
+.clear-block ul{
+	padding:0;
+}
+.clear-block ul, .clear-block  li{
+	list-style:none;
+}*/
+.clear-block .meta{
+	width:341px;
+	float:left;
+	padding-bottom:10px;
+}
+.node-type-journal .clear-block .meta{
+	margin:10px 0;
+}
+.clear-block .links{
+	float:right;
+}
+.clear-block ul.links, .clear-block .meta .meta{
+	float:left;
+}
+.clear-block ul li.comment_add{
+	float:right;
+}
+span.down-arrow{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/down-arrow.png) right no-repeat;
+	padding-right:10px;
+	cursor:pointer;
+	display:inline-block;
+	float:left;
+}
+ul.down-arrow{
+	position:absolute;
+	z-index:999;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/usermenu-topbot.png) no-repeat 0 -15px;
+	width:122px;
+	display:none;
+	color:#fff;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	font-size:12px;
+	font-weight:bold;
+	text-align:left;
+	padding-top:22px;
+	right:0;
+	top:60px;
+	float:right;
+}
+ul.down-arrow.dalogin{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/loginmenu-topbot.png) no-repeat 0 -15px;
+	width:142px;
+}
+ul.down-arrow .form-item label{
+	padding: 0;
+}
+ul.down-arrow li{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/usermenu.png) repeat-y;
+	padding:0 8px;
+	width:116px;
+	height:21px;
+	line-height:1;
+}
+ul.down-arrow.dalogin li{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/loginmenu.png) repeat-y;
+	padding:0 20px;
+	height:auto;
+	line-height:200%;
+	width: 156px;
+	overflow: hidden;
+}
+ul.down-arrow.dalogin li .form-item{
+	margin: 0 0 10px 0;
+	width: 102px;
+	text-align: center;
+}
+ul.down-arrow.dalogin li .form-item .description{
+	display:none;
+}
+ul.down-arrow .down-arrow-bottom{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/usermenu-topbot.png);
+	width:122px;
+	height:13px;
+}
+ul.down-arrow.dalogin .down-arrow-bottom{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/loginmenu-topbot.png);
+	width:102px;
+	height:13px;
+}
+ul.down-arrow.dalogin input{
+	width:94px;
+	border:0;
+	margin: 0 auto;
+}
+ul.down-arrow a{
+	color:#fff;
+	display:inline-block;
+	height:21px;
+	width:94px;
+	padding-left:12px;
+	line-height:21px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+ul.down-arrow a:hover{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/sidebar-selector.png) repeat-x;
+	text-shadow:#107088 1px 0 0;
+}
+.stretch-down{
+	float:left;
+}
+html.js fieldset.collapsible{
+	margin:10px 0;
+}
+/*
+Tables
+*/
+tr.even, tr.odd{
+	border-bottom:1px solid #E4E4E4;
+	color:#888;
+}
+tr.even.selected td, tr.odd.selected td{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/table-select-grad.png) repeat-x #D3D3D3;
+	text-shadow:0 1px 0 #fff;
+	border-bottom: #CCC solid 1px;
+}
+tr.odd{
+	background:#FAFAFA;
+}
+tr.even{
+	background:#F0F0F0;
+}
+tr.even td, tr.odd  td{
+	padding: 20px 10px;
+}
+.page-admin tr.even td, .page-admin tr.odd  td{
+	padding:20px;
+}
+.page-admin td.description {
+	max-width: 300px;
+}
+tr.even a, tr.odd a{
+	color:#585858;
+}
+tr.even a, tr.odd .privatemsg-list-subject a{
+}
+td.active{
+	background:none;
+}
+/*
+Webdev
+*/
+.webdev{
+	width:100%;
+	position:fixed;
+	background:#000;
+	opacity:0.9;
+	color:#fff;
+	right:0;
+	left:0;
+	bottom:0;
+	text-align:center;
+	padding:5px 0;
+	font-size:16px;
+	z-index:99;
+}
+.webdev a.close{
+	position:absolute;
+	left:6px;
+	font-weight:bold;
+}
+/*
+Advert Test
+*/
+.supportadvert{
+	float:right;
+	clear: none;
+}
+/*
+Private Messaging
+*/
+.pmsg .pmsg-q-info{
+	float:left;
+	width:390px;
+	margin:0 10px 10px;
+	position:relative;
+}
+.pmsg .pmsg-corners{
+	position:absolute;
+	height:9px;
+	width:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-corners.png);
+}
+.pmsg .pmsg-topbot{
+	position:absolute;
+	height:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-topbot.png);
+	left:9px;
+	right:9px;
+}
+.pmsg .pmsg-leftright{
+	position:absolute;
+	width:9px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/support-page/question-leftright.png);
+	top:9px;
+	bottom:9px;
+}
+.pmsg .pmsg-top-left{
+	top:0;
+	left:0;
+}
+.pmsg .pmsg-top-right{
+	top:0;
+	right:0;
+	background-position:9px 0;
+}
+.pmsg .pmsg-bot-left{
+	bottom:0;
+	left:0;
+	background-position:0 9px;
+}
+.pmsg .pmsg-bot-right{
+	bottom:0;
+	right:0;
+	background-position:9px 9px;
+}
+.pmsg .pmsg-center{
+	margin:9px;
+	background:#F8F8F8;
+	padding:0 5px;
+	display:inline-block;
+}
+.pmsg .pmsg-top{
+	top:0;
+}
+.pmsg .pmsg-left{
+	right:0;
+	background-position:9px 0;
+}
+.pmsg .pmsg-bot{
+	bottom:0;
+	background-position:0 9px;
+}
+.pmsg .pmsg-right{
+	left:0;
+}
+.pmsg .pmsg-date{
+	position:absolute;
+	top:7px;
+	right:15px;
+	color:#319ED5;
+	font-size:10px;
+}
+.pmsg .pmsg-date em{
+	font-style:normal;
+}
+.pmsg-body, .pmsg-body p{
+	display:inline-block;
+	width:362px!important;
+}
+.privatemsg-box-fb .avatar-fb{
+	float:left;
+}
+.privatemsg-box-fb{
+	margin: 0 auto;
+	width: /*566px*/ 600px;
+	
+}
+.privatemsg-box-fb.pmsg-self .avatar-fb, .privatemsg-box-fb.pmsg-self .pmsg-q-info{
+	float:right;
+}
+.message-participants{
+	border-bottom:0!important;
+	margin:0 0 10px!important;
+}
+.privatemsg-view-pager{
+	margin:20px 0;
+	padding-left:0;
+	width:300px;
+}
+/*
+table.privatemsg-list {
+	width: 325px;
+}
+*/
+.avatar-fb{
+	width:68px;
+	float:left;
+	text-align:right;
+}
+.privatemsg-box-fb .picture{
+	float:right;
+	padding:0 0 0 0;
+	clear:both;
+}
+.privatemsg-box-fb.pmsg-self .picture{
+	float:left;
+}
+.pmsg ul.message-actions, .pmsg ul.message-actions li{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.pmsg .pmsg-name a, .support-name a{
+	color:#999;
+	font-size:14px;
+	font-weight:bold;
+}
+.pmsg ul.message-actions{
+	position:absolute;
+	bottom:8px;
+	right:7px;
+}
+.pmsg ul.message-actions a, .action-button {
+	color: #4D4D4D;
+	font-size: 12px;
+	display: inline-block;
+	height: 26px;
+	width: 80px;
+	background: url(http://elementaryos.org/sites/all/themes/elementary/img//buttons-flat.png) no-repeat;
+	line-height: 26px;
+	text-align: center;
+}
+.action-button img {
+	float: left;
+	position: relative;
+	left: 5px;
+}
+.pmsg ul.message-actions a:active, a.action-button:active {
+	background-position: 0 -26px;
+}
+.action-button{
+	float: right;
+	position: relative;
+	right: -5px;
+	margin: 10px 0 0 3px;
+}
+.message-body{
+	width:360px;
+	padding-bottom:20px;
+}
+.message-indicator{
+	width:24px;
+	height:23px;
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/messages.png);
+	float:left;
+	margin-top:9px;
+	margin-right:3px;
+	padding-top:1px; /* line height fix */
+}
+.message-indicator.message-new{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/messages-new.png);
+	color:#fff;
+	font-size:8pt;
+	line-height:21px;
+	text-align:center;
+	font-weight:bold;
+}
+.message-padding-expand{
+	width:1px;
+	height:20px;
+	clear:both;
+}
+.pmsg-newnew, .s-newnew{
+	background:url(http://elementaryos.org/sites/all/themes/elementary/img/new.png);
+	width:40px;
+	height:40px;
+	z-index:9;
+	bottom:5px;
+	left:4px;
+	position:absolute;
+}
+.page-messages form .leftbutton {
+	float:right;
+}
+/*
+Text Area / Form
+*/
+.resizable-textarea{
+	width:100%;
+}
+.resizable-textarea span#cke_edit-body{
+	width:auto!important;
+}
+.form-item label{
+	padding-bottom:10px;
+	font-weight: normal;
+}
+/*
+Forms
+*/
+
+.button.leftbutton:active {
+	background-position: 0 -26px;
+}
+.button:active .rightbutton {
+	background-position: -196px -26px;
+}
+#edit-submit.leftbutton:active {
+	background-position: 0 -78px;
+}
+#edit-submit:active .rightbutton {
+	background-position: -196px -78px;
+}
+
+.button input.form-submit{
+	height: 26px;
+	line-height: 26px;
+	font-size: 12px;
+	text-shadow: 0px 1px 0px #FFF;
+	min-width: 80px;
+	cursor: pointer;
+	border: 0;
+	padding: 0 10px 4px;
+	background: none;
+	float: left;
+	margin: 0 -4px 0 0 !important;
+}
+.button.leftbutton {
+	background: url(http://elementaryos.org/sites/all/themes/elementary/img/basic-sprite-button.png);
+	display: inline-block;
+}
+.button div.rightbutton {
+	background: #FAFAFA url(http://elementaryos.org/sites/all/themes/elementary/img/basic-sprite-button.png) -196px 0;
+	display: inline-block;
+	float: right;
+	width: 4px;
+	height: 26px;
+	cursor: pointer;
+}
+/**/
+#nav-search .leftbutton {
+	display: none;
+}
+/**/
+#edit-submit.leftbutton {
+	background-position: 0 -52px;
+}
+#edit-submit .rightbutton {
+	background-position: -196px -52px;
+}
+.form-submit#edit-submit{
+	color: #FFF;
+	text-shadow: 0 -1px 0 #276B9E;
+}
+.form-submit:active{
+	background-position: 0 -26px;
+}
+.form-submit#edit-submit:active{
+	background-position: -100px -26px;
+}
+input[type="text"], input[type="password"], select{
+	height: 26px;
+	border: 1px #CCC solid;
+	background: #FFF;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+input[type="text"], input[type="password"] {
+	padding: 0 0 0 10px;
+}
+html.js fieldset.collapsible legend a{
+	color: #999;
+	font-style: italic;
+}
+.marker, .form-required{
+	color: #08C;
+}
+dl.multiselect .form-item{
+	height: 26px;
+}
+#user-admin-buttons{
+	clear: both;
+}
+.container-inline{
+	margin: 5px 0;
+}
+.search-right .container-inline{
+	margin: 0;
+}
+html.js input.form-autocomplete{
+background-position: 100% 6px;
+}
+/*
+Title
+*/
+.title-icon-block{
+	padding-left:75px;
+	height:64px;
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/help-info.png") no-repeat 0 -5px;
+}
+.answers .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/help-contents.png") no-repeat 0 -5px;
+}
+.developers .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/applications-development.png") no-repeat;
+}
+.support .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/application-community.png") no-repeat;
+}
+.get-involved .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/applications-other.png") no-repeat;
+}
+.live-support .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/applications-internet.png") no-repeat;
+}
+.journal .title-icon-block{
+	padding-bottom:20px;
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/text.png") no-repeat;
+}
+.the-team .title-icon-block{
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/e-icon/user-info.png") no-repeat;
+}
+
+/* Content */
+.content h2{
+	margin-top:30px;
+}
+
+.content ol{
+	padding:0 15px;
+}
+
+	.content ol li{
+		list-style:decimal;
+	}
+
+/*
+Indent Tricks
+*/
+
+.margin10 {
+	margin-bottom:10px;
+	display:inline-block;
+}
+
+/*
+The Team
+*/
+
+ul.teamlist h2 span.role {
+	font-size:12pt;
+	padding:0 5px;
+	color:#aaa;
+	font-weight: normal;
+}
+
+ul.teamlist li, ul.teamlist {
+	padding:0;
+	list-style: none;
+}
+
+ul.teamlist h2 a {
+	color:#666;
+}
+
+/*
+Searchpage
+*/
+
+body.search .form-item#edit-keys-wrapper{
+	float:left;
+	display:block;
+	margin:0;
+}
+
+/*
+Secondary Rules
+*/
+
+ul.secondary a.active {
+	border:0;
+	color:#333;
+}
+ul.secondary a {
+	color:#999;
+}
+ul.secondary li {
+	border:0;
+	padding:0 1em 0 0;
+}
+ul.secondary {
+	border:0;
+	margin:0 0 20px;
+	padding:0;
+}
+
+/*
+Profile
+*/
+
+.profile {
+	margin:0;
+}
+.profile h2 {
+	padding-top:5px;
+	margin:0 0 5px 0;
+}
+.profile .picture {
+	float:left;
+}
+.profile ul.profile-roles li{
+	list-style:none;
+	font-style:italic;
+	padding: 0;
+}
+.profile dl {
+	margin:0;
+	clear:both;
+}
+.avatar-picture {
+	width:60px;
+	height:60px;
+	padding:4px;
+	background:#fafafa url("http://elementaryos.org/sites/all/themes/elementary/img/avatar.png");
+}
+.profile .avatar-picture {
+	float:left;
+	margin:0px 10px 5px 0;
+}
+.page-user .user-titles {
+	float: left;
+	padding: 5px 0 5px 10px;
+}
+.page-user .user-badges-col {
+	float: left;
+	width: 68px;
+	text-align: center;
+}
+.page-user .user-badges-col .user_badges {
+	margin: 0 auto;
+	clear: both;
+}
+.page-user .user-right-menu {
+	float: right;
+	text-align: right;
+	color: #000;
+}
+.page-user .user-right-menu a{
+	color: #000;
+}
+.page-user .user-right-menu ul li{
+	padding: 0 0 0 38px;
+	margin: 7px 0;
+	width: 60px;
+	text-align: left;
+	list-style: none;
+	height: 24px;
+	line-height: 25px;
+	overflow: hidden;
+	font-size: 12px;
+}
+.page-user .user-right-menu ul li#votinglist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/vote-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu ul li#answerlist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/answer-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu ul li#pointlist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/star-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu ul li#editlist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/edit-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu ul li#filelist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/file-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu ul li#advancedlist{
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/profile/advanced-profile-24.png") no-repeat;
+}
+.page-user .user-right-menu .user-button-a-child a{
+	display: block;
+	width: 100px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/fixed-width-sprite.png");
+	text-shadow: 0px 1px 0px white;
+	cursor: pointer;
+}
+.page-user .user-right-menu .user-button-a-child a:active{
+	background-position: 0 -26px;
+}
+.page-user .user-content-info {
+	text-align: center;
+	margin: 0 auto;
+}
+/*
+Adverts
+*/
+.ad-468x60 {
+	width:468px;
+	height:60px;
+	margin:10px auto;
+	display:block;
+	color:#fff;
+	clear:both;
+	background:#EEE;
+	line-height:60px;
+	text-align:center;
+	font-size:16px;
+}
+.ad-160x600 {
+	width:160px;
+	height:600px;
+	line-height:250px;
+	text-align:center;
+	font-size:16px;
+	background:#eee;
+}
+.ad-200x200 {
+	width:200px;
+	height:200px;
+	line-height:200px;
+	text-align:center;
+	font-size:16px;
+	background:#eee;
+	color:#fff;
+	margin:5px auto;
+}
+
+/* Post-launch fixes by cassidyjames */
+
+div.messages{
+	display:block;
+	padding:8px;
+	background-color:rgba(0, 0, 0, .75);
+	color:#fff;
+	text-align:center;
+	position:fixed;
+	width:100%;
+	z-index:888;
+	opacity:1;
+	/*-webkit-transition:all;
+	-webkit-transition-timing-function:ease-out;
+	-webkit-transition-duration:500ms;
+	-moz-transition:all;
+	-moz-transition-timing-function:ease-out;
+	-moz-transition-duration:500ms;
+	-webkit-animation-name:Notify-OSD;
+	-webkit-animation-duration:1s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-delay:4s;*/
+}
+
+.view-question-answers{
+	float:left;
+}
+
+.node-type-journal #container div div div.node div.content ul{
+	padding:5px 0;
+}
+
+	.node-type-journal #container div div div.node div.content ul li{
+		list-style-type:disc;
+		padding:0;
+		margin-left:2em;
+	}
+
+/* Post-launch fixes by khampal */
+
+.node-type-question .views-row{
+	clear:both;
+}
+
+div.messages.error{
+	background: #F5A3A3;
+}
+
+/*
+Form Specific
+*/
+
+.form-item#edit-field-notify-p-value-wrapper label,
+.form-item#edit-field-resolved-question-value-wrapper label{
+	padding: 5px 10px 5px 5px;
+	background: #EEE -webkit-gradient( linear,left bottom,left top,color-stop(0,#DEDEDE),color-stop(1,#FEFEFE) );
+	background: #EEE -moz-linear-gradient( center bottom,#DEDEDE 0%,#FEFEFE 100% );
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: solid 1px #CCC;
+	cursor: pointer;
+	margin: 5px 0;
+	display: inline-block;
+	text-shadow: 0 1px 0 #FFF;
+	height: 21px;
+	line-height: 21px;
+}
+.form-item#edit-field-notify-p-value-wrapper label input[type=checkbox],
+.form-item#edit-field-resolved-question-value-wrapper  label input[type=checkbox]
+{
+	float: left;
+	margin: 4px 10px 0 3px;
+}
+
+/*
+Report
+*/
+
+.node-type-report .field, .node-type-report .content_center p {
+	padding: 10px;
+	background: #EFEFEF;
+	margin: 5px 0;
+}
+ .node-type-report .content_center p {
+	background: #CEF;
+}
+
+/*
+New Login Box
+*/
+
+.content-wrap .login-box {
+	width: 408px;
+	margin: 0 auto;
+}
+.content-wrap .login-header {
+	width: 408px;
+	height: 88px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/login/login-header-main.png") no-repeat;
+}
+.content-wrap .login-body {
+	width: 408px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/login/login-body.png") repeat-y;
+	padding: 20px 0 10px;
+}
+.content-wrap .login-warning {
+	width: 61px;
+	height: 59px;
+	float: left;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/login/login-warning.png") no-repeat;
+	margin: 26px 0 0 26px;
+}
+.content-wrap .login-body input[type=text],.content-wrap .login-body input[type=password]{
+	margin: 0 10px;
+	padding: 0;
+	width: 325px;
+	border: 0;
+	background: none !important;
+	font-style: italic;
+	color: #A1A1A1;
+}
+.content-wrap .login-body input[type=text].edit-name,.content-wrap .login-body input[type=password].edit-pass{
+	font-style: normal;
+	color: #000;
+}
+.content-wrap .login-messages {
+	width: 300px;
+	float: right;
+}
+.content-wrap .login-header h1 {
+	font-size: 16px;
+	color: #666;
+	font-weight: bold;
+	padding: 24px 0 0 0;
+	margin: 0;
+	text-shadow: 0 1px 0 #FFF;
+}
+.content-wrap .login-header h2 {
+	font-size: 12px;
+	color: #666;
+	font-weight: normal;
+	text-shadow: 0 1px 0 #FFF;
+	padding: 0;
+	margin: 0;
+}
+.content-wrap .login-box .form-item, .content-wrap .login-footer .form-item {
+	margin: 0;
+}
+.content-wrap .login-footer {
+	width: 690px;
+	margin: 0 auto;
+	min-height: 87px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/login/horizon.png") no-repeat;
+}
+.content-wrap .login-footer .login-foot-cont {
+	width: 408px;
+	margin: 0 auto;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/login/login-footer.png") no-repeat;
+	height: 55px;
+}
+.content-wrap .login-footer .login-foot-cont #edit-remember-me-wrapper{
+	float: left;
+	padding: 13px 0 0 0;
+	margin: 0 0 0 25px;
+}
+.content-wrap .login-footer .login-foot-cont .leftbutton{
+	float: right;
+	margin: 13px 29px 0 0;
+}
+.content-wrap .login-footer .login-foot-cont .rightbutton{
+	background-color: #CCC;
+}
+.content-wrap .login-footer .login-foot-register{
+	clear: both;
+	padding: 10px 0 0 0;
+	text-align: center;
+	color: #999;
+}
+.nofloat {
+	float: none !important;
+}
+.login-input-left{
+	margin: 0 auto 10px auto;
+	height: 26px;
+	width: 347px;
+	padding-left: 4px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png") no-repeat;
+
+}
+.login-input-center{
+	margin: 0;
+	height: 26px;
+	width: 343px;
+	background: url("http://elementaryos.org/sites/all/themes/elementary/img/search/entry-center.png") repeat-x;
+	float: left;
+}
+input[type=text].edit-name, input[type=password].edit-pass{
+	font-style: normal;
+	color: #000;
+}
+.login-input-right{
+	margin:0;
+	height:26px;
+	width:4px;
+	float:right;
+	background:url("http://elementaryos.org/sites/all/themes/elementary/img/search/entry-left-right.png") -4px 0;
+}
+.user-account ul.tabs.primary {
+	display: none;
+}
+a.forgot-password-text {
+	color: #BBB;
+	font-size: 9pt;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+}
+a.forgot-password-text:hover {
+	color: #666;
+}
+/*
+Grid & Special Pages
+*/
+body .small-box {
+	float: left;
+	width: 235px;
+	margin-bottom: 10px;
+}
+body .small-box.smallermargin, body .content-wrap.smallermargin {
+	margin-bottom: 5px;
+}
+body .small-box img {
+	float: left;
+}
+body .small-box span {
+	display: block;
+	clear:both;
+	padding: 5px 0 0 0;
+}
+body .small-box h1 {
+	font-size: 21px;
+	font-weight: bold;
+	display: inline-block;
+	padding: 10px 0 0 5px;
+}
+body .small-box .content_center {
+	width: 195px;
+	padding: 10px;
+	height: 155px;
+}
+h1.gothic {
+	text-shadow: 0 0 1px #FAFAFA;
+	font-weight: normal;
+	font-size: 44px;
+	width: 840px;
+	margin: -20px 0 10px 0;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+h1.gothic span.bold {
+	font-weight: 900;
+}
+.content_center.medtext {
+	font-size: 14px;
+}
+
+.site_footer
+{
+    clear:both;
+    text-align:center;
+}
+
+hr.navi_hr
+{
+    border-color:#444;
+}
+li.package_index, li.package
+{
+    display:none;
+}
+
+.main_keyword
+{
+    color:#a00;
+    font-weight:bold;
+}
+
+.main_basic_type
+{
+    color:#080;
+}
+.leaf_code_definition
+{
+    font-weight:bold;
+}
+
+
+
+
+.content-sidebar span.abstract_class, .content-sidebar span.class, .content-sidebar span.struct,
+.content-sidebar span.enum, .content-sidebar span.namespace, .content-sidebar span.delegate,
+.content-sidebar span.property, .content-sidebar span.virtual_method, .content-sidebar span.creation_method,
+.content-sidebar span.static_method, .content-sidebar span.signal, .content-sidebar span.field, .content-sidebar span.method, .content-sidebar span.constant
+{
+    margin-left: -10px;
+    padding-left:20px;
+    min-height:16px;
+    display:block;
+}
+
+.content-sidebar span.abstract_class
+{
+    background:url(../img/abstractclass.png) center left no-repeat;
+}
+
+.content-sidebar span.class
+{
+    background:url(../img/class.png) center left no-repeat;
+}
+
+.content-sidebar span.enum
+{
+    background:url(../img/enum.png) center left no-repeat;
+}
+
+.content-sidebar span.struct
+{
+    background:url(../img/struct.png) center left no-repeat;
+}
+
+.content-sidebar span.delegate
+{
+    background:url(../img/delegate.png) center left no-repeat;
+}
+
+.content-sidebar span.namespace
+{
+    background:url(../img/namespace.png) center left no-repeat;
+}
+
+.content-sidebar span.property
+{
+    background:url(../img/property.png) center left no-repeat;
+}
+
+.content-sidebar span.virtual_method
+{
+    background:url(../img/virtualmethod.png) center left no-repeat;
+}
+
+.content-sidebar span.creation_method
+{
+    background:url(../img/constructor.png) center left no-repeat;
+}
+
+.content-sidebar span.static_method
+{
+    background:url(../img/staticmethod.png) center left no-repeat;
+}
+
+.content-sidebar span.signal
+{
+    background:url(../img/signal.png) center left no-repeat;
+}
+
+.content-sidebar span.field
+{
+    background:url(../img/field.png) center left no-repeat;
+}
+
+.content-sidebar span.method
+{
+    background:url(../img/method.png) center left no-repeat;
+}
+
+.content-sidebar span.constant
+{
+    background:url(../img/constant.png) center left no-repeat;
+}

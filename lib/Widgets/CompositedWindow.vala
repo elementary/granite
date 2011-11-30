@@ -29,7 +29,7 @@ namespace Granite.Widgets {
             // Set up css provider
             style_provider = new CssProvider ();
             try {
-                style_provider.load_from_path (Build.RESOURCES_DIR + "/style/CompositedWindow.css");
+                style_provider.load_from_path (RESOURCES_DIR + "/style/CompositedWindow.css");
             } catch (Error e) {
                 warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
             }
