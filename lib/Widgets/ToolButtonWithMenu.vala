@@ -226,7 +226,6 @@ namespace Granite.Widgets {
             if(has_fetcher) fetch_menu();
 
             /* FIXME select_first works ok but some gtk_return_fail make some nasty verbose lines in the terminal, origin gtk_device_grab_add gtk+-3 */
-            menu.select_first (true);
 
             try {
                 menu.popup (null,
@@ -237,7 +236,8 @@ namespace Granite.Widgets {
             } finally {
                 // Highlight the parent
                 if (menu.attach_widget != null)
-                    menu.attach_widget.set_state(StateType.SELECTED);                
+                    menu.attach_widget.set_state(StateType.SELECTED);
+                menu.select_first (true);
             }
         }
 
