@@ -186,7 +186,7 @@ namespace Granite.Widgets {
 
         private bool on_button_press_event (Gdk.EventButton ev)
         {
-            if(timeout == -1 && ev.button == 1){
+            if(timeout == -1 && ev.button == 1) {
                 last_click_time = ev.time;
                 timeout = (int) Timeout.add(long_press_time, () => {
                     /* long click */

@@ -280,13 +280,20 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      *
      * @param w a normal Gtk.Widget, e.g. a button
      **/
-    public void move_to_widget (Gtk.Widget w)
-    {
+    public void move_to_widget (Gtk.Widget w) {
         int x, y;
-        Gdk.Rectangle rectangle = Gdk.Rectangle();
-        w.get_window ().get_origin(out x, out y);
+        Gdk.Rectangle rectangle = Gdk.Rectangle ();
+        bool is_visible_window = false;
+        if (w is Gtk.EventBox) {
+            is_visible_window = (w as Gtk.EventBox).visible_window;
+            (w as Gtk.EventBox).visible_window = false;
+        }
+        w.get_window ().get_origin (out x, out y);
         Gtk.Allocation alloc;
         w.get_allocation (out alloc);
+        if(w is Gtk.EventBox) {
+            (w as Gtk.EventBox).visible_window = is_visible_window;
+        }
         x += alloc.x;
         y += alloc.y;
         rectangle.x = x;
