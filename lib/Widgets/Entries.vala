@@ -117,7 +117,15 @@ namespace Granite.Widgets {
          * use changed () method.
          **/
         public signal void text_changed_pause (string text);
-
+        
+        /**
+         * icon_pressed () signal is emitted after a short delay,
+         * which depends on the SearchBar's icon.
+         * It can be useful to show something on the icon press,
+         * we can show a PopOver, for example.
+         **/
+        public signal void icon_pressed (Gtk.Widget icon);
+        
         public SearchBar (string hint_string) {
         
             base (hint_string);
@@ -175,6 +183,9 @@ namespace Granite.Widgets {
                 set_icon_from_stock (position, null);
                 is_searching = true;
             } else {
+                var pix = get_icon_pixbuf (EntryIconPosition.PRIMARY);
+                Gtk.Image icon = new Gtk.Image.from_pixbuf (pix);
+                icon_pressed (icon);
                 if (!is_focus) {
                     is_searching = false;
                     hint ();
@@ -203,4 +214,3 @@ namespace Granite.Widgets {
     }
 
 }
-
