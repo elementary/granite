@@ -22,6 +22,7 @@ namespace Granite {
     public void init () {
         if (!Thread.supported ())
             error ("Problem initializing thread support.");
-        Gdk.threads_init ();
+        //Threading is initialized automatically now
+        //Gdk.threads_init ();
     }
 }
