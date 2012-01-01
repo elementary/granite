@@ -67,10 +67,16 @@ public class Granite.Demo : Granite.Application
         win.add(notebook);
         
         /* welcome */
-        var welcome = new Welcome("Granite", "Let's try...");
+        var welcome = new Welcome("Welcome Screen", "Let's try a subtitle ...");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
-        welcome.append("gtk-open", "Open", "Open a file");
-        welcome.append("gtk-save", "Save", "Save with a much longer description");
+        
+        Gdk.Pixbuf? pixbuf = Gtk.IconTheme.get_default().load_icon ("document-new", 48, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+        Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
+        
+        // Adding elements
+        welcome.append_from_pixbuf(pixbuf, "New", "Create a new document");
+        welcome.append_from_image(image, "Open", "Open a file");
+        welcome.append("document-save", "Save", "Save with a much longer description");
         
         /* modebutton */
         var mode_button = new ModeButton();
