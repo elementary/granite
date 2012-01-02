@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011 Victor Eduardo
+ * Copyright (C) 2012 Victor Eduardo
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,18 +16,19 @@
 **/
 
 .WelcomeScreen {
-    background-image: none;
     background-color: #f9f9f9;
-    text-shadow: 0 1 alpha (shade (#dedede, 1.35), 0.5);
 }
 
 .WelcomeScreen .title,
 .WelcomeScreen .option-title {
-    color: #333333;
+    color: shade (#333333, 1.2);
+    text-shadow: 0 1 alpha (#000, 0.03);
 }
 
-.WelcomeScreen .subtitle {
+.WelcomeScreen .subtitle,
+.WelcomeScreen .option-description {
     color: #8f8f8f;
+    text-shadow: 0 1 alpha (#000, 0.04);
 }
 
 .WelcomeScreen .button,
