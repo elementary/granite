@@ -67,16 +67,27 @@ public class Granite.Demo : Granite.Application
         win.add(notebook);
         
         /* welcome */
-        var welcome = new Welcome("Welcome Screen", "Let's try a subtitle ...");
+        
+        // These strings will be corrected automatically by the widget
+        var welcome = new Welcome("do something", "description text.");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
         
-        Gdk.Pixbuf? pixbuf = Gtk.IconTheme.get_default().load_icon ("document-new", 48, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+        Gdk.Pixbuf? pixbuf = null;
+        
+        try {
+            pixbuf = Gtk.IconTheme.get_default().load_icon ("document-new", 48, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+        }
+        catch(Error e) {
+            warning("Could not load icon, %s", e.message);
+        }
+        
         Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
         
-        // Adding elements
-        welcome.append_from_pixbuf(pixbuf, "New", "Create a new document");
-        welcome.append_from_image(image, "Open", "Open a file");
-        welcome.append("document-save", "Save", "Save with a much longer description");
+        // Adding elements. Use the most convenient function to add an icon
+        welcome.append_from_pixbuf(pixbuf, "create", "write a new document.");
+        welcome.append_from_image(image, "open", "select a file.");
+        welcome.append("document-save", "save", "with a much longer description.");
+        welcome.append("help-info", "Learn", "Discover new features.");
         
         /* modebutton */
         var mode_button = new ModeButton();

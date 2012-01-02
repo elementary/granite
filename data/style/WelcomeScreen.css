@@ -1,45 +1,38 @@
-/*
-* Copyright (C) 2011 Victor Eduardo
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 .WelcomeScreen
- {
+{
     background-image: none;
     background-color: #f9f9f9;
     text-shadow: 0 1 alpha (shade (#dedede, 1.35), 0.5);
 }
 
 .WelcomeScreen .main-title,
-.WelcomeScreen .option-label {
+.WelcomeScreen .option-label
+{
     color: #333333;
 }
 
-.WelcomeScreen .subtitle {
-    color : #8f8f8f;
+.WelcomeScreen .subtitle
+{
+    color: #8f8f8f;
 }
+
+/*
+TODO: Theme buttons
 
 .WelcomeScreen .button,
 .WelcomeScreen .button:active,
 .WelcomeScreen .button:hover,
 .WelcomeScreen .button:active:hover,
-.WelcomeScreen .button:insensitive {
+.WelcomeScreen .button:insensitive
+{
+
+    -GtkButton-child-displacement-x: 0;
+    -GtkButton-child-displacement-y: 0;
+
     background-image: -gtk-gradient (linear, left top, left bottom,
                                        from (shade (#fff, 0.97)),
                                        to (shade (#fff, 0.93)));
-    /* TODO: Theme borders */
+
     -unico-border-gradient: -gtk-gradient (linear,
                                           left top, left bottom,
                                           from (shade (#f9f9f9, 0.93)),
@@ -47,15 +40,21 @@
 }
 
 .WelcomeScreen .button:active,
-.WelcomeScreen .button:active:hover {
+.WelcomeScreen .button:active:hover
+{
     background-image: -gtk-gradient (linear, left top, left bottom,
-                                       from (shade (#f9f9f9, 0.95)),
-                                       to (shade (#f9f9f9, 0.99)));
+                                       from (shade (#f9f9f9, 0.90)),
+                                       to (shade (#f9f9f9, 0.96)));
+
+    -unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
+                                           from (shade (#f9f9f9, 0.87)),
+                                           to (shade (#f9f9f9, 0.88)));
 }
 
-.WelcomeScreen .button:insensitive {
+.WelcomeScreen .button:insensitive
+{
     background-image: -gtk-gradient (linear, left top, left bottom,
                                        from (shade (#fff, 0.98)),
                                        to (shade (#fff, 0.99)));
 }
-
+*/
