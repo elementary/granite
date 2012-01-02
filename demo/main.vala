@@ -68,8 +68,8 @@ public class Granite.Demo : Granite.Application
 
         /* welcome */
 
-        // These strings will be corrected automatically by the widget
-        var welcome = new Welcome("do something", "description text.");
+        // These strings will be automatically corrected by the widget
+        var welcome = new Welcome("welcome widget", "description text.");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
 
         Gdk.Pixbuf? pixbuf = null;
@@ -87,7 +87,7 @@ public class Granite.Demo : Granite.Application
         welcome.append_with_pixbuf(pixbuf, "create", "write a new document.");
         welcome.append_with_image(image, "open", "select a file.");
         welcome.append("document-save", "save", "with a much longer description.");
-        welcome.append("help-info", "Learn", "Discover new features.");
+        welcome.append("help-info", "Discover", "Learn more about this app.");
 
         /* modebutton */
         var mode_button = new ModeButton();

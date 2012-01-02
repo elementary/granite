@@ -72,7 +72,7 @@
                                        to (shade (#f9f9f9, 0.95)));
 
     -unico-inner-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
-                                                 from (shade (#ffffff, 0.76)),
+                                                 from (shade (#ffffff, 0.83)),
                                                  to (shade (#f9f9f9, 0.97)));
 
     -unico-border-gradient: -gtk-gradient (linear, left top, left bottom,

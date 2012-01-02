@@ -159,7 +159,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         vbox.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // bottom spacing
 
-        hbox.pack_start (vbox, false, true, 6);
+        hbox.pack_start (vbox, false, true, 3);
 
         button.add (hbox);
         this.children.append (button);
