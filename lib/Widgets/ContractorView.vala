@@ -44,7 +44,7 @@ public class Granite.Widgets.ContractorView : TreeView {
     /**
      * the original array of contracts returned by contractor
      **/
-    public HashTable<string,string>[] contracts;
+    HashTable<string,string>[] contracts;
     
     /**
      * Create the default ContractorView
@@ -96,7 +96,7 @@ public class Granite.Widgets.ContractorView : TreeView {
         else {
             contractor_available = true;
             
-            for (var i=0;i<this.contracts.length; i++){
+            for (var i=0; i<this.contracts.length; i++){
                 TreeIter it;
                 list.append (out it);
                 string text = this.contracts[i].lookup ("Description");
@@ -106,7 +106,10 @@ public class Granite.Widgets.ContractorView : TreeView {
                     list.set (it, 
                         0, IconTheme.get_default ().load_icon (this.contracts[i].lookup ("IconName"), 
                         icon_size, 0), 1, text);
-                }catch (Error e){error (e.message);}
+                }
+                catch (Error e) {
+                    error (e.message);
+                }
             }
             this.selected = 0;
         }
