@@ -62,6 +62,9 @@ public class Granite.Widgets.ContractorView : TreeView {
 		this.headers_visible = false;
 		this.hexpand = true;
 		
+		/* Events */
+		row_activated.connect(() => { run_selected(); });
+		
 		/* View */
 		var cell1 = new CellRendererPixbuf ();
 		cell1.set_padding (5, 8);
