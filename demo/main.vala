@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>, Jaap Broekhuizen <jaapz.b@gmail.com>
+ * Copyright (c) 2011-2012 Lucas Baudin <xapantu@gmail.com>, Jaap Broekhuizen <jaapz.b@gmail.com>
  *
  * This is a free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -177,6 +177,7 @@ public class Granite.Demo : Granite.Application
             text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";    
         }
         contractor_tab.add(text_view);
+        contractor_tab.add(new ContractorView("file:///home/user/file.txt", "text/plain"));
 
         /* window properties */
         win.show_all();

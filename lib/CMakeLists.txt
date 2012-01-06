@@ -67,6 +67,7 @@ vala_precompile(VALA_C
     Widgets/Welcome.vala
     Widgets/ToolButtonWithMenu.vala
     Widgets/PopOver.vala
+    Widgets/ContractorView.vala
     Main.vala
     config.vapi
 CUSTOM_VAPIS
