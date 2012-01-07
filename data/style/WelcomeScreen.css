@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012 Victor Eduardo
+ * Copyright (C) 2012 Daniel Foré <daniel@elementaryos.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,73 +15,78 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-.WelcomeScreen {
-    background-color: #f9f9f9;
+.GraniteWelcomeScreen {
+    background-color: @base_color;
 }
 
-.WelcomeScreen .title,
-.WelcomeScreen .option-title {
-    color: shade (#333333, 1.2);
+.GraniteWelcomeScreen .title,
+.GraniteWelcomeScreen .option-title {
+    color: @text_color;
     text-shadow: 0 1 alpha (#000, 0.03);
 }
 
-.WelcomeScreen .subtitle,
-.WelcomeScreen .option-description {
-    color: #8f8f8f;
+.GraniteWelcomeScreen .subtitle,
+.GraniteWelcomeScreen .option-description {
+    color: alpha (@text_color, 0.5);
     text-shadow: 0 1 alpha (#000, 0.04);
 }
 
-.WelcomeScreen .button,
-.WelcomeScreen .button:active,
-.WelcomeScreen .button:hover,
-.WelcomeScreen .button:active:hover {
+.GraniteWelcomeScreen .button,
+.GraniteWelcomeScreen .button:active,
+.GraniteWelcomeScreen .button:hover,
+.GraniteWelcomeScreen .button:active:hover {
 
     -GtkButton-child-displacement-x: 0;
     -GtkButton-child-displacement-y: 0;
 
-    border-radius: 4;
+    border-radius: 2.5;
     transition: 160ms ease-in-out;
     border-style: solid;
 
-    background-image: -gtk-gradient (linear, left top, left bottom,
-                                       from (shade (#fff, 0.99)),
-                                       to (shade (#fff, 0.89)));
+    background-image: none;
 
     -unico-outer-stroke-width: 1;
     -unico-inner-stroke-width: 1;
 
-    -unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
-                                          from (shade (#f9f9f9, 0.82)),
-                                          to (shade (#f9f9f9, 0.72)));
+    background-color: alpha (#fff, 0.0);
 
-    -unico-inner-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
-                                                 from (shade (#f9f9f9, 1.10)),
-                                                 to (shade (#f9f9f9, 0.95)));
+    -unico-outer-stroke-gradient: -gtk-gradient (linear,
+                     left top, left bottom,
+                     from (alpha (#fff, 0.00)),
+                     color-stop (0.80, alpha (#fff, 0.00)),
+                     to (alpha (#fff, 0.30)));
 
-    -unico-outer-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
-                                                 from (alpha (#000, 0.01)),
-                                                 to (alpha (#000, 0.08)));
+    -unico-inner-stroke-gradient: -gtk-gradient (linear,
+                     left bottom, left top,
+                     from (alpha (#fff, 0.00)),
+                     color-stop (0.80, alpha (#fff, 0.00)),
+                     to (alpha (#fff, 0.20)));
+
+
+    -unico-border-gradient: -gtk-gradient (linear,
+                     left top, left bottom,
+                     from (shade (@base_color, 0.80)),
+                     to (shade (@base_color, 0.74)));
 }
 
-.WelcomeScreen .button:active,
-.WelcomeScreen .button:active:hover,
-.WelcomeScreen .button:insensitive {
-    -unico-outer-stroke-width: 0;
+.GraniteWelcomeScreen .button:active,
+.GraniteWelcomeScreen .button:active:hover,
+.GraniteWelcomeScreen .button:insensitive {
 
-    background-image: -gtk-gradient (linear, left top, left bottom,
-                                       from (shade (#f9f9f9, 0.86)),
-                                       to (shade (#f9f9f9, 0.95)));
+    background-color: alpha (#000, 0.05);
 
-    -unico-inner-stroke-gradient: -gtk-gradient (linear, left top, left bottom,
-                                                 from (shade (#ffffff, 0.83)),
-                                                 to (shade (#f9f9f9, 0.97)));
+    -unico-border-gradient: -gtk-gradient (linear,
+                     left top, left bottom,
+                     from (shade (@base_color, 0.74)),
+                     to (shade (@base_color, 0.74)));
 
-    -unico-border-gradient: -gtk-gradient (linear, left top, left bottom,
-                                           from (shade (#f9f9f9, 0.75)),
-                                           to (shade (#f9f9f9, 0.85)));
+    -unico-inner-stroke-gradient: -gtk-gradient (linear,
+                    left top, left bottom,
+                    from (alpha (#000, 0.07)),
+                    to (alpha (#000, 0.03)));
 }
 
-.WelcomeScreen .button:insensitive {
+.GraniteWelcomeScreen .button:insensitive {
     background-image: none;
     background-color: alpha (#fff, 0.0);
 }

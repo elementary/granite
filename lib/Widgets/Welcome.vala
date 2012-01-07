@@ -26,9 +26,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     protected Gtk.Box options;
 
     private enum CaseConversionMode {
-        UPPER_CASE,
-        LOWER_CASE,
-        TOGGLE_CASE,
         TITLE,
         SENTENCE
     }
@@ -36,7 +33,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     private CssProvider style_provider;
 
     public Welcome (string title_text, string subtitle_text) {
-
         string _title_text = modify_text_case (title_text, CaseConversionMode.TITLE);
         string _subtitle_text = modify_text_case (subtitle_text, CaseConversionMode.SENTENCE);
 
@@ -50,9 +46,10 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             warning ("WelcomeScreen: Could not add CSS provider. This widget will not look as intended. %s", e.message);
         }
 
+        // Set theming
         var style_context = this.get_style_context();
-        style_context.add_class ("WelcomeScreen");
-        style_context.add_provider (style_provider, 1000);
+        style_context.add_class ("GraniteWelcomeScreen");
+        style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Box properties
         content.homogeneous = false;
@@ -65,7 +62,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         var main_title_style = title.get_style_context();
         main_title_style.add_class ("title");
-        main_title_style.add_provider (style_provider, 1000);
+        main_title_style.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         title.use_markup = true;
         title.set_justify (Gtk.Justification.CENTER);
@@ -79,7 +76,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         var subtitle_style = subtitle.get_style_context();
         subtitle_style.add_class("subtitle");
-        subtitle_style.add_provider (style_provider, 600);
+        subtitle_style.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Options wrapper
         this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
@@ -113,7 +110,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     public void append_with_image (Gtk.Image? image, string option_text, string description_text) {
-
         string _option_text = modify_text_case (option_text, CaseConversionMode.TITLE);
         string _description_text = modify_text_case (description_text, CaseConversionMode.SENTENCE);
 
@@ -123,7 +119,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         label.halign = Gtk.Align.START;
         label.valign = Gtk.Align.CENTER;
         label.get_style_context().add_class ("option-title");
-        label.get_style_context().add_provider (style_provider, 600);
+        label.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Description label
         var description = new Gtk.Label ("<span weight='medium' size='11400'>" + _description_text + "</span>");
@@ -131,12 +127,12 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
         description.get_style_context().add_class ("option-description");
-        description.get_style_context().add_provider (style_provider, 600);
+        description.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Button
         var button = new Gtk.Button ();
         button.set_relief (Gtk.ReliefStyle.NONE);
-        button.get_style_context().add_provider (style_provider, 700);
+        button.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Button contents wrapper
         var button_contents = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 7);
@@ -170,9 +166,9 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     private string modify_text_case (string text, CaseConversionMode mode) {
 
         /**
-         * This function will not modify the text if it meets the following conditions: 
-         * - @text ends with a dot
-         * - @text contains at least one character outside the English alphabet
+         * This function will not modify the text any the following conditions are met:
+         * - @text ends with a dot.
+         * - @text contains at least one character outside the English alphabet.
          */
 
         var fixed_text = new StringBuilder ();
@@ -181,39 +177,13 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         // Disabling this feature for other languages
         for (int i = 0; text.get_next_char (ref i, out c);) {
             if (c.isgraph () && !('a' <= c.tolower () && c.tolower () <= 'z'))
-            	return text;
+                return text;
         }
-        
+        // Checking if @text ends with a dot.
         if (c == '.')
-        	return text;
+            return text;
 
         switch (mode) {
-            case CaseConversionMode.UPPER_CASE:
-                for (int i = 0; text.get_next_char (ref i, out c);) {
-                    if (c.islower ())
-                        fixed_text.append_unichar (c.toupper ());
-                    else
-                        fixed_text.append_unichar (c);
-                }
-                break;
-            case CaseConversionMode.LOWER_CASE:
-                for (int i = 0; text.get_next_char (ref i, out c);) {
-                    if (c.isupper ())
-                        fixed_text.append_unichar (c.tolower ());
-                    else
-                        fixed_text.append_unichar (c);
-                }
-                break;
-            case CaseConversionMode.TOGGLE_CASE:
-                for (int i = 0; text.get_next_char (ref i, out c);) {
-                    if (c.islower ())
-                        fixed_text.append_unichar (c.toupper ());
-                    else if (c.isupper ())
-                        fixed_text.append_unichar (c.tolower ());
-                    else
-                        fixed_text.append_unichar (c);
-                }
-                break;
             case CaseConversionMode.TITLE:
                 unichar last_char = ' ';
                 for (int i = 0; text.get_next_char (ref i, out c);) {
@@ -247,5 +217,4 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         return fixed_text.str;
     }
 }
-
 
