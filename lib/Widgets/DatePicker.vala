@@ -32,7 +32,7 @@ namespace Granite.Widgets {
         private DateTime _date;
         public DateTime date {
             get { return _date; }
-            protected set {
+            set {
                 _date = value;
                 text = _date.format (format);
             }
