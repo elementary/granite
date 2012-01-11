@@ -25,35 +25,35 @@ public class Granite.Demo : Granite.Application
 {
     construct
     {
-		application_id = "demo.granite.org";
-		program_name = "Granite Demo";
-		app_years = "2011";
-		
-		build_version = "1.0";
-		app_icon = "text-editor";
-		main_url = "https://launchpad.net/granite";
-		bug_url = "https://bugs.launchpad.net/granite";
-		help_url = "https://answers.launchpad.net/granite";
-		translate_url = "https://translations.launchpad.net/granite";
-		about_authors = {"Kekun",
-						 null
-						 };
-		about_documenters = {"Valadoc",
-							 null
-							 };
-		about_artists = {"Daniel P. Fore",
-						 null
-						 };
-		
-		about_authors = {"Maxwell Barvian <mbarvian@gmail.com>",
-						 "Daniel Foré <bunny@go-docky.com>",
-						 "Avi Romanoff <aviromanoff@gmail.com>",
-						 null
-						 };
+        application_id = "demo.granite.org";
+        program_name = "Granite Demo";
+        app_years = "2011";
 
-		about_comments = "A demo of the Granite toolkit";
-		about_translators = "Launchpad Translators";
-		about_license_type = Gtk.License.GPL_3_0;
+        build_version = "1.0";
+        app_icon = "text-editor";
+        main_url = "https://launchpad.net/granite";
+        bug_url = "https://bugs.launchpad.net/granite";
+        help_url = "https://answers.launchpad.net/granite";
+        translate_url = "https://translations.launchpad.net/granite";
+        about_authors = {"Kekun",
+                         null
+                         };
+        about_documenters = {"Valadoc",
+                             null
+                             };
+        about_artists = {"Daniel P. Fore",
+                         null
+                         };
+
+        about_authors = {"Maxwell Barvian <mbarvian@gmail.com>",
+                         "Daniel Foré <bunny@go-docky.com>",
+                         "Avi Romanoff <aviromanoff@gmail.com>",
+                         null
+                         };
+
+        about_comments = "A demo of the Granite toolkit";
+        about_translators = "Launchpad Translators";
+        about_license_type = Gtk.License.GPL_3_0;
     }
     public Demo()
     {
@@ -62,16 +62,33 @@ public class Granite.Demo : Granite.Application
     public override void activate() {
         var win = new Gtk.Window();
         win.delete_event.connect( () => { Gtk.main_quit(); return false; });
-        
+
         var notebook = new Gtk.Notebook();
         win.add(notebook);
-        
+
         /* welcome */
-        var welcome = new Welcome("Granite", "Let's try...");
+
+        // These strings will be automatically corrected by the widget
+        var welcome = new Welcome("welcome widget", "description text");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
-        welcome.append("gtk-open", "Open", "Open a file");
-        welcome.append("gtk-save", "Save", "Save with a much longer description");
-        
+
+        Gdk.Pixbuf? pixbuf = null;
+
+        try {
+            pixbuf = Gtk.IconTheme.get_default().load_icon ("document-new", 48, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+        }
+        catch(Error e) {
+            warning("Could not load icon, %s", e.message);
+        }
+
+        Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
+
+        // Adding elements. Use the most convenient function to add an icon
+        welcome.append_with_pixbuf(pixbuf, "create", "write a new document");
+        welcome.append_with_image(image, "open", "select a file");
+        welcome.append("document-save", "save", "with a much longer description");
+        welcome.append("help-info", "Discover", "Learn more about this app");
+
         /* modebutton */
         var mode_button = new ModeButton();
         mode_button.valign = Gtk.Align.CENTER;
@@ -80,8 +97,8 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("Input"));
         mode_button.append(new Gtk.Label("Output"));
         mode_button.append(new Gtk.Label("Quite long"));
-        mode_button.append(new Gtk.Label("Veruy very long \n with a line break"));
-        
+        mode_button.append(new Gtk.Label("Very very long \n with a line break"));
+
         var vbox = new Gtk.VBox(false, 0);
         var toolbar = new Gtk.Toolbar();
         toolbar.get_style_context().add_class("primary-toolbar");
@@ -105,7 +122,7 @@ public class Granite.Demo : Granite.Application
         toolbutton.add(tool_mode);
         toolbar.insert(toolbutton, -1);
         vbox.pack_start(toolbar, false, false);
-        
+
         vbox.pack_start(mode_button);
 
         mode_button = new ModeButton();
@@ -115,26 +132,26 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("a"));
         vbox.pack_start(mode_button);
         notebook.append_page(vbox, new Gtk.Label("ModeButton"));
-        
+
         /* static notebook */
         var staticbox = new Gtk.VBox (false, 5);
         var staticnotebook = new StaticNotebook ();
-        
+
         var pageone = new Gtk.Label("Page 1");
-        
+
         staticnotebook.append_page (new Gtk.Label("Page 1"), pageone);
         staticnotebook.append_page (new Gtk.Label("Page 2"), new Gtk.Label("Page 2"));
         staticnotebook.append_page (new Gtk.Label("Page 3"), new Gtk.Label("Page 3"));
-        
+
         staticnotebook.page_changed.connect(() => pageone.set_text("Page changed"));
-        
+
         staticbox.add (staticnotebook);
-        
+
         notebook.append_page (staticbox, new Gtk.Label ("Static Notebook"));
         var button_about = new Gtk.Button.with_label("show_about");
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
-        
+
         var popover_buttons = new Gtk.VBox(false, 0);
         var hbox3 = new Gtk.HBox(false, 0);
         hbox3.halign = Gtk.Align.END;
@@ -145,7 +162,7 @@ public class Granite.Demo : Granite.Application
             var pop = new PopOver();
             var pop_hbox = (Gtk.Box)pop.get_content_area();
             pop_hbox.add(new HintedEntry("This is an HIntedEntry"));
-            pop_hbox.add(new Gtk.Label("Another label")); 
+            pop_hbox.add(new Gtk.Label("Another label"));
             var mode_pop = new ModeButton();
             mode_pop.append(new Gtk.Label("ele"));
             mode_pop.append(new Gtk.Label("ment"));
@@ -160,13 +177,13 @@ public class Granite.Demo : Granite.Application
         popover_buttons.pack_start(new Gtk.Label("Let's try the PopOvers!"), false, false);
         popover_buttons.pack_start(hbox3, false, false);
         notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
-        
+
         var calendar_button = new Gtk.HBox(false, 0);
         var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
         date_button.valign = date_button.halign = Gtk.Align.CENTER;
         calendar_button.add(date_button);
         notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
-        
+
         /* Contractor */
         var contractor_tab = new Gtk.VBox (false, 0);
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
@@ -174,7 +191,7 @@ public class Granite.Demo : Granite.Application
         GLib.HashTable<string, string>[] hash_ = Contractor.get_contract("/.zip", "application/zip");
         foreach(var hash in hash_)
         {
-            text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";    
+            text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";
         }
         contractor_tab.add(text_view);
         contractor_tab.add(new ContractorView("file:///home/user/file.txt", "text/plain"));
@@ -187,9 +204,9 @@ public class Granite.Demo : Granite.Application
     public static int main(string[] args)
     {
         new Granite.Demo().run(args);
-        
+
         Gtk.main();
-        
+
         return 0;
     }
 }

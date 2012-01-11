@@ -1,116 +1,204 @@
-//  
+//
 //  Copyright (C) 2011 Maxwell Barvian
-// 
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-// 
+//
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
-// 
+//
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
 using Gtk;
 
-public class Granite.Widgets.Welcome : VBox {
+public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     // Signals
     public signal void activated (int index);
 
-    protected new List<Button> children;
-    protected VBox options;
+    protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
+    protected Gtk.Box options;
 
-    public Welcome (string title_text, string subtitle_text) {
-
-        children = new List<Button> ();
-        options = new Gtk.VBox (false, 6);
-
-        // VBox properties
-        spacing = 5;
-        homogeneous = false;
-
-        // Top spacer
-        pack_start (new Gtk.VBox (false, 0), true, true, 0);
-
-        // Labels
-        var title = new Label ("<span weight='heavy' size='15000'>" + title_text + "</span>");
-        title.use_markup = true;
-        title.set_justify (Justification.CENTER);
-        pack_start (title, false, true, 0);
-
-        var subtitle = new Label (subtitle_text);
-        subtitle.sensitive = false;
-        subtitle.set_justify (Justification.CENTER);
-        pack_start (subtitle, false, true, 6);
-
-        // Options wrapper
-
-        var options_wrapper = new HBox (false, 0);
-
-        options_wrapper.pack_start (new Gtk.VBox (false, 0), true, true, 0); // left padding
-        options_wrapper.pack_start (options, false, false, 0); // actual options
-        options_wrapper.pack_end (new Gtk.VBox (false, 0), true, true, 0); // right padding
-
-        pack_start (options_wrapper, false, false, 0);
-
-        // Bottom spacer
-        pack_end (new Gtk.VBox (false, 0), true, true, 0);
+    private enum CaseConversionMode {
+        TITLE,
+        SENTENCE
     }
 
-    public void append (string icon_name, string label_text, string description_text) {
+    public Welcome (string title_text, string subtitle_text) {
+        string _title_text = modify_text_case (title_text, CaseConversionMode.TITLE);
+        string _subtitle_text = modify_text_case (subtitle_text, CaseConversionMode.SENTENCE);
 
-        // Button
-        var button = new Button ();
-        button.set_relief (ReliefStyle.NONE);
+        Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
-        // HBox wrapper
-        var hbox = new HBox (false, 6);
+        // Set theming
+        this.get_style_context().add_class ("GraniteWelcomeScreen");
 
-        // Add left image
-        var icon = new Image.from_icon_name (icon_name, IconSize.DIALOG);
-        hbox.pack_start (icon, false, true, 6);
+        // Box properties
+        content.homogeneous = false;
 
-        // Add right vbox
-        var vbox = new VBox (false, 0);
+        // Top spacer
+        content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
-        vbox.pack_start (new HBox (false, 0), true, true, 0); // top spacing
+        // Labels
+        var title = new Gtk.Label ("<span weight='medium' size='14700'>" + _title_text + "</span>");
+
+        title.get_style_context().add_class ("title");
+
+        title.use_markup = true;
+        title.set_justify (Gtk.Justification.CENTER);
+        content.pack_start (title, false, true, 0);
+
+        var subtitle = new Gtk.Label ("<span weight='medium' size='11500'>" + _subtitle_text + "</span>");
+        subtitle.use_markup = true;
+        subtitle.sensitive = false;
+        subtitle.set_justify (Gtk.Justification.CENTER);
+        content.pack_start (subtitle, false, true, 2);
+
+        subtitle.get_style_context().add_class("subtitle");
+
+        // Options wrapper
+        this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
+        var options_wrapper = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+
+        options_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // left padding
+        options_wrapper.pack_start (this.options, false, false, 0); // actual options
+        options_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // right padding
+
+        content.pack_start (options_wrapper, false, false, 20);
+
+        // Bottom spacer
+        content.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
+
+        add (content);
+    }
+
+    public void set_sensitivity (uint index, bool val) {
+        if(index < children.length () && children.nth_data (index) is Gtk.Widget)
+            children.nth_data (index).set_sensitive (val);
+    }
+
+    public void append (string icon_name, string option_text, string description_text) {
+        Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        append_with_image (image, option_text, description_text);
+    }
+
+    public void append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
+        var image = new Gtk.Image.from_pixbuf (pixbuf);
+        append_with_image (image, option_text, description_text);
+    }
+
+    public void append_with_image (Gtk.Image? image, string option_text, string description_text) {
+        string _option_text = modify_text_case (option_text, CaseConversionMode.TITLE);
+        string _description_text = modify_text_case (description_text, CaseConversionMode.SENTENCE);
 
         // Option label
-        var label = new Label ("<span weight='medium' size='12500'>" + label_text + "</span>");
+        var label = new Gtk.Label ("<span weight='medium' size='11700'>" + _option_text + "</span>");
         label.use_markup = true;
-        label.set_alignment(0.0f, 0.5f);
-        vbox.pack_start (label, false, false, 0);
+        label.halign = Gtk.Align.START;
+        label.valign = Gtk.Align.CENTER;
+        label.get_style_context().add_class ("option-title");
 
         // Description label
-        var description = new Label (description_text);
+        var description = new Gtk.Label ("<span weight='medium' size='11400'>" + _description_text + "</span>");
+        description.use_markup = true;
+        description.halign = Gtk.Align.START;
+        description.valign = Gtk.Align.CENTER;
         description.sensitive = false;
-        description.set_alignment(0.0f, 0.5f);
-        vbox.pack_start (description, false, false, 0);
+        description.get_style_context().add_class ("option-description");
 
-        vbox.pack_end (new Gtk.VBox (false, 0), true, true, 0); // bottom spacing
+        // Button
+        var button = new Gtk.Button ();
+        button.set_relief (Gtk.ReliefStyle.NONE);
 
-        hbox.pack_start (vbox, false, true, 6);
+        // Button contents wrapper
+        var button_contents = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 7);
 
-        button.add (hbox);
+        // Add left image
+        if (image != null) {
+            image.set_pixel_size (48);
+            button_contents.pack_start (image, false, true, 8);
+        }
+
+        // Add right text wrapper
+        var text_wrapper = new Gtk.Box (Gtk.Orientation.VERTICAL, 3);
+        // top spacing
+        text_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
+        text_wrapper.pack_start (label, false, false, 0);
+        text_wrapper.pack_start (description, false, false, 0);
+        // bottom spacing
+        text_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
+
+        button_contents.pack_start (text_wrapper, false, true, 8);
+
+        button.add (button_contents);
         children.append (button);
         options.pack_start (button, false, false, 0);
 
         button.button_release_event.connect ( () => {
-            int index = children.index (button);
+            int index = this.children.index (button);
             activated (index); // send signal
-
             return false;
         } );
-
     }
 
-    public new void set_sensitive (int index, bool sensitivity) {
-        children.nth_data (index).sensitive = sensitivity;
-    }
+    private string modify_text_case (string text, CaseConversionMode mode) {
 
+        /**
+         * This function will not modify the text if any the following conditions are met:
+         * - @text ends with a dot.
+         * - @text contains at least one character outside the English alphabet.
+         */
+
+        var fixed_text = new StringBuilder ();
+        unichar c;
+
+        // Disabling this feature for other languages
+        for (int i = 0; text.get_next_char (ref i, out c);) {
+            if (c.isgraph () && !('a' <= c.tolower () && c.tolower () <= 'z'))
+                return text;
+        }
+        // Checking if @text ends with a dot.
+        if (c == '.')
+            return text;
+
+        switch (mode) {
+            case CaseConversionMode.TITLE:
+                unichar last_char = ' ';
+                for (int i = 0; text.get_next_char (ref i, out c);) {
+                    if (last_char.isspace () && c.islower ())
+                        fixed_text.append_unichar (c.totitle ());
+                    else
+                        fixed_text.append_unichar (c);
+
+                    last_char = c;
+                }
+                break;
+            case CaseConversionMode.SENTENCE:
+                bool fixed = false;
+                unichar last_char = ' ';
+                for (int i = 0; text.get_next_char (ref i, out c);) {
+                    if (!fixed && last_char.isspace ()) {
+                        if (c.islower ())
+                            fixed_text.append_unichar (c.totitle ());
+                        else
+                            fixed_text.append_unichar (c);
+                        fixed = true;
+                    }
+                    else {
+                        fixed_text.append_unichar (c);
+                    }
+                }
+                fixed_text.append_unichar ('.');
+                break;
+        }
+
+        return fixed_text.str;
+    }
 }
+
