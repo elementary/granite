@@ -30,26 +30,14 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         SENTENCE
     }
 
-    private CssProvider style_provider;
-
     public Welcome (string title_text, string subtitle_text) {
         string _title_text = modify_text_case (title_text, CaseConversionMode.TITLE);
         string _subtitle_text = modify_text_case (subtitle_text, CaseConversionMode.SENTENCE);
 
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
-        style_provider = new CssProvider ();
-
-        try {
-            style_provider.load_from_path (RESOURCES_DIR + "/style/WelcomeScreen.css");
-        } catch (Error e) {
-            warning ("WelcomeScreen: Could not add CSS provider. This widget will not look as intended. %s", e.message);
-        }
-
         // Set theming
-        var style_context = this.get_style_context();
-        style_context.add_class ("GraniteWelcomeScreen");
-        style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        this.get_style_context().add_class ("GraniteWelcomeScreen");
 
         // Box properties
         content.homogeneous = false;
@@ -60,9 +48,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         // Labels
         var title = new Gtk.Label ("<span weight='medium' size='14700'>" + _title_text + "</span>");
 
-        var main_title_style = title.get_style_context();
-        main_title_style.add_class ("title");
-        main_title_style.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        title.get_style_context().add_class ("title");
 
         title.use_markup = true;
         title.set_justify (Gtk.Justification.CENTER);
@@ -74,9 +60,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle.set_justify (Gtk.Justification.CENTER);
         content.pack_start (subtitle, false, true, 2);
 
-        var subtitle_style = subtitle.get_style_context();
-        subtitle_style.add_class("subtitle");
-        subtitle_style.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        subtitle.get_style_context().add_class("subtitle");
 
         // Options wrapper
         this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
@@ -119,20 +103,18 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         label.halign = Gtk.Align.START;
         label.valign = Gtk.Align.CENTER;
         label.get_style_context().add_class ("option-title");
-        label.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Description label
         var description = new Gtk.Label ("<span weight='medium' size='11400'>" + _description_text + "</span>");
         description.use_markup = true;
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
+        description.sensitive = false;
         description.get_style_context().add_class ("option-description");
-        description.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Button
         var button = new Gtk.Button ();
         button.set_relief (Gtk.ReliefStyle.NONE);
-        button.get_style_context().add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
         // Button contents wrapper
         var button_contents = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 7);
@@ -145,20 +127,22 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         // Add right text wrapper
         var text_wrapper = new Gtk.Box (Gtk.Orientation.VERTICAL, 3);
-        text_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // top spacing
+        // top spacing
+        text_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
         text_wrapper.pack_start (label, false, false, 0);
         text_wrapper.pack_start (description, false, false, 0);
-        text_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // bottom spacing
+        // bottom spacing
+        text_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
         button_contents.pack_start (text_wrapper, false, true, 8);
 
         button.add (button_contents);
-        this.children.append (button);
+        children.append (button);
         options.pack_start (button, false, false, 0);
 
         button.button_release_event.connect ( () => {
             int index = this.children.index (button);
-            this.activated (index); // send signal
+            activated (index); // send signal
             return false;
         } );
     }
@@ -166,7 +150,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     private string modify_text_case (string text, CaseConversionMode mode) {
 
         /**
-         * This function will not modify the text any the following conditions are met:
+         * This function will not modify the text if any the following conditions are met:
          * - @text ends with a dot.
          * - @text contains at least one character outside the English alphabet.
          */
