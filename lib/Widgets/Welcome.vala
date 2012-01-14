@@ -42,6 +42,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         // Set theming
         this.get_style_context().add_class ("GraniteWelcomeScreen");
+        this.get_style_context().add_class ("WelcomeScreen");
 
         // Box properties
         content.homogeneous = false;
