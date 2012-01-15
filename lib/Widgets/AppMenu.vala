@@ -23,11 +23,11 @@ namespace Granite.Widgets {
     
     public class AppMenu : ToolButtonWithMenu {
     
-        public MenuItem about_item;
+        public Gtk.MenuItem about_item;
     
         public signal void show_about(Gtk.Widget w);
 
-        public AppMenu (Menu menu) {
+        public AppMenu (Gtk.Menu menu) {
         
             base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
         }
@@ -46,14 +46,14 @@ namespace Granite.Widgets {
          *
          * @deprecated 0.1
          **/
-        public AppMenu.with_urls (Menu menu, string help_url, string translate_url, string bug_url) {
+        public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");
             base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
         }
         
-        public void add_items (Menu menu) {
+        public void add_items (Gtk.Menu menu) {
             
-            about_item = new MenuItem.with_label (_("About"));
+            about_item = new Gtk.MenuItem.with_label (_("About"));
             
             if (menu.get_children ().length () > 0)
                 menu.append (new SeparatorMenuItem ());

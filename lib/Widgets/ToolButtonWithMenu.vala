@@ -39,7 +39,7 @@ namespace Granite.Widgets {
         public Gtk.Action? myaction;
 
         /* delegate function used to populate menu */
-        public delegate Menu MenuFetcher();
+        public delegate Gtk.Menu MenuFetcher();
 
         private int long_press_time = Gtk.Settings.get_default().gtk_double_click_time * 2;
         private Button button;
@@ -78,8 +78,8 @@ namespace Granite.Widgets {
             }
         }
 
-        private Menu _menu;
-        public Menu menu {
+        private Gtk.Menu _menu;
+        public Gtk.Menu menu {
             get {
                     return _menu;
                 }
@@ -95,7 +95,7 @@ namespace Granite.Widgets {
 
         public ToolButtonWithMenu.from_action (Gtk.Action action)
         {
-            this.from_stock(action.stock_id, IconSize.MENU, action.label, new Menu());
+            this.from_stock(action.stock_id, IconSize.MENU, action.label, new Gtk.Menu());
 
             use_action_appearance = true;
 
@@ -105,7 +105,7 @@ namespace Granite.Widgets {
             myaction = action;
         }
 
-        public ToolButtonWithMenu.from_stock (string stock_image, IconSize size, string label, Menu menu)
+        public ToolButtonWithMenu.from_stock (string stock_image, IconSize size, string label, Gtk.Menu menu)
         {
             Image image = new Image.from_stock(stock_image, size);
 
@@ -121,7 +121,7 @@ namespace Granite.Widgets {
             menu.deactivate.connect(popdown_menu);
         }
 
-        public ToolButtonWithMenu (Image image, string label, Menu _menu, PositionType _menu_orientation = Gtk.PositionType.LEFT)
+        public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu, PositionType _menu_orientation = Gtk.PositionType.LEFT)
         {
             this.menu_orientation = _menu_orientation;
 
@@ -255,7 +255,7 @@ namespace Granite.Widgets {
             update_menu_properties();
         }
 
-        private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
+        private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in)
         {
             Allocation menu_allocation;
             menu.get_allocation (out menu_allocation);

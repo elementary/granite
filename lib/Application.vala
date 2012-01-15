@@ -134,7 +134,7 @@ namespace Granite {
                 Logger.DisplayLevel = LogLevel.DEBUG;
         }
 
-        public AppMenu create_appmenu (Menu menu) {
+        public AppMenu create_appmenu (Gtk.Menu menu) {
 
             AppMenu app_menu = new AppMenu.with_app (this, menu);
             app_menu.show_about.connect (show_about);
