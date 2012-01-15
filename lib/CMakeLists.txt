@@ -41,7 +41,7 @@ link_directories(${LIB_PATHS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.12.0" MINIMUM)
+ensure_vala_version("0.13.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
     Application.vala
