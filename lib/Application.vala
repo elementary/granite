@@ -21,15 +21,6 @@ using Granite.Services;
 using Granite.Widgets;
 
 namespace Granite {
-    public struct utsname {
-
-        char sysname [65];
-        char nodename [65];
-        char release [65];
-        char version [65];
-        char machine [65];
-        char domainname [65];
-    }
 
     /**
      * Global deprecated object..
@@ -81,8 +72,7 @@ namespace Granite {
             Logger.initialize (program_name);
             Logger.DisplayLevel = LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
-            var un = utsname ();
-            uname (un);
+            var un = Posix.utsname ();
             message ("Kernel version: %s", (string) un.release);
             Logger.DisplayLevel = LogLevel.WARN;
 
@@ -95,9 +85,6 @@ namespace Granite {
 
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
             protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
-
-        [CCode (cheader_filename = "sys/utsname.h", cname = "uname")]
-            protected extern static int uname (utsname buf);
 
         public new int run (string[] args) {
 
