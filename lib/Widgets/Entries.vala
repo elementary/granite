@@ -25,10 +25,13 @@ namespace Granite.Widgets {
         public string hint_string;
         Gdk.RGBA normal_color;
         Gdk.RGBA insensitive_color;
+ 
+        private string text_restore;
 
         public HintedEntry (string hint_string) {
         
             this.hint_string = hint_string;
+            text_restore = hint_string;
             normal_color = get_style_context().get_color(Gtk.StateFlags.NORMAL);
             insensitive_color = get_style_context().get_color(Gtk.StateFlags.INSENSITIVE);
             
@@ -71,11 +74,14 @@ namespace Granite.Widgets {
         private void grey_out () {
             override_font (Pango.FontDescription.from_string ("italic"));
             override_color(Gtk.StateFlags.NORMAL, insensitive_color);
+            text_restore = this.text;
+            this.text = "";
         }
         
         private void reset_font () {
             override_font (Pango.FontDescription.from_string ("normal"));
             override_color(Gtk.StateFlags.NORMAL, normal_color);
+            this.text = text_restore;
         }
         
         public new string get_text () {
