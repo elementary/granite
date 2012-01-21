@@ -37,12 +37,10 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     public Welcome (string title_text, string subtitle_text) {
         string _title_text = modify_text_case (title_text, CaseConversionMode.TITLE);
         string _subtitle_text = modify_text_case (subtitle_text, CaseConversionMode.SENTENCE);
+        _title_text = _title_text.replace("&", "&amp;");
+        _subtitle_text = _subtitle_text.replace("&", "&amp;");
 
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-        // Set theming
-        this.get_style_context().add_class ("GraniteWelcomeScreen");
-        this.get_style_context().add_class ("WelcomeScreen");
 
         // Box properties
         content.homogeneous = false;
@@ -83,7 +81,22 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         add (content);
     }
 
-    public void set_sensitivity (uint index, bool val) {
+    public void set_item_visible (uint index, bool val) {
+        if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
+            children.nth_data(index).set_no_show_all (!val);
+            children.nth_data(index).set_visible (val);
+        }
+    }
+
+    public void remove_item (uint index) {
+        if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
+            var item = children.nth_data (index);
+            item.destroy ();
+            children.remove (item);
+        }
+    }
+
+    public void set_item_sensitivity (uint index, bool val) {
         if(index < children.length () && children.nth_data (index) is Gtk.Widget)
             children.nth_data (index).set_sensitive (val);
     }
@@ -101,6 +114,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     public void append_with_image (Gtk.Image? image, string option_text, string description_text) {
         string _option_text = modify_text_case (option_text, CaseConversionMode.TITLE);
         string _description_text = modify_text_case (description_text, CaseConversionMode.SENTENCE);
+        _option_text = _option_text.replace ("&", "&amp;");
+        _description_text = _description_text.replace ("&", "&amp;");
 
         // Option label
         var label = new Gtk.Label ("<span weight='medium' size='11700'>" + _option_text + "</span>");
@@ -152,25 +167,18 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         } );
     }
 
+    /**
+     * This function will not modify the text if it contains one or more
+     * characters outside the English alphabet.
+     */
     private string modify_text_case (string text, CaseConversionMode mode) {
-
-        /**
-         * This function will not modify the text if any the following conditions are met:
-         * - @text ends with a dot.
-         * - @text contains at least one character outside the English alphabet.
-         */
-
-        var fixed_text = new StringBuilder ();
         unichar c;
-
-        // Disabling this feature for other languages
         for (int i = 0; text.get_next_char (ref i, out c);) {
             if (c.isgraph () && !('a' <= c.tolower () && c.tolower () <= 'z'))
                 return text;
         }
-        // Checking if @text ends with a dot.
-        if (c == '.')
-            return text;
+
+        var fixed_text = new StringBuilder ();
 
         switch (mode) {
             case CaseConversionMode.TITLE:
