@@ -22,83 +22,35 @@ namespace Granite.Widgets {
 
     public class HintedEntry : Gtk.Entry {
 
-        public string hint_string;
-        Gdk.RGBA normal_color;
-        Gdk.RGBA insensitive_color;
- 
-        private string text_restore;
+        public string hint_string {
+            get {
+                return placeholder_text;
+            }
+            set {
+                placeholder_text = value;
+            }
+        }
 
         public HintedEntry (string hint_string) {
         
             this.hint_string = hint_string;
-            text_restore = hint_string;
-            normal_color = get_style_context().get_color(Gtk.StateFlags.NORMAL);
-            insensitive_color = get_style_context().get_color(Gtk.StateFlags.INSENSITIVE);
-            
-            hint ();
-            
-            // Signals and callbacks
-            focus_in_event.connect (on_focus_in);
-            focus_out_event.connect (on_focus_out);
         }
-
-        private bool on_focus_in () {
-        
-            if (get_text () == "")
-                unhint ();
-                
-            return false;
-        }
-        
-        private bool on_focus_out () {
-        
-            if (get_text () == "")
-                hint ();
-            
-            return false;
-        }
-        
+      
+        /*
+         * These 4 functions must be removed, they are only kept here
+         * for API compatibility.
+         */
         protected void hint () {
-        
-            text = hint_string;
-            grey_out ();
         }
 
         protected void unhint () {
-        
-            text = "";
-            reset_font ();
-        }
-        
-        
-        private void grey_out () {
-            override_font (Pango.FontDescription.from_string ("italic"));
-            override_color(Gtk.StateFlags.NORMAL, insensitive_color);
-            text_restore = this.text;
-            this.text = "";
-        }
-        
-        private void reset_font () {
-            override_font (Pango.FontDescription.from_string ("normal"));
-            override_color(Gtk.StateFlags.NORMAL, normal_color);
-            this.text = text_restore;
         }
         
         public new string get_text () {
-            
-            if (text == this.hint_string)
-                return "";
-            
             return text;        
         }
         
         public new void set_text (string text) {
-        
-            if (text == "")
-                hint();
-            else
-                unhint();
-            
             this.text = text;
         }
         
