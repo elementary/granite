@@ -31,8 +31,8 @@ namespace Granite.Widgets {
            usage only. Theme developers should use GraniteWidgetsModeButton instead.
          */
 
-        public static CssProvider style_provider;
-        public static StyleContext widget_style;
+        internal static CssProvider style_provider;
+        internal static StyleContext widget_style;
 
         private const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
