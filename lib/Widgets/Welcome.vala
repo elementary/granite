@@ -35,8 +35,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     public Welcome (string title_text, string subtitle_text) {
-        string _title_text = modify_text_case (title_text, CaseConversionMode.TITLE);
-        string _subtitle_text = modify_text_case (subtitle_text, CaseConversionMode.SENTENCE);
+        string _title_text = title_text;
+        string _subtitle_text = subtitle_text;
         _title_text = _title_text.replace("&", "&amp;");
         _subtitle_text = _subtitle_text.replace("&", "&amp;");
 
@@ -112,8 +112,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     public void append_with_image (Gtk.Image? image, string option_text, string description_text) {
-        string _option_text = modify_text_case (option_text, CaseConversionMode.TITLE);
-        string _description_text = modify_text_case (description_text, CaseConversionMode.SENTENCE);
+        string _option_text = option_text;
+        string _description_text = description_text;
         _option_text = _option_text.replace ("&", "&amp;");
         _description_text = _description_text.replace ("&", "&amp;");
 
@@ -165,53 +165,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             activated (index); // send signal
             return false;
         } );
-    }
-
-    /**
-     * This function will not modify the text if it contains one or more
-     * characters outside the English alphabet.
-     */
-    private string modify_text_case (string text, CaseConversionMode mode) {
-        unichar c;
-        for (int i = 0; text.get_next_char (ref i, out c);) {
-            if (c.isgraph () && !('a' <= c.tolower () && c.tolower () <= 'z'))
-                return text;
-        }
-
-        var fixed_text = new StringBuilder ();
-
-        switch (mode) {
-            case CaseConversionMode.TITLE:
-                unichar last_char = ' ';
-                for (int i = 0; text.get_next_char (ref i, out c);) {
-                    if (last_char.isspace () && c.islower ())
-                        fixed_text.append_unichar (c.totitle ());
-                    else
-                        fixed_text.append_unichar (c);
-
-                    last_char = c;
-                }
-                break;
-            case CaseConversionMode.SENTENCE:
-                bool fixed = false;
-                unichar last_char = ' ';
-                for (int i = 0; text.get_next_char (ref i, out c);) {
-                    if (!fixed && last_char.isspace ()) {
-                        if (c.islower ())
-                            fixed_text.append_unichar (c.totitle ());
-                        else
-                            fixed_text.append_unichar (c);
-                        fixed = true;
-                    }
-                    else {
-                        fixed_text.append_unichar (c);
-                    }
-                }
-                fixed_text.append_unichar ('.');
-                break;
-        }
-
-        return fixed_text.str;
     }
 }
 
