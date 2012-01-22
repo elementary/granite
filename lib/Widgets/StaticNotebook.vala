@@ -93,7 +93,7 @@ namespace Granite.Widgets {
         }
 
         private void update_switcher_visibility() {
-            if (switcher_hidden && switcher_box.visible) {
+            if (switcher_hidden) {
                 switcher_box.hide();
                 return;
             }
