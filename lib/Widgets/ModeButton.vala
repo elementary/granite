@@ -77,7 +77,7 @@ namespace Granite.Widgets {
 
         public uint n_items {
             get {
-                return get_children().length();
+                return get_children ().length ();
             }
         }
 
@@ -99,7 +99,7 @@ namespace Granite.Widgets {
             homogeneous = true;
             spacing = 0;
             app_paintable = true;
-            set_visual (get_screen().get_rgba_visual());
+            set_visual (get_screen ().get_rgba_visual ());
 
             can_focus = true;
         }
@@ -124,7 +124,7 @@ namespace Granite.Widgets {
         }
 
         /**
-         * This is the recommended function for adding icons to the ModeButton widget.
+         * This is the recommended method for adding icons to the ModeButton widget.
          * If the name of a symbolic icon is passed, it will be properly themed for
          * each state of the widget. That is, it will match the foreground color
          * defined by the theme for each state (active, prelight, insensitive, etc.)
@@ -152,40 +152,37 @@ namespace Granite.Widgets {
             add (button);
             button.show_all ();
 
-            mode_added((int)get_children().length(), w);
+            mode_added ((int)get_children ().length (), w);
         }
 
         public void set_active (int new_active_index) {
-
-            if (new_active_index >= get_children().length () || _selected == new_active_index)
+            if (new_active_index >= get_children ().length () || _selected == new_active_index)
                 return;
 
             if (_selected >= 0)
-                ((ToggleButton) get_children().nth_data(_selected)).set_active (false);
+                ((ToggleButton) get_children ().nth_data (_selected)).set_active (false);
 
             _selected = new_active_index;
-            ((ToggleButton) get_children().nth_data(_selected)).set_active (true);
+            ((ToggleButton) get_children ().nth_data (_selected)).set_active (true);
 
-            mode_changed(((ToggleButton) get_children().nth_data(_selected)).get_child());
+            mode_changed (((ToggleButton) get_children ().nth_data (_selected)).get_child ());
         }
 
-        public void set_item_visible(int index, bool val) {
-            var item = get_children().nth_data(index);
-            if(item == null)
+        public void set_item_visible (int index, bool val) {
+            var item = get_children ().nth_data (index);
+            if (item == null)
                 return;
 
-            item.set_no_show_all(!val);
-            item.set_visible(val);
+            item.set_no_show_all (!val);
+            item.set_visible (val);
         }
 
-        public new void remove(int index)
-        {
-            mode_removed(index, (get_children().nth_data(index) as Gtk.Bin).get_child ());
-            get_children().nth_data(index).destroy();
+        public new void remove (int index) {
+            mode_removed (index, (get_children ().nth_data (index) as Gtk.Bin).get_child ());
+            get_children ().nth_data (index).destroy ();
         }
 
         public void clear_children () {
-
             foreach (weak Widget button in get_children ()) {
                 button.hide ();
                 if (button.get_parent () != null)
@@ -196,7 +193,7 @@ namespace Granite.Widgets {
         }
 
         protected override bool scroll_event (EventScroll ev) {
-            if(ev.direction == Gdk.ScrollDirection.DOWN) {
+            if (ev.direction == Gdk.ScrollDirection.DOWN) {
                 selected ++;
             }
             else if (ev.direction == Gdk.ScrollDirection.UP) {
@@ -213,8 +210,8 @@ namespace Granite.Widgets {
 
             const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
-            get_style_context().add_class ("raised");
-            get_style_context().add_provider (ModeButton.style_provider, style_priority);
+            get_style_context ().add_class ("raised");
+            get_style_context ().add_provider (ModeButton.style_provider, style_priority);
         }
     }
 }
