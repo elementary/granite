@@ -69,7 +69,7 @@ public class Granite.Demo : Granite.Application
         /* welcome */
 
         // These strings will be automatically corrected by the widget
-        var welcome = new Welcome("welcome widget", "description text");
+        var welcome = new Welcome("Granite's Welcome Screen", "This is Granite's Welcome widget.");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
 
         Gdk.Pixbuf? pixbuf = null;
@@ -84,10 +84,10 @@ public class Granite.Demo : Granite.Application
         Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
 
         // Adding elements. Use the most convenient function to add an icon
-        welcome.append_with_pixbuf(pixbuf, "create", "write a new document");
-        welcome.append_with_image(image, "open", "select a file");
-        welcome.append("document-save", "save", "with a much longer description");
-        welcome.append("help-info", "Discover", "Learn more about this app");
+        welcome.append_with_pixbuf(pixbuf, "Create", "Write a new document.");
+        welcome.append_with_image(image, "Open", "select a file.");
+        welcome.append("document-save", "Save", "With a much longer description.");
+        welcome.append("help-info", "Discover", "Learn more about this application.");
 
         /* modebutton */
         var mode_button = new ModeButton();
@@ -104,10 +104,10 @@ public class Granite.Demo : Granite.Application
         toolbar.get_style_context().add_class("primary-toolbar");
         var toolbutton = new Gtk.ToolItem();
         var tool_mode = new ModeButton();
-        tool_mode.append(new Gtk.Label("1"));
-        tool_mode.append(new Gtk.Label("2"));
-        tool_mode.append(new Gtk.Label("3"));
-        tool_mode.append(new Gtk.Label("4"));
+        tool_mode.append_icon ("view-list-column-symbolic", Gtk.IconSize.MENU);
+        tool_mode.append_icon ("view-list-details-symbolic", Gtk.IconSize.MENU);
+        tool_mode.append_icon ("view-list-icons-symbolic", Gtk.IconSize.MENU);
+        tool_mode.append_icon ("view-list-video-symbolic", Gtk.IconSize.MENU);
         toolbutton.add(tool_mode);
         toolbar.insert(toolbutton, -1);
         toolbar.insert(create_appmenu(new Gtk.Menu()), -1);
