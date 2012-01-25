@@ -20,7 +20,7 @@
 
 
 /**
- * /!\ Unstable api
+ * /!\ Unstable API
  *
  * PopOver widget. It is a Dialog you can attach to a widget, e.g. a button.
  *
@@ -46,7 +46,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     protected Gtk.Border PADDINGS;
     double offset = 15.0;
     const int MARGIN = 12;
-    bool is_composited;
+    new bool is_composited;
     Gtk.Widget menu;
     static Gtk.CssProvider style_provider;
     Gtk.Box hbox;
@@ -60,58 +60,66 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         BOTTOMRIGHT
     }
 
+    private const string POPOVER_STYLESHEET = """
+        .composited {
+            background-color: rgba (0, 0, 0, 0.0);
+        }
+    """;
+
     PopPosition pos = PopPosition.TOPRIGHT;
     protected bool arrow_up = false;
     protected double arrow_offset = 35.0;
+
     static construct {
-        
+
         install_style_property (new GLib.ParamSpecInt ("border-radius",
                                                        "Border radius",
                                                        "Border radius of the popover",
                                                        0, 50, 8,
                                                        ParamFlags.READABLE));
-                                                       
+
         install_style_property (new GLib.ParamSpecInt ("border-width",
                                                        "Border width",
                                                        "Width of the popover's outer border",
                                                        0, 8, 1,
                                                        ParamFlags.READABLE));
-        
+
         install_style_property (new GLib.ParamSpecInt ("shadow-size",
                                                        "Shadow size",
                                                        "Size of the popover's shadow",
                                                        4, 50, 20,
                                                        ParamFlags.READABLE));
-        
+
         install_style_property (new GLib.ParamSpecInt ("arrow-height",
                                                        "Arrow height",
                                                        "Height of the popover's arrow",
                                                        0, 50, 14,
                                                        ParamFlags.READABLE));
-        
+
         install_style_property (new GLib.ParamSpecInt ("arrow-width",
                                                        "Arrow width",
                                                        "Width of the popover's arrow",
                                                        0, 50, 30,
                                                        ParamFlags.READABLE));
-    }    
+    }
+
     construct {
-        
+
         /* Are we composited? */
         is_composited = Gdk.Screen.get_default ().is_composited ();
-        
+
         if(is_composited) {
             // Set up css provider
             style_provider = new Gtk.CssProvider ();
             try {
-                style_provider.load_from_path (RESOURCES_DIR + "/style/CompositedWindow.css");
+                style_provider.load_from_data (POPOVER_STYLESHEET, -1);
             } catch (Error e) {
-                warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+                warning ("GranitePopOver: %s. The widget will not look as intended.", e.message);
             }
-            
+
             // Window properties
             set_visual (get_screen ().get_rgba_visual());
-            
+
             get_style_context ().add_class ("popover");
             get_style_context ().add_class ("composited");
             get_style_context ().add_provider_for_screen (get_screen(), style_provider, 600);
@@ -130,7 +138,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public PopOver()
     {
-    
+
         hbox = get_content_area() as Gtk.Box;
         abox = get_action_area() as Gtk.Box;
         menu = new Gtk.Window();
@@ -147,7 +155,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         abox.set_margin_left(PADDINGS.left + SHADOW_SIZE + 5);
         abox.set_margin_right(PADDINGS.right + SHADOW_SIZE + 5);
         abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + 5);
-        
+
         menu.get_style_context().add_class("popover_bg");
 
         size_allocate.connect(on_size_allocate);
@@ -165,15 +173,15 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
             return false;
         });
-        
+
         hide.connect( () => { response(Gtk.ResponseType.CANCEL); });
     }
 
     /* May be null if the screen is not composited */
     protected Granite.Drawing.BufferSurface? main_buffer = null;
-    
+
     protected void reset_buffers () {
-        
+
         main_buffer = null;
     }
 
@@ -254,7 +262,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             hbox.set_margin_top(PADDINGS.top + SHADOW_SIZE + 5);
             abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + ARROW_HEIGHT);
         }
-        
+
         if(old_pos != pos) {
             compute_shadow (get_allocated_width (), get_allocated_height ());
         }
@@ -268,7 +276,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
                     PADDINGS.top + SHADOW_SIZE + (arrow_up ? ARROW_HEIGHT : 0));
         }
     }
-    
+
     int win_x;
     int win_y;
 
@@ -348,11 +356,11 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     }
 
     protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height) {
-    
+
         // Start with rounded rectangle as base
         Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, x, (arrow_up) ? y + ARROW_HEIGHT : y,
                                                            width, height - ARROW_HEIGHT, BORDER_RADIUS);
-        
+
         // Draw arrow
         if (arrow_up) {
             cr.move_to (arrow_offset, y + ARROW_HEIGHT);
@@ -363,32 +371,32 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
             cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
         }
-        cr.close_path ();  
+        cr.close_path ();
     }
 
     int old_w = 0;
     int old_h = 0;
-    
+
     void compute_shadow (int w, int h) {
         if(!is_composited) {
             return;
         }
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
-        
+
         // Shadow first
         cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
                        w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH);
         main_buffer.context.set_source_rgba (0.0, 0.0, 0.0, 0.4);
         main_buffer.context.fill_preserve ();
-        main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation 
-        
+        main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation
+
         // Outer border
         main_buffer.context.set_operator (Cairo.Operator.SOURCE);
         main_buffer.context.set_line_width (BORDER_WIDTH);
         Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
         main_buffer.context.stroke_preserve ();
-        
-        // Background        
+
+        // Background
         main_buffer.context.clip ();
         Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
         if(is_composited) {
@@ -409,7 +417,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             return;
 
         compute_shadow (w, h);
-        
 
         old_w = w;
         old_h = h;
@@ -430,3 +437,4 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         return base.draw(cr);
     }
 }
+
