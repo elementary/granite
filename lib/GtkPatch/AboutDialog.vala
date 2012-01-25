@@ -286,7 +286,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         content_area.pack_start(content_hbox, true, true, 0);
 
         logo_image = new Image();
-        logo_vbox.pack_start(logo_image, false, false, 0);
+        logo_vbox.pack_start(logo_image, false, false, 12);
         logo_vbox.pack_end(new Box(Orientation.VERTICAL, 0), true, true, 0);
 
         // Adjust sizes
