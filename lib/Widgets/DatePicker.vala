@@ -94,24 +94,6 @@ namespace Granite.Widgets {
             hide_dropdown ();
         }
         
-        private bool on_dropdown_button_press (EventButton event) {
-        
-            // Determine if the button press was in the bounds of the 
-            // calendar popup. If it wasn't, hide the popup.
-            Allocation dropdown_size;
-            dropdown.get_allocation (out dropdown_size);
-            
-            if (event.x > dropdown_size.x + dropdown_size.width || event.x < dropdown_size.x)
-                hide_dropdown ();                
-            
-            return false;
-        }
-        
-        private bool on_dropdown_delete_event () {
-            hide_dropdown ();
-            return true; // don't destroy the dropdown
-        }
-        
         private void hide_dropdown () {
         
             popover.hide ();

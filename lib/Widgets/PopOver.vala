@@ -345,7 +345,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public void move_to_window(Gdk.Window window)
     {
-        int x,y,w,h;
+        int x, y;
         window.get_root_origin(out x, out y);
         window.get_origin(out x, out y);
         x += window.get_width()/2 - MARGIN - SHADOW_SIZE - (int)offset;
