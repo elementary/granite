@@ -104,23 +104,23 @@ namespace Granite.Widgets {
             can_focus = true;
         }
 
-        public void append_pixbuf (Gdk.Pixbuf? pixbuf) {
+        public int append_pixbuf (Gdk.Pixbuf? pixbuf) {
             if (pixbuf == null) {
                 warning ("GraniteWidgetsModeButton: Attempt to add null pixbuf failed.");
-                return;
+                return -1;
             }
 
             var image = new Image.from_pixbuf (pixbuf);
-            append (image);
+            return append (image);
         }
 
-        public void append_text (string? text) {
+        public int append_text (string? text) {
             if (text == null) {
                 warning ("GraniteWidgetsModeButton: Attempt to add null text string failed.");
-                return;
+                return -1;
             }
 
-            append (new Gtk.Label(text));
+            return append (new Gtk.Label(text));
         }
 
         /**
@@ -129,14 +129,14 @@ namespace Granite.Widgets {
          * each state of the widget. That is, it will match the foreground color
          * defined by the theme for each state (active, prelight, insensitive, etc.)
          */
-        public void append_icon (string icon_name, Gtk.IconSize size) {
-            append (new Image.from_icon_name (icon_name, size));
+        public int append_icon (string icon_name, Gtk.IconSize size) {
+            return append (new Image.from_icon_name (icon_name, size));
         }
 
-        public void append (Gtk.Widget w) {
+        public int append (Gtk.Widget w) {
             if (w == null) {
                 warning ("GraniteWidgetsModeButton: Attempt to add null widget failed.");
-                return;
+                return -1;
             }
 
             var button = new ModeButtonItem ();
@@ -152,7 +152,9 @@ namespace Granite.Widgets {
             add (button);
             button.show_all ();
 
-            mode_added ((int)get_children ().length (), w);
+            int item_index = (int)get_children ().length ();
+            mode_added (item_index, w); // Emit the added signal
+            return item_index;
         }
 
         public void set_active (int new_active_index) {
