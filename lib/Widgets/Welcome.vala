@@ -29,11 +29,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
     protected Gtk.Box options;
 
-    private enum CaseConversionMode {
-        TITLE,
-        SENTENCE
-    }
-
     public Welcome (string title_text, string subtitle_text) {
         string _title_text = title_text;
         string _subtitle_text = subtitle_text;
@@ -101,17 +96,17 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             children.nth_data (index).set_sensitive (val);
     }
 
-    public void append (string icon_name, string option_text, string description_text) {
+    public int append (string icon_name, string option_text, string description_text) {
         Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
-        append_with_image (image, option_text, description_text);
+        return append_with_image (image, option_text, description_text);
     }
 
-    public void append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
+    public int append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
         var image = new Gtk.Image.from_pixbuf (pixbuf);
-        append_with_image (image, option_text, description_text);
+        return append_with_image (image, option_text, description_text);
     }
 
-    public void append_with_image (Gtk.Image? image, string option_text, string description_text) {
+    public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         string _option_text = option_text;
         string _description_text = description_text;
         _option_text = _option_text.replace ("&", "&amp;");
@@ -165,6 +160,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             activated (index); // send signal
             return false;
         } );
+
+        return this.children.index (button);
     }
 }
 
