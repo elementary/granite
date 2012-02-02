@@ -1,3 +1,2 @@
 usr/lib/lib*.so.*
-usr/share/granite/style/*.css
 usr/lib/girepository-1.0/*.typelib
