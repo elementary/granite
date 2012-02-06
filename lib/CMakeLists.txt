@@ -24,7 +24,7 @@ find_package(PkgConfig)
 find_package(GObjectIntrospection 0.9.12)
 include(GObjectIntrospectionMacros)
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gio-unix-2.0 gthread-2.0)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gio-unix-2.0 gthread-2.0 gee-1.0)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -75,6 +75,7 @@ CUSTOM_VAPIS
 PACKAGES
     ${PKG_DEPS}
     posix
+    gee-1.0
 OPTIONS
     --thread
 GENERATE_VAPI
