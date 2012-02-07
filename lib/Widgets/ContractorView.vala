@@ -28,24 +28,15 @@ public class Granite.Widgets.ContractorView : TreeView {
     public bool contractor_available;
     
     public delegate void DelegateType ();
+    private Gee.HashMap<int, DelegateWrapper?> outsiders;
+    private int[] blacklisted_pos;
+    private ListStore list;
     
-    /**
-     * A general item that can be inserted in the tree, even if it isn't a contract
-     * @param name the name
-     * @param text the description
-     * @param icon_name the name of the icon to show
-     * @param icon_size the size of the icon in pixel
-     * @param position the posion the item will be inserted at (first position  is 0)
-     * @param method a general method that contains all the methods which should be called when the item is activated
-     *        (must return void and mustn't have any parameter)
-     **/
-    public struct Item {string name; string text; string icon_name; int icon_size; int position; DelegateType method;}
-    private Gee.HashMap<int, Item?> outsiders;
+    private struct DelegateWrapper {DelegateType method;}
     
     /**
      * the index of the currently selected contract
      **/
-     
     public int selected {
         get {
             TreePath path;
@@ -69,10 +60,10 @@ public class Granite.Widgets.ContractorView : TreeView {
      * @param icon_size the size of the icon in pixel
      * @param show_contract_name show the name of the contract in the list
      **/
-    public ContractorView (string filename, string mime, int icon_size = 32, bool show_contract_name = true, Item[] items = {}, string[] name_blacklist = {}) {
-    
+    public ContractorView (string filename, string mime, int icon_size = 32, bool show_contract_name = true) {
         /* Setup the ListStore */
-        var list = new ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
+        list = new ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
+        outsiders = new Gee.HashMap<int, DelegateWrapper?> ();
         this.model = list;
         
         /* GUI */
@@ -86,10 +77,10 @@ public class Granite.Widgets.ContractorView : TreeView {
         var cell1 = new CellRendererPixbuf ();
         cell1.set_padding (5, 8);
         this.insert_column_with_attributes (-1, "", cell1, "pixbuf", 0);
-        
         var cell2 = new CellRendererText ();
         cell2.set_padding (2, 8);
         this.insert_column_with_attributes (-1, "", cell2, "markup", 1);
+
         this.contracts = Granite.Services.Contractor.get_contract (filename, mime);
         if (this.contracts == null || this.contracts.length == 0) {
             warning ("You should install contractor (or no contracts found for this mime).\n");
@@ -113,34 +104,16 @@ public class Granite.Widgets.ContractorView : TreeView {
         else {
             contractor_available = true;
             
-            int correction = 0;
-            outsiders = new Gee.HashMap<int, Item?> ();
-            for (var i=0; i<(this.contracts.length+items.length); i++){
-                bool is_item = false;
-                Item? item = null;            
-                foreach (Item cur_item in items) {
-                    if (cur_item.position == i) {
-                        is_item = true;
-                        item = cur_item;
-                        outsiders[i] = cur_item;
-                        correction++;
-                        break;
-                    }
-                }
-                
-                if ((!is_item) && this.contracts[i-correction].lookup ("Name") in name_blacklist) {
-                    continue;
-                }
-                
+            for (var i=0; i<this.contracts.length; i++){
                 TreeIter it;
                 list.append (out it);
-                string text = is_item ? item.text : this.contracts[i-correction].lookup ("Description");
-                
+                string text = this.contracts[i].lookup ("Description");
                 if (show_contract_name)
-                    text = "<b>"+ (is_item ? item.name : this.contracts[i-correction].lookup ("Name") )+"</b>\n"+text;
+                    text = "<b>"+this.contracts[i].lookup ("Name")+"</b>\n"+text;
                 try{
-                    string icon_name = is_item ? item.icon_name : this.contracts[i-correction].lookup ("IconName");
-                    list.set (it, 0, IconTheme.get_default ().load_icon (icon_name, icon_size, 0), 1, text);
+                    list.set (it, 
+                        0, IconTheme.get_default ().load_icon (this.contracts[i].lookup ("IconName"), 
+                        icon_size, 0), 1, text);
                 }
                 catch (Error e) {
                     error (e.message);
@@ -150,15 +123,80 @@ public class Granite.Widgets.ContractorView : TreeView {
         }
     }
     
+    /**
+    * A method to add items to the tree
+    * @param name the name
+    * @param text the description
+    * @param icon_name the name of the icon to show
+    * @param icon_size the size of the icon in pixel
+    * @param position the posion the item will be inserted at (first position  is 0)
+    * @param method a general method containing all the methods that should be called when the item is activated
+    *        (must return void and mustn't have any parameter)
+    **/ 
+    public void add_item (string name, string desc, string icon_name, int icon_size, int position, DelegateType method) {
+        TreeIter it;
+        list.insert (out it, position);
+        
+        string text = "<b>" + name + "</b>\n" + desc;
+        
+        try{
+            list.set (it, 0, IconTheme.get_default ().load_icon (icon_name, icon_size, 0), 1, text);
+        } catch (Error e) {
+            error (e.message);
+        }
+        
+        DelegateWrapper wr = {method};
+        outsiders[position] = wr;
+        
+        this.selected = 0;
+    }
+    
+    public void name_blacklist (string[] names) {
+        TreeIter it;
+        TreeIter it2;
+        Value value;
+        bool check;
+        int cur_pos = 0;
+        list.get_iter_first (out it);
+        list.get_iter_first (out it2);
+        
+        while (true) {
+	        list.get_value (it, 1, out value);
+	        check = list.iter_next (ref it2);
+	        string text = value.get_string ();
+	        
+	        if (text[3:text.index_of ("</b>")] in names) {
+	            list.remove (it);
+	            blacklisted_pos += cur_pos;
+            }
+	        if (!check)
+	            break;
+	            
+            it = it2;
+	        cur_pos++;	            
+        }
+    }
+        
+    
     public void run_selected () {
         if (this.selected in outsiders.keys ) {
             outsiders[this.selected].method ();
         } else {
             try {
+                int corr = 0;
+                foreach (int i in outsiders.keys) { //adjust in case of items added
+                    if (i > this.selected)
+                        break;
+                    corr++;
+                }
+                foreach (int i in blacklisted_pos) { //adjust in case of items removed
+                    if (i > this.selected)
+                        break;
+                    corr--;
+                }
                 Process.spawn_command_line_async (
-                    this.contracts[this.selected].lookup ("Exec"));
-            }
-            catch (Error e) {
+                    this.contracts[this.selected-corr].lookup ("Exec"));
+            } catch (Error e) {
                 error (e.message);
             }
         }
