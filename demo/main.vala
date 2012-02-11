@@ -168,9 +168,11 @@ public class Granite.Demo : Granite.Application
             mode_pop.append(new Gtk.Label("ment"));
             mode_pop.append(new Gtk.Label("tary"));
             pop_hbox.add(mode_pop);
+            pop_hbox.add(new DatePicker());
             pop.set_parent_pop (win);
             pop.move_to_widget(popover1);
             pop.show_all();
+            pop.present();
             pop.run ();
             pop.destroy ();
         });

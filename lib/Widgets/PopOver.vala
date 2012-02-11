@@ -138,6 +138,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      **/
     public PopOver()
     {
+        modal = true;
 
         hbox = get_content_area() as Gtk.Box;
         abox = get_action_area() as Gtk.Box;
@@ -164,7 +165,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         {
             foreach(Gtk.Window window in Gtk.Window.list_toplevels())
             {
-                if(((int)window.type_hint) != 0 && window.visible && window != this)
+                if((window.type_hint == Gdk.WindowTypeHint.POPUP_MENU || window.type_hint == Gdk.WindowTypeHint.MENU) && window.visible && window != this)
                 {
                     return false;
                 }
@@ -192,6 +193,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     public void set_parent_pop (Gtk.Window win)
     {
         set_transient_for(win);
+        set_parent(win);
         win.configure_event.connect( () => { hide(); return true; });
     }
 

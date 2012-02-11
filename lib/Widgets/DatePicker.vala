@@ -70,6 +70,7 @@ namespace Granite.Widgets {
         
             popover.show_all ();
             popover.move_to_coords (x, y);
+            popover.present();
             calendar.grab_focus ();
         }
         
