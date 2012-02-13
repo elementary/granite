@@ -38,29 +38,29 @@ namespace Granite.Widgets {
                 -GtkToolbar-button-relief: normal;
                 border-radius: 0 0 0 0;
                 border-style: solid;
-                border-width: 1 0 1 1;
+                border-width: 1px 0 1px 1px;
 
-                -unico-outer-stroke-width: 1 0 1 0;
+                -unico-outer-stroke-width: 1px 0 1px 0;
                 -unico-outer-stroke-radius: 0 0 0 0;
             }
 
             .GraniteModeButton .button:active,
             .GraniteModeButton .button:insensitive {
-                -unico-outer-stroke-width: 1 0 1 0;
+                -unico-outer-stroke-width: 1px 0 1px 0;
             }
 
             .GraniteModeButton .button:first-child {
-                border-radius: 3 0 0 3;
-                border-width: 1 0 1 1;
+                border-radius: 3px 0 0 3px;
+                border-width: 1px 0 1px 1px;
 
-                -unico-outer-stroke-width: 1 0 1 1;
+                -unico-outer-stroke-width: 1px 0 1px 1px;
             }
 
             .GraniteModeButton .button:last-child {
-                border-radius: 0 3 3 0;
-                border-width: 1;
+                border-radius: 0 3px 3px 0;
+                border-width: 1px;
 
-                -unico-outer-stroke-width: 1 1 1 0;
+                -unico-outer-stroke-width: 1px 1px 1px 0;
             }
         """;
 
