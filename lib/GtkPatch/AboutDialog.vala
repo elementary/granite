@@ -241,8 +241,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
     private const string STYLESHEET = """
         * {
-            -GtkDialog-action-area-border: 12;
-            -GtkDialog-button-spacing: 10;
+            -GtkDialog-action-area-border: 12px;
+            -GtkDialog-button-spacing: 10px;
             -GtkDialog-content-area-border: 0;
         }
     """;
