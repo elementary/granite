@@ -191,8 +191,8 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
         
         var tb = new Gtk.Toolbar ();
-        tb.set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
-        var bt = new ToolButtonWithMenu.from_stock (Gtk.Stock.GO_FORWARD, Gtk.IconSize.SMALL_TOOLBAR, "Share", new ContractorMenu ("/home/andrea/NFR", "text"));
+        tb.set_icon_size (Gtk.IconSize.LARGE_TOOLBAR);
+        var bt = new ToolButtonWithMenu (new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR), "Share", new ContractorMenu ("/home/user/file.txt", "text"));
         tb.insert (bt, 0);
         contractor_tab.add(tb);
         
