@@ -2,7 +2,6 @@ Source: granite
 Priority: extra
 Maintainer: Lucas Baudin <xapantu@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), 
- build-essential,
  pkg-config,
  cmake,
  valac,
