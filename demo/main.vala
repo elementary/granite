@@ -189,6 +189,13 @@ public class Granite.Demo : Granite.Application
         /* Contractor */
         var contractor_tab = new Gtk.VBox (false, 0);
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
+        
+        var tb = new Gtk.Toolbar ();
+        tb.set_icon_size (Gtk.IconSize.LARGE_TOOLBAR);
+        var bt = new ToolButtonWithMenu (new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR), "Share", new ContractorMenu ("/home/user/file.txt", "text"));
+        tb.insert (bt, 0);
+        contractor_tab.pack_start (tb, false, false);
+        
         var text_view = new Gtk.TextView ();
         GLib.HashTable<string, string>[] hash_ = Contractor.get_contract("/.zip", "application/zip");
         foreach(var hash in hash_)
