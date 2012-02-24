@@ -5,7 +5,7 @@ using Gtk;
 
 public class Granite.Widgets.Tab : Object {
     public string text;
-    public  Gdk.Pixbuf? pixbuf = null;
+    public  Gdk.Pixbuf? pixbuf { set; get; default = null; }
 
     internal Gtk.StateFlags close_button = Gtk.StateFlags.NORMAL;
     internal Gtk.StateFlags state = Gtk.StateFlags.NORMAL;
@@ -15,10 +15,13 @@ public class Granite.Widgets.Tab : Object {
     internal  bool removed = false;
     double initial_offset = 1.0;
     double initial_draw_offset = 0.0;
-    internal bool loading = false;
+    public bool loading { set; get; default = false;}
     internal Cairo.Surface surface;
 
     public Gtk.Widget widget;
+
+    public signal void need_redraw ();
+    public signal void need_recache ();
 
     public bool is_animated () {
 
@@ -32,6 +35,7 @@ public class Granite.Widgets.Tab : Object {
         this.text = text;
         if (stock_id != null) pixbuf = Gtk.IconTheme.get_default ().load_icon (stock_id, 16, 0);
         this.loading = loading;
+        notify["pixbuf"].connect ( () => { need_recache (); });
     }
 
     internal void start_animation () {
@@ -68,7 +72,7 @@ public class Granite.Widgets.Tab : Object {
     
     internal bool draw_with_cache (Cairo.Context cr, double x) {
         if (offset == 1.0 && surface != null && state == Gtk.StateFlags.NORMAL &&
-            close_button == Gtk.StateFlags.NORMAL) {
+            close_button == Gtk.StateFlags.NORMAL && !loading) {
             cr.set_source_surface (surface, x + draw_offset, 0);
             cr.paint ();
             return true;
@@ -83,7 +87,6 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
     Gtk.StyleContext tab_context;
     Gtk.StyleContext label_context;
     Gtk.StyleContext button_context;
-    Gtk.Style ctx;
     
     internal Gee.ArrayList<Tab> tabs;
     internal static Gtk.CssProvider style_provider;
@@ -161,7 +164,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
             style_provider = new Gtk.CssProvider ();
             try {
                 if (Gtk.Settings.get_default ().gtk_theme_name == "Ambiance") {
-                    style_provider.load_from_data (STYLESHEET_AMBIANCE, -1);
+                    //style_provider.load_from_data (STYLESHEET_AMBIANCE, -1);
                 }
                 else if (Gtk.Settings.get_default ().gtk_theme_name == "Adwaita") {
                     style_provider.load_from_data (STYLESHEET_ADWAITA, -1);
@@ -179,10 +182,10 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         
         /* Set up the StyleContexts */
         tab_context = new Gtk.StyleContext ();
-        label_context = new Gtk.StyleContext ();
+        label_context = get_style_context ();;
         button_context = new Gtk.StyleContext ();
         
-        var path =  new Gtk.WidgetPath ();
+        var path =  get_style_context ().get_path ().copy ();
 
         var pos = path.append_type (typeof (Gtk.Notebook));
         path.iter_add_class (pos, "notebook");
@@ -205,22 +208,29 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         /* Add our nice provider... */
         get_style_context ().add_provider (style_provider, style_priority);
         tab_context.add_provider (style_provider, style_priority);
-        label_context.add_provider (style_provider, style_priority);
+        //label_context.add_provider (style_provider, style_priority);
         button_context.add_provider (style_provider, style_priority);
-
-        /* Spinner Style
-         * TODO: it uses a deprecated API, but how are we supposed to use the new one? */
-        var spinner = new Gtk.Spinner ();
-        ctx = spinner.get_style ();
-        spinner.set_state_flags (Gtk.StateFlags.ACTIVE, false);
 
         size_allocate.connect (on_size_allocate);
 
         add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+
+        Timeout.add (80, () => {
+            foreach (var tab in tabs) {
+                if(tab.loading) {
+                    spinner_count++;
+                    queue_draw ();
+                    break;
+                }
+            }
+            return true;
+        });
     }
 
     public void add_tab (Tab tab) {
         tabs.add (tab);
+        tab.need_redraw.connect (() => { queue_draw (); });
+        tab.need_recache.connect (() => { cache_tab (tab); queue_draw (); });
 
         switch_page (tab);
         page = tabs.size -1;
@@ -291,7 +301,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
 
     void draw_pixbuf_icon (Cairo.Context cr, double x, double y, double height, Tab tab) {
         if (tab.loading)
-            Gtk.paint_spinner (ctx, cr, Gtk.StateType.ACTIVE, this, "",
+            Gtk.paint_spinner (get_style (), cr, Gtk.StateType.ACTIVE, this, "",
                                spinner_count, (int)(x + width*tab.offset - overlap - close_margin - close_size),
                                (int)(y +  height /2 - close_size/2), close_size, close_size);
         else if (tab.pixbuf != null) {
@@ -344,25 +354,31 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         double offset = old_width/width;
         /* Let's create the new tab cache. */
         foreach (var tab in tabs) {
-            /* Reset some values */
-            tab.offset = 1.0;
-            var draw_offset = tab.draw_offset;
-            var state = tab.state;
-            tab.draw_offset = 0;
-            tab.state = Gtk.StateFlags.NORMAL;
-
-            var buf = new Granite.Drawing.BufferSurface ( (int)(width +2*radius), get_allocated_height ());
-            draw_tab (buf.context, radius, tab, false /* don't use cache */);
-
-            tab.surface = buf.surface;
-            
-            /* Restore the values */
-            tab.state = state;
-            tab.draw_offset = draw_offset;
-            
+            cache_tab (tab);
             /* This is old_width/width, useful to have the tabs dynamically resized */
             tab.offset = offset;
         }
+    }
+
+    void cache_tab (Tab tab) {
+        /* Reset some values */
+        tab.offset = 1.0;
+        var draw_offset = tab.draw_offset;
+        var state = tab.state;
+        var loading = tab.loading;
+        tab.loading = false;
+        tab.draw_offset = 0;
+        tab.state = Gtk.StateFlags.NORMAL;
+
+        var buf = new Granite.Drawing.BufferSurface ( (int)(width +2*radius), get_allocated_height ());
+        draw_tab (buf.context, radius, tab, false /* don't use cache */);
+
+        tab.surface = buf.surface;
+        
+        /* Restore the values */
+        tab.state = state;
+        tab.loading = loading;
+        tab.draw_offset = draw_offset;
     }
 
     void on_size_allocate (Gtk.Allocation alloc) {
