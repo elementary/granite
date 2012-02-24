@@ -68,8 +68,8 @@ namespace Granite.Widgets {
 
         private const string HELP_BUTTON_STYLESHEET = """
             .help_button {
-                border-radius: 20;
-                padding: 3;
+                border-radius: 20px;
+                padding: 3px;
             }
         """;
 
