@@ -236,7 +236,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     private Button close_button;
 
     // Set the markup used for big text (program name and version)
-    private const string BIG_TEXT_MARKUP_START = "<span weight='heavy' size='17200'>";
+    private const string BIG_TEXT_MARKUP_START = "<span weight='heavy' size='18500'>";
     private const string BIG_TEXT_MARKUP_END = "</span>";
 
     private const string STYLESHEET = """
