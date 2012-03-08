@@ -68,8 +68,7 @@ namespace Granite.Widgets {
 
         private const string HELP_BUTTON_STYLESHEET = """
             .help_button {
-                border-radius: 20px;
-                padding: 3px;
+                border-radius: 12px;
             }
         """;
 
@@ -98,7 +97,7 @@ namespace Granite.Widgets {
             help_button.pressed.connect(() => { activate_link(help); });
 
             /* Circular help button */
-            help_button.set_size_request (29, -1);
+            help_button.set_size_request (26, -1);
 
             action_area.pack_end (help_button, false, false, 0);
             ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
