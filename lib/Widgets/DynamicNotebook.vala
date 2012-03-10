@@ -150,6 +150,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
     }
 
     public Gtk.PositionType tab_position { set; get; default = Gtk.PositionType.BOTTOM; }
+    public bool draw_unselected_background { set; get; default = false; }
 
     int start_dragging = -1;
     int spinner_count = 0;
@@ -421,31 +422,44 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
                               double radius, Tab tab) {
         double border_size = 0.8;
 
-        cr.set_source_surface (left_surface, x - radius, y - shadow_size);
-        cr.paint ();
-        cr.set_source_surface (right_surface, x + width - radius, y - shadow_size);
-        cr.paint ();
-
-        
-        cr.rectangle (x + radius, y - shadow_size, width - 2*radius, height + 2*shadow_size);
-        cr.set_source (center_pattern);
-        cr.fill ();
-
-        tab_context.set_state (tab.state);
         var border_color = tab_context.get_border_color (tab.state);
-        Gdk.cairo_set_source_rgba (cr, border_color);
-        draw_tab_background_shape (cr, x, y, width, height, radius, radius);
-        cr.fill ();
-        
-        double y_origin = y;
-        if (tab_position == Gtk.PositionType.BOTTOM)
-            y_origin += border_size;
+        if (draw_unselected_background || tab.state == Gtk.StateFlags.ACTIVE) {
+            cr.set_source_surface (left_surface, x - radius, y - shadow_size);
+            cr.paint ();
+            cr.set_source_surface (right_surface, x + width - radius, y - shadow_size);
+            cr.paint ();
 
-        draw_tab_background_shape (cr, x + border_size, y_origin,
-            width - 2*border_size, height - border_size, radius, radius - border_size);
-        cr.set_source_rgba (1, 1, 1, 0.8);
-        cr.clip ();
-        Gtk.render_background ( tab_context, cr, x - radius, y - 3, width + 2* radius, height + 6);
+            
+            cr.rectangle (x + radius, y - shadow_size, width - 2*radius, height + 2*shadow_size);
+            cr.set_source (center_pattern);
+            cr.fill ();
+
+            tab_context.set_state (tab.state);
+            Gdk.cairo_set_source_rgba (cr, border_color);
+            draw_tab_background_shape (cr, x, y, width, height, radius, radius);
+            cr.fill ();
+            
+            double y_origin = y;
+            if (tab_position == Gtk.PositionType.BOTTOM)
+                y_origin += border_size;
+
+            draw_tab_background_shape (cr, x + border_size, y_origin,
+                width - 2*border_size, height - border_size, radius, radius - border_size);
+            cr.set_source_rgba (1, 1, 1, 0.8);
+            cr.clip ();
+            Gtk.render_background ( tab_context, cr, x - radius, y - 3, width + 2* radius, height + 6);
+        }
+        else {
+            /* Just a light gradient */
+            cr.move_to (x + width - radius + overlap/2, y);
+            cr.line_to (x + width - radius + overlap/2, y + height);
+            var gradient = new Cairo.Pattern.linear (0, 0, 0, height);
+            gradient.add_color_stop_rgba (0.0, border_color.red, border_color.green, border_color.blue, 0.0);
+            gradient.add_color_stop_rgba (1.0, border_color.red, border_color.green, border_color.blue, 1.0);
+            cr.set_source (gradient);
+            cr.set_line_width (1.0);
+            cr.stroke ();
+        }
     }
 
     void draw_tab_background_shape (Cairo.Context cr, double x, double y, double width,
@@ -758,7 +772,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
     
     public Tab append_page (Gtk.Widget widget, string label, string? icon_id = null) {
         var tab = new Tab (label, icon_id);
-        widget.set_has_window (true);
+        //widget.set_has_window (true);
         tab.widget = widget;
         widget.hexpand = widget.vexpand = true;
         attach (widget, 0, 1, 2, 1);
