@@ -149,7 +149,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         }
     }
 
-    public Gtk.PositionType tab_position { set; get; default = Gtk.PositionType.TOP; }
+    public Gtk.PositionType tab_position { set; get; default = Gtk.PositionType.BOTTOM; }
 
     int start_dragging = -1;
     int spinner_count = 0;
@@ -174,8 +174,11 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
             }
         }
 
-        close_pixbuf = Gtk.IconTheme.get_default ().load_icon ("dialog-close", close_size, 0);
-        assert (close_pixbuf != null);
+        try {
+            close_pixbuf = Gtk.IconTheme.get_default ().load_icon ("gtk-close", close_size, 0);
+        }
+        catch (Error e) {
+        }
 
         height_request = 35;
         width_request = (int)(2*max_width);
@@ -715,8 +718,8 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         tabs.tabs[tabs.page].widget.set_child_visible (true);
         show_all ();
     } get { return tabs.page; } }
-    
-    Gtk.EventBox add_eventbox; 
+
+    Gtk.EventBox add_eventbox;
     Gtk.Button add_button;
     public DynamicNotebook () {
         add_eventbox = new Gtk.EventBox ();
@@ -731,6 +734,8 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         tabs.hexpand = true;
         attach (tabs, 0, 0, 1, 1);
         attach (add_eventbox, 1, 0, 1, 1);
+
+        get_style_context ().add_class ("notebook");
 
         tabs.switch_page.connect ( (t) => {
             page = tabs.tabs.index_of (t);
@@ -753,6 +758,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
     
     public Tab append_page (Gtk.Widget widget, string label, string? icon_id = null) {
         var tab = new Tab (label, icon_id);
+        widget.set_has_window (true);
         tab.widget = widget;
         widget.hexpand = widget.vexpand = true;
         attach (widget, 0, 1, 2, 1);
