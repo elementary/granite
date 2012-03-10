@@ -451,8 +451,8 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         }
         else {
             /* Just a light gradient */
-            cr.move_to (x + width - radius + overlap/2, y);
-            cr.line_to (x + width - radius + overlap/2, y + height);
+            cr.move_to (x + width - overlap/2, y);
+            cr.line_to (x + width - overlap/2, y + height);
             var gradient = new Cairo.Pattern.linear (0, 0, 0, height);
             gradient.add_color_stop_rgba (0.0, border_color.red, border_color.green, border_color.blue, 0.0);
             gradient.add_color_stop_rgba (1.0, border_color.red, border_color.green, border_color.blue, 1.0);
