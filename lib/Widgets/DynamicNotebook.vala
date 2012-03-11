@@ -150,7 +150,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
     }
 
     public Gtk.PositionType tab_position { set; get; default = Gtk.PositionType.BOTTOM; }
-    public bool draw_unselected_background { set; get; default = false; }
+    public bool draw_unselected_background { set; get; default = true; }
 
     int start_dragging = -1;
     int spinner_count = 0;
