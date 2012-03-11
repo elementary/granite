@@ -68,6 +68,7 @@ vala_precompile(VALA_C
     Widgets/TimePicker.vala
     Widgets/CollapsiblePaned.vala
     Widgets/StaticNotebook.vala
+    Widgets/DynamicNotebook.vala
     Widgets/CompositedWindow.vala
     Widgets/AppMenu.vala
     Widgets/Welcome.vala

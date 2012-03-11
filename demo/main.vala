@@ -205,6 +205,14 @@ public class Granite.Demo : Granite.Application
         contractor_tab.add(text_view);
         contractor_tab.add(new ContractorView("file:///home/user/file.txt", "text/plain"));
 
+
+        /* DynamicNotebook */
+        var dynamic_notebook = new DynamicNotebook ();
+        notebook.append_page (dynamic_notebook, new Gtk.Label ("Dynamic Notebook"));
+        dynamic_notebook.append_page (new Gtk.Label ("Page 1"), "Page 1");
+        dynamic_notebook.append_page (new Gtk.Label ("Page 2"), "Page 2");
+        dynamic_notebook.append_page (new Gtk.Label ("Page 3"), "Page 3");
+
         /* window properties */
         win.show_all();
         win.resize(800, 600);

@@ -116,7 +116,7 @@ public class Granite.Widgets.ContractorView : TreeView {
                         icon_size, 0), 1, text);
                 }
                 catch (Error e) {
-                    error (e.message);
+                    warning (e.message);
                 }
             }
             this.selected = 0;

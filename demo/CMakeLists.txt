@@ -9,7 +9,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # TODO: configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0)
+pkg_check_modules(DEPS REQUIRED gee-1.0 gtk+-3.0)
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER} )
 set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
 link_directories(${LIB_PATHS} ${CMAKE_CURRENT_BINARY_DIR}/../lib/)
@@ -20,6 +20,7 @@ CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/granite.vapi
 PACKAGES
     gtk+-3.0
+    gee-1.0
 OPTIONS
     --thread
 )
