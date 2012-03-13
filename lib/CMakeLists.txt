@@ -26,7 +26,7 @@ include(GObjectIntrospectionMacros)
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
 
 pkg_check_modules(DEPS REQUIRED
-    gtk+-3.0>=3.3.14
+    gtk+-3.0>=3.0.0
     gio-unix-2.0
     gthread-2.0
     gee-1.0)
