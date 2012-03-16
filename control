@@ -20,7 +20,7 @@ Homepage: http://launchpad.net/granite
 Package: libgranite-dev
 Section: libdevel
 Architecture: any
-Depends: libgranite0 (= ${binary:Version}), ${misc:Depends}
+Depends: libgranite0 (= ${binary:Version}), ${misc:Depends}, libgee-dev
 Pre-Depends: dpkg (>= 1.15.6)
 Description: Development files of Granite.
 
