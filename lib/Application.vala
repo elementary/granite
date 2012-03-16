@@ -112,7 +112,7 @@ namespace Granite {
 
         protected static void sig_handler (int sig) {
             warning ("Caught signal (%d), exiting", sig);
-            Granite.app.quit_mainloop ();
+            Gtk.main_quit ();
         }
 
         protected virtual void set_options () {
