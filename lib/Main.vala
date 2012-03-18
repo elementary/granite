@@ -19,6 +19,10 @@
  */
 
 namespace Granite {
+
+    /* STYLE CLASSES */
+    public const string STYLE_CLASS_CONTENT_VIEW = "content-view";
+
     public void init () {
         if (!Thread.supported ())
             error ("Problem initializing thread support.");
