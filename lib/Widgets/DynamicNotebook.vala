@@ -718,6 +718,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
 
 public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
     Granite.Widgets.Tabs tabs;
+    public signal void add_button_clicked ();
     public signal void new_tab_created (Tab tab);
 
     public signal void switch_page (Widget page, uint num);
@@ -743,7 +744,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         add_eventbox.add (add_button);
         add_eventbox.get_style_context ().add_class ("dynamic-notebook");
         add_eventbox.get_style_context ().add_provider (Tabs.style_provider, Tabs.style_priority);
-        add_button.clicked.connect ( () => { new_tab (); });
+        add_button.clicked.connect ( () => { add_button_clicked (); });
         tabs = new Granite.Widgets.Tabs ();
         tabs.hexpand = true;
         attach (tabs, 0, 0, 1, 1);
