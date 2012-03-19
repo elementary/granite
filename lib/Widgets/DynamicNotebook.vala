@@ -771,6 +771,11 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         return tab;
     }
     
+    /**
+     * granite_widgets_dynamic_notebook_append_page:
+     *
+     * Return value: (transfer full): a tab
+     */
     public Tab append_page (Gtk.Widget widget, string label, string? icon_id = null) {
         var tab = new Tab (label, icon_id);
         //widget.set_has_window (true);

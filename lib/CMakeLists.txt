@@ -126,7 +126,7 @@ endmacro(_list_prefix)
 
 # GObject Introspection
 include(GObjectIntrospectionMacros)
-add_target_gir(granite Granite granite.h "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
