@@ -161,25 +161,19 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
     // FIXME: probably needs to be moved somewhere with a public API
     Gdk.Pixbuf load_pixbuf_with_fallbacks (string[] icons_name, int icon_size) {
         Gdk.Pixbuf pixbuf = null;
-        foreach (var icon_name in icons_name) {
-            try {
-                var icon_info = Gtk.IconTheme.get_default ().lookup_icon (icon_name, icon_size, 0);
-                if (icon_info != null) {
-                    pixbuf = icon_info.load_symbolic_for_context (button_context, null);
-                }
-            }
-            catch (Error e) {
-                debug ("The icon %s is not present in the theme, let's try the next one.", icon_name);
-            }
-            if (pixbuf != null) {
-                return pixbuf;
-            }
-        }
         try {
-            pixbuf = Gtk.IconTheme.get_default ().load_icon ("gtk-missing-image", icon_size, 0);
+            var icon_info = Gtk.IconTheme.get_default ().choose_icon (icons_name, icon_size, 0);
+            if (icon_info != null) {
+                pixbuf = icon_info.load_symbolic_for_context (button_context, null);
+            }
         }
         catch (Error e) {
-            error ("gtk-missing-image not found");
+            try {
+                pixbuf = Gtk.IconTheme.get_default ().load_icon ("gtk-missing-image", icon_size, 0);
+            }
+            catch (Error e) {
+                error ("gtk-missing-image not found");
+            }
         }
         return pixbuf;
     }
