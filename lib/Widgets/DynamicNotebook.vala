@@ -157,6 +157,10 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
 
     public signal void switch_page (Tab tab);
     public signal void page_removed (Tab tab);
+    /**
+     * Emitted when the user makes a double click on an empty space.
+     **/
+    public signal void need_new_tab ();
 
     public Tabs () {
         tabs = new Gee.ArrayList<Tab>();
@@ -531,6 +535,9 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
             start_dragging = (int)(event.x/(width - overlap));
             if (start_dragging >= tabs.size) {
                 start_dragging = -1;
+                /* click on an empty space */
+                if (event.type == Gdk.EventType.2BUTTON_PRESS)
+                    need_new_tab ();
             }
             else {
                 tabs[start_dragging].drag_origin = event.x - start_dragging * (width - overlap);
@@ -759,6 +766,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         tabs.page_removed.connect ( (t) => {
             page_removed (t.widget, 0);
         });
+        tabs.need_new_tab.connect ( () => { add_button_clicked (); });
 
         tabs.show_all ();
         add_eventbox.show_all ();

@@ -212,6 +212,7 @@ public class Granite.Demo : Granite.Application
         dynamic_notebook.append_page (new Gtk.Label ("Page 1"), "Page 1");
         dynamic_notebook.append_page (new Gtk.Label ("Page 2"), "Page 2");
         dynamic_notebook.append_page (new Gtk.Label ("Page 3"), "Page 3");
+        dynamic_notebook.add_button_clicked.connect ( () => { dynamic_notebook.append_page (new Gtk.Label("New page"), "New tab"); });
 
         /* window properties */
         win.show_all();
