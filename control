@@ -1,5 +1,5 @@
 Source: granite
-Priority: extra
+Priority: optional
 Maintainer: Lucas Baudin <xapantu@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), 
  pkg-config,
@@ -27,12 +27,13 @@ Description: Development files of Granite.
 Package: libgranite0
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, contractor
 Pre-Depends: dpkg (>= 1.15.6)
 Description: A development library for elementary development.
 
 Package: libgranite0-dbg
 Section: debug
+Priority: extra
 Architecture: any
 Depends: libgranite0 (= ${binary:Version}), ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
