@@ -162,6 +162,27 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
      **/
     public signal void need_new_tab ();
 
+    // FIXME: probably needs to be moved somewhere with a public API
+    Gdk.Pixbuf load_pixbuf_with_fallbacks (string[] icons_name, int icon_size) {
+        Gdk.Pixbuf pixbuf = null;
+        try {
+            var icon_info = Gtk.IconTheme.get_default ().choose_icon (icons_name, icon_size, 0);
+            if (icon_info != null) {
+                pixbuf = icon_info.load_symbolic_for_context (button_context, null);
+            }
+        }
+        catch (Error e) {
+            try {
+                pixbuf = Gtk.IconTheme.get_default ().load_icon ("gtk-missing-image", icon_size, 0);
+            }
+            catch (Error e) {
+                error ("gtk-missing-image not found");
+            }
+        }
+        return pixbuf;
+    }
+
+
     public Tabs () {
         tabs = new Gee.ArrayList<Tab>();
         
@@ -179,11 +200,6 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
             }
         }
 
-        try {
-            close_pixbuf = Gtk.IconTheme.get_default ().load_icon ("gtk-close", close_size, 0);
-        }
-        catch (Error e) {
-        }
 
         height_request = 35;
         width_request = (int)(2*max_width);
@@ -233,6 +249,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
             }
             return true;
         });
+        close_pixbuf = load_pixbuf_with_fallbacks ( {"window-close-symbolic", "window-close", "gtk-close"}, close_size);
     }
 
     public void add_tab (Tab tab) {
