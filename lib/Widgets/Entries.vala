@@ -141,9 +141,8 @@ namespace Granite.Widgets {
                 set_icon_from_stock (position, null);
                 is_searching = true;
             } else {
-                var pix = get_icon_pixbuf (EntryIconPosition.PRIMARY);
-                Gtk.Image icon = new Gtk.Image.from_pixbuf (pix);
-                search_icon_pressed ();
+                search_icon_pressed (); // emit signal
+
                 if (!is_focus) {
                     is_searching = false;
                     hint ();
