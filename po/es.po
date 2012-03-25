@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-30 14:55+0200\n"
-"PO-Revision-Date: 2012-01-13 19:58+0000\n"
-"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2012-03-24 18:42+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-03-24 05:18+0000\n"
+"X-Launchpad-Export-Date: 2012-03-25 05:42+0000\n"
 "X-Generator: Launchpad (build 14981)\n"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//TimePicker.vala:25
@@ -23,7 +23,7 @@ msgstr "%l:%M %p"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr "%e %B, %Y"
+msgstr "%e %B del %Y"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:38
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:52
