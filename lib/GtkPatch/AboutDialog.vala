@@ -367,7 +367,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
         action_area.pack_end (close_button, false, false, 0);
 
-        show_all();
         close_button.grab_focus();
     }
 

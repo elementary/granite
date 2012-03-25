@@ -91,13 +91,14 @@ namespace Granite.Widgets {
             /* help button */
             help_button = new Button.with_label("?");
             help_button.get_style_context ().add_class ("help_button");
-            help_button.get_style_context ().add_provider (help_button_style_provider,
-                                                           STYLE_PROVIDER_PRIORITY_APPLICATION);
+            help_button.get_style_context ().add_provider (help_button_style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
             help_button.halign = Gtk.Align.CENTER;
             help_button.pressed.connect(() => { activate_link(help); });
 
             /* Circular help button */
-            help_button.set_size_request (26, -1);
+            help_button.size_allocate.connect ( (alloc) => {
+            	help_button.set_size_request (alloc.height, -1);
+            });
 
             action_area.pack_end (help_button, false, false, 0);
             ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
@@ -116,11 +117,10 @@ namespace Granite.Widgets {
             action_area.reorder_child (bug_button, 0);
             action_area.reorder_child (translate_button, 0);
 
-            action_area.show_all ();
+            show_all ();
         }
     }
 
     public extern void show_about_dialog (Gtk.Window *parent, ...);
 }
-
 
