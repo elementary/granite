@@ -118,7 +118,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
     const double max_width = 200;
     const double min_width = 120;
     double width = max_width;
-    const double overlap = 3;
+    protected double overlap = 3;
     const int close_size = 16;
     const double close_margin = 1;
     const double y = 5;
@@ -157,6 +157,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
 
     public signal void switch_page (Tab tab);
     public signal void page_removed (Tab tab);
+
     /**
      * Emitted when the user makes a double click on an empty space.
      **/
@@ -182,9 +183,17 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         return pixbuf;
     }
 
+    static construct {
+        install_style_property (new GLib.ParamSpecDouble ("tab-overlap",
+                                                       "Tab overlap",
+                                                       "Tab overlap",
+                                                       0, 50, 3,
+                                                       ParamFlags.READABLE));
+    }
 
     public Tabs () {
         tabs = new Gee.ArrayList<Tab>();
+        style_get ("tab-overlap", out overlap, null);
         
         if (style_provider == null) {
             style_provider = new Gtk.CssProvider ();
