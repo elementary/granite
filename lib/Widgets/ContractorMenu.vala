@@ -23,8 +23,33 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     HashTable<string,string>[] contracts;
     Gee.HashMap <string,string> execs;
     public delegate void ContractCallback ();
+    private string filepath;
+    private string filemime;
     
     public ContractorMenu (string filename, string mime) {
+        filepath = filename;
+        filemime = mime;
+        load_items (filename, mime);
+    }
+    
+    public void add_item (string name, string icon_name, int position, ContractCallback method) {
+        var item = new Gtk.ImageMenuItem ();
+        item.set_always_show_image (true);
+        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
+        item.set_label (name);
+        item.set_image (image);
+        item.activate.connect (()=>{method();});
+        insert(item, position);
+    }
+    
+    public void name_blacklist (string[] names) {
+        this.foreach ((item)=> {
+            if (((Gtk.MenuItem)item).get_label () in names)
+                remove (item);
+        });
+    }
+    
+    private void load_items (string filename, string mime) {
         contracts = Granite.Services.Contractor.get_contract (filename, mime);
         execs = new Gee.HashMap<string,string> ();
         
@@ -44,23 +69,30 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
  	            }
             });
             append (item);
+            item.show_all ();
         }
     }
     
-    public void add_item (string name, string icon_name, int position, ContractCallback method) {
-        var item = new Gtk.ImageMenuItem ();
-        item.set_always_show_image (true);
-        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
-        item.set_label (name);
-        item.set_image (image);
-        item.activate.connect (()=>{method();});
-        insert(item, position);
-    }
+    public void update (string? filename, string? mime) {
+        this.foreach ((w) => {remove (w);});
+        
+        string fn = "";
+        string mm = "";
+        
+        if (filename != null) {
+            fn = filename;
+            filepath = filename;
+        } else {
+            fn = filepath;
+        }
+        
+        if (mime != null) {
+            mm = mime;
+            filemime = mime;
+        } else {
+            mm = filemime;
+        }
     
-    public void name_blacklist (string[] names) {
-        this.foreach ((item)=> {
-            if (((Gtk.MenuItem)item).get_label () in names)
-                remove (item);
-        });
+        load_items (fn, mm);
     }
 }
