@@ -188,8 +188,6 @@ namespace Granite.Services {
         void handle_verify_notify (Object sender, ParamSpec property) {
         
             warning ("Key '%s' failed verification in schema '%s', changing value", property.name, schema.schema);
-            
-            save_key (property.name);
         }
         
         private void call_verify (string key) {
@@ -222,17 +220,22 @@ namespace Granite.Services {
             
             var type = prop.value_type;
             var val = Value (type);
+            this.get_property (prop.name, ref val);
             
-            if (type == typeof (int))
-                val.set_int (schema.get_int (key));
-            else if (type == typeof (double))
-                val.set_double (schema.get_double (key));
-            else if (type == typeof (string))
-                val.set_string (schema.get_string (key));
-            else if (type == typeof (bool))
-                val.set_boolean (schema.get_boolean (key));
-            else if (type.is_enum ())
-                val.set_enum (schema.get_enum (key));
+            if(val.type() == prop.value_type) {
+                // As all of these Properties are equal to their Settings Key, we can
+                // apply them directly without problems.
+                if(type == typeof (int))
+                    set_property (prop.name, schema.get_int (key));
+                else if(type == typeof (double))
+                    set_property (prop.name, schema.get_double (key));
+                else if(type == typeof (string))
+                    set_property (prop.name, schema.get_string (key));
+                else if(type == typeof (string[]))
+                    set_property (prop.name, schema.get_strv (key));
+                else if(type == typeof (bool))
+                    set_property (prop.name, schema.get_boolean (key));
+            }
             else if (type.is_a (typeof (SettingsSerializable))) {
                 get_property (key, ref val);
                 (val.get_object () as SettingsSerializable).settings_deserialize (schema.get_string (key));
@@ -244,7 +247,6 @@ namespace Granite.Services {
                 return;
             }
             
-            set_property (prop.name, val);
             call_verify (key);
             
             notify.connect (handle_notify);
@@ -263,23 +265,27 @@ namespace Granite.Services {
                 
             var type = prop.value_type;
             var val = Value (type);
-            get_property (prop.name, ref val);
+            this.get_property (prop.name, ref val);
             
-            if (type == typeof (int))
-                success = schema.set_int (key, val.get_int ());
-            else if (type == typeof (double))
-                success = schema.set_double (key, val.get_double ());
-            else if (type == typeof (string))
-                success = schema.set_string (key, val.get_string ());
-            else if (type == typeof (bool))
-                success = schema.set_boolean (key, val.get_boolean ());
-            else if (type.is_enum ())
-                success = schema.set_enum (key, val.get_enum ());
+            if(val.type() == prop.value_type) {
+                if(type == typeof (int))
+                    success = schema.set_int (key, val.get_int ());
+                else if(type == typeof (double))
+                    success = schema.set_double (key, val.get_double ());
+                else if(type == typeof (string))
+                    success = schema.set_string (key, val.get_string ());
+                else if(type == typeof (string[])) {
+                    string[] strings = null;
+                    this.get(key, &strings);
+                    success = schema.set_strv (key, strings);
+                } else if(type == typeof (bool))
+                    success = schema.set_boolean (key, val.get_boolean ());
+            }
             else if (type.is_a (typeof (SettingsSerializable)))
                 success = schema.set_string (key, (val.get_object () as SettingsSerializable).settings_serialize ());
             else
                 debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema);
-                
+            
             if (!success)
                 warning ("Key '%s' could not be written to.", key);
             
