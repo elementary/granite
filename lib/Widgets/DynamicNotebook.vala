@@ -141,9 +141,12 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         }
         set {
             if (_page != value) {
-                tabs[_page].unselect ();
+                if (_page < tabs.size) tabs[_page].unselect ();
                 _page = value;
-                tabs[_page].select ();
+                if (0 <= _page && _page < tabs.size)
+                    tabs[_page].select ();
+                else
+                    error ("The selected tab doesn't exist.");
                 queue_draw ();
             }
         }
@@ -573,62 +576,75 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         return false;
     }
 
+    /**
+     * Internally remove a tab.
+     *
+     * @param n_tab the tab index in the tabs array. Errors aren't handled, so, it must be
+     * between 0 and the maximum index.
+     **/
+    void remove_tab_internal (int n_tab) {
+        /* Prepare the tab */
+        tabs[n_tab].state = Gtk.StateFlags.NORMAL;
+        tabs[n_tab].removed = true;
+        tabs[n_tab].offset = 1.0;
+        
+        /* Launch the removing animation */
+        launch_animations ();
+        
+        /* If it was selected */
+        if (page == n_tab && page > 0)
+            page--;
+        else if (n_tab == 0 && page == 0)
+            page = int.min (page + 1, tabs.size - 1);
+        if (page < tabs.size)
+        tabs[page].select ();
+        page_removed (tabs[n_tab]);
+        if (page < tabs.size)
+        switch_page (tabs[page]);
+    }
+
     public override bool button_release_event (Gdk.EventButton event) {
         Tab? tab_removed = null;
         foreach (var tab in tabs) {
             if (tab.removed) tab_removed = tab;
         }
-        if (tab_removed != null) tabs.remove (tab_removed);
+        if (tab_removed != null) remove_tab (tab_removed);
 
         event.x -= radius + scrolling;
 
-        if (event.button == 1) { /* It is a left click */
-            /* we select the good one */
-            int n_tab = (int)(event.x/(width - overlap));
-            if (n_tab < tabs.size) {
+        /* Wich tab are we on? */
+        int n_tab = (int)(event.x/(width - overlap));
+        if (n_tab < tabs.size && n_tab >= 0) {
+            if (event.button == 1) { /* It is a left click */
                 /* we unselect all tabs */
                 foreach (var tab in tabs) {
                     tab.state = Gtk.StateFlags.NORMAL;
                 }
+                /* we select the good one */
                 tabs[n_tab].select ();
-
                 /* Let's see of it is on the close button */
                 double offset = event.x - n_tab * (width - overlap) - overlap;
                 if (0 < offset < close_margin*2 + close_size) { /* then it is a click on the close_button */
-                    tabs[n_tab].state = Gtk.StateFlags.NORMAL;
-                    tabs[n_tab].removed = true;
-                    tabs[n_tab].offset = 1.0;
-                    launch_animations ();
-                    if (page == n_tab)
-                        page--;
-                    page_removed (tabs[n_tab]);
-                    tabs[page].select ();
+                    remove_tab_internal (n_tab);
                 }
-                else
+                else {
                     page = n_tab;
-                switch_page (tabs[page]);
+                    switch_page (tabs[page]);
+                }
+            }
+            else if (event.button == 2) {
+                remove_tab_internal (n_tab);
             }
         }
-        else if (event.button == 2) {
-            int n_tab = (int)(event.x/(width - overlap));
-            if (n_tab < tabs.size && n_tab >= 0) {
-                tabs[n_tab].unselect ();
-                tabs[n_tab].removed = true;
-                tabs[n_tab].offset = 1.0;
-                launch_animations ();
-                if (page == n_tab)
-                    page--;
-                tabs[page].select ();
-                page_removed (tabs[n_tab]);
-                switch_page (tabs[page]);
-            }
-        }
+        
+        /* If a tab was dragged, we need to release it. */
         if (start_dragging != -1) {
             var tab = tabs[start_dragging];
             tab.drag_origin = 0.0;
             launch_animations ();
+            start_dragging = -1;
         }
-        start_dragging = -1;
+        
         queue_draw ();
         return true;
     }
@@ -757,6 +773,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
     public signal void switch_page (Widget page, uint num);
     public signal void page_added (Widget page, uint num);
     public signal void page_removed (Widget page, uint num);
+    public signal void is_empty ();
 
     public int page { set {
         /* Hide the old one */
@@ -791,6 +808,9 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
 
         tabs.page_removed.connect ( (t) => {
             page_removed (t.widget, 0);
+            if (tabs.tabs.size == 0) {
+                is_empty ();
+            }
         });
         tabs.need_new_tab.connect ( () => { add_button_clicked (); });
 
