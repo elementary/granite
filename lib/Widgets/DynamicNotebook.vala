@@ -19,12 +19,12 @@ public class Granite.Widgets.Tab : Object {
     internal Cairo.Surface surface;
 
     public Gtk.Widget widget;
-
+    
+    public signal void close_button_clicked ();
     public signal void need_redraw ();
     public signal void need_recache ();
 
     public bool is_animated () {
-
         bool return_value =  (!removed && initial_offset != 1.0) ||
                              (drag_origin == 0.0 && initial_draw_offset != 0.0) ||
                              (removed && initial_offset != 0.0);
@@ -625,6 +625,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
                 /* Let's see of it is on the close button */
                 double offset = event.x - n_tab * (width - overlap) - overlap;
                 if (0 < offset < close_margin*2 + close_size) { /* then it is a click on the close_button */
+                    tabs[n_tab].close_button_clicked ();
                     remove_tab_internal (n_tab);
                 }
                 else {
