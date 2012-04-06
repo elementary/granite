@@ -686,7 +686,7 @@ internal class Granite.Widgets.Tabs : Gtk.EventBox {
         });
     }
 
-    void remove_tab (Tab tab) {
+    public void remove_tab (Tab tab) {
         int n_tab = tabs.index_of (tab);
         tabs.remove (tab);
         if (_page >= n_tab)
@@ -841,7 +841,11 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         page_added (widget, tabs.tabs.size - 1);
         return tab;
     }
-
+    
+    public void remove_tab (Tab tab) {
+        tabs.remove_tab (tab);
+    }
+    
     public void set_scrollable (bool scrollable) {
     }
 
