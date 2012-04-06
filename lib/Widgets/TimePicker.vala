@@ -24,7 +24,7 @@ namespace Granite.Widgets {
     
         public string format { get; construct; default = _("%l:%M %p"); }
         
-        public DateTime time { get; protected set; }
+        public DateTime time { get; set; }
         
         construct {
             
@@ -34,19 +34,28 @@ namespace Granite.Widgets {
         
             // SpinButton properties
             can_focus = false;
-            editable = false; // user can't edit the entry directly
             adjustment = new Adjustment (starting_time, 0, 1440, 30, 300, 0);
             climb_rate = 0;
             digits = 0;
             numeric = false; // so the text can be set
             wrap = true;
+            notify["time"].connect (on_time_changed);
         }
 
         public TimePicker.with_format (string format) {
             Object (format: format);
         }
+
+        void on_time_changed () {
+            text = time.format (format);
+        }
         
-        protected override bool output () {        
+        protected override int input (out double new_value) {
+            new_value = this.value;
+            return 1;
+        }
+
+        protected override bool output () {    
             set_minutes ((int) this.value);
             return true;           
         }
@@ -55,7 +64,6 @@ namespace Granite.Widgets {
         
             time = time.add_full (0, 0, 0, minutes / 60 - time.get_hour (),
                     minutes % 60 - time.get_minute (), 0);
-            text = time.format (format);
         }
         
     }
