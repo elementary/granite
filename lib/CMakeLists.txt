@@ -26,7 +26,7 @@ include(GObjectIntrospectionMacros)
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
 
 pkg_check_modules(DEPS REQUIRED
-    gtk+-3.0>=3.0.0
+    gtk+-3.0>=3.3.14
     gio-unix-2.0
     gthread-2.0
     gee-1.0)
@@ -47,7 +47,7 @@ link_directories(${LIB_PATHS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.13.0" MINIMUM)
+ensure_vala_version("0.16.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
     Application.vala

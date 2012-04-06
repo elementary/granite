@@ -1,6 +1,6 @@
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.11.3" MINIMUM)
+ensure_vala_version("0.16.0" MINIMUM)
 include(ValaPrecompile)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
 # pkgconfig, real C code
