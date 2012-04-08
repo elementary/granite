@@ -4,13 +4,11 @@ Maintainer: Lucas Baudin <xapantu@gmail.com>
 Build-Depends: debhelper (>= 7.0.50~), 
  pkg-config,
  cmake,
- valac,
- libvala-0.14-dev,
- libgtk-3-dev,
+ valac-0.16 (>= 0.16.0),
+ libvala-0.16-dev,
+ libgtk-3-dev (>= 3.3.14),
  gobject-introspection,
  libgirepository1.0-dev,
- gir1.2-gtk-3.0,
- gir1.2-glib-2.0,
  libgee-dev,
  libtool
 Standards-Version: 3.9.2
