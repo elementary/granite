@@ -49,6 +49,11 @@ public class Granite.Widgets.ContractorView : TreeView {
     }
     
     /**
+     * A contract was launched using double clicking
+     **/
+    public signal void executed ();
+    
+    /**
      * the original array of contracts returned by contractor
      **/
     HashTable<string,string>[] contracts;
@@ -71,7 +76,10 @@ public class Granite.Widgets.ContractorView : TreeView {
         this.hexpand = true;
         
         /* Events */
-        row_activated.connect(() => { run_selected(); });
+        row_activated.connect (() => { 
+            run_selected ();
+            executed ();
+        });
         
         /* View */
         var cell1 = new CellRendererPixbuf ();
