@@ -48,6 +48,8 @@ namespace Granite.Widgets {
 
         void on_time_changed () {
             text = time.format (format);
+            int new_time = time.get_hour () * 60 + 30;
+            adjustment.set_value (new_time);
         }
         
         protected override int input (out double new_value) {
