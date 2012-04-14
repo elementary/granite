@@ -139,6 +139,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     public PopOver()
     {
         modal = true;
+		set_role ("popover");
 
         hbox = get_content_area() as Gtk.Box;
         abox = get_action_area() as Gtk.Box;
