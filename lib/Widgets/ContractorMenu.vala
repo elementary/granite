@@ -40,6 +40,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
         item.set_image (image);
         item.activate.connect (()=>{method();});
         insert(item, position);
+        item.show ();
     }
     
     public void name_blacklist (string[] names) {
