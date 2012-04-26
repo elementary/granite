@@ -76,12 +76,8 @@ namespace Granite.Widgets {
 
         private const string WINDOW_STYLESHEET = """
             .window {
-                background-image: -gtk-gradient (linear,
-                        left top,
-                        left bottom,
-                        from (shade (@bg_color, 1.15)),
-                        color-stop (0.8, shade (@bg_color, 1.15)),
-                        to (shade (@bg_color, 1.10)));
+                background-image:none;
+                background-color:@bg_color;
                 
                 border-radius: 6px;
                 
@@ -90,19 +86,19 @@ namespace Granite.Widgets {
                 border-color: alpha (#000, 0.25);
             }
         """;
-
+        
         int shadow_blur = 15;
         int shadow_x    = 0;
         int shadow_y    = 2;
         double shadow_alpha = 0.3;
-
+        
         /**
          * Creates a new Granite.Widgets.AboutDialog
          */
         public AboutDialog()
         {
             Box action_area = (Box) get_action_area ();
-
+            
             /* help button style */
             var help_button_style_provider = new CssProvider();
             try {
@@ -111,14 +107,14 @@ namespace Granite.Widgets {
             catch (Error e) {
                 warning ("GraniteWidgetsAboutDialog: %s. Some widgets will not look as intended", e.message);
             }
-
+            
             var draw_ref = new Gtk.Window ();
             var window_style_provider = new Gtk.CssProvider ();
             try {
                 window_style_provider.load_from_data (WINDOW_STYLESHEET, -1);
             } catch (Error e) { warning (e.message); }
-            draw_ref.get_style_context ().add_provider (window_style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
-            draw_ref.get_style_context ().add_class ("window");
+            draw_ref.get_style_context ().add_provider (window_style_provider, STYLE_PROVIDER_PRIORITY_FALLBACK);
+            draw_ref.get_style_context ().add_class ("content-view-window");
             
             this.decorated = false;
             this.set_visual (this.get_screen ().get_rgba_visual ());
