@@ -160,7 +160,7 @@ namespace Granite.Widgets {
 
             this.height_request = 282;
             
-            var w = -1; var h = -1; var SHADOW = 21;
+            var w = -1; var h = -1;
             this.size_allocate.connect ( () => {
                 if (this.get_allocated_width () == w && this.get_allocated_height () == h)
                     return;
