@@ -52,11 +52,6 @@ namespace Granite.Widgets {
             adjustment.set_value (new_time);
         }
         
-        protected override int input (out double new_value) {
-            new_value = this.value;
-            return 1;
-        }
-
         protected override bool output () {    
             set_minutes ((int) this.value);
             return true;           
