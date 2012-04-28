@@ -76,6 +76,7 @@ vala_precompile(VALA_C
     Widgets/PopOver.vala
     Widgets/ContractorView.vala
     Widgets/ContractorMenu.vala
+    Widgets/LightWindow.vala
     Main.vala
     config.vapi
 CUSTOM_VAPIS
@@ -98,6 +99,7 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION $
 add_library (${PKGNAME} SHARED
     GtkPatch/gtkpatch-utils.c
     Widgets/widgets-utils.c
+    Widgets/close-button.c
     ${VALA_C}
 )
 target_link_libraries(${PKGNAME} ${LIBS})

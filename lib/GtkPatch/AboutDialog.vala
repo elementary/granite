@@ -236,9 +236,10 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     private Button close_button;
 
     // Set the markup used for big text (program name and version)
-    private const string BIG_TEXT_MARKUP_START = "<span weight='heavy' size='18500'>";
-    private const string BIG_TEXT_MARKUP_END = "</span>";
-
+    private const string BIG_TEXT_CSS = """
+    .h2 { font: open sans light 18; }
+    """;
+    
     private const string STYLESHEET = """
         * {
             -GtkDialog-action-area-border: 12px;
@@ -267,6 +268,11 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         }
 
         get_style_context().add_provider(style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        var title_css = new Gtk.CssProvider ();
+        try {
+            title_css.load_from_data (BIG_TEXT_CSS, -1);
+        } catch (Error e) { warning (e.message); }
 
         // Set the default containers
         Box content_area = (Box)get_content_area();
@@ -298,6 +304,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         name_label.halign = Gtk.Align.START;
         name_label.set_line_wrap(true);
         name_label.set_selectable(true);
+        name_label.get_style_context ().add_provider (title_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        name_label.get_style_context ().add_class ("h2");
 
         copyright_label = new Label("");
         copyright_label.set_selectable(true);
@@ -444,7 +452,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
             name_label.set_text(program_name);
             if (version != null && version != "")
                 name_label.set_text(name_label.get_text() + " " + version);
-            name_label.set_markup(BIG_TEXT_MARKUP_START + name_label.get_text().replace("&", "&amp;") + BIG_TEXT_MARKUP_END);
             name_label.show();
         }
         else

@@ -66,19 +66,39 @@ namespace Granite.Widgets {
         private Button translate_button;
         private Button bug_button;
 
+        private Granite.Drawing.BufferSurface buffer;
+
         private const string HELP_BUTTON_STYLESHEET = """
             .help_button {
                 border-radius: 200px;
             }
         """;
 
+        private const string WINDOW_STYLESHEET = """
+            .window {
+                background-image:none;
+                background-color:@bg_color;
+                
+                border-radius: 6px;
+                
+                border-width:1px;
+                border-style: solid;
+                border-color: alpha (#000, 0.25);
+            }
+        """;
+        
+        int shadow_blur = 15;
+        int shadow_x    = 0;
+        int shadow_y    = 2;
+        double shadow_alpha = 0.3;
+        
         /**
          * Creates a new Granite.Widgets.AboutDialog
          */
         public AboutDialog()
         {
             Box action_area = (Box) get_action_area ();
-
+            
             /* help button style */
             var help_button_style_provider = new CssProvider();
             try {
@@ -87,6 +107,25 @@ namespace Granite.Widgets {
             catch (Error e) {
                 warning ("GraniteWidgetsAboutDialog: %s. Some widgets will not look as intended", e.message);
             }
+            
+            var draw_ref = new Gtk.Window ();
+            var window_style_provider = new Gtk.CssProvider ();
+            try {
+                window_style_provider.load_from_data (WINDOW_STYLESHEET, -1);
+            } catch (Error e) { warning (e.message); }
+            draw_ref.get_style_context ().add_provider (window_style_provider, STYLE_PROVIDER_PRIORITY_FALLBACK);
+            draw_ref.get_style_context ().add_class ("content-view-window");
+            
+            this.decorated = false;
+            this.set_visual (this.get_screen ().get_rgba_visual ());
+            this.app_paintable = true;
+
+            action_area.get_style_context ().add_class ("content-view");
+            action_area.margin = 4;
+            action_area.margin_bottom = 8;
+            this.get_content_area ().margin = 10;
+            this.get_content_area ().margin_top = 27;
+            this.get_content_area ().margin_bottom = 3;
 
             /* help button */
             help_button = new Button.with_label("?");
@@ -118,6 +157,51 @@ namespace Granite.Widgets {
             action_area.reorder_child (translate_button, 0);
 
             show_all ();
+
+            this.height_request = 282;
+            
+            var w = -1; var h = -1;
+            this.size_allocate.connect ( () => {
+                if (this.get_allocated_width () == w && this.get_allocated_height () == h)
+                    return;
+                w = this.get_allocated_width ();
+                h = this.get_allocated_height ();
+                
+                this.buffer = new Granite.Drawing.BufferSurface (w, h);
+                
+                this.buffer.context.rectangle (shadow_blur + shadow_x, 
+                    shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
+                this.buffer.context.set_source_rgba (0, 0, 0, shadow_alpha);
+                this.buffer.context.fill ();
+                this.buffer.exponential_blur (shadow_blur / 2);
+                
+                draw_ref.get_style_context ().render_activity (this.buffer.context, shadow_blur + shadow_x, 
+                    shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
+                
+            });
+            /*draw the buffer*/
+            this.draw.connect ( (ctx) => {
+                if (buffer == null)
+                    return false;
+                
+                ctx.set_operator (Cairo.Operator.SOURCE);
+                ctx.rectangle (0, 0, w, h);
+                ctx.set_source_rgba (0, 0, 0, 0);
+                ctx.fill ();
+                
+                ctx.set_source_surface (this.buffer.surface, 0, 0);
+                ctx.paint ();
+                
+                return false;
+            });
+            /*allow moving the window*/
+            this.button_press_event.connect ( (e) => {
+                if (e.button == 1) {
+                    this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
+                    return true;
+                }
+                return false;
+            });
         }
     }
 
