@@ -20,6 +20,20 @@ namespace Granite.Widgets {
             }
         """;
         
+        bool _show_close_button = true;
+        public bool show_close_button {
+            get { return _show_close_button; }
+            set {
+                _show_close_button = value;
+                w = -1; h = -1; //get it to redraw the buffer
+                Gtk.Allocation alloc;
+                this.get_allocation (out alloc);
+                this.size_allocate (alloc);
+                
+                this.queue_draw ();
+            }
+        }
+        
         Granite.Drawing.BufferSurface buffer;
         
         Gtk.Box box;
@@ -31,6 +45,8 @@ namespace Granite.Widgets {
         
         int close_button_x = -3;
         int close_button_y = -3;
+        
+        int w = -1; int h = -1;
         
         public LightWindow () {
             
@@ -50,7 +66,6 @@ namespace Granite.Widgets {
             draw_ref.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
             
             var close_img = get_close_pixbuf ();
-            var w = -1; var h = -1;
             this.size_allocate.connect ( () => {
                 if (this.get_allocated_width () == w && this.get_allocated_height () == h)
                     return;
@@ -68,9 +83,11 @@ namespace Granite.Widgets {
                 draw_ref.get_style_context ().render_activity (this.buffer.context, shadow_blur + shadow_x, 
                     shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
                 
-                Gdk.cairo_set_source_pixbuf (this.buffer.context, close_img, shadow_blur/2 + close_button_x, 
-                    shadow_blur/2 + close_button_y);
-                this.buffer.context.paint ();
+                if (this.show_close_button) {
+                    Gdk.cairo_set_source_pixbuf (this.buffer.context, close_img, shadow_blur/2 + close_button_x, 
+                        shadow_blur/2 + close_button_y);
+                    this.buffer.context.paint ();
+                }
             });
             
             this.draw.connect ( (ctx) => {
@@ -81,7 +98,8 @@ namespace Granite.Widgets {
             
             this.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK);
             this.button_press_event.connect ( (e) => {
-                if (e.x > (shadow_blur/2+close_button_x) && 
+                if (this.show_close_button &&
+                    e.x > (shadow_blur/2+close_button_x) && 
                     e.x < (close_img.get_width  () + shadow_blur/2+close_button_x) &&
                     e.y > (shadow_blur/2+close_button_y) && 
                     e.y < (close_img.get_height () + shadow_blur/2+close_button_y)) {
@@ -92,7 +110,8 @@ namespace Granite.Widgets {
                 return true;
             });
             this.motion_notify_event.connect ( (e) => {
-                if (e.x > (shadow_blur/2+close_button_x) && 
+                if (this.show_close_button &&
+                    e.x > (shadow_blur/2+close_button_x) && 
                     e.x < (close_img.get_width  () + shadow_blur/2+close_button_x) &&
                     e.y > (shadow_blur/2+close_button_y) && 
                     e.y < (close_img.get_height () + shadow_blur/2+close_button_y)) {
