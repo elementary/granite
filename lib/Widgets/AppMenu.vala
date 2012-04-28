@@ -29,12 +29,12 @@ namespace Granite.Widgets {
 
         public AppMenu (Gtk.Menu menu) {
         
-            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+            base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
         }
 
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
         
-            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+            base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
             
             this.add_items (menu);
             
@@ -48,7 +48,7 @@ namespace Granite.Widgets {
          **/
         public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");
-            base (new Image.from_stock (Stock.PROPERTIES, IconSize.MENU), _("Menu"), menu);
+            base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
         }
         
         public void add_items (Gtk.Menu menu) {
