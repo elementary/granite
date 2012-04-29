@@ -209,10 +209,10 @@ public class Granite.Demo : Granite.Application
         /* DynamicNotebook */
         var dynamic_notebook = new DynamicNotebook ();
         notebook.append_page (dynamic_notebook, new Gtk.Label ("Dynamic Notebook"));
-        dynamic_notebook.append_page (new Gtk.Label ("Page 1"), "Page 1");
-        dynamic_notebook.append_page (new Gtk.Label ("Page 2"), "Page 2");
-        dynamic_notebook.append_page (new Gtk.Label ("Page 3"), "Page 3");
-        dynamic_notebook.add_button_clicked.connect ( () => { dynamic_notebook.append_page (new Gtk.Label("New page"), "New tab"); });
+        dynamic_notebook.append_page ("Page 1", new Gtk.Label ("Page 1"));
+        dynamic_notebook.append_page ("Page 2", new Gtk.Label ("Page 2"));
+        dynamic_notebook.append_page ("Page 3", new Gtk.Label ("Page 3"));
+        dynamic_notebook.new_page.connect ( () => { return {"New tab", new Gtk.Label("New page"), null}; });
 
         /*Light window*/
         var light_window_button = new Gtk.Button.with_label ("Show LightWindow");
