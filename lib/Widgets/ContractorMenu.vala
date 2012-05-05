@@ -26,6 +26,8 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     private string filepath;
     private string filemime;
     
+    public signal void contract_activated (string contract_name);
+    
     public ContractorMenu (string filename, string mime) {
         filepath = filename;
         filemime = mime;
@@ -38,7 +40,10 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
         var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
         item.set_label (name);
         item.set_image (image);
-        item.activate.connect (()=>{method();});
+        item.activate.connect (()=> {
+            contract_activated (name);
+            method();
+        });
         insert(item, position);
         item.show ();
     }
