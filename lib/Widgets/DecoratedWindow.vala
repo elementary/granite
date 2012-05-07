@@ -157,10 +157,10 @@ namespace Granite.Widgets {
             .content-view-window {
                 background-image:none;
                 background-color:@bg_color;
-                border-radius: 6px;
+                border-radius:6px;
                 border-width:1px;
-                border-style: solid;
-                border-color: alpha (#000, 0.25);
+                border-style:solid;
+                border-color:alpha (#000, 0.25);
             }
         """;
 
