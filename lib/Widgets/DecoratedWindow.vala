@@ -66,7 +66,6 @@ namespace Granite.Widgets {
             this.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 
             this.box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
             this.draw_ref = new Gtk.Window ();
 
             close_img = get_close_pixbuf ();
@@ -158,9 +157,7 @@ namespace Granite.Widgets {
             .content-view-window {
                 background-image:none;
                 background-color:@bg_color;
-
                 border-radius: 6px;
-
                 border-width:1px;
                 border-style: solid;
                 border-color: alpha (#000, 0.25);
@@ -172,7 +169,9 @@ namespace Granite.Widgets {
 
             try {
                 css.load_from_data (LIGHT_WINDOW_STYLE, -1);
-            } catch (Error e) { warning (e.message); }
+            } catch (Error e) {
+                warning (e.message);
+            }
 
             box.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
 
@@ -180,14 +179,5 @@ namespace Granite.Widgets {
             draw_ref.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
     }
-
-    public class DarkWindow : DecoratedWindow {
-
-        public DarkWindow () {
-            box.get_style_context ().add_class ("dark-content-view");
-            draw_ref.get_style_context ().add_class ("dark-content-view-window");
-        }
-    }
-
 }
 
