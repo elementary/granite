@@ -136,7 +136,7 @@ namespace Granite.Widgets {
 
         private bool on_button_press (Gdk.EventButton e) {
                 if (coords_over_close_button (e.x, e.y))
-                    this.destroy ();
+                    this.hide ();
                 else
                     this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
 
