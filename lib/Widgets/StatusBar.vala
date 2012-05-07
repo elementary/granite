@@ -1,3 +1,4 @@
+// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*
  * Copyright (c) 2012 Granite Developers
  *
@@ -27,8 +28,8 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
 
     protected const int ITEM_SPACING = 3;
 
-    internal Gtk.CssProvider style_provider;
-    internal Gtk.StyleContext context;
+    protected Gtk.CssProvider style_provider;
+    protected Gtk.StyleContext context;
 
     /* This prevents the huge vertical padding */
     private const string STATUSBAR_STYLESHEET = """
@@ -38,7 +39,6 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             border-left-width: 0;
             -GtkWidget-window-dragging: false;
         }
-
         GraniteWidgetsStatusBar .button {
             padding: 0px;
         }
@@ -55,8 +55,9 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             warning (err.message);
         }
 
-        /* Get rid of the "toolbar" class to avoid inheriting its style,
-           since we want the widget to look more like a normal statusbar. */
+        /* Get rid of the "toolbar" class to avoid inheriting its style.
+         * We want the widget to look more like a normal statusbar.
+         */
         get_style_context ().remove_class (Gtk.STYLE_CLASS_TOOLBAR);
 
         context = new Gtk.StyleContext ();
@@ -91,6 +92,15 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             left_box.pack_start (widget, false, false, ITEM_SPACING);
         else
             right_box.pack_start (widget, false, false, ITEM_SPACING);
+    }
+
+    public void set_text (string text) {
+        if (text == null) {
+            status_label.set_text ("");
+            return;
+        }
+
+        status_label.set_text (text);
     }
 }
 
