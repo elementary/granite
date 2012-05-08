@@ -25,6 +25,17 @@ namespace Granite.Widgets {
     [CCode (cname="get_close_pixbuf")]
     internal extern Gdk.Pixbuf get_close_pixbuf ();
 
+    public const string DEFAULT_STYLE = """
+        .decorated-window {
+            background-image:none;
+            background-color:@bg_color;
+            border-radius:6px;
+            border-width:1px;
+            border-style:solid;
+            border-color:alpha (#000, 0.35);
+        }
+    """;
+
     public class DecoratedWindow : CompositedWindow {
         bool _show_close_button = true;
         public bool show_close_button {
@@ -67,6 +78,17 @@ namespace Granite.Widgets {
 
             this.box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             this.draw_ref = new Gtk.Window ();
+
+            var css = new Gtk.CssProvider ();
+
+            try {
+                css.load_from_data (DEFAULT_STYLE, -1);
+            } catch (Error e) {
+                warning (e.message);
+            }
+
+            draw_ref.get_style_context ().add_class ("decorated-window");
+            draw_ref.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
 
             close_img = get_close_pixbuf ();
 
@@ -153,30 +175,9 @@ namespace Granite.Widgets {
 
     public class LightWindow : DecoratedWindow {
 
-        public const string LIGHT_WINDOW_STYLE = """
-            .content-view-window {
-                background-image:none;
-                background-color:@bg_color;
-                border-radius:6px;
-                border-width:1px;
-                border-style:solid;
-                border-color:alpha (#000, 0.25);
-            }
-        """;
-
         public LightWindow () {
-            var css = new Gtk.CssProvider ();
-
-            try {
-                css.load_from_data (LIGHT_WINDOW_STYLE, -1);
-            } catch (Error e) {
-                warning (e.message);
-            }
-
             box.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
-
             draw_ref.get_style_context ().add_class ("content-view-window");
-            draw_ref.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
     }
 }
