@@ -37,7 +37,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 artists_label.set_text("");
             }
             else {
-                artists_label.set_markup(set_string_from_string_array("<span size=\"small\">Designed by" + ":</span>\n", _artists));
+                artists_label.set_markup(set_string_from_string_array("<span size=\"small\">" + _("Designed by") + ":</span>\n", _artists));
                 artists_label.show();
             }
         }
@@ -56,7 +56,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 authors_label.set_text("");
             }
             else {
-                authors_label.set_markup(set_string_from_string_array("<span size=\"small\">Written by" + ":</span>\n", _authors));
+                authors_label.set_markup(set_string_from_string_array("<span size=\"small\">" + _("Written by") + ":</span>\n", _authors));
                 authors_label.show();
             }
         }
@@ -172,7 +172,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 translators_label.set_text("");
             }
             else {
-                translators_label.set_markup("<span size=\"small\">Translated by " + _translator_credits.replace("&", "&amp;") + "</span>\n");
+                translators_label.set_markup("<span size=\"small\">" + _("Translated by ") + _translator_credits.replace("&", "&amp;") + "</span>\n");
                 translators_label.show();
             }
         }
@@ -441,7 +441,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
     private void set_generic_license(string url, string license_type)
     {
-        license_label.set_markup("<span size=\"small\">This program is published under the terms of the " + license_type + " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit <a href=\"" + url + "\">" + url + "</a></span>\n");
+        license_label.set_markup("<span size=\"small\">" + _("This program is published under the terms of the ") + license_type + _(" license, it comes with ABSOLUTELY NO WARRANTY; for details, visit ") + "<a href=\"" + url + "\">" + url + "</a></span>\n");
         license_label.show();
     }
 
