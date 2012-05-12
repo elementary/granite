@@ -32,9 +32,10 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
         load_items (filename, mime);
     }
     
-    public void add_item (string name, string icon_name, int position, ContractCallback method) {
+    public void add_item (string name, string icon_name, int position, ContractCallback method, bool use_stock = true) {
         var item = new Gtk.ImageMenuItem ();
         item.set_always_show_image (true);
+        item.set_use_stock (use_stock);
         var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.MENU);
         item.set_label (name);
         item.set_image (image);
