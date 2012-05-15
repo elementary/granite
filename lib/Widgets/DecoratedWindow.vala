@@ -25,18 +25,46 @@ namespace Granite.Widgets {
     [CCode (cname="get_close_pixbuf")]
     internal extern Gdk.Pixbuf get_close_pixbuf ();
 
-    public const string DEFAULT_STYLE = """
-        .decorated-window {
-            background-image:none;
-            background-color:@bg_color;
-            border-radius:6px;
-            border-width:1px;
-            border-style:solid;
-            border-color:alpha (#000, 0.35);
-        }
-    """;
-
     public class DecoratedWindow : CompositedWindow {
+
+        const string DECORATED_WINDOW_STYLESHEET = """
+            .decorated-window {
+                background-image:none;
+                background-color:@bg_color;
+                border-radius:6px;
+                border-width:1px;
+                border-style:solid;
+                border-color:alpha (#000, 0.35);
+            }
+        """;
+
+        const string DECORATED_WINDOW_WORKAROUNDS_STYLESHEET = """
+            .decorated-window * {
+                background-image:none;
+                background-color:alpha (#fff, 0.0);
+            }
+        """;
+
+        public static void set_default_theming (Gtk.Window ref_window, Gtk.Widget content) {
+            var window_css_provider = new Gtk.CssProvider ();
+            var content_css_provider = new Gtk.CssProvider ();
+
+            try {
+                window_css_provider.load_from_data (DECORATED_WINDOW_STYLESHEET, -1);
+                content_css_provider.load_from_data (DECORATED_WINDOW_WORKAROUNDS_STYLESHEET, -1);
+            } catch (Error e) {
+                warning (e.message);
+            }
+
+            ref_window.get_style_context ().add_class (STYLE_CLASS_DECORATED_WINDOW);
+            ref_window.get_style_context ().add_provider (window_css_provider, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+
+            // Add workarounds
+            content.get_style_context ().add_class (STYLE_CLASS_DECORATED_WINDOW);
+            content.get_style_context ().add_provider (content_css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION	);
+        }
+
+
         bool _show_close_button = true;
         public bool show_close_button {
             get {
@@ -79,16 +107,8 @@ namespace Granite.Widgets {
             this.box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             this.draw_ref = new Gtk.Window ();
 
-            var css = new Gtk.CssProvider ();
-
-            try {
-                css.load_from_data (DEFAULT_STYLE, -1);
-            } catch (Error e) {
-                warning (e.message);
-            }
-
-            draw_ref.get_style_context ().add_class ("decorated-window");
-            draw_ref.get_style_context ().add_provider (css, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+            // set theming
+            set_default_theming (draw_ref, box);
 
             close_img = get_close_pixbuf ();
 
@@ -101,7 +121,8 @@ namespace Granite.Widgets {
             this.button_press_event.connect (on_button_press);
 
             base.add (this.box);
-            this.box.margin = SHADOW_BLUR;
+
+            this.box.margin = SHADOW_BLUR + 1;
         }
 
         public new void add (Gtk.Widget w) {
@@ -173,12 +194,5 @@ namespace Granite.Widgets {
         }
     }
 
-    public class LightWindow : DecoratedWindow {
-
-        public LightWindow () {
-            box.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
-            draw_ref.get_style_context ().add_class ("content-view-window");
-        }
-    }
 }
 

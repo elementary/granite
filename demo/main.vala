@@ -266,12 +266,6 @@ public class Granite.Demo : Granite.Application
             general.column_spacing = 6;
             general.row_spacing = 6;
             
-            var c = new Gtk.CssProvider ();
-            try {
-                c.load_from_data ("*{background-image:none;background-color:alpha (#fff, 0);}", -1);
-            } catch (Error e) { warning (e.message); }
-            general.get_parent ().get_style_context ().add_provider (c, 20000);
-            
             light_window.add (grid);
             light_window.show_all ();
         });

@@ -73,19 +73,6 @@ namespace Granite.Widgets {
                 border-radius: 200px;
             }
         """;
-
-        private const string WINDOW_STYLESHEET = """
-            .window {
-                background-image:none;
-                background-color:@bg_color;
-                
-                border-radius: 6px;
-                
-                border-width:1px;
-                border-style: solid;
-                border-color: alpha (#000, 0.25);
-            }
-        """;
         
         int shadow_blur = 15;
         int shadow_x    = 0;
@@ -105,22 +92,18 @@ namespace Granite.Widgets {
                 help_button_style_provider.load_from_data(HELP_BUTTON_STYLESHEET, -1);
             }
             catch (Error e) {
-                warning ("GraniteWidgetsAboutDialog: %s. Some widgets will not look as intended", e.message);
+                warning ("%s. Some widgets will not look as intended", e.message);
             }
-            
+
             var draw_ref = new Gtk.Window ();
-            var window_style_provider = new Gtk.CssProvider ();
-            try {
-                window_style_provider.load_from_data (WINDOW_STYLESHEET, -1);
-            } catch (Error e) { warning (e.message); }
-            draw_ref.get_style_context ().add_provider (window_style_provider, STYLE_PROVIDER_PRIORITY_FALLBACK);
-            draw_ref.get_style_context ().add_class ("content-view-window");
-            
+            draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
+            DecoratedWindow.set_default_theming (draw_ref, action_area);
+            action_area.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
+
             this.decorated = false;
             this.set_visual (this.get_screen ().get_rgba_visual ());
             this.app_paintable = true;
 
-            action_area.get_style_context ().add_class ("content-view");
             action_area.margin = 4;
             action_area.margin_bottom = 8;
             this.get_content_area ().margin = 10;

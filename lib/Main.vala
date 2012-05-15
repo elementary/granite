@@ -22,6 +22,9 @@ namespace Granite {
 
     /* STYLE CLASSES */
     public const string STYLE_CLASS_CONTENT_VIEW = "content-view";
+    public const string STYLE_CLASS_CONTENT_VIEW_WINDOW = "content-view-window";
+    public const string STYLE_CLASS_DECORATED_WINDOW = "decorated-window";
+
 
     public void init () {
         if (!Thread.supported ())
