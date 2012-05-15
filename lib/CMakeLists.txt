@@ -77,6 +77,7 @@ vala_precompile(VALA_C
     Widgets/ContractorView.vala
     Widgets/ContractorMenu.vala
     Widgets/DecoratedWindow.vala
+    Widgets/LightWindow.vala
     Widgets/StatusBar.vala
     Main.vala
     config.vapi
