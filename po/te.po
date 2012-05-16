@@ -1,16 +1,16 @@
-# Bosnian translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Telugu translation for granite
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-30 14:55+0200\n"
-"PO-Revision-Date: 2012-05-14 21:07+0000\n"
-"Last-Translator: Samir Ribić <Unknown>\n"
-"Language-Team: Bosnian <bs@li.org>\n"
+"PO-Revision-Date: 2012-05-14 16:37+0000\n"
+"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
+"Language-Team: Telugu <te@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,20 +28,20 @@ msgstr "%B %e, %Y"
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:38
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:52
 msgid "Menu"
-msgstr "Meni"
+msgstr "మెను"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:64
 msgid "Get Help Online..."
-msgstr "Potražite pomoć na Internetu..."
+msgstr "ఆన్‌లైన్ సహయం  పొందండి..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:65
 msgid "Translate This Application..."
-msgstr "Prevedite ovu Aplikaciju..."
+msgstr "ఈ అనువర్తనాన్ని అనువదించండి..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:66
 msgid "Report a Problem..."
-msgstr "Prijavite problem..."
+msgstr "ఒక సమస్యను నివేదించండి..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:67
 msgid "About"
-msgstr "O"
+msgstr "గురించి"
