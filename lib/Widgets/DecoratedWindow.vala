@@ -99,10 +99,23 @@ namespace Granite.Widgets {
         private int w = -1;
         private int h = -1;
 
-        public DecoratedWindow () {
+        private Gtk.Label _title;
+
+        public new string title {
+            get { return _title.label; }
+            set { _title.label = value; }
+        }
+
+        public DecoratedWindow (string title = "") {
             this.resizable = true;
             this.has_resize_grip = false;
             this.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+
+            this._title = new Gtk.Label (title);
+            this._title.margin_top = 5;
+            var attr = new Pango.AttrList ();
+            attr.insert (new Pango.AttrFontDesc (Pango.FontDescription.from_string ("bold")));
+            this._title.attributes = attr;
 
             this.box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             this.draw_ref = new Gtk.Window ();
@@ -119,6 +132,8 @@ namespace Granite.Widgets {
 
             this.motion_notify_event.connect (on_motion_notify);
             this.button_press_event.connect (on_button_press);
+
+            box.pack_start (_title, false);
 
             base.add (this.box);
 
@@ -179,7 +194,7 @@ namespace Granite.Widgets {
 
         private bool on_button_press (Gdk.EventButton e) {
                 if (coords_over_close_button (e.x, e.y))
-                    this.hide ();
+                    this.destroy ();
                 else
                     this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
 
@@ -193,6 +208,4 @@ namespace Granite.Widgets {
                     y < (close_img.get_height () + SHADOW_BLUR / 2 + CLOSE_BUTTON_Y);
         }
     }
-
 }
-

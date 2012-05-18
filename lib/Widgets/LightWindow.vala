@@ -23,7 +23,8 @@
 namespace Granite.Widgets {
     public class LightWindow : DecoratedWindow {
 
-        public LightWindow () {
+        public LightWindow (string title="") {
+            base (title);
             box.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
             draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
         }
