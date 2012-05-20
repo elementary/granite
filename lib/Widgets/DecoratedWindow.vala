@@ -81,6 +81,15 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Whether to hide or destroy the window when the close button is clicked.
+         * By default, the window is destroyed. You can change that by changing this
+         * property to 'true'.
+         *
+         * Default: false;
+         */
+        public bool hide_on_close { get; set; default = false; }
+
         protected Gtk.Box box { get; private set; }
         protected Gtk.Window draw_ref { get; private set; }
         protected Gdk.Pixbuf close_img;
@@ -193,10 +202,15 @@ namespace Granite.Widgets {
         }
 
         private bool on_button_press (Gdk.EventButton e) {
-                if (coords_over_close_button (e.x, e.y))
-                    this.destroy ();
-                else
+                if (coords_over_close_button (e.x, e.y)) {
+                    if (hide_on_close)
+                        this.hide ();
+                    else
+                        this.destroy ();
+                }
+                else {
                     this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
+                }
 
                 return true;
         }
