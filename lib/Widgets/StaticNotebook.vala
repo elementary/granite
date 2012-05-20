@@ -36,7 +36,7 @@ namespace Granite.Widgets {
 
         public signal void page_changed (int index);
 
-        public StaticNotebook () {
+        public StaticNotebook (bool show_separator = true) {
 
             orientation = Gtk.Orientation.VERTICAL;
             switcher_hidden = false;
@@ -47,12 +47,17 @@ namespace Granite.Widgets {
             switcher = new ModeButton();
 
             switcher_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var left_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
-            var right_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
-
-            switcher_box.pack_start(left_separator, true, true);
-            switcher_box.pack_start(switcher, false, false);
-            switcher_box.pack_end(right_separator, true, true);
+            
+            if (show_separator) {
+                var left_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+                var right_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
+                switcher_box.pack_start(left_separator, true, true);
+                switcher_box.pack_start(switcher, false, false);
+                switcher_box.pack_end(right_separator, true, true);
+            } else {
+                switcher.halign = Gtk.Align.CENTER;
+                switcher_box.pack_start(switcher, true, true);
+            }
 
             switcher.set_margin_top(5);
             switcher.set_margin_bottom(5);
