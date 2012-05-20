@@ -1,0 +1,12 @@
+add_subdirectory(16x16)
+add_subdirectory(22x22)
+add_subdirectory(24x24)
+add_subdirectory(32x32)
+add_subdirectory(48x48)
+add_subdirectory(scalable)
+
+option (ICON_UPDATE "Run gtk-update-icon-cache after the install." ON)
+if (ICON_UPDATE)
+  install (CODE "message(\"-- Updating icon cache...\")")
+  install (CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)")
+endif ()
