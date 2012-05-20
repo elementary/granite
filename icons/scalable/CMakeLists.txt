@@ -1,1 +1,1 @@
-install(FILES application-menu.svg DESTINATION share/icons/hicolor/scalable/actions/)
+install(FILES application-menu-symbolic.svg DESTINATION share/icons/hicolor/scalable/actions/)
