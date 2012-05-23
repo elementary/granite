@@ -1,2 +1,4 @@
 usr/lib/lib*.so.*
 usr/lib/girepository-1.0/*.typelib
+usr/share/locale/*
+usr/share/icons/*
