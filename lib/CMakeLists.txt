@@ -60,6 +60,7 @@ vala_precompile(VALA_C
     Services/Paths.vala
     Services/System.vala
     Services/Contractor.vala
+    Services/IconFactory.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
     Widgets/ModeButton.vala
