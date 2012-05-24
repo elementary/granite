@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-30 14:55+0200\n"
-"PO-Revision-Date: 2012-03-31 17:14+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2012-05-22 15:51+0000\n"
+"Last-Translator: ttosttos <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-05 05:23+0000\n"
-"X-Generator: Launchpad (build 15195)\n"
+"X-Launchpad-Export-Date: 2012-05-24 11:50+0000\n"
+"X-Generator: Launchpad (build 15288)\n"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//TimePicker.vala:25
 msgid "%l:%M %p"
@@ -32,15 +32,15 @@ msgstr "Menú"
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:64
 msgid "Get Help Online..."
-msgstr "Obtener ayuda en línea…"
+msgstr "Obtener Ayuda en Línea..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:65
 msgid "Translate This Application..."
-msgstr "Traducir esta aplicación…"
+msgstr "Traducir Esta Aplicación..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:66
 msgid "Report a Problem..."
-msgstr "Informar de un problema…"
+msgstr "Reportar un Problema..."
 
 #: /home/xapantu/granite-cmake/po/../lib/Widgets//AppMenu.vala:67
 msgid "About"
