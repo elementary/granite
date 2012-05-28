@@ -441,9 +441,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             cr.paint_with_alpha(1.0);
         }
         else {
-            cr.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
-            cr.set_source_rgba (0, 0, 0, 0.3);
-            cr.set_line_width(1);
+            cr.rectangle (BORDER_WIDTH / 2.0, BORDER_WIDTH / 2.0, get_allocated_width () - BORDER_WIDTH, get_allocated_height () - BORDER_WIDTH);
+            Gdk.cairo_set_source_rgba (cr, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
+            cr.set_line_width (BORDER_WIDTH);
             cr.stroke ();
         }
         return base.draw(cr);
