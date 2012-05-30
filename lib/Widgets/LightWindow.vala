@@ -21,12 +21,14 @@
  */
 
 namespace Granite.Widgets {
+
     public class LightWindow : DecoratedWindow {
 
-        public LightWindow (string title="") {
-            base (title);
-            box.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
-            draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
+        public LightWindow (string title = "") {
+            base (title, STYLE_CLASS_CONTENT_VIEW_WINDOW, STYLE_CLASS_CONTENT_VIEW);
         }
+
     }
+
 }
+

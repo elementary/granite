@@ -97,7 +97,10 @@ namespace Granite.Widgets {
 
             var draw_ref = new Gtk.Window ();
             draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
-            DecoratedWindow.set_default_theming (draw_ref, action_area);
+
+            // Apply DecoratedWindow's theming
+            DecoratedWindow.set_default_theming (draw_ref);
+
             action_area.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
 
             this.decorated = false;
