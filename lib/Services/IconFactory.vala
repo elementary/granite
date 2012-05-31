@@ -36,11 +36,10 @@ namespace Granite.Services {
             return icon_factory;
         }
 
-        public Gdk.Pixbuf? load_symbolic_icon (Gtk.StyleContext style, string iconname, int size) {
+        public Gdk.Pixbuf? load_symbolic_icon_from_gicon (Gtk.StyleContext style, GLib.Icon gicon, int size) {
             Gdk.Pixbuf px = null;
 
-            ThemedIcon themed_icon = new ThemedIcon.with_default_fallbacks (iconname);
-            Gtk.IconInfo icon_info = icon_theme.lookup_by_gicon ((GLib.Icon) themed_icon, size, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+            Gtk.IconInfo icon_info = icon_theme.lookup_by_gicon (gicon, size, Gtk.IconLookupFlags.GENERIC_FALLBACK);
             try {
                 px = icon_info.load_symbolic_for_context (style);
             } catch (Error err) {
@@ -48,6 +47,12 @@ namespace Granite.Services {
             }
 
             return px;
+        }
+
+        public Gdk.Pixbuf? load_symbolic_icon (Gtk.StyleContext style, string iconname, int size) {
+            ThemedIcon themed_icon = new ThemedIcon.with_default_fallbacks (iconname);
+            
+            return load_symbolic_icon_from_gicon (style, (GLib.Icon) themed_icon, size);
         }
     
     }
