@@ -77,12 +77,12 @@ namespace Granite.Widgets {
         public signal void text_changed_pause (string text);
         
         /**
-         * search_icon_pressed () signal is emitted after a short delay,
+         * search_icon_release () signal is emitted after releasing the mouse button,
          * which depends on the SearchBar's icon.
          * It can be useful to show something on the icon press,
          * we can show a PopOver, for example.
          **/
-        public signal void search_icon_pressed ();
+        public signal void search_icon_release ();
         
         public SearchBar (string hint_string) {
         
@@ -95,7 +95,7 @@ namespace Granite.Widgets {
             changed.connect_after (on_changed);            
             focus_in_event.connect (on_focus_in);
             focus_out_event.connect (on_focus_out);
-            icon_press.connect (on_icon_press);
+            icon_release.connect (on_icon_release);
         }
 
         protected new void hint () {
@@ -133,7 +133,7 @@ namespace Granite.Widgets {
                 set_icon_from_stock (EntryIconPosition.SECONDARY, null);
         }
 
-        private void on_icon_press (EntryIconPosition position) {
+        private void on_icon_release (EntryIconPosition position) {
         
             if (position == EntryIconPosition.SECONDARY) {
                 is_searching = false;
@@ -141,7 +141,7 @@ namespace Granite.Widgets {
                 set_icon_from_stock (position, null);
                 is_searching = true;
             } else {
-                search_icon_pressed (); // emit signal
+                search_icon_release (); // emit signal
 
                 if (!is_focus) {
                     is_searching = false;
