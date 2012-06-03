@@ -25,7 +25,14 @@ namespace Granite.Widgets {
         // Constants
         protected const int PADDING = 5;
 
-        public DateTime time { get; set; default = new DateTime.now_local ();}
+        private DateTime _time = new DateTime.now_local ();
+        public DateTime time {
+            get { return _time; }
+            set {
+                _time = value;
+                text = _time.format (format);
+            }
+        }
 
         public string format { get; construct; default = _("%l:%M %p"); }
 
