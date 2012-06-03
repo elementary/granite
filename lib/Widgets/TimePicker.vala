@@ -1,5 +1,5 @@
 //  
-//  Copyright (C) 2011 Maxwell Barvian
+//  Copyright (C) 2011-2012 Corentin Noël <tintou@mailoo.org>, Maxwell Barvian
 // 
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,55 +15,228 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using Gtk;
-using Gdk;
-
 namespace Granite.Widgets {
 
-    public class TimePicker : SpinButton, Gtk.Buildable {
+    public class TimePicker : Gtk.EventBox {  
     
+        // Signals
+        public signal void time_changed ();
+        
+        // Constants
+        protected const int PADDING = 5;
+
+        private DateTime _time = new DateTime.now_local ();
+        public DateTime time {
+            get { return _time; }
+            set {
+                _time = value;
+                text = _time.format (format);
+            }
+        }
+
         public string format { get; construct; default = _("%l:%M %p"); }
+
+        private bool _is_pressed = false;
+        protected bool is_pressed {
+            get { return _is_pressed; }
+            set {
+                _is_pressed = value;
+                if (hovered == 0 || hovered == 1 || hovered == 3 || hovered == 4)
+                    container_grid.get_children ().nth_data (hovered).set_state (value ? Gtk.StateType.SELECTED : Gtk.StateType.NORMAL);
+                queue_draw ();
+            }
+        }
         
-        public DateTime time { get; set; }
+        private int _hovered = -1;
+        protected int hovered {
+            get { return _hovered; }
+            set {
+                _hovered = value;
+                queue_draw ();
+            }
+        }
         
+        private Gtk.Grid container_grid;
+        
+        public Gtk.Label label { get; protected set; }
+        public string text {
+            get { return label.label; }
+            set { label.label = value; }
+        }
+        
+        internal Gtk.Alignment set_paddings (Gtk.Widget widget, int top, int right, int bottom, int left) {
+
+        var alignment = new Gtk.Alignment (0.0f, 0.0f, 1.0f, 1.0f);
+        alignment.top_padding = top;
+        alignment.right_padding = right;
+        alignment.bottom_padding = bottom;
+        alignment.left_padding = left;
+
+        alignment.add (widget);
+        return alignment;
+    }
+
+        /**
+         * Creates a new DateSwitcher.
+         *
+         * @param chars_width
+         *          The width of the label. Automatic if -1 is given.
+         */
         construct {
-            
-            time = new DateTime.now_local ();
-            int starting_time = time.get_hour () * 60 + 30; // start at this hour : 30
-            set_minutes (starting_time);
         
-            // SpinButton properties
-            can_focus = false;
-            adjustment = new Adjustment (starting_time, 0, 1440, 30, 300, 0);
-            climb_rate = 0;
-            digits = 0;
-            numeric = false; // so the text can be set
-            wrap = true;
-            notify["time"].connect (on_time_changed);
+            // EventBox properties
+            events |= Gdk.EventMask.POINTER_MOTION_MASK
+                   |  Gdk.EventMask.BUTTON_PRESS_MASK
+                   |  Gdk.EventMask.BUTTON_RELEASE_MASK
+                   |  Gdk.EventMask.SCROLL_MASK
+                   |  Gdk.EventMask.LEAVE_NOTIFY_MASK;
+            set_visible_window (false);
+
+            // Initialize everything
+            
+            if (format == null)
+                format =_("%l:%M %p");
+            
+            container_grid = new Gtk.Grid();
+            container_grid.border_width = 0;
+            container_grid.set_row_homogeneous (true);
+            label = new Gtk.Label ("");
+            label.width_chars = -1;
+            text = time.format (format);
+            
+            // Add everything in appropriate order
+            container_grid.attach (set_paddings (new Gtk.Arrow (Gtk.ArrowType.LEFT, Gtk.ShadowType.NONE), 0, PADDING/2, 0, PADDING), 
+                    0, 0, 1, 1);
+            container_grid.attach (set_paddings (new Gtk.Arrow (Gtk.ArrowType.RIGHT, Gtk.ShadowType.NONE), 0, PADDING, 0, PADDING/2),
+                    1, 0, 1, 1);
+            container_grid.attach (label, 2, 0, 1, 1);
+            container_grid.attach (set_paddings (new Gtk.Arrow (Gtk.ArrowType.LEFT, Gtk.ShadowType.NONE), 0, PADDING/2, 0, PADDING), 
+                    3, 0, 1, 1);
+            container_grid.attach (set_paddings (new Gtk.Arrow (Gtk.ArrowType.RIGHT, Gtk.ShadowType.NONE), 0, PADDING, 0, PADDING/2),
+                    4, 0, 1, 1);
+            
+            add (container_grid);
         }
 
         public TimePicker.with_format (string format) {
             Object (format: format);
         }
-
-        void on_time_changed () {
+        
+        protected void hours_left_clicked () {
+            time = time.add_hours (1);
             text = time.format (format);
-            int new_time = time.get_hour () * 60 + 30;
-            adjustment.set_value (new_time);
+            time_changed ();
+        }
+        protected void hours_right_clicked () {
+            time = time.add_hours (-1);
+            text = time.format (format);
+            time_changed ();
+        }
+        protected void minutes_left_clicked () {
+        
+            time = time.add_minutes (5);
+            if (time.get_minute () < 5) {
+                time = time.add_hours (-1);
+            }
+            text = time.format (format);
+            time_changed ();
+        }
+        protected void minutes_right_clicked () {
+        
+            time = time.add_minutes (-5);
+            if (time.get_minute () > 55) {
+                time = time.add_hours (+1);
+            }
+            text = time.format (format);
+            time_changed ();
+        }
+
+        protected override bool button_press_event (Gdk.EventButton event) {
+        
+            is_pressed = (hovered == 0 || hovered == 1 || hovered == 3 || hovered == 4);
+
+            return true;
         }
         
-        protected override bool output () {    
-            set_minutes ((int) this.value);
-            return true;           
+        protected override bool button_release_event (Gdk.EventButton event) {
+        
+            is_pressed = false;
+            if (hovered == 4)
+                hours_left_clicked ();
+            else if (hovered == 3)
+                hours_right_clicked ();
+            else if (hovered == 1)
+                minutes_left_clicked ();
+            else if (hovered == 0)
+                minutes_right_clicked ();
+
+            return true;
         }
         
-        protected virtual void set_minutes (int minutes) {
+        protected override bool motion_notify_event (Gdk.EventMotion event) {
         
-            time = time.add_full (0, 0, 0, minutes / 60 - time.get_hour (),
-                    minutes % 60 - time.get_minute (), 0);
+            Gtk.Allocation box_size, hours_left_size, hours_right_size, minutes_left_size, minutes_right_size;
+            container_grid.get_allocation (out box_size);
+            container_grid.get_children ().nth_data (0).get_allocation (out hours_left_size);
+            container_grid.get_children ().nth_data (1).get_allocation (out hours_right_size);
+            container_grid.get_children ().nth_data (3).get_allocation (out minutes_left_size);
+            container_grid.get_children ().nth_data (4).get_allocation (out minutes_right_size);
+            
+            double x = event.x + box_size.x;
+
+            if (x > hours_left_size.x && x < hours_left_size.x + hours_left_size.width)
+                hovered = 0;
+            else if (x > hours_right_size.x && x < hours_right_size.x + hours_right_size.width)
+                hovered = 1;
+            else if (x > minutes_left_size.x && x < minutes_left_size.x + minutes_left_size.width)
+                hovered = 3;
+            else if (x > minutes_right_size.x && x < minutes_right_size.x + minutes_right_size.width)
+                hovered = 4;
+            else
+                hovered = -1;
+
+            return true;
+        }
+
+        protected override bool leave_notify_event (Gdk.EventCrossing event) {
+        
+            is_pressed = false;
+            hovered = -1;
+
+            return true;
+        }
+
+        protected override bool draw (Cairo.Context cr) {
+        
+            Gtk.Allocation box_size;
+            container_grid.get_allocation (out box_size);
+            
+            style.draw_box (cr, Gtk.StateType.NORMAL, Gtk.ShadowType.ETCHED_OUT, this, "button", 0, 0, box_size.width, box_size.height);
+            
+            if (hovered == 0 || hovered == 1 || hovered == 3 || hovered == 4) {
+
+                Gtk.Allocation arrow_size;
+                container_grid.get_children ().nth_data (hovered).get_allocation (out arrow_size);
+                
+                cr.save ();
+
+                cr.rectangle (arrow_size.x - box_size.x, 0, arrow_size.width, arrow_size.height);
+                cr.clip ();
+                
+                if (is_pressed)
+                    style.draw_box (cr, Gtk.StateType.SELECTED, Gtk.ShadowType.IN, this, "button", 0, 0, box_size.width, box_size.height);
+                else
+                    style.draw_box (cr, Gtk.StateType.PRELIGHT, Gtk.ShadowType.ETCHED_OUT, this, "button", 0, 0, box_size.width, box_size.height);
+                            
+                cr.restore ();
+            }
+            
+            propagate_draw (container_grid, cr);
+            
+            return true;
         }
         
     }
-
+    
 }
 

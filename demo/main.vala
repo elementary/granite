@@ -182,8 +182,11 @@ public class Granite.Demo : Granite.Application
 
         var calendar_button = new Gtk.HBox(false, 0);
         var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
+        var time_button = new Granite.Widgets.TimePicker ();
         date_button.valign = date_button.halign = Gtk.Align.CENTER;
+        time_button.valign = time_button.halign = Gtk.Align.CENTER;
         calendar_button.add(date_button);
+        calendar_button.add(time_button);
         notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
 
         /* Contractor */
