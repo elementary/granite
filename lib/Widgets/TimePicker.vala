@@ -144,7 +144,7 @@ namespace Granite.Widgets {
         protected void minutes_right_clicked () {
         
             time = time.add_minutes (-5);
-            if (time.get_minute () > 55) {
+            if (time.get_minute () >= 55) {
                 time = time.add_hours (+1);
             }
             text = time.format (format);
