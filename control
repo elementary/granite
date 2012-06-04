@@ -25,8 +25,10 @@ Description: Development files of Granite.
 Package: libgranite0
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, contractor
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: contractor
 Pre-Depends: dpkg (>= 1.15.6)
+Suggests: libgranite-demo
 Description: A development library for elementary development.
 
 Package: libgranite0-dbg
