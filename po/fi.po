@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-06-04 21:59-0700\n"
-"PO-Revision-Date: 2011-10-26 08:46+0000\n"
-"Last-Translator: Erkka Juhaninmäki <Unknown>\n"
+"PO-Revision-Date: 2012-06-06 16:36+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-06-06 05:12+0000\n"
+"X-Launchpad-Export-Date: 2012-06-07 05:02+0000\n"
 "X-Generator: Launchpad (build 15353)\n"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/DatePicker.vala:25
@@ -32,22 +32,22 @@ msgstr "%H:%M"
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:133
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:133
 msgid "Translate This App"
-msgstr ""
+msgstr "Käännä tämä sovellus"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:138
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:138
 msgid "Report a Problem"
-msgstr ""
+msgstr "Raportoi ongelmasta"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
+msgstr "Ei yhteyttä Contractoriin. Onhan se asennettu?"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr ""
+msgstr "Tälle tiedostolle ei löytynyt sopivaa toimintoa"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:32
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:37
@@ -65,15 +65,15 @@ msgstr "Tietoja"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr ""
+msgstr "Suunnitellut"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr ""
+msgstr "Toteuttanut"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr ""
+msgstr "Kääntänyt "
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:444
 msgid "This program is published under the terms of the "
