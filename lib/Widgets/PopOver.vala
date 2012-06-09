@@ -360,19 +360,28 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height) {
 
-        // Start with rounded rectangle as base
-        Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, x, (arrow_up) ? y + ARROW_HEIGHT : y,
-                                                           width, height - ARROW_HEIGHT, BORDER_RADIUS);
-
-        // Draw arrow
+        // The top half
         if (arrow_up) {
-            cr.move_to (arrow_offset, y + ARROW_HEIGHT);
+            cr.arc (x + BORDER_RADIUS, y + ARROW_HEIGHT + BORDER_RADIUS, BORDER_RADIUS, Math.PI, Math.PI * 1.5);
+            cr.line_to (arrow_offset, y + ARROW_HEIGHT);
             cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
             cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
+            cr.arc (x + width - BORDER_RADIUS, y + ARROW_HEIGHT + BORDER_RADIUS, BORDER_RADIUS, Math.PI * 1.5, Math.PI * 2.0);
         } else {
-            cr.move_to (arrow_offset, y + height - ARROW_HEIGHT);
-            cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
-            cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
+            cr.arc (x + BORDER_RADIUS, y + BORDER_RADIUS, BORDER_RADIUS, Math.PI, Math.PI * 1.5);
+            cr.arc (x + width - BORDER_RADIUS, y + BORDER_RADIUS, BORDER_RADIUS, Math.PI * 1.5, Math.PI * 2.0);
+        }
+
+        // The bottom half
+        if (arrow_up) {
+            cr.arc (x + width - BORDER_RADIUS, y + height - BORDER_RADIUS, BORDER_RADIUS, 0, Math.PI * 0.5);
+            cr.arc (x + BORDER_RADIUS, y + height - BORDER_RADIUS, BORDER_RADIUS, Math.PI * 0.5, Math.PI);
+        } else {
+            cr.arc (x + width - BORDER_RADIUS, y + height - ARROW_HEIGHT - BORDER_RADIUS, BORDER_RADIUS, 0, Math.PI * 0.5);
+            cr.line_to (arrow_offset + ARROW_WIDTH, y + height - ARROW_HEIGHT);
+            cr.rel_line_to (-ARROW_WIDTH / 2.0, ARROW_HEIGHT);
+            cr.rel_line_to (-ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
+            cr.arc (x + BORDER_RADIUS, y + height - ARROW_HEIGHT - BORDER_RADIUS, BORDER_RADIUS, Math.PI * 0.5, Math.PI);
         }
         cr.close_path ();
     }
@@ -387,29 +396,29 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
 
         // Shadow first
-        cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
-                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH);
+        cairo_popover (main_buffer.context, SHADOW_SIZE, SHADOW_SIZE,
+                       w - SHADOW_SIZE * 2, h - SHADOW_SIZE * 2);
         main_buffer.context.set_source_rgba (0.0, 0.0, 0.0, 0.4);
         main_buffer.context.fill_preserve ();
         main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation
-
-        // Outer border
-        main_buffer.context.set_operator (Cairo.Operator.SOURCE);
-        main_buffer.context.set_line_width (BORDER_WIDTH);
-        Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
-        main_buffer.context.stroke_preserve ();
 
         // Background
         main_buffer.context.clip ();
         Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
         if(is_composited) {
-            h -= 2* (PADDINGS.top + SHADOW_SIZE) + ARROW_HEIGHT;
-            w -= 2*(PADDINGS.right + SHADOW_SIZE);
             if(get_window () != null)
-                get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w, h}),
+                get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w - 2*(PADDINGS.right + SHADOW_SIZE), h - 2*(PADDINGS.top + SHADOW_SIZE) - ARROW_HEIGHT}),
                         PADDINGS.right + SHADOW_SIZE,
                         PADDINGS.top + SHADOW_SIZE + (arrow_up ? ARROW_HEIGHT : 0));
         }
+
+        // Outer border
+        main_buffer.context.reset_clip ();
+        cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
+                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH);
+        main_buffer.context.set_line_width (BORDER_WIDTH);
+        Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
+        main_buffer.context.stroke ();
     }
 
     void on_size_allocate(Gtk.Allocation alloc)
@@ -432,9 +441,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
             cr.paint_with_alpha(1.0);
         }
         else {
-            cr.rectangle (0, 0, get_allocated_width (), get_allocated_height ());
-            cr.set_source_rgba (0, 0, 0, 0.3);
-            cr.set_line_width(1);
+            cr.rectangle (BORDER_WIDTH / 2.0, BORDER_WIDTH / 2.0, get_allocated_width () - BORDER_WIDTH, get_allocated_height () - BORDER_WIDTH);
+            Gdk.cairo_set_source_rgba (cr, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
+            cr.set_line_width (BORDER_WIDTH);
             cr.stroke ();
         }
         return base.draw(cr);
