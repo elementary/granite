@@ -360,6 +360,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height, double border_radius) {
 
+        if (border_radius < 0.0) border_radius = 0.0;
+
         // The top half
         if (arrow_up) {
             cr.arc (x + border_radius, y + ARROW_HEIGHT + border_radius, border_radius, Math.PI, Math.PI * 1.5);
