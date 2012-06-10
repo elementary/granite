@@ -12,41 +12,154 @@ const string BUTTON_STYLE = """
 
 namespace Granite.Widgets {
     
-    public struct Tab {
-        string label;
-        Gtk.Widget page;
-        string? icon;
+    public class Tab : Gtk.Box {
+        Gtk.Label _label;
+        public string label {
+            get { return _label.label;  }
+            set { _label.label = value; }
+        }
+        public Gtk.Widget page {
+            get;
+            set;
+        }
+        internal Gtk.Image _icon;
+        public GLib.Icon? icon {
+            owned get { return _icon.gicon;  }
+            set { _icon.gicon = value; }
+        }
+        Gtk.Spinner _working;
+        bool __working;
+        public bool working {
+            get { return __working; }
+            set { __working = _working.visible = value; _icon.visible = !value; }
+        }
+        
+        internal Gtk.Button close;
+        
+        internal signal void closed ();
+        
+        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
+            this._label   = new Gtk.Label (label);
+            if (icon != null)
+            	this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
+        	else
+        		this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
+            this._working = new Gtk.Spinner ();
+            this.close    = new Gtk.Button ();
+            
+            working = false;
+            
+            close.add (new Gtk.Image.from_stock (Gtk.Stock.CLOSE, Gtk.IconSize.MENU));
+            close.relief = Gtk.ReliefStyle.NONE;
+            
+            var lbl = new Gtk.EventBox ();
+            _label.set_tooltip_text (label);
+            lbl.add (_label);
+            _label.ellipsize = Pango.EllipsizeMode.END;
+            lbl.visible_window = false;
+            
+            this.pack_start (this.close, false);
+            this.pack_start (lbl);
+            this.pack_start (this._icon, false);
+            this.pack_start (this._working, false);
+            
+            this._working.show.connect (() => {
+            	if (!working)
+            		_working.hide ();
+            });
+            
+            this.page = page;
+            if (this.page == null)
+                this.page = new Gtk.Label ("");
+            this.page.show_all ();
+            
+            this.show_all ();
+            
+            lbl.button_release_event.connect ( (e) => {
+                if (e.button == 2) {
+                    this.closed ();
+                    return true;
+                }
+                return false;
+            });
+            
+            close.clicked.connect ( () => this.closed () );
+        }
     }
     
     public class DynamicNotebook : Gtk.EventBox {
         
         /**
-         * the underlying GtkNotebook, in case you need a method not provided by this class
+         * number of pages
          **/
-        public Gtk.Notebook notebook;
+        public int n_tabs {
+            get { return notebook.get_n_pages (); }
+            private set {}
+        }
         /**
-         * connect to this signal to be notified when a page is closed. 
-         * @return return true to let the tab be closed
+         * Hide the tab bar and only show the pages
          **/
-        public signal bool page_closed (Gtk.Widget page, uint num);
+        public bool show_tabs {
+            get { return notebook.show_tabs;  }
+            set { notebook.show_tabs = value; }
+        }
         /**
-         * the plus button was pressed, you should return a Tab struct and fill it with the 
-         * appropriate content
+         * Hide the close buttons and disable closing of tabs
          **/
-        public signal Tab? new_page ();
+        bool _tabs_closable = false;
+        public bool tabs_closable { //TODO
+            get { return _tabs_closable; }
+            set { _tabs_closable = value; }
+        }
         /**
-         * the notebook page was swtiched
+         * Make tabs reorderable
          **/
-        public signal void switch_page (Gtk.Widget page, uint num);
+        bool _allow_drag = true;
+        public bool allow_drag {
+            get { return _allow_drag; }
+            set {
+                _allow_drag = value;
+                this.tabs.foreach ( (t) => {
+                    notebook.set_tab_reorderable (t.page, value);
+                });
+            }
+        }
         /**
-         * Show or hide tab icons. Doesn't apply to existing tabs.
+         * Allow creating new windows by dragging a tab out
          **/
-        public bool show_icon;
+        bool _allow_new_window = false;
+        public bool allow_new_window {
+            get { return _allow_new_window; }
+            set {
+                _allow_new_window = value;
+                this.tabs.foreach ( (t) => {
+                    notebook.set_tab_detachable (t.page, value);
+                });
+            }
+        }
         
+        GLib.List<Tab> _tabs;
+        public GLib.List<Tab> tabs {
+            get {
+                _tabs = new GLib.List<Tab> ();
+                for (var i=0;i<n_tabs;i++) {
+                    _tabs.append (notebook.get_tab_label (notebook.get_nth_page (i)) as Tab);
+                }
+                return _tabs;
+            }
+            private set {}
+        }
+        
+        private Gtk.Notebook    notebook;
         private Gtk.CssProvider button_fix;
         
         private int tab_width = 150;
         private int max_tab_width = 150;
+        
+        public signal void tab_added (Tab tab);
+        public signal bool tab_removed (Tab tab);
+        public signal void tab_switched (Tab old_t, Tab new_t);
+        public signal void tab_moved (Tab tab, int old_pos, bool new_window, int x, int y);
         
         /**
          * create a new dynamic notebook
@@ -82,8 +195,9 @@ namespace Granite.Widgets {
             add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             
             add.clicked.connect ( () => {
-                var t = this.new_page ();
-                this.append_page (t.label, t.page, t.icon);
+                 var t = new Tab ();
+                 this.insert_tab (t, this.n_tabs - 1);
+                 this.tab_added (t);
             });
             
             this.size_allocate.connect ( () => {
@@ -94,9 +208,8 @@ namespace Granite.Widgets {
                 switch (e.keyval){
                     case 119: //ctrl+w
                         if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-                            Signal.lookup ("page-closed", typeof (DynamicNotebook)), 0, true)) {
-                            var sure = this.page_closed (this.notebook.get_nth_page (this.notebook.page), 
-                                this.notebook.page);
+                            Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
+                            var sure = this.tab_removed (tabs.nth_data (this.notebook.page));
                             if (sure)
                                 this.notebook.remove_page (this.notebook.page);
                         } else {
@@ -104,8 +217,9 @@ namespace Granite.Widgets {
                         }
                         return true;
                     case 116: //ctrl+t
-                        var t = this.new_page ();
-                        this.append_page (t.label, t.page, t.icon);
+                        var t = new Tab ();
+                        this.tab_added (t);
+                        this.insert_tab (t, -1);
                         return true;
                     case 49: //ctrl+[1-8]
                     case 50:
@@ -168,79 +282,30 @@ namespace Granite.Widgets {
                 this.notebook.page-1;
         }
         
-        public uint append_tab (Tab tab) {
-            return this.append_page (tab.label, tab.page, tab.icon);
+        public int get_tab_position (Tab tab) {
+            return this.notebook.page_num (tab.page);
         }
         
-        /**
-         * add a page to the notebook
-         * @param label The label for the tab
-         * @param page The tab page
-         * @param icon An optional icon for the tab. Use a Gtk icon_name
-         **/
-        public uint append_page (string label, Gtk.Widget page, string? icon = null) {
-            var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        public uint insert_tab (Tab tab, int index) {
+            if (index == -1)
+            	index = n_tabs - 1;
+        	
+            this.notebook.page = this.notebook.insert_page (tab.page, tab, index);
+            this.notebook.set_tab_reorderable (tab.page, this.allow_drag);
+            this.notebook.set_tab_detachable  (tab.page, this.allow_new_window);
             
-            var close = new Gtk.Button ();
-            close.add (new Gtk.Image.from_stock (Gtk.Stock.CLOSE, Gtk.IconSize.MENU));
-            close.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            close.relief = Gtk.ReliefStyle.NONE;
-            
-            var lbl = new Gtk.EventBox ();
-            var l = new Gtk.Label (label);
-            l.set_tooltip_text (label);
-            lbl.add (l);
-            l.ellipsize = Pango.EllipsizeMode.END;
-            lbl.visible_window = false;
-            
-            var spinner = new Gtk.Spinner ();
-            
-            box.width_request = tab_width;
-            box.pack_start (close, false);
-            box.pack_start (lbl);
-            
-            Gtk.Image img;
-            if (icon != null)
-                img = new Gtk.Image.from_icon_name (icon, Gtk.IconSize.MENU);
-            else
-                img = new Gtk.Image.from_icon_name ("empty", Gtk.IconSize.MENU);
-            box.pack_start (img, false);
-            box.pack_start (spinner, false);
-            
-            var idx = this.notebook.append_page (page, box);
-            this.notebook.set_tab_reorderable (page, true);
-            
-            page.show_all ();
-            this.notebook.page = idx;
-            
-            box.show_all ();
-            if (!show_icon)
-                img.hide ();
-            spinner.hide ();
-            
-            lbl.button_release_event.connect ( (e) => {
-                if (e.button == 2) {
-                    this.close_by_button (close);
-                    return true;
-                }
-                return false;
+            tab.width_request = tab_width;
+            tab.close.get_style_context ().add_provider (button_fix, 
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            tab.closed.connect ( () => {
+                this.notebook.remove_page (get_tab_position (tab));
             });
-            
-            lbl.scroll_event.connect ( (e) => {
-                if (e.direction == Gdk.ScrollDirection.UP)
-                    this.prev ();
-                else
-                    this.next ();
-                return false;
-            });
-            
-            close.clicked.connect ( () => this.close_by_button (close) );
             
             this.recalc_size ();
             
-            return idx;
+            return this.notebook.page;
         }
-        
+        /*
         private void close_by_button (Gtk.Button close) {
             int i; //find the label widget that fits the close button's parent
             for (i=0;i<this.notebook.get_n_pages (); i++) {
@@ -256,37 +321,7 @@ namespace Granite.Widgets {
             } else {
                 this.notebook.remove_page (i);
             }
-        }
-        
-        /**
-         * toggle the working state of the tab, which will cause a spinner to appear if it's working
-         **/
-        public void toggle_working (int num, bool enable) {
-            var box = (Gtk.Container)this.notebook.get_tab_label (this.notebook.get_nth_page (num));
-            if (enable) {
-                box.get_children ().nth_data (3).show_all ();
-                box.get_children ().nth_data (2).hide ();
-            } else {
-                box.get_children ().nth_data (2).show_all ();
-                box.get_children ().nth_data (3).hide ();
-            }
-            
-        }
-        
-        /**
-         * toggle whether the tab should be an app, e.g. show only its icon
-         **/
-        public void toggle_app_tab (int num, bool enable) {
-            var box = (Gtk.Container)this.notebook.get_tab_label (this.notebook.get_nth_page (num));
-            if (enable) {
-                box.get_children ().nth_data (0).hide ();
-                box.get_children ().nth_data (1).hide ();
-            } else {
-                box.get_children ().nth_data (0).show_all ();
-                box.get_children ().nth_data (1).show_all ();
-            }
-        }
-        
+        }*/
     }
     
 }
