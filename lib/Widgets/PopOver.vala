@@ -358,30 +358,32 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         move(x, y);
     }
 
-    protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height) {
+    protected void cairo_popover (Cairo.Context cr, double x, double y, double width, double height, double border_radius) {
+
+        if (border_radius < 0.0) border_radius = 0.0;
 
         // The top half
         if (arrow_up) {
-            cr.arc (x + BORDER_RADIUS, y + ARROW_HEIGHT + BORDER_RADIUS, BORDER_RADIUS, Math.PI, Math.PI * 1.5);
+            cr.arc (x + border_radius, y + ARROW_HEIGHT + border_radius, border_radius, Math.PI, Math.PI * 1.5);
             cr.line_to (arrow_offset, y + ARROW_HEIGHT);
             cr.rel_line_to (ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
             cr.rel_line_to (ARROW_WIDTH / 2.0, ARROW_HEIGHT);
-            cr.arc (x + width - BORDER_RADIUS, y + ARROW_HEIGHT + BORDER_RADIUS, BORDER_RADIUS, Math.PI * 1.5, Math.PI * 2.0);
+            cr.arc (x + width - border_radius, y + ARROW_HEIGHT + border_radius, border_radius, Math.PI * 1.5, Math.PI * 2.0);
         } else {
-            cr.arc (x + BORDER_RADIUS, y + BORDER_RADIUS, BORDER_RADIUS, Math.PI, Math.PI * 1.5);
-            cr.arc (x + width - BORDER_RADIUS, y + BORDER_RADIUS, BORDER_RADIUS, Math.PI * 1.5, Math.PI * 2.0);
+            cr.arc (x + border_radius, y + border_radius, border_radius, Math.PI, Math.PI * 1.5);
+            cr.arc (x + width - border_radius, y + border_radius, border_radius, Math.PI * 1.5, Math.PI * 2.0);
         }
 
         // The bottom half
         if (arrow_up) {
-            cr.arc (x + width - BORDER_RADIUS, y + height - BORDER_RADIUS, BORDER_RADIUS, 0, Math.PI * 0.5);
-            cr.arc (x + BORDER_RADIUS, y + height - BORDER_RADIUS, BORDER_RADIUS, Math.PI * 0.5, Math.PI);
+            cr.arc (x + width - border_radius, y + height - border_radius, border_radius, 0, Math.PI * 0.5);
+            cr.arc (x + border_radius, y + height - border_radius, border_radius, Math.PI * 0.5, Math.PI);
         } else {
-            cr.arc (x + width - BORDER_RADIUS, y + height - ARROW_HEIGHT - BORDER_RADIUS, BORDER_RADIUS, 0, Math.PI * 0.5);
+            cr.arc (x + width - border_radius, y + height - ARROW_HEIGHT - border_radius, border_radius, 0, Math.PI * 0.5);
             cr.line_to (arrow_offset + ARROW_WIDTH, y + height - ARROW_HEIGHT);
             cr.rel_line_to (-ARROW_WIDTH / 2.0, ARROW_HEIGHT);
             cr.rel_line_to (-ARROW_WIDTH / 2.0, -ARROW_HEIGHT);
-            cr.arc (x + BORDER_RADIUS, y + height - ARROW_HEIGHT - BORDER_RADIUS, BORDER_RADIUS, Math.PI * 0.5, Math.PI);
+            cr.arc (x + border_radius, y + height - ARROW_HEIGHT - border_radius, border_radius, Math.PI * 0.5, Math.PI);
         }
         cr.close_path ();
     }
@@ -397,14 +399,14 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
         // Shadow first
         cairo_popover (main_buffer.context, SHADOW_SIZE, SHADOW_SIZE,
-                       w - SHADOW_SIZE * 2, h - SHADOW_SIZE * 2);
+                       w - SHADOW_SIZE * 2, h - SHADOW_SIZE * 2, BORDER_RADIUS);
         main_buffer.context.set_source_rgba (0.0, 0.0, 0.0, 0.4);
         main_buffer.context.fill_preserve ();
         main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation
 
         // Background
         main_buffer.context.clip ();
-        Gtk.render_background (menu.get_style_context (), main_buffer.context, SHADOW_SIZE, SHADOW_SIZE, w - 2 * SHADOW_SIZE, h - 2 * SHADOW_SIZE);
+        Gtk.render_background (menu.get_style_context (), main_buffer.context, 0, 0, w, h);
         if(is_composited) {
             if(get_window () != null)
                 get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w - 2*(PADDINGS.right + SHADOW_SIZE), h - 2*(PADDINGS.top + SHADOW_SIZE) - ARROW_HEIGHT}),
@@ -415,7 +417,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         // Outer border
         main_buffer.context.reset_clip ();
         cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
-                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH);
+                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH, BORDER_RADIUS - BORDER_WIDTH / 2.0);
         main_buffer.context.set_line_width (BORDER_WIDTH);
         Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
         main_buffer.context.stroke ();
