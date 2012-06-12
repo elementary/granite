@@ -34,6 +34,18 @@ namespace Granite.Widgets {
             set { __working = _working.visible = value; _icon.visible = !value; }
         }
         
+        bool _fixed;
+        public bool fixed {
+        	get { return _fixed; }
+        	set {
+        		if (value != _fixed) {
+        			label.visible = value;
+        			close.visible = value;
+        		}
+        		_fixed = value;
+        	}
+        }
+        
         internal Gtk.Button close;
         
         internal signal void closed ();
@@ -107,9 +119,15 @@ namespace Granite.Widgets {
          * Hide the close buttons and disable closing of tabs
          **/
         bool _tabs_closable = false;
-        public bool tabs_closable { //TODO
+        public bool tabs_closable {
             get { return _tabs_closable; }
-            set { _tabs_closable = value; }
+            set {
+            	if (value != _tabs_closable)
+            		tabs.foreach ((t) => {
+            			t.close.visible = value;
+            		});
+            	_tabs_closable = value;
+        	}
         }
         /**
          * Make tabs reorderable
@@ -150,7 +168,12 @@ namespace Granite.Widgets {
             private set {}
         }
         
-        private Gtk.Notebook    notebook;
+        public string group_name {
+        	get { return notebook.group_name; }
+        	set { notebook.group_name = value; }
+        }
+        
+        public Gtk.Notebook    notebook;
         private Gtk.CssProvider button_fix;
         
         private int tab_width = 150;
@@ -259,7 +282,8 @@ namespace Granite.Widgets {
             });
         }
         
-        private void recalc_size () {
+        private void recalc_size ()
+        {
             if (this.notebook.get_n_pages () == 0)
                 return;
             
@@ -273,7 +297,13 @@ namespace Granite.Widgets {
             }
         }
         
-        private void next () {
+        public void remove_tab (Tab tab)
+        {
+        	notebook.remove_page (get_tab_position (tab));
+        }
+        
+        private void next ()
+        {
             this.notebook.page = (this.notebook.page + 1 >= this.notebook.get_n_pages ())?
                 this.notebook.page = 0 : this.notebook.page + 1;
         }
@@ -282,8 +312,21 @@ namespace Granite.Widgets {
                 this.notebook.page-1;
         }
         
-        public int get_tab_position (Tab tab) {
+        public int get_tab_position (Tab tab)
+        {
             return this.notebook.page_num (tab.page);
+        }
+        
+        public Tab? get_tab_by_index (int index) {
+        	return notebook.get_tab_label (notebook.get_nth_page (index)) as Tab;
+        }
+        
+        public Tab? get_tab_by_widget (Gtk.Widget widget) {
+        	return notebook.get_tab_label (widget) as Tab;
+        }
+        
+        public Gtk.Widget get_nth_page (int index) {
+        	return notebook.get_nth_page (index);
         }
         
         public uint insert_tab (Tab tab, int index) {
@@ -297,31 +340,21 @@ namespace Granite.Widgets {
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix, 
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            
             tab.closed.connect ( () => {
-                this.notebook.remove_page (get_tab_position (tab));
+                if (Signal.has_handler_pending (this, //if no one listens, just kill it!
+		            Signal.lookup ("tab-removed", typeof (Tab)), 0, true)) {
+		            var sure = tab_removed (tab);
+		            if (sure)
+		                remove_tab (tab);
+		        } else
+		            remove_tab (tab);
             });
             
             this.recalc_size ();
             
             return this.notebook.page;
         }
-        /*
-        private void close_by_button (Gtk.Button close) {
-            int i; //find the label widget that fits the close button's parent
-            for (i=0;i<this.notebook.get_n_pages (); i++) {
-                if (close.get_parent () == 
-                    this.notebook.get_tab_label (this.notebook.get_nth_page (i)))
-                    break;
-            }
-            if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-                Signal.lookup ("page-closed", typeof (DynamicNotebook)), 0, true)) {
-                var sure = this.page_closed (this.notebook.get_nth_page (i), i);
-                if (sure)
-                    this.notebook.remove_page (i);
-            } else {
-                this.notebook.remove_page (i);
-            }
-        }*/
     }
     
 }
