@@ -39,7 +39,7 @@ namespace Granite.Widgets {
         	get { return _fixed; }
         	set {
         		if (value != _fixed) {
-        			label.visible = value;
+        			_label.visible = value;
         			close.visible = value;
         		}
         		_fixed = value;
