@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-06-04 21:59-0700\n"
-"PO-Revision-Date: 2012-01-19 17:33+0000\n"
+"PO-Revision-Date: 2012-06-14 20:05+0000\n"
 "Last-Translator: DavyS <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-06-06 05:12+0000\n"
-"X-Generator: Launchpad (build 15353)\n"
+"X-Launchpad-Export-Date: 2012-06-15 04:52+0000\n"
+"X-Generator: Launchpad (build 15414)\n"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/DatePicker.vala:25
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//DatePicker.vala:25
@@ -32,22 +32,22 @@ msgstr "%l:%M %p"
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:133
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:133
 msgid "Translate This App"
-msgstr ""
+msgstr "Traduzir Este Aplicativo"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:138
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:138
 msgid "Report a Problem"
-msgstr ""
+msgstr "Relatar um Problema"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
+msgstr "Não foi possível contactar Contractor. Você pode precisar instalá-lo"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr ""
+msgstr "Nenhuma ação encontrada para este arquivo"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:32
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:37
@@ -65,20 +65,21 @@ msgstr "Sobre"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr ""
+msgstr "Projetado por"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr ""
+msgstr "Escrito por"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr ""
+msgstr "Traduzido por "
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:444
 msgid "This program is published under the terms of the "
-msgstr ""
+msgstr "Este programa é publicado sob os termos da licença "
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:444
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
+" , ela vem com ABSOLUTAMENTE NENHUMA GARANTIA; para detalhes, visite "
