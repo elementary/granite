@@ -895,7 +895,7 @@ public class Granite.Widgets.DynamicNotebook : Gtk.Grid {
         if (page < tabs.tabs.size && page >= 0)
             return tabs.tabs[page];
         else
-            return null;
+            return new Tab ("");;
     }
 }
 
