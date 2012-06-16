@@ -398,8 +398,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         main_buffer = new Granite.Drawing.BufferSurface (w, h);
 
         // Shadow first
-        cairo_popover (main_buffer.context, SHADOW_SIZE, SHADOW_SIZE,
-                       w - SHADOW_SIZE * 2, h - SHADOW_SIZE * 2, BORDER_RADIUS);
+        cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
+                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH, BORDER_RADIUS);
         main_buffer.context.set_source_rgba (0.0, 0.0, 0.0, 0.4);
         main_buffer.context.fill_preserve ();
         main_buffer.exponential_blur (SHADOW_SIZE / 2 - 1); // rough approximation
@@ -417,7 +417,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         // Outer border
         main_buffer.context.reset_clip ();
         cairo_popover (main_buffer.context, SHADOW_SIZE + BORDER_WIDTH / 2.0, SHADOW_SIZE + BORDER_WIDTH / 2.0,
-                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH, BORDER_RADIUS - BORDER_WIDTH / 2.0);
+                       w - SHADOW_SIZE * 2 - BORDER_WIDTH, h - SHADOW_SIZE * 2 - BORDER_WIDTH, BORDER_RADIUS);
+        main_buffer.context.set_operator (Cairo.Operator.SOURCE);
         main_buffer.context.set_line_width (BORDER_WIDTH);
         Gdk.cairo_set_source_rgba (main_buffer.context, get_style_context ().get_border_color (Gtk.StateFlags.NORMAL));
         main_buffer.context.stroke ();
