@@ -66,9 +66,6 @@ namespace Granite {
             prctl (15, exec_name, 0, 0, 0);
             Environment.set_prgname (exec_name);
 
-            Posix.signal (Posix.SIGINT, sig_handler);
-            Posix.signal (Posix.SIGTERM, sig_handler);
-
             Logger.initialize (program_name);
             Logger.DisplayLevel = LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
@@ -109,11 +106,6 @@ namespace Granite {
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
             { null }
         };
-
-        protected static void sig_handler (int sig) {
-            warning ("Caught signal (%d), exiting", sig);
-            Gtk.main_quit ();
-        }
 
         protected virtual void set_options () {
 
