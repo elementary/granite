@@ -110,7 +110,12 @@ namespace Granite.Services {
         
             if (level < DisplayLevel)
                 return;
-            
+
+            // TODO
+            // - The problem is that new LogMessage(..) fails this method
+            // - Avoiding the above removes the problem with renaming files
+
+            /*
             if (is_writing) {
                 lock (queue_lock)
                     log_queue.append (new LogMessage (level, msg));
@@ -125,11 +130,16 @@ namespace Granite.Services {
                     foreach (var log in logs)
                         print_log (log);
                 }
-                
-                print_log (new LogMessage (level, msg));
-                
+            */  
+            set_color_for_level (level);
+            stdout.printf ("[%s %s]", level.to_string ().substring (25), get_time ());
+            
+            reset_color ();
+            stdout.printf (" %s\n", msg);
+            //print_log (new LogMessage (level, msg));
+                /*  
                 is_writing = false;
-            }
+                }*/
         }
         
         static void print_log (LogMessage log) {
