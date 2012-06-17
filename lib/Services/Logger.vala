@@ -2,7 +2,7 @@
 //  Copyright (C) 2011 Robert Dyer
 //
 //  Originally Written by Robert Dyer for Varka Library
-//  Varka: http://www.launchpad.net/varka
+//  Varka Library: http://www.launchpad.net/varka
 // 
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
