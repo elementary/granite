@@ -125,13 +125,13 @@ namespace Granite.Services {
                     foreach (var log in logs)
                         print_log (log.Level, log.Message);
                 }
-
+                
                 print_log (level, msg);
-              
+                
                 is_writing = false;
             }
         }
-
+        
         static void print_log (LogLevel level, string msg) {
         
             set_color_for_level (level);
@@ -140,7 +140,7 @@ namespace Granite.Services {
             reset_color ();
             stdout.printf (" %s\n", msg);
         }
-
+        
         static void set_color_for_level (LogLevel level) {
         
             switch (level) {
@@ -189,7 +189,7 @@ namespace Granite.Services {
         static void glib_log_func (string? d, LogLevelFlags flags, string msg) {
             var domain = "";
             if (d != null)
-                domain = "[%s] ".printf (d ?? "");
+                domain = "[%s] ".printf (d);
             
             var message = msg.replace ("\n", "").replace ("\r", "");
             message = "%s%s".printf (domain, message);
