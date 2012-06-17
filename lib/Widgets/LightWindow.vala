@@ -3,7 +3,7 @@
 namespace Granite.Widgets {
     
     [CCode (cname="get_close_pixbuf")]
-    internal extern Gdk.Pixbuf get_close_pixbuf ();
+    public extern Gdk.Pixbuf get_close_pixbuf ();
     
     public class LightWindow : Granite.Widgets.CompositedWindow {
         

@@ -18,9 +18,16 @@ namespace Granite.Widgets {
             get { return _label.label;  }
             set { _label.label = value; }
         }
+        internal Gtk.EventBox page_container;
         public Gtk.Widget page {
-            get;
-            set;
+            get {
+            	return page_container.get_child ();
+        	}
+            set {
+            	if (page_container.get_child () != null)
+            		page_container.remove (page_container.get_child ());
+        		page_container.add (value);
+            }
         }
         internal Gtk.Image _icon;
         public GLib.Icon? icon {
@@ -32,6 +39,11 @@ namespace Granite.Widgets {
         public bool working {
             get { return __working; }
             set { __working = _working.visible = value; _icon.visible = !value; }
+        }
+        
+        public Pango.EllipsizeMode ellipsize_mode {
+        	get { return _label.ellipsize; }
+        	set { _label.ellipsize = value; }
         }
         
         bool _fixed;
@@ -80,10 +92,9 @@ namespace Granite.Widgets {
             		_working.hide ();
             });
             
-            this.page = page;
-            if (this.page == null)
-                this.page = new Gtk.Label ("");
-            this.page.show_all ();
+            page_container = new Gtk.EventBox ();
+            page_container.add ((page == null)?new Gtk.Label (""):page);
+            page_container.show_all ();
             
             this.show_all ();
             
@@ -108,12 +119,27 @@ namespace Granite.Widgets {
             get { return notebook.get_n_pages (); }
             private set {}
         }
+        
         /**
          * Hide the tab bar and only show the pages
          **/
         public bool show_tabs {
             get { return notebook.show_tabs;  }
             set { notebook.show_tabs = value; }
+        }
+        
+        bool _show_icons;
+        /**
+         * Toggle icon display
+         **/
+        public bool show_icons {
+        	get { return _show_icons; }
+        	set {
+        		if (_show_icons != value) {
+        			tabs.foreach ((t) => t._icon.visible = value );
+        		}
+        		_show_icons = value;
+    		}
         }
         /**
          * Hide the close buttons and disable closing of tabs
@@ -138,7 +164,7 @@ namespace Granite.Widgets {
             set {
                 _allow_drag = value;
                 this.tabs.foreach ( (t) => {
-                    notebook.set_tab_reorderable (t.page, value);
+                    notebook.set_tab_reorderable (t.page_container, value);
                 });
             }
         }
@@ -151,9 +177,14 @@ namespace Granite.Widgets {
             set {
                 _allow_new_window = value;
                 this.tabs.foreach ( (t) => {
-                    notebook.set_tab_detachable (t.page, value);
+                    notebook.set_tab_detachable (t.page_container, value);
                 });
             }
+        }
+        
+        public Tab current {
+        	get { return tabs.nth_data (notebook.get_current_page ()); }
+        	set { notebook.set_current_page (tabs.index (value)); }
         }
         
         GLib.List<Tab> _tabs;
@@ -284,7 +315,7 @@ namespace Granite.Widgets {
         
         private void recalc_size ()
         {
-            if (this.notebook.get_n_pages () == 0)
+            if (n_tabs == 0)
                 return;
             
             var offset = 130;
@@ -301,7 +332,7 @@ namespace Granite.Widgets {
         {
         	notebook.remove_page (get_tab_position (tab));
         }
-        
+        /*
         private void next ()
         {
             this.notebook.page = (this.notebook.page + 1 >= this.notebook.get_n_pages ())?
@@ -311,10 +342,10 @@ namespace Granite.Widgets {
             this.notebook.page = (this.notebook.page - 1 < 0)?this.notebook.get_n_pages () - 1:
                 this.notebook.page-1;
         }
-        
+        */
         public int get_tab_position (Tab tab)
         {
-            return this.notebook.page_num (tab.page);
+            return this.notebook.page_num (tab.page_container);
         }
         
         public Tab? get_tab_by_index (int index) {
@@ -333,9 +364,11 @@ namespace Granite.Widgets {
             if (index == -1)
             	index = n_tabs - 1;
         	
-            this.notebook.page = this.notebook.insert_page (tab.page, tab, index);
-            this.notebook.set_tab_reorderable (tab.page, this.allow_drag);
-            this.notebook.set_tab_detachable  (tab.page, this.allow_new_window);
+            this.notebook.page = this.notebook.insert_page (tab.page_container, tab, index);
+            this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
+            this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
+            
+        	tab._icon.visible = show_icons;
             
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix, 
@@ -343,7 +376,7 @@ namespace Granite.Widgets {
             
             tab.closed.connect ( () => {
                 if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-		            Signal.lookup ("tab-removed", typeof (Tab)), 0, true)) {
+		            Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
 		            var sure = tab_removed (tab);
 		            if (sure)
 		                remove_tab (tab);
