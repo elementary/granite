@@ -77,7 +77,7 @@ namespace Granite.Services {
             log_queue = new List<LogMessage> ();
             try {
                 re = new Regex ("""[(]?.*?([^/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)""");
-                } catch { }
+            } catch { }
             
             Log.set_default_handler (glib_log_func);
         }
@@ -121,6 +121,7 @@ namespace Granite.Services {
                     var logs = log_queue.copy ();
                     lock (queue_lock)
                         log_queue = new List<LogMessage> ();
+                    
                     foreach (var log in logs)
                         print_log (log);
                 }
@@ -132,6 +133,7 @@ namespace Granite.Services {
         }
         
         static void print_log (LogMessage log) {
+        
             set_color_for_level (log.Level);
             stdout.printf ("[%s %s]", log.Level.to_string ().substring (25), get_time ());
             
@@ -142,25 +144,25 @@ namespace Granite.Services {
         static void set_color_for_level (LogLevel level) {
         
             switch (level) {
-            case LogLevel.DEBUG:
-                set_foreground (ConsoleColor.GREEN);
-                break;
-            case LogLevel.INFO:
-                set_foreground (ConsoleColor.BLUE);
-                break;
-            case LogLevel.NOTIFY:
-                set_foreground (ConsoleColor.MAGENTA);
-                break;
-            case LogLevel.WARN:
-                set_foreground (ConsoleColor.YELLOW);
-                break;
-            case LogLevel.ERROR:
-                set_foreground (ConsoleColor.RED);
-                break;
-            case LogLevel.FATAL:
-                set_background (ConsoleColor.RED);
-                set_foreground (ConsoleColor.WHITE);
-                break;
+                case LogLevel.DEBUG:
+                    set_foreground (ConsoleColor.GREEN);
+                    break;
+                case LogLevel.INFO:
+                    set_foreground (ConsoleColor.BLUE);
+                    break;
+                case LogLevel.NOTIFY:
+                    set_foreground (ConsoleColor.MAGENTA);
+                    break;
+                case LogLevel.WARN:
+                    set_foreground (ConsoleColor.YELLOW);
+                    break;
+                case LogLevel.ERROR:
+                    set_foreground (ConsoleColor.RED);
+                    break;
+                case LogLevel.FATAL:
+                    set_background (ConsoleColor.RED);
+                    set_foreground (ConsoleColor.WHITE);
+                    break;
             }
         }
         
