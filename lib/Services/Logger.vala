@@ -71,20 +71,22 @@ namespace Granite.Services {
          * @param app_name the name of the app to display in the logs
          */
         public static void initialize (string app_name) {
+        
             AppName = app_name;
             is_writing = false;
             log_queue = new List<LogMessage> ();
             try {
                 re = new Regex ("""[(]?.*?([^/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)""");
-            } catch { }
-
+                } catch { }
+            
             Log.set_default_handler (glib_log_func);
         }
         
         static string format_message (string msg) {
+        
             if (re != null && re.match (msg)) {
                 var parts = re.split (msg);
-                return "[%s%s] %s".printf (parts[1], parts[3], parts[4]);
+                return "[%s%s] %s".printf (parts[1], parts[2], parts[3]);
             }
             return msg;
         }
@@ -99,28 +101,28 @@ namespace Granite.Services {
         }
         
         static string get_time () {
+        
             var now = new DateTime.now_local ();
-            return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (),
-                                                 now.get_second (), now.get_microsecond ());
+            return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
         }
         
         static void write (LogLevel level, string msg) {
+        
             if (level < DisplayLevel)
                 return;
             
             if (is_writing) {
                 lock (queue_lock)
-                log_queue.append (new LogMessage (level, msg));
+                    log_queue.append (new LogMessage (level, msg));
             } else {
                 is_writing = true;
                 
                 if (log_queue.length () > 0) {
                     var logs = log_queue.copy ();
                     lock (queue_lock)
-                    log_queue = new List<LogMessage> ();
-                    
+                        log_queue = new List<LogMessage> ();
                     foreach (var log in logs)
-                    print_log (log);
+                        print_log (log);
                 }
                 
                 print_log (new LogMessage (level, msg));
@@ -191,28 +193,28 @@ namespace Granite.Services {
             message = "%s%s".printf (domain, message);
             
             switch (flags) {
-            case LogLevelFlags.LEVEL_CRITICAL:
-                write (LogLevel.FATAL, format_message (message));
-                write (LogLevel.FATAL, format_message (AppName + " will not function properly."));
-                break;
-            
-            case LogLevelFlags.LEVEL_ERROR:
-                write (LogLevel.ERROR, format_message (message));
-                break;
-            
-            case LogLevelFlags.LEVEL_INFO:
-            case LogLevelFlags.LEVEL_MESSAGE:
-                write (LogLevel.INFO, format_message (message));
-                break;
-            
-            case LogLevelFlags.LEVEL_DEBUG:
-                write (LogLevel.DEBUG, format_message (message));
-                break;
-            
-            case LogLevelFlags.LEVEL_WARNING:
-            default:
-                write (LogLevel.WARN, format_message (message));
-                break;
+                case LogLevelFlags.LEVEL_CRITICAL:
+                    write (LogLevel.FATAL, format_message (message));
+                    write (LogLevel.FATAL, format_message (AppName + " will not function properly."));
+                    break;
+                
+                case LogLevelFlags.LEVEL_ERROR:
+                    write (LogLevel.ERROR, format_message (message));
+                    break;
+                
+                case LogLevelFlags.LEVEL_INFO:
+                case LogLevelFlags.LEVEL_MESSAGE:
+                    write (LogLevel.INFO, format_message (message));
+                    break;
+                
+                case LogLevelFlags.LEVEL_DEBUG:
+                    write (LogLevel.DEBUG, format_message (message));
+                    break;
+                
+                case LogLevelFlags.LEVEL_WARNING:
+                default:
+                    write (LogLevel.WARN, format_message (message));
+                    break;
             }
         }
         
