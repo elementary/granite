@@ -76,7 +76,7 @@ namespace Granite.Services {
             is_writing = false;
             log_queue = new List<LogMessage> ();
             try {
-                re = new Regex ("""[(]?.*?([^/]*?)(\.2)?\.vala(:\d+)[)]?:\s*(.*)""");
+                re = new Regex ("""(.*)\.vala(:\d+): (.*)""");
             } catch { }
             
             Log.set_default_handler (glib_log_func);
@@ -135,7 +135,7 @@ namespace Granite.Services {
         static void print_log (LogLevel level, string msg) {
         
             set_color_for_level (level);
-            stdout.printf ("[%s %s]", level.to_string ().substring (25), get_time ());
+            stdout.printf ("[%s %s]", level.to_string ().substring (27), get_time ());
             
             reset_color ();
             stdout.printf (" %s\n", msg);
