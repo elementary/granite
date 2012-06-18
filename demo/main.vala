@@ -99,7 +99,7 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("Quite long"));
         mode_button.append(new Gtk.Label("Very very long \n with a line break"));
 
-        var vbox = new Gtk.VBox(false, 0);
+        var vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
         var toolbar = new Gtk.Toolbar();
         toolbar.get_style_context().add_class("primary-toolbar");
         var toolbutton = new Gtk.ToolItem();
@@ -134,7 +134,7 @@ public class Granite.Demo : Granite.Application
         notebook.append_page(vbox, new Gtk.Label("ModeButton"));
 
         /* static notebook */
-        var staticbox = new Gtk.VBox (false, 5);
+        var staticbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
         var staticnotebook = new StaticNotebook ();
 
         var pageone = new Gtk.Label("Page 1");
@@ -152,8 +152,8 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
 
-        var popover_buttons = new Gtk.VBox(false, 0);
-        var hbox3 = new Gtk.HBox(false, 0);
+        var popover_buttons = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        var hbox3 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         hbox3.halign = Gtk.Align.END;
         var popover1 = new Gtk.Button.with_label("PopOver 1");
         popover1.halign = Gtk.Align.END;
@@ -180,7 +180,7 @@ public class Granite.Demo : Granite.Application
         popover_buttons.pack_start(hbox3, false, false);
         notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
 
-        var calendar_button = new Gtk.HBox(false, 0);
+        var calendar_button = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
         var time_button = new Granite.Widgets.TimePicker ();
         date_button.valign = date_button.halign = Gtk.Align.CENTER;
@@ -190,7 +190,7 @@ public class Granite.Demo : Granite.Application
         notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
 
         /* Contractor */
-        var contractor_tab = new Gtk.VBox (false, 0);
+        var contractor_tab = new Gtk.Box (Gtk.Orientation.VERTICAL, 0 );
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
         
         var tb = new Gtk.Toolbar ();
