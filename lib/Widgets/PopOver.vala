@@ -103,6 +103,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     }
 
     construct {
+        // Set up css provider
         style_provider = new Gtk.CssProvider ();
         try {
             style_provider.load_from_data (POPOVER_STYLESHEET, -1);
@@ -124,7 +125,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         set_type_hint(Gdk.WindowTypeHint.MENU);
         skip_pager_hint = true;
         skip_taskbar_hint = true;
-	}
+    }
 
     /**
      * Create a new PopOver
@@ -421,8 +422,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     public override bool draw(Cairo.Context cr)
     {
-		cr.set_source_surface(main_buffer.surface, 0, 0);
-		cr.paint_with_alpha(1.0);
+        cr.set_source_surface(main_buffer.surface, 0, 0);
+        cr.paint_with_alpha(1.0);
         return base.draw(cr);
     }
 }
