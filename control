@@ -41,8 +41,15 @@ Enhances: libgranite0
 Description: Debugging symbols of granite
 
 Package: libgranite-demo
-Section: libdevel
+Section: x11
 Architecture: any
 Depends: libgranite0 (= ${binary:Version}), ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
-Description: A small apps to show Granite Widgets.
+Description: A simple app to show Granite Widgets.
+
+Package: granite-demo
+Section: x11
+Architecture: any
+Depends: libgranite-demo, ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
+Description: Dummy transitional package to libgranite-demo.
