@@ -269,17 +269,22 @@ namespace Granite.Services {
             
             if(val.type() == prop.value_type) {
                 if(type == typeof (int))
-                    success = schema.set_int (key, val.get_int ());
+                    if (val.get_int () != schema.get_int (key))
+                        success = schema.set_int (key, val.get_int ());
                 else if(type == typeof (double))
-                    success = schema.set_double (key, val.get_double ());
+                    if (val.get_double () != schema.get_double (key))
+                        success = schema.set_double (key, val.get_double ());
                 else if(type == typeof (string))
-                    success = schema.set_string (key, val.get_string ());
+                    if (val.get_string () != schema.get_string (key))
+                        success = schema.set_string (key, val.get_string ());
                 else if(type == typeof (string[])) {
                     string[] strings = null;
                     this.get(key, &strings);
-                    success = schema.set_strv (key, strings);
+                    if (strings != schema.get_strv (key))
+                        success = schema.set_strv (key, strings);
                 } else if(type == typeof (bool))
-                    success = schema.set_boolean (key, val.get_boolean ());
+                    if (val.get_boolean () != schema.get_boolean (key))
+                        success = schema.set_boolean (key, val.get_boolean ());
             }
             else if (type.is_a (typeof (SettingsSerializable)))
                 success = schema.set_string (key, (val.get_object () as SettingsSerializable).settings_serialize ());
