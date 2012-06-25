@@ -29,9 +29,25 @@ namespace Granite.Widgets {
         public DateTime time {
             get { return _time; }
             set {
-                _time = value;
+                if (_time.get_minute () != value.get_minute ())
+                    _time = normalize_time (value);
+                else
+                    _time = value;
                 text = _time.format (format);
             }
+        }
+        
+        private GLib.DateTime normalize_time (GLib.DateTime given_to_normalize_time) {
+            GLib.DateTime to_normalize_time = given_to_normalize_time;
+            int rest = to_normalize_time.get_minute ();
+            rest = (rest - (((int)(rest*0.1f))*10));
+            if ( rest < 5) {
+                to_normalize_time = to_normalize_time.add_minutes (-rest);
+            }
+            else {
+                to_normalize_time = to_normalize_time.add_minutes (5-rest);
+            }
+            return to_normalize_time;
         }
 
         public string format { get; construct; default = _("%l:%M %p"); }
@@ -84,6 +100,8 @@ namespace Granite.Widgets {
          */
         construct {
         
+            _time = normalize_time (_time);
+            
             // EventBox properties
             events |= Gdk.EventMask.POINTER_MOTION_MASK
                    |  Gdk.EventMask.BUTTON_PRESS_MASK
@@ -121,31 +139,35 @@ namespace Granite.Widgets {
         public TimePicker.with_format (string format) {
             Object (format: format);
         }
-        
+
         protected void hours_left_clicked () {
-            time = time.add_hours (1);
-            text = time.format (format);
-            time_changed ();
-        }
-        protected void hours_right_clicked () {
             time = time.add_hours (-1);
             text = time.format (format);
             time_changed ();
         }
-        protected void minutes_left_clicked () {
+
+        protected void hours_right_clicked () {
         
-            time = time.add_minutes (5);
-            if (time.get_minute () < 5) {
-                time = time.add_hours (-1);
-            }
+            time = time.add_hours (1);
             text = time.format (format);
             time_changed ();
         }
-        protected void minutes_right_clicked () {
+
+        protected void minutes_left_clicked () {
         
             time = time.add_minutes (-5);
             if (time.get_minute () >= 55) {
                 time = time.add_hours (+1);
+            }
+            text = time.format (format);
+            time_changed ();
+        }
+
+        protected void minutes_right_clicked () {
+        
+            time = time.add_minutes (5);
+            if (time.get_minute () < 5) {
+                time = time.add_hours (-1);
             }
             text = time.format (format);
             time_changed ();
