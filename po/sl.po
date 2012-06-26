@@ -8,26 +8,26 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-06-04 21:59-0700\n"
-"PO-Revision-Date: 2012-06-22 17:54+0000\n"
+"PO-Revision-Date: 2012-06-25 14:56+0000\n"
 "Last-Translator: MarkoD <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-06-23 05:20+0000\n"
-"X-Generator: Launchpad (build 15461)\n"
+"X-Launchpad-Export-Date: 2012-06-26 05:41+0000\n"
+"X-Generator: Launchpad (build 15482)\n"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/DatePicker.vala:25
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr "%e. %B, %Y"
+msgstr "%e. %B %Y"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/TimePicker.vala:37
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/TimePicker.vala:98
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//TimePicker.vala:37
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//TimePicker.vala:98
 msgid "%l:%M %p"
-msgstr "%H:%M"
+msgstr "%k.%M"
 
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:133
 #: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:133
