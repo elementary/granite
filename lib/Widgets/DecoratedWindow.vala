@@ -27,7 +27,7 @@ namespace Granite.Widgets {
 
     public class DecoratedWindow : CompositedWindow {
 
-        const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
+        static const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
             .decorated-window {
                 border-style:solid;
                 border-color:alpha (#000, 0.35);
@@ -38,7 +38,7 @@ namespace Granite.Widgets {
         """;
 
         // Currently not overridable
-        const string DECORATED_WINDOW_STYLESHEET = """
+        static const string DECORATED_WINDOW_STYLESHEET = """
             .decorated-window { border-width:1px; }
         """;
 
@@ -55,34 +55,13 @@ namespace Granite.Widgets {
 
             ref_window.get_style_context ().add_class (STYLE_CLASS_DECORATED_WINDOW);
 
-            ref_window.get_style_context ().add_provider (normal_style, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            ref_window.get_style_context ().add_provider (fallback_style, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+            ref_window.get_style_context ().add_provider (normal_style,
+                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            ref_window.get_style_context ().add_provider (fallback_style,
+                                            Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
 
-        bool _show_close_button = true;
-        public bool show_close_button {
-            get {
-                return _show_close_button;
-            }
-            set {
-                _show_close_button = value;
-                w = -1; h = -1; // get it to redraw the buffer
-                Gtk.Allocation alloc;
-                this.get_allocation (out alloc);
-                this.size_allocate (alloc);
-
-                this.queue_draw ();
-            }
-        }
-
-        /**
-         * Whether to hide or destroy the window when the close button is clicked.
-         * By default, the window is destroyed. You can change that by changing this
-         * property to 'true'.
-         *
-         * Default: false;
-         */
-        public bool hide_on_close { get; set; default = false; }
+        public bool show_title { get; set; default = true; }
 
         protected Gtk.Box box { get; private set; }
         protected Gtk.Window draw_ref { get; private set; }
@@ -104,55 +83,70 @@ namespace Granite.Widgets {
 
         private Gtk.Label _title;
 
-        public new string title {
-            get { return _title.label; }
-            set { _title.label = value; }
-        }
-
         public DecoratedWindow (string title = "", string? window_style = null, string? content_style = null) {
-            this.resizable = true;
+            this.resizable = false;
             this.has_resize_grip = false;
             this.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 
-            this._title = new Gtk.Label (title);
-            this._title.margin_top = 5;
+            this.close_img = get_close_pixbuf ();
+
+            this._title = new Gtk.Label (null);
+            this._title.halign = Gtk.Align.CENTER;
+            this._title.hexpand = false;
+            this._title.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            this._title.single_line_mode = true;
+            this._title.margin = 6;
+            this._title.margin_left = this._title.margin_right = 6 + this.close_img.get_width () / 3;
             var attr = new Pango.AttrList ();
             attr.insert (new Pango.AttrFontDesc (Pango.FontDescription.from_string ("bold")));
             this._title.attributes = attr;
 
+            this.notify["title"].connect ( () => {
+                this._title.label = this.title;
+            });
+
+            this.notify["show-title"].connect ( () => {
+                this._title.visible = this.show_title;
+            });
+
+            this.notify["deletable"].connect ( () => {
+                w = -1; h = -1; // get it to redraw the buffer
+                this.queue_resize ();
+                this.queue_draw ();
+            });
+
+            this.title = title;
+            this.deletable = true;
+
             this.box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            this.box.margin = SHADOW_BLUR + 1; // SHADOW_BLUR + border_width
+
             this.draw_ref = new Gtk.Window ();
 
             // set theming
-            set_default_theming (draw_ref);
+            set_default_theming (this.draw_ref);
 
             // extra theming
             if (window_style != null && window_style != "")
-                draw_ref.get_style_context ().add_class (window_style);
+                this.draw_ref.get_style_context ().add_class (window_style);
 
             if (content_style != null && content_style != "")
-                box.get_style_context ().add_class (content_style);
+                this.box.get_style_context ().add_class (content_style);
 
-            close_img = get_close_pixbuf ();
-
-            this.size_allocate.connect (on_size_allocate);
-            this.draw.connect (draw_widget);
+            this.box.pack_start (this._title, false);
+            base.add (this.box);
 
             this.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK);
-
             this.motion_notify_event.connect (on_motion_notify);
             this.button_press_event.connect (on_button_press);
-
-            box.pack_start (_title, false);
-
-            box.margin = SHADOW_BLUR + 1; // SHADOW_BLUR + border_width
-
-            base.add (this.box);
+            this.delete_event.connect_after (on_delete_event);
+            this.size_allocate.connect (on_size_allocate);
+            this.draw.connect (draw_widget);
         }
 
 
         public new void add (Gtk.Widget w) {
-            this.box.pack_start (w);
+            this.box.pack_start (w, true, true);
         }
 
         public new void remove (Gtk.Widget w) {
@@ -185,17 +179,19 @@ namespace Granite.Widgets {
                 this.buffer.context.fill ();
                 this.buffer.exponential_blur (SHADOW_BLUR / 2);
 
-                draw_ref.get_style_context ().render_activity (this.buffer.context, x, y, width, height);
+                draw_ref.get_style_context ().render_activity (this.buffer.context,
+                                                               x, y, width, height);
 
-                if (this.show_close_button) {
-                    Gdk.cairo_set_source_pixbuf (this.buffer.context, close_img, SHADOW_BLUR / 2 + CLOSE_BUTTON_X,
+                if (this.deletable) {
+                    Gdk.cairo_set_source_pixbuf (this.buffer.context, close_img,
+                                                 SHADOW_BLUR / 2 + CLOSE_BUTTON_X,
                                                  SHADOW_BLUR / 2 + CLOSE_BUTTON_Y);
                     this.buffer.context.paint ();
                 }
         }
 
         private bool on_motion_notify (Gdk.EventMotion e) {
-            if (show_close_button && coords_over_close_button (e.x, e.y))
+            if (coords_over_close_button (e.x, e.y))
                 this.get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND1));
             else
                 this.get_window ().set_cursor (null);
@@ -205,10 +201,10 @@ namespace Granite.Widgets {
 
         private bool on_button_press (Gdk.EventButton e) {
                 if (coords_over_close_button (e.x, e.y)) {
-                    if (hide_on_close)
-                        this.hide ();
-                    else
-                        this.destroy ();
+                    var event = new Gdk.Event (Gdk.EventType.DELETE);
+                    event.any.window = e.window;
+                    event.any.send_event = e.send_event;
+                    this.delete_event (event.any);
                 }
                 else {
                     this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
@@ -218,10 +214,18 @@ namespace Granite.Widgets {
         }
 
         private bool coords_over_close_button (double x, double y) {
-            return x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
+            return this.deletable &&
+                    x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
                     x < (close_img.get_width () + SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
                     y > (SHADOW_BLUR / 2 + CLOSE_BUTTON_Y) &&
                     y < (close_img.get_height () + SHADOW_BLUR / 2 + CLOSE_BUTTON_Y);
+        }
+
+        private bool on_delete_event (Gdk.EventAny event) {
+            if (this.deletable)
+                this.destroy ();
+
+            return false;
         }
     }
 }
