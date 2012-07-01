@@ -37,47 +37,20 @@ namespace Granite.Services {
         WHITE,
     }
     
-    /**
-     * An enhanced GLib logger which all {@link Granite.Application}s use.
-     */
     public class Logger : GLib.Object {
-    
-        class LogMessage : GLib.Object {
-        
-            public LogLevel Level { get; private set; }
-            public string Message { get; private set; }
-            
-            public LogMessage (LogLevel level, string message) {
-                Level = level;
-                Message = message;
-            }
-            
-        }
         
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
         
         static string AppName { get; set; }
         
-        static Object queue_lock = null;
-        
-        static List<LogMessage> log_queue;
-        static bool is_writing;
-        
         static Regex re;
         
-        /**
-         * Initializes the logger with the supplied application name.
-         *
-         * @param app_name the name of the app to display in the logs
-         */
         public static void initialize (string app_name) {
         
             AppName = app_name;
-            is_writing = false;
-            log_queue = new List<LogMessage> ();
-            try {
+            /*try {
                 re = new Regex ("""(.*)\.vala(:\d+): (.*)""");
-            } catch { }
+            } catch { }*/
             
             Log.set_default_handler (glib_log_func);
         }
@@ -91,11 +64,6 @@ namespace Granite.Services {
             return msg;
         }
         
-        /**
-         * Convenience method to write a message with LogLevel.NOTIFY.
-         *
-         * @param msg the message to write to the log
-         */
         public static void notification (string msg) {
             write (LogLevel.NOTIFY, format_message (msg));
         }
@@ -110,32 +78,9 @@ namespace Granite.Services {
         
             if (level < DisplayLevel)
                 return;
-            
-            if (is_writing) {
-                lock (queue_lock)
-                    log_queue.append (new LogMessage (level, msg));
-            } else {
-                is_writing = true;
                 
-                if (log_queue.length () > 0) {
-                    var logs = log_queue.copy ();
-                    lock (queue_lock)
-                        log_queue = new List<LogMessage> ();
-                    
-                    foreach (var log in logs)
-                        print_log (log.Level, log.Message);
-                }
-                
-                print_log (level, msg);
-                
-                is_writing = false;
-            }
-        }
-        
-        static void print_log (LogLevel level, string msg) {
-        
             set_color_for_level (level);
-            stdout.printf ("[%s %s]", level.to_string ().substring (27), get_time ());
+            stdout.printf ("[%s %s]", level.to_string ().substring (16), get_time ());
             
             reset_color ();
             stdout.printf (" %s\n", msg);
