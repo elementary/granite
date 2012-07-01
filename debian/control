@@ -1,16 +1,16 @@
 Source: granite
 Priority: optional
 Maintainer: Lucas Baudin <xapantu@gmail.com>
-Build-Depends: debhelper (>= 7.0.50~), 
- pkg-config,
- cmake,
- valac-0.16 (>= 0.16.0),
- libvala-0.16-dev,
- libgtk-3-dev (>= 3.3.14),
- gobject-introspection,
- libgirepository1.0-dev,
- libgee-dev,
- libtool
+Build-Depends: cmake,
+               debhelper (>= 7.0.50~),
+               gobject-introspection,
+               libgee-dev,
+               libgirepository1.0-dev,
+               libgtk-3-dev (>= 3.3.14),
+               libtool,
+               libvala-0.16-dev,
+               pkg-config,
+               valac-0.16 (>= 0.16.0)
 Standards-Version: 3.9.2
 Section: libs
 Homepage: http://launchpad.net/granite
@@ -18,14 +18,18 @@ Homepage: http://launchpad.net/granite
 Package: libgranite-dev
 Section: libdevel
 Architecture: any
-Depends: libgranite0 (= ${binary:Version}), ${misc:Depends}, libgee-dev
+Depends: libgee-dev,
+         libglib2.0-dev,
+         libgranite0 (= ${binary:Version}),
+         libgtk-3-dev (>= 3.3.14),
+         ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: Development files of Granite.
 
 Package: libgranite0
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: contractor
 Pre-Depends: dpkg (>= 1.15.6)
 Suggests: libgranite-demo
