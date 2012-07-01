@@ -8,5 +8,5 @@ Description: Granite framework
 Version: @GRANITE_VERSION@
 Libs: -L@DOLLAR@{libdir} -lgranite
 Cflags: -I@DOLLAR@{includedir}/${PKGNAME}
-Requires: gtk+-3.0
+Requires: cairo gee-1.0 glib-2.0 gio-unix-2.0 gobject-2.0 gthread-2.0 gdk-3.0 gdk-pixbuf-2.0 gtk+-3.0
 
