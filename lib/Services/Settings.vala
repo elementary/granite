@@ -258,6 +258,7 @@ namespace Granite.Services {
                 return;
         
             stop_monitor ();
+            notify.disconnect (handle_notify);
             
             var obj_class = (ObjectClass) get_type ().class_ref ();
             var prop = obj_class.find_property (key);
@@ -268,23 +269,29 @@ namespace Granite.Services {
             this.get_property (prop.name, ref val);
             
             if(val.type() == prop.value_type) {
-                if(type == typeof (int))
-                    if (val.get_int () != schema.get_int (key))
+                if(type == typeof (int)) {
+                    if (val.get_int () != schema.get_int (key)) {
                         success = schema.set_int (key, val.get_int ());
-                else if(type == typeof (double))
-                    if (val.get_double () != schema.get_double (key))
+                    }
+                } else if(type == typeof (double)) {
+                    if (val.get_double () != schema.get_double (key)) {
                         success = schema.set_double (key, val.get_double ());
-                else if(type == typeof (string))
-                    if (val.get_string () != schema.get_string (key))
+                    }
+                } else if(type == typeof (string)) {
+                    if (val.get_string () != schema.get_string (key)) {
                         success = schema.set_string (key, val.get_string ());
-                else if(type == typeof (string[])) {
+                    }
+                } else if(type == typeof (string[])) {
                     string[] strings = null;
                     this.get(key, &strings);
-                    if (strings != schema.get_strv (key))
+                    if (strings != schema.get_strv (key)) {
                         success = schema.set_strv (key, strings);
-                } else if(type == typeof (bool))
-                    if (val.get_boolean () != schema.get_boolean (key))
+                    }
+                } else if(type == typeof (bool)) {
+                    if (val.get_boolean () != schema.get_boolean (key)) {
                         success = schema.set_boolean (key, val.get_boolean ());
+                    }
+                }
             }
             else if (type.is_a (typeof (SettingsSerializable)))
                 success = schema.set_string (key, (val.get_object () as SettingsSerializable).settings_serialize ());
@@ -294,6 +301,7 @@ namespace Granite.Services {
             if (!success)
                 warning ("Key '%s' could not be written to.", key);
             
+            notify.connect (handle_notify);
             start_monitor ();
         }
         
