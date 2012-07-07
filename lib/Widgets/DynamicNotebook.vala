@@ -27,6 +27,7 @@ namespace Granite.Widgets {
             	if (page_container.get_child () != null)
             		page_container.remove (page_container.get_child ());
         		page_container.add (value);
+        		page_container.show_all ();
             }
         }
         internal Gtk.Image _icon;
@@ -212,7 +213,8 @@ namespace Granite.Widgets {
         
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
-        public signal void tab_switched (Tab old_t, Tab new_t);
+        Tab? old_tab; //stores a reference for tab_switched
+        public signal void tab_switched (Tab? old_t, Tab new_t);
         public signal void tab_moved (Tab tab, int old_pos, bool new_window, int x, int y);
         
         /**
@@ -250,7 +252,7 @@ namespace Granite.Widgets {
             
             add.clicked.connect ( () => {
                  var t = new Tab ();
-                 this.insert_tab (t, this.n_tabs - 1);
+                 this.insert_tab (t, -1);
                  this.tab_added (t);
             });
             
@@ -311,6 +313,21 @@ namespace Granite.Widgets {
                 }*/
                 return false;
             });
+            
+            notebook.switch_page.connect (on_switch_page);
+        }
+        
+        ~Notebook ()
+        {
+        	notebook.switch_page.disconnect (on_switch_page);
+        }
+        
+        void on_switch_page (Gtk.Widget page, uint pagenum)
+        {
+        	var new_tab = notebook.get_tab_label (page) as Tab;
+        	
+        	tab_switched (old_tab, new_tab);
+        	old_tab = new_tab;
         }
         
         private void recalc_size ()
@@ -343,9 +360,30 @@ namespace Granite.Widgets {
                 this.notebook.page-1;
         }
         */
+        
+        public override void show ()
+        {
+        	base.show ();
+        	notebook.show ();
+        }
+        
+        public new List<Gtk.Widget> get_children ()
+        {
+        	var list = new List<Gtk.Widget> ();
+        	
+        	foreach (var child in notebook.get_children ()) {
+        		list.append ((child as Gtk.Container).get_children ().nth_data (0));
+        	}
+        	return list;
+        }
+        
         public int get_tab_position (Tab tab)
         {
             return this.notebook.page_num (tab.page_container);
+        }
+        public void set_tab_position (Tab tab, int position)
+        {
+        	notebook.reorder_child (tab.page, position);
         }
         
         public Tab? get_tab_by_index (int index) {
@@ -361,10 +399,14 @@ namespace Granite.Widgets {
         }
         
         public uint insert_tab (Tab tab, int index) {
+            
+            return_if_fail (tabs.index (tab) < 0);
+            
             if (index == -1)
-            	index = n_tabs - 1;
-        	
-            this.notebook.page = this.notebook.insert_page (tab.page_container, tab, index);
+            	this.notebook.page = this.notebook.append_page (tab.page_container, tab);
+        	else
+        		this.notebook.page = this.notebook.insert_page (tab.page_container, tab, index);
+            
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
             
