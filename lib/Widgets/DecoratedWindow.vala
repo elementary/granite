@@ -101,13 +101,8 @@ namespace Granite.Widgets {
             attr.insert (new Pango.AttrFontDesc (Pango.FontDescription.from_string ("bold")));
             this._title.attributes = attr;
 
-            this.notify["title"].connect ( () => {
-                this._title.label = this.title;
-            });
-
-            this.notify["show-title"].connect ( () => {
-                this._title.visible = this.show_title;
-            });
+            this.notify["title"].connect (update_titlebar_label);
+            this.notify["show-title"].connect (update_titlebar_label);
 
             this.notify["deletable"].connect ( () => {
                 w = -1; h = -1; // get it to redraw the buffer
@@ -144,13 +139,19 @@ namespace Granite.Widgets {
             this.draw.connect (draw_widget);
         }
 
-
         public new void add (Gtk.Widget w) {
             this.box.pack_start (w, true, true);
         }
 
         public new void remove (Gtk.Widget w) {
             this.box.remove (w);
+        }
+
+        private void update_titlebar_label () {
+            // If the show_title property is false, we show an empty titlebar
+            // instead of hiding the _title label. This is important since the titlebar
+            // sets a sane vertical padding at the top of the window.
+            this._title.label = (show_title) ? this.title : "";
         }
 
         private bool draw_widget (Cairo.Context ctx) {
