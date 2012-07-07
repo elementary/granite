@@ -39,7 +39,10 @@ namespace Granite.Widgets {
         bool __working;
         public bool working {
             get { return __working; }
-            set { __working = _working.visible = value; _icon.visible = !value; }
+            set { __working = _working.visible = value; _icon.visible = !value;
+                    if (__working) _working.show_all();
+                    else _working.hide();
+                }
         }
         
         public Pango.EllipsizeMode ellipsize_mode {
@@ -70,9 +73,9 @@ namespace Granite.Widgets {
         	else
         		this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
             this._working = new Gtk.Spinner ();
+            _working.start();
             this.close    = new Gtk.Button ();
             
-            working = false;
             
             close.add (new Gtk.Image.from_stock (Gtk.Stock.CLOSE, Gtk.IconSize.MENU));
             close.relief = Gtk.ReliefStyle.NONE;
@@ -88,13 +91,8 @@ namespace Granite.Widgets {
             this.pack_start (this._icon, false);
             this.pack_start (this._working, false);
             
-            this._working.show.connect (() => {
-            	if (!working)
-            		_working.hide ();
-            });
-            
             page_container = new Gtk.EventBox ();
-            page_container.add ((page == null)?new Gtk.Label (""):page);
+            page_container.add (page ?? new Gtk.Label (""));
             page_container.show_all ();
             
             this.show_all ();
@@ -108,6 +106,7 @@ namespace Granite.Widgets {
             });
             
             close.clicked.connect ( () => this.closed () );
+            working = false;
         }
     }
     
