@@ -281,7 +281,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      *
      * @param w a normal Gtk.Widget, e.g. a button
      **/
-    public void move_to_widget (Gtk.Widget w) {
+    public void move_to_widget (Gtk.Widget w, bool show = true) {
         int x, y;
         Gdk.Rectangle rectangle = Gdk.Rectangle ();
         bool is_visible_window = false;
@@ -301,15 +301,17 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         rectangle.y = y;
         rectangle.width = alloc.width;
         rectangle.height = alloc.height;
-        show_all();
+        if (show)
+            show_all();
         compute_pop_position (w.get_screen (), rectangle);
         move(win_x, win_y);
         set_parent_pop(w.get_toplevel() as Gtk.Window);
     }
 
-    public void move_to_coords (int x, int y)
+    public void move_to_coords (int x, int y, bool show = true)
     {
-        show_all();
+        if (show)
+            show_all();
         Gdk.Rectangle rect = Gdk.Rectangle ();
         rect.x = x;
         rect.y = y;
