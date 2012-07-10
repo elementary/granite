@@ -75,6 +75,7 @@ namespace Granite.Widgets {
             working = false;
             
             close.add (new Gtk.Image.from_stock (Gtk.Stock.CLOSE, Gtk.IconSize.MENU));
+            close.tooltip_text = _("Close tab");
             close.relief = Gtk.ReliefStyle.NONE;
             
             var lbl = new Gtk.EventBox ();
@@ -246,6 +247,7 @@ namespace Granite.Widgets {
             add.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
             add.margin_left = 6;
             add.relief = Gtk.ReliefStyle.NONE;
+            add.tooltip_text = _("New tab");
             this.notebook.set_action_widget (add, Gtk.PackType.START);
             add.show_all ();
             add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
