@@ -246,6 +246,7 @@ namespace Granite.Widgets {
             add.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
             add.margin_left = 6;
             add.relief = Gtk.ReliefStyle.NONE;
+            add.tooltip_text = _("New Tab");
             this.notebook.set_action_widget (add, Gtk.PackType.START);
             add.show_all ();
             add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
