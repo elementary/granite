@@ -82,8 +82,6 @@ vala_precompile(VALA_C
     Widgets/StatusBar.vala
     Main.vala
     config.vapi
-CUSTOM_VAPIS
-    ${CMAKE_CURRENT_SOURCE_DIR}/GtkPatch/gtkpatch-utils.vapi
 PACKAGES
     ${PKG_DEPS}
     posix
@@ -99,8 +97,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.vapi DESTINATION ${CMAKE_INST
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite.deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
-add_library (${PKGNAME} SHARED
-    GtkPatch/gtkpatch-utils.c
+add_library (${PKGNAME} SHARED    
     Widgets/widgets-utils.c
     Widgets/close-button.c
     ${VALA_C}
