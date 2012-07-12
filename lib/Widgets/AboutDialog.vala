@@ -136,12 +136,13 @@ namespace Granite.Widgets {
 
             /* bug button */
             bug_button = new Button.with_label (_("Report a Problem"));
-            bug_button.pressed.connect (() => { //activate_link(bug);
+            bug_button.pressed.connect (() => { 
                     try {
                             GLib.Process.spawn_command_line_async ("ubuntu-bug %d".printf ((int) Posix.getpid()));                            
                         } 
                         catch (Error e){
                             warning ("Could Not Launch 'ubuntu-bug'.");
+                            activate_link(bug);
                             }   
                         });
             action_area.pack_start (bug_button, false, false, 0);
