@@ -136,8 +136,7 @@ namespace Granite.Widgets {
 
             /* bug button */
             bug_button = new Button.with_label (_("Report a Problem"));
-            bug_button.pressed.connect (() => { 
-            bug_button.pressed.connect (() => {
+            bug_button.pressed.connect (() => {             
                 try {
                     GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
                 } catch (Error e) {
