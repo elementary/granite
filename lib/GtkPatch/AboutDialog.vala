@@ -390,7 +390,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         for (int i= 0;i<peoples.length;i++){
             if (peoples[i] == null)
                 break;
-            _person_data = peoples[i];            
+            _person_data = peoples[i];
 
             for (int j=0;j< _person_data.length;j++){
 
@@ -401,18 +401,17 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                     name += _person_data[j].to_string ();
 
                 else 
-                    if (_person_data.get (j) != '>')
-                        email +=_person_data[j].to_string ();               
+                    if ( _person_data[j] != '<' && _person_data[j] != '>')
+                        email +=_person_data[j].to_string ();
 
-            }
+            }            
             if (email == "")
-                text += "<u>%s</u>\n".printf (name);    
+                text += "<u>%s</u>\n".printf (name);
             else
                 text += "<a href=\"%s\">%s</a>\n".printf (email,name);
-            email = ""; name =""; email_started=false;            
+            email = ""; name =""; email_started=false;
         }
         text += "</span>";
-      //  print ("\n==\n"+text+"\n ==\n");
 
         return text;
     }
