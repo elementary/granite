@@ -216,7 +216,7 @@ namespace Granite.Widgets {
         public signal bool tab_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_t, Tab new_t);
-        public signal void tab_moved (Tab tab, int old_pos, bool new_window, int x, int y);
+        public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
         
         /**
          * create a new dynamic notebook
@@ -317,11 +317,15 @@ namespace Granite.Widgets {
             });
             
             notebook.switch_page.connect (on_switch_page);
+            notebook.page_reordered.connect (on_page_reordered);
+            notebook.create_window.connect (on_create_window);
         }
         
         ~Notebook ()
         {
         	notebook.switch_page.disconnect (on_switch_page);
+        	notebook.page_reordered.disconnect (on_page_reordered);
+        	notebook.create_window.disconnect (on_create_window);
         }
         
         void on_switch_page (Gtk.Widget page, uint pagenum)
@@ -330,6 +334,17 @@ namespace Granite.Widgets {
         	
         	tab_switched (old_tab, new_tab);
         	old_tab = new_tab;
+        }
+        
+        void on_page_reordered (Gtk.Widget page, uint pagenum)
+        {
+        	tab_moved (notebook.get_tab_label (page) as Tab, (int)pagenum, false, -1, -1);
+        }
+        
+        weak Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y)
+        {
+        	tab_moved (notebook.get_tab_label (page) as Tab, 0, true, x, y);
+        	return null;
         }
         
         private void recalc_size ()
