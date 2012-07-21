@@ -291,23 +291,29 @@ namespace Granite.Widgets {
             this.key_press_event.connect ( (e) => {
                 switch (e.keyval){
                     case 119: //ctrl+w
-                    	if (!tabs_closable)
-                    		break;
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0){
+                            if (!tabs_closable)
+                                break;
                 		
-                        if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-                            Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
-                            var sure = this.tab_removed (tabs.nth_data (this.notebook.page));
-                            if (sure)
+                            if (Signal.has_handler_pending (this, //if no one listens, just kill it!
+                                    Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
+                                var sure = this.tab_removed (tabs.nth_data (this.notebook.page));
+                                if (sure)
+                                    this.notebook.remove_page (this.notebook.page);
+                            } else {
                                 this.notebook.remove_page (this.notebook.page);
-                        } else {
-                            this.notebook.remove_page (this.notebook.page);
+                            }
+                            return true;
                         }
-                        return true;
+                        break;
                     case 116: //ctrl+t
-                        var t = new Tab ();
-                        this.tab_added (t);
-                        notebook.page = (int)this.insert_tab (t, -1);
-                        return true;
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0){
+                            var t = new Tab ();
+                            this.tab_added (t);
+                            notebook.page = (int)this.insert_tab (t, -1);
+                            return true;
+                        }
+                        break;
                     case 49: //ctrl+[1-8]
                     case 50:
                     case 51:
