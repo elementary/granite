@@ -215,7 +215,7 @@ namespace Granite.Widgets {
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
-        public signal void tab_switched (Tab? old_t, Tab new_t);
+        public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
         
         /**

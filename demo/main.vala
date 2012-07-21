@@ -218,6 +218,8 @@ public class Granite.Demo : Granite.Application
         	t.page = new Gtk.Label ("new!");
         	t.label = "New Page";
     	});
+    	dynamic_notebook.tab_moved.connect ((t, p) => { print ("Moved tab %s to %i\n", t.label, p);});
+    	dynamic_notebook.tab_switched.connect ((old_t, new_t) => { print ("Switched from %s to %s\n", old_t.label, new_t.label);});
 
         /*Light window*/
         var light_window_button = new Gtk.Button.with_label ("Show LightWindow");
