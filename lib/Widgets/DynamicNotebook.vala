@@ -12,6 +12,16 @@ const string BUTTON_STYLE = """
 
 namespace Granite.Widgets {
     
+    bool is_ancestor (Gdk.Window child, Gdk.Window parent)
+    {
+    	while (child != null) {
+    		if (child == parent)
+    			return true;
+			child = child.get_parent ();
+    	}
+    	return false;
+    }
+    
     public class Tab : Gtk.Box {
         Gtk.Label _label;
         public string label {
@@ -60,8 +70,10 @@ namespace Granite.Widgets {
         }
         
         internal Gtk.Button close;
+        public Gtk.Menu menu;
         
         internal signal void closed ();
+        internal signal void close_others ();
         
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label   = new Gtk.Label (label);
@@ -100,15 +112,29 @@ namespace Granite.Widgets {
             
             this.show_all ();
             
-            lbl.button_release_event.connect ( (e) => {
+            menu = new Gtk.Menu ();
+            var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
+            var close_other_m = new Gtk.MenuItem.with_label (_("Close other Tabs"));
+        	menu.append (close_other_m);
+        	menu.append (close_m);
+        	menu.show_all ();
+            
+            close_m.activate.connect (() => closed () );
+            close_other_m.activate.connect (() => close_others () );
+            
+            lbl.button_press_event.connect ( (e) => {
                 if (e.button == 2 && close.visible) { //if !close.visible, closable if false
                     this.closed ();
                     return true;
+                } else if (e.button == 3) {
+                	menu.popup (null, null, null, 3, e.time);
+                	return true;
                 }
+                
                 return false;
             });
-            
-            close.clicked.connect ( () => this.closed () );
+            page_container.button_press_event.connect (() => { return true; });//dont let clicks pass through
+            close.clicked.connect ( () => closed () );
         }
     }
     
@@ -311,14 +337,6 @@ namespace Granite.Widgets {
                 return false;
             });
             
-            this.notebook.button_press_event.connect ( (e) => {
-                /*if (e.button == 1) {
-                    this.get_parent_window ().begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
-                    return true;
-                }*/
-                return false;
-            });
-            
             notebook.switch_page.connect (on_switch_page);
             notebook.page_reordered.connect (on_page_reordered);
             notebook.create_window.connect (on_create_window);
@@ -445,6 +463,20 @@ namespace Granite.Widgets {
 		                remove_tab (tab);
 		        } else
 		            remove_tab (tab);
+            });
+            tab.close_others.connect (() => {
+            	var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
+            	
+            	for (var j=0;j<tabs.length ();j++) {
+            		if (tab != tabs.nth_data (j)) {
+            			tabs.nth_data (j).closed ();
+            			if (num == n_tabs)
+            				break;
+        				j --;
+        			}
+        			
+        			num = n_tabs;
+            	}
             });
             
             this.recalc_size ();
