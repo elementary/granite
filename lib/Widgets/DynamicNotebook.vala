@@ -133,6 +133,14 @@ namespace Granite.Widgets {
                 
                 return false;
             });
+
+            // Disable the double click signal on the tab
+            this.button_press_event.connect ( (e) => {
+                    if (e.type == Gdk.EventType.2BUTTON_PRESS)
+                        return true;
+                    return false;
+                });
+            
             page_container.button_press_event.connect (() => { return true; });//dont let clicks pass through
             close.clicked.connect ( () => closed () );
         }
@@ -267,6 +275,15 @@ namespace Granite.Widgets {
             });
             
             this.add (this.notebook);
+
+            this.button_press_event.connect ( (e) => {
+                    if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
+                        var t = new Tab ();
+                        notebook.page = (int)this.insert_tab (t, -1);
+                        this.tab_added (t);
+                    }
+                    return false;
+                });
             
             
             var add = new Gtk.Button ();
