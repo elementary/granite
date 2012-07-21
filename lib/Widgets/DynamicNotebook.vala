@@ -289,6 +289,7 @@ namespace Granite.Widgets {
             });
             
             this.key_press_event.connect ( (e) => {
+                    warning( "KEY_PRESSED <%u>", e.keyval);
                 switch (e.keyval){
                     case 119: //ctrl+w
                     	if (!tabs_closable)
@@ -316,7 +317,7 @@ namespace Granite.Widgets {
                     case 54:
                     case 55:
                     case 56:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0){
+                        if ((e.state & Gdk.ModifierType.META_MASK) != 0){
                             var i = e.keyval - 49;
                             this.notebook.page = (int)((i >= this.notebook.get_n_pages ()) ? 
                                 this.notebook.get_n_pages () - 1 : i);
@@ -333,6 +334,7 @@ namespace Granite.Widgets {
                             return true;
                         }
                         break;*/
+                    
                 }
                 return false;
             });
