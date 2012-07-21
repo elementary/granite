@@ -101,7 +101,7 @@ namespace Granite.Widgets {
             this.show_all ();
             
             lbl.button_release_event.connect ( (e) => {
-                if (e.button == 2) {
+                if (e.button == 2 && close.visible) { //if !close.visible, closable if false
                     this.closed ();
                     return true;
                 }
@@ -146,7 +146,7 @@ namespace Granite.Widgets {
         /**
          * Hide the close buttons and disable closing of tabs
          **/
-        bool _tabs_closable = false;
+        bool _tabs_closable = true;
         public bool tabs_closable {
             get { return _tabs_closable; }
             set {
@@ -265,6 +265,9 @@ namespace Granite.Widgets {
             this.key_press_event.connect ( (e) => {
                 switch (e.keyval){
                     case 119: //ctrl+w
+                    	if (!tabs_closable)
+                    		break;
+                		
                         if (Signal.has_handler_pending (this, //if no one listens, just kill it!
                             Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
                             var sure = this.tab_removed (tabs.nth_data (this.notebook.page));
@@ -445,6 +448,9 @@ namespace Granite.Widgets {
             });
             
             this.recalc_size ();
+            
+            if (!tabs_closable)
+            	tab.close.visible = false;
             
             return i;
         }
