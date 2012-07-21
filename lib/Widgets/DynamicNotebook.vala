@@ -254,7 +254,7 @@ namespace Granite.Widgets {
             
             add.clicked.connect ( () => {
                  var t = new Tab ();
-                 this.insert_tab (t, -1);
+                 notebook.page = (int)this.insert_tab (t, -1);
                  this.tab_added (t);
             });
             
@@ -277,7 +277,7 @@ namespace Granite.Widgets {
                     case 116: //ctrl+t
                         var t = new Tab ();
                         this.tab_added (t);
-                        this.insert_tab (t, -1);
+                        notebook.page = (int)this.insert_tab (t, -1);
                         return true;
                     case 49: //ctrl+[1-8]
                     case 50:
@@ -419,10 +419,11 @@ namespace Granite.Widgets {
             
             return_if_fail (tabs.index (tab) < 0);
             
+            var i = 0;
             if (index == -1)
-            	this.notebook.page = this.notebook.append_page (tab.page_container, tab);
+            	i = this.notebook.append_page (tab.page_container, tab);
         	else
-        		this.notebook.page = this.notebook.insert_page (tab.page_container, tab, index);
+        		i = this.notebook.insert_page (tab.page_container, tab, index);
             
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
@@ -445,7 +446,7 @@ namespace Granite.Widgets {
             
             this.recalc_size ();
             
-            return this.notebook.page;
+            return i;
         }
     }
     
