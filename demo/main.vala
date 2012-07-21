@@ -220,6 +220,7 @@ public class Granite.Demo : Granite.Application
     	});
     	dynamic_notebook.tab_moved.connect ((t, p) => { print ("Moved tab %s to %i\n", t.label, p);});
     	dynamic_notebook.tab_switched.connect ((old_t, new_t) => { print ("Switched from %s to %s\n", old_t.label, new_t.label);});
+		dynamic_notebook.tab_removed.connect ((t) => { print ("Going to remove %s\n", t.label); return true;});
 
         /*Light window*/
         var light_window_button = new Gtk.Button.with_label ("Show LightWindow");
