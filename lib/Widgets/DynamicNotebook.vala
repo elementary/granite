@@ -289,7 +289,6 @@ namespace Granite.Widgets {
             });
             
             this.key_press_event.connect ( (e) => {
-                    warning( "KEY_PRESSED <%u>", e.keyval);
                 switch (e.keyval){
                     case 119: //ctrl+w
                     	if (!tabs_closable)
@@ -334,7 +333,6 @@ namespace Granite.Widgets {
                             return true;
                         }
                         break;*/
-                    
                 }
                 return false;
             });
