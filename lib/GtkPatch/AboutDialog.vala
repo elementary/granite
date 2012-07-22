@@ -380,8 +380,38 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
     private string set_string_from_string_array(string title, string[] peoples)
     {
-        string text = title;
-        text += add_credits_section (title, peoples);
+        string text  = "";
+        string name  = "";
+        string email = "" ;
+        string _person_data;
+        bool email_started= false;        
+        //text += add_credits_section (title, peoples);
+        text += title + "<span size=\"small\">";
+        for (int i= 0;i<peoples.length;i++){
+            if (peoples[i] == null)
+                break;
+            _person_data = peoples[i];
+
+            for (int j=0;j< _person_data.length;j++){
+
+                if ( _person_data.get (j) == '<')
+                    email_started = true;
+
+                if (!email_started)
+                    name += _person_data[j].to_string ();
+
+                else 
+                    if ( _person_data[j] != '<' && _person_data[j] != '>')
+                        email +=_person_data[j].to_string ();
+
+            }            
+            if (email == "")
+                text += "<u>%s</u>\n".printf (name);
+            else
+                text += "<a href=\"%s\">%s</a>\n".printf (email,name);
+            email = ""; name =""; email_started=false;
+        }
+        text += "</span>";
 
         return text;
     }
