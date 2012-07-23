@@ -7,78 +7,98 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-06-04 21:59-0700\n"
+"POT-Creation-Date: 2012-07-22 18:41-0500\n"
 "PO-Revision-Date: 2012-07-06 08:07+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-07 05:39+0000\n"
-"X-Generator: Launchpad (build 15558)\n"
+"X-Launchpad-Export-Date: 2012-07-23 05:25+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/DatePicker.vala:25
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//DatePicker.vala:25
-msgid "%B %e, %Y"
-msgstr "%Y年%b%e日"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/TimePicker.vala:37
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/TimePicker.vala:98
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//TimePicker.vala:37
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//TimePicker.vala:98
-msgid "%l:%M %p"
-msgstr "%p %l:%M"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:133
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:133
-msgid "Translate This App"
-msgstr "翻譯此程式"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AboutDialog.vala:138
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AboutDialog.vala:138
-msgid "Report a Problem"
-msgstr "回報問題"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "無法聯絡 Contractor。您可能需要安裝它"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/ContractorView.vala:99
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//ContractorView.vala:99
-msgid "No action found for this file"
-msgstr "沒有動作找到這檔案"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:32
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:37
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:51
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AppMenu.vala:32
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AppMenu.vala:37
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AppMenu.vala:51
-msgid "Menu"
-msgstr "選單"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//Widgets/AppMenu.vala:56
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib/Widgets//AppMenu.vala:56
-msgid "About"
-msgstr "關於"
-
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
 msgstr "設計者"
 
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
 msgstr "撰寫者"
 
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
 msgstr "翻譯者 "
 
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:444
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:474
 msgid "This program is published under the terms of the "
 msgstr "本程式是基於 "
 
-#: /home/ttosttos/Projects/elementary/Bugs/granite-fix-989076/po/../lib//GtkPatch/AboutDialog.vala:444
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:474
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " 授權條款發布，「絕對沒有任何保證」，詳情請參照 "
+
+#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:25
+#: /home/codygarver/granite/po/../lib/Widgets//DatePicker.vala:25
+msgid "%B %e, %Y"
+msgstr "%Y年%b%e日"
+
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:53
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:116
+#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:53
+#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:116
+msgid "%l:%M %p"
+msgstr "%p %l:%M"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:133
+#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:133
+msgid "Translate This App"
+msgstr "翻譯此程式"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:138
+#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:138
+msgid "Report a Problem"
+msgstr "回報問題"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:32
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:37
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:51
+#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:32
+#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:37
+#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:51
+msgid "Menu"
+msgstr "選單"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:56
+#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:56
+msgid "About"
+msgstr "關於"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "無法聯絡 Contractor。您可能需要安裝它"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+msgid "No action found for this file"
+msgstr "沒有動作找到這檔案"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
+msgid "Close tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
+msgid "Close Tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
+msgid "Close other Tabs"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
+msgid "New tab"
+msgstr ""
