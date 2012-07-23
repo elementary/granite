@@ -465,7 +465,7 @@ namespace Granite.Widgets {
             
             var i = 0;
             if (index == -1)
-            	i = this.notebook.append_page (tab.page_container, tab);
+            	i = this.notebook.insert_page (tab.page_container, tab, 0);
         	else
         		i = this.notebook.insert_page (tab.page_container, tab, index);
             
