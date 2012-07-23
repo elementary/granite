@@ -1,15 +1,4 @@
 
-const string BUTTON_STYLE = """
-* {
-    -GtkButton-default-border : 0;
-    -GtkButton-default-outside-border : 0;
-    -GtkButton-inner-border: 0;
-    -GtkWidget-focus-line-width : 0;
-    -GtkWidget-focus-padding : 0;
-    padding: 0;
-}
-""";
-
 namespace Granite.Widgets {
     
     bool is_ancestor (Gdk.Window child, Gdk.Window parent)
@@ -23,6 +12,7 @@ namespace Granite.Widgets {
     }
     
     public class Tab : Gtk.Box {
+        
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
@@ -252,6 +242,17 @@ namespace Granite.Widgets {
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
         
+        private static const string CLOSE_BUTTON_STYLE = """
+		* {
+			-GtkButton-default-border : 0;
+			-GtkButton-default-outside-border : 0;
+			-GtkButton-inner-border: 0;
+			-GtkWidget-focus-line-width : 0;
+			-GtkWidget-focus-padding : 0;
+			padding: 0;
+		}
+		""";
+        
         /**
          * create a new dynamic notebook
          **/
@@ -259,7 +260,7 @@ namespace Granite.Widgets {
             
             this.button_fix = new Gtk.CssProvider ();
             try {
-                this.button_fix.load_from_data (BUTTON_STYLE, -1);
+                this.button_fix.load_from_data (CLOSE_BUTTON_STYLE, -1);
             } catch (Error e) { warning (e.message); }
             
             this.notebook = new Gtk.Notebook ();
@@ -311,16 +312,7 @@ namespace Granite.Widgets {
                         if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0){
                             if (!tabs_closable)
                                 break;
-                		
-                            if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-                                    Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
-                                var sure = this.tab_removed (tabs.nth_data (this.notebook.page));
-                                if (sure)
-                                    this.notebook.remove_page (this.notebook.page);
-                            } else {
-                                this.notebook.remove_page (this.notebook.page);
-                            }
-                            return true;
+                			remove_tab (current);
                         }
                         break;
                     case 116: //ctrl+t
@@ -387,7 +379,10 @@ namespace Granite.Widgets {
         
         weak Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y)
         {
-        	tab_moved (notebook.get_tab_label (page) as Tab, 0, true, x, y);
+        	var tab = notebook.get_tab_label (page) as Tab;
+        	notebook.remove_page (notebook.page_num (tab.page_container));
+        	
+        	tab_moved (tab, 0, true, x, y);
         	return null;
         }
         
@@ -408,7 +403,14 @@ namespace Granite.Widgets {
         
         public void remove_tab (Tab tab)
         {
-        	notebook.remove_page (get_tab_position (tab));
+        	if (Signal.has_handler_pending (this, Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
+	            var sure = tab_removed (tab);
+	            if (!sure)
+	                return;
+            }
+            var pos = get_tab_position (tab);
+            if (pos != -1)
+            	notebook.remove_page (pos);
         }
         /*
         private void next ()
@@ -442,9 +444,11 @@ namespace Granite.Widgets {
         {
             return this.notebook.page_num (tab.page_container);
         }
+        
         public void set_tab_position (Tab tab, int position)
         {
-        	notebook.reorder_child (tab.page, position);
+        	notebook.reorder_child (tab.page_container, position);
+        	tab_moved (tab, position, false, -1, -1);
         }
         
         public Tab? get_tab_by_index (int index) {
@@ -452,7 +456,7 @@ namespace Granite.Widgets {
         }
         
         public Tab? get_tab_by_widget (Gtk.Widget widget) {
-        	return notebook.get_tab_label (widget) as Tab;
+        	return notebook.get_tab_label (widget.get_parent ()) as Tab;
         }
         
         public Gtk.Widget get_nth_page (int index) {
@@ -479,13 +483,7 @@ namespace Granite.Widgets {
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             
             tab.closed.connect ( () => {
-                if (Signal.has_handler_pending (this, //if no one listens, just kill it!
-		            Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
-		            var sure = tab_removed (tab);
-		            if (sure)
-		                remove_tab (tab);
-		        } else
-		            remove_tab (tab);
+                remove_tab (tab);
             });
             tab.close_others.connect (() => {
             	var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
