@@ -76,7 +76,7 @@ namespace Granite.Widgets {
             
             working = false;
             
-            close.add (new Gtk.Image.from_stock (Gtk.Stock.CLOSE, Gtk.IconSize.MENU));
+            close.add (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
             close.tooltip_text = _("Close tab");
             close.relief = Gtk.ReliefStyle.NONE;
             
