@@ -104,7 +104,7 @@ namespace Granite.Widgets {
             
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
-            var close_other_m = new Gtk.MenuItem.with_label (_("Close other Tabs"));
+            var close_other_m = new Gtk.MenuItem.with_label (_("Close Other Tabs"));
         	menu.append (close_other_m);
         	menu.append (close_m);
         	menu.show_all ();
@@ -118,6 +118,8 @@ namespace Granite.Widgets {
                     return true;
                 } else if (e.button == 3) {
                 	menu.popup (null, null, null, 3, e.time);
+                	if ((this.get_parent () as Gtk.Container).get_children ().length () == 1)
+                		close_other_m.sensitive = false;
                 	return true;
                 }
                 
