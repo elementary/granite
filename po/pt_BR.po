@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-22 18:41-0500\n"
-"PO-Revision-Date: 2012-06-14 20:05+0000\n"
-"Last-Translator: DavyS <Unknown>\n"
+"PO-Revision-Date: 2012-07-24 12:22+0000\n"
+"Last-Translator: Leonardo Lemos <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:00+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-25 04:56+0000\n"
+"X-Generator: Launchpad (build 15679)\n"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -87,19 +87,19 @@ msgstr "Nenhuma ação encontrada para este arquivo"
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
 msgid "Close tab"
-msgstr ""
+msgstr "Fechar aba"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
 msgid "Close Tab"
-msgstr ""
+msgstr "Fechar aba"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
 msgid "Close other Tabs"
-msgstr ""
+msgstr "Fechar outras abas"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
 msgid "New tab"
-msgstr ""
+msgstr "Nova aba"
