@@ -232,7 +232,7 @@ namespace Granite.Widgets {
         	set { notebook.group_name = value; }
         }
         
-        public Gtk.Notebook    notebook;
+        Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
         
         private int tab_width = 150;
