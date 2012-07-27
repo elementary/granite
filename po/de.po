@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-22 18:41-0500\n"
-"PO-Revision-Date: 2012-06-06 19:02+0000\n"
+"PO-Revision-Date: 2012-07-26 18:28+0000\n"
 "Last-Translator: Thomas Pitlik <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:00+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-27 05:32+0000\n"
+"X-Generator: Launchpad (build 15694)\n"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -90,19 +90,19 @@ msgstr "Mit dieser Datei ist keine Aktion verknüpft"
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
 msgid "Close tab"
-msgstr ""
+msgstr "Reiter schließen"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
 msgid "Close Tab"
-msgstr ""
+msgstr "Reiter schließen"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
 msgid "Close other Tabs"
-msgstr ""
+msgstr "Andere Reiter schließen"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
 msgid "New tab"
-msgstr ""
+msgstr "Neuer Reiter"
