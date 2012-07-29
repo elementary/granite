@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-22 18:41-0500\n"
-"PO-Revision-Date: 2012-06-18 12:31+0000\n"
-"Last-Translator: Federico Mameli <requiemvi@gmail.com>\n"
+"PO-Revision-Date: 2012-07-28 17:26+0000\n"
+"Last-Translator: Angelo Rako <angelo.rako@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:00+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-29 04:47+0000\n"
+"X-Generator: Launchpad (build 15694)\n"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -87,19 +87,19 @@ msgstr "Nessuna azione trovata per questo file"
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
 msgid "Close tab"
-msgstr ""
+msgstr "Chiudi scheda"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
 msgid "Close Tab"
-msgstr ""
+msgstr "Chiudi scheda"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
 msgid "Close other Tabs"
-msgstr ""
+msgstr "Chiudi altre schede"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
 msgid "New tab"
-msgstr ""
+msgstr "Nuova scheda"
