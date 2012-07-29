@@ -239,7 +239,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     private const string BIG_TEXT_CSS = """
     .h2 { font: open sans light 18; }
     """;
-    
+
     private const string STYLESHEET = """
         * {
             -GtkDialog-action-area-border: 12px;
@@ -354,7 +354,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         content_scrolled.add_with_viewport(content_scrolled_vbox);
 
         title_vbox.pack_start(name_label, false, false, 12); //FIXME
-        
+
         content_right_box.pack_start(title_vbox, false, false, 0);
         content_right_box.pack_start(content_scrolled, true, true, 0);
         // Extra padding between the scrolled window and the action area
@@ -378,14 +378,16 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         close_button.grab_focus();
     }
 
-    private string set_string_from_string_array(string title, string[] peoples)
+    private string set_string_from_string_array(string title, string[] peoples,bool tooltip=false)
     {
+        if (tooltip)
+            return string.joinv ("\n",peoples);
+
         string text  = "";
         string name  = "";
         string email = "" ;
         string _person_data;
-        bool email_started= false;        
-        //text += add_credits_section (title, peoples);
+        bool email_started= false;
         text += title + "<span size=\"small\">";
         for (int i= 0;i<peoples.length;i++){
             if (peoples[i] == null)
@@ -400,19 +402,18 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 if (!email_started)
                     name += _person_data[j].to_string ();
 
-                else 
-                    if ( _person_data[j] != '<' && _person_data[j] != '>')
+                else
+                    if (_person_data.get (j) != '>' && _person_data.get (j) != '<')
                         email +=_person_data[j].to_string ();
 
-            }            
+            }
             if (email == "")
                 text += "<u>%s</u>\n".printf (name);
             else
-                text += "<a href=\"%s\">%s</a>\n".printf (email,name);
+                text += "<a href=\"%s\" title=\"%s\">%s</a>\n".printf (email,email,name);
             email = ""; name =""; email_started=false;
         }
         text += "</span>";
-
         return text;
     }
 
