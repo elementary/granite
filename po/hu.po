@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-22 18:41-0500\n"
-"PO-Revision-Date: 2012-06-27 19:59+0000\n"
-"Last-Translator: András Bognár <Unknown>\n"
+"PO-Revision-Date: 2012-07-30 17:17+0000\n"
+"Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:00+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-31 05:15+0000\n"
+"X-Generator: Launchpad (build 15702)\n"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -89,12 +89,12 @@ msgstr "Nem található művelet a fájlhoz"
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
 msgid "Close tab"
-msgstr ""
+msgstr "Lap bezárása"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
 msgid "Close Tab"
-msgstr ""
+msgstr "Lap bezárása"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
@@ -104,4 +104,4 @@ msgstr ""
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
 msgid "New tab"
-msgstr ""
+msgstr "Új lap"
