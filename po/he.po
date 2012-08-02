@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-07-22 18:41-0500\n"
+"POT-Creation-Date: 2012-08-01 23:48-0500\n"
 "PO-Revision-Date: 2012-01-11 09:17+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:00+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-08-02 05:08+0000\n"
+"X-Generator: Launchpad (build 15719)\n"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -29,11 +29,11 @@ msgstr ""
 msgid "Translated by "
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:474
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
 msgid "This program is published under the terms of the "
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:474
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 
@@ -83,22 +83,22 @@ msgstr ""
 msgid "No action found for this file"
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:90
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:90
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:80
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:80
 msgid "Close tab"
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:116
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:116
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:106
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:106
 msgid "Close Tab"
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:117
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:117
-msgid "Close other Tabs"
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:107
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:107
+msgid "Close Other Tabs"
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:293
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:293
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:296
+#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:296
 msgid "New tab"
 msgstr ""
