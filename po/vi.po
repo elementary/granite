@@ -1,16 +1,16 @@
-# French translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Vietnamese translation for granite
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-01 23:48-0500\n"
-"PO-Revision-Date: 2012-08-08 15:56+0000\n"
-"Last-Translator: André Fernandes <mkody@mail.com>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2012-08-08 08:41+0000\n"
+"Last-Translator: Ngô Chin <ndtrung4419@gmail.com>\n"
+"Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,24 +19,23 @@ msgstr ""
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr "Conçu par"
+msgstr "Thiết kế bởi"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr "Développé par"
+msgstr "Được viết bởi"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr "Traduit par "
+msgstr "Được dịch bởi "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
 msgid "This program is published under the terms of the "
-msgstr "Ce programme est publié conformément à la licence "
+msgstr "Chương trình này được phát hành theo các điều khoản của giấy phép "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr ""
-" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
+msgstr " , nó HOÀN TOÀN KHÔNG ĐƯỢC BẢO HÀNH; để biết chi tiết, truy cập "
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/codygarver/granite/po/../lib/Widgets//DatePicker.vala:25
@@ -53,12 +52,12 @@ msgstr "%l:%M %p"
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:133
 #: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:133
 msgid "Translate This App"
-msgstr "Traduire cette application"
+msgstr "Dịch ứng dụng này"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:138
 #: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:138
 msgid "Report a Problem"
-msgstr "Signaler un problème"
+msgstr "Thông báo lỗi"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:32
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:37
@@ -72,35 +71,34 @@ msgstr "Menu"
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "À propos."
+msgstr "Giới thiệu"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"Impossible d'accéder à Contractor. Vous avez peut-être besoin de l'installer"
+msgstr "Không thể kết nối với Contractor. Có lẽ bạn cần cài đặt nó trước"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr "Aucune action n'a été trouvée pour ce fichier"
+msgstr "Không tìm thấy hành động nào cho tập tin này"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:80
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:80
 msgid "Close tab"
-msgstr "Fermer l'onglet"
+msgstr "Đóng tab"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:106
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:106
 msgid "Close Tab"
-msgstr "Fermer l’onglet"
+msgstr "Đóng tab"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:107
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:107
 msgid "Close Other Tabs"
-msgstr "Fermer les autres onglets"
+msgstr "Đóng các tab khác"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:296
 #: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:296
 msgid "New tab"
-msgstr "Nouvel onglet"
+msgstr "Tab mới"
