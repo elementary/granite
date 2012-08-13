@@ -60,7 +60,10 @@ namespace Granite.Widgets {
         }
         
         internal Gtk.Button close;
-        public Gtk.Menu menu;
+        public Gtk.Menu menu {
+        	get;
+        	set;
+    	}
         
         internal signal void closed ();
         internal signal void close_others ();
