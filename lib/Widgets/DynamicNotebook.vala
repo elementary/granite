@@ -75,9 +75,9 @@ namespace Granite.Widgets {
         	else
         		this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
             this._working = new Gtk.Spinner ();
+            _working.start();
             this.close    = new Gtk.Button ();
             
-            working = false;
             
             close.add (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
             close.tooltip_text = _("Close tab");
@@ -94,13 +94,8 @@ namespace Granite.Widgets {
             this.pack_start (this._icon, false);
             this.pack_start (this._working, false);
             
-            this._working.show.connect (() => {
-            	if (!working)
-            		_working.hide ();
-            });
-            
             page_container = new Gtk.EventBox ();
-            page_container.add ((page == null)?new Gtk.Label (""):page);
+            page_container.add (page ?? new Gtk.Label (""));
             page_container.show_all ();
             
             this.show_all ();
@@ -135,12 +130,13 @@ namespace Granite.Widgets {
                         return true;
                     return false;
                 });
-            
+
             page_container.button_press_event.connect (() => { return true; });//dont let clicks pass through
-            close.clicked.connect ( () => closed () );
+            close.clicked.connect ( () => this.closed () );
+            working = false;
         }
     }
-    
+
     public class DynamicNotebook : Gtk.EventBox {
         
         /**

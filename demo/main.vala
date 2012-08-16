@@ -213,7 +213,9 @@ public class Granite.Demo : Granite.Application
         var dynamic_notebook = new DynamicNotebook ();
         
         notebook.append_page (dynamic_notebook, new Gtk.Label ("Dynamic Notebook"));
-        dynamic_notebook.insert_tab (new Tab ("Page 1", new ThemedIcon ("empty"), new Gtk.Label ("Page 1")), -1);
+        var tab = new Tab ("Page 1", new ThemedIcon ("empty"), new Gtk.Label ("Page 1"));
+        dynamic_notebook.insert_tab (tab, -1);
+        tab.working = true;
         dynamic_notebook.insert_tab (new Tab ("Page 2", new ThemedIcon ("empty"), new Gtk.Label ("Page 2")), -1);
         dynamic_notebook.tab_added.connect ( (t) => {
         	t.page = new Gtk.Label ("new!");
