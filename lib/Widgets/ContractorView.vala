@@ -31,8 +31,8 @@ public class Granite.Widgets.ContractorView : TreeView {
     private Gee.HashMap<int, DelegateWrapper?> outsiders;
     private int[] blacklisted_pos;
     private ListStore list;
-    
-    private struct DelegateWrapper {ContractCallback method;}
+
+    private struct DelegateWrapper { unowned ContractCallback method; }
     
     /**
      * the index of the currently selected contract
@@ -153,7 +153,7 @@ public class Granite.Widgets.ContractorView : TreeView {
             error (e.message);
         }
         
-        DelegateWrapper wr = {method};
+        DelegateWrapper wr = { method };
         outsiders[position] = wr;
         
         this.selected = 0;
