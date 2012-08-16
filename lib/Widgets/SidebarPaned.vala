@@ -80,6 +80,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         this.paned.add2 (child);
     }
 
+    public new void remove (Gtk.Widget child) {
+        this.paned.remove (child);
+    }
+
     public unowned Gtk.Widget? get_child1 () {
         return this.paned.get_child1 ();
     }
