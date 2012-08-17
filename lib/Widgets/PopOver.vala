@@ -155,19 +155,21 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         size_allocate.connect(on_size_allocate);
     }
 	
-	public override void destroy ()
+	public override void hide ()
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
 		
 		Gtk.device_grab_remove (this, pointer);
 		pointer.ungrab (Gdk.CURRENT_TIME);
+		
+		base.hide ();
 	}
 	
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
 			
-			pointer.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.SMOOTH_SCROLL_MASK |
+			var ret = pointer.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.SMOOTH_SCROLL_MASK |
 						       Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK |
 						       Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK |
 						       Gdk.EventMask.POINTER_MOTION_MASK,
@@ -184,16 +186,16 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		
 		return base.button_press_event (event);
 	}
-
+	
 	public override bool button_release_event (Gdk.EventButton event)
 	{
 		if (event_in_window (event))
 			return true;
 		
-		destroy ();
+		hide ();
 		return false;
 	}
-
+	
 	bool event_in_window (Gdk.EventButton event)
 	{
 		int x, y, w, h;
