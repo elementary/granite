@@ -153,23 +153,56 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         menu.get_style_context().add_class("popover_bg");
 
         size_allocate.connect(on_size_allocate);
-
-        focus_out_event.connect_after((f) =>
-        {
-            foreach(Gtk.Window window in Gtk.Window.list_toplevels())
-            {
-                if((window.type_hint == Gdk.WindowTypeHint.POPUP_MENU || window.type_hint == Gdk.WindowTypeHint.MENU) && window.visible && window != this)
-                {
-                    return false;
-                }
-            }
-            hide ();
-
-            return false;
-        });
-
-        hide.connect( () => { response(Gtk.ResponseType.CANCEL); });
     }
+	
+	public override void destroy ()
+	{
+		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+		
+		Gtk.device_grab_remove (this, pointer);
+		pointer.ungrab (Gdk.CURRENT_TIME);
+	}
+	
+	public override bool map_event (Gdk.EventAny event)
+	{
+		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+			
+			pointer.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.SMOOTH_SCROLL_MASK |
+						       Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK |
+						       Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK |
+						       Gdk.EventMask.POINTER_MOTION_MASK,
+						       null, Gdk.CURRENT_TIME);
+			Gtk.device_grab_add (this, pointer, true);
+			
+			return false;
+	}
+	
+	public override bool button_press_event (Gdk.EventButton event)
+	{
+		if (event_in_window (event))
+			return true;
+		
+		return base.button_press_event (event);
+	}
+
+	public override bool button_release_event (Gdk.EventButton event)
+	{
+		if (event_in_window (event))
+			return true;
+		
+		destroy ();
+		return false;
+	}
+
+	bool event_in_window (Gdk.EventButton event)
+	{
+		int x, y, w, h;
+		get_position (out x, out y);
+		get_size (out w, out h);
+		
+		return event.x_root >= x && event.x_root <= x + w &&
+		       event.y_root >= y && event.y_root <= y + h;
+	}
 
     /* May be null if the screen is not composited */
     protected Granite.Drawing.BufferSurface? main_buffer = null;
