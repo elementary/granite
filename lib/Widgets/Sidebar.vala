@@ -483,11 +483,11 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    private static void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+    private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
-        renderer.visible =  (path.get_depth () == 1);
+        renderer.visible = (path.get_depth () == 1);
          ( (CellRendererExpander)renderer).expanded = is_row_expanded (path);
     }
 
