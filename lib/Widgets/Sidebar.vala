@@ -156,88 +156,6 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         this.button_press_event.connect (sidebar_click);
     }
 
-    private static void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-        int depth = path.get_depth ();
-
-        renderer.visible =  (depth > 1);
-        renderer.xpad =  (depth > 1) ? 8 : 0;
-    }
-
-    private static void secondary_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-        int depth = path.get_depth ();
-
-        renderer.visible =  (depth > 2);
-        renderer.xpad =  (depth > 1) ? 8 : 0;
-    }
-
-    private static void pixbuf_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-
-        if (path.get_depth () == 1) {
-            renderer.visible = false;
-        }
-        else {
-            renderer.visible = true;
-        }
-    }
-
-    private static void string_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-        int depth = path.get_depth ();
-        string text = "";
-        model.get (iter, Column.COLUMN_TEXT, out text);
-
-        if (depth == 1) {
-             ( (Gtk.CellRendererText)renderer).markup = "<b>" + text + "</b>";
-        }
-        else {
-             ( (Gtk.CellRendererText)renderer).markup = text;
-        }
-    }
-
-    private static void clickable_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-
-        if (path.get_depth () == 1) {
-            renderer.visible = false;
-        }
-        else {
-            renderer.visible = true;
-        }
-    }
-
-    private static void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                 Gtk.TreeModel model, Gtk.TreeIter iter) {
-        Gtk.TreePath path = model.get_path (iter);
-
-        renderer.visible =  (path.get_depth () == 1);
-         ( (CellRendererExpander)renderer).expanded = is_row_expanded (path);
-    }
-
-    /* Convenient add/remove/edit methods */
-    public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? o, Gtk.Widget? w, Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
-        Gtk.TreeIter iter;
-
-        tree.append (out iter, parent);
-        tree.set (iter, 0, o, 1, w, 2, true, 3, pixbuf, 4, text, 5, clickable);
-
-        if (parent != null) {
-            tree.set (parent, 2, true);
-        }
-        else {
-            tree.set (iter, 2, false);
-        }
-
-        expand_all ();
-        return iter;
-    }
 
     public bool remove_item (Gtk.TreeIter iter) {
         Gtk.TreeIter parent;
@@ -505,5 +423,89 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         filter.convert_iter_to_child_iter (out rv, filt);
 
         return rv;
+    }
+
+
+    private static void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+        int depth = path.get_depth ();
+
+        renderer.visible =  (depth > 1);
+        renderer.xpad =  (depth > 1) ? 8 : 0;
+    }
+
+    private static void secondary_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+        int depth = path.get_depth ();
+
+        renderer.visible =  (depth > 2);
+        renderer.xpad =  (depth > 1) ? 8 : 0;
+    }
+
+    private static void pixbuf_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+
+        if (path.get_depth () == 1) {
+            renderer.visible = false;
+        }
+        else {
+            renderer.visible = true;
+        }
+    }
+
+    private static void string_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+        int depth = path.get_depth ();
+        string text = "";
+        model.get (iter, Column.COLUMN_TEXT, out text);
+
+        if (depth == 1) {
+             ( (Gtk.CellRendererText)renderer).markup = "<b>" + text + "</b>";
+        }
+        else {
+             ( (Gtk.CellRendererText)renderer).markup = text;
+        }
+    }
+
+    private static void clickable_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+
+        if (path.get_depth () == 1) {
+            renderer.visible = false;
+        }
+        else {
+            renderer.visible = true;
+        }
+    }
+
+    private static void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                 Gtk.TreeModel model, Gtk.TreeIter iter) {
+        Gtk.TreePath path = model.get_path (iter);
+
+        renderer.visible =  (path.get_depth () == 1);
+         ( (CellRendererExpander)renderer).expanded = is_row_expanded (path);
+    }
+
+    /* Convenient add/remove/edit methods */
+    public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? o, Gtk.Widget? w, Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
+        Gtk.TreeIter iter;
+
+        tree.append (out iter, parent);
+        tree.set (iter, 0, o, 1, w, 2, true, 3, pixbuf, 4, text, 5, clickable);
+
+        if (parent != null) {
+            tree.set (parent, 2, true);
+        }
+        else {
+            tree.set (iter, 2, false);
+        }
+
+        expand_all ();
+        return iter;
     }
 }
