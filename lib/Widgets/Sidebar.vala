@@ -30,7 +30,7 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
 
     private class CellRendererExpander : Gtk.CellRenderer {
         public bool expanded;
-        public static int EXPANDER_SIZE = 8;
+        public const int EXPANDER_SIZE = 8;
 
         public CellRendererExpander () {
             expanded = false;
@@ -39,26 +39,16 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
             out int x_offset, out int y_offset, out int width, out int height) {
             x_offset = 0;
-            y_offset = 4;
-            width = 8;
-            height = 8;
+            y_offset = EXPANDER_SIZE / 2;
+            width = height = EXPANDER_SIZE;
         }
 
         public override void render (Cairo.Context context, Gtk.Widget widget,
             Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
-            if (expanded)
-                widget.get_style_context ().set_state (Gtk.StateFlags.ACTIVE);
-            else
-                widget.get_style_context ().set_state (Gtk.StateFlags.NORMAL);
-
-            // this is for vala 0.14
-            widget.get_style_context ().render_expander (context,
-                                cell_area.x + 8 / 2, cell_area.y + 8 / 2, 8.0, 8.0);//expanded ? ExpanderStyle.EXPANDED : ExpanderStyle.COLLAPSED);
-
-            // this is for newer vala versions
-            //widget.get_style_context ().render_expander (context, cell_area.x + 8 / 2,
-            //                                           cell_area.y + 8 / 2, 8.0, 8.0);
-                                     //expanded ? ExpanderStyle.EXPANDED : ExpanderStyle.COLLAPSED);
+            widget.get_style_context ().set_state (expanded ? Gtk.StateFlags.ACTIVE : Gtk.StateFlags.NORMAL);
+            widget.get_style_context ().render_expander (context, cell_area.x + EXPANDER_SIZE / 2,
+                                                         cell_area.y + EXPANDER_SIZE / 2,
+                                                         EXPANDER_SIZE, EXPANDER_SIZE);
         }
     }
 
@@ -71,22 +61,22 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         COLUMN_CLICKABLE
     }
 
-    public Gtk.TreeStore tree;
-    public Gtk.TreeModelFilter filter;
-
-    Gtk.CellRendererText spacer;
-    Gtk.CellRendererText secondary_spacer;
-    Gtk.CellRendererPixbuf pix_cell;
-    Gtk.CellRendererText text_cell;
-    Gtk.CellRendererPixbuf clickable_cell;
-    CellRendererExpander expander_cell;
-
-    Gtk.TreeIter? selectedIter;
-
     public bool autoExpanded;
 
     public signal void clickable_clicked (Gtk.TreeIter iter);
     public signal void true_selection_change (Gtk.TreeIter selected);
+
+    private Gtk.TreeStore tree;
+    private Gtk.TreeModelFilter filter;
+    private Gtk.TreeIter? selectedIter;
+
+    private Gtk.CellRendererText spacer;
+    private Gtk.CellRendererText secondary_spacer;
+    private Gtk.CellRendererPixbuf pix_cell;
+    private Gtk.CellRendererText text_cell;
+    private Gtk.CellRendererPixbuf clickable_cell;
+    private CellRendererExpander expander_cell;
+
 
     public Sidebar () {
         tree = new Gtk.TreeStore (6, typeof (Object), typeof (Gtk.Widget), typeof (bool), typeof (Gdk.Pixbuf), typeof (string), typeof (Gdk.Pixbuf));
@@ -166,7 +156,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         this.button_press_event.connect (sidebar_click);
     }
 
-    private void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
 
@@ -174,7 +165,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         renderer.xpad =  (depth > 1) ? 8 : 0;
     }
 
-    private void secondary_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void secondary_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
 
@@ -182,7 +174,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         renderer.xpad =  (depth > 1) ? 8 : 0;
     }
 
-    private void pixbuf_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void pixbuf_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         if (path.get_depth () == 1) {
@@ -193,7 +186,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    public void string_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void string_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                               Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
         string text = "";
@@ -207,7 +201,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    private void clickable_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void clickable_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                  Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         if (path.get_depth () == 1) {
@@ -218,7 +213,8 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private static void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                 Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         renderer.visible =  (path.get_depth () == 1);
