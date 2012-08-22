@@ -24,9 +24,9 @@
 
 /**
  * NOTES: The iters returned are child model iters. To work with any function
- * except for add, you need to to use convertToFilter (child iter);
+ * except for add, you need to to use convert_to_filter (child iter);
  */
-public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
+public class Granite.Widgets.Sidebar : Gtk.TreeView {
 
     private class CellRendererExpander : Gtk.CellRenderer {
         public bool expanded;
@@ -36,7 +36,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
             expanded = false;
         }
 
-        public override void get_size (Gtk.Gtk.Widget widget, Gdk.Rectangle? cell_area,
+        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
             out int x_offset, out int y_offset, out int width, out int height) {
             x_offset = 0;
             y_offset = 4;
@@ -44,12 +44,12 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
             height = 8;
         }
 
-        public override void render (Cairo.Context context, Gtk.Gtk.Widget widget,
+        public override void render (Cairo.Context context, Gtk.Widget widget,
             Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
             if (expanded)
-                widget.get_style_context ().set_state (StateFlags.ACTIVE);
+                widget.get_style_context ().set_state (Gtk.StateFlags.ACTIVE);
             else
-                widget.get_style_context ().set_state (StateFlags.NORMAL);
+                widget.get_style_context ().set_state (Gtk.StateFlags.NORMAL);
 
             // this is for vala 0.14
             widget.get_style_context ().render_expander (context,
@@ -62,7 +62,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    public enum SideBarColumn {
+    public enum Column {
         COLUMN_OBJECT,
         COLUMN_WIDGET,
         COLUMN_VISIBLE,
@@ -89,7 +89,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
     public signal void true_selection_change (Gtk.TreeIter selected);
 
     public Sidebar () {
-        tree = new TreeStore (6, typeof (Object), typeof (Gtk.Widget), typeof (bool), typeof (Gdk.Pixbuf), typeof (string), typeof (Gdk.Pixbuf));
+        tree = new Gtk.TreeStore (6, typeof (Object), typeof (Gtk.Widget), typeof (bool), typeof (Gdk.Pixbuf), typeof (string), typeof (Gdk.Pixbuf));
         filter = new Gtk.TreeModelFilter (tree, null);
         set_model (filter);
 
@@ -113,26 +113,26 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         // add spacer
         spacer = new Gtk.CellRendererText ();
         col.pack_start (spacer, false);
-        col.set_cell_data_func (spacer, spacerDataFunc);
+        col.set_cell_data_func (spacer, spacer_cell_data_func);
         spacer.xpad = 8;
 
         // secondary spacer
         secondary_spacer = new Gtk.CellRendererText ();
         col.pack_start (secondary_spacer, false);
-        col.set_cell_data_func (secondary_spacer, secondarySpacerDataFunc);
+        col.set_cell_data_func (secondary_spacer, secondary_spacer_cell_data_func);
         secondary_spacer.xpad = 8;
 
         // add pixbuf
         pix_cell = new Gtk.CellRendererPixbuf ();
         col.pack_start (pix_cell, false);
-        col.set_cell_data_func (pix_cell, pixCellDataFunc);
-        col.set_attributes (pix_cell, "pixbuf", SideBarColumn.COLUMN_PIXBUF);
+        col.set_cell_data_func (pix_cell, pixbuf_cell_data_func);
+        col.set_attributes (pix_cell, "pixbuf", Column.COLUMN_PIXBUF);
 
         // add text
         text_cell = new Gtk.CellRendererText ();
         col.pack_start (text_cell, true);
-        col.set_cell_data_func (text_cell, textCellDataFunc);
-        col.set_attributes (text_cell, "markup", SideBarColumn.COLUMN_TEXT);
+        col.set_cell_data_func (text_cell, string_cell_data_func);
+        col.set_attributes (text_cell, "markup", Column.COLUMN_TEXT);
         text_cell.ellipsize = Pango.EllipsizeMode.END;
         text_cell.xalign = 0.0f;
         text_cell.xpad = 3;
@@ -140,8 +140,8 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         // add clickable icon
         clickable_cell = new Gtk.CellRendererPixbuf ();
         col.pack_start (clickable_cell, false);
-        col.set_cell_data_func (clickable_cell, clickableCellDataFunc);
-        col.set_attributes (clickable_cell, "pixbuf", SideBarColumn.COLUMN_CLICKABLE);
+        col.set_cell_data_func (clickable_cell, clickable_cell_data_func);
+        col.set_attributes (clickable_cell, "pixbuf", Column.COLUMN_CLICKABLE);
         clickable_cell.mode = Gtk.CellRendererMode.ACTIVATABLE;
         clickable_cell.xpad = 2;
         clickable_cell.xalign = 1.0f;
@@ -150,23 +150,23 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         // add expander
         expander_cell = new CellRendererExpander ();
         col.pack_start (expander_cell, false);
-        col.set_cell_data_func (expander_cell, expanderCellDataFunc);
+        col.set_cell_data_func (expander_cell, expander_cell_data_func);
 
         this.set_headers_visible (false);
         //this.set_expander_column (get_column (3));
         this.set_show_expanders (false);
-        filter.set_visible_column (SideBarColumn.COLUMN_VISIBLE);
-        this.set_grid_lines (TreeViewGridLines.NONE);
+        filter.set_visible_column (Column.COLUMN_VISIBLE);
+        this.set_grid_lines (Gtk.TreeViewGridLines.NONE);
         this.name = "SidebarContent";
 
         // Setup theming
-        this.get_style_context ().add_class  (STYLE_CLASS_SIDEBAR);
+        this.get_style_context ().add_class  (Gtk.STYLE_CLASS_SIDEBAR);
 
-        this.get_selection ().changed.connect (selectionChange);
-        this.button_press_event.connect (sideBarClick);
+        this.get_selection ().changed.connect (selection_change);
+        this.button_press_event.connect (sidebar_click);
     }
 
-    public void spacerDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
 
@@ -174,7 +174,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         renderer.xpad =  (depth > 1) ? 8 : 0;
     }
 
-    public void secondarySpacerDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private void secondary_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
 
@@ -182,7 +182,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         renderer.xpad =  (depth > 1) ? 8 : 0;
     }
 
-    public void pixCellDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private void pixbuf_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         if (path.get_depth () == 1) {
@@ -193,11 +193,11 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    public void textCellDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    public void string_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
         int depth = path.get_depth ();
         string text = "";
-        model.get (iter, SideBarColumn.COLUMN_TEXT, out text);
+        model.get (iter, Column.COLUMN_TEXT, out text);
 
         if (depth == 1) {
              ( (Gtk.CellRendererText)renderer).markup = "<b>" + text + "</b>";
@@ -207,7 +207,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    public void clickableCellDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private void clickable_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         if (path.get_depth () == 1) {
@@ -218,7 +218,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
     }
 
-    public void expanderCellDataFunc (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
+    private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer, Gtk.TreeModel model, Gtk.TreeIter iter) {
         Gtk.TreePath path = model.get_path (iter);
 
         renderer.visible =  (path.get_depth () == 1);
@@ -226,7 +226,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
     }
 
     /* Convenient add/remove/edit methods */
-    public Gtk.TreeIter addItem (Gtk.TreeIter? parent, Object? o, Gtk.Widget? w, Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
+    public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? o, Gtk.Widget? w, Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
         Gtk.TreeIter iter;
 
         tree.append (out iter, parent);
@@ -243,7 +243,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         return iter;
     }
 
-    public bool removeItem (Gtk.TreeIter iter) {
+    public bool remove_item (Gtk.TreeIter iter) {
         Gtk.TreeIter parent;
         if (tree.iter_parent (out parent, iter)) {
             if (tree.iter_n_children (parent) > 1)
@@ -253,14 +253,14 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
 
         Gtk.Widget w;
-        tree.get (iter, SideBarColumn.COLUMN_WIDGET, out w);
+        tree.get (iter, Column.COLUMN_WIDGET, out w);
         w.destroy ();
 
         // destroy child row widgets as well
         Gtk.TreeIter current;
         if (tree.iter_children (out current, iter)) {
             do {
-                tree.get (current, SideBarColumn.COLUMN_WIDGET, out w);
+                tree.get (current, Column.COLUMN_WIDGET, out w);
                 w.destroy ();
             }
             while (tree.iter_next (ref current));
@@ -270,27 +270,27 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
     }
 
     // input MUST be a child iter
-    public void setVisibility (Gtk.TreeIter it, bool val) {
+    public void set_item_visibility (Gtk.TreeIter it, bool val) {
         bool was = false;
-        tree.get (it, SideBarColumn.COLUMN_VISIBLE, out was);
-        tree.set (it, SideBarColumn.COLUMN_VISIBLE, val);
+        tree.get (it, Column.COLUMN_VISIBLE, out was);
+        tree.set (it, Column.COLUMN_VISIBLE, val);
 
         if (val && !was) {
             warning  ("error happening sidebar.vala...");
-            expand_row (filter.get_path (convertToFilter (it)), true);
+            expand_row (filter.get_path (convert_to_filter (it)), true);
             warning  ("error finished");
         }
     }
 
-    public void setName (Gtk.TreeIter it, string name) {
-        Gtk.TreeIter iter = convertToChild (it);
+    public void set_item_name (Gtk.TreeIter it, string name) {
+        Gtk.TreeIter iter = convert_to_child (it);
 
-        tree.set (iter, SideBarColumn.COLUMN_TEXT, name);
+        tree.set (iter, Column.COLUMN_TEXT, name);
     }
 
     // parent should be filter iter
-    public bool setNameFromObject (Gtk.TreeIter parent, Object o, string name) {
-        Gtk.TreeIter realParent = convertToChild (parent);
+    public bool set_item_name_from_object (Gtk.TreeIter parent, Object o, string name) {
+        Gtk.TreeIter realParent = convert_to_child (parent);
         Gtk.TreeIter pivot;
         tree.iter_children (out pivot, realParent);
 
@@ -299,7 +299,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
             tree.get (pivot, 0, out tempO);
 
             if (tempO == o) {
-                tree.set (pivot, SideBarColumn.COLUMN_TEXT, name);
+                tree.set (pivot, Column.COLUMN_TEXT, name);
                 return true;
             }
             else if (!tree.iter_next (ref pivot)) {
@@ -309,7 +309,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         } while (true);
     }
 
-    public Gtk.TreeIter? getSelectedIter () {
+    public Gtk.TreeIter? get_selected_iter () {
         Gtk.TreeModel mod;
         Gtk.TreeIter sel;
 
@@ -320,20 +320,20 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         return null;
     }
 
-    public void setSelectedIter (Gtk.TreeIter iter) {
-        this.get_selection ().changed.disconnect (selectionChange);
+    public void set_selected_iter (Gtk.TreeIter iter) {
+        this.get_selection ().changed.disconnect (selection_change);
         get_selection ().unselect_all ();
 
         get_selection ().select_iter (iter);
-        this.get_selection ().changed.connect (selectionChange);
+        this.get_selection ().changed.connect (selection_change);
         selectedIter = iter;
     }
 
-    public bool expandItem (Gtk.TreeIter iter, bool expanded) {
-        if  (filter.iter_n_children  (convertToFilter  (iter)) < 1)
+    public bool expand_item (Gtk.TreeIter iter, bool expanded) {
+        if  (filter.iter_n_children  (convert_to_filter  (iter)) < 1)
             return false;
 
-        Gtk.TreePath? path = filter.get_path  (convertToFilter  (iter));
+        Gtk.TreePath? path = filter.get_path  (convert_to_filter  (iter));
 
         if  (path == null || path.get_depth  () > 1)
             return false;
@@ -346,24 +346,24 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
 
     public bool item_expanded  (Gtk.TreeIter? iter) {
         if  (iter != null)
-            return is_row_expanded  (filter.get_path  (convertToFilter  (iter)));
+            return is_row_expanded  (filter.get_path  (convert_to_filter  (iter)));
 
         return false;
     }
 
-    public Object? getObject (Gtk.TreeIter iter) {
+    public Object? get_object (Gtk.TreeIter iter) {
         Object o;
-        filter.get (iter, SideBarColumn.COLUMN_OBJECT, out o);
+        filter.get (iter, Column.COLUMN_OBJECT, out o);
         return o;
     }
 
-    public Gtk.Widget? getWidget (Gtk.TreeIter iter) {
+    public Gtk.Widget? get_widget (Gtk.TreeIter iter) {
         Gtk.Widget w;
-        tree.get (iter, SideBarColumn.COLUMN_WIDGET, out w);
+        tree.get (iter, Column.COLUMN_WIDGET, out w);
         return w;
     }
 
-    public Gtk.Widget? getSelectedWidget () {
+    public Gtk.Widget? get_selected_widget () {
         Gtk.TreeModel m;
         Gtk.TreeIter iter;
 
@@ -373,11 +373,11 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
 
         Gtk.Widget w;
-        m.get (iter, SideBarColumn.COLUMN_WIDGET, out w);
+        m.get (iter, Column.COLUMN_WIDGET, out w);
         return w;
     }
 
-    public Object? getSelectedObject () {
+    public Object? get_selected_object () {
         Gtk.TreeModel m;
         Gtk.TreeIter iter;
 
@@ -387,12 +387,12 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         }
 
         Object o;
-        m.get (iter, SideBarColumn.COLUMN_OBJECT, out o);
+        m.get (iter, Column.COLUMN_OBJECT, out o);
         return o;
     }
 
     /* stops user from selecting the root nodes */
-    public void selectionChange () {
+    public void selection_change () {
         Gtk.TreeModel model;
         Gtk.TreeIter pending;
 
@@ -418,7 +418,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
     }
 
     /* click event functions */
-    private bool sideBarClick (Gdk.EventButton event) {
+    private bool sidebar_click (Gdk.EventButton event) {
         if (event.type == Gdk.EventType.BUTTON_PRESS && event.button == 1) {
             // select one based on mouse position
             Gtk.TreeIter iter;
@@ -432,10 +432,10 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
             if (!filter.get_iter (out iter, path))
                 return false;
 
-            if (overClickable (iter, column,  (int)cell_x,  (int)cell_y)) {
+            if (over_clickable (iter, column,  (int)cell_x,  (int)cell_y)) {
                 clickable_clicked (iter);
             }
-            else if (overExpander (iter, column,  (int)cell_x,  (int)cell_y)) {
+            else if (over_expander (iter, column,  (int)cell_x,  (int)cell_y)) {
                 if (is_row_expanded (path))
                     this.collapse_row (path);
                 else
@@ -446,8 +446,8 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         return false;
     }
 
-    private bool overClickable (Gtk.TreeIter iter, Gtk.TreeViewColumn col, int x, int y) {
-        Pixbuf pix;
+    private bool over_clickable (Gtk.TreeIter iter, Gtk.TreeViewColumn col, int x, int y) {
+        Gdk.Pixbuf pix;
         filter.get (iter, 5, out pix);
 
         if (pix == null)
@@ -463,7 +463,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         return false;
     }
 
-    private bool overExpander (Gtk.TreeIter iter, Gtk.TreeViewColumn col, int x, int y) {
+    private bool over_expander (Gtk.TreeIter iter, Gtk.TreeViewColumn col, int x, int y) {
         if (filter.get_path (iter).get_depth () != 1)
             return false;
         else
@@ -488,7 +488,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
     }
 
     /* Helpers for child->filter, filter->child */
-    public Gtk.TreeIter? convertToFilter (Gtk.TreeIter? child) {
+    public Gtk.TreeIter? convert_to_filter (Gtk.TreeIter? child) {
         if (child == null)
             return null;
 
@@ -501,7 +501,7 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
         return null;
     }
 
-    public Gtk.TreeIter? convertToChild (Gtk.TreeIter? filt) {
+    public Gtk.TreeIter? convert_to_child (Gtk.TreeIter? filt) {
         if (filt == null)
             return null;
 
@@ -510,5 +510,4 @@ public class Granite.Gtk.Widgets.Sidebar : Gtk.TreeView {
 
         return rv;
     }
-
 }
