@@ -80,6 +80,7 @@ vala_precompile(VALA_C
     Widgets/DecoratedWindow.vala
     Widgets/LightWindow.vala
     Widgets/StatusBar.vala
+    Widgets/SidebarPaned.vala
     Main.vala
     config.vapi
 PACKAGES
