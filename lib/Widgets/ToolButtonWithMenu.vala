@@ -286,20 +286,9 @@ namespace Granite.Widgets {
 
             if (menu_position == MenuPosition.INSIDE_WINDOW) {
                 /* Get window geometry */
-                Gtk.Widget? parent_widget = get_parent ();
-                Gtk.Widget? next_parent = parent_widget.get_parent ();
+                var parent_widget = get_toplevel ();
 
-                while (true) {
-                    if (parent_widget != null && next_parent != null) {
-                        parent_widget = parent_widget.get_parent();
-                        next_parent = parent_widget.get_parent();
-                    }
-
-                    if (parent_widget == null || next_parent == null)
-                        break;
-                }
-
-                Allocation window_allocation;
+                Gtk.Allocation window_allocation;
                 parent_widget.get_allocation (out window_allocation);
 
                 parent_widget.get_window ().get_origin (out x, out y);
