@@ -27,10 +27,10 @@ namespace Granite.Widgets {
             public Item () {
                 can_focus = false;
 
-                const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
+                const int STYLE_PRIORITY = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
                 get_style_context ().add_class ("raised");
-                get_style_context ().add_provider (ModeButton.style_provider, style_priority);
+                get_style_context ().add_provider (ModeButton.style_provider, STYLE_PRIORITY);
             }
         }
 
@@ -40,9 +40,9 @@ namespace Granite.Widgets {
 
         // Style properties. Please note that style class names are for internal
         // use only. Theme developers should use GraniteWidgetsModeButton instead.
-        internal static CssProvider style_provider;
-        internal static StyleContext widget_style;
-        private const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
+        private static CssProvider style_provider;
+        private static StyleContext widget_style;
+        private const int STYLE_PRIORITY = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
         private const string STYLESHEET = """
             .GraniteModeButton .button {
