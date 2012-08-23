@@ -23,6 +23,17 @@ namespace Granite.Widgets {
 
     public class ModeButton : Gtk.Box {
 
+        private class Item : Gtk.ToggleButton {
+            public Item () {
+                can_focus = false;
+
+                const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
+
+                get_style_context ().add_class ("raised");
+                get_style_context ().add_provider (ModeButton.style_provider, style_priority);
+            }
+        }
+
         public signal void mode_added (int index, Gtk.Widget widget);
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
@@ -139,7 +150,7 @@ namespace Granite.Widgets {
                 return -1;
             }
 
-            var button = new ModeButtonItem ();
+            var button = new Item ();
 
             button.add (w);
 
@@ -152,7 +163,7 @@ namespace Granite.Widgets {
             add (button);
             button.show_all ();
 
-            int item_index = (int)get_children ().length ();
+            int item_index = (int)get_children ().length () - 1;
             mode_added (item_index, w); // Emit the added signal
             return item_index;
         }
@@ -203,17 +214,6 @@ namespace Granite.Widgets {
             }
 
             return false;
-        }
-    }
-
-    private class ModeButtonItem : Gtk.ToggleButton {
-        public ModeButtonItem () {
-            can_focus = false;
-
-            const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-            get_style_context ().add_class ("raised");
-            get_style_context ().add_provider (ModeButton.style_provider, style_priority);
         }
     }
 }
