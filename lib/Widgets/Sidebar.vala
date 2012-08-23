@@ -201,6 +201,13 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
 
         tree.set (iter, Column.COLUMN_TEXT, name);
     }
+    
+    public string get_item_name (Gtk.TreeIter it)
+    {
+        string s;
+        filter.get (it, Column.COLUMN_TEXT, out s);
+        return s;
+    }
 
     // parent should be filter iter
     public bool set_item_name_from_object (Gtk.TreeIter parent, Object o, string name) {
@@ -221,6 +228,47 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
             }
 
         } while (true);
+    }
+    
+    /**
+     * returns the first iter holding name, if parent is non null, only childs
+     * of this node will be checked
+     * @param name The item's name
+     * @param parent The parent of the searched item or null for all
+     * @return the GtkTreeIter or null
+     */
+    public Gtk.TreeIter? get_item_by_name (string name, Gtk.TreeIter? parent)
+    {
+        if (parent == null) {
+            Gtk.TreeIter? result = null;
+            
+            tree.foreach ((model, path, iter) => {
+                string text;
+                tree.get (iter, Column.COLUMN_TEXT, out text);
+                
+                if (name == text) {
+                    result = iter;
+                    return true;
+                }
+                
+                return false;
+            });
+            
+            return result;
+        } else {
+            Gtk.TreeIter iter;
+            tree.iter_children (out iter, convert_to_child (parent));
+            do {
+                string text;
+                tree.get (iter, Column.COLUMN_TEXT, out text);
+                
+                if (name == text)
+                    return iter;
+                if (!tree.iter_next (ref iter))
+                    return null;
+                
+            } while (true);
+        }
     }
 
     public Gtk.TreeIter? get_selected_iter () {
@@ -265,13 +313,13 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
         return false;
     }
 
-    public Object? get_object (Gtk.TreeIter iter) {
+    public Object? get_item_object (Gtk.TreeIter iter) {
         Object o;
         filter.get (iter, Column.COLUMN_OBJECT, out o);
         return o;
     }
 
-    public Gtk.Widget? get_widget (Gtk.TreeIter iter) {
+    public Gtk.Widget? get_item_widget (Gtk.TreeIter iter) {
         Gtk.Widget w;
         tree.get (iter, Column.COLUMN_WIDGET, out w);
         return w;
@@ -491,12 +539,24 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
          ( (CellRendererExpander)renderer).expanded = is_row_expanded (path);
     }
 
-    /* Convenient add/remove/edit methods */
-    public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? o, Gtk.Widget? w, Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
+    /**
+     * Adds an item to the sidebar
+     * @param parent The parent to which the item will be added or null for a root item
+     * @param object A GLib.Object to be stored for this item or null
+     * @param widget A GtkWidget to be stored for this item or null
+     * @param pixbuf A GdkPixbuf to be displayed as the items icon or null
+     * @param text The text for this item
+     * @param clickable A GdkPixbuf displayed on the right side of the item which
+     *  will emit the clickable_clicked signal when clicked or null
+     * @return the added GtkTreeIter
+     **/
+    public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? object, Gtk.Widget? widget, 
+        Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
+        
         Gtk.TreeIter iter;
 
         tree.append (out iter, parent);
-        tree.set (iter, 0, o, 1, w, 2, true, 3, pixbuf, 4, text, 5, clickable);
+        tree.set (iter, 0, object, 1, widget, 2, true, 3, pixbuf, 4, text, 5, clickable);
 
         if (parent != null) {
             tree.set (parent, 2, true);
