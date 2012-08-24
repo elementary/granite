@@ -26,11 +26,8 @@ namespace Granite.Widgets {
         private class Item : Gtk.ToggleButton {
             public Item () {
                 can_focus = false;
-
-                const int STYLE_PRIORITY = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-                get_style_context ().add_class ("raised");
-                get_style_context ().add_provider (ModeButton.style_provider, STYLE_PRIORITY);
+                Utils.set_theming (this, ModeButton.STYLESHEET, "raised",
+                                   ModeButton.STYLE_PRIORITY);
             }
         }
 
@@ -38,14 +35,10 @@ namespace Granite.Widgets {
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
 
-        // Style properties. Please note that style class names are for internal
-        // use only. Theme developers should use GraniteWidgetsModeButton instead.
-        private static CssProvider style_provider;
-        private static StyleContext widget_style;
         private const int STYLE_PRIORITY = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
         private const string STYLESHEET = """
-            .GraniteModeButton .button {
+            .mode-button .button {
                 -GtkToolbar-button-relief: normal;
                 border-radius: 0 0 0 0;
                 border-style: solid;
@@ -55,19 +48,19 @@ namespace Granite.Widgets {
                 -unico-outer-stroke-radius: 0 0 0 0;
             }
 
-            .GraniteModeButton .button:active,
-            .GraniteModeButton .button:insensitive {
+            .mode-button .button:active,
+            .mode-button .button:insensitive {
                 -unico-outer-stroke-width: 1px 0 1px 0;
             }
 
-            .GraniteModeButton .button:first-child {
+            .mode-button .button:first-child {
                 border-radius: 3px 0 0 3px;
                 border-width: 1px 0 1px 1px;
 
                 -unico-outer-stroke-width: 1px 0 1px 1px;
             }
 
-            .GraniteModeButton .button:last-child {
+            .mode-button .button:last-child {
                 border-radius: 0 3px 3px 0;
                 border-width: 1px;
 
@@ -93,19 +86,7 @@ namespace Granite.Widgets {
         }
 
         public ModeButton () {
-
-            if (style_provider == null)
-            {
-                style_provider = new CssProvider ();
-                try {
-                    style_provider.load_from_data (STYLESHEET, -1);
-                } catch (Error e) {
-                    warning ("GraniteModeButton: %s. The widget will not look as intended", e.message);
-                }
-            }
-
-            widget_style = get_style_context ();
-            widget_style.add_class ("GraniteModeButton");
+            Utils.set_theming (this, STYLESHEET, "mode-button", STYLE_PRIORITY);
 
             homogeneous = true;
             spacing = 0;

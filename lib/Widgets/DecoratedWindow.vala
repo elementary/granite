@@ -22,12 +22,9 @@
 
 namespace Granite.Widgets {
 
-    [CCode (cname="get_close_pixbuf")]
-    public extern Gdk.Pixbuf get_close_pixbuf ();
-
     public class DecoratedWindow : CompositedWindow {
 
-        static const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
+        const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
             .decorated-window {
                 border-style:solid;
                 border-color:alpha (#000, 0.35);
@@ -38,27 +35,18 @@ namespace Granite.Widgets {
         """;
 
         // Currently not overridable
-        static const string DECORATED_WINDOW_STYLESHEET = """
+        const string DECORATED_WINDOW_STYLESHEET = """
             .decorated-window { border-width:1px; }
         """;
 
         public static void set_default_theming (Gtk.Window ref_window) {
-            var normal_style = new Gtk.CssProvider ();
-            var fallback_style = new Gtk.CssProvider ();
+            Utils.set_theming (ref_window, DECORATED_WINDOW_STYLESHEET,
+                               STYLE_CLASS_DECORATED_WINDOW,
+                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            try {
-                normal_style.load_from_data (DECORATED_WINDOW_STYLESHEET, -1);
-                fallback_style.load_from_data (DECORATED_WINDOW_FALLBACK_STYLESHEET, -1);
-            } catch (Error e) {
-                warning (e.message);
-            }
-
-            ref_window.get_style_context ().add_class (STYLE_CLASS_DECORATED_WINDOW);
-
-            ref_window.get_style_context ().add_provider (normal_style,
-                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            ref_window.get_style_context ().add_provider (fallback_style,
-                                            Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+            Utils.set_theming (ref_window, DECORATED_WINDOW_FALLBACK_STYLESHEET,
+                               STYLE_CLASS_DECORATED_WINDOW,
+                               Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
 
         public bool show_title { get; set; default = true; }
@@ -88,7 +76,7 @@ namespace Granite.Widgets {
             this.has_resize_grip = false;
             this.window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
 
-            this.close_img = get_close_pixbuf ();
+            this.close_img = Utils.get_close_pixbuf ();
 
             this._title = new Gtk.Label (null);
             this._title.halign = Gtk.Align.CENTER;

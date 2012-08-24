@@ -47,7 +47,6 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     double offset = 15.0;
     const int MARGIN = 12;
     Gtk.Widget menu;
-    static Gtk.CssProvider style_provider;
     Gtk.Box hbox;
     Gtk.Box abox;
 
@@ -103,20 +102,14 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     }
 
     construct {
-        // Set up css provider
-        style_provider = new Gtk.CssProvider ();
-        try {
-            style_provider.load_from_data (POPOVER_STYLESHEET, -1);
-        } catch (Error e) {
-            warning ("GranitePopOver: %s. The widget will not look as intended.", e.message);
-        }
-
         // Window properties
         set_visual (get_screen ().get_rgba_visual());
 
         get_style_context ().add_class ("popover");
         get_style_context ().add_class ("composited");
-        get_style_context ().add_provider_for_screen (get_screen(), style_provider, 600);
+
+        Utils.set_theming_for_screen (get_screen (), POPOVER_STYLESHEET,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         app_paintable = true;
         decorated = false;

@@ -235,11 +235,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     private Label website_url_label;
     private Button close_button;
 
-    // Set the markup used for big text (program name and version)
-    private const string BIG_TEXT_CSS = """
-    .h2 { font: open sans light 18; }
-    """;
-
     private const string STYLESHEET = """
         * {
             -GtkDialog-action-area-border: 12px;
@@ -259,20 +254,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         deletable = false; // Hide the window's close button when possible
         set_default_response(ResponseType.CANCEL);
 
-        var style_provider = new CssProvider ();
 
-        try {
-            style_provider.load_from_data (STYLESHEET, -1);
-        } catch (Error e) {
-            warning ("GraniteAboutDialog: %s. The widget will not look as intended.", e.message);
-        }
-
-        get_style_context().add_provider(style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-        var title_css = new Gtk.CssProvider ();
-        try {
-            title_css.load_from_data (BIG_TEXT_CSS, -1);
-        } catch (Error e) { warning (e.message); }
+        Granite.Widgets.Utils.set_theming (this, STYLESHEET, null,
+                                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         // Set the default containers
         Box content_area = (Box)get_content_area();
@@ -304,8 +288,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         name_label.halign = Gtk.Align.START;
         name_label.set_line_wrap(true);
         name_label.set_selectable(true);
-        name_label.get_style_context ().add_provider (title_css, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        name_label.get_style_context ().add_class ("h2");
+
+        Granite.Widgets.Utils.apply_text_style_to_label (TextStyle.H2, name_label);
 
         copyright_label = new Label("");
         copyright_label.set_selectable(true);

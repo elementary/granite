@@ -139,8 +139,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
             }
         """;
 
-        set_theming (this.paned, DEFAULT_STYLESHEET, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        set_theming (this.paned, FALLBACK_STYLESHEET, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        Utils.set_theming (this.paned, DEFAULT_STYLESHEET, "",
+                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Utils.set_theming (this.paned, FALLBACK_STYLESHEET, "",
+                           Gtk.STYLE_PROVIDER_PRIORITY_THEME);
     }
 
 
@@ -204,20 +206,6 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
         this.handle.button_release_event.connect (on_handle_button_release);
         this.handle.grab_broken_event.connect (on_handle_grab_broken);
         this.handle.realize.connect (set_handle_cursor);
-    }
-
-    protected static void set_theming (Gtk.Widget widget, string stylesheet, int priority) {
-        var css_provider = new Gtk.CssProvider ();
-
-        try {
-            css_provider.load_from_data (stylesheet, -1);
-        }
-        catch (Error e) {
-            warning (e.message);
-            return_if_reached ();
-        }
-
-        widget.get_style_context ().add_provider (css_provider, priority);
     }
 
     public override bool motion_notify_event (Gdk.EventMotion e) {
