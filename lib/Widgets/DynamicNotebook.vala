@@ -394,9 +394,12 @@ namespace Granite.Widgets {
             
             var offset = 130;
             this.tab_width = (this.get_allocated_width () - offset) / this.notebook.get_n_pages ();
-            if (this.tab_width > max_tab_width)
-                this.tab_width = max_tab_width;
-            
+            if (tab_width > max_tab_width)
+                tab_width = max_tab_width;
+
+            if (tab_width < 0)
+                tab_width = 0;
+
             for (var i=0;i<this.notebook.get_n_pages ();i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
