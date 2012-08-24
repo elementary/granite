@@ -28,11 +28,8 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
 
     protected const int ITEM_SPACING = 3;
 
-    protected Gtk.CssProvider style_provider;
-    protected Gtk.StyleContext context;
-
     /* This prevents the huge vertical padding */
-    private const string STATUSBAR_STYLESHEET = """
+    private const string STYLESHEET = """
         GraniteWidgetsStatusBar {
             border-bottom-width: 0;
             border-right-width: 0;
@@ -45,23 +42,14 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
     """;
 
     public StatusBar () {
-
-        style_provider = new Gtk.CssProvider ();
-
-        try {
-            style_provider.load_from_data (STATUSBAR_STYLESHEET, -1);
-        }
-        catch (Error err) {
-            warning (err.message);
-        }
-
         /* Get rid of the "toolbar" class to avoid inheriting its style.
          * We want the widget to look more like a normal statusbar.
          */
         get_style_context ().remove_class (Gtk.STYLE_CLASS_TOOLBAR);
 
-        context = new Gtk.StyleContext ();
-        context.add_provider_for_screen (get_screen (), style_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        Utils.set_theming_for_screen (this.get_screen (), STYLESHEET,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+
 
         status_label = new Gtk.Label ("");
         status_label.set_justify (Gtk.Justification.CENTER);
@@ -95,11 +83,6 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
     }
 
     public void set_text (string text) {
-        if (text == null) {
-            status_label.set_text ("");
-            return;
-        }
-
         status_label.set_text (text);
     }
 }

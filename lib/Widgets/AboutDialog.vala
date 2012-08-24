@@ -86,15 +86,6 @@ namespace Granite.Widgets {
         {
             Box action_area = (Box) get_action_area ();
             
-            /* help button style */
-            var help_button_style_provider = new CssProvider();
-            try {
-                help_button_style_provider.load_from_data(HELP_BUTTON_STYLESHEET, -1);
-            }
-            catch (Error e) {
-                warning ("%s. Some widgets will not look as intended", e.message);
-            }
-
             var draw_ref = new Gtk.Window ();
             draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
 
@@ -114,11 +105,13 @@ namespace Granite.Widgets {
             this.get_content_area ().margin_bottom = 3;
 
             /* help button */
-            help_button = new Button.with_label("?");
-            help_button.get_style_context ().add_class ("help_button");
-            help_button.get_style_context ().add_provider (help_button_style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+            help_button = new Button.with_label ("?");
+
+            Utils.set_theming (help_button, HELP_BUTTON_STYLESHEET, "help_button",
+                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
             help_button.halign = Gtk.Align.CENTER;
-            help_button.pressed.connect(() => { activate_link(help); });
+            help_button.clicked.connect (() => { activate_link(help); });
 
             /* Circular help button */
             help_button.size_allocate.connect ( (alloc) => {
@@ -131,12 +124,12 @@ namespace Granite.Widgets {
 
             /* translate button */
             translate_button = new Button.with_label(_("Translate This App"));
-            translate_button.pressed.connect ( () => { activate_link(translate); });
+            translate_button.clicked.connect ( () => { activate_link(translate); });
             action_area.pack_start (translate_button, false, false, 0);
 
             /* bug button */
             bug_button = new Button.with_label (_("Report a Problem"));
-            bug_button.pressed.connect (() => {             
+            bug_button.clicked.connect (() => {             
                 try {
                     GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
                 } catch (Error e) {

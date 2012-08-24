@@ -23,18 +23,22 @@ namespace Granite.Widgets {
 
     public class ModeButton : Gtk.Box {
 
+        private class Item : Gtk.ToggleButton {
+            public Item () {
+                can_focus = false;
+                Utils.set_theming (this, ModeButton.STYLESHEET, "raised",
+                                   ModeButton.STYLE_PRIORITY);
+            }
+        }
+
         public signal void mode_added (int index, Gtk.Widget widget);
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
 
-        // Style properties. Please note that style class names are for internal
-        // use only. Theme developers should use GraniteWidgetsModeButton instead.
-        internal static CssProvider style_provider;
-        internal static StyleContext widget_style;
-        private const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
+        private const int STYLE_PRIORITY = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
 
         private const string STYLESHEET = """
-            .GraniteModeButton .button {
+            .mode-button .button {
                 -GtkToolbar-button-relief: normal;
                 border-radius: 0 0 0 0;
                 border-style: solid;
@@ -44,19 +48,19 @@ namespace Granite.Widgets {
                 -unico-outer-stroke-radius: 0 0 0 0;
             }
 
-            .GraniteModeButton .button:active,
-            .GraniteModeButton .button:insensitive {
+            .mode-button .button:active,
+            .mode-button .button:insensitive {
                 -unico-outer-stroke-width: 1px 0 1px 0;
             }
 
-            .GraniteModeButton .button:first-child {
+            .mode-button .button:first-child {
                 border-radius: 3px 0 0 3px;
                 border-width: 1px 0 1px 1px;
 
                 -unico-outer-stroke-width: 1px 0 1px 1px;
             }
 
-            .GraniteModeButton .button:last-child {
+            .mode-button .button:last-child {
                 border-radius: 0 3px 3px 0;
                 border-width: 1px;
 
@@ -82,44 +86,22 @@ namespace Granite.Widgets {
         }
 
         public ModeButton () {
+            Utils.set_theming (this, STYLESHEET, "mode-button", STYLE_PRIORITY);
 
-            if (style_provider == null)
-            {
-                style_provider = new CssProvider ();
-                try {
-                    style_provider.load_from_data (STYLESHEET, -1);
-                } catch (Error e) {
-                    warning ("GraniteModeButton: %s. The widget will not look as intended", e.message);
-                }
-            }
-
-            widget_style = get_style_context ();
-            widget_style.add_class ("GraniteModeButton");
+            set_visual (get_screen ().get_rgba_visual ());
 
             homogeneous = true;
             spacing = 0;
             app_paintable = true;
-            set_visual (get_screen ().get_rgba_visual ());
-
             can_focus = true;
         }
 
-        public int append_pixbuf (Gdk.Pixbuf? pixbuf) {
-            if (pixbuf == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null pixbuf failed.");
-                return -1;
-            }
-
+        public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             var image = new Image.from_pixbuf (pixbuf);
             return append (image);
         }
 
-        public int append_text (string? text) {
-            if (text == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null text string failed.");
-                return -1;
-            }
-
+        public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
 
@@ -134,12 +116,9 @@ namespace Granite.Widgets {
         }
 
         public int append (Gtk.Widget w) {
-            if (w == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null widget failed.");
-                return -1;
-            }
-
-            var button = new ModeButtonItem ();
+            var button = new Item ();
+            button.add_events (Gdk.EventMask.SCROLL_MASK);
+            button.scroll_event.connect (on_scroll_event);
 
             button.add (w);
 
@@ -152,7 +131,7 @@ namespace Granite.Widgets {
             add (button);
             button.show_all ();
 
-            int item_index = (int)get_children ().length ();
+            int item_index = (int)get_children ().length () - 1;
             mode_added (item_index, w); // Emit the added signal
             return item_index;
         }
@@ -194,26 +173,19 @@ namespace Granite.Widgets {
             _selected = -1;
         }
 
-        protected override bool scroll_event (EventScroll ev) {
-            if (ev.direction == Gdk.ScrollDirection.DOWN) {
-                selected ++;
-            }
-            else if (ev.direction == Gdk.ScrollDirection.UP) {
-                selected --;
+        private bool on_scroll_event (Gtk.Widget widget, Gdk.EventScroll ev) {
+            switch (ev.direction) {
+                case Gdk.ScrollDirection.DOWN:
+                case Gdk.ScrollDirection.RIGHT:
+                    selected ++;
+                    break;
+                case Gdk.ScrollDirection.UP:
+                case Gdk.ScrollDirection.LEFT:
+                    selected --;
+                    break;
             }
 
             return false;
-        }
-    }
-
-    private class ModeButtonItem : Gtk.ToggleButton {
-        public ModeButtonItem () {
-            can_focus = false;
-
-            const int style_priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-            get_style_context ().add_class ("raised");
-            get_style_context ().add_provider (ModeButton.style_provider, style_priority);
         }
     }
 }

@@ -30,10 +30,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     protected Gtk.Box options;
 
     public Welcome (string title_text, string subtitle_text) {
-        string _title_text = title_text;
-        string _subtitle_text = subtitle_text;
-        _title_text = _title_text.replace("&", "&amp;");
-        _subtitle_text = _subtitle_text.replace("&", "&amp;");
 
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
@@ -47,21 +43,19 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
         // Labels
-        var title = new Gtk.Label ("<span weight='medium' size='14700'>" + _title_text + "</span>");
+        var title = new Gtk.Label (title_text);
+        Utils.apply_text_style_to_label (TextStyle.H1, title);
 
-        title.get_style_context().add_class ("title");
-
-        title.use_markup = true;
         title.set_justify (Gtk.Justification.CENTER);
         content.pack_start (title, false, true, 0);
 
-        var subtitle = new Gtk.Label ("<span weight='medium' size='11500'>" + _subtitle_text + "</span>");
-        subtitle.use_markup = true;
+        var subtitle = new Gtk.Label (subtitle_text);
+        Utils.apply_text_style_to_label (TextStyle.H2, subtitle);
+
         subtitle.sensitive = false;
         subtitle.set_justify (Gtk.Justification.CENTER);
-        content.pack_start (subtitle, false, true, 2);
 
-        subtitle.get_style_context().add_class("subtitle");
+        content.pack_start (subtitle, false, true, 2);
 
         // Options wrapper
         this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
@@ -110,25 +104,18 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
-        string _option_text = option_text;
-        string _description_text = description_text;
-        _option_text = _option_text.replace ("&", "&amp;");
-        _description_text = _description_text.replace ("&", "&amp;");
-
         // Option label
-        var label = new Gtk.Label ("<span weight='medium' size='11700'>" + _option_text + "</span>");
+        var label = new Gtk.Label (Markup.printf_escaped ("<span weight='medium' size='11700'>%s</span>", option_text));
         label.use_markup = true;
         label.halign = Gtk.Align.START;
         label.valign = Gtk.Align.CENTER;
-        label.get_style_context().add_class ("option-title");
 
         // Description label
-        var description = new Gtk.Label ("<span weight='medium' size='11400'>" + _description_text + "</span>");
+        var description = new Gtk.Label (Markup.printf_escaped ("<span weight='medium' size='11400'>%s</span>", description_text));
         description.use_markup = true;
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
         description.sensitive = false;
-        description.get_style_context().add_class ("option-description");
 
         // Button
         var button = new Gtk.Button ();

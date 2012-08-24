@@ -22,31 +22,20 @@ namespace Granite.Widgets {
 
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
-        private CssProvider style_provider;
-
-        private const string COMPOSITED_WINDOW_STYLESHEET = """
-            .composited {
-                background-color: rgba (0, 0, 0, 0.0);
-            }
-        """;
+        private const string STYLESHEET =
+            ".composited { background-color: rgba (0,0,0,0); }";
 
         construct {
-
-            // Set up css provider
-            style_provider = new CssProvider ();
-            try {
-                style_provider.load_from_data (COMPOSITED_WINDOW_STYLESHEET, -1);
-            } catch (Error e) {
-                warning ("GraniteWidgetsCompositedWindow: %s", e.message);
-            }
-
             // Window properties
-            set_visual (get_screen ().get_rgba_visual());
-            get_style_context().add_class("composited");
-            get_style_context ().add_provider (style_provider, 600);
             app_paintable = true;
             decorated = false;
             resizable = false;
+
+            set_visual (get_screen ().get_rgba_visual());
+
+            // Set up css provider
+            Utils.set_theming (this, STYLESHEET, "composited",
+                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }
 }

@@ -20,12 +20,12 @@
  * Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
 
-public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
+public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
 
     protected Gtk.Paned paned { get; private set; }
-    private Gtk.EventBox? handle = null;
+    private Gtk.Overlay overlay;
+    private Gtk.EventBox handle;
     private bool on_resize_mode = false;
-    private Gdk.Cursor? arrow_cursor = null;
 
     static const string STYLE_PROP_HANDLE_SIZE = "handle-size";
 
@@ -80,8 +80,17 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         this.paned.add2 (child);
     }
 
-    public new void remove (Gtk.Widget child) {
-        this.paned.remove (child);
+    public new void remove (Gtk.Widget widget) {
+        this.paned.remove (widget);
+    }
+
+    public new void add (Gtk.Widget widget) {
+        if (get_child1 () == null)
+            add1 (widget);
+        else if (get_child2 () == null)
+            add2 (widget);
+        else
+            critical ("Container supports a maximum of two children");
     }
 
     public unowned Gtk.Widget? get_child1 () {
@@ -96,6 +105,14 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         return this.handle.get_window ();
     }
 
+    public new void foreach (Gtk.Callback callback) {
+        this.paned.foreach (callback);
+    }
+
+    public new void forall (Gtk.Callback callback) {
+        this.paned.forall (callback);
+    }
+
     public new void set_direction (Gtk.TextDirection dir) {
         this.paned.set_direction (dir);
         base.set_direction (dir);
@@ -104,15 +121,6 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
 
     public new Gtk.TextDirection get_direction () {
         return this.paned.get_direction ();
-    }
-
-    public new void set_default_direction (Gtk.TextDirection dir) {
-        base.set_default_direction (dir);
-        this.paned.set_default_direction (dir);
-    }
-
-    public new Gtk.TextDirection get_default_direction () {
-        return this.paned.get_default_direction ();
     }
 
     public SidebarPaned () {
@@ -131,8 +139,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
             }
         """;
 
-        set_theming (this.paned, DEFAULT_STYLESHEET, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-        set_theming (this.paned, FALLBACK_STYLESHEET, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        Utils.set_theming (this.paned, DEFAULT_STYLESHEET, "",
+                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Utils.set_theming (this.paned, FALLBACK_STYLESHEET, "",
+                           Gtk.STYLE_PROVIDER_PRIORITY_THEME);
     }
 
 
@@ -142,18 +152,24 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
 
     construct {
         push_composite_child ();
+        this.overlay = new Gtk.Overlay ();
+        this.overlay.set_composite_name ("overlay");
+        pop_composite_child ();
+
+        push_composite_child ();
         this.paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
         this.paned.set_composite_name ("paned");
         pop_composite_child ();
 
         this.paned.expand = true;
 
-        this.add (this.paned);
-
         Gdk.RGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
-        this.override_background_color (0, transparent);
+        overlay.override_background_color (0, transparent);
 
         setup_handle ();
+
+        this.overlay.add (this.paned);
+        base.add (this.overlay);
 
         this.paned.size_allocate.connect_after (on_paned_size_allocate);
 
@@ -181,7 +197,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         Gdk.RGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
         this.handle.override_background_color (0, transparent);
 
-        this.add_overlay (handle);
+        overlay.add_overlay (handle);
 
         this.handle.add_events (Gdk.EventMask.BUTTON_PRESS_MASK
                                | Gdk.EventMask.BUTTON_RELEASE_MASK);
@@ -189,29 +205,21 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         this.handle.button_press_event.connect (on_handle_button_press);
         this.handle.button_release_event.connect (on_handle_button_release);
         this.handle.grab_broken_event.connect (on_handle_grab_broken);
-        this.handle.realize.connect (set_arrow_cursor);
-    }
-
-    protected static void set_theming (Gtk.Widget widget, string stylesheet, int priority) {
-        var css_provider = new Gtk.CssProvider ();
-
-        try {
-            css_provider.load_from_data (stylesheet, -1);
-        }
-        catch (Error e) {
-            warning (e.message);
-            return_if_reached ();
-        }
-
-        widget.get_style_context ().add_provider (css_provider, priority);
+        this.handle.realize.connect (set_handle_cursor);
     }
 
     public override bool motion_notify_event (Gdk.EventMotion e) {
         var device = e.device ?? Gtk.get_current_event_device ();
 
         if (device == null) {
-            var dev_manager = this.paned.get_display ().get_device_manager ();
-            device = dev_manager.list_devices (Gdk.DeviceType.MASTER).nth_data (0);
+            var display = this.paned.get_display ();
+
+            if (display != null) {
+                var dev_manager = display.get_device_manager ();
+
+                if (dev_manager != null)
+                    device = dev_manager.list_devices (Gdk.DeviceType.MASTER).nth_data (0);
+            }
         }
 
         if (this.on_resize_mode && device != null) {
@@ -222,7 +230,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
                 window.get_device_position (device, out x, out y, null);
 
                 if (this.orientation == Gtk.Orientation.HORIZONTAL)
-                    pos = is_ltr() ? x : this.paned.get_allocated_width() - x;
+                    pos = is_ltr () ? x : this.paned.get_allocated_width () - x;
                 else
                     pos = y;
 
@@ -239,8 +247,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
 
     private bool is_ltr () {
         var dir = get_direction ();
+
         if (dir == Gtk.TextDirection.NONE)
             dir = get_default_direction ();
+
         return dir == Gtk.TextDirection.LTR;
     }
 
@@ -253,12 +263,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         this.handle.set_size_request (0, 0);
 
         if (horizontal) {
-            this.arrow_cursor = new Gdk.Cursor (Gdk.CursorType.SB_H_DOUBLE_ARROW);
             this.handle.margin_top = this.handle.margin_bottom = 0;
             this.handle.halign = Gtk.Align.START;
             this.handle.valign = Gtk.Align.FILL;
         } else {
-            this.arrow_cursor = new Gdk.Cursor (Gdk.CursorType.SB_V_DOUBLE_ARROW);
             this.handle.margin_left = this.handle.margin_right = 0;
             this.handle.halign = Gtk.Align.FILL;
             this.handle.valign = Gtk.Align.START;
@@ -268,7 +276,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         update_virtual_handle_position ();
 
         // Update cursor.
-        set_arrow_cursor ();
+        set_handle_cursor ();
     }
 
     private void on_paned_size_allocate () {
@@ -303,10 +311,16 @@ public class Granite.Widgets.SidebarPaned : Gtk.Overlay, Gtk.Orientable {
         }
     }
 
-    private void set_arrow_cursor () {
-        var window = this.handle.get_window ();
-        if (window != null && window.get_cursor () != this.arrow_cursor)
-            window.set_cursor (this.arrow_cursor);
+    private void set_handle_cursor () {
+        Gdk.Cursor? arrow_cursor = null;
+
+        var paned_handle_window = this.paned.get_handle_window ();
+        if (paned_handle_window != null)
+            arrow_cursor = paned_handle_window.get_cursor ();
+
+        var handle_window = this.handle.get_window ();
+        if (handle_window != null && handle_window.get_cursor () != arrow_cursor)
+            handle_window.set_cursor (arrow_cursor);
     }
 
     /**
