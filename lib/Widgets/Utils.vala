@@ -49,6 +49,7 @@ namespace Granite.Widgets.Utils {
     [CCode (cname="get_close_pixbuf")]
     public extern Gdk.Pixbuf get_close_pixbuf ();
 
+
     /**
      * Applies the stylesheet to the widget
      */
@@ -87,7 +88,8 @@ namespace Granite.Widgets.Utils {
             provider.load_from_data (stylesheet, -1);
         }
         catch (Error e) {
-            warning (e.message);
+            warning ("Could not create CSS Provider: %s\nStylesheet:\n%s",
+                     e.message, stylesheet);
             return null;
         }
 
