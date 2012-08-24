@@ -88,30 +88,20 @@ namespace Granite.Widgets {
         public ModeButton () {
             Utils.set_theming (this, STYLESHEET, "mode-button", STYLE_PRIORITY);
 
+            set_visual (get_screen ().get_rgba_visual ());
+
             homogeneous = true;
             spacing = 0;
             app_paintable = true;
-            set_visual (get_screen ().get_rgba_visual ());
-
             can_focus = true;
         }
 
-        public int append_pixbuf (Gdk.Pixbuf? pixbuf) {
-            if (pixbuf == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null pixbuf failed.");
-                return -1;
-            }
-
+        public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             var image = new Image.from_pixbuf (pixbuf);
             return append (image);
         }
 
-        public int append_text (string? text) {
-            if (text == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null text string failed.");
-                return -1;
-            }
-
+        public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
 
@@ -126,12 +116,9 @@ namespace Granite.Widgets {
         }
 
         public int append (Gtk.Widget w) {
-            if (w == null) {
-                warning ("GraniteWidgetsModeButton: Attempt to add null widget failed.");
-                return -1;
-            }
-
             var button = new Item ();
+            button.add_events (Gdk.EventMask.SCROLL_MASK);
+            button.scroll_event.connect (on_scroll_event);
 
             button.add (w);
 
@@ -186,12 +173,16 @@ namespace Granite.Widgets {
             _selected = -1;
         }
 
-        protected override bool scroll_event (EventScroll ev) {
-            if (ev.direction == Gdk.ScrollDirection.DOWN) {
-                selected ++;
-            }
-            else if (ev.direction == Gdk.ScrollDirection.UP) {
-                selected --;
+        private bool on_scroll_event (Gtk.Widget widget, Gdk.EventScroll ev) {
+            switch (ev.direction) {
+                case Gdk.ScrollDirection.DOWN:
+                case Gdk.ScrollDirection.RIGHT:
+                    selected ++;
+                    break;
+                case Gdk.ScrollDirection.UP:
+                case Gdk.ScrollDirection.LEFT:
+                    selected --;
+                    break;
             }
 
             return false;
