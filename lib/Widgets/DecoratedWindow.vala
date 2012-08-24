@@ -191,9 +191,7 @@ namespace Granite.Widgets {
         private bool on_button_press (Gdk.EventButton e) {
                 if (coords_over_close_button (e.x, e.y)) {
                     var event = new Gdk.Event (Gdk.EventType.DELETE);
-                    event.any.window = e.window;
-                    event.any.send_event = e.send_event;
-                    this.delete_event (event.any);
+                    this.delete_event (event.copy ().any);
                 }
                 else {
                     this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
