@@ -67,7 +67,7 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Applies an stylesheet to the given screen. This will affects all the
+     * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
      */
     public void set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
