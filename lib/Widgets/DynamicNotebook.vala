@@ -208,9 +208,9 @@ namespace Granite.Widgets {
             get { return _allow_drag; }
             set {
                 _allow_drag = value;
-                this.tabs.foreach ( (t) => {
-                        notebook.set_tab_reorderable (t.page_container, value);
-                    });
+                this.tabs.foreach ((t) => {
+                    notebook.set_tab_reorderable (t.page_container, value);
+                });
             }
         }
 
@@ -222,9 +222,9 @@ namespace Granite.Widgets {
             get { return _allow_new_window; }
             set {
                 _allow_new_window = value;
-                this.tabs.foreach ( (t) => {
-                        notebook.set_tab_detachable (t.page_container, value);
-                    });
+                this.tabs.foreach ((t) => {
+                    notebook.set_tab_detachable (t.page_container, value);
+                });
             }
         }
 
@@ -237,7 +237,7 @@ namespace Granite.Widgets {
         public GLib.List<Tab> tabs {
             get {
                 _tabs = new GLib.List<Tab> ();
-                for (var i=0;i<n_tabs;i++) {
+                for (var i = 0; i < n_tabs; i++) {
                     _tabs.append (notebook.get_tab_label (notebook.get_nth_page (i)) as Tab);
                 }
                 return _tabs;
@@ -297,10 +297,10 @@ namespace Granite.Widgets {
 
             this.add (this.notebook);
 
-            this.button_press_event.connect ( (e) => {
+            this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
                     var t = new Tab ();
-                    notebook.page = (int)this.insert_tab (t, -1);
+                    notebook.page = (int) this.insert_tab (t, -1);
                     this.tab_added (t);
                 }
 
@@ -507,8 +507,7 @@ namespace Granite.Widgets {
                 for (var j = 0; j < tabs.length (); j++) {
                     if (tab != tabs.nth_data (j)) {
                         tabs.nth_data (j).closed ();
-                        if (num == n_tabs)
-                            break;
+                        if (num == n_tabs) break;
                         j--;
                     }
 
