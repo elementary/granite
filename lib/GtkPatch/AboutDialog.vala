@@ -172,7 +172,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 translators_label.set_text("");
             }
             else {
-                translators_label.set_markup("<span size=\"small\">" + _("Translated by ") + _translator_credits.replace("&", "&amp;") + "</span>\n");
+                translators_label.set_markup("<span size=\"small\">" + _("Translated by ") + _translator_credits.replace("&", "&amp;") + "</span>");
                 translators_label.show();
             }
         }
@@ -392,9 +392,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
             }
             if (email == "")
-                text += "<u>%s</u>\n".printf (name);
+                text += "<u>%s</u>\n".printf (name.strip ());
             else
-                text += "<a href=\"%s\" title=\"%s\">%s</a>\n".printf (email,email,name);
+                text += "<a href=\"mailto:%s\" title=\"%s\">%s</a>\n".printf (email,email,name.strip ());
             email = ""; name =""; email_started=false;
         }
         text += "</span>";
