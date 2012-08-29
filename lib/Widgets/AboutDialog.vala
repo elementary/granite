@@ -1,31 +1,30 @@
-//
-//  Copyright (C) 2011 Adrien Plazas
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-//
-//
-//  Authors:
-//      Adrien Plazas <kekun.plazas@laposte.net>
-//  Artists:
-//      Daniel Foré <daniel@elementaryos.org>
-//
+/***
+  BEGIN LICENSE
+
+  Copyright (C) 2011-2012 Adrien Plazas <kekun.plazas@laposte.net>
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License version 3, as published
+  by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranties of
+  MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+  PURPOSE.  See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along
+  with this program.  If not, see <http://www.gnu.org/licenses/>
+
+  END LICENSE
+
+  Artists:
+      Daniel Foré <daniel@elementaryos.org>
+***/
 
 using Gtk;
 
 namespace Granite.Widgets {
-    public class AboutDialog : Granite.GtkPatch.AboutDialog
-    {
+
+    public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.
          */
@@ -73,19 +72,18 @@ namespace Granite.Widgets {
                 border-radius: 200px;
             }
         """;
-        
+
         int shadow_blur = 15;
         int shadow_x    = 0;
         int shadow_y    = 2;
         double shadow_alpha = 0.3;
-        
+
         /**
          * Creates a new Granite.Widgets.AboutDialog
          */
-        public AboutDialog()
-        {
+        public AboutDialog () {
             Box action_area = (Box) get_action_area ();
-            
+
             var draw_ref = new Gtk.Window ();
             draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
 
@@ -129,7 +127,7 @@ namespace Granite.Widgets {
 
             /* bug button */
             bug_button = new Button.with_label (_("Report a Problem"));
-            bug_button.clicked.connect (() => {             
+            bug_button.clicked.connect (() => {
                 try {
                     GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
                 } catch (Error e) {
@@ -145,45 +143,47 @@ namespace Granite.Widgets {
             show_all ();
 
             this.height_request = 282;
-            
-            var w = -1; var h = -1;
+
+            var w = -1;
+            var h = -1;
             this.size_allocate.connect ( () => {
                 if (this.get_allocated_width () == w && this.get_allocated_height () == h)
                     return;
                 w = this.get_allocated_width ();
                 h = this.get_allocated_height ();
-                
+
                 this.buffer = new Granite.Drawing.BufferSurface (w, h);
-                
-                this.buffer.context.rectangle (shadow_blur + shadow_x, 
+
+                this.buffer.context.rectangle (shadow_blur + shadow_x,
                     shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
                 this.buffer.context.set_source_rgba (0, 0, 0, shadow_alpha);
                 this.buffer.context.fill ();
                 this.buffer.exponential_blur (shadow_blur / 2);
-                
-                draw_ref.get_style_context ().render_activity (this.buffer.context, shadow_blur + shadow_x, 
+
+                draw_ref.get_style_context ().render_activity (this.buffer.context, shadow_blur + shadow_x,
                     shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
-                
+
             });
             /*draw the buffer*/
             this.draw.connect ( (ctx) => {
                 if (buffer == null)
                     return false;
-                
+
                 ctx.set_operator (Cairo.Operator.SOURCE);
                 ctx.rectangle (0, 0, w, h);
                 ctx.set_source_rgba (0, 0, 0, 0);
                 ctx.fill ();
-                
+
                 ctx.set_source_surface (this.buffer.surface, 0, 0);
                 ctx.paint ();
-                
+
                 return false;
             });
+
             /*allow moving the window*/
             this.button_press_event.connect ( (e) => {
                 if (e.button == 1) {
-                    this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
+                    this.begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
                     return true;
                 }
                 return false;
@@ -193,4 +193,3 @@ namespace Granite.Widgets {
 
     public extern void show_about_dialog (Gtk.Window *parent, ...);
 }
-

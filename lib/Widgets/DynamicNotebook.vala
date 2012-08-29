@@ -19,6 +19,7 @@
 ***/
 
 namespace Granite.Widgets {
+
     bool is_ancestor (Gdk.Window child, Gdk.Window parent) {
         while (child != null) {
             if (child == parent)
@@ -501,7 +502,7 @@ namespace Granite.Widgets {
                 remove_tab (tab);
             });
 
-            tab.close_others.connect (() => {
+            tab.close_others.connect ( () => {
                 var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
 
                 for (var j = 0; j < tabs.length (); j++) {
