@@ -652,7 +652,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Returns the Item pointed by path, or null if the iter doesn't refer to a valid path.
+         * Returns the Item pointed by path, or null if the path doesn't refer to a valid item.
          */
         public Item? get_item_from_path (Gtk.TreePath path) {
             Gtk.TreeIter iter;
@@ -663,7 +663,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Returns a newly-created iter pointing to the item.
+         * Returns a newly-created Gtk.TreeIter pointing to the item.
          */
         public Gtk.TreeIter? get_item_iter (Item item) {
             Gtk.TreeIter? iter = null, child_iter = get_item_child_iter (item);
@@ -684,6 +684,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public Gtk.TreePath? get_item_path (Item item) {
             Gtk.TreePath? path = null, child_path = get_item_child_path (item);
 
+            // We want a filter path, not a child_model path
             if (child_path != null)
                 path = convert_child_path_to_path (child_path);
 
@@ -691,7 +692,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Sets the sort function, or "unsets" it if null is passed. XXX Please note though,
+         * Sets the sort function, or "unsets" it if null is passed. Please note though,
          * that unsetting the sort function doesn't bring the items back to their initial
          * order.
          */
@@ -703,16 +704,18 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Actual sort function. It simply returns zero if sort_func is null.
          */
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
-            int order = 0;
+            // Return zero by default, since a different value would not be reflexive when
+            // sort_func is null.
+            int sort = 0;
 
             Item? item_a, item_b;
             child_tree.get (a, Column.ITEM, out item_a, -1);
             child_tree.get (b, Column.ITEM, out item_b, -1);
 
             if (sort_func != null && item_a != null && item_b != null)
-                order = sort_func (item_a, item_b);
+                sort = sort_func (item_a, item_b);
 
-            return order;
+            return sort;
         }
 
         private Gtk.TreeIter? get_item_child_iter (Item item) {
@@ -774,6 +777,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public Item? selected_item {
             get { return selected; }
             set { set_selected (value, true); }
+        }
+
+        public bool editing {
+            get { return text_cell.editing; }
         }
 
         private enum Column {
@@ -862,7 +869,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             expander_column.set_cell_data_func (expander_cell, expander_cell_data_func);
 
             // Performance improvement
-            fixed_height_mode = true;
+            //fixed_height_mode = true;
 
             // Selection
             var selection = get_selection ();
@@ -897,7 +904,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void start_editing_item (Item item) {
-            if (item.editable) {
+            if (!editing && item.editable) {
                 // We make the text renderer temporarily editable. This is needed to prevent non-editable
                 // items from being edited when activated. The cell is made non-editable again when the
                 // editing finishes (see on_text_renderer_edited.)
@@ -955,7 +962,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             total_min_width += badge_column.fixed_width;
 
             // Also update size request
-            set_size_request (total_min_width, -1);
+            set_size_request (total_min_width + 2 * LEVEL_INDENTATION + 10, -1);
 
             columns_autosize ();
         }
@@ -968,9 +975,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public void update_expansion (Category category) {
             var path = data_model.get_item_path (category);
             if (path != null) {
-                if (category.expanded || !category.collapsible && !is_row_expanded (path))
+                if (category.expanded || !category.collapsible)
                     expand_row (path, false);
-                else if (is_row_expanded (path))
+                else
                     collapse_row (path);
             }
         }
@@ -1290,6 +1297,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         set { tree.selected_item = value; }
     }
 
+    /**
+     * Whether an item is being edited
+     *
+     * @see Granite.Widgets.Sidebar.start_editing_item
+     * @since 0.2
+     */
+    public bool editing {
+        get { return tree.editing; }
+    }
 
     private Tree tree;
     private FilteredDataModel data_model { get { return tree.data_model; } }
@@ -1309,6 +1325,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         tree.set_composite_name ("treeview");
         pop_composite_child ();
 
+        set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         add (tree);
         show_all ();
 
@@ -1346,7 +1363,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @see Granite.Widgets.Sidebar.Item.editable
      * @since 0.2
      */
-    public void start_editing_item (Item item) requires (item.editable && has_item (item)) {
+    public void start_editing_item (Item item) requires (item.editable && has_item (item) && !editing) {
         tree.start_editing_item (item);
     }
 
@@ -1480,7 +1497,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     /**
      * Updates an item in response to the {@link Granite.Widgets.Sidebar.Item.changed} signal.
      */
-    private void on_item_property_changed (Item item) requires (has_item (item)) {
+    private void on_item_property_changed (Item item, string prop) requires (has_item (item)) {
+        // Currently only handled by add_item() and remove_item()
+        if (prop == "parent")
+            return;
+
         data_model.update_item (item);
 
         var category = item as Category;
