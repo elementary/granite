@@ -203,7 +203,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * @since 0.2
          */
-        public bool visible { get; set; default = true; }
+        public virtual bool visible { get; set; default = true; }
 
         /**
          * Primary icon. This property should be used to give the user an idea of what the
@@ -273,7 +273,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * clickable.) They can be made selectable by setting the {@link Granite.Widgets.Sidebar.Item.editable}
      * property to //true//.
      *
-     * //Empty categories are not displayed//.
+     * //Categories containing zero visible items are not displayed//.
      *
      * @since 0.2
      */
@@ -332,6 +332,28 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * {@inheritDoc}
          *
+         * //Categories containing zero visible children are not visible.//
+         *
+         * @see Granite.Widgets.Sidebar.Item.visible
+         * @since 0.2
+         */
+        public override bool visible {
+            get {
+                uint n_visible = 0;
+                foreach (var item in get_children ()) {
+                    if (item.visible)
+                        n_visible ++;
+                }
+                return base.visible && n_visible > 0;
+            }
+            set {
+                base.visible = value;
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         *
          * //Non-editable categories are not selectable.//
          * See {@link Granite.Widgets.Sidebar.Item.selectable} for further details.
          *
@@ -339,19 +361,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.Item.editable
          * @see Granite.Widgets.Sidebar.Category.expanded
          * @see Granite.Widgets.Sidebar.Category.collapsible
+         * @since 0.2
          */
         public override bool selectable {
-            get {
-                return base.selectable && editable;
-            }
+            get { return base.selectable && editable; }
         }
 
         /**
          * Number of child items contained by the category.
          *
          * @since 0.2
+         * @see Granite.Widgets.Sidebar.Category.get_children
          */
-        public uint n_children { get { return children.size; } }
+        public uint n_children {
+            get { return children.size; }
+        }
 
         private Gee.Set<Item> children = new Gee.HashSet<Item> ();
 
@@ -370,7 +394,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Gets all the items which are part of the category.
          *
-         * @return (transfer full) child items.
+         * @return (transfer full) Children.
+         * @see Granite.Widgets.Sidebar.Category.n_children
          * @since 0.2
          */
         public Gee.Set<Item> get_children () {
@@ -748,14 +773,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             Item? item;
             child_tree.get (iter, Column.ITEM, out item, -1);
 
-            if (item != null) {
+            if (item != null)
                item_visible = item.visible;
-
-                // Don't show categories with less than 1 child
-                var category = item as Category;
-                if (category != null && category.n_children < 1)
-                    item_visible = false;
-            }
 
             return item_visible;
         }
