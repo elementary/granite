@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-05 10:54+0200\n"
+"POT-Creation-Date: 2012-09-05 17:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,23 +73,38 @@ msgstr ""
 msgid "%B %e, %Y"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:102
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:102
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:123
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:123
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:124
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:124
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:130
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:130
 msgid "Close Other Tabs"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:315
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:315
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
+msgid "Open in a new Window"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
+msgid "Duplicate"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+msgid "New Tab"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
 msgstr ""
 
