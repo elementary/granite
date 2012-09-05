@@ -54,13 +54,13 @@ public class Granite.Widgets.CellRendererNumerable : Gtk.CellRenderer {
         set_alignment (0.5f, 0.5f);
     }
 
-    protected override Gtk.SizeRequestMode get_request_mode () {
+    public override Gtk.SizeRequestMode get_request_mode () {
         return Gtk.SizeRequestMode.WIDTH_FOR_HEIGHT;
     }
 
-    protected override void get_preferred_height (Gtk.Widget widget,
-                                                  out int minimum_size,
-                                                  out int natural_size)
+    public override void get_preferred_height (Gtk.Widget widget,
+                                               out int minimum_size,
+                                               out int natural_size)
     {
         var test_layout = widget.create_pango_layout (get_text ());
         set_text_attributes (test_layout);
@@ -77,9 +77,9 @@ public class Granite.Widgets.CellRendererNumerable : Gtk.CellRenderer {
         minimum_size = natural_size = preferred_height;
     }
 
-	public override void get_preferred_width_for_height (Gtk.Widget widget, int width,
-	                                                     out int minimum_width,
-	                                                     out int natural_width)
+    public override void get_preferred_width_for_height (Gtk.Widget widget, int width,
+                                                         out int minimum_width,
+                                                         out int natural_width)
     {
         int preferred_width = (text_rect != null) ? text_rect.width : 0;
 
@@ -89,7 +89,7 @@ public class Granite.Widgets.CellRendererNumerable : Gtk.CellRenderer {
         minimum_width = natural_width = preferred_width;
     }
 
-    protected override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
+    public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
         if (count > 1) {
             var style_context = widget.get_style_context ();
@@ -142,7 +142,7 @@ public class Granite.Widgets.CellRendererNumerable : Gtk.CellRenderer {
     }
 
     // XXX @deprecated. Not used
-    protected override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                       out int x_offset, out int y_offset,
                                       out int width, out int height) {
         x_offset = y_offset = width = height = 0;

@@ -25,13 +25,13 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         set_alignment (0.5f, 0.5f);
     }
 
-    protected override Gtk.SizeRequestMode get_request_mode () {
+    public override Gtk.SizeRequestMode get_request_mode () {
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
 
-    protected override void get_preferred_width (Gtk.Widget widget,
-                                                 out int minimum_size,
-                                                 out int natural_size)
+    public override void get_preferred_width (Gtk.Widget widget,
+                                              out int minimum_size,
+                                              out int natural_size)
     {
         if (widget is Gtk.TreeView)
             widget.style_get ("expander-size", out arrow_size);
@@ -39,14 +39,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         minimum_size = natural_size = arrow_size;
     }
 
-	protected override void get_preferred_height_for_width (Gtk.Widget widget, int width,
-	                                                        out int minimum_height,
-	                                                        out int natural_height)
+    public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
+                                                         out int minimum_height,
+                                                         out int natural_height)
     {
         minimum_height = natural_height = arrow_size;
     }
 
-    protected override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
+    public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
         bool is_expandable = (flags & Gtk.CellRendererState.EXPANDABLE) != 0;
 
@@ -54,10 +54,11 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
             bool expanded = (flags & Gtk.CellRendererState.EXPANDED) != 0;
 
             var ctx = widget.get_style_context ();
-            var orig_state = ctx.get_state ();
+            ctx.save ();
 
             const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
-            ctx.set_state (expanded ? orig_state | EXPANDED_FLAG : orig_state & ~EXPANDED_FLAG);
+            var state = ctx.get_state ();
+            ctx.set_state (expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
             int offset = arrow_size / 2;
             int x = cell_area.x + cell_area.width / 2 - offset;
@@ -65,14 +66,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
             ctx.render_expander (context, x, y, arrow_size, arrow_size);
 
             // Restore original state
-            ctx.set_state (orig_state);
+            ctx.restore ();
         }
     }
 
     // XXX @deprecated. Not used
-    protected override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                      out int x_offset, out int y_offset,
-                                      out int width, out int height)
+    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+                                   out int x_offset, out int y_offset,
+                                   out int width, out int height)
     {
         x_offset = y_offset = width = height = 0;
     }
