@@ -132,7 +132,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * ---------------------------------------------------------------------------------------------
      * + Item            |                                   |
      *   - parent        | Not monitored                     | N/A
-     *   - count         | Sidebar::on_item_property_changed | Sidebar::count_cell_data_func
      *   - name          | Sidebar::on_item_property_changed | Sidebar::name_cell_data_func
      *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See on_text_renderer_edit)
      *   - visible       | Sidebar::on_item_property_changed | FilteredDataModel::filter_visible_func
@@ -185,7 +184,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         /**
          * A counter shown in a bubble right next to the item's name. It can be used for displaying
-         * the number of unread messages in the "Inbox" item, for instance.
+         * the number of unread messages in the "Inbox" item, for instance. ''Still not implemented''.
          *
          * @since 0.2
          */
@@ -804,7 +803,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private enum Column {
             ITEM,
-            BADGE,
             EXPANDER,
             N_COLS
         }
@@ -814,7 +812,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Item? selected;
 
         private Gtk.CellRendererText text_cell;
-        private CellRendererNumerable count_cell;
         private CellRendererIcon activatable_cell;
         private CellRendererExpander expander_cell;
 
@@ -857,19 +854,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
 
-            // insert count renderer
-            var badge_column = new Gtk.TreeViewColumn ();
-            badge_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
-
-            // width test
-            badge_column.expand = false;
-
-            insert_column (badge_column, Column.BADGE);
-
-            count_cell = new CellRendererNumerable ();
-            badge_column.set_cell_data_func (count_cell, count_cell_data_func);
-            badge_column.pack_start (count_cell, true);
-
             // add expander
             var expander_column = new Gtk.TreeViewColumn ();
 
@@ -886,9 +870,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             expander_cell = new CellRendererExpander ();
             expander_column.pack_start (expander_cell, false);
             expander_column.set_cell_data_func (expander_cell, expander_cell_data_func);
-
-            // Performance improvement
-            //fixed_height_mode = true;
 
             // Selection
             var selection = get_selection ();
@@ -970,15 +951,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 expander_column.fixed_width = natural_size.width;
 
             total_min_width += expander_column.fixed_width;
-
-            // Badge size test
-            var badge_column = get_column (Column.BADGE);
-            count_cell.count = 1000; // test
-            count_cell.get_preferred_size (this, out minimum_size, out natural_size);
-            count_cell.count = 0;
-            badge_column.fixed_width = natural_size.width;
-
-            total_min_width += badge_column.fixed_width;
 
             // Also update size request
             set_size_request (total_min_width + 2 * LEVEL_INDENTATION + 10, -1);
@@ -1108,25 +1080,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             icon_renderer.visible = visible;
             icon_renderer.gicon = icon;
-        }
-
-        private void count_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                           Gtk.TreeModel model, Gtk.TreeIter iter) {
-            var count_renderer = renderer as CellRendererNumerable;
-            assert (count_renderer != null);
-
-            bool visible = false;
-            uint count = 0;
-
-            var item = get_item_from_model (model, iter);
-            if (item != null) {
-                visible = !(item is Category);
-                if (item.count > 0)
-                    count = item.count;
-            }
-
-            count_renderer.visible = visible;
-            count_renderer.count = count;
         }
 
         private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
