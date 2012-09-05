@@ -632,7 +632,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // not be displayed
                     var parent = item.parent; // hold a reference since the item's reference will be dropped
                     if (parent != null && parent.n_children < 1) {
-                        Idle.add_full (Priority.HIGH_IDLE, () => {
+                        Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
                             if (parent != null)
                                 update_item (parent);
                             return false;
@@ -1467,7 +1467,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             foreach (var child in category.get_children ()) {
                 // This will always be faster than the recursive implementation
-                Idle.add_full (Priority.HIGH_IDLE, () => {
+                Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
                     add_item (child);
                     return false;
                 });
