@@ -84,9 +84,15 @@ namespace Granite.Widgets {
 
         internal Gtk.Button close;
         public Gtk.Menu menu { get; set; }
+		
+		//we need to be able to toggle those from the notebook
+		internal Gtk.MenuItem new_window_m;
+		internal Gtk.MenuItem duplicate_m;
 
         internal signal void closed ();
         internal signal void close_others ();
+        internal signal void new_window ();
+        internal signal void duplicate ();
 
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label = new Gtk.Label (label);
@@ -122,12 +128,18 @@ namespace Granite.Widgets {
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
             var close_other_m = new Gtk.MenuItem.with_label (_("Close Other Tabs"));
+            new_window_m = new Gtk.MenuItem.with_label (_("Open in a new Window"));
+            duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
             menu.append (close_other_m);
             menu.append (close_m);
+            menu.append (new_window_m);
+            menu.append (duplicate_m);
             menu.show_all ();
 
             close_m.activate.connect (() => closed () );
             close_other_m.activate.connect (() => close_others () );
+            new_window_m.activate.connect (() => new_window () );
+            duplicate_m.activate.connect (() => duplicate () );
 
             lbl.button_press_event.connect ((e) => {
                 if (e.button == 2 && close.visible) { //if !close.visible, closable if false
@@ -229,6 +241,20 @@ namespace Granite.Widgets {
             }
         }
 
+		/**
+		 * Allow duplicating tabs
+		 **/
+		bool _allow_duplication = true;
+		public bool allow_duplication {
+			get { return _allow_duplication; }
+			set {
+				_allow_duplication = value;
+				foreach (var tab in tabs) {
+					tab.duplicate_m.visible = value;
+				}
+			}
+		}
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
@@ -251,6 +277,11 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
+		/**
+		 * The menu appearning when the notebook is clicked on a blank space
+		 **/
+		public Gtk.Menu menu { get; private set; }
+
         Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
 
@@ -262,6 +293,7 @@ namespace Granite.Widgets {
         Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
+        public signal void tab_duplicated (Tab duplicated_tab);
 
         private static const string CLOSE_BUTTON_STYLE = """
         * {
@@ -298,11 +330,26 @@ namespace Granite.Widgets {
 
             this.add (this.notebook);
 
+			menu = new Gtk.Menu ();
+			
+			var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
+			menu.append (new_tab_m);
+			
+			menu.show_all ();
+
+			new_tab_m.activate.connect (() => {
+				var t = new Tab ();
+				notebook.page = (int)this.insert_tab (t, -1);
+				this.tab_added (t);
+			});
+
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
                     var t = new Tab ();
                     notebook.page = (int) this.insert_tab (t, -1);
                     this.tab_added (t);
+                } else if (e.button == 3) {
+                	menu.popup (null, null, null, 3, e.time);
                 }
 
                 return false;
@@ -493,6 +540,8 @@ namespace Granite.Widgets {
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
 
             tab._icon.visible = show_icons;
+            tab.duplicate_m.visible = allow_duplication;
+            tab.new_window_m.visible = allow_new_window;
 
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
@@ -514,6 +563,17 @@ namespace Granite.Widgets {
 
                     num = n_tabs;
                 }
+            });
+
+            tab.new_window.connect (() => {
+            	notebook.remove_page (notebook.page_num (tab.page_container));
+            	tab_moved (tab, 0, true, 0, 0);
+            });
+            
+            tab.duplicate.connect (() => {
+            	var dupl = new Tab (tab.label, tab.icon, tab.page);
+            	insert_tab (dupl, -1);
+            	tab_duplicated (dupl);
             });
 
             this.recalc_size ();
