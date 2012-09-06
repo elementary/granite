@@ -164,9 +164,53 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Emitted every time a property changes.
          *
          * @param self Self.
+         * @param prop_name Property name.
          * @since 0.2
          */
-        public signal void changed (Item self, string prop_name);
+        public virtual signal void changed (Item self, string prop_name) {
+#if TRACE_SIDEBAR
+            debug ("Item::changed[%s] [%s]", prop_name, name);
+#endif
+        }
+
+        /**
+         * Emitted when the user has finished editing the item's name. By default, the new
+         * name is automatically asigned to the {@link Granite.Widgets.Sidebar.name} property.
+         *
+         * @since 0.2
+         */
+        public virtual signal void edited (string new_name) {
+#if TRACE_SIDEBAR
+            debug ("Item::edited [%s]\tnew_name = %s", name, new_name);
+#endif
+            this.name = new_name;
+        }
+
+        /**
+         * The {@link Granite.Widgets.Sidebar.Item.activatable} icon was activated.
+         *
+         * @param time Time when the event took place.
+         * @see Granite.Widgets.Sidebar.Item.activatable
+         * @since 0.2
+         */
+        public virtual signal void action_activated (uint32 time) {
+#if TRACE_SIDEBAR
+            debug ("Item::action_activated [%s]", name);
+#endif
+        }
+
+        /**
+         * Emitted when the item is double-clicked or when it is selected and one of the keys:
+         * Space, Shift+Space, Return or Enter is pressed. This signal is //not emitted// for
+         * editable items.
+         *
+         * @since 0.2
+         */
+        public virtual signal void activated () {
+#if TRACE_SIDEBAR
+            debug ("Item::activated [%s]", name);
+#endif
+        }
 
         /**
          * Parent {@link Granite.Widgets.Sidebar.Category} of the item.
@@ -195,7 +239,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * @since 0.2
          */
-        public bool editable { get; set; default = false; }
+        public virtual bool editable { get; set; default = false; }
 
         /**
          * Whether the item will appear in the sidebar's tree or not.
@@ -205,26 +249,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public virtual bool visible { get; set; default = true; }
 
         /**
-         * Primary icon. This property should be used to give the user an idea of what the
-         * item represents (i.e. content type.)
-         *
-         * @since 0.2
-         */
-        public Icon icon { get; set; }
-
-        /**
-         * An activatable icon that works like a button. It can be used for e.g. showing an
-         * "eject" icon on a device's sidebar item.
-         *
-         * @see Granite.Widgets.Sidebar.item_action_activated
-         * @since 0.2
-         */
-        public Icon activatable { get; set; }
-
-        /**
          * Whether the item can be selected or not.
          *
-         * There are a couple reasons that could make an item not-selectable:<<BR>>
+         * There are a couple reasons that could make the item not-selectable:<<BR>>
          * * The item is not visible<<BR>>
          * * The item's parent category is collapsed<<BR>>
          *
@@ -244,6 +271,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
+         * Primary icon. This property should be used to give the user an idea of what the
+         * item represents (i.e. content type.)
+         *
+         * @since 0.2
+         */
+        public Icon icon { get; set; }
+
+        /**
+         * An activatable icon that works like a button. It can be used for e.g. showing an
+         * "eject" icon on a device's sidebar item.
+         *
+         * @see Granite.Widgets.Sidebar.Item.action_activated
+         * @since 0.2
+         */
+        public Icon activatable { get; set; }
+
+
+        /**
          * Creates a new {@link Granite.Widgets.Sidebar.Item}.
          *
          * @param name Name of the item.
@@ -253,6 +298,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public Item (string name = "") {
             this.name = name;
             this.notify.connect (on_property_changed);
+        }
+
+        /**
+         * Invoked when the item is secondary-clicked or when the usual menu keys are pressed.
+         *
+         * @return A {@link Gtk.Menu} or //null// if nothing should be displayed.
+         * @since 0.2
+         */
+        public virtual Gtk.Menu? get_context_menu () {
+            return null;
         }
 
         private void on_property_changed (ParamSpec prop) {
@@ -437,6 +492,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void add_item (Item item) requires (item.parent == null && !(item in children)) {
+#if TRACE_SIDEBAR
+            debug ("Category::add_item [%s]\titem = %s", name, item.name);
+#endif
+
             lock (children) {
                 item.parent = this;
                 children.add (item);
@@ -460,6 +519,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void remove_item (Item item) requires (item.parent == this && item in children) {
+#if TRACE_SIDEBAR
+            debug ("Category::remove_item [%s]\titem = %s", name, item.name);
+#endif
+
             lock (children) {
                 children.remove (item);
             }
@@ -477,6 +540,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
+#if TRACE_SIDEBAR
+            debug ("Category::clear [%s]", name);
+#endif
             foreach (var item in get_children ())
                 remove_item (item);
         }
@@ -597,6 +663,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void update_item (Item item) {
+#if TRACE_SIDEBAR
+            debug ("FilteredDataModel::update_item [%s]", item.name);
+#endif
+
             lock (child_tree) {
                 // Emitting row_changed() for this item's row in the child model causes the filter to
                 // re-evaluate whether a row is visible or not, and that's exactly what we want.
@@ -615,6 +685,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void add_item (Item item) {
+#if TRACE_SIDEBAR
+            debug ("FilteredDataModel::add_item [%s]", item.name);
+#endif
+
             lock (child_tree) {
                 // Try to find the parent. XXX: If the parent is not found, and item.parent != null,
                 // we should call add_item(item.parent) in order to add it prior to adding the item.
@@ -635,6 +709,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void remove_item (Item item) {
+#if TRACE_SIDEBAR
+            debug ("FilteredDataModel::remove_item [%s]", item.name);
+#endif
+
             lock (child_tree) {
                 if (items.has_key (item)) {
                     // get_item_child_iter() depends on @items.get(item) for retrieving the right iter,
@@ -728,7 +806,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Actual sort function. It simply returns zero if sort_func is null.
          */
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
-            // Return zero by default, since a different value would not be reflexive when
+            // Return zero by default, since a different value would not be reflexive nor symmetric when
             // sort_func is null.
             int sort = 0;
 
@@ -785,13 +863,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * The tree that actually displays the items. All the user interaction happens here.
      */
     private class Tree : Gtk.TreeView {
-
         public FilteredDataModel data_model { get; set; }
-        public Sidebar sidebar { get; private set; }
 
-        /**
-         * See Sidebar.selected for more information
-         */
+        public signal void item_selected (Item item);
+
         public Item? selected_item {
             get { return selected; }
             set { set_selected (value, true); }
@@ -810,7 +885,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private const int LEVEL_INDENTATION = 18;
 
-        // i.e. right-left padding. This space is added at both ends of the tree
+        // right-left padding. This space is added at both ends of the tree
         private const int BASE_INDENTATION = LEVEL_INDENTATION / 3;
 
         private Item? selected;
@@ -820,8 +895,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private CellRendererExpander expander_cell;
 
 
-        public Tree (Sidebar sidebar, FilteredDataModel data_model) {
-            this.sidebar = sidebar;
+        public Tree (FilteredDataModel data_model) {
 
             this.data_model = data_model;
             set_model (data_model);
@@ -911,6 +985,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // Try to scroll to the respective cell
             var path = data_model.get_item_path (item);
             if (path != null) {
+#if TRACE_SIDEBAR
+                debug ("Tree::scroll_to_item [%s]", item.name);
+#endif
                 scroll_to_cell (path, null, false, 0, 0);
                 scrolled = true;
             }
@@ -924,7 +1001,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 // items from being edited when activated. The cell is made non-editable again when the
                 // editing finishes (see on_text_renderer_edited.)
                 text_cell.editable = true;
-
+#if TRACE_SIDEBAR
+                debug ("Tree::start_editing_item [%s]", item.name);
+#endif
                 var path = data_model.get_item_path (item);
                 if (path != null)
                     set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
@@ -939,9 +1018,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editable = false;
 
             var item = data_model.get_item_from_path (new Gtk.TreePath.from_string (path));
-            if (item != null && item.editable) {
-                item.name = new_text;
-                sidebar.item_edited (item);
+            if (item != null) {
+#if TRACE_SIDEBAR
+                debug ("Tree::on_text_renderer_edited [%s]", item.name);
+#endif
+                item.edited (new_text);
             }
         }
 
@@ -980,7 +1061,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         public void update_expansion (Category category) {
             var path = data_model.get_item_path (category);
+
             if (path != null) {
+#if TRACE_SIDEBAR
+                debug ("Tree::update_expansion [%s]", category.name);
+#endif
                 if (category.expanded || !category.collapsible)
                     expand_row (path, false);
                 else
@@ -992,10 +1077,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (column == get_column (Column.ITEM)) {
                 var item = data_model.get_item_from_path (path);
                 if (item != null) {
+#if TRACE_SIDEBAR
+                    debug ("Tree::row_activated [%s]", item.name);
+#endif
                     if (item.editable)
                         start_editing_item (item);
                     else
-                        sidebar.item_activated (item);
+                        item.activated ();
                 }
             }
         }
@@ -1038,7 +1126,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     this.selected = item; // Set new item a selected
 
                     // Notify clients
-                    sidebar.item_selected (this.selected);
+                    item_selected (this.selected);
                 }
             }
 
@@ -1115,21 +1203,38 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public override bool key_release_event (Gdk.EventKey event) {
+
            if (selected_item != null) {
                 switch (event.keyval) {
                     case Gdk.Key.F2:
+                       var modifiers = Gtk.accelerator_get_default_mod_mask ();
                         // try to start editing selected item
-                        if (selected_item.editable)
+                        if ((event.state & modifiers) == 0 && selected_item.editable)
                             start_editing_item (selected_item);
-                        break;
-                     // XXX replace with Gtk.Widget.popup_menu()
-                     case Gdk.Key.Menu:
-                        sidebar.item_secondary_clicked (selected_item, event.time);
                         break;
                 }
             }
 
             return base.key_release_event (event);
+        }
+
+        public override bool popup_menu () {
+            return popup_context_menu (selected_item, null);
+        }
+
+        private bool popup_context_menu (Item item, Gdk.EventButton? event) {
+            var time = (event != null) ? event.time : Gtk.get_current_event_time ();
+            var button = (event != null) ? event.button : 0;
+
+            var menu = item.get_context_menu ();
+
+            if (menu != null) {
+                menu.attach_to_widget (this.parent, null);
+                menu.popup (null, null, null, button, time);
+                return true;
+            }
+
+            return false;
         }
 
         public override bool button_press_event (Gdk.EventButton event) {
@@ -1140,18 +1245,23 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 var item = data_model.get_item_from_path (path);
+
                 if (item != null && event.type == Gdk.EventType.BUTTON_PRESS) {
-                    if (event.button == Gdk.BUTTON_PRIMARY) {
+                    // This is implemented in C as a union, so there's no other way around than doing
+                    // pointer casting when working from Vala.
+                    var ev = (Gdk.Event*)(&event);
+
+                    if (ev->triggers_context_menu ()) {
+                        popup_context_menu (item, event);
+                    } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         if (over_activatable (item, column, cell_x, cell_y)) {
-                            sidebar.item_action_activated (item, event.time);
+                            item.action_activated (event.time);
                         } else if (over_expander (item, column, cell_x, cell_y)) {
                             debug ("Expander clicked");
                             var category = item as Category;
                             if (category != null)
                                 category.expanded = !category.expanded;
                         }
-                    } else if (event.button == Gdk.BUTTON_SECONDARY) {
-                        sidebar.item_secondary_clicked (item, event.time);
                     }
                 }
             } else {
@@ -1194,51 +1304,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
     /**
-     * Emitted when the user has finished editing the name of an editable item.
-     * It is also emitted for {@link Granite.Widgets.Sidebar.Category} items.
-     *
-     * @param item Edited item.
-     * @since 0.2
-     */
-    public signal void item_edited (Item item);
-
-    /**
      * Emitted when the sidebar selection changes.
      *
      * @param item Selected item.
      * @since 0.2
      */
-    public signal void item_selected (Item? item);
-
-    /**
-     * Emitted when an item is secondary-clicked or when the //Menu// key is pressed.
-     * It is also emitted for {@link Granite.Widgets.Sidebar.Category} items.
-     *
-     * @param item Clicked item.
-     * @param time time when the event took place.
-     * @since 0.2
-     */
-    public signal void item_secondary_clicked (Item item, uint32 time);
-
-    /**
-     * The {@link Granite.Widgets.Sidebar.Item.activatable} icon was activated for an item.
-     *
-     * @param item Item whose action was activated.
-     * @param time Time when the event took place.
-     * @see Granite.Widgets.Sidebar.Item.activatable
-     * @since 0.2
-     */
-    public signal void item_action_activated (Item item, uint32 time);
-
-    /**
-     * Emitted when an item is double-clicked or when an item is selected and one of the keys:
-     * Space, Shift+Space, Return or Enter is pressed. This signal is //not emitted// for
-     * editable items.
-     *
-     * @param item Item activated.
-     * @since 0.2
-     */
-    public signal void item_activated (Item item);
+    public virtual signal void item_selected (Item? item) {
+#if TRACE_SIDEBAR
+        debug ("item_selected [%s]", item != null ? item.name : "null");
+#endif
+    }
 
     /**
      * A {@link Granite.Widgets.Sidebar.SortFunc} should return a negative integer, zero, or a
@@ -1285,7 +1360,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Whether an item is being edited
+     * Whether an item is being edited.
      *
      * @see Granite.Widgets.Sidebar.start_editing_item
      * @since 0.2
@@ -1308,13 +1383,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         var model = new FilteredDataModel ();
 
         push_composite_child ();
-        tree = new Tree (this, model);
+        tree = new Tree (model);
         tree.set_composite_name ("treeview");
         pop_composite_child ();
 
         set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         add (tree);
         show_all ();
+
+        tree.item_selected.connect ( (item) => item_selected (item) );
 
         // Initialize item monitor
         root.child_added.connect (add_item);
@@ -1344,10 +1421,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * If //item// is editable, this activates the editor; otherwise, it does nothing.
+     * If //item// is editable, this activates the editor; otherwise, it does nothing. If an item
+     * was already being edited, this will fail.
      *
      * @param item Item to edit.
      * @see Granite.Widgets.Sidebar.Item.editable
+     * @see Granite.Widgets.Sidebar.editing
      * @since 0.2
      */
     public void start_editing_item (Item item) requires (item.editable && has_item (item) && !editing) {

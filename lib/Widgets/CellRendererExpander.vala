@@ -47,7 +47,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                    Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
         bool is_expandable = (flags & Gtk.CellRendererState.EXPANDABLE) != 0;
 
         if (is_expandable) {
