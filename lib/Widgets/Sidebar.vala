@@ -804,10 +804,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private enum Column {
             ITEM,
             EXPANDER,
+            END_PADDING,
             N_COLS
         }
 
         private const int LEVEL_INDENTATION = 18;
+
+        // i.e. right-left padding. This space is added at both ends of the tree
+        private const int BASE_INDENTATION = LEVEL_INDENTATION / 3;
 
         private Item? selected;
 
@@ -839,12 +843,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             insert_column (item_column, Column.ITEM);
 
+            var left_spacer = new Gtk.CellRendererText ();
+            left_spacer.xpad = BASE_INDENTATION / 2;
+            item_column.pack_start (left_spacer, false);
+
             var icon_cell = new CellRendererIcon (CellRendererIcon.IconType.ICON);
+            icon_cell.xpad = 3;
             item_column.pack_start (icon_cell, false);
             item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
 
             text_cell = new Gtk.CellRendererText ();
-            text_cell.xpad = 3;
             text_cell.editable = false;
             text_cell.ellipsize = Pango.EllipsizeMode.END;
             text_cell.xalign = 0.0f;
@@ -870,6 +878,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             expander_cell = new CellRendererExpander ();
             expander_column.pack_start (expander_cell, false);
             expander_column.set_cell_data_func (expander_cell, expander_cell_data_func);
+
+            var end_padding_column = new Gtk.TreeViewColumn ();
+            end_padding_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
+            end_padding_column.fixed_width = BASE_INDENTATION;
+            end_padding_column.expand = false;
+
+            insert_column (end_padding_column, Column.END_PADDING);
 
             // Selection
             var selection = get_selection ();
@@ -1438,7 +1453,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             tree.update_expansion (category);
 
             foreach (var child in category.get_children ()) {
-                // This will always be faster than the recursive implementation
+                // This will always be faster than the normal recursive implementation
                 Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
                     add_item (child);
                     return false;
