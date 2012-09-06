@@ -7,98 +7,113 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-01 23:48-0500\n"
+"POT-Creation-Date: 2012-09-05 17:23+0200\n"
 "PO-Revision-Date: 2012-08-07 06:29+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 08:39+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-09-06 04:51+0000\n"
+"X-Generator: Launchpad (build 15909)\n"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
 msgstr "Dirancang oleh"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
 msgstr "Ditulis oleh"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
 msgstr "Diterjemahkan oleh "
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
 msgstr "Program ini diterbitkan di bawah ketentuan "
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " lisensi, TANPA GARANSI; lebih lengkap, kunjungi "
 
-#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:25
-#: /home/codygarver/granite/po/../lib/Widgets//DatePicker.vala:25
-msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
-
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:116
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:116
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:133
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:133
-msgid "Translate This App"
-msgstr "Terjemahkan Apl Ini"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:138
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:138
-msgid "Report a Problem"
-msgstr "Laporkan Masalah"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:51
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:51
-msgid "Menu"
-msgstr "Menu"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:56
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:56
-msgid "About"
-msgstr "Ihwal"
-
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
 msgstr "Tak tersambung ke Contractor. Anda perlu memasangnya"
 
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
 msgstr "Tidak ada aksi untuk berkas ini"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:80
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:80
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:51
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
+msgid "Menu"
+msgstr "Menu"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
+msgid "About"
+msgstr "Ihwal"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
+#: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
+msgid "%B %e, %Y"
+msgstr "%B %e, %Y"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
 msgstr "Tutup tab"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:106
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:106
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
 msgstr "Tutup Tab"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:107
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:107
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:130
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:130
 msgid "Close Other Tabs"
 msgstr "Tutup Tab Lain"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:296
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:296
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
+msgid "Open in a new Window"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
+msgid "Duplicate"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+msgid "New Tab"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
 msgstr "Tab baru"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "Terjemahkan Apl Ini"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "Laporkan Masalah"
