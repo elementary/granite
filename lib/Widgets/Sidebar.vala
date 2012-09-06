@@ -1257,15 +1257,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                         if (over_activatable (item, column, cell_x, cell_y)) {
                             item.action_activated (event.time);
                         } else if (over_expander (item, column, cell_x, cell_y)) {
-                            debug ("Expander clicked");
+#if TRACE_SIDEBAR
+                            debug ("Tree: expander clicked");
+#endif
                             var category = item as Category;
                             if (category != null)
                                 category.expanded = !category.expanded;
                         }
                     }
                 }
-            } else {
-                debug ("could not get path at %i, %i", x, y);
             }
 
             return base.button_press_event (event);
@@ -1573,8 +1573,5 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         var category = item as Category;
         if (category != null)
             tree.update_expansion (category);
-
-        // And for the remaining properties, let the cell-data functions do their job.
-        tree.queue_draw ();
     }
 }
