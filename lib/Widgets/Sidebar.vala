@@ -174,8 +174,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Emitted when the user has finished editing the item's name. By default, the new
-         * name is automatically asigned to the {@link Granite.Widgets.Sidebar.name} property.
+         * Emitted when the user has finished editing the item's name. By default, if the name doesn't consist
+         * of white space, it is automatically asigned to the {@link Granite.Widgets.Sidebar.name} property.
          *
          * @since 0.2
          */
@@ -183,7 +183,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 #if TRACE_SIDEBAR
             debug ("Item::edited [%s]\tnew_name = %s", name, new_name);
 #endif
-            this.name = new_name;
+            if (new_name.strip () != "")
+                this.name = new_name;
         }
 
         /**
@@ -583,14 +584,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     private class FilteredDataModel : Gtk.TreeModelFilter {
 
         /**
-         * An object that references a particular row in the model.
-         * This class is a wrapper built around Gtk.TreeRowReference.
+         * An object that references a particular row in a model. This class is a wrapper built around
+         * Gtk.TreeRowReference, and exists with the purpose of ensuring we never use invalid tree paths
+         * or iters in the model, since most of these errors provoke failures due to GTK+ assertions
+         * or even worse: unexpected behavior.
          */
         private class NodeWrapper {
-            // The actual reference to the node
+            /**
+             * The actual reference to the node. If is is null, it is treated as invalid.
+             */
             private Gtk.TreeRowReference? row_reference;
 
-            // Returns a valid Gtk.TreeIter if the node exists; null otherwise
+            /**
+             * A newly-created Gtk.TreeIter pointing to the node if it exists; null otherwise.
+             */
             public Gtk.TreeIter? iter {
                 owned get {
                     Gtk.TreeIter? rv = null;
@@ -608,20 +615,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 }
             }
 
-            // Returns a valid Gtk.TreePath if the node exists; null otherwise
+            /**
+             * A newly-created Gtk.TreePath pointing to the node if it exists; null otherwise.
+             */
             public Gtk.TreePath? path {
                 owned get {
                     return valid ? row_reference.get_path () : null;
                 }
             }
 
-            // Returns whether the node is valid or not
+            /**
+             * Whether the node is valid or not. When it is not valid, no valid references are
+             * returned by the object to avoid errors (null is returned instead).
+             */
             public bool valid {
                 get { return row_reference != null && row_reference.valid (); }
             }
 
             public NodeWrapper (Gtk.TreeModel model, Gtk.TreeIter iter) {
-                // create row reference
                 row_reference = new Gtk.TreeRowReference (model, model.get_path (iter));
             }
         }
@@ -635,7 +646,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     case ITEM:
                         return typeof (Item);
                     default:
-                        assert_not_reached (); // a GType must be returned for every valid column
+                        assert_not_reached (); // a Type must be returned for every valid column
                 }
             }
         }
@@ -662,16 +673,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             set_visible_func (filter_visible_func);
         }
 
-        public void update_item (Item item) {
+        public bool has_item (Item item) {
+            return items.has_key (item);
+        }
+
+        public void update_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
             debug ("FilteredDataModel::update_item [%s]", item.name);
 #endif
-
             lock (child_tree) {
-                // Emitting row_changed() for this item's row in the child model causes the filter to
-                // re-evaluate whether a row is visible or not, and that's exactly what we want.
+                // Emitting row_changed() for this item's row in the child model causes the filter
+                // (i.e. this model) to re-evaluate whether a row is visible or not, calling
+                // filter_visible_func for that row again, and that's exactly what we want.
                 var node_reference = items.get (item);
-                if (node_reference != null && node_reference.valid) {
+                if (node_reference != null) {
                     var path = node_reference.path;
                     var iter = node_reference.iter;
                     if (path != null && iter != null)
@@ -680,66 +695,56 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        public bool has_item (Item item) {
-            return items.has_key (item);
-        }
-
-        public void add_item (Item item) {
+        public void add_item (Item item) requires (!has_item (item)) {
 #if TRACE_SIDEBAR
             debug ("FilteredDataModel::add_item [%s]", item.name);
 #endif
-
             lock (child_tree) {
                 // Try to find the parent. XXX: If the parent is not found, and item.parent != null,
-                // we should call add_item(item.parent) in order to add it prior to adding the item.
-                // This will be needed if Item::parent ever becomes writable from client code. It is
-                // currently not needed because of the way the sidebar operates: it adds categories
+                // we should call add_item(item.parent) in order to add it prior to adding the child
+                // item. This will be mandatory if Item::parent ever becomes writable from client code.
+                // It is currently not needed because of the way the sidebar operates: it adds categories
                 // first, and then their children.
                 Gtk.TreeIter? parent_child_iter = null, child_iter;
                 if (item.parent != null)
                     parent_child_iter = get_item_child_iter (item.parent);
 
-                // Add item
                 child_tree.append (out child_iter, parent_child_iter);
                 child_tree.set (child_iter, Column.ITEM, item, -1);
 
-                // Also add it to the Item-TreeIter table
                 items.set (item, new NodeWrapper (child_tree, child_iter));
             }
         }
 
-        public void remove_item (Item item) {
+        public void remove_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
             debug ("FilteredDataModel::remove_item [%s]", item.name);
 #endif
-
             lock (child_tree) {
-                if (items.has_key (item)) {
-                    // get_item_child_iter() depends on @items.get(item) for retrieving the right iter,
-                    // so don't unset the item from @items yet! We first get the child iter and then
-                    // unset the value.
-                    var child_iter = get_item_child_iter (item);
+                // get_item_child_iter() depends on @items.get(item) for retrieving the right reference,
+                // so don't unset the item from @items yet! We first get the child iter and then
+                // unset the value.
+                var child_iter = get_item_child_iter (item);
 
-                    // We first remove the item from the table, because that way get_item_iter() and
-                    // all the methods that depend on it won't return invalid iters or items when
-                    // called. This is important because child_tree.remove() will emit row_deleted(),
-                    // and its handlers could potentially depend on one of the methods mentioned above.
-                    items.unset (item);
+                // Now we remove the item from the table, because that way get_item_iter() and
+                // all the methods that depend on it won't return invalid iters or items when
+                // called. This is important because child_tree.remove() will emit row_deleted(),
+                // and its handlers could potentially depend on one of the methods mentioned above.
+                items.unset (item);
 
-                    if (child_iter != null)
-                        child_tree.remove (child_iter);
+                if (child_iter != null)
+                    child_tree.remove (child_iter);
 
-                    // Also query the item's parent n_children property. In case it is zero, we update
-                    // the parent category's row in order to re-filter it, since empty categories should
-                    // not be displayed
-                    var parent = item.parent; // hold a reference since the item's reference will be dropped
-                    if (parent != null && parent.n_children < 1) {
-                        Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
-                            if (parent != null)
-                                update_item (parent);
-                            return false;
-                        });
-                    }
+                // Also query the item's parent n_children property. In case it is zero, we update
+                // the parent category's row in order to re-filter it, since empty categories should
+                // not be displayed
+                var parent = item.parent; // hold a reference since the item's reference will be dropped
+                if (parent != null) {
+                    Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
+                        if (parent != null)
+                            update_item (parent);
+                        return false;
+                    });
                 }
             }
         }
@@ -765,7 +770,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Returns a newly-created Gtk.TreeIter pointing to the item.
+         * Returns a newly-created Gtk.TreeIter pointing to the item, or null if a valid iter could
+         * not be created.
          */
         public Gtk.TreeIter? get_item_iter (Item item) {
             Gtk.TreeIter? iter = null, child_iter = get_item_child_iter (item);
@@ -781,7 +787,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Returns a newly-created path pointing to the item.
+         * Returns a newly-created path pointing to the item, or null in case a valid path
+         * is not found.
          */
         public Gtk.TreePath? get_item_path (Item item) {
             Gtk.TreePath? path = null, child_path = get_item_child_path (item);
@@ -896,7 +903,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
         public Tree (FilteredDataModel data_model) {
-
             this.data_model = data_model;
             set_model (data_model);
 
@@ -962,7 +968,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Selection
             var selection = get_selection ();
-            selection.mode = Gtk.SelectionMode.SINGLE;
+            selection.mode = Gtk.SelectionMode.SINGLE; // XXX Move to Gtk.SelectionMode.BROWSE
             selection.changed.connect (on_selection_change);
 
             // Styling
@@ -996,19 +1002,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void start_editing_item (Item item) {
-            if (!editing && item.editable) {
-                // We make the text renderer temporarily editable. This is needed to prevent non-editable
-                // items from being edited when activated. The cell is made non-editable again when the
-                // editing finishes (see on_text_renderer_edited.)
-                text_cell.editable = true;
+            if (item.editable) {
 #if TRACE_SIDEBAR
                 debug ("Tree::start_editing_item [%s]", item.name);
 #endif
                 var path = data_model.get_item_path (item);
-                if (path != null)
+                if (path != null) {
+                    // We make the text renderer temporarily editable. This is needed to prevent non-editable
+                    // items from being edited when activated. The cell is made non-editable again when the
+                    // editing finishes (see on_text_renderer_edited.)
+                    text_cell.editable = true;
                     set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
-                else
+                    grab_focus ();
+                } else {
                     warning ("Could not edit \"%s\": path not found", item.name);
+                }
             }
         }
 
@@ -1195,6 +1203,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 var category = item as Category;
+
+                // We could actually do better here. It should be something like
+                // ... && category.n_visible_children > 0; but that doesn't matter at the moment,
+                // since in such case the category would be hidden by the model. If that behavior
+                // ever changes, make sure you update this portion of code to do that right.
                 if (category != null)
                     visible = category.collapsible && category.n_children > 0;
             }
@@ -1203,7 +1216,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public override bool key_release_event (Gdk.EventKey event) {
-
            if (selected_item != null) {
                 switch (event.keyval) {
                     case Gdk.Key.F2:
@@ -1223,6 +1235,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private bool popup_context_menu (Item item, Gdk.EventButton? event) {
+#if TRACE_SIDEBAR
+            debug ("popup_context_menu [%s]", item.name);
+#endif
             var time = (event != null) ? event.time : Gtk.get_current_event_time ();
             var button = (event != null) ? event.button : 0;
 
@@ -1298,7 +1313,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             return false;
         }
-
     }
 
 
@@ -1514,7 +1528,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * This method is recursively signaled. While it is first emitted in response to the
      * root's child_added() signal, successive calls are fired by child categories, since
-     * we set this method as handler for their child_added signal. In fact, all the item
+     * we set this method as handler for their child_added() signal. In fact, all the item
      * monitors are connected here, and disconnected in remove_item().
      */
     private void add_item (Item item) requires (!has_item (item)) {
@@ -1564,8 +1578,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * Updates an item in response to the {@link Granite.Widgets.Sidebar.Item.changed} signal.
      */
     private void on_item_property_changed (Item item, string prop) requires (has_item (item)) {
-        // Currently only handled by add_item() and remove_item()
-        if (prop == "parent")
+        if (prop == "parent") // Currently only handled by add_item() and remove_item()
             return;
 
         data_model.update_item (item);
