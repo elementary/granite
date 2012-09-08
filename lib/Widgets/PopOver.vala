@@ -421,7 +421,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
         // Background
         main_buffer.context.clip ();
-        Gtk.render_background (menu.get_style_context (), main_buffer.context, 0, 0, w, h);
+        menu.get_style_context ().render_background (main_buffer.context, 0, 0, w, h);
         if(get_window () != null)
             get_window ().input_shape_combine_region  (new Cairo.Region.rectangle({0, 0, w - 2*(PADDINGS.right + SHADOW_SIZE), h - 2*(PADDINGS.top + SHADOW_SIZE) - ARROW_HEIGHT}),
                     PADDINGS.right + SHADOW_SIZE,

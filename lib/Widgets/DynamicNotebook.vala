@@ -445,7 +445,7 @@ namespace Granite.Widgets {
             tab_moved (notebook.get_tab_label (page) as Tab, (int) pagenum, false, -1, -1);
         }
 
-        weak Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
+        unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
             notebook.remove_page (notebook.page_num (tab.page_container));
 
