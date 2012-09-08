@@ -180,7 +180,11 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
             while (tree.iter_next (ref current));
         }
 
+#if !VALA_0_18
         return tree.remove (iter);
+#else
+        return tree.remove (ref iter);
+#endif
     }
 
     // input MUST be a child iter
