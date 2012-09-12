@@ -173,7 +173,6 @@ namespace Granite.Widgets {
          **/
         public int n_tabs {
             get { return notebook.get_n_pages (); }
-            private set {}
         }
 
         /**
@@ -269,7 +268,6 @@ namespace Granite.Widgets {
                 }
                 return _tabs;
             }
-            private set {}
         }
 
         public string group_name {
@@ -278,7 +276,7 @@ namespace Granite.Widgets {
         }
 
 		/**
-		 * The menu appearning when the notebook is clicked on a blank space
+		 * The menu appearing when the notebook is clicked on a blank space
 		 **/
 		public Gtk.Menu menu { get; private set; }
 
