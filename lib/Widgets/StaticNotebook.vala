@@ -74,8 +74,8 @@ namespace Granite.Widgets {
             update_switcher_visibility();
         }
 
-        public void append_page (Gtk.Widget widget, Gtk.Label label) {
-            notebook.append_page(widget, null);
+        public int append_page (Gtk.Widget widget, Gtk.Label label) {
+            int index = notebook.append_page(widget, null);
             label.set_margin_right(5);
             label.set_margin_left(5);
             switcher.append(label);
@@ -84,6 +84,8 @@ namespace Granite.Widgets {
                 switcher.selected = 0;
 
             update_switcher_visibility();
+
+            return index;
         }
 
         void on_mode_changed (Gtk.Widget widget) {
