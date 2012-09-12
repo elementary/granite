@@ -30,7 +30,7 @@ namespace Granite {
 
 namespace Granite.Widgets {
 
-    public class CollapsiblePaned : HPaned {
+    public class CollapsiblePaned : Gtk.Paned {
     
         private int saved_state = 10;
         private uint last_click_time = 0;
