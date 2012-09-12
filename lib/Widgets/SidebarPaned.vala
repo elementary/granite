@@ -163,7 +163,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
 
         this.paned.expand = true;
 
-        Gdk.RGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
+        Gdk.RGBA transparent = {0, 0, 0, 0};
         overlay.override_background_color (0, transparent);
 
         setup_handle ();
@@ -175,6 +175,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
 
         // The virtual handle will always follow the paned's position
         this.paned.notify["position"].connect (update_virtual_handle_position);
+        this.paned.direction_changed.connect (update_virtual_handle_position);
 
         // We use POINTER_MOTION_HINT_MASK for performance reasons. It reduces the number
         // of motion events received.
@@ -194,7 +195,7 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
         this.handle.set_composite_name ("handle");
         pop_composite_child ();
 
-        Gdk.RGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
+        Gdk.RGBA transparent = {0, 0, 0, 0};
         this.handle.override_background_color (0, transparent);
 
         overlay.add_overlay (handle);
