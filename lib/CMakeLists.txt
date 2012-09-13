@@ -34,7 +34,7 @@ pkg_check_modules(DEPS REQUIRED
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"GRANITE\"")
+add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"granite\"")
 set(LIBS
     ${DEPS_LIBRARIES}
 )
