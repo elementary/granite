@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-05 17:23+0200\n"
+"POT-Creation-Date: 2012-09-20 20:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,14 @@ msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+msgid "Copyright"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by"
 msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
@@ -98,13 +106,13 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:333
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:333
 msgid "New Tab"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:360
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:360
 msgid "New tab"
 msgstr ""
 
