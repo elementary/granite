@@ -108,7 +108,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         get_style_context ().add_class ("popover");
         get_style_context ().add_class ("composited");
 
-        Utils.set_theming (this, POPOVER_STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Utils.set_theming_for_screen (get_screen (), POPOVER_STYLESHEET,
+                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         app_paintable = true;
         decorated = false;
