@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-09-05 17:23+0200\n"
+"POT-Creation-Date: 2012-09-20 20:36+0200\n"
 "PO-Revision-Date: 2012-08-21 02:11+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-09-06 04:51+0000\n"
-"X-Generator: Launchpad (build 15909)\n"
+"X-Launchpad-Export-Date: 2012-09-21 04:54+0000\n"
+"X-Generator: Launchpad (build 15985)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -24,6 +24,14 @@ msgstr "만든 사람들"
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
 msgstr "개발한 사람"
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+msgid "Copyright"
+msgstr ""
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
@@ -98,13 +106,13 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:333
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:333
 msgid "New Tab"
 msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:360
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:360
 msgid "New tab"
 msgstr "새 탭"
 
