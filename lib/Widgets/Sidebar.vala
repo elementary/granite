@@ -325,7 +325,7 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
 
     public Gtk.Widget? get_item_widget (Gtk.TreeIter iter) {
         Gtk.Widget w;
-        tree.get (iter, Column.COLUMN_WIDGET, out w);
+        filter.get (iter, Column.COLUMN_WIDGET, out w);
         return w;
     }
 
