@@ -649,6 +649,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private Gtk.TreeStore child_tree;
         private Sidebar.SortFunc? sort_func;
+        private Sidebar.VisibleFunc? filter_func;
 
         public FilteredDataModel () {
             var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
@@ -803,6 +804,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
+         *
+         */
+        public void set_filter_func (owned Sidebar.VisibleFunc visible_func) {
+            this.filter_func = (owned)visible_func;
+        }
+
+        /**
          * Actual sort function. It simply returns zero if sort_func is null.
          */
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
@@ -852,6 +860,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (item != null)
                item_visible = item.visible;
+
+           if (filter_func != null)
+              item_visible = item_visible && filter_func (item);
 
             return item_visible;
         }
@@ -1336,6 +1347,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public delegate int SortFunc (Item a, Item b);
 
     /**
+     * A {@linkGranite.Widgets.Sidebar.VisibleFunc} should return true if the item should be 
+     * visible, false otherwise
+     * @param item Item to be checked
+     * @since 0.2
+     */
+    public delegate bool VisibleFunc (Item item);
+
+    /**
      * Root-level category. This category represents the first-level sidebar items. It is treated
      * differently than the other categories: for this category, ''all'' the Item and Category
      * properties are ignored. It only serves as an item container, and also allows the sidebar to
@@ -1418,6 +1437,25 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     public void set_sort_func (owned SortFunc sort_func) {
         data_model.set_sort_func ((owned)sort_func);
+    }
+
+    /**
+     * Sets the method used for filtering out items.
+     * @param visible_func The method to use for filtering items.
+     * @see Granite.Widgets.Sidebar.VisibleFunc
+     * @since 0.2
+     */
+    public void set_filter_func (owned VisibleFunc visible_func) {
+        data_model.set_filter_func (visible_func);
+    }
+
+    /**
+     * Traverses the tree hiding each item if it is to be hidden based on the passed VisibleFunc
+     * @see Granite.Widgets.Sidebar.VisibleFunc
+     * @since 0.2
+     */
+    public void refilter () {
+        data_model.refilter ();
     }
 
     /**
