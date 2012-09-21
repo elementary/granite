@@ -50,12 +50,12 @@ namespace Granite.Widgets {
             return append (new Gtk.Image.from_pixbuf (pixbuf));
         }
 
-        public int append_icon (string icon_name, Gtk.IconSize size) {
-            return append (new Gtk.Image.from_icon_name (icon_name, size));
-        }
-
         public int append_text (string text) {
             return append (new Gtk.Label(text));
+        }
+
+        public int append_icon (string icon_name, Gtk.IconSize size) {
+            return append (new Gtk.Image.from_icon_name (icon_name, size));
         }
 
         public int append (Gtk.Widget w) {
@@ -79,19 +79,20 @@ namespace Granite.Widgets {
         }
 
         public void set_active (int new_active_index) requires (valid_item (new_active_index)) {
-            if (_selected != new_active_index) {
-                var new_item = get_children ().nth_data (new_active_index) as Gtk.ToggleButton;
-                if (new_item != null) {
-                    // Unselect the previous item
-                    var old_item = get_children ().nth_data (_selected) as Gtk.ToggleButton;
-                    if (old_item != null)
-                        old_item.set_active (false);
+            if (_selected == new_active_index)
+                return;
 
-                    _selected = new_active_index;
+            var new_item = get_children ().nth_data (new_active_index) as Gtk.ToggleButton;
+            if (new_item != null) {
+                // Unselect the previous item
+                var old_item = get_children ().nth_data (_selected) as Gtk.ToggleButton;
+                if (old_item != null)
+                    old_item.set_active (false);
 
-                    new_item.set_active (true);
-                    mode_changed (new_item.get_child ());
-                }
+                _selected = new_active_index;
+
+                new_item.set_active (true);
+                mode_changed (new_item.get_child ());
             }
         }
 
@@ -126,21 +127,21 @@ namespace Granite.Widgets {
         }
 
         private bool on_scroll_event (Gtk.Widget widget, Gdk.EventScroll ev) {
-            bool move_to_right = false;
+            int offset;
 
             switch (ev.direction) {
                 case Gdk.ScrollDirection.DOWN:
                 case Gdk.ScrollDirection.RIGHT:
-                    move_to_right = true;
+                    offset = 1;
                     break;
                 case Gdk.ScrollDirection.UP:
                 case Gdk.ScrollDirection.LEFT:
+                    offset = -1;
                     break;
                 default:
                     return false;
             }
 
-            int offset = move_to_right ? 1 : -1;
             int new_item = selected;
 
             // Try to find a valid item, since there could be invisible items in the middle
