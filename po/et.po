@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-20 20:36+0200\n"
-"PO-Revision-Date: 2012-09-20 17:39+0000\n"
+"PO-Revision-Date: 2012-09-21 17:57+0000\n"
 "Last-Translator: Kristjan Vool <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-09-21 04:54+0000\n"
+"X-Launchpad-Export-Date: 2012-09-22 05:19+0000\n"
 "X-Generator: Launchpad (build 15985)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
@@ -27,42 +27,44 @@ msgstr "Programmeerijad"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr ""
+msgstr "Autoriõigused"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr ""
+msgstr "Dokumenteerijad"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr ""
-"Tõlkijad:\r\n"
-"Kristjan Vool "
+msgstr "Tõlkijad: "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
-msgstr ""
+msgstr "See rakendus on avaldatud "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
+" litsentsitingimustega ning igasugune garantii puudub; täpsemate detailide "
+"jaoks külasta lehte "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
+"Contractor'iga polnud võimalik ühendust luua. Palun kontroll Contractor'i "
+"paigaldust ning vajadusel paigalda see."
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr ""
+msgstr "Toimingut selle faili jaoks ei leitud"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%H:%M"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
@@ -76,12 +78,12 @@ msgstr "Menüü"
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "Programmist"
+msgstr "Programmist lähemalt"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr ""
+msgstr "%d. %B, %Y"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
@@ -121,7 +123,7 @@ msgstr "Uus kaart"
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Tõlgi seda rakendust"
+msgstr "Aita tõlkida"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
