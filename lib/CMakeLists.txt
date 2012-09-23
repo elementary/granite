@@ -61,6 +61,7 @@ vala_precompile(VALA_C
     Services/System.vala
     Services/Contractor.vala
     Services/IconFactory.vala
+    Services/SimpleCommand.vala
     Widgets/Utils.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
