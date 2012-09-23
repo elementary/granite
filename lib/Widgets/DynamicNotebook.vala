@@ -127,7 +127,7 @@ namespace Granite.Widgets {
 
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
-            var close_other_m = new Gtk.MenuItem.with_label (_("Close Other Tabs"));
+            var close_other_m = new Gtk.MenuItem.with_label ("");
             new_window_m = new Gtk.MenuItem.with_label (_("Open in a new Window"));
             duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
             menu.append (close_other_m);
@@ -147,10 +147,12 @@ namespace Granite.Widgets {
                     return true;
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
-                    if ((this.get_parent () as Gtk.Container).get_children ().length () == 1)
+                    uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
+                    close_other_m.label = ngettext ("Close Other Tab", "Close Other Tabs", num_tabs);
+                    if (num_tabs == 1)
                         close_other_m.sensitive = false;
-                        return true;
-                    }
+                    return true;
+                }
 
                 return false;
             });
