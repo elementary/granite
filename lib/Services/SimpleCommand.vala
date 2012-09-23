@@ -31,27 +31,37 @@ public class Granite.Services.SimpleCommand : GLib.Object
     /**
      * When the output changed (std.out and std.err).
      *
-     * @param text the full output
+     * @param text the new text
      **/
     public signal void output_changed(string text);
 
     /**
      * When the standard output is changed.
      *
-     * @param text the full std.out
+     * @param text the new text from std.out
      **/
     public signal void standard_changed(string text);
 
     /**
      * When the error output is changed.
      *
-     * @param text the full std.err
+     * @param text the new text from std.err
      **/
     public signal void error_changed(string text);
 
+	/**
+	 * The whole current standard output
+	 **/
     public string standard_output_str = "";
-    string error_output_str = "";
-    string output_str = "";
+    /**
+	 * The whole current error output
+	 **/
+    public string error_output_str = "";
+    /**
+	 * The whole current output
+	 **/
+    public string output_str = "";
+    
     GLib.IOChannel out_make;
     GLib.IOChannel error_out;
     string dir;
@@ -118,7 +128,7 @@ public class Granite.Services.SimpleCommand : GLib.Object
             
             standard_output_str += output;
             output_str += output;
-            standard_changed(standard_output_str);
+            standard_changed(output);
             output_changed(output);
             
             return true;
@@ -142,7 +152,7 @@ public class Granite.Services.SimpleCommand : GLib.Object
             
             error_output_str += output;
             output_str += output;
-            error_changed(error_output_str);
+            error_changed(output);
             output_changed(output);
             
             return true;
