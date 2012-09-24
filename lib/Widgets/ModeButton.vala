@@ -66,8 +66,9 @@ namespace Granite.Widgets {
 
             button.add (w);
 
-            button.clicked.connect ( () => {
+            button.button_press_event.connect ( () => {
                 set_active (get_children ().index (button));
+                return true;
             });
 
             add (button);
@@ -79,11 +80,14 @@ namespace Granite.Widgets {
         }
 
         public void set_active (int new_active_index) requires (valid_item (new_active_index)) {
-            if (_selected == new_active_index)
-                return;
-
             var new_item = get_children ().nth_data (new_active_index) as Gtk.ToggleButton;
+
             if (new_item != null) {
+                new_item.set_active (true);
+
+                if (_selected == new_active_index)
+                    return;
+
                 // Unselect the previous item
                 var old_item = get_children ().nth_data (_selected) as Gtk.ToggleButton;
                 if (old_item != null)
@@ -91,7 +95,6 @@ namespace Granite.Widgets {
 
                 _selected = new_active_index;
 
-                new_item.set_active (true);
                 mode_changed (new_item.get_child ());
             }
         }
