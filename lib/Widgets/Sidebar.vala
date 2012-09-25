@@ -132,19 +132,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * ---------------------------------------------------------------------------------------------
      * + Item            |                                   |
      *   - parent        | Not monitored                     | N/A
-     *   - name          | Sidebar::on_item_property_changed | Sidebar::name_cell_data_func
-     *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See on_text_renderer_edit)
+     *   - name          | Sidebar::on_item_property_changed | Tree::name_cell_data_func
+     *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See on_text_renderer_edited)
      *   - visible       | Sidebar::on_item_property_changed | FilteredDataModel::filter_visible_func
-     *   - icon          | Sidebar::on_item_property_changed | Sidebar::icon_cell_data_func
+     *   - icon          | Sidebar::on_item_property_changed | Tree::icon_cell_data_func
      *   - activatable   | Same as @icon                     | Same as @icon
      * + Category        |                                   |
-     *   - no_caption    | Sidebar::on_item_property_changed | Sidebar::name_cell_data_func
-     *   - collapsible   | Sidebar::on_item_property_changed | Sidebar::update_tree_expansion
-     *                   |                                   | Sidebar::expander_cell_data_func
+     *   - no_caption    | Sidebar::on_item_property_changed | Tree::name_cell_data_func
+     *   - collapsible   | Sidebar::on_item_property_changed | Tree::update_expansion
+     *                   |                                   | Tree::expander_cell_data_func
      *   - expanded      | Same as @collapsible              | Same as @collapsible
      * ---------------------------------------------------------------------------------------------
      * * Only automatic properties are monitored. Category's add/removals are handled by
-     *   Sidebar::add_item and Sidebar::remove_item
+     *   Sidebar::add_item() and Sidebar::remove_item()
      *
      * Other features:
      * - Sorting: this happens on the tree-model-level. See FilteredDataModel and Sidebar::SortFunc.
@@ -183,18 +183,17 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 #if TRACE_SIDEBAR
             debug ("Item::edited [%s]\tnew_name = %s", name, new_name);
 #endif
-            if (new_name.strip () != "")
+            if (editable && new_name.strip () != "")
                 this.name = new_name;
         }
 
         /**
          * The {@link Granite.Widgets.Sidebar.Item.activatable} icon was activated.
          *
-         * @param time Time when the event took place.
          * @see Granite.Widgets.Sidebar.Item.activatable
          * @since 0.2
          */
-        public virtual signal void action_activated (uint32 time) {
+        public virtual signal void action_activated () {
 #if TRACE_SIDEBAR
             debug ("Item::action_activated [%s]", name);
 #endif
@@ -382,7 +381,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.Category.collapsible
          * @since 0.2
          */
-        public bool expanded { get; set; default = false; }
+        private bool _expanded = false;
+        public bool expanded {
+            get { return _expanded || !collapsible; } // if not collapsible, always return true
+            set { _expanded = value; }
+        }
 
         /**
          * {@inheritDoc}
@@ -552,22 +555,23 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
     private class CellRendererIcon : Gtk.CellRendererPixbuf {
-        // These correspond to all the icons supported by Item objects
-        public enum IconType {
-            ICON,
-            ACTIVATABLE
-        }
-
-        public IconType icon_type { get; construct; }
+        public signal void activated (string path);
 
         private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
 
-        public CellRendererIcon (IconType icon_type) {
-            Object (icon_type: icon_type);
+        public CellRendererIcon () {
             set_alignment (0.5f, 0.5f);
             mode = Gtk.CellRendererMode.ACTIVATABLE;
             stock_size = ICON_SIZE;
             follow_state = true;
+        }
+
+        public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
+                                       Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
+                                       Gtk.CellRendererState flags)
+        {
+            activated (path);
+            return true;
         }
     }
 
@@ -587,9 +591,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * An object that references a particular row in a model. This class is a wrapper built around
          * Gtk.TreeRowReference, and exists with the purpose of ensuring we never use invalid tree paths
          * or iters in the model, since most of these errors provoke failures due to GTK+ assertions
-         * or even worse: unexpected behavior.
+         * or, even worse, unexpected behavior.
          */
         private class NodeWrapper {
+
             /**
              * The actual reference to the node. If is is null, it is treated as invalid.
              */
@@ -677,20 +682,22 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return items.has_key (item);
         }
 
-        public void update_item (Item item) requires (has_item (item)) {
+        public void update_item (Item item) {
+            if (has_item (item)) {
 #if TRACE_SIDEBAR
-            debug ("FilteredDataModel::update_item [%s]", item.name);
+                debug ("FilteredDataModel::update_item [%s]", item.name);
 #endif
-            lock (child_tree) {
-                // Emitting row_changed() for this item's row in the child model causes the filter
-                // (i.e. this model) to re-evaluate whether a row is visible or not, calling
-                // filter_visible_func for that row again, and that's exactly what we want.
-                var node_reference = items.get (item);
-                if (node_reference != null) {
-                    var path = node_reference.path;
-                    var iter = node_reference.iter;
-                    if (path != null && iter != null)
-                        child_tree.row_changed (path, iter);
+                lock (child_tree) {
+                    // Emitting row_changed() for this item's row in the child model causes the filter
+                    // (i.e. this model) to re-evaluate whether a row is visible or not, calling
+                    // filter_visible_func for that row again, and that's exactly what we want.
+                    var node_reference = items.get (item);
+                    if (node_reference != null) {
+                        var path = node_reference.path;
+                        var iter = node_reference.iter;
+                        if (path != null && iter != null)
+                            child_tree.row_changed (path, iter);
+                    }
                 }
             }
         }
@@ -848,8 +855,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Filters the child-tree items based on their "visible" property. If the item is also
-         * a category, the visibility is decided based on its number of children.
+         * Filters the child-tree items based on their "visible" property.
          */
         private bool filter_visible_func (Gtk.TreeModel child_model, Gtk.TreeIter iter) {
             bool item_visible = false;
@@ -857,7 +863,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             Item? item;
             child_tree.get (iter, Column.ITEM, out item, -1);
 
-            if (item != null)
+            if (item != null) 
                item_visible = item.visible;
 
             return item_visible;
@@ -870,6 +876,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * The tree that actually displays the items. All the user interaction happens here.
      */
     private class Tree : Gtk.TreeView {
+
         public FilteredDataModel data_model { get; set; }
 
         public signal void item_selected (Item item);
@@ -898,6 +905,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Item? selected;
 
         private Gtk.CellRendererText text_cell;
+        private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
         private CellRendererExpander expander_cell;
 
@@ -927,7 +935,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             left_spacer.xpad = BASE_INDENTATION / 2;
             item_column.pack_start (left_spacer, false);
 
-            var icon_cell = new CellRendererIcon (CellRendererIcon.IconType.ICON);
+            icon_cell = new CellRendererIcon ();
             icon_cell.xpad = 3;
             item_column.pack_start (icon_cell, false);
             item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
@@ -951,7 +959,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             expander_column.expand = false;
             expander_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
 
-            activatable_cell = new CellRendererIcon (CellRendererIcon.IconType.ACTIVATABLE);
+            activatable_cell = new CellRendererIcon ();
+            activatable_cell.activated.connect (on_activatable_activated);
+
             expander_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
             expander_column.pack_start (activatable_cell, false);
 
@@ -968,7 +978,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Selection
             var selection = get_selection ();
-            selection.mode = Gtk.SelectionMode.SINGLE; // XXX Move to Gtk.SelectionMode.BROWSE
+            selection.mode = Gtk.SelectionMode.SINGLE;
             selection.changed.connect (on_selection_change);
 
             // Styling
@@ -1001,22 +1011,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return scrolled;
         }
 
-        public void start_editing_item (Item item) {
-            if (item.editable) {
+        public void start_editing_item (Item item) requires (item.editable) {
 #if TRACE_SIDEBAR
-                debug ("Tree::start_editing_item [%s]", item.name);
+            debug ("Tree::start_editing_item [%s]", item.name);
 #endif
-                var path = data_model.get_item_path (item);
-                if (path != null) {
-                    // We make the text renderer temporarily editable. This is needed to prevent non-editable
-                    // items from being edited when activated. The cell is made non-editable again when the
-                    // editing finishes (see on_text_renderer_edited.)
-                    text_cell.editable = true;
-                    set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
-                    grab_focus ();
-                } else {
-                    warning ("Could not edit \"%s\": path not found", item.name);
-                }
+            var path = data_model.get_item_path (item);
+            if (path != null) {
+                // We make the text renderer temporarily editable. This is needed to prevent non-editable
+                // items from being edited when activated. The cell is made non-editable again when the
+                // editing finishes (see on_text_renderer_edited.)
+                text_cell.editable = true;
+                set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
+                grab_focus ();
+            } else {
+                warning ("Could not edit \"%s\": path not found", item.name);
             }
         }
 
@@ -1034,9 +1042,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
+        private void on_activatable_activated (string path) {
+            var item = data_model.get_item_from_path (new Gtk.TreePath.from_string (path));
+            if (item != null)
+                item.action_activated ();
+        }
+
         /**
-         * Resizes all the columns to their ideal widths. Useful when the style
-         * information is updated.
+         * Resizes all the columns to their ideal widths. Useful when the style information is updated.
          */
         private void autosize_columns () {
             int total_min_width = 0;
@@ -1074,7 +1087,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 #if TRACE_SIDEBAR
                 debug ("Tree::update_expansion [%s]", category.name);
 #endif
-                if (category.expanded || !category.collapsible)
+                if (category.expanded)
                     expand_row (path, false);
                 else
                     collapse_row (path);
@@ -1176,17 +1189,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 visible = !(item is Category);
-                switch (icon_renderer.icon_type) {
-                    case CellRendererIcon.IconType.ICON:
-                        icon = item.icon;
-                        break;
-                    case CellRendererIcon.IconType.ACTIVATABLE:
-                        icon = item.activatable;
-                        break;
-                    default:
-                        warning ("Icon type %s was not handled", icon_renderer.icon_type.to_string ());
-                        break;
-                }
+
+                if (icon_renderer == icon_cell)
+                    icon = item.icon;
+                else if (icon_renderer == activatable_cell)
+                    icon = item.activatable;
+                else
+                    assert_not_reached ();
             }
 
             icon_renderer.visible = visible;
@@ -1203,13 +1212,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 var category = item as Category;
-
-                // We could actually do better here. It should be something like
-                // ... && category.n_visible_children > 0; but that doesn't matter at the moment,
-                // since in such case the category would be hidden by the model. If that behavior
-                // ever changes, make sure you update this portion of code to do that right.
                 if (category != null)
-                    visible = category.collapsible && category.n_children > 0;
+                    visible = category.collapsible;
             }
 
             expander_renderer.visible = visible;
@@ -1269,15 +1273,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     if (ev->triggers_context_menu ()) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
-                        if (over_activatable (item, column, cell_x, cell_y)) {
-                            item.action_activated (event.time);
-                        } else if (over_expander (item, column, cell_x, cell_y)) {
+                        if (over_expander (item, column, cell_x, cell_y)) {
 #if TRACE_SIDEBAR
                             debug ("Tree: expander clicked");
 #endif
                             var category = item as Category;
                             if (category != null)
                                 category.expanded = !category.expanded;
+
+                            return true;
                         }
                     }
                 }
@@ -1286,21 +1290,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return base.button_press_event (event);
         }
 
-        private bool over_activatable (Item item, Gtk.TreeViewColumn col, int x, int y) {
-            if (item.activatable != null) {
-                int cell_x, cell_width;
-                col.cell_get_position (activatable_cell, out cell_x, out cell_width);
-
-                if (x > cell_x && x < cell_x + cell_width)
-                    return true;
-            }
-
-            return false;
-        }
-
         private bool over_expander (Item item, Gtk.TreeViewColumn col, int x, int y) {
             var category = item as Category;
-            if (category != null && category.collapsible) {
+            if (category != null) {
                 int cell_x, cell_width;
                 col.cell_get_position (expander_cell, out cell_x, out cell_width);
 
@@ -1507,8 +1499,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     /**
      * Scrolls the sidebar tree to make //item// visible.
      *
-     * If //expand_parents// is //true//, expand_with_parents() is called for the item's
-     * parent category to make sure it's not obscured behind a group of collapsed categories.
+     * If //expand_parents// is //true//, {@link Sidebar.expand_with_parents} is called for the
+     * item's parent category to make sure it's not obscured behind a group of collapsed categories.
      *
      * @param item Item to scroll to.
      * @param expand_parents Whether to expand item's parent categories in case they are collapsed.
@@ -1540,9 +1532,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // If it's a category, also add children
         var category = item as Category;
         if (category != null) {
-            category.child_added.connect (add_item);
-            category.child_removed.connect (remove_item);
-
             tree.update_expansion (category);
 
             foreach (var child in category.get_children ()) {
@@ -1552,6 +1541,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     return false;
                 });
             }
+
+            category.child_added.connect (add_item);
+            category.child_removed.connect (remove_item);
         }
     }
 
