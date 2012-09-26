@@ -69,7 +69,7 @@ namespace Granite.Widgets {
             var children = get_children ();
 
             button.button_press_event.connect ( () => {
-                set_active (children.index (button));
+                set_active (get_children ().index (button));
                 return true;
             });
 
@@ -94,7 +94,7 @@ namespace Granite.Widgets {
                     return;
 
                 // Unselect the previous item
-                var old_item = get_children ().nth_data (_selected) as Gtk.ToggleButton;
+                var old_item = children.nth_data (_selected) as Gtk.ToggleButton;
                 if (old_item != null)
                     old_item.set_active (false);
 
