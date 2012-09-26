@@ -66,8 +66,6 @@ namespace Granite.Widgets {
 
             button.add (w);
 
-            var children = get_children ();
-
             button.button_press_event.connect ( () => {
                 set_active (get_children ().index (button));
                 return true;
@@ -76,6 +74,7 @@ namespace Granite.Widgets {
             add (button);
             button.show_all ();
 
+            var children = get_children ();
             int item_index = (int)children.length () - 1;
             mode_added (item_index, w);
             return item_index;
