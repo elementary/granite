@@ -66,21 +66,26 @@ namespace Granite.Widgets {
 
             button.add (w);
 
+            var children = get_children ();
+
             button.button_press_event.connect ( () => {
-                set_active (get_children ().index (button));
+                set_active (children.index (button));
                 return true;
             });
 
             add (button);
             button.show_all ();
 
-            int item_index = (int)get_children ().length () - 1;
+            int item_index = (int)children.length () - 1;
             mode_added (item_index, w);
             return item_index;
         }
 
-        public void set_active (int new_active_index) requires (valid_item (new_active_index)) {
-            var new_item = get_children ().nth_data (new_active_index) as Gtk.ToggleButton;
+        public void set_active (int new_active_index) {
+            var children = get_children ();
+            return_if_fail (new_active_index >= 0 && new_active_index < children.length ());
+
+            var new_item = children.nth_data (new_active_index) as Gtk.ToggleButton;
 
             if (new_item != null) {
                 new_item.set_active (true);
@@ -99,16 +104,23 @@ namespace Granite.Widgets {
             }
         }
 
-        public void set_item_visible (int index, bool val) requires (valid_item (index)) {
-            var item = get_children ().nth_data (index);
+        public void set_item_visible (int index, bool val) {
+            var children = get_children ();
+            return_if_fail (index >= 0 && index < children.length ());
+
+            var item = children.nth_data (index);
+
             if (item != null) {
                 item.no_show_all = !val;
                 item.visible = val;
             }
         }
 
-        public new void remove (int index) requires (valid_item (index)) {
-            var item = get_children ().nth_data (index) as Gtk.Bin;
+        public new void remove (int index) {
+            var children = get_children ();
+            return_if_fail (index >= 0 && index < children.length ());
+
+            var item = children.nth_data (index) as Gtk.Bin;
             if (item != null) {
                 mode_removed (index, item.get_child ());
                 item.destroy ();
@@ -123,10 +135,6 @@ namespace Granite.Widgets {
             }
 
             _selected = -1;
-        }
-
-        private bool valid_item (int index) {
-            return index >= 0 && index < n_items;
         }
 
         private bool on_scroll_event (Gtk.Widget widget, Gdk.EventScroll ev) {
@@ -149,14 +157,17 @@ namespace Granite.Widgets {
 
             // Try to find a valid item, since there could be invisible items in the middle
             // and those shouldn't be selected
+            var children = get_children ();
+            uint n_children = children.length ();
+
             do {
                 new_item += offset;
-                var item = get_children ().nth_data (new_item);
+                var item = children.nth_data (new_item);
                 if (item != null && item.visible) {
                     selected = new_item;
                     break;
                 }
-            } while (valid_item (new_item));
+            } while (new_item >= 0 && new_item < n_children);
 
             return false;
         }
