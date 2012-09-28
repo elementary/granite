@@ -740,15 +740,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 // and its handlers could potentially depend on one of the methods mentioned above.
                 items.unset (item);
 
-                if (child_iter != null)
+                if (child_iter != null) {
+#if VALA_0_18
+                    child_tree.remove (ref child_iter);
+#else
                     child_tree.remove (child_iter);
+#endif
+                }
 
                 // Also query the item's parent n_children property. In case it is zero, we update
                 // the parent category's row in order to re-filter it, since empty categories should
                 // not be displayed
                 var parent = item.parent; // hold a reference since the item's reference will be dropped
                 if (parent != null) {
-                    Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
+                    Idle.add_full (Priority.HIGH_IDLE, () => {
                         if (parent != null)
                             update_item (parent);
                         return false;
@@ -903,8 +908,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private enum Column {
             ITEM,
-            EXPANDER,
-            END_PADDING,
             N_COLS
         }
 
@@ -918,8 +921,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Gtk.CellRendererText text_cell;
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
-        private CellRendererExpander expander_cell;
-
+        private CellRendererExpander primary_expander_cell;
+        private CellRendererExpander secondary_expander_cell;
 
         public Tree (FilteredDataModel data_model) {
             this.data_model = data_model;
@@ -946,6 +949,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             left_spacer.xpad = BASE_INDENTATION / 2;
             item_column.pack_start (left_spacer, false);
 
+            // First expander. Used for normal expandable items
+            primary_expander_cell = new CellRendererExpander ();
+            item_column.pack_start (primary_expander_cell, true);
+            item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
+
             icon_cell = new CellRendererIcon ();
             icon_cell.xpad = 3;
             item_column.pack_start (icon_cell, false);
@@ -955,49 +963,26 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editable = false;
             text_cell.ellipsize = Pango.EllipsizeMode.END;
             text_cell.xalign = 0.0f;
-
             text_cell.edited.connect (on_text_renderer_edited);
-
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
 
-            // add expander
-            var expander_column = new Gtk.TreeViewColumn ();
-
-            insert_column (expander_column, Column.EXPANDER);
-
-            expander_column.visible = true;
-            expander_column.expand = false;
-            expander_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
-
             activatable_cell = new CellRendererIcon ();
             activatable_cell.activated.connect (on_activatable_activated);
+            item_column.pack_start (activatable_cell, false);
+            item_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
 
-            expander_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
-            expander_column.pack_start (activatable_cell, false);
-
-            expander_cell = new CellRendererExpander ();
-            expander_column.pack_start (expander_cell, false);
-            expander_column.set_cell_data_func (expander_cell, expander_cell_data_func);
-
-            var end_padding_column = new Gtk.TreeViewColumn ();
-            end_padding_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
-            end_padding_column.fixed_width = BASE_INDENTATION;
-            end_padding_column.expand = false;
-
-            insert_column (end_padding_column, Column.END_PADDING);
+            // Second expander. Used for main categories
+            secondary_expander_cell = new CellRendererExpander ();
+            item_column.pack_start (secondary_expander_cell, false);
+            item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
 
             // Selection
             var selection = get_selection ();
             selection.mode = Gtk.SelectionMode.SINGLE;
             selection.changed.connect (on_selection_change);
 
-            // Styling
-            var style_context = get_style_context ();
-            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
-            style_context.changed.connect (autosize_columns);
-
-            autosize_columns ();
+            get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         }
 
 
@@ -1057,33 +1042,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = data_model.get_item_from_path (new Gtk.TreePath.from_string (path));
             if (item != null)
                 item.action_activated ();
-        }
-
-        /**
-         * Resizes all the columns to their ideal widths. Useful when the style information is updated.
-         */
-        private void autosize_columns () {
-            int total_min_width = 0;
-            Gtk.Requisition minimum_size, natural_size;
-
-            // Expander size test
-            var expander_column = get_column (Column.EXPANDER);
-
-            expander_cell.get_preferred_size (this, out minimum_size, out natural_size);
-            expander_column.fixed_width = natural_size.width + LEVEL_INDENTATION;
-
-            // Activatable size test. It shares the column with the expander, so we end up
-            // using the greatest width for the column.
-            activatable_cell.get_preferred_size (this, out minimum_size, out natural_size);
-            if (expander_column.fixed_width < natural_size.width)
-                expander_column.fixed_width = natural_size.width;
-
-            total_min_width += expander_column.fixed_width;
-
-            // Also update size request
-            set_size_request (total_min_width + 2 * LEVEL_INDENTATION + 10, -1);
-
-            columns_autosize ();
         }
 
         /**
@@ -1171,8 +1129,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return data_model.get_item (iter);
         }
 
-        private static void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                 Gtk.TreeModel model, Gtk.TreeIter iter) {
+        private void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                 Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
             var text_renderer = renderer as Gtk.CellRendererText;
             assert (text_renderer != null);
 
@@ -1190,7 +1149,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                          Gtk.TreeModel model, Gtk.TreeIter iter) {
+                                          Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
             var icon_renderer = renderer as CellRendererIcon;
             assert (icon_renderer != null);
 
@@ -1214,20 +1174,33 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                              Gtk.TreeModel model, Gtk.TreeIter iter) {
+                                              Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
             var expander_renderer = renderer as CellRendererExpander;
             assert (expander_renderer != null);
 
-            bool visible = false;
+            bool expander_visible = false, primary_expander_visible = false;
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 var category = item as Category;
-                if (category != null)
-                    visible = category.collapsible;
+                if (category != null) {
+                    expander_visible = category.collapsible;
+
+                    // Decide which expander to show based on whether the item is a main
+                    // category or not. For root-level categories, we show the expander
+                    // on the right side. Otherwise, on the left.
+                    if (expander_visible)
+                        primary_expander_visible = !is_root_item (iter);
+                }
             }
 
-            expander_renderer.visible = visible;
+            primary_expander_cell.visible = expander_visible && primary_expander_visible;
+            secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
+        }
+
+        private bool is_root_item (Gtk.TreeIter iter) {
+            return data_model.get_path (iter).get_depth () == 1;
         }
 
         public override bool key_release_event (Gdk.EventKey event) {
@@ -1304,14 +1277,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private bool over_expander (Item item, Gtk.TreeViewColumn col, int x, int y) {
             var category = item as Category;
             if (category != null) {
-                int cell_x, cell_width;
-                col.cell_get_position (expander_cell, out cell_x, out cell_width);
-
                 // If the item is not selectable (see the explanation of why an item could
                 // not be selectable at Item.selectable), convert its entire area into
-                // an expander (and make it easier for the user to expand/collapse items).
-                if (!category.selectable || x > cell_x && x < cell_x + cell_width)
+                // an expander, making it easier for the user to expand/collapse items,
+                // as the target area becomes bigger.
+                if (!category.selectable)
                     return true;
+
+                int p_cell_x, p_cell_width; // left renderer
+                int s_cell_x, s_cell_width; // right renderer
+
+                col.cell_get_position (primary_expander_cell, out p_cell_x, out p_cell_width);
+                col.cell_get_position (secondary_expander_cell, out s_cell_x, out s_cell_width);
+
+                return (x > p_cell_x && x < p_cell_x + p_cell_width)
+                    || (x > s_cell_x && x < s_cell_x + s_cell_width);
             }
 
             return false;
@@ -1442,7 +1422,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @since 0.2
      */
     public void set_sort_func (owned SortFunc sort_func) {
-        data_model.set_sort_func ((owned)sort_func);
+        data_model.set_sort_func ((owned) sort_func);
     }
 
     /**
@@ -1451,7 +1431,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @see Granite.Widgets.Sidebar.VisibleFunc
      * @since 0.2
      */
-    public void set_filter_func (owned VisibleFunc visible_func) {
+    public void set_filter_func (unowned VisibleFunc visible_func) {
         data_model.set_filter_func (visible_func);
     }
 
@@ -1574,7 +1554,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             foreach (var child in category.get_children ()) {
                 // This will always be faster than the normal recursive implementation
-                Gdk.threads_add_idle_full (Priority.HIGH_IDLE, () => {
+                Idle.add_full (Priority.HIGH_IDLE, () => {
                     add_item (child);
                     return false;
                 });
