@@ -639,7 +639,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public bool is_iter_at_root_level (Gtk.TreeIter iter) {
-            return get_path (iter).get_depth () == 1;
+            return is_path_at_root_level (get_path (iter));
+        }
+
+        public bool is_path_at_root_level (Gtk.TreePath path) {
+            return path.get_depth () == 1;
         }
 
         public void update_item (Item item) {
@@ -948,12 +952,74 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Selection
             var selection = get_selection ();
-            selection.mode = Gtk.SelectionMode.SINGLE;
-            selection.changed.connect (on_selection_change);
+            selection.mode = Gtk.SelectionMode.BROWSE;
+            selection.set_select_function (select_func);
 
             get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         }
 
+        /**
+         * Evaluates whether the item at the specified path can be selected or not.
+         */
+        private bool select_func (Gtk.TreeSelection selection, Gtk.TreeModel model,
+                                  Gtk.TreePath path, bool path_currently_selected)
+        {
+            bool selectable = false;
+            var item = data_model.get_item_from_path (path);
+
+            if (item != null) {
+                // Main categories ARE NOT selectable, so let's check for that
+                if (!is_category (item, null, path))
+                    selectable = item.selectable;
+            }
+
+            return selectable;
+        }
+
+        private Gtk.TreePath? get_selected_path () {
+            Gtk.TreePath? selected_path = null;
+
+            var selection = get_selection ();
+            Gtk.TreeModel model;
+            var selected_rows = selection.get_selected_rows (out model);
+            if (selected_rows.length () == 1)
+                selected_path = selected_rows.nth_data (0);
+
+            return selected_path;
+        }
+
+        private void set_selected (Item? item, bool scroll_to_item) {
+            var selection = get_selection ();
+
+            // Initial test
+            if (item == null || !item.selectable) {
+                selection.unselect_all ();
+            } else if (item != null) {
+                if (scroll_to_item)
+                    this.scroll_to_item (item);
+
+                var to_select = data_model.get_item_iter (item);
+
+                if (to_select != null)
+                    selection.select_iter (to_select);
+            }
+        }
+
+        public override void cursor_changed () {
+            var path = get_selected_path ();
+
+            if (path != null) {
+                var item = data_model.get_item_from_path (path);
+                if (item != null) {
+                    // TODO: This is a good place to enable/disable
+                    // text editing (text_cell.editable = ...)
+                    if (item != this.selected && item.selectable) {
+                        this.selected = item;
+                        item_selected (item);
+                    }
+                }
+            }
+        }
 
         /**
          * Scrolls the tree to make //item// visible.
@@ -1056,51 +1122,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        private void on_selection_change () {
-            Gtk.TreeModel? model;
-            Gtk.TreeIter? iter;
-
-            if (get_selection ().get_selected (out model, out iter)) {
-                var item = get_item_from_model (model, iter);
-                if (item != selected_item)
-                    set_selected (item, false);
-            }
-        }
-
-        private void set_selected (Item? item, bool scroll_to_item) {
-            var selection = get_selection ();
-            selection.changed.disconnect (on_selection_change);
-
-            selection.unselect_all ();
-
-            // Initial test
-            if (item == null || !item.selectable)
-                item = this.selected;
-
-            if (item != null) {
-                Gtk.TreeIter? to_select = null;
-
-                if (scroll_to_item)
-                    this.scroll_to_item (item);
-
-                // Only *selectable* items can be set as selected
-                if (item.selectable) {
-                    // Try to get a valid iter for the item
-                    to_select = data_model.get_item_iter (item);
-                }
-
-                if (to_select != null) {
-                    selection.select_iter (to_select);
-                    this.selected = item; // Set new item a selected
-
-                    // Notify clients
-                    item_selected (this.selected);
-                }
-            }
-
-            selection.changed.connect (on_selection_change);
-        }
-
         private static Item? get_item_from_model (Gtk.TreeModel model, Gtk.TreeIter iter) {
             var data_model = model as FilteredDataModel;
             assert (data_model != null);
@@ -1128,8 +1149,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_renderer.text = text;
         }
 
-        private bool is_category (Item item, Gtk.TreeIter item_iter) {
-            return item is ExpandableItem && data_model.is_iter_at_root_level (item_iter);
+        /**
+         * Checks whether an item is a category (i.e. a root-level expandable item).
+         * The caller must pass an iter or path pointing to the item, but not both
+         * (one of them must be null.)
+         */
+        private bool is_category (Item item, Gtk.TreeIter? iter, Gtk.TreePath? path = null) {
+            bool is_category = false;
+            // either iter or path has to be null
+            if (item is ExpandableItem) {
+                if (iter != null) {
+                    assert (path == null);
+                    return data_model.is_iter_at_root_level (iter);
+                } else {
+                    assert (path != null);
+                    return data_model.is_path_at_root_level (path);
+                }
+            }
+            return is_category;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
