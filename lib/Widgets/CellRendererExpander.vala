@@ -19,10 +19,15 @@
  */
 
 public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
+    public signal void toggled (string path);
+
+    public bool arrow_visible { get; set; }
+
     private int arrow_size = 8;
 
     public CellRendererExpander () {
         set_alignment (0.5f, 0.5f);
+        mode = Gtk.CellRendererMode.ACTIVATABLE;
     }
 
     public override Gtk.SizeRequestMode get_request_mode () {
@@ -47,7 +52,11 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
+    {
+        if (!arrow_visible)
+            return;
+
         bool is_expandable = (flags & Gtk.CellRendererState.EXPANDABLE) != 0;
 
         if (is_expandable) {
@@ -68,6 +77,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
             // Restore original state
             ctx.restore ();
         }
+    }
+
+    public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
+                                   Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
+                                   Gtk.CellRendererState flags)
+    {
+        toggled (path);
+        return true;
     }
 
     // XXX @deprecated. Not used
