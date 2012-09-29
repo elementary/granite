@@ -24,13 +24,13 @@
  *
  * The sidebar widget consists of a collection of items, some of which are also categories (and
  * thus can contain more items). All the items displayed in the sidebar are children of the widget's
- * root category. The API is meant to be used as follows:
+ * root item. The API is meant to be used as follows:
  *
  * 1. Create the items you want to display in the sidebar, setting the appropriate values for their
  * properties. The desired hierarchy is achieved by creating categories and adding items to them.
  * These will be displayed as descendants in the widget's tree structure. The categories that are
- * not nested inside any other category are considered to be at root level, and should be added to
- * the widget's root category.<<BR>>
+ * not nested inside any other item are considered to be at root level, and should be added to
+ * the widget's root item.<<BR>>
  *
  * ''Example''<<BR>>
  * The final tree will have the following structure:
@@ -56,14 +56,15 @@
  * // "Libraries" will be the parent category of "Music"
  * library_category.add_item (music_item);
  *
- * var my_store_category = new Granite.Widgets.Sidebar.ExpandableItem ("My Store");
- * store_category.add_item (my_store_category);
+ * // We plan to add sub-items to the store, so let's use an expandable item
+ * var my_store_item = new Granite.Widgets.Sidebar.ExpandableItem ("My Store");
+ * store_category.add_item (my_store_item);
  *
  * var my_store_podcast_item = new Granite.Widgets.Sidebar.Item ("Podcasts");
  * var my_store_music_item = new Granite.Widgets.Sidebar.Item ("Music");
  *
- * my_store_category.add_item (my_store_music_item);
- * my_store_category.add_item (my_store_podcast_item);
+ * my_store_item.add_item (my_store_music_item);
+ * my_store_item.add_item (my_store_podcast_item);
  *
  * var player1_item = new Granite.Widgets.Sidebar.Item ("Player 1");
  * var player2_item = new Granite.Widgets.Sidebar.Item ("Player 2");
@@ -77,13 +78,13 @@
  * var sidebar = new Granite.Widgets.Sidebar ();
  * }}}
  *
- * 3. Add root-level categories and/or items to the {@link Granite.Widgets.Sidebar.root} category.
- * This category only serves as a container, and all its properties are ignored by the widget.
+ * 3. Add root-level items to the {@link Granite.Widgets.Sidebar.root} item.
+ * This item only serves as a container, and all its properties are ignored by the widget.
  *
  * {{{
  * // This will add the main categories (including their children) to the sidebar. After
- * // having being added to be widget, any other item added to any of these categories
- * // (or any other child category in a deeper level) will be automatically added too.
+ * // having being added to be widget, any other item added to any of these items
+ * // (or any other child item in a deeper level) will be automatically added too.
  * // There's no need to deal with the sidebar widget directly.
  *
  * var root = sidebar.root;
@@ -119,7 +120,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * In order to offer a transparent Item-based API, and avoid the need of providing methods
      * to deal with items directly on the Sidebar widget, it was decided to follow a monitor-like
-     * implementation, where the sidebar permanently monitors its root category and any other
+     * implementation, where the sidebar permanently monitors its root item and any other
      * child item added to it. The task of monitoring the properties of the items has been
      * divided between different objects, as shown below:
      *
@@ -253,16 +254,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * There are a couple reasons that could make the item not-selectable:<<BR>>
          * * The item is not visible<<BR>>
-         * * The item's parent category is collapsed<<BR>>
+         * * The item's parent item is collapsed<<BR>>
          *
          * @see Granite.Widgets.Sidebar.Item.visible
          * @since 0.2
          */
-        public virtual bool selectable {
+        internal virtual bool selectable {
             get {
                 bool rv = false;
 
-                // we won't select items hidden behind a collapsed category
+                // we won't select items hidden behind another collapsed item
                 if (parent != null && !(parent.collapsible && !parent.expanded))
                     rv = visible;
 
@@ -333,7 +334,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public class ExpandableItem : Item {
 
         /**
-         * Emitted when an item is added to the category.
+         * Emitted when an item is added.
          *
          * @param item Item added.
          * @see Granite.Widgets.Sidebar.ExpandableItem.add_item
@@ -342,7 +343,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public signal void child_added (Item item);
 
         /**
-         * Emitted when an item is removed from the category.
+         * Emitted when an item is removed.
          *
          * @param item Item removed.
          * @see Granite.Widgets.Sidebar.ExpandableItem.remove_item
@@ -351,8 +352,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public signal void child_removed (Item item);
 
         /**
-         * Whether the category is collapsible or not. When set to //false//, the category
-         * is always expanded and the expander is not shown.
+         * Whether the item is collapsible or not. When set to //false//, the item
+         * is always expanded and the expander is not shown. Please note that this
+         * will also affect the value returned by the
+         * {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
          * @since 0.2
@@ -360,7 +363,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public bool collapsible { get; set; default = true; }
 
         /**
-         * Whether the category is expanded or not. This property has no effect when
+         * Whether the item is expanded or not. This property has no effect when
          * {@link Granite.Widgets.Sidebar.ExpandableItem.collapsible} is //false//.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.collapsible
@@ -373,7 +376,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Number of child items contained by the category.
+         * Number of child items contained by the item.
          *
          * @since 0.2
          * @see Granite.Widgets.Sidebar.ExpandableItem.get_children
@@ -387,7 +390,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Creates a new {@link Granite.Widgets.Sidebar.ExpandableItem}
          *
-         * @param name Title of the category.
+         * @param name Title of the item.
          * @return (transfer full) A new {@link Granite.Widgets.Sidebar.ExpandableItem}.
          * @since 0.2
          */
@@ -397,7 +400,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Gets all the items which are part of the category.
+         * Gets all the items which are children of the item.
          *
          * @return (transfer full) Children.
          * @see Granite.Widgets.Sidebar.ExpandableItem.n_children
@@ -423,14 +426,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Adds an item to the category. Since Categories are also items, it can also add sub-categories.
+         * Adds an item.
          *
          * {@link Granite.Widgets.Sidebar.ExpandableItem.child_added} is fired after the item is added.
          *
-         * While adding the item, //the category sets itself as the item's parent//. Please note
-         * that items are required to have their //parent// property set to //null// before being added,
-         * so make sure you remove the item from its previous category before adding it to the new category.
-         * This can be done as follows:
+         * While adding the item, //the item it's being added to sets itself as the item's parent//.
+         * Please note that items are required to have their //parent// property set to //null// before
+         * being added, so make sure you remove the item from its previous paremt item before attempting
+         * to add it to another item. For instance:
          * {{{
          * if (item.parent != null)
          *     item.parent.remove (item); // this will set item's parent to null
@@ -456,15 +459,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Removes an item from the category.
+         * Removes an item.
          *
          * The {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed} signal is fired
          * //after removing the item//. Finally (i.e. after all the handlers have been invoked),
          * the item's {@link Granite.Widgets.Sidebar.Item.parent} property is set to //null//.
-         * This has the advantage of letting signal handlers know the category from which the //item//
+         * This has the advantage of letting signal handlers know the parent from which the //item//
          * is being removed.
          *
-         * @param item The item to remove. The category __must__ be its parent.
+         * @param item The item to remove. This will fail if item has a different parent.
          * @see Granite.Widgets.Sidebar.ExpandableItem.child_removed
          * @see Granite.Widgets.Sidebar.ExpandableItem.clear
          * @since 0.2
@@ -483,7 +486,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Removes all the items contained by the category. It works similarly to
+         * Removes all the items contained by the item. It works similarly to
          * {@link Granite.Widgets.Sidebar.ExpandableItem.remove_item}.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.remove_item
@@ -711,7 +714,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         // Queries the item's parent n_children property. In case it is zero, we update
-        // the parent category's row in order to re-filter it, since empty categories should
+        // the parent item's row in order to re-filter it, since empty categories should
         // not be displayed.
         private void queue_parent_update (ExpandableItem? parent) {
             if (parent != null && is_at_root_level (parent)) {
@@ -1022,18 +1025,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Updates the tree to reflect the @expanded and @collapsible properties of a category.
-         * If the category is collapsible, is is expanded or collapsed based on this property;
-         * otherwise we make sure the category is expanded.
+         * Updates the tree to reflect the ''expanded'' property of an expandable item
          */
-        public void update_expansion (ExpandableItem category) {
-            var path = data_model.get_item_path (category);
+        public void update_expansion (ExpandableItem expandable_item) {
+            var path = data_model.get_item_path (expandable_item);
 
             if (path != null) {
 #if TRACE_SIDEBAR
-                debug ("Tree::update_expansion [%s]", category.name);
+                debug ("Tree::update_expansion [%s]", expandable_item.name);
 #endif
-                if (category.expanded)
+                if (expandable_item.expanded)
                     expand_row (path, false);
                 else
                     collapse_row (path);
@@ -1167,14 +1168,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                var category = item as ExpandableItem;
-                if (category != null) {
-                    expander_visible = category.collapsible;
+                var expandable_item = item as ExpandableItem;
+                if (expandable_item != null) {
+                    expander_visible = expandable_item.collapsible;
 
                     // Decide which expander to show based on whether the item is a main
                     // category or not. For categories, we show the expander on the right.
                     if (expander_visible)
-                        primary_expander_visible = !is_category (category, iter);
+                        primary_expander_visible = !is_category (expandable_item, iter);
                 }
             }
 
@@ -1285,11 +1286,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public delegate bool VisibleFunc (Item item);
 
     /**
-     * Root-level category. This category represents the first-level sidebar items. It is treated
-     * differently than the other categories: for this category, ''all'' the Item and ExpandableItem
-     * properties are ignored. It only serves as an item container, and also allows the sidebar to
-     * connect to its {@link Granite.Widgets.Sidebar.ExpandableItem.child_added} and
-     * {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed} signals in order to monitor
+     * Root-level expandable item.
+     *
+     * This item contains the first-level sidebar items. It //only serves as an item container//.
+     * It is used to add and remove items to/from the widget.
+     *
+     * Internally, it allows the sidebar to connect to its {@link Granite.Widgets.Sidebar.ExpandableItem.child_added}
+     * and {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed} signals in order to monitor
      * new children additions/removals.
      *
      * @since 0.2
@@ -1423,36 +1426,36 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     /**
      * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //category// and its child categories to the value specified, so this can
+     * of //expandable_item// and its child categories to the value specified, so this can
      * be used for both expanding and collapsing.
      *
-     * @param category ExpandableItem where expansion begins.
+     * @param expandable_item ExpandableItem where expansion begins.
      * @param expand Whether categories will be expanded or collapsed.
      * @since 0.2
      */
-    public void expand_with_children (ExpandableItem category, bool expand) {
-        category.expanded = expand;
+    public void expand_with_children (ExpandableItem expandable_item, bool expand) {
+        expandable_item.expanded = expand;
 
-        foreach (var item in category.get_children ()) {
-            var child_category = item as ExpandableItem;
-            if (child_category != null)
-                expand_with_children (child_category, expand);
+        foreach (var item in expandable_item.get_children ()) {
+            var child_expandable_item = item as ExpandableItem;
+            if (child_expandable_item != null)
+                expand_with_children (child_expandable_item, expand);
         }
     }
 
     /**
      * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //category// and its parent categories to the value specified, so this can
+     * of //expandable_item// and its parent categories to the value specified, so this can
      * be used for both expanding and collapsing.
      *
-     * @param category ExpandableItem where expansion begins.
+     * @param expandable_item ExpandableItem where expansion begins.
      * @param expand Whether categories will be expanded or collapsed.
      * @since 0.2
      */
-    public void expand_with_parents (ExpandableItem category, bool expand) {
-        category.expanded = expand;
+    public void expand_with_parents (ExpandableItem expandable_item, bool expand) {
+        expandable_item.expanded = expand;
 
-        var parent = category.parent;
+        var parent = expandable_item.parent;
         if (parent != null && parent != this.root)
             expand_with_parents (parent, expand);
     }
@@ -1461,7 +1464,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * Scrolls the sidebar tree to make //item// visible.
      *
      * If //expand_parents// is //true//, {@link Sidebar.expand_with_parents} is called for the
-     * item's parent category to make sure it's not obscured behind a group of collapsed categories.
+     * item's parent, to make sure it's not obscured behind a collapsed group.
      *
      * @param item Item to scroll to.
      * @param expand_parents Whether to expand item's parent categories in case they are collapsed.
@@ -1490,12 +1493,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // Monitor object properties
         item.changed.connect (on_item_property_changed);
 
-        // If it's a category, also add children
-        var category = item as ExpandableItem;
-        if (category != null) {
-            tree.update_expansion (category);
+        // If it's an expandable item, also add children
+        var expandable_item = item as ExpandableItem;
+        if (expandable_item != null) {
+            tree.update_expansion (expandable_item);
 
-            foreach (var child in category.get_children ()) {
+            foreach (var child in expandable_item.get_children ()) {
                 // This will always be faster than the normal recursive implementation
                 Idle.add_full (Priority.HIGH_IDLE, () => {
                     add_item (child);
@@ -1503,8 +1506,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 });
             }
 
-            category.child_added.connect (add_item);
-            category.child_removed.connect (remove_item);
+            expandable_item.child_added.connect (add_item);
+            expandable_item.child_removed.connect (remove_item);
         }
     }
 
@@ -1518,10 +1521,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // Disconnect everything we connected in add_item()
         item.changed.disconnect (on_item_property_changed);
 
-        var category = item as ExpandableItem;
-        if (category != null) {
-            category.child_added.disconnect (add_item);
-            category.child_removed.disconnect (remove_item);
+        var expandable_item = item as ExpandableItem;
+        if (expandable_item != null) {
+            expandable_item.child_added.disconnect (add_item);
+            expandable_item.child_removed.disconnect (remove_item);
         }
 
         data_model.remove_item (item);
@@ -1536,8 +1539,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         data_model.update_item (item);
 
-        var category = item as ExpandableItem;
-        if (category != null)
-            tree.update_expansion (category);
+        var expandable_item = item as ExpandableItem;
+        if (expandable_item != null)
+            tree.update_expansion (expandable_item);
     }
 }
