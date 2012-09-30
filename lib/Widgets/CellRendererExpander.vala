@@ -21,7 +21,7 @@
 public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public signal void toggled (string path);
 
-    public bool arrow_visible { get; set; }
+    public bool arrow_visible { get; set; default = true; }
 
     private int arrow_size = 8;
 

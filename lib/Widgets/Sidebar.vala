@@ -1232,8 +1232,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 }
             }
 
+            // For the primary expander, we only make the arrow invisible in order to avoid messing
+            // up the item alignment (because that will keep the cell's allocated area). For the secondary
+            // expander that's not important, and thus we should simply hide the entire cell renderer.
             primary_expander_cell.arrow_visible = expander_visible && primary_expander_visible;
-            secondary_expander_cell.arrow_visible = expander_visible && !primary_expander_visible;
+            secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
         }
 
         public override bool key_release_event (Gdk.EventKey event) {
