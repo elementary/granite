@@ -134,7 +134,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * + Item            |                                   |
      *   - parent        | Not monitored                     | N/A
      *   - name          | Sidebar::on_item_property_changed | Tree::name_cell_data_func
-     *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See on_text_renderer_edited)
+     *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See Tree::start_editing_item)
      *   - visible       | Sidebar::on_item_property_changed | FilteredDataModel::filter_visible_func
      *   - icon          | Sidebar::on_item_property_changed | Tree::icon_cell_data_func
      *   - activatable   | Same as @icon                     | Same as @icon
@@ -878,7 +878,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private enum Column {
-            ITEM,
+            ITEM = 0,
             N_COLS
         }
 
@@ -889,6 +889,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private Item? selected;
 
+        private Gtk.Entry? editable_entry;
         private Gtk.CellRendererText text_cell;
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
@@ -932,10 +933,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
 
             text_cell = new Gtk.CellRendererText ();
+            text_cell.editable_set = true;
             text_cell.editable = false;
+            text_cell.editing_started.connect (on_editing_started);
+            text_cell.editing_canceled.connect (on_editing_canceled);
             text_cell.ellipsize = Pango.EllipsizeMode.END;
             text_cell.xalign = 0.0f;
-            text_cell.edited.connect (on_text_renderer_edited);
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
 
@@ -958,6 +961,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         }
 
+        ~Tree () {
+            text_cell.editing_started.disconnect (on_editing_started);
+            text_cell.editing_canceled.disconnect (on_editing_canceled);
+            primary_expander_cell.toggled.disconnect (on_expander_toggled);
+            secondary_expander_cell.toggled.disconnect (on_expander_toggled);
+        }
+
         /**
          * Evaluates whether the item at the specified path can be selected or not.
          */
@@ -968,7 +978,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = data_model.get_item_from_path (path);
 
             if (item != null) {
-                // Main categories ARE NOT selectable, so let's check for that
+                // Main categories ARE NOT selectable, so check for that
                 if (!is_category (item, null, path))
                     selectable = item.selectable;
             }
@@ -1010,13 +1020,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (path != null) {
                 var item = data_model.get_item_from_path (path);
-                if (item != null) {
-                    // TODO: This is a good place to enable/disable
-                    // text editing (text_cell.editable = ...)
-                    if (item != this.selected && item.selectable) {
-                        this.selected = item;
-                        item_selected (item);
-                    }
+                if (item != null && item != this.selected && item.selectable) {
+                    this.selected = item;
+                    item_selected (item);
                 }
             }
         }
@@ -1042,35 +1048,52 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return scrolled;
         }
 
-        public void start_editing_item (Item item) requires (item.editable) {
+        public bool start_editing_item (Item item) requires (item.editable) {
 #if TRACE_SIDEBAR
             debug ("Tree::start_editing_item [%s]", item.name);
 #endif
             var path = data_model.get_item_path (item);
             if (path != null) {
-                // We make the text renderer temporarily editable. This is needed to prevent non-editable
-                // items from being edited when activated. The cell is made non-editable again when the
-                // editing finishes (see on_text_renderer_edited.)
                 text_cell.editable = true;
                 set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
-                grab_focus ();
+                return true;
             } else {
                 warning ("Could not edit \"%s\": path not found", item.name);
             }
+
+            return false;
         }
 
-        // Editing has finished
-        private void on_text_renderer_edited (string path, string new_text) {
-            // text_cell will no longer be editable
-            text_cell.editable = false;
-
-            var item = data_model.get_item_from_path (new Gtk.TreePath.from_string (path));
-            if (item != null) {
-#if TRACE_SIDEBAR
-                debug ("Tree::on_text_renderer_edited [%s]", item.name);
-#endif
-                item.edited (new_text);
+        private void on_editing_started (Gtk.CellEditable editable, string path) {
+            editable_entry = editable as Gtk.Entry;
+            if (editable_entry != null) {
+                editable_entry.editing_done.connect (on_editing_done);
+                editable_entry.focus_out_event.connect (on_editing_focus_out);
+                editable_entry.editable = true;
             }
+        }
+
+        private void on_editing_canceled () {
+            editable_entry.editable = false;
+            editable_entry.editing_done.disconnect (on_editing_done);
+            editable_entry.focus_out_event.disconnect (on_editing_focus_out);
+
+            text_cell.editable = false;
+        }
+
+        private void on_editing_done () {
+            // Same actions as when cancelling editing
+            on_editing_canceled ();
+
+            if (selected_item != null && selected_item.editable)
+                selected_item.edited (editable_entry.get_text ());
+        }
+
+        private bool on_editing_focus_out (Gdk.EventFocus event) {
+            // We'll return false here, in case other parts of the app
+            // want to know if the button press event that caused
+            // us to lose focus have been fully handled.
+            return false;
         }
 
         private void on_activatable_activated (string item_path_str) {
@@ -1110,15 +1133,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public override void row_activated (Gtk.TreePath path, Gtk.TreeViewColumn column) {
             if (column == get_column (Column.ITEM)) {
                 var item = data_model.get_item_from_path (path);
-                if (item != null) {
-#if TRACE_SIDEBAR
-                    debug ("Tree::row_activated [%s]", item.name);
-#endif
-                    if (item.editable)
-                        start_editing_item (item);
-                    else
-                        item.activated ();
-                }
+                if (item != null)
+                    item.activated ();
             }
         }
 
@@ -1160,10 +1176,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (item is ExpandableItem) {
                 if (iter != null) {
                     assert (path == null);
-                    return data_model.is_iter_at_root_level (iter);
+                    is_category = data_model.is_iter_at_root_level (iter);
                 } else {
                     assert (path != null);
-                    return data_model.is_path_at_root_level (path);
+                    is_category = data_model.is_path_at_root_level (path);
                 }
             }
             return is_category;
@@ -1271,8 +1287,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // pointer casting when working from Vala.
                     var ev = (Gdk.Event*) (&event);
 
-                    if (ev->triggers_context_menu ())
+                    if (ev->triggers_context_menu ()) {
                         popup_context_menu (item, event);
+                    } else if (event.button == Gdk.BUTTON_PRIMARY) {
+                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable)
+                            return start_editing_item (item);
+                    }
                 }
             }
 
@@ -1434,10 +1454,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param item Item to edit.
      * @see Granite.Widgets.Sidebar.Item.editable
      * @see Granite.Widgets.Sidebar.editing
+     * @return true if the editing started sucessfully; false otherwise.
      * @since 0.2
      */
-    public void start_editing_item (Item item) requires (item.editable && has_item (item) && !editing) {
-        tree.start_editing_item (item);
+    public bool start_editing_item (Item item) requires (item.editable)
+                                               requires (has_item (item))
+    {
+        return tree.start_editing_item (item);
     }
 
     /**
