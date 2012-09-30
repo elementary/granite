@@ -707,7 +707,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
                 if (child_iter != null) {
 #if VALA_0_18
-                    child_tree.remove (ref child_iter);
+                    // Workaround for a bug in valac that tries to pass an invalid pointer
+                    // to gtk_tree_store_remove() in the generated C code. TODO: add link
+                    // to the bug report.
+                    Gtk.TreeIter iter = child_iter;
+                    child_tree.remove (ref iter);
 #else
                     child_tree.remove (child_iter);
 #endif
