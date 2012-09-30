@@ -1365,7 +1365,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * @since 0.2
      */
-    public ExpandableItem root { get; private set; default = new ExpandableItem (); }
+    public ExpandableItem root { get; private set; default = new ExpandableItem ("ROOT"); }
 
     /**
      * The current selected item. Setting its value to //null// or an invalid (e.g. unselectable)
