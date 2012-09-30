@@ -878,7 +878,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private enum Column {
-            ITEM = 0,
+            ITEM,
             N_COLS
         }
 
@@ -1199,16 +1199,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 // Icons are not displayed for categories
                 visible = !is_category (item, iter);
 
-                if (icon_renderer == icon_cell)
-                    icon = item.icon;
-                else if (icon_renderer == activatable_cell)
-                    icon = item.activatable;
-                else
-                    assert_not_reached ();
+                if (visible) {
+                    if (icon_renderer == icon_cell)
+                        icon = item.icon;
+                    else if (icon_renderer == activatable_cell)
+                        icon = item.activatable;
+                    else
+                        assert_not_reached ();
+                }
             }
 
+            visible = visible && icon != null;
+
             icon_renderer.visible = visible;
-            icon_renderer.gicon = icon;
+            icon_renderer.gicon = visible ? icon : null;
         }
 
         private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
