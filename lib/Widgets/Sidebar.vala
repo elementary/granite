@@ -181,7 +181,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * to the {@link Granite.Widgets.Sidebar.name} property. Code can change that behavior
          * by overriding this signal.
          *
-         * @param name The item's new name (result of editing.)
+         * @param new_name The item's new name (result of editing.)
          * @since 0.2
          */
         public virtual signal void edited (string new_name) {
@@ -1194,6 +1194,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                         if (data_model.is_category (item, null, path)) {
                             var category = item as ExpandableItem;
                             category.expanded = !category.expanded;
+                            return true;
                         }
                     }
                 }
@@ -1221,10 +1222,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (menu != null) {
                 menu.attach_to_widget (this, null);
 
-                if (event != null)
+                if (event != null) {
                     menu.popup (null, null, null, button, time);
-                else
+                } else {
                     menu.popup (null, null, menu_position_func, button, time);
+                    menu.select_first (false);
+                }
 
                 return true;
             }
@@ -1394,7 +1397,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public delegate int SortFunc (Item a, Item b);
 
     /**
-     * A {@linkGranite.Widgets.Sidebar.VisibleFunc} should return true if the item should be 
+     * A {@link Granite.Widgets.Sidebar.VisibleFunc} should return true if the item should be 
      * visible, false otherwise.
      *
      * IMPORTANT NOTE: This method ''must not'' modify the item's //visible// property. Also,

@@ -52,27 +52,23 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
     {
-        if (!arrow_visible || !is_expander)
+        if (!arrow_visible)
             return;
 
-        bool is_expandable = (flags & Gtk.CellRendererState.EXPANDABLE) != 0;
+        var ctx = widget.get_style_context ();
+        ctx.save ();
 
-        if (is_expandable) {
-            var ctx = widget.get_style_context ();
-            ctx.save ();
+        const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
+        var state = ctx.get_state ();
+        ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
-            const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
-            var state = ctx.get_state ();
-            ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
+        int offset = arrow_size / 2;
+        int x = cell_area.x + cell_area.width / 2 - offset;
+        int y = cell_area.y + cell_area.height / 2 - offset;
+        ctx.render_expander (context, x, y, arrow_size, arrow_size);
 
-            int offset = arrow_size / 2;
-            int x = cell_area.x + cell_area.width / 2 - offset;
-            int y = cell_area.y + cell_area.height / 2 - offset;
-            ctx.render_expander (context, x, y, arrow_size, arrow_size);
-
-            // Restore original state
-            ctx.restore ();
-        }
+        // Restore original state
+        ctx.restore ();
     }
 
     public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
