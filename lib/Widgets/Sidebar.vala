@@ -789,7 +789,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * External "extra" filter method.
          */
-        public void set_filter_func (Sidebar.VisibleFunc visible_func) {
+        public void set_filter_func (Sidebar.VisibleFunc? visible_func) {
             this.filter_func = visible_func;
         }
 
@@ -1503,7 +1503,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @see Granite.Widgets.Sidebar.SortFunc
      * @since 0.2
      */
-    public void set_sort_func (owned SortFunc sort_func) {
+    public void set_sort_func (owned SortFunc? sort_func) {
         data_model.set_sort_func ((owned) sort_func);
     }
 
@@ -1515,7 +1515,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @see Granite.Widgets.Sidebar.VisibleFunc
      * @since 0.2
      */
-    public void set_filter_func (VisibleFunc visible_func, bool refilter) {
+    public void set_filter_func (VisibleFunc? visible_func, bool refilter) {
         data_model.set_filter_func (visible_func);
         if (refilter)
             this.refilter ();
