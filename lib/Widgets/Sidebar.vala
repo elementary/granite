@@ -608,7 +608,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private Gtk.TreeStore child_tree;
         private Sidebar.SortFunc? sort_func;
-        private Sidebar.VisibleFunc? filter_func;
+        private unowned Sidebar.VisibleFunc? filter_func;
 
         private SortColumn sort_column = SortColumn.UNSORTED;
 
@@ -789,8 +789,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * External "extra" filter method.
          */
-        public void set_filter_func (owned Sidebar.VisibleFunc visible_func) {
-            this.filter_func = (owned) visible_func;
+        public void set_filter_func (Sidebar.VisibleFunc visible_func) {
+            this.filter_func = visible_func;
         }
 
         /**
@@ -1525,6 +1525,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * Traverses the tree hiding each item if it is to be hidden based on the passed VisibleFunc
      *
      * @see Granite.Widgets.Sidebar.VisibleFunc
+     * @see Granite.Widgets.Sidebar.set_visible_func
      * @since 0.2
      */
     public void refilter () {
