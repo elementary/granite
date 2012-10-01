@@ -52,7 +52,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
     {
-        if (!arrow_visible)
+        if (!arrow_visible || !is_expander)
             return;
 
         var ctx = widget.get_style_context ();
