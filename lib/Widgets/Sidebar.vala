@@ -496,7 +496,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
 
         public CellRendererIcon () {
-            set_alignment (0.5f, 0.5f);
             mode = Gtk.CellRendererMode.ACTIVATABLE;
             stock_size = ICON_SIZE;
             follow_state = true;
@@ -619,19 +618,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return items.has_key (item);
         }
 
-        public bool is_at_root_level (Item item) {
-            var iter = get_item_iter (item);
-            return (iter != null) ? is_iter_at_root_level (iter) : false;
-        }
-
-        public bool is_iter_at_root_level (Gtk.TreeIter iter) {
-            return is_path_at_root_level (get_path (iter));
-        }
-
-        public bool is_path_at_root_level (Gtk.TreePath path) {
-            return path.get_depth () == 1;
-        }
-
         public void update_item (Item item) {
             if (has_item (item)) {
 #if TRACE_SIDEBAR
@@ -711,15 +697,18 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // the parent item's row in order to re-filter it, since empty empty expandable
         // items should not be displayed.
         private void queue_parent_update (ExpandableItem? parent) {
-            if (parent != null && is_at_root_level (parent)) {
-                parent.ref ();
-                Idle.add_full (Priority.HIGH_IDLE, () => {
-                    if (parent != null)
-                        update_item (parent);
+            if (parent != null) {
+                var path = get_item_path (parent);
+                if (path != null && is_category (parent, null, path)) {
+                    parent.ref ();
+                    Idle.add_full (Priority.HIGH_IDLE, () => {
+                        if (parent != null)
+                            update_item (parent);
 
-                    parent.unref ();
-                    return false;
-                });
+                        parent.unref ();
+                        return false;
+                    });
+                }
             }
         }
 
@@ -791,6 +780,34 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
+         * Checks whether an item is a category (i.e. a root-level expandable item).
+         * The caller must pass an iter or path pointing to the item, but not both
+         * (one of them must be null.)
+         */
+        public bool is_category (Item item, Gtk.TreeIter? iter, Gtk.TreePath? path = null) {
+            bool is_category = false;
+            // either iter or path has to be null
+            if (item is ExpandableItem) {
+                if (iter != null) {
+                    assert (path == null);
+                    is_category = is_iter_at_root_level (iter);
+                } else {
+                    assert (iter == null);
+                    is_category = is_path_at_root_level (path);
+                }
+            }
+            return is_category;
+        }
+
+        private bool is_iter_at_root_level (Gtk.TreeIter iter) {
+            return is_path_at_root_level (get_path (iter));
+        }
+
+        private bool is_path_at_root_level (Gtk.TreePath path) {
+            return path.get_depth () == 1;
+        }
+
+        /**
          * Actual sort function. It simply returns zero if sort_func is null.
          */
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
@@ -837,11 +854,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             Item? item;
             child_tree.get (iter, Column.ITEM, out item, -1);
 
-            if (item != null) 
+            if (item != null) {
                item_visible = item.visible;
 
-           if (filter_func != null)
-              item_visible = item_visible && filter_func (item);
+                // If the item is a category, also query the number of visible child items
+                // because empty categories should not be displayed.
+                var expandable = item as ExpandableItem;
+                if (expandable != null && child_tree.iter_depth (iter) == 0) {
+                    uint n_visible_children = 0;
+                    foreach (var child_item in expandable.get_children ()) {
+                        if (child_item.visible)
+                            n_visible_children++;
+                    }
+                    item_visible = item_visible && n_visible_children > 0;
+                }
+            }
+
+            if (filter_func != null)
+                item_visible = item_visible && filter_func (item);
 
             return item_visible;
         }
@@ -969,7 +999,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (item != null) {
                 // Main categories ARE NOT selectable, so check for that
-                if (!is_category (item, null, path))
+                if (!data_model.is_category (item, null, path))
                     selectable = item.selectable;
             }
 
@@ -1112,6 +1142,75 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
+        public override bool key_release_event (Gdk.EventKey event) {
+           if (selected_item != null) {
+                switch (event.keyval) {
+                    case Gdk.Key.F2:
+                       var modifiers = Gtk.accelerator_get_default_mod_mask ();
+                        // try to start editing selected item
+                        if ((event.state & modifiers) == 0 && selected_item.editable)
+                            start_editing_item (selected_item);
+                        break;
+                }
+            }
+
+            return base.key_release_event (event);
+        }
+
+        public override bool button_press_event (Gdk.EventButton event) {
+            Gtk.TreePath path;
+            Gtk.TreeViewColumn column;
+
+            int x = (int)event.x, y = (int)event.y, cell_x, cell_y;
+
+            if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
+                var item = data_model.get_item_from_path (path);
+
+                if (item != null) {
+                    // This is implemented in C as a union, so there's no other way around than doing
+                    // pointer casting when working from Vala.
+                    var ev = (Gdk.Event*) (&event);
+
+                    if (ev->triggers_context_menu ()) {
+                        popup_context_menu (item, event);
+                    } else if (event.button == Gdk.BUTTON_PRIMARY) {
+                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable)
+                            return start_editing_item (item);
+
+                        // toggle item expansion if the item is a category
+                        if (data_model.is_category (item, null, path)) {
+                            var category = item as ExpandableItem;
+                            category.expanded = !category.expanded;
+                        }
+                    }
+                }
+            }
+
+            return base.button_press_event (event);
+        }
+
+        public override bool popup_menu () {
+            return popup_context_menu (selected_item, null);
+        }
+
+        private bool popup_context_menu (Item item, Gdk.EventButton? event) {
+#if TRACE_SIDEBAR
+            debug ("popup_context_menu [%s]", item.name);
+#endif
+            var time = (event != null) ? event.time : Gtk.get_current_event_time ();
+            var button = (event != null) ? event.button : 0;
+
+            var menu = item.get_context_menu ();
+
+            if (menu != null) {
+                menu.attach_to_widget (this.parent, null);
+                menu.popup (null, null, null, button, time);
+                return true;
+            }
+
+            return false;
+        }
+
         private static Item? get_item_from_model (Gtk.TreeModel model, Gtk.TreeIter iter) {
             var data_model = model as FilteredDataModel;
             assert (data_model != null);
@@ -1131,32 +1230,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (item != null) {
                 text = item.name;
 
-                if (is_category (item, iter))
+                if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
             }
 
             text_renderer.weight = weight;
             text_renderer.text = text;
-        }
-
-        /**
-         * Checks whether an item is a category (i.e. a root-level expandable item).
-         * The caller must pass an iter or path pointing to the item, but not both
-         * (one of them must be null.)
-         */
-        private bool is_category (Item item, Gtk.TreeIter? iter, Gtk.TreePath? path = null) {
-            bool is_category = false;
-            // either iter or path has to be null
-            if (item is ExpandableItem) {
-                if (iter != null) {
-                    assert (path == null);
-                    is_category = data_model.is_iter_at_root_level (iter);
-                } else {
-                    assert (path != null);
-                    is_category = data_model.is_path_at_root_level (path);
-                }
-            }
-            return is_category;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
@@ -1171,7 +1250,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 // Icons are not displayed for main categories
-                visible = !is_category (item, iter);
+                visible = !data_model.is_category (item, iter);
 
                 if (visible) {
                     if (icon_renderer == icon_cell)
@@ -1206,7 +1285,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // Decide which expander to show based on whether the item is a main
                     // category or not. For main categories, we show the expander on the right.
                     if (expander_visible)
-                        primary_expander_visible = !is_category (expandable_item, iter);
+                        primary_expander_visible = !data_model.is_category (expandable_item, iter);
                 }
             }
 
@@ -1215,69 +1294,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // expander that's not important, and thus we should simply hide the entire cell renderer.
             primary_expander_cell.arrow_visible = expander_visible && primary_expander_visible;
             secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
-        }
-
-        public override bool key_release_event (Gdk.EventKey event) {
-           if (selected_item != null) {
-                switch (event.keyval) {
-                    case Gdk.Key.F2:
-                       var modifiers = Gtk.accelerator_get_default_mod_mask ();
-                        // try to start editing selected item
-                        if ((event.state & modifiers) == 0 && selected_item.editable)
-                            start_editing_item (selected_item);
-                        break;
-                }
-            }
-
-            return base.key_release_event (event);
-        }
-
-        public override bool popup_menu () {
-            return popup_context_menu (selected_item, null);
-        }
-
-        private bool popup_context_menu (Item item, Gdk.EventButton? event) {
-#if TRACE_SIDEBAR
-            debug ("popup_context_menu [%s]", item.name);
-#endif
-            var time = (event != null) ? event.time : Gtk.get_current_event_time ();
-            var button = (event != null) ? event.button : 0;
-
-            var menu = item.get_context_menu ();
-
-            if (menu != null) {
-                menu.attach_to_widget (this.parent, null);
-                menu.popup (null, null, null, button, time);
-                return true;
-            }
-
-            return false;
-        }
-
-        public override bool button_press_event (Gdk.EventButton event) {
-            Gtk.TreePath path;
-            Gtk.TreeViewColumn column;
-
-            int x = (int)event.x, y = (int)event.y, cell_x, cell_y;
-
-            if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
-                var item = data_model.get_item_from_path (path);
-
-                if (item != null) {
-                    // This is implemented in C as a union, so there's no other way around than doing
-                    // pointer casting when working from Vala.
-                    var ev = (Gdk.Event*) (&event);
-
-                    if (ev->triggers_context_menu ()) {
-                        popup_context_menu (item, event);
-                    } else if (event.button == Gdk.BUTTON_PRIMARY) {
-                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable)
-                            return start_editing_item (item);
-                    }
-                }
-            }
-
-            return base.button_press_event (event);
         }
     }
 

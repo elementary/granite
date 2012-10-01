@@ -22,11 +22,9 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public signal void toggled (string path);
 
     public bool arrow_visible { get; set; default = true; }
-
     private int arrow_size = 8;
 
     public CellRendererExpander () {
-        set_alignment (0.5f, 0.5f);
         mode = Gtk.CellRendererMode.ACTIVATABLE;
     }
 
@@ -54,20 +52,18 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
     {
-        if (!arrow_visible)
+        if (!arrow_visible || !is_expander)
             return;
 
         bool is_expandable = (flags & Gtk.CellRendererState.EXPANDABLE) != 0;
 
         if (is_expandable) {
-            bool expanded = (flags & Gtk.CellRendererState.EXPANDED) != 0;
-
             var ctx = widget.get_style_context ();
             ctx.save ();
 
             const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
             var state = ctx.get_state ();
-            ctx.set_state (expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
+            ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
             int offset = arrow_size / 2;
             int x = cell_area.x + cell_area.width / 2 - offset;
