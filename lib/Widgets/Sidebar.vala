@@ -452,11 +452,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void add_item (Item item) requires (item.parent == null && !(item in children)) {
-            lock (children) {
-                item.parent = this;
-                children.add (item);
-            }
-
+            item.parent = this;
+            children.add (item);
             child_added (item);
         }
 
@@ -475,10 +472,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void remove_item (Item item) requires (item.parent == this && item in children) {
-            lock (children) {
-                children.remove (item);
-            }
-
+            children.remove (item);
             child_removed (item);
             item.parent = null;
         }
@@ -627,23 +621,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return items.has_key (item);
         }
 
-        public void update_item (Item item) {
-            if (has_item (item)) {
+        public void update_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
-                debug ("FilteredDataModel::update_item [%s]", item.name);
+            debug ("FilteredDataModel::update_item [%s]", item.name);
 #endif
-                lock (child_tree) {
-                    // Emitting row_changed() for this item's row in the child model causes the filter
-                    // (i.e. this model) to re-evaluate whether a row is visible or not, calling
-                    // filter_visible_func for that row again, and that's exactly what we want.
-                    var node_reference = items.get (item);
-                    if (node_reference != null) {
-                        var path = node_reference.path;
-                        var iter = node_reference.iter;
-                        if (path != null && iter != null)
-                            child_tree.row_changed (path, iter);
-                    }
-                }
+            // Emitting row_changed() for this item's row in the child model causes the filter
+            // (i.e. this model) to re-evaluate whether a row is visible or not, calling
+            // filter_visible_func for that row again, and that's exactly what we want.
+            var node_reference = items.get (item);
+            if (node_reference != null) {
+                var path = node_reference.path;
+                var iter = node_reference.iter;
+                if (path != null && iter != null)
+                    child_tree.row_changed (path, iter);
             }
         }
 
@@ -651,55 +641,52 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 #if TRACE_SIDEBAR
             debug ("FilteredDataModel::add_item [%s]", item.name);
 #endif
-            lock (child_tree) {
-                // Try to find the parent. XXX: If the parent is not found, and item.parent != null,
-                // we should call add_item(item.parent) in order to add it prior to adding the child
-                // item. This will be mandatory if Item::parent ever becomes writable from client code.
-                // It is currently not needed because of the way the sidebar operates: it adds expandable
-                // items first, and then their children.
-                Gtk.TreeIter? parent_child_iter = null, child_iter;
-                if (item.parent != null)
-                    parent_child_iter = get_item_child_iter (item.parent);
+            // Try to find the parent. XXX If the parent is not found, and item.parent != null,
+            // we should call add_item(item.parent) in order to add it prior to adding the child
+            // item. This will be mandatory if Item::parent ever becomes writable from client code.
+            // It is currently not needed because of the way the sidebar operates: it adds expandable
+            // items first, and then their children.
+            Gtk.TreeIter? parent_child_iter = null, child_iter;
+            if (item.parent != null)
+                parent_child_iter = get_item_child_iter (item.parent);
 
-                child_tree.append (out child_iter, parent_child_iter);
-                child_tree.set (child_iter, Column.ITEM, item, -1);
+            child_tree.append (out child_iter, parent_child_iter);
+            child_tree.set (child_iter, Column.ITEM, item, -1);
 
-                items.set (item, new NodeWrapper (child_tree, child_iter));
+            items.set (item, new NodeWrapper (child_tree, child_iter));
 
-                queue_parent_update (item.parent);
-            }
+            queue_parent_update (item.parent);
         }
 
         public void remove_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
             debug ("FilteredDataModel::remove_item [%s]", item.name);
 #endif
-            lock (child_tree) {
-                // get_item_child_iter() depends on @items.get(item) for retrieving the right reference,
-                // so don't unset the item from @items yet! We first get the child iter and then
-                // unset the value.
-                var child_iter = get_item_child_iter (item);
+            // get_item_child_iter() depends on @items.get(item) for retrieving the right reference,
+            // so don't unset the item from @items yet! We first get the child iter and then
+            // unset the value.
+            var child_iter = get_item_child_iter (item);
 
-                // Now we remove the item from the table, because that way get_item_iter() and
-                // all the methods that depend on it won't return invalid iters or items when
-                // called. This is important because child_tree.remove() will emit row_deleted(),
-                // and its handlers could potentially depend on one of the methods mentioned above.
-                items.unset (item);
+            // Now we remove the item from the table, because that way get_item_iter() and
+            // all the methods that depend on it won't return invalid iters or items when
+            // called. This is important because child_tree.remove() will emit row_deleted(),
+            // and its handlers could potentially depend on one of the methods mentioned above.
+            items.unset (item);
 
-                if (child_iter != null) {
+            if (child_iter != null) {
 #if VALA_0_18
-                    // Workaround for a bug in valac that tries to pass an invalid pointer
-                    // to gtk_tree_store_remove() in the generated C code.
-                    // Bug ticket: https://bugzilla.gnome.org/show_bug.cgi?id=685177
-                    Gtk.TreeIter iter = child_iter;
-                    child_tree.remove (ref iter);
-#else
-                    child_tree.remove (child_iter);
-#endif
-                }
+                // Workaround for a bug in valac that tries to pass an invalid pointer type
+                // (GtkTreeIter** instead of GtkTreeIter*) to gtk_tree_store_remove() in the
+                // generated C code. https://bugzilla.gnome.org/show_bug.cgi?id=685177
+                Gtk.TreeIter iter = child_iter;
 
-                queue_parent_update (item.parent);
+                child_tree.remove (ref iter);
+#else
+                child_tree.remove (child_iter);
+#endif
             }
+
+            queue_parent_update (item.parent);
         }
 
         /**
