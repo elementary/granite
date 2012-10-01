@@ -594,6 +594,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
+        private enum SortColumn {
+            UNSORTED = Gtk.SortColumn.UNSORTED,
+            SORTED = Gtk.SortColumn.DEFAULT + 1
+        }
+
         /**
          * This hashmap stores items and their respective child node references. For that reason, the
          * references it contains should only be used on the child_tree model, or converted to filter
@@ -605,15 +610,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Sidebar.SortFunc? sort_func;
         private Sidebar.VisibleFunc? filter_func;
 
+        private SortColumn sort_column = SortColumn.UNSORTED;
+
+        private Gtk.SortType sort_dir = Gtk.SortType.ASCENDING;
+        public Gtk.SortType sort_direction {
+            get { return sort_dir; }
+            set { 
+                sort_dir = value;
+                child_tree.set_sort_column_id (this.sort_column, sort_dir);
+            }
+        }
+
         public FilteredDataModel () {
             var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
             Object (child_model: child_tree, virtual_root: null);
-
             this.child_tree = child_tree;
-
-            child_tree.set_default_sort_func (child_model_sort_func);
-            child_tree.set_sort_column_id (Gtk.SortColumn.DEFAULT, Gtk.SortType.ASCENDING);
-
             set_visible_func (filter_visible_func);
         }
 
@@ -768,10 +779,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         public void set_sort_func (owned Sidebar.SortFunc? sort_func) {
             this.sort_func = (owned) sort_func;
+            this.sort_column = this.sort_func != null ?
+                               SortColumn.SORTED : SortColumn.UNSORTED;
+
+            child_tree.set_sort_func (SortColumn.SORTED, child_model_sort_func);
+            sort_direction = sort_dir;
         }
 
         /**
-         *
+         * External "extra" filter method.
          */
         public void set_filter_func (owned Sidebar.VisibleFunc visible_func) {
             this.filter_func = (owned) visible_func;
@@ -1430,9 +1446,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         get { return tree.editing; }
     }
 
+    /**
+     * Sort direction to use along with the sort function.
+     *
+     * @see Granite.Widgets.Sidebar.set_sort_func
+     * @since 0.2
+     */
+    public Gtk.SortType sort_direction {
+        get { return data_model.sort_direction; }
+        set { data_model.sort_direction = value; }
+    }
+
     private Tree tree;
     private FilteredDataModel data_model { get { return tree.data_model; } }
-
 
     /**
      * Creates a new {@link Granite.Widgets.Sidebar}.
