@@ -315,7 +315,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * An item that can contain more items.
      *
      * It supports all the properties inherited from {@link Granite.Widgets.Sidebar.Item},
-     * and behaves as a normal item, except when it is located at the root sidebar level;
+     * and behaves like a normal item, except when it is located at the root sidebar level;
      * in that case, the {@link Granite.Widgets.Sidebar.Item.activatable},
      * {@link Granite.Widgets.Sidebar.Item.count}, and {@link Granite.Widgets.Sidebar.Item.icon}
      * properties are simply //ignored// by the {@link Granite.Widgets.Sidebar} widget.
@@ -490,28 +490,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public void clear () {
             foreach (var item in get_children ())
                 remove_item (item);
-        }
-    }
-
-
-
-    private class CellRendererIcon : Gtk.CellRendererPixbuf {
-        public signal void activated (string path);
-
-        private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
-
-        public CellRendererIcon () {
-            mode = Gtk.CellRendererMode.ACTIVATABLE;
-            stock_size = ICON_SIZE;
-            follow_state = true;
-        }
-
-        public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
-                                       Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
-                                       Gtk.CellRendererState flags)
-        {
-            activated (path);
-            return true;
         }
     }
 
@@ -890,6 +868,32 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 item_visible = item_visible && filter_func (item);
 
             return item_visible;
+        }
+    }
+
+
+
+    /**
+     * Class responsible for rendering Item.icon and Item.activatable. It also
+     * notifies about clicks through the activated() signal.
+     */
+    private class CellRendererIcon : Gtk.CellRendererPixbuf {
+        public signal void activated (string path);
+
+        private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
+
+        public CellRendererIcon () {
+            mode = Gtk.CellRendererMode.ACTIVATABLE;
+            stock_size = ICON_SIZE;
+            follow_state = true;
+        }
+
+        public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
+                                       Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
+                                       Gtk.CellRendererState flags)
+        {
+            activated (path);
+            return true;
         }
     }
 
