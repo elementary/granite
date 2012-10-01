@@ -238,14 +238,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * @since 0.2
          */
-        public virtual bool editable { get; set; default = false; }
+        public bool editable { get; set; default = false; }
 
         /**
          * Whether the item will appear in the sidebar's tree or not.
          *
          * @since 0.2
          */
-        public virtual bool visible { get; set; default = true; }
+        public bool visible { get; set; default = true; }
 
         /**
          * Whether the item can be selected or not.
@@ -262,7 +262,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 bool rv = false;
 
                 // we won't select items hidden behind another collapsed item
-                if (parent != null && !(parent.collapsible && !parent.expanded))
+                if (parent != null && parent.expanded)
                     rv = visible;
 
                 return rv;
@@ -349,6 +349,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public signal void child_removed (Item item);
 
         /**
+         * Emitted when the item is expanded or collapsed.
+         *
+         * @since 0.2
+         */
+        public virtual signal void toggled () { }
+
+        /**
          * Whether the item is collapsible or not. When set to //false//, the item
          * is always expanded and the expander is not shown. Please note that this
          * will also affect the value returned by the
@@ -369,7 +376,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private bool _expanded = false;
         public bool expanded {
             get { return _expanded || !collapsible; } // if not collapsible, always return true
-            set { _expanded = value; }
+            set {
+                if (value != _expanded) {
+                    _expanded = value;
+                    toggled ();
+                }
+            }
         }
 
         /**
