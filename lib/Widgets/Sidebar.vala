@@ -22,15 +22,17 @@
 /**
  * A widget that can display a list of items organized in categories.
  *
- * The sidebar widget consists of a collection of items, some of which are also categories (and
+ * The sidebar widget consists of a collection of items, some of which are also expandable (and
  * thus can contain more items). All the items displayed in the sidebar are children of the widget's
  * root item. The API is meant to be used as follows:
  *
  * 1. Create the items you want to display in the sidebar, setting the appropriate values for their
- * properties. The desired hierarchy is achieved by creating categories and adding items to them.
- * These will be displayed as descendants in the widget's tree structure. The categories that are
+ * properties. The desired hierarchy is achieved by creating expandable items and adding items to them.
+ * These will be displayed as descendants in the widget's tree structure. The expandable items that are
  * not nested inside any other item are considered to be at root level, and should be added to
  * the widget's root item.<<BR>>
+ *
+ * Expandable items located at the root level are treated as categories, and only support text.
  *
  * ''Example''<<BR>>
  * The final tree will have the following structure:
@@ -168,22 +170,18 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @param prop_name Property name.
          * @since 0.2
          */
-        public virtual signal void changed (Item self, string prop_name) {
-#if TRACE_SIDEBAR
-            debug ("Item::changed[%s] [%s]", prop_name, name);
-#endif
-        }
+        public signal void changed (Item self, string prop_name);
 
         /**
-         * Emitted when the user has finished editing the item's name. By default, if the name doesn't consist
-         * of white space, it is automatically asigned to the {@link Granite.Widgets.Sidebar.name} property.
+         * Emitted when the user has finished editing the item's name. By default, if the name
+         * doesn't consist of white space, it is automatically asigned to the
+         * {@link Granite.Widgets.Sidebar.name} property. Client code overriding this signal
+         * can change that behaviour though.
          *
+         * @param name The item's new name (result of editing.)
          * @since 0.2
          */
         public virtual signal void edited (string new_name) {
-#if TRACE_SIDEBAR
-            debug ("Item::edited [%s]\tnew_name = %s", name, new_name);
-#endif
             if (editable && new_name.strip () != "")
                 this.name = new_name;
         }
@@ -259,7 +257,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.Item.visible
          * @since 0.2
          */
-        internal virtual bool selectable {
+        public virtual bool selectable {
             get {
                 bool rv = false;
 
@@ -287,7 +285,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public Icon activatable { get; set; }
-
 
         /**
          * Creates a new {@link Granite.Widgets.Sidebar.Item}.
@@ -446,10 +443,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void add_item (Item item) requires (item.parent == null && !(item in children)) {
-#if TRACE_SIDEBAR
-            debug ("ExpandableItem::add_item [%s]\titem = %s", name, item.name);
-#endif
-
             lock (children) {
                 item.parent = this;
                 children.add (item);
@@ -473,10 +466,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void remove_item (Item item) requires (item.parent == this && item in children) {
-#if TRACE_SIDEBAR
-            debug ("ExpandableItem::remove_item [%s]\titem = %s", name, item.name);
-#endif
-
             lock (children) {
                 children.remove (item);
             }
@@ -494,9 +483,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
-#if TRACE_SIDEBAR
-            debug ("ExpandableItem::clear [%s]", name);
-#endif
             foreach (var item in get_children ())
                 remove_item (item);
         }
@@ -531,7 +517,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * The model backing the Sidebar tree. It controls the visibility of the items.
      *
      * The FilteredDataModel controls the visibility of the items based on their "visible" property,
-     * and also on their number of children, if they happen to be categories. It also offers an easy
+     * and also on their number of children, if they happen to be expandable. It also offers an easy
      * interface for sorting, adding, removing and updating items, eliminating the need of repeatedly
      * dealing with the Gtk.TreeModel API directly.
      */
@@ -674,8 +660,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 // Try to find the parent. XXX: If the parent is not found, and item.parent != null,
                 // we should call add_item(item.parent) in order to add it prior to adding the child
                 // item. This will be mandatory if Item::parent ever becomes writable from client code.
-                // It is currently not needed because of the way the sidebar operates: it adds categories
-                // first, and then their children.
+                // It is currently not needed because of the way the sidebar operates: it adds expandable
+                // items first, and then their children.
                 Gtk.TreeIter? parent_child_iter = null, child_iter;
                 if (item.parent != null)
                     parent_child_iter = get_item_child_iter (item.parent);
@@ -722,8 +708,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         // Queries the item's parent n_children property. In case it is zero, we update
-        // the parent item's row in order to re-filter it, since empty categories should
-        // not be displayed.
+        // the parent item's row in order to re-filter it, since empty empty expandable
+        // items should not be displayed.
         private void queue_parent_update (ExpandableItem? parent) {
             if (parent != null && is_at_root_level (parent)) {
                 parent.ref ();
@@ -992,12 +978,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private Gtk.TreePath? get_selected_path () {
             Gtk.TreePath? selected_path = null;
+            Gtk.TreeSelection? selection = get_selection ();
 
-            var selection = get_selection ();
-            Gtk.TreeModel model;
-            var selected_rows = selection.get_selected_rows (out model);
-            if (selected_rows.length () == 1)
-                selected_path = selected_rows.nth_data (0);
+            if (selection != null) {
+                Gtk.TreeModel? model;
+                var selected_rows = selection.get_selected_rows (out model);
+                if (selected_rows.length () == 1)
+                    selected_path = selected_rows.nth_data (0);
+            }
 
             return selected_path;
         }
@@ -1042,9 +1030,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // Try to scroll to the respective cell
             var path = data_model.get_item_path (item);
             if (path != null) {
-#if TRACE_SIDEBAR
-                debug ("Tree::scroll_to_item [%s]", item.name);
-#endif
                 scroll_to_cell (path, null, false, 0, 0);
                 scrolled = true;
             }
@@ -1053,9 +1038,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public bool start_editing_item (Item item) requires (item.editable) {
-#if TRACE_SIDEBAR
-            debug ("Tree::start_editing_item [%s]", item.name);
-#endif
             var path = data_model.get_item_path (item);
             if (path != null) {
                 text_cell.editable = true;
@@ -1072,7 +1054,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             editable_entry = editable as Gtk.Entry;
             if (editable_entry != null) {
                 editable_entry.editing_done.connect (on_editing_done);
-                editable_entry.focus_out_event.connect (on_editing_focus_out);
                 editable_entry.editable = true;
             }
         }
@@ -1080,7 +1061,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private void on_editing_canceled () {
             editable_entry.editable = false;
             editable_entry.editing_done.disconnect (on_editing_done);
-            editable_entry.focus_out_event.disconnect (on_editing_focus_out);
 
             text_cell.editable = false;
         }
@@ -1091,13 +1071,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (selected_item != null && selected_item.editable)
                 selected_item.edited (editable_entry.get_text ());
-        }
-
-        private bool on_editing_focus_out (Gdk.EventFocus event) {
-            // We'll return false here, in case other parts of the app
-            // want to know if the button press event that caused
-            // us to lose focus have been fully handled.
-            return false;
         }
 
         private void on_activatable_activated (string item_path_str) {
@@ -1124,9 +1097,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var path = data_model.get_item_path (expandable_item);
 
             if (path != null) {
-#if TRACE_SIDEBAR
-                debug ("Tree::update_expansion [%s]", expandable_item.name);
-#endif
                 if (expandable_item.expanded)
                     expand_row (path, false);
                 else
@@ -1159,10 +1129,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
+                text = item.name;
+
                 if (is_category (item, iter))
                     weight = Pango.Weight.BOLD;
-
-                text = item.name;
             }
 
             text_renderer.weight = weight;
@@ -1200,7 +1170,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                // Icons are not displayed for categories
+                // Icons are not displayed for main categories
                 visible = !is_category (item, iter);
 
                 if (visible) {
@@ -1234,7 +1204,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     expander_visible = expandable_item.collapsible;
 
                     // Decide which expander to show based on whether the item is a main
-                    // category or not. For categories, we show the expander on the right.
+                    // category or not. For main categories, we show the expander on the right.
                     if (expander_visible)
                         primary_expander_visible = !is_category (expandable_item, iter);
                 }
@@ -1475,7 +1445,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Recursively expands all the categories.
+     * Recursively expands all the expandable items.
      *
      * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
      * @since 0.2
@@ -1485,7 +1455,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Recursively collapses all the collapsible categories.
+     * Recursively collapses all the collapsible (expandable) items.
      *
      * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
      * @see Granite.Widgets.Sidebar.ExpandableItem.collapsible
@@ -1497,11 +1467,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     /**
      * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //expandable_item// and its child categories to the value specified, so this can
+     * of //expandable_item// and its child expandable items to the value specified, so this can
      * be used for both expanding and collapsing.
      *
      * @param expandable_item ExpandableItem where expansion begins.
-     * @param expand Whether categories will be expanded or collapsed.
+     * @param expand Whether expandable items will be expanded or collapsed.
      * @since 0.2
      */
     public void expand_with_children (ExpandableItem expandable_item, bool expand) {
@@ -1516,11 +1486,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     /**
      * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //expandable_item// and its parent categories to the value specified, so this can
+     * of //expandable_item// and its parent expandable items to the value specified, so this can
      * be used for both expanding and collapsing.
      *
      * @param expandable_item ExpandableItem where expansion begins.
-     * @param expand Whether categories will be expanded or collapsed.
+     * @param expand Whether expandable items will be expanded or collapsed.
      * @since 0.2
      */
     public void expand_with_parents (ExpandableItem expandable_item, bool expand) {
@@ -1538,7 +1508,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * item's parent, to make sure it's not obscured behind a collapsed group.
      *
      * @param item Item to scroll to.
-     * @param expand_parents Whether to expand item's parent categories in case they are collapsed.
+     * @param expand_parents Whether to expand item's parent expandable items in case they are collapsed.
      * @return //true// if successful; //false// otherwise.
      * @since 0.2
      */
@@ -1554,9 +1524,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * signal.
      *
      * This method is recursively signaled. While it is first emitted in response to the
-     * root's child_added() signal, successive calls are fired by child categories, since
-     * we set this method as handler for their child_added() signal. In fact, all the item
-     * monitors are connected here, and disconnected in remove_item().
+     * root's child_added() signal, successive calls are fired by child expandable items,
+     * since we set this method as handler for their child_added() signal. In fact, all the
+     * item monitors are connected here, and disconnected in remove_item().
      */
     private void add_item (Item item) requires (!has_item (item)) {
         data_model.add_item (item);
