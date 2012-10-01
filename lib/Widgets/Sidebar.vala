@@ -172,7 +172,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @param prop_name Property name.
          * @since 0.2
          */
-        public signal void changed (Item self, string prop_name);
+        internal signal void changed (Item self, string prop_name);
 
         /**
          * Emitted when the user has finished editing the item's name.
@@ -208,6 +208,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         /**
          * Parent {@link Granite.Widgets.Sidebar.ExpandableItem} of the item.
+         * ''Must not'' be modified.
          *
          * @since 0.2
          */
@@ -236,6 +237,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * When this property is set to //true//, users can edit the item by pressing
          * the F2 key, or by double-cliking over an item.
          *
+         * @see Granite.Widgets.Sidebar.start_editing_item
          * @since 0.2
          */
         public bool editable { get; set; default = false; }
