@@ -140,7 +140,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *   - visible       | Sidebar::on_item_property_changed | FilteredDataModel::filter_visible_func
      *   - icon          | Sidebar::on_item_property_changed | Tree::icon_cell_data_func
      *   - activatable   | Same as @icon                     | Same as @icon
-     * + ExpandableItem        |                                   |
+     * + ExpandableItem  |                                   |
      *   - no_caption    | Sidebar::on_item_property_changed | Tree::name_cell_data_func
      *   - collapsible   | Sidebar::on_item_property_changed | Tree::update_expansion
      *                   |                                   | Tree::expander_cell_data_func
@@ -156,7 +156,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
     /**
-     * A sidebar entry. Any change made to any of its properties will be ''automatically'' reflected
+     * A sidebar entry.
+     *
+     * Any change made to any of its properties will be ''automatically'' reflected
      * by the {@link Granite.Widgets.Sidebar} widget.
      *
      * @since 0.2
@@ -173,10 +175,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public signal void changed (Item self, string prop_name);
 
         /**
-         * Emitted when the user has finished editing the item's name. By default, if the name
-         * doesn't consist of white space, it is automatically asigned to the
-         * {@link Granite.Widgets.Sidebar.name} property. Client code overriding this signal
-         * can change that behaviour though.
+         * Emitted when the user has finished editing the item's name.
+         *
+         * By default, if the name doesn't consist of white space, it is automatically asigned
+         * to the {@link Granite.Widgets.Sidebar.name} property. Code can change that behavior
+         * by overriding this signal.
          *
          * @param name The item's new name (result of editing.)
          * @since 0.2
@@ -192,24 +195,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.Item.activatable
          * @since 0.2
          */
-        public virtual signal void action_activated () {
-#if TRACE_SIDEBAR
-            debug ("Item::action_activated [%s]", name);
-#endif
-        }
+        public virtual signal void action_activated () { }
 
         /**
          * Emitted when the item is double-clicked or when it is selected and one of the keys:
-         * Space, Shift+Space, Return or Enter is pressed. This signal is //not emitted// for
+         * Space, Shift+Space, Return or Enter is pressed. This signal is //also// for
          * editable items.
          *
          * @since 0.2
          */
-        public virtual signal void activated () {
-#if TRACE_SIDEBAR
-            debug ("Item::activated [%s]", name);
-#endif
-        }
+        public virtual signal void activated () { }
 
         /**
          * Parent {@link Granite.Widgets.Sidebar.ExpandableItem} of the item.
@@ -226,8 +221,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
-         * A counter shown in a bubble right next to the item's name. It can be used for displaying
-         * the number of unread messages in the "Inbox" item, for instance. ''Still not implemented''.
+         * A counter shown in a bubble right next to the item's name.
+         *
+         * It can be used for displaying the number of unread messages in the "Inbox" item,
+         * for instance. ''Still not implemented''.
          *
          * @since 0.2
          */
@@ -235,6 +232,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         /**
          * Whether the item's name can be edited from within the sidebar.
+         *
+         * When this property is set to //true//, users can edit the item by pressing
+         * the F2 key, or by double-cliking over an item.
          *
          * @since 0.2
          */
@@ -250,36 +250,30 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Whether the item can be selected or not.
          *
-         * There are a couple reasons that could make the item not-selectable:<<BR>>
-         * * The item is not visible<<BR>>
-         * * The item's parent item is collapsed<<BR>>
+         * Setting this property to true doesn't guarantee that the item will actually be
+         * selectable, since there are other external factors to take into account, like the
+         * item's {@link Granite.Widgets.Sidebar.Item.visible} property; whether the item is
+         * a category; the parent item is collapsed, etc.
          *
          * @see Granite.Widgets.Sidebar.Item.visible
          * @since 0.2
          */
-        public virtual bool selectable {
-            get {
-                bool rv = false;
-
-                // we won't select items hidden behind another collapsed item
-                if (parent != null && parent.expanded)
-                    rv = visible;
-
-                return rv;
-            }
-        }
+        public bool selectable { get; set; default = true; }
 
         /**
-         * Primary icon. This property should be used to give the user an idea of what the
-         * item represents (i.e. content type.)
+         * Primary icon.
+         *
+         * This property should be used to give the user an idea of what the item represents
+         * (i.e. content type.)
          *
          * @since 0.2
          */
         public Icon icon { get; set; }
 
         /**
-         * An activatable icon that works like a button. It can be used for e.g. showing an
-         * "eject" icon on a device's sidebar item.
+         * An activatable icon that works like a button.
+         *
+         * It can be used for e.g. showing an //"eject"// icon on a device's sidebar item.
          *
          * @see Granite.Widgets.Sidebar.Item.action_activated
          * @since 0.2
@@ -320,11 +314,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * It supports all the properties inherited from {@link Granite.Widgets.Sidebar.Item},
      * and behaves as a normal item, except when it is located at the root sidebar level;
-     * in such case, the {@link Granite.Widgets.Sidebar.Item.activatable},
+     * in that case, the {@link Granite.Widgets.Sidebar.Item.activatable},
      * {@link Granite.Widgets.Sidebar.Item.count}, and {@link Granite.Widgets.Sidebar.Item.icon}
-     * properties are simply ignored by the {@link Granite.Widgets.Sidebar} widget. Root-level
-     * expandable items are also ''not'' editable, and are not displayed when they contain
-     * zero children.
+     * properties are simply //ignored// by the {@link Granite.Widgets.Sidebar} widget.
+     * Root-level expandable items are also ''not'' editable, and are not displayed when they
+     * contain zero children.
      *
      * @since 0.2
      */
@@ -356,9 +350,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public virtual signal void toggled () { }
 
         /**
-         * Whether the item is collapsible or not. When set to //false//, the item
-         * is always expanded and the expander is not shown. Please note that this
-         * will also affect the value returned by the
+         * Whether the item is collapsible or not.
+         *
+         * When set to //false//, the item is //always// expanded and the expander is
+         * not shown. Please note that this will also affect the value returned by the
          * {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
@@ -367,8 +362,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public bool collapsible { get; set; default = true; }
 
         /**
-         * Whether the item is expanded or not. This property has no effect when
-         * {@link Granite.Widgets.Sidebar.ExpandableItem.collapsible} is //false//.
+         * Whether the item is expanded or not.
+         *
+         * This property has no effect when {@link Granite.Widgets.Sidebar.ExpandableItem.collapsible}
+         * is set to //false//.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.collapsible
          * @since 0.2
@@ -385,10 +382,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Number of child items contained by the item.
+         * Number of children contained by the item.
          *
-         * @since 0.2
          * @see Granite.Widgets.Sidebar.ExpandableItem.get_children
+         * @since 0.2
          */
         public uint n_children {
             get { return children.size; }
@@ -409,7 +406,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Gets all the items which are children of the item.
+         * Gets all the children of the item.
          *
          * @return (transfer full) Children.
          * @see Granite.Widgets.Sidebar.ExpandableItem.n_children
@@ -439,9 +436,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * {@link Granite.Widgets.Sidebar.ExpandableItem.child_added} is fired after the item is added.
          *
-         * While adding the item, //the item it's being added to sets itself as the item's parent//.
+         * While adding a child item, //the item it's being added to will set itself as the parent//.
          * Please note that items are required to have their //parent// property set to //null// before
-         * being added, so make sure you remove the item from its previous paremt item before attempting
+         * being added, so make sure you remove the item from its previous parent before attempting
          * to add it to another item. For instance:
          * {{{
          * if (item.parent != null)
@@ -469,7 +466,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * The {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed} signal is fired
          * //after removing the item//. Finally (i.e. after all the handlers have been invoked),
          * the item's {@link Granite.Widgets.Sidebar.Item.parent} property is set to //null//.
-         * This has the advantage of letting signal handlers know the parent from which the //item//
+         * This has the advantage of letting signal handlers know the parent from which //item//
          * is being removed.
          *
          * @param item The item to remove. This will fail if item has a different parent.
@@ -528,7 +525,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * The model backing the Sidebar tree. It controls the visibility of the items.
      *
      * The FilteredDataModel controls the visibility of the items based on their "visible" property,
-     * and also on their number of children, if they happen to be expandable. It also offers an easy
+     * and also on their number of children, if they happen to be categories. It also offers an easy
      * interface for sorting, adding, removing and updating items, eliminating the need of repeatedly
      * dealing with the Gtk.TreeModel API directly.
      */
@@ -692,8 +689,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 if (child_iter != null) {
 #if VALA_0_18
                     // Workaround for a bug in valac that tries to pass an invalid pointer
-                    // to gtk_tree_store_remove() in the generated C code. TODO: add link
-                    // to the bug report.
+                    // to gtk_tree_store_remove() in the generated C code.
+                    // Bug ticket: https://bugzilla.gnome.org/show_bug.cgi?id=685177
                     Gtk.TreeIter iter = child_iter;
                     child_tree.remove (ref iter);
 #else
@@ -705,9 +702,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        // Queries the item's parent n_children property. In case it is zero, we update
-        // the parent item's row in order to re-filter it, since empty empty expandable
-        // items should not be displayed.
+        /**
+         * Queries the item's parent n_children property. In case it is zero, we update
+         * the parent item's row in order to re-filter it, since empty empty expandable
+         * items should not be displayed.
+         */
         private void queue_parent_update (ExpandableItem? parent) {
             if (parent != null) {
                 var path = get_item_path (parent);
@@ -781,14 +780,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * order.
          */
         public void set_sort_func (owned Sidebar.SortFunc? sort_func) {
-            this.sort_func = (owned)sort_func;
+            this.sort_func = (owned) sort_func;
         }
 
         /**
          *
          */
         public void set_filter_func (owned Sidebar.VisibleFunc visible_func) {
-            this.filter_func = (owned)visible_func;
+            this.filter_func = (owned) visible_func;
         }
 
         /**
@@ -892,7 +891,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
     /**
-     * The tree that actually displays the items. All the user interaction happens here.
+     * The tree that actually displays the items.
+     *
+     * All the user interaction happens here.
      */
     private class Tree : Gtk.TreeView {
 
@@ -1212,9 +1213,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (item == null)
                 return false;
 
-#if TRACE_SIDEBAR
-            debug ("popup_context_menu [%s]", item.name);
-#endif
             var time = (event != null) ? event.time : Gtk.get_current_event_time ();
             var button = (event != null) ? event.button : 0;
 
@@ -1235,9 +1233,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Positions a menu based on an item's coordinates. As this function is only used
-         * for menu popups triggered by key-press events, it assumes that the item in question
-         * is the one currently selected.
+         * Positions a menu based on an item's coordinates.
+         *
+         * As this function is only used for menu popups triggered by events other than button
+         * presses (e.g. key-press events), it assumes that the item in question is the one
+         * currently selected, since those events provide no coordinates.
          */
         private void menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             push_in = true;
@@ -1371,11 +1371,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param item Selected item.
      * @since 0.2
      */
-    public virtual signal void item_selected (Item? item) {
-#if TRACE_SIDEBAR
-        debug ("item_selected [%s]", item != null ? item.name : "null");
-#endif
-    }
+    public virtual signal void item_selected (Item? item) { }
 
     /**
      * A {@link Granite.Widgets.Sidebar.SortFunc} should return a negative integer, zero, or a
@@ -1399,8 +1395,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     /**
      * A {@linkGranite.Widgets.Sidebar.VisibleFunc} should return true if the item should be 
-     * visible, false otherwise
-     * @param item Item to be checked
+     * visible, false otherwise.
+     *
+     * IMPORTANT NOTE: This method ''must not'' modify the item's //visible// property. Also,
+     * if the item //visible// property is set to //false//, the item won't be displayed even
+     * if this method returns true.
+     *
+     * @param item Item to be checked.
      * @since 0.2
      */
     public delegate bool VisibleFunc (Item item);
@@ -1420,8 +1421,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public ExpandableItem root { get; private set; default = new ExpandableItem ("ROOT"); }
 
     /**
-     * The current selected item. Setting its value to //null// or an invalid (e.g. unselectable)
-     * item has no effect over the current selection and nothing is changed.
+     * The current selected item.
      *
      * @since 0.2
      */
@@ -1493,16 +1493,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     /**
      * Sets the method used for filtering out items.
+     *
      * @param visible_func The method to use for filtering items.
+     * @param refilter whether to call {@link Sidebar.refilter} using the new function.
      * @see Granite.Widgets.Sidebar.VisibleFunc
      * @since 0.2
      */
-    public void set_filter_func (VisibleFunc visible_func) {
+    public void set_filter_func (VisibleFunc visible_func, bool refilter) {
         data_model.set_filter_func (visible_func);
+        if (refilter)
+            this.refilter ();
     }
 
     /**
      * Traverses the tree hiding each item if it is to be hidden based on the passed VisibleFunc
+     *
      * @see Granite.Widgets.Sidebar.VisibleFunc
      * @since 0.2
      */
