@@ -99,7 +99,7 @@ public class Granite.Demo : Granite.Application
         mode_button.append(new Gtk.Label("Quite long"));
         mode_button.append(new Gtk.Label("Very very long \n with a line break"));
 
-        var vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+        var vbox = new Gtk.Grid ();
         var toolbar = new Gtk.Toolbar();
         toolbar.get_style_context().add_class("primary-toolbar");
         var toolbutton = new Gtk.ToolItem();
@@ -111,7 +111,7 @@ public class Granite.Demo : Granite.Application
         toolbutton.add(tool_mode);
         toolbar.insert(toolbutton, -1);
         toolbar.insert(create_appmenu(new Gtk.Menu()), -1);
-        vbox.pack_start(toolbar, false, false);toolbar = new Gtk.Toolbar();
+        vbox.attach (toolbar, 0, 0, 1, 1);toolbar = new Gtk.Toolbar();
         toolbar.get_style_context().add_class("inline-toolbar");
         toolbutton = new Gtk.ToolItem();
         tool_mode = new ModeButton();
@@ -121,20 +121,20 @@ public class Granite.Demo : Granite.Application
         tool_mode.append(new Gtk.Label("4"));
         toolbutton.add(tool_mode);
         toolbar.insert(toolbutton, -1);
-        vbox.pack_start(toolbar, false, false);
+        vbox.attach(toolbar, 0, 1, 1, 1);
 
-        vbox.pack_start(mode_button);
+        vbox.attach(mode_button, 0, 2, 1, 1);
 
         mode_button = new ModeButton();
         mode_button.valign = Gtk.Align.CENTER;
         mode_button.halign = Gtk.Align.CENTER;
         mode_button.append(new Gtk.Label("Small"));
         mode_button.append(new Gtk.Label("a"));
-        vbox.pack_start(mode_button);
+        vbox.attach(mode_button, 0, 3, 1, 1);
         notebook.append_page(vbox, new Gtk.Label("ModeButton"));
 
         /* static notebook */
-        var staticbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+        var staticbox = new Gtk.Grid ();
         var staticnotebook = new StaticNotebook ();
 
         var pageone = new Gtk.Label("Page 1");
@@ -145,19 +145,19 @@ public class Granite.Demo : Granite.Application
 
         staticnotebook.page_changed.connect(() => pageone.set_text("Page changed"));
 
-        staticbox.add (staticnotebook);
+        staticbox.attach (staticnotebook, 0, 0, 1, 1);
 
         notebook.append_page (staticbox, new Gtk.Label ("Static Notebook"));
         var button_about = new Gtk.Button.with_label("show_about");
         notebook.append_page (button_about, new Gtk.Label ("About Dialog"));
         button_about.clicked.connect(() => { show_about(win); } );
 
-        var popover_buttons = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        var hbox3 = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var popover_buttons = new Gtk.Grid ();
+        var hbox3 = new Gtk.Grid ();
         hbox3.halign = Gtk.Align.END;
         var popover1 = new Gtk.Button.with_label("PopOver 1");
         popover1.halign = Gtk.Align.END;
-        hbox3.add(popover1);
+        hbox3.attach(popover1, 0, 0, 1, 1);
         popover1.clicked.connect( () => {
             var pop = new PopOver();
             var pop_hbox = (Gtk.Box)pop.get_content_area();
@@ -176,28 +176,28 @@ public class Granite.Demo : Granite.Application
             pop.run ();
             pop.destroy ();
         });
-        popover_buttons.pack_start(new Gtk.Label("Let's try the PopOvers!"), false, false);
-        popover_buttons.pack_start(hbox3, false, false);
+        popover_buttons.attach(new Gtk.Label("Let's try the PopOvers!"), 0, 0, 1, 1);
+        popover_buttons.attach(hbox3, 0, 1, 1, 1);
         notebook.append_page (popover_buttons, new Gtk.Label ("PopOvers"));
 
-        var calendar_button = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        var calendar_button = new Gtk.Grid ();
         var date_button = new Granite.Widgets.DatePicker.with_format("%d-%m-%y");
         var time_button = new Granite.Widgets.TimePicker ();
         date_button.valign = date_button.halign = Gtk.Align.CENTER;
         time_button.valign = time_button.halign = Gtk.Align.CENTER;
-        calendar_button.add(date_button);
-        calendar_button.add(time_button);
+        calendar_button.attach(date_button, 0, 0, 1, 1);
+        calendar_button.attach(time_button, 1, 0, 1, 1);
         notebook.append_page (calendar_button, new Gtk.Label ("Calendar"));
 
         /* Contractor */
-        var contractor_tab = new Gtk.Box (Gtk.Orientation.VERTICAL, 0 );
+        var contractor_tab = new Gtk.Grid ();
         notebook.append_page (contractor_tab, new Gtk.Label ("Contractor"));
         
         var tb = new Gtk.Toolbar ();
         tb.set_icon_size (Gtk.IconSize.LARGE_TOOLBAR);
         var bt = new ToolButtonWithMenu (new Gtk.Image.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR), "Share", new ContractorMenu ("/home/user/file.txt", "text"));
         tb.insert (bt, 0);
-        contractor_tab.pack_start (tb, false, false);
+        contractor_tab.attach (tb, 0, 0, 1, 1);
         
         var text_view = new Gtk.TextView ();
         GLib.HashTable<string, string>[] hash_ = Contractor.get_contract("/.zip", "application/zip");
@@ -205,8 +205,8 @@ public class Granite.Demo : Granite.Application
         {
             text_view.buffer.text += hash.lookup("Name") + ": " + hash.lookup("Description") +  " icon: " + hash.lookup("Exec") + "\n";
         }
-        contractor_tab.add(text_view);
-        contractor_tab.add(new ContractorView("file:///home/user/file.txt", "text/plain"));
+        contractor_tab.attach(text_view, 0, 1, 1, 1);
+        contractor_tab.attach(new ContractorView("file:///home/user/file.txt", "text/plain"), 0, 2, 1, 1);
 
 
         /* DynamicNotebook */
