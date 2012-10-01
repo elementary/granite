@@ -1202,10 +1202,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public override bool popup_menu () {
-            return popup_context_menu (selected_item, null);
+            return popup_context_menu (null, null);
         }
 
-        private bool popup_context_menu (Item item, Gdk.EventButton? event) {
+        private bool popup_context_menu (Item? item, Gdk.EventButton? event) {
+            if (item == null)
+                item = selected_item;
+
+            if (item == null)
+                return false;
+
 #if TRACE_SIDEBAR
             debug ("popup_context_menu [%s]", item.name);
 #endif
@@ -1215,12 +1221,60 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var menu = item.get_context_menu ();
 
             if (menu != null) {
-                menu.attach_to_widget (this.parent, null);
-                menu.popup (null, null, null, button, time);
+                menu.attach_to_widget (this, null);
+
+                if (event != null)
+                    menu.popup (null, null, null, button, time);
+                else
+                    menu.popup (null, null, menu_position_func, button, time);
+
                 return true;
             }
 
             return false;
+        }
+
+        /**
+         * Positions a menu based on an item's coordinates. As this function is only used
+         * for menu popups triggered by key-press events, it assumes that the item in question
+         * is the one currently selected.
+         */
+        private void menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
+            push_in = true;
+            x = y = 0;
+
+            if (selected_item == null)
+                return;
+
+            var path = data_model.get_item_path (selected_item);
+            if (path == null || !get_realized ())
+                return;
+
+            get_window ().get_origin (out x, out y);
+
+            // Try to find the position of the item
+            Gdk.Rectangle item_bin_coords;
+            get_cell_area (path, get_column (Column.ITEM), out item_bin_coords);
+
+            int item_y = item_bin_coords.y + item_bin_coords.height / 2;
+            int item_x = item_bin_coords.x;
+
+            bool is_rtl = get_direction () == Gtk.TextDirection.RTL;
+
+            if (!is_rtl)
+                item_x += item_bin_coords.width - 20;
+
+            int widget_x, widget_y;
+            convert_bin_window_to_widget_coords (item_x, item_y, out widget_x, out widget_y);
+
+            x += widget_x.clamp (0, this.get_allocated_width ());
+            y += widget_y.clamp (0, this.get_allocated_height ());
+
+            if (is_rtl) {
+                Gtk.Requisition menu_req;
+                menu.get_preferred_size (out menu_req, null);
+                y -= menu_req.width;
+            }
         }
 
         private static Item? get_item_from_model (Gtk.TreeModel model, Gtk.TreeIter iter) {
