@@ -956,7 +956,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
             primary_expander_cell.toggled.connect (on_expander_toggled);
-            primary_expander_cell.xpad = 5;
+            primary_expander_cell.xpad = 7;
             primary_expander_cell.xalign = 0.0f;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
