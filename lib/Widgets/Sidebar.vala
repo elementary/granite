@@ -146,7 +146,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *                   |                                   | Tree::expander_cell_data_func
      *   - expanded      | Same as @collapsible              | Same as @collapsible
      * ---------------------------------------------------------------------------------------------
-     * * Only automatic properties are monitored. ExpandableItem's add/removals are handled by
+     * * Only automatic properties are monitored. ExpandableItem's additions/removals are handled by
      *   Sidebar::add_item() and Sidebar::remove_item()
      *
      * Other features:
@@ -177,7 +177,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Emitted when the user has finished editing the item's name.
          *
-         * By default, if the name doesn't consist of white space, it is automatically asigned
+         * By default, if the name doesn't consist of white space, it is automatically assigned
          * to the {@link Granite.Widgets.Sidebar.name} property. Code can change that behavior
          * by overriding this signal.
          *
@@ -235,7 +235,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Whether the item's name can be edited from within the sidebar.
          *
          * When this property is set to //true//, users can edit the item by pressing
-         * the F2 key, or by double-cliking over an item.
+         * the F2 key, or by double-clicking over an item.
          *
          * @see Granite.Widgets.Sidebar.start_editing_item
          * @since 0.2
@@ -580,7 +580,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * This hashmap stores items and their respective child node references. For that reason, the
+         * This hash map stores items and their respective child node references. For that reason, the
          * references it contains should only be used on the child_tree model, or converted to filter
          * iters/paths using convert_child_*_to_*() before using them with the filter (i.e. this) model.
          */
@@ -1130,7 +1130,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void on_editing_done () {
-            // Same actions as when cancelling editing
+            // Same actions as when canceling editing
             on_editing_canceled ();
 
             if (selected_item != null && selected_item.editable && editable_entry != null)
@@ -1259,7 +1259,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Positions a menu based on an item's coordinates.
          *
-         * As this function is only used for menu popups triggered by events other than button
+         * As this function is only used for menu pop-ups triggered by events other than button
          * presses (e.g. key-press events), it assumes that the item in question is the one
          * currently selected, since those events provide no coordinates.
          */
@@ -1267,14 +1267,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             push_in = true;
             x = y = 0;
 
-            if (selected_item == null)
+            if (selected_item == null || !get_realized ())
                 return;
 
             var path = data_model.get_item_path (selected_item);
-            if (path == null || !get_realized ())
+            if (path == null)
                 return;
-
-            get_window ().get_origin (out x, out y);
 
             // Try to find the position of the item
             Gdk.Rectangle item_bin_coords;
@@ -1291,6 +1289,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             int widget_x, widget_y;
             convert_bin_window_to_widget_coords (item_x, item_y, out widget_x, out widget_y);
 
+            get_window ().get_origin (out x, out y);
             x += widget_x.clamp (0, get_allocated_width ());
             y += widget_y.clamp (0, get_allocated_height ());
 
@@ -1529,7 +1528,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * Sets the method used for filtering out items.
      *
      * @param visible_func The method to use for filtering items.
-     * @param refilter whether to call {@link Sidebar.refilter} using the new function.
+     * @param re-filter whether to call {@link Sidebar.refilter} using the new function.
      * @see Granite.Widgets.Sidebar.VisibleFunc
      * @since 0.2
      */
@@ -1557,7 +1556,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param item Item to edit.
      * @see Granite.Widgets.Sidebar.Item.editable
      * @see Granite.Widgets.Sidebar.editing
-     * @return true if the editing started sucessfully; false otherwise.
+     * @return true if the editing started successfully; false otherwise.
      * @since 0.2
      */
     public bool start_editing_item (Item item) requires (item.editable)
