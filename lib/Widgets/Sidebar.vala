@@ -924,11 +924,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             N_COLS
         }
 
-        private const int LEVEL_INDENTATION = 18;
-
-        // right-left padding. This space is added at both ends of the tree
-        private const int BASE_INDENTATION = LEVEL_INDENTATION / 3;
-
         private Item? selected;
 
         private Gtk.Entry? editable_entry;
@@ -942,35 +937,31 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             this.data_model = data_model;
             set_model (data_model);
 
+            halign = valign = Gtk.Align.FILL;
+            expand = true;
+
             enable_search = false;
             headers_visible = false;
             enable_grid_lines = Gtk.TreeViewGridLines.NONE;
-            halign = valign = Gtk.Align.FILL;
-            expand = true;
 
             // Deactivate GtkTreeView's built-in expander functionality
             expander_column = null;
             show_expanders = false;
-            level_indentation = LEVEL_INDENTATION;
 
             var item_column = new Gtk.TreeViewColumn ();
-            item_column.sizing = Gtk.TreeViewColumnSizing.FIXED;
             item_column.expand = true;
 
             insert_column (item_column, Column.ITEM);
 
-            var left_spacer = new Gtk.CellRendererText ();
-            left_spacer.xpad = BASE_INDENTATION / 2;
-            item_column.pack_start (left_spacer, false);
-
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
             primary_expander_cell.toggled.connect (on_expander_toggled);
+            primary_expander_cell.xpad = 5;
+            primary_expander_cell.xalign = 0.0f;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
             icon_cell = new CellRendererIcon ();
-            icon_cell.xpad = 3;
             item_column.pack_start (icon_cell, false);
             item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
 
@@ -980,6 +971,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editing_started.connect (on_editing_started);
             text_cell.editing_canceled.connect (on_editing_canceled);
             text_cell.ellipsize = Pango.EllipsizeMode.END;
+            text_cell.xpad = 3;
             text_cell.xalign = 0.0f;
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
@@ -991,6 +983,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
+            secondary_expander_cell.xpad = 3;
             secondary_expander_cell.toggled.connect (on_expander_toggled);
             item_column.pack_start (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
@@ -1000,7 +993,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             selection.mode = Gtk.SelectionMode.BROWSE;
             selection.set_select_function (select_func);
 
-            get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            var style_context = get_style_context ();
+            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            style_context.changed.connect (compute_indentation);
+
+            compute_indentation ();
         }
 
         ~Tree () {
@@ -1008,6 +1005,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editing_canceled.disconnect (on_editing_canceled);
             primary_expander_cell.toggled.disconnect (on_expander_toggled);
             secondary_expander_cell.toggled.disconnect (on_expander_toggled);
+        }
+
+        /**
+         * Sets the ideal level indentation.
+         */
+        private void compute_indentation () {
+            int expander_width = get_cell_width (primary_expander_cell);
+
+            int left_padding;
+            style_get ("horizontal-separator", out left_padding);
+
+            level_indentation = expander_width + left_padding;
+        }
+
+        private int get_cell_width (Gtk.CellRenderer cell_renderer) {
+            Gtk.Requisition min_req;
+            cell_renderer.get_preferred_size (this, out min_req, null);
+            return min_req.width;
         }
 
         /**
@@ -1071,11 +1086,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        /**
-         * Scrolls the tree to make //item// visible.
-         *
-         * @param item Item to scroll to.
-         */
         public bool scroll_to_item (Item item) {
             bool scrolled = false;
 
@@ -1111,8 +1121,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void on_editing_canceled () {
-            editable_entry.editable = false;
-            editable_entry.editing_done.disconnect (on_editing_done);
+            if (editable_entry != null) {
+                editable_entry.editable = false;
+                editable_entry.editing_done.disconnect (on_editing_done);
+            }
 
             text_cell.editable = false;
         }
@@ -1121,7 +1133,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // Same actions as when cancelling editing
             on_editing_canceled ();
 
-            if (selected_item != null && selected_item.editable)
+            if (selected_item != null && selected_item.editable && editable_entry != null)
                 selected_item.edited (editable_entry.get_text ());
         }
 
@@ -1143,7 +1155,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Updates the tree to reflect the ''expanded'' property of an expandable item
+         * Updates the tree to reflect the ''expanded'' property of expandable_item.
          */
         public void update_expansion (ExpandableItem expandable_item) {
             var path = data_model.get_item_path (expandable_item);
@@ -1183,7 +1195,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             Gtk.TreePath path;
             Gtk.TreeViewColumn column;
 
-            int x = (int)event.x, y = (int)event.y, cell_x, cell_y;
+            int x = (int) event.x, y = (int) event.y, cell_x, cell_y;
 
             if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 var item = data_model.get_item_from_path (path);
@@ -1279,8 +1291,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             int widget_x, widget_y;
             convert_bin_window_to_widget_coords (item_x, item_y, out widget_x, out widget_y);
 
-            x += widget_x.clamp (0, this.get_allocated_width ());
-            y += widget_y.clamp (0, this.get_allocated_height ());
+            x += widget_x.clamp (0, get_allocated_width ());
+            y += widget_y.clamp (0, get_allocated_height ());
 
             if (is_rtl) {
                 Gtk.Requisition menu_req;
@@ -1367,9 +1379,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 }
             }
 
-            // For the primary expander, we only make the arrow invisible in order to avoid messing
-            // up the item alignment (because that will keep the cell's allocated area). For the secondary
-            // expander that's not important, and thus we should simply hide the entire cell renderer.
+            // For the primary expander, we only make the arrow invisible in order to avoid messing up
+            // the item alignment (because that will keep the cell's allocated area). For the secondary
+            // expander that's not important, and thus we simply hide the entire cell renderer.
             primary_expander_cell.arrow_visible = expander_visible && primary_expander_visible;
             secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
         }

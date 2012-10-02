@@ -39,14 +39,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         if (widget is Gtk.TreeView)
             widget.style_get ("expander-size", out arrow_size);
 
-        minimum_size = natural_size = arrow_size;
+        minimum_size = natural_size = arrow_size + (int) xpad;
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
                                                          out int natural_height)
     {
-        minimum_height = natural_height = arrow_size;
+        minimum_height = natural_height = arrow_size + (int) ypad;
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
