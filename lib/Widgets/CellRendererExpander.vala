@@ -22,7 +22,6 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public signal void toggled (string path);
 
     public bool arrow_visible { get; set; default = true; }
-    private int arrow_size = 8;
 
     public CellRendererExpander () {
         mode = Gtk.CellRendererMode.ACTIVATABLE;
@@ -36,17 +35,21 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
                                               out int minimum_size,
                                               out int natural_size)
     {
-        if (widget is Gtk.TreeView)
-            widget.style_get ("expander-size", out arrow_size);
 
-        minimum_size = natural_size = arrow_size + (int) xpad;
+        minimum_size = natural_size = get_arrow_size (widget) + (int) xpad;
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
                                                          out int natural_height)
     {
-        minimum_height = natural_height = arrow_size + (int) ypad;
+        minimum_height = natural_height = get_arrow_size (widget) + (int) ypad;
+    }
+
+    private static int get_arrow_size (Gtk.Widget widget) {
+        int arrow_size;
+        widget.style_get ("expander-size", out arrow_size);
+        return arrow_size;
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
@@ -62,6 +65,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         var state = ctx.get_state ();
         ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
+        int arrow_size = get_arrow_size (widget);
         int offset = arrow_size / 2;
         int x = cell_area.x + cell_area.width / 2 - offset;
         int y = cell_area.y + cell_area.height / 2 - offset;

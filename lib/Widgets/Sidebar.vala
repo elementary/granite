@@ -793,11 +793,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return is_category;
         }
 
-        private bool is_iter_at_root_level (Gtk.TreeIter iter) {
+        public bool is_iter_at_root_level (Gtk.TreeIter iter) {
             return is_path_at_root_level (get_path (iter));
         }
 
-        private bool is_path_at_root_level (Gtk.TreePath path) {
+        public bool is_path_at_root_level (Gtk.TreePath path) {
             return path.get_depth () == 1;
         }
 
@@ -924,6 +924,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             N_COLS
         }
 
+        // Extra horizontal space added between the expanders and items
+        private const int EXPANDER_PADDING = 6;
+
         private Item? selected;
 
         private Gtk.Entry? editable_entry;
@@ -932,6 +935,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private CellRendererIcon activatable_cell;
         private CellRendererExpander primary_expander_cell;
         private CellRendererExpander secondary_expander_cell;
+        private CellRendererExpander root_spacer_cell;
 
         public Tree (FilteredDataModel data_model) {
             this.data_model = data_model;
@@ -953,10 +957,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             insert_column (item_column, Column.ITEM);
 
+            // Root-level item spacer. It is supposed to only add padding. As this is
+            // an expander renderer, it has the nice advantage of adjusting the padding
+            // to the arrow size specified by the theme, so we don't have to care about
+            // setting a size manually. This is similar to what would happen if we used
+            // the TreeView's built-in expanders.
+            root_spacer_cell = new CellRendererExpander ();
+            root_spacer_cell.arrow_visible = false;
+            item_column.pack_start (root_spacer_cell, false);
+            item_column.set_cell_data_func (root_spacer_cell, root_spacer_cell_data_func);
+
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
             primary_expander_cell.toggled.connect (on_expander_toggled);
-            primary_expander_cell.xpad = 7;
+            primary_expander_cell.xpad = EXPANDER_PADDING;
             primary_expander_cell.xalign = 0.0f;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
@@ -971,7 +985,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editing_started.connect (on_editing_started);
             text_cell.editing_canceled.connect (on_editing_canceled);
             text_cell.ellipsize = Pango.EllipsizeMode.END;
-            text_cell.xpad = 3;
             text_cell.xalign = 0.0f;
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
@@ -983,7 +996,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
-            secondary_expander_cell.xpad = 3;
+            secondary_expander_cell.xpad = EXPANDER_PADDING;
             secondary_expander_cell.toggled.connect (on_expander_toggled);
             item_column.pack_start (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
@@ -1011,12 +1024,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Sets the ideal level indentation.
          */
         private void compute_indentation () {
-            int expander_width = get_cell_width (primary_expander_cell);
+            int level_indentation;
+            style_get ("horizontal-separator", out level_indentation);
+            level_indentation += get_cell_width (root_spacer_cell);
 
-            int left_padding;
-            style_get ("horizontal-separator", out left_padding);
-
-            level_indentation = expander_width + left_padding;
+            this.level_indentation = level_indentation;
         }
 
         private int get_cell_width (Gtk.CellRenderer cell_renderer) {
@@ -1306,6 +1318,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             return data_model.get_item (iter);
         }
 
+        private void root_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                 Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
+            // Only show allocated space for root-level items. Otherwise, hide.
+            renderer.visible = data_model.is_iter_at_root_level (iter);
+        }
+
         private void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
                                           Gtk.TreeModel model, Gtk.TreeIter iter)
         {
@@ -1381,6 +1400,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // For the primary expander, we only make the arrow invisible in order to avoid messing up
             // the item alignment (because that will keep the cell's allocated area). For the secondary
             // expander that's not important, and thus we simply hide the entire cell renderer.
+            primary_expander_cell.visible = !data_model.is_iter_at_root_level (iter);
             primary_expander_cell.arrow_visible = expander_visible && primary_expander_visible;
             secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
         }
