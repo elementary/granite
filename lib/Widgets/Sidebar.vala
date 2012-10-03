@@ -1247,25 +1247,23 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (item == null)
                 item = selected_item;
 
-            if (item == null)
-                return false;
+            if (item != null) {
+                var menu = item.get_context_menu ();
+                if (menu != null) {
+                    var time = (event != null) ? event.time : Gtk.get_current_event_time ();
+                    var button = (event != null) ? event.button : 0;
 
-            var time = (event != null) ? event.time : Gtk.get_current_event_time ();
-            var button = (event != null) ? event.button : 0;
+                    menu.attach_to_widget (this, null);
 
-            var menu = item.get_context_menu ();
+                    if (event != null) {
+                        menu.popup (null, null, null, button, time);
+                    } else {
+                        menu.popup (null, null, menu_position_func, button, time);
+                        menu.select_first (false);
+                    }
 
-            if (menu != null) {
-                menu.attach_to_widget (this, null);
-
-                if (event != null) {
-                    menu.popup (null, null, null, button, time);
-                } else {
-                    menu.popup (null, null, menu_position_func, button, time);
-                    menu.select_first (false);
+                    return true;
                 }
-
-                return true;
             }
 
             return false;
