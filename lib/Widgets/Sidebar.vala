@@ -1098,6 +1098,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
+        private static void toggle_expansion (ExpandableItem item) {
+            item.expanded = !item.expanded;
+        }
+
         public bool scroll_to_item (Item item) {
             bool scrolled = false;
 
@@ -1158,7 +1162,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private void on_expander_toggled (string item_path_str) {
             var item = get_item_from_path_string (item_path_str) as ExpandableItem;
             if (item != null)
-                item.expanded = !item.expanded;
+                toggle_expansion (item);
         }
 
         private Item? get_item_from_path_string (string item_path_str) {
@@ -1225,8 +1229,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
                         // toggle item expansion if the item is a category
                         if (data_model.is_category (item, null, path)) {
-                            var category = item as ExpandableItem;
-                            category.expanded = !category.expanded;
+                            toggle_expansion (item as ExpandableItem);
                             return true;
                         }
                     }
