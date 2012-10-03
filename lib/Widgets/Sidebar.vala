@@ -580,6 +580,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
+         * Used by push_parent_update() as key to associate the respective data to the objects.
+         */
+        private const string ITEM_PARENT_NEEDS_UPDATE = "item-parent-needs-update";
+
+        /**
          * This hash map stores items and their respective child node references. For that reason, the
          * references it contains should only be used on the child_tree model, or converted to filter
          * iters/paths using convert_child_*_to_*() before using them with the filter (i.e. this) model.
@@ -646,7 +651,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             items.set (item, new NodeWrapper (child_tree, child_iter));
 
-            queue_parent_update (item.parent);
+            push_parent_update (item.parent);
         }
 
         public void remove_item (Item item) requires (has_item (item)) {
@@ -677,24 +682,40 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 #endif
             }
 
-            queue_parent_update (item.parent);
+            push_parent_update (item.parent);
         }
 
         /**
-         * Queries the item's parent n_children property. In case it is zero, we update
-         * the parent item's row in order to re-filter it, since empty empty expandable
-         * items should not be displayed.
+         * Pushes a call to update_item() if //parent// is a category.
+         *
+         * This is needed because the visibility of categories depends on their n_children property.
+         * If many updates are pushed, and the item has still not been updated, only one is processed.
+         * This guarantees efficiency as updating a category item could trigger expensive actions.
          */
-        private void queue_parent_update (ExpandableItem? parent) {
-            if (parent != null) {
+        private void push_parent_update (ExpandableItem? parent) { 
+           if (parent != null) {
+                bool needs_update = parent.get_data<bool> (ITEM_PARENT_NEEDS_UPDATE);
+
+                // If an update is already waiting to be processed, just return, as we
+                // don't need to queue another one for the same item.
+                if (needs_update)
+                    return;
+
                 var path = get_item_path (parent);
+
+                // Make sure the item is a category
                 if (path != null && is_category (parent, null, path)) {
-                    parent.ref ();
-                    Idle.add_full (Priority.HIGH_IDLE, () => {
-                        if (parent != null)
+                    // Let's mark this item for update
+                    parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, true);
+
+                    Idle.add (() => {
+                        if (parent != null) {
                             update_item (parent);
 
-                        parent.unref ();
+                            // Already updated. No longer needs an update.
+                            parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, false);
+                        }
+
                         return false;
                     });
                 }
@@ -1099,7 +1120,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private static void toggle_expansion (ExpandableItem item) {
-            item.expanded = !item.expanded;
+            if (item.collapsible)
+                item.expanded = !item.expanded;
         }
 
         public bool scroll_to_item (Item item) {
@@ -1681,13 +1703,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         if (expandable_item != null) {
             tree.update_expansion (expandable_item);
 
-            foreach (var child in expandable_item.get_children ()) {
-                // This will always be faster than the normal recursive implementation
-                Idle.add_full (Priority.HIGH_IDLE, () => {
-                    add_item (child);
-                    return false;
-                });
-            }
+            // We would like a non-recursive implementation here
+            foreach (var child in expandable_item.get_children ())
+                add_item (child);
 
             expandable_item.child_added.connect (add_item);
             expandable_item.child_removed.connect (remove_item);
