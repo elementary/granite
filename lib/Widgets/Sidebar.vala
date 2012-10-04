@@ -56,23 +56,23 @@
  * var music_item = new Granite.Widgets.Sidebar.Item ("Music");
  *
  * // "Libraries" will be the parent category of "Music"
- * library_category.add_item (music_item);
+ * library_category.add (music_item);
  *
  * // We plan to add sub-items to the store, so let's use an expandable item
  * var my_store_item = new Granite.Widgets.Sidebar.ExpandableItem ("My Store");
- * store_category.add_item (my_store_item);
+ * store_category.add (my_store_item);
  *
  * var my_store_podcast_item = new Granite.Widgets.Sidebar.Item ("Podcasts");
  * var my_store_music_item = new Granite.Widgets.Sidebar.Item ("Music");
  *
- * my_store_item.add_item (my_store_music_item);
- * my_store_item.add_item (my_store_podcast_item);
+ * my_store_item.add (my_store_music_item);
+ * my_store_item.add (my_store_podcast_item);
  *
  * var player1_item = new Granite.Widgets.Sidebar.Item ("Player 1");
  * var player2_item = new Granite.Widgets.Sidebar.Item ("Player 2");
  *
- * device_category.add_item (player1_item);
- * device_category.add_item (player2_item);
+ * device_category.add (player1_item);
+ * device_category.add (player2_item);
  * }}}
  *
  * 2. Create a sidebar widget.<<BR>>
@@ -91,9 +91,9 @@
  *
  * var root = sidebar.root;
  *
- * root.add_item (library_category);
- * root.add_item (store_category);
- * root.add_item (device_category);
+ * root.add (library_category);
+ * root.add (store_category);
+ * root.add (device_category);
  * }}}
  *
  * The steps mentioned above are enough for initializing the sidebar. Future changes to the items'
@@ -330,7 +330,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Emitted when an item is added.
          *
          * @param item Item added.
-         * @see Granite.Widgets.Sidebar.ExpandableItem.add_item
+         * @see Granite.Widgets.Sidebar.ExpandableItem.add
          * @since 0.2
          */
         public signal void child_added (Item item);
@@ -339,7 +339,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * Emitted when an item is removed.
          *
          * @param item Item removed.
-         * @see Granite.Widgets.Sidebar.ExpandableItem.remove_item
+         * @see Granite.Widgets.Sidebar.ExpandableItem.remove
          * @since 0.2
          */
         public signal void child_removed (Item item);
@@ -445,15 +445,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * {{{
          * if (item.parent != null)
          *     item.parent.remove (item); // this will set item's parent to null
-         * new_parent.add_item (item);
+         * new_parent.add (item);
          * }}}
          *
          * @param item The item to add. Its parent __must__ be //null//.
          * @see Granite.Widgets.Sidebar.ExpandableItem.child_added
-         * @see Granite.Widgets.Sidebar.ExpandableItem.remove_item
+         * @see Granite.Widgets.Sidebar.ExpandableItem.remove
          * @since 0.2
          */
-        public void add_item (Item item) requires (item.parent == null && !(item in children)) {
+        public void add (Item item) requires (item.parent == null && !(item in children)) {
             item.parent = this;
             children.add (item);
             child_added (item);
@@ -473,7 +473,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.ExpandableItem.clear
          * @since 0.2
          */
-        public void remove_item (Item item) requires (item.parent == this && item in children) {
+        public void remove (Item item) requires (item.parent == this && item in children) {
             children.remove (item);
             child_removed (item);
             item.parent = null;
@@ -481,15 +481,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         /**
          * Removes all the items contained by the item. It works similarly to
-         * {@link Granite.Widgets.Sidebar.ExpandableItem.remove_item}.
+         * {@link Granite.Widgets.Sidebar.ExpandableItem.remove}.
          *
-         * @see Granite.Widgets.Sidebar.ExpandableItem.remove_item
+         * @see Granite.Widgets.Sidebar.ExpandableItem.remove
          * @see Granite.Widgets.Sidebar.ExpandableItem.child_removed
          * @since 0.2
          */
         public void clear () {
             foreach (var item in get_children ())
-                remove_item (item);
+                remove (item);
         }
     }
 
