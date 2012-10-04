@@ -18,10 +18,24 @@
  * Boston, MA 02111-1307, USA.
  */
 
+/**
+ * An expander renderer.
+ *
+ * For it to draw an expander, the the {@link Gtk.CellRenderer.is_expander} property must
+ * be set to true; otherwise nothing is drawn. The state of the expander (i.e. expanded or
+ * collapsed) is controlled by the {@link Gtk.CellRenderer.is_expanded} property. 
+ *
+ * @since 0.2
+ */
 public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
-    public signal void toggled (string path);
 
-    public bool arrow_visible { get; set; default = true; }
+    /**
+     * The expander was activated. Actual state toggling must be done by the
+     * handler.
+     *
+     * @since 0.2
+     */
+    public signal void toggled (string path);
 
     public CellRendererExpander () {
         mode = Gtk.CellRendererMode.ACTIVATABLE;
@@ -46,7 +60,18 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         minimum_height = natural_height = get_arrow_size (widget) + (int) ypad;
     }
 
-    private static int get_arrow_size (Gtk.Widget widget) {
+    /**
+     * Gets the size of the expander arrow.
+     *
+     * The default implementation tries to retrieve the "expander-size" style property from
+     * //widget//, as it is primarily meant to be used along with a {@link Gtk.TreeView}.
+     * For those with special needs, it is recommended to override this method.
+     *
+     * @param widget Widget used to query the "expander-size" style property (should be a Gtk.TreeView.)
+     * @return Size of the expander arrow.
+     * @since 0.2
+     */
+    public virtual int get_arrow_size (Gtk.Widget widget) {
         int arrow_size;
         widget.style_get ("expander-size", out arrow_size);
         return arrow_size;
@@ -55,7 +80,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
     {
-        if (!arrow_visible || !is_expander)
+        if (!is_expander)
             return;
 
         var ctx = widget.get_style_context ();
@@ -79,8 +104,11 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
                                    Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
                                    Gtk.CellRendererState flags)
     {
-        toggled (path);
-        return true;
+        if (is_expander) {
+            toggled (path);
+            return true;
+        }
+        return false;
     }
 
     // XXX @deprecated. Not used
