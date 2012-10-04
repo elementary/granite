@@ -985,7 +985,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // setting a size manually. This is similar to what would happen if we used
             // the TreeView's built-in expanders.
             root_spacer_cell = new CellRendererExpander ();
-            root_spacer_cell.arrow_visible = false;
             item_column.pack_start (root_spacer_cell, false);
             item_column.set_cell_data_func (root_spacer_cell, root_spacer_cell_data_func);
 
@@ -993,7 +992,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             primary_expander_cell = new CellRendererExpander ();
             primary_expander_cell.toggled.connect (on_expander_toggled);
             primary_expander_cell.xpad = EXPANDER_PADDING;
-            primary_expander_cell.xalign = 0.0f;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
@@ -1044,13 +1042,45 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         /**
          * Sets the ideal level indentation.
+         *
+         * Because our tree doesn't use GtkTreeView's built-in expanders, some tricks
+         * had to be applied to it in order to get proper indentation, as the widget
+         * ties the automatic indentation feature to the default expanders; if they
+         * are not used, the default indentation support is gone and we have no other
+         * option than using the level_indentation property. Since level_indentation
+         * doesn't affect root-level items, we pack an invisible expander-cell there.
+         *
+         * LEGEND:
+         *
+         * {...} : root_spacer_cell
+         * -----> : level_indentation
+         * [....]  : primary_expander_cell
+         *
+         * level_indentaton and primary_expander_cell are supposed to have the
+         * same width.
+         *
+         * SPACER DIAGRAM
+         *
+         * {...} CATEGORY 1
+         * -----> [....] Item 1
+         * -----> [....] Expandable Item 2
+         * -----> -----> [....] Sub-Item 1
+         * {...} CATEGORY 2
+         * -----> [....] Expandable Item 1
+         * -----> -----> [....] Expandable Sub-Item 1
+         * -----> -----> -----> [....] Expandable Sub-Item 1
+         *
+         * As shown in the diagram above, level_indentation equals the width of
+         * primary_expander_cell, which is visible even if the row it's packed
+         * into is not expandable; it only draws an arrow for expandable and
+         * collapsible rows though. Please notice that the tree view doesn't
+         * add the value of level_indentation to root-level items, and so we
+         * must use an invisible expander row to control the padding there;
+         * it doesn't have the same value of level_indentation though, so it's
+         * not aligned with the second-level children.
          */
         private void compute_indentation () {
-            int level_indentation;
-            style_get ("horizontal-separator", out level_indentation);
-            level_indentation += get_cell_width (root_spacer_cell);
-
-            this.level_indentation = level_indentation;
+            this.level_indentation = get_cell_width (primary_expander_cell);
         }
 
         private int get_cell_width (Gtk.CellRenderer cell_renderer) {
@@ -1373,6 +1403,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         {
             // Only show allocated space for root-level items. Otherwise, hide.
             renderer.visible = data_model.is_iter_at_root_level (iter);
+            root_spacer_cell.is_expander = false;
         }
 
         private void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
@@ -1451,7 +1482,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // the item alignment (because that will keep the cell's allocated area). For the secondary
             // expander that's not important, and thus we simply hide the entire cell renderer.
             primary_expander_cell.visible = !data_model.is_iter_at_root_level (iter);
-            primary_expander_cell.arrow_visible = expander_visible && primary_expander_visible;
+            primary_expander_cell.is_expander = expander_visible && primary_expander_visible;
             secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
         }
     }
