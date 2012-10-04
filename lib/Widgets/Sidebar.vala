@@ -949,6 +949,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private const int EXPANDER_PADDING = 6;
 
         private Item? selected;
+        private unowned Item? edited;
 
         private Gtk.Entry? editable_entry;
         private Gtk.CellRendererText text_cell;
@@ -1119,9 +1120,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        private static void toggle_expansion (ExpandableItem item) {
-            if (item.collapsible)
+        private static bool toggle_expansion (ExpandableItem item) {
+            if (item.collapsible) {
                 item.expanded = !item.expanded;
+                return true;
+            }
+            return false;
         }
 
         public bool scroll_to_item (Item item) {
@@ -1140,14 +1144,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public bool start_editing_item (Item item) requires (item.editable) {
             var path = data_model.get_item_path (item);
             if (path != null) {
+                edited = item;
                 text_cell.editable = true;
                 set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, true);
-                return true;
             } else {
                 warning ("Could not edit \"%s\": path not found", item.name);
             }
 
-            return false;
+            return editing;
+        }
+
+        public void stop_editing () {
+            // Because of the way start_editing_item works, we can currently
+            // call it again to cancel a previous editing.
+            if (editing && edited != null)
+                start_editing_item (edited);
         }
 
         private void on_editing_started (Gtk.CellEditable editable, string path) {
@@ -1171,8 +1182,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // Same actions as when canceling editing
             on_editing_canceled ();
 
-            if (selected_item != null && selected_item.editable && editable_entry != null)
-                selected_item.edited (editable_entry.get_text ());
+            if (edited != null && edited.editable && editable_entry != null)
+                edited.edited (editable_entry.get_text ());
         }
 
         private void on_activatable_activated (string item_path_str) {
@@ -1238,7 +1249,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 var item = data_model.get_item_from_path (path);
 
+                // This is needed since the treeview adds an offset at the beginning of every level
+                cell_x -= level_indentation * (path.get_depth () - 1);
+
                 if (item != null) {
+                    // Cancel any editing operation going on
+                    stop_editing ();
+
                     // This is implemented in C as a union, so there's no other way around than doing
                     // pointer casting when working from Vala.
                     var ev = (Gdk.Event*) (&event);
@@ -1246,19 +1263,29 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     if (ev->triggers_context_menu ()) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
-                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable)
-                            return start_editing_item (item);
+                        // Check if the user double-clicked over the text cell
+                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable
+                            && over_cell (column, text_cell, cell_x))
+                        {
+                            if (start_editing_item (item))
+                                return true;
+                        }
 
                         // toggle item expansion if the item is a category
-                        if (data_model.is_category (item, null, path)) {
-                            toggle_expansion (item as ExpandableItem);
-                            return true;
-                        }
+                        if (data_model.is_category (item, null, path))
+                            if (toggle_expansion (item as ExpandableItem))
+                                return true;
                     }
                 }
             }
 
             return base.button_press_event (event);
+        }
+
+        private bool over_cell (Gtk.TreeViewColumn col, Gtk.CellRenderer cell, int x) {
+            int cell_x, cell_width;
+            col.cell_get_position (cell, out cell_x, out cell_width);
+            return x > cell_x && x < cell_x + cell_width;
         }
 
         public override bool popup_menu () {
@@ -1606,6 +1633,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                                                requires (has_item (item))
     {
         return tree.start_editing_item (item);
+    }
+
+    /**
+     * Cancels any editing operation going on.
+     *
+     * @see Granite.Widgets.Sidebar.start_editing_item
+     * @since 0.2
+     */
+    public void stop_editing () {
+        tree.stop_editing ();
     }
 
     /**
