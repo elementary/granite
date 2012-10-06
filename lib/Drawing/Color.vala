@@ -173,7 +173,7 @@ namespace Granite.Drawing {
         /**
          * Adds the supplied hue value to this color's hue value.
          *
-         * @param hue the hue to add to this color's hue
+         * @param val the hue to add to this color's hue
          * 
          * @return the new {@link Granite.Drawing.Color}
          */

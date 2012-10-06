@@ -69,8 +69,8 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Applies a stylesheet to the given screen. This will affects all the
-     * widgets which are part of that screen.
+     * Applies a stylesheet to the given screen. This will affect all the widgets which are
+     * part of that screen.
      */
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -83,7 +83,7 @@ namespace Granite.Widgets.Utils {
 
     /**
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
-     *         @stylesheet failed.
+     *         //stylesheet// failed.
      */
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();

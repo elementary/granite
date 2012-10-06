@@ -25,8 +25,9 @@ namespace Granite {
     /**
      * Global deprecated object..
      *
-     * @deprecated 0.1
+     *
     **/
+    [Deprecated (since = "granite-0.1")]
     public static Granite.Application app;
 
     public abstract class Application : Gtk.Application {
