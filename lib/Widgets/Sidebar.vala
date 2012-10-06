@@ -542,9 +542,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
              * A newly-created Gtk.TreePath pointing to the node if it exists; null otherwise.
              */
             public Gtk.TreePath? path {
-                owned get {
-                    return valid ? row_reference.get_path () : null;
-                }
+                owned get { return valid ? row_reference.get_path () : null; }
             }
 
             /**
@@ -940,13 +938,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             get { return text_cell.editing; }
         }
 
+        public Pango.EllipsizeMode ellipsize_mode {
+            get { return text_cell.ellipsize; }
+            set { text_cell.ellipsize = value; }
+        }
+
         private enum Column {
             ITEM,
             N_COLS
         }
 
-        // Extra horizontal space added between the expanders and items
-        private const int EXPANDER_PADDING = 6;
+        // Extra horizontal space added between the expanders and items.
+        private const int PRIMARY_EXPANDER_PADDING = 6;
+        private const int SECONDARY_EXPANDER_PADDING = 5;
 
         private Item? selected;
         private unowned Item? edited;
@@ -990,8 +994,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
-            primary_expander_cell.toggled.connect (on_expander_toggled);
-            primary_expander_cell.xpad = EXPANDER_PADDING;
+            primary_expander_cell.xpad = PRIMARY_EXPANDER_PADDING;
+            primary_expander_cell.xalign = 0;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
@@ -1005,7 +1009,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             text_cell.editing_started.connect (on_editing_started);
             text_cell.editing_canceled.connect (on_editing_canceled);
             text_cell.ellipsize = Pango.EllipsizeMode.END;
-            text_cell.xalign = 0.0f;
+            text_cell.xalign = 0;
             item_column.pack_start (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
 
@@ -1016,8 +1020,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
-            secondary_expander_cell.xpad = EXPANDER_PADDING;
-            secondary_expander_cell.toggled.connect (on_expander_toggled);
+            secondary_expander_cell.xpad = SECONDARY_EXPANDER_PADDING;
             item_column.pack_start (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
 
@@ -1036,8 +1039,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
-            primary_expander_cell.toggled.disconnect (on_expander_toggled);
-            secondary_expander_cell.toggled.disconnect (on_expander_toggled);
         }
 
         /**
@@ -1222,12 +1223,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 item.action_activated ();
         }
 
-        private void on_expander_toggled (string item_path_str) {
-            var item = get_item_from_path_string (item_path_str) as ExpandableItem;
-            if (item != null)
-                toggle_expansion (item);
-        }
-
         private Item? get_item_from_path_string (string item_path_str) {
             var item_path = new Gtk.TreePath.from_string (item_path_str);
             return data_model.get_item_from_path (item_path);
@@ -1282,7 +1277,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 // This is needed since the treeview adds an offset at the beginning of every level
                 cell_x -= level_indentation * (path.get_depth () - 1);
 
-                if (item != null) {
+                if (item != null && column == get_column (Column.ITEM)) {
                     // Cancel any editing operation going on
                     stop_editing ();
 
@@ -1293,6 +1288,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     if (ev->triggers_context_menu ()) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
+                        if (item is ExpandableItem) {
+                            bool over_expander = over_cell (column, primary_expander_cell, cell_x)
+                                              || over_cell (column, secondary_expander_cell, cell_x)
+                                              || data_model.is_category (item, null, path);
+                            if (over_expander) {
+                                if (toggle_expansion (item as ExpandableItem))
+                                    return true;
+                            }
+                        }
+
                         // Check if the user double-clicked over the text cell
                         if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable
                             && over_cell (column, text_cell, cell_x))
@@ -1300,11 +1305,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                             if (start_editing_item (item))
                                 return true;
                         }
-
-                        // toggle item expansion if the item is a category
-                        if (data_model.is_category (item, null, path))
-                            if (toggle_expansion (item as ExpandableItem))
-                                return true;
                     }
                 }
             }
@@ -1314,8 +1314,18 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private bool over_cell (Gtk.TreeViewColumn col, Gtk.CellRenderer cell, int x) {
             int cell_x, cell_width;
-            col.cell_get_position (cell, out cell_x, out cell_width);
-            return x > cell_x && x < cell_x + cell_width;
+            bool found = col.cell_get_position (cell, out cell_x, out cell_width);
+
+            // XXX: This is ugly. Most times, when primary_expander_cell.is_expanded is
+            // 'false', cell_get_position returns 0 for cell_width, making everything fail
+            // in our button-press handler. Since I have no idea of what is provoking this
+            // (it is certainly not the cell's visibility - already checked that), I think
+            // I'll be a duck-taper and add a workaround (which is working perfectly find
+            // by the way). Please add a proper fix if you know what is provoking that.
+            if (cell == primary_expander_cell)
+                cell_width = get_cell_width (primary_expander_cell);
+
+            return found && x > cell_x && x < cell_x + cell_width;
         }
 
         public override bool popup_menu () {
@@ -1552,6 +1562,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public Item? selected {
         get { return tree.selected_item; }
         set { tree.selected_item = value; }
+    }
+
+    /**
+     * Text ellipsize mode.
+     *
+     * @since 0.2
+     */
+    public Pango.EllipsizeMode ellipsize_mode {
+        get { return tree.ellipsize_mode; }
+        set { tree.ellipsize_mode = value; }
     }
 
     /**

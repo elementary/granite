@@ -29,16 +29,7 @@
  */
 public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
 
-    /**
-     * The expander was activated. Actual state toggling must be done by the
-     * handler.
-     *
-     * @since 0.2
-     */
-    public signal void toggled (string path);
-
     public CellRendererExpander () {
-        mode = Gtk.CellRendererMode.ACTIVATABLE;
     }
 
     public override Gtk.SizeRequestMode get_request_mode () {
@@ -84,38 +75,36 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
             return;
 
         var ctx = widget.get_style_context ();
-        ctx.save ();
+        var state = ctx.get_state ();
 
         const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
-        var state = ctx.get_state ();
         ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
         int arrow_size = get_arrow_size (widget);
         int offset = arrow_size / 2;
-        int x = cell_area.x + cell_area.width / 2 - offset;
-        int y = cell_area.y + cell_area.height / 2 - offset;
+
+        int x = cell_area.x;
+        int y = cell_area.y;
+
+        float xalign = this.xalign;
+
+        if (widget.get_direction () == Gtk.TextDirection.RTL)
+            xalign = (float) Math.fabs (xalign - 1.0f);
+
+        x += (int) ((float) cell_area.width * xalign - offset);
+        y += (int) ((float) cell_area.height * yalign - offset);
+
+        x = x.clamp (cell_area.x, cell_area.x + cell_area.width - arrow_size);
+        y = y.clamp (cell_area.y, cell_area.y + cell_area.height - arrow_size);
+
         ctx.render_expander (context, x, y, arrow_size, arrow_size);
-
-        // Restore original state
-        ctx.restore ();
     }
 
-    public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
-                                   Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
-                                   Gtk.CellRendererState flags)
-    {
-        if (is_expander) {
-            toggled (path);
-            return true;
-        }
-        return false;
-    }
-
-    // XXX @deprecated. Not used
+    [Deprecated (replacement = "Gtk.CellRenderer.get_preferred_size", since = "")]
     public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                    out int x_offset, out int y_offset,
                                    out int width, out int height)
     {
-        x_offset = y_offset = width = height = 0;
+        assert_not_reached ();
     }
 }
