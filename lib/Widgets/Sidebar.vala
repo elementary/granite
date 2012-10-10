@@ -661,7 +661,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // unset the value.
             var child_iter = get_item_child_iter (item);
 
-            // Now we remove the item from the table, because that way get_item_iter() and
+            // Now we remove the item from the table, because that way get_item_child_iter() and
             // all the methods that depend on it won't return invalid iters or items when
             // called. This is important because child_tree.remove() will emit row_deleted(),
             // and its handlers could potentially depend on one of the methods mentioned above.
@@ -738,23 +738,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 return get_item (iter);
 
             return null;
-        }
-
-        /**
-         * Returns a newly-created Gtk.TreeIter pointing to the item, or null if a valid iter could
-         * not be created.
-         */
-        public Gtk.TreeIter? get_item_iter (Item item) {
-            Gtk.TreeIter? iter = null, child_iter = get_item_child_iter (item);
-
-            // Now let's convert the child iter to a valid iter
-            if (child_iter != null) {
-                Gtk.TreeIter tmp_iter;
-                if (convert_child_iter_to_iter (out tmp_iter, child_iter))
-                    iter = tmp_iter;
-            }
-
-            return iter;
         }
 
         /**
