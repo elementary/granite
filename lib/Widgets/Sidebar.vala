@@ -927,7 +927,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         public FilteredDataModel data_model { get; set; }
 
-        public signal void item_selected (Item item);
+        public signal void item_selected (Item? item);
 
         public Item? selected_item {
             get { return selected; }
@@ -1123,31 +1123,48 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void set_selected (Item? item, bool scroll_to_item) {
-            var selection = get_selection ();
+            if (item == null) {
+                get_selection ().unselect_all ();
 
-            // Initial test
-            if (item == null || !item.selectable) {
-                selection.unselect_all ();
-            } else if (item != null) {
+                // As explained in cursor_changed(), we cannot emit signals
+                // for this special case from there because that wouldn't allow
+                // us to implement the behavior we want (i.e. restoring the old selection
+                // after expanding a previously collapsed category) without emitting the
+                // undesired item_selected() signal along the way. This special case is handled
+                // manually, because it *should* only happen in response to client code
+                // requests and never in response to user interaction. We do that here
+                // because there's no way to determine whether whether the cursor change
+                // came from code (i.e. this method) or user interaction from cursor_changed().
+                this.selected = null;
+                item_selected (null);
+            } else if (item.selectable) {
                 if (scroll_to_item)
                     this.scroll_to_item (item);
 
-                var to_select = data_model.get_item_iter (item);
-
+                var to_select = data_model.get_item_path (item);
                 if (to_select != null)
-                    selection.select_iter (to_select);
+                    set_cursor_on_cell (to_select, get_column (Column.ITEM), text_cell, false);
             }
         }
 
         public override void cursor_changed () {
             var path = get_selected_path ();
+            Item? new_item = path != null ? data_model.get_item_from_path (path) : null;
 
-            if (path != null) {
-                var item = data_model.get_item_from_path (path);
-                if (item != null && item != this.selected && item.selectable) {
-                    this.selected = item;
-                    item_selected (item);
-                }
+            // Don't do anything if @new_item is null.
+            //
+            // The only way 'this.selected' can be null is by setting it explicitly to
+            // that value from client code, and thus we handle that case in set_selected().
+            // THIS CANNOT HAPPEN IN RESPONSE TO USER INTERACTION. For example, if an
+            // item is un-selected because its parent category has been collapsed, then it will
+            // remain as the current selected item (not in reality, just as the value of
+            // this.selected) and will be re-selected after the parent is expanded again.
+            // THIS ALL HAPPENS SILENTLY BEHIND THE SCENES, so client code will never know
+            // it ever happened; the value of selected_item remains unchanged and item_selected()
+            // is not emitted.
+            if (new_item != null && new_item != this.selected) {
+                this.selected = new_item;
+                item_selected (new_item);
             }
         }
 
@@ -1235,10 +1252,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var path = data_model.get_item_path (expandable_item);
 
             if (path != null) {
-                if (expandable_item.expanded)
+                if (expandable_item.expanded) {
                     expand_row (path, false);
-                else
+
+                    // Since collapsing an item un-selects any child item previously selected,
+                    // we need to restore the selection. This will be done silently because
+                    // set_selected checks for equality between the previously "selected" item
+                    // and the newly selected, and only emits the item_selected if they are
+                    // different. See cursor_changed() for a better explanation of this behavior.
+                    if (selected != null && selected.parent == expandable_item)
+                        set_selected (selected, true);
+                } else {
                     collapse_row (path);
+                }
             }
         }
 
@@ -1258,7 +1284,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                         // try to start editing selected item
                         if ((event.state & modifiers) == 0 && selected_item.editable)
                             start_editing_item (selected_item);
-                        break;
+                    break;
                 }
             }
 
@@ -1292,18 +1318,17 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                             bool over_expander = over_cell (column, primary_expander_cell, cell_x)
                                               || over_cell (column, secondary_expander_cell, cell_x)
                                               || data_model.is_category (item, null, path);
-                            if (over_expander) {
-                                if (toggle_expansion (item as ExpandableItem))
-                                    return true;
-                            }
+                            if (over_expander && toggle_expansion (item as ExpandableItem))
+                                return true;
                         }
 
                         // Check if the user double-clicked over the text cell
-                        if (event.type == Gdk.EventType.2BUTTON_PRESS && item.editable
-                            && over_cell (column, text_cell, cell_x))
+                        if (event.type == Gdk.EventType.2BUTTON_PRESS
+                            && item.editable
+                            && over_cell (column, text_cell, cell_x)
+                            && start_editing_item (item))
                         {
-                            if (start_editing_item (item))
-                                return true;
+                            return true;
                         }
                     }
                 }
@@ -1319,9 +1344,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // XXX: This is ugly. Most times, when primary_expander_cell.is_expanded is
             // 'false', cell_get_position returns 0 for cell_width, making everything fail
             // in our button-press handler. Since I have no idea of what is provoking this
-            // (it is certainly not the cell's visibility - already checked that), I think
-            // I'll be a duck-taper and add a workaround (which is working perfectly find
-            // by the way). Please add a proper fix if you know what is provoking that.
+            // (it is certainly not the cell's visibility - already checked that), I thought
+            // I'd be a duck-taper and added a workaround (which is working perfectly fine
+            // by the way). Please add a proper fix if you know what is provoking the problem.
             if (cell == primary_expander_cell)
                 cell_width = get_cell_width (primary_expander_cell);
 
@@ -1502,10 +1527,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     /**
      * Emitted when the sidebar selection changes.
      *
-     * @param item Selected item.
+     * @param item Selected item; //null// if nothing is selected.
      * @since 0.2
      */
-    public virtual signal void item_selected (Item? item) { }
+    public virtual signal void item_selected (Item? item) {
+        message ("ITEM SELECTED: %s", item != null ? item.name : "NONE");
+    }
 
     /**
      * A {@link Granite.Widgets.Sidebar.SortFunc} should return a negative integer, zero, or a
@@ -1557,11 +1584,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     /**
      * The current selected item.
      *
+     * Setting it to //null// un-selects the previously selected item, if there was any.
+     * {@link Granite.Widgets.Sidebar.expand_with_parents} is called on the item's parent
+     * to make sure it's possible to select it. If the item is //not selectable//, nothing
+     * is changed.
+     *
      * @since 0.2
      */
     public Item? selected {
         get { return tree.selected_item; }
-        set { tree.selected_item = value; }
+        set {
+            if (value != null && value.parent != null)
+                expand_with_parents (value.parent, true);
+            tree.selected_item = value;
+        }
     }
 
     /**
