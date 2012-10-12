@@ -21,6 +21,15 @@ namespace Granite.Widgets {
 
     public class ModeButton : Gtk.Box {
 
+        private class Item : Gtk.ToggleButton {
+            public int index { get; construct; }
+            public Item (int index) {
+                Object (index: index);
+                can_focus = false;
+                add_events (Gdk.EventMask.SCROLL_MASK);
+            }
+        }
+
         public signal void mode_added (int index, Gtk.Widget widget);
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
@@ -31,15 +40,18 @@ namespace Granite.Widgets {
         }
 
         public uint n_items {
-            get { return get_children ().length (); }
+            get { return item_map.size; }
         }
 
         private int _selected = -1;
+        private Gee.HashMap<int, Item> item_map;
 
         public ModeButton () {
             homogeneous = true;
             spacing = 0;
             can_focus = false;
+
+            item_map = new Gee.HashMap<int, Item> ();
 
             var style = get_style_context ();
             style.add_class (Gtk.STYLE_CLASS_LINKED);
@@ -59,41 +71,42 @@ namespace Granite.Widgets {
         }
 
         public int append (Gtk.Widget w) {
-            var button = new Gtk.ToggleButton ();
-            button.can_focus = false;
-            button.add_events (Gdk.EventMask.SCROLL_MASK);
-            button.scroll_event.connect (on_scroll_event);
+            int index;
+            for (index = item_map.size; item_map.has_key (index); index++);
+            assert (item_map[index] == null);
 
-            button.add (w);
+            var item = new Item (index);
+            item.scroll_event.connect (on_scroll_event);
+            item.add (w);
 
-            button.button_press_event.connect ( () => {
-                set_active (get_children ().index (button));
+            item.button_press_event.connect (() => {
+                set_active (item.index);
                 return true;
             });
 
-            add (button);
-            button.show_all ();
+            item_map[index] = item;
 
-            var children = get_children ();
-            int item_index = (int)children.length () - 1;
-            mode_added (item_index, w);
-            return item_index;
+            add (item);
+            item.show_all ();
+
+            mode_added (index, w);
+
+            return index;
         }
 
         public void set_active (int new_active_index) {
-            var children = get_children ();
-            return_if_fail (new_active_index >= 0 && new_active_index < children.length ());
-
-            var new_item = children.nth_data (new_active_index) as Gtk.ToggleButton;
+            return_if_fail (item_map.has_key (new_active_index));
+            var new_item = item_map[new_active_index] as Item;
 
             if (new_item != null) {
+                assert (new_item.index == new_active_index);
                 new_item.set_active (true);
 
                 if (_selected == new_active_index)
                     return;
 
                 // Unselect the previous item
-                var old_item = children.nth_data (_selected) as Gtk.ToggleButton;
+                var old_item = item_map[_selected] as Item;
                 if (old_item != null)
                     old_item.set_active (false);
 
@@ -104,24 +117,24 @@ namespace Granite.Widgets {
         }
 
         public void set_item_visible (int index, bool val) {
-            var children = get_children ();
-            return_if_fail (index >= 0 && index < children.length ());
-
-            var item = children.nth_data (index);
+            return_if_fail (item_map.has_key (index));
+            var item = item_map[index] as Item;
 
             if (item != null) {
+                assert (item.index == index);
                 item.no_show_all = !val;
                 item.visible = val;
             }
         }
 
         public new void remove (int index) {
-            var children = get_children ();
-            return_if_fail (index >= 0 && index < children.length ());
+            return_if_fail (item_map.has_key (index));
+            var item = item_map[index] as Item;
 
-            var item = children.nth_data (index) as Gtk.Bin;
             if (item != null) {
+                assert (item.index == index);
                 mode_removed (index, item.get_child ());
+                item_map.unset (index);
                 item.destroy ();
             }
         }
@@ -132,6 +145,8 @@ namespace Granite.Widgets {
                 if (button.get_parent () != null)
                     base.remove (button);
             }
+
+            item_map.clear ();
 
             _selected = -1;
         }
@@ -152,18 +167,26 @@ namespace Granite.Widgets {
                     return false;
             }
 
-            int new_item = selected;
-
-            // Try to find a valid item, since there could be invisible items in the middle
-            // and those shouldn't be selected
+            // Try to find a valid item, since there could be invisible items in
+            // the middle and those shouldn't be selected. We use the children list
+            // instead of item_map because order matters here.
             var children = get_children ();
             uint n_children = children.length ();
 
+            var selected_item = item_map[selected];
+            if (selected_item == null)
+                return false;
+
+            int new_item = children.index (selected_item);
+            if (new_item < 0)
+                return false;
+
             do {
                 new_item += offset;
-                var item = children.nth_data (new_item);
-                if (item != null && item.visible) {
-                    selected = new_item;
+                var item = children.nth_data (new_item) as Item;
+
+                if (item != null && item.visible && item.sensitive) {
+                    selected = item.index;
                     break;
                 }
             } while (new_item >= 0 && new_item < n_children);
