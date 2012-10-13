@@ -22,7 +22,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INS
 
 find_package(PkgConfig)
 find_package(GObjectIntrospection 0.9.12)
-include(GObjectIntrospectionMacros)
+
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
 
 pkg_check_modules(DEPS REQUIRED
@@ -131,8 +131,10 @@ macro(_list_prefix _outvar _listvar _prefix)
 endmacro(_list_prefix)
 
 # GObject Introspection
-include(GObjectIntrospectionMacros)
-add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+if(INTROSPECTION_FOUND)
+  include(GObjectIntrospectionMacros)
+  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+endif()
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
