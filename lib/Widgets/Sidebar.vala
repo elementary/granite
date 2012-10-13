@@ -1758,8 +1758,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         tree.item_selected.connect ( (item) => item_selected (item) );
 
         // Initialize item monitor
-        root.child_added.connect (add_item);
-        root.child_removed.connect (remove_item);
+        add_children_monitor (root);
+    }
+
+    ~Sidebar () {
+        remove_children_monitor (root);
     }
 
     /**
@@ -1884,15 +1887,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         monitors[item] = wrapper;
         wrapper.changed.connect_after (on_item_prop_changed);
 
-        // If it's an expandable item, also add children, and monitor future
-        // additions and removals through the signal handlers.
+        // If it's an expandable item, add children, and monitor future additions and removals.
         var expandable_item = item as ExpandableItem;
         if (expandable_item != null) {
             foreach (var child in expandable_item.get_children ())
                 add_item (child);
 
-            expandable_item.child_added.connect_after (add_item);
-            expandable_item.child_removed.connect_after (remove_item);
+            add_children_monitor (expandable_item);
         }
     }
 
@@ -1910,12 +1911,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         monitors.unset (item);
 
         var expandable_item = item as ExpandableItem;
-        if (expandable_item != null) {
-            expandable_item.child_added.disconnect (add_item);
-            expandable_item.child_removed.disconnect (remove_item);
-        }
+        if (expandable_item != null)
+            remove_children_monitor (expandable_item);
 
         data_model.remove_item (item);
+    }
+
+    private void add_children_monitor (ExpandableItem item) {
+        item.child_added.connect_after (add_item);
+        item.child_removed.connect_after (remove_item);
+    }
+
+    private void remove_children_monitor (ExpandableItem item) {
+        item.child_added.disconnect (add_item);
+        item.child_removed.disconnect (remove_item);
     }
 
     private void on_item_prop_changed (Item item, string prop_name) {
