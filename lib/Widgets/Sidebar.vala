@@ -352,10 +352,21 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Whether the item is expanded or not.
          *
+         * The sidebar widget will obey the value of this property when possible.
+         *
          * This property has no effect when {@link Granite.Widgets.Sidebar.ExpandableItem.collapsible}
-         * is set to //false//.
+         * is set to //false//. Also keep in mind that, __when set to //true//__, this property
+         * doesn't always represent the actual expanded state of an item. For example, it might
+         * be the case that an expandable item is collapsed because it has zero visible children,
+         * but its //expanded// property value is still //true//; in such case, once one of the
+         * item's children becomes visible, the item will be expanded again. Same applies to items
+         * hidden behind a collapsed parent item.
+         *
+         * If obtaining the ''actual'' expanded state of an item is important to your needs,
+         * use {@link Granite.Widgets.Sidebar.is_item_expanded} instead.
          *
          * @see Granite.Widgets.Sidebar.ExpandableItem.collapsible
+         * @see Granite.Widgets.Sidebar.is_item_expanded
          * @since 0.2
          */
         private bool _expanded = false;
@@ -476,6 +487,81 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public void clear () {
             foreach (var item in get_children ())
                 remove (item);
+        }
+
+        /**
+         * Expands the item and/or its children.
+         *
+         * @param inclusive Whether to also expand this item (true), or only its children (false).
+         * @param recursive Whether to recursively expand all the children (true), or only
+         * immediate children (false).
+         * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
+         * @since 0.2
+         */
+        public void expand_all (bool inclusive = true, bool recursive = true) {
+            set_expansion (this, inclusive, recursive, true);
+        }
+
+        /**
+         * Collapses the item and/or its children.
+         *
+         * @param inclusive Whether to also collapse this item (true), or only its children (false).
+         * @param recursive Whether to recursively collapse all the children (true), or only
+         * immediate children (false). The latter case might appear contradictory, given that collapsing
+         * immediate children will also //visually// collapse non-immediate children, but it makes total
+         * sense once you've understood what the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded}
+         * property actually means. If you set //recursive// to //true,// the non-immediate children's
+         * //expanded// property will be set to //false//, and therefore they will __stay collapsed__
+         * the next time their parents are expanded; otherwise (i.e. if //recursive// is //false//),
+         * __their previous expansion state will be restored__ once their parents are expanded again.
+         * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
+         * @since 0.2
+         */
+        public void collapse_all (bool inclusive = true, bool recursive = true) {
+            set_expansion (this, inclusive, recursive, false);
+        }
+
+        private static void set_expansion (ExpandableItem item, bool inclusive, bool recursive, bool expanded) {
+            if (inclusive)
+                item.expanded = expanded;
+
+            foreach (var child_item in item.get_children ()) {
+                var child_expandable_item = child_item as ExpandableItem;
+                if (child_expandable_item != null) {
+                    if (recursive)
+                        set_expansion (child_expandable_item, true, true, expanded);
+                    else
+                        child_expandable_item.expanded = expanded;
+                }
+            }
+        }
+
+        /**
+         * Recursively expands the item along with its parent(s).
+         *
+         * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
+         * @since 0.2
+         */
+        public void expand_with_parents () {
+            // Update parent items first due to GtkTreeView's working internals:
+            // Expanding children before their parents would not always work, because
+            // they could be obscured behind a collapsed row by the time the treeview
+            // tries to expand them, obviously failing.
+            if (parent != null)
+                parent.expand_with_parents ();
+            expanded = true;
+        }
+
+        /**
+         * Recursively collapses the item along with its parent(s).
+         *
+         * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
+         * @since 0.2
+         */
+        public void collapse_with_parents () {
+            if (parent != null)
+                parent.collapse_with_parents ();
+            expanded = false;
         }
     }
 
@@ -678,7 +764,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Pushes a call to update_item() if //parent// is a category.
+         * Pushes a call to update_item() if //parent// is not //null//.
          *
          * This is needed because the visibility of categories depends on their n_children property,
          * and also because item expansion should be updated after adding or removing items.
@@ -755,8 +841,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         public void set_sort_func (owned Sidebar.SortFunc? sort_func) {
             this.sort_func = (owned) sort_func;
-            this.sort_column = this.sort_func != null ?
-                               SortColumn.SORTED : SortColumn.UNSORTED;
+            this.sort_column = this.sort_func != null ? SortColumn.SORTED : SortColumn.UNSORTED;
 
             child_tree.set_sort_func (SortColumn.SORTED, child_model_sort_func);
             sort_direction = sort_dir;
@@ -1255,16 +1340,17 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // of this behavior.
                     if (selected != null && selected.parent == expandable_item)
                         set_selected (selected, true);
-                } else {
-                    collapse_row (path);
 
-                    // Collapsing expandable_item's row will also collapsed all its children,
-                    // and thus we need to update the "expanded" property of each of them.
+                    // Collapsing expandable_item's row also collapsed all its children,
+                    // and thus we need to update the "expanded" property of each of them
+                    // to reflect their previous state.
                     foreach (var child_item in expandable_item.get_children ()) {
                         var child_expandable_item = child_item as ExpandableItem;
                         if (child_expandable_item != null)
-                            child_expandable_item.expanded = false;
+                            update_expansion (child_expandable_item);
                     }
+                } else {
+                    collapse_row (path);
                 }
             }
         }
@@ -1602,9 +1688,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * The current selected item.
      *
      * Setting it to //null// un-selects the previously selected item, if there was any.
-     * {@link Granite.Widgets.Sidebar.expand_with_parents} is called on the item's parent
-     * to make sure it's possible to select it. If the item is //not selectable//, nothing
-     * is changed.
+     * {@link Granite.Widgets.Sidebar.ExpandableItem.expand_with_parents} is called on the
+     * item's parent to make sure it's possible to select it.
      *
      * @since 0.2
      */
@@ -1612,7 +1697,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         get { return tree.selected_item; }
         set {
             if (value != null && value.parent != null)
-                expand_with_parents (value.parent, true);
+                value.parent.expand_with_parents ();
             tree.selected_item = value;
         }
     }
@@ -1726,6 +1811,17 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
+     * Queries the actual expanded state of //item//.
+     *
+     * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
+     * @since 0.2
+     */
+    public bool is_item_expanded (Item item) requires (has_item (item)) {
+        var path = data_model.get_item_path (item);
+        return path != null && tree.is_row_expanded (path);
+    }
+
+    /**
      * If //item// is editable, this activates the editor; otherwise, it does nothing.
      * If an item was already being edited, this will fail.
      *
@@ -1755,80 +1851,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Recursively expands all the expandable items.
-     *
-     * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
-     * @since 0.2
-     */
-    public void expand_all () {
-        expand_with_children (root, true);
-    }
-
-    /**
-     * Recursively collapses all the collapsible (expandable) items.
-     *
-     * @see Granite.Widgets.Sidebar.ExpandableItem.expanded
-     * @see Granite.Widgets.Sidebar.ExpandableItem.collapsible
-     * @since 0.2
-     */
-    public void collapse_all () {
-        expand_with_children (root, false);
-    }
-
-    /**
-     * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //expandable_item// and its child expandable items to the value specified, so this can
-     * be used for both expanding and collapsing.
-     *
-     * @param expandable_item ExpandableItem where expansion begins.
-     * @param expand Whether expandable items will be expanded or collapsed.
-     * @since 0.2
-     */
-    public void expand_with_children (ExpandableItem expandable_item, bool expand)
-        requires (expandable_item == root || has_item (expandable_item))
-    {
-        // expandable_item is the parent, so we update it prior to its children. Otherwise
-        // the operation would likely fail due to Gtk.TreeView's restrictions. For example,
-        // expanding a row obscured behind a collapsed parent row wouldn't take any effect.
-        expandable_item.expanded = expand;
-
-        // When collapsing an expandable item, Tree.update_expansion() will also update
-        // children (i.e. set their "expanded" property to false), so there's no need for
-        // this unless we're expanding all the items. It would be otherwise inneficient.
-        if (expand) {
-            foreach (var item in expandable_item.get_children ()) {
-                var child_expandable_item = item as ExpandableItem;
-                if (child_expandable_item != null)
-                    expand_with_children (child_expandable_item, expand);
-            }
-        }
-    }
-
-    /**
-     * Recursively sets the {@link Granite.Widgets.Sidebar.ExpandableItem.expanded} property
-     * of //expandable_item// and its parent expandable items to the value specified, so this can
-     * be used for both expanding and collapsing.
-     *
-     * @param expandable_item ExpandableItem where expansion begins.
-     * @param expand Whether expandable items will be expanded or collapsed.
-     * @since 0.2
-     */
-    public void expand_with_parents (ExpandableItem expandable_item, bool expand)
-        requires (has_item (expandable_item))
-    {
-        // Update parent first. Same explanation as in expand_with_children()
-        var parent = expandable_item.parent;
-        if (parent != null && parent != this.root)
-            expand_with_parents (parent, expand);
-
-        expandable_item.expanded = expand;
-    }
-
-    /**
      * Scrolls the sidebar tree to make //item// visible.
      *
-     * If //expand_parents// is //true//, {@link Sidebar.expand_with_parents} is called for the
-     * item's parent, to make sure it's not obscured behind a collapsed group.
+     * If //expand_parents// is //true//, {@link Granite.Widgets.Sidebar.ExpandableItem.expand_with_parents}
+     * is called for the item's parent, to make sure it's not hidden behind a collapsed row.
      *
      * @param item Item to scroll to.
      * @param expand_parents Whether to expand item's parent expandable items in case they are collapsed.
@@ -1837,7 +1863,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     public bool scroll_to_item (Item item, bool expand_parents = true) requires (has_item (item)) {
         if (expand_parents && item.parent != null)
-            expand_with_parents (item.parent, true);
+            item.parent.expand_with_parents ();
 
         return tree.scroll_to_item (item);
     }
@@ -1858,10 +1884,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         monitors[item] = wrapper;
         wrapper.changed.connect_after (on_item_prop_changed);
 
-        // If it's an expandable item, also add children
+        // If it's an expandable item, also add children, and monitor future
+        // additions and removals through the signal handlers.
         var expandable_item = item as ExpandableItem;
         if (expandable_item != null) {
-            // We would like a non-recursive implementation here
             foreach (var child in expandable_item.get_children ())
                 add_item (child);
 
