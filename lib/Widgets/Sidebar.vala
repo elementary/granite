@@ -1288,6 +1288,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public override bool button_press_event (Gdk.EventButton event) {
+            if (event.window != get_bin_window ())
+                return base.button_press_event (event);
+
             Gtk.TreePath path;
             Gtk.TreeViewColumn column;
 
@@ -1296,8 +1299,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
                 var item = data_model.get_item_from_path (path);
 
-                // This is needed since the treeview adds an offset at the beginning of every level
-                cell_x -= level_indentation * (path.get_depth () - 1);
+                // This is needed because the treeview adds an offset at the beginning of every level
+                Gdk.Rectangle start_cell_area;
+                get_cell_area (path, get_column (0), out start_cell_area);
+                cell_x -= start_cell_area.x;
 
                 if (item != null && column == get_column (Column.ITEM)) {
                     // Cancel any editing operation going on
@@ -1762,7 +1767,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // When collapsing an expandable item, Tree.update_expansion() will also update
         // children (i.e. set their "expanded" property to false), so there's no need for
         // this unless we're expanding all the items. It would be otherwise inneficient.
-        if (!expand) {
+        if (expand) {
             foreach (var item in expandable_item.get_children ()) {
                 var child_expandable_item = item as ExpandableItem;
                 if (child_expandable_item != null)
