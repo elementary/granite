@@ -135,14 +135,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * ---------------------------------------------------------------------------------------------
      * + Item            |                                   |
      *   - parent        | Not monitored                     | N/A
-     *   - name          | Sidebar::on_item_property_changed | Tree::name_cell_data_func
-     *   - editable      | Sidebar::on_item_property_changed | Queried when needed (See Tree::start_editing_item)
-     *   - visible       | Sidebar::on_item_property_changed | FilteredDataModel::filter_visible_func
-     *   - icon          | Sidebar::on_item_property_changed | Tree::icon_cell_data_func
+     *   - name          | DataModel::on_item_prop_changed   | Tree::name_cell_data_func
+     *   - editable      | DataModel::on_item_prop_changed   | Queried when needed (See Tree::start_editing_item)
+     *   - visible       | DataModel::on_item_prop_changed   | DataModel::filter_visible_func
+     *   - icon          | DataModel::on_item_prop_changed   | Tree::icon_cell_data_func
      *   - activatable   | Same as @icon                     | Same as @icon
      * + ExpandableItem  |                                   |
-     *   - no_caption    | Sidebar::on_item_property_changed | Tree::name_cell_data_func
-     *   - collapsible   | Sidebar::on_item_property_changed | Tree::update_expansion
+     *   - no_caption    | DataModel::on_item_prop_changed   | Tree::name_cell_data_func
+     *   - collapsible   | DataModel::on_item_prop_changed   | Tree::update_expansion
      *                   |                                   | Tree::expander_cell_data_func
      *   - expanded      | Same as @collapsible              | Same as @collapsible
      * ---------------------------------------------------------------------------------------------
@@ -150,7 +150,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *   Sidebar::add_item() and Sidebar::remove_item()
      *
      * Other features:
-     * - Sorting: this happens on the tree-model level. See FilteredDataModel and Sidebar::SortFunc.
+     * - Sorting: this happens on the tree-model level. See DataModel and Sidebar::SortFunc.
      */
 
 
@@ -570,12 +570,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     /**
      * The model backing the Sidebar tree. It controls the visibility of the items.
      *
-     * The FilteredDataModel controls the visibility of the items based on their "visible" property,
+     * The DataModel controls the visibility of the items based on their "visible" property,
      * and also on their number of children, if they happen to be categories. It also offers an easy
      * interface for sorting, adding, removing and updating items, eliminating the need of repeatedly
      * dealing with the Gtk.TreeModel API directly.
      */
-    private class FilteredDataModel : Gtk.TreeModelFilter {
+    private class DataModel : Gtk.TreeModelFilter {
 
         /**
          * An object that references a particular row in a model. This class is a wrapper built around
@@ -630,6 +630,27 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
+        /**
+         * Helper object used to monitor item property changes.
+         */
+        private class ItemMonitor {
+            public signal void changed (Item self, string prop_name);
+            private Item item;
+
+            public ItemMonitor (Item item) {
+                this.item = item;
+                item.notify.connect_after (on_notify);
+            }
+
+            ~ItemMonitor () {
+                item.notify.disconnect (on_notify);
+            }
+
+            private void on_notify (ParamSpec prop) {
+                changed (item, prop.name);
+            }
+        }
+
         private enum Column {
             ITEM,
             N_COLUMNS;
@@ -663,6 +684,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         private Gee.HashMap<Item, NodeWrapper> items = new Gee.HashMap<Item, NodeWrapper> ();
 
+        private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
+
         private Gtk.TreeStore child_tree;
         private Sidebar.SortFunc? sort_func;
         private unowned Sidebar.VisibleFunc? filter_func;
@@ -678,7 +701,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        public FilteredDataModel () {
+        public DataModel () {
             var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
             Object (child_model: child_tree, virtual_root: null);
             this.child_tree = child_tree;
@@ -691,7 +714,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         public void update_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
-            debug ("FilteredDataModel::update_item [%s]", item.name);
+            debug ("DataModel::update_item [%s]", item.name);
 #endif
             // Emitting row_changed() for this item's row in the child model causes the filter
             // (i.e. this model) to re-evaluate whether a row is visible or not, calling
@@ -709,7 +732,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         public void add_item (Item item) requires (!has_item (item)) {
 #if TRACE_SIDEBAR
-            debug ("FilteredDataModel::add_item [%s]", item.name);
+            debug ("DataModel::add_item [%s]", item.name);
 #endif
             // Try to find the parent. XXX If the parent is not found, and item.parent != null,
             // we should call add_item(item.parent) in order to add it prior to adding the child
@@ -728,14 +751,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // This is equivalent to a property change. The tree still needs to update
             // the some of the new item's properties through this signal's handler.
             item_updated (item);
-
+            add_property_monitor (item);
             push_parent_update (item.parent);
         }
 
         public void remove_item (Item item) requires (has_item (item)) {
 #if TRACE_SIDEBAR
-            debug ("FilteredDataModel::remove_item [%s]", item.name);
+            debug ("DataModel::remove_item [%s]", item.name);
 #endif
+            remove_property_monitor (item);
+
             // get_item_child_iter() depends on @items.get(item) for retrieving the right reference,
             // so don't unset the item from @items yet! We first get the child iter and then
             // unset the value.
@@ -761,6 +786,29 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
 
             push_parent_update (item.parent);
+        }
+
+        private void add_property_monitor (Item item) {
+            var wrapper = new ItemMonitor (item);
+            monitors[item] = wrapper;
+            wrapper.changed.connect (on_item_prop_changed);
+        }
+
+        private void remove_property_monitor (Item item) {
+            // Disconnect everything we connected in add_property_monitor()
+            var wrapper = monitors[item];
+            if (wrapper != null)
+                wrapper.changed.disconnect (on_item_prop_changed);
+            monitors.unset (item);
+        }
+
+        private void on_item_prop_changed (Item item, string prop_name) {
+            // the parent property is currently only handled by ExpandableItem.add() and
+            // ExpandableItem.remove(), which also emit child_added() and child_removed(),
+            // so we don't monitor this specific property. There are further comments on
+            // this topic in DataModel.add_item()
+            if (prop_name != "parent")
+                update_item (item);
         }
 
         /**
@@ -987,7 +1035,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     private class Tree : Gtk.TreeView {
 
-        public FilteredDataModel data_model { get; set; }
+        public DataModel data_model { get; set; }
 
         public signal void item_selected (Item? item);
 
@@ -1025,7 +1073,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private CellRendererExpander secondary_expander_cell;
         private CellRendererExpander root_spacer_cell;
 
-        public Tree (FilteredDataModel data_model) {
+        public Tree (DataModel data_model) {
             this.data_model = data_model;
             set_model (data_model);
 
@@ -1516,7 +1564,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private static Item? get_item_from_model (Gtk.TreeModel model, Gtk.TreeIter iter) {
-            var data_model = model as FilteredDataModel;
+            var data_model = model as DataModel;
             assert (data_model != null);
             return data_model.get_item (iter);
         }
@@ -1602,28 +1650,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 renderer.visible = data_model.is_category (item, iter);
             else
                 assert_not_reached ();
-        }
-    }
-
-
-    /**
-     * Helper object used to monitor item property changes.
-     */
-    private class ItemMonitor {
-        public signal void changed (Item self, string prop_name);
-        private Item item;
-
-        public ItemMonitor (Item item) {
-            this.item = item;
-            item.notify.connect (on_notify);
-        }
-
-        ~ItemMonitor () {
-            item.notify.disconnect (on_notify);
-        }
-
-        private void on_notify (ParamSpec prop) {
-            changed (item, prop.name);
         }
     }
 
@@ -1734,8 +1760,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     private Tree tree;
-    private FilteredDataModel data_model { get { return tree.data_model; } }
-    private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
+    private DataModel data_model { get { return tree.data_model; } }
 
     /**
      * Creates a new {@link Granite.Widgets.Sidebar}.
@@ -1744,7 +1769,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @since 0.2
      */
     public Sidebar () {
-        var model = new FilteredDataModel ();
+        var model = new DataModel ();
 
         push_composite_child ();
         tree = new Tree (model);
@@ -1872,8 +1897,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Adds an item in response to the {@link Granite.Widgets.Sidebar.ExpandableItem.child_added}
-     * signal.
+     * Adds an item in response to {@link Granite.Widgets.Sidebar.ExpandableItem.child_added}
      *
      * This method is recursively signaled. While it is first emitted in response to the
      * root's child_added() signal, successive calls are fired by child expandable items,
@@ -1882,10 +1906,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     private void add_item (Item item) requires (!has_item (item)) {
         data_model.add_item (item);
-
-        var wrapper = new ItemMonitor (item);
-        monitors[item] = wrapper;
-        wrapper.changed.connect_after (on_item_prop_changed);
 
         // If it's an expandable item, add children, and monitor future additions and removals.
         var expandable_item = item as ExpandableItem;
@@ -1898,21 +1918,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * Removes an item in response to the {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed}
-     * signal.
+     * Removes an item in response to {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed}.
      *
-     * This method also disconnects the handlers set by add_item().
+     * It un-does what add_item() did.
      */
     private void remove_item (Item item) requires (has_item (item)) {
-        // Disconnect everything we connected in add_item()
-        var wrapper = monitors[item];
-        if (wrapper != null)
-            wrapper.changed.disconnect (on_item_prop_changed);
-        monitors.unset (item);
-
-        var expandable_item = item as ExpandableItem;
-        if (expandable_item != null)
-            remove_children_monitor (expandable_item);
+        if (item is ExpandableItem)
+            remove_children_monitor (item as ExpandableItem);
 
         data_model.remove_item (item);
     }
@@ -1925,10 +1937,5 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     private void remove_children_monitor (ExpandableItem item) {
         item.child_added.disconnect (add_item);
         item.child_removed.disconnect (remove_item);
-    }
-
-    private void on_item_prop_changed (Item item, string prop_name) {
-        if (prop_name != "parent") // Currently only handled by add_item() and remove_item()
-            data_model.update_item (item);
     }
 }
