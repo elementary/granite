@@ -134,14 +134,14 @@ public class Granite.Demo : Granite.Application {
 
 
         // Main sidebar categories
-        var widgets_category = new Granite.Widgets.Sidebar.Category ("Widgets");
-        var services_category = new Granite.Widgets.Sidebar.Category ("Services");
+        var widgets_category = new Granite.Widgets.Sidebar.ExpandableItem ("Widgets");
+        var services_category = new Granite.Widgets.Sidebar.ExpandableItem ("Services");
 
         // Expand categories
         widgets_category.expanded = services_category.expanded = true;
 
-        sidebar.root.add_item (widgets_category);
-        sidebar.root.add_item (services_category);
+        sidebar.root.add (widgets_category);
+        sidebar.root.add (services_category);
 
         sidebar.expand_all ();
 
@@ -172,7 +172,7 @@ public class Granite.Demo : Granite.Application {
         // Welcome widget
         var welcome_screen = create_welcome_screen ();
         var welcome_item = new SidebarItem ("Welcome");
-        widgets_category.add_item (welcome_item);
+        widgets_category.add (welcome_item);
         welcome_item.page_num = page_switcher.append_page (welcome_screen, null);
 
 
@@ -201,7 +201,7 @@ public class Granite.Demo : Granite.Application {
 
         var static_notebook_item = new SidebarItem ("StaticNotebook");
         static_notebook_item.page_num = page_switcher.append_page (staticnotebook, null);
-        widgets_category.add_item (static_notebook_item);
+        widgets_category.add (static_notebook_item);
 
 
         // ModeButton
@@ -275,7 +275,7 @@ public class Granite.Demo : Granite.Application {
         // Dynamic notebook
         var dynamic_notebook = create_dynamic_notebook ();
         var dynamic_notebook_item = new SidebarItem ("DynamicNotebook");
-        widgets_category.add_item (dynamic_notebook_item);
+        widgets_category.add (dynamic_notebook_item);
         dynamic_notebook_item.page_num = page_switcher.append_page (dynamic_notebook, null);
 
 
@@ -310,7 +310,7 @@ public class Granite.Demo : Granite.Application {
 
         var contractor_item = new SidebarItem ("Contractor");
         contractor_item.page_num = page_switcher.append_page (contractor_tab, null);
-        services_category.add_item (contractor_item);
+        services_category.add (contractor_item);
 
 
         // Search Entry
