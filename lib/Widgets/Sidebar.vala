@@ -598,7 +598,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Gtk.SortType sort_dir = Gtk.SortType.ASCENDING;
         public Gtk.SortType sort_direction {
             get { return sort_dir; }
-            set { 
+            set {
                 sort_dir = value;
                 child_tree.set_sort_column_id (this.sort_column, sort_dir);
             }
@@ -669,7 +669,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             if (child_iter != null) {
 #if VALA_0_18
-                // Workaround for a bug in valac that tries to pass an invalid pointer type
+                // Workaround for a bug in valac 0.18 that tries to pass an invalid pointer type
                 // (GtkTreeIter** instead of GtkTreeIter*) to gtk_tree_store_remove() in the
                 // generated C code. https://bugzilla.gnome.org/show_bug.cgi?id=685177
                 Gtk.TreeIter iter = child_iter;
@@ -690,7 +690,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * If many updates are pushed, and the item has still not been updated, only one is processed.
          * This guarantees efficiency as updating a category item could trigger expensive actions.
          */
-        private void push_parent_update (ExpandableItem? parent) { 
+        private void push_parent_update (ExpandableItem? parent) {
            if (parent != null) {
                 bool needs_update = parent.get_data<bool> (ITEM_PARENT_NEEDS_UPDATE);
 
@@ -932,8 +932,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         // Extra horizontal space added between the expanders and items.
-        private const int PRIMARY_EXPANDER_PADDING = 6;
-        private const int SECONDARY_EXPANDER_PADDING = 5;
+        private const uint PRIMARY_EXPANDER_PADDING = 6;
+        private const uint SECONDARY_EXPANDER_PADDING = 3;
 
         private Item? selected;
         private unowned Item? edited;
@@ -1107,17 +1107,17 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private void set_selected (Item? item, bool scroll_to_item) {
             if (item == null) {
-                get_selection ().unselect_all ();
+                unselect_all ();
 
-                // As explained in cursor_changed(), we cannot emit signals
-                // for this special case from there because that wouldn't allow
-                // us to implement the behavior we want (i.e. restoring the old selection
-                // after expanding a previously collapsed category) without emitting the
-                // undesired item_selected() signal along the way. This special case is handled
-                // manually, because it *should* only happen in response to client code
-                // requests and never in response to user interaction. We do that here
-                // because there's no way to determine whether whether the cursor change
-                // came from code (i.e. this method) or user interaction from cursor_changed().
+                // As explained in cursor_changed(), we cannot emit signals for this special
+                // case from there because that wouldn't allow us to implement the behavior
+                // we want (i.e. restoring the old selection after expanding a previously
+                // collapsed category) without emitting the undesired item_selected() signal
+                // along the way. This special case is handled manually, because it *should*
+                // only happen in response to client code requests and never in response to
+                // user interaction. We do that here because there's no way to determine
+                // whether the cursor change came from code (i.e. this method) or user
+                // interaction from cursor_changed().
                 this.selected = null;
                 item_selected (null);
             } else if (item.selectable) {
@@ -1151,7 +1151,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        private static bool toggle_expansion (ExpandableItem item) {
+        private bool toggle_expansion (ExpandableItem item) {
             if (item.collapsible) {
                 item.expanded = !item.expanded;
                 return true;
@@ -1162,7 +1162,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public bool scroll_to_item (Item item) {
             bool scrolled = false;
 
-            // Try to scroll to the respective cell
             var path = data_model.get_item_path (item);
             if (path != null) {
                 scroll_to_cell (path, null, false, 0, 0);
@@ -1186,10 +1185,14 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void stop_editing () {
-            // Because of the way start_editing_item works, we can currently
-            // call it again to cancel a previous editing.
-            if (editing && edited != null)
-                start_editing_item (edited);
+            if (editing && edited != null) {
+                var path = data_model.get_item_path (edited);
+
+                // Setting the cursor on the same cell without editing cancels any editing
+                // operation going on
+                if (path != null)
+                    set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, false);
+            }
         }
 
         private void on_editing_started (Gtk.CellEditable editable, string path) {
@@ -1207,14 +1210,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
 
             text_cell.editable = false;
+            edited = null;
         }
 
         private void on_editing_done () {
-            // Same actions as when canceling editing
-            on_editing_canceled ();
-
             if (edited != null && edited.editable && editable_entry != null)
                 edited.edited (editable_entry.get_text ());
+
+            // Same actions as when canceling editing
+            on_editing_canceled ();
         }
 
         private void on_activatable_activated (string item_path_str) {
@@ -1240,13 +1244,22 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
                     // Since collapsing an item un-selects any child item previously selected,
                     // we need to restore the selection. This will be done silently because
-                    // set_selected checks for equality between the previously "selected" item
-                    // and the newly selected, and only emits the item_selected if they are
-                    // different. See cursor_changed() for a better explanation of this behavior.
+                    // set_selected checks for equality between the previously "selected"
+                    // item and the newly selected, and only emits the item_selected() signal
+                    // if they are different. See cursor_changed() for a better explanation
+                    // of this behavior.
                     if (selected != null && selected.parent == expandable_item)
                         set_selected (selected, true);
                 } else {
                     collapse_row (path);
+
+                    // Collapsing expandable_item's row will also collapsed all its children,
+                    // and thus we need to update the "expanded" property of each of them.
+                    foreach (var child_item in expandable_item.get_children ()) {
+                        var child_expandable_item = child_item as ExpandableItem;
+                        if (child_expandable_item != null)
+                            child_expandable_item.expanded = false;
+                    }
                 }
             }
         }
@@ -1290,11 +1303,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // Cancel any editing operation going on
                     stop_editing ();
 
-                    // This is implemented in C as a union, so there's no other way around than doing
-                    // pointer casting when working from Vala.
-                    var ev = (Gdk.Event*) (&event);
-
-                    if (ev->triggers_context_menu ()) {
+                    if (((Gdk.Event*) (&event))->triggers_context_menu ()) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         if (item is ExpandableItem) {
@@ -1475,33 +1484,28 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             icon_renderer.gicon = visible ? icon : null;
         }
 
+        /**
+         * Controls expander visibility.
+         */
         private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
                                               Gtk.TreeModel model, Gtk.TreeIter iter)
         {
-            var expander_renderer = renderer as CellRendererExpander;
-            assert (expander_renderer != null);
-
-            bool expander_visible = false, primary_expander_visible = false;
-
             var item = get_item_from_model (model, iter);
             if (item != null) {
+                // is_expander takes into account whether the item has children or not.
+                // The tree-view checks for that and sets this property for us. It also sets
+                // is_expanded, and thus we don't need to check for that either.
                 var expandable_item = item as ExpandableItem;
-                if (expandable_item != null) {
-                    expander_visible = expandable_item.collapsible;
-
-                    // Decide which expander to show based on whether the item is a main
-                    // category or not. For main categories, we show the expander on the right.
-                    if (expander_visible)
-                        primary_expander_visible = !data_model.is_category (expandable_item, iter);
-                }
+                if (expandable_item != null)
+                    renderer.is_expander = renderer.is_expander && expandable_item.collapsible;
             }
 
-            // For the primary expander, we only make the arrow invisible in order to avoid messing up
-            // the item alignment (because that will keep the cell's allocated area). For the secondary
-            // expander that's not important, and thus we simply hide the entire cell renderer.
-            primary_expander_cell.visible = !data_model.is_iter_at_root_level (iter);
-            primary_expander_cell.is_expander = expander_visible && primary_expander_visible;
-            secondary_expander_cell.visible = expander_visible && !primary_expander_visible;
+            if (renderer == primary_expander_cell)
+                renderer.visible = !data_model.is_iter_at_root_level (iter);
+            else if (renderer == secondary_expander_cell)
+                renderer.visible = data_model.is_category (item, iter);
+            else
+                assert_not_reached ();
         }
     }
 
@@ -1513,9 +1517,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param item Selected item; //null// if nothing is selected.
      * @since 0.2
      */
-    public virtual signal void item_selected (Item? item) {
-        message ("ITEM SELECTED: %s", item != null ? item.name : "NONE");
-    }
+    public virtual signal void item_selected (Item? item) { }
 
     /**
      * A {@link Granite.Widgets.Sidebar.SortFunc} should return a negative integer, zero, or a
@@ -1538,7 +1540,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public delegate int SortFunc (Item a, Item b);
 
     /**
-     * A {@link Granite.Widgets.Sidebar.VisibleFunc} should return true if the item should be 
+     * A {@link Granite.Widgets.Sidebar.VisibleFunc} should return true if the item should be
      * visible, false otherwise.
      *
      * IMPORTANT NOTE: This method ''must not'' modify the item's //visible// property. Also,
@@ -1670,6 +1672,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param visible_func The method to use for filtering items.
      * @param re-filter whether to call {@link Sidebar.refilter} using the new function.
      * @see Granite.Widgets.Sidebar.VisibleFunc
+     * @see Granite.Widgets.Sidebar.refilter
      * @since 0.2
      */
     public void set_filter_func (VisibleFunc? visible_func, bool refilter) {
@@ -1690,29 +1693,32 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
     /**
-     * If //item// is editable, this activates the editor; otherwise, it does nothing. If an item
-     * was already being edited, this will fail.
+     * If //item// is editable, this activates the editor; otherwise, it does nothing.
+     * If an item was already being edited, this will fail.
      *
      * @param item Item to edit.
      * @see Granite.Widgets.Sidebar.Item.editable
      * @see Granite.Widgets.Sidebar.editing
+     * @see Granite.Widgets.Sidebar.stop_editing
      * @return true if the editing started successfully; false otherwise.
      * @since 0.2
      */
     public bool start_editing_item (Item item) requires (item.editable)
                                                requires (has_item (item))
     {
-        return tree.start_editing_item (item);
+        return !editing && tree.start_editing_item (item);
     }
 
     /**
      * Cancels any editing operation going on.
      *
+     * @see Granite.Widgets.Sidebar.editing
      * @see Granite.Widgets.Sidebar.start_editing_item
      * @since 0.2
      */
     public void stop_editing () {
-        tree.stop_editing ();
+        if (editing)
+            tree.stop_editing ();
     }
 
     /**
@@ -1745,13 +1751,23 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param expand Whether expandable items will be expanded or collapsed.
      * @since 0.2
      */
-    public void expand_with_children (ExpandableItem expandable_item, bool expand) {
+    public void expand_with_children (ExpandableItem expandable_item, bool expand)
+        requires (expandable_item == root || has_item (expandable_item))
+    {
+        // expandable_item is the parent, so we update it prior to its children. Otherwise
+        // the operation would likely fail due to Gtk.TreeView's restrictions. For example,
+        // expanding a row obscured behind a collapsed parent row wouldn't take any effect.
         expandable_item.expanded = expand;
 
-        foreach (var item in expandable_item.get_children ()) {
-            var child_expandable_item = item as ExpandableItem;
-            if (child_expandable_item != null)
-                expand_with_children (child_expandable_item, expand);
+        // When collapsing an expandable item, Tree.update_expansion() will also update
+        // children (i.e. set their "expanded" property to false), so there's no need for
+        // this unless we're expanding all the items. It would be otherwise inneficient.
+        if (!expand) {
+            foreach (var item in expandable_item.get_children ()) {
+                var child_expandable_item = item as ExpandableItem;
+                if (child_expandable_item != null)
+                    expand_with_children (child_expandable_item, expand);
+            }
         }
     }
 
@@ -1764,12 +1780,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      * @param expand Whether expandable items will be expanded or collapsed.
      * @since 0.2
      */
-    public void expand_with_parents (ExpandableItem expandable_item, bool expand) {
-        expandable_item.expanded = expand;
-
+    public void expand_with_parents (ExpandableItem expandable_item, bool expand)
+        requires (has_item (expandable_item))
+    {
+        // Update parent first. Same explanation as in expand_with_children()
         var parent = expandable_item.parent;
         if (parent != null && parent != this.root)
             expand_with_parents (parent, expand);
+
+        expandable_item.expanded = expand;
     }
 
     /**
