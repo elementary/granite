@@ -383,14 +383,22 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Number of children contained by the item.
          *
-         * @see Granite.Widgets.Sidebar.ExpandableItem.get_children
          * @since 0.2
          */
         public uint n_children {
-            get { return children.size; }
+            get { return children_set.size; }
         }
 
-        private Gee.Set<Item> children = new Gee.HashSet<Item> ();
+        /**
+         * The item's children.
+         *
+         * @since 0.2
+         */
+        public Gee.Set<Item> children {
+            owned get { return children_set.read_only_view; }
+        }
+
+        private Gee.Set<Item> children_set = new Gee.HashSet<Item> ();
 
         /**
          * Creates a new {@link Granite.Widgets.Sidebar.ExpandableItem}
@@ -405,29 +413,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         /**
-         * Gets all the children of the item.
+         * Checks whether the item contains the specified child.
          *
-         * @return (transfer full) Children.
-         * @see Granite.Widgets.Sidebar.ExpandableItem.n_children
+         * This method only considers the item's immediate children.
+         *
+         * @param item Item to search.
+         * @return Whether the item was found or not.
          * @since 0.2
          */
-        public Gee.Set<Item> get_children () {
-            var chilren_set = new Gee.HashSet<Item> ();
-            var to_remove = new Gee.LinkedList<Item> ();
-
-            foreach (var item in children) {
-                if (item.parent == this)
-                    chilren_set.add (item);
-                else
-                    to_remove.add (item);
-            }
-
-            foreach (var item in to_remove) {
-                // Silently remove items that don't belong here
-                children.remove (item);
-            }
-
-            return chilren_set;
+        public bool contains (Item item) {
+            return item in children_set;
         }
 
         /**
@@ -450,9 +445,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.ExpandableItem.remove
          * @since 0.2
          */
-        public void add (Item item) requires (item.parent == null && !(item in children)) {
+        public void add (Item item) requires (item.parent == null) requires (!contains (item)) {
             item.parent = this;
-            children.add (item);
+            children_set.add (item);
             child_added (item);
         }
 
@@ -470,8 +465,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @see Granite.Widgets.Sidebar.ExpandableItem.clear
          * @since 0.2
          */
-        public void remove (Item item) requires (item.parent == this && item in children) {
-            children.remove (item);
+        public void remove (Item item) requires (item.parent == this) requires (contains (item)) {
+            children_set.remove (item);
             child_removed (item);
             item.parent = null;
         }
@@ -485,7 +480,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
-            foreach (var item in get_children ())
+            foreach (var item in children)
                 remove (item);
         }
 
@@ -525,7 +520,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (inclusive)
                 item.expanded = expanded;
 
-            foreach (var child_item in item.get_children ()) {
+            foreach (var child_item in item.children) {
                 var child_expandable_item = child_item as ExpandableItem;
                 if (child_expandable_item != null) {
                     if (recursive)
@@ -985,7 +980,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 var expandable = item as ExpandableItem;
                 if (expandable != null && child_tree.iter_depth (iter) == 0) {
                     uint n_visible_children = 0;
-                    foreach (var child_item in expandable.get_children ()) {
+                    foreach (var child_item in expandable.children) {
                         if (child_item.visible)
                             n_visible_children++;
                     }
@@ -1392,7 +1387,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                     // Collapsing expandable_item's row also collapsed all its children,
                     // and thus we need to update the "expanded" property of each of them
                     // to reflect their previous state.
-                    foreach (var child_item in expandable_item.get_children ()) {
+                    foreach (var child_item in expandable_item.children) {
                         var child_expandable_item = child_item as ExpandableItem;
                         if (child_expandable_item != null)
                             update_expansion (child_expandable_item);
@@ -1910,7 +1905,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         // If it's an expandable item, add children, and monitor future additions and removals.
         var expandable_item = item as ExpandableItem;
         if (expandable_item != null) {
-            foreach (var child in expandable_item.get_children ())
+            foreach (var child in expandable_item.children)
                 add_item (child);
 
             add_children_monitor (expandable_item);
