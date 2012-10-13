@@ -166,15 +166,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     public class Item : Object {
 
         /**
-         * Emitted every time a property changes.
-         *
-         * @param self Self.
-         * @param prop_name Property name.
-         * @since 0.2
-         */
-        internal signal void changed (Item self, string prop_name);
-
-        /**
          * Emitted when the user has finished editing the item's name.
          *
          * By default, if the name doesn't consist of white space, it is automatically assigned
@@ -291,7 +282,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         public Item (string name = "") {
             this.name = name;
-            this.notify.connect (on_property_changed);
         }
 
         /**
@@ -302,10 +292,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         public virtual Gtk.Menu? get_context_menu () {
             return null;
-        }
-
-        private void on_property_changed (ParamSpec prop) {
-            changed (this, prop.name);
         }
     }
 
@@ -577,6 +563,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             SORTED = Gtk.SortColumn.DEFAULT + 1
         }
 
+        public signal void item_updated (Item item);
+
         /**
          * Used by push_parent_update() as key to associate the respective data to the objects.
          */
@@ -626,8 +614,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (node_reference != null) {
                 var path = node_reference.path;
                 var iter = node_reference.iter;
-                if (path != null && iter != null)
+                if (path != null && iter != null) {
                     child_tree.row_changed (path, iter);
+                    item_updated (item);
+                }
             }
         }
 
@@ -648,6 +638,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             child_tree.set (child_iter, Column.ITEM, item, -1);
 
             items.set (item, new NodeWrapper (child_tree, child_iter));
+
+            // This is equivalent to a property change. The tree still needs to update
+            // the some of the new item's properties through this signal's handler.
+            item_updated (item);
 
             push_parent_update (item.parent);
         }
@@ -686,7 +680,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         /**
          * Pushes a call to update_item() if //parent// is a category.
          *
-         * This is needed because the visibility of categories depends on their n_children property.
+         * This is needed because the visibility of categories depends on their n_children property,
+         * and also because item expansion should be updated after adding or removing items.
          * If many updates are pushed, and the item has still not been updated, only one is processed.
          * This guarantees efficiency as updating a category item could trigger expensive actions.
          */
@@ -701,8 +696,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
                 var path = get_item_path (parent);
 
-                // Make sure the item is a category
-                if (path != null && is_category (parent, null, path)) {
+                if (path != null) {
                     // Let's mark this item for update
                     parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, true);
 
@@ -1017,11 +1011,22 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             style_context.changed.connect (compute_indentation);
 
             compute_indentation ();
+
+            // Monitor item changes
+            data_model.item_updated.connect_after (on_model_item_updated);
         }
 
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
+        }
+
+        private void on_model_item_updated (Item item) {
+            // Currently, all the other properties are updated automatically by the
+            // cell-data functions after a change in the model.
+            var expandable_item = item as ExpandableItem;
+            if (expandable_item != null)
+                update_expansion (expandable_item);
         }
 
         /**
@@ -1515,6 +1520,28 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     }
 
 
+    /**
+     * Helper object used to monitor item property changes.
+     */
+    private class ItemMonitor {
+        public signal void changed (Item self, string prop_name);
+        private Item item;
+
+        public ItemMonitor (Item item) {
+            this.item = item;
+            item.notify.connect (on_notify);
+        }
+
+        ~ItemMonitor () {
+            item.notify.disconnect (on_notify);
+        }
+
+        private void on_notify (ParamSpec prop) {
+            changed (item, prop.name);
+        }
+    }
+
+
 
     /**
      * Emitted when the sidebar selection changes.
@@ -1623,6 +1650,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
     private Tree tree;
     private FilteredDataModel data_model { get { return tree.data_model; } }
+    private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
 
     /**
      * Creates a new {@link Granite.Widgets.Sidebar}.
@@ -1826,20 +1854,19 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
     private void add_item (Item item) requires (!has_item (item)) {
         data_model.add_item (item);
 
-        // Monitor object properties
-        item.changed.connect (on_item_property_changed);
+        var wrapper = new ItemMonitor (item);
+        monitors[item] = wrapper;
+        wrapper.changed.connect_after (on_item_prop_changed);
 
         // If it's an expandable item, also add children
         var expandable_item = item as ExpandableItem;
         if (expandable_item != null) {
-            tree.update_expansion (expandable_item);
-
             // We would like a non-recursive implementation here
             foreach (var child in expandable_item.get_children ())
                 add_item (child);
 
-            expandable_item.child_added.connect (add_item);
-            expandable_item.child_removed.connect (remove_item);
+            expandable_item.child_added.connect_after (add_item);
+            expandable_item.child_removed.connect_after (remove_item);
         }
     }
 
@@ -1851,7 +1878,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     private void remove_item (Item item) requires (has_item (item)) {
         // Disconnect everything we connected in add_item()
-        item.changed.disconnect (on_item_property_changed);
+        var wrapper = monitors[item];
+        if (wrapper != null)
+            wrapper.changed.disconnect (on_item_prop_changed);
+        monitors.unset (item);
 
         var expandable_item = item as ExpandableItem;
         if (expandable_item != null) {
@@ -1862,17 +1892,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         data_model.remove_item (item);
     }
 
-    /**
-     * Updates an item in response to the {@link Granite.Widgets.Sidebar.Item.changed} signal.
-     */
-    private void on_item_property_changed (Item item, string prop) requires (has_item (item)) {
-        if (prop == "parent") // Currently only handled by add_item() and remove_item()
-            return;
-
-        data_model.update_item (item);
-
-        var expandable_item = item as ExpandableItem;
-        if (expandable_item != null)
-            tree.update_expansion (expandable_item);
+    private void on_item_prop_changed (Item item, string prop_name) {
+        if (prop_name != "parent") // Currently only handled by add_item() and remove_item()
+            data_model.update_item (item);
     }
 }
