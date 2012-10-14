@@ -104,7 +104,7 @@ namespace Granite.Widgets {
         /**
         * Sets item of given index's activity 
         *
-        * @param index index of changed item
+        * @param new_active_index index of changed item
         */
         public void set_active (int new_active_index) {
             var children = get_children ();

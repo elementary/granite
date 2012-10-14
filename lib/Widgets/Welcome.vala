@@ -20,7 +20,9 @@
  */
 
 using Gtk;
-
+/**
+* This class is for making a first-launch screen easily
+*/
 public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     // Signals
@@ -120,7 +122,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      /**
      * Appends new action item to welcome page with icon
      *
-     * @param image image to be set as icon for action item
+     * @param icon_name icon to be set as icon for action item
      * @param option_text text to be set as the header for action item
      * @param description_text text to be set as description for action item
     */
@@ -131,7 +133,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      /**
      * Appends new action item to welcome page with Gtk.Pixbuf icon
      *
-     * @param image image to be set as icon for action item
+     * @param pixbuf pixbuf to be set as icon for action item
      * @param option_text text to be set as the header for action item
      * @param description_text text to be set as description for action item
     */

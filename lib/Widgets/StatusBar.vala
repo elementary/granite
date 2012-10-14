@@ -19,7 +19,9 @@
  *
  * Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
-
+/**
+* This class is an easy way to make a status bar with both widgets and text
+*/
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
     /**
     * Label of status bar
