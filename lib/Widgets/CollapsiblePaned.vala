@@ -19,7 +19,16 @@ using Gtk;
 using Gdk;
 
 namespace Granite {
-
+    /**
+     * Enum of possible Collapse modes
+     * NONE
+     * LEFT
+     * TOP
+     * FIRST
+     * RIGHT
+     * BOTTOM
+     * LAST
+    */
     public enum CollapseMode {
         NONE=0,
         LEFT=1, TOP=1, FIRST=1,
@@ -34,11 +43,13 @@ namespace Granite.Widgets {
     
         private int saved_state = 10;
         private uint last_click_time = 0;
-
         public CollapseMode collapse_mode = CollapseMode.NONE;
         //public signal void shrink(); //TODO: Make the default action overwriteable
         //public new signal void expand(int saved_state); //TODO same
-
+        /**
+        * Makes new Paned
+        * @param o orientation of new Paned
+        */
         public CollapsiblePaned (Orientation o) {
             //events |= EventMask.BUTTON_PRESS_MASK;
             set_orientation (o);
@@ -89,7 +100,9 @@ namespace Granite.Widgets {
         }
         
     }
-
+    /**
+     * Horizantally Collapsing Paned
+    */
     public class HCollapsablePaned : CollapsiblePaned {
     
         public HCollapsablePaned () {
@@ -97,7 +110,9 @@ namespace Granite.Widgets {
         }
         
     }
-
+    /**
+     * Vertically Collapsing Paned
+    */
     public class VCollapsablePaned : CollapsiblePaned {
     
         public VCollapsablePaned () {

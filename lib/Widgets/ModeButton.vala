@@ -18,7 +18,9 @@
 //
 
 namespace Granite.Widgets {
-
+    /**
+    * A multiple option modal switch
+    */
     public class ModeButton : Gtk.Box {
 
         public signal void mode_added (int index, Gtk.Widget widget);
@@ -35,7 +37,10 @@ namespace Granite.Widgets {
         }
 
         private int _selected = -1;
-
+        /**
+        * Makes new ModeButton
+        *
+        */
         public ModeButton () {
             homogeneous = true;
             spacing = 0;
@@ -45,19 +50,36 @@ namespace Granite.Widgets {
             style.add_class (Gtk.STYLE_CLASS_LINKED);
             style.add_class ("raised"); // needed for toolbars
         }
-
+        /**
+        * Appends Pixbuf to ModeButton
+        *
+        * @param pixbuf Gdk.Pixbuf to append to ModeButton
+        */
         public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             return append (new Gtk.Image.from_pixbuf (pixbuf));
         }
-
+        /**
+        * Appends text to ModeButton
+        *
+        * @param text text to append to ModeButton
+        */
         public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
-
+        /**
+        * Appends icon to ModeButton
+        *
+        * @param icon_name name of icon to append
+        * @param size desired size of icon
+        */
         public int append_icon (string icon_name, Gtk.IconSize size) {
             return append (new Gtk.Image.from_icon_name (icon_name, size));
         }
-
+        /**
+        * Appends given widget to ModeButton
+        *
+        * @param w widget to add to ModeButton
+        */
         public int append (Gtk.Widget w) {
             var button = new Gtk.ToggleButton ();
             button.can_focus = false;
@@ -79,7 +101,11 @@ namespace Granite.Widgets {
             mode_added (item_index, w);
             return item_index;
         }
-
+        /**
+        * Sets item of given index's activity 
+        *
+        * @param index index of changed item
+        */
         public void set_active (int new_active_index) {
             var children = get_children ();
             return_if_fail (new_active_index >= 0 && new_active_index < children.length ());
@@ -102,7 +128,12 @@ namespace Granite.Widgets {
                 mode_changed (new_item.get_child ());
             }
         }
-
+        /**
+        * Changes visibility of item of given index
+        *
+        * @param index index of item to be modified
+        * @param val value to change the visiblity to
+        */
         public void set_item_visible (int index, bool val) {
             var children = get_children ();
             return_if_fail (index >= 0 && index < children.length ());
@@ -114,7 +145,11 @@ namespace Granite.Widgets {
                 item.visible = val;
             }
         }
-
+        /**
+        * Removes item at given index
+        *
+        * @param index index of item to remove
+        */
         public new void remove (int index) {
             var children = get_children ();
             return_if_fail (index >= 0 && index < children.length ());
@@ -125,7 +160,10 @@ namespace Granite.Widgets {
                 item.destroy ();
             }
         }
-
+        /**
+        * Clears all children
+        *
+        */
         public void clear_children () {
             foreach (weak Gtk.Widget button in get_children ()) {
                 button.hide ();

@@ -17,13 +17,24 @@
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
-
+        /**
+         * Granite.TextStyle
+         * TITLE: Full title weight and size
+         * H1: Second highest header
+         * H2: Third highest header
+         * H3: Fourth Highest Header
+         **/
 public enum Granite.TextStyle {
     TITLE,
     H1,
     H2,
     H3;
 
+    /**
+     * Gets style sheet of text style
+     *
+     * @return CSS of text style
+    */
     public string get_stylesheet (out string style_class = null) {
         switch (this) {
             case TITLE:
@@ -52,6 +63,10 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Applies the stylesheet to the widget
+     * @param widget widget to apply style to
+     * @param stylesheet style to apply to screen
+     * @param class_name class name to add style to
+     * @param priority priorty of change
      */
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
@@ -71,6 +86,9 @@ namespace Granite.Widgets.Utils {
     /**
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
+     * @param screen Screen to apply style to
+     * @param stylesheet style to apply to screen
+     * @param priority priorty of change
      */
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -103,6 +121,8 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Text Style
+     * @param text_style text style to apply
+     * @param label label to apply style to
      */
 
     public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {

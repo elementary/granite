@@ -25,8 +25,13 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     // Signals
     public signal void activated (int index);
-
+    /**
+     * List of buttons for action items
+    */
     protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
+    /**
+     * Box for action items
+    */
     protected Gtk.Box options;
 
     /**
