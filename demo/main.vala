@@ -80,7 +80,7 @@ public class Granite.Demo : Granite.Application {
         program_name = "Granite Demo";
         app_years = "2011 - 2012";
 
-        build_version = "1.0";
+        build_version = "0.2";
         app_icon = "text-editor";
         main_url = "https://launchpad.net/granite";
         bug_url = "https://bugs.launchpad.net/granite";
@@ -137,13 +137,10 @@ public class Granite.Demo : Granite.Application {
         var widgets_category = new Granite.Widgets.Sidebar.ExpandableItem ("Widgets");
         var services_category = new Granite.Widgets.Sidebar.ExpandableItem ("Services");
 
-        // Expand categories
-        widgets_category.expanded = services_category.expanded = true;
-
+        // Add and expand categories
         sidebar.root.add (widgets_category);
         sidebar.root.add (services_category);
-
-        sidebar.expand_all ();
+        sidebar.root.expand_all ();
 
         var sidebar_paned = new Granite.Widgets.SidebarPaned ();
         sidebar_paned.pack1 (sidebar, true, false);
@@ -175,6 +172,8 @@ public class Granite.Demo : Granite.Application {
         widgets_category.add (welcome_item);
         welcome_item.page_num = page_switcher.append_page (welcome_screen, null);
 
+        // Select welcome widget
+        sidebar.selected = welcome_item;
 
         // Light window
         var light_window_icon = new Gtk.Image.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
