@@ -151,11 +151,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * Other features:
      * - Sorting: this happens on the tree-model level (DataModel). Also see Sidebar::SortFunc.
-     *
-     * TODO:
-     * - Count badge renderer. This would implement support for Item.count
-     * - Drag and drop
-     *   - The model already implements TreeDragSource
      */
 
 
@@ -668,6 +663,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
                 switch (this) {
                     case ITEM:
                         return typeof (Item);
+
                     default:
                         assert_not_reached (); // a Type must be returned for every valid column
                 }
@@ -686,6 +682,40 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          */
         private const string ITEM_PARENT_NEEDS_UPDATE = "item-parent-needs-update";
 
+        private Gtk.SortType sort_dir = Gtk.SortType.ASCENDING;
+        public Gtk.SortType sort_direction {
+            get { return sort_dir; }
+            set {
+                sort_dir = value;
+                child_tree.set_sort_column_id (this.sort_column, sort_dir);
+            }
+        }
+
+        private ExpandableItem _root;
+
+        /**
+         * Root item.
+         *
+         * This item is not actually part of the model. It's only used as a proxy
+         * for adding and removing items.
+         */
+        public ExpandableItem root {
+            get { return _root; }
+            set {
+                if (_root != null) {
+                    remove_children_monitor (_root);
+                    foreach (var item in _root.children)
+                        remove_item (item);
+                }
+
+                _root = value;
+
+                add_children_monitor (_root);
+                foreach (var item in _root.children)
+                    add_item (item);
+            }
+        }
+
         /**
          * This hash map stores items and their respective child node references. For that reason, the
          * references it contains should only be used on the child_tree model, or converted to filter
@@ -698,17 +728,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Gtk.TreeStore child_tree;
         private Sidebar.SortFunc? sort_func;
         private unowned Sidebar.VisibleFunc? filter_func;
-
         private SortColumn sort_column = SortColumn.UNSORTED;
-
-        private Gtk.SortType sort_dir = Gtk.SortType.ASCENDING;
-        public Gtk.SortType sort_direction {
-            get { return sort_dir; }
-            set {
-                sort_dir = value;
-                child_tree.set_sort_column_id (this.sort_column, sort_dir);
-            }
-        }
 
         public DataModel () {
             var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
@@ -722,9 +742,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         public void update_item (Item item) requires (has_item (item)) {
-#if TRACE_SIDEBAR
-            debug ("DataModel::update_item [%s]", item.name);
-#endif
+            assert (root != null);
+
             // Emitting row_changed() for this item's row in the child model causes the filter
             // (i.e. this model) to re-evaluate whether a row is visible or not, calling
             // filter_visible_func for that row again, and that's exactly what we want.
@@ -739,18 +758,24 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        public void add_item (Item item) requires (!has_item (item)) {
-#if TRACE_SIDEBAR
-            debug ("DataModel::add_item [%s]", item.name);
-#endif
-            // Try to find the parent. XXX If the parent is not found, and item.parent != null,
-            // we should call add_item(item.parent) in order to add it prior to adding the child
-            // item. This will be mandatory if Item::parent ever becomes writable from client code.
-            // It is currently not needed because of the way the sidebar operates: it adds expandable
-            // items first, and then their children.
+        private void add_item (Item item) requires (!has_item (item)) {
+            assert (root != null);
+
+            // Find the parent iter
             Gtk.TreeIter? parent_child_iter = null, child_iter;
-            if (item.parent != null)
-                parent_child_iter = get_item_child_iter (item.parent);
+            var parent = item.parent;
+
+            if (parent != null && parent != root) {
+                // Add parent if it hasn't been added yet
+                if (!has_item (parent))
+                    add_item (parent);
+
+                // Try to find the parent's iter
+                parent_child_iter = get_item_child_iter (parent);
+
+                // Parent must have been added prior to adding this item
+                assert (parent_child_iter != null);
+            }
 
             child_tree.append (out child_iter, parent_child_iter);
             child_tree.set (child_iter, Column.ITEM, item, -1);
@@ -760,9 +785,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // This is equivalent to a property change. The tree still needs to update
             // the some of the new item's properties through this signal's handler.
             item_updated (item);
+
             add_property_monitor (item);
 
-            push_parent_update (item.parent);
+            push_parent_update (parent);
 
             // If the item is expandable, also add children
             var expandable = item as ExpandableItem;
@@ -775,13 +801,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
         }
 
-        public void remove_item (Item item) requires (has_item (item)) {
-#if TRACE_SIDEBAR
-            debug ("DataModel::remove_item [%s]", item.name);
-#endif
+        private void remove_item (Item item) requires (has_item (item)) {
+            assert (root != null);
+
             remove_property_monitor (item);
 
-            // get_item_child_iter() depends on @items.get(item) for retrieving the right reference,
+            // get_item_child_iter() depends on items.get(item) for retrieving the right reference,
             // so don't unset the item from @items yet! We first get the child iter and then
             // unset the value.
             var child_iter = get_item_child_iter (item);
@@ -810,11 +835,11 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // If the item is expandable, also remove children
             var expandable = item as ExpandableItem;
             if (expandable != null) {
-                foreach (var child_item in expandable.children)
-                    remove_item (child_item);
-
                 // No longer monitor future additions or removals
                 remove_children_monitor (expandable);
+
+                foreach (var child_item in expandable.children)
+                    remove_item (child_item);
             }
         }
 
@@ -825,15 +850,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void remove_property_monitor (Item item) {
-            // Disconnect everything we connected in add_property_monitor()
             var wrapper = monitors[item];
             if (wrapper != null)
                 wrapper.changed.disconnect (on_item_prop_changed);
             monitors.unset (item);
         }
 
-        // Public just to avoid code duplication when connecting external sidebar root
-        public void add_children_monitor (ExpandableItem item) {
+        private void add_children_monitor (ExpandableItem item) {
             item.child_added.connect_after (on_item_child_added);
             item.child_removed.connect_after (on_item_child_removed);
         }
@@ -852,10 +875,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         }
 
         private void on_item_prop_changed (Item item, string prop_name) {
-            // the parent property is currently only handled by ExpandableItem.add() and
-            // ExpandableItem.remove(), which also emit child_added() and child_removed(),
-            // so we don't monitor this specific property. There are further comments on
-            // this topic in DataModel.add_item()
             if (prop_name != "parent")
                 update_item (item);
         }
@@ -1533,7 +1552,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             int cell_x, cell_width;
             bool found = col.cell_get_position (cell, out cell_x, out cell_width);
 
-            // XXX: This is ugly. Most times, when primary_expander_cell.is_expanded is
+            // XXX Most times, when primary_expander_cell.is_expanded is
             // 'false', cell_get_position returns 0 for cell_width, making everything fail
             // in our button-press handler. Since I have no idea of what is provoking this
             // (it is certainly not the cell's visibility - already checked that), I thought
@@ -1764,7 +1783,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *
      * @since 0.2
      */
-    public ExpandableItem root { get; private set; default = new ExpandableItem ("ROOT"); }
+    public ExpandableItem root { get; private set; default = new ExpandableItem (); }
 
     /**
      * The current selected item.
@@ -1826,6 +1845,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      */
     public Sidebar () {
         var model = new DataModel ();
+        model.root = root;
 
         push_composite_child ();
         tree = new Tree (model);
@@ -1837,9 +1857,6 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         show_all ();
 
         tree.item_selected.connect ( (item) => item_selected (item) );
-
-        // Initialize item monitor
-        data_model.add_children_monitor (root);
     }
 
     /**
