@@ -22,7 +22,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INS
 
 find_package(PkgConfig)
 find_package(GObjectIntrospection 0.9.12)
-include(GObjectIntrospectionMacros)
+
 set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
 
 pkg_check_modules(DEPS REQUIRED
@@ -34,7 +34,7 @@ pkg_check_modules(DEPS REQUIRED
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"GRANITE\"")
+add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"granite\"")
 set(LIBS
     ${DEPS_LIBRARIES}
 )
@@ -61,6 +61,7 @@ vala_precompile(VALA_C
     Services/System.vala
     Services/Contractor.vala
     Services/IconFactory.vala
+    Services/SimpleCommand.vala
     Widgets/Utils.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
@@ -131,16 +132,16 @@ macro(_list_prefix _outvar _listvar _prefix)
 endmacro(_list_prefix)
 
 # GObject Introspection
-include(GObjectIntrospectionMacros)
-add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+if(INTROSPECTION_FOUND)
+  include(GObjectIntrospectionMacros)
+  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+endif()
 
 add_custom_target(docs)
 add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
-add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CURRENT_BINARY_DIR}/granite.h ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=granite --package-version=0.1.1 --doclet=gtkdoc)
+add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CURRENT_BINARY_DIR}/granite.h ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=granite --package-version=0.1.1 --doclet=gtkdoc)
 add_custom_target (valadocs)
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_vala -R -f)
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/images -R -f)
 add_custom_command (TARGET valadocs COMMAND cp ${CMAKE_SOURCE_DIR}/doc/images/ ${CMAKE_CURRENT_BINARY_DIR}/images -R)
-add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --driver 0.13.x --force --doclet=elementary)
-add_custom_command (TARGET valadocs COMMAND cp ${CMAKE_SOURCE_DIR}/doc/css/ ${CMAKE_CURRENT_BINARY_DIR}/docs_vala/css -R)
-
+add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=Granite --package-version=0.1.1 --driver 0.13.x --force --doclet=elementary)

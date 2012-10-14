@@ -7,99 +7,125 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-01 23:48-0500\n"
-"PO-Revision-Date: 2012-08-20 07:46+0000\n"
+"POT-Creation-Date: 2012-09-23 22:31+0200\n"
+"PO-Revision-Date: 2012-09-25 15:26+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 08:39+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2012-09-26 05:05+0000\n"
+"X-Generator: Launchpad (build 16022)\n"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
 msgstr "Dissenyat per"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
 msgstr "Escrit per"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+msgid "Copyright"
+msgstr "Copyright"
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by"
+msgstr "Documentat per"
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
 msgstr "Traduït per "
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
 msgstr "Aquest programa està publicat sota els termes de la llicència "
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " , aquesta no té CAP MENA DE GARANTIA; per a més detalls, visiteu "
 
-#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:25
-#: /home/codygarver/granite/po/../lib/Widgets//DatePicker.vala:25
-msgid "%B %e, %Y"
-msgstr "%e de %B del %Y"
-
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:116
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:116
-msgid "%l:%M %p"
-msgstr "%H:%M"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:133
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:133
-msgid "Translate This App"
-msgstr "Tradueix aquesta applicació"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:138
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:138
-msgid "Report a Problem"
-msgstr "Informeu d'un problema"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:51
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:51
-msgid "Menu"
-msgstr "Menú"
-
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:56
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:56
-msgid "About"
-msgstr "Quant a"
-
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
 "No s'ha pogut contactar amb el Contractor. Pot ser que necessiteu instalar-lo"
 
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
 msgstr "No s'ha trobat cap acció per a aquest fitxer"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:80
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:80
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
+msgid "%l:%M %p"
+msgstr "%H:%M"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:51
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
+msgid "Menu"
+msgstr "Menú"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
+msgid "About"
+msgstr "Quant a"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
+#: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
+msgid "%B %e, %Y"
+msgstr "%e de %B del %Y"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
 msgstr "Tanca la pestanya"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:106
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:106
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
 msgstr "Tanca la pestanya"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:107
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:107
-msgid "Close Other Tabs"
-msgstr "Tanca la rest pestanyes"
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
+msgid "Open in a new Window"
+msgstr "Obre a una finestra nova"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:296
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:296
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
+msgid "Duplicate"
+msgstr "Duplica"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
+msgid "Close Other Tab"
+msgid_plural "Close Other Tabs"
+msgstr[0] "Tanca l'altra pestanya"
+msgstr[1] "Tanca les altres pestanyes"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+msgid "New Tab"
+msgstr "Pestanya nova"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
 msgstr "Pestanya nova"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "Tradueix aquesta applicació"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "Informeu d'un problema"

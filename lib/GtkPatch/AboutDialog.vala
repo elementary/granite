@@ -94,7 +94,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 copyright_label.set_text("");
             }
             else {
-                copyright_label.set_markup("<span size=\"small\">Copyright © " + _copyright.replace("&", "&amp;") + "</span>\n");
+                copyright_label.set_markup("<span size=\"small\">"+_("Copyright")+" © " + _copyright.replace("&", "&amp;") + "</span>\n");
                 copyright_label.show();
             }
         }
@@ -112,7 +112,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 documenters_label.hide();
             else {
                 documenters_label.show();
-                documenters_label.set_markup(set_string_from_string_array("<span size=\"small\">Documented by:</span>\n", documenters));
+                documenters_label.set_markup(set_string_from_string_array("<span size=\"small\">"+_("Documented by")+":</span>\n", documenters));
             }
         }
         get { return _documenters; }

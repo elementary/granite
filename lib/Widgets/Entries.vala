@@ -88,8 +88,9 @@ namespace Granite.Widgets {
         
             base (hint_string);
             
-            set_icon_from_stock (EntryIconPosition.PRIMARY, "gtk-find");
-            
+            set_icon_from_gicon (EntryIconPosition.PRIMARY,
+                new ThemedIcon.with_default_fallbacks ("edit-find-symbolic"));
+
             // Signals and callbacks
             changed.connect (manage_icon);
             changed.connect_after (on_changed);            

@@ -1,69 +1,69 @@
-# French translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Galician translation for granite
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-09-22 19:37+0000\n"
-"Last-Translator: Corentin Noël <tintou@mailoo.org>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2012-10-10 05:48+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
+"Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-09-24 04:52+0000\n"
-"X-Generator: Launchpad (build 15985)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2012-10-11 05:33+0000\n"
+"X-Generator: Launchpad (build 16118)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr "Conçu par"
+msgstr "Deseñado por"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr "Développé par"
+msgstr "Escrito por"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr "Copyright"
+msgstr "Dereitos de autoría"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr "Documenté par"
+msgstr "Documentado por"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr "Traduit par "
+msgstr "Traducido por "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
-msgstr "Ce programme est publié conformément à la licence "
+msgstr "Este programa foi publicado baixo os termos da licenza "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
+" , que non ofrece NINGUNHA GARANTÍA; para obter máis detalles, visite "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
-"Impossible d'accéder à Contractor. Vous avez peut-être besoin de l'installer."
+"Non foi posíbel contactar con Contractor. É probábel que precise instalalo"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr "Aucune action n'a été trouvée pour ce fichier"
+msgstr "No se atopou ningunha acción para este ficheiro"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
 msgid "%l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%H:%M"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
@@ -72,61 +72,61 @@ msgstr "%l:%M %p"
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menú"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "À propos"
+msgstr "Sobre"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr "%e %B %Y"
+msgstr "%e de %B de %Y"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
-msgstr "Fermer l'onglet"
+msgstr "Pechar a lapela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
-msgstr "Fermer l’onglet"
+msgstr "Pechar a lapela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
+msgstr "Abrir nunha nova xanela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr "Dupliquer"
+msgstr "Duplicar"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pechar a outra lapela"
+msgstr[1] "Pechar as outras lapelas"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr "Nouvel onglet"
+msgstr "Nova lapela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
-msgstr "Nouvel onglet"
+msgstr "Nova lapela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Traduire cette application"
+msgstr "Traducir este aplicativo"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
 msgid "Report a Problem"
-msgstr "Signaler un problème"
+msgstr "Informar dun problema"

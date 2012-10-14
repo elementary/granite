@@ -7,98 +7,125 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-01 23:48-0500\n"
-"PO-Revision-Date: 2011-10-23 18:00+0000\n"
-"Last-Translator: Eneko Sarasola <Unknown>\n"
+"POT-Creation-Date: 2012-09-23 22:31+0200\n"
+"PO-Revision-Date: 2012-10-10 19:40+0000\n"
+"Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 08:39+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2012-10-11 05:33+0000\n"
+"X-Generator: Launchpad (build 16118)\n"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr ""
+msgstr "Diseinua:"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr ""
+msgstr "Garapena:"
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+msgid "Copyright"
+msgstr "Copyright-a"
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by"
+msgstr "Dokumentazioa:"
+
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr ""
+msgstr "Itzulpenak: "
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:475
+#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 
-#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:25
-#: /home/codygarver/granite/po/../lib/Widgets//DatePicker.vala:25
-msgid "%B %e, %Y"
-msgstr "%Y %B %e"
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
+msgid "Could not contact Contractor. You may need to install it"
+msgstr ""
+"Ezin izan da Contractor-ekin kontaktatu. Behar bada instalatu beharko duzu"
 
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:116
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:53
-#: /home/codygarver/granite/po/../lib/Widgets//TimePicker.vala:116
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
+msgid "No action found for this file"
+msgstr "Ez da ekintzarik aurkitu fitxategi honentzat"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
+#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:133
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:133
-msgid "Translate This App"
-msgstr ""
-
-#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:138
-#: /home/codygarver/granite/po/../lib/Widgets//AboutDialog.vala:138
-msgid "Report a Problem"
-msgstr ""
-
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:51
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:32
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:37
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:51
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:51
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:32
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
 msgid "Menu"
 msgstr "Menua"
 
-#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:56
-#: /home/codygarver/granite/po/../lib/Widgets//AppMenu.vala:56
+#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
+#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
 msgstr "Honi buruz"
 
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
-msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
+#: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
+#: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
+msgid "%B %e, %Y"
+msgstr "%Y %B %e"
 
-#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/codygarver/granite/po/../lib/Widgets//ContractorView.vala:99
-msgid "No action found for this file"
-msgstr ""
-
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:80
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:80
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
-msgstr ""
+msgstr "Itxi fitxa"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:106
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:106
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
-msgstr ""
+msgstr "Itxi fitxa"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:107
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:107
-msgid "Close Other Tabs"
-msgstr ""
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
+msgid "Open in a new Window"
+msgstr "Ireki leiho berri batean"
 
-#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:296
-#: /home/codygarver/granite/po/../lib/Widgets//DynamicNotebook.vala:296
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
+msgid "Duplicate"
+msgstr "Bikoiztu"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
+msgid "Close Other Tab"
+msgid_plural "Close Other Tabs"
+msgstr[0] "Itxi beste fitxa"
+msgstr[1] "Itxi beste fitxak"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+msgid "New Tab"
+msgstr "Fitxa berria"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
+#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
-msgstr ""
+msgstr "Fitxa berria"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "Itzuli aplikazio hau"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
+#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "Arazo baten berri eman"

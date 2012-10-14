@@ -53,7 +53,7 @@ namespace Granite.Widgets.Utils {
     /**
      * Applies the stylesheet to the widget
      */
-    public void set_theming (Gtk.Widget widget, string stylesheet,
+    public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
         var css_provider = get_css_provider (stylesheet);
 
@@ -64,17 +64,21 @@ namespace Granite.Widgets.Utils {
 
         if (class_name != null && class_name.strip () != "")
             context.add_class (class_name);
+
+        return css_provider;
     }
 
     /**
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
      */
-    public void set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
-        var provider = get_css_provider (stylesheet);
+    public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
+        var css_provider = get_css_provider (stylesheet);
 
-        if (provider != null)
-            Gtk.StyleContext.add_provider_for_screen (screen, provider, priority);
+        if (css_provider != null)
+            Gtk.StyleContext.add_provider_for_screen (screen, css_provider, priority);
+
+        return css_provider;
     }
 
     /**
