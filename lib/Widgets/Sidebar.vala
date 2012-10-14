@@ -234,7 +234,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public bool editable { get; set; default = false; }
 
         /**
-         * Whether the item will appear in the sidebar's tree or not.
+         * Whether the item should appear in the sidebar's tree or not.
          *
          * @since 0.2
          */
@@ -1053,9 +1053,12 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             N_COLS
         }
 
-        // Extra horizontal space added between the expanders and items.
-        private const uint PRIMARY_EXPANDER_PADDING = 6;
-        private const uint SECONDARY_EXPANDER_PADDING = 3;
+        // Extra horizontal space added between the expanders and items. The actual
+        // added space equals two times the values.
+        private const uint LEFT_HPADDING = 2;
+        private const uint PRIMARY_EXPANDER_HPADDING = 2;
+        private const uint SECONDARY_EXPANDER_HPADDING = 2;
+        private const uint ICON_HPADDING = 2;
 
         private Item? selected;
         private unowned Item? edited;
@@ -1064,9 +1067,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         private Gtk.CellRendererText text_cell;
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
-        private CellRendererExpander primary_expander_cell;
-        private CellRendererExpander secondary_expander_cell;
-        private CellRendererExpander root_spacer_cell;
+        private Gtk.CellRenderer primary_expander_cell;
+        private Gtk.CellRenderer secondary_expander_cell;
+        private Gtk.CellRenderer root_spacer_cell;
 
         public Tree (DataModel data_model) {
             this.data_model = data_model;
@@ -1093,18 +1096,20 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // to the arrow size specified by the theme, so we don't have to care about
             // setting a size manually. This is similar to what would happen if we used
             // the TreeView's built-in expanders.
-            root_spacer_cell = new CellRendererExpander ();
+            root_spacer_cell = new Gtk.CellRendererText ();
+            root_spacer_cell.xpad = LEFT_HPADDING;
             item_column.pack_start (root_spacer_cell, false);
             item_column.set_cell_data_func (root_spacer_cell, root_spacer_cell_data_func);
 
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
-            primary_expander_cell.xpad = PRIMARY_EXPANDER_PADDING;
+            primary_expander_cell.xpad = PRIMARY_EXPANDER_HPADDING;
             primary_expander_cell.xalign = 0;
             item_column.pack_start (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
             icon_cell = new CellRendererIcon ();
+            icon_cell.xpad = ICON_HPADDING;
             item_column.pack_start (icon_cell, false);
             item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
 
@@ -1125,7 +1130,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
-            secondary_expander_cell.xpad = SECONDARY_EXPANDER_PADDING;
+            secondary_expander_cell.xpad = SECONDARY_EXPANDER_HPADDING;
             item_column.pack_start (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
 
@@ -1169,9 +1174,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * LEGEND:
          *
-         * {...} : root_spacer_cell
+         * {...}  : root_spacer_cell
          * -----> : level_indentation
-         * [....]  : primary_expander_cell
+         * [....] : primary_expander_cell
          *
          * level_indentaton and primary_expander_cell are supposed to have the
          * same width.
@@ -1240,7 +1245,9 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
         private void set_selected (Item? item, bool scroll_to_item) {
             if (item == null) {
-                unselect_all ();
+                Gtk.TreeSelection? selection = get_selection ();
+                if (selection != null)
+                    selection.unselect_all ();
 
                 // As explained in cursor_changed(), we cannot emit signals for this special
                 // case from there because that wouldn't allow us to implement the behavior
@@ -1321,8 +1328,8 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (editing && edited != null) {
                 var path = data_model.get_item_path (edited);
 
-                // Setting the cursor on the same cell without editing cancels any editing
-                // operation going on
+                // Setting the cursor on the same cell without starting an edit cancels any
+                // editing operation going on.
                 if (path != null)
                     set_cursor_on_cell (path, get_column (Column.ITEM), text_cell, false);
             }
