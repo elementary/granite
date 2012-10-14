@@ -147,10 +147,15 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
      *   - expanded      | Same as @collapsible              | Same as @collapsible
      * ---------------------------------------------------------------------------------------------
      * * Only automatic properties are monitored. ExpandableItem's additions/removals are handled by
-     *   Sidebar::add_item() and Sidebar::remove_item()
+     *   DataModel::add_item() and DataModel::remove_item()
      *
      * Other features:
-     * - Sorting: this happens on the tree-model level. See DataModel and Sidebar::SortFunc.
+     * - Sorting: this happens on the tree-model level (DataModel). Also see Sidebar::SortFunc.
+     *
+     * TODO:
+     * - Count badge renderer. This would implement support for Item.count
+     * - Drag and drop
+     *   - The model already implements TreeDragSource
      */
 
 
@@ -394,8 +399,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
          *
          * @since 0.2
          */
-        public Gee.Set<Item> children {
-            owned get { return children_set.read_only_view; }
+        public Gee.Collection<Item> children {
+            owned get {
+                // Create a copy of the children so that it's safe to iterate it
+                // (e.g. by using foreach) while removing items. See clear() for
+                // an example of such case.
+                var copy = new Gee.LinkedList<Item> ();
+                foreach (var item in children_set)
+                    copy.add (item);
+                return copy;
+            }
         }
 
         private Gee.Set<Item> children_set = new Gee.HashSet<Item> ();
@@ -563,12 +576,13 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
 
 
     /**
-     * The model backing the Sidebar tree. It controls the visibility of the items.
+     * The model backing the Sidebar tree.
      *
-     * The DataModel controls the visibility of the items based on their "visible" property,
-     * and also on their number of children, if they happen to be categories. It also offers an easy
-     * interface for sorting, adding, removing and updating items, eliminating the need of repeatedly
-     * dealing with the Gtk.TreeModel API directly.
+     * It monitors item property changes, and handles children additions and removals. It also controls
+     * the visibility of the items based on their "visible" property, and on their number of children,
+     * if they happen to be categories. Its main purpose is to provide an easy and practical interface
+     * for sorting, adding, removing and updating items, eliminating the need of repeatedly dealing with
+     * the Gtk.TreeModel API directly.
      */
     private class DataModel : Gtk.TreeModelFilter {
 
@@ -747,7 +761,18 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             // the some of the new item's properties through this signal's handler.
             item_updated (item);
             add_property_monitor (item);
+
             push_parent_update (item.parent);
+
+            // If the item is expandable, also add children
+            var expandable = item as ExpandableItem;
+            if (expandable != null) {
+                foreach (var child_item in expandable.children)
+                    add_item (child_item);
+
+                // Monitor future additions/removals through signal handlers
+                add_children_monitor (expandable);
+            }
         }
 
         public void remove_item (Item item) requires (has_item (item)) {
@@ -781,6 +806,16 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             }
 
             push_parent_update (item.parent);
+
+            // If the item is expandable, also remove children
+            var expandable = item as ExpandableItem;
+            if (expandable != null) {
+                foreach (var child_item in expandable.children)
+                    remove_item (child_item);
+
+                // No longer monitor future additions or removals
+                remove_children_monitor (expandable);
+            }
         }
 
         private void add_property_monitor (Item item) {
@@ -795,6 +830,25 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             if (wrapper != null)
                 wrapper.changed.disconnect (on_item_prop_changed);
             monitors.unset (item);
+        }
+
+        // Public just to avoid code duplication when connecting external sidebar root
+        public void add_children_monitor (ExpandableItem item) {
+            item.child_added.connect_after (on_item_child_added);
+            item.child_removed.connect_after (on_item_child_removed);
+        }
+
+        private void remove_children_monitor (ExpandableItem item) {
+            item.child_added.disconnect (on_item_child_added);
+            item.child_removed.disconnect (on_item_child_removed);
+        }
+
+        private void on_item_child_added (Item item) {
+            add_item (item);
+        }
+
+        private void on_item_child_removed (Item item) {
+            remove_item (item);
         }
 
         private void on_item_prop_changed (Item item, string prop_name) {
@@ -1549,7 +1603,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             bool is_rtl = get_direction () == Gtk.TextDirection.RTL;
 
             if (!is_rtl)
-                item_x += item_bin_coords.width - 20;
+                item_x += item_bin_coords.width - 6;
 
             int widget_x, widget_y;
             convert_bin_window_to_widget_coords (item_x, item_y, out widget_x, out widget_y);
@@ -1785,11 +1839,7 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         tree.item_selected.connect ( (item) => item_selected (item) );
 
         // Initialize item monitor
-        add_children_monitor (root);
-    }
-
-    ~Sidebar () {
-        remove_children_monitor (root);
+        data_model.add_children_monitor (root);
     }
 
     /**
@@ -1896,48 +1946,5 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             item.parent.expand_with_parents ();
 
         return tree.scroll_to_item (item);
-    }
-
-    /**
-     * Adds an item in response to {@link Granite.Widgets.Sidebar.ExpandableItem.child_added}
-     *
-     * This method is recursively signaled. While it is first emitted in response to the
-     * root's child_added() signal, successive calls are fired by child expandable items,
-     * since we set this method as handler for their child_added() signal. In fact, all the
-     * item monitors are connected here, and disconnected in remove_item().
-     */
-    private void add_item (Item item) requires (!has_item (item)) {
-        data_model.add_item (item);
-
-        // If it's an expandable item, add children, and monitor future additions and removals.
-        var expandable_item = item as ExpandableItem;
-        if (expandable_item != null) {
-            foreach (var child in expandable_item.children)
-                add_item (child);
-
-            add_children_monitor (expandable_item);
-        }
-    }
-
-    /**
-     * Removes an item in response to {@link Granite.Widgets.Sidebar.ExpandableItem.child_removed}.
-     *
-     * It un-does what add_item() did.
-     */
-    private void remove_item (Item item) requires (has_item (item)) {
-        if (item is ExpandableItem)
-            remove_children_monitor (item as ExpandableItem);
-
-        data_model.remove_item (item);
-    }
-
-    private void add_children_monitor (ExpandableItem item) {
-        item.child_added.connect_after (add_item);
-        item.child_removed.connect_after (remove_item);
-    }
-
-    private void remove_children_monitor (ExpandableItem item) {
-        item.child_added.disconnect (add_item);
-        item.child_removed.disconnect (remove_item);
     }
 }
