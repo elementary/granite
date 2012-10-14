@@ -83,7 +83,7 @@ namespace Granite.Widgets.Utils {
         return css_provider;
     }
 
-    /**
+    /** 
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
      * @param screen Screen to apply style to
@@ -101,7 +101,7 @@ namespace Granite.Widgets.Utils {
 
     /**
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
-     *         @stylesheet failed.
+     *         //stylesheet// failed.
      */
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();

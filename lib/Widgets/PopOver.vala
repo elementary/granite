@@ -32,7 +32,7 @@
  * dialog because it doesn't hide a big part of the screen. And it is closed
  * when it lose focus.
  *
- * {{images/popover.png}}
+ * {{../../doc/images/popover.png}}
  *
  **/
 
