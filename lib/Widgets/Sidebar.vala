@@ -213,10 +213,10 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
-         * A counter shown in a bubble right next to the item's name.
+         * A counter shown next to the item's name.
          *
          * It can be used for displaying the number of unread messages in the "Inbox" item,
-         * for instance. ''Still not implemented''.
+         * for instance.
          *
          * @since 0.2
          */
@@ -1658,19 +1658,26 @@ public class Granite.Widgets.Sidebar : Gtk.ScrolledWindow {
             var text_renderer = renderer as Gtk.CellRendererText;
             assert (text_renderer != null);
 
-            string text = "";
+            var text = new StringBuilder ();
             var weight = Pango.Weight.NORMAL;
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                text = item.name;
+                text.append (item.name);
 
                 if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
+
+                if (item.count > 0) {
+                    text.append_unichar (' ');
+                    text.append_unichar ('(');
+                    text.append (item.count.to_string ());
+                    text.append_unichar (')');
+                }
             }
 
             text_renderer.weight = weight;
-            text_renderer.text = text;
+            text_renderer.text = text.str;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
