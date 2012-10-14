@@ -158,7 +158,10 @@ public class Granite.Widgets.ContractorView : TreeView {
         
         this.selected = 0;
     }
-    
+    /**
+    * Removes menu items by array of names
+    * @param names the array of names to be deleted
+    **/ 
     public void name_blacklist (string[] names) {
         TreeIter it;
         TreeIter it2;
@@ -184,8 +187,9 @@ public class Granite.Widgets.ContractorView : TreeView {
 	        cur_pos++;	            
         }
     }
-        
-    
+    /**
+    * Runs selected menu items associated contract
+    **/ 
     public void run_selected () {
         if (this.selected in outsiders.keys ) {
             outsiders[this.selected].method ();

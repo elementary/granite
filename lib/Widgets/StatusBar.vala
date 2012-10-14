@@ -21,9 +21,17 @@
  */
 
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
-
+    /**
+    * Label of status bar
+    **/ 
     protected Gtk.Label status_label;
+    /**
+    * Gtk box on the left
+    **/ 
     protected Gtk.Box left_box;
+    /**
+    * Gtk box on the right
+    **/ 
     protected Gtk.Box right_box;
 
     protected const int ITEM_SPACING = 3;
@@ -40,7 +48,9 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             padding: 0px;
         }
     """;
-
+    /**
+    * Makes new StatusBar
+    **/ 
     public StatusBar () {
         /* Get rid of the "toolbar" class to avoid inheriting its style.
          * We want the widget to look more like a normal statusbar.
@@ -74,14 +84,21 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
         this.insert (status_label_item, 1);
         this.insert (right_item, 2);
     }
-
+    /**
+    * Inserts widget in status bar
+    * @param widget widget to insert
+    * @param use_left_side whether or not to use left_side
+    **/ 
     public void insert_widget (Gtk.Widget widget, bool? use_left_side = false) {
         if (use_left_side)
             left_box.pack_start (widget, false, false, ITEM_SPACING);
         else
             right_box.pack_start (widget, false, false, ITEM_SPACING);
     }
-
+    /**
+    * Sets the text of StatusBar
+    * @param text text to set Status bar to
+    **/ 
     public void set_text (string text) {
         status_label.set_text (text);
     }
