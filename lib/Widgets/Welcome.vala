@@ -29,6 +29,12 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
     protected Gtk.Box options;
 
+    /**
+     * Makes new Welcome Page
+     *
+     * @param title_text main title for new Welcome Page
+     * @param subtitle_text subtitle text for new Welcome Page
+    */
     public Welcome (string title_text, string subtitle_text) {
 
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -72,14 +78,23 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         add (content);
     }
-
+     /**
+     * Sets action item of given index's visiblity
+     *
+     * @param index index of action item to be changed
+     * @param val value deteriming whether the action item is visible
+    */
     public void set_item_visible (uint index, bool val) {
         if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
             children.nth_data(index).set_no_show_all (!val);
             children.nth_data(index).set_visible (val);
         }
     }
-
+     /**
+     * Removes action item of given index
+     *
+     * @param index index of action item to remove
+    */
     public void remove_item (uint index) {
         if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
             var item = children.nth_data (index);
@@ -87,22 +102,45 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             children.remove (item);
         }
     }
-
+     /**
+     * Sets action item of given index sensitivity
+     *
+     * @param index index of action item to be changed
+     * @param val value deteriming whether the action item is senstitive
+    */
     public void set_item_sensitivity (uint index, bool val) {
         if(index < children.length () && children.nth_data (index) is Gtk.Widget)
             children.nth_data (index).set_sensitive (val);
     }
-
+     /**
+     * Appends new action item to welcome page with icon
+     *
+     * @param image image to be set as icon for action item
+     * @param option_text text to be set as the header for action item
+     * @param description_text text to be set as description for action item
+    */
     public int append (string icon_name, string option_text, string description_text) {
         Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
         return append_with_image (image, option_text, description_text);
     }
-
+     /**
+     * Appends new action item to welcome page with Gtk.Pixbuf icon
+     *
+     * @param image image to be set as icon for action item
+     * @param option_text text to be set as the header for action item
+     * @param description_text text to be set as description for action item
+    */
     public int append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
         var image = new Gtk.Image.from_pixbuf (pixbuf);
         return append_with_image (image, option_text, description_text);
     }
-
+     /**
+     * Appends new action item to welcome page with Gtk.Image icon
+     *
+     * @param image image to be set as icon for action item
+     * @param option_text text to be set as the header for action item
+     * @param description_text text to be set as description for action item
+    */
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         // Option label
         var label = new Gtk.Label (Markup.printf_escaped ("<span weight='medium' size='11700'>%s</span>", option_text));

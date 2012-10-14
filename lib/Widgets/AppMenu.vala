@@ -22,16 +22,30 @@ using Granite.Services;
 namespace Granite.Widgets {
     
     public class AppMenu : ToolButtonWithMenu {
-    
+        /**
+        * Menu item for about page
+        */
         public Gtk.MenuItem about_item;
-    
+        /**
+        * Called when showing about
+        */
         public signal void show_about(Gtk.Widget w);
 
+        /**
+        * Makes new AppMenu
+        *
+        * @param menu menu to be added
+        */
         public AppMenu (Gtk.Menu menu) {
         
             base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
         }
-
+        /**
+        * Makes new AppMenu with built-in about page
+        *
+        * @param application application of AppMenu
+        * @param menu to be created
+        */
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
         
             base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
