@@ -41,14 +41,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
                                               out int natural_size)
     {
 
-        minimum_size = natural_size = get_arrow_size (widget) + (int) xpad;
+        minimum_size = natural_size = get_arrow_size (widget) + 2 * (int) xpad;
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
                                                          out int natural_height)
     {
-        minimum_height = natural_height = get_arrow_size (widget) + (int) ypad;
+        minimum_height = natural_height = get_arrow_size (widget) + 2 * (int) ypad;
     }
 
     /**
@@ -74,29 +74,17 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         if (!is_expander)
             return;
 
+        Gdk.Rectangle aligned_area = get_aligned_area (widget, flags, cell_area);
+
+        int arrow_size = int.min (get_arrow_size (widget), aligned_area.width);
+        int offset = arrow_size / 2;
+        int x = aligned_area.x + aligned_area.width / 2 - offset;
+        int y = aligned_area.y + aligned_area.height / 2 - offset;
+
         var ctx = widget.get_style_context ();
         var state = ctx.get_state ();
-
         const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
         ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
-
-        int arrow_size = get_arrow_size (widget);
-        int offset = arrow_size / 2;
-
-        int x = cell_area.x;
-        int y = cell_area.y;
-
-        float xalign = this.xalign;
-
-        if (widget.get_direction () == Gtk.TextDirection.RTL)
-            xalign = (float) Math.fabs (xalign - 1.0f);
-
-        x += (int) ((float) cell_area.width * xalign - offset);
-        y += (int) ((float) cell_area.height * yalign - offset);
-
-        x = x.clamp (cell_area.x, cell_area.x + cell_area.width - arrow_size);
-        y = y.clamp (cell_area.y, cell_area.y + cell_area.height - arrow_size);
-
         ctx.render_expander (context, x, y, arrow_size, arrow_size);
     }
 
