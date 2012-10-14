@@ -17,7 +17,9 @@
 
 using Gtk;
 using Gdk;
-
+/**
+* 
+*/
 namespace Granite.Widgets {
 
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {

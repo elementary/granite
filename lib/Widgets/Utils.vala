@@ -55,6 +55,10 @@ public enum Granite.TextStyle {
     }
 }
 
+/**
+* This class provides methods to apply styles to widgets and screens.
+*
+*/
 namespace Granite.Widgets.Utils {
 
     [CCode (cname="get_close_pixbuf")]

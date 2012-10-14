@@ -101,7 +101,7 @@ namespace Granite.Widgets {
         
     }
     /**
-     * Horizantally Collapsing Paned
+     * This class is a horizantally colapsing paned
     */
     public class HCollapsablePaned : CollapsiblePaned {
     
@@ -111,7 +111,7 @@ namespace Granite.Widgets {
         
     }
     /**
-     * Vertically Collapsing Paned
+     * This class is a vertically colapsing paned
     */
     public class VCollapsablePaned : CollapsiblePaned {
     

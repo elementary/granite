@@ -14,7 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-
+/**
+* This widget allows users to easily pick a time.
+*/
 namespace Granite.Widgets {
 
     public class TimePicker : Gtk.EventBox {  

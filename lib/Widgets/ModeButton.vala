@@ -19,7 +19,7 @@
 
 namespace Granite.Widgets {
     /**
-    * A multiple option modal switch
+    * This widget is a multiple option modal switch
     */
     public class ModeButton : Gtk.Box {
 

@@ -21,7 +21,9 @@
 ***/
 
 using Gtk;
-
+/**
+* This class makes an about dialog which goes in the App Menu on most apps.
+*/
 namespace Granite.Widgets {
 
     public class AboutDialog : Granite.GtkPatch.AboutDialog {

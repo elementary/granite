@@ -18,7 +18,9 @@
 using Gtk;
 
 using Granite.Services;
-
+/**
+* An App Menu is the gear menu that goes on the right of the toolbar.
+*/
 namespace Granite.Widgets {
     
     public class AppMenu : ToolButtonWithMenu {
