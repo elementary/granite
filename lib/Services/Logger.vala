@@ -16,7 +16,15 @@
 // 
 
 namespace Granite.Services {
-
+    /**
+     * LogLevel:
+     * DEBUG: This level is for use in debugging.
+     * INFO: This level should be used for non-error, non-debugging that is not due to any direct event.
+     * NOTIFY: This level is used to log events that have happened in the app.
+     * WARN: This level should be used for warnings of errors that haven't happened yet.
+     * ERROR: This level should be used by recoverable errors.
+     * FATAL: This level should be used only in cases of unrecoverable errors.
+     */
     public enum LogLevel {
         DEBUG,
         INFO,
@@ -36,15 +44,26 @@ namespace Granite.Services {
         CYAN,
         WHITE,
     }
-    
+    /**
+    * This class helps in the use of logs in a Granite application.
+    * 
+    */
     public class Logger : GLib.Object {
-        
+
+        /**
+        * This is used to determine which level of LogLevelling should be used.
+        */
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
-        
+        /**
+        * The name of the app that is logging.
+        */
         static string AppName { get; set; }
         
         static Regex re;
-        
+        /**
+        * This method initializes the Logger
+        * @param app_name name of app that is logging
+        */
         public static void initialize (string app_name) {
         
             AppName = app_name;
@@ -54,7 +73,10 @@ namespace Granite.Services {
             
             Log.set_default_handler (glib_log_func);
         }
-        
+        /**
+        * Formats a message to be logged
+        * @param msg message to be formatted
+        */
         static string format_message (string msg) {
         
             if (re != null && re.match (msg)) {
@@ -63,7 +85,10 @@ namespace Granite.Services {
             }
             return msg;
         }
-        
+        /**
+        * Logs message using Notify level formatting
+        * @param msg message to be logged
+        */
         public static void notification (string msg) {
             write (LogLevel.NOTIFY, format_message (msg));
         }
