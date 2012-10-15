@@ -30,7 +30,11 @@ namespace Granite.Widgets {
                 placeholder_text = value;
             }
         }
-
+        /**
+        * Makes new hinted entry
+        *
+        * @param hint_string hint for new entry
+        **/
         public HintedEntry (string hint_string) {
         
             this.hint_string = hint_string;
@@ -83,7 +87,11 @@ namespace Granite.Widgets {
          * we can show a PopOver, for example.
          **/
         public signal void search_icon_release ();
-        
+        /**
+        * Makes new search bar
+        *
+        * @param hint_string hint for new search bar
+        **/
         public SearchBar (string hint_string) {
         
             base (hint_string);
