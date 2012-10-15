@@ -17,7 +17,7 @@
 
 namespace Granite.Services {
 
-    [DBus (name = "org.elementary.contractor")]
+    [DBus (name = "org.elemtentary.contractor")]
     interface ContractorDBus : Object
     {
         public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
@@ -35,7 +35,9 @@ namespace Granite.Services {
         internal ContractorDBus contract;
 
         internal static Contractor? contractor = null;
-
+        /**
+        * This creates a new Contractor 
+        */
         public Contractor()
         {
             try
@@ -54,7 +56,13 @@ namespace Granite.Services {
         {
             if(contractor == null) contractor = new Contractor ();
         }
-
+        /**
+        * This searches for available contracts
+        * 
+        * @param uri uri of contract
+        * @param mime mime type of contract
+        * @return Hashtable of available contracts
+        */
         public static GLib.HashTable<string,string>[] get_contract(string uri, string mime)
         {
             ensure ();
@@ -68,7 +76,12 @@ namespace Granite.Services {
 
             return contracts;
         }
-
+        /**
+        * This searches for available contracts
+        * 
+        * @param locations Hashtable of locations
+        * @return Hashtable of available contracts
+        */
         public static GLib.HashTable<string,string>[] get_selection_contracts (GLib.HashTable<string, string>[] locations)
         {
             ensure ();

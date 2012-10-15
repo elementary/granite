@@ -49,7 +49,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     Gtk.Widget menu;
     Gtk.Box hbox;
     Gtk.Box abox;
-
+   /**
+    * Location of small triangle of popover
+    **/
     public enum PopPosition
     {
         TOPLEFT,
@@ -147,7 +149,10 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
         size_allocate.connect(on_size_allocate);
     }
-	
+
+   /**
+    * Hides popover
+    **/
 	public override void hide ()
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
@@ -157,7 +162,9 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		
 		base.hide ();
 	}
-	
+   /**
+    * Grabs focus
+    **/
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
