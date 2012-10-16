@@ -57,10 +57,10 @@ namespace Granite.Services {
             if(contractor == null) contractor = new Contractor ();
         }
         /**
-        * This searches for available contracts
+        * This searches for available contracts of a particular file
         * 
-        * @param uri uri of contract
-        * @param mime mime type of contract
+        * @param uri uri of file
+        * @param mime mime type of file
         * @return Hashtable of available contracts
         */
         public static GLib.HashTable<string,string>[] get_contract(string uri, string mime)
@@ -77,7 +77,7 @@ namespace Granite.Services {
             return contracts;
         }
         /**
-        * This searches for available contracts
+        * generate contracts for rguments and filter them by  common parent mimetype.
         * 
         * @param locations Hashtable of locations
         * @return Hashtable of available contracts
