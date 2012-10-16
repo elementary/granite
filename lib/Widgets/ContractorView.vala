@@ -19,7 +19,10 @@
  */
 
 using Gtk;
-
+/**
+ * A widget for showing lists of Contracts from Contractor.
+ *
+**/
 public class Granite.Widgets.ContractorView : TreeView {
     
     /**

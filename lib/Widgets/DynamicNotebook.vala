@@ -30,9 +30,14 @@ namespace Granite.Widgets {
 
         return false;
     }
-
+    /**
+    * This widget is a tab for use in Notebooks.
+    */
     public class Tab : Gtk.Box {
         Gtk.Label _label;
+        /**
+        * This is the label of the tab
+        */
         public string label {
             get { return _label.label;  }
             set { _label.label = value; }
@@ -53,6 +58,9 @@ namespace Granite.Widgets {
         }
 
         internal Gtk.Image _icon;
+        /**
+        * This is the icon for the tab
+        */
         public GLib.Icon? icon {
             owned get { return _icon.gicon;  }
             set { _icon.gicon = value; }
@@ -60,6 +68,9 @@ namespace Granite.Widgets {
 
         Gtk.Spinner _working;
         bool __working;
+        /**
+        * This shows whether or not to show the working s
+        */
         public bool working {
             get { return __working; }
             set { __working = _working.visible = value; _icon.visible = !value; }

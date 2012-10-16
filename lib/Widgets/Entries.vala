@@ -19,7 +19,10 @@ using Gtk;
 using Gdk;
 
 namespace Granite.Widgets {
-
+    /**
+    * A text entry space with hint
+    *
+    **/
     public class HintedEntry : Gtk.Entry {
 
         public string hint_string {
@@ -59,7 +62,10 @@ namespace Granite.Widgets {
         }
         
     }
-
+    /**
+    * A searchbar with hint-text.
+    *
+    **/
     public class SearchBar : HintedEntry {
 
         private bool is_searching = true;

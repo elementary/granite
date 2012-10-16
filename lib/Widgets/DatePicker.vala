@@ -19,7 +19,10 @@ using Gtk;
 using Gdk;
     
 namespace Granite.Widgets {
-
+    /**
+    * This class allows users to pick dates from a calendar.
+    *
+    **/
     public class DatePicker : Gtk.Entry, Gtk.Buildable {
         /**
         * Desired format of DatePicker

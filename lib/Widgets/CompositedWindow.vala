@@ -17,11 +17,11 @@
 
 using Gtk;
 using Gdk;
-/**
-* 
-*/
-namespace Granite.Widgets {
 
+namespace Granite.Widgets {
+    /**
+    * This is an undecorated, unresizable window with a white background.
+    */
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
         private const string STYLESHEET =

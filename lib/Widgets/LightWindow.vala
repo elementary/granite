@@ -21,7 +21,9 @@
  */
 
 namespace Granite.Widgets {
-
+   /**
+   * Make tabs reorderable
+   **/
     public class LightWindow : DecoratedWindow {
         /**
         * Makes a new Window with the Light Theme
