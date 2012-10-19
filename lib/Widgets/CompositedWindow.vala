@@ -20,7 +20,7 @@ using Gdk;
 
 namespace Granite.Widgets {
     /**
-    * This is an undecorated, unresizable window with a white background.
+	* Atransparent window without decorations and so on. Useful for any kinds of overlays and similar things
     */
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
