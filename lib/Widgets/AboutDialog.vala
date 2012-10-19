@@ -21,11 +21,11 @@
 ***/
 
 using Gtk;
-/**
-* This class makes an about dialog which goes in the App Menu on most apps.
-*/
-namespace Granite.Widgets {
 
+namespace Granite.Widgets {
+	/**
+	* This class makes an about dialog which goes in the App Menu on most apps.
+	*/
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.

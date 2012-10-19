@@ -54,10 +54,8 @@ public enum Granite.TextStyle {
         }
     }
 }
-
 /**
-* This class provides methods to apply styles to widgets and screens.
-*
+* This class helps to apply CSS to widgets.
 */
 namespace Granite.Widgets.Utils {
 
