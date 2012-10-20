@@ -19,10 +19,12 @@
  *
  * Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
+
 /**
 * This class is an easy way to make a status bar with both widgets and text
 */
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
+
     /**
     * Label of status bar
     **/ 
@@ -50,6 +52,7 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             padding: 0px;
         }
     """;
+
     /**
     * Makes new StatusBar
     **/ 
@@ -86,6 +89,7 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
         this.insert (status_label_item, 1);
         this.insert (right_item, 2);
     }
+
     /**
     * Inserts widget in status bar
     * @param widget widget to insert

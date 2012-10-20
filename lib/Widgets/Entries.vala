@@ -19,10 +19,12 @@ using Gtk;
 using Gdk;
 
 namespace Granite.Widgets {
+
     /**
     * A text entry space with hint
     *
     **/
+
     public class HintedEntry : Gtk.Entry {
 
         public string hint_string {
@@ -33,6 +35,7 @@ namespace Granite.Widgets {
                 placeholder_text = value;
             }
         }
+
         /**
         * Makes new hinted entry
         *
@@ -93,6 +96,7 @@ namespace Granite.Widgets {
          * we can show a PopOver, for example.
          **/
         public signal void search_icon_release ();
+
         /**
         * Makes new search bar
         *

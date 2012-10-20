@@ -30,6 +30,7 @@ namespace Granite.Widgets {
 
         return false;
     }
+
     /**
     * This widget is a tab for use in Notebooks.
     */

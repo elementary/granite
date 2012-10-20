@@ -37,6 +37,7 @@ namespace Granite.Widgets {
             }
         """;
 
+
         // Currently not overridable
         const string DECORATED_WINDOW_STYLESHEET = """
             .decorated-window { border-width:1px; }
@@ -151,6 +152,7 @@ namespace Granite.Widgets {
         public new void add (Gtk.Widget w) {
             this.box.pack_start (w, true, true);
         }
+
         /**
         * This method removes item to window
         *

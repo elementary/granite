@@ -29,6 +29,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     // Signals
     public signal void activated (int index);
+
     /**
      * List of buttons for action items
     */
@@ -87,6 +88,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
         add (content);
     }
+
      /**
      * Sets action item of given index's visiblity
      *
@@ -111,6 +113,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             children.remove (item);
         }
     }
+
      /**
      * Sets action item of given index sensitivity
      *
@@ -121,6 +124,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         if(index < children.length () && children.nth_data (index) is Gtk.Widget)
             children.nth_data (index).set_sensitive (val);
     }
+
      /**
      * Appends new action item to welcome page with icon
      *
@@ -132,6 +136,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
         return append_with_image (image, option_text, description_text);
     }
+
      /**
      * Appends new action item to welcome page with Gtk.Pixbuf icon
      *
@@ -143,6 +148,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         var image = new Gtk.Image.from_pixbuf (pixbuf);
         return append_with_image (image, option_text, description_text);
     }
+
      /**
      * Appends new action item to welcome page with Gtk.Image icon
      *

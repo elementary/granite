@@ -24,7 +24,7 @@ namespace Granite {
 
     /**
      * Global deprecated object..
-     * 
+     *
      * @deprecated 0.1
     **/
     [Deprecated (since = "granite-0.1")]
@@ -35,7 +35,7 @@ namespace Granite {
     **/
     
     public abstract class Application : Gtk.Application {
-		
+
         public string build_data_dir;
         public string build_pkg_data_dir;
         public string build_release_name;

@@ -63,7 +63,7 @@ namespace Granite.Services {
         static string AppName { get; set; }
         
         static Regex re;
-
+        
         /**
         * This method initializes the Logger
         * @param app_name name of app that is logging
@@ -90,7 +90,7 @@ namespace Granite.Services {
             }
             return msg;
         }
-
+        
         /**
         * Logs message using Notify level formatting
         * @param msg message to be logged

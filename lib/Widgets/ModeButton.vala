@@ -18,6 +18,7 @@
 //
 
 namespace Granite.Widgets {
+
     /**
     * This widget is a multiple option modal switch
     */
@@ -37,6 +38,7 @@ namespace Granite.Widgets {
         }
 
         private int _selected = -1;
+
         /**
         * Makes new ModeButton
         *
@@ -50,6 +52,7 @@ namespace Granite.Widgets {
             style.add_class (Gtk.STYLE_CLASS_LINKED);
             style.add_class ("raised"); // needed for toolbars
         }
+
         /**
         * Appends Pixbuf to ModeButton
         *
@@ -58,6 +61,7 @@ namespace Granite.Widgets {
         public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             return append (new Gtk.Image.from_pixbuf (pixbuf));
         }
+
         /**
         * Appends text to ModeButton
         *
@@ -66,6 +70,7 @@ namespace Granite.Widgets {
         public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
+
         /**
         * Appends icon to ModeButton
         *
@@ -75,6 +80,7 @@ namespace Granite.Widgets {
         public int append_icon (string icon_name, Gtk.IconSize size) {
             return append (new Gtk.Image.from_icon_name (icon_name, size));
         }
+
         /**
         * Appends given widget to ModeButton
         *
@@ -128,6 +134,7 @@ namespace Granite.Widgets {
                 mode_changed (new_item.get_child ());
             }
         }
+
         /**
         * Changes visibility of item of given index
         *
@@ -145,6 +152,7 @@ namespace Granite.Widgets {
                 item.visible = val;
             }
         }
+
         /**
         * Removes item at given index
         *
@@ -160,6 +168,7 @@ namespace Granite.Widgets {
                 item.destroy ();
             }
         }
+
         /**
         * Clears all children
         *

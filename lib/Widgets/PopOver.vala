@@ -49,6 +49,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     Gtk.Widget menu;
     Gtk.Box hbox;
     Gtk.Box abox;
+
    /**
     * Location of small triangle of popover
     **/
@@ -162,6 +163,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		
 		base.hide ();
 	}
+
    /**
     * Grabs focus
     **/

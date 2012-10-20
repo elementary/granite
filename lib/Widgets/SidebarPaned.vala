@@ -19,6 +19,7 @@
  *
  * Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
+ 
 /**
 * This class is a SidePanel to be used on the side of windows.
 */

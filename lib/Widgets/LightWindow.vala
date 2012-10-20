@@ -22,6 +22,7 @@
 
 namespace Granite.Widgets {
     public class LightWindow : DecoratedWindow {
+
         /**
         * Makes a new Window with the Light Theme
         *

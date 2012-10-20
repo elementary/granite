@@ -19,6 +19,7 @@
  */
 
 namespace Granite.Widgets {
+
 	/**
 	* This class provides an easy way to manage tabs.
 	* 
@@ -40,6 +41,7 @@ namespace Granite.Widgets {
         }
 
         public signal void page_changed (int index);
+
         /**
         * This creates a new StaticNotebook
         * @param show_seperator whether or not to show a seperator
