@@ -19,6 +19,7 @@ using Gtk;
 using Gdk;
 
 namespace Granite {
+
     /**
      * Enum of possible Collapse modes
      * NONE
@@ -38,18 +39,23 @@ namespace Granite {
 }
 
 namespace Granite.Widgets {
+
     /**
     * This widget is a collapsible panel
     *
     **/
     public class CollapsiblePaned : Gtk.Paned {
+
         private int saved_state = 10;
         private uint last_click_time = 0;
+
         public CollapseMode collapse_mode = CollapseMode.NONE;
         //public signal void shrink(); //TODO: Make the default action overwriteable
         //public new signal void expand(int saved_state); //TODO same
+
         /**
         * Makes new Paned
+        * 
         * @param o orientation of new Paned
         */
         public CollapsiblePaned (Orientation o) {

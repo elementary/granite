@@ -24,12 +24,12 @@ namespace Granite {
 
     /**
      * Global deprecated object..
-	 * @deprecated 0.1
-     *
+     * 
+     * @deprecated 0.1
     **/
     [Deprecated (since = "granite-0.1")]
     public static Granite.Application app;
-    
+
     /**
      * This is the base class for all Granite-based apps. It has methods to help create a great deal of an app's functionality.
     **/
@@ -44,7 +44,7 @@ namespace Granite {
 
         public string program_name;
         public string exec_name;
- 
+
         public string app_copyright;
         public string app_years;
         public string app_icon;
@@ -62,6 +62,7 @@ namespace Granite {
         public string about_translators;
         public string about_license;
         public License about_license_type;
+
         /**
         * This creates a new Application class
         **/
@@ -122,6 +123,7 @@ namespace Granite {
             if (DEBUG)
                 Logger.DisplayLevel = LogLevel.DEBUG;
         }
+
         /**
         * This methods creates a new App Menu
         * @param menu the menu to create the App Menu for
@@ -169,5 +171,5 @@ namespace Granite {
 
     }
 
-
 }
+

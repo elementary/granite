@@ -19,6 +19,7 @@ using Gtk;
 using Gdk;
     
 namespace Granite.Widgets {
+
     /**
     * This class allows users to pick dates from a calendar.
     *
@@ -54,6 +55,7 @@ namespace Granite.Widgets {
                 text = _date.format (format);
             }
         }
+
         /**
         * Makes new DatePicker
         *

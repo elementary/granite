@@ -19,6 +19,7 @@
 namespace Granite.Services {
 
     public static IconFactory? icon_factory = null;
+
     /**
     * This class provides an easy way to access symbolic icons.
     */

@@ -19,6 +19,7 @@ using Gtk;
 using Gdk;
 
 namespace Granite.Widgets {
+
     /**
 	* A transparent window without decorations and so on. Useful for any kinds of overlays and similar things
     */

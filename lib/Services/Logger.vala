@@ -45,6 +45,7 @@ namespace Granite.Services {
         CYAN,
         WHITE,
     }
+
     /**
     * This class helps in the use of logs in a Granite application.
     * 

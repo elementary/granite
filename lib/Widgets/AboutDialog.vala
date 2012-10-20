@@ -23,6 +23,7 @@
 using Gtk;
 
 namespace Granite.Widgets {
+
 	/**
 	* This class makes an about dialog which goes in the App Menu on most apps.
 	*/

@@ -35,6 +35,7 @@ namespace Granite.Services {
         internal ContractorDBus contract;
 
         internal static Contractor? contractor = null;
+
         /**
         * This creates a new Contractor 
         */
@@ -56,7 +57,7 @@ namespace Granite.Services {
         {
             if(contractor == null) contractor = new Contractor ();
         }
-        
+
         /**
         * This searches for available contracts of a particular file
         * 
@@ -77,6 +78,7 @@ namespace Granite.Services {
 
             return contracts;
         }
+
         /**
         * generate contracts for rguments and filter them by  common parent mimetype.
         * 

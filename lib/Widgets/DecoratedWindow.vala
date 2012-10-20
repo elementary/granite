@@ -21,6 +21,7 @@
  */
 
 namespace Granite.Widgets {
+
     /**
     * This class is a standard decorated window.
     */
@@ -78,6 +79,7 @@ namespace Granite.Widgets {
         private int h = -1;
 
         private Gtk.Label _title;
+
         /**
         * This creates a new DecoratedWindow
         *
