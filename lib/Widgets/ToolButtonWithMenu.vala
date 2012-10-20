@@ -34,7 +34,6 @@ using Gdk;
 using Gtk;
 
 namespace Granite.Widgets {
-
     public class ToolButtonWithMenu : Gtk.ToggleToolButton {
 
         public signal void right_click (Gdk.EventButton ev);
