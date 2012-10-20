@@ -24,15 +24,18 @@ namespace Granite {
 
     /**
      * Global deprecated object..
-     *
+	 * @deprecated 0.1
      *
     **/
     [Deprecated (since = "granite-0.1")]
     public static Granite.Application app;
+    
     /**
      * This is the base class for all Granite-based apps. It has methods to help create a great deal of an app's functionality.
     **/
+    
     public abstract class Application : Gtk.Application {
+		
         public string build_data_dir;
         public string build_pkg_data_dir;
         public string build_release_name;
@@ -41,11 +44,12 @@ namespace Granite {
 
         public string program_name;
         public string exec_name;
+ 
         public string app_copyright;
         public string app_years;
         public string app_icon;
         public string app_launcher;
-        
+
         public string main_url;
         public string bug_url;
         public string help_url;
@@ -85,6 +89,7 @@ namespace Granite {
 
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
             protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
+
         /**
         * This method runs the application
         **/
@@ -131,6 +136,7 @@ namespace Granite {
         }
 
         protected Granite.Widgets.AboutDialog about_dlg;
+
         /**
         * This method shows the about dialog of this app.
         * @param parent This widget is the window that is calling the about page being created. 
@@ -162,5 +168,6 @@ namespace Granite {
         }
 
     }
+
 
 }

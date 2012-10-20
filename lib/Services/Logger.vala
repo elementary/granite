@@ -16,6 +16,7 @@
 // 
 
 namespace Granite.Services {
+
     /**
      * LogLevel:
      * DEBUG: This level is for use in debugging.
@@ -54,12 +55,14 @@ namespace Granite.Services {
         * This is used to determine which level of LogLevelling should be used.
         */
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
+
         /**
         * The name of the app that is logging.
         */
         static string AppName { get; set; }
         
         static Regex re;
+
         /**
         * This method initializes the Logger
         * @param app_name name of app that is logging
@@ -73,6 +76,7 @@ namespace Granite.Services {
             
             Log.set_default_handler (glib_log_func);
         }
+
         /**
         * Formats a message to be logged
         * @param msg message to be formatted
@@ -85,6 +89,7 @@ namespace Granite.Services {
             }
             return msg;
         }
+
         /**
         * Logs message using Notify level formatting
         * @param msg message to be logged

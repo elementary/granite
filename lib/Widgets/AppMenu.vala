@@ -20,14 +20,17 @@ using Gtk;
 using Granite.Services;
 
 namespace Granite.Widgets {
+
 	/**
 	* An App Menu is the gear menu that goes on the right of the toolbar.
 	*/    
     public class AppMenu : ToolButtonWithMenu {
+
         /**
         * Menu item for about page
         */
         public Gtk.MenuItem about_item;
+
         /**
         * Called when showing about
         */
@@ -42,6 +45,7 @@ namespace Granite.Widgets {
         
             base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
         }
+
         /**
         * Makes new AppMenu with built-in about page
         *
