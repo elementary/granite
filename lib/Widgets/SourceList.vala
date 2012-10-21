@@ -1164,11 +1164,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             insert_column (item_column, Column.ITEM);
 
-            // Root-level item spacer. It is supposed to only add padding. As this is
-            // an expander renderer, it has the nice advantage of adjusting the padding
-            // to the arrow size specified by the theme, so we don't have to care about
-            // setting a size manually. This is similar to what would happen if we used
-            // the TreeView's built-in expanders.
             root_spacer_cell = new Gtk.CellRendererText ();
             root_spacer_cell.xpad = LEFT_HPADDING;
             item_column.pack_start (root_spacer_cell, false);
@@ -1718,14 +1713,15 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         {
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                // is_expander takes into account whether the item has children or not.
+                // Gtk.CellRenderer.is_expander takes into account whether the item has children or not.
                 // The tree-view checks for that and sets this property for us. It also sets
-                // is_expanded, and thus we don't need to check for that either.
+                // Gtk.CellRenderer.is_expanded, and thus we don't need to check for that either.
                 var expandable_item = item as ExpandableItem;
                 if (expandable_item != null)
                     renderer.is_expander = renderer.is_expander && expandable_item.collapsible;
             }
 
+            // See compute_indentation() for an explanation of this portion of code
             if (renderer == primary_expander_cell)
                 renderer.visible = !data_model.is_iter_at_root_level (iter);
             else if (renderer == secondary_expander_cell)
@@ -1767,13 +1763,20 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
     /**
      * A {@link Granite.Widgets.SourceList.VisibleFunc} should return true if the item should be
-     * visible, false otherwise.
+     * visible; false otherwise. If //item//'s {@link Granite.Widgets.SourceList.Item.visible}
+     * property is set to //false//, then it won't be displayed even if this method returns true.
      *
-     * IMPORTANT NOTE: This method ''must not'' modify the item's //visible// property. Also,
-     * if the item //visible// property is set to //false//, the item won't be displayed even
-     * if this method returns true.
+     * It is important to note that the method ''must not modify any property of //item//'',
+     * because doing so would cause re-entrancy, as the widget's internal data model invokes the
+     * method to filter an item again after every property change, resulting in an infinite chain
+     * of recursive calls.
+     *
+     * Usually, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough in
+     * most cases. The advantage of using this method is that its nature is non-destructive, and the
+     * changes it makes can be easily reverted (see {@link Granite.Widgets.SourceList.refilter}).
      *
      * @param item Item to be checked.
+     * @return Whether //item// should be visible or not.
      * @since 0.2
      */
     public delegate bool VisibleFunc (Item item);
@@ -1892,7 +1895,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * Sets the method used for filtering out items.
      *
      * @param visible_func The method to use for filtering items.
-     * @param re-filter whether to call {@link SourceList.refilter} using the new function.
+     * @param refilter Whether to call {@link Granite.Widgets.SourceList.refilter} using the new function.
      * @see Granite.Widgets.SourceList.VisibleFunc
      * @see Granite.Widgets.SourceList.refilter
      * @since 0.2
@@ -1918,6 +1921,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * Queries the actual expanded state of //item//.
      *
      * @see Granite.Widgets.SourceList.ExpandableItem.expanded
+     * @return Whether //item// is expanded or not.
      * @since 0.2
      */
     public bool is_item_expanded (Item item) requires (has_item (item)) {
