@@ -1380,6 +1380,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         public bool start_editing_item (Item item) requires (item.editable) {
+            if (editing && item == edited) // If same item again, simply return.
+                return false;
+
             var path = data_model.get_item_path (item);
             if (path != null) {
                 edited = item;
@@ -1940,10 +1943,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * @return true if the editing started successfully; false otherwise.
      * @since 0.2
      */
-    public bool start_editing_item (Item item) requires (item.editable)
-                                               requires (has_item (item))
+    public bool start_editing_item (Item item) requires (has_item (item))
     {
-        return !editing && tree.start_editing_item (item);
+        return tree.start_editing_item (item);
     }
 
     /**
