@@ -27,12 +27,16 @@ namespace Granite.Widgets {
         public signal void mode_added (int index, Gtk.Widget widget);
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
-
+        /**
+         * Index of currently selected item.
+         */
         public int selected {
             get { return _selected; }
             set { set_active (value); }
         }
-
+        /**
+         * Read-only length of current ModeButton
+         */
         public uint n_items {
             get { return get_children ().length (); }
         }
@@ -66,6 +70,7 @@ namespace Granite.Widgets {
          * Appends text to ModeButton
          *
          * @param text text to append to ModeButton
+         * @return index of new item
          */
         public int append_text (string text) {
             return append (new Gtk.Label(text));
@@ -76,6 +81,7 @@ namespace Granite.Widgets {
          *
          * @param icon_name name of icon to append
          * @param size desired size of icon
+         * @return index of appended item
          */
         public int append_icon (string icon_name, Gtk.IconSize size) {
             return append (new Gtk.Image.from_icon_name (icon_name, size));
@@ -85,6 +91,7 @@ namespace Granite.Widgets {
          * Appends given widget to ModeButton
          *
          * @param w widget to add to ModeButton
+         * @return index of new item
          */
         public int append (Gtk.Widget w) {
             var button = new Gtk.ToggleButton ();

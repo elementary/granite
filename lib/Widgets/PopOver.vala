@@ -166,6 +166,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
    /**
     * Grabs focus
+    * @return false
     */
 	public override bool map_event (Gdk.EventAny event)
 	{

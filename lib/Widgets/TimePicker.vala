@@ -29,6 +29,9 @@ namespace Granite.Widgets {
         protected const int PADDING = 5;
 
         private DateTime _time = new DateTime.now_local ();
+        /**
+         * Current time
+         */
         public DateTime time {
             get { return _time; }
             set {
@@ -52,10 +55,18 @@ namespace Granite.Widgets {
             }
             return to_normalize_time;
         }
-
+        /**
+         * Current format for time
+         */
         public string format { get; construct; default = _("%l:%M %p"); }
 
         private bool _is_pressed = false;
+        
+        /**
+         * Currently pressed
+         * 
+         * @return whether or not the TimePicker is currently pressed
+         */
         protected bool is_pressed {
             get { return _is_pressed; }
             set {

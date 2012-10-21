@@ -71,7 +71,11 @@ namespace Granite.Widgets {
             critical("This is a deprecated creation method: AppMenu.with_urls");
             base (new Image.from_icon_name ("application-menu", IconSize.MENU), _("Menu"), menu);
         }
-        
+        /**
+         * This method adds makes a properly formatted App Menu menu from given menu
+         * 
+         * @param menu menu to format
+         */
         public void add_items (Gtk.Menu menu) {
             
             about_item = new Gtk.MenuItem.with_label (_("About"));

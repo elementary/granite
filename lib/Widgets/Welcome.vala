@@ -132,6 +132,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * @param icon_name icon to be set as icon for action item
      * @param option_text text to be set as the header for action item
      * @param description_text text to be set as description for action item
+     * @return index of new item
      */
     public int append (string icon_name, string option_text, string description_text) {
         Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
@@ -144,6 +145,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * @param pixbuf pixbuf to be set as icon for action item
      * @param option_text text to be set as the header for action item
      * @param description_text text to be set as description for action item
+     * @return index of new item
      */
     public int append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
         var image = new Gtk.Image.from_pixbuf (pixbuf);
@@ -156,6 +158,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * @param image image to be set as icon for action item
      * @param option_text text to be set as the header for action item
      * @param description_text text to be set as description for action item
+     * @return index of new item
     */
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         // Option label
