@@ -40,12 +40,12 @@ namespace Granite.Widgets {
         public signal void right_click (Gdk.EventButton ev);
 
         /**
-         * MenuPosition:
-         * CENTER: Center-align the menu relative to the button's position.
-         * LEFT: Left-align the menu relative to the button's position.
-         * RIGHT: Right-align the menu relative to the button's position.
-         * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
-         **/
+          * MenuPosition:
+          * CENTER: Center-align the menu relative to the button's position.
+          * LEFT: Left-align the menu relative to the button's position.
+          * RIGHT: Right-align the menu relative to the button's position.
+          * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
+          */
         public enum MenuPosition {
             CENTER,
             LEFT,

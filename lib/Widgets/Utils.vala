@@ -24,7 +24,7 @@
          * H1: Second highest header
          * H2: Third highest header
          * H3: Fourth Highest Header
-         **/
+         */
 public enum Granite.TextStyle {
     TITLE,
     H1,
@@ -35,7 +35,7 @@ public enum Granite.TextStyle {
      * Gets style sheet of text style
      *
      * @return CSS of text style
-    */
+     */
     public string get_stylesheet (out string style_class = null) {
         switch (this) {
             case TITLE:
@@ -57,8 +57,8 @@ public enum Granite.TextStyle {
 }
 
 /**
-* This class helps to apply CSS to widgets.
-*/
+ * This class helps to apply CSS to widgets.
+ */
 namespace Granite.Widgets.Utils {
 
     [CCode (cname="get_close_pixbuf")]
@@ -67,6 +67,7 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Applies the stylesheet to the widget
+     * 
      * @param widget widget to apply style to
      * @param stylesheet style to apply to screen
      * @param class_name class name to add style to
@@ -90,6 +91,7 @@ namespace Granite.Widgets.Utils {
     /**
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
+     * 
      * @param screen Screen to apply style to
      * @param stylesheet style to apply to screen
      * @param priority priorty of change
@@ -124,7 +126,8 @@ namespace Granite.Widgets.Utils {
 
 
     /**
-     * Text Style
+     * This method applies given text style to given label
+     * 
      * @param text_style text style to apply
      * @param label label to apply style to
      */

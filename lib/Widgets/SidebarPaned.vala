@@ -21,8 +21,8 @@
  */
  
 /**
-* This class is a SidePanel to be used on the side of windows.
-*/
+ * This class is a SidePanel to be used on the side of windows.
+ */
 public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
 
     protected Gtk.Paned paned { get; private set; }

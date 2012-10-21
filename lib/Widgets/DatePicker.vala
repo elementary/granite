@@ -21,33 +21,33 @@ using Gdk;
 namespace Granite.Widgets {
 
     /**
-    * This class allows users to pick dates from a calendar.
-    *
-    **/
+     * This class allows users to pick dates from a calendar.
+     *
+     */
     public class DatePicker : Gtk.Entry, Gtk.Buildable {
         /**
-        * Desired format of DatePicker
-        *
-        */
+         * Desired format of DatePicker
+         *
+         */
         public string format { get; construct; default = _("%B %e, %Y"); }
         /**
-        * Dropdown of DatePicker
-        *
-        */
+         * Dropdown of DatePicker
+         *
+         */
         protected Gtk.EventBox dropdown;
         /**
-        * The Calendar to create the DatePicker
-        *
-        */
+         * The Calendar to create the DatePicker
+         *
+         */
         protected Calendar calendar;
 
         PopOver popover;
         
         private DateTime _date;
         /**
-        * Current Date
-        *
-        */
+         * Current Date
+         *
+         */
         public DateTime date {
             get { return _date; }
             set {
@@ -57,9 +57,9 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Makes new DatePicker
-        *
-        */
+         * Makes new DatePicker
+         *
+         */
         construct {
             
             dropdown = new Gtk.EventBox();
@@ -81,10 +81,10 @@ namespace Granite.Widgets {
             calendar.day_selected_double_click.connect (on_calendar_day_selected);
         }
         /**
-        * Makes a new DatePicker
-        *
-        * @param format desired format of new DatePicker
-        */
+         * Makes a new DatePicker
+         *
+         * @param format desired format of new DatePicker
+         */
         public DatePicker.with_format (string format) {
             Object (format: format);
         }

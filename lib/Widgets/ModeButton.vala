@@ -20,8 +20,8 @@
 namespace Granite.Widgets {
 
     /**
-    * This widget is a multiple option modal switch
-    */
+     * This widget is a multiple option modal switch
+     */
     public class ModeButton : Gtk.Box {
 
         public signal void mode_added (int index, Gtk.Widget widget);
@@ -40,9 +40,9 @@ namespace Granite.Widgets {
         private int _selected = -1;
 
         /**
-        * Makes new ModeButton
-        *
-        */
+         * Makes new ModeButton
+         *
+         */
         public ModeButton () {
             homogeneous = true;
             spacing = 0;
@@ -54,38 +54,38 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Appends Pixbuf to ModeButton
-        *
-        * @param pixbuf Gdk.Pixbuf to append to ModeButton
-        */
+         * Appends Pixbuf to ModeButton
+         *
+         * @param pixbuf Gdk.Pixbuf to append to ModeButton
+         */
         public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             return append (new Gtk.Image.from_pixbuf (pixbuf));
         }
 
         /**
-        * Appends text to ModeButton
-        *
-        * @param text text to append to ModeButton
-        */
+         * Appends text to ModeButton
+         *
+         * @param text text to append to ModeButton
+         */
         public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
 
         /**
-        * Appends icon to ModeButton
-        *
-        * @param icon_name name of icon to append
-        * @param size desired size of icon
-        */
+         * Appends icon to ModeButton
+         *
+         * @param icon_name name of icon to append
+         * @param size desired size of icon
+         */
         public int append_icon (string icon_name, Gtk.IconSize size) {
             return append (new Gtk.Image.from_icon_name (icon_name, size));
         }
 
         /**
-        * Appends given widget to ModeButton
-        *
-        * @param w widget to add to ModeButton
-        */
+         * Appends given widget to ModeButton
+         *
+         * @param w widget to add to ModeButton
+         */
         public int append (Gtk.Widget w) {
             var button = new Gtk.ToggleButton ();
             button.can_focus = false;
@@ -109,10 +109,10 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Sets item of given index's activity 
-        *
-        * @param new_active_index index of changed item
-        */
+         * Sets item of given index's activity 
+         *
+         * @param new_active_index index of changed item
+         */
         public void set_active (int new_active_index) {
             var children = get_children ();
             return_if_fail (new_active_index >= 0 && new_active_index < children.length ());
@@ -137,11 +137,11 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Changes visibility of item of given index
-        *
-        * @param index index of item to be modified
-        * @param val value to change the visiblity to
-        */
+         * Changes visibility of item of given index
+         *
+         * @param index index of item to be modified
+         * @param val value to change the visiblity to
+         */
         public void set_item_visible (int index, bool val) {
             var children = get_children ();
             return_if_fail (index >= 0 && index < children.length ());
@@ -155,10 +155,10 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Removes item at given index
-        *
-        * @param index index of item to remove
-        */
+         * Removes item at given index
+         *
+         * @param index index of item to remove
+         */
         public new void remove (int index) {
             var children = get_children ();
             return_if_fail (index >= 0 && index < children.length ());
@@ -171,9 +171,9 @@ namespace Granite.Widgets {
         }
 
         /**
-        * Clears all children
-        *
-        */
+         * Clears all children
+         *
+         */
         public void clear_children () {
             foreach (weak Gtk.Widget button in get_children ()) {
                 button.hide ();

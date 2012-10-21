@@ -18,8 +18,8 @@
 namespace Granite.Widgets {
 
 	/**
-	* This widget allows users to easily pick a time.
-	*/
+	 * This widget allows users to easily pick a time.
+	 */
     public class TimePicker : Gtk.EventBox {  
     
         // Signals

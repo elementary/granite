@@ -41,9 +41,9 @@ namespace Granite {
 namespace Granite.Widgets {
 
     /**
-    * This widget is a collapsible panel
-    *
-    **/
+     * This widget is a collapsible panel
+     *
+     */
     public class CollapsiblePaned : Gtk.Paned {
     
         private int saved_state = 10;
@@ -54,10 +54,10 @@ namespace Granite.Widgets {
         //public new signal void expand(int saved_state); //TODO same
 
         /**
-        * Makes new Paned
-        * 
-        * @param o orientation of new Paned
-        */
+         * Makes new Paned
+         * 
+         * @param o orientation of new Paned
+         */
         public CollapsiblePaned (Orientation o) {
             //events |= EventMask.BUTTON_PRESS_MASK;
             set_orientation (o);
@@ -111,7 +111,7 @@ namespace Granite.Widgets {
 
     /**
      * This class is a horizantally colapsing paned
-    */
+     */
     public class HCollapsablePaned : CollapsiblePaned {
     
         public HCollapsablePaned () {
@@ -122,7 +122,7 @@ namespace Granite.Widgets {
 
     /**
      * This class is a vertically colapsing paned
-    */
+     */
     public class VCollapsablePaned : CollapsiblePaned {
     
         public VCollapsablePaned () {

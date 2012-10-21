@@ -553,7 +553,7 @@ public class Granite.Widgets.Sidebar : Gtk.TreeView {
      * @param clickable A GdkPixbuf displayed on the right side of the item which
      *  will emit the clickable_clicked signal when clicked or null
      * @return the added GtkTreeIter
-     **/
+     */
     public Gtk.TreeIter add_item (Gtk.TreeIter? parent, Object? object, Gtk.Widget? widget, 
         Gdk.Pixbuf? pixbuf, string text, Gdk.Pixbuf? clickable) {
         

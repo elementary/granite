@@ -34,7 +34,7 @@
  *
  * {{../../doc/images/popover.png}}
  *
- **/
+ */
 
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
@@ -52,7 +52,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
    /**
     * Location of small triangle of popover
-    **/
+    */
     public enum PopPosition
     {
         TOPLEFT,
@@ -125,7 +125,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     /**
      * Create a new PopOver
-     **/
+     */
     public PopOver()
     {
         modal = true;
@@ -153,7 +153,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
    /**
     * Hides popover
-    **/
+    */
 	public override void hide ()
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
@@ -166,7 +166,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
    /**
     * Grabs focus
-    **/
+    */
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
@@ -219,7 +219,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     /**
      * Set the parent window of the popover. It should not be needed, but it
      * could solve some bugs on some window manager.
-     **/
+     */
     public void set_parent_pop (Gtk.Window win)
     {
         set_transient_for(win);
@@ -317,7 +317,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      * horizontally centered.
      *
      * @param w a normal Gtk.Widget, e.g. a button
-     **/
+     */
     public void move_to_widget (Gtk.Widget w, bool show = true) {
         int x, y;
         Gdk.Rectangle rectangle = Gdk.Rectangle ();
@@ -362,7 +362,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     /**
     * Move the popover to the coordinates of the given Gdk.Rectangle and
     * position it acording to the width and height of the rectangle.
-    **/
+     */
     public void move_to_rect (Gdk.Rectangle rect)
     {
         show_all();
@@ -374,7 +374,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      * Move the popover to the Gdk.Window window. The recommand method is
      * move_to_widget, but this one can be used when we don't know which widget
      * triggered the action (e.g. with a Gtk.Action).
-     **/
+     */
     public void move_to_window(Gdk.Window window)
     {
         int x, y;

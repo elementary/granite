@@ -20,24 +20,24 @@
 
 
 /**
-* This class provides a simple menu for managing Contractor.
-*/
+ * This class provides a simple menu for managing Contractor.
+ */
 public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     /**
-    * The Hashtable of available contracts
-    */
+     * The Hashtable of available contracts
+     */
     HashTable<string,string>[] contracts;
     /**
-    * The Hashtable of executables
-    */
+     * The Hashtable of executables
+     */
     Gee.HashMap <string,string> execs;
     public delegate void ContractCallback ();
     private string filepath;
     private string filemime;
 
     /**
-    * Passes when contract is clicked
-    */
+     * Passes when contract is clicked
+     */
     public signal void contract_activated (string contract_name);
     
     /**
@@ -45,7 +45,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
      *
      * @param filename the filename of the file
      * @param mime the mime-type of the file
-    */
+     */
     public ContractorMenu (string filename, string mime) {
         filepath = filename;
         filemime = mime;
@@ -60,7 +60,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
      * @param position desired position of menu item
      * @param method method to be called when menu item is clicked
      * @param use_stock tells whether to use stock for menu item
-    */
+     */
     public void add_item (string name, string icon_name, int position, ContractCallback method, bool use_stock = true) {
         var item = new Gtk.ImageMenuItem ();
         item.set_always_show_image (true);
@@ -80,7 +80,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
      * Deletes a group of menu items
      *
      * @param names of menu items to delete
-    */
+     */
     public void name_blacklist (string[] names) {
         this.foreach ((item)=> {
             if (((Gtk.MenuItem)item).get_label () in names)
@@ -117,7 +117,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
      *
      * @param filename the filename of the file
      * @param mime the mime-type of the file
-    */
+     */
     public void update (string? filename, string? mime) {
         this.foreach ((w) => {remove (w);});
         

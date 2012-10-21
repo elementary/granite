@@ -25,10 +25,10 @@ namespace Granite.Widgets {
     public class LightWindow : DecoratedWindow {
 
         /**
-        * Makes a new Window with the Light Theme
-        *
-        * @param title title of new window
-        */
+         * Makes a new Window with the Light Theme
+         *
+         * @param title title of new window
+         */
         public LightWindow (string title = "") {
             base (title, STYLE_CLASS_CONTENT_VIEW_WINDOW, STYLE_CLASS_CONTENT_VIEW);
         }

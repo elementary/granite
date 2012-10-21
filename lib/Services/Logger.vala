@@ -47,27 +47,28 @@ namespace Granite.Services {
     }
     
     /**
-    * This class helps in the use of logs in a Granite application.
-    * 
-    */
+     * This class helps in the use of logs in a Granite application.
+     * 
+     */
     public class Logger : GLib.Object {
         
         /**
-        * This is used to determine which level of LogLevelling should be used.
-        */
+         * This is used to determine which level of LogLevelling should be used.
+         */
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
         
         /**
-        * The name of the app that is logging.
-        */
+         * The name of the app that is logging.
+         */
         static string AppName { get; set; }
         
         static Regex re;
         
         /**
-        * This method initializes the Logger
-        * @param app_name name of app that is logging
-        */
+         * This method initializes the Logger
+         * 
+         * @param app_name name of app that is logging
+         */
         public static void initialize (string app_name) {
         
             AppName = app_name;
@@ -79,9 +80,10 @@ namespace Granite.Services {
         }
         
         /**
-        * Formats a message to be logged
-        * @param msg message to be formatted
-        */
+         * Formats a message to be logged
+         * 
+         * @param msg message to be formatted
+         */
         static string format_message (string msg) {
         
             if (re != null && re.match (msg)) {
@@ -92,9 +94,10 @@ namespace Granite.Services {
         }
         
         /**
-        * Logs message using Notify level formatting
-        * @param msg message to be logged
-        */
+         * Logs message using Notify level formatting
+         * 
+         * @param msg message to be logged
+         */
         public static void notification (string msg) {
             write (LogLevel.NOTIFY, format_message (msg));
         }
