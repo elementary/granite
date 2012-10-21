@@ -1910,7 +1910,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     }
 
     /**
-     * Traverses the tree hiding each item if it is to be hidden based on the passed VisibleFunc
+     * Applies the filter method set by {@link Granite.Widgets.SourceList.set_filter_func}
+     * to all the items that are part of the current tree.
      *
      * @see Granite.Widgets.SourceList.VisibleFunc
      * @see Granite.Widgets.SourceList.set_visible_func
