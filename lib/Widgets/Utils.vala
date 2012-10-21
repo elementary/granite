@@ -55,6 +55,7 @@ public enum Granite.TextStyle {
         }
     }
 }
+
 /**
 * This class helps to apply CSS to widgets.
 */
@@ -86,7 +87,7 @@ namespace Granite.Widgets.Utils {
         return css_provider;
     }
 
-    /** 
+    /**
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
      * @param screen Screen to apply style to

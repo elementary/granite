@@ -45,7 +45,7 @@ namespace Granite.Widgets {
     *
     **/
     public class CollapsiblePaned : Gtk.Paned {
-
+    
         private int saved_state = 10;
         private uint last_click_time = 0;
 
@@ -108,6 +108,7 @@ namespace Granite.Widgets {
         }
         
     }
+
     /**
      * This class is a horizantally colapsing paned
     */
@@ -118,6 +119,7 @@ namespace Granite.Widgets {
         }
         
     }
+
     /**
      * This class is a vertically colapsing paned
     */

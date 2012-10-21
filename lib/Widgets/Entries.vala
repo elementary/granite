@@ -65,6 +65,7 @@ namespace Granite.Widgets {
         }
         
     }
+
     /**
     * A searchbar with hint-text.
     *

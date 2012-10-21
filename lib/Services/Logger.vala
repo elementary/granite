@@ -45,18 +45,18 @@ namespace Granite.Services {
         CYAN,
         WHITE,
     }
-
+    
     /**
     * This class helps in the use of logs in a Granite application.
     * 
     */
     public class Logger : GLib.Object {
-
+        
         /**
         * This is used to determine which level of LogLevelling should be used.
         */
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
-
+        
         /**
         * The name of the app that is logging.
         */
@@ -77,7 +77,7 @@ namespace Granite.Services {
             
             Log.set_default_handler (glib_log_func);
         }
-
+        
         /**
         * Formats a message to be logged
         * @param msg message to be formatted

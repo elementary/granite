@@ -20,6 +20,7 @@
  */
 
 using Gtk;
+
 /**
 * This class is for making a first-launch screen easily
 *

@@ -101,6 +101,7 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
         else
             right_box.pack_start (widget, false, false, ITEM_SPACING);
     }
+
     /**
     * Sets the text of StatusBar
     * @param text text to set Status bar to

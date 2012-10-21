@@ -21,6 +21,7 @@
  */
 
 namespace Granite.Widgets {
+
     public class LightWindow : DecoratedWindow {
 
         /**

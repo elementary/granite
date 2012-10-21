@@ -107,6 +107,7 @@ namespace Granite.Widgets {
             mode_added (item_index, w);
             return item_index;
         }
+
         /**
         * Sets item of given index's activity 
         *

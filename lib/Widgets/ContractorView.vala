@@ -162,7 +162,7 @@ public class Granite.Widgets.ContractorView : TreeView {
         
         this.selected = 0;
     }
-
+    
     /**
     * Removes menu items by array of names
     * @param names the array of names to be deleted
@@ -192,8 +192,8 @@ public class Granite.Widgets.ContractorView : TreeView {
 	        cur_pos++;	            
         }
     }
-
-
+    
+    
     /**
     * Runs selected menu items associated contract
     **/ 

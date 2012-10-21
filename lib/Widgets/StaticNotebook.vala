@@ -32,6 +32,7 @@ namespace Granite.Widgets {
 
         /* The page switcher will NEVER be shown if this property is set to true */
         private bool switcher_hidden;
+
         /**
         * This currently selected page
         */
