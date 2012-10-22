@@ -199,7 +199,7 @@ namespace Granite.Widgets {
         }
 
         public override bool button_release_event (Gdk.EventButton e) {
-            return coords_over_close_button (e.x, e.y) || base.button_release_event (e);
+            return coords_over_close_button (e.x, e.y);
         }
 
         private bool coords_over_close_button (double x, double y) {
