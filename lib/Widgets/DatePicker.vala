@@ -30,6 +30,7 @@ namespace Granite.Widgets {
          *
          */
         public string format { get; construct; default = _("%B %e, %Y"); }
+    
         /**
          * Dropdown of DatePicker
          *
@@ -80,6 +81,7 @@ namespace Granite.Widgets {
             icon_release.connect (on_icon_press);
             calendar.day_selected_double_click.connect (on_calendar_day_selected);
         }
+
         /**
          * Makes a new DatePicker
          *

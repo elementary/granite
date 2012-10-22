@@ -18,7 +18,7 @@
 
   Artists:
       Daniel Foré <daniel@elementaryos.org>
-**/
+***/
 
 using Gtk;
 

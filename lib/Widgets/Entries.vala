@@ -97,7 +97,7 @@ namespace Granite.Widgets {
          * we can show a PopOver, for example.
          */
         public signal void search_icon_release ();
-
+        
         /**
          * Makes new search bar
          *

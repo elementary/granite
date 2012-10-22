@@ -42,6 +42,7 @@ namespace Granite.Widgets {
         const string DECORATED_WINDOW_STYLESHEET = """
             .decorated-window { border-width:1px; }
         """;
+
         /**
          * This method sets the given window to the decorated window style
          *
@@ -56,6 +57,7 @@ namespace Granite.Widgets {
                                STYLE_CLASS_DECORATED_WINDOW,
                                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
+
         /**
          * Whether to show the window title
          */
