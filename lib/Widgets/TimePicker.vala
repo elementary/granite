@@ -55,6 +55,7 @@ namespace Granite.Widgets {
             }
             return to_normalize_time;
         }
+
         /**
          * Current format for time
          */

@@ -43,7 +43,7 @@ public class Granite.Widgets.WrapLabel : Label {
             queue_resize();
         }
     }
-
+    
     public override void get_preferred_width (out int minimum_width, out int natural_width)
     {
         minimum_width = natural_width = m_wrap_width;

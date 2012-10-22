@@ -27,6 +27,7 @@ namespace Granite.Widgets {
         public signal void mode_added (int index, Gtk.Widget widget);
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
+
         /**
          * Index of currently selected item.
          */
@@ -34,6 +35,7 @@ namespace Granite.Widgets {
             get { return _selected; }
             set { set_active (value); }
         }
+
         /**
          * Read-only length of current ModeButton
          */

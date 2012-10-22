@@ -16,7 +16,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>
 
     END LICENSE
-* */
+**/
 
 namespace Granite.Widgets {
 
@@ -96,10 +96,10 @@ namespace Granite.Widgets {
 
         internal Gtk.Button close;
         public Gtk.Menu menu { get; set; }
-		
-		//we need to be able to toggle those from the notebook
-		internal Gtk.MenuItem new_window_m;
-		internal Gtk.MenuItem duplicate_m;
+        
+        //we need to be able to toggle those from the notebook
+        internal Gtk.MenuItem new_window_m;
+        internal Gtk.MenuItem duplicate_m;
 
         internal signal void closed ();
         internal signal void close_others ();
@@ -254,19 +254,19 @@ namespace Granite.Widgets {
             }
         }
 
-		/**
-		 * Allow duplicating tabs
+        /**
+         * Allow duplicating tabs
          */
-		bool _allow_duplication = true;
-		public bool allow_duplication {
-			get { return _allow_duplication; }
-			set {
-				_allow_duplication = value;
-				foreach (var tab in tabs) {
-					tab.duplicate_m.visible = value;
-				}
-			}
-		}
+        bool _allow_duplication = true;
+        public bool allow_duplication {
+            get { return _allow_duplication; }
+            set {
+                _allow_duplication = value;
+                foreach (var tab in tabs) {
+                    tab.duplicate_m.visible = value;
+                }
+            }
+        }
 
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
@@ -289,10 +289,10 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
-		/**
-		 * The menu appearing when the notebook is clicked on a blank space
+        /**
+         * The menu appearing when the notebook is clicked on a blank space
          */
-		public Gtk.Menu menu { get; private set; }
+        public Gtk.Menu menu { get; private set; }
 
         Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
@@ -342,18 +342,18 @@ namespace Granite.Widgets {
 
             this.add (this.notebook);
 
-			menu = new Gtk.Menu ();
-			
-			var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
-			menu.append (new_tab_m);
-			
-			menu.show_all ();
+            menu = new Gtk.Menu ();
+            
+            var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
+            menu.append (new_tab_m);
+            
+            menu.show_all ();
 
-			new_tab_m.activate.connect (() => {
-				var t = new Tab ();
-				notebook.page = (int)this.insert_tab (t, -1);
-				this.tab_added (t);
-			});
+            new_tab_m.activate.connect (() => {
+                var t = new Tab ();
+                notebook.page = (int)this.insert_tab (t, -1);
+                this.tab_added (t);
+            });
 
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
@@ -361,7 +361,7 @@ namespace Granite.Widgets {
                     notebook.page = (int) this.insert_tab (t, -1);
                     this.tab_added (t);
                 } else if (e.button == 3) {
-                	menu.popup (null, null, null, 3, e.time);
+                    menu.popup (null, null, null, 3, e.time);
                 }
 
                 return false;
@@ -578,14 +578,14 @@ namespace Granite.Widgets {
             });
 
             tab.new_window.connect (() => {
-            	notebook.remove_page (notebook.page_num (tab.page_container));
-            	tab_moved (tab, 0, true, 0, 0);
+                notebook.remove_page (notebook.page_num (tab.page_container));
+                tab_moved (tab, 0, true, 0, 0);
             });
             
             tab.duplicate.connect (() => {
-            	var dupl = new Tab (tab.label, tab.icon, tab.page);
-            	insert_tab (dupl, -1);
-            	tab_duplicated (dupl);
+                var dupl = new Tab (tab.label, tab.icon, tab.page);
+                insert_tab (dupl, -1);
+                tab_duplicated (dupl);
             });
 
             this.recalc_size ();

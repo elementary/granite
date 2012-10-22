@@ -102,6 +102,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             children.nth_data(index).set_visible (val);
         }
     }
+
      /**
      * Removes action item of given index
      *

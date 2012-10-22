@@ -18,15 +18,15 @@
 
   Artists:
       Daniel Foré <daniel@elementaryos.org>
-* */
+**/
 
 using Gtk;
 
 namespace Granite.Widgets {
 
-	/**
+    /**
      * This class makes an about dialog which goes in the App Menu on most apps.
-	 */
+     */
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.
@@ -116,7 +116,7 @@ namespace Granite.Widgets {
 
             /* Circular help button */
             help_button.size_allocate.connect ( (alloc) => {
-            	help_button.set_size_request (alloc.height, -1);
+                help_button.set_size_request (alloc.height, -1);
             });
 
             action_area.pack_end (help_button, false, false, 0);
