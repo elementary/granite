@@ -1367,12 +1367,12 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return false;
         }
 
-        public bool scroll_to_item (Item item) {
+        public bool scroll_to_item (Item item, bool use_align = false, float row_align = 0) {
             bool scrolled = false;
 
             var path = data_model.get_item_path (item);
             if (path != null) {
-                scroll_to_cell (path, null, false, 0, 0);
+                scroll_to_cell (path, null, use_align, row_align, 0);
                 scrolled = true;
             }
 
@@ -1964,18 +1964,28 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     /**
      * Scrolls the source list tree to make //item// visible.
      *
-     * If //expand_parents// is //true//, {@link Granite.Widgets.SourceList.ExpandableItem.expand_with_parents}
-     * is called for the item's parent, to make sure it's not hidden behind a collapsed row.
+     * {@link Granite.Widgets.SourceList.ExpandableItem.expand_with_parents} is called
+     * for the item's parent if //expand_parents// is //true//, to make sure it's not
+     * hidden behind a collapsed row.
+     *
+     * If use_align is //false//, then the row_align argument is ignored, and the tree
+     * does the minimum amount of work to scroll the item onto the screen. This means that
+     * the item will be scrolled to the edge closest to its current position. If the item
+     * is currently visible on the screen, nothing is done.
      *
      * @param item Item to scroll to.
-     * @param expand_parents Whether to expand item's parent expandable items in case they are collapsed.
+     * @param expand_parents Whether to recursively expand item's parent in case they are collapsed.
+     * @param use_align Whether to use the //row_align// argument.
+     * @param row_align The vertical alignment of //item//. 0.0 means top, 0.5 center, and 1.0 bottom.
      * @return //true// if successful; //false// otherwise.
      * @since 0.2
      */
-    public bool scroll_to_item (Item item, bool expand_parents = true) requires (has_item (item)) {
+    public bool scroll_to_item (Item item, bool expand_parents = true, bool use_align = false, float row_align = 0)
+        requires (has_item (item))
+    {
         if (expand_parents && item.parent != null)
             item.parent.expand_with_parents ();
 
-        return tree.scroll_to_item (item);
+        return tree.scroll_to_item (item, use_align, row_align);
     }
 }
