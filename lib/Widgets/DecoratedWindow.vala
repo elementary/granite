@@ -121,7 +121,6 @@ namespace Granite.Widgets {
 
             this.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK);
             this.motion_notify_event.connect (on_motion_notify);
-            this.button_press_event.connect (on_button_press);
             this.delete_event.connect_after (on_delete_event);
             this.size_allocate.connect (on_size_allocate);
             this.draw.connect (draw_widget);
@@ -188,16 +187,19 @@ namespace Granite.Widgets {
             return true;
         }
 
-        private bool on_button_press (Gdk.EventButton e) {
-                if (coords_over_close_button (e.x, e.y)) {
-                    var event = (Gdk.Event*)(&e);
-                    this.delete_event (event->copy ().any);
-                }
-                else {
-                    this.begin_move_drag ((int)e.button, (int)e.x_root, (int)e.y_root, e.time);
-                }
-
+        public override bool button_press_event (Gdk.EventButton e) {
+            if (coords_over_close_button (e.x, e.y)) {
+                var event = (Gdk.Event*) (&e);
+                this.delete_event (event->any);
                 return true;
+            }
+
+            this.begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
+            return base.button_press_event (e);
+        }
+
+        public override bool button_release_event (Gdk.EventButton e) {
+            return coords_over_close_button (e.x, e.y) || base.button_release_event (e);
         }
 
         private bool coords_over_close_button (double x, double y) {
