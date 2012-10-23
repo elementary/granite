@@ -47,6 +47,12 @@ namespace Granite.Widgets {
          * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
          **/
         public enum MenuPosition {
+            BOTTOM_LEFT,
+            BOTTOM_CENTER,
+            BOTTOM_RIGHT,
+            TOP_LEFT,
+            TOP_CENTER,
+            TOP_RIGHT,
             CENTER,
             LEFT,
             RIGHT,
@@ -269,16 +275,24 @@ namespace Granite.Widgets {
             Allocation allocation;
             menu.attach_widget.get_allocation (out allocation);
 
-            if (menu_position == MenuPosition.RIGHT) {
+
+            //left, right or center?? (menu is already on left)
+            if (menu_position == MenuPosition.BOTTOM_RIGHT || menu_position == MenuPosition.TOP_RIGHT || menu_position == MenuPosition.RIGHT) {
                 x += allocation.x;
                 x -= menu_allocation.width;
                 x += allocation.width;
             }
-            else if (menu_position != MenuPosition.LEFT) {
+            else if (menu_position != MenuPosition.LEFT && menu_position != MenuPosition.BOTTOM_LEFT && menu_position != MenuPosition.TOP_LEFT) {
                 /* Centered menu */
                 x += allocation.x;
                 x -= menu_allocation.width / 2;
                 x += allocation.width / 2;
+            }
+
+            //bottom or top? (menu is already on bottom by default)
+            if(menu_position == MenuPosition.TOP_LEFT || menu_position == MenuPosition.TOP_CENTER || menu_position == MenuPosition.TOP_RIGHT ){
+                y -= menu_allocation.height;
+                y -= this.get_allocated_height ();
             }
 
             int width, height;
