@@ -195,7 +195,7 @@ public class Granite.Widgets.ContractorView : TreeView {
 	        cur_pos++;	            
         }
     }
-    
+		
     
     /**
      * Runs selected menu items associated contract

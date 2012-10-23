@@ -34,7 +34,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     public delegate void ContractCallback ();
     private string filepath;
     private string filemime;
-
+	
     /**
      * Passes when contract is clicked
      */
@@ -111,7 +111,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
             item.show_all ();
         }
     }
-
+	
     /**
      * Updates Contractor menu items
      *
