@@ -175,8 +175,10 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
 
             get_window ().get_device_position (device, out x, out y, null);
 
+            bool is_ltr = get_actual_direction () == Gtk.TextDirection.LTR;
+
             if (orientation == Gtk.Orientation.HORIZONTAL)
-                pos = Utils.is_ltr (this) ? x : get_allocated_width () - x;
+                pos = is_ltr ? x : get_allocated_width () - x;
             else
                 pos = y;
 
@@ -210,5 +212,12 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
     public override bool grab_broken_event (Gdk.EventGrabBroken event) {
         in_resize = false;
         return base.grab_broken_event (event);
+    }
+
+    private Gtk.TextDirection get_actual_direction () {
+        var dir = get_direction ();
+        if (dir == Gtk.TextDirection.NONE)
+            dir = Gtk.Widget.get_default_direction ();
+        return dir;
     }
 }

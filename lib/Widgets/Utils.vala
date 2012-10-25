@@ -100,14 +100,6 @@ namespace Granite.Widgets.Utils {
         return provider;
     }
 
-    public bool is_ltr (Gtk.Widget widget) {
-        var dir = widget.get_direction ();
-
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-
-        return dir == Gtk.TextDirection.LTR;
-    }
 
     /**
      * Text Style
