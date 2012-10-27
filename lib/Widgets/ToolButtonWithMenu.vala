@@ -46,22 +46,23 @@ namespace Granite.Widgets {
          * RIGHT: Right-align the menu relative to the button's position.
          * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
          **/
-        public enum MenuPosition {
-            BOTTOM_LEFT,
-            BOTTOM_CENTER,
-            BOTTOM_RIGHT,
-            TOP_LEFT,
-            TOP_CENTER,
-            TOP_RIGHT,
-            CENTER,
-            LEFT,
-            RIGHT,
-            INSIDE_WINDOW
-        }
+		public enum VMenuPosition {
+    		TOP,
+    		BOTTOM
+		}
+
+		public enum HMenuPosition {
+    		LEFT,
+    		CENTER,
+    		RIGHT,
+    		INSIDE_WINDOW // center by default but move it the menu goes out of the window
+		}
+		
+		public HMenuPosition horizontal_menu_position { get; set; default = HMenuPosition.CENTER; }
+		public VMenuPosition vertical_menu_position { get; set; default = VMenuPosition.BOTTOM; }
 
         public Gtk.Action? myaction;
         public ulong toggled_sig_id;
-        public MenuPosition menu_position;
 
         /* Delegate function used to populate menu */
         public delegate Gtk.Menu MenuFetcher ();
@@ -122,9 +123,9 @@ namespace Granite.Widgets {
         }
 
         public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu,
-                                    MenuPosition menu_position = MenuPosition.CENTER)
+                                    HMenuPosition horizontal_menu_position = HMenuPosition.CENTER)
         {
-            this.menu_position = menu_position;
+            this.horizontal_menu_position = horizontal_menu_position;
 
             icon_widget = image;
             label_widget = new Gtk.Label (label);
@@ -276,21 +277,21 @@ namespace Granite.Widgets {
             menu.attach_widget.get_allocation (out allocation);
 
 
-            //left, right or center?? (menu is already on left)
-            if (menu_position == MenuPosition.BOTTOM_RIGHT || menu_position == MenuPosition.TOP_RIGHT || menu_position == MenuPosition.RIGHT) {
+            /* Left, right or center?? (menu is already on left) */
+            if (horizontal_menu_position == HMenuPosition.RIGHT) {
                 x += allocation.x;
                 x -= menu_allocation.width;
                 x += allocation.width;
-            }
-            else if (menu_position != MenuPosition.LEFT && menu_position != MenuPosition.BOTTOM_LEFT && menu_position != MenuPosition.TOP_LEFT) {
+                
+            } else if (horizontal_menu_position != HMenuPosition.LEFT) {
                 /* Centered menu */
                 x += allocation.x;
                 x -= menu_allocation.width / 2;
                 x += allocation.width / 2;
             }
 
-            //bottom or top? (menu is already on bottom by default)
-            if(menu_position == MenuPosition.TOP_LEFT || menu_position == MenuPosition.TOP_CENTER || menu_position == MenuPosition.TOP_RIGHT ){
+            /* Bottom or top? (menu is already on bottom by default) */
+            if (vertical_menu_position == VMenuPosition.TOP && horizontal_menu_position != HMenuPosition.INSIDE_WINDOW) {
                 y -= menu_allocation.height;
                 y -= this.get_allocated_height ();
             }
@@ -298,7 +299,7 @@ namespace Granite.Widgets {
             int width, height;
             menu.get_size_request (out width, out height);
 
-            if (menu_position == MenuPosition.INSIDE_WINDOW) {
+            if (horizontal_menu_position == HMenuPosition.INSIDE_WINDOW) {
                 /* Get window geometry */
                 var parent_widget = get_toplevel ();
 
