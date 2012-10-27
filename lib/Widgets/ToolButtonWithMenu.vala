@@ -123,10 +123,12 @@ namespace Granite.Widgets {
         }
 
         public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu,
-                                    HMenuPosition horizontal_menu_position = HMenuPosition.CENTER)
+                                    HMenuPosition horizontal_menu_position = HMenuPosition.CENTER,
+                                    VMenuPosition vertical_menu_position = VMenuPosition.TOP)
         {
             this.horizontal_menu_position = horizontal_menu_position;
-
+            this.vertical_menu_position = vertical_menu_position;
+            
             icon_widget = image;
             label_widget = new Gtk.Label (label);
             (label_widget as Gtk.Label).use_underline = true;
