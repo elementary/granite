@@ -1,6 +1,6 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1.5)
+set (${PKGNAME_}_VERSION 0.1.1)
 # increase when you break the API
 
 set (${PKGNAME_}_SOVERSION 0)
@@ -84,7 +84,6 @@ vala_precompile(VALA_C
     Widgets/StatusBar.vala
     Widgets/SidebarPaned.vala
     Widgets/ThinPaned.vala
-    Widgets/Sidebar.vala
     Main.vala
     config.vapi
 PACKAGES
@@ -134,7 +133,7 @@ endmacro(_list_prefix)
 # GObject Introspection
 if(INTROSPECTION_FOUND)
   include(GObjectIntrospectionMacros)
-  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1 Gtk-3.0)
+  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1.1 Gtk-3.0)
 endif()
 
 add_custom_target(docs)
