@@ -40,26 +40,31 @@ namespace Granite.Widgets {
         public signal void right_click (Gdk.EventButton ev);
 
         /**
-         * MenuPosition:
+         * VMenuPosition:
+         * TOP: Align the menu at top of button position.
+         * BOTTOM: Align the menu at bottom of button position.
+         **/
+	public enum VMenuPosition {
+    		TOP,
+    		BOTTOM
+	}
+
+        /**
+         * HMenuPosition:
          * CENTER: Center-align the menu relative to the button's position.
          * LEFT: Left-align the menu relative to the button's position.
          * RIGHT: Right-align the menu relative to the button's position.
          * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
          **/
-		public enum VMenuPosition {
-    		TOP,
-    		BOTTOM
-		}
-
-		public enum HMenuPosition {
+	public enum HMenuPosition {
     		LEFT,
     		CENTER,
     		RIGHT,
     		INSIDE_WINDOW // center by default but move it the menu goes out of the window
-		}
+	}
 		
-		public HMenuPosition horizontal_menu_position { get; set; default = HMenuPosition.CENTER; }
-		public VMenuPosition vertical_menu_position { get; set; default = VMenuPosition.BOTTOM; }
+	public HMenuPosition horizontal_menu_position { get; set; default = HMenuPosition.CENTER; }
+	public VMenuPosition vertical_menu_position { get; set; default = VMenuPosition.BOTTOM; }
 
         public Gtk.Action? myaction;
         public ulong toggled_sig_id;
@@ -122,9 +127,7 @@ namespace Granite.Widgets {
             menu.deactivate.connect (popdown_menu);
         }
 
-        public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu,
-                                    HMenuPosition horizontal_menu_position = HMenuPosition.CENTER,
-                                    VMenuPosition vertical_menu_position = VMenuPosition.TOP)
+        public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu)
         {
             this.horizontal_menu_position = horizontal_menu_position;
             this.vertical_menu_position = vertical_menu_position;
