@@ -1,70 +1,68 @@
-# Russian translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Arabic translation for granite
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-10-21 19:58+0000\n"
-"Last-Translator: Denis Lets <Unknown>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"PO-Revision-Date: 2012-10-27 16:49+0000\n"
+"Last-Translator: xDev <Unknown>\n"
+"Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-22 04:49+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
+"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
+"X-Launchpad-Export-Date: 2012-10-28 04:56+0000\n"
+"X-Generator: Launchpad (build 16194)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr "Проект:"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr "Автор:"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr "Авторские права"
+msgstr "حقوق النسخ"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr "Подтверждено"
+msgstr "وثّقه"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr "Перевод: "
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
-msgstr "Эта программа опубликована в соответствии с условиями "
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" не предоставляется АБСОЛЮТНО НИКАКИХ гарантий; для деталей посетите "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"Не удалось соедиться с Contractor. Возможно, его необходимо установить"
+msgstr "غير قادر على التواصل مع Contractor. قد تحتاج لتثبيته"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr "Нет действий для этого файла"
+msgstr "لم يُعثر على فعل لهذا المللف"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
 msgid "%l:%M %p"
-msgstr "%k:%M"
+msgstr "%Ol:%OM %p"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
@@ -73,62 +71,61 @@ msgstr "%k:%M"
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
 msgid "Menu"
-msgstr "Меню"
+msgstr "القائمة"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "О программе"
+msgstr "عن البرنامج"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
+msgstr "%e %B، %Y"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
-msgstr "Закрыть вкладку"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
-msgstr "Закрыть вкладку"
+msgstr "أغلق اللّسان"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr "Открыть в новом окне"
+msgstr "افتح في نافذة جديدة"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr "Копия"
+msgstr "كرّر"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] "Закрыть другую вкладку"
-msgstr[1] "Закрыть другие вкладки"
-msgstr[2] "Закрыть другие вкладки"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr "Новая вкладка"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
-msgstr "Новая вкладка"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Перевести это приложение"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
 msgid "Report a Problem"
-msgstr "Сообщить о проблеме"
+msgstr ""

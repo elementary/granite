@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-08-07 06:29+0000\n"
+"PO-Revision-Date: 2012-10-30 16:22+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-09-24 04:52+0000\n"
-"X-Generator: Launchpad (build 15985)\n"
+"X-Launchpad-Export-Date: 2012-10-31 05:14+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -28,11 +28,11 @@ msgstr "Ditulis oleh"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr ""
+msgstr "Hak Cipta"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr ""
+msgstr "Didokumentasikan oleh"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
@@ -40,16 +40,16 @@ msgstr "Diterjemahkan oleh "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
-msgstr "Program ini diterbitkan di bawah ketentuan "
+msgstr "Program ini diterbitkan di bawah ketentuan lisensi "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " lisensi, TANPA GARANSI; lebih lengkap, kunjungi "
+msgstr " , TANPA GARANSI; lebih lengkap, kunjungi "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Tak tersambung ke Contractor. Anda perlu memasangnya"
+msgstr "Tak tersambung ke Contractor. Anda perlu menginstalnya"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
@@ -75,7 +75,7 @@ msgstr "Menu"
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "Ihwal"
+msgstr "Info"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
@@ -95,24 +95,23 @@ msgstr "Tutup Tab"
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Buka di jendela baru"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr ""
+msgstr "Gandakan"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tutup Tab yang Lain"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr ""
+msgstr "Tab Baru"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
@@ -122,7 +121,7 @@ msgstr "Tab baru"
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Terjemahkan Apl Ini"
+msgstr "Terjemahkan App Ini"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
