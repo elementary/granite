@@ -127,8 +127,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * divided between different objects, as shown below:
      *
      * Monitored by: Object::method that receives the signals indicating the property change.
-     * Applied by: Object::method that actually updates (directly or indirectly, as in the case of
-     *             the tree model) the tree to reflect the property changes.
+     * Applied by: Object::method that actually updates the tree to reflect the property changes
+     *             (directly or indirectly, as in the case of the tree data model).
      *
      * ---------------------------------------------------------------------------------------------
      *   PROPERTY        |  MONITORED BY                     |  APPLIED BY
@@ -1097,6 +1097,46 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
 
     /**
+     * A cell renderer that only adds space.
+     */
+    private class CellRendererSpacer : Gtk.CellRenderer {
+        /**
+         * Indentation level represented by this cell renderer
+         */
+        public int level { get; set; default = -1; }
+
+        public override Gtk.SizeRequestMode get_request_mode () {
+            return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+        }
+
+        public override void get_preferred_width (Gtk.Widget widget, out int min_size, out int natural_size) {
+            min_size = natural_size = 2 * (int) xpad;
+        }
+
+        public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
+                                                             out int min_height, out int natural_height)
+        {
+            min_height = natural_height = 2 * (int) ypad;
+        }
+
+        public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
+                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
+        {
+            // Nothing to do. This renderer only adds space.
+        }
+
+        [Deprecated (replacement = "Gtk.CellRenderer.get_preferred_size", since = "")]
+        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+                                       out int x_offset, out int y_offset,
+                                       out int width, out int height)
+        {
+            assert_not_reached ();
+        }
+    }
+
+
+
+    /**
      * The tree that actually displays the items.
      *
      * All the user interaction happens here.
@@ -1126,12 +1166,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             N_COLS
         }
 
-        // Extra horizontal space added between the expanders and items. The actual
-        // added space equals two times the values.
-        private const uint LEFT_HPADDING = 2;
-        private const uint PRIMARY_EXPANDER_HPADDING = 2;
-        private const uint SECONDARY_EXPANDER_HPADDING = 2;
-        private const uint ICON_HPADDING = 2;
+        // Padding added at the beginning of every new level. Must be an even number.
+        private const uint LEVEL_INDENTATION = 10;
+
+        // Padding added on the left side of the sidebar. Must be an even number.
+        private const uint LEFT_PADDING = 4;
 
         private Item? selected;
         private unowned Item? edited;
@@ -1142,9 +1181,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private CellRendererIcon activatable_cell;
         private Gtk.CellRenderer primary_expander_cell;
         private Gtk.CellRenderer secondary_expander_cell;
-        private Gtk.CellRenderer root_spacer_cell;
+        private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
 
         public Tree (DataModel data_model) {
+            get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+
             this.data_model = data_model;
             set_model (data_model);
 
@@ -1164,22 +1205,22 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             insert_column (item_column, Column.ITEM);
 
-            root_spacer_cell = new Gtk.CellRendererText ();
-            root_spacer_cell.xpad = LEFT_HPADDING;
-            item_column.pack_start (root_spacer_cell, false);
-            item_column.set_cell_data_func (root_spacer_cell, root_spacer_cell_data_func);
+            // Now pack the cell renderers. We insert them in reverse order (using pack_end)
+            // because we want to use TreeViewColumn.pack_start exclusively for inserting
+            // spacer cell renderers for level-indentation purposes.
+            // See add_spacer_cell_for_level() for more details.
 
-            // First expander. Used for normal expandable items
-            primary_expander_cell = new CellRendererExpander ();
-            primary_expander_cell.xpad = PRIMARY_EXPANDER_HPADDING;
-            primary_expander_cell.xalign = 0;
-            item_column.pack_start (primary_expander_cell, false);
-            item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
+            // Second expander. Used for main categories
+            secondary_expander_cell = new CellRendererExpander ();
+            secondary_expander_cell.xpad = 10;
+            item_column.pack_end (secondary_expander_cell, false);
+            item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
 
-            icon_cell = new CellRendererIcon ();
-            icon_cell.xpad = ICON_HPADDING;
-            item_column.pack_start (icon_cell, false);
-            item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
+            activatable_cell = new CellRendererIcon ();
+            activatable_cell.xpad = 6;
+            activatable_cell.activated.connect (on_activatable_activated);
+            item_column.pack_end (activatable_cell, false);
+            item_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
 
             text_cell = new Gtk.CellRendererText ();
             text_cell.editable_set = true;
@@ -1188,38 +1229,37 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             text_cell.editing_canceled.connect (on_editing_canceled);
             text_cell.ellipsize = Pango.EllipsizeMode.END;
             text_cell.xalign = 0;
-            item_column.pack_start (text_cell, true);
+            item_column.pack_end (text_cell, true);
             item_column.set_cell_data_func (text_cell, name_cell_data_func);
 
-            activatable_cell = new CellRendererIcon ();
-            activatable_cell.activated.connect (on_activatable_activated);
-            item_column.pack_start (activatable_cell, false);
-            item_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
+            icon_cell = new CellRendererIcon ();
+            icon_cell.xpad = 2;
+            item_column.pack_end (icon_cell, false);
+            item_column.set_cell_data_func (icon_cell, icon_cell_data_func);
 
-            // Second expander. Used for main categories
-            secondary_expander_cell = new CellRendererExpander ();
-            secondary_expander_cell.xpad = SECONDARY_EXPANDER_HPADDING;
-            item_column.pack_start (secondary_expander_cell, false);
-            item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
+            // First expander. Used for normal expandable items
+            primary_expander_cell = new CellRendererExpander ();
+            primary_expander_cell.xpad = 2;
+            primary_expander_cell.xalign = 0;
+            item_column.pack_end (primary_expander_cell, false);
+            item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
             // Selection
             var selection = get_selection ();
             selection.mode = Gtk.SelectionMode.BROWSE;
             selection.set_select_function (select_func);
 
-            var style_context = get_style_context ();
-            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
-            style_context.changed.connect (compute_indentation);
-
-            compute_indentation ();
-
             // Monitor item changes
             data_model.item_updated.connect_after (on_model_item_updated);
+
+            // Add root-level indentation. New levels will be added by update_item_expansion()
+            add_spacer_cell_for_level (1);
         }
 
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
+            data_model.item_updated.disconnect (on_model_item_updated);
         }
 
         private void on_model_item_updated (Item item) {
@@ -1230,47 +1270,51 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                 update_expansion (expandable_item);
         }
 
-        /**
-         * Sets the ideal level indentation.
-         *
-         * Because our tree doesn't use GtkTreeView's built-in expanders, some tricks
-         * had to be applied to it in order to get proper indentation, as the widget
-         * ties the automatic indentation feature to the default expanders; if they
-         * are not used, the default indentation support is gone and we have no other
-         * option than using the level_indentation property. Since level_indentation
-         * doesn't affect root-level items, we pack an invisible expander-cell there.
-         *
-         * LEGEND:
-         *
-         * {...}  : root_spacer_cell
-         * -----> : level_indentation
-         * [....] : primary_expander_cell
-         *
-         * level_indentaton and primary_expander_cell are supposed to have the
-         * same width.
-         *
-         * SPACER DIAGRAM
-         *
-         * {...} CATEGORY 1
-         * -----> [....] Item 1
-         * -----> [....] Expandable Item 2
-         * -----> -----> [....] Sub-Item 1
-         * {...} CATEGORY 2
-         * -----> [....] Expandable Item 1
-         * -----> -----> [....] Expandable Sub-Item 1
-         * -----> -----> -----> [....] Expandable Sub-Item 1
-         *
-         * As shown in the diagram above, level_indentation equals the width of
-         * primary_expander_cell, which is visible even if the row it's packed
-         * into is not expandable; it only draws an arrow for expandable and
-         * collapsible rows though. Please notice that the tree view doesn't
-         * add the value of level_indentation to root-level items, and so we
-         * must use an invisible expander row to control the padding there;
-         * it doesn't have the same value of level_indentation though, so it's
-         * not aligned with the second-level children.
-         */
-        private void compute_indentation () {
-            this.level_indentation = get_cell_width (primary_expander_cell);
+        private void add_spacer_cell_for_level (int level, bool check_previous = true)
+            requires (level > 0)
+        {
+            if (spacer_cells == null)
+                spacer_cells = new Gee.HashMap<int, CellRendererSpacer> ();
+
+            if (spacer_cells[level] == null) {
+                var spacer_cell = new CellRendererSpacer ();
+                spacer_cell.level = level;
+                spacer_cells[level] = spacer_cell;
+
+                uint cell_xpadding;
+
+                // The primary expander is not visible for root-level (i.e. first level)
+                // items, so for the second level of indentation, we use a low padding
+                // because the primary expander will add enough space. For the root level,
+                // we use LEFT_PADDING, and LEVEL_INDENTATION for the remaining levels.
+                // The value of cell_xpadding will be allocated *twice* by the cell renderer,
+                // so we set the value to a half of actual (desired) value.
+                switch (level) {
+                    case 1: // root
+                        cell_xpadding = LEFT_PADDING / 2;
+                    break;
+
+                    case 2: // second level
+                        cell_xpadding = 0;
+                    break;
+
+                    default: // remaining levels
+                        cell_xpadding = LEVEL_INDENTATION / 2;
+                    break;
+                }
+
+                spacer_cell.xpad = cell_xpadding;
+
+                var item_column = get_column (Column.ITEM);
+                item_column.pack_start (spacer_cell, false);
+                item_column.set_cell_data_func (spacer_cell, spacer_cell_data_func);
+
+                // Make sure that the previous indentation levels also exist
+                if (check_previous) {
+                    for (int i = level - 1; i > 0; i--)
+                        add_spacer_cell_for_level (i, false);
+                }
+            }
         }
 
         private int get_cell_width (Gtk.CellRenderer cell_renderer) {
@@ -1450,6 +1494,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             var path = data_model.get_item_path (expandable_item);
 
             if (path != null) {
+                // Make sure that the indentation cell for the item's level exists.
+                // We use +1 because the method will make sure that the previous
+                // indentation levels exist too.
+                add_spacer_cell_for_level (path.get_depth () + 1);
+
                 if (expandable_item.expanded) {
                     expand_row (path, false);
 
@@ -1642,12 +1691,20 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return data_model.get_item (iter);
         }
 
-        private void root_spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                 Gtk.TreeModel model, Gtk.TreeIter iter)
+        private static void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                                   Gtk.TreeModel model, Gtk.TreeIter iter)
         {
-            // Only show allocated space for root-level items. Otherwise, hide.
-            renderer.visible = data_model.is_iter_at_root_level (iter);
-            root_spacer_cell.is_expander = false;
+            var spacer = renderer as CellRendererSpacer;
+            assert (spacer != null);
+            assert (spacer.level > 0);
+
+            var path = model.get_path (iter);
+
+            int level = -1;
+            if (path != null)
+                level = path.get_depth ();
+
+            renderer.visible = spacer.level <= level;
         }
 
         private void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
