@@ -1317,12 +1317,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        private int get_cell_width (Gtk.CellRenderer cell_renderer) {
-            Gtk.Requisition min_req;
-            cell_renderer.get_preferred_size (this, out min_req, null);
-            return min_req.width;
-        }
-
         /**
          * Evaluates whether the item at the specified path can be selected or not.
          */
@@ -1573,8 +1567,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         if (item is ExpandableItem) {
-                            bool over_expander = over_cell (column, primary_expander_cell, cell_x)
-                                              || over_cell (column, secondary_expander_cell, cell_x)
+                            bool over_expander = over_cell (column, path, primary_expander_cell, cell_x)
+                                              || over_cell (column, path, secondary_expander_cell, cell_x)
                                               || data_model.is_category (item, null, path);
                             if (over_expander && toggle_expansion (item as ExpandableItem))
                                 return true;
@@ -1583,7 +1577,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                         // Check if the user double-clicked over the text cell
                         if (event.type == Gdk.EventType.2BUTTON_PRESS
                             && item.editable
-                            && over_cell (column, text_cell, cell_x)
+                            && over_cell (column, path, text_cell, cell_x)
                             && start_editing_item (item))
                         {
                             return true;
@@ -1595,20 +1589,37 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return base.button_press_event (event);
         }
 
-        private bool over_cell (Gtk.TreeViewColumn col, Gtk.CellRenderer cell, int x) {
+        private bool over_cell (Gtk.TreeViewColumn col, Gtk.TreePath path, Gtk.CellRenderer cell, int x) {
             int cell_x, cell_width;
             bool found = col.cell_get_position (cell, out cell_x, out cell_width);
 
-            // XXX Most times, when primary_expander_cell.is_expanded is
-            // 'false', cell_get_position returns 0 for cell_width, making everything fail
-            // in our button-press handler. Since I have no idea of what is provoking this
-            // (it is certainly not the cell's visibility - already checked that), I thought
-            // I'd be a duck-taper and added a workaround (which is working perfectly fine
-            // by the way). Please add a proper fix if you know what is provoking the problem.
-            if (cell == primary_expander_cell)
+            if (found && cell == primary_expander_cell) {
+                // XXX Most times, when primary_expander_cell.is_expanded is
+                // 'false', cell_get_position returns 0 for cell_width, making everything fail
+                // in our button-press handler. Since I have no idea of what is provoking this
+                // (it is certainly not the cell's visibility - already checked that), I thought
+                // I'd be a duck-taper and added a workaround (which is working perfectly fine
+                // by the way). Please add a proper fix if you know what is provoking the problem.
                 cell_width = get_cell_width (primary_expander_cell);
 
+                Gtk.TreeIter iter;
+                if (model.get_iter (out iter, path)) {
+                    // Call the cell-data function and make it assign the proper state to the cell
+                    expander_cell_data_func (col, cell, model, iter);
+
+                    // We want to return false if the cell is not expandable (i.e. the arrow is hidden)
+                    // or not visible.
+                    found = cell.visible && cell.is_expander;
+                }
+            }
+
             return found && x > cell_x && x < cell_x + cell_width;
+        }
+
+        private int get_cell_width (Gtk.CellRenderer cell_renderer) {
+            Gtk.Requisition min_req;
+            cell_renderer.get_preferred_size (this, out min_req, null);
+            return min_req.width;
         }
 
         public override bool popup_menu () {
