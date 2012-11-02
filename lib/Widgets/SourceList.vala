@@ -951,6 +951,22 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         /**
+         * Returns a newly-created iterator pointing to the item, or null in case a valid iter
+         * was not found.
+         */
+        public Gtk.TreeIter? get_item_iter (Item item) {
+            var child_iter = get_item_child_iter (item);
+
+            if (child_iter != null) {
+                Gtk.TreeIter iter;
+                if (convert_child_iter_to_iter (out iter, child_iter))
+                    return iter;
+            }
+
+            return null;
+        }
+
+        /**
          * Sets the sort function, or "unsets" it if null is passed. Please note though,
          * that unsetting the sort function doesn't bring the items back to their initial
          * order.
@@ -1838,12 +1854,12 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * property is set to //false//, then it won't be displayed even if this method returns true.
      *
      * It is important to note that the method ''must not modify any property of //item//'',
-     * because doing so would cause re-entrancy, as the widget's internal data model invokes the
+     * because doing so would cause re-entrancy, because the widget's internal data model invokes the
      * method to filter an item again after every property change, resulting in an infinite chain
      * of recursive calls.
      *
-     * Usually, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough in
-     * most cases. The advantage of using this method is that its nature is non-destructive, and the
+     * Usually, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough.
+     * The advantage of using this method is that its nature is non-destructive, and the
      * changes it makes can be easily reverted (see {@link Granite.Widgets.SourceList.refilter}).
      *
      * @param item Item to be checked.
@@ -2055,5 +2071,92 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             item.parent.expand_with_parents ();
 
         return tree.scroll_to_item (item, use_align, row_align);
+    }
+
+    /**
+     * Gets the previous item with respect to //reference//.
+     *
+     * @param reference Item to use as reference.
+     * @return The item that appears before //reference//, or //null// if there's none.
+     * @since 0.2
+     */
+    public Item? get_previous_item (Item reference) requires (has_item (reference)) {
+        // this will return null for root, so iter_n_children() will always work fine
+        var iter = data_model.get_item_iter (reference);
+        if (iter != null) {
+            Gtk.TreeIter new_iter = iter; // workaround for valac 0.18
+            if (data_model.iter_previous (ref new_iter))
+                return data_model.get_item (new_iter);
+        }
+        
+        return null;
+    }
+
+    /**
+     * Gets the next item with respect to //reference//.
+     *
+     * @param reference Item to use as reference.
+     * @return The item that appears after //reference//, or //null// if there's none.
+     * @since 0.2
+     */
+    public Item? get_next_item (Item reference) requires (has_item (reference)) {
+        // this will return null for root, so iter_n_children() will always work fine
+        var iter = data_model.get_item_iter (reference);
+        if (iter != null) {
+            Gtk.TreeIter new_iter = iter; // workaround for valac 0.18
+            if (data_model.iter_next (ref new_iter))
+                return data_model.get_item (new_iter);
+        }
+        
+        return null;
+    }
+
+    /**
+     * Gets the first visible child of an expandable item.
+     *
+     * @param parent Parent of the child to look up.
+     * @return The first visible child of //parent//, or null if it was not found.
+     * @since 0.2
+     */
+    public Item? get_first_child (ExpandableItem parent) {
+        return get_nth_child (parent, 0);
+    }
+
+    /**
+     * Gets the last visible child of an expandable item.
+     *
+     * @param parent Parent of the child to look up.
+     * @return The last visible child of //parent//, or null if it was not found.
+     * @since 0.2
+     */
+    public Item? get_last_child (ExpandableItem parent) {
+        return get_nth_child (parent, (int) get_n_visible_children (parent) - 1);
+    }
+
+    /**
+     * Gets the number of visible children of an expandable item.
+     *
+     * @param parent Item to query.
+     * @return Number of visible children of //parent//.
+     * @since 0.2
+     */
+    public uint get_n_visible_children (ExpandableItem parent) {
+        // this will return null for root, so iter_n_children() will always work properly.
+        var parent_iter = data_model.get_item_iter (parent);
+        return data_model.iter_n_children (parent_iter);
+    }
+
+    private Item? get_nth_child (ExpandableItem parent, int index) {
+        if (index < 0)
+            return null;
+
+        // this will return null for root, so iter_nth_child() will always work properly.
+        var parent_iter = data_model.get_item_iter (parent);
+
+        Gtk.TreeIter child_iter;
+        if (data_model.iter_nth_child (out child_iter, parent_iter, index))
+            return data_model.get_item (child_iter);
+
+        return null;
     }
 }
