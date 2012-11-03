@@ -228,6 +228,10 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * When this property is set to //true//, users can edit the item by pressing
          * the F2 key, or by double-clicking over an item.
          *
+         * ''This property only works for selectable items''. If that property is set to
+         * //false//, the item won't be editable even if this property is set to //true//.
+         *
+         * @see Granite.Widgets.SourceList.Item.selectable
          * @see Granite.Widgets.SourceList.start_editing_item
          * @since 0.2
          */
@@ -301,12 +305,17 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * An item that can contain more items.
      *
      * It supports all the properties inherited from {@link Granite.Widgets.SourceList.Item},
-     * and behaves like a normal item, except when it is located at the root level;
-     * in that case, the {@link Granite.Widgets.SourceList.Item.activatable},
-     * {@link Granite.Widgets.SourceList.Item.count}, and {@link Granite.Widgets.SourceList.Item.icon}
-     * properties are simply //ignored// by the {@link Granite.Widgets.SourceList} widget.
-     * Root-level expandable items are also ''not'' editable, and are not displayed when they
-     * contain zero children.
+     * and behaves like a normal item, except when it is located at the root level; in that case,
+     * the following properties are ignored by the widget:
+     *
+     * * {@link Granite.Widgets.SourceList.Item.selectable}
+     * * {@link Granite.Widgets.SourceList.Item.editable}
+     * * {@link Granite.Widgets.SourceList.Item.icon}
+     * * {@link Granite.Widgets.SourceList.Item.activatable}
+     * * {@link Granite.Widgets.SourceList.Item.count}
+     *
+     * Root-level expandable items (i.e. Main Categories) are ''not'' displayed when they contain
+     * zero visible children.
      *
      * @since 0.2
      */
@@ -990,6 +999,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * Checks whether an item is a category (i.e. a root-level expandable item).
          * The caller must pass an iter or path pointing to the item, but not both
          * (one of them must be null.)
+         *
+         * TODO: instead of checking the position of the iter or path, we should simply
+         * check whether the item's parent is the root item and whether the item is
+         * expandable. We don't do so right now because vala still allows client code
+         * to access the Item.parent property, even though its setter is defined as internal.
          */
         public bool is_category (Item item, Gtk.TreeIter? iter, Gtk.TreePath? path = null) {
             bool is_category = false;
@@ -1255,8 +1269,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
-            primary_expander_cell.xpad = 2;
-            primary_expander_cell.xalign = 0;
+            primary_expander_cell.xpad = 3;
             item_column.pack_end (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
@@ -1413,14 +1426,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        private bool toggle_expansion (ExpandableItem item) {
-            if (item.collapsible) {
-                item.expanded = !item.expanded;
-                return true;
-            }
-            return false;
-        }
-
         public bool scroll_to_item (Item item, bool use_align = false, float row_align = 0) {
             bool scrolled = false;
 
@@ -1433,7 +1438,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return scrolled;
         }
 
-        public bool start_editing_item (Item item) requires (item.editable) {
+        public bool start_editing_item (Item item) requires (item.editable) requires (item.selectable) {
             if (editing && item == edited) // If same item again, simply return.
                 return false;
 
@@ -1495,6 +1500,14 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private Item? get_item_from_path_string (string item_path_str) {
             var item_path = new Gtk.TreePath.from_string (item_path_str);
             return data_model.get_item_from_path (item_path);
+        }
+
+        private bool toggle_expansion (ExpandableItem item) {
+            if (item.collapsible) {
+                item.expanded = !item.expanded;
+                return true;
+            }
+            return false;
         }
 
         /**
@@ -1564,7 +1577,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             Gtk.TreePath path;
             Gtk.TreeViewColumn column;
-
             int x = (int) event.x, y = (int) event.y, cell_x, cell_y;
 
             if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
@@ -1582,17 +1594,24 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                     if (((Gdk.Event*) (&event))->triggers_context_menu ()) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
-                        if (item is ExpandableItem) {
-                            bool over_expander = over_cell (column, path, primary_expander_cell, cell_x)
-                                              || over_cell (column, path, secondary_expander_cell, cell_x)
-                                              || data_model.is_category (item, null, path);
+                        // Check whether an expander (or an equivalent area) was clicked.
+                        bool is_expandable = item is ExpandableItem;
+                        bool is_category = is_expandable && data_model.is_category (item, null, path);
+
+                        if (is_expandable) {
+                            // Checking for secondary_expander_cell is not necessary because the entire row
+                            // serves for this purpose when the item is a category. It is only a visual indicator.
+                            bool over_expander = is_category || over_cell (column, path, primary_expander_cell, cell_x);
                             if (over_expander && toggle_expansion (item as ExpandableItem))
                                 return true;
                         }
 
-                        // Check if the user double-clicked over the text cell
+                        // Check if the user double-clicked over the text cell. Main categories are
+                        // *not* editable;
                         if (event.type == Gdk.EventType.2BUTTON_PRESS
+                            && !is_category
                             && item.editable
+                            && item.selectable
                             && over_cell (column, path, text_cell, cell_x)
                             && start_editing_item (item))
                         {
@@ -1671,9 +1690,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         /**
          * Positions a menu based on an item's coordinates.
          *
-         * As this function is only used for menu pop-ups triggered by events other than button
-         * presses (e.g. key-press events), it assumes that the item in question is the one
-         * currently selected, since those events provide no coordinates.
+         * This function is only used for menu pop-ups triggered by events other than button
+         * presses (e.g. key-press events). Since such events provide no coordinates, it is
+         * assumed that the item in question is the one currently selected.
          */
         private void menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             push_in = true;
@@ -1751,8 +1770,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                     weight = Pango.Weight.BOLD;
 
                 if (item.count > 0) {
-                    text.append_unichar (' ');
-                    text.append_unichar ('(');
+                    text.append (" (");
                     text.append (item.count.to_string ());
                     text.append_unichar (')');
                 }
@@ -1808,7 +1826,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                     renderer.is_expander = renderer.is_expander && expandable_item.collapsible;
             }
 
-            // See compute_indentation() for an explanation of this portion of code
             if (renderer == primary_expander_cell)
                 renderer.visible = !data_model.is_iter_at_root_level (iter);
             else if (renderer == secondary_expander_cell)
