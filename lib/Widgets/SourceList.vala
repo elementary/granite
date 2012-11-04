@@ -104,16 +104,16 @@
  * the selection was modified.
  *
  * It is strongly recommended to pack the source list into the GUI using the
- * {@link Granite.Widgets.SidebarPaned} widget. It has aesthetic advantages and offers a wider
- * re-size handle than usual Paned widgets do. This is usually done as follows:
+ * {@link Granite.Widgets.ThinPaned} widget. It has aesthetic advantages and offers a wider
+ * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
  * {{{
- * var pane = new Granite.Widgets.SidebarPaned ();
+ * var pane = new Granite.Widgets.ThinPaned ();
  * pane.pack1 (source_list, true, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
  * @since 0.2
- * @see Granite.Widgets.SidebarPaned
+ * @see Granite.Widgets.ThinPaned
  */
 public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
@@ -169,9 +169,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * Emitted when the user has finished editing the item's name.
          *
          * By default, if the name doesn't consist of white space, it is automatically assigned
-         * to the {@link Granite.Widgets.SourceList.name} property. Code can change that behavior
-         * by overriding this signal.
-         *
+         * to the {@link Granite.Widgets.SourceList.Item.name} property. The default behavior can
+         * be changed by overriding this signal.
          * @param new_name The item's new name (result of editing.)
          * @since 0.2
          */
@@ -365,13 +364,13 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          *
          * This property has no effect when {@link Granite.Widgets.SourceList.ExpandableItem.collapsible}
          * is set to //false//. Also keep in mind that, __when set to //true//__, this property
-         * doesn't always represent the actual expanded state of an item. For example, it might
+         * doesn't always represent the actual expansion state of an item. For example, it might
          * be the case that an expandable item is collapsed because it has zero visible children,
          * but its //expanded// property value is still //true//; in such case, once one of the
          * item's children becomes visible, the item will be expanded again. Same applies to items
          * hidden behind a collapsed parent item.
          *
-         * If obtaining the ''actual'' expanded state of an item is important to your needs,
+         * If obtaining the ''actual'' expansion state of an item is important to your needs,
          * use {@link Granite.Widgets.SourceList.is_item_expanded} instead.
          *
          * @see Granite.Widgets.SourceList.ExpandableItem.collapsible
@@ -2016,7 +2015,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * to all the items that are part of the current tree.
      *
      * @see Granite.Widgets.SourceList.VisibleFunc
-     * @see Granite.Widgets.SourceList.set_visible_func
+     * @see Granite.Widgets.SourceList.set_filter_func
      * @since 0.2
      */
     public void refilter () {
@@ -2024,7 +2023,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     }
 
     /**
-     * Queries the actual expanded state of //item//.
+     * Queries the actual expansion state of //item//.
      *
      * @see Granite.Widgets.SourceList.ExpandableItem.expanded
      * @return Whether //item// is expanded or not.
