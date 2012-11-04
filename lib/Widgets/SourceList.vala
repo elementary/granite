@@ -755,7 +755,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // Emitting row_changed() for this item's row in the child model causes the filter
             // (i.e. this model) to re-evaluate whether a row is visible or not, calling
-            // filter_visible_func for that row again, and that's exactly what we want.
+            // filter_visible_func() for that row again, and that's exactly what we want.
             var node_reference = items.get (item);
             if (node_reference != null) {
                 var path = node_reference.path;
@@ -792,7 +792,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             items.set (item, new NodeWrapper (child_tree, child_iter));
 
             // This is equivalent to a property change. The tree still needs to update
-            // the some of the new item's properties through this signal's handler.
+            // some of the new item's properties through this signal's handler.
             item_updated (item);
 
             add_property_monitor (item);
@@ -897,31 +897,32 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * This guarantees efficiency as updating a category item could trigger expensive actions.
          */
         private void push_parent_update (ExpandableItem? parent) {
-           if (parent != null) {
-                bool needs_update = parent.get_data<bool> (ITEM_PARENT_NEEDS_UPDATE);
+            if (parent == null)
+                return;
 
-                // If an update is already waiting to be processed, just return, as we
-                // don't need to queue another one for the same item.
-                if (needs_update)
-                    return;
+            bool needs_update = parent.get_data<bool> (ITEM_PARENT_NEEDS_UPDATE);
 
-                var path = get_item_path (parent);
+            // If an update is already waiting to be processed, just return, as we
+            // don't need to queue another one for the same item.
+            if (needs_update)
+                return;
 
-                if (path != null) {
-                    // Let's mark this item for update
-                    parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, true);
+            var path = get_item_path (parent);
 
-                    Idle.add (() => {
-                        if (parent != null) {
-                            update_item (parent);
+            if (path != null) {
+                // Let's mark this item for update
+                parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, true);
 
-                            // Already updated. No longer needs an update.
-                            parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, false);
-                        }
+                Idle.add (() => {
+                    if (parent != null) {
+                        update_item (parent);
 
-                        return false;
-                    });
-                }
+                        // Already updated. No longer needs an update.
+                        parent.set_data<bool> (ITEM_PARENT_NEEDS_UPDATE, false);
+                    }
+
+                    return false;
+                });
             }
         }
 
@@ -976,7 +977,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         /**
-         * Sets the sort function, or "unsets" it if null is passed. Please note though,
+         * Sets the sort function, or "unsets" it if null is passed. Please note though
          * that unsetting the sort function doesn't bring the items back to their initial
          * order.
          */
@@ -1313,7 +1314,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                 uint cell_xpadding;
 
                 // The primary expander is not visible for root-level (i.e. first level)
-                // items, so for the second level of indentation, we use a low padding
+                // items, so for the second level of indentation we use a low padding
                 // because the primary expander will add enough space. For the root level,
                 // we use LEFT_PADDING, and LEVEL_INDENTATION for the remaining levels.
                 // The value of cell_xpadding will be allocated *twice* by the cell renderer,
