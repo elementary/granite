@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-10-27 16:49+0000\n"
-"Last-Translator: xDev <Unknown>\n"
+"PO-Revision-Date: 2012-11-04 13:37+0000\n"
+"Last-Translator: Odai Alali <odai.alali@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2012-10-28 04:56+0000\n"
-"X-Generator: Launchpad (build 16194)\n"
+"X-Launchpad-Export-Date: 2012-11-05 04:50+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr ""
+msgstr "صمّمه"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr ""
+msgstr "مطور بواسطة"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
@@ -37,15 +37,15 @@ msgstr "وثّقه"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr ""
+msgstr "ترجمه "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
-msgstr ""
+msgstr "نُشِرَ هذا البرنامج وفق شروط رخصة "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr ""
+msgstr " ، ويأتي دون ضمانات على الإطلاق؛ لمزيد من التفاصيل، قم بزيارة "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
@@ -86,7 +86,7 @@ msgstr "%e %B، %Y"
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
-msgstr ""
+msgstr "إغلاق علامة التبويب"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
@@ -107,25 +107,26 @@ msgstr "كرّر"
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "إغلاق علامة التبويب الأخرى"
+msgstr[1] "إغلاق علامات التبويب الأخرى"
+msgstr[2] "إغلاق علامة/علامات التبويب الأخرى"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr ""
+msgstr "علامة تبويب جديدة"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
-msgstr ""
+msgstr "علامة تبويب جديدة"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr ""
+msgstr "قم بترجمة هذا التطبيق"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
 msgid "Report a Problem"
-msgstr ""
+msgstr "قم بالإبلاغ عن مشكلة"
