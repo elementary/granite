@@ -245,7 +245,7 @@ namespace Granite.Widgets {
 		/**
 		 * Allow duplicating tabs
 		 **/
-		bool _allow_duplication = true;
+		bool _allow_duplication = false;
 		public bool allow_duplication {
 			get { return _allow_duplication; }
 			set {
