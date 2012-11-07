@@ -1598,23 +1598,22 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                         bool is_expandable = item is ExpandableItem;
                         bool is_category = is_expandable && data_model.is_category (item, null, path);
 
-                        if (is_expandable) {
-                            // Checking for secondary_expander_cell is not necessary because the entire row
-                            // serves for this purpose when the item is a category. It is only a visual indicator.
-                            bool over_expander = is_category || over_cell (column, path, primary_expander_cell, cell_x);
-                            if (over_expander && toggle_expansion (item as ExpandableItem))
-                                return true;
-                        }
-
-                        // Check if the user double-clicked over the text cell. Main categories are
-                        // *not* editable;
-                        if (event.type == Gdk.EventType.2BUTTON_PRESS
-                            && !is_category
+                        if (event.type == Gdk.EventType.BUTTON_PRESS) {
+                            if (is_expandable) {
+                                // Checking for secondary_expander_cell is not necessary because the entire row
+                                // serves for this purpose when the item is a category. It is only a visual indicator.
+                                bool expander_clicked = is_category || over_primary_expander (column, path, cell_x);
+                                if (expander_clicked && toggle_expansion (item as ExpandableItem))
+                                    return true;
+                            }
+                        } else if (event.type == Gdk.EventType.2BUTTON_PRESS
+                            && !is_category // Main categories are *not* editable
                             && item.editable
                             && item.selectable
                             && over_cell (column, path, text_cell, cell_x)
                             && start_editing_item (item))
                         {
+                            // The user double-clicked over the text cell, and editing started successfully.
                             return true;
                         }
                     }
@@ -1624,30 +1623,52 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return base.button_press_event (event);
         }
 
-        private bool over_cell (Gtk.TreeViewColumn col, Gtk.TreePath path, Gtk.CellRenderer cell, int x) {
-            int cell_x, cell_width;
-            bool found = col.cell_get_position (cell, out cell_x, out cell_width);
+        private bool over_primary_expander (Gtk.TreeViewColumn col, Gtk.TreePath path, int x) {
+            Gtk.TreeIter iter;
+            if (!model.get_iter (out iter, path))
+                return false;
 
-            if (found && cell == primary_expander_cell) {
-                // XXX Most times, when primary_expander_cell.is_expanded is
-                // 'false', cell_get_position returns 0 for cell_width, making everything fail
-                // in our button-press handler. Since I have no idea of what is provoking this
-                // (it is certainly not the cell's visibility - already checked that), I thought
-                // I'd be a duck-taper and added a workaround (which is working perfectly fine
-                // by the way). Please add a proper fix if you know what is provoking the problem.
-                cell_width = get_cell_width (primary_expander_cell);
+            // Call the cell-data function and make it assign the proper visibility state to the cell
+            expander_cell_data_func (col, primary_expander_cell, model, iter);
 
-                Gtk.TreeIter iter;
-                if (model.get_iter (out iter, path)) {
-                    // Call the cell-data function and make it assign the proper state to the cell
-                    expander_cell_data_func (col, cell, model, iter);
+            if (!primary_expander_cell.visible)
+                return false;
 
-                    // We want to return false if the cell is not expandable (i.e. the arrow is hidden)
-                    // or not visible.
-                    found = cell.visible && cell.is_expander;
+            // We want to return false if the cell is not expandable (i.e. the arrow is hidden)
+            if (model.iter_n_children (iter) < 1)
+                return false;
+
+            // Now that we're sure that the item is expandable, let's see if the user clicked
+            // over the expander area. We don't do so directly by querying the primary expander
+            // position because it's not fixed, yielding incorrect coordinates depending on whether
+            // a different area was re-drawn before this method was called. We know that the last
+            // spacer cell precedes (in a LTR fashion) the expander cell. Because the position
+            // of the spacer cell is fixed, we can safely query it.
+            int indentation_level = path.get_depth ();
+            var last_spacer_cell = spacer_cells[indentation_level];
+
+            if (last_spacer_cell != null) {
+                int cell_x, cell_width;
+
+                if (col.cell_get_position (last_spacer_cell, out cell_x, out cell_width)) {
+                    // Add a pixel so that the expander area is a bit wider
+                    int expander_width = get_cell_width (primary_expander_cell) + 1;
+
+                    if (get_direction () == Gtk.TextDirection.LTR) {
+                        int indentation_offset = cell_x + cell_width;
+                        return x >= indentation_offset && x <= indentation_offset + expander_width;
+                    }
+
+                    return x <= cell_x && x >= cell_x - expander_width;
                 }
             }
 
+            return false;
+        }
+
+        private bool over_cell (Gtk.TreeViewColumn col, Gtk.TreePath path, Gtk.CellRenderer cell, int x) {
+            int cell_x, cell_width;
+            bool found = col.cell_get_position (cell, out cell_x, out cell_width);
             return found && x > cell_x && x < cell_x + cell_width;
         }
 
@@ -1970,7 +1991,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         add (tree);
         show_all ();
 
-        tree.item_selected.connect ( (item) => item_selected (item) );
+        tree.item_selected.connect ((item) => item_selected (item));
     }
 
     /**
