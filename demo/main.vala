@@ -247,16 +247,20 @@ public class Granite.Demo : Granite.Application {
             pop.destroy ();
         });
 
-        // Date/Time widgets
+        // Date widget
         var calendar_tool_item = new Gtk.ToolItem ();
         calendar_tool_item.margin_left = 12;
         var date_button = new Granite.Widgets.DatePicker.with_format ("%d-%m-%y");
-        var time_button = new Granite.Widgets.TimePicker ();
-        date_button.valign = date_button.halign = Gtk.Align.CENTER;
-        time_button.valign = time_button.halign = Gtk.Align.CENTER;
         calendar_tool_item.add (date_button);
-        calendar_tool_item.add (time_button);
         main_toolbar.insert (calendar_tool_item, -1);
+
+        // Time widget
+        var time_tool_item = new Gtk.ToolItem ();
+        time_tool_item.margin_left = 12;
+        time_tool_item.valign = Gtk.Align.CENTER;
+        var time_button = new Granite.Widgets.TimePicker ();
+        time_tool_item.add (time_button);
+        main_toolbar.insert (time_tool_item, -1);
 
         // Dynamic notebook
         var dynamic_notebook = create_dynamic_notebook ();
@@ -295,7 +299,6 @@ public class Granite.Demo : Granite.Application {
         contractor_item.page_num = page_switcher.append_page (contractor_tab, null);
         services_category.add (contractor_item);
 
-
         // Search Entry
         var search_entry = new Granite.Widgets.SearchBar ("Search");
         var search_item = new Gtk.ToolItem ();
@@ -303,12 +306,10 @@ public class Granite.Demo : Granite.Application {
         search_item.margin_left = 12;
         main_toolbar.insert (search_item, -1);
 
-
         // App Menu (this gives access to the About dialog)
         var main_menu = create_appmenu (new Gtk.Menu ());
         main_menu.margin_left = 12;
         main_toolbar.insert (main_menu, -1);
-
 
         window.set_default_size (800, 550);
         window.show_all ();
