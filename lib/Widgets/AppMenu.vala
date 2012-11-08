@@ -27,19 +27,19 @@ namespace Granite.Widgets {
     public class AppMenu : ToolButtonWithMenu {
 	
         /**
-         * Menu item for about page
+         * Menu item for about page.
          */
         public Gtk.MenuItem about_item;
     
         /**
-         * Called when showing about
+         * Called when showing about.
          */
         public signal void show_about(Gtk.Widget w);
 
         /**
-         * Makes new AppMenu
+         * Makes new AppMenu.
          *
-         * @param menu menu to be added
+         * @param menu menu to be turned into an AppMenu.
          */
         public AppMenu (Gtk.Menu menu) {
         
@@ -47,10 +47,10 @@ namespace Granite.Widgets {
         }
 
         /**
-         * Makes new AppMenu with built-in about page
+         * Makes new AppMenu with built-in about page.
          *
-         * @param application application of AppMenu
-         * @param menu to be created
+         * @param application application of AppMenu.
+         * @param menu menu to be created.
          */
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
         

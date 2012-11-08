@@ -25,7 +25,7 @@ namespace Granite.Widgets {
      *
      */
     public class DatePicker : Gtk.Entry, Gtk.Buildable {
-	
+    
         /**
          * Desired format of DatePicker
          *
@@ -57,7 +57,7 @@ namespace Granite.Widgets {
                 text = _date.format (format);
             }
         }
-		
+        
         /**
          * Makes new DatePicker
          *

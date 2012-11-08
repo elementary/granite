@@ -116,7 +116,7 @@ namespace Granite.Widgets {
 
             /* Circular help button */
             help_button.size_allocate.connect ( (alloc) => {
-                help_button.set_size_request (alloc.height, -1);
+            	help_button.set_size_request (alloc.height, -1);
             });
 
             action_area.pack_end (help_button, false, false, 0);

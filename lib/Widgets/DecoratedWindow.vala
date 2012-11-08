@@ -37,7 +37,6 @@ namespace Granite.Widgets {
             }
         """;
 
-
         // Currently not overridable
         const string DECORATED_WINDOW_STYLESHEET = """
             .decorated-window { border-width:1px; }

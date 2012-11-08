@@ -41,8 +41,7 @@ namespace Granite {
 namespace Granite.Widgets {
 
     /**
-     * This widget is a collapsible panel
-     *
+     * This widget is a collapsible paned.
      */
     public class CollapsiblePaned : Gtk.Paned {
     
