@@ -40,31 +40,31 @@ namespace Granite.Widgets {
         public signal void right_click (Gdk.EventButton ev);
 
         /**
-         * VMenuPosition:
-         * TOP: Align the menu at top of button position.
-         * BOTTOM: Align the menu at bottom of button position.
-         **/
-	public enum VMenuPosition {
-    		TOP,
-    		BOTTOM
-	}
+        * VMenuPosition:
+        * TOP: Align the menu at top of button position.
+        * BOTTOM: Align the menu at bottom of button position.
+        **/
+        public enum VMenuPosition {
+            TOP,
+            BOTTOM
+        }
 
         /**
-         * HMenuPosition:
-         * CENTER: Center-align the menu relative to the button's position.
-         * LEFT: Left-align the menu relative to the button's position.
-         * RIGHT: Right-align the menu relative to the button's position.
-         * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
-         **/
-	public enum HMenuPosition {
-    		LEFT,
-    		CENTER,
-    		RIGHT,
-    		INSIDE_WINDOW // center by default but move it the menu goes out of the window
-	}
-		
-	public HMenuPosition horizontal_menu_position { get; set; default = HMenuPosition.CENTER; }
-	public VMenuPosition vertical_menu_position { get; set; default = VMenuPosition.BOTTOM; }
+        * HMenuPosition:
+        * CENTER: Center-align the menu relative to the button's position.
+        * LEFT: Left-align the menu relative to the button's position.
+        * RIGHT: Right-align the menu relative to the button's position.
+        * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
+        **/
+        public enum HMenuPosition {
+            LEFT,
+            CENTER,
+            RIGHT,
+            INSIDE_WINDOW // center by default but move it the menu goes out of the window
+        }
+
+        public HMenuPosition horizontal_menu_position { get; set; default = HMenuPosition.CENTER; }
+        public VMenuPosition vertical_menu_position { get; set; default = VMenuPosition.BOTTOM; }
 
         public Gtk.Action? myaction;
         public ulong toggled_sig_id;
@@ -127,18 +127,15 @@ namespace Granite.Widgets {
             menu.deactivate.connect (popdown_menu);
         }
 
-        public ToolButtonWithMenu (Image image, string label, Gtk.Menu _menu)
-        {
-            this.horizontal_menu_position = horizontal_menu_position;
-            this.vertical_menu_position = vertical_menu_position;
-            
+        public ToolButtonWithMenu (Image image, string label, Gtk.Menu menu)
+        {           
             icon_widget = image;
             label_widget = new Gtk.Label (label);
             (label_widget as Gtk.Label).use_underline = true;
             can_focus = true;
             set_tooltip_text (label);
 
-            menu = _menu;
+            this.menu = menu;
 
             mnemonic_activate.connect (on_mnemonic_activate);
 
@@ -268,6 +265,7 @@ namespace Granite.Widgets {
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             Allocation menu_allocation;
             menu.get_allocation (out menu_allocation);
+
             if (menu.attach_widget == null ||
                 menu.attach_widget.get_window () == null) {
                 // Prevent null exception in weird cases
@@ -278,25 +276,27 @@ namespace Granite.Widgets {
             }
 
             menu.attach_widget.get_window ().get_origin (out x, out y);
+            
             Allocation allocation;
             menu.attach_widget.get_allocation (out allocation);
 
-
-            /* Left, right or center?? (menu is already on left) */
+            /* Left, right or center??*/
             if (horizontal_menu_position == HMenuPosition.RIGHT) {
                 x += allocation.x;
-                x -= menu_allocation.width;
-                x += allocation.width;
-                
-            } else if (horizontal_menu_position != HMenuPosition.LEFT) {
-                /* Centered menu */
+
+            } else if (horizontal_menu_position == HMenuPosition.CENTER) {
                 x += allocation.x;
                 x -= menu_allocation.width / 2;
                 x += allocation.width / 2;
             }
+            else {
+                x += allocation.x;
+                x -= menu_allocation.width;
+                x += this.get_allocated_width();
+            }
 
-            /* Bottom or top? (menu is already on bottom by default) */
-            if (vertical_menu_position == VMenuPosition.TOP && horizontal_menu_position != HMenuPosition.INSIDE_WINDOW) {
+            /* Bottom or top?*/
+            if (vertical_menu_position == VMenuPosition.TOP) {
                 y -= menu_allocation.height;
                 y -= this.get_allocated_height ();
             }
