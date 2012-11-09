@@ -24,7 +24,6 @@ namespace Granite.Widgets {
      * A text entry space with hint
      *
      */
-
     public class HintedEntry : Gtk.Entry {
 
         public string hint_string {
@@ -76,10 +75,10 @@ namespace Granite.Widgets {
         private uint timeout_id = 0;
 
         /**
-          * This value handles how much time (in ms) should pass
-          * after the user stops typing. By default it is set 
-          * to 300 ms.
-          */
+         * This value handles how much time (in ms) should pass
+         * after the user stops typing. By default it is set 
+         * to 300 ms.
+         */
         public int pause_delay { get; set; default = 300; }
 
         /**

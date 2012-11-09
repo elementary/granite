@@ -599,13 +599,7 @@ namespace Granite.Widgets {
             });
             
             tab.duplicate.connect (() => {
-<<<<<<< TREE
-                var dupl = new Tab (tab.label, tab.icon, tab.page);
-                insert_tab (dupl, -1);
-                tab_duplicated (dupl);
-=======
             	tab_duplicated (tab);
->>>>>>> MERGE-SOURCE
             });
 
             this.recalc_size ();

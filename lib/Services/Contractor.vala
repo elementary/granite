@@ -2,7 +2,7 @@
  * Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
  * 
  * Marlin is free software: you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
+ * under the Sterms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
@@ -37,8 +37,8 @@ namespace Granite.Services {
         internal static Contractor? contractor = null;
 
         /**
-        * This creates a new Contractor 
-        */
+         * This creates a new Contractor 
+         */
         public Contractor()
         {
             try
@@ -59,12 +59,12 @@ namespace Granite.Services {
         }
 
         /**
-        * This searches for available contracts of a particular file
-        * 
-        * @param uri uri of file
-        * @param mime mime type of file
-        * @return Hashtable of available contracts
-        */
+         * This searches for available contracts of a particular file
+         * 
+         * @param uri uri of file
+         * @param mime mime type of file
+         * @return Hashtable of available contracts
+         */
         public static GLib.HashTable<string,string>[] get_contract(string uri, string mime)
         {
             ensure ();
@@ -80,11 +80,11 @@ namespace Granite.Services {
         }
 
         /**
-        * generate contracts for rguments and filter them by  common parent mimetype.
-        * 
-        * @param locations Hashtable of locations
-        * @return Hashtable of available contracts
-        */
+         * generate contracts for rguments and filter them by  common parent mimetype.
+         * 
+         * @param locations Hashtable of locations
+         * @return Hashtable of available contracts
+         */
         public static GLib.HashTable<string,string>[] get_selection_contracts (GLib.HashTable<string, string>[] locations)
         {
             ensure ();

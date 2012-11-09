@@ -21,8 +21,8 @@ namespace Granite.Services {
     public static IconFactory? icon_factory = null;
 
     /**
-    * This class provides an easy way to access symbolic icons.
-    */
+     * This class provides an easy way to access symbolic icons.
+     */
     public class IconFactory : GLib.Object {
 
         private Gtk.IconTheme icon_theme;

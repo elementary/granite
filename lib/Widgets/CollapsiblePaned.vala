@@ -29,7 +29,7 @@ namespace Granite {
      * RIGHT
      * BOTTOM
      * LAST
-    */
+     */
     public enum CollapseMode {
         NONE=0,
         LEFT=1, TOP=1, FIRST=1,
