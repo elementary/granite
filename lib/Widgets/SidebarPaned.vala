@@ -19,6 +19,7 @@
  *
  * Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
+<<<<<<< TREE
  
 /**
  * This class is a SidePanel to be used on the side of windows.
@@ -351,4 +352,10 @@ public class Granite.Widgets.SidebarPaned : Gtk.EventBox, Gtk.Orientable {
         this.on_resize_mode = false;
         return true;
     }
+=======
+
+[Deprecated (replacement = "Granite.Widgets.ThinPaned", since = "granite-0.2")]
+public class Granite.Widgets.SidebarPaned : ThinPaned {
+>>>>>>> MERGE-SOURCE
 }
+

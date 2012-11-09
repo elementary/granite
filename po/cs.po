@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-08-18 19:05+0000\n"
-"Last-Translator: Tomáš Sýkora <steache@gmail.com>\n"
+"PO-Revision-Date: 2012-10-20 12:19+0000\n"
+"Last-Translator: Hlobil Vaclav <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-09-24 04:52+0000\n"
-"X-Generator: Launchpad (build 15985)\n"
+"X-Launchpad-Export-Date: 2012-10-21 05:07+0000\n"
+"X-Generator: Launchpad (build 16165)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr "Navrženo"
+msgstr "Navrhli"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr "Napsal"
+msgstr "Napsali"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr ""
+msgstr "Zdokumentovali"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
-msgstr "Přeloženo "
+msgstr "Přeložili "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
@@ -44,7 +44,8 @@ msgstr "Program je vydáván s těmito podmínkami "
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " licence, která je absolutně bez záruky, pro detaily navštivte "
+msgstr ""
+" licence, je poskytován ABSOLUTNĚ BEZ ZÁRUKY; pro podrobnosti navštivte "
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
@@ -54,7 +55,7 @@ msgstr "Nelze kontaktovat dodavatele. Možná budete muset nainstalovat"
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr "Žádná akce nebyla nalezena pro tento soubor"
+msgstr "Pro tento soubor nebyla nalezena žádná akce"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
@@ -95,24 +96,25 @@ msgstr "Zavřít záložku"
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Otevřít v novém okně"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr ""
+msgstr "Kopírovat"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Zavřít ostatní kartu"
+msgstr[1] "Zavřít ostatní karty"
+msgstr[2] "Zavřít ostatní karty"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr ""
+msgstr "Nová karta"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362

@@ -254,6 +254,7 @@ namespace Granite.Widgets {
             }
         }
 
+<<<<<<< TREE
         /**
          * Allow duplicating tabs
          */
@@ -267,6 +268,21 @@ namespace Granite.Widgets {
                 }
             }
         }
+=======
+		/**
+		 * Allow duplicating tabs
+		 **/
+		bool _allow_duplication = false;
+		public bool allow_duplication {
+			get { return _allow_duplication; }
+			set {
+				_allow_duplication = value;
+				foreach (var tab in tabs) {
+					tab.duplicate_m.visible = value;
+				}
+			}
+		}
+>>>>>>> MERGE-SOURCE
 
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
@@ -583,9 +599,13 @@ namespace Granite.Widgets {
             });
             
             tab.duplicate.connect (() => {
+<<<<<<< TREE
                 var dupl = new Tab (tab.label, tab.icon, tab.page);
                 insert_tab (dupl, -1);
                 tab_duplicated (dupl);
+=======
+            	tab_duplicated (tab);
+>>>>>>> MERGE-SOURCE
             });
 
             this.recalc_size ();
