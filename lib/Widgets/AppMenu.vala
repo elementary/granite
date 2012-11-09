@@ -25,7 +25,7 @@ namespace Granite.Widgets {
 	 * An App Menu is the gear menu that goes on the right of the toolbar.
 	 */    
     public class AppMenu : ToolButtonWithMenu {
-	
+    
         /**
          * Menu item for about page.
          */

@@ -54,11 +54,11 @@ public class Granite.Services.SimpleCommand : GLib.Object
      */
     public string standard_output_str = "";
     /**
-	 * The whole current error output
+     * The whole current error output
      */
     public string error_output_str = "";
     /**
-	 * The whole current output
+     * The whole current output
      */
     public string output_str = "";
     
