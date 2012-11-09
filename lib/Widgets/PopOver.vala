@@ -150,7 +150,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
         size_allocate.connect(on_size_allocate);
     }
-
+	  
    /**
     * Hides popover
     */

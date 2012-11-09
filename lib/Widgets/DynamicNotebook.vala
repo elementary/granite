@@ -31,14 +31,8 @@ namespace Granite.Widgets {
         return false;
     }
 
-    /**
-     * This widget is a tab for use in Notebooks.
-     */
     public class Tab : Gtk.Box {
         Gtk.Label _label;
-        /**
-         * This is the label of the tab
-         */
         public string label {
             get { return _label.label;  }
             set { _label.label = value; }
@@ -59,9 +53,6 @@ namespace Granite.Widgets {
         }
 
         internal Gtk.Image _icon;
-        /**
-         * This is the icon for the tab
-         */
         public GLib.Icon? icon {
             owned get { return _icon.gicon;  }
             set { _icon.gicon = value; }
@@ -69,9 +60,6 @@ namespace Granite.Widgets {
 
         Gtk.Spinner _working;
         bool __working;
-        /**
-         * This shows whether or not to show the working s
-         */
         public bool working {
             get { return __working; }
             set { __working = _working.visible = value; _icon.visible = !value; }
@@ -96,10 +84,10 @@ namespace Granite.Widgets {
 
         internal Gtk.Button close;
         public Gtk.Menu menu { get; set; }
-        
-        //we need to be able to toggle those from the notebook
-        internal Gtk.MenuItem new_window_m;
-        internal Gtk.MenuItem duplicate_m;
+		
+		//we need to be able to toggle those from the notebook
+		internal Gtk.MenuItem new_window_m;
+		internal Gtk.MenuItem duplicate_m;
 
         internal signal void closed ();
         internal signal void close_others ();
@@ -184,14 +172,14 @@ namespace Granite.Widgets {
 
         /**
          * number of pages
-         */
+         **/
         public int n_tabs {
             get { return notebook.get_n_pages (); }
         }
 
         /**
          * Hide the tab bar and only show the pages
-         */
+         **/
         public bool show_tabs {
             get { return notebook.show_tabs;  }
             set { notebook.show_tabs = value; }
@@ -200,7 +188,7 @@ namespace Granite.Widgets {
         bool _show_icons;
         /**
          * Toggle icon display
-         */
+         **/
         public bool show_icons {
             get { return _show_icons; }
             set {
@@ -213,7 +201,7 @@ namespace Granite.Widgets {
 
         /**
          * Hide the close buttons and disable closing of tabs
-         */
+         **/
         bool _tabs_closable = true;
         public bool tabs_closable {
             get { return _tabs_closable; }
@@ -228,7 +216,7 @@ namespace Granite.Widgets {
 
         /**
          * Make tabs reorderable
-         */
+         **/
         bool _allow_drag = true;
         public bool allow_drag {
             get { return _allow_drag; }
@@ -242,7 +230,7 @@ namespace Granite.Widgets {
 
         /**
          * Allow creating new windows by dragging a tab out
-         */
+         **/
         bool _allow_new_window = false;
         public bool allow_new_window {
             get { return _allow_new_window; }
@@ -254,21 +242,6 @@ namespace Granite.Widgets {
             }
         }
 
-<<<<<<< TREE
-        /**
-         * Allow duplicating tabs
-         */
-        bool _allow_duplication = true;
-        public bool allow_duplication {
-            get { return _allow_duplication; }
-            set {
-                _allow_duplication = value;
-                foreach (var tab in tabs) {
-                    tab.duplicate_m.visible = value;
-                }
-            }
-        }
-=======
 		/**
 		 * Allow duplicating tabs
 		 **/
@@ -282,7 +255,6 @@ namespace Granite.Widgets {
 				}
 			}
 		}
->>>>>>> MERGE-SOURCE
 
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
@@ -305,10 +277,10 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
-        /**
-         * The menu appearing when the notebook is clicked on a blank space
-         */
-        public Gtk.Menu menu { get; private set; }
+		/**
+		 * The menu appearing when the notebook is clicked on a blank space
+		 **/
+		public Gtk.Menu menu { get; private set; }
 
         Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
@@ -336,7 +308,7 @@ namespace Granite.Widgets {
 
         /**
          * create a new dynamic notebook
-         */
+         **/
         public DynamicNotebook () {
 
             this.button_fix = new Gtk.CssProvider ();
@@ -358,18 +330,18 @@ namespace Granite.Widgets {
 
             this.add (this.notebook);
 
-            menu = new Gtk.Menu ();
-            
-            var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
-            menu.append (new_tab_m);
-            
-            menu.show_all ();
+			menu = new Gtk.Menu ();
+			
+			var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
+			menu.append (new_tab_m);
+			
+			menu.show_all ();
 
-            new_tab_m.activate.connect (() => {
-                var t = new Tab ();
-                notebook.page = (int)this.insert_tab (t, -1);
-                this.tab_added (t);
-            });
+			new_tab_m.activate.connect (() => {
+				var t = new Tab ();
+				notebook.page = (int)this.insert_tab (t, -1);
+				this.tab_added (t);
+			});
 
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
@@ -377,7 +349,7 @@ namespace Granite.Widgets {
                     notebook.page = (int) this.insert_tab (t, -1);
                     this.tab_added (t);
                 } else if (e.button == 3) {
-                    menu.popup (null, null, null, 3, e.time);
+                	menu.popup (null, null, null, 3, e.time);
                 }
 
                 return false;
@@ -594,8 +566,8 @@ namespace Granite.Widgets {
             });
 
             tab.new_window.connect (() => {
-                notebook.remove_page (notebook.page_num (tab.page_container));
-                tab_moved (tab, 0, true, 0, 0);
+            	notebook.remove_page (notebook.page_num (tab.page_container));
+            	tab_moved (tab, 0, true, 0, 0);
             });
             
             tab.duplicate.connect (() => {
