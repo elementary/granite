@@ -20,6 +20,9 @@
 
 using Gtk;
 
+/**
+ * This class provides a simple way to look at contracts from Contractor
+ */
 public class Granite.Widgets.ContractorView : TreeView {
     
     /**

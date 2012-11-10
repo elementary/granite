@@ -30,7 +30,9 @@ namespace Granite.Widgets {
 
         return false;
     }
-
+    /**
+     * This is a standard tab which can be used in a notebook to form a tabbed UI.
+     */
     public class Tab : Gtk.Box {
         Gtk.Label _label;
         public string label {

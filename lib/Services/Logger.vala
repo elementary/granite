@@ -19,19 +19,36 @@ namespace Granite.Services {
 
     /**
      * LogLevel:
-     * DEBUG: This level is for use in debugging.
-     * INFO: This level should be used for non-error, non-debugging that is not due to any direct event.
-     * NOTIFY: This level is used to log events that have happened in the app.
-     * WARN: This level should be used for warnings of errors that haven't happened yet.
-     * ERROR: This level should be used by recoverable errors.
-     * FATAL: This level should be used only in cases of unrecoverable errors.
      */
     public enum LogLevel {
+        /**
+         * DEBUG: This level is for use in debugging.
+         */
         DEBUG,
+        
+        /**
+         * INFO: This level should be used for non-error, non-debugging that is not due to any direct event.
+         */
         INFO,
+
+        /**
+         * NOTIFY: This level is used to log events that have happened in the app.
+         */
         NOTIFY,
+
+        /**
+         * WARN: This level should be used for warnings of errors that haven't happened yet.
+         */
         WARN,
+
+        /**
+         * ERROR: This level should be used by recoverable errors.
+         */
         ERROR,
+
+        /**
+         * FATAL: This level should be used only in cases of unrecoverable errors.
+         */
         FATAL,
     }
     

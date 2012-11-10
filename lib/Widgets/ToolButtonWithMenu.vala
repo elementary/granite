@@ -34,7 +34,9 @@ using Gdk;
 using Gtk;
 
 namespace Granite.Widgets {
-
+    /**
+     * This a button that can be in a toolbar and have a menu come out from it.
+     */
     public class ToolButtonWithMenu : Gtk.ToggleToolButton {
 
         public signal void right_click (Gdk.EventButton ev);

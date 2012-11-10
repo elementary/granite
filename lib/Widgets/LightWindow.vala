@@ -22,6 +22,9 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This is always-on-top, non-modal window with a large close button.
+     */
     public class LightWindow : DecoratedWindow {
 
         /**

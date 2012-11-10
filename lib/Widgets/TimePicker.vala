@@ -66,7 +66,6 @@ namespace Granite.Widgets {
         /**
          * Currently pressed
          * 
-         * @return whether or not the TimePicker is currently pressed
          */
         protected bool is_pressed {
             get { return _is_pressed; }

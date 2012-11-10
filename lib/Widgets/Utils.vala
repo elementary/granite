@@ -18,17 +18,25 @@
  * Boston, MA 02111-1307, USA.
  */
 
-        /**
-         * Granite.TextStyle
-         * TITLE: Full title weight and size
-         * H1: Second highest header
-         * H2: Third highest header
-         * H3: Fourth Highest Header
-         */
 public enum Granite.TextStyle {
+    /**
+     * TITE: Highest level header
+     */
     TITLE,
+    
+    /**
+     * H1: Second highest header
+     */
     H1,
+    
+    /**
+     * H2: Third highest header
+     */
     H2,
+    
+    /**
+     * H3: Fourth Highest Header
+     */
     H3;
 
     /**
