@@ -22,7 +22,6 @@ namespace Granite.Widgets {
 
     /**
      * A text entry space with hint
-     *
      */
     public class HintedEntry : Gtk.Entry {
 
@@ -67,7 +66,6 @@ namespace Granite.Widgets {
 
     /**
      * A searchbar with hint-text.
-     *
      */
     public class SearchBar : HintedEntry {
 
