@@ -27,7 +27,7 @@ public class Granite.Widgets.ContractorView : TreeView {
     
     /**
      * indicates if it was possible to connect to contractor
-     **/
+     */
     public bool contractor_available;
     
     public delegate void ContractCallback ();
@@ -39,7 +39,7 @@ public class Granite.Widgets.ContractorView : TreeView {
     
     /**
      * the index of the currently selected contract
-     **/
+     */
     public int selected {
         get {
             TreePath path;
@@ -53,12 +53,12 @@ public class Granite.Widgets.ContractorView : TreeView {
     
     /**
      * A contract was launched using double clicking
-     **/
+     */
     public signal void executed ();
     
     /**
      * the original array of contracts returned by contractor
-     **/
+     */
     HashTable<string,string>[] contracts;
     
     /**
@@ -67,7 +67,7 @@ public class Granite.Widgets.ContractorView : TreeView {
      * @param mime the mimetype of the file
      * @param icon_size the size of the icon in pixel
      * @param show_contract_name show the name of the contract in the list
-     **/
+     */
     public ContractorView (string filename, string mime, int icon_size = 32, bool show_contract_name = true) {
         /* Setup the ListStore */
         list = new ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
@@ -135,15 +135,15 @@ public class Granite.Widgets.ContractorView : TreeView {
     }
     
     /**
-    * A method to add items to the tree
-    * @param name the name
-    * @param desc the description
-    * @param icon_name the name of the icon to show
-    * @param icon_size the size of the icon in pixel
-    * @param position the posion the item will be inserted at (first position  is 0)
-    * @param method a general method containing all the methods that should be called when the item is activated
-    *        (must return void and mustn't have any parameter)
-    **/ 
+     * A method to add items to the tree
+     * @param name the name
+     * @param desc the description
+     * @param icon_name the name of the icon to show
+     * @param icon_size the size of the icon in pixel
+     * @param position the posion the item will be inserted at (first position  is 0)
+     * @param method a general method containing all the methods that should be called when the item is activated
+     *        (must return void and mustn't have any parameter)
+     */ 
     public void add_item (string name, string desc, string icon_name, int icon_size, int position, ContractCallback method) {
         TreeIter it;
         list.insert (out it, position);

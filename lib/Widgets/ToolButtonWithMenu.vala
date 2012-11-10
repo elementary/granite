@@ -36,33 +36,48 @@ using Gtk;
 namespace Granite.Widgets {
 
     /**
-     * This a button that can be in a toolbar and have a menu come out from it.
+     * ToolButtonWithMenu
+     * - support long click / right click with depressed button states
+     * - activate a GtkAction if any or popup a menu
+     * (used in history navigation buttons and the AppMenu)
      */
     public class ToolButtonWithMenu : Gtk.ToggleToolButton {
 
         public signal void right_click (Gdk.EventButton ev);
 
         /**
-        * VMenuPosition:
-        * TOP: Align the menu at top of button position.
-        * BOTTOM: Align the menu at bottom of button position.
-        **/
+         * VMenuPosition:
+         */
         public enum VMenuPosition {
+            /**
+             * TOP: Align the menu at top of button position.
+             */
             TOP,
+            /**
+             * TOP: Align the menu at top of button position.
+             */
             BOTTOM
         }
 
         /**
-        * HMenuPosition:
-        * CENTER: Center-align the menu relative to the button's position.
-        * LEFT: Left-align the menu relative to the button's position.
-        * RIGHT: Right-align the menu relative to the button's position.
-        * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
-        **/
+         * HMenuPosition:
+         */
         public enum HMenuPosition {
+            /**
+             * LEFT: Left-align the menu relative to the button's position.
+             */
             LEFT,
+            /**
+             * CENTER: Center-align the menu relative to the button's position.
+             */
             CENTER,
+            /**
+             * RIGHT: Right-align the menu relative to the button's position.
+             */
             RIGHT,
+            /**
+             * INSIDE_WINDOW: Keep the menu inside the GtkWindow. Center-align when possible.
+             */
             INSIDE_WINDOW // center by default but move it the menu goes out of the window
         }
 
@@ -72,7 +87,9 @@ namespace Granite.Widgets {
         public Gtk.Action? myaction;
         public ulong toggled_sig_id;
 
-        /* Delegate function used to populate menu */
+        /** 
+         * Delegate function used to populate menu 
+         */
         public delegate Gtk.Menu MenuFetcher ();
 
         public MenuFetcher fetcher {

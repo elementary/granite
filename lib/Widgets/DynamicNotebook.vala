@@ -175,14 +175,14 @@ namespace Granite.Widgets {
 
         /**
          * number of pages
-         **/
+         */
         public int n_tabs {
             get { return notebook.get_n_pages (); }
         }
 
         /**
          * Hide the tab bar and only show the pages
-         **/
+         */
         public bool show_tabs {
             get { return notebook.show_tabs;  }
             set { notebook.show_tabs = value; }
@@ -191,7 +191,7 @@ namespace Granite.Widgets {
         bool _show_icons;
         /**
          * Toggle icon display
-         **/
+         */
         public bool show_icons {
             get { return _show_icons; }
             set {
@@ -204,7 +204,7 @@ namespace Granite.Widgets {
 
         /**
          * Hide the close buttons and disable closing of tabs
-         **/
+         */
         bool _tabs_closable = true;
         public bool tabs_closable {
             get { return _tabs_closable; }
@@ -219,7 +219,7 @@ namespace Granite.Widgets {
 
         /**
          * Make tabs reorderable
-         **/
+         */
         bool _allow_drag = true;
         public bool allow_drag {
             get { return _allow_drag; }
@@ -233,7 +233,7 @@ namespace Granite.Widgets {
 
         /**
          * Allow creating new windows by dragging a tab out
-         **/
+         */
         bool _allow_new_window = false;
         public bool allow_new_window {
             get { return _allow_new_window; }
@@ -247,7 +247,7 @@ namespace Granite.Widgets {
 
 		/**
 		 * Allow duplicating tabs
-		 **/
+         */
 		bool _allow_duplication = false;
 		public bool allow_duplication {
 			get { return _allow_duplication; }
@@ -282,7 +282,7 @@ namespace Granite.Widgets {
 
 		/**
 		 * The menu appearing when the notebook is clicked on a blank space
-		 **/
+         */
 		public Gtk.Menu menu { get; private set; }
 
         Gtk.Notebook notebook;
@@ -310,8 +310,8 @@ namespace Granite.Widgets {
         """;
 
         /**
-         * create a new dynamic notebook
-         **/
+         * Create a new dynamic notebook
+         */
         public DynamicNotebook () {
 
             this.button_fix = new Gtk.CssProvider ();

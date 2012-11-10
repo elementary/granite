@@ -28,7 +28,7 @@ namespace Granite.Services {
      * A way to handle contractor, a way to communicate between apps.
      * 
      * /!\ Highly unstable API
-     **/
+     */
     public class Contractor : Object
     {
 

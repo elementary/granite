@@ -20,22 +20,22 @@
 
 public enum Granite.TextStyle {
     /**
-     * TITE: Highest level header
+     * Highest level header
      */
     TITLE,
     
     /**
-     * H1: Second highest header
+     * Second highest header
      */
     H1,
     
     /**
-     * H2: Third highest header
+     * Third highest header
      */
     H2,
     
     /**
-     * H3: Fourth Highest Header
+     * Fourth Highest Header
      */
     H3;
 
