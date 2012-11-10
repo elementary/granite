@@ -46,7 +46,7 @@ namespace Granite.Widgets {
         /**
          * This creates a new StaticNotebook
          * 
-         * @param show_seperator whether or not to show a seperator
+         * @param show_separator whether or not to show a seperator
          */
         public StaticNotebook (bool show_separator = true) {
 

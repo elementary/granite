@@ -64,7 +64,6 @@ namespace Granite.Widgets {
         /**
          * Create a new AppMenu, parameters are unused now.
          *
-         * @deprecated 0.1
          */
         [Deprecated (since = "granite-0.1")]
         public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {

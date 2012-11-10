@@ -134,7 +134,7 @@ public class Granite.Widgets.ContractorView : TreeView {
     /**
     * A method to add items to the tree
     * @param name the name
-    * @param text the description
+    * @param desc the description
     * @param icon_name the name of the icon to show
     * @param icon_size the size of the icon in pixel
     * @param position the posion the item will be inserted at (first position  is 0)
