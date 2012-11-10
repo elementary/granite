@@ -16,8 +16,6 @@ Homepage: https://launchpad.net/granite
 
 Package: libgranite1
 Architecture: any
-Replaces: libgranite0 (<< 0.2.0~r440-0~)
-Breaks: libgranite0 (<< 0.2.0~r440-0~)
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: contractor, apport-hooks-elementary
 Description: extension of GTK+ libraries
@@ -31,7 +29,7 @@ Package: libgranite-dev
 Section: libdevel
 Architecture: any
 Depends: ${misc:Depends}, libgranite1 (= ${binary:Version}),
- gir1.2-granite-0.1.1 (= ${binary:Version})
+ gir1.2-granite-1.0 (= ${binary:Version})
 Description: extension of GTK+ libraries (development files)
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
@@ -39,7 +37,7 @@ Description: extension of GTK+ libraries (development files)
  .
  This package contains the static library and header files.
 
-Package: gir1.2-granite-0.1.1
+Package: gir1.2-granite-1.0
 Section: introspection
 Architecture: any
 Depends: ${gir:Depends}, ${misc:Depends}
@@ -75,10 +73,3 @@ Description: extension of GTK+ libraries (debugging symbols)
  search bars, and more found in elementary apps.
  .
  This package contains debugging symbols.
-
-Package: libgranite0
-Depends: libgranite1
-Architecture: all
-Section: oldlibs
-Description: transitional dummy package
- This is a transitional dummy package. It can safely be removed.
