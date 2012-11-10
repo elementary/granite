@@ -30,6 +30,7 @@ namespace Granite.Widgets {
 
         return false;
     }
+
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
