@@ -1,0 +1,3 @@
+usr/lib/lib*.so.*
+usr/share/icons/*
+usr/share/locale/*

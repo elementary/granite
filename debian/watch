@@ -1,0 +1,4 @@
+version=3
+opts=dversionmangle=s/\+dfsg// \
+https://launchpad.net/granite/+download \
+  http://launchpad.net/granite.*/granite-(.*)\.tar\.gz
