@@ -3,7 +3,7 @@ set (PKGNAME_ GRANITE)
 set (${PKGNAME_}_VERSION 0.1.1)
 # increase when you break the API
 
-set (${PKGNAME_}_SOVERSION 0)
+set (${PKGNAME_}_SOVERSION 1)
 # Increase when you add functionality
 
 #
