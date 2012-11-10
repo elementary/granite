@@ -33,7 +33,6 @@ namespace Granite {
     /**
      * This is the base class for all Granite-based apps. It has methods to help create a great deal of an app's functionality.
      */
-    
     public abstract class Application : Gtk.Application {
 
         public string build_data_dir;
