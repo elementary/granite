@@ -16,8 +16,8 @@ Homepage: https://launchpad.net/granite
 
 Package: libgranite1
 Architecture: any
-Replaces: libgranite0
-Breaks: libgranite0
+Replaces: libgranite0 (<< 0.2.0~r440-0~)
+Breaks: libgranite0 (<< 0.2.0~r440-0~)
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: contractor, apport-hooks-elementary
 Description: extension of GTK+ libraries
