@@ -1,7 +1,0 @@
-usr/include/*
-usr/lib/lib*.a
-usr/lib/lib*.so
-usr/lib/pkgconfig/*
-usr/share/gir-1.0/*.gir
-usr/share/vala/vapi/*.deps
-usr/share/vala/vapi/*.vapi
