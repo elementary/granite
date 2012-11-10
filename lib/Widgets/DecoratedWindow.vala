@@ -22,6 +22,9 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This class is a standard decorated window.
+     */
     public class DecoratedWindow : CompositedWindow {
 
         const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
@@ -39,6 +42,11 @@ namespace Granite.Widgets {
             .decorated-window { border-width:1px; }
         """;
 
+        /**
+         * This method sets the given window to the decorated window style
+         *
+         * @param ref_window window to set style to
+         */
         public static void set_default_theming (Gtk.Window ref_window) {
             Utils.set_theming (ref_window, DECORATED_WINDOW_STYLESHEET,
                                STYLE_CLASS_DECORATED_WINDOW,
@@ -49,6 +57,9 @@ namespace Granite.Widgets {
                                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
 
+        /**
+         * Whether to show the window title
+         */
         public bool show_title { get; set; default = true; }
 
         protected Gtk.Box box { get; private set; }
@@ -71,6 +82,13 @@ namespace Granite.Widgets {
 
         private Gtk.Label _title;
 
+        /**
+         * This creates a new DecoratedWindow
+         *
+         * @param title title to set window's title to
+         * @param window_style style to set window to
+         * @param content_style style to set content to
+         */
         public DecoratedWindow (string title = "", string? window_style = null, string? content_style = null) {
             this.resizable = false;
             this.has_resize_grip = false;
@@ -126,10 +144,20 @@ namespace Granite.Widgets {
             this.draw.connect (draw_widget);
         }
 
+        /**
+         * This method adds new item to window
+         *
+         * @param w widget to add to window
+         */
         public new void add (Gtk.Widget w) {
             this.box.pack_start (w, true, true);
         }
 
+        /**
+         * This method removes item to window
+         *
+         * @param w widget to remove from window
+         */
         public new void remove (Gtk.Widget w) {
             this.box.remove (w);
         }

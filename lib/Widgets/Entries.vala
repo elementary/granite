@@ -20,6 +20,9 @@ using Gdk;
 
 namespace Granite.Widgets {
 
+    /**
+     * A text entry space with hint
+     */
     public class HintedEntry : Gtk.Entry {
 
         public string hint_string {
@@ -31,6 +34,11 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Makes new hinted entry
+         *
+         * @param hint_string hint for new entry
+         */
         public HintedEntry (string hint_string) {
         
             this.hint_string = hint_string;
@@ -56,6 +64,9 @@ namespace Granite.Widgets {
         
     }
 
+    /**
+     * A searchbar with hint-text.
+     */
     public class SearchBar : HintedEntry {
 
         private bool is_searching = true;
@@ -65,7 +76,7 @@ namespace Granite.Widgets {
          * This value handles how much time (in ms) should pass
          * after the user stops typing. By default it is set 
          * to 300 ms.
-         **/
+         */
         public int pause_delay { get; set; default = 300; }
 
         /**
@@ -73,7 +84,7 @@ namespace Granite.Widgets {
          * which depends on pause_delay.
          * If you need a synchronous signal without any delay,
          * use changed () method.
-         **/
+         */
         public signal void text_changed_pause (string text);
         
         /**
@@ -81,9 +92,14 @@ namespace Granite.Widgets {
          * which depends on the SearchBar's icon.
          * It can be useful to show something on the icon press,
          * we can show a PopOver, for example.
-         **/
+         */
         public signal void search_icon_release ();
         
+        /**
+         * Makes new search bar
+         *
+         * @param hint_string hint for new search bar
+         */
         public SearchBar (string hint_string) {
         
             base (hint_string);

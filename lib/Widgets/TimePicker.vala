@@ -17,6 +17,9 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This widget allows users to easily pick a time.
+     */
     public class TimePicker : Gtk.EventBox {  
     
         // Signals
@@ -26,6 +29,10 @@ namespace Granite.Widgets {
         protected const int PADDING = 5;
 
         private DateTime _time = new DateTime.now_local ();
+
+        /**
+         * Current time
+         */
         public DateTime time {
             get { return _time; }
             set {
@@ -50,9 +57,16 @@ namespace Granite.Widgets {
             return to_normalize_time;
         }
 
+        /**
+         * Current format for time
+         */
         public string format { get; construct; default = _("%l:%M %p"); }
 
         private bool _is_pressed = false;
+        
+        /**
+         * Currently pressed
+         */
         protected bool is_pressed {
             get { return _is_pressed; }
             set {
@@ -95,8 +109,7 @@ namespace Granite.Widgets {
         /**
          * Creates a new DateSwitcher.
          *
-         * @param chars_width
-         *          The width of the label. Automatic if -1 is given.
+         * @param chars_width The width of the label. Automatic if -1 is given.
          */
         construct {
         

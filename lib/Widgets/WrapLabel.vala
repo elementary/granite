@@ -6,7 +6,7 @@ using Gtk;
 /**
  * This is a label which is automatically wrapped.
  * If a line is too long, there will be a line break for instance.
- **/
+ */
 public class Granite.Widgets.WrapLabel : Label {
 
     public int m_wrap_width = 0;
@@ -16,7 +16,7 @@ public class Granite.Widgets.WrapLabel : Label {
      * Create a new WrapLabel.
      *
      * @param str the content of the label
-     **/
+     */
     public WrapLabel(string? str = null) 
     {
         wrap = true;

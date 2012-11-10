@@ -20,15 +20,23 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This class provides an easy way to manage tabs.
+     */
     public class StaticNotebook : Gtk.Box {
 
         private Gtk.Notebook notebook;
         private ModeButton switcher;
         private Gtk.Box switcher_box;
 
-        /* The page switcher will NEVER be shown if this property is set to true */
+        /**
+         * The page switcher will NEVER be shown if this property is set to true
+         */
         private bool switcher_hidden;
 
+        /**
+         * This currently selected page
+         */
         public int page {
             set { switcher.selected = value; notebook.page = value; }
             get { return notebook.page; }
@@ -36,6 +44,11 @@ namespace Granite.Widgets {
 
         public signal void page_changed (int index);
 
+        /**
+         * This creates a new StaticNotebook
+         * 
+         * @param show_separator whether or not to show a seperator
+         */
         public StaticNotebook (bool show_separator = true) {
 
             orientation = Gtk.Orientation.VERTICAL;

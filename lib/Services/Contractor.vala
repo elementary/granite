@@ -25,10 +25,10 @@ namespace Granite.Services {
     }
 
     /**
-     * A way to handle contractor
+     * A way to handle contractor, a way to communicate between apps.
      * 
      * /!\ Highly unstable API
-     **/
+     */
     public class Contractor : Object
     {
 
@@ -36,6 +36,9 @@ namespace Granite.Services {
 
         internal static Contractor? contractor = null;
 
+        /**
+         * This creates a new Contractor 
+         */
         public Contractor()
         {
             try
@@ -55,6 +58,13 @@ namespace Granite.Services {
             if(contractor == null) contractor = new Contractor ();
         }
 
+        /**
+         * This searches for available contracts of a particular file
+         * 
+         * @param uri uri of file
+         * @param mime mime type of file
+         * @return Hashtable of available contracts
+         */
         public static GLib.HashTable<string,string>[] get_contract(string uri, string mime)
         {
             ensure ();
@@ -69,6 +79,12 @@ namespace Granite.Services {
             return contracts;
         }
 
+        /**
+         * generate contracts for rguments and filter them by  common parent mimetype.
+         * 
+         * @param locations Hashtable of locations
+         * @return Hashtable of available contracts
+         */
         public static GLib.HashTable<string,string>[] get_selection_contracts (GLib.HashTable<string, string>[] locations)
         {
             ensure ();

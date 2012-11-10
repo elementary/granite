@@ -19,11 +19,31 @@
  */
 
 public enum Granite.TextStyle {
+    /**
+     * Highest level header
+     */
     TITLE,
+    
+    /**
+     * Second highest header
+     */
     H1,
+    
+    /**
+     * Third highest header
+     */
     H2,
+    
+    /**
+     * Fourth Highest Header
+     */
     H3;
 
+    /**
+     * Gets style sheet of text style
+     *
+     * @return CSS of text style
+     */
     public string get_stylesheet (out string style_class = null) {
         switch (this) {
             case TITLE:
@@ -44,6 +64,9 @@ public enum Granite.TextStyle {
     }
 }
 
+/**
+ * This class helps to apply CSS to widgets.
+ */
 namespace Granite.Widgets.Utils {
 
     [CCode (cname="get_close_pixbuf")]
@@ -52,6 +75,11 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Applies the stylesheet to the widget
+     * 
+     * @param widget widget to apply style to
+     * @param stylesheet style to apply to screen
+     * @param class_name class name to add style to
+     * @param priority priorty of change
      */
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
@@ -71,6 +99,10 @@ namespace Granite.Widgets.Utils {
     /**
      * Applies a stylesheet to the given screen. This will affects all the
      * widgets which are part of that screen.
+     * 
+     * @param screen Screen to apply style to
+     * @param stylesheet style to apply to screen
+     * @param priority priorty of change
      */
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -83,7 +115,7 @@ namespace Granite.Widgets.Utils {
 
     /**
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
-     *         @stylesheet failed.
+     *         //stylesheet// failed.
      */
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();
@@ -102,7 +134,10 @@ namespace Granite.Widgets.Utils {
 
 
     /**
-     * Text Style
+     * This method applies given text style to given label
+     * 
+     * @param text_style text style to apply
+     * @param label label to apply style to
      */
 
     public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {

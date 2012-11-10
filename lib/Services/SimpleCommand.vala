@@ -20,46 +20,46 @@
 
 /**
  * This class is a wrapper to run an async command. It provides useful signals.
- **/
+ */
 public class Granite.Services.SimpleCommand : GLib.Object
 {
     /**
      * Emitted when the command is finished.
-     **/
+     */
     public signal void done(int exit);
 
     /**
      * When the output changed (std.out and std.err).
      *
      * @param text the new text
-     **/
+     */
     public signal void output_changed(string text);
 
     /**
      * When the standard output is changed.
      *
      * @param text the new text from std.out
-     **/
+     */
     public signal void standard_changed(string text);
 
     /**
      * When the error output is changed.
      *
      * @param text the new text from std.err
-     **/
+     */
     public signal void error_changed(string text);
 
 	/**
 	 * The whole current standard output
-	 **/
+     */
     public string standard_output_str = "";
     /**
-	 * The whole current error output
-	 **/
+     * The whole current error output
+     */
     public string error_output_str = "";
     /**
-	 * The whole current output
-	 **/
+     * The whole current output
+     */
     public string output_str = "";
     
     GLib.IOChannel out_make;
@@ -75,7 +75,7 @@ public class Granite.Services.SimpleCommand : GLib.Object
      * @param command The command to execute (using absolute paths like /usr/bin/make causes less
      * strange bugs).
      *
-     **/
+     */
     public SimpleCommand(string dir, string command)
     {
         this.dir = dir;
@@ -84,7 +84,7 @@ public class Granite.Services.SimpleCommand : GLib.Object
 
     /**
      * Launch the command. It is async.
-     **/
+     */
     public void run()
     {
         int standard_output = 0;

@@ -25,10 +25,13 @@ namespace Granite {
     /**
      * Global deprecated object..
      *
-     * @deprecated 0.1
-    **/
+     */
+    [Deprecated (since = "granite-0.1")]
     public static Granite.Application app;
 
+    /**
+     * This is the base class for all Granite-based apps. It has methods to help create a great deal of an app's functionality.
+     */
     public abstract class Application : Gtk.Application {
 
         public string build_data_dir;
@@ -58,6 +61,9 @@ namespace Granite {
         public string about_license;
         public License about_license_type;
 
+        /**
+         * This creates a new Application class
+         */
         public Application () {
 
 
@@ -83,6 +89,11 @@ namespace Granite {
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
             protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
 
+        /**
+         * This method runs the application
+         * 
+         * @param args array of arguments
+         */
         public new int run (string[] args) {
 
             // parse commandline options
@@ -113,6 +124,13 @@ namespace Granite {
                 Logger.DisplayLevel = LogLevel.DEBUG;
         }
 
+        /**
+         * This methods creates a new App Menu
+         * 
+         * @param menu the menu to create the App Menu for
+         * 
+         * @return app_menu
+         */
         public AppMenu create_appmenu (Gtk.Menu menu) {
 
             AppMenu app_menu = new AppMenu.with_app (this, menu);
@@ -123,6 +141,11 @@ namespace Granite {
 
         protected Granite.Widgets.AboutDialog about_dlg;
 
+        /**
+         * This method shows the about dialog of this app.
+         * 
+         * @param parent This widget is the window that is calling the about page being created. 
+         */
         public virtual void show_about (Gtk.Widget parent) {
 
             assert(parent is Gtk.Window);

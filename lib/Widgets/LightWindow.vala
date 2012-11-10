@@ -22,8 +22,16 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This is always-on-top, non-modal window with a large close button.
+     */
     public class LightWindow : DecoratedWindow {
 
+        /**
+         * Makes a new Window with the Light Theme
+         *
+         * @param title title of new window
+         */
         public LightWindow (string title = "") {
             base (title, STYLE_CLASS_CONTENT_VIEW_WINDOW, STYLE_CLASS_CONTENT_VIEW);
         }

@@ -19,6 +19,9 @@
 
 namespace Granite.Widgets {
 
+    /**
+     * This widget is a multiple option modal switch
+     */
     public class ModeButton : Gtk.Box {
 
         private class Item : Gtk.ToggleButton {
@@ -34,11 +37,17 @@ namespace Granite.Widgets {
         public signal void mode_removed (int index, Gtk.Widget widget);
         public signal void mode_changed (Gtk.Widget widget);
 
+        /**
+         * Index of currently selected item.
+         */
         public int selected {
             get { return _selected; }
             set { set_active (value); }
         }
 
+        /**
+         * Read-only length of current ModeButton
+         */
         public uint n_items {
             get { return item_map.size; }
         }
@@ -46,6 +55,9 @@ namespace Granite.Widgets {
         private int _selected = -1;
         private Gee.HashMap<int, Item> item_map;
 
+        /**
+         * Makes new ModeButton
+         */
         public ModeButton () {
             homogeneous = true;
             spacing = 0;
@@ -58,18 +70,42 @@ namespace Granite.Widgets {
             style.add_class ("raised"); // needed for toolbars
         }
 
+        /**
+         * Appends Pixbuf to ModeButton
+         *
+         * @param pixbuf Gdk.Pixbuf to append to ModeButton
+         */
         public int append_pixbuf (Gdk.Pixbuf pixbuf) {
             return append (new Gtk.Image.from_pixbuf (pixbuf));
         }
 
+        /**
+         * Appends text to ModeButton
+         *
+         * @param text text to append to ModeButton
+         * @return index of new item
+         */
         public int append_text (string text) {
             return append (new Gtk.Label(text));
         }
 
+        /**
+         * Appends icon to ModeButton
+         *
+         * @param icon_name name of icon to append
+         * @param size desired size of icon
+         * @return index of appended item
+         */
         public int append_icon (string icon_name, Gtk.IconSize size) {
             return append (new Gtk.Image.from_icon_name (icon_name, size));
         }
 
+        /**
+         * Appends given widget to ModeButton
+         *
+         * @param w widget to add to ModeButton
+         * @return index of new item
+         */
         public int append (Gtk.Widget w) {
             int index;
             for (index = item_map.size; item_map.has_key (index); index++);
@@ -94,6 +130,11 @@ namespace Granite.Widgets {
             return index;
         }
 
+        /**
+         * Sets item of given index's activity 
+         *
+         * @param new_active_index index of changed item
+         */
         public void set_active (int new_active_index) {
             return_if_fail (item_map.has_key (new_active_index));
             var new_item = item_map[new_active_index] as Item;
@@ -116,6 +157,12 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Changes visibility of item of given index
+         *
+         * @param index index of item to be modified
+         * @param val value to change the visiblity to
+         */
         public void set_item_visible (int index, bool val) {
             return_if_fail (item_map.has_key (index));
             var item = item_map[index] as Item;
@@ -127,6 +174,11 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Removes item at given index
+         *
+         * @param index index of item to remove
+         */
         public new void remove (int index) {
             return_if_fail (item_map.has_key (index));
             var item = item_map[index] as Item;
@@ -139,6 +191,9 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Clears all children
+         */
         public void clear_children () {
             foreach (weak Gtk.Widget button in get_children ()) {
                 button.hide ();
