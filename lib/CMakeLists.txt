@@ -1,10 +1,12 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
 set (${PKGNAME_}_VERSION 0.1.1)
-# increase when you break the API
 
+# increase when you break the API
 set (${PKGNAME_}_SOVERSION 1)
+
 # Increase when you add functionality
+set (${PKGNAME_}_SOMINOR 0.1)
 
 #
 
@@ -120,7 +122,7 @@ SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATIC MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${GRANITE_VERSION}
+    VERSION ${GRANITE_SOVERSION}.${GRANITE_SOMINOR}
     SOVERSION ${GRANITE_SOVERSION}
                        )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
@@ -135,7 +137,7 @@ endmacro(_list_prefix)
 # GObject Introspection
 if(INTROSPECTION_FOUND)
   include(GObjectIntrospectionMacros)
-  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 0.1.1 Gtk-3.0)
+  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" ${GRANITE_SOVERSION}.0 Gtk-3.0)
 endif()
 
 add_custom_target(docs)
