@@ -1,6 +1,6 @@
 set (PKGNAME granite)
 set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.1.1)
+set (${PKGNAME_}_VERSION 0.2)
 
 # increase when you break the API
 set (${PKGNAME_}_SOVERSION 1)
@@ -148,3 +148,4 @@ add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/images -R -f)
 add_custom_command (TARGET valadocs COMMAND cp ${CMAKE_SOURCE_DIR}/doc/images/ ${CMAKE_CURRENT_BINARY_DIR}/images -R)
 add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=${PKGNAME} --package-version=${GRANITE_VERSION} --force --doclet=html)
+
