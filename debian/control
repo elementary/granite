@@ -60,8 +60,8 @@ Package: libgranite-common
 Section: misc
 Architecture: all
 Depends: ${misc:Depends}
-Replaces: libgranite0 (>> 0.2)
-Conflicts: libgranite0 (>> 0.2)
+Replaces: libgranite0 (>> 0.2~)
+Conflicts: libgranite0 (>> 0.2~)
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (common files)
  Granite is an extension of GTK+. Among other things, it provides the
