@@ -31,9 +31,6 @@ namespace Granite.Widgets {
         return false;
     }
 
-    /**
-     * This is a standard tab which can be used in a notebook to form a tabbed UI.
-     */
     public class Tab : Gtk.Box {
         Gtk.Label _label;
         public string label {
@@ -45,8 +42,7 @@ namespace Granite.Widgets {
         public Gtk.Widget page {
             get {
                 return page_container.get_child ();
-            }
-            set {
+            } set {
                 if (page_container.get_child () != null)
                     page_container.remove (page_container.get_child ());
 
@@ -81,16 +77,17 @@ namespace Granite.Widgets {
                     _label.visible = value;
                     close.visible = value;
                 }
+
                 _fixed = value;
             }
         }
 
         internal Gtk.Button close;
         public Gtk.Menu menu { get; set; }
-		
-		//we need to be able to toggle those from the notebook
-		internal Gtk.MenuItem new_window_m;
-		internal Gtk.MenuItem duplicate_m;
+
+        //we need to be able to toggle those from the notebook
+        internal Gtk.MenuItem new_window_m;
+        internal Gtk.MenuItem duplicate_m;
 
         internal signal void closed ();
         internal signal void close_others ();
@@ -103,6 +100,7 @@ namespace Granite.Widgets {
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
             else
                 this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
+
             this._working = new Gtk.Spinner ();
             _working.start();
             this.close = new Gtk.Button ();
@@ -175,14 +173,14 @@ namespace Granite.Widgets {
 
         /**
          * number of pages
-         */
+         **/
         public int n_tabs {
             get { return notebook.get_n_pages (); }
         }
 
         /**
          * Hide the tab bar and only show the pages
-         */
+         **/
         public bool show_tabs {
             get { return notebook.show_tabs;  }
             set { notebook.show_tabs = value; }
@@ -191,7 +189,7 @@ namespace Granite.Widgets {
         bool _show_icons;
         /**
          * Toggle icon display
-         */
+         **/
         public bool show_icons {
             get { return _show_icons; }
             set {
@@ -204,7 +202,7 @@ namespace Granite.Widgets {
 
         /**
          * Hide the close buttons and disable closing of tabs
-         */
+         **/
         bool _tabs_closable = true;
         public bool tabs_closable {
             get { return _tabs_closable; }
@@ -219,7 +217,7 @@ namespace Granite.Widgets {
 
         /**
          * Make tabs reorderable
-         */
+         **/
         bool _allow_drag = true;
         public bool allow_drag {
             get { return _allow_drag; }
@@ -233,7 +231,7 @@ namespace Granite.Widgets {
 
         /**
          * Allow creating new windows by dragging a tab out
-         */
+         **/
         bool _allow_new_window = false;
         public bool allow_new_window {
             get { return _allow_new_window; }
@@ -245,19 +243,20 @@ namespace Granite.Widgets {
             }
         }
 
-		/**
-		 * Allow duplicating tabs
-		 */
-		bool _allow_duplication = false;
-		public bool allow_duplication {
-			get { return _allow_duplication; }
-			set {
-				_allow_duplication = value;
-				foreach (var tab in tabs) {
-					tab.duplicate_m.visible = value;
-				}
-			}
-		}
+        /**
+         * Allow duplicating tabs
+         **/
+        bool _allow_duplication = true;
+        public bool allow_duplication {
+        get { return _allow_duplication; }
+            set {
+                _allow_duplication = value;
+
+                foreach (var tab in tabs) {
+                    tab.duplicate_m.visible = value;
+                }
+            }
+        }
 
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
@@ -280,10 +279,10 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
-		/**
-		 * The menu appearing when the notebook is clicked on a blank space
-		 */
-		public Gtk.Menu menu { get; private set; }
+        /**
+         * The menu appearing when the notebook is clicked on a blank space
+         **/
+        public Gtk.Menu menu { get; private set; }
 
         Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
@@ -310,8 +309,8 @@ namespace Granite.Widgets {
         """;
 
         /**
-         * Create a new dynamic notebook
-         */
+         * create a new dynamic notebook
+         **/
         public DynamicNotebook () {
 
             this.button_fix = new Gtk.CssProvider ();
@@ -333,18 +332,18 @@ namespace Granite.Widgets {
 
             this.add (this.notebook);
 
-			menu = new Gtk.Menu ();
-			
-			var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
-			menu.append (new_tab_m);
-			
-			menu.show_all ();
+            menu = new Gtk.Menu ();
 
-			new_tab_m.activate.connect (() => {
-				var t = new Tab ();
-				notebook.page = (int)this.insert_tab (t, -1);
-				this.tab_added (t);
-			});
+            var new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
+            menu.append (new_tab_m);
+
+            menu.show_all ();
+
+            new_tab_m.activate.connect (() => {
+                var t = new Tab ();
+                notebook.page = (int)this.insert_tab (t, -1);
+                this.tab_added (t);
+            });
 
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
@@ -352,7 +351,7 @@ namespace Granite.Widgets {
                     notebook.page = (int) this.insert_tab (t, -1);
                     this.tab_added (t);
                 } else if (e.button == 3) {
-                	menu.popup (null, null, null, 3, e.time);
+                    menu.popup (null, null, null, 3, e.time);
                 }
 
                 return false;
@@ -367,17 +366,27 @@ namespace Granite.Widgets {
             add.show_all ();
             add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            add.clicked.connect ( () => {
+            add.clicked.connect (() => {
                 var t = new Tab ();
-                notebook.page = (int)this.insert_tab (t, -1);
+                notebook.page = (int) this.insert_tab (t, -1);
                 this.tab_added (t);
             });
 
-            this.size_allocate.connect ( () => {
+            this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
 
-            this.key_press_event.connect ( (e) => {
+            this.scroll_event.connect ((e) => {
+                if (e.direction == Gdk.ScrollDirection.UP || e.direction == Gdk.ScrollDirection.LEFT) {
+                    previous_page ();
+                } else {
+                    next_page ();
+                }
+                
+                return true;
+            });
+            
+            this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
                 case 119: //ctrl+w
                     if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
@@ -540,7 +549,7 @@ namespace Granite.Widgets {
                 i = this.notebook.insert_page (tab.page_container, tab, index);
 
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
-            this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
+            this.notebook.set_tab_detachable (tab.page_container, this.allow_new_window);
 
             tab._icon.visible = show_icons;
             tab.duplicate_m.visible = allow_duplication;
@@ -569,12 +578,14 @@ namespace Granite.Widgets {
             });
 
             tab.new_window.connect (() => {
-            	notebook.remove_page (notebook.page_num (tab.page_container));
-            	tab_moved (tab, 0, true, 0, 0);
+                notebook.remove_page (notebook.page_num (tab.page_container));
+                tab_moved (tab, 0, true, 0, 0);
             });
-            
+
             tab.duplicate.connect (() => {
-            	tab_duplicated (tab);
+                var dupl = new Tab (tab.label, tab.icon, tab.page);
+                insert_tab (dupl, -1);
+                tab_duplicated (dupl);
             });
 
             this.recalc_size ();
@@ -585,5 +596,4 @@ namespace Granite.Widgets {
             return i;
         }
     }
-
 }
