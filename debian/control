@@ -60,6 +60,7 @@ Package: libgranite-common
 Section: misc
 Architecture: all
 Depends: ${misc:Depends}
+Replaces: libgranite0
 Conflicts: libgranite0
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (common files)
