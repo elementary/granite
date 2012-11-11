@@ -137,7 +137,7 @@ endmacro(_list_prefix)
 # GObject Introspection
 if(INTROSPECTION_FOUND)
   include(GObjectIntrospectionMacros)
-  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" ${GRANITE_SOVERSION}.0 Gtk-3.0)
+  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 1.0 Gtk-3.0)
 endif()
 
 add_custom_target(docs)
