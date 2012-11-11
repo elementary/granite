@@ -2,22 +2,22 @@ Source: granite
 Section: libs
 Priority: optional
 Maintainer: Devid Antonio Filoni <d.filoni@ubuntu.com>
-Build-Depends: debhelper (>= 8),
-               cmake,
-               valac (>= 0.16),
-               libgtk-3-dev,
+Build-Depends: cmake,
+               debhelper (>= 8),
                gobject-introspection (>= 1.31.0-2),
+               libgee-dev,
                libgirepository1.0-dev,
-               gir1.2-gtk-3.0,
-               gir1.2-glib-2.0,
-               libgee-dev
+               libgtk-3-dev (>= 3.3.14),
+               valac (>= 0.16)
 Standards-Version: 3.9.2
 Homepage: https://launchpad.net/granite
 
 Package: libgranite1
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, libgranite-common (= ${binary:Version})
-Recommends: contractor, apport-hooks-elementary
+Depends: libgranite-common (>= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: apport-hooks-elementary, contractor
 Description: extension of GTK+ libraries
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
@@ -28,8 +28,12 @@ Description: extension of GTK+ libraries
 Package: libgranite-dev
 Section: libdevel
 Architecture: any
-Depends: ${misc:Depends}, libgranite1 (= ${binary:Version}),
- gir1.2-granite-1.0 (= ${binary:Version})
+Depends: gir1.2-granite-1.0 (= ${binary:Version}),
+         libgee-dev,
+         libglib2.0-dev,
+         libgranite1 (= ${binary:Version}),
+         libgtk-3-dev (>= 3.3.14),
+         ${misc:Depends}
 Description: extension of GTK+ libraries (development files)
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
@@ -46,13 +50,12 @@ Description: extension of GTK+ libraries (introspection files)
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
  search bars, and more found in elementary apps.
  .
- This package can be used by other packages using the GIRepository format to 
+ This package can be used by other packages using the GIRepository format to
  generate dynamic bindings.
 
 Package: libgranite-common
 Section: misc
 Architecture: all
-Recommends: libgranite1 (= ${binary:Version})
 Description: extension of GTK+ libraries (common files)
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
@@ -63,8 +66,7 @@ Description: extension of GTK+ libraries (common files)
 Package: granite-demo
 Section: misc
 Architecture: any
-Depends: libgranite1 (= ${binary:Version}), ${shlibs:Depends},
- ${misc:Depends} 
+Depends: libgranite1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
@@ -76,8 +78,7 @@ Package: libgranite1-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: libgranite1
- (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: libgranite1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (debugging symbols)
  Granite is an extension of GTK+. Among other things, it provides the
  commonly-used widgets such as modeswitchers, welcome screens, AppMenus,

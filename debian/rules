@@ -3,5 +3,11 @@
 %:
 	dh $@ --with gir
 
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
+
+override_dh_install:
+	dh_install --fail-missing
+
 override_dh_strip:
 	dh_strip --dbg-package=libgranite1-dbg
