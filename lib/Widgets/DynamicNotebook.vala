@@ -570,12 +570,12 @@ namespace Granite.Widgets {
             });
 
             tab.new_window.connect (() => {
-            	notebook.remove_page (notebook.page_num (tab.page_container));
-            	tab_moved (tab, 0, true, 0, 0);
+                notebook.remove_page (notebook.page_num (tab.page_container));
+                tab_moved (tab, 0, true, 0, 0);
             });
             
             tab.duplicate.connect (() => {
-            	tab_duplicated (tab);
+                tab_duplicated (tab);
             });
 
             this.recalc_size ();
@@ -586,5 +586,4 @@ namespace Granite.Widgets {
             return i;
         }
     }
-
 }
