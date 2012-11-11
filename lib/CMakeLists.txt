@@ -110,7 +110,7 @@ add_library (${PKGNAME} SHARED
     Widgets/close-button.c
     ${VALA_C}
 )
-target_link_libraries(${PKGNAME} ${LIBS})
+target_link_libraries(${PKGNAME} ${LIBS} -lm)
 if(BUILD_STATIC MATCHES "Yes")
 ADD_LIBRARY(${PKGNAME}-static STATIC ${VALA_C})
 target_link_libraries(${PKGNAME}-static ${LIBS})
