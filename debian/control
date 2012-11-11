@@ -14,9 +14,9 @@ Homepage: https://launchpad.net/granite
 
 Package: libgranite1
 Architecture: any
-Depends: ${misc:Depends},
+Depends: libgranite-common (>= ${source:Version}),
+         ${misc:Depends},
          ${shlibs:Depends}
-Suggests: libgranite-common
 Pre-Depends: dpkg (>= 1.15.6)
 Recommends: apport-hooks-elementary, contractor
 Description: extension of GTK+ libraries
@@ -60,8 +60,8 @@ Package: libgranite-common
 Section: misc
 Architecture: all
 Depends: ${misc:Depends}
-Replaces: libgranite0
-Conflicts: libgranite0
+Replaces: libgranite0 (>> 0.2)
+Conflicts: libgranite0 (>> 0.2)
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (common files)
  Granite is an extension of GTK+. Among other things, it provides the
