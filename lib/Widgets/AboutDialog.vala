@@ -193,6 +193,5 @@ namespace Granite.Widgets {
             });
         }
     }
-
-    public extern void show_about_dialog (Gtk.Window *parent, ...);
 }
+
