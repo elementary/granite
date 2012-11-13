@@ -8,15 +8,20 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-11-01 19:03+0000\n"
+"PO-Revision-Date: 2012-11-12 15:36+0000\n"
 "Last-Translator: Jaap Broekhuizen <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-02 05:29+0000\n"
-"X-Generator: Launchpad (build 16218)\n"
+"X-Launchpad-Export-Date: 2012-11-13 05:46+0000\n"
+"X-Generator: Launchpad (build 16251)\n"
+
+#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
+#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "Kon Contractor niet benaderen. Mogelijk moet u dit installeren"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -46,11 +51,6 @@ msgstr "Dit programma wordt verspreid onder de voorwaarden van de "
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " licentie, het komt met ABSOLUUT GEEN GARANTIE; voor details, bezoek "
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "kon Contractor niet benaderen. Mogelijk moet u dit installeren"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
