@@ -148,53 +148,31 @@ namespace Granite {
          */
         public virtual void show_about (Gtk.Widget parent) {
 
-            assert (parent is Gtk.Window);
-            
-            Granite.Widgets.AboutDialog dialog;
+            assert(parent is Gtk.Window);
+            Granite.Widgets.show_about_dialog ((Gtk.Window) parent, 
+                                               "program_name", program_name,
+                                               "version", build_version,
+                                               "logo_icon_name", app_icon,
 
-            if (parent != null)
-                dialog = parent.get_data ("gtk-about-dialog");
-            else
-                dialog = about_dlg;
+                                               "comments", about_comments,
+                                               "copyright", "%s %s Developers".printf (app_years, program_name),
+                                               "website", main_url,
+                                               "website_label", "Website",
 
-            if (dialog == null) {
-                dialog = new Granite.Widgets.AboutDialog ();
+                                               "authors", about_authors,
+                                               "documenters", about_documenters,
+                                               "artists", about_artists,
+                                               "translator_credits", about_translators,
+                                               "license", about_license,
+                                               "license_type", about_license_type,
 
-                dialog.program_name = program_name;
-                dialog.version = build_version;
-                dialog.logo_icon_name = app_icon;
+                                               "help", help_url,
+                                               "translate", translate_url,
+                                               "bug", bug_url);
 
-                dialog.comments = about_comments;
-                dialog.copyright = "%s %s Developers".printf (app_years, program_name);
-                dialog.website = main_url;
-                dialog.website_label = "Website";
-
-                dialog.authors = about_authors;
-                dialog.documenters = about_documenters;
-                dialog.artists = about_artists;
-                dialog.translator_credits = about_translators;
-                dialog.license = about_license;
-                dialog.license_type = about_license_type;
-
-                dialog.help = help_url;
-                dialog.translate = translate_url;
-                dialog.bug = bug_url;
-
-                dialog.delete_event.connect (dialog.hide_on_delete);
-                dialog.response.connect (() => { dialog.hide (); });
-
-                if (parent != null) {
-                    dialog.set_modal (true);
-                    dialog.set_transient_for (parent as Gtk.Window);
-                    dialog.set_destroy_with_parent (true);
-                    parent.set_data_full ("gtk-about-dialog", dialog, Object.unref);
-                } else {
-                    about_dlg = dialog;
-                }
-            }
-
-            dialog.present ();
         }
+
     }
+
 }
 
