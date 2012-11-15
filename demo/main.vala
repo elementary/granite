@@ -82,12 +82,12 @@ public class Granite.Demo : Granite.Application
         }
 
         Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
-
         // Adding elements. Use the most convenient function to add an icon
         welcome.append_with_pixbuf(pixbuf, "Create", "Write a new document.");
         welcome.append_with_image(image, "Open", "select a file.");
         welcome.append("document-save", "Save", "With a much longer description.");
         welcome.append("help-info", "Discover", "Learn more about this application.");
+        string x = welcome.title;
 
         /* modebutton */
         var mode_button = new ModeButton();
