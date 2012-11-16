@@ -68,7 +68,7 @@ public class Granite.Demo : Granite.Application
 
         /* welcome */
 
-        // These strings wtieill be automatically corrected by the widget
+        // These strings will be automatically corrected by the widget
         var welcome = new Welcome("Granite's Welcome Screen", "This is Granite's Welcome widget.");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
 
@@ -82,6 +82,7 @@ public class Granite.Demo : Granite.Application
         }
 
         Gtk.Image? image = new Gtk.Image.from_icon_name("document-open", Gtk.IconSize.DIALOG);
+
         // Adding elements. Use the most convenient function to add an icon
         welcome.append_with_pixbuf(pixbuf, "Create", "Write a new document.");
         welcome.append_with_image(image, "Open", "select a file.");
