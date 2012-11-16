@@ -43,8 +43,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     /**
      * This is the title of the welcome widget.
      */
-    public string title 
-    {
+    public string title {
         get {
             return title_label.get_label ();
         }
@@ -52,11 +51,11 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
             title_label.set_label (value);
         }
     }
+
     /**
      * This is the subtitle of the welcome widget.
      */
-    public string subtitle 
-    {
+    public string subtitle {
         get {
             return subtitle_label.get_label ();
         }
