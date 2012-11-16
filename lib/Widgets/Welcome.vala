@@ -39,7 +39,33 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * Box for action items
      */
     protected Gtk.Box options;
+    
+    /**
+     * This is the title of the welcome widget.
+     */
+    public string title {
+        get {
+            return title_label.get_label ();
+        }
+        set {
+            title_label.set_label (value);
+        }
+    }
 
+    /**
+     * This is the subtitle of the welcome widget.
+     */
+    public string subtitle {
+        get {
+            return subtitle_label.get_label ();
+        }
+        set {
+            subtitle_label.set_label (value);
+        }
+    }
+
+    private Gtk.Label title_label;
+    private Gtk.Label subtitle_label;
     /**
      * Makes new Welcome Page
      *
@@ -60,19 +86,19 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
         // Labels
-        var title = new Gtk.Label (title_text);
-        Utils.apply_text_style_to_label (TextStyle.H1, title);
+        title_label = new Gtk.Label (title_text);
+        Utils.apply_text_style_to_label (TextStyle.H1, title_label);
 
-        title.set_justify (Gtk.Justification.CENTER);
-        content.pack_start (title, false, true, 0);
+        title_label.set_justify (Gtk.Justification.CENTER);
+        content.pack_start (title_label, false, true, 0);
 
-        var subtitle = new Gtk.Label (subtitle_text);
-        Utils.apply_text_style_to_label (TextStyle.H2, subtitle);
+        subtitle_label = new Gtk.Label (subtitle_text);
+        Utils.apply_text_style_to_label (TextStyle.H2, subtitle_label);
 
-        subtitle.sensitive = false;
-        subtitle.set_justify (Gtk.Justification.CENTER);
+        subtitle_label.sensitive = false;
+        subtitle_label.set_justify (Gtk.Justification.CENTER);
 
-        content.pack_start (subtitle, false, true, 2);
+        content.pack_start (subtitle_label, false, true, 2);
 
         // Options wrapper
         this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
