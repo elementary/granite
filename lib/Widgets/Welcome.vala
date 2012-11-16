@@ -65,8 +65,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         }
     }
 
-    public Gtk.Label title_label;
-    public Gtk.Label subtitle_label;
+    private Gtk.Label title_label;
+    private Gtk.Label subtitle_label;
     /**
      * Makes new Welcome Page
      *
