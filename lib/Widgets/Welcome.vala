@@ -40,17 +40,29 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      */
     protected Gtk.Box options;
     
-    public string title {
+    /**
+     * This is the title of the welcome widget.
+     */
+    public string title 
+    {
         get {
             return title_label.get_label ();
         }
         set {
-        	title_label.set_label (value);
+            title_label.set_label (value);
         }
     }
-    public string subtitle {
-        get;
-        set;
+    /**
+     * This is the subtitle of the welcome widget.
+     */
+    public string subtitle 
+    {
+        get {
+            return subtitle_label.get_label ();
+        }
+        set {
+            subtitle_label.set_label (value);
+        }
     }
 
 	public Gtk.Label title_label;

@@ -68,7 +68,7 @@ public class Granite.Demo : Granite.Application
 
         /* welcome */
 
-        // These strings will be automatically corrected by the widget
+        // These strings wtieill be automatically corrected by the widget
         var welcome = new Welcome("Granite's Welcome Screen", "This is Granite's Welcome widget.");
         notebook.append_page(welcome, new Gtk.Label("Welcome"));
 
@@ -87,7 +87,6 @@ public class Granite.Demo : Granite.Application
         welcome.append_with_image(image, "Open", "select a file.");
         welcome.append("document-save", "Save", "With a much longer description.");
         welcome.append("help-info", "Discover", "Learn more about this application.");
-        string x = welcome.title;
 
         /* modebutton */
         var mode_button = new ModeButton();
