@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-08-19 14:30+0000\n"
+"PO-Revision-Date: 2012-11-15 09:54+0000\n"
 "Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-24 04:52+0000\n"
-"X-Generator: Launchpad (build 15985)\n"
+"X-Launchpad-Export-Date: 2012-11-16 04:52+0000\n"
+"X-Generator: Launchpad (build 16272)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -28,11 +28,11 @@ msgstr "Escrito por"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr ""
+msgstr "Direitos de autor"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr ""
+msgstr "Documentado por"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
@@ -97,24 +97,24 @@ msgstr "Fechar separador"
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Abrir em nova Janela"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplicar"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fechar outro separador"
+msgstr[1] "Fechar outros separadores"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr ""
+msgstr "Novo separador"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
