@@ -1,57 +1,41 @@
-set (PKGNAME granite)
-set (PKGNAME_ GRANITE)
-set (${PKGNAME_}_VERSION 0.2)
-
 # increase when you break the API
-set (${PKGNAME_}_SOVERSION 1)
+set (PKG_SOVERSION 1)
 
 # Increase when you add functionality
-set (${PKGNAME_}_SOMINOR 0.1)
+set (PKG_SOMINOR 0.1)
 
-#
-
-# granite.pc
-
-#
-
+######################
+# lib PC file
+######################
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (DOLLAR "$")
-# You hear that? It's kittens being killed by the gods of cmake
+set (DOLLAR "$") # You hear that? It's kittens being killed by the gods of cmake
 
-configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h) # used from config.vala
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+
 # Check for the deps
+find_package (PkgConfig)
 
-find_package(PkgConfig)
-find_package(GObjectIntrospection 0.9.12)
-
-set(PKG_DEPS gtk+-3.0 gio-unix-2.0)
-
-pkg_check_modules(DEPS REQUIRED
-    gtk+-3.0>=3.3.14
-    gio-unix-2.0
-    gthread-2.0
-    gee-1.0)
+pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
 # Link all
 
-set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"granite\"")
-set(LIBS
-    ${DEPS_LIBRARIES}
-)
-set(LIB_PATHS
-    ${DEPS_LIBRARY_DIRS}
-)
-link_directories(${LIB_PATHS})
-#VALA stuff
+set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
+add_definitions (${CFLAGS} "-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.16.0" MINIMUM)
-include(ValaPrecompile)
-vala_precompile(VALA_C
+set (LIBS ${DEPS_LIBRARIES})
+set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
+link_directories (${LIB_PATHS})
+
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
+
+find_package (Vala REQUIRED)
+include (ValaVersion)
+ensure_vala_version ("0.16.0" MINIMUM)
+include (ValaPrecompile)
+
+vala_precompile (VALA_C
     Application.vala
     Drawing/Color.vala
     Drawing/BufferSurface.vala
@@ -92,60 +76,41 @@ vala_precompile(VALA_C
     config.vapi
 PACKAGES
     ${PKG_DEPS}
-    posix
-    gee-1.0
 OPTIONS
     --thread
 GENERATE_VAPI
-    granite
+    ${PKG_NAME}
 GENERATE_HEADER
-    granite
+    ${PKG_NAME}
 )
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.vapi DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite.deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/granite.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/granite/)
-add_library (${PKGNAME} SHARED    
-    Widgets/widgets-utils.c
-    Widgets/close-button.c
-    ${VALA_C}
-)
-target_link_libraries(${PKGNAME} ${LIBS} -lm)
-if(BUILD_STATIC MATCHES "Yes")
-ADD_LIBRARY(${PKGNAME}-static STATIC ${VALA_C})
-target_link_libraries(${PKGNAME}-static ${LIBS})
-# The library target "foo" already has a default OUTPUT_NAME of "foo", so we don't need to change it.
 
-# The library target "foo-static" has a default OUTPUT_NAME of "foo-static", so change it.
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.vapi DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.deps DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PKG_NAME}/)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PKG_NAME}/)
 
-SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
-install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-endif(BUILD_STATIC MATCHES "Yes")
-set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${GRANITE_SOVERSION}.${GRANITE_SOMINOR}
-    SOVERSION ${GRANITE_SOVERSION}
-                       )
-install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+set (LIB_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/close-button.c
+    ${VALA_C})
 
-macro(_list_prefix _outvar _listvar _prefix)
-  set(${_outvar})
-  foreach(_item IN LISTS ${_listvar})
-    list(APPEND ${_outvar} ${_prefix}${_item})
-  endforeach()
-endmacro(_list_prefix)
+add_library (${PKG_NAME} SHARED ${LIB_FILES})
 
+target_link_libraries (${PKG_NAME} ${LIBS} -lm)
+
+set_target_properties (${PKG_NAME} PROPERTIES
+    VERSION ${PKG_SOVERSION}.${PKG_SOMINOR}
+    SOVERSION ${PKG_SOVERSION})
+
+install (TARGETS ${PKG_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+
+###########################
 # GObject Introspection
-if(INTROSPECTION_FOUND)
-  include(GObjectIntrospectionMacros)
-  add_target_gir(granite Granite granite.h "${VALA_C}" "${DEPS_CFLAGS}" 1.0 Gtk-3.0)
-endif()
+###########################
 
-add_custom_target(docs)
-add_custom_command (TARGET docs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs -R -f)
-add_custom_command (TARGET docs COMMAND valadoc -o docs --doclet-arg=${CMAKE_CURRENT_BINARY_DIR}/granite.h ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=granite --package-version=0.1.1 --doclet=gtkdoc)
-add_custom_target (valadocs)
-add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_vala -R -f)
-add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/images -R -f)
-add_custom_command (TARGET valadocs COMMAND cp ${CMAKE_SOURCE_DIR}/doc/images/ ${CMAKE_CURRENT_BINARY_DIR}/images -R)
-add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=${PKGNAME} --package-version=${GRANITE_VERSION} --force --doclet=html)
+find_package (GObjectIntrospection 0.9.12)
 
+if (INTROSPECTION_FOUND)
+  include (GObjectIntrospectionMacros)
+  add_target_gir (${PKG_NAME} ${PKG_DESC_NAME} ${PKG_NAME}.h "${VALA_C}" "${DEPS_CFLAGS}" ${PKG_VERSION} Gtk-3.0 Gee-1.0)
+endif ()
