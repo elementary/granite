@@ -1,18 +1,38 @@
-                                   Install                                      
---------------------------------------------------------------------------------
+----------------------------------------------------------
+  INSTALLATION INSTRUCTIONS
+----------------------------------------------------------
 
 • Build Granite
 
-  bzr branch lp:granite
-  cd granite
-  mkdir build; cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-  make
-  sudo make install
+  1) Grab the source:
+      $ bzr branch lp:granite
+
+  2) Configure:
+      $ cd granite
+      $ mkdir build
+      $ cd build
+      $ cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+
+  3) Build library and demo application:
+     $ make
+
+  4) Install (may need root privileges, e.g. using 'sudo')
+     # make install
+
+  5) Build API documentation (optional)
+
+     • Vala API:
+       $ make valadocs
+
+     • C API:
+       $ make cdocs
+
+     • Both targets:
+       $ make docs
 
 • Bugs
 
-  If you find bugs in this installation guide or in Granite itself, please report them at
-  https://launchpad.net/granite/+filebug
+  If you find bugs in this installation guide or in Granite itself,
+  please report them at:
 
-
+      https://launchpad.net/granite/+filebug
