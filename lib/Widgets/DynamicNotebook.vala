@@ -343,7 +343,7 @@ namespace Granite.Widgets {
 
             new_tab_m.activate.connect (() => {
                 var t = new Tab ();
-                notebook.page = (int)this.insert_tab (t, -1);
+                notebook.page = (int) this.insert_tab (t, -1);
                 this.tab_added (t);
             });
 
@@ -370,7 +370,7 @@ namespace Granite.Widgets {
 
             add.clicked.connect ( () => {
                 var t = new Tab ();
-                notebook.page = (int)this.insert_tab (t, -1);
+                notebook.page = (int) this.insert_tab (t, -1);
                 this.tab_added (t);
             });
 
@@ -391,7 +391,7 @@ namespace Granite.Widgets {
                     if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                         var t = new Tab ();
                         this.tab_added (t);
-                        notebook.page = (int)this.insert_tab (t, -1);
+                        notebook.page = (int) this.insert_tab (t, -1);
                         return true;
                     }
 
@@ -536,7 +536,7 @@ namespace Granite.Widgets {
 
             var i = 0;
             if (index == -1)
-                i = this.notebook.insert_page (tab.page_container, tab, 0);
+                i = this.notebook.insert_page (tab.page_container, tab, this.notebook.get_n_pages ());
             else
                 i = this.notebook.insert_page (tab.page_container, tab, index);
 
