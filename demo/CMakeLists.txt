@@ -1,30 +1,25 @@
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.16.0" MINIMUM)
-include(ValaPrecompile)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+include_directories (${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+
 # pkgconfig, real C code
+set (CMAKE_INCLUDE_CURRENT_DIR ON)
+set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER} )
+set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# TODO: configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+link_directories (${LIB_PATHS} ${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+add_definitions (${CFLAGS})
 
-find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gee-1.0 gtk+-3.0)
-set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER} )
-set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
-link_directories(${LIB_PATHS} ${CMAKE_CURRENT_BINARY_DIR}/../lib/)
-add_definitions(${CFLAGS})
-vala_precompile(VALA_C
+vala_precompile (
+VALA_C
     main.vala
 CUSTOM_VAPIS
-    ${CMAKE_CURRENT_BINARY_DIR}/../lib/granite.vapi
+    ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES
-    gtk+-3.0
-    gee-1.0
+    ${PKG_DEPS}
 OPTIONS
     --thread
 )
-add_executable(granite-demo ${VALA_C})
-target_link_libraries(granite-demo granite ${DEPS_LIBRARIES})
 
-install (TARGETS granite-demo RUNTIME DESTINATION bin)
+set (EXEC_NAME ${PKG_NAME}-demo)
+add_executable (${EXEC_NAME} ${VALA_C})
+target_link_libraries (${EXEC_NAME} ${PKG_NAME} ${DEPS_LIBRARIES})
+install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
