@@ -8,6 +8,10 @@ set (PKG_NAME ${CMAKE_PROJECT_NAME})
 set (PKG_DESC_NAME Granite)
 set (PKG_VERSION 0.2)
 
+# Used to create GObject introspection files
+set (GI_PKG_VERSION 1.0)
+set (GI_PKG_NAME Granite)
+
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
 set (RESOURCES_DIR ${CMAKE_INSTALL_PREFIX}/share/${PKG_NAME}/)
@@ -20,6 +24,12 @@ set (CPACK_SOURCE_IGNORE_FILES "/build/;/.bzr/;/.bzrignore;~$;${CPACK_SOURCE_IGN
 
 include (CPack)
 add_custom_target (dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
+
+find_package (Vala REQUIRED)
+include (ValaVersion)
+include (ValaPrecompile)
+
+ensure_vala_version ("0.16.1" MINIMUM)
 
 #
 # Packages in PKG_DEPS are used with the vala compiler and other related tools (not versioned.)
@@ -41,9 +51,15 @@ set (PKG_DEPS_CHECK
     gthread-2.0
     gee-1.0)
 
+# GI dependencies
+set (GI_PKG_DEPS Gtk-3.0 Gee-1.0)
+
+# Check for the deps
+find_package (PkgConfig)
+pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
+
 add_subdirectory (lib)
+add_subdirectory (demo)
 add_subdirectory (doc)
 add_subdirectory (po)
-add_subdirectory (demo)
 add_subdirectory (icons)
-
