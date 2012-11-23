@@ -31,18 +31,22 @@ public class Granite.Demo : Granite.Application {
             this.label = label;
             halign = Gtk.Align.START;
         }
+
         public LLabel.indent (string label) {
             this.label = label;
             margin_left = 12;
         }
+
         public LLabel.markup (string label) {
             this.label = label;
             use_markup = true;
         }
+
         public LLabel.right (string label) {
             this.label = label;
             halign = Gtk.Align.END;
         }
+
         public LLabel.right_with_markup (string label) {
             this.label = label;
             halign = Gtk.Align.END;
@@ -106,7 +110,7 @@ public class Granite.Demo : Granite.Application {
     public override void activate () {
         window = new Gtk.Window ();
 
-        window.delete_event.connect ( () => {
+        window.delete_event.connect (() => {
             Gtk.main_quit ();
             return false;
         });
@@ -124,7 +128,7 @@ public class Granite.Demo : Granite.Application {
         page_switcher.show_border = false;
         page_switcher.expand = true;
 
-        sidebar.item_selected.connect ( (item) => {
+        sidebar.item_selected.connect ((item) => {
             var sidebar_item = item as SourceListItem;
             assert (sidebar_item != null);
             page_switcher.set_current_page (sidebar_item.page_num);
@@ -187,7 +191,7 @@ public class Granite.Demo : Granite.Application {
         staticnotebook.append_page (new Gtk.Label ("Page 2"), new Gtk.Label ("Page 2"));
         staticnotebook.append_page (new Gtk.Label ("Page 3"), new Gtk.Label ("Page 3"));
 
-        staticnotebook.page_changed.connect ( () => {
+        staticnotebook.page_changed.connect (() => {
             pageone.set_text ("Page changed");
         });
 
@@ -205,7 +209,7 @@ public class Granite.Demo : Granite.Application {
 
         mode_button.selected = normal_mode_index;
 
-        mode_button.mode_changed.connect ( () => {
+        mode_button.mode_changed.connect (() => {
             var settings = Gtk.Settings.get_default ();
             settings.gtk_application_prefer_dark_theme = (mode_button.selected == dark_mode_index);
         });
@@ -223,7 +227,7 @@ public class Granite.Demo : Granite.Application {
         popover_statusbar_item.add (new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU));
         statusbar.insert_widget (popover_statusbar_item);
 
-        popover_statusbar_item.clicked.connect ( () => {
+        popover_statusbar_item.clicked.connect (() => {
             var pop = new Granite.Widgets.PopOver ();
 
             var pop_hbox = pop.get_content_area () as Gtk.Container;
@@ -315,7 +319,6 @@ public class Granite.Demo : Granite.Application {
         window.show_all ();
     }
 
-
     private Granite.Widgets.Welcome create_welcome_screen () {
         var welcome = new Granite.Widgets.Welcome ("Granite's Welcome Screen",
                                                     "This Is Granite's Welcome Widget.");
@@ -338,7 +341,6 @@ public class Granite.Demo : Granite.Application {
 
         return welcome;
     }
-
 
     private void show_light_window () {
         var light_window = new Granite.Widgets.LightWindow ();
@@ -393,7 +395,6 @@ public class Granite.Demo : Granite.Application {
         light_window.show_all ();
     }
 
-
     private Granite.Widgets.DynamicNotebook create_dynamic_notebook () {
         var dynamic_notebook = new Granite.Widgets.DynamicNotebook ();
 
@@ -407,20 +408,20 @@ public class Granite.Demo : Granite.Application {
                                                               new ThemedIcon ("empty"),
                                                               new Gtk.Label ("Page 2")), -1);
 
-        dynamic_notebook.tab_added.connect ( (t) => {
+        dynamic_notebook.tab_added.connect ((t) => {
         	t.page = new Gtk.Label ("newuser@elementaryos: ~");
         	t.label = "newuser@elementaryos: ~";
     	});
 
-    	dynamic_notebook.tab_moved.connect ( (t, p) => {
+    	dynamic_notebook.tab_moved.connect ((t, p) => {
     	    print ("Moved tab %s to %i\n", t.label, p);
     	});
 
-    	dynamic_notebook.tab_switched.connect ( (old_t, new_t) => {
+    	dynamic_notebook.tab_switched.connect ((old_t, new_t) => {
     	    print ("Switched from %s to %s\n", old_t.label, new_t.label);
 	    });
 
-		dynamic_notebook.tab_removed.connect ( (t) => {
+		dynamic_notebook.tab_removed.connect ((t) => {
 		    print ("Going to remove %s\n", t.label);
 		    return true;
 	    });
