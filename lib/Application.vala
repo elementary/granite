@@ -69,9 +69,7 @@ namespace Granite {
 
             Granite.init ();
             // set program name
-#if LINUX
             prctl (15, exec_name, 0, 0, 0);
-#endif
             Environment.set_prgname (exec_name);
 
             Logger.initialize (program_name);
@@ -88,10 +86,8 @@ namespace Granite {
 
         }
 
-#if LINUX
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
             protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
-#endif
 
         /**
          * This method runs the application
