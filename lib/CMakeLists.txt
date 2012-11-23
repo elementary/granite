@@ -70,11 +70,10 @@ PACKAGES
     ${PKG_DEPS}
 GENERATE_HEADER
     ${PKG_NAME}
+GENERATE_VAPI
+    ${PKG_NAME}
 OPTIONS
     --thread
-
-    # This will also create a vapi without internal symbols
-    --library=${PKG_NAME}
 )
 
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.vapi DESTINATION ${CMAKE_INSTALL_PREFIX}/share/vala/vapi)

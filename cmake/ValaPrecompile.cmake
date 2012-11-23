@@ -95,6 +95,8 @@ find_package(Vala REQUIRED)
 #       myvapi
 #   GENERATE_HEADER
 #       myheader
+#   GENERATE_GIR
+#       mygir
 #   )
 #
 # Most important is the variable VALA_C which will contain all the generated c
@@ -102,7 +104,7 @@ find_package(Vala REQUIRED)
 ##
 
 macro(vala_precompile output)
-    parse_arguments(ARGS "PACKAGES;OPTIONS;DIRECTORY;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
+    parse_arguments(ARGS "PACKAGES;OPTIONS;DIRECTORY;GENERATE_GIR;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
     if(ARGS_DIRECTORY)
         set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_DIRECTORY})
     else(ARGS_DIRECTORY)
@@ -135,21 +137,20 @@ macro(vala_precompile output)
     set(vapi_arguments "")
     if(ARGS_GENERATE_VAPI)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_VAPI}.vapi")
-        set(vapi_arguments "--internal-vapi=${ARGS_GENERATE_VAPI}.vapi")
-
-        # Header and internal header is needed to generate internal vapi
-        if (NOT ARGS_GENERATE_HEADER)
-            set(ARGS_GENERATE_HEADER ${ARGS_GENERATE_VAPI})
-        endif(NOT ARGS_GENERATE_HEADER)
+        set(vapi_arguments "--library=${ARGS_GENERATE_VAPI}" "--vapi=${ARGS_GENERATE_VAPI}.vapi")
     endif(ARGS_GENERATE_VAPI)
 
     set(header_arguments "")
     if(ARGS_GENERATE_HEADER)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_HEADER}.h")
-        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_HEADER}_internal.h")
-        list(APPEND header_arguments "--header=${DIRECTORY}/${ARGS_GENERATE_HEADER}.h")
-        list(APPEND header_arguments "--internal-header=${DIRECTORY}/${ARGS_GENERATE_HEADER}_internal.h")
+        list(APPEND header_arguments "--header=${ARGS_GENERATE_HEADER}.h")
     endif(ARGS_GENERATE_HEADER)
+
+    set(gir_arguments "")
+    if(ARGS_GENERATE_GIR)
+        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_GIR}.gir")
+        set(gir_arguments "--gir=${ARGS_GENERATE_GIR}.gir")
+    endif(ARGS_GENERATE_GIR)
 
     add_custom_command(OUTPUT ${out_files} 
     COMMAND 
@@ -157,7 +158,8 @@ macro(vala_precompile output)
     ARGS 
         "-C" 
         ${header_arguments} 
-        ${vapi_arguments}
+        ${vapi_arguments} 
+        ${gir_arguments} 
         "-b" ${CMAKE_CURRENT_SOURCE_DIR} 
         "-d" ${DIRECTORY} 
         ${vala_pkg_opts} 
