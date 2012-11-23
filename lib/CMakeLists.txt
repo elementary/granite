@@ -102,7 +102,7 @@ PACKAGES
     gee-1.0
 OPTIONS
     --thread
-    ${OS_TYPE)
+    ${OS_TYPE}
 GENERATE_VAPI
     granite
 GENERATE_HEADER
