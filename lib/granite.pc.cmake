@@ -3,8 +3,8 @@ exec_prefix=@DOLLAR@{prefix}
 libdir=@DOLLAR@{prefix}/lib
 includedir=@DOLLAR@{prefix}/include
 
-Name: @PKG_NAME@
-Description: @PKG_DESC_NAME@ framework
+Name: granite
+Description: elementary's Application Framework
 Version: @PKG_VERSION@
 Libs: -L@DOLLAR@{libdir} -l@PKG_NAME@
 Cflags: -I@DOLLAR@{includedir}/@PKG_NAME@

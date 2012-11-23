@@ -5,12 +5,11 @@ cmake_policy (VERSION 2.6)
 project (granite)
 
 set (PKG_NAME ${CMAKE_PROJECT_NAME})
-set (PKG_DESC_NAME Granite)
 set (PKG_VERSION 0.2)
 set (API_VERSION 1.0)
 
 # Used to create GObject introspection files
-set (PKG_GIR_NAME Granite-${API_VERSION})
+set (PKG_GIR_NAME Granite)
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 

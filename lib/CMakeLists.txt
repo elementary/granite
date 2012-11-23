@@ -24,9 +24,6 @@ link_directories (${LIB_PATHS})
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
 
-set (GI_NAME ${GI_PKG_NAME}-${GI_PKG_VERSION})
-set (GIR_FILENAME ${GI_NAME}.gir)
-
 vala_precompile (VALA_C
     Application.vala
     Drawing/Color.vala
@@ -104,5 +101,5 @@ include (FindGObjectIntrospection)
 
 if (INTROSPECTION_FOUND)
     include (GObjectIntrospectionMacros)
-    add_target_gir (${PKG_NAME} ${GI_PKG_NAME} ${PKG_NAME}.h "${VALA_C}" "${DEPS_CFLAGS}" ${GI_PKG_VERSION} ${GI_PKG_DEPS})
+    add_target_gir (${PKG_NAME} ${PKG_GIR_NAME} ${PKG_NAME}.h "${VALA_C}" "${DEPS_CFLAGS}" ${API_VERSION} ${GI_PKG_DEPS})
 endif ()
