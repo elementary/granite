@@ -44,6 +44,12 @@ set(LIB_PATHS
     ${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
+
+# Check whether OS type is Linux
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set (OS_TYPE --define=LINUX)
+endif ()
+
 #VALA stuff
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Widgets/)
@@ -96,6 +102,7 @@ PACKAGES
     gee-1.0
 OPTIONS
     --thread
+    ${OS_TYPE}
 GENERATE_VAPI
     granite
 GENERATE_HEADER
@@ -148,4 +155,3 @@ add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/docs_
 add_custom_command (TARGET valadocs COMMAND rm ${CMAKE_CURRENT_BINARY_DIR}/images -R -f)
 add_custom_command (TARGET valadocs COMMAND cp ${CMAKE_SOURCE_DIR}/doc/images/ ${CMAKE_CURRENT_BINARY_DIR}/images -R)
 add_custom_command (TARGET valadocs COMMAND VALADOC_HEADER=${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html valadoc -o docs_vala ${CMAKE_CURRENT_SOURCE_DIR}/*/*.vala ${CMAKE_CURRENT_SOURCE_DIR}/*.vapi ${CMAKE_CURRENT_SOURCE_DIR}/*.vala --pkg=glib-2.0 --pkg=gio-2.0 --pkg=posix --pkg=gtk+-3.0 --pkg=gee-1.0 --pkg=gio-unix-2.0 --package-name=${PKGNAME} --package-version=${GRANITE_VERSION} --force --doclet=html)
-
