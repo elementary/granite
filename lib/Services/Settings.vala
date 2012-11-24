@@ -208,16 +208,20 @@ namespace Granite.Services {
             // want to force subclasses to implement this
         }
         
-        void load_key (string key) {
-            
+        private void load_key (string key) {
             if (key == "schema")
                 return;
-        
-            notify.disconnect (handle_notify);
-        
+
             var obj_class = (ObjectClass) get_type ().class_ref ();
             var prop = obj_class.find_property (key);
-            
+
+            // If a property for the key is not found, just return. Subclasses do not
+            // necessarily have to import all the keys from a given schema.
+            if (prop == null)
+                return;
+
+            notify.disconnect (handle_notify);
+
             var type = prop.value_type;
             var val = Value (type);
             this.get_property (prop.name, ref val);
@@ -253,17 +257,21 @@ namespace Granite.Services {
         }
         
         void save_key (string key) {
-            
             if (key == "schema")
                 return;
-        
-            stop_monitor ();
-            notify.disconnect (handle_notify);
-            
+
             var obj_class = (ObjectClass) get_type ().class_ref ();
             var prop = obj_class.find_property (key);
+
+            // Do not attempt to save a non-mapped key
+            if (prop == null)
+                return;
+
             bool success = true;
-                
+
+            stop_monitor ();
+            notify.disconnect (handle_notify);
+
             var type = prop.value_type;
             var val = Value (type);
             this.get_property (prop.name, ref val);
