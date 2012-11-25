@@ -1,11 +1,10 @@
-include_directories (${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+include_directories (${CMAKE_CURRENT_BINARY_DIR}/../lib)
 
-# pkgconfig, real C code
 set (CMAKE_INCLUDE_CURRENT_DIR ON)
 set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER} )
 set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
 
-link_directories (${LIB_PATHS} ${CMAKE_CURRENT_BINARY_DIR}/../lib/)
+link_directories (${LIB_PATHS} ${CMAKE_CURRENT_BINARY_DIR}/../lib)
 add_definitions (${CFLAGS})
 
 set (EXEC_NAME ${PKG_NAME}-demo)
@@ -17,7 +16,7 @@ CUSTOM_VAPIS
 PACKAGES
     ${PKG_DEPS}
 OPTIONS
-    --thread
+    ${VALAC_OPTIONS}
 )
 
 add_executable (${EXEC_NAME} ${VALA_C})

@@ -1,38 +1,39 @@
-# Latvian translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Belarusian translation for granite
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-11-21 15:36+0000\n"
-"Last-Translator: Arvis Lācis <Unknown>\n"
-"Language-Team: Latvian <lv@li.org>\n"
+"PO-Revision-Date: 2012-11-19 11:12+0000\n"
+"Last-Translator: Nick <Unknown>\n"
+"Language-Team: Belarusian <be@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-11-22 05:21+0000\n"
-"X-Generator: Launchpad (build 16293)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Launchpad-Export-Date: 2012-11-20 05:11+0000\n"
+"X-Generator: Launchpad (build 16286)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
-msgstr ""
+msgstr "Разпрацавана"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by"
-msgstr ""
+msgstr "Стваральнікі"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 msgid "Copyright"
-msgstr ""
+msgstr "Аўтарскае права"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr ""
+msgstr "Задакумэнтавана"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
@@ -50,6 +51,7 @@ msgstr ""
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
+"Не ўдаецца звязацца з Contractor. Магчыма, вам неабходна ўсталяваць яго"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
@@ -61,7 +63,7 @@ msgstr ""
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
 msgid "%l:%M %p"
-msgstr "%l:%M %p"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
@@ -70,54 +72,54 @@ msgstr "%l:%M %p"
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
 msgid "Menu"
-msgstr "Izvēlne"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
 #: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
 msgid "About"
-msgstr "Par"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
 #: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
 msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
+msgstr ""
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
 msgid "Close tab"
-msgstr ""
+msgstr "Закрыць укладку"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
 msgid "Close Tab"
-msgstr ""
+msgstr "Закрыць укладку"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Адкрыць у новым акне"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
 msgid "Duplicate"
-msgstr ""
+msgstr "Дубляваць"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Закрыць іншую ўкладку"
+msgstr[1] "Закрыць іншыя ўкладкі"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr ""
+msgstr "Новая ўкладка"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
 msgid "New tab"
-msgstr ""
+msgstr "Новая ўкладка"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
