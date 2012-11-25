@@ -69,7 +69,7 @@ link_directories (${LIB_PATHS})
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
 
-vala_precompile (VALA_C
+vala_precompile (VALA_C ${PKG_NAME}
     ${VALA_SOURCES}
 PACKAGES
     ${PKG_DEPS}
