@@ -4,27 +4,8 @@ set (PKG_SOVERSION 1)
 # Increase when you add functionality
 set (PKG_SOMINOR 0.1)
 
-######################
-# lib PC file
-######################
-set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (DOLLAR "$") # You hear that? It's kittens being killed by the gods of cmake
-
-configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h) # used from config.vala
-configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
-
-# Link all
-set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions (${CFLAGS} "-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
-
-set (LIBS ${DEPS_LIBRARIES})
-set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
-link_directories (${LIB_PATHS})
-
-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
-
-vala_precompile (VALA_C
+set (VALA_SOURCES
+    Main.vala
     Application.vala
     Drawing/Color.vala
     Drawing/BufferSurface.vala
@@ -61,14 +42,43 @@ vala_precompile (VALA_C
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/ThinPaned.vala
-    Main.vala
-    config.vapi
+)
+
+set (C_SOURCES
+    Widgets/widgets-utils.c
+    Widgets/close-button.c
+)
+
+######################
+# lib PC file
+######################
+set (PREFIX ${CMAKE_INSTALL_PREFIX})
+set (DOLLAR "$") # You hear that? It's kittens being killed by the gods of cmake
+
+configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h) # used from config.vala
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+
+# Link all
+set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
+add_definitions (${CFLAGS} "-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
+
+set (LIBS ${DEPS_LIBRARIES} -lm)
+set (LIB_PATHS ${DEPS_LIBRARY_DIRS})
+link_directories (${LIB_PATHS})
+
+include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
+
+vala_precompile (VALA_C
+    ${VALA_SOURCES}
 PACKAGES
     ${PKG_DEPS}
 GENERATE_HEADER
     ${PKG_NAME}
 GENERATE_VAPI
     ${PKG_NAME}
+CUSTOM_VAPIS
+    ${CMAKE_CURRENT_SOURCE_DIR}/config.vapi
 OPTIONS
     --thread
 )
@@ -78,20 +88,17 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.deps DESTINATION ${CMAKE_
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PKG_NAME})
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.h DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${PKG_NAME})
 
-set (LIB_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/widgets-utils.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/Widgets/close-button.c
-    ${VALA_C})
+set (LIB_FILES ${C_SOURCES} ${VALA_C})
 
 add_library (${PKG_NAME} SHARED ${LIB_FILES})
 
-target_link_libraries (${PKG_NAME} ${LIBS} -lm)
+target_link_libraries (${PKG_NAME} ${LIBS})
 
 set_target_properties (${PKG_NAME} PROPERTIES
     VERSION ${PKG_SOVERSION}.${PKG_SOMINOR}
     SOVERSION ${PKG_SOVERSION})
 
-install (TARGETS ${PKG_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+install (TARGETS ${PKG_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 ###########################
 # GObject Introspection
