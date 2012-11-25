@@ -74,6 +74,11 @@ find_package(Vala REQUIRED)
 #   be a header file as well as an internal header file being generated called
 #   <provided_name>.h and <provided_name>_internal.h
 #
+# GENERATE_GIR
+#   Have the compiler generate a GObject-Introspection repository file with
+#   name: <provided_name>.gir. This can be later used to create a binary typelib
+#   using the GI compiler.
+#
 # The following call is a simple example to the vala_precompile macro showing
 # an example to every of the optional sections:
 #
@@ -152,7 +157,13 @@ macro(vala_precompile output)
         set(gir_arguments "--gir=${ARGS_GENERATE_GIR}.gir")
     endif(ARGS_GENERATE_GIR)
 
-    add_custom_command(OUTPUT ${out_files} 
+    # Workaround for a bug that would make valac run twice. This file is written
+    # after the vala compiler generates C source code.
+    set(OUTPUT_STAMP ${CMAKE_CURRENT_BINARY_DIR}/valac-build-stamp)
+
+    add_custom_command(
+    OUTPUT
+        ${OUTPUT_STAMP}
     COMMAND 
         ${VALA_EXECUTABLE} 
     ARGS 
@@ -166,8 +177,18 @@ macro(vala_precompile output)
         ${ARGS_OPTIONS} 
         ${in_files} 
         ${custom_vapi_arguments}
+    COMMAND
+        touch
+    ARGS
+        ${OUTPUT_STAMP}
     DEPENDS 
         ${in_files} 
         ${ARGS_CUSTOM_VAPIS}
+    COMMENT
+        "Generating C files for: ${ARGS_DEFAULT_ARGS}"
     )
+
+    # This command will be run twice for some reason (pass a non-empty string to COMMENT
+    # in order to see it). Since valac is not executed from here, this won't be a problem.
+    add_custom_command(OUTPUT ${out_files} DEPENDS ${OUTPUT_STAMP} COMMENT "")
 endmacro(vala_precompile)
