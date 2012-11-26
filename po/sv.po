@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-23 22:31+0200\n"
-"PO-Revision-Date: 2012-10-22 06:19+0000\n"
-"Last-Translator: Zahirovic Mensur <Unknown>\n"
+"PO-Revision-Date: 2012-11-25 23:06+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-23 05:11+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-11-26 04:58+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by"
@@ -32,7 +32,7 @@ msgstr "Copyright"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by"
-msgstr "Dokumenterat av"
+msgstr "Dokumenterad av"
 
 #: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 msgid "Translated by "
@@ -49,12 +49,12 @@ msgstr " licensen, och ges INGEN SOM HELST GARANTI; för detaljer, besök "
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Kunde inte kontakta Contactor. Kanske du behöver installera den."
+msgstr "Kunde inte kontakta Contactor. Kanske behöver du installera den."
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
 #: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
 msgid "No action found for this file"
-msgstr "Ingen möjlig handling för den här fil"
+msgstr "Ingen möjlig handling för den här filen"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
 #: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
@@ -106,13 +106,13 @@ msgstr "Duplicera"
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
-msgstr[0] "Stäng annan flik"
-msgstr[1] "Stäng andra flikar"
+msgstr[0] "Stäng Annan Flik"
+msgstr[1] "Stäng Andra Flikar"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
 msgid "New Tab"
-msgstr "Ny flik"
+msgstr "Ny Flik"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
 #: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
@@ -122,7 +122,7 @@ msgstr "Ny flik"
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Översätta den här app"
+msgstr "Översätt Denna Applikationen"
 
 #: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
 #: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
