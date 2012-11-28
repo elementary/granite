@@ -177,7 +177,7 @@ macro(vala_precompile output target_name)
 
     # Workaround for a bug that would make valac run twice. This file is written
     # after the vala compiler generates C source code.
-    set(OUTPUT_STAMP ${CMAKE_CURRENT_BINARY_DIR}/${target_name}valac.stamp)
+    set(OUTPUT_STAMP ${CMAKE_CURRENT_BINARY_DIR}/${target_name}_valac.stamp)
 
     add_custom_command(
     OUTPUT
