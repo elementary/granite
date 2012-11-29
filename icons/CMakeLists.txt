@@ -5,8 +5,3 @@ install(FILES 32x32/application-menu.svg DESTINATION share/icons/hicolor/32x32/a
 install(FILES 48x48/application-menu.svg DESTINATION share/icons/hicolor/48x48/actions/)
 install(FILES scalable/application-menu-symbolic.svg DESTINATION share/icons/hicolor/scalable/actions/)
 
-option (ICON_UPDATE "Run gtk-update-icon-cache after the install." ON)
-if (ICON_UPDATE)
-  install (CODE "message(\"-- Updating icon cache...\")")
-  install (CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)")
-endif ()
