@@ -74,10 +74,18 @@ find_package(Vala REQUIRED)
 #   be a header file as well as an internal header file being generated called
 #   <provided_name>.h and <provided_name>_internal.h
 #
+# GENERATE_GIR
+#   Have the compiler generate a GObject-Introspection repository file with
+#   name: <provided_name>.gir. This can be later used to create a binary typelib
+#   using the GI compiler.
+#
+# GENERATE_SYMBOLS
+#   Output a <provided_name>.symbols file containing all the exported symbols.
+# 
 # The following call is a simple example to the vala_precompile macro showing
 # an example to every of the optional sections:
 #
-#   vala_precompile(VALA_C
+#   vala_precompile(VALA_C mytargetname
 #       source1.vala
 #       source2.vala
 #       source3.vala
@@ -95,14 +103,19 @@ find_package(Vala REQUIRED)
 #       myvapi
 #   GENERATE_HEADER
 #       myheader
+#   GENERATE_GIR
+#       mygir
+#   GENERATE_SYMBOLS
+#       mysymbols
 #   )
 #
 # Most important is the variable VALA_C which will contain all the generated c
 # file names after the call.
 ##
 
-macro(vala_precompile output)
-    parse_arguments(ARGS "PACKAGES;OPTIONS;DIRECTORY;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
+macro(vala_precompile output target_name)
+    parse_arguments(ARGS "TARGET;PACKAGES;OPTIONS;DIRECTORY;GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
+
     if(ARGS_DIRECTORY)
         set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_DIRECTORY})
     else(ARGS_DIRECTORY)
@@ -115,6 +128,7 @@ macro(vala_precompile output)
     endforeach(pkg ${ARGS_PACKAGES})
     set(in_files "")
     set(out_files "")
+    set(out_files_display "")
     set(${output} "")
     foreach(src ${ARGS_DEFAULT_ARGS})
         list(APPEND in_files "${CMAKE_CURRENT_SOURCE_DIR}/${src}")
@@ -122,6 +136,7 @@ macro(vala_precompile output)
         string(REPLACE ".gs" ".c" src ${src})
         set(out_file "${DIRECTORY}/${src}")
         list(APPEND out_files "${DIRECTORY}/${src}")
+        list(APPEND out_files_display "${src}")
         list(APPEND ${output} ${out_file})
     endforeach(src ${ARGS_DEFAULT_ARGS})
 
@@ -135,37 +150,64 @@ macro(vala_precompile output)
     set(vapi_arguments "")
     if(ARGS_GENERATE_VAPI)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_VAPI}.vapi")
-        set(vapi_arguments "--internal-vapi=${ARGS_GENERATE_VAPI}.vapi")
-
-        # Header and internal header is needed to generate internal vapi
-        if (NOT ARGS_GENERATE_HEADER)
-            set(ARGS_GENERATE_HEADER ${ARGS_GENERATE_VAPI})
-        endif(NOT ARGS_GENERATE_HEADER)
+        list(APPEND out_files_display "${ARGS_GENERATE_VAPI}.vapi")
+        set(vapi_arguments "--library=${ARGS_GENERATE_VAPI}" "--vapi=${ARGS_GENERATE_VAPI}.vapi")
     endif(ARGS_GENERATE_VAPI)
 
     set(header_arguments "")
     if(ARGS_GENERATE_HEADER)
         list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_HEADER}.h")
-        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_HEADER}_internal.h")
-        list(APPEND header_arguments "--header=${DIRECTORY}/${ARGS_GENERATE_HEADER}.h")
-        list(APPEND header_arguments "--internal-header=${DIRECTORY}/${ARGS_GENERATE_HEADER}_internal.h")
+        list(APPEND out_files_display "${ARGS_GENERATE_HEADER}.h")
+        list(APPEND header_arguments "--header=${ARGS_GENERATE_HEADER}.h")
     endif(ARGS_GENERATE_HEADER)
 
-    add_custom_command(OUTPUT ${out_files} 
+    set(gir_arguments "")
+    if(ARGS_GENERATE_GIR)
+        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_GIR}.gir")
+        list(APPEND out_files_display "${ARGS_GENERATE_GIR}.gir")
+        set(gir_arguments "--gir=${ARGS_GENERATE_GIR}.gir")
+    endif(ARGS_GENERATE_GIR)
+
+    set(symbols_arguments "")
+    if(ARGS_GENERATE_SYMBOLS)
+        list(APPEND out_files "${DIRECTORY}/${ARGS_GENERATE_SYMBOLS}.symbols")
+        list(APPEND out_files_display "${ARGS_GENERATE_SYMBOLS}.symbols")
+        set(symbols_arguments "--symbols=${ARGS_GENERATE_SYMBOLS}.symbols")
+    endif(ARGS_GENERATE_SYMBOLS)
+
+    # Workaround for a bug that would make valac run twice. This file is written
+    # after the vala compiler generates C source code.
+    set(OUTPUT_STAMP ${CMAKE_CURRENT_BINARY_DIR}/${target_name}_valac.stamp)
+
+    add_custom_command(
+    OUTPUT
+        ${OUTPUT_STAMP}
     COMMAND 
         ${VALA_EXECUTABLE} 
     ARGS 
         "-C" 
         ${header_arguments} 
-        ${vapi_arguments}
+        ${vapi_arguments} 
+        ${gir_arguments} 
+        ${symbols_arguments} 
         "-b" ${CMAKE_CURRENT_SOURCE_DIR} 
         "-d" ${DIRECTORY} 
         ${vala_pkg_opts} 
         ${ARGS_OPTIONS} 
         ${in_files} 
         ${custom_vapi_arguments}
+    COMMAND
+        touch
+    ARGS
+        ${OUTPUT_STAMP}
     DEPENDS 
         ${in_files} 
         ${ARGS_CUSTOM_VAPIS}
+    COMMENT
+        "Generating ${out_files_display}"
     )
+
+    # This command will be run twice for some reason (pass a non-empty string to COMMENT
+    # in order to see it). Since valac is not executed from here, this won't be a problem.
+    add_custom_command(OUTPUT ${out_files} DEPENDS ${OUTPUT_STAMP} COMMENT "")
 endmacro(vala_precompile)
