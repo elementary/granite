@@ -85,6 +85,8 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         var state = ctx.get_state ();
         const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
         ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
+
+        ctx.add_class (Gtk.STYLE_CLASS_EXPANDER);
         ctx.render_expander (context, x, y, arrow_size, arrow_size);
     }
 
