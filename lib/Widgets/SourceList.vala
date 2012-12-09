@@ -1209,6 +1209,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private Gtk.CellRendererText text_cell;
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
+        private CellRendererBadge badge_cell;
         private Gtk.CellRenderer primary_expander_cell;
         private Gtk.CellRenderer secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
@@ -1251,6 +1252,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             activatable_cell.activated.connect (on_activatable_activated);
             item_column.pack_end (activatable_cell, false);
             item_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
+
+            badge_cell = new CellRendererBadge ();
+            badge_cell.xpad = 1;
+            item_column.pack_end (badge_cell, false);
+            item_column.set_cell_data_func (badge_cell, badge_cell_data_func);
 
             text_cell = new Gtk.CellRendererText ();
             text_cell.editable_set = true;
@@ -1789,16 +1795,31 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
                 if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
-
-                if (item.count > 0) {
-                    text.append (" (");
-                    text.append (item.count.to_string ());
-                    text.append_unichar (')');
-                }
             }
 
             text_renderer.weight = weight;
             text_renderer.text = text.str;
+        }
+
+        private void badge_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                           Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
+            var badge_renderer = renderer as CellRendererBadge;
+            assert (badge_renderer != null);
+
+            string text = "";
+            bool visible = false;
+
+            var item = get_item_from_model (model, iter);
+            if (item != null) {
+                // Count badges are not displayed for main categories
+                visible = !data_model.is_category (item, iter);
+                if (visible && item.count > 0)
+                    text = item.count.to_string ();
+            }
+
+            badge_renderer.visible = visible;
+            badge_renderer.text = text;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,

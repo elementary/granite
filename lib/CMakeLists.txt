@@ -41,6 +41,7 @@ set (VALA_SOURCES
     Widgets/SidebarPaned.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
+    Widgets/CellRendererBadge.vala
     Widgets/ThinPaned.vala
 )
 
