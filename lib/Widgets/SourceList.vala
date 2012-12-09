@@ -2066,8 +2066,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * @return true if the editing started successfully; false otherwise.
      * @since 0.2
      */
-    public bool start_editing_item (Item item) requires (has_item (item))
-    {
+    public bool start_editing_item (Item item) requires (has_item (item)) {
         return tree.start_editing_item (item);
     }
 
