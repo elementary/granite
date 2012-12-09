@@ -85,6 +85,7 @@ vala_precompile(VALA_C
     Widgets/SidebarPaned.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
+    Widgets/CellRendererBadge.vala
     Widgets/ThinPaned.vala
     Main.vala
     config.vapi
