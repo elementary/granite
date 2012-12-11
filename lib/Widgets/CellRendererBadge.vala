@@ -18,18 +18,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
-/**
- * A count badge cell renderer.
- *
- * @since 0.2
- */
 public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
-    /**
-     * Text to display.
-     *
-     * @since 0.2
-     */
     public string text { get; set; default = ""; }
 
     private Pango.Rectangle text_logical_rect;
@@ -75,6 +65,12 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
     private void update_layout_properties (Gtk.Widget widget) {
         var ctx = widget.get_style_context ();
+        ctx.save ();
+
+        // Add class before creating the pango layout and fetching paddings.
+        // This is needed in order to fetch the proper style information.
+        ctx.add_class (STYLE_CLASS_BADGE);
+
         var state = ctx.get_state ();
 
         margin = ctx.get_margin (state);
@@ -82,6 +78,10 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
         border = ctx.get_border (state);
 
         text_layout = widget.create_pango_layout (text);
+        text_layout.set_font_description (ctx.get_font (state));
+
+        ctx.restore ();
+
         Pango.Rectangle ink_rect;
         text_layout.get_pixel_extents (out ink_rect, out text_logical_rect);
     }
@@ -89,11 +89,6 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
     {
-        var ctx = widget.get_style_context ();
-
-        // Add class before creating the pango layout
-        ctx.add_class (STYLE_CLASS_BADGE);
-
         update_layout_properties (widget);
 
         Gdk.Rectangle aligned_area = get_aligned_area (widget, flags, cell_area);
@@ -108,6 +103,9 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
         y += margin.top;
         width -= margin.left + margin.right;
         height -= margin.top + margin.bottom;
+
+        var ctx = widget.get_style_context ();
+        ctx.add_class (STYLE_CLASS_BADGE);
 
         ctx.render_background (context, x, y, width, height);
         ctx.render_frame (context, x, y, width, height);
