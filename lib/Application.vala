@@ -161,7 +161,7 @@ namespace Granite {
                                                "comments", about_comments,
                                                "copyright", "%s %s Developers".printf (app_years, program_name),
                                                "website", main_url,
-                                               "website_label", "Website",
+                                               "website_label", _("Website"),
 
                                                "authors", about_authors,
                                                "documenters", about_documenters,
