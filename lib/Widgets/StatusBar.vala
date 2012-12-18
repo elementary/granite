@@ -21,26 +21,27 @@
  */
 
 /**
- * This class is an easy way to make a status bar with both widgets and text
+ * A status bar with a centered label.
+ *
+ * It supports adding widgets at its left and right sides.
  */
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
+    private const int ITEM_SPACING = 3;
 
     /**
      * Label of status bar
      */ 
-    protected Gtk.Label status_label;
+    private Gtk.Label status_label;
     /**
      * Gtk box on the left
      */ 
-    protected Gtk.Box left_box;
+    private Gtk.Box left_box;
     /**
      * Gtk box on the right
      */ 
-    protected Gtk.Box right_box;
+    private Gtk.Box right_box;
 
-    protected const int ITEM_SPACING = 3;
-
-    /* This prevents the huge vertical padding */
+    // This prevents a huge vertical padding.
     private const string STYLESHEET = """
         GraniteWidgetsStatusBar {
             border-bottom-width: 0;
@@ -49,24 +50,22 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
             -GtkWidget-window-dragging: false;
         }
         GraniteWidgetsStatusBar .button {
-            padding: 0px;
+            padding: 0;
         }
     """;
 
     /**
-     * Makes new StatusBar
+     * Creates a new StatusBar.
      */ 
     public StatusBar () {
-        /* Get rid of the "toolbar" class to avoid inheriting its style.
-         * We want the widget to look more like a normal statusbar.
-         */
+        // Get rid of the "toolbar" class to avoid inheriting its style.
+        // We want the widget to look more like a normal statusbar.
         get_style_context ().remove_class (Gtk.STYLE_CLASS_TOOLBAR);
 
         Utils.set_theming_for_screen (this.get_screen (), STYLESHEET,
                                       Gtk.STYLE_PROVIDER_PRIORITY_THEME);
 
-
-        status_label = new Gtk.Label ("");
+        status_label = new Gtk.Label (null);
         status_label.set_justify (Gtk.Justification.CENTER);
 
         left_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
