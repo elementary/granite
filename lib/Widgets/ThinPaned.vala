@@ -38,18 +38,16 @@
  * @since 0.2
  */
 public class Granite.Widgets.ThinPaned : Gtk.Paned {
-
     private const string STYLE_PROP_OVERLAY_HANDLE_SIZE = "overlay-handle-size";
+    private const string STYLE_CLASS_SEPARATOR = "sidebar-pane-separator";
 
     private const string DEFAULT_STYLESHEET = """
-        .sidebar-pane-separator {
-            -GtkPaned-handle-size: 1px;
-        }
+        GraniteWidgetsThinPaned { -GtkPaned-handle-size: 1px; }
     """;
 
     private const string FALLBACK_STYLESHEET = """
-        GraniteWidgetsThinPaned.pane-separator {
-            background-color: shade (@bg_color, 0.75);
+        GraniteWidgetsThinPaned.sidebar-pane-separator {
+            background-color: alpha (#000, 0.3);
             border-width: 0;
         }
     """;
@@ -66,7 +64,6 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
     }
 
     public ThinPaned () {
-        get_style_context ().add_class ("sidebar-pane-separator");
         Utils.set_theming (this, DEFAULT_STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         Utils.set_theming (this, FALLBACK_STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
     }
@@ -107,6 +104,72 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
         update_overlay_handle ();
     }
 
+    public override void unrealize () {
+        base.unrealize ();
+        overlay_handle.set_user_data (null);
+        overlay_handle.destroy ();
+        overlay_handle = null;
+    }
+
+    public override void map () {
+        base.map ();
+        overlay_handle.show ();
+    }
+
+    public override void unmap () {
+        base.unmap ();
+        overlay_handle.hide ();
+    }
+
+    public override bool draw (Cairo.Context ctx) {
+        base.draw (ctx);
+
+        // if the overlay handle is not visible, don't draw a pane separator.
+        if (!overlay_handle.is_visible ())
+            return false;
+
+        Gtk.Allocation allocation;
+        get_allocation (out allocation);
+
+        var style_context = get_style_context ();
+        var state = style_context.get_state ();
+
+        if (is_focus)
+            state |= Gtk.StateFlags.SELECTED;
+
+        if (in_resize)
+            state |= Gtk.StateFlags.PRELIGHT;
+
+        double width, height;
+
+        if (orientation == Gtk.Orientation.HORIZONTAL) {
+            width = 1;
+            height = allocation.height;
+        } else {
+            width = allocation.width;
+            height = 1;
+        }
+
+        ctx.save ();
+        Gtk.cairo_transform_to_window (ctx, this, get_handle_window ());
+
+        // render normal background to override default handle.
+        style_context.render_background (ctx, 0, 0, width, height);
+
+        style_context.save ();
+        style_context.add_class (STYLE_CLASS_SEPARATOR);
+        style_context.set_state (state);
+
+        // draw thin separator. We don't use render_handle() because we're
+        // only supposed to draw a thin separator without any marks.
+        style_context.render_background (ctx, 0, 0, width, height);
+
+        ctx.restore ();
+        style_context.restore ();
+
+        return false;
+    }
+
     public override void size_allocate (Gtk.Allocation allocation) {
         base.size_allocate (allocation);
         update_overlay_handle ();
@@ -134,8 +197,10 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
             overlay_handle_height += overlay_handle_size;
         }
 
-        overlay_handle.move_resize (overlay_handle_x, overlay_handle_y,
-                                    overlay_handle_width, overlay_handle_height);
+        overlay_handle.move_resize (overlay_handle_x,
+                                    overlay_handle_y,
+                                    overlay_handle_width,
+                                    overlay_handle_height);
 
         state_flags_changed (0); // Updates the handle's cursor
 
@@ -175,10 +240,8 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
 
             get_window ().get_device_position (device, out x, out y, null);
 
-            bool is_ltr = get_actual_direction () == Gtk.TextDirection.LTR;
-
             if (orientation == Gtk.Orientation.HORIZONTAL)
-                pos = is_ltr ? x : get_allocated_width () - x;
+                pos = Utils.is_left_to_right (this) ? x : get_allocated_width () - x;
             else
                 pos = y;
 
@@ -212,12 +275,5 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
     public override bool grab_broken_event (Gdk.EventGrabBroken event) {
         in_resize = false;
         return base.grab_broken_event (event);
-    }
-
-    private Gtk.TextDirection get_actual_direction () {
-        var dir = get_direction ();
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-        return dir;
     }
 }

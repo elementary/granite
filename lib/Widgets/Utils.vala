@@ -132,6 +132,12 @@ namespace Granite.Widgets.Utils {
         return provider;
     }
 
+    internal bool is_left_to_right (Gtk.Widget widget) {
+        var dir = widget.get_direction ();
+        if (dir == Gtk.TextDirection.NONE)
+            dir = Gtk.Widget.get_default_direction ();
+        return dir == Gtk.TextDirection.LTR;
+    }
 
     /**
      * This method applies given text style to given label
@@ -139,7 +145,6 @@ namespace Granite.Widgets.Utils {
      * @param text_style text style to apply
      * @param label label to apply style to
      */
-
     public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {
         var style_provider = new Gtk.CssProvider ();
         var style_context = label.get_style_context ();
