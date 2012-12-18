@@ -96,7 +96,7 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
      * @param widget widget to insert
      * @param use_left_side whether or not to use left_side
      */ 
-    public void insert_widget (Gtk.Widget widget, bool? use_left_side = false) {
+    public void insert_widget (Gtk.Widget widget, bool use_left_side = false) {
         if (use_left_side)
             left_box.pack_start (widget, false, false, ITEM_SPACING);
         else
