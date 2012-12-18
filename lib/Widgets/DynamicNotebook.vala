@@ -20,17 +20,6 @@
 
 namespace Granite.Widgets {
 
-    bool is_ancestor (Gdk.Window child, Gdk.Window parent) {
-        while (child != null) {
-            if (child == parent)
-                return true;
-
-            child = child.get_parent ();
-        }
-
-        return false;
-    }
-
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
