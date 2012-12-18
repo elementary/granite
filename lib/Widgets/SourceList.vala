@@ -212,23 +212,22 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
-         * A counter shown next to the item's name.
+         * A badge shown next to the item's name.
          *
          * It can be used for displaying the number of unread messages in the "Inbox" item,
          * for instance.
          *
          * @since 0.2
          */
-        public uint count { get; set; default = 0; }
+        public string badge { get; set; default = ""; }
 
         /**
          * Whether the item's name can be edited from within the source list.
          *
          * When this property is set to //true//, users can edit the item by pressing
-         * the F2 key, or by double-clicking over an item.
+         * the F2 key, or by double-clicking its name.
          *
-         * ''This property only works for selectable items''. If that property is set to
-         * //false//, the item won't be editable even if this property is set to //true//.
+         * ''This property only works for selectable items''.
          *
          * @see Granite.Widgets.SourceList.Item.selectable
          * @see Granite.Widgets.SourceList.start_editing_item
@@ -311,7 +310,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * * {@link Granite.Widgets.SourceList.Item.editable}
      * * {@link Granite.Widgets.SourceList.Item.icon}
      * * {@link Granite.Widgets.SourceList.Item.activatable}
-     * * {@link Granite.Widgets.SourceList.Item.count}
+     * * {@link Granite.Widgets.SourceList.Item.badge}
      *
      * Root-level expandable items (i.e. Main Categories) are ''not'' displayed when they contain
      * zero visible children.
@@ -1209,12 +1208,23 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private Gtk.CellRendererText text_cell;
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
+        private CellRendererBadge badge_cell;
         private Gtk.CellRenderer primary_expander_cell;
         private Gtk.CellRenderer secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
 
+        private const string DEFAULT_STYLESHEET = """
+            .source-list.badge {
+                border-radius: 10px;
+                border-width: 0;
+                padding: 1px 2px 1px 2px;
+                font-weight: bold;
+            }
+        """;
+
         public Tree (DataModel data_model) {
-            get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            Utils.set_theming (this, DEFAULT_STYLESHEET, STYLE_CLASS_SOURCE_LIST,
+                               Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
 
             this.data_model = data_model;
             set_model (data_model);
@@ -1251,6 +1261,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             activatable_cell.activated.connect (on_activatable_activated);
             item_column.pack_end (activatable_cell, false);
             item_column.set_cell_data_func (activatable_cell, icon_cell_data_func);
+
+            badge_cell = new CellRendererBadge ();
+            badge_cell.xpad = 1;
+            item_column.pack_end (badge_cell, false);
+            item_column.set_cell_data_func (badge_cell, badge_cell_data_func);
 
             text_cell = new Gtk.CellRendererText ();
             text_cell.editable_set = true;
@@ -1789,16 +1804,31 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
                 if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
-
-                if (item.count > 0) {
-                    text.append (" (");
-                    text.append (item.count.to_string ());
-                    text.append_unichar (')');
-                }
             }
 
             text_renderer.weight = weight;
             text_renderer.text = text.str;
+        }
+
+        private void badge_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
+                                           Gtk.TreeModel model, Gtk.TreeIter iter)
+        {
+            var badge_renderer = renderer as CellRendererBadge;
+            assert (badge_renderer != null);
+
+            string text = "";
+            bool visible = false;
+
+            var item = get_item_from_model (model, iter);
+            if (item != null) {
+                // Badges are not displayed for main categories
+                visible = !data_model.is_category (item, iter);
+                if (visible && item.badge != null && item.badge.strip () != "")
+                    text = item.badge;
+            }
+
+            badge_renderer.visible = visible;
+            badge_renderer.text = text;
         }
 
         private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
@@ -2066,8 +2096,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * @return true if the editing started successfully; false otherwise.
      * @since 0.2
      */
-    public bool start_editing_item (Item item) requires (has_item (item))
-    {
+    public bool start_editing_item (Item item) requires (has_item (item)) {
         return tree.start_editing_item (item);
     }
 
