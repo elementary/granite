@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-09-23 22:31+0200\n"
+"POT-Creation-Date: 2012-12-15 15:44+0100\n"
 "PO-Revision-Date: 2012-10-06 09:04+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,115 +15,118 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-10-07 04:48+0000\n"
-"X-Generator: Launchpad (build 16061)\n"
+"X-Launchpad-Export-Date: 2012-12-18 05:13+0000\n"
+"X-Generator: Launchpad (build 16372)\n"
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:40
-msgid "Designed by"
-msgstr "設計者"
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+msgid "Designed by:"
+msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:59
-msgid "Written by"
-msgstr "撰寫者"
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+msgid "Written by:"
+msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:97
-msgid "Copyright"
-msgstr "版權所有"
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+#, c-format
+msgid "Copyright © %s"
+msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:115
-msgid "Documented by"
-msgstr "文件編寫"
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by:"
+msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:175
-msgid "Translated by "
-msgstr "翻譯者 "
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#, c-format
+msgid "Translated by %s"
+msgstr ""
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
 msgstr "本程式是基於 "
 
-#: /home/tom/Programming/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " 授權條款發布，「絕對沒有任何保證」，詳情請參照 "
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "無法聯絡 Contractor。您可能需要安裝它"
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/ContractorView.vala:99
-#: /home/tom/Programming/granite/po/../lib/Widgets//ContractorView.vala:99
-msgid "No action found for this file"
-msgstr "沒有動作找到這檔案"
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:53
-#: /home/tom/Programming/granite/po/../lib//Widgets/TimePicker.vala:116
-#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:53
-#: /home/tom/Programming/granite/po/../lib/Widgets//TimePicker.vala:116
-msgid "%l:%M %p"
-msgstr "%p %l:%M"
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:32
-#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:37
-#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:51
-#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:32
-#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:37
-#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:51
-msgid "Menu"
-msgstr "選單"
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/AppMenu.vala:56
-#: /home/tom/Programming/granite/po/../lib/Widgets//AppMenu.vala:56
-msgid "About"
-msgstr "關於"
-
-#: /home/tom/Programming/granite/po/../lib//Widgets/DatePicker.vala:25
-#: /home/tom/Programming/granite/po/../lib/Widgets//DatePicker.vala:25
+#: /home/noelco/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
 msgstr "%Y年%b%e日"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:108
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:108
+#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "無法聯絡 Contractor。您可能需要安裝它"
+
+#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "沒有動作找到這檔案"
+
+#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:127
+msgid "Translate This App"
+msgstr "翻譯此程式"
+
+#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:132
+msgid "Report a Problem"
+msgstr "回報問題"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:111
 msgid "Close tab"
 msgstr "關閉分頁"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:129
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:129
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:132
 msgid "Close Tab"
 msgstr "關閉分頁"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:131
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:131
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:134
 msgid "Open in a new Window"
 msgstr "以新視窗開啟"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:132
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:132
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:135
 msgid "Duplicate"
 msgstr "複製"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:151
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:151
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:154
 msgid "Close Other Tab"
 msgid_plural "Close Other Tabs"
 msgstr[0] "關閉其他分頁"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:335
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:335
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:339
 msgid "New Tab"
 msgstr "新增分頁"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/DynamicNotebook.vala:362
-#: /home/tom/Programming/granite/po/../lib/Widgets//DynamicNotebook.vala:362
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:366
 msgid "New tab"
 msgstr "新增分頁"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:124
-#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:124
-msgid "Translate This App"
-msgstr "翻譯此程式"
+#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:63
+#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "%l:%M %p"
+msgstr "%p %l:%M"
 
-#: /home/tom/Programming/granite/po/../lib//Widgets/AboutDialog.vala:129
-#: /home/tom/Programming/granite/po/../lib/Widgets//AboutDialog.vala:129
-msgid "Report a Problem"
-msgstr "回報問題"
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:46
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:57
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:70
+msgid "Menu"
+msgstr "選單"
+
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:80
+msgid "About"
+msgstr "關於"
+
+#: /home/noelco/granite/po/../lib//Application.vala:164
+msgid "Website"
+msgstr ""
+
+#~ msgid "Designed by"
+#~ msgstr "設計者"
+
+#~ msgid "Written by"
+#~ msgstr "撰寫者"
+
+#~ msgid "Translated by "
+#~ msgstr "翻譯者 "
+
+#~ msgid "Copyright"
+#~ msgstr "版權所有"
+
+#~ msgid "Documented by"
+#~ msgstr "文件編寫"
