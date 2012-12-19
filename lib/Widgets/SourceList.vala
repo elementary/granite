@@ -1195,12 +1195,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             N_COLS
         }
 
-        // Padding added at the beginning of every new level. Must be an even number.
-        private const uint LEVEL_INDENTATION = 10;
-
-        // Padding added on the left side of the sidebar. Must be an even number.
-        private const uint LEFT_PADDING = 4;
-
         private Item? selected;
         private unowned Item? edited;
 
@@ -1221,6 +1215,30 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                 font-weight: bold;
             }
         """;
+
+        private const string STYLE_PROP_LEVEL_INDENTATION = "level-indentation";
+        private const string STYLE_PROP_LEFT_PADDING = "left-padding";
+        private const string STYLE_PROP_EXPANDER_SPACING = "expander-spacing";
+
+        static construct {
+            install_style_property (new ParamSpecInt (STYLE_PROP_LEVEL_INDENTATION,
+                                                      "Level Indentation",
+                                                      "Space to add at the beginning of every indentation level. Must be an even number.",
+                                                      1, 50, 6,
+                                                      ParamFlags.READABLE));
+
+            install_style_property (new ParamSpecInt (STYLE_PROP_LEFT_PADDING,
+                                                      "Left Padding",
+                                                      "Padding added to the left side of the tree. Must be an even number.",
+                                                      1, 50, 4,
+                                                      ParamFlags.READABLE));
+
+            install_style_property (new ParamSpecInt (STYLE_PROP_EXPANDER_SPACING,
+                                                      "Expander Spacing",
+                                                      "Space added between an item and its expander. Must be an even number.",
+                                                      1, 50, 4,
+                                                      ParamFlags.READABLE));
+        }
 
         public Tree (DataModel data_model) {
             Utils.set_theming (this, DEFAULT_STYLESHEET, STYLE_CLASS_SOURCE_LIST,
@@ -1284,7 +1302,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // First expander. Used for normal expandable items
             primary_expander_cell = new CellRendererExpander ();
-            primary_expander_cell.xpad = 3;
+
+            int expander_spacing;
+            style_get (STYLE_PROP_EXPANDER_SPACING, out expander_spacing);
+            primary_expander_cell.xpad = expander_spacing / 2;
+
             item_column.pack_end (primary_expander_cell, false);
             item_column.set_cell_data_func (primary_expander_cell, expander_cell_data_func);
 
@@ -1320,7 +1342,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             if (spacer_cells == null)
                 spacer_cells = new Gee.HashMap<int, CellRendererSpacer> ();
 
-            if (spacer_cells[level] == null) {
+            if (!spacer_cells.has_key (level)) {
                 var spacer_cell = new CellRendererSpacer ();
                 spacer_cell.level = level;
                 spacer_cells[level] = spacer_cell;
@@ -1330,12 +1352,14 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                 // The primary expander is not visible for root-level (i.e. first level)
                 // items, so for the second level of indentation we use a low padding
                 // because the primary expander will add enough space. For the root level,
-                // we use LEFT_PADDING, and LEVEL_INDENTATION for the remaining levels.
+                // we use left_padding, and level_indentation for the remaining levels.
                 // The value of cell_xpadding will be allocated *twice* by the cell renderer,
                 // so we set the value to a half of actual (desired) value.
                 switch (level) {
                     case 1: // root
-                        cell_xpadding = LEFT_PADDING / 2;
+                        int left_padding;
+                        style_get (STYLE_PROP_LEFT_PADDING, out left_padding);
+                        cell_xpadding = left_padding / 2;
                     break;
 
                     case 2: // second level
@@ -1343,7 +1367,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                     break;
 
                     default: // remaining levels
-                        cell_xpadding = LEVEL_INDENTATION / 2;
+                        int level_indentation;
+                        style_get (STYLE_PROP_LEVEL_INDENTATION, out level_indentation);
+                        cell_xpadding = level_indentation / 2;
                     break;
                 }
 
@@ -1822,8 +1848,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 // Badges are not displayed for main categories
-                visible = !data_model.is_category (item, iter);
-                if (visible && item.badge != null && item.badge.strip () != "")
+                visible = !data_model.is_category (item, iter)
+                       && item.badge != null
+                       && item.badge.strip () != "";
+
+                if (visible)
                     text = item.badge;
             }
 
