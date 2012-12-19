@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-12-18 05:12+0000\n"
-"X-Generator: Launchpad (build 16372)\n"
+"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
@@ -116,12 +116,3 @@ msgstr "このアプリケーションについて"
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Website"
 msgstr ""
-
-#~ msgid "Designed by"
-#~ msgstr "デザイナー："
-
-#~ msgid "Translated by "
-#~ msgstr "翻訳者： "
-
-#~ msgid "Written by"
-#~ msgstr "作者:"

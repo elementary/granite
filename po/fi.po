@@ -8,37 +8,37 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-15 15:44+0100\n"
-"PO-Revision-Date: 2012-09-26 15:37+0000\n"
+"PO-Revision-Date: 2012-12-18 19:39+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-12-18 05:12+0000\n"
-"X-Generator: Launchpad (build 16372)\n"
+"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Suunnitellut:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Toteuttanut:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Tekijänoikeus © %s"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Dokumentoinut:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Käännöksen toteutti %s"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
@@ -117,19 +117,4 @@ msgstr "Tietoja"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Website"
-msgstr ""
-
-#~ msgid "Designed by"
-#~ msgstr "Suunnitellut"
-
-#~ msgid "Translated by "
-#~ msgstr "Kääntänyt "
-
-#~ msgid "Written by"
-#~ msgstr "Toteuttanut"
-
-#~ msgid "Documented by"
-#~ msgstr "Dokumentointi"
-
-#~ msgid "Copyright"
-#~ msgstr "Tekijänoikeus"
+msgstr "Verkkosivusto"
