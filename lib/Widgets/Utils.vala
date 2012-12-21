@@ -47,16 +47,16 @@ public enum Granite.TextStyle {
     public string get_stylesheet (out string style_class = null) {
         switch (this) {
             case TITLE:
-                style_class = "title";
+                style_class = StyleClass.TITLE_TEXT;
                 return @".$style_class { font: raleway 36; }";
             case H1:
-                style_class = "h1";
+                style_class = StyleClass.H1_TEXT;
                 return @".$style_class { font: open sans bold 24; }";
             case H2:
-                style_class = "h2";
+                style_class = StyleClass.H2_TEXT;
                 return @".$style_class { font: open sans light 18; }";
             case H3:
-                style_class = "h3";
+                style_class = StyleClass.H3_TEXT;
                 return @".$style_class { font: open sans bold 12; }";
             default:
                 assert_not_reached ();

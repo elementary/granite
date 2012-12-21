@@ -37,7 +37,7 @@ namespace Granite.Widgets {
             set_visual (get_screen ().get_rgba_visual());
 
             // Set up css provider
-            Utils.set_theming (this, STYLESHEET, "composited",
+            Utils.set_theming (this, STYLESHEET, StyleClass.COMPOSITED,
                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
     }

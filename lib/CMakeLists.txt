@@ -5,7 +5,7 @@ set (PKG_SOVERSION 1)
 set (PKG_SOMINOR 0.1)
 
 set (VALA_SOURCES
-    Main.vala
+    style-classes.vala
     Application.vala
     Drawing/Color.vala
     Drawing/BufferSurface.vala

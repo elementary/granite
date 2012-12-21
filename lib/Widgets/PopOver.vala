@@ -107,8 +107,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         // Window properties
         set_visual (get_screen ().get_rgba_visual());
 
-        get_style_context ().add_class ("popover");
-        get_style_context ().add_class ("composited");
+        get_style_context ().add_class (StyleClass.POPOVER);
+        get_style_context ().add_class (StyleClass.COMPOSITED);
 
         Utils.set_theming_for_screen (get_screen (), POPOVER_STYLESHEET,
                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -145,7 +145,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         abox.set_margin_right(PADDINGS.right + SHADOW_SIZE + 5);
         abox.set_margin_bottom(PADDINGS.bottom + SHADOW_SIZE + 5);
 
-        menu.get_style_context().add_class("popover_bg");
+        menu.get_style_context().add_class(StyleClass.POPOVER_BG);
 
         size_allocate.connect(on_size_allocate);
     }
@@ -171,15 +171,8 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-			
-			var ret = pointer.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.SMOOTH_SCROLL_MASK |
-						       Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK |
-						       Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK |
-						       Gdk.EventMask.POINTER_MOTION_MASK,
-						       null, Gdk.CURRENT_TIME);
-			Gtk.device_grab_add (this, pointer, true);
-			
-			return false;
+		Gtk.device_grab_add (this, pointer, true);
+		return false;
 	}
 	
 	public override bool button_press_event (Gdk.EventButton event)

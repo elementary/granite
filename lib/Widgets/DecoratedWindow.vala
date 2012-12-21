@@ -49,11 +49,11 @@ namespace Granite.Widgets {
          */
         public static void set_default_theming (Gtk.Window ref_window) {
             Utils.set_theming (ref_window, DECORATED_WINDOW_STYLESHEET,
-                               STYLE_CLASS_DECORATED_WINDOW,
+                               StyleClass.DECORATED_WINDOW,
                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             Utils.set_theming (ref_window, DECORATED_WINDOW_FALLBACK_STYLESHEET,
-                               STYLE_CLASS_DECORATED_WINDOW,
+                               StyleClass.DECORATED_WINDOW,
                                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
         }
 

@@ -88,12 +88,12 @@ namespace Granite.Widgets {
             Box action_area = (Box) get_action_area ();
 
             var draw_ref = new Gtk.Window ();
-            draw_ref.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW_WINDOW);
+            draw_ref.get_style_context ().add_class (StyleClass.CONTENT_VIEW_WINDOW);
 
             // Apply DecoratedWindow's theming
             DecoratedWindow.set_default_theming (draw_ref);
 
-            action_area.get_style_context ().add_class (STYLE_CLASS_CONTENT_VIEW);
+            action_area.get_style_context ().add_class (StyleClass.CONTENT_VIEW);
 
             this.decorated = false;
             this.set_visual (this.get_screen ().get_rgba_visual ());
@@ -108,7 +108,7 @@ namespace Granite.Widgets {
             /* help button */
             help_button = new Button.with_label ("?");
 
-            Utils.set_theming (help_button, HELP_BUTTON_STYLESHEET, "help_button",
+            Utils.set_theming (help_button, HELP_BUTTON_STYLESHEET, StyleClass.HELP_BUTTON,
                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             help_button.halign = Gtk.Align.CENTER;
@@ -143,8 +143,6 @@ namespace Granite.Widgets {
             action_area.reorder_child (bug_button, 0);
             action_area.reorder_child (translate_button, 0);
 
-            show_all ();
-
             this.height_request = 282;
 
             var w = -1;
@@ -167,6 +165,7 @@ namespace Granite.Widgets {
                     shadow_blur + shadow_y, w - shadow_blur*2 + shadow_x, h - shadow_blur*2 + shadow_y);
 
             });
+
             /*draw the buffer*/
             this.draw.connect ( (ctx) => {
                 if (buffer == null)
@@ -191,6 +190,9 @@ namespace Granite.Widgets {
                 }
                 return false;
             });
+
+
+            show_all ();
         }
     }
 

@@ -24,13 +24,13 @@ namespace Granite {
 
     /**
      * Global deprecated object..
-     *
      */
     [Deprecated (since = "granite-0.1")]
     public static Granite.Application app;
 
     /**
-     * This is the base class for all Granite-based apps. It has methods to help create a great deal of an app's functionality.
+     * This is the base class for all Granite-based apps. It has methods that help
+     * to create a great deal of an app's functionality.
      */
     public abstract class Application : Gtk.Application {
 
@@ -65,10 +65,6 @@ namespace Granite {
          * This creates a new Application class
          */
         public Application () {
-
-
-            Granite.init ();
-            // set program name
 #if LINUX
             prctl (15, exec_name, 0, 0, 0);
 #endif
@@ -85,7 +81,6 @@ namespace Granite {
 
             // Deprecated
             Granite.app = this;
-
         }
 
 #if LINUX

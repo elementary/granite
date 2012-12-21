@@ -1241,7 +1241,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         public Tree (DataModel data_model) {
-            Utils.set_theming (this, DEFAULT_STYLESHEET, STYLE_CLASS_SOURCE_LIST,
+            Utils.set_theming (this, DEFAULT_STYLESHEET, StyleClass.SOURCE_LIST,
                                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
 
             this.data_model = data_model;

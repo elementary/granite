@@ -80,7 +80,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         content.homogeneous = false;
 
         // Add content-view styling
-        get_style_context().add_class (Granite.STYLE_CLASS_CONTENT_VIEW);
+        get_style_context().add_class (StyleClass.CONTENT_VIEW);
 
         // Top spacer
         content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);

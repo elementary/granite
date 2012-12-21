@@ -16,27 +16,22 @@
  * License along with this program; see the file COPYING.  If not,
  * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
- *
- * Authored by: Tom Beckmann <tombeckmann@online.de>
  */
 
-namespace Granite.Widgets {
+namespace Granite.StyleClass {
+    public const string COMPOSITED = "composited";
+    public const string BADGE = "badge";
+    public const string CONTENT_VIEW = "content-view";
+    public const string CONTENT_VIEW_WINDOW = "content-view-window";
+    public const string DECORATED_WINDOW = "decorated-window";
+    public const string SOURCE_LIST = "source-list";
+    public const string POPOVER = "popover";
+    public const string POPOVER_BG = "popover_bg";
+    public const string HELP_BUTTON = "help_button";
+    public const string THIN_PANE_SEPARATOR = "sidebar-pane-separator";
 
-    /**
-     * This is always-on-top, non-modal window with a large close button.
-     */
-    public class LightWindow : DecoratedWindow {
-
-        /**
-         * Makes a new Window with the Light Theme
-         *
-         * @param title title of new window
-         */
-        public LightWindow (string title = "") {
-            base (title, StyleClass.CONTENT_VIEW_WINDOW, StyleClass.CONTENT_VIEW);
-        }
-
-    }
-
+    public const string TITLE_TEXT = "title";
+    public const string H1_TEXT = "h1";
+    public const string H2_TEXT = "h2";
+    public const string H3_TEXT = "h3";
 }
-

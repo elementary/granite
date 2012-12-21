@@ -39,7 +39,6 @@
  */
 public class Granite.Widgets.ThinPaned : Gtk.Paned {
     private const string STYLE_PROP_OVERLAY_HANDLE_SIZE = "overlay-handle-size";
-    private const string STYLE_CLASS_SEPARATOR = "sidebar-pane-separator";
 
     private const string DEFAULT_STYLESHEET = """
         GraniteWidgetsThinPaned { -GtkPaned-handle-size: 1px; }
@@ -157,7 +156,7 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
         style_context.render_background (ctx, 0, 0, width, height);
 
         style_context.save ();
-        style_context.add_class (STYLE_CLASS_SEPARATOR);
+        style_context.add_class (StyleClass.THIN_PANE_SEPARATOR);
         style_context.set_state (state);
 
         // draw thin separator. We don't use render_handle() because we're
