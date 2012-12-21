@@ -363,11 +363,11 @@ namespace Granite.Widgets {
                 this.tab_added (t);
             });
 
-            this.size_allocate.connect ( () => {
+            this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
 
-            this.key_press_event.connect ( (e) => {
+            this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
                 case 119: //ctrl+w
                     if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
@@ -382,6 +382,18 @@ namespace Granite.Widgets {
                         this.tab_added (t);
                         notebook.page = (int) this.insert_tab (t, -1);
                         return true;
+                    }
+
+                    break;
+                case 65365:
+                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                        notebook.next_page ();
+                    }
+
+                    break;
+                case 65366:
+                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                        notebook.previous_page ();
                     }
 
                     break;
@@ -562,7 +574,7 @@ namespace Granite.Widgets {
                 notebook.remove_page (notebook.page_num (tab.page_container));
                 tab_moved (tab, 0, true, 0, 0);
             });
-            
+
             tab.duplicate.connect (() => {
                 tab_duplicated (tab);
             });
