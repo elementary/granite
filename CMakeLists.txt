@@ -57,7 +57,10 @@ set (GI_PKG_DEPS Gtk-3.0 Gee-1.0)
 find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
-set (VALAC_OPTIONS --thread)
+set (VALAC_OPTIONS
+     --thread
+     --target-glib=2.32)
+
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     set (VALAC_OPTIONS ${VALAC_OPTIONS} --define=LINUX)
 endif ()

@@ -382,23 +382,27 @@ namespace Granite.Drawing {
             
             try {
                 // Process Rows
-                unowned Thread<void*> th = Thread.create<void*> (() => {
+                exponential_blur_rows (pixels, width, height, height / 2, height, 0, width, alpha);
+
+                var th = new Thread<void*>.try (null, () => {
                     exponential_blur_rows (pixels, width, height, 0, height / 2, 0, width, alpha);
                     return null;
-                }, true);
+                });
                 
-                exponential_blur_rows (pixels, width, height, height / 2, height, 0, width, alpha);
                 th.join ();
                 
                 // Process Columns
-                th = Thread.create<void*> (() => {
+                exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
+
+                th = new Thread<void*>.try (null, () => {
                     exponential_blur_columns (pixels, width, height, 0, width / 2, 0, height, alpha);
                     return null;
-                }, true);
+                });
                 
-                exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
                 th.join ();
-            } catch { }
+            } catch (Error err) {
+                warning (err.message);
+            }
             
             original.mark_dirty ();
             
@@ -510,12 +514,13 @@ namespace Granite.Drawing {
             
             try {
                 // Horizontal Pass
-                unowned Thread<void*> th = Thread.create<void*> (() => {
+                gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
+
+                var th = new Thread<void*>.try (null, () => {
                     gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, 0, height / 2, shiftar);
                     return null;
-                }, true);
+                });
                 
-                gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
                 th.join ();
                 
                 // Clear buffer
@@ -533,14 +538,17 @@ namespace Granite.Drawing {
                     }
                 
                 // Vertical Pass
-                th = Thread.create<void*> (() => {
+                gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
+
+                th = new Thread<void*>.try (null, () => {
                     gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, 0, width / 2, shiftar);
                     return null;
-                }, true);
+                });
                 
-                gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
                 th.join ();
-            } catch {}
+            } catch (Error err) {
+                message (err.message);
+            }
             
             // Save blurred image to original uint8[]
             for (var i = 0; i < size; i++)
