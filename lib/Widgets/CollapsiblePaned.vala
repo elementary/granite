@@ -15,55 +15,43 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using Gtk;
-using Gdk;
-
-namespace Granite {
-
-    public enum CollapseMode {
-        NONE=0,
-        LEFT=1, TOP=1, FIRST=1,
-        RIGHT=2, BOTTOM=2, LAST=2
-    }
-
+public enum Granite.CollapseMode {
+    NONE = 0,
+    LEFT = 1,
+    TOP = 1,
+    FIRST = 1,
+    RIGHT = 2,
+    BOTTOM = 2,
+    LAST = 2
 }
 
 namespace Granite.Widgets {
 
     /**
-     * This widget is a collapsible paned.
+     * A paned that can be easily collapsed by double-clicking over the pane separator.
+     * If it was previously collapsed, it is expanded, and vice-versa.
      */
     public class CollapsiblePaned : Gtk.Paned {
-    
+        public CollapseMode collapse_mode { get; set; default = CollapseMode.NONE; }
+        //public signal void shrink(); //TODO: Make the default action overwritable
+        //public new signal void expand(int saved_state); //TODO same
+
         private int saved_state = 10;
         private uint last_click_time = 0;
 
-        public CollapseMode collapse_mode = CollapseMode.NONE;
-        //public signal void shrink(); //TODO: Make the default action overwriteable
-        //public new signal void expand(int saved_state); //TODO same
-
-        /**
-         * Makes new Paned
-         * 
-         * @param o orientation of new Paned
-         */
-        public CollapsiblePaned (Orientation o) {
-            //events |= EventMask.BUTTON_PRESS_MASK;
-            set_orientation (o);
-
+        public CollapsiblePaned (Gtk.Orientation orientation) {
+            this.orientation = orientation;
             button_press_event.connect (detect_toggle);
         }
 
-        private bool detect_toggle (EventButton event) {
-            
+        private bool detect_toggle (Gdk.EventButton event) {
             if (collapse_mode == CollapseMode.NONE)
                 return false;
 
-            if (event.time < (last_click_time + Gtk.Settings.get_default ().gtk_double_click_time) && event.type != EventType.2BUTTON_PRESS)
+            if (event.time < (last_click_time + Gtk.Settings.get_default ().gtk_double_click_time) && event.type != Gdk.EventType.2BUTTON_PRESS)
                 return true;
 
-            if (Gdk.Window.at_pointer (null, null) == this.get_handle_window () && event.type == EventType.2BUTTON_PRESS) {
-            
+            if (event.type == Gdk.EventType.2BUTTON_PRESS && event.window == get_handle_window ()) {
                 accept_position ();
 
                 var current_position = get_position ();
@@ -84,7 +72,7 @@ namespace Granite.Widgets {
                 }
 
                 if (collapse_mode == CollapseMode.LAST)
-                    requested_position = max_position - requested_position; // change requeste_position back to be non-relative
+                    requested_position = max_position - requested_position; // change requested_position back to be non-relative
 
                 set_position (requested_position);
 
@@ -95,30 +83,19 @@ namespace Granite.Widgets {
 
             return false;
         }
-        
     }
 
-    /**
-     * This class is a horizantally colapsing paned
-     */
+    [Deprecated (replacement = "Granite.Widgets.CollapsiblePaned", since = "granite-0.2")]
     public class HCollapsablePaned : CollapsiblePaned {
-    
         public HCollapsablePaned () {
-            base (Orientation.HORIZONTAL);
+            base (Gtk.Orientation.HORIZONTAL);
         }
-        
     }
 
-    /**
-     * This class is a vertically colapsing paned
-     */
+    [Deprecated (replacement = "Granite.Widgets.CollapsiblePaned", since = "granite-0.2")]
     public class VCollapsablePaned : CollapsiblePaned {
-    
         public VCollapsablePaned () {
-            base (Orientation.VERTICAL);
+            base (Gtk.Orientation.VERTICAL);
         }
-        
     }
-    
 }
-
