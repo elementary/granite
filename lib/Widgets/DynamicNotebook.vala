@@ -387,13 +387,13 @@ namespace Granite.Widgets {
                     break;
                 case 65365:
                     if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        notebook.next_page ();
+                        next_page ();
                     }
 
                     break;
                 case 65366:
                     if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        notebook.previous_page ();
+                        previous_page ();
                     }
 
                     break;
