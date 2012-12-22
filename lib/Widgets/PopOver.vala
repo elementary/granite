@@ -154,7 +154,15 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		grab_broken_event.connect (() => {
 			base.hide ();
 
-			return true;
+			return false;
+		});
+		// once the DnD action ended, we'll have a blocked window, unless we remove the grab manually again
+		grab_notify.connect ((was_grabbed) => {
+			if (was_grabbed) {
+				var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+				Gtk.device_grab_remove (this, pointer);
+				pointer.ungrab (Gdk.CURRENT_TIME);
+			}
 		});
     }
 	  
@@ -179,7 +187,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-		pointer.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.SMOOTH_SCROLL_MASK | 
+		pointer.grab (get_window (), Gdk.GrabOwnership.NONE, true, Gdk.EventMask.SMOOTH_SCROLL_MASK | 
 			Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | 
 			Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK | 
 			Gdk.EventMask.POINTER_MOTION_MASK, null, Gdk.CURRENT_TIME);
