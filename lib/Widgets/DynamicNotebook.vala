@@ -369,14 +369,14 @@ namespace Granite.Widgets {
 
             this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
-                    case Gdk.Key.W: //ctrl+w
+                    case Gdk.Key.@W: //ctrl+w
                         if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                             if (!tabs_closable) break;
                             remove_tab (current);
                         }
 
                         break;
-                    case Gdk.Key.T:
+                    case Gdk.Key.@T:
                         if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                             var t = new Tab ();
                             this.tab_added (t);
