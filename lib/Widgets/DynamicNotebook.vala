@@ -369,10 +369,11 @@ namespace Granite.Widgets {
 
             this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
-                    case Gdk.Key.@w: //ctrl+w
+                    case Gdk.Key.@w:
                         if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                             if (!tabs_closable) break;
                             remove_tab (current);
+                            return true;
                         }
 
                         break;
@@ -417,6 +418,7 @@ namespace Granite.Widgets {
                     case Gdk.Key.@9:
                         if ((e.state & Gdk.ModifierType.MOD1_MASK) != 0) {
                             notebook.page = notebook.get_n_pages () - 1;
+                            return true;
                         }
 
                         break;
