@@ -369,60 +369,57 @@ namespace Granite.Widgets {
 
             this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
-                case 119: //ctrl+w
-                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        if (!tabs_closable) break;
-                        remove_tab (current);
-                    }
+                    case Gdk.Key.W: //ctrl+w
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                            if (!tabs_closable) break;
+                            remove_tab (current);
+                        }
 
-                    break;
-                case 116: //ctrl+t
-                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        var t = new Tab ();
-                        this.tab_added (t);
-                        notebook.page = (int) this.insert_tab (t, -1);
-                        return true;
-                    }
+                        break;
+                    case Gdk.Key.T:
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                            var t = new Tab ();
+                            this.tab_added (t);
+                            notebook.page = (int) this.insert_tab (t, -1);
+                            return true;
+                        }
 
-                    break;
-                case 65365:
-                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        next_page ();
-                    }
+                        break;
+                    case Gdk.Key.Page_Up:
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                            next_page ();
+                            return true;
+                        }
 
-                    break;
-                case 65366:
-                    if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                        previous_page ();
-                    }
+                        break;
+                    case Gdk.Key.Page_Down:
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                            previous_page ();
+                            return true;
+                        }
 
-                    break;
-                case 49: //ctrl+[1-8]
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                case 54:
-                case 55:
-                case 56:
-                    if ((e.state & Gdk.ModifierType.META_MASK) != 0) {
-                        var i = e.keyval - 49;
-                        this.notebook.page = (int) ((i >= this.notebook.get_n_pages ()) ?
-                                             this.notebook.get_n_pages () - 1 : i);
-                        return true;
-                    }
-                    break;
+                        break;
+                    case Gdk.Key.@1:
+                    case Gdk.Key.@2:
+                    case Gdk.Key.@3:
+                    case Gdk.Key.@4:
+                    case Gdk.Key.@5:
+                    case Gdk.Key.@6:
+                    case Gdk.Key.@7:
+                    case Gdk.Key.@8:
+                        if ((e.state & Gdk.ModifierType.MOD1_MASK) != 0) {
+                            var i = e.keyval - 49;
+                            notebook.page = (int) ((i >= notebook.get_n_pages ()) ?
+                                                   notebook.get_n_pages () - 1 : i);
+                            return true;
+                        }
+                        break;
+                    case Gdk.Key.@9:
+                        if ((e.state & Gdk.ModifierType.MOD1_MASK) != 0) {
+                            notebook.page = notebook.get_n_pages () - 1;
+                        }
 
-                /*case 65289: //tab (and shift+tab)    not working :(  (Gtk seems to move focus)
-                  case 65056:
-                  if ((e.state & Gdk.ModifierType.SHIFT_MASK) != 0){
-                  this.prev ();
-                  return true;
-                  }else if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0){
-                  this.next ();
-                  return true;
-                  }
-                  break;*/
+                        break;
                 }
 
                 return false;
