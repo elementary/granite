@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*
- * Copyright (c) 2012 Victor Eduardo <victoreduardm@gmail.com>
+ * Copyright (c) 2012-2013 Victor Eduardo <victoreduardm@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as

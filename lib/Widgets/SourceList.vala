@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*
- * Copyright (c) 2012 Victor Eduardo <victoreduardm@gmail.com>
+ * Copyright (c) 2012-2013 Victor Eduardo <victoreduardm@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License as
@@ -723,11 +723,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        /**
-         * This hash map stores items and their respective child node references. For that reason, the
-         * references it contains should only be used on the child_tree model, or converted to filter
-         * iters/paths using convert_child_*_to_*() before using them with the filter (i.e. this) model.
-         */
+        // This hash map stores items and their respective child node references. For that reason, the
+        // references it contains should only be used on the child_tree model, or converted to filter
+        // iters/paths using convert_child_*_to_*() before using them with the filter (i.e. this) model.
         private Gee.HashMap<Item, NodeWrapper> items = new Gee.HashMap<Item, NodeWrapper> ();
 
         private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
