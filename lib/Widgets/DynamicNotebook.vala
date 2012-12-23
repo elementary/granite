@@ -371,7 +371,7 @@ namespace Granite.Widgets {
                 switch (e.keyval) {
                     case Gdk.Key.@w:
                     case Gdk.Key.@W:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK != 0) {
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
                             if (!tabs_closable) break;
                             remove_tab (current);
                             return true;
@@ -380,7 +380,7 @@ namespace Granite.Widgets {
                         break;
                     case Gdk.Key.@t:
                     case Gdk.Key.@T:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK != 0) {
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
                             var t = new Tab ();
                             this.tab_added (t);
                             notebook.page = (int) this.insert_tab (t, -1);
@@ -389,14 +389,14 @@ namespace Granite.Widgets {
 
                         break;
                     case Gdk.Key.Page_Up:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK != 0) {
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
                             next_page ();
                             return true;
                         }
 
                         break;
                     case Gdk.Key.Page_Down:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK != 0) {
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
                             previous_page ();
                             return true;
                         }
@@ -410,7 +410,7 @@ namespace Granite.Widgets {
                     case Gdk.Key.@6:
                     case Gdk.Key.@7:
                     case Gdk.Key.@8:
-                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) != 0) {
+                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK)) {
                             var i = e.keyval - 49;
                             var n_pages = notebook.get_n_pages ();
                             notebook.page = (int) ((i >= n_pages) ? n_pages - 1 : i);
@@ -418,7 +418,7 @@ namespace Granite.Widgets {
                         }
                         break;
                     case Gdk.Key.@9:
-                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) != 0) {
+                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK)) {
                             notebook.page = notebook.get_n_pages () - 1;
                             return true;
                         }
