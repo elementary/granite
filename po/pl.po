@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-12-15 15:44+0100\n"
-"PO-Revision-Date: 2012-12-06 13:14+0000\n"
-"Last-Translator: Piotr Sokół <Unknown>\n"
+"PO-Revision-Date: 2012-12-22 12:03+0000\n"
+"Last-Translator: Łukasz Szeremeta <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
+"X-Launchpad-Export-Date: 2012-12-23 04:52+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Zaprojektowany przez:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Napisany przez:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Copyright © %s"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Udokumentowany przez:"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Przetłumaczony przez %s"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
 msgid "This program is published under the terms of the "
@@ -120,4 +120,4 @@ msgstr "O programie"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Website"
-msgstr ""
+msgstr "Witryna internetowa"
