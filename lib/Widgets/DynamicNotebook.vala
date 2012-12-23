@@ -412,8 +412,8 @@ namespace Granite.Widgets {
                     case Gdk.Key.@8:
                         if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) != 0) {
                             var i = e.keyval - 49;
-                            notebook.page = (int) ((i >= notebook.get_n_pages ()) ?
-                                                   notebook.get_n_pages () - 1 : i);
+                            var n_pages = notebook.get_n_pages ();
+                            notebook.page = (int) ((i >= n_pages) ? n_pages - 1 : i);
                             return true;
                         }
                         break;
