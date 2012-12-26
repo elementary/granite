@@ -1772,9 +1772,9 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             int item_y = item_bin_coords.y + item_bin_coords.height / 2;
             int item_x = item_bin_coords.x;
 
-            bool is_rtl = get_direction () == Gtk.TextDirection.RTL;
+            bool is_ltr = Utils.is_left_to_right (this);
 
-            if (!is_rtl)
+            if (is_ltr)
                 item_x += item_bin_coords.width - 6;
 
             int widget_x, widget_y;
@@ -1784,7 +1784,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             x += widget_x.clamp (0, get_allocated_width ());
             y += widget_y.clamp (0, get_allocated_height ());
 
-            if (is_rtl) {
+            if (!is_ltr) {
                 Gtk.Requisition menu_req;
                 menu.get_preferred_size (out menu_req, null);
                 y -= menu_req.width;
