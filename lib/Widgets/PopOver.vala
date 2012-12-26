@@ -148,6 +148,23 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         menu.get_style_context().add_class(StyleClass.POPOVER_BG);
 
         size_allocate.connect(on_size_allocate);
+
+		// if for example a DnD action from within the popover, our drag is broken
+		// In this case, we just simply hide. Releasing the grab would make the DnD stop
+		grab_broken_event.connect (() => {
+			base.hide ();
+
+			return false;
+		});
+		// once the DnD action ended, we'll have a blocked window, unless we remove the grab manually again
+		grab_notify.connect ((was_grabbed) => {
+			if (!was_shown || !was_grabbed)
+				return;
+
+			var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+			Gtk.device_grab_remove (this, pointer);
+			pointer.ungrab (Gdk.CURRENT_TIME);
+		});
     }
 	  
    /**
@@ -159,8 +176,19 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		
 		Gtk.device_grab_remove (this, pointer);
 		pointer.ungrab (Gdk.CURRENT_TIME);
+		was_shown = false;
 		
 		base.hide ();
+	}
+
+	// we have a problem with the grab_notify signal, applications like wingpanel which use popovers
+	// for drawing map the popover, so it takes a focus which does not have to released if it is not shown,
+	// so we got to catch that case
+	bool was_shown = false;
+
+	public override void show () {
+		was_shown = true;
+		base.show ();
 	}
 
     /**
@@ -171,7 +199,12 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-		Gtk.device_grab_add (this, pointer, true);
+		pointer.grab (get_window (), Gdk.GrabOwnership.NONE, true, Gdk.EventMask.SMOOTH_SCROLL_MASK | 
+			Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | 
+			Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK | 
+			Gdk.EventMask.POINTER_MOTION_MASK, null, Gdk.CURRENT_TIME);
+		Gtk.device_grab_add (this, pointer, false);
+
 		return false;
 	}
 	
