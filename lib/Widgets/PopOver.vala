@@ -158,11 +158,12 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		});
 		// once the DnD action ended, we'll have a blocked window, unless we remove the grab manually again
 		grab_notify.connect ((was_grabbed) => {
-			if (was_grabbed) {
-				var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-				Gtk.device_grab_remove (this, pointer);
-				pointer.ungrab (Gdk.CURRENT_TIME);
-			}
+			if (!was_shown || !was_grabbed)
+				return;
+
+			var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
+			Gtk.device_grab_remove (this, pointer);
+			pointer.ungrab (Gdk.CURRENT_TIME);
 		});
     }
 	  
@@ -175,8 +176,19 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 		
 		Gtk.device_grab_remove (this, pointer);
 		pointer.ungrab (Gdk.CURRENT_TIME);
+		was_shown = false;
 		
 		base.hide ();
+	}
+
+	// we have a problem with the grab_notify signal, applications like wingpanel which use popovers
+	// for drawing map the popover, so it takes a focus which does not have to released if it is not shown,
+	// so we got to catch that case
+	bool was_shown = false;
+
+	public override void show () {
+		was_shown = true;
+		base.show ();
 	}
 
     /**
