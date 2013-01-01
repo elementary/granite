@@ -37,8 +37,9 @@ namespace Granite.Widgets {
         }
 
         public override bool key_press_event (Gdk.EventKey event) {
-            if(event.keyval == Gdk.Key.Escape) {
+            if (event.keyval == Gdk.Key.Escape) {
                 this.delete_event (((Gdk.Event*) (&event))->any);
+                return true;
             }
             return base.key_press_event (event);
         }
