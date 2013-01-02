@@ -324,9 +324,10 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         license_label = new Widgets.WrapLabel("");
         license_label.set_selectable(true);
 
-        website_url_label = new Label("");
+        website_url_label = new Label ("");
+        website_url_label.set_selectable (true);
         website_url_label.halign = Gtk.Align.START;
-        website_url_label.set_line_wrap(true);
+        website_url_label.set_line_wrap (true);
 
         // left and right padding
         content_hbox.pack_start(new Box(Orientation.VERTICAL, 0), false, false, 0);
@@ -473,18 +474,20 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
             name_label.hide();
     }
 
-    private void update_website()
-    {
+    private void update_website () {
         if (website != null && website != "") {
-            if (website != null && website != "") {
-                website_url_label.set_markup("<a href=\"" + website + "\">" + website_label.replace("&", "&amp;") + "</a>\n");
-            }
+
+            if (website_label != null && website_label != "")
+                website_url_label.set_markup ("<a href=\"%s\" title=\"%s\">%s</a>\n".printf
+                                              (website, website, website_label.replace("&", "&amp;")));
             else
-                website_url_label.set_markup("<a href=\"" + website + "\">" + website + "</a>\n");
-            website_url_label.show();
+                website_url_label.set_markup ("<a href=\"%s\" title=\"%s\">%s</a>\n".printf
+                                              (website, website, website));
+
+            website_url_label.show ();
         }
         else
-            website_url_label.hide();
+            website_url_label.hide ();
     }
 }
 
