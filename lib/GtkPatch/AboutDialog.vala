@@ -325,6 +325,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         license_label.set_selectable(true);
 
         website_url_label = new Label("");
+        website_url_label.set_selectable(true);
         website_url_label.halign = Gtk.Align.START;
         website_url_label.set_line_wrap(true);
 
@@ -476,11 +477,11 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     private void update_website()
     {
         if (website != null && website != "") {
-            if (website != null && website != "") {
-                website_url_label.set_markup("<a href=\"" + website + "\">" + website_label.replace("&", "&amp;") + "</a>\n");
+            if (website_label != null && website_label != "") {
+                website_url_label.set_markup("<a href=\"" + website + "\" title=\""+ website +"\">" + website_label.replace("&", "&amp;") + "</a>\n");
             }
             else
-                website_url_label.set_markup("<a href=\"" + website + "\">" + website + "</a>\n");
+                website_url_label.set_markup("<a href=\"" + website + "\" title=\""+ website +"\">" + website + "</a>\n");
             website_url_label.show();
         }
         else
