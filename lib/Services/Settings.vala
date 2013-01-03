@@ -233,14 +233,15 @@ namespace Granite.Services {
                     set_property (prop.name, schema.get_int (key));
                 else if(type == typeof (double))
                     set_property (prop.name, schema.get_double (key));
-                else if(type == typeof (string))
+                else if(type == typeof (string)) 
                     set_property (prop.name, schema.get_string (key));
                 else if(type == typeof (string[]))
                     set_property (prop.name, schema.get_strv (key));
                 else if(type == typeof (bool))
                     set_property (prop.name, schema.get_boolean (key));
-            }
-            else if (type.is_a (typeof (SettingsSerializable))) {
+                else if(type.is_enum ())
+                    set_property (prop.name, schema.get_enum (key));
+            } else if (type.is_a (typeof (SettingsSerializable))) {
                 get_property (key, ref val);
                 (val.get_object () as SettingsSerializable).settings_deserialize (schema.get_string (key));
                 notify.connect (handle_notify);
@@ -298,6 +299,10 @@ namespace Granite.Services {
                 } else if(type == typeof (bool)) {
                     if (val.get_boolean () != schema.get_boolean (key)) {
                         success = schema.set_boolean (key, val.get_boolean ());
+                    }
+                } else if(type.is_enum ()) {
+                    if (val.get_enum () != schema.get_enum (key)) {
+                        success = schema.set_enum (key, val.get_enum ());
                     }
                 }
             }
