@@ -231,6 +231,8 @@ namespace Granite.Services {
                 // apply them directly without problems.
                 if(type == typeof (int))
                     set_property (prop.name, schema.get_int (key));
+                else if(type == typeof (uint))
+                    set_property (prop.name, schema.get_uint (key));
                 else if(type == typeof (double))
                     set_property (prop.name, schema.get_double (key));
                 else if(type == typeof (string))
@@ -280,6 +282,10 @@ namespace Granite.Services {
                 if(type == typeof (int)) {
                     if (val.get_int () != schema.get_int (key)) {
                         success = schema.set_int (key, val.get_int ());
+                    }
+                } else if(type == typeof (uint)) {
+                    if (val.get_uint () != schema.get_uint (key)) {
+                        success = schema.set_uint (key, val.get_uint ());
                     }
                 } else if(type == typeof (double)) {
                     if (val.get_double () != schema.get_double (key)) {
