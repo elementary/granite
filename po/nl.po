@@ -7,113 +7,114 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-12-15 15:44+0100\n"
+"POT-Creation-Date: 2013-01-03 15:33-0600\n"
 "PO-Revision-Date: 2012-11-21 15:37+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-04 05:03+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
 msgstr "Kon Contractor niet benaderen. Mogelijk moet u dit installeren"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
+msgid "Close tab"
+msgstr "Tabblad sluiten"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
+msgid "Close Tab"
+msgstr "Tabblad sluiten"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
+msgid "Open in a new Window"
+msgstr "Open in een nieuw venster"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
+msgid "Duplicate"
+msgstr "Kopie maken"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tabs"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
+msgid "New Tab"
+msgstr "Nieuw tabblad"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
+msgid "New tab"
+msgstr "Nieuw tabblad"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:70
+msgid "Menu"
+msgstr "Menu"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
+msgid "About"
+msgstr "Over"
+
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "%l:%M %p"
+msgstr "%k:%M"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
+msgid "Translate This App"
+msgstr "Vertaal dit programma"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
+msgid "Report a Problem"
+msgstr "Meld een probleem"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
+msgid "%B %e, %Y"
+msgstr "%e %B %Y"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "Geen actie gevonden voor dit bestand"
+
+#: /home/codygarver/granite/po/../lib//Application.vala:159
+msgid "Website"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
 msgstr "Dit programma wordt verspreid onder de voorwaarden van de "
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " licentie, het komt met ABSOLUUT GEEN GARANTIE; voor details, bezoek "
-
-#: /home/noelco/granite/po/../lib//Widgets/DatePicker.vala:31
-msgid "%B %e, %Y"
-msgstr "%e %B %Y"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "Geen actie gevonden voor dit bestand"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:127
-msgid "Translate This App"
-msgstr "Vertaal dit programma"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:132
-msgid "Report a Problem"
-msgstr "Meld een probleem"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:111
-msgid "Close tab"
-msgstr "Tabblad sluiten"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:132
-msgid "Close Tab"
-msgstr "Tabblad sluiten"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:134
-msgid "Open in a new Window"
-msgstr "Open in een nieuw venster"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:135
-msgid "Duplicate"
-msgstr "Kopie maken"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:154
-msgid "Close Other Tab"
-msgid_plural "Close Other Tabs"
-msgstr[0] "Sluit ander tabblad"
-msgstr[1] "Sluit andere tabbladen"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:339
-msgid "New Tab"
-msgstr "Nieuw tabblad"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:366
-msgid "New tab"
-msgstr "Nieuw tabblad"
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:63
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:129
-msgid "%l:%M %p"
-msgstr "%k:%M"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:46
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:57
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:70
-msgid "Menu"
-msgstr "Menu"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:80
-msgid "About"
-msgstr "Over"
-
-#: /home/noelco/granite/po/../lib//Application.vala:164
-msgid "Website"
-msgstr ""

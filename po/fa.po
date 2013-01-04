@@ -7,114 +7,116 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-15 15:44+0100\n"
+"POT-Creation-Date: 2013-01-03 15:33-0600\n"
 "PO-Revision-Date: 2012-12-28 09:12+0000\n"
 "Last-Translator: Mohammad Zali <mohamadzali@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-12-29 05:10+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-04 05:04+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 "Language: \n"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
+msgid "Close tab"
+msgstr "بستن برگه"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
+msgid "Close Tab"
+msgstr "بستن برگه"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
+msgid "Open in a new Window"
+msgstr "باز کردن در پنجره جدید"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
+msgid "Duplicate"
+msgstr "تکرار"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tabs"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
+msgid "New Tab"
+msgstr "برگه جدید"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
+msgid "New tab"
+msgstr "برگه جدید"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:70
+msgid "Menu"
+msgstr "منو"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
+msgid "About"
+msgstr "درباره"
+
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "%l:%M %p"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
+msgid "Translate This App"
+msgstr "ترجمه برنامه"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
+msgid "Report a Problem"
+msgstr "گزارش ایراد"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
+msgid "%B %e, %Y"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "نمی‌توان با کانترکتور اتصال برقرار کرد. احتمالاً باید آن را نصب کنید"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "هیچ کنشی برای این پرونده پیدا نشد"
+
+#: /home/codygarver/granite/po/../lib//Application.vala:159
+msgid "Website"
+msgstr "وبگاه"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
 msgstr "طراح:"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
 msgstr "نویسنده:"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
 msgstr "حق نشر © %s"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
 msgstr "مستندسازی:"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
 msgstr "ترجمه توسط %s"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
 msgstr "این برنامه طبق مجوز نرم‌افزاری "
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " منتشر شده است، هیچ گونه تضمینی برای این برنامه ارائه نشده است؛ اطلاعات "
 "بیشتر در "
-
-#: /home/noelco/granite/po/../lib//Widgets/DatePicker.vala:31
-msgid "%B %e, %Y"
-msgstr ""
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "نمی‌توان با کانترکتور اتصال برقرار کرد. احتمالاً باید آن را نصب کنید"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "هیچ کنشی برای این پرونده پیدا نشد"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:127
-msgid "Translate This App"
-msgstr "ترجمه برنامه"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:132
-msgid "Report a Problem"
-msgstr "گزارش ایراد"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:111
-msgid "Close tab"
-msgstr "بستن برگه"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:132
-msgid "Close Tab"
-msgstr "بستن برگه"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:134
-msgid "Open in a new Window"
-msgstr "باز کردن در پنجره جدید"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:135
-msgid "Duplicate"
-msgstr "تکرار"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:154
-msgid "Close Other Tab"
-msgid_plural "Close Other Tabs"
-msgstr[0] "بستر برگه دیگر"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:339
-msgid "New Tab"
-msgstr "برگه جدید"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:366
-msgid "New tab"
-msgstr "برگه جدید"
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:63
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:129
-msgid "%l:%M %p"
-msgstr ""
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:46
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:57
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:70
-msgid "Menu"
-msgstr "منو"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:80
-msgid "About"
-msgstr "درباره"
-
-#: /home/noelco/granite/po/../lib//Application.vala:164
-msgid "Website"
-msgstr "وبگاه"

@@ -7,114 +7,115 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-12-15 15:44+0100\n"
+"POT-Creation-Date: 2013-01-03 15:33-0600\n"
 "PO-Revision-Date: 2012-12-18 11:02+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-04 05:04+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
-msgid "Designed by:"
-msgstr "Deseñado por:"
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
+msgid "Close tab"
+msgstr "Pechar a lapela"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
-msgid "Written by:"
-msgstr "Escrito por:"
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
+msgid "Close Tab"
+msgstr "Pechar a lapela"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
-#, c-format
-msgid "Copyright © %s"
-msgstr "Copyright © %s"
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
+msgid "Open in a new Window"
+msgstr "Abrir nunha nova xanela"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
-msgid "Documented by:"
-msgstr "Documentado por:"
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
+msgid "Duplicate"
+msgstr "Duplicar"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
-#, c-format
-msgid "Translated by %s"
-msgstr "Traducido por %s"
-
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
-msgid "This program is published under the terms of the "
-msgstr "Este programa foi publicado baixo os termos da licenza "
-
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
-msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tab"
 msgstr ""
-" , que non ofrece NINGUNHA GARANTÍA; para obter máis detalles, visite "
 
-#: /home/noelco/granite/po/../lib//Widgets/DatePicker.vala:31
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tabs"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
+msgid "New Tab"
+msgstr "Nova lapela"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
+msgid "New tab"
+msgstr "Nova lapela"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:70
+msgid "Menu"
+msgstr "Menú"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
+msgid "About"
+msgstr "Sobre"
+
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "%l:%M %p"
+msgstr "%H:%M"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
+msgid "Translate This App"
+msgstr "Traducir este aplicativo"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
+msgid "Report a Problem"
+msgstr "Informar dun problema"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
 msgstr "%e de %B de %Y"
 
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
 "Non foi posíbel contactar con Contractor. É probábel que precise instalalo"
 
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
 msgstr "No se atopou ningunha acción para este ficheiro"
 
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:127
-msgid "Translate This App"
-msgstr "Traducir este aplicativo"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:132
-msgid "Report a Problem"
-msgstr "Informar dun problema"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:111
-msgid "Close tab"
-msgstr "Pechar a lapela"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:132
-msgid "Close Tab"
-msgstr "Pechar a lapela"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:134
-msgid "Open in a new Window"
-msgstr "Abrir nunha nova xanela"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:135
-msgid "Duplicate"
-msgstr "Duplicar"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:154
-msgid "Close Other Tab"
-msgid_plural "Close Other Tabs"
-msgstr[0] "Pechar a outra lapela"
-msgstr[1] "Pechar as outras lapelas"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:339
-msgid "New Tab"
-msgstr "Nova lapela"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:366
-msgid "New tab"
-msgstr "Nova lapela"
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:63
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:129
-msgid "%l:%M %p"
-msgstr "%H:%M"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:46
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:57
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:70
-msgid "Menu"
-msgstr "Menú"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:80
-msgid "About"
-msgstr "Sobre"
-
-#: /home/noelco/granite/po/../lib//Application.vala:164
+#: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
 msgstr "Páxina web"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+msgid "Designed by:"
+msgstr "Deseñado por:"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+msgid "Written by:"
+msgstr "Escrito por:"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+#, c-format
+msgid "Copyright © %s"
+msgstr "Copyright © %s"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+msgid "Documented by:"
+msgstr "Documentado por:"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#, c-format
+msgid "Translated by %s"
+msgstr "Traducido por %s"
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
+msgid "This program is published under the terms of the "
+msgstr "Este programa foi publicado baixo os termos da licenza "
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
+msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+msgstr ""
+" , que non ofrece NINGUNHA GARANTÍA; para obter máis detalles, visite "

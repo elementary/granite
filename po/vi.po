@@ -7,112 +7,113 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-12-15 15:44+0100\n"
+"POT-Creation-Date: 2013-01-03 15:33-0600\n"
 "PO-Revision-Date: 2012-08-08 08:41+0000\n"
 "Last-Translator: Ngô Trung <ndtrung4419@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-12-19 05:26+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-04 05:04+0000\n"
+"X-Generator: Launchpad (build 16393)\n"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:40
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
+msgid "Close tab"
+msgstr "Đóng tab"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
+msgid "Close Tab"
+msgstr "Đóng tab"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
+msgid "Open in a new Window"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
+msgid "Duplicate"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
+msgid "Close Other Tabs"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
+msgid "New Tab"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
+msgid "New tab"
+msgstr "Tab mới"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:70
+msgid "Menu"
+msgstr "Menu"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
+msgid "About"
+msgstr "Giới thiệu"
+
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
+#: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
+msgid "Translate This App"
+msgstr "Dịch ứng dụng này"
+
+#: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
+msgid "Report a Problem"
+msgstr "Thông báo lỗi"
+
+#: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
+msgid "%B %e, %Y"
+msgstr "%B %e, %Y"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "Không thể kết nối với Contractor. Có lẽ bạn cần cài đặt nó trước"
+
+#: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "Không tìm thấy hành động nào cho tập tin này"
+
+#: /home/codygarver/granite/po/../lib//Application.vala:159
+msgid "Website"
+msgstr ""
+
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:59
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:97
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:115
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:175
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
 msgstr ""
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
 msgstr "Chương trình này được phát hành theo các điều khoản của giấy phép "
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:459
+#: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " , nó HOÀN TOÀN KHÔNG ĐƯỢC BẢO HÀNH; để biết chi tiết, truy cập "
-
-#: /home/noelco/granite/po/../lib//Widgets/DatePicker.vala:31
-msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "Không thể kết nối với Contractor. Có lẽ bạn cần cài đặt nó trước"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "Không tìm thấy hành động nào cho tập tin này"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:127
-msgid "Translate This App"
-msgstr "Dịch ứng dụng này"
-
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:132
-msgid "Report a Problem"
-msgstr "Thông báo lỗi"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:111
-msgid "Close tab"
-msgstr "Đóng tab"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:132
-msgid "Close Tab"
-msgstr "Đóng tab"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:134
-msgid "Open in a new Window"
-msgstr ""
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:135
-msgid "Duplicate"
-msgstr ""
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:154
-msgid "Close Other Tab"
-msgid_plural "Close Other Tabs"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:339
-msgid "New Tab"
-msgstr ""
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:366
-msgid "New tab"
-msgstr "Tab mới"
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:63
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:129
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:46
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:57
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:70
-msgid "Menu"
-msgstr "Menu"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:80
-msgid "About"
-msgstr "Giới thiệu"
-
-#: /home/noelco/granite/po/../lib//Application.vala:164
-msgid "Website"
-msgstr ""
