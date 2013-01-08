@@ -1,16 +1,16 @@
-# Catalan translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# French (Canada) translation for granite
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-03 15:33-0600\n"
-"PO-Revision-Date: 2013-01-07 12:08+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
-"Language-Team: Catalan <ca@li.org>\n"
+"PO-Revision-Date: 2013-01-07 06:06+0000\n"
+"Last-Translator: Nicolas Boivin <nakilio@live.ca>\n"
+"Language-Team: French (Canada) <fr_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,83 +19,83 @@ msgstr ""
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
-msgstr "Tanca la pestanya"
+msgstr "Fermer l'onglet"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr "Tanca la pestanya"
+msgstr "Fermer l’onglet"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
-msgstr "Obre a una finestra nova"
+msgstr "Ouvrir dans une nouvelle fenêtre"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
-msgstr "Duplica"
+msgstr "Dupliquer"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr "Tanca l'altra pestanya"
+msgstr "Fermer l'autre onglet"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr "Tanca les altres pestanyes"
+msgstr "Fermer les autres onglets"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr "Pestanya nova"
+msgstr "Nouvel onglet"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
-msgstr "Pestanya nova"
+msgstr "Nouvel onglet"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:70
 msgid "Menu"
-msgstr "Menú"
+msgstr "Menu"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
 msgid "About"
-msgstr "Quant a"
+msgstr "À propos"
 
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "%l:%M %p"
-msgstr "%H:%M"
+msgstr "%l:%M %p"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
 msgid "Translate This App"
-msgstr "Tradueix aquesta applicació"
+msgstr "Traduire cette application"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
 msgid "Report a Problem"
-msgstr "Informeu d'un problema"
+msgstr "Signaler un problème"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
-msgstr "%e de %B de %Y"
+msgstr "%e %B %Y"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
-"No s'ha pogut contactar amb el Contractor. Pot ser que necessiteu instalar-lo"
+"Impossible d'accéder à Contractor. Vous avez peut-être besoin de l'installer."
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
-msgstr "No s'ha trobat cap acció per a aquest fitxer"
+msgstr "Aucune action n'a été trouvée pour ce fichier"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr "Lloc web"
+msgstr "Site web"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr "Disenyat per:"
+msgstr "Conçu par :"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr "Escrit per:"
+msgstr "Développé par :"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
@@ -104,17 +104,18 @@ msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr "Documentat per:"
+msgstr "Documenté par :"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr "Traduït per %s"
+msgstr "Traduit par %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
-msgstr "Aquest programa està publicat sota els termes de la llicència "
+msgstr "Ce programme est publié conformément à la licence "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " , aquesta no té CAP MENA DE GARANTIA; per a més detalls, visiteu "
+msgstr ""
+" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "

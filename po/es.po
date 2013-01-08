@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-03 15:33-0600\n"
-"PO-Revision-Date: 2013-01-03 23:16+0000\n"
-"Last-Translator: Julián Unrrein <Unknown>\n"
+"PO-Revision-Date: 2013-01-07 12:04+0000\n"
+"Last-Translator: Ignacio Martin Rodriguez <newwen@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-05 05:17+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-01-08 05:22+0000\n"
+"X-Generator: Launchpad (build 16402)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -74,7 +74,7 @@ msgstr "Informar de un problema"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
-msgstr "%e de %B del %Y"
+msgstr "%e de %B de %Y"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
