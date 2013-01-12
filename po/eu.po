@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-03 15:33-0600\n"
-"PO-Revision-Date: 2012-11-16 23:25+0000\n"
+"PO-Revision-Date: 2013-01-11 21:20+0000\n"
 "Last-Translator: Ibai Oihanguren <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-04 05:03+0000\n"
-"X-Generator: Launchpad (build 16393)\n"
+"X-Launchpad-Export-Date: 2013-01-12 05:09+0000\n"
+"X-Generator: Launchpad (build 16420)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -35,11 +35,11 @@ msgstr "Bikoiztu"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Itxi beste fitxa"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Itxi beste fitxak"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
@@ -87,29 +87,29 @@ msgstr "Ez da ekintzarik aurkitu fitxategi honentzat"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "Webgunea"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Diseinatzailea:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Programatzailea:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Dokumentatzailea:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Itzultzailea(k): %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
