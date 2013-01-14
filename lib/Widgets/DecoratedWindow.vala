@@ -137,9 +137,9 @@ namespace Granite.Widgets {
             this.box.pack_start (this._title, false);
             base.add (this.box);
 
-            this.add_events (Gdk.EventMask.BUTTON_PRESS_MASK
-                             | Gdk.EventMask.BUTTON_RELEASE_MASK
-                             | Gdk.EventMask.POINTER_MOTION_MASK);
+            this.add_events (Gdk.EventMask.BUTTON_PRESS_MASK |
+                             Gdk.EventMask.BUTTON_RELEASE_MASK |
+                             Gdk.EventMask.POINTER_MOTION_MASK);
             this.motion_notify_event.connect (on_motion_notify);
             this.delete_event.connect_after (on_delete_event);
             this.size_allocate.connect (on_size_allocate);
@@ -228,7 +228,7 @@ namespace Granite.Widgets {
 
         public override bool button_release_event (Gdk.EventButton e) {
             bool on_close_button = coords_over_close_button (e.x, e.y);
-            if(on_close_button){
+            if(on_close_button) {
                 var event = (Gdk.Event*) (&e);
                 this.delete_event (event->any);
             }
