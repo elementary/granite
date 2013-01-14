@@ -232,7 +232,7 @@ namespace Granite.Widgets {
                 var event = (Gdk.Event*) (&e);
                 this.delete_event (event->any);
             }
-            
+
             return on_close_button;
         }
 
