@@ -21,9 +21,11 @@ using Gdk;
 namespace Granite.Widgets {
 
     /**
-     * A text entry space with hint
+     * A text entry space with hint and clear icon
      */
     public class HintedEntry : Gtk.Entry {
+
+		public bool has_clear_icon { get; set; }
 
         public string hint_string {
             get {
@@ -38,10 +40,28 @@ namespace Granite.Widgets {
          * Makes new hinted entry
          *
          * @param hint_string hint for new entry
+         * @param has_clear_icon optional clear icon
          */
-        public HintedEntry (string hint_string) {
-        
+        public HintedEntry (string hint_string, bool has_clear_icon = false) {
+
             this.hint_string = hint_string;
+            this.has_clear_icon = has_clear_icon;
+			
+            this.icon_release.connect ((pos) => {
+                if (pos == Gtk.EntryIconPosition.SECONDARY) 
+                     text = "";
+            } );
+	
+            this.changed.connect (manage_icon);
+            this.notify["has-clear-icon"].connect (manage_icon);
+        }
+        
+        private void manage_icon ()
+        {
+        	if (has_clear_icon && text != "")
+				set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-clear-symbolic");
+			else
+				set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, null);
         }
       
         /*
