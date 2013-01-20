@@ -25,7 +25,7 @@ namespace Granite.Widgets {
      */
     public class HintedEntry : Gtk.Entry {
 
-		public bool has_clear_icon { get; set; }
+        public bool has_clear_icon { get; set; }
 
         public string hint_string {
             get {
