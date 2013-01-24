@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-03 15:33-0600\n"
-"PO-Revision-Date: 2012-10-06 09:04+0000\n"
+"PO-Revision-Date: 2013-01-23 07:54+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-22 05:06+0000\n"
-"X-Generator: Launchpad (build 16430)\n"
+"X-Launchpad-Export-Date: 2013-01-24 04:55+0000\n"
+"X-Generator: Launchpad (build 16445)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -35,11 +35,11 @@ msgstr "複製"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "關閉其他分頁"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "關閉其他分頁"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
@@ -86,29 +86,29 @@ msgstr "沒有動作找到這檔案"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "網站"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "設計："
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "撰寫："
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "著作權 © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "文件："
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "翻譯：%s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
