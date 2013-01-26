@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-03 15:33-0600\n"
-"PO-Revision-Date: 2012-08-14 17:33+0000\n"
+"PO-Revision-Date: 2013-01-25 15:09+0000\n"
 "Last-Translator: Joji Bronner <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-01-22 05:06+0000\n"
-"X-Generator: Launchpad (build 16430)\n"
+"X-Launchpad-Export-Date: 2013-01-26 05:18+0000\n"
+"X-Generator: Launchpad (build 16451)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -35,15 +35,15 @@ msgstr ""
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "他のタブを閉じる"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "他のタブを閉じる"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr ""
+msgstr "新しいタブ"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
@@ -86,24 +86,24 @@ msgstr "このファイルに対して作用することが見つかりません
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "ウェブサイト"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "デザイナー:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "作家:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "執筆者"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
