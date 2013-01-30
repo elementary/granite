@@ -57,20 +57,20 @@ namespace Granite.Widgets {
          * These 4 functions must be removed, they are only kept here
          * for API compatibility.
          */
-        [Deprecated (since = "granite-0.2")]
+        [Deprecated (since = "0.2")]
         protected void hint () {
         }
  
-        [Deprecated (since = "granite-0.2")]
+        [Deprecated (since = "0.2")]
         protected void unhint () {
         }
  
-        [Deprecated (since = "granite-0.2", replacement = "Gtk.Entry.get_text")]
+        [Deprecated (since = "0.2", replacement = "Gtk.Entry.get_text")]
         public new string get_text () {
             return text;
         }
  
-        [Deprecated (since = "granite-0.2", replacement = "Gtk.Entry.set_text")]
+        [Deprecated (since = "0.2", replacement = "Gtk.Entry.set_text")]
         public new void set_text (string text) {
             this.text = text;
         }
