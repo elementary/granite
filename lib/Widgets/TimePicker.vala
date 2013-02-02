@@ -169,9 +169,6 @@ namespace Granite.Widgets {
         protected void minutes_left_clicked () {
         
             time = time.add_minutes (-5);
-            if (time.get_minute () >= 55) {
-                time = time.add_hours (+1);
-            }
             text = time.format (format);
             time_changed ();
         }
@@ -179,9 +176,6 @@ namespace Granite.Widgets {
         protected void minutes_right_clicked () {
         
             time = time.add_minutes (5);
-            if (time.get_minute () < 5) {
-                time = time.add_hours (-1);
-            }
             text = time.format (format);
             time_changed ();
         }
