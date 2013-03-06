@@ -8,46 +8,46 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2012-07-19 07:16+0000\n"
-"Last-Translator: QUIX <Unknown>\n"
+"PO-Revision-Date: 2013-03-05 20:30+0000\n"
+"Last-Translator: Richard B. <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-28 05:09+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-03-06 06:04+0000\n"
+"X-Generator: Launchpad (build 16514)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
-msgstr ""
+msgstr "Închide fila"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr ""
+msgstr "Închide fila"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Deschide într-o fereastră nouă"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplichează"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Închide cealaltă filă"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Închide celelalte file"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr ""
+msgstr "Filă nouă"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
-msgstr ""
+msgstr "Filă nouă"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
@@ -86,29 +86,29 @@ msgstr "Nici o acțiune găsită pentru acest fișier"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Proiectat de:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Scris de:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Documentat de:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Tradus de %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
