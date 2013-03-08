@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-02-06 15:32+0000\n"
+"PO-Revision-Date: 2013-03-07 10:42+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-28 05:09+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-03-08 05:09+0000\n"
+"X-Generator: Launchpad (build 16523)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -66,7 +66,7 @@ msgstr "%H:%M"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
 msgid "Translate This App"
-msgstr "Terjemahkan App Ini"
+msgstr "Terjemahkan Apl Ini"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
 msgid "Report a Problem"
