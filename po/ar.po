@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2012-11-04 13:37+0000\n"
-"Last-Translator: Odai Alali <odai.alali@gmail.com>\n"
+"PO-Revision-Date: 2013-03-16 12:31+0000\n"
+"Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-28 05:09+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-03-17 05:09+0000\n"
+"X-Generator: Launchpad (build 16532)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -23,7 +23,7 @@ msgstr "إغلاق علامة التبويب"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr "أغلق اللّسان"
+msgstr "إغلاق تبويب"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
@@ -35,11 +35,11 @@ msgstr "كرّر"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "إغلاق علامة التبويب الأخرى"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "إغلاق علامات التبويب الأخرى"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
@@ -62,7 +62,7 @@ msgstr "عن البرنامج"
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "%l:%M %p"
-msgstr "%Ol:%OM %p"
+msgstr "%l:%M %p"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
 msgid "Translate This App"
@@ -74,7 +74,7 @@ msgstr "قم بالإبلاغ عن مشكلة"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
-msgstr "%e %B، %Y"
+msgstr "%B %e, %Y"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
@@ -86,29 +86,29 @@ msgstr "لم يُعثر على فعل لهذا المللف"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "موقع  الإنترنت"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "تصميم:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "كتبها:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "جميع الحقوق محفوظة © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "وثقتها:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "ترجم من قبل %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
