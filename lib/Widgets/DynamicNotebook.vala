@@ -459,6 +459,7 @@ namespace Granite.Widgets {
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
             notebook.remove_page (notebook.page_num (tab.page_container));
+            tab.page_container.destroy ();
 
             tab_moved (tab, 0, true, x, y);
             return null;
@@ -491,6 +492,7 @@ namespace Granite.Widgets {
             var pos = get_tab_position (tab);
             if (pos != -1)
                 notebook.remove_page (pos);
+            tab.page_container.destroy ();
         }
 
         public void next_page () {
@@ -578,6 +580,7 @@ namespace Granite.Widgets {
 
             tab.new_window.connect (() => {
                 notebook.remove_page (notebook.page_num (tab.page_container));
+                tab.page_container.destroy ();
                 tab_moved (tab, 0, true, 0, 0);
             });
 
