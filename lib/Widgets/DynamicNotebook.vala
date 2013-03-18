@@ -385,6 +385,7 @@ namespace Granite.Widgets {
                         }
                         break;
                 }
+                
                 return false;
             });
 
