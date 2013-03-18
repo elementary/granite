@@ -35,14 +35,7 @@ namespace Granite.Widgets {
         public LightWindow (string title = "") {
             base (title, StyleClass.CONTENT_VIEW_WINDOW, StyleClass.CONTENT_VIEW);
         }
-
-        public override bool key_press_event (Gdk.EventKey event) {
-            if (event.keyval == Gdk.Key.Escape) {
-                this.delete_event (((Gdk.Event*) (&event))->any);
-                return true;
-            }
-            return base.key_press_event (event);
-        }
+        
     }
 
 }
