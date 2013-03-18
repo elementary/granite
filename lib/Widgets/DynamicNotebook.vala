@@ -366,6 +366,27 @@ namespace Granite.Widgets {
             this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
+            
+            this.scroll_event.connect ((e) => {
+                switch (e.direction) {
+                    case Gdk.ScrollDirection.UP:
+                    case Gdk.ScrollDirection.LEFT:
+                        if (get_tab_position (current) > 0) {
+                            previous_page ();
+                            return true;
+                        }
+                        break;        
+                                    
+                    case Gdk.ScrollDirection.DOWN:
+                    case Gdk.ScrollDirection.RIGHT:
+                        if (get_tab_position (current) < this.notebook.get_n_pages () - 1) {
+                            next_page ();
+                            return true;
+                        }
+                        break;
+                }
+                return false;
+            });
 
             this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
