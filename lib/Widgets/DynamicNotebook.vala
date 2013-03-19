@@ -140,7 +140,7 @@ namespace Granite.Widgets {
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
-                    close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs);
+                    close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     if (num_tabs == 1)
                         close_other_m.sensitive = false;
                     return true;
