@@ -20,6 +20,11 @@
 
 namespace Granite.Widgets {
 
+    // a mask to ignore modifiers like num lock or caps lock that are irrelevant to keyboard shortcuts
+    internal const Gdk.ModifierType MODIFIER_MASK = (Gdk.ModifierType.SHIFT_MASK |
+                                                       Gdk.ModifierType.SUPER_MASK |
+                                                       Gdk.ModifierType.CONTROL_MASK |
+                                                       Gdk.ModifierType.MOD1_MASK);
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
@@ -134,24 +139,26 @@ namespace Granite.Widgets {
             duplicate_m.activate.connect (() => duplicate () );
 
             lbl.button_press_event.connect ((e) => {
-                if (e.button == 2 && close.visible) { //if !close.visible, closable if false
+            
+                e.state &= MODIFIER_MASK;
+                
+                if (e.button == 2 && e.state == 0 && close.visible) {
                     this.closed ();
-                    return true;
+                } else if (e.button == 2 && e.state == Gdk.ModifierType.SHIFT_MASK && close.visible) {
+                    this.close_others ();
+                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS) {
+                    this.duplicate ();
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     if (num_tabs == 1)
                         close_other_m.sensitive = false;
-                    return true;
+                } else {
+                    return false;
                 }
-
-                return false;
-            });
-
-            /* Disable the double click signal on the tab */
-            this.button_press_event.connect ((e) => {
-                return (e.type == Gdk.EventType.2BUTTON_PRESS);
+                
+                return true;
             });
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
