@@ -22,9 +22,9 @@ namespace Granite.Widgets {
 
     // a mask to ignore modifiers like num lock or caps lock that are irrelevant to keyboard shortcuts
     internal const Gdk.ModifierType MODIFIER_MASK = (Gdk.ModifierType.SHIFT_MASK |
-                                                       Gdk.ModifierType.SUPER_MASK |
-                                                       Gdk.ModifierType.CONTROL_MASK |
-                                                       Gdk.ModifierType.MOD1_MASK);
+                                                     Gdk.ModifierType.SUPER_MASK |
+                                                     Gdk.ModifierType.CONTROL_MASK |
+                                                     Gdk.ModifierType.MOD1_MASK);
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
