@@ -146,7 +146,7 @@ namespace Granite.Widgets {
                     this.closed ();
                 } else if (e.button == 2 && e.state == Gdk.ModifierType.SHIFT_MASK && close.visible) {
                     this.close_others ();
-                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS) {
+                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
