@@ -160,7 +160,11 @@ namespace Granite.Widgets {
                 
                 return true;
             });
-
+            
+            this.button_press_event.connect ((e) => {
+                return (e.type == Gdk.EventType.2BUTTON_PRESS || e.button != 1);
+            });
+            
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
             close.clicked.connect ( () => this.closed () );
             working = false;
