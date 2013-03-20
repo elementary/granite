@@ -2,7 +2,7 @@
 
 cmake_minimum_required (VERSION 2.6)
 cmake_policy (VERSION 2.6)
-project (granite)
+project (granite C)
 
 set (PKG_NAME ${CMAKE_PROJECT_NAME})
 set (PKG_VERSION 0.2)
