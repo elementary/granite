@@ -138,6 +138,29 @@ namespace Granite.Widgets {
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
 
+            lbl.scroll_event.connect ((e) => {
+                var notebook = (this.get_parent () as Gtk.Notebook);
+                switch (e.direction) {
+                    case Gdk.ScrollDirection.UP:
+                    case Gdk.ScrollDirection.LEFT:
+                        if (notebook.page > 0) {
+                            notebook.page--;
+                            return true;
+                        }
+                        break;
+                        
+                    case Gdk.ScrollDirection.DOWN:
+                    case Gdk.ScrollDirection.RIGHT:
+                        if (notebook.page < notebook.get_n_pages ()) {
+                            notebook.page++;
+                            return true;
+                        }
+                        break;
+                }
+                
+                return false;
+            });
+
             lbl.button_press_event.connect ((e) => {
             
                 e.state &= MODIFIER_MASK;
@@ -378,28 +401,6 @@ namespace Granite.Widgets {
                 this.recalc_size ();
             });
             
-            this.scroll_event.connect ((e) => {
-                switch (e.direction) {
-                    case Gdk.ScrollDirection.UP:
-                    case Gdk.ScrollDirection.LEFT:
-                        if (get_tab_position (current) > 0) {
-                            previous_page ();
-                            return true;
-                        }
-                        break;        
-                                    
-                    case Gdk.ScrollDirection.DOWN:
-                    case Gdk.ScrollDirection.RIGHT:
-                        if (get_tab_position (current) < this.notebook.get_n_pages () - 1) {
-                            next_page ();
-                            return true;
-                        }
-                        break;
-                }
-                
-                return false;
-            });
-
             this.key_press_event.connect ((e) => {
                 switch (e.keyval) {
                     case Gdk.Key.@w:
