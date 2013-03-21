@@ -1,7 +1,7 @@
 /***
     Copyright (C) 2008-2013 Christian Hergert <chris@dronelabs.com>,
                             Giulio Collura <random.cpp@gmail.com>,
-                            Victor Eduardo <victor@elementaryos.org>
+                            Victor Eduardo <victoreduardm@gmal.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
