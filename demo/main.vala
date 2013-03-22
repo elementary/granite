@@ -344,42 +344,42 @@ public class Granite.Demo : Granite.Application {
 
     private void show_light_window () {
         var light_window = new Granite.Widgets.LightWindow ();
-        
+
         var light_window_notebook = new Granite.Widgets.StaticNotebook ();
         var entry = new Gtk.Entry ();
         var open_drop = new Gtk.ComboBoxText ();
         var open_lbl = new LLabel ("Alwas Open Mpeg Video Files with Audience");
-        
+
         var grid = new Gtk.Grid ();
         grid.attach (new Gtk.Image.from_icon_name ("video-x-generic", Gtk.IconSize.DIALOG), 0, 0, 1, 2);
         grid.attach (entry, 1, 0, 1, 1);
         grid.attach (new LLabel ("1.13 GB, Mpeg Video File"), 1, 1, 1, 1);
-        
+
         grid.attach (light_window_notebook, 0, 2, 2, 1);
-        
+
         var general = new Gtk.Grid ();
         general.attach (new LLabel.markup ("<b>Info:</b>"), 0, 0, 2, 1);
-        
+
         general.attach (new LLabel.right ("Created:"), 0, 1, 1, 1);
         general.attach (new LLabel.right ("Modified:"), 0, 2, 1, 1);
         general.attach (new LLabel.right ("Opened:"), 0, 3, 1, 1);
         general.attach (new LLabel.right ("Mimetype:"), 0, 4, 1, 1);
         general.attach (new LLabel.right ("Location:"), 0, 5, 1, 1);
-        
+
         general.attach (new LLabel ("Today at 9:50 PM"), 1, 1, 1, 1);
         general.attach (new LLabel ("Today at 9:50 PM"), 1, 2, 1, 1);
         general.attach (new LLabel ("Today at 10:00 PM"), 1, 3, 1, 1);
         general.attach (new LLabel ("video/mpeg"), 1, 4, 1, 1);
         general.attach (new LLabel ("/home/daniel/Downloads"), 1, 5, 1, 1);
-        
+
         general.attach (new LLabel.markup ("<b>Open with:</b>"), 0, 6, 2, 1);
         general.attach (open_drop, 0, 7, 2, 1);
         general.attach (open_lbl, 0, 8, 2, 1);
-        
+
         light_window_notebook.append_page (general, new Gtk.Label ("General"));
         light_window_notebook.append_page (new Gtk.Label ("More"), new Gtk.Label ("More"));
         light_window_notebook.append_page (new Gtk.Label ("Sharing"), new Gtk.Label ("Sharing"));
-        
+
         open_lbl.margin_left = 24;
         open_drop.margin_left = 12;
         open_drop.append ("audience", "Audience");
@@ -390,67 +390,67 @@ public class Granite.Demo : Granite.Application {
         entry.text = "Cool Hand Luke";
         general.column_spacing = 6;
         general.row_spacing = 6;
-        
+
         light_window.add (grid);
         light_window.show_all ();
     }
 
     private Granite.Widgets.DynamicNotebook create_dynamic_notebook () {
-    
+
         int i = 3;
-        
+
         var dynamic_notebook = new Granite.Widgets.DynamicNotebook ();
 
         dynamic_notebook.allow_duplication = true;
         dynamic_notebook.allow_restoring = true;
 
         var tab = new Granite.Widgets.Tab ("user1@elementaryos: ~",
-                                            new ThemedIcon ("empty"),
-                                            new Gtk.Label ("Page 1"));
+                                           new ThemedIcon ("empty"),
+                                           new Gtk.Label ("Page 1"));
         tab.data = "1";
         tab.working = true;
         dynamic_notebook.insert_tab (tab, -1);
-        
+
         var tab2 = new Granite.Widgets.Tab ("user2@elementaryos: ~",
-                                             new ThemedIcon ("empty"),
-                                             new Gtk.Label ("Page 2"));
+                                            new ThemedIcon ("empty"),
+                                            new Gtk.Label ("Page 2"));
         tab2.data = "2";
         dynamic_notebook.insert_tab (tab2, -1);
-        
+
         dynamic_notebook.tab_added.connect ((t) => {
-        	t.page = new Gtk.Label (@"Page $i");
-        	t.label = @"user$i@elementaryos: ~";
-        	t.data = i.to_string ();
-        	i++;
-    	});
-    	
-    	dynamic_notebook.tab_restored.connect ((t, d) => {
-    	    print ("Restored tab %s\n", t.label);
+            t.page = new Gtk.Label (@"Page $i");
+            t.label = @"user$i@elementaryos: ~";
+            t.data = i.to_string ();
+            i++;
+        });
+
+        dynamic_notebook.tab_restored.connect ((t, d) => {
+            print ("Restored tab %s\n", t.label);
             t.page = new Gtk.Label (@"Page $d");
         });
-        
+
         dynamic_notebook.tab_duplicated.connect ((t) => {
             var num = t.data;
             var t2 = new Granite.Widgets.Tab (@"user$num@elementaryos: ~",
-                                               new ThemedIcon ("empty"),
-                                               new Gtk.Label (@"Page $num"));
+                                              new ThemedIcon ("empty"),
+                                              new Gtk.Label (@"Page $num"));
             t2.data = t.data;
             dynamic_notebook.insert_tab (t2, -1);
-    	    print ("Duplicated tab %s\n", t2.label);
+            print ("Duplicated tab %s\n", t2.label);
         });
-        
-    	dynamic_notebook.tab_moved.connect ((t, p) => {
-    	    print ("Moved tab %s to %i\n", t.label, p);
-    	});
 
-    	dynamic_notebook.tab_switched.connect ((old_t, new_t) => {
-    	    print ("Switched from %s to %s\n", old_t.label, new_t.label);
-	    });
+        dynamic_notebook.tab_moved.connect ((t, p) => {
+            print ("Moved tab %s to %i\n", t.label, p);
+        });
 
-		dynamic_notebook.tab_removed.connect ((t) => {
-		    print ("Going to remove %s\n", t.label);
-		    return true;
-	    });
+        dynamic_notebook.tab_switched.connect ((old_t, new_t) => {
+            print ("Switched from %s to %s\n", old_t.label, new_t.label);
+        });
+
+        dynamic_notebook.tab_removed.connect ((t) => {
+            print ("Going to remove %s\n", t.label);
+            return true;
+        });
 
         return dynamic_notebook;
     }

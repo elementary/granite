@@ -29,13 +29,13 @@ namespace Granite.Widgets {
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
     public class Tab : Gtk.Box {
-    
+
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
             set { _label.label = value; }
         }
-        
+
         public string data { get; set; }
 
         internal Gtk.EventBox page_container;
@@ -140,7 +140,7 @@ namespace Granite.Widgets {
             close_other_m.activate.connect (() => close_others () );
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
-            
+
             lbl.scroll_event.connect ((e) => {
                 var notebook = (this.get_parent () as Gtk.Notebook);
                 switch (e.direction) {
@@ -151,7 +151,7 @@ namespace Granite.Widgets {
                             return true;
                         }
                         break;
-                        
+
                     case Gdk.ScrollDirection.DOWN:
                     case Gdk.ScrollDirection.RIGHT:
                         if (notebook.page < notebook.get_n_pages ()) {
@@ -160,14 +160,14 @@ namespace Granite.Widgets {
                         }
                         break;
                 }
-                
+
                 return false;
             });
-            
+
             lbl.button_press_event.connect ((e) => {
-            
+
                 e.state &= MODIFIER_MASK;
-                
+
                 if (e.button == 2 && e.state == 0 && close.visible) {
                     this.closed ();
                 } else if (e.button == 2 && e.state == Gdk.ModifierType.SHIFT_MASK && close.visible) {
@@ -182,42 +182,42 @@ namespace Granite.Widgets {
                 } else {
                     return false;
                 }
-                
+
                 return true;
             });
-            
+
             this.button_press_event.connect ((e) => {
                 return (e.type == Gdk.EventType.2BUTTON_PRESS || e.button != 1);
             });
-            
+
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
             close.clicked.connect ( () => this.closed () );
             working = false;
         }
     }
-    
+
     internal class ClosedTabs : GLib.Object {
-        
+
         public signal void restored (Tab tab);
-        
+
         private struct Entry {
             string title;
             string data;
             GLib.Icon icon;
         }
-        
+
         private Entry[] closed_tabs;
-        
+
         public ClosedTabs () {
             closed_tabs = {};
         }
-        
+
         public bool empty {
             get {
                 return closed_tabs.length == 0;
             }
         }
-        
+
         public void push (Tab tab) {
             foreach (var entry in closed_tabs)
                 if (tab.data == entry.data)
@@ -225,7 +225,7 @@ namespace Granite.Widgets {
             Entry tmp = { tab.label, tab.data, tab.icon };
             closed_tabs += tmp;
         }
-        
+
         public Tab pop () {
             assert (closed_tabs.length > 0);
             Entry entry = closed_tabs[closed_tabs.length - 1];
@@ -235,11 +235,11 @@ namespace Granite.Widgets {
             closed_tabs.resize (closed_tabs.length - 1);
             return tab;
         }
-        
+
         public Tab? pick (string search) {
             var tab = (Tab) null;
             Entry[] copy = {};
-            
+
             foreach (var entry in closed_tabs) {
                 if (entry.data != search) {
                     copy += entry;
@@ -249,15 +249,16 @@ namespace Granite.Widgets {
                     tab.icon = entry.icon;
                 }
             }
-            
+
             closed_tabs = copy;
             return tab;
         }
-        
+
         private Gtk.Menu _menu;
         public Gtk.Menu menu {
             get {
                 _menu = new Gtk.Menu ();
+
                 foreach (var entry in closed_tabs) {
                     var item = new Gtk.ImageMenuItem.with_label (entry.title);
                     item.set_always_show_image (true);
@@ -266,16 +267,17 @@ namespace Granite.Widgets {
                         item.set_image (icon);
                     }
                     _menu.prepend (item);
-                    
+
                     item.activate.connect (() => {
                         this.restored (pick (entry.data));
                     });
                 }
+
                 return _menu;
             }
         }
     }
-    
+
     public class DynamicNotebook : Gtk.EventBox {
 
         /**
@@ -377,7 +379,7 @@ namespace Granite.Widgets {
                 restore_button.visible = value;
             }
         }
-        
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
@@ -393,7 +395,7 @@ namespace Granite.Widgets {
                 return _tabs;
             }
         }
-        
+
 
         public string group_name {
             get { return notebook.group_name; }
@@ -406,7 +408,7 @@ namespace Granite.Widgets {
         public Gtk.Menu menu { get; private set; }
 
         private ClosedTabs closed_tabs;
-        
+
         Gtk.Notebook notebook;
         private Gtk.CssProvider button_fix;
 
@@ -420,13 +422,13 @@ namespace Granite.Widgets {
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
         public signal void tab_duplicated (Tab duplicated_tab);
         public signal void tab_restored (Tab tab, string data);
-        
+
         private Gtk.MenuItem new_tab_m;
         private Gtk.MenuItem restore_tab_m;
-        
+
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
-        
+
         private static const string CLOSE_BUTTON_STYLE = """
         * {
             -GtkButton-default-border : 0;
@@ -469,13 +471,13 @@ namespace Granite.Widgets {
             menu.append (new_tab_m);
             menu.append (restore_tab_m);
             menu.show_all ();
-            
+
             new_tab_m.activate.connect (() => {
                 var t = new Tab ();
                 notebook.page = (int) this.insert_tab (t, -1);
                 this.tab_added (t);
             });
-            
+
             restore_tab_m.activate.connect (() => {
                 restore_last_tab ();
             });
@@ -488,7 +490,7 @@ namespace Granite.Widgets {
                 insert_tab (tab, -1);
                 this.tab_restored (tab, tab.data);
             });
-            
+
             add_button = new Gtk.Button ();
             add_button.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
             add_button.margin_left = 6;
@@ -506,27 +508,27 @@ namespace Granite.Widgets {
             restore_button.sensitive = false;
             this.notebook.set_action_widget (restore_button, Gtk.PackType.END);
             restore_button.show_all ();
-            
+
             add_button.clicked.connect (() => {
                 var t = new Tab ();
                 notebook.page = (int) this.insert_tab (t, -1);
                 this.tab_added (t);
             });
-            
+
             restore_button.clicked.connect (() => {
                 var menu = closed_tabs.menu;
                 menu.attach_widget = restore_button;
                 menu.show_all ();
-                menu.popup (null, null, this.restore_menu_positioning, 1, 0);
+                menu.popup (null, null, this.restore_menu_position, 1, 0);
             });
-            
+
             restore_tab_m.visible = allow_restoring;
             restore_button.visible = allow_restoring;
-            
+
             this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
-            
+
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
                     var t = new Tab ();
@@ -543,9 +545,9 @@ namespace Granite.Widgets {
             });
 
             this.key_press_event.connect ((e) => {
-            
+
                 e.state &= MODIFIER_MASK;
-            
+
                 switch (e.keyval) {
                     case Gdk.Key.@w:
                     case Gdk.Key.@W:
@@ -603,7 +605,7 @@ namespace Granite.Widgets {
                         }
 
                         break;
-                        
+
                     case Gdk.Key.@9:
                         if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) {
                             notebook.page = notebook.get_n_pages () - 1;
@@ -626,8 +628,8 @@ namespace Granite.Widgets {
             notebook.page_reordered.disconnect (on_page_reordered);
             notebook.create_window.disconnect (on_create_window);
         }
-        
-        void restore_menu_positioning (Gtk.Menu menu, out int x, out int y, out bool p) {
+
+        void restore_menu_position (Gtk.Menu menu, out int x, out int y, out bool p) {
             Gtk.Allocation button_alloc, menu_alloc;
             restore_button.get_allocation (out button_alloc);
             menu.get_allocation (out menu_alloc);
@@ -672,12 +674,12 @@ namespace Granite.Widgets {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
         }
-        
+
         private void restore_last_tab () {
             if (!allow_restoring || closed_tabs.empty)
                 return;
 
-            var tab = closed_tabs.pop ();              
+            var tab = closed_tabs.pop ();
             restore_button.sensitive = !closed_tabs.empty;
             restore_tab_m.sensitive = !closed_tabs.empty;
             insert_tab (tab, -1);
@@ -692,19 +694,19 @@ namespace Granite.Widgets {
             }
 
             var pos = get_tab_position (tab);
-            
+
             if (pos != -1)
                 notebook.remove_page (pos);
-            
+
             if (tab.label != "" && tab.data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
                 restore_tab_m.sensitive = !closed_tabs.empty;
             }
-            
+
             tab.page_container.destroy ();
         }
-        
+
         public void next_page () {
             this.notebook.page = this.notebook.page + 1 >= this.notebook.get_n_pages () ? this.notebook.page = 0 : this.notebook.page + 1;
         }
@@ -765,7 +767,7 @@ namespace Granite.Widgets {
             tab._icon.visible = show_icons;
             tab.duplicate_m.visible = allow_duplication;
             tab.new_window_m.visible = allow_new_window;
-            
+
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
