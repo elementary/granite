@@ -417,7 +417,7 @@ namespace Granite.Widgets {
         private Gtk.MenuItem restore_tab_m;
         
         private Gtk.Button add_button;
-        private Gtk.Button restore_button;
+        private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
         
         private static const string CLOSE_BUTTON_STYLE = """
         * {
@@ -506,8 +506,9 @@ namespace Granite.Widgets {
             
             restore_button.clicked.connect (() => {
                 var menu = closed_tabs.menu;
-                menu.popup (null, null, null, 1, 0);
+                menu.attach_widget = restore_button;
                 menu.show_all ();
+                menu.popup (null, null, this.restore_menu_positioning, 1, 0);
             });
             
             restore_tab_m.visible = allow_restoring;
@@ -616,6 +617,15 @@ namespace Granite.Widgets {
             notebook.page_reordered.disconnect (on_page_reordered);
             notebook.create_window.disconnect (on_create_window);
         }
+        
+        void restore_menu_positioning (Gtk.Menu menu, out int x, out int y, out bool p) {
+            Gtk.Allocation button_alloc, menu_alloc;
+            restore_button.get_allocation (out button_alloc);
+            menu.get_allocation (out menu_alloc);
+            restore_button.get_window ().get_origin (out x, out y);
+            x += button_alloc.x - menu_alloc.width + button_alloc.width + 5;
+            y += button_alloc.y + button_alloc.height + 1;
+        }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
             var new_tab = notebook.get_tab_label (page) as Tab;
@@ -674,8 +684,10 @@ namespace Granite.Widgets {
 
             var pos = get_tab_position (tab);
             
-            if (pos != -1 && tab.label != "" && tab.data != "") {
+            if (pos != -1)
                 notebook.remove_page (pos);
+            
+            if (tab.label != "" && tab.data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
                 restore_tab_m.sensitive = !closed_tabs.empty;
