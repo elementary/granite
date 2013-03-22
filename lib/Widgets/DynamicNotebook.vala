@@ -465,6 +465,7 @@ namespace Granite.Widgets {
             menu = new Gtk.Menu ();
             new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
             restore_tab_m = new Gtk.MenuItem.with_label (_("Undo Close Tab"));
+            restore_tab_m.sensitive = false;
             menu.append (new_tab_m);
             menu.append (restore_tab_m);
             menu.show_all ();
@@ -521,7 +522,7 @@ namespace Granite.Widgets {
             
             restore_tab_m.visible = allow_restoring;
             restore_button.visible = allow_restoring;
-
+            
             this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
