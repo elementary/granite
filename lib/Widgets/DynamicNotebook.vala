@@ -203,6 +203,7 @@ namespace Granite.Widgets {
         private struct Entry {
             string title;
             string data;
+            GLib.Icon icon;
         }
         
         private Entry[] closed_tabs;
@@ -221,15 +222,16 @@ namespace Granite.Widgets {
             foreach (var entry in closed_tabs)
                 if (tab.data == entry.data)
                     return;
-            Entry tmp = { tab.label, tab.data };
+            Entry tmp = { tab.label, tab.data, tab.icon };
             closed_tabs += tmp;
         }
         
         public Tab pop () {
             assert (closed_tabs.length > 0);
-            Entry element = closed_tabs[closed_tabs.length - 1];
-            var tab = new Tab (element.title);
-            tab.data = element.data;
+            Entry entry = closed_tabs[closed_tabs.length - 1];
+            var tab = new Tab (entry.title);
+            tab.data = entry.data;
+            tab.icon = entry.icon;
             closed_tabs.resize (closed_tabs.length - 1);
             return tab;
         }
@@ -238,12 +240,13 @@ namespace Granite.Widgets {
             var tab = (Tab) null;
             Entry[] copy = {};
             
-            foreach (var element in closed_tabs) {
-                if (element.data != search) {
-                    copy += element;
+            foreach (var entry in closed_tabs) {
+                if (entry.data != search) {
+                    copy += entry;
                 } else {
-                    tab = new Tab (element.title);
-                    tab.data = element.data;
+                    tab = new Tab (entry.title);
+                    tab.data = entry.data;
+                    tab.icon = entry.icon;
                 }
             }
             
@@ -256,7 +259,12 @@ namespace Granite.Widgets {
             get {
                 _menu = new Gtk.Menu ();
                 foreach (var entry in closed_tabs) {
-                    var item = new Gtk.MenuItem.with_label (entry.title);
+                    var item = new Gtk.ImageMenuItem.with_label (entry.title);
+                    item.set_always_show_image (true);
+                    if (entry.icon.to_string () != "empty") {
+                        var icon = new Gtk.Image.from_gicon (entry.icon, Gtk.IconSize.MENU);
+                        item.set_image (icon);
+                    }
                     _menu.prepend (item);
                     
                     item.activate.connect (() => {
