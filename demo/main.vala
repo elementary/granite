@@ -424,9 +424,9 @@ public class Granite.Demo : Granite.Application {
             i++;
         });
 
-        dynamic_notebook.tab_restored.connect ((t, d) => {
+        dynamic_notebook.tab_restored.connect ((t) => {
             print ("Restored tab %s\n", t.label);
-            t.page = new Gtk.Label (@"Page $d");
+            t.page = new Gtk.Label ("Page " + t.data);
         });
 
         dynamic_notebook.tab_duplicated.connect ((t) => {

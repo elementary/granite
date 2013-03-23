@@ -421,7 +421,7 @@ namespace Granite.Widgets {
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
         public signal void tab_duplicated (Tab duplicated_tab);
-        public signal void tab_restored (Tab tab, string data);
+        public signal void tab_restored (Tab tab);
 
         private Gtk.MenuItem new_tab_m;
         private Gtk.MenuItem restore_tab_m;
@@ -488,7 +488,7 @@ namespace Granite.Widgets {
                     return;
                 restore_button.sensitive = !closed_tabs.empty;
                 insert_tab (tab, -1);
-                this.tab_restored (tab, tab.data);
+                this.tab_restored (tab);
             });
 
             add_button = new Gtk.Button ();
@@ -683,7 +683,7 @@ namespace Granite.Widgets {
             restore_button.sensitive = !closed_tabs.empty;
             restore_tab_m.sensitive = !closed_tabs.empty;
             insert_tab (tab, -1);
-            this.tab_restored (tab, tab.data);
+            this.tab_restored (tab);
         }
 
         public void remove_tab (Tab tab) {
