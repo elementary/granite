@@ -394,12 +394,12 @@ namespace Granite.Drawing {
                 // Process Columns
                 exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
 
-                th = new Thread<void*>.try (null, () => {
+                var th2 = new Thread<void*>.try (null, () => {
                     exponential_blur_columns (pixels, width, height, 0, width / 2, 0, height, alpha);
                     return null;
                 });
                 
-                th.join ();
+                th2.join ();
             } catch (Error err) {
                 warning (err.message);
             }
@@ -540,12 +540,12 @@ namespace Granite.Drawing {
                 // Vertical Pass
                 gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
 
-                th = new Thread<void*>.try (null, () => {
+                var th2 = new Thread<void*>.try (null, () => {
                     gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, 0, width / 2, shiftar);
                     return null;
                 });
                 
-                th.join ();
+                th2.join ();
             } catch (Error err) {
                 message (err.message);
             }
