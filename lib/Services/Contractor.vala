@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2011-2013 Lucas Baudin 2011 <xapantu@gmail.com>
+    Copyright (C) 2011-2013 Lucas Baudin <xapantu@gmail.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
