@@ -1,7 +1,8 @@
 /***
     Copyright (C) 2008-2013 Christian Hergert <chris@dronelabs.com>,
                             Giulio Collura <random.cpp@gmail.com>,
-                            Victor Eduardo <victoreduardm@gmal.com>
+                            Victor Eduardo <victoreduardm@gmail.com>,
+                            ammonkey <am.monkeyd@gmail.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
@@ -12,7 +13,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -133,7 +134,7 @@ namespace Granite.Widgets {
         }
 
         /**
-         * Sets item of given index's activity 
+         * Sets item of given index's activity
          *
          * @param new_active_index index of changed item
          */
