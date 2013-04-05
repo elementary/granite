@@ -1,7 +1,27 @@
+/***
+    Copyright (C) 2010 troorl <troorl@gmail.com>
+    Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
+    Copyright (C) 2012-2013 Granite Developers
+
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+***/
+
 using Gtk;
 
-/* Label with NORMAL wrapping. Thanks to VMWare team.
- * TODO: check license, it comes from pino git repository. */
+/* Label with NORMAL wrapping. Thanks to VMWare team. */
 
 /**
  * This is a label which is automatically wrapped.
@@ -17,7 +37,7 @@ public class Granite.Widgets.WrapLabel : Label {
      *
      * @param str the content of the label
      */
-    public WrapLabel(string? str = null) 
+    public WrapLabel(string? str = null)
     {
         wrap = true;
         wrap_mode = Pango.WrapMode.WORD_CHAR;
@@ -27,7 +47,7 @@ public class Granite.Widgets.WrapLabel : Label {
         set_wrap_width(m_wrap_width);
     }
 
-    private void set_wrap_width(int width) 
+    private void set_wrap_width(int width)
     {
         if (width == 0) {
             return;
@@ -49,7 +69,7 @@ public class Granite.Widgets.WrapLabel : Label {
         minimum_width = natural_width = m_wrap_width;
     }
 
-    public override void size_allocate(Gtk.Allocation alloc) 
+    public override void size_allocate(Gtk.Allocation alloc)
     {
         base.size_allocate(alloc);
         set_wrap_width(alloc.width);
