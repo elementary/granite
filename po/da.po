@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2012-10-28 19:17+0000\n"
-"Last-Translator: mjjzf <mjjzf@syntaktisk.dk>\n"
+"PO-Revision-Date: 2013-04-08 16:27+0000\n"
+"Last-Translator: Frans Peter Larsen <larsen.frans@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-28 05:09+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-04-09 05:40+0000\n"
+"X-Generator: Launchpad (build 16550)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -23,27 +23,27 @@ msgstr "Luk fanen"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr "Luk Faner"
+msgstr "Luk Fane"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Åben it et nyt Vindue"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
-msgstr ""
+msgstr "Duplikér"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Luk Anden Fane"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Luk Andre Faner"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr ""
+msgstr "Ny Fane"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
@@ -83,37 +83,37 @@ msgstr ""
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
-msgstr "Ingen muligheder fundet for denne fil"
+msgstr "Ingen handling fundet for denne fil"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr ""
+msgstr "Hjemmeside"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Designet af:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Skrevet af:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Ophavsret © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Dokumenteret af:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Oversat af %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
-msgstr "Dette program er udgivet i henhold til "
+msgstr "Dette program er publiceret under betingelserne til "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
