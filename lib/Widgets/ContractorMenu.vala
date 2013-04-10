@@ -20,6 +20,7 @@
 /**
  * This class provides a simple menu for managing Contractor.
  */
+[Deprecated]
 public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     /**
      * The Hashtable of available contracts

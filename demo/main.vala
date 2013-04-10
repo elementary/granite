@@ -276,32 +276,6 @@ public class Granite.Demo : Granite.Application {
         right_sep.set_expand (true);
         main_toolbar.insert (right_sep, -1);
 
-        // Contractor
-        var contractor_tab = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        var text_view = new Gtk.TextView ();
-
-        var hash_tables = Granite.Services.Contractor.get_contract ("/.zip", "application/zip");
-        foreach (var hash_table in hash_tables) {
-            text_view.buffer.text += hash_table.lookup ("Name")
-                                  + ": " + hash_table.lookup ("Description")
-                                  + " icon: " + hash_table.lookup ("Exec") + "\n";
-        }
-
-        contractor_tab.add (text_view);
-        contractor_tab.add (new Granite.Widgets.ContractorView ("file:///home/user/file.txt", "text/plain"));
-        var contractor_menu = new Granite.Widgets.ContractorMenu ("/home/user/file.txt", "text");
-        var contractor_button_image = new Gtk.Image.from_icon_name ("document-export",
-                                                                     Gtk.IconSize.LARGE_TOOLBAR);
-        var contractor_tool_item = new Granite.Widgets.ToolButtonWithMenu (contractor_button_image,
-                                                                            "Share", contractor_menu);
-        main_toolbar.insert (contractor_tool_item, -1);
-
-        contractor_tool_item.halign = contractor_tool_item.valign = Gtk.Align.CENTER;
-
-        var contractor_item = new SourceListItem ("Contractor");
-        contractor_item.page_num = page_switcher.append_page (contractor_tab, null);
-        services_category.add (contractor_item);
-
         // Search Entry
         var search_entry = new Granite.Widgets.SearchBar ("Search");
         var search_item = new Gtk.ToolItem ();
