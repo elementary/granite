@@ -52,7 +52,7 @@ namespace Granite.Services {
         /**
          * This creates a new Contractor 
          */
-        private Contractor() {
+        private Contractor () {
             try {
                 contract = Bus.get_proxy_sync (BusType.SESSION,
                                                "org.elementary.Contractor",
@@ -63,7 +63,9 @@ namespace Granite.Services {
         }
 
         internal static void ensure () {
-            if(contractor == null) contractor = new Contractor ();
+            if (contractor == null) {
+                contractor = new Contractor ();
+            }
         }
 
         /**
