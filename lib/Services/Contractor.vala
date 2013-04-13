@@ -19,7 +19,7 @@
 
 namespace Granite.Services {
     
-    public struct GenericContract {
+    public struct ContractorContract {
         string id;
         string display_name;
         string description;
@@ -27,16 +27,16 @@ namespace Granite.Services {
     }
 
     [DBus (name = "org.elementary.Contractor")]
-    interface ContractorDBus : Object {   
+    internal interface ContractorDBus : Object {   
         [Deprecated]
         public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
         [Deprecated]
         public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations)  throws IOError;
-        public abstract GenericContract[] list_all_contracts () throws Error;
-        public abstract GenericContract[] get_contracts_by_mime (string mime_type) throws Error;
-        public abstract GenericContract[] get_contracts_by_mimelist (string[] mime_types) throws Error;
-        public abstract int execute_with_uri (string id, string path) throws Error;
-        public abstract int execute_with_uri_list (string id, string[] path) throws Error;
+        public abstract ContractorContract[] list_all_contracts () throws Error;
+        public abstract ContractorContract[] get_contracts_by_mime (string mime_type) throws Error;
+        public abstract ContractorContract[] get_contracts_by_mimelist (string[] mime_types) throws Error;
+        public abstract int execute_with_uri (string id, string uri) throws Error;
+        public abstract int execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
     /**
@@ -69,11 +69,11 @@ namespace Granite.Services {
         /**
          * Lists all the contracts
          *
-         * @return an array of struct GenericContract
+         * @return an array of struct ContractorContract
          */
-        public static GenericContract[] list_all_contracts () {
+        public static ContractorContract[] list_all_contracts () {
             ensure ();
-            GenericContract[] contracts = null;
+            ContractorContract[] contracts = null;
 
             try {
                 contracts = contractor.contract.list_all_contracts ();
@@ -88,11 +88,11 @@ namespace Granite.Services {
          * This searches for available contracts of a particular file
          *
          * @param mime mime type of file
-         * @return an array of struct GenericContract
+         * @return an array of struct ContractorContract
          */
-        public static GenericContract[] get_contracts_by_mime (string mime_type) {
+        public static ContractorContract[] get_contracts_by_mime (string mime_type) {
             ensure ();
-            GenericContract[] contracts = null;
+            ContractorContract[] contracts = null;
 
             try {
                 contracts = contractor.contract.get_contracts_by_mime (mime_type);
@@ -108,11 +108,11 @@ namespace Granite.Services {
          * all of them are returned
          *
          * @param locations Array of MimeTypes
-         * @return array of struct (GenericContract)
+         * @return array of struct (ContractorContract)
          */
-        public static GenericContract[] get_contracts_by_mimelist (string[] mime_types) {
+        public static ContractorContract[] get_contracts_by_mimelist (string[] mime_types) {
             ensure ();
-            GenericContract[] contracts = null;
+            ContractorContract[] contracts = null;
 
             try {
                 contracts = contractor.contract.get_contracts_by_mimelist (mime_types);
@@ -125,18 +125,18 @@ namespace Granite.Services {
 
         /**
          * This executes the exec parameter provided by the contract of given id
-         * with the path as arguments
+         * with the uri as arguments
          *
          * @param id id of the contract
-         * @param paths path to execute
+         * @param uris uri to execute
          * @return int status of execution
          */
-        public static int execute_with_uri (string id, string path) {
+        public static int execute_with_uri (string id, string uri) {
             ensure ();
             int ret_val = 1;
 
             try {
-                ret_val = contractor.contract.execute_with_uri (id, path);
+                ret_val = contractor.contract.execute_with_uri (id, uri);
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
@@ -145,18 +145,18 @@ namespace Granite.Services {
 
         /**
          * This executes the exec parameter provided by the contract of given id
-         * with the paths as arguments
+         * with the uris as arguments
          *
          * @param id id of the contract
-         * @param paths array of paths to execute
+         * @param uris array of uris to execute
          * @return int status of execution
          */
-        public static int execute_with_uri_list (string id, string[] paths) {
+        public static int execute_with_uri_list (string id, string[] uris) {
             ensure ();
             int ret_val = 1;
 
             try {
-                ret_val = contractor.contract.execute_with_uri_list (id, paths);
+                ret_val = contractor.contract.execute_with_uri_list (id, uris);
             } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
