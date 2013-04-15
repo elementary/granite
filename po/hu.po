@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-02-23 16:51+0000\n"
-"Last-Translator: Attila Elter <stixy96@gmail.com>\n"
+"PO-Revision-Date: 2013-04-14 07:10+0000\n"
+"Last-Translator: Bence Lukács <Unknown>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-28 05:09+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-04-15 05:37+0000\n"
+"X-Generator: Launchpad (build 16564)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -35,7 +35,7 @@ msgstr "Duplikálás"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Másik lap bezárása"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
@@ -95,12 +95,12 @@ msgstr "Tervezte:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Írta:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
