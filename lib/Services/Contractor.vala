@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -18,16 +18,23 @@
 ***/
 
 namespace Granite.Services {
-    
+
     public struct ContractorContract {
         string id;
         string display_name;
         string description;
         string icon_path;
+
+        public int execute_uri (string uri) {
+            return Contractor.execute_with_uri (this.id, uri);
+        }
+        public int execute_uris (string[] uris) {
+            return Contractor.execute_with_uri_list (this.id, uris);
+        }
     }
 
     [DBus (name = "org.elementary.Contractor")]
-    internal interface ContractorDBus : Object {   
+    internal interface ContractorDBus : Object {
         [Deprecated]
         public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
         [Deprecated]
@@ -39,18 +46,31 @@ namespace Granite.Services {
         public abstract int execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
+    /*
+     * interface that the contractor class must implement
+     */
+    public interface ContractorIface {
+        public abstract ContractorContract[] get_contracts () throws ContractError;
+        public abstract ContractorContract get_for_id (string id) throws ContractError;
+    }
+
     /**
      * A way to handle contractor, a way to communicate between apps.
-     * 
+     *
      */
-    public class Contractor : Object {
+    public class Contractor : Object, ContractorIface {
+
+        private string? mime_type;
+        private string[]? mime_types;
+        private ContractorContract[]? contracts;
+
 
         internal ContractorDBus contract;
 
         internal static Contractor? contractor = null;
 
         /**
-         * This creates a new Contractor 
+         * This creates a new Contractor
          */
         private Contractor () {
             try {
@@ -66,6 +86,52 @@ namespace Granite.Services {
             if (contractor == null) {
                 contractor = new Contractor ();
             }
+        }
+
+        /*
+         * Class constructor for single mime type
+         */
+        public Contractor.for_mime (string mime) {
+            this.mime_type = mime;
+            this.mime_types = null;
+        }
+
+        /*
+         * Class constructor for multiple mime types
+         */
+        public Contractor.for_mime_list (string[] mimes) {
+            this.mime_types = mimes;
+            this.mime_type = null;
+        }
+
+        /*
+         * searches for contracts that support the specified mime type(s)
+         * throws error if mime type is not set.
+         */
+        public ContractorContract[] get_contracts () throws ContractError {
+            if (this.mime_type != null) {
+                this.contracts = get_contracts_by_mime (this.mime_type);
+                return contracts;
+            } else if (this.mime_types != null) {
+                contracts = get_contracts_by_mimelist (this.mime_types);
+                return this.contracts;
+            }
+            throw new ContractError.OBJECT_ERROR ("data members are null");
+        }
+
+        /*
+         * Searches for the contract with with the id as specified
+         * if not found, throws NOT_FOUND error
+         */
+        public ContractorContract get_for_id (string id) throws ContractError {
+            if (this.contracts == null) {
+                throw new ContractError.NOT_FOUND ("contracts were not found");
+            }
+            foreach (var cont in this.contracts) {
+                if (cont.id == id)
+                    return cont;
+            }
+            throw new ContractError.NOT_FOUND ("Contract of this ID was not found");
         }
 
         /**
@@ -98,7 +164,7 @@ namespace Granite.Services {
 
             try {
                 contracts = contractor.contract.get_contracts_by_mime (mime_type);
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
 
@@ -118,7 +184,7 @@ namespace Granite.Services {
 
             try {
                 contracts = contractor.contract.get_contracts_by_mimelist (mime_types);
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
 
@@ -172,7 +238,7 @@ namespace Granite.Services {
 
         /**
          * This searches for available contracts of a particular file
-         * 
+         *
          * @param uri uri of file
          * @param mime mime type of file
          * @return Hashtable of available contracts
@@ -185,7 +251,7 @@ namespace Granite.Services {
 
         /**
          * generate contracts for rguments and filter them by  common parent mimetype.
-         * 
+         *
          * @param locations Hashtable of locations
          * @return Hashtable of available contracts
          */
@@ -194,5 +260,10 @@ namespace Granite.Services {
 
             return { new GLib.HashTable<string,string> (null, null) };
         }
+    }
+
+    public errordomain ContractError {
+        OBJECT_ERROR,
+        NOT_FOUND
     }
 }
