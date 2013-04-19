@@ -133,7 +133,7 @@ namespace Granite.Services {
          *
          * @return List containing all the contracts available in the system.
          */
-        public static List<Contract> get_all_contracts () {
+        public static Gee.List<Contract> get_all_contracts () {
             ensure ();
             ContractData[] data = null;
 
@@ -152,7 +152,7 @@ namespace Granite.Services {
          * @param mime Mimetype of file.
          * @return List of contracts that support the given mimetype.
          */
-        public static List<Contract> get_contracts_by_mime (string mime_type) {
+        public static Gee.List<Contract> get_contracts_by_mime (string mime_type) {
             ensure ();
             ContractData[] data = null;
 
@@ -173,7 +173,7 @@ namespace Granite.Services {
          * @param locations Array of mimetypes.
          * @return List of contracts that support the given mimetypes.
          */
-        public static List<Contract> get_contracts_by_mimelist (string[] mime_types) {
+        public static Gee.List<Contract> get_contracts_by_mimelist (string[] mime_types) {
             ensure ();
             ContractData[] data = null;
 
@@ -186,8 +186,8 @@ namespace Granite.Services {
             return get_contracts_from_data (data);
         }
 
-        private static List<Contract> get_contracts_from_data (ContractData[] data) {
-            var contract_list = new List<Contract> ();
+        private static Gee.List<Contract> get_contracts_from_data (ContractData[] data) {
+            var contract_list = new Gee.LinkedList<Contract> ();
 
             if (data != null && data.length > 0) {
                 foreach (var contract_data in data) {
@@ -208,7 +208,7 @@ namespace Granite.Services {
                         contract.update_data (contract_data);
                     }
 
-                    contract_list.prepend (contract);
+                    contract_list.add (contract);
                 }
             }
 
