@@ -87,6 +87,13 @@ namespace Granite.Services {
 
         private static ContractorDBus contractor_dbus;
 
+        /* Used to keep references of contracts around. Contracts are unowned by the map
+         * because their references are only useful if the client code still has its own
+         * references around. Otherwise no client code would have reference for us to compare
+         * against, so keeping our own one would not be useful for our purposes.
+         */
+        private static Gee.HashMap<string, unowned Contract> contracts;
+
         private Contractor () {
         }
 
@@ -100,6 +107,9 @@ namespace Granite.Services {
                     warning (e.message);
                 }
             }
+
+            if (contracts == null)
+                contracts = new Gee.HashMap<string, unowned Contract> ();
         }
 
         private static int execute_with_uri (string id, string uri) throws Error {
@@ -114,11 +124,6 @@ namespace Granite.Services {
 
         /**
          * Provides all the contracts.
-         *
-         * Please note that this function will always return a newly-created
-         * list containing newly-created instances of contracts. For this reason,
-         * comparing the objects from this list against the objects of a previous
-         * list by reference is extremely discouraged.
          *
          * @return List containing all the contracts available in the system.
          */
@@ -137,11 +142,6 @@ namespace Granite.Services {
 
         /**
          * This searches for available contracts of a particular file type.
-         *
-         * Please note that this function will always return a newly-created
-         * list containing newly-created instances of contracts. For this reason,
-         * comparing the objects from this list against the objects of a previous
-         * list by reference is extremely discouraged.
          *
          * @param mime Mimetype of file.
          * @return List of contracts that support the given mimetype.
@@ -164,11 +164,6 @@ namespace Granite.Services {
          *
          * Only the contracts that support all the mimetypes are returned.
          *
-         * Please note that this function will always return a newly-created
-         * list containing newly-created instances of contracts. For this reason,
-         * comparing the objects from this list against the objects of a previous
-         * list by reference is extremely discouraged.
-         *
          * @param locations Array of mimetypes.
          * @return List of contracts that support the given mimetypes.
          */
@@ -186,16 +181,28 @@ namespace Granite.Services {
         }
 
         private static List<Contract> get_contracts_from_data (ContractData[] data) {
-            var contracts = new List<Contract> ();
+            var contract_list = new List<Contract> ();
 
             if (data != null && data.length > 0) {
                 foreach (var contract_data in data) {
-                    var contract = new GenericContract (contract_data);
-                    contracts.prepend (contract);
+                    string contract_id = contract_data.id;
+
+                    /* See if we have a contract already. Otherwise create a new one.
+                     * We do this in order to be able to compare contracts by reference
+                     * from client code.
+                     */
+                    var contract = contracts.get (contract_id);
+
+                    if (contract == null) {
+                        contract = new GenericContract (contract_data);
+                        contracts.set (contract_id, contract);
+                    }
+
+                    contract_list.prepend (contract);
                 }
             }
 
-            return contracts;        
+            return contract_list;
         }
 
         /**
