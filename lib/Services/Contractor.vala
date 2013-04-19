@@ -213,12 +213,12 @@ namespace Granite.Services {
          * @return Hashtable of available contracts
          */
         [Deprecated (since = "0.2", replacement = "Granite.Services.Contractor.get_contracts_by_mime")]
-        public static GLib.HashTable<string,string>[] get_contract(string uri, string mime) {
+        public static GLib.HashTable<string,string>[] get_contract (string uri, string mime) {
             return { new GLib.HashTable<string,string> (null, null) };
         }
 
         /**
-         * generate contracts for arguments and filter them by  common parent mimetype.
+         * generate contracts for arguments and filter them by common parent mimetype.
          *
          * @param locations Hashtable of locations
          * @return Hashtable of available contracts
