@@ -84,32 +84,31 @@ namespace Granite.Services {
             }
         }
 
-        private ContractorDBus contractor_dbus;
-        private static Contractor instance;
+        private static ContractorDBus contractor_dbus;
 
         private Contractor () {
-            try {
-                contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
-                                                      "org.elementary.Contractor",
-                                                      "/org/elementary/contractor");
-            } catch (IOError e) {
-                warning (e.message);
-            }
         }
 
         private static void ensure () {
-            if (instance == null)
-                instance = new Contractor ();
+            if (contractor_dbus == null) {
+                try {
+                    contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
+                                                          "org.elementary.Contractor",
+                                                          "/org/elementary/contractor");
+                } catch (IOError e) {
+                    warning (e.message);
+                }
+            }
         }
 
         private static int execute_with_uri (string id, string uri) throws Error {
             ensure ();
-            return instance.contractor_dbus.execute_with_uri (id, uri);
+            return contractor_dbus.execute_with_uri (id, uri);
         }
 
         private static int execute_with_uri_list (string id, string[] uris) throws Error {
             ensure ();
-            return instance.contractor_dbus.execute_with_uri_list (id, uris);
+            return contractor_dbus.execute_with_uri_list (id, uris);
         }
 
         /**
@@ -127,7 +126,7 @@ namespace Granite.Services {
             ContractData[] data = null;
 
             try {
-                data = instance.contractor_dbus.list_all_contracts ();
+                data = contractor_dbus.list_all_contracts ();
             } catch (Error e) {
                 warning (e.message);
             }
@@ -151,7 +150,7 @@ namespace Granite.Services {
             ContractData[] data = null;
 
             try {
-                data = instance.contractor_dbus.get_contracts_by_mime (mime_type);
+                data = contractor_dbus.get_contracts_by_mime (mime_type);
             } catch (Error e) {
                 warning (e.message);
             }
@@ -177,7 +176,7 @@ namespace Granite.Services {
             ContractData[] data = null;
 
             try {
-                data = instance.contractor_dbus.get_contracts_by_mimelist (mime_types);
+                data = contractor_dbus.get_contracts_by_mimelist (mime_types);
             } catch (Error e) {
                 warning (e.message);
             }
@@ -197,11 +196,6 @@ namespace Granite.Services {
 
             return contracts;        
         }
-
-        /**
-         * The functions below have been deprecated in order to support the
-         * the new contractor API.
-         */
 
         /**
          * This searches for available contracts of a particular file
