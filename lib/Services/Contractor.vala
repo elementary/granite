@@ -50,7 +50,12 @@ namespace Granite.Services {
             private Icon icon;
 
             public GenericContract (ContractData data) {
+                update_data (data);
+            }
+
+            public void update_data (ContractData data) {
                 this.data = data;
+                icon = null;
             }
 
             public string get_display_name () {
@@ -87,12 +92,13 @@ namespace Granite.Services {
 
         private static ContractorDBus contractor_dbus;
 
-        /* Used to keep references of contracts around. Contracts are unowned by the map
-         * because their references are only useful if the client code still has its own
-         * references around. Otherwise no client code would have reference for us to compare
-         * against, so keeping our own one would not be useful for our purposes.
+        /**
+         * This map does not own Contract references because we want to depend on
+         * the references held by others. If no other code has a reference for a given
+         * contract, we don't want our own one either, since we keep these references
+         * in order to allow client code to compare against them.
          */
-        private static Gee.HashMap<string, unowned Contract> contracts;
+        private static Gee.HashMap<string, unowned GenericContract> contracts;
 
         private Contractor () {
         }
@@ -109,7 +115,7 @@ namespace Granite.Services {
             }
 
             if (contracts == null)
-                contracts = new Gee.HashMap<string, unowned Contract> ();
+                contracts = new Gee.HashMap<string, unowned GenericContract> ();
         }
 
         private static int execute_with_uri (string id, string uri) throws Error {
@@ -187,7 +193,8 @@ namespace Granite.Services {
                 foreach (var contract_data in data) {
                     string contract_id = contract_data.id;
 
-                    /* See if we have a contract already. Otherwise create a new one.
+                    /**
+                     * See if we have a contract already. Otherwise create a new one.
                      * We do this in order to be able to compare contracts by reference
                      * from client code.
                      */
@@ -196,6 +203,9 @@ namespace Granite.Services {
                     if (contract == null) {
                         contract = new GenericContract (contract_data);
                         contracts.set (contract_id, contract);
+                    } else {
+                        // Make sure data is always up-to-date
+                        contract.update_data (contract_data);
                     }
 
                     contract_list.prepend (contract);
