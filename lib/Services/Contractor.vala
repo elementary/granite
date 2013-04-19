@@ -45,11 +45,11 @@ namespace Granite.Services {
     }
 
     public class Contractor {
-        private class ContractorContract : Object, Contract {
+        private class GenericContract : Object, Contract {
             private ContractData data;
             private Icon icon;
 
-            public ContractorContract (ContractData data) {
+            public GenericContract (ContractData data) {
                 this.data = data;
             }
 
@@ -83,6 +83,7 @@ namespace Granite.Services {
                 return Contractor.execute_with_uri_list (data.id, uris);
             }
         }
+
 
         private static ContractorDBus contractor_dbus;
 
@@ -189,7 +190,7 @@ namespace Granite.Services {
 
             if (data != null && data.length > 0) {
                 foreach (var contract_data in data) {
-                    var contract = new ContractorContract (contract_data);
+                    var contract = new GenericContract (contract_data);
                     contracts.prepend (contract);
                 }
             }
