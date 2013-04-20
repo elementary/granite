@@ -18,6 +18,7 @@
 ***/
 
 namespace Granite.StyleClass {
+    public const string CATEGORY_EXPANDER = "category-expander";
     public const string COMPOSITED = "composited";
     public const string BADGE = "badge";
     public const string CONTENT_VIEW = "content-view";
