@@ -32,7 +32,7 @@ namespace Granite.Services {
         string id;
         string display_name;
         string description;
-        string icon_path;
+        string icon;
     }
 
     [DBus (name = "org.elementary.Contractor")]
@@ -67,11 +67,8 @@ namespace Granite.Services {
             }
 
             public Icon get_icon () {
-                if (icon == null) {
-                    var icon_file = File.new_for_path (data.icon_path);
-                    icon = new FileIcon (icon_file);
-                }
-
+                if (icon == null)
+                    icon = new ThemedIcon.with_default_fallbacks (data.icon);
                 return icon;
             }
 
