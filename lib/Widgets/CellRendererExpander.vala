@@ -40,18 +40,18 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
                                               out int minimum_size,
                                               out int natural_size)
     {
-        push_style_changes (widget);
+        apply_style_changes (widget);
         minimum_size = natural_size = get_arrow_size (widget) + 2 * (int) xpad;
-        pop_style_changes (widget);
+        revert_style_changes (widget);
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
                                                          out int natural_height)
     {
-        push_style_changes (widget);
+        apply_style_changes (widget);
         minimum_height = natural_height = get_arrow_size (widget) + 2 * (int) ypad;
-        pop_style_changes (widget);
+        revert_style_changes (widget);
     }
 
     /**
@@ -77,7 +77,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         if (!is_expander)
             return;
 
-        var ctx = push_style_changes (widget);
+        var ctx = apply_style_changes (widget);
 
         Gdk.Rectangle aligned_area = get_aligned_area (widget, flags, cell_area);
 
@@ -93,7 +93,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
 
         ctx.render_expander (context, x, y, arrow_size, arrow_size);
 
-        pop_style_changes (widget);
+        revert_style_changes (widget);
     }
 
     [Deprecated (replacement = "Gtk.CellRenderer.get_preferred_size", since = "")]
@@ -104,7 +104,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         assert_not_reached ();
     }
 
-    private Gtk.StyleContext push_style_changes (Gtk.Widget widget) {
+    private Gtk.StyleContext apply_style_changes (Gtk.Widget widget) {
         var ctx = widget.get_style_context ();
         ctx.save ();
 
@@ -116,7 +116,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         return ctx;
     }
 
-    private void pop_style_changes (Gtk.Widget widget) {
+    private void revert_style_changes (Gtk.Widget widget) {
         widget.get_style_context ().restore ();
     }
 }
