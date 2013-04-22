@@ -77,7 +77,7 @@ namespace Granite.Services {
             }
 
             public int execute_with_file (File file) throws Error {
-                return Contractor.execute_with_uri (data.id, file.get_uri ());
+                return ContractorProxy.execute_with_uri (data.id, file.get_uri ());
             }
 
             public int execute_with_files (File[] files) throws Error {
@@ -86,7 +86,7 @@ namespace Granite.Services {
                 foreach (var file in files)
                     uris += file.get_uri ();
 
-                return Contractor.execute_with_uri_list (data.id, uris);
+                return ContractorProxy.execute_with_uri_list (data.id, uris);
             }
         }
 
