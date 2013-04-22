@@ -28,6 +28,10 @@ namespace Granite.Services {
         public abstract int execute_with_files (File[] files) throws Error;
     }
 
+    public errordomain ContractorError {
+        SERVICE_NOT_AVAILABLE
+    }
+
     internal struct ContractData {
         string id;
         string display_name;
@@ -36,7 +40,7 @@ namespace Granite.Services {
     }
 
     [DBus (name = "org.elementary.Contractor")]
-    internal interface ContractorDBus : Object {
+    internal interface ContractorDBusAPI : Object {
         public abstract ContractData[] list_all_contracts () throws Error;
         public abstract ContractData[] get_contracts_by_mime (string mime_type) throws Error;
         public abstract ContractData[] get_contracts_by_mimelist (string[] mime_types) throws Error;
@@ -44,7 +48,7 @@ namespace Granite.Services {
         public abstract int execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
-    public class Contractor {
+    public class ContractorProxy {
         private class GenericContract : Object, Contract {
             private ContractData data;
             private Icon icon;
@@ -87,7 +91,7 @@ namespace Granite.Services {
         }
 
 
-        private static ContractorDBus contractor_dbus;
+        private static ContractorDBusAPI contractor_dbus;
 
         /**
          * This map does not own Contract references because we want to depend on
@@ -97,17 +101,17 @@ namespace Granite.Services {
          */
         private static Gee.HashMap<string, unowned GenericContract> contracts;
 
-        private Contractor () {
+        private ContractorProxy () {
         }
 
-        private static void ensure () {
+        private static void ensure () throws Error {
             if (contractor_dbus == null) {
                 try {
                     contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
                                                           "org.elementary.Contractor",
                                                           "/org/elementary/contractor");
                 } catch (IOError e) {
-                    warning (e.message);
+                    throw new ContractorError.SERVICE_NOT_AVAILABLE (e.message);
                 }
             }
 
@@ -130,15 +134,11 @@ namespace Granite.Services {
          *
          * @return List containing all the contracts available in the system.
          */
-        public static Gee.List<Contract> get_all_contracts () {
+        public static Gee.List<Contract> get_all_contracts () throws Error {
             ensure ();
             ContractData[] data = null;
 
-            try {
-                data = contractor_dbus.list_all_contracts ();
-            } catch (Error e) {
-                warning (e.message);
-            }
+            data = contractor_dbus.list_all_contracts ();
 
             return get_contracts_from_data (data);
         }
@@ -146,18 +146,14 @@ namespace Granite.Services {
         /**
          * This searches for available contracts of a particular file type.
          *
-         * @param mime Mimetype of file.
+         * @param mime_type Mimetype of file.
          * @return List of contracts that support the given mimetype.
          */
-        public static Gee.List<Contract> get_contracts_by_mime (string mime_type) {
+        public static Gee.List<Contract> get_contracts_by_mime (string mime_type) throws Error {
             ensure ();
             ContractData[] data = null;
 
-            try {
-                data = contractor_dbus.get_contracts_by_mime (mime_type);
-            } catch (Error e) {
-                warning (e.message);
-            }
+            data = contractor_dbus.get_contracts_by_mime (mime_type);
 
             return get_contracts_from_data (data);
         }
@@ -167,18 +163,14 @@ namespace Granite.Services {
          *
          * Only the contracts that support all the mimetypes are returned.
          *
-         * @param locations Array of mimetypes.
+         * @param mime_types Array of mimetypes.
          * @return List of contracts that support the given mimetypes.
          */
-        public static Gee.List<Contract> get_contracts_by_mimelist (string[] mime_types) {
+        public static Gee.List<Contract> get_contracts_by_mimelist (string[] mime_types) throws Error {
             ensure ();
             ContractData[] data = null;
 
-            try {
-                data = contractor_dbus.get_contracts_by_mimelist (mime_types);
-            } catch (Error e) {
-                warning (e.message);
-            }
+            data = contractor_dbus.get_contracts_by_mimelist (mime_types);
 
             return get_contracts_from_data (data);
         }
@@ -210,29 +202,6 @@ namespace Granite.Services {
             }
 
             return contract_list;
-        }
-
-        /**
-         * This searches for available contracts of a particular file
-         *
-         * @param uri uri of file
-         * @param mime mime type of file
-         * @return Hashtable of available contracts
-         */
-        [Deprecated (since = "0.2", replacement = "Granite.Services.Contractor.get_contracts_by_mime")]
-        public static GLib.HashTable<string,string>[] get_contract (string uri, string mime) {
-            return { new GLib.HashTable<string,string> (null, null) };
-        }
-
-        /**
-         * generate contracts for arguments and filter them by common parent mimetype.
-         *
-         * @param locations Hashtable of locations
-         * @return Hashtable of available contracts
-         */
-        [Deprecated (since = "0.2", replacement = "Granite.Services.Contractor.get_contracts_by_mimelist")]
-        public static GLib.HashTable<string,string>[] get_selection_contracts (GLib.HashTable<string, string>[] locations) {
-            return { new GLib.HashTable<string,string> (null, null) };
         }
     }
 }
