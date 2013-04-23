@@ -77,7 +77,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         if (!is_expander)
             return;
 
-        var ctx = apply_style_changes (widget);
+        unowned Gtk.StyleContext ctx = apply_style_changes (widget);
 
         Gdk.Rectangle aligned_area = get_aligned_area (widget, flags, cell_area);
 
@@ -104,8 +104,8 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         assert_not_reached ();
     }
 
-    private Gtk.StyleContext apply_style_changes (Gtk.Widget widget) {
-        var ctx = widget.get_style_context ();
+    private unowned Gtk.StyleContext apply_style_changes (Gtk.Widget widget) {
+        unowned Gtk.StyleContext ctx = widget.get_style_context ();
         ctx.save ();
 
         if (is_category_expander)
