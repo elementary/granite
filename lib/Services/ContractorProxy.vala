@@ -50,7 +50,11 @@ namespace Granite.Services {
 
     public class ContractorProxy {
         private class GenericContract : Object, Contract {
-            private ContractData data;
+            private string id;
+            private string display_name;
+            private string description;
+            private string icon_key;
+
             private Icon icon;
 
             public GenericContract (ContractData data) {
@@ -58,21 +62,25 @@ namespace Granite.Services {
             }
 
             public void update_data (ContractData data) {
-                this.data = data;
-                icon = null;
+                id = data.id;
+                display_name = data.display_name;
+                description = data.description;
+
+                if (icon_key != data.icon) {
+                    icon_key = data.icon;
+                    icon = null;
+                }
             }
 
             public string get_display_name () {
-                return data.display_name;
+                return display_name;
             }
 
             public string get_description () {
-                return data.description;
+                return description;
             }
 
             public Icon get_icon () {
-                string icon_key = data.icon;
-
                 if (icon == null) {
                     if (Path.is_absolute (icon_key))
                         icon = new FileIcon (File.new_for_path (icon_key));
@@ -84,7 +92,7 @@ namespace Granite.Services {
             }
 
             public int execute_with_file (File file) throws Error {
-                return ContractorProxy.execute_with_uri (data.id, file.get_uri ());
+                return ContractorProxy.execute_with_uri (id, file.get_uri ());
             }
 
             public int execute_with_files (File[] files) throws Error {
@@ -93,7 +101,7 @@ namespace Granite.Services {
                 foreach (var file in files)
                     uris += file.get_uri ();
 
-                return ContractorProxy.execute_with_uri_list (data.id, uris);
+                return ContractorProxy.execute_with_uri_list (id, uris);
             }
         }
 
