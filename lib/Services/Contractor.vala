@@ -18,7 +18,7 @@
 ***/
 
 namespace Granite.Services {
-    [Deprecated (replacement = "Granite.Services.ContractorAPI", since = "0.2")]
+    [DBus (name = "org.elementary.Contractor")]
     interface ContractorDBus : Object {
         public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime = "") throws IOError;
         public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations) throws IOError;
