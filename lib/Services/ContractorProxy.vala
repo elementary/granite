@@ -71,8 +71,15 @@ namespace Granite.Services {
             }
 
             public Icon get_icon () {
-                if (icon == null)
-                    icon = new ThemedIcon.with_default_fallbacks (data.icon);
+                string icon_key = data.icon;
+
+                if (icon == null) {
+                    if (Path.is_absolute (icon_key))
+                        icon = new FileIcon (File.new_for_path (icon_key));
+                    else
+                        icon = new ThemedIcon.with_default_fallbacks (icon_key);
+                }
+
                 return icon;
             }
 
