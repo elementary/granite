@@ -58,16 +58,17 @@ namespace Granite.Services {
             private Icon icon;
 
             public GenericContract (ContractData data) {
+                icon_key = "";
                 update_data (data);
             }
 
             public void update_data (ContractData data) {
-                id = data.id;
-                display_name = data.display_name;
-                description = data.description;
+                id = data.id ?? "";
+                display_name = data.display_name ?? "";
+                description = data.description ?? "";
 
                 if (icon_key != data.icon) {
-                    icon_key = data.icon;
+                    icon_key = data.icon ?? "";
                     icon = null;
                 }
             }
@@ -107,17 +108,9 @@ namespace Granite.Services {
 
 
         private static ContractorDBusAPI contractor_dbus;
+        private static Gee.HashMap<string, GenericContract> contracts;
 
-        /**
-         * This map does not own Contract references because we want to depend on
-         * the references held by others. If no other code has a reference for a given
-         * contract, we don't want our own one either, since we keep these references
-         * in order to allow client code to compare against them.
-         */
-        private static Gee.HashMap<string, unowned GenericContract> contracts;
-
-        private ContractorProxy () {
-        }
+        private ContractorProxy () { }
 
         private static void ensure () throws Error {
             if (contractor_dbus == null) {
@@ -131,7 +124,7 @@ namespace Granite.Services {
             }
 
             if (contracts == null)
-                contracts = new Gee.HashMap<string, unowned GenericContract> ();
+                contracts = new Gee.HashMap<string, GenericContract> ();
         }
 
         private static int execute_with_uri (string id, string uri) throws Error {
@@ -151,9 +144,8 @@ namespace Granite.Services {
          */
         public static Gee.List<Contract> get_all_contracts () throws Error {
             ensure ();
-            ContractData[] data = null;
 
-            data = contractor_dbus.list_all_contracts ();
+            var data = contractor_dbus.list_all_contracts ();
 
             return get_contracts_from_data (data);
         }
@@ -166,9 +158,8 @@ namespace Granite.Services {
          */
         public static Gee.List<Contract> get_contracts_by_mime (string mime_type) throws Error {
             ensure ();
-            ContractData[] data = null;
 
-            data = contractor_dbus.get_contracts_by_mime (mime_type);
+            var data = contractor_dbus.get_contracts_by_mime (mime_type);
 
             return get_contracts_from_data (data);
         }
@@ -183,9 +174,8 @@ namespace Granite.Services {
          */
         public static Gee.List<Contract> get_contracts_by_mimelist (string[] mime_types) throws Error {
             ensure ();
-            ContractData[] data = null;
 
-            data = contractor_dbus.get_contracts_by_mimelist (mime_types);
+            var data = contractor_dbus.get_contracts_by_mimelist (mime_types);
 
             return get_contracts_from_data (data);
         }
@@ -193,22 +183,19 @@ namespace Granite.Services {
         private static Gee.List<Contract> get_contracts_from_data (ContractData[] data) {
             var contract_list = new Gee.LinkedList<Contract> ();
 
-            if (data != null && data.length > 0) {
+            if (data != null) {
                 foreach (var contract_data in data) {
                     string contract_id = contract_data.id;
 
-                    /**
-                     * See if we have a contract already. Otherwise create a new one.
-                     * We do this in order to be able to compare contracts by reference
-                     * from client code.
-                     */
+                    // See if we have a contract already. Otherwise create a new one.
+                    // We do this in order to be able to compare contracts by reference
+                    // from client code.
                     var contract = contracts.get (contract_id);
 
                     if (contract == null) {
                         contract = new GenericContract (contract_data);
                         contracts.set (contract_id, contract);
                     } else {
-                        // Make sure data is always up-to-date
                         contract.update_data (contract_data);
                     }
 
