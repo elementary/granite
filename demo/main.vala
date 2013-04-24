@@ -13,7 +13,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -276,32 +276,6 @@ public class Granite.Demo : Granite.Application {
         right_sep.set_expand (true);
         main_toolbar.insert (right_sep, -1);
 
-        // Contractor
-        var contractor_tab = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        var text_view = new Gtk.TextView ();
-
-        var hash_tables = Granite.Services.Contractor.get_contract ("/.zip", "application/zip");
-        foreach (var hash_table in hash_tables) {
-            text_view.buffer.text += hash_table.lookup ("Name")
-                                  + ": " + hash_table.lookup ("Description")
-                                  + " icon: " + hash_table.lookup ("Exec") + "\n";
-        }
-
-        contractor_tab.add (text_view);
-        contractor_tab.add (new Granite.Widgets.ContractorView ("file:///home/user/file.txt", "text/plain"));
-        var contractor_menu = new Granite.Widgets.ContractorMenu ("/home/user/file.txt", "text");
-        var contractor_button_image = new Gtk.Image.from_icon_name ("document-export",
-                                                                     Gtk.IconSize.LARGE_TOOLBAR);
-        var contractor_tool_item = new Granite.Widgets.ToolButtonWithMenu (contractor_button_image,
-                                                                            "Share", contractor_menu);
-        main_toolbar.insert (contractor_tool_item, -1);
-
-        contractor_tool_item.halign = contractor_tool_item.valign = Gtk.Align.CENTER;
-
-        var contractor_item = new SourceListItem ("Contractor");
-        contractor_item.page_num = page_switcher.append_page (contractor_tab, null);
-        services_category.add (contractor_item);
-
         // Search Entry
         var search_entry = new Granite.Widgets.SearchBar ("Search");
         var search_item = new Gtk.ToolItem ();
@@ -343,42 +317,42 @@ public class Granite.Demo : Granite.Application {
 
     private void show_light_window () {
         var light_window = new Granite.Widgets.LightWindow ();
-        
+
         var light_window_notebook = new Granite.Widgets.StaticNotebook ();
         var entry = new Gtk.Entry ();
         var open_drop = new Gtk.ComboBoxText ();
         var open_lbl = new LLabel ("Alwas Open Mpeg Video Files with Audience");
-        
+
         var grid = new Gtk.Grid ();
         grid.attach (new Gtk.Image.from_icon_name ("video-x-generic", Gtk.IconSize.DIALOG), 0, 0, 1, 2);
         grid.attach (entry, 1, 0, 1, 1);
         grid.attach (new LLabel ("1.13 GB, Mpeg Video File"), 1, 1, 1, 1);
-        
+
         grid.attach (light_window_notebook, 0, 2, 2, 1);
-        
+
         var general = new Gtk.Grid ();
         general.attach (new LLabel.markup ("<b>Info:</b>"), 0, 0, 2, 1);
-        
+
         general.attach (new LLabel.right ("Created:"), 0, 1, 1, 1);
         general.attach (new LLabel.right ("Modified:"), 0, 2, 1, 1);
         general.attach (new LLabel.right ("Opened:"), 0, 3, 1, 1);
         general.attach (new LLabel.right ("Mimetype:"), 0, 4, 1, 1);
         general.attach (new LLabel.right ("Location:"), 0, 5, 1, 1);
-        
+
         general.attach (new LLabel ("Today at 9:50 PM"), 1, 1, 1, 1);
         general.attach (new LLabel ("Today at 9:50 PM"), 1, 2, 1, 1);
         general.attach (new LLabel ("Today at 10:00 PM"), 1, 3, 1, 1);
         general.attach (new LLabel ("video/mpeg"), 1, 4, 1, 1);
         general.attach (new LLabel ("/home/daniel/Downloads"), 1, 5, 1, 1);
-        
+
         general.attach (new LLabel.markup ("<b>Open with:</b>"), 0, 6, 2, 1);
         general.attach (open_drop, 0, 7, 2, 1);
         general.attach (open_lbl, 0, 8, 2, 1);
-        
+
         light_window_notebook.append_page (general, new Gtk.Label ("General"));
         light_window_notebook.append_page (new Gtk.Label ("More"), new Gtk.Label ("More"));
         light_window_notebook.append_page (new Gtk.Label ("Sharing"), new Gtk.Label ("Sharing"));
-        
+
         open_lbl.margin_left = 24;
         open_drop.margin_left = 12;
         open_drop.append ("audience", "Audience");
@@ -389,7 +363,7 @@ public class Granite.Demo : Granite.Application {
         entry.text = "Cool Hand Luke";
         general.column_spacing = 6;
         general.row_spacing = 6;
-        
+
         light_window.add (grid);
         light_window.show_all ();
     }

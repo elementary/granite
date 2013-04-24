@@ -16,6 +16,7 @@ set (VALA_SOURCES
     Services/Paths.vala
     Services/System.vala
     Services/Contractor.vala
+    Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
     Widgets/Utils.vala
