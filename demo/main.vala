@@ -108,6 +108,8 @@ public class Granite.Demo : Granite.Application {
 
     public override void activate () {
         window = new Gtk.Window ();
+        window.title = "Granite Demo";
+        window.window_position = Gtk.WindowPosition.CENTER;
 
         window.delete_event.connect (() => {
             Gtk.main_quit ();
