@@ -24,8 +24,8 @@ namespace Granite.Services {
         public abstract string get_display_name ();
         public abstract string get_description ();
         public abstract Icon get_icon ();
-        public abstract int execute_with_file (File file) throws Error;
-        public abstract int execute_with_files (File[] files) throws Error;
+        public abstract void execute_with_file (File file) throws Error;
+        public abstract void execute_with_files (File[] files) throws Error;
     }
 
     public errordomain ContractorError {
@@ -44,8 +44,8 @@ namespace Granite.Services {
         public abstract ContractData[] list_all_contracts () throws Error;
         public abstract ContractData[] get_contracts_by_mime (string mime_type) throws Error;
         public abstract ContractData[] get_contracts_by_mimelist (string[] mime_types) throws Error;
-        public abstract int execute_with_uri (string id, string uri) throws Error;
-        public abstract int execute_with_uri_list (string id, string[] uri) throws Error;
+        public abstract void execute_with_uri (string id, string uri) throws Error;
+        public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
     public class ContractorProxy {
@@ -92,17 +92,17 @@ namespace Granite.Services {
                 return icon;
             }
 
-            public int execute_with_file (File file) throws Error {
-                return ContractorProxy.execute_with_uri (id, file.get_uri ());
+            public void execute_with_file (File file) throws Error {
+                ContractorProxy.execute_with_uri (id, file.get_uri ());
             }
 
-            public int execute_with_files (File[] files) throws Error {
-                string[] uris = new string[files.length];
+            public void execute_with_files (File[] files) throws Error {
+                string[] uris = new string[0];
 
                 foreach (var file in files)
                     uris += file.get_uri ();
 
-                return ContractorProxy.execute_with_uri_list (id, uris);
+                ContractorProxy.execute_with_uri_list (id, uris);
             }
         }
 
@@ -127,14 +127,14 @@ namespace Granite.Services {
                 contracts = new Gee.HashMap<string, GenericContract> ();
         }
 
-        private static int execute_with_uri (string id, string uri) throws Error {
+        private static void execute_with_uri (string id, string uri) throws Error {
             ensure ();
-            return contractor_dbus.execute_with_uri (id, uri);
+            contractor_dbus.execute_with_uri (id, uri);
         }
 
-        private static int execute_with_uri_list (string id, string[] uris) throws Error {
+        private static void execute_with_uri_list (string id, string[] uris) throws Error {
             ensure ();
-            return contractor_dbus.execute_with_uri_list (id, uris);
+            contractor_dbus.execute_with_uri_list (id, uris);
         }
 
         /**
