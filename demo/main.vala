@@ -144,7 +144,7 @@ public class Granite.Demo : Granite.Application {
         sidebar.root.add (services_category);
         sidebar.root.expand_all ();
 
-        var sidebar_paned = new Granite.Widgets.ThinPaned ();
+        var sidebar_paned = new Granite.Widgets.ThinPaned (/* optional Gtk.Orientation.HORIZONTAL */);
         sidebar_paned.pack1 (sidebar, true, false);
         sidebar_paned.pack2 (page_switcher, true, false);
         sidebar_paned.expand = true;
