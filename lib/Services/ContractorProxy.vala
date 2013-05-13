@@ -41,6 +41,8 @@ namespace Granite.Services {
 
     [DBus (name = "org.elementary.Contractor")]
     internal interface ContractorDBusAPI : Object {
+        public signal void contracts_changed ();
+
         public abstract ContractData[] list_all_contracts () throws Error;
         public abstract ContractData[] get_contracts_by_mime (string mime_type) throws Error;
         public abstract ContractData[] get_contracts_by_mimelist (string[] mime_types) throws Error;
@@ -48,7 +50,7 @@ namespace Granite.Services {
         public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
-    public class ContractorProxy {
+    public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
             private string id;
             private string display_name;
@@ -106,11 +108,21 @@ namespace Granite.Services {
             }
         }
 
+        public signal void contracts_changed ();
 
         private static ContractorDBusAPI contractor_dbus;
         private static Gee.HashMap<string, GenericContract> contracts;
+        private static ContractorProxy instance;
 
-        private ContractorProxy () { }
+        private ContractorProxy () throws Error {
+            ensure ();
+        }
+
+        public static ContractorProxy get_instance () throws Error {
+            if (instance == null)
+                instance = new ContractorProxy ();
+            return instance;
+        }
 
         private static void ensure () throws Error {
             if (contractor_dbus == null) {
@@ -118,6 +130,7 @@ namespace Granite.Services {
                     contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
                                                           "org.elementary.Contractor",
                                                           "/org/elementary/contractor");
+                    contractor_dbus.contracts_changed.connect (on_contracts_changed);
                 } catch (IOError e) {
                     throw new ContractorError.SERVICE_NOT_AVAILABLE (e.message);
                 }
@@ -125,6 +138,12 @@ namespace Granite.Services {
 
             if (contracts == null)
                 contracts = new Gee.HashMap<string, GenericContract> ();
+        }
+
+        private static void on_contracts_changed () {
+            debug ("Contracts changed. Clearing cached references.");
+            contracts.clear ();
+            instance.contracts_changed ();
         }
 
         private static void execute_with_uri (string id, string uri) throws Error {
