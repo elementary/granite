@@ -52,7 +52,8 @@ namespace Granite.Services {
 
     public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
-            private string id;
+            public string id { get; private set; }
+
             private string display_name;
             private string description;
             private string icon_key;
@@ -141,9 +142,22 @@ namespace Granite.Services {
         }
 
         private static void on_contracts_changed () {
-            debug ("Contracts changed. Clearing cached references.");
-            contracts.clear ();
-            instance.contracts_changed ();
+            // Remove the contracts no longer present in the system. If we have
+            // references to some of the contracts that are still present,
+            // get_all_contracts() will return them.
+
+            try {
+                var all_contracts = get_all_contracts ();
+
+                foreach (var contract in contracts.values) {
+                    if (!all_contracts.contains (contract))
+                        contracts.unset (contract.id); // contract no longer present in system
+                }
+
+                instance.contracts_changed ();
+            } catch (Error err) {
+                warning ("Could not process changes in contracts: %s", err.message);
+            }
         }
 
         private static void execute_with_uri (string id, string uri) throws Error {
