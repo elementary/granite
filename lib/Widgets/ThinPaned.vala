@@ -61,7 +61,7 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
                                                   ParamFlags.READABLE));
     }
 
-    public ThinPaned (Gtk.Orientation orientation=Gtk.Orientation.HORIZONTAL) {
+    public ThinPaned (Gtk.Orientation orientation = Gtk.Orientation.HORIZONTAL) {
         this.orientation = orientation;
         Utils.set_theming (this, DEFAULT_STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         Utils.set_theming (this, FALLBACK_STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
