@@ -1199,8 +1199,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
         private CellRendererBadge badge_cell;
-        private Gtk.CellRenderer primary_expander_cell;
-        private Gtk.CellRenderer secondary_expander_cell;
+        private CellRendererExpander primary_expander_cell;
+        private CellRendererExpander secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
 
         private const string DEFAULT_STYLESHEET = """
@@ -1266,6 +1266,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
+            secondary_expander_cell.is_category_expander = true;
             secondary_expander_cell.xpad = 10;
             item_column.pack_end (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
