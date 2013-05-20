@@ -154,7 +154,13 @@ namespace Granite.Services {
                         contracts.unset (contract.id); // contract no longer present in system
                 }
 
-                instance.contracts_changed ();
+                int diff = contracts.size - all_contracts.size;
+
+                if (diff != 0)
+                    critical ("ContractorProxy: failed to remove %i contracts.", diff);
+
+                if (instance != null)
+                    instance.contracts_changed ();
             } catch (Error err) {
                 warning ("Could not process changes in contracts: %s", err.message);
             }
