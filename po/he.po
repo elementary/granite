@@ -8,46 +8,46 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-02-25 19:19+0000\n"
-"Last-Translator: Danny Damsky <dannydamsky99@gmail.com>\n"
+"PO-Revision-Date: 2013-05-22 04:31+0000\n"
+"Last-Translator: uri damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-05-02 05:19+0000\n"
-"X-Generator: Launchpad (build 16580)\n"
+"X-Launchpad-Export-Date: 2013-05-22 04:52+0000\n"
+"X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
-msgstr "סגור כרטיסייה"
+msgstr "סגירת לשונית"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr "סגור כרטיסייה"
+msgstr "סגירת לשונית"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
-msgstr "פתח בחלון חדש"
+msgstr "פתיחה בחלון חדש"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
-msgstr "שכפל"
+msgstr "שכפול"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr "סגור כרטיסייה אחרת"
+msgstr "סגירת לשונית אחרת"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr "סגור כרטיסיות אחרות"
+msgstr "סגירת לשוניות אחרות"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr "כרטיסייה חדשה"
+msgstr "לשונית חדשה"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
-msgstr "כרטיסייה חדשה"
+msgstr "לשונית חדשה"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
@@ -57,7 +57,7 @@ msgstr "תפריט"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:80
 msgid "About"
-msgstr "על אודות"
+msgstr "אודות"
 
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
@@ -70,7 +70,7 @@ msgstr "תרגם תוכנה זו"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
 msgid "Report a Problem"
-msgstr "לדווח על שגיאה"
+msgstr "דיווח על שגיאה"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
@@ -82,7 +82,7 @@ msgstr "לא הוצלח לתקשר עם הקבלן. עלייך להתקין זא
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
-msgstr "אף פעולה לא נמצאה לקובץ זה"
+msgstr "לא נמצאה פעולה לקובץ זה"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
@@ -90,7 +90,7 @@ msgstr "אתר אינטרנט"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr "נעצב על ידי:"
+msgstr "עוצב על ידי:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
@@ -99,7 +99,7 @@ msgstr "נכתב על ידי:"
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
 msgid "Copyright © %s"
-msgstr "זכות היוצר© %s"
+msgstr "זכות יוצרים © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
@@ -112,8 +112,8 @@ msgstr "מתורגם על ידי %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
-msgstr "תוכנה זו פורסמה בתנאים של % "
+msgstr "תוכנה זו הונפקה תחת בהתאם לתנאי % "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " רישיון, בא בלי שום אחריות; בשביל פרטים, הכנסו % "
+msgstr " הרשיון הינו ללא אחריות. לפרטים נא לפנות ל  % "
