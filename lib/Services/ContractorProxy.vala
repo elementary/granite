@@ -142,22 +142,23 @@ namespace Granite.Services {
         }
 
         private static void on_contracts_changed () {
-            // Remove the contracts no longer present in the system. If we have
-            // references to some of the contracts that are still present,
-            // get_all_contracts() will return them.
-
             try {
                 var all_contracts = get_all_contracts ();
 
+                // Remove contracts no longer present in the system.
+                // get_all_contracts already provided references to the contracts
+                // that have not been removed, so those are kept.
                 foreach (var contract in contracts.values) {
                     if (!all_contracts.contains (contract))
-                        contracts.unset (contract.id); // contract no longer present in system
+                        contracts.unset (contract.id);
                 }
 
                 int diff = contracts.size - all_contracts.size;
 
-                if (diff != 0)
-                    critical ("ContractorProxy: failed to remove %i contracts.", diff);
+                if (diff < 0)
+                    critical ("Failed to add %d contracts.", diff);
+                else if (diff > 0)
+                    critical ("Failed to remove %d contracts.", diff);
 
                 if (instance != null)
                     instance.contracts_changed ();
