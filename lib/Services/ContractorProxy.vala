@@ -24,8 +24,8 @@ namespace Granite.Services {
         public abstract string get_display_name ();
         public abstract string get_description ();
         public abstract Icon get_icon ();
-        public abstract int execute_with_file (File file) throws Error;
-        public abstract int execute_with_files (File[] files) throws Error;
+        public abstract void execute_with_file (File file) throws Error;
+        public abstract void execute_with_files (File[] files) throws Error;
     }
 
     public errordomain ContractorError {
@@ -41,16 +41,19 @@ namespace Granite.Services {
 
     [DBus (name = "org.elementary.Contractor")]
     internal interface ContractorDBusAPI : Object {
+        public signal void contracts_changed ();
+
         public abstract ContractData[] list_all_contracts () throws Error;
         public abstract ContractData[] get_contracts_by_mime (string mime_type) throws Error;
         public abstract ContractData[] get_contracts_by_mimelist (string[] mime_types) throws Error;
-        public abstract int execute_with_uri (string id, string uri) throws Error;
-        public abstract int execute_with_uri_list (string id, string[] uri) throws Error;
+        public abstract void execute_with_uri (string id, string uri) throws Error;
+        public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
-    public class ContractorProxy {
+    public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
-            private string id;
+            public string id { get; private set; }
+
             private string display_name;
             private string description;
             private string icon_key;
@@ -92,25 +95,35 @@ namespace Granite.Services {
                 return icon;
             }
 
-            public int execute_with_file (File file) throws Error {
-                return ContractorProxy.execute_with_uri (id, file.get_uri ());
+            public void execute_with_file (File file) throws Error {
+                ContractorProxy.execute_with_uri (id, file.get_uri ());
             }
 
-            public int execute_with_files (File[] files) throws Error {
-                string[] uris = new string[files.length];
+            public void execute_with_files (File[] files) throws Error {
+                string[] uris = new string[0];
 
                 foreach (var file in files)
                     uris += file.get_uri ();
 
-                return ContractorProxy.execute_with_uri_list (id, uris);
+                ContractorProxy.execute_with_uri_list (id, uris);
             }
         }
 
+        public signal void contracts_changed ();
 
         private static ContractorDBusAPI contractor_dbus;
         private static Gee.HashMap<string, GenericContract> contracts;
+        private static ContractorProxy instance;
 
-        private ContractorProxy () { }
+        private ContractorProxy () throws Error {
+            ensure ();
+        }
+
+        public static ContractorProxy get_instance () throws Error {
+            if (instance == null)
+                instance = new ContractorProxy ();
+            return instance;
+        }
 
         private static void ensure () throws Error {
             if (contractor_dbus == null) {
@@ -118,6 +131,7 @@ namespace Granite.Services {
                     contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
                                                           "org.elementary.Contractor",
                                                           "/org/elementary/contractor");
+                    contractor_dbus.contracts_changed.connect (on_contracts_changed);
                 } catch (IOError e) {
                     throw new ContractorError.SERVICE_NOT_AVAILABLE (e.message);
                 }
@@ -127,14 +141,40 @@ namespace Granite.Services {
                 contracts = new Gee.HashMap<string, GenericContract> ();
         }
 
-        private static int execute_with_uri (string id, string uri) throws Error {
-            ensure ();
-            return contractor_dbus.execute_with_uri (id, uri);
+        private static void on_contracts_changed () {
+            try {
+                var all_contracts = get_all_contracts ();
+
+                // Remove contracts no longer present in the system.
+                // get_all_contracts already provided references to the contracts
+                // that have not been removed, so those are kept.
+                foreach (var contract in contracts.values) {
+                    if (!all_contracts.contains (contract))
+                        contracts.unset (contract.id);
+                }
+
+                int diff = contracts.size - all_contracts.size;
+
+                if (diff < 0)
+                    critical ("Failed to add %d contracts.", diff);
+                else if (diff > 0)
+                    critical ("Failed to remove %d contracts.", diff);
+
+                if (instance != null)
+                    instance.contracts_changed ();
+            } catch (Error err) {
+                warning ("Could not process changes in contracts: %s", err.message);
+            }
         }
 
-        private static int execute_with_uri_list (string id, string[] uris) throws Error {
+        private static void execute_with_uri (string id, string uri) throws Error {
             ensure ();
-            return contractor_dbus.execute_with_uri_list (id, uris);
+            contractor_dbus.execute_with_uri (id, uri);
+        }
+
+        private static void execute_with_uri_list (string id, string[] uris) throws Error {
+            ensure ();
+            contractor_dbus.execute_with_uri_list (id, uris);
         }
 
         /**
