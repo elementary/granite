@@ -85,44 +85,43 @@ libgranite.so.1 libgranite1 #MINVER#
  granite_gtk_patch_about_dialog_set_website@Base 0.2.0~
  granite_gtk_patch_about_dialog_set_website_label@Base 0.2.0~
  granite_services_console_color_get_type@Base 0.2.0~
- granite_services_contract_data_copy@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_data_destroy@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_data_dup@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_data_free@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_data_get_type@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_execute_with_file@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_execute_with_files@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_get_description@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_get_display_name@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_get_icon@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contract_get_type@Base 0.2.0~r559-0+pkg48~localbuild
+ granite_services_contract_data_copy@Base 0.2.0~
+ granite_services_contract_data_destroy@Base 0.2.0~
+ granite_services_contract_data_dup@Base 0.2.0~
+ granite_services_contract_data_free@Base 0.2.0~
+ granite_services_contract_data_get_type@Base 0.2.0~
+ granite_services_contract_execute_with_file@Base 0.2.0~
+ granite_services_contract_execute_with_files@Base 0.2.0~
+ granite_services_contract_get_description@Base 0.2.0~
+ granite_services_contract_get_display_name@Base 0.2.0~
+ granite_services_contract_get_icon@Base 0.2.0~
+ granite_services_contract_get_type@Base 0.2.0~
  granite_services_contractor_construct@Base 0.2.0~
  granite_services_contractor_contractor@Base 0.2.0~
  granite_services_contractor_dbus_GetServicesByLocation@Base 0.2.0~
  granite_services_contractor_dbus_GetServicesByLocationsList@Base 0.2.0~
- granite_services_contractor_dbus_api_execute_with_uri@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_execute_with_uri_list@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_get_contracts_by_mime@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_get_contracts_by_mimelist@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_get_type@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_list_all_contracts@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_proxy_get_type@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_dbus_api_register_object@Base 0.2.0~r559-0+pkg48~localbuild
+ granite_services_contractor_dbus_api_execute_with_uri@Base 0.2.0~
+ granite_services_contractor_dbus_api_execute_with_uri_list@Base 0.2.0~
+ granite_services_contractor_dbus_api_get_contracts_by_mime@Base 0.2.0~
+ granite_services_contractor_dbus_api_get_contracts_by_mimelist@Base 0.2.0~
+ granite_services_contractor_dbus_api_get_type@Base 0.2.0~
+ granite_services_contractor_dbus_api_list_all_contracts@Base 0.2.0~
+ granite_services_contractor_dbus_api_proxy_get_type@Base 0.2.0~
+ granite_services_contractor_dbus_api_register_object@Base 0.2.0~
  granite_services_contractor_dbus_get_type@Base 0.2.0~
  granite_services_contractor_dbus_proxy_get_type@Base 0.2.0~
  granite_services_contractor_dbus_register_object@Base 0.2.0~
  granite_services_contractor_ensure@Base 0.2.0~
- granite_services_contractor_error_quark@Base 0.2.0~r559-0+pkg48~localbuild
+ granite_services_contractor_error_quark@Base 0.2.0~
  granite_services_contractor_get_contract@Base 0.2.0~
  granite_services_contractor_get_selection_contracts@Base 0.2.0~
  granite_services_contractor_get_type@Base 0.2.0~
  granite_services_contractor_new@Base 0.2.0~
- granite_services_contractor_proxy_get_all_contracts@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_proxy_get_contracts_by_mime@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_proxy_get_contracts_by_mimelist@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_proxy_get_type@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_proxy_ref@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_contractor_proxy_unref@Base 0.2.0~r559-0+pkg48~localbuild
+ granite_services_contractor_proxy_get_all_contracts@Base 0.2.0~
+ granite_services_contractor_proxy_get_contracts_by_mime@Base 0.2.0~
+ granite_services_contractor_proxy_get_contracts_by_mimelist@Base 0.2.0~
+ granite_services_contractor_proxy_get_instance@Base 0.2.0~
+ granite_services_contractor_proxy_get_type@Base 0.2.0~
  granite_services_icon_factory@Base 0.2.0~
  granite_services_icon_factory_construct@Base 0.2.0~
  granite_services_icon_factory_get_default@Base 0.2.0~
@@ -138,7 +137,6 @@ libgranite.so.1 libgranite1 #MINVER#
  granite_services_logger_new@Base 0.2.0~
  granite_services_logger_notification@Base 0.2.0~
  granite_services_logger_set_DisplayLevel@Base 0.2.0~
- granite_services_param_spec_contractor_proxy@Base 0.2.0~r559-0+pkg48~localbuild
  granite_services_paths_construct@Base 0.2.0~
  granite_services_paths_ensure_directory_exists@Base 0.2.0~
  granite_services_paths_get_data_folder@Base 0.2.0~
@@ -185,9 +183,6 @@ libgranite.so.1 libgranite1 #MINVER#
  granite_services_system_open@Base 0.2.0~
  granite_services_system_open_files@Base 0.2.0~
  granite_services_system_open_uri@Base 0.2.0~
- granite_services_value_get_contractor_proxy@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_value_set_contractor_proxy@Base 0.2.0~r559-0+pkg48~localbuild
- granite_services_value_take_contractor_proxy@Base 0.2.0~r559-0+pkg48~localbuild
  granite_text_style_get_stylesheet@Base 0.2.0~
  granite_text_style_get_type@Base 0.2.0~
  granite_widgets_about_dialog_construct@Base 0.2.0~
@@ -214,8 +209,10 @@ libgranite.so.1 libgranite1 #MINVER#
  granite_widgets_cell_renderer_badge_set_text@Base 0.2.0~
  granite_widgets_cell_renderer_expander_construct@Base 0.2.0~
  granite_widgets_cell_renderer_expander_get_arrow_size@Base 0.2.0~
+ granite_widgets_cell_renderer_expander_get_is_category_expander@Base 0.2.0~
  granite_widgets_cell_renderer_expander_get_type@Base 0.2.0~
  granite_widgets_cell_renderer_expander_new@Base 0.2.0~
+ granite_widgets_cell_renderer_expander_set_is_category_expander@Base 0.2.0~
  granite_widgets_collapsible_paned_construct@Base 0.2.0~
  granite_widgets_collapsible_paned_get_collapse_mode@Base 0.2.0~
  granite_widgets_collapsible_paned_get_type@Base 0.2.0~
