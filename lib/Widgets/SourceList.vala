@@ -1639,8 +1639,14 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                         if (event.type == Gdk.EventType.BUTTON_PRESS) {
                             if (is_expandable) {
                                 // Checking for secondary_expander_cell is not necessary because the entire row
-                                // serves for this purpose when the item is a category. It is only a visual indicator.
-                                bool expander_clicked = is_category || over_primary_expander (column, path, cell_x);
+                                // serves for this purpose when the item is a category or when the item is a
+                                // normal expandable item that is not selectable (special care is taken to
+                                // not break the activatable/action icons for such cases).
+                                // The expander only works like a visual indicator for these items.
+                                bool expander_clicked = is_category
+                                    || over_primary_expander (column, path, cell_x)
+                                    || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
+
                                 if (expander_clicked && toggle_expansion (item as ExpandableItem))
                                     return true;
                             }
