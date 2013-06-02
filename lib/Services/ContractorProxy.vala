@@ -144,14 +144,18 @@ namespace Granite.Services {
         private static void on_contracts_changed () {
             try {
                 var all_contracts = get_all_contracts ();
+                var to_remove = new Gee.LinkedList<GenericContract> ();
 
                 // Remove contracts no longer present in the system.
                 // get_all_contracts already provided references to the contracts
                 // that have not been removed, so those are kept.
                 foreach (var contract in contracts.values) {
                     if (!all_contracts.contains (contract))
-                        contracts.unset (contract.id);
+                        to_remove.add (contract);
                 }
+
+                foreach (var contract in to_remove)
+                    contracts.unset (contract.id);
 
                 int diff = contracts.size - all_contracts.size;
 
