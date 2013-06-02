@@ -364,16 +364,12 @@ namespace Granite.Widgets {
             menu.show_all ();
 
             new_tab_m.activate.connect (() => {
-                var t = new Tab ();
-                notebook.page = (int) this.insert_tab (t, -1);
-                this.tab_added (t);
+                insert_new_tab_at_end ();
             });
 
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
-                    var t = new Tab ();
-                    notebook.page = (int) this.insert_tab (t, -1);
-                    this.tab_added (t);
+                    insert_new_tab_at_end ();
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
                 }
@@ -391,9 +387,7 @@ namespace Granite.Widgets {
             add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
             add.clicked.connect ( () => {
-                var t = new Tab ();
-                notebook.page = (int) this.insert_tab (t, -1);
-                this.tab_added (t);
+                insert_new_tab_at_end ();
             });
 
             this.size_allocate.connect (() => {
@@ -415,9 +409,7 @@ namespace Granite.Widgets {
                     case Gdk.Key.@t:
                     case Gdk.Key.@T:
                         if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
-                            var t = new Tab ();
-                            this.tab_added (t);
-                            notebook.page = (int) this.insert_tab (t, -1);
+                            insert_new_tab_at_end ();
                             return true;
                         }
 
@@ -571,6 +563,12 @@ namespace Granite.Widgets {
 
         public Gtk.Widget get_nth_page (int index) {
             return notebook.get_nth_page (index);
+        }
+
+        public void insert_new_tab_at_end () {
+            var t = new Tab ();
+            notebook.page = (int) this.insert_tab (t, -1);
+            this.tab_added (t);
         }
 
         public uint insert_tab (Tab tab, int index) {
