@@ -565,7 +565,7 @@ namespace Granite.Widgets {
             return notebook.get_nth_page (index);
         }
 
-        public void insert_new_tab_at_end () {
+        private void insert_new_tab_at_end () {
             var t = new Tab ();
             notebook.page = (int) this.insert_tab (t, -1);
             this.tab_added (t);
