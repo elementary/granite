@@ -59,7 +59,11 @@ set (DOLLAR "$") # You hear that? It's kittens being killed by the gods of cmake
 
 configure_file (${CMAKE_SOURCE_DIR}/lib/config.h.cmake ${CMAKE_BINARY_DIR}/lib/config.h) # used from config.vala
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKG_NAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+
+if(NOT DEFINED LIB_INSTALL_DIR)
+    set(LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib")
+endif()
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_NAME}.pc DESTINATION ${LIB_INSTALL_DIR}/pkgconfig)
 
 # Link all
 set (CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -100,7 +104,7 @@ set_target_properties (${PKG_NAME} PROPERTIES
     VERSION ${PKG_SOVERSION}.${PKG_SOMINOR}
     SOVERSION ${PKG_SOVERSION})
 
-install (TARGETS ${PKG_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install (TARGETS ${PKG_NAME} DESTINATION ${LIB_INSTALL_DIR})
 
 ###########################
 # GObject Introspection
