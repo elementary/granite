@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-03-14 20:32+0000\n"
+"PO-Revision-Date: 2013-06-09 14:34+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-05-02 05:19+0000\n"
-"X-Generator: Launchpad (build 16580)\n"
+"X-Launchpad-Export-Date: 2013-06-11 06:05+0000\n"
+"X-Generator: Launchpad (build 16667)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
@@ -35,23 +35,23 @@ msgstr "Open in een nieuw venster"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
-msgstr "Kopie maken"
+msgstr "Kopiëren"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr "Sluit ander tabblad"
+msgstr "Sluit andere tab"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr "Sluit andere tabbladen"
+msgstr "Andere tabs sluiten"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
-msgstr "Nieuw tabblad"
+msgstr "Nieuwe tab"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:355
 msgid "New tab"
-msgstr "Nieuw tabblad"
+msgstr "Nieuwe tab"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:46
 #: /home/codygarver/granite/po/../lib//Widgets/AppMenu.vala:57
