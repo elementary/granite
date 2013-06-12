@@ -208,7 +208,7 @@ namespace Granite.Widgets {
         }
 
         private bool on_motion_notify (Gdk.EventMotion e) {
-            if (coords_over_close_button (e.x, e.y))
+            if (coords_over_close_button (e.x_root, e.y_root))
                 this.get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND1));
             else
                 this.get_window ().set_cursor (null);
@@ -217,7 +217,7 @@ namespace Granite.Widgets {
         }
 
         public override bool button_press_event (Gdk.EventButton e) {
-            if (coords_over_close_button (e.x, e.y)) {
+            if (coords_over_close_button (e.x_root, e.y_root)) {
                 return true;
             }
 
@@ -226,7 +226,7 @@ namespace Granite.Widgets {
         }
 
         public override bool button_release_event (Gdk.EventButton e) {
-            bool on_close_button = coords_over_close_button (e.x, e.y);
+            bool on_close_button = coords_over_close_button (e.x_root, e.y_root);
             if(on_close_button) {
                 var event = (Gdk.Event*) (&e);
                 this.delete_event (event->any);
@@ -244,7 +244,13 @@ namespace Granite.Widgets {
             return base.key_press_event (event);
         }
 
-        private bool coords_over_close_button (double x, double y) {
+        private bool coords_over_close_button (double x_root, double y_root) {
+        	int w_x, w_y;
+        	this.get_position(out w_x, out w_y);
+        
+        	int x = (int) x_root - w_x;
+        	int y = (int) y_root - w_y;
+        
             return this.deletable &&
                     x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
                     x < (close_img.get_width () + SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
