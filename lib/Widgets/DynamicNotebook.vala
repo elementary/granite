@@ -116,7 +116,7 @@ namespace Granite.Widgets {
             this.pack_start (this._working, false);
 
             page_container = new Gtk.EventBox ();
-            page_container.add (page ?? new Gtk.Label (""));
+            this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
 
             this.show_all ();
@@ -484,7 +484,7 @@ namespace Granite.Widgets {
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
             notebook.remove_page (notebook.page_num (tab.page_container));
-            tab.page_container.destroy ();
+            //tab.page_container.destroy ();
 
             tab_moved (tab, 0, true, x, y);
             return null;
