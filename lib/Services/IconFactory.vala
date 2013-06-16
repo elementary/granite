@@ -45,6 +45,9 @@ namespace Granite.Services {
             Gdk.Pixbuf px = null;
 
             Gtk.IconInfo icon_info = icon_theme.lookup_by_gicon (gicon, size, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+            if (icon_info == null)
+                return null;
+
             try {
                 px = icon_info.load_symbolic_for_context (style);
             } catch (Error err) {
