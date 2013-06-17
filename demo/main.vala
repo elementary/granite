@@ -73,6 +73,8 @@ public class Granite.Demo : Granite.Application {
     private Gtk.Window window; // both NORMAL and DARK window modes
 
     private Gtk.Grid main_layout; // outer-most container
+    private Granite.Widgets.ModeButton mode_button;
+    private int dark_mode_index;
 
     /**
      * Basic app information for Granite.Application. This is used by the About dialog.
@@ -201,19 +203,18 @@ public class Granite.Demo : Granite.Application {
         widgets_category.add (static_notebook_item);
 
         // ModeButton
-        var mode_button = new Granite.Widgets.ModeButton ();
+        mode_button = new Granite.Widgets.ModeButton ();
         mode_button.valign = Gtk.Align.CENTER;
         mode_button.halign = Gtk.Align.CENTER;
 
         var normal_mode_index = mode_button.append (new Gtk.Label ("Normal"));
-        var dark_mode_index = mode_button.append (new Gtk.Label ("Dark"));
+        dark_mode_index = mode_button.append (new Gtk.Label ("Dark"));
 
         mode_button.selected = normal_mode_index;
 
-        mode_button.mode_changed.connect (() => {
-            var settings = Gtk.Settings.get_default ();
-            settings.gtk_application_prefer_dark_theme = (mode_button.selected == dark_mode_index);
-        });
+        on_theme_mode_button_changed ();
+
+        mode_button.mode_changed.connect (on_theme_mode_button_changed);
 
         var mode_button_item = new Gtk.ToolItem ();
         mode_button_item.add (mode_button);
@@ -292,6 +293,11 @@ public class Granite.Demo : Granite.Application {
 
         window.set_default_size (800, 550);
         window.show_all ();
+    }
+
+    private void on_theme_mode_button_changed () {
+        var settings = Gtk.Settings.get_default ();
+        settings.gtk_application_prefer_dark_theme = (mode_button.selected == dark_mode_index);
     }
 
     private Granite.Widgets.Welcome create_welcome_screen () {
