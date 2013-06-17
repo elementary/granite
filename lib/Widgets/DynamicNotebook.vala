@@ -504,13 +504,20 @@ namespace Granite.Widgets {
             }
         }
 
-        public void remove_tab (Tab tab, bool force = false) {
-            if (!force && Signal.has_handler_pending (this, Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
+        public void remove_tab (Tab tab) {
+            if (Signal.has_handler_pending (this, Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
                 var sure = tab_removed (tab);
                 if (!sure)
                     return;
             }
 
+            var pos = get_tab_position (tab);
+            if (pos != -1)
+                notebook.remove_page (pos);
+        }
+        
+	[Deprecated (since=0.2)]
+	public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
             if (pos != -1)
                 notebook.remove_page (pos);
