@@ -195,14 +195,14 @@ namespace Granite.Widgets {
         }
     }
 
-    internal class ClosedTabs : GLib.Object {
+    private class ClosedTabs : GLib.Object {
 
         public signal void restored (Tab tab);
 
         private struct Entry {
             string title;
             string data;
-            GLib.Icon icon;
+            GLib.Icon? icon;
         }
 
         private Entry[] closed_tabs;
@@ -261,7 +261,7 @@ namespace Granite.Widgets {
                 foreach (var entry in closed_tabs) {
                     var item = new Gtk.ImageMenuItem.with_label (entry.title);
                     item.set_always_show_image (true);
-                    if (entry.icon.to_string () != "empty") {
+                    if (entry.icon != null) {
                         var icon = new Gtk.Image.from_gicon (entry.icon, Gtk.IconSize.MENU);
                         item.set_image (icon);
                     }
@@ -507,9 +507,7 @@ namespace Granite.Widgets {
             restore_button.show_all ();
 
             add_button.clicked.connect (() => {
-                var t = new Tab ();
-                notebook.page = (int) this.insert_tab (t, -1);
-                this.tab_added (t);
+                insert_new_tab_at_end ();
             });
 
             restore_button.clicked.connect (() => {
@@ -539,19 +537,6 @@ namespace Granite.Widgets {
                 return false;
             });
 
-            var add = new Gtk.Button ();
-            add.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
-            add.margin_left = 6;
-            add.relief = Gtk.ReliefStyle.NONE;
-            add.tooltip_text = _("New tab");
-            this.notebook.set_action_widget (add, Gtk.PackType.START);
-            add.show_all ();
-            add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            add.clicked.connect ( () => {
-                insert_new_tab_at_end ();
-            });
-
             this.size_allocate.connect (() => {
                 this.recalc_size ();
             });
@@ -573,7 +558,7 @@ namespace Granite.Widgets {
 
                     case Gdk.Key.@t:
                     case Gdk.Key.@T:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
+                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
                             insert_new_tab_at_end ();
                             return true;
                         } else if (e.state == (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) && allow_restoring) {
@@ -584,7 +569,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.Page_Up:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
+                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
                             next_page ();
                             return true;
                         }
@@ -592,7 +577,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.Page_Down:
-                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
+                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
                             previous_page ();
                             return true;
                         }
@@ -704,6 +689,12 @@ namespace Granite.Widgets {
 
             if (pos != -1)
                 notebook.remove_page (pos);
+            
+            if (tab.label != "" && tab.data != "") {
+                closed_tabs.push (tab);
+                restore_button.sensitive = !closed_tabs.empty;
+                restore_tab_m.sensitive = !closed_tabs.empty;
+            }
         }
         
 	[Deprecated (since=0.2)]
