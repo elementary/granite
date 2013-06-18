@@ -1,6 +1,5 @@
-----------------------------------------------------------
-  INSTALLATION INSTRUCTIONS
-----------------------------------------------------------
+Installation Instructions
+-------------------------
 
 • Build Granite
 
@@ -29,10 +28,3 @@
 
      • Both targets:
        $ make docs
-
-• Bugs
-
-  If you find bugs in this installation guide or in Granite itself,
-  please report them at:
-
-      https://launchpad.net/granite/+filebug

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-03-06 18:39+0000\n"
-"Last-Translator: Dan Hansson <dan@frontneck.se>\n"
+"PO-Revision-Date: 2013-06-06 11:32+0000\n"
+"Last-Translator: Joachim Johansson <joachim.j@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-03-07 05:31+0000\n"
-"X-Generator: Launchpad (build 16514)\n"
+"X-Launchpad-Export-Date: 2013-06-07 06:05+0000\n"
+"X-Generator: Launchpad (build 16667)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -23,11 +23,11 @@ msgstr "Stäng flik"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:121
 msgid "Close Tab"
-msgstr "Stäng Flik"
+msgstr "Stäng flik"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:123
 msgid "Open in a new Window"
-msgstr "Öppna i nytt fönster"
+msgstr "Öppna i ett nytt fönster"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:124
 msgid "Duplicate"
@@ -35,11 +35,11 @@ msgstr "Duplicera"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tab"
-msgstr "Stäng annan flik"
+msgstr "Stäng Annan Flik"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:143
 msgid "Close Other Tabs"
-msgstr "Stäng övriga flikar"
+msgstr "Stäng Övriga Flikar"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:328
 msgid "New Tab"
@@ -66,11 +66,11 @@ msgstr "%l:%M %p"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
 msgid "Translate This App"
-msgstr "Översätt Denna Applikation"
+msgstr "Översätt denna applikation"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:132
 msgid "Report a Problem"
-msgstr "Rapportera ett Problem"
+msgstr "Rapportera Ett Problem"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
@@ -78,7 +78,7 @@ msgstr "%B %e, %Y"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Kunde inte kontakta Contactor. Kanske behöver du installera den."
+msgstr "Kan inte kontakta Contractor. Du kan behöva installera programmet."
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
@@ -86,15 +86,15 @@ msgstr "Ingen möjlig handling för den här filen"
 
 #: /home/codygarver/granite/po/../lib//Application.vala:159
 msgid "Website"
-msgstr "Hemsida"
+msgstr "Webbplats"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:40
 msgid "Designed by:"
-msgstr ""
+msgstr "Formgiven av:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:59
 msgid "Written by:"
-msgstr ""
+msgstr "Skriven av:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:97
 #, c-format
@@ -103,7 +103,7 @@ msgstr "Copyright © %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr ""
+msgstr "Dokumenterad av:"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
@@ -112,7 +112,7 @@ msgstr "Översatt av %s"
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid "This program is published under the terms of the "
-msgstr "Det här programmet är utgivet under följande villkor i "
+msgstr "Det här programmet är utgivet under vilkoren i "
 
 #: /home/codygarver/granite/po/../lib//GtkPatch/AboutDialog.vala:460
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "

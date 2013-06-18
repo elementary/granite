@@ -1,19 +1,22 @@
-//  
-//  Copyright (C) 2011 Robert Dyer, Rico Tzschichholz
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/***
+    Copyright (C) 2011-2013 Robert Dyer,
+                            Rico Tzschichholz <ricotz@ubuntu.com>
+
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+***/
 
 using Cairo;
 using Posix;
@@ -394,12 +397,12 @@ namespace Granite.Drawing {
                 // Process Columns
                 exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
 
-                th = new Thread<void*>.try (null, () => {
+                var th2 = new Thread<void*>.try (null, () => {
                     exponential_blur_columns (pixels, width, height, 0, width / 2, 0, height, alpha);
                     return null;
                 });
                 
-                th.join ();
+                th2.join ();
             } catch (Error err) {
                 warning (err.message);
             }
@@ -540,12 +543,12 @@ namespace Granite.Drawing {
                 // Vertical Pass
                 gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
 
-                th = new Thread<void*>.try (null, () => {
+                var th2 = new Thread<void*>.try (null, () => {
                     gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, 0, width / 2, shiftar);
                     return null;
                 });
                 
-                th.join ();
+                th2.join ();
             } catch (Error err) {
                 message (err.message);
             }

@@ -1,19 +1,22 @@
-//  
-//  Copyright (C) 2011-2012 Corentin Noël <tintou@mailoo.org>, Maxwell Barvian
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
+/***
+    Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+                            Corentin Noël <tintou@mailoo.org>
+
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+***/
 
 namespace Granite.Widgets {
 
@@ -169,9 +172,6 @@ namespace Granite.Widgets {
         protected void minutes_left_clicked () {
         
             time = time.add_minutes (-5);
-            if (time.get_minute () >= 55) {
-                time = time.add_hours (+1);
-            }
             text = time.format (format);
             time_changed ();
         }
@@ -179,9 +179,6 @@ namespace Granite.Widgets {
         protected void minutes_right_clicked () {
         
             time = time.add_minutes (5);
-            if (time.get_minute () < 5) {
-                time = time.add_hours (-1);
-            }
             text = time.format (format);
             time_changed ();
         }

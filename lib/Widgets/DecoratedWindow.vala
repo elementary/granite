@@ -1,24 +1,23 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*
- * Copyright (c) 2012 Granite Developers
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * This is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- *
- * Authored by: Tom Beckmann <tombeckmann@online.de>
- */
+/***
+    Copyright (C) 2011-2013 Granite Developers
+
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+
+    Authored by: Tom Beckmann <tom@elementaryos.org>
+***/
 
 namespace Granite.Widgets {
 
@@ -209,7 +208,7 @@ namespace Granite.Widgets {
         }
 
         private bool on_motion_notify (Gdk.EventMotion e) {
-            if (coords_over_close_button (e.x, e.y))
+            if (coords_over_close_button (e.x_root, e.y_root))
                 this.get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND1));
             else
                 this.get_window ().set_cursor (null);
@@ -218,7 +217,7 @@ namespace Granite.Widgets {
         }
 
         public override bool button_press_event (Gdk.EventButton e) {
-            if (coords_over_close_button (e.x, e.y)) {
+            if (coords_over_close_button (e.x_root, e.y_root)) {
                 return true;
             }
 
@@ -227,7 +226,7 @@ namespace Granite.Widgets {
         }
 
         public override bool button_release_event (Gdk.EventButton e) {
-            bool on_close_button = coords_over_close_button (e.x, e.y);
+            bool on_close_button = coords_over_close_button (e.x_root, e.y_root);
             if(on_close_button) {
                 var event = (Gdk.Event*) (&e);
                 this.delete_event (event->any);
@@ -245,7 +244,13 @@ namespace Granite.Widgets {
             return base.key_press_event (event);
         }
 
-        private bool coords_over_close_button (double x, double y) {
+        private bool coords_over_close_button (double x_root, double y_root) {
+        	int w_x, w_y;
+        	this.get_position(out w_x, out w_y);
+        
+        	int x = (int) x_root - w_x;
+        	int y = (int) y_root - w_y;
+        
             return this.deletable &&
                     x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
                     x < (close_img.get_width () + SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&

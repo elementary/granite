@@ -1,23 +1,21 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*
- * Copyright (c) 2012-2013 Victor Eduardo <victoreduardm@gmail.com>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * This is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- */
+/***
+    Copyright (C) 2012-2013 Victor Eduardo <victoreduardm@gmal.com>
 
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+***/
 
 /**
  * A widget that can display a list of items organized in categories.
@@ -1201,8 +1199,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private CellRendererIcon icon_cell;
         private CellRendererIcon activatable_cell;
         private CellRendererBadge badge_cell;
-        private Gtk.CellRenderer primary_expander_cell;
-        private Gtk.CellRenderer secondary_expander_cell;
+        private CellRendererExpander primary_expander_cell;
+        private CellRendererExpander secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
 
         private const string DEFAULT_STYLESHEET = """
@@ -1268,6 +1266,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // Second expander. Used for main categories
             secondary_expander_cell = new CellRendererExpander ();
+            secondary_expander_cell.is_category_expander = true;
             secondary_expander_cell.xpad = 10;
             item_column.pack_end (secondary_expander_cell, false);
             item_column.set_cell_data_func (secondary_expander_cell, expander_cell_data_func);
@@ -1640,8 +1639,14 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                         if (event.type == Gdk.EventType.BUTTON_PRESS) {
                             if (is_expandable) {
                                 // Checking for secondary_expander_cell is not necessary because the entire row
-                                // serves for this purpose when the item is a category. It is only a visual indicator.
-                                bool expander_clicked = is_category || over_primary_expander (column, path, cell_x);
+                                // serves for this purpose when the item is a category or when the item is a
+                                // normal expandable item that is not selectable (special care is taken to
+                                // not break the activatable/action icons for such cases).
+                                // The expander only works like a visual indicator for these items.
+                                bool expander_clicked = is_category
+                                    || over_primary_expander (column, path, cell_x)
+                                    || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
+
                                 if (expander_clicked && toggle_expansion (item as ExpandableItem))
                                     return true;
                             }

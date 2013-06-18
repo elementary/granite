@@ -1,21 +1,20 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /***
-    BEGIN ICENSE
+    Copyright (C) 2011-2013 Tom Beckmann <tom@elementaryos.org>
 
-    Copyright (C) 2011-2012 Tom Beckmann <tom@elementaryos.org>
-    This program is free software: you can redistribute it and/or modify it
-    under the terms of the GNU Lesser General Public License version 3, as published
-    by the Free Software Foundation.
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranties of
-    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-    PURPOSE.  See the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License along
-    with this program.  If not, see <http://www.gnu.org/licenses/>
-
-    END LICENSE
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
 ***/
 
 namespace Granite.Widgets {
@@ -120,7 +119,7 @@ namespace Granite.Widgets {
             this.pack_start (this._working, false);
 
             page_container = new Gtk.EventBox ();
-            page_container.add (page ?? new Gtk.Label (""));
+            this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
 
             this.show_all ();
@@ -473,9 +472,7 @@ namespace Granite.Widgets {
             menu.show_all ();
 
             new_tab_m.activate.connect (() => {
-                var t = new Tab ();
-                notebook.page = (int) this.insert_tab (t, -1);
-                this.tab_added (t);
+                insert_new_tab_at_end ();
             });
 
             restore_tab_m.activate.connect (() => {
@@ -531,9 +528,7 @@ namespace Granite.Widgets {
 
             this.button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
-                    var t = new Tab ();
-                    notebook.page = (int) this.insert_tab (t, -1);
-                    this.tab_added (t);
+                    insert_new_tab_at_end ();
                 } else if (e.button == 2 && allow_restoring) {
                     restore_last_tab ();
                     return true;
@@ -544,6 +539,23 @@ namespace Granite.Widgets {
                 return false;
             });
 
+            var add = new Gtk.Button ();
+            add.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
+            add.margin_left = 6;
+            add.relief = Gtk.ReliefStyle.NONE;
+            add.tooltip_text = _("New tab");
+            this.notebook.set_action_widget (add, Gtk.PackType.START);
+            add.show_all ();
+            add.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+            add.clicked.connect ( () => {
+                insert_new_tab_at_end ();
+            });
+
+            this.size_allocate.connect (() => {
+                this.recalc_size ();
+            });
+            
             this.key_press_event.connect ((e) => {
 
                 e.state &= MODIFIER_MASK;
@@ -561,10 +573,8 @@ namespace Granite.Widgets {
 
                     case Gdk.Key.@t:
                     case Gdk.Key.@T:
-                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
-                            var t = new Tab ();
-                            this.tab_added (t);
-                            notebook.page = (int) this.insert_tab (t, -1);
+                        if ((e.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
+                            insert_new_tab_at_end ();
                             return true;
                         } else if (e.state == (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) && allow_restoring) {
                             restore_last_tab ();
@@ -651,9 +661,6 @@ namespace Granite.Widgets {
 
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
-            notebook.remove_page (notebook.page_num (tab.page_container));
-            tab.page_container.destroy ();
-
             tab_moved (tab, 0, true, x, y);
             return (Gtk.Notebook) null;
         }
@@ -697,14 +704,13 @@ namespace Granite.Widgets {
 
             if (pos != -1)
                 notebook.remove_page (pos);
-
-            if (tab.label != "" && tab.data != "") {
-                closed_tabs.push (tab);
-                restore_button.sensitive = !closed_tabs.empty;
-                restore_tab_m.sensitive = !closed_tabs.empty;
-            }
-
-            tab.page_container.destroy ();
+        }
+        
+	[Deprecated (since=0.2)]
+	public void remove_tab_force (Tab tab) {
+            var pos = get_tab_position (tab);
+            if (pos != -1)
+                notebook.remove_page (pos);
         }
 
         public void next_page () {
@@ -752,6 +758,12 @@ namespace Granite.Widgets {
             return notebook.get_nth_page (index);
         }
 
+        private void insert_new_tab_at_end () {
+            var t = new Tab ();
+            notebook.page = (int) this.insert_tab (t, -1);
+            this.tab_added (t);
+        }
+
         public uint insert_tab (Tab tab, int index) {
             return_if_fail (tabs.index (tab) < 0);
 
@@ -791,9 +803,7 @@ namespace Granite.Widgets {
             });
 
             tab.new_window.connect (() => {
-                notebook.remove_page (notebook.page_num (tab.page_container));
-                tab.page_container.destroy ();
-                tab_moved (tab, 0, true, 0, 0);
+                notebook.create_window(tab.page_container, 0, 0);
             });
 
             tab.duplicate.connect (() => {

@@ -1,25 +1,24 @@
-/*
- * Copyright (c) 2011-2012 Lucas Baudin <xapantu@gmail.com>,
- *                         Jaap Broekhuizen <jaapz.b@gmail.com>,
- *                         Victor Eduardo <victoreduardm@gmal.com>,
- *                         Tom Beckmann <tom@elementaryos.org>
- *
- * This is a free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version.
- *
- * This is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public
- * License along with this program; see the file COPYING.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
- *
- */
+/***
+    Copyright (C) 2011-2013 Lucas Baudin <xapantu@gmail.com>,
+                            Jaap Broekhuizen <jaapz.b@gmail.com>,
+                            Victor Eduardo <victoreduardm@gmal.com>,
+                            Tom Beckmann <tom@elementaryos.org>
+
+    This program or library is free software; you can redistribute it
+    and/or modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General
+    Public License along with this library; if not, write to the
+    Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301 USA.
+***/
 
 public class Granite.Demo : Granite.Application {
 
@@ -74,6 +73,8 @@ public class Granite.Demo : Granite.Application {
     private Gtk.Window window; // both NORMAL and DARK window modes
 
     private Gtk.Grid main_layout; // outer-most container
+    private Granite.Widgets.ModeButton mode_button;
+    private int dark_mode_index;
 
     /**
      * Basic app information for Granite.Application. This is used by the About dialog.
@@ -109,6 +110,8 @@ public class Granite.Demo : Granite.Application {
 
     public override void activate () {
         window = new Gtk.Window ();
+        window.title = "Granite Demo";
+        window.window_position = Gtk.WindowPosition.CENTER;
 
         window.delete_event.connect (() => {
             Gtk.main_quit ();
@@ -200,19 +203,18 @@ public class Granite.Demo : Granite.Application {
         widgets_category.add (static_notebook_item);
 
         // ModeButton
-        var mode_button = new Granite.Widgets.ModeButton ();
+        mode_button = new Granite.Widgets.ModeButton ();
         mode_button.valign = Gtk.Align.CENTER;
         mode_button.halign = Gtk.Align.CENTER;
 
         var normal_mode_index = mode_button.append (new Gtk.Label ("Normal"));
-        var dark_mode_index = mode_button.append (new Gtk.Label ("Dark"));
+        dark_mode_index = mode_button.append (new Gtk.Label ("Dark"));
 
         mode_button.selected = normal_mode_index;
 
-        mode_button.mode_changed.connect (() => {
-            var settings = Gtk.Settings.get_default ();
-            settings.gtk_application_prefer_dark_theme = (mode_button.selected == dark_mode_index);
-        });
+        on_theme_mode_button_changed ();
+
+        mode_button.mode_changed.connect (on_theme_mode_button_changed);
 
         var mode_button_item = new Gtk.ToolItem ();
         mode_button_item.add (mode_button);
@@ -277,32 +279,6 @@ public class Granite.Demo : Granite.Application {
         right_sep.set_expand (true);
         main_toolbar.insert (right_sep, -1);
 
-        // Contractor
-        var contractor_tab = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        var text_view = new Gtk.TextView ();
-
-        var hash_tables = Granite.Services.Contractor.get_contract ("/.zip", "application/zip");
-        foreach (var hash_table in hash_tables) {
-            text_view.buffer.text += hash_table.lookup ("Name")
-                                  + ": " + hash_table.lookup ("Description")
-                                  + " icon: " + hash_table.lookup ("Exec") + "\n";
-        }
-
-        contractor_tab.add (text_view);
-        contractor_tab.add (new Granite.Widgets.ContractorView ("file:///home/user/file.txt", "text/plain"));
-        var contractor_menu = new Granite.Widgets.ContractorMenu ("/home/user/file.txt", "text");
-        var contractor_button_image = new Gtk.Image.from_icon_name ("document-export",
-                                                                     Gtk.IconSize.LARGE_TOOLBAR);
-        var contractor_tool_item = new Granite.Widgets.ToolButtonWithMenu (contractor_button_image,
-                                                                            "Share", contractor_menu);
-        main_toolbar.insert (contractor_tool_item, -1);
-
-        contractor_tool_item.halign = contractor_tool_item.valign = Gtk.Align.CENTER;
-
-        var contractor_item = new SourceListItem ("Contractor");
-        contractor_item.page_num = page_switcher.append_page (contractor_tab, null);
-        services_category.add (contractor_item);
-
         // Search Entry
         var search_entry = new Granite.Widgets.SearchBar ("Search");
         var search_item = new Gtk.ToolItem ();
@@ -317,6 +293,11 @@ public class Granite.Demo : Granite.Application {
 
         window.set_default_size (800, 550);
         window.show_all ();
+    }
+
+    private void on_theme_mode_button_changed () {
+        var settings = Gtk.Settings.get_default ();
+        settings.gtk_application_prefer_dark_theme = (mode_button.selected == dark_mode_index);
     }
 
     private Granite.Widgets.Welcome create_welcome_screen () {
