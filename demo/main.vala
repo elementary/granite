@@ -377,35 +377,61 @@ public class Granite.Demo : Granite.Application {
     }
 
     private Granite.Widgets.DynamicNotebook create_dynamic_notebook () {
+
+        int i = 3;
+
         var dynamic_notebook = new Granite.Widgets.DynamicNotebook ();
 
-        var tab = new Granite.Widgets.Tab ("user@elementaryos: ~",
-                                            new ThemedIcon ("empty"),
-                                            new Gtk.Label ("Page 1"));
-        tab.working = true;
+        dynamic_notebook.allow_duplication = true;
+        dynamic_notebook.allow_restoring = true;
 
+        var tab = new Granite.Widgets.Tab ("user1@elementaryos: ~",
+                                           new ThemedIcon ("empty"),
+                                           new Gtk.Label ("Page 1"));
+        tab.restore_data = "1";
+        tab.working = true;
         dynamic_notebook.insert_tab (tab, -1);
-        dynamic_notebook.insert_tab (new Granite.Widgets.Tab ("user2@elementaryos: ~",
-                                                              new ThemedIcon ("empty"),
-                                                              new Gtk.Label ("Page 2")), -1);
+
+        var tab2 = new Granite.Widgets.Tab ("user2@elementaryos: ~",
+                                            new ThemedIcon ("empty"),
+                                            new Gtk.Label ("Page 2"));
+        tab2.restore_data = "2";
+        dynamic_notebook.insert_tab (tab2, -1);
 
         dynamic_notebook.tab_added.connect ((t) => {
-        	t.page = new Gtk.Label ("newuser@elementaryos: ~");
-        	t.label = "newuser@elementaryos: ~";
-    	});
+            t.page = new Gtk.Label (@"Page $i");
+            t.label = @"user$i@elementaryos: ~";
+            t.restore_data = i.to_string ();
+            i++;
+        });
 
-    	dynamic_notebook.tab_moved.connect ((t, p) => {
-    	    print ("Moved tab %s to %i\n", t.label, p);
-    	});
+        dynamic_notebook.tab_restored.connect ((t) => {
+            print ("Restored tab %s\n", t.label);
+            t.page = new Gtk.Label ("Page " + t.restore_data);
+        });
 
-    	dynamic_notebook.tab_switched.connect ((old_t, new_t) => {
-    	    print ("Switched from %s to %s\n", old_t.label, new_t.label);
-	    });
+        dynamic_notebook.tab_duplicated.connect ((t) => {
+            var num = t.restore_data;
+            var t2 = new Granite.Widgets.Tab (@"user$num@elementaryos: ~",
+                                              new ThemedIcon ("empty"),
+                                              new Gtk.Label (@"Page $num"));
+            t2.restore_data = t.restore_data;
+            dynamic_notebook.insert_tab (t2, -1);
+            print ("Duplicated tab %s\n", t2.label);
+        });
 
-		dynamic_notebook.tab_removed.connect ((t) => {
-		    print ("Going to remove %s\n", t.label);
-		    return true;
-	    });
+        dynamic_notebook.tab_moved.connect ((t, p) => {
+            print ("Moved tab %s to %i\n", t.label, p);
+        });
+
+        dynamic_notebook.tab_switched.connect ((old_t, new_t) => {
+            print ("Switched from %s to %s\n", old_t.label, new_t.label);
+        });
+
+        dynamic_notebook.tab_removed.connect ((t) => {
+            print ("Going to remove %s\n", t.label);
+            return true;
+        });
 
         return dynamic_notebook;
     }
