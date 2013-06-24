@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-30 22:36-0600\n"
-"PO-Revision-Date: 2013-06-18 22:49+0000\n"
-"Last-Translator: Benjamin Bultman <bultman.ben@gmail.com>\n"
+"PO-Revision-Date: 2013-06-23 19:06+0000\n"
+"Last-Translator: Joachim Johansson <joachim.j@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-06-19 05:40+0000\n"
-"X-Generator: Launchpad (build 16673)\n"
+"X-Launchpad-Export-Date: 2013-06-24 04:53+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DynamicNotebook.vala:100
 msgid "Close tab"
@@ -62,7 +62,7 @@ msgstr "Om"
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:63
 #: /home/codygarver/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "%l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%k.%M"
 
 #: /home/codygarver/granite/po/../lib//Widgets/AboutDialog.vala:127
 msgid "Translate This App"
@@ -74,7 +74,7 @@ msgstr "Rapportera ett problem"
 
 #: /home/codygarver/granite/po/../lib//Widgets/DatePicker.vala:31
 msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
+msgstr "%Y-%m-%d"
 
 #: /home/codygarver/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
