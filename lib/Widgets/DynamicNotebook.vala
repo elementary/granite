@@ -126,6 +126,8 @@ namespace Granite.Widgets {
             page_container = new Gtk.EventBox ();
             this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
+            
+            restore_data = "";
 
             this.show_all ();
 
