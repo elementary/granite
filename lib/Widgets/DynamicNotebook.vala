@@ -541,10 +541,6 @@ namespace Granite.Widgets {
 
                 return false;
             });
-
-            this.size_allocate.connect (() => {
-                this.recalc_size ();
-            });
             
             this.key_press_event.connect ((e) => {
 
