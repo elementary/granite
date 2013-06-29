@@ -127,6 +127,8 @@ namespace Granite.Widgets {
             this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
 
+            restore_data = "";
+
             this.show_all ();
 
             menu = new Gtk.Menu ();
@@ -540,10 +542,6 @@ namespace Granite.Widgets {
                 }
 
                 return false;
-            });
-
-            this.size_allocate.connect (() => {
-                this.recalc_size ();
             });
             
             this.key_press_event.connect ((e) => {
