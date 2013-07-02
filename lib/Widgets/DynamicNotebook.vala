@@ -668,6 +668,8 @@ namespace Granite.Widgets {
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
+            
+            this.notebook.resize_children ();
         }
 
         private void restore_last_tab () {
