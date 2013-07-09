@@ -50,8 +50,10 @@ namespace Granite.Widgets {
             set {
                 if (page_container.get_child () != null)
                     page_container.remove (page_container.get_child ());
-
-                page_container.add (value);
+                if (value.get_parent () != null)
+                    value.reparent (page_container);
+                else
+                    page_container.add (value);
                 page_container.show_all ();
             }
         }
@@ -692,8 +694,11 @@ namespace Granite.Widgets {
 
             var pos = get_tab_position (tab);
 
-            if (pos != -1)
+            if (pos != -1) {
                 notebook.remove_page (pos);
+                if (tab.page.get_parent () != null)
+                    tab.page.unparent ();
+            }
             
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
