@@ -32,7 +32,10 @@ namespace Granite.Widgets {
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
-            set { _label.label = value; }
+            set {
+                _label.label = value;
+                _label.set_tooltip_text (value);
+            }
         }
 
         /**
