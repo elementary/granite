@@ -139,7 +139,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      *   - icon          | DataModel::on_item_prop_changed   | Tree::icon_cell_data_func
      *   - activatable   | Same as @icon                     | Same as @icon
      * + ExpandableItem  |                                   |
-     *   - no_caption    | DataModel::on_item_prop_changed   | Tree::name_cell_data_func
      *   - collapsible   | DataModel::on_item_prop_changed   | Tree::update_expansion
      *                   |                                   | Tree::expander_cell_data_func
      *   - expanded      | Same as @collapsible              | Same as @collapsible
