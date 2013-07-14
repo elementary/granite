@@ -52,6 +52,18 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
+    private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem {
+        public SourceListExpandableItem (string name) {
+            base (name);
+        }
+
+        public override int compare (Granite.Widgets.SourceList.Item a,
+                                     Granite.Widgets.SourceList.Item b)
+        {
+            return strcmp (a.name, b.name);
+        }
+    }
+
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
@@ -138,8 +150,8 @@ public class Granite.Demo : Granite.Application {
         });
 
         // Main sidebar categories
-        var widgets_category = new Granite.Widgets.SourceList.ExpandableItem ("Widgets");
-        var services_category = new Granite.Widgets.SourceList.ExpandableItem ("Services");
+        var widgets_category = new SourceListExpandableItem ("Widgets");
+        var services_category = new SourceListExpandableItem ("Services");
 
         // Add and expand categories
         sidebar.root.add (widgets_category);

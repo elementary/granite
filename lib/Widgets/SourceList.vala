@@ -419,6 +419,27 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         /**
+         * Should return a negative integer, zero, or a positive integer if ''a'' sorts //before//
+         * ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts //after// ''b'' respectively. If two
+         * items compare as equal, their order in the sorted source list is undefined.
+         *
+         * In order to ensure that the source list behaves as expected, this method must define a
+         * partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
+         * transitive.
+         *
+         * (Same description as {@link Gtk.TreeIterCompareFunc}.)
+         *
+         * @param a First item.
+         * @param b Second item.
+         * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
+         *         or a //positive// integer if //a// sorts before //b//.
+         * @since 0.2
+         */
+        public virtual int compare (Item a, Item b) {
+            return 0;
+        }
+
+        /**
          * Checks whether the item contains the specified child.
          *
          * This method only considers the item's immediate children.
@@ -673,11 +694,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        private enum SortColumn {
-            UNSORTED = Gtk.SortColumn.UNSORTED,
-            SORTED = Gtk.SortColumn.DEFAULT + 1
-        }
-
         public signal void item_updated (Item item);
 
         /**
@@ -690,7 +706,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             get { return sort_dir; }
             set {
                 sort_dir = value;
-                child_tree.set_sort_column_id (this.sort_column, sort_dir);
+                resort ();
             }
         }
 
@@ -729,12 +745,15 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private Gtk.TreeStore child_tree;
         private SourceList.SortFunc? sort_func;
         private unowned SourceList.VisibleFunc? filter_func;
-        private SortColumn sort_column = SortColumn.UNSORTED;
 
         public DataModel () {
             var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
             Object (child_model: child_tree, virtual_root: null);
             this.child_tree = child_tree;
+
+            child_tree.set_default_sort_func (child_model_sort_func);
+            resort ();
+
             set_visible_func (filter_visible_func);
         }
 
@@ -975,10 +994,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          */
         public void set_sort_func (owned SourceList.SortFunc? sort_func) {
             this.sort_func = (owned) sort_func;
-            this.sort_column = this.sort_func != null ? SortColumn.SORTED : SortColumn.UNSORTED;
-
-            child_tree.set_sort_func (SortColumn.SORTED, child_model_sort_func);
-            sort_direction = sort_dir;
+            resort ();
         }
 
         /**
@@ -1021,20 +1037,31 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return path.get_depth () == 1;
         }
 
-        /**
-         * Actual sort function. It simply returns zero if sort_func is null.
-         */
+        private void resort () {
+            child_tree.set_sort_column_id (Gtk.SortColumn.UNSORTED, sort_direction);
+            child_tree.set_sort_column_id (Gtk.SortColumn.DEFAULT, sort_direction);
+        }
+
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
-            // Return zero by default, since a different value would not be reflexive nor symmetric when
-            // sort_func is null.
             int sort = 0;
 
             Item? item_a, item_b;
             child_tree.get (a, Column.ITEM, out item_a, -1);
             child_tree.get (b, Column.ITEM, out item_b, -1);
 
-            if (sort_func != null && item_a != null && item_b != null)
-                sort = sort_func (item_a, item_b);
+            // If the sort function is not null use old sorting API. Otherwise, use each
+            // item's compare() method.
+            if (sort_func != null) {
+                if (item_a != null && item_b != null)
+                    sort = sort_func (item_a, item_b);
+            } else {
+                // code should only compare items on same hierarchy level
+                assert (item_a.parent == item_b.parent);
+
+                var parent = item_a.parent;
+                if (parent != null)
+                    sort = parent.compare (item_a, item_b);
+            }
 
             return sort;
         }
@@ -1071,7 +1098,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             if (item != null) {
                item_visible = item.visible;
 
-                // If the item is a category, also query the number of visible child items
+                // If the item is a category, also query the number of visible children
                 // because empty categories should not be displayed.
                 var expandable = item as ExpandableItem;
                 if (expandable != null && child_tree.iter_depth (iter) == 0) {
@@ -1944,6 +1971,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      *         or a //positive// integer if //a// sorts before //b//.
      * @since 0.2
      */
+    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
     public delegate int SortFunc (Item a, Item b);
 
     /**
@@ -1978,7 +2006,10 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      *
      * @since 0.2
      */
-    public ExpandableItem root { get; private set; default = new ExpandableItem (); }
+    public ExpandableItem root {
+        get { return data_model.root; }
+        set { data_model.root = value; }
+    }
 
     /**
      * The current selected item.
@@ -2030,20 +2061,19 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     }
 
     private Tree tree;
-    private DataModel data_model { get { return tree.data_model; } }
+    private DataModel data_model = new DataModel ();
 
     /**
      * Creates a new {@link Granite.Widgets.SourceList}.
      *
-     * @return (transfer full) a new {@link Granite.Widgets.SourceList}.
+     * @return A new {@link Granite.Widgets.SourceList}.
      * @since 0.2
      */
-    public SourceList () {
-        var model = new DataModel ();
-        model.root = root;
+    public SourceList (ExpandableItem root = new ExpandableItem ()) {
+        this.root = root;
 
         push_composite_child ();
-        tree = new Tree (model);
+        tree = new Tree (data_model);
         tree.set_composite_name ("treeview");
         pop_composite_child ();
 
@@ -2072,6 +2102,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * @see Granite.Widgets.SourceList.SortFunc
      * @since 0.2
      */
+    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
     public void set_sort_func (owned SortFunc? sort_func) {
         data_model.set_sort_func ((owned) sort_func);
     }
