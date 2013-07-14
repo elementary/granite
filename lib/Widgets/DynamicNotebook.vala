@@ -113,15 +113,17 @@ namespace Granite.Widgets {
             close.relief = Gtk.ReliefStyle.NONE;
 
             var lbl = new Gtk.EventBox ();
+            var lblbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            lblbox.pack_start (_label);
+            lblbox.pack_start (_icon);
+            lblbox.pack_start (_working);
+            lbl.add (lblbox);
             _label.set_tooltip_text (label);
-            lbl.add (_label);
             _label.ellipsize = Pango.EllipsizeMode.END;
             lbl.visible_window = false;
 
             this.pack_start (this.close, false);
             this.pack_start (lbl);
-            this.pack_start (this._icon, false);
-            this.pack_start (this._working, false);
 
             page_container = new Gtk.EventBox ();
             this.page = page ?? new Gtk.Label("");
