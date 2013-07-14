@@ -390,7 +390,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public uint n_children {
-            get { return children_set.size; }
+            get { return children_list.size; }
         }
 
         /**
@@ -400,17 +400,11 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          */
         public Gee.Collection<Item> children {
             owned get {
-                // Create a copy of the children so that it's safe to iterate it
-                // (e.g. by using foreach) while removing items. See clear() for
-                // an example of such case.
-                var copy = new Gee.LinkedList<Item> ();
-                foreach (var item in children_set)
-                    copy.add (item);
-                return copy;
+                return children_list.read_only_view;
             }
         }
 
-        private Gee.Set<Item> children_set = new Gee.HashSet<Item> ();
+        private Gee.Collection<Item> children_list = new Gee.ArrayList<Item> ();
 
         /**
          * Creates a new {@link Granite.Widgets.SourceList.ExpandableItem}
@@ -434,7 +428,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public bool contains (Item item) {
-            return item in children_set;
+            return item in children_list;
         }
 
         /**
@@ -459,7 +453,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          */
         public void add (Item item) requires (item.parent == null) requires (!contains (item)) {
             item.parent = this;
-            children_set.add (item);
+            children_list.add (item);
             child_added (item);
         }
 
@@ -478,7 +472,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void remove (Item item) requires (item.parent == this) requires (contains (item)) {
-            children_set.remove (item);
+            children_list.remove (item);
             child_removed (item);
             item.parent = null;
         }
@@ -492,7 +486,12 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
-            foreach (var item in children)
+            // Create a copy of the children so that it's safe to iterate it
+            // (e.g. by using foreach) while removing items
+            var children_list_copy = new Gee.ArrayList<Item> ();
+            children_list_copy.add_all (children_list);
+
+            foreach (var item in children_list_copy)
                 remove (item);
         }
 
