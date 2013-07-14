@@ -451,7 +451,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @see Granite.Widgets.SourceList.ExpandableItem.remove
          * @since 0.2
          */
-        public void add (Item item) requires (item.parent == null) requires (!contains (item)) {
+        public void add (Item item) requires (item.parent == null) {
             item.parent = this;
             children_list.add (item);
             child_added (item);
@@ -471,7 +471,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @see Granite.Widgets.SourceList.ExpandableItem.clear
          * @since 0.2
          */
-        public void remove (Item item) requires (item.parent == this) requires (contains (item)) {
+        public void remove (Item item) requires (item.parent == this) {
             children_list.remove (item);
             child_removed (item);
             item.parent = null;
