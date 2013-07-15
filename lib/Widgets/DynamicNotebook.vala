@@ -32,7 +32,10 @@ namespace Granite.Widgets {
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
-            set { _label.label = value; }
+            set {
+                _label.label = value;
+                _label.set_tooltip_text (value);
+            }
         }
 
         /**
@@ -50,8 +53,10 @@ namespace Granite.Widgets {
             set {
                 if (page_container.get_child () != null)
                     page_container.remove (page_container.get_child ());
-
-                page_container.add (value);
+                if (value.get_parent () != null)
+                    value.reparent (page_container);
+                else
+                    page_container.add (value);
                 page_container.show_all ();
             }
         }
@@ -670,6 +675,8 @@ namespace Granite.Widgets {
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
+            
+            this.notebook.resize_children ();
         }
 
         private void restore_last_tab () {
@@ -692,8 +699,11 @@ namespace Granite.Widgets {
 
             var pos = get_tab_position (tab);
 
-            if (pos != -1)
+            if (pos != -1) {
                 notebook.remove_page (pos);
+                if (tab.page.get_parent () != null)
+                    tab.page.unparent ();
+            }
             
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
