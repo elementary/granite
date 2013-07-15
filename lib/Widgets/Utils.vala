@@ -181,7 +181,11 @@ namespace Granite.Widgets.Utils {
 	 */
 	public CloseButtonPosition get_default_close_button_position ()
 	{
-		var layout = new Settings (get_button_layout_schema ()).get_string (WM_BUTTON_LAYOUT_KEY);
+		var schema = get_button_layout_schema ();
+		if (schema == null)
+			return CloseButtonPosition.LEFT;
+
+		var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
 		var parts = layout.split (":");
 
 		// do the right side first, so we default to left
@@ -194,15 +198,24 @@ namespace Granite.Widgets.Utils {
 	/**
 	 * This methods returns the schema used by {@link Granite.Widgets.Utils.get_default_close_button_position}
 	 * to determine the close button placement. It will first check for the pantheon/gala schema and then fallback
-	 * to the default gnome one.
+	 * to the default gnome one. If neither is available, NULL is returned. Make sure to check for this case, 
+	 * as otherwise your program may crash on startup.
 	 *
 	 * @return the schema name
 	 */
-	public string get_button_layout_schema ()
+	public string? get_button_layout_schema ()
 	{
-		var schema = WM_SETTINGS_PATH;
-		if (PANTHEON_SETTINGS_PATH in GLib.Settings.list_schemas ())
+		var schemas = GLib.Settings.list_schemas ();
+
+		string schema;
+		if (PANTHEON_SETTINGS_PATH in schemas)
 			schema = PANTHEON_SETTINGS_PATH;
+		else if (WM_SETTINGS_PATH in schemas)
+			schema = WM_SETTINGS_PATH;
+		else {
+			warning ("No schema indicating the button-layout is installed.");
+			return null;
+		}
 
 		return schema;
 	}
