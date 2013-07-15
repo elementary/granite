@@ -177,22 +177,38 @@ namespace Granite.Widgets.Utils {
 	 * need to know when this key changed, it's best to listen on the schema returned by
 	 * {@link Granite.Widgets.Utils.get_button_layout_schema} for changes and then call this method again.
 	 *
+	 * @param failed if no schema was detected by {@link Granite.Widgets.Utils.get_button_layout_schema}
+	 *               or there was no close value in the button-layout string, this bool will be true. The
+	 *               returned will be LEFT in that case.
 	 * @return a {@link Granite.CloseButtonPosition} indicating where to best put the close button
 	 */
-	public CloseButtonPosition get_default_close_button_position ()
+	public CloseButtonPosition get_default_close_button_position (out bool? failed = null)
 	{
 		var schema = get_button_layout_schema ();
-		if (schema == null)
+		if (schema == null) {
+			if (failed != null)
+				failed = true;
 			return CloseButtonPosition.LEFT;
+		}
 
 		var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
 		var parts = layout.split (":");
 
-		// do the right side first, so we default to left
-		if (parts.length > 1 && "close" in parts[1])
-			return CloseButtonPosition.RIGHT;
-		else
+		if (parts.length < 2) {
+			if (failed != null)
+				failed = true;
 			return CloseButtonPosition.LEFT;
+		}
+
+		if ("close" in parts[0])
+			return CloseButtonPosition.LEFT;
+		else if ("close" in parts[1])
+			return CloseButtonPosition.RIGHT;
+		else {
+			if (failed != null)
+				failed = true;
+			return CloseButtonPosition.LEFT;
+		}
 	}
 
 	/**
