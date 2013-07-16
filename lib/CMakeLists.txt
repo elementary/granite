@@ -44,6 +44,7 @@ set (VALA_SOURCES
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
     Widgets/ThinPaned.vala
+    Widgets/OverlayBar.vala
 )
 
 set (C_SOURCES
