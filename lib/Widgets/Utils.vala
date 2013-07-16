@@ -173,42 +173,41 @@ namespace Granite.Widgets.Utils {
 	const string WM_BUTTON_LAYOUT_KEY = "button-layout";
 
 	/**
-	 * This method returns the close button position as configured for the window manager. If you
+	 * This method detects the close button position as configured for the window manager. If you
 	 * need to know when this key changed, it's best to listen on the schema returned by
 	 * {@link Granite.Widgets.Utils.get_button_layout_schema} for changes and then call this method again.
 	 *
-	 * @param failed if no schema was detected by {@link Granite.Widgets.Utils.get_button_layout_schema}
-	 *               or there was no close value in the button-layout string, this bool will be true. The
-	 *               returned will be LEFT in that case.
-	 * @return a {@link Granite.CloseButtonPosition} indicating where to best put the close button
+	 * @param position a {@link Granite.CloseButtonPosition} indicating where to best put the close button
+	 * @return if no schema was detected by {@link Granite.Widgets.Utils.get_button_layout_schema}
+	 *         or there was no close value in the button-layout string, false will be returned. The position
+	 *         will be LEFT in that case.
 	 */
-	public CloseButtonPosition get_default_close_button_position (out bool? failed = null)
+	public bool get_default_close_button_position (out CloseButtonPosition position)
 	{
+		// default value
+		position = CloseButtonPosition.LEFT;
+
 		var schema = get_button_layout_schema ();
 		if (schema == null) {
-			if (failed != null)
-				failed = true;
-			return CloseButtonPosition.LEFT;
+			return false;
 		}
 
 		var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
 		var parts = layout.split (":");
 
 		if (parts.length < 2) {
-			if (failed != null)
-				failed = true;
-			return CloseButtonPosition.LEFT;
+			return false;
 		}
 
-		if ("close" in parts[0])
-			return CloseButtonPosition.LEFT;
-		else if ("close" in parts[1])
-			return CloseButtonPosition.RIGHT;
-		else {
-			if (failed != null)
-				failed = true;
-			return CloseButtonPosition.LEFT;
+		if ("close" in parts[0]) {
+			position = CloseButtonPosition.LEFT;
+			return true;
+		} else if ("close" in parts[1]) {
+			position = CloseButtonPosition.RIGHT;
+			return true;
 		}
+
+		return false;
 	}
 
 	/**
@@ -223,16 +222,12 @@ namespace Granite.Widgets.Utils {
 	{
 		var schemas = GLib.Settings.list_schemas ();
 
-		string schema;
 		if (PANTHEON_SETTINGS_PATH in schemas)
-			schema = PANTHEON_SETTINGS_PATH;
+			return PANTHEON_SETTINGS_PATH;
 		else if (WM_SETTINGS_PATH in schemas)
-			schema = WM_SETTINGS_PATH;
-		else {
-			warning ("No schema indicating the button-layout is installed.");
-			return null;
-		}
+			return WM_SETTINGS_PATH;
 
-		return schema;
+		warning ("No schema indicating the button-layout is installed.");
+		return null;
 	}
 }
