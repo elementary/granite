@@ -121,10 +121,12 @@ namespace Granite.Widgets {
             var lblbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             lblbox.pack_start (_label);
             lblbox.pack_start (_icon, false, false);
-            lblbox.pack_start (_working, false, false, 2);
+            lblbox.pack_start (_working, false, false);
             lbl.add (lblbox);
             _label.set_tooltip_text (label);
             _label.ellipsize = Pango.EllipsizeMode.END;
+            _icon.set_size_request (16,16);
+            _working.set_size_request (16, 16);
             lbl.visible_window = false;
 
             this.pack_start (this.close, false);
