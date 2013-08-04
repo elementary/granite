@@ -182,8 +182,7 @@ namespace Granite.Widgets.Utils {
      *         or there was no close value in the button-layout string, false will be returned. The position
      *         will be LEFT in that case.
      */
-    public bool get_default_close_button_position (out CloseButtonPosition position)
-    {
+    public bool get_default_close_button_position (out CloseButtonPosition position) {
         // default value
         position = CloseButtonPosition.LEFT;
 
@@ -218,8 +217,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the schema name
      */
-    public string? get_button_layout_schema ()
-    {
+    public string? get_button_layout_schema () {
         var schemas = GLib.Settings.list_schemas ();
 
         if (PANTHEON_SETTINGS_PATH in schemas)
