@@ -63,6 +63,12 @@ public enum Granite.TextStyle {
     }
 }
 
+public enum Granite.CloseButtonPosition
+{
+    LEFT,
+    RIGHT
+}
+
 /**
  * This class helps to apply CSS to widgets.
  */
@@ -160,5 +166,66 @@ namespace Granite.Widgets.Utils {
         }
 
         style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
+    const string WM_SETTINGS_PATH = "org.gnome.desktop.wm.preferences";
+    const string PANTHEON_SETTINGS_PATH = "org.pantheon.desktop.gala.appearance";
+    const string WM_BUTTON_LAYOUT_KEY = "button-layout";
+
+    /**
+     * This method detects the close button position as configured for the window manager. If you
+     * need to know when this key changed, it's best to listen on the schema returned by
+     * {@link Granite.Widgets.Utils.get_button_layout_schema} for changes and then call this method again.
+     *
+     * @param position a {@link Granite.CloseButtonPosition} indicating where to best put the close button
+     * @return if no schema was detected by {@link Granite.Widgets.Utils.get_button_layout_schema}
+     *         or there was no close value in the button-layout string, false will be returned. The position
+     *         will be LEFT in that case.
+     */
+    public bool get_default_close_button_position (out CloseButtonPosition position) {
+        // default value
+        position = CloseButtonPosition.LEFT;
+
+        var schema = get_button_layout_schema ();
+        if (schema == null) {
+            return false;
+        }
+
+        var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
+        var parts = layout.split (":");
+
+        if (parts.length < 2) {
+            return false;
+        }
+
+        if ("close" in parts[0]) {
+            position = CloseButtonPosition.LEFT;
+            return true;
+        } else if ("close" in parts[1]) {
+            position = CloseButtonPosition.RIGHT;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * This methods returns the schema used by {@link Granite.Widgets.Utils.get_default_close_button_position}
+     * to determine the close button placement. It will first check for the pantheon/gala schema and then fallback
+     * to the default gnome one. If neither is available, NULL is returned. Make sure to check for this case, 
+     * as otherwise your program may crash on startup.
+     *
+     * @return the schema name
+     */
+    public string? get_button_layout_schema () {
+        var schemas = GLib.Settings.list_schemas ();
+
+        if (PANTHEON_SETTINGS_PATH in schemas)
+            return PANTHEON_SETTINGS_PATH;
+        else if (WM_SETTINGS_PATH in schemas)
+            return WM_SETTINGS_PATH;
+
+        warning ("No schema indicating the button-layout is installed.");
+        return null;
     }
 }
