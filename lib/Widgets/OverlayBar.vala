@@ -122,8 +122,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
         update_spacing ();
 
-        overlay.set_events (overlay.get_events () |
-                            Gdk.EventMask.ENTER_NOTIFY_MASK);
+        overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
         overlay.add_overlay (this);
     }
 
