@@ -101,7 +101,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     }
 
     /**
-     * Creates a new Overlay Bar.
+     * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
     public OverlayBar (Gtk.Overlay overlay) {
         visible_window = false;
