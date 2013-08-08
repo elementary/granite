@@ -34,19 +34,15 @@
  *
  * public class OverlayBarExample : Gtk.Window {{{
  *
- *     private Gtk.Overlay overlay;
- *     private Granite.Widgets.OverlayBar overlaybar;
- *
  *     public OverlayBarExample () {{{
  *         this.title = "Overlay Bar Example";
  *  	   this.window_position = Gtk.WindowPosition.CENTER;
  *  	   this.set_default_size (400, 300);
  *
- *  	   this.overlay = new Gtk.Overlay ();
- *  	   overlay.set_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+ *  	   var overlay = new Gtk.Overlay ();
  *
- *         this.overlaybar = new Granite.Widgets.OverlayBar ();
- *         this.overlaybar.status.label = "Overlay Bar Example";
+ *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
+ *         overlaybar.status = "Overlay Bar Example";
  *
  *         overlay.add (new Gtk.IconView ());
  *         overlay.add_overlay (overlaybar);
