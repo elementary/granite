@@ -86,15 +86,24 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
        border-color: darker (@bg_color);
    }""";
 
-    public Gtk.Label status;
+    private Gtk.Label status_label;
+    public string status {
+        set {
+           status_label.label = value; 
+        }
+        
+        get {
+            return status_label.label;
+        }
+    }
 
-    public OverlayBar () {
+    public OverlayBar (Gtk.Overlay overlay) {
         visible_window = false;
 
-        status = new Gtk.Label (null);
-        status.set_ellipsize (Pango.EllipsizeMode.END);
-        add (status);
-        status.show ();
+        status_label = new Gtk.Label (null);
+        status_label.set_ellipsize (Pango.EllipsizeMode.END);
+        add (status_label);
+        status_label.show ();
 
         set_halign (Gtk.Align.END);
         set_valign (Gtk.Align.END);
@@ -106,6 +115,10 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         ctx.changed.connect_after (queue_resize);
 
         update_spacing ();
+        
+        overlay.set_events (overlay.get_events () |
+                            Gdk.EventMask.ENTER_NOTIFY_MASK);
+        overlay.add_overlay (this);
     }
 
     public override void parent_set (Gtk.Widget? old_parent) {
@@ -130,7 +143,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
         Gtk.Requisition label_min_size, label_natural_size;
-        status.get_preferred_size (out label_min_size, out label_natural_size);
+        status_label.get_preferred_size (out label_min_size, out label_natural_size);
 
         var ctx = get_style_context ();
         var state = ctx.get_state ();
@@ -144,7 +157,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     public override void get_preferred_height_for_width (int width, out int minimum_height,
                                                          out int natural_height) {
         Gtk.Requisition label_min_size, label_natural_size;
-        status.get_preferred_size (out label_min_size, out label_natural_size);
+        status_label.get_preferred_size (out label_min_size, out label_natural_size);
 
         var ctx = get_style_context ();
         var state = ctx.get_state ();
@@ -160,10 +173,10 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         var state = ctx.get_state ();
 
         var padding = ctx.get_padding (state);
-        status.margin_top = padding.top;
-        status.margin_bottom = padding.bottom;
-        status.margin_left = padding.left;
-        status.margin_right = padding.right;
+        status_label.margin_top = padding.top;
+        status_label.margin_bottom = padding.bottom;
+        status_label.margin_left = padding.left;
+        status_label.margin_right = padding.right;
 
         var margin = ctx.get_margin (state);
         margin_top = margin.top;
