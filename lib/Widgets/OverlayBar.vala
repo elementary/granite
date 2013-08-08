@@ -21,14 +21,19 @@
 /**
  * A floating status bar that displays a single line of text.
  *
- * This widget is intended to be used as an overlay for a {@link Gtk.Overlay} and is placed in its
- * bottom corners (bottom-right corner, initially).
+ * This widget is intended to be used as an overlay for a {@link Gtk.Overlay} and is placed in the
+ * bottom-right corner by default. You can change its position like you would do for any overlay
+ * widget used in a {@link Gtk.Overlay}.
  *
- * The Overlay Bar displays a single line of text that can be manipulated using the status label
- * (a standard {@link Gtk.Label}).
+ * The Overlay Bar displays a single line of text that can be changed using the "status" property.
  *
- * This widget tries to avoid getting in front of the content being shown inside the {@link Gtk.Overlay}
- * by moving itself to the opposite corner from the current one when a mouse enter event is detected.
+ * This widget tries to avoid getting in front of the content being displayed inside the {@link Gtk.Overlay}
+ * by moving itself horizontally to the opposite side from the current one when a mouse enter event
+ * is detected.
+ *
+ * For this widget to function correctly, the event {@ling Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
+ * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
+ * but you have to be careful not to unset the event for the {@lint Gtk.Overlay} at a later stage.
  *
  * ''Example'' <<BR>>
  *
@@ -40,12 +45,10 @@
  *  	   this.set_default_size (400, 300);
  *
  *  	   var overlay = new Gtk.Overlay ();
+ *         overlay.add (new Gtk.IconView ());
  *
  *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
  *         overlaybar.status = "Overlay Bar Example";
- *
- *         overlay.add (new Gtk.IconView ());
- *         overlay.add_overlay (overlaybar);
  *
  *         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
  *         box.pack_start (overlay, true, true);
@@ -83,16 +86,23 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
    }""";
 
     private Gtk.Label status_label;
+
+    /**
+     * Status text displayed inside the Overlay Bar.
+     */
     public string status {
         set {
-           status_label.label = value; 
+           status_label.label = value;
         }
-        
+
         get {
             return status_label.label;
         }
     }
 
+    /**
+     * Creates a new Overlay Bar.
+     */
     public OverlayBar (Gtk.Overlay overlay) {
         visible_window = false;
 
@@ -111,7 +121,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         ctx.changed.connect_after (queue_resize);
 
         update_spacing ();
-        
+
         overlay.set_events (overlay.get_events () |
                             Gdk.EventMask.ENTER_NOTIFY_MASK);
         overlay.add_overlay (this);
