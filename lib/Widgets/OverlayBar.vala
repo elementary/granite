@@ -11,13 +11,68 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301 USA.
 ***/
 
+/**
+ * A floating status bar that displays a single line of text.
+ *
+ * This widget is intended to be used as an overlay for a {@link Gtk.Overlay} and is placed in its
+ * bottom corners (bottom-right corner, initially).
+ *
+ * The Overlay Bar displays a single line of text that can be manipulated using the status label
+ * (a standard {@link Gtk.Label}).
+ *
+ * This widget tries to avoid getting in front of the content being shown inside the {@link Gtk.Overlay}
+ * by moving itself to the opposite corner from the current one when a mouse enter event is detected.
+ *
+ * ''Example'' <<BR>>
+ *
+ * public class OverlayBarExample : Gtk.Window {{{
+ *
+ *     private Gtk.Overlay overlay;
+ *     private Granite.Widgets.OverlayBar overlaybar;
+ *
+ *     public OverlayBarExample () {{{
+ *         this.title = "Overlay Bar Example";
+ *  	   this.window_position = Gtk.WindowPosition.CENTER;
+ *  	   this.set_default_size (400, 300);
+ *
+ *  	   this.overlay = new Gtk.Overlay ();
+ *  	   overlay.set_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+ *
+ *         this.overlaybar = new Granite.Widgets.OverlayBar ();
+ *         this.overlaybar.status.label = "Overlay Bar Example";
+ *
+ *         overlay.add (new Gtk.IconView ());
+ *         overlay.add_overlay (overlaybar);
+ *
+ *         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+ *         box.pack_start (overlay, true, true);
+ *
+ *         this.add (box);
+ *     }}}
+ *
+ *     public static int main (string[] args) {{{
+ *         Gtk.init (ref args);
+ *
+ *         var window = new OverlayBarExample ();
+ *         window.destroy.connect (Gtk.main_quit);
+ *         window.show_all ();
+ *
+ *         Gtk.main ();
+ *         return 0;
+ *     }}}
+ * }}}
+ *
+ * valac --pkg gtk+-3.0 --pkg granite OverlayBarExample.vala
+ *
+ * @see Gtk.Overlay
+ */
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     private const string FALLBACK_THEME = """
