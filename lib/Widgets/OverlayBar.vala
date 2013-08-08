@@ -28,8 +28,8 @@
  * The Overlay Bar displays a single line of text that can be changed using the "status" property.
  *
  * This widget tries to avoid getting in front of the content being displayed inside the {@link Gtk.Overlay}
- * by moving itself horizontally to the opposite side from the current one when a mouse enter event
- * is detected.
+ * by moving itself horizontally to the opposite side from the current one when the mouse pointer enters
+ * the widget.
  *
  * For this widget to function correctly, the event {@ling Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
  * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
