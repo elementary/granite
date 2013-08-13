@@ -210,6 +210,7 @@ namespace Granite.Widgets {
     private class ClosedTabs : GLib.Object {
 
         public signal void restored (Tab tab);
+        public signal void cleared ();
 
         private struct Entry {
             string title;
@@ -265,10 +266,9 @@ namespace Granite.Widgets {
             return tab;
         }
 
-        private Gtk.Menu _menu;
         public Gtk.Menu menu {
-            get {
-                _menu = new Gtk.Menu ();
+            owned get {
+                var _menu = new Gtk.Menu ();
 
                 foreach (var entry in closed_tabs) {
                     var item = new Gtk.ImageMenuItem.with_label (entry.title);
@@ -283,7 +283,20 @@ namespace Granite.Widgets {
                         this.restored (pick (entry.data));
                     });
                 }
-
+                
+                if (!empty) {
+                    var separator = new Gtk.SeparatorMenuItem ();
+                    var item = new Gtk.MenuItem.with_label (_("Clear All"));
+                    
+                    _menu.append (separator);
+                    _menu.append (item);
+                    
+                    item.activate.connect (() => {
+                        closed_tabs = {};
+                        cleared ();
+                    });
+                }
+                
                 return _menu;
             }
         }
@@ -498,6 +511,11 @@ namespace Granite.Widgets {
                 restore_button.sensitive = !closed_tabs.empty;
                 insert_tab (tab, -1);
                 this.tab_restored (tab);
+            });
+            
+            closed_tabs.cleared.connect (() => {
+                restore_button.sensitive = false;
+                restore_tab_m.sensitive = false;
             });
 
             add_button = new Gtk.Button ();
