@@ -11,6 +11,7 @@ set (BASE_VALADOC_COMMAND
     valadoc
     ${VALADOC_PKG_OPTS}
     ${SRC_FILES}
+    --target-glib=2.32
     --package-name=${PKG_NAME}
     --package-version=${PKG_VERSION})
 
