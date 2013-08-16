@@ -41,10 +41,10 @@
  *
  *     public OverlayBarExample () {{{
  *         this.title = "Overlay Bar Example";
- *  	   this.window_position = Gtk.WindowPosition.CENTER;
- *  	   this.set_default_size (400, 300);
+ *         this.window_position = Gtk.WindowPosition.CENTER;
+ *         this.set_default_size (400, 300);
  *
- *  	   var overlay = new Gtk.Overlay ();
+ *         var overlay = new Gtk.Overlay ();
  *         overlay.add (new Gtk.IconView ());
  *
  *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
