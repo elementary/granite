@@ -820,18 +820,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             // and its handlers could potentially depend on one of the methods mentioned above.
             items.unset (item);
 
-            if (child_iter != null) {
-#if VALA_0_18
-                // Workaround for a bug in valac 0.18 that tries to pass an invalid pointer type
-                // (GtkTreeIter** instead of GtkTreeIter*) to gtk_tree_store_remove() in the
-                // generated C code. https://bugzilla.gnome.org/show_bug.cgi?id=685177
-                Gtk.TreeIter iter = child_iter;
-
-                child_tree.remove (ref iter);
-#else
-                child_tree.remove (child_iter);
-#endif
-            }
+            if (child_iter != null)
+                child_tree.remove (ref child_iter);
 
             push_parent_update (item.parent);
 
