@@ -31,9 +31,9 @@
  * by moving itself horizontally to the opposite side from the current one when the mouse pointer enters
  * the widget.
  *
- * For this widget to function correctly, the event {@ling Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
+ * For this widget to function correctly, the event {@link Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
  * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
- * but you have to be careful not to unset the event for the {@lint Gtk.Overlay} at a later stage.
+ * but you have to be careful not to unset the event for the {@link Gtk.Overlay} at a later stage.
  *
  * ''Example'' <<BR>>
  *
