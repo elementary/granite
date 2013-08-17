@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -283,20 +283,20 @@ namespace Granite.Widgets {
                         this.restored (pick (entry.data));
                     });
                 }
-                
+
                 if (!empty) {
                     var separator = new Gtk.SeparatorMenuItem ();
                     var item = new Gtk.MenuItem.with_label (_("Clear All"));
-                    
+
                     _menu.append (separator);
                     _menu.append (item);
-                    
+
                     item.activate.connect (() => {
                         closed_tabs = {};
                         cleared ();
                     });
                 }
-                
+
                 return _menu;
             }
         }
@@ -512,7 +512,7 @@ namespace Granite.Widgets {
                 insert_tab (tab, -1);
                 this.tab_restored (tab);
             });
-            
+
             closed_tabs.cleared.connect (() => {
                 restore_button.sensitive = false;
                 restore_tab_m.sensitive = false;
@@ -566,7 +566,7 @@ namespace Granite.Widgets {
 
                 return false;
             });
-            
+
             this.key_press_event.connect ((e) => {
 
                 e.state &= MODIFIER_MASK;
@@ -691,7 +691,7 @@ namespace Granite.Widgets {
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
-            
+
             this.notebook.resize_children ();
         }
 
@@ -720,14 +720,14 @@ namespace Granite.Widgets {
                 if (tab.page.get_parent () != null)
                     tab.page.unparent ();
             }
-            
+
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
                 restore_tab_m.sensitive = !closed_tabs.empty;
             }
         }
-        
+
 	[Deprecated (since=0.2)]
 	public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
