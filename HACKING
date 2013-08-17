@@ -26,7 +26,7 @@ Browse it online and look for other branches at http://code.launchpad.net/granit
 
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ..
     make
 
 Run a program using your compiled Granite branch:
