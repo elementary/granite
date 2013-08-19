@@ -426,6 +426,8 @@ namespace Granite.Widgets {
         private int tab_width = 150;
         private int max_tab_width = 150;
 
+		private bool add_button_visible = true;
+
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
@@ -761,6 +763,18 @@ namespace Granite.Widgets {
         public Gtk.Widget get_nth_page (int index) {
             return notebook.get_nth_page (index);
         }
+
+        public void set_button_visible (bool visible) {
+			if (visible != add_button_visible) {
+				if (add_button_visible) {
+					this.notebook.set_action_widget (null, Gtk.PackType.START);					
+				} else {
+					this.notebook.set_action_widget (add_button, Gtk.PackType.START);
+				}
+				
+				add_button_visible = visible;
+			}
+		}
 
         private void insert_new_tab_at_end () {
             var t = new Tab ();
