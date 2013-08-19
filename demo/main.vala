@@ -384,8 +384,6 @@ public class Granite.Demo : Granite.Application {
 
         dynamic_notebook.allow_duplication = true;
         dynamic_notebook.allow_restoring = true;
-		dynamic_notebook.allow_pinning = true;
-		dynamic_notebook.show_icons = true;
 
         var tab = new Granite.Widgets.Tab ("user1@elementaryos: ~",
                                            new ThemedIcon ("empty"),
