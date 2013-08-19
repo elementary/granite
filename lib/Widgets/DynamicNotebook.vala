@@ -394,7 +394,7 @@ namespace Granite.Widgets {
         /**
          * Controls the '+' add button visibility
          */
-        private bool _add_button_visible = true;
+        bool _add_button_visible = true;
         public bool add_button_visible {
             get { return _add_button_visible; }
             set {
