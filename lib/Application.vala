@@ -156,7 +156,7 @@ namespace Granite {
                                                "logo_icon_name", app_icon,
 
                                                "comments", about_comments,
-                                               "copyright", "%s %s Developers".printf (app_years, program_name),
+                                               "copyright", "%s %s".printf (app_years, program_name) + _("Developers"),
                                                "website", main_url,
                                                "website_label", _("Website"),
 
