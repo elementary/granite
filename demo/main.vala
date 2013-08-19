@@ -438,7 +438,7 @@ public class Granite.Demo : Granite.Application {
     private Gtk.Widget get_overlay_bar_widget () {
         // OverlayBar (inside StaticNotebook)
         var overlay = new Gtk.Overlay ();
-        overlay.add (new Gtk.IconView ());
+        overlay.add (new Gtk.Label ("Try to touch the Overlay Bar!"));
 
         var overlay_bar = new Granite.Widgets.OverlayBar (overlay);
         overlay_bar.status = "Overlay Bar Example";

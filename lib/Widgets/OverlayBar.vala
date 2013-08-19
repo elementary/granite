@@ -45,7 +45,7 @@
  *         this.set_default_size (400, 300);
  *
  *         var overlay = new Gtk.Overlay ();
- *         overlay.add (new Gtk.IconView ());
+ *         overlay.add (new Gtk.Label ("Try to touch the Overlay Bar!"));
  *
  *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
  *         overlaybar.status = "Overlay Bar Example";
