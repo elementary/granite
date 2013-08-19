@@ -38,11 +38,44 @@ namespace Granite.Widgets {
             }
         }
 
+        private bool _pinned;
+        public bool pinned {
+            get { return _pinned; }
+            set {
+                if (pinnable) {
+                    if (value != _pinned) {
+                        if (value) {
+                            _label.visible = false;
+                            close.visible = false;
+                        } else {
+                            _label.visible = true;
+                            close.visible = true;
+                        }
+
+                        _pinned = value;
+                        this.pin_switch ();
+                    }
+                }
+            }
+        }
+
+        private bool _pinnable;
+        public bool pinnable {
+            get { return _pinnable; }
+            set {
+                if (!value) {
+                    pinned = false;
+                }
+                _pinnable = value;
+
+            }
+        }
+
         /**
-	 * Data which will be kept once the tab is deleted, and which will be used by
-	 * the application to restore the data into the restored tab. Let it empty if
-	 * the tab should not be restored.
-	 **/
+         * Data which will be kept once the tab is deleted, and which will be used by
+         * the application to restore the data into the restored tab. Let it empty if
+         * the tab should not be restored.
+         **/
         public string restore_data { get; set; }
 
         internal Gtk.EventBox page_container;
@@ -71,7 +104,7 @@ namespace Granite.Widgets {
         bool __working;
         public bool working {
             get { return __working; }
-            set { __working = _working.visible = value; _icon.visible = !value; }
+            set {__working = _working.visible = value; _icon.visible = !value; }
         }
 
         public Pango.EllipsizeMode ellipsize_mode {
@@ -97,11 +130,13 @@ namespace Granite.Widgets {
         //We need to be able to toggle these from the notebook.
         internal Gtk.MenuItem new_window_m;
         internal Gtk.MenuItem duplicate_m;
+        internal Gtk.MenuItem pin_m;
 
         internal signal void closed ();
         internal signal void close_others ();
         internal signal void new_window ();
         internal signal void duplicate ();
+        internal signal void pin_switch ();
 
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label = new Gtk.Label (label);
@@ -111,8 +146,8 @@ namespace Granite.Widgets {
                 this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
             this._working = new Gtk.Spinner ();
             _working.start();
-            this.close = new Gtk.Button ();
 
+            this.close = new Gtk.Button ();
             close.add (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
             close.tooltip_text = _("Close Tab");
             close.relief = Gtk.ReliefStyle.NONE;
@@ -141,18 +176,21 @@ namespace Granite.Widgets {
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
             var close_other_m = new Gtk.MenuItem.with_label ("");
+            pin_m = new Gtk.MenuItem.with_label ("");
             new_window_m = new Gtk.MenuItem.with_label (_("Open in a new Window"));
             duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
             menu.append (close_other_m);
             menu.append (close_m);
             menu.append (new_window_m);
             menu.append (duplicate_m);
+            menu.append (pin_m);
             menu.show_all ();
 
             close_m.activate.connect (() => closed () );
             close_other_m.activate.connect (() => close_others () );
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
+            pin_m.activate.connect (() => pinned = !pinned );
 
             this.scroll_event.connect ((e) => {
                 var notebook = (this.get_parent () as Gtk.Notebook);
@@ -191,6 +229,10 @@ namespace Granite.Widgets {
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
+                    pin_m.label = "Pin";
+                    if (this.pinned) {
+                        pin_m.label = "Unpin";
+                    }
                 } else {
                     return false;
                 }
@@ -315,7 +357,7 @@ namespace Granite.Widgets {
             get { return _show_icons; }
             set {
                 if (_show_icons != value) {
-                    tabs.foreach ((t) => t._icon.visible = value );
+                    tabs.foreach ((t) => t._icon.visible = (value && !t.working));
                 }
                 _show_icons = value;
             }
@@ -411,6 +453,24 @@ namespace Granite.Widgets {
             }
         }
 
+        bool _allow_pinning = false;
+        public bool allow_pinning {
+            get { return _allow_pinning; }
+            set {
+                _allow_pinning = value;
+
+                foreach (var tab in tabs) {
+                    tab.pinnable = value;
+                }
+            }
+        }
+
+        bool _force_left = true;
+        public bool force_left {
+            get { return _force_left; }
+            set { _force_left = value; }
+        }
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
@@ -445,6 +505,7 @@ namespace Granite.Widgets {
 
         private int tab_width = 150;
         private int max_tab_width = 150;
+        private int tab_width_pinned = 20;
 
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
@@ -670,20 +731,61 @@ namespace Granite.Widgets {
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
             tab_moved (notebook.get_tab_label (page) as Tab, (int) pagenum, false, -1, -1);
+            recalc_order ();
         }
 
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
             tab_moved (tab, 0, true, x, y);
+            recalc_order ();
             return (Gtk.Notebook) null;
+        }
+
+        private void recalc_order () {
+            if (n_tabs == 0 || !force_left)
+                return;
+
+            var pinned_tabs = 0;
+            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
+                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                    pinned_tabs++;
+                }
+            }
+
+            for (var p = 0; p < pinned_tabs; p++) {         
+                int sel = p;
+                for (var i = p; i < this.notebook.get_n_pages (); i++) {
+                    if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                        sel = i;
+                        break;
+                    }
+                }
+                if (sel != p) {
+                    this.notebook.reorder_child (this.notebook.get_nth_page (sel), p);
+                }
+            }
         }
 
         private void recalc_size () {
             if (n_tabs == 0)
                 return;
 
+            var pinned_tabs = 0;
+            var unpinned_tabs = 0;
+            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
+                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                    pinned_tabs++;
+                } else {
+                    unpinned_tabs++;
+                }
+            }
+
+            if (unpinned_tabs == 0) {
+                unpinned_tabs = 1;
+            }
+
             var offset = 130;
-            this.tab_width = (this.get_allocated_width () - offset) / this.notebook.get_n_pages ();
+            this.tab_width = (this.get_allocated_width () - offset - pinned_tabs * tab_width_pinned) / unpinned_tabs;
             if (tab_width > max_tab_width)
                 tab_width = max_tab_width;
 
@@ -692,6 +794,10 @@ namespace Granite.Widgets {
 
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
+
+                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                    this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width_pinned;
+                }
             }
             
             this.notebook.resize_children ();
@@ -706,6 +812,22 @@ namespace Granite.Widgets {
             restore_tab_m.sensitive = !closed_tabs.empty;
             insert_tab (tab, -1);
             this.tab_restored (tab);
+        }
+
+        private void switch_pin_tab (Tab tab) {
+            if (!allow_pinning) {
+                return;
+            }
+
+            var pin_state = !tab.pinned;
+            if (pin_state) {
+                tab._icon.visible = !tab.working;
+            } else {
+                tab._icon.visible = show_icons && !tab.working;
+            }
+
+            recalc_order ();
+            recalc_size ();
         }
 
         public void remove_tab (Tab tab) {
@@ -730,8 +852,8 @@ namespace Granite.Widgets {
             }
         }
         
-	[Deprecated (since=0.2)]
-	public void remove_tab_force (Tab tab) {
+        [Deprecated (since=0.2)]
+        public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
             if (pos != -1)
                 notebook.remove_page (pos);
@@ -768,6 +890,7 @@ namespace Granite.Widgets {
         public void set_tab_position (Tab tab, int position) {
             notebook.reorder_child (tab.page_container, position);
             tab_moved (tab, position, false, -1, -1);
+            recalc_order ();
         }
 
         public Tab? get_tab_by_index (int index) {
@@ -800,9 +923,12 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
 
-            tab._icon.visible = show_icons;
+            tab._icon.visible = show_icons && !tab.working;
             tab.duplicate_m.visible = allow_duplication;
             tab.new_window_m.visible = allow_new_window;
+            tab.pin_m.visible = allow_pinning;
+            tab.pinnable = allow_pinning;
+            tab.pinned = false;
 
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
@@ -834,7 +960,12 @@ namespace Granite.Widgets {
                 tab_duplicated (tab);
             });
 
+            tab.pin_switch.connect (() => {
+                switch_pin_tab (tab);
+            });
+
             this.recalc_size ();
+            this.recalc_order ();
 
             if (!tabs_closable)
                 tab.close.visible = false;
