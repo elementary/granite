@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -92,7 +92,7 @@ namespace Granite {
 
         /**
          * This method runs the application
-         * 
+         *
          * @param args array of arguments
          */
         public new int run (string[] args) {
@@ -127,9 +127,9 @@ namespace Granite {
 
         /**
          * This methods creates a new App Menu
-         * 
+         *
          * @param menu the menu to create the App Menu for
-         * 
+         *
          * @return app_menu
          */
         public AppMenu create_appmenu (Gtk.Menu menu) {
@@ -144,19 +144,21 @@ namespace Granite {
 
         /**
          * This method shows the about dialog of this app.
-         * 
-         * @param parent This widget is the window that is calling the about page being created. 
+         *
+         * @param parent This widget is the window that is calling the about page being created.
          */
         public virtual void show_about (Gtk.Widget parent) {
+            assert (parent is Gtk.Window);
 
-            assert(parent is Gtk.Window);
-            Granite.Widgets.show_about_dialog ((Gtk.Window) parent, 
+            var developers_string = _("Developers");
+            
+            Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
                                                "program_name", program_name,
                                                "version", build_version,
                                                "logo_icon_name", app_icon,
 
                                                "comments", about_comments,
-                                               "copyright", "%s %s Developers".printf (app_years, program_name),
+                                               "copyright", "%s %s %s".printf (app_years, program_name, developers_string),
                                                "website", main_url,
                                                "website_label", _("Website"),
 
@@ -170,10 +172,6 @@ namespace Granite {
                                                "help", help_url,
                                                "translate", translate_url,
                                                "bug", bug_url);
-
         }
-
     }
-
 }
-
