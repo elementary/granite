@@ -391,6 +391,26 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * Controls the '+' add button visibility
+         */
+
+        private bool _add_button_visible = true;
+        public bool add_button_visible {
+            get { return _add_button_visible; }
+            set {
+                if (value != _add_button_visible) {
+                    if (_add_button_visible) {
+                        this.notebook.set_action_widget (null, Gtk.PackType.START);                 
+                    } else {
+                        this.notebook.set_action_widget (add_button, Gtk.PackType.START);
+                    }
+
+                    _add_button_visible = value;
+                }
+            }
+        }
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
@@ -425,8 +445,6 @@ namespace Granite.Widgets {
 
         private int tab_width = 150;
         private int max_tab_width = 150;
-
-        private bool add_button_visible = true;
 
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
@@ -762,18 +780,6 @@ namespace Granite.Widgets {
 
         public Gtk.Widget get_nth_page (int index) {
             return notebook.get_nth_page (index);
-        }
-
-        public void set_button_visible (bool visible) {
-            if (visible != add_button_visible) {
-                if (add_button_visible) {
-                    this.notebook.set_action_widget (null, Gtk.PackType.START);                 
-                } else {
-                    this.notebook.set_action_widget (add_button, Gtk.PackType.START);
-                }
-                
-                add_button_visible = visible;
-            }
         }
 
         private void insert_new_tab_at_end () {
