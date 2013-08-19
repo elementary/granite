@@ -27,7 +27,7 @@ namespace Granite.Widgets {
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
-    public class Tab : Gtk.Box {
+    public class Tab : Gtk.EventBox {
 
         Gtk.Label _label;
         public string label {
@@ -94,7 +94,7 @@ namespace Granite.Widgets {
         internal Gtk.Button close;
         public Gtk.Menu menu { get; set; }
 
-        //we need to be able to toggle those from the notebook
+        //We need to be able to toggle these from the notebook.
         internal Gtk.MenuItem new_window_m;
         internal Gtk.MenuItem duplicate_m;
 
@@ -117,16 +117,18 @@ namespace Granite.Widgets {
             close.tooltip_text = _("Close Tab");
             close.relief = Gtk.ReliefStyle.NONE;
 
-            var lbl = new Gtk.EventBox ();
+            var tab_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            tab_box.pack_start (close, false);
+            tab_box.pack_start (_label);
+            tab_box.pack_start (_icon, false);
+            tab_box.pack_start (_working, false);
             _label.set_tooltip_text (label);
-            lbl.add (_label);
             _label.ellipsize = Pango.EllipsizeMode.END;
-            lbl.visible_window = false;
-
-            this.pack_start (this.close, false);
-            this.pack_start (lbl);
-            this.pack_start (this._icon, false);
-            this.pack_start (this._working, false);
+            _icon.set_size_request (16, 16);
+            _working.set_size_request (16, 16);
+            this.visible_window = false;
+            
+            this.add (tab_box);
 
             page_container = new Gtk.EventBox ();
             this.page = page ?? new Gtk.Label("");
@@ -152,7 +154,7 @@ namespace Granite.Widgets {
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
 
-            lbl.scroll_event.connect ((e) => {
+            this.scroll_event.connect ((e) => {
                 var notebook = (this.get_parent () as Gtk.Notebook);
                 switch (e.direction) {
                     case Gdk.ScrollDirection.UP:
@@ -175,8 +177,7 @@ namespace Granite.Widgets {
                 return false;
             });
 
-            lbl.button_press_event.connect ((e) => {
-
+            this.button_press_event.connect ((e) => {
                 e.state &= MODIFIER_MASK;
 
                 if (e.button == 2 && e.state == 0 && close.visible) {
@@ -197,9 +198,9 @@ namespace Granite.Widgets {
                 return true;
             });
 
-            this.button_press_event.connect ((e) => {
+            /*this.button_press_event.connect ((e) => {
                 return (e.type == Gdk.EventType.2BUTTON_PRESS || e.button != 1);
-            });
+            });*/
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
             close.clicked.connect ( () => this.closed () );
