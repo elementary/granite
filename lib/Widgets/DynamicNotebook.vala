@@ -66,8 +66,8 @@ namespace Granite.Widgets {
                 if (!value) {
                     pinned = false;
                 }
-                _pinnable = value;
 
+                _pinnable = value;
             }
         }
 
@@ -760,6 +760,7 @@ namespace Granite.Widgets {
                         break;
                     }
                 }
+
                 if (sel != p) {
                     this.notebook.reorder_child (this.notebook.get_nth_page (sel), p);
                 }
