@@ -52,10 +52,9 @@ namespace Granite.Widgets {
                             close.visible = true;
                         }
 
+                        _pinned = value;
                         this.pin_switch ();
                     }
-
-                    _pinned = value;
                 }
             }
         }
@@ -357,7 +356,7 @@ namespace Granite.Widgets {
             get { return _show_icons; }
             set {
                 if (_show_icons != value) {
-                    tabs.foreach ((t) => t._icon.visible = (value && !t.working) );
+                    tabs.foreach ((t) => t._icon.visible = (value && !t.working));
                 }
                 _show_icons = value;
             }
@@ -444,6 +443,12 @@ namespace Granite.Widgets {
                     tab.pinnable = value;
                 }
             }
+        }
+
+        bool _force_left = true;
+        public bool force_left {
+            get { return _force_left; }
+            set { _force_left = value; }
         }
 
         public Tab current {
@@ -706,12 +711,39 @@ namespace Granite.Widgets {
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
             tab_moved (notebook.get_tab_label (page) as Tab, (int) pagenum, false, -1, -1);
+            recalc_order ();
         }
 
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
             tab_moved (tab, 0, true, x, y);
+            recalc_order ();
             return (Gtk.Notebook) null;
+        }
+
+        private void recalc_order () {
+            if (n_tabs == 0 || !force_left)
+                return;
+
+            var pinned_tabs = 0;
+            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
+                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                    pinned_tabs++;
+                }
+            }
+
+            for (var p = 0; p < pinned_tabs; p++) {         
+                int sel = p;
+                for (var i = p; i < this.notebook.get_n_pages (); i++) {
+                    if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
+                        sel = i;
+                        break;
+                    }
+                }
+                if (sel != p) {
+                    this.notebook.reorder_child (this.notebook.get_nth_page (sel), p);
+                }
+            }
         }
 
         private void recalc_size () {
@@ -774,6 +806,7 @@ namespace Granite.Widgets {
                 tab._icon.visible = show_icons && !tab.working;
             }
 
+            recalc_order ();
             recalc_size ();
         }
 
@@ -837,6 +870,7 @@ namespace Granite.Widgets {
         public void set_tab_position (Tab tab, int position) {
             notebook.reorder_child (tab.page_container, position);
             tab_moved (tab, position, false, -1, -1);
+            recalc_order ();
         }
 
         public Tab? get_tab_by_index (int index) {
@@ -911,6 +945,7 @@ namespace Granite.Widgets {
             });
 
             this.recalc_size ();
+            this.recalc_order ();
 
             if (!tabs_closable)
                 tab.close.visible = false;
