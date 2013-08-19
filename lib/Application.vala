@@ -150,13 +150,15 @@ namespace Granite {
         public virtual void show_about (Gtk.Widget parent) {
             assert (parent is Gtk.Window);
 
+            var developers_string = _("Developers");
+            
             Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
                                                "program_name", program_name,
                                                "version", build_version,
                                                "logo_icon_name", app_icon,
 
                                                "comments", about_comments,
-                                               "copyright", "%s %s".printf (app_years, program_name) + _("Developers"),
+                                               "copyright", "%s %s %s".printf (app_years, program_name, developers_string),
                                                "website", main_url,
                                                "website_label", _("Website"),
 
