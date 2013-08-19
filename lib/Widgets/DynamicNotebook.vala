@@ -54,6 +54,7 @@ namespace Granite.Widgets {
 
                         this.pin_switch ();
                     }
+
                     _pinned = value;
                 }
             }
@@ -67,14 +68,15 @@ namespace Granite.Widgets {
                     pinned = false;
                 }
                 _pinnable = value;
+
             }
         }
 
         /**
-     * Data which will be kept once the tab is deleted, and which will be used by
-     * the application to restore the data into the restored tab. Let it empty if
-     * the tab should not be restored.
-     **/
+         * Data which will be kept once the tab is deleted, and which will be used by
+         * the application to restore the data into the restored tab. Let it empty if
+         * the tab should not be restored.
+         **/
         public string restore_data { get; set; }
 
         internal Gtk.EventBox page_container;
@@ -740,6 +742,7 @@ namespace Granite.Widgets {
 
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
+
                 if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
                     this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width_pinned;
                 }
@@ -763,6 +766,7 @@ namespace Granite.Widgets {
             if (!allow_pinning) {
                 return;
             }
+
             var pin_state = !tab.pinned;
             if (pin_state) {
                 tab._icon.visible = !tab.working;
@@ -795,8 +799,8 @@ namespace Granite.Widgets {
             }
         }
         
-    [Deprecated (since=0.2)]
-    public void remove_tab_force (Tab tab) {
+        [Deprecated (since=0.2)]
+        public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
             if (pos != -1)
                 notebook.remove_page (pos);
