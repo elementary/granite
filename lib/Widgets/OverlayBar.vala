@@ -50,10 +50,7 @@
  *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
  *         overlaybar.status = "Overlay Bar Example";
  *
- *         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
- *         box.pack_start (overlay, true, true);
- *
- *         this.add (box);
+ *         this.add (overlay);
  *     }}}
  *
  *     public static int main (string[] args) {{{

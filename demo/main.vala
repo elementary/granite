@@ -443,10 +443,7 @@ public class Granite.Demo : Granite.Application {
         var overlay_bar = new Granite.Widgets.OverlayBar (overlay);
         overlay_bar.status = "Overlay Bar Example";
 
-        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        box.pack_start (overlay, true, true);
-
-        return box;
+        return overlay;
     }
 
     public static int main (string[] args) {
