@@ -191,7 +191,7 @@ public class Granite.Demo : Granite.Application {
         var pageone = new Gtk.Label ("Page 1");
 
         staticnotebook.append_page (new Gtk.Label ("Page 1"), pageone);
-        staticnotebook.append_page (new Gtk.Label ("Page 2"), new Gtk.Label ("Page 2"));
+        staticnotebook.append_page (get_overlay_bar_widget (), new Gtk.Label ("Overlay Bar"));
         staticnotebook.append_page (new Gtk.Label ("Page 3"), new Gtk.Label ("Page 3"));
 
         staticnotebook.page_changed.connect (() => {
@@ -377,7 +377,6 @@ public class Granite.Demo : Granite.Application {
     }
 
     private Granite.Widgets.DynamicNotebook create_dynamic_notebook () {
-
         int i = 3;
 
         var dynamic_notebook = new Granite.Widgets.DynamicNotebook ();
@@ -434,6 +433,17 @@ public class Granite.Demo : Granite.Application {
         });
 
         return dynamic_notebook;
+    }
+
+    private Gtk.Widget get_overlay_bar_widget () {
+        // OverlayBar (inside StaticNotebook)
+        var overlay = new Gtk.Overlay ();
+        overlay.add (new Gtk.Label ("Try to touch the Overlay Bar!"));
+
+        var overlay_bar = new Granite.Widgets.OverlayBar (overlay);
+        overlay_bar.status = "Overlay Bar Example";
+
+        return overlay;
     }
 
     public static int main (string[] args) {
