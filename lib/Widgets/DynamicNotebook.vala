@@ -104,7 +104,7 @@ namespace Granite.Widgets {
         bool __working;
         public bool working {
             get { return __working; }
-            set {__working = _working.visible = value; _icon.visible = !value; }
+            set { __working = _working.visible = value; _icon.visible = !value; }
         }
 
         public Pango.EllipsizeMode ellipsize_mode {
@@ -159,7 +159,7 @@ namespace Granite.Widgets {
             tab_box.pack_start (_working, false);
             _label.set_tooltip_text (label);
             _label.ellipsize = Pango.EllipsizeMode.END;
-            _icon.set_size_request (16, 16);
+            _icon.set_size_request (18, 18);
             _working.set_size_request (16, 16);
             this.visible_window = false;
             
@@ -505,7 +505,7 @@ namespace Granite.Widgets {
 
         private int tab_width = 150;
         private int max_tab_width = 150;
-        private int tab_width_pinned = 20;
+        private int tab_width_pinned = 18;
 
         public signal void tab_added (Tab tab);
         public signal bool tab_removed (Tab tab);
