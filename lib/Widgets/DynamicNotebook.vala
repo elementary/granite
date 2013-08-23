@@ -47,9 +47,14 @@ namespace Granite.Widgets {
                         if (value) {
                             _label.visible = false;
                             close.visible = false;
+							_icon.margin_left = 1;
+							_working.margin_left = 1;
+
                         } else {
                             _label.visible = true;
                             close.visible = true;
+							_icon.margin_left = 0;
+							_working.margin_left = 0;
                         }
 
                         _pinned = value;
@@ -113,6 +118,7 @@ namespace Granite.Widgets {
         }
 
         bool _fixed;
+        [Deprecated (since=0.3)]
         public bool fixed {
             get { return _fixed; }
             set {
@@ -159,7 +165,7 @@ namespace Granite.Widgets {
             tab_box.pack_start (_working, false);
             _label.set_tooltip_text (label);
             _label.ellipsize = Pango.EllipsizeMode.END;
-            _icon.set_size_request (18, 18);
+            _icon.set_size_request (16, 16);
             _working.set_size_request (16, 16);
             this.visible_window = false;
             
@@ -453,7 +459,7 @@ namespace Granite.Widgets {
             }
         }
 
-        bool _allow_pinning = false;
+        bool _allow_pinning = true;
         public bool allow_pinning {
             get { return _allow_pinning; }
             set {
