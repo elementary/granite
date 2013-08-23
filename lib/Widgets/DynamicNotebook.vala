@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -211,6 +211,7 @@ namespace Granite.Widgets {
     private class ClosedTabs : GLib.Object {
 
         public signal void restored (Tab tab);
+        public signal void cleared ();
 
         private struct Entry {
             string title;
@@ -266,10 +267,9 @@ namespace Granite.Widgets {
             return tab;
         }
 
-        private Gtk.Menu _menu;
         public Gtk.Menu menu {
-            get {
-                _menu = new Gtk.Menu ();
+            owned get {
+                var _menu = new Gtk.Menu ();
 
                 foreach (var entry in closed_tabs) {
                     var item = new Gtk.ImageMenuItem.with_label (entry.title);
@@ -282,6 +282,19 @@ namespace Granite.Widgets {
 
                     item.activate.connect (() => {
                         this.restored (pick (entry.data));
+                    });
+                }
+
+                if (!empty) {
+                    var separator = new Gtk.SeparatorMenuItem ();
+                    var item = new Gtk.MenuItem.with_label (_("Clear All"));
+
+                    _menu.append (separator);
+                    _menu.append (item);
+
+                    item.activate.connect (() => {
+                        closed_tabs = {};
+                        cleared ();
                     });
                 }
 
@@ -520,6 +533,11 @@ namespace Granite.Widgets {
                 this.tab_restored (tab);
             });
 
+            closed_tabs.cleared.connect (() => {
+                restore_button.sensitive = false;
+                restore_tab_m.sensitive = false;
+            });
+
             add_button = new Gtk.Button ();
             add_button.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
             add_button.margin_left = 6;
@@ -568,7 +586,7 @@ namespace Granite.Widgets {
 
                 return false;
             });
-            
+
             this.key_press_event.connect ((e) => {
 
                 e.state &= MODIFIER_MASK;
@@ -693,7 +711,7 @@ namespace Granite.Widgets {
             for (var i = 0; i < this.notebook.get_n_pages (); i++) {
                 this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
             }
-            
+
             this.notebook.resize_children ();
         }
 
@@ -722,14 +740,14 @@ namespace Granite.Widgets {
                 if (tab.page.get_parent () != null)
                     tab.page.unparent ();
             }
-            
+
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
                 restore_tab_m.sensitive = !closed_tabs.empty;
             }
         }
-        
+
 	[Deprecated (since=0.2)]
 	public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
