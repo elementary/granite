@@ -196,7 +196,7 @@ namespace Granite.Widgets {
             close_other_m.activate.connect (() => close_others () );
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
-            pin_m.activate.connect (() => pinned = !pinned );
+            pin_m.activate.connect (() => pinned = !pinned);
 
             this.scroll_event.connect ((e) => {
                 var notebook = (this.get_parent () as Gtk.Notebook);
