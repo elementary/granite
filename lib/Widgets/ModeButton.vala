@@ -188,8 +188,8 @@ namespace Granite.Widgets {
 
             if (item != null) {
                 assert (item.index == index);
-                mode_removed (index, item.get_child ());
                 item_map.unset (index);
+                mode_removed (index, item.get_child ());
                 item.destroy ();
             }
         }
