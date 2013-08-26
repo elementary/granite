@@ -472,7 +472,7 @@ namespace Granite.Widgets {
             }
         }
 
-        bool _allow_pinning = true;
+        bool _allow_pinning = false;
         public bool allow_pinning {
             get { return _allow_pinning; }
             set {
