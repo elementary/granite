@@ -21,7 +21,6 @@
 ***/
 
 public class Granite.Demo : Granite.Application {
-
     /**
      * Small helper class for constructing labels a bit faster.
      */
@@ -92,21 +91,21 @@ public class Granite.Demo : Granite.Application {
         translate_url = "https://translations.launchpad.net/granite";
 
         about_documenters = {"Valadoc", null };
-        about_artists = {"Daniel P. Fore", null };
-        about_authors = {"Maxwell Barvian <mbarvian@gmail.com>",
-                         "Daniel Foré <bunny@go-docky.com>",
-                         "Avi Romanoff <aviromanoff@gmail.com>",
-                         "Lucas Baudin <xapantu@gmail.com>",
-                         "Victor Eduardo <victoreduardm@gmail.com>",
-                         "Tom Beckmann <tombeckmann@online.de>",
-                         null
-                         };
+        about_artists = {"Daniel P. Fore", "<daniel@elementaryos.org>" };
+        about_authors = {
+            "Maxwell Barvian <mbarvian@gmail.com>",
+            "Daniel Foré <bunny@go-docky.com>",
+            "Avi Romanoff <aviromanoff@gmail.com>",
+            "Lucas Baudin <xapantu@gmail.com>",
+            "Victor Eduardo <victoreduardm@gmail.com>",
+            "Tom Beckmann <tombeckmann@online.de>",
+            null
+        };
 
         about_comments = "A demo of the Granite toolkit";
         about_translators = "Launchpad Translators";
         about_license_type = Gtk.License.GPL_3_0;
     }
-
 
     public override void activate () {
         window = new Gtk.Window ();
@@ -125,6 +124,7 @@ public class Granite.Demo : Granite.Application {
 
         // SourceList
         var sidebar = new Granite.Widgets.SourceList ();
+        sidebar.width_request = 200;
 
         var page_switcher = new Gtk.Notebook ();
         page_switcher.show_tabs = false;
@@ -207,7 +207,7 @@ public class Granite.Demo : Granite.Application {
         mode_button.valign = Gtk.Align.CENTER;
         mode_button.halign = Gtk.Align.CENTER;
 
-        var normal_mode_index = mode_button.append (new Gtk.Label ("Normal"));
+        var normal_mode_index = mode_button.append (new Gtk.Label ("Light"));
         dark_mode_index = mode_button.append (new Gtk.Label ("Dark"));
 
         mode_button.selected = normal_mode_index;
@@ -226,7 +226,8 @@ public class Granite.Demo : Granite.Application {
         var popover_statusbar_item = new Gtk.Button ();
         popover_statusbar_item.relief = Gtk.ReliefStyle.NONE;
         popover_statusbar_item.tooltip_text = "Show PopOver";
-        popover_statusbar_item.add (new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU));
+        popover_statusbar_item.add (new Gtk.Image.from_icon_name ("help-info-symbolic",
+                                                                  Gtk.IconSize.MENU));
         statusbar.insert_widget (popover_statusbar_item);
 
         popover_statusbar_item.clicked.connect (() => {
@@ -317,7 +318,7 @@ public class Granite.Demo : Granite.Application {
 
         // Adding elements. Use the most convenient method to add an icon
         welcome.append_with_pixbuf (pixbuf, "Create", "Write a new document.");
-        welcome.append_with_image (image, "Open", "select a file.");
+        welcome.append_with_image (image, "Open", "Select a file.");
         welcome.append ("document-save", "Save", "With a much longer description.");
 
         return welcome;
@@ -416,6 +417,7 @@ public class Granite.Demo : Granite.Application {
             var t2 = new Granite.Widgets.Tab (@"user$num@elementaryos: ~",
                                               new ThemedIcon ("empty"),
                                               new Gtk.Label (@"Page $num"));
+
             t2.restore_data = t.restore_data;
             dynamic_notebook.insert_tab (t2, -1);
             print ("Duplicated tab %s\n", t2.label);
