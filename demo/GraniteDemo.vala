@@ -90,11 +90,11 @@ public class Granite.Demo : Granite.Application {
         help_url = "https://answers.launchpad.net/granite";
         translate_url = "https://translations.launchpad.net/granite";
 
-        about_documenters = {"Valadoc", null };
+        about_documenters = { "Valadoc" };
         about_artists = { "Daniel P. Fore <daniel@elementaryos.org>" };
         about_authors = {
             "Maxwell Barvian <mbarvian@gmail.com>",
-            "Daniel Foré <bunny@go-docky.com>",
+            "Daniel Foré <daniel@elementaryos.org>",
             "Avi Romanoff <aviromanoff@gmail.com>",
             "Lucas Baudin <xapantu@gmail.com>",
             "Victor Eduardo <victoreduardm@gmail.com>",
