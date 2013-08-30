@@ -90,7 +90,7 @@ public class Granite.Demo : Granite.Application {
         help_url = "https://answers.launchpad.net/granite";
         translate_url = "https://translations.launchpad.net/granite";
 
-        about_documenters = { "Valadoc" };
+        about_documenters = { };
         about_artists = { "Daniel P. Fore <daniel@elementaryos.org>" };
         about_authors = {
             "Maxwell Barvian <mbarvian@gmail.com>",
