@@ -1,8 +1,8 @@
-granite (0.2.2-1) UNRELEASED; urgency=low
+granite (0.2.3) UNRELEASED; urgency=low
 
   * New upstream release.
 
- -- Cody Garver <cody@elementaryos.org>  Fri, 09 Aug 2013 14:56:58 -0500
+ -- Cody Garver <cody@elementaryos.org>  Fri, 30 Aug 2013 09:29:32 -0500
 
 granite (0.2.1-1) UNRELEASED; urgency=low
 
