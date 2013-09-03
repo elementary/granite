@@ -35,38 +35,6 @@
  * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
  * but you have to be careful not to unset the event for the {@link Gtk.Overlay} at a later stage.
  *
- * ''Example'' <<BR>>
- *
- * public class OverlayBarExample : Gtk.Window {{{
- *
- *     public OverlayBarExample () {{{
- *         this.title = "Overlay Bar Example";
- *         this.window_position = Gtk.WindowPosition.CENTER;
- *         this.set_default_size (400, 300);
- *
- *         var overlay = new Gtk.Overlay ();
- *         overlay.add (new Gtk.Label ("Try to touch the Overlay Bar!"));
- *
- *         var overlaybar = new Granite.Widgets.OverlayBar (overlay);
- *         overlaybar.status = "Overlay Bar Example";
- *
- *         this.add (overlay);
- *     }}}
- *
- *     public static int main (string[] args) {{{
- *         Gtk.init (ref args);
- *
- *         var window = new OverlayBarExample ();
- *         window.destroy.connect (Gtk.main_quit);
- *         window.show_all ();
- *
- *         Gtk.main ();
- *         return 0;
- *     }}}
- * }}}
- *
- * valac --pkg gtk+-3.0 --pkg granite OverlayBarExample.vala
- *
  * @see Gtk.Overlay
  */
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
