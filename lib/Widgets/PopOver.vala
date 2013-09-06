@@ -52,6 +52,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      */
     public enum PopPosition
     {
+        NONE,
         TOPLEFT,
         TOPRIGHT,
         BOTTOMLEFT,
@@ -64,7 +65,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         }
     """;
 
-    PopPosition pos = PopPosition.TOPRIGHT;
+    PopPosition pos = PopPosition.NONE;
     protected bool arrow_up = false;
     protected double arrow_offset = 35.0;
 
