@@ -52,7 +52,6 @@ namespace Granite.Widgets {
 
                         } else {
                             _label.visible = true;
-                            close.visible = true;
                             _icon.margin_left = 0;
                             _working.margin_left = 0;
                         }
@@ -847,6 +846,7 @@ namespace Granite.Widgets {
             var pin_state = !tab.pinned;
             if (pin_state) {
                 tab._icon.visible = !tab.working;
+                tab.close.visible = tabs_closable;
             } else {
                 tab._icon.visible = show_icons && !tab.working;
             }
