@@ -107,6 +107,15 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         return base.draw (cr);
     }
 
+    /*
+      Using Cairo.Context's render_background and render_frame methods
+      requires complementary space-allocator code, to account for the
+      widget's border width.
+
+      The following three methods guarantee that the borders drawn by
+      render_frame don't overlap the text in the widget.
+    */
+
     public override Gtk.SizeRequestMode get_request_mode () {
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
