@@ -596,6 +596,7 @@ namespace Granite.Widgets {
                 if (!allow_restoring)
                     return;
                 restore_button.sensitive = !closed_tabs.empty;
+                restore_tab_m.sensitive = !closed_tabs.empty;
                 insert_tab (tab, -1);
                 this.tab_restored (tab);
             });
