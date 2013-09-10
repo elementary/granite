@@ -72,7 +72,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * @param subtitle_text subtitle text for new Welcome Page
      */
     public Welcome (string title_text, string subtitle_text) {
-
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
         // Box properties
@@ -122,7 +121,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       * @param val value deteriming whether the action item is visible
       */
     public void set_item_visible (uint index, bool val) {
-        if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
+        if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
             children.nth_data(index).set_no_show_all (!val);
             children.nth_data(index).set_visible (val);
         }
@@ -134,7 +133,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       * @param index index of action item to remove
       */
     public void remove_item (uint index) {
-        if(index < children.length () && children.nth_data (index) is Gtk.Widget) {
+        if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
             var item = children.nth_data (index);
             item.destroy ();
             children.remove (item);
@@ -148,7 +147,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       * @param val value deteriming whether the action item is senstitive
       */
     public void set_item_sensitivity (uint index, bool val) {
-        if(index < children.length () && children.nth_data (index) is Gtk.Widget)
+        if (index < children.length () && children.nth_data (index) is Gtk.Widget)
             children.nth_data (index).set_sensitive (val);
     }
 
@@ -228,11 +227,11 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         children.append (button);
         options.pack_start (button, false, false, 0);
 
-        button.button_release_event.connect ( () => {
+        button.button_release_event.connect (() => {
             int index = this.children.index (button);
             activated (index); // send signal
             return false;
-        } );
+        });
 
         return this.children.index (button);
     }
