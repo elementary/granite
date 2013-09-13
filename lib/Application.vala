@@ -108,14 +108,16 @@ namespace Granite {
             } catch { }
 
             set_options ();
-
+            
             return base.run (args);
         }
 
         protected static bool DEBUG = false;
+        protected static bool ABOUT = false;
 
         protected const OptionEntry[] options = {
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
+            { "about", 'a', 0, OptionArg.NONE, out ABOUT, "Show About dialog", null },
             { null }
         };
 
