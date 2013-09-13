@@ -490,6 +490,14 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
+       /**
+        * The text shown in the add button tooltip
+        */
+        public string add_button_tooltip {
+            get { return add_button.tooltip_text; }
+            set { add_button.tooltip_text = value; }
+        }
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }

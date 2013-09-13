@@ -385,6 +385,7 @@ public class Granite.Demo : Granite.Application {
         dynamic_notebook.allow_restoring = true;
         dynamic_notebook.allow_pinning = true;
         dynamic_notebook.show_icons = true;
+        dynamic_notebook.add_button_tooltip = "New user tab";
 
         var tab = new Granite.Widgets.Tab ("user1@elementaryos: ~",
                                            new ThemedIcon ("empty"),
