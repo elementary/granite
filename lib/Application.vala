@@ -108,24 +108,22 @@ namespace Granite {
             } catch { }
 
             set_options ();
-            
+
             if (ABOUT) {
                 Gtk.init (ref args);
                 var window = new Gtk.Window ();
                 show_about (window);
 
                 Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
-                var loop = new MainLoop ();
-
                 about_dialog.hide.connect (() => {
-                    loop.quit ();
+                    Gtk.main_quit ();
                 });
 
-                loop.run ();
+                Gtk.main ();
 
                 return Posix.EXIT_SUCCESS;
             }
-            
+
             return base.run (args);
         }
 
@@ -170,7 +168,7 @@ namespace Granite {
             assert (parent is Gtk.Window);
 
             var developers_string = _("Developers");
-            
+
             Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
                                                "program_name", program_name,
                                                "version", build_version,
