@@ -109,6 +109,23 @@ namespace Granite {
 
             set_options ();
             
+            if (ABOUT) {
+                Gtk.init (ref args);
+                var window = new Gtk.Window ();
+                show_about (window);
+
+                Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
+                var loop = new MainLoop ();
+
+                about_dialog.hide.connect (() => {
+                    loop.quit ();
+                });
+
+                loop.run ();
+
+                return Posix.EXIT_SUCCESS;
+            }
+            
             return base.run (args);
         }
 
