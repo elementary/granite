@@ -877,6 +877,7 @@ namespace Granite.Widgets {
                 notebook.remove_page (pos);
                 if (tab.page.get_parent () != null)
                     tab.page.unparent ();
+                remove_callbacks (tab);
             }
 
             if (tab.label != "" && tab.restore_data != "") {
@@ -891,6 +892,7 @@ namespace Granite.Widgets {
             var pos = get_tab_position (tab);
             if (pos != -1)
                 notebook.remove_page (pos);
+                remove_callbacks (tab);
         }
 
         public void next_page () {
@@ -967,36 +969,7 @@ namespace Granite.Widgets {
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            tab.closed.connect ( () => {
-                remove_tab (tab);
-            });
-
-            tab.close_others.connect ( () => {
-                var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
-
-                for (var j = 0; j < tabs.length (); j++) {
-                    if (tab != tabs.nth_data (j)) {
-                        tabs.nth_data (j).closed ();
-                        if (num == n_tabs) break;
-                        j--;
-                    }
-
-                    num = n_tabs;
-                }
-            });
-
-            tab.new_window.connect (() => {
-                notebook.create_window(tab.page_container, 0, 0);
-            });
-
-            tab.duplicate.connect (() => {
-                tab_duplicated (tab);
-            });
-
-            tab.pin_switch.connect (() => {
-                switch_pin_tab (tab);
-            });
+            insert_callbacks(tab);
 
             this.recalc_size ();
             this.recalc_order ();
@@ -1005,6 +978,52 @@ namespace Granite.Widgets {
                 tab.close.visible = false;
 
             return i;
+        }
+        
+        private void insert_callbacks (Tab tab) {
+            tab.closed.connect (on_tab_closed);
+            tab.close_others.connect (on_close_others);
+            tab.new_window.connect (on_new_window);
+            tab.duplicate.connect (on_duplicate);
+            tab.pin_switch.connect (on_pin_switch);
+        }
+        
+        private void remove_callbacks (Tab tab) {
+            tab.closed.disconnect (on_tab_closed);
+            tab.close_others.disconnect (on_close_others);
+            tab.new_window.disconnect (on_new_window);
+            tab.duplicate.disconnect (on_duplicate);
+            tab.pin_switch.disconnect (on_pin_switch);
+        }
+        
+        private void on_tab_closed (Tab tab) {
+            remove_tab (tab);
+        }
+        
+        private void on_close_others (Tab tab) {
+            var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
+
+            for (var j = 0; j < tabs.length (); j++) {
+                if (tab != tabs.nth_data (j)) {
+                    tabs.nth_data (j).closed ();
+                    if (num == n_tabs) break;
+                    j--;
+                }
+
+                num = n_tabs;
+            }
+        }
+        
+        private void on_new_window (Tab tab) {
+            notebook.create_window (tab.page_container, 0, 0);
+        }
+        
+        private void on_duplicate (Tab tab) {
+            tab_duplicated (tab);
+        }
+        
+        private void on_pin_switch (Tab tab) {
+            switch_pin_tab (tab);
         }
     }
 }
