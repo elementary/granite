@@ -184,7 +184,7 @@ namespace Granite {
                                                "translate", translate_url,
                                                "bug", bug_url);
         }
-        
+
         private Gtk.Window about_dialog_parent = null;
 
         private void add_actions () {
@@ -197,14 +197,10 @@ namespace Granite {
 
                 if (about_dialog_parent == null)
                     about_dialog_parent = new Gtk.Window ();
-                    
+
                 show_about (about_dialog_parent);
 
-                Gtk.Widget about_dialog = about_dialog_parent.get_data ("gtk-about-dialog");
-
-                about_dialog.hide.connect (() => {
-                    release ();
-                });
+                release ();
             });
 
             add_action (show_about_action);
@@ -226,20 +222,19 @@ namespace Granite {
 
                 if (about_dialog_parent == null)
                     about_dialog_parent = new Gtk.Window ();
-                    
+
                 show_about (about_dialog_parent);
 
                 Gtk.Widget about_dialog = about_dialog_parent.get_data ("gtk-about-dialog");
 
                 about_dialog.hide.connect (() => {
-                    if (get_windows () == null) {
+                    if (get_windows () == null)
                         Gtk.main_quit ();
-                    } else {
-                        window_removed.connect (() => {
-                            if (get_windows () == null)
-                                Gtk.main_quit ();
-                        });
-                    }
+                });
+
+                window_removed.connect (() => {
+                    if (get_windows () == null)
+                        Gtk.main_quit ();
                 });
 
                 Gtk.main ();
