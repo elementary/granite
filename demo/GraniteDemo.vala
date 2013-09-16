@@ -77,7 +77,7 @@ public class Granite.Demo : Granite.Application {
      * Basic app information for Granite.Application. This is used by the About dialog.
      */
     construct {
-        application_id = "org.granite.demo";
+        application_id = "org.pantheon.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
 
         program_name = "Granite Demo";
