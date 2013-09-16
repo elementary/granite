@@ -81,6 +81,8 @@ namespace Granite {
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 
+            add_actions ();
+
             // Deprecated
             Granite.app = this;
         }
@@ -111,15 +113,7 @@ namespace Granite {
 
             if (ABOUT) {
                 Gtk.init (ref args);
-                var window = new Gtk.Window ();
-                show_about (window);
-
-                Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
-                about_dialog.hide.connect (() => {
-                    Gtk.main_quit ();
-                });
-
-                Gtk.main ();
+                handle_about_parameter ();
 
                 return Posix.EXIT_SUCCESS;
             }
@@ -189,6 +183,48 @@ namespace Granite {
                                                "help", help_url,
                                                "translate", translate_url,
                                                "bug", bug_url);
+        }
+
+        private void add_actions () {
+            var show_about_action = new SimpleAction ("show-about-dialog", null);
+
+            show_about_action.activate.connect (() => {
+                hold ();
+
+                debug ("The show-about-dialog action was activated");
+
+                var window = new Gtk.Window ();
+                show_about (window);
+
+                Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
+                about_dialog.hide.connect (() => {
+                    release ();
+                });
+            });
+
+            add_action (show_about_action);
+        }
+
+        private void handle_about_parameter () {
+            register (null);
+
+            if (this.is_remote) {
+                debug ("The app is already running: Show About dialog in the main instance and exit");
+
+                activate_action ("show-about-dialog", null);
+            } else {
+                debug ("The app isn't already running - Show About dialog in this instance");
+                
+                var window = new Gtk.Window ();
+                show_about (window);
+
+                Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
+                about_dialog.hide.connect (() => {
+                    Gtk.main_quit ();
+                });
+
+                Gtk.main ();
+            }
         }
     }
 }
