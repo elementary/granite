@@ -221,7 +221,8 @@ namespace Granite {
             activate_action ("show-about-dialog", null);
 
             if (!this.is_remote) {
-                /* The primary instance was created by running "app --about".
+                /* This means that the primary instance was created by running
+                   "app --about".
                    Manually set up exit conditions and run the main loop of the
                    application.
                    This is needed to prevent weird stuff from happening if the
