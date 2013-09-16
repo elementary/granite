@@ -211,7 +211,11 @@ namespace Granite {
         }
 
         private void handle_about_parameter () {
-            register (null);
+            try {
+                register ();
+            } catch (Error error) {
+                warning ("Couldn't register application: %s", error.message);
+            }
 
             if (this.is_remote) {
                 debug ("The app is already running: Show About dialog in the main instance and exit");
