@@ -197,6 +197,7 @@ namespace Granite {
                 show_about (window);
 
                 Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
+
                 about_dialog.hide.connect (() => {
                     release ();
                 });
@@ -214,13 +215,21 @@ namespace Granite {
                 activate_action ("show-about-dialog", null);
             } else {
                 debug ("The app isn't already running - Show About dialog in this instance");
-                
+
                 var window = new Gtk.Window ();
                 show_about (window);
 
                 Gtk.Widget about_dialog = window.get_data ("gtk-about-dialog");
+
                 about_dialog.hide.connect (() => {
-                    Gtk.main_quit ();
+                    if (get_windows () == null) {
+                        Gtk.main_quit ();
+                    } else {
+                        window_removed.connect (() => {
+                            if (get_windows () == null)
+                                Gtk.main_quit ();
+                        });
+                    }
                 });
 
                 Gtk.main ();
