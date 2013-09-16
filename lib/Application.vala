@@ -188,6 +188,7 @@ namespace Granite {
         private Gtk.Window about_dialog_parent = null;
 
         private void add_actions () {
+            /* Shows the About dialog in the active instance. */
             var show_about_action = new SimpleAction ("show-about-dialog", null);
 
             show_about_action.activate.connect (() => {
@@ -195,10 +196,10 @@ namespace Granite {
 
                 debug ("The show-about-dialog action was activated");
 
-                if (about_dialog_parent == null)
-                    about_dialog_parent = new Gtk.Window ();
+                if (this.about_dialog_parent == null)
+                    this.about_dialog_parent = new Gtk.Window ();
 
-                show_about (about_dialog_parent);
+                show_about (this.about_dialog_parent);
 
                 release ();
             });
@@ -220,12 +221,12 @@ namespace Granite {
             } else {
                 debug ("The app isn't already running - Show About dialog in this instance");
 
-                if (about_dialog_parent == null)
-                    about_dialog_parent = new Gtk.Window ();
+                if (this.about_dialog_parent == null)
+                    this.about_dialog_parent = new Gtk.Window ();
 
-                show_about (about_dialog_parent);
+                show_about (this.about_dialog_parent);
 
-                Gtk.Widget about_dialog = about_dialog_parent.get_data ("gtk-about-dialog");
+                Gtk.Widget about_dialog = this.about_dialog_parent.get_data ("gtk-about-dialog");
 
                 about_dialog.hide.connect (() => {
                     if (get_windows () == null)
