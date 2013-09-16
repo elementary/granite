@@ -223,7 +223,9 @@ namespace Granite {
             if (!this.is_remote) {
                 /* The primary instance was created by running "app --about".
                    Manually set up exit conditions and run the main loop of the
-                   application. */
+                   application.
+                   This is needed to prevent weird stuff from happening if the
+                   actual application is opened while this is running. */
                 Gtk.Widget about_dialog = this.about_dialog_parent.get_data ("gtk-about-dialog");
 
                 about_dialog.hide.connect (() => {
