@@ -890,9 +890,10 @@ namespace Granite.Widgets {
         [Deprecated (since=0.2)]
         public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
-            if (pos != -1)
+            if (pos != -1) {
                 notebook.remove_page (pos);
                 remove_callbacks (tab);
+            }
         }
 
         public void next_page () {
