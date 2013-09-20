@@ -980,7 +980,7 @@ namespace Granite.Widgets {
 
             return i;
         }
-        
+
         private void insert_callbacks (Tab tab) {
             tab.closed.connect (on_tab_closed);
             tab.close_others.connect (on_close_others);
@@ -988,7 +988,7 @@ namespace Granite.Widgets {
             tab.duplicate.connect (on_duplicate);
             tab.pin_switch.connect (on_pin_switch);
         }
-        
+
         private void remove_callbacks (Tab tab) {
             tab.closed.disconnect (on_tab_closed);
             tab.close_others.disconnect (on_close_others);
@@ -996,11 +996,11 @@ namespace Granite.Widgets {
             tab.duplicate.disconnect (on_duplicate);
             tab.pin_switch.disconnect (on_pin_switch);
         }
-        
+
         private void on_tab_closed (Tab tab) {
             remove_tab (tab);
         }
-        
+
         private void on_close_others (Tab tab) {
             var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
 
@@ -1014,15 +1014,15 @@ namespace Granite.Widgets {
                 num = n_tabs;
             }
         }
-        
+
         private void on_new_window (Tab tab) {
             notebook.create_window (tab.page_container, 0, 0);
         }
-        
+
         private void on_duplicate (Tab tab) {
             tab_duplicated (tab);
         }
-        
+
         private void on_pin_switch (Tab tab) {
             switch_pin_tab (tab);
         }
