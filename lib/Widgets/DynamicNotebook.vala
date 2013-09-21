@@ -24,6 +24,18 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.SUPER_MASK |
                                                      Gdk.ModifierType.CONTROL_MASK |
                                                      Gdk.ModifierType.MOD1_MASK);
+
+    private class TabPageContainer : Gtk.EventBox {
+        internal Tab _tab;
+        public Tab tab {
+            get { return _tab; }
+        }
+
+        public TabPageContainer (Tab tab) {
+            this._tab = tab;
+        }
+    }
+
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
@@ -82,7 +94,7 @@ namespace Granite.Widgets {
          **/
         public string restore_data { get; set; }
 
-        internal Gtk.EventBox page_container;
+        internal TabPageContainer page_container;
         public Gtk.Widget page {
             get {
                 return page_container.get_child ();
@@ -170,7 +182,7 @@ namespace Granite.Widgets {
             
             this.add (tab_box);
 
-            page_container = new Gtk.EventBox ();
+            page_container = new TabPageContainer (this);
             this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
 
@@ -735,6 +747,8 @@ namespace Granite.Widgets {
             });
 
             notebook.switch_page.connect (on_switch_page);
+            notebook.page_added.connect (on_page_added);
+            notebook.page_removed.connect (on_page_removed);
             notebook.page_reordered.connect (on_page_reordered);
             notebook.create_window.connect (on_create_window);
         }
@@ -755,14 +769,22 @@ namespace Granite.Widgets {
         }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
-            var new_tab = notebook.get_tab_label (page) as Tab;
+            var new_tab = (page as TabPageContainer).tab;
 
             tab_switched (old_tab, new_tab);
             old_tab = new_tab;
         }
 
+        void on_page_added (Gtk.Widget page, uint pagenum) {
+            insert_callbacks ((page as TabPageContainer).tab);
+        }
+
+        void on_page_removed (Gtk.Widget page, uint pagenum) {
+            remove_callbacks ((page as TabPageContainer).tab);
+        }
+
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
-            tab_moved (notebook.get_tab_label (page) as Tab, (int) pagenum, false, -1, -1);
+            tab_moved ((page as TabPageContainer).tab, (int) pagenum, false, -1, -1);
             recalc_order ();
         }
 
@@ -877,7 +899,6 @@ namespace Granite.Widgets {
                 notebook.remove_page (pos);
                 if (tab.page.get_parent () != null)
                     tab.page.unparent ();
-                remove_callbacks (tab);
             }
 
             if (tab.label != "" && tab.restore_data != "") {
@@ -890,10 +911,8 @@ namespace Granite.Widgets {
         [Deprecated (since=0.2)]
         public void remove_tab_force (Tab tab) {
             var pos = get_tab_position (tab);
-            if (pos != -1) {
+            if (pos != -1)
                 notebook.remove_page (pos);
-                remove_callbacks (tab);
-            }
         }
 
         public void next_page () {
@@ -970,8 +989,6 @@ namespace Granite.Widgets {
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            insert_callbacks(tab);
-
             this.recalc_size ();
             this.recalc_order ();
 
