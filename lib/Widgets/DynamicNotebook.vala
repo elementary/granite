@@ -26,7 +26,7 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.MOD1_MASK);
 
     private class TabPageContainer : Gtk.EventBox {
-        internal Tab _tab;
+        internal weak Tab _tab;
         public Tab tab {
             get { return _tab; }
         }
