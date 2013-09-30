@@ -234,7 +234,7 @@ namespace Granite.Services {
          */
         public static Gee.List<Contract> get_contracts_for_file (File file) throws Error {
             var content_type = file.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                 FileQueryInfoFlags.NONE).get_content_type();
+                                                FileQueryInfoFlags.NONE).get_content_type();
             return get_contracts_by_mime (ContentType.get_mime_type (content_type));
         }
 
@@ -249,7 +249,7 @@ namespace Granite.Services {
 
             foreach (var file in files) {
                 var content_type = file.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                     FileQueryInfoFlags.NONE).get_content_type();
+                                                    FileQueryInfoFlags.NONE).get_content_type();
                 mime_types.add (ContentType.get_mime_type (content_type));
             }
 
