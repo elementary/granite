@@ -227,7 +227,7 @@ namespace Granite.Services {
         /**
          * Returns actions (contracts) applicable to the given file.
          *
-         * Errors occurring in GLib.File.query_info () method while looking up
+         * Errors occurring in {@link GLib.File.query_info} method while looking up
          * the file (e.g. if the file is deleted) are forwarded to the caller.
          *
          * @param file An existing file readable by the current user.
@@ -242,7 +242,7 @@ namespace Granite.Services {
          * Returns actions (contracts) applicable to all given files.
          *
          * Only the contracts that support all of the files are returned.<<BR>>
-         * Errors occurring in GLib.File.query_info () method while looking up
+         * Errors occurring in {@link GLib.File.query_info} method while looking up
          * the file (e.g. if the file is deleted) are forwarded to the caller.<<BR>>
          *
          * @param files Array of existing files readable by the current user.
