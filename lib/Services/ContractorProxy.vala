@@ -231,9 +231,8 @@ namespace Granite.Services {
          * @return List of contracts that apply to the given file.
          */
         public static Gee.List<Contract> get_contracts_for_file (File file) throws Error {
-            var content_type = file.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                FileQueryInfoFlags.NONE).get_content_type();
-            return get_contracts_by_mime (ContentType.get_mime_type (content_type));
+            File[] files = { file };
+            return get_contracts_for_files (files);
         }
 
         /**
