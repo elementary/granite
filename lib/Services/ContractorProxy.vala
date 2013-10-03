@@ -46,8 +46,6 @@ namespace Granite.Services {
         public abstract ContractData[] list_all_contracts () throws Error;
         public abstract ContractData[] get_contracts_by_mime (string mime_type) throws Error;
         public abstract ContractData[] get_contracts_by_mimelist (string[] mime_types) throws Error;
-        public abstract ContractData[] get_contracts_for_file (File file) throws Error;
-        public abstract ContractData[] get_contracts_for_files (File[] files) throws Error;
         public abstract void execute_with_uri (string id, string uri) throws Error;
         public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
