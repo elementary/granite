@@ -230,7 +230,7 @@ namespace Granite.Services {
          * Errors occurring in {@link GLib.File.query_info} method while looking up
          * the file (e.g. if the file is deleted) are forwarded to the caller.
          *
-         * @param file An existing file readable by the current user.
+         * @param file An existing file.
          * @return List of contracts applicable to the given file.
          */
         public static Gee.List<Contract> get_contracts_for_file (File file) throws Error {
@@ -245,7 +245,7 @@ namespace Granite.Services {
          * Errors occurring in {@link GLib.File.query_info} method while looking up
          * the file (e.g. if the file is deleted) are forwarded to the caller.<<BR>>
          *
-         * @param files Array of existing files readable by the current user.
+         * @param files Array of existing files.
          * @return List of contracts applicable to any of the given files.
          */
         public static Gee.List<Contract> get_contracts_for_files (File[] files) throws Error {
