@@ -27,6 +27,7 @@ namespace Granite.Widgets {
 
     private class TabPageContainer : Gtk.EventBox {
         internal weak Tab _tab;
+
         public Tab tab {
             get { return _tab; }
         }
