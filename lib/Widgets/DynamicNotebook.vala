@@ -547,7 +547,10 @@ namespace Granite.Widgets {
         private int tab_width_pinned = 18;
 
         public signal void tab_added (Tab tab);
+        [Deprecated (since=0.3)]
         public signal bool tab_removed (Tab tab);
+        public signal bool tab_removal_requested (Tab tab);
+        public signal void tab_successfully_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
@@ -781,7 +784,10 @@ namespace Granite.Widgets {
         }
 
         void on_page_removed (Gtk.Widget page, uint pagenum) {
-            remove_callbacks ((page as TabPageContainer).tab);
+            var tab = (page as TabPageContainer).tab;
+
+            remove_callbacks (tab);
+            tab_successfully_removed (tab);
         }
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
@@ -890,6 +896,12 @@ namespace Granite.Widgets {
         public void remove_tab (Tab tab) {
             if (Signal.has_handler_pending (this, Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
                 var sure = tab_removed (tab);
+                if (!sure)
+                    return;
+            }
+
+            if (Signal.has_handler_pending (this, Signal.lookup ("tab-removal-requested", typeof (DynamicNotebook)), 0, true)) {
+                var sure = tab_removal_requested (tab);
                 if (!sure)
                     return;
             }
