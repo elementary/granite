@@ -24,6 +24,19 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.SUPER_MASK |
                                                      Gdk.ModifierType.CONTROL_MASK |
                                                      Gdk.ModifierType.MOD1_MASK);
+
+    private class TabPageContainer : Gtk.EventBox {
+        internal weak Tab _tab;
+
+        public Tab tab {
+            get { return _tab; }
+        }
+
+        public TabPageContainer (Tab tab) {
+            this._tab = tab;
+        }
+    }
+
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
@@ -82,7 +95,7 @@ namespace Granite.Widgets {
          **/
         public string restore_data { get; set; }
 
-        internal Gtk.EventBox page_container;
+        internal TabPageContainer page_container;
         public Gtk.Widget page {
             get {
                 return page_container.get_child ();
@@ -170,7 +183,7 @@ namespace Granite.Widgets {
             
             this.add (tab_box);
 
-            page_container = new Gtk.EventBox ();
+            page_container = new TabPageContainer (this);
             this.page = page ?? new Gtk.Label("");
             page_container.show_all ();
 
@@ -735,6 +748,8 @@ namespace Granite.Widgets {
             });
 
             notebook.switch_page.connect (on_switch_page);
+            notebook.page_added.connect (on_page_added);
+            notebook.page_removed.connect (on_page_removed);
             notebook.page_reordered.connect (on_page_reordered);
             notebook.create_window.connect (on_create_window);
         }
@@ -755,14 +770,22 @@ namespace Granite.Widgets {
         }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
-            var new_tab = notebook.get_tab_label (page) as Tab;
+            var new_tab = (page as TabPageContainer).tab;
 
             tab_switched (old_tab, new_tab);
             old_tab = new_tab;
         }
 
+        void on_page_added (Gtk.Widget page, uint pagenum) {
+            insert_callbacks ((page as TabPageContainer).tab);
+        }
+
+        void on_page_removed (Gtk.Widget page, uint pagenum) {
+            remove_callbacks ((page as TabPageContainer).tab);
+        }
+
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
-            tab_moved (notebook.get_tab_label (page) as Tab, (int) pagenum, false, -1, -1);
+            tab_moved ((page as TabPageContainer).tab, (int) pagenum, false, -1, -1);
             recalc_order ();
         }
 
@@ -967,37 +990,6 @@ namespace Granite.Widgets {
             tab.width_request = tab_width;
             tab.close.get_style_context ().add_provider (button_fix,
                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
-            tab.closed.connect ( () => {
-                remove_tab (tab);
-            });
-
-            tab.close_others.connect ( () => {
-                var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
-
-                for (var j = 0; j < tabs.length (); j++) {
-                    if (tab != tabs.nth_data (j)) {
-                        tabs.nth_data (j).closed ();
-                        if (num == n_tabs) break;
-                        j--;
-                    }
-
-                    num = n_tabs;
-                }
-            });
-
-            tab.new_window.connect (() => {
-                notebook.create_window(tab.page_container, 0, 0);
-            });
-
-            tab.duplicate.connect (() => {
-                tab_duplicated (tab);
-            });
-
-            tab.pin_switch.connect (() => {
-                switch_pin_tab (tab);
-            });
-
             this.recalc_size ();
             this.recalc_order ();
 
@@ -1005,6 +997,52 @@ namespace Granite.Widgets {
                 tab.close.visible = false;
 
             return i;
+        }
+
+        private void insert_callbacks (Tab tab) {
+            tab.closed.connect (on_tab_closed);
+            tab.close_others.connect (on_close_others);
+            tab.new_window.connect (on_new_window);
+            tab.duplicate.connect (on_duplicate);
+            tab.pin_switch.connect (on_pin_switch);
+        }
+
+        private void remove_callbacks (Tab tab) {
+            tab.closed.disconnect (on_tab_closed);
+            tab.close_others.disconnect (on_close_others);
+            tab.new_window.disconnect (on_new_window);
+            tab.duplicate.disconnect (on_duplicate);
+            tab.pin_switch.disconnect (on_pin_switch);
+        }
+
+        private void on_tab_closed (Tab tab) {
+            remove_tab (tab);
+        }
+
+        private void on_close_others (Tab tab) {
+            var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
+
+            for (var j = 0; j < tabs.length (); j++) {
+                if (tab != tabs.nth_data (j)) {
+                    tabs.nth_data (j).closed ();
+                    if (num == n_tabs) break;
+                    j--;
+                }
+
+                num = n_tabs;
+            }
+        }
+
+        private void on_new_window (Tab tab) {
+            notebook.create_window (tab.page_container, 0, 0);
+        }
+
+        private void on_duplicate (Tab tab) {
+            tab_duplicated (tab);
+        }
+
+        private void on_pin_switch (Tab tab) {
+            switch_pin_tab (tab);
         }
     }
 }
