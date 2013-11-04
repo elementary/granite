@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-19 10:22+0100\n"
-"PO-Revision-Date: 2013-02-26 11:29+0000\n"
-"Last-Translator: marhis <Unknown>\n"
+"PO-Revision-Date: 2013-11-03 21:22+0000\n"
+"Last-Translator: Matiss Roberts Treinis <mrtreinis@gmail.com>\n"
 "Language-Team: Latvian <lv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-02 06:12+0000\n"
+"X-Launchpad-Export-Date: 2013-11-04 05:53+0000\n"
 "X-Generator: Launchpad (build 16820)\n"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:153
 msgid "Developers"
-msgstr ""
+msgstr "Izstrādātāji"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:163
 msgid "Website"
@@ -63,19 +63,20 @@ msgstr "Jauna cilne"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:480
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Atcelt cilnes aizvēršanu"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:516
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Aizvērtās cilnes"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
+"Nevarēja savienoties ar Contractor. Iespējams, to nepieciešams instalēt"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
-msgstr ""
+msgstr "Šim failam nav reģistrētu darbību"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
 msgid "%B %e, %Y"
@@ -100,12 +101,12 @@ msgstr "Dizaina izstrdādātājs"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
-msgstr ""
+msgstr "Autors:"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Autortiesības © %s"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
@@ -114,12 +115,13 @@ msgstr "Dokumentējis"
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Tulkojums no %s"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
-msgstr ""
+msgstr "Šī programmatūra ir licencēta izmantojot "
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
+" licenci, tā ir bez JEBKĀDAS GARANTIJAS; vairāk informācijas iespējams iegūt "
