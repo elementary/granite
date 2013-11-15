@@ -88,6 +88,11 @@ namespace Granite.Widgets {
             }
         }
 
+        private bool _is_empty;
+        public bool is_empty {
+            get { return _is_empty; }
+        }
+
         /**
          * Data which will be kept once the tab is deleted, and which will be used by
          * the application to restore the data into the restored tab. Let it empty if
@@ -108,6 +113,7 @@ namespace Granite.Widgets {
                 else
                     page_container.add (value);
                 page_container.show_all ();
+                _is_empty = false;
             }
         }
 
@@ -156,7 +162,12 @@ namespace Granite.Widgets {
         internal signal void duplicate ();
         internal signal void pin_switch ();
 
-        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
+        public Tab.with_empty_page (string label="", GLib.Icon? icon=null) {
+            this(label, icon, new Gtk.Label(""));
+            _is_empty = true;
+        }
+
+        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget page=null) {
             this._label = new Gtk.Label (label);
             if (icon != null)
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
@@ -184,8 +195,7 @@ namespace Granite.Widgets {
             this.add (tab_box);
 
             page_container = new TabPageContainer (this);
-            this.page = page ?? new Gtk.Label("");
-            page_container.show_all ();
+            this.page = page;
 
             restore_data = "";
 
@@ -546,10 +556,13 @@ namespace Granite.Widgets {
         private int max_tab_width = 150;
         private int tab_width_pinned = 18;
 
+        [Deprecated (since=0.3)]
         public signal void tab_added (Tab tab);
         [Deprecated (since=0.3)]
         public signal bool tab_removed (Tab tab);
+
         public signal bool tab_removal_requested (Tab tab);
+        public signal void tab_successfully_added (Tab tab);
         public signal void tab_successfully_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
@@ -780,14 +793,17 @@ namespace Granite.Widgets {
         }
 
         void on_page_added (Gtk.Widget page, uint pagenum) {
-            insert_callbacks ((page as TabPageContainer).tab);
+            var t = (page as TabPageContainer).tab;
+
+            insert_callbacks (t);
+            tab_successfully_added (t);
         }
 
         void on_page_removed (Gtk.Widget page, uint pagenum) {
-            var tab = (page as TabPageContainer).tab;
+            var t = (page as TabPageContainer).tab;
 
-            remove_callbacks (tab);
-            tab_successfully_removed (tab);
+            remove_callbacks (t);
+            tab_successfully_removed (t);
         }
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
@@ -975,7 +991,7 @@ namespace Granite.Widgets {
         }
 
         private void insert_new_tab_at_end () {
-            var t = new Tab ();
+            var t = new Tab.with_empty_page ();
             notebook.page = (int) this.insert_tab (t, -1);
             this.tab_added (t);
         }
