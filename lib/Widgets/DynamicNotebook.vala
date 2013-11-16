@@ -162,12 +162,7 @@ namespace Granite.Widgets {
         internal signal void duplicate ();
         internal signal void pin_switch ();
 
-        public Tab.with_empty_page (string label="", GLib.Icon? icon=null) {
-            this(label, icon, new Gtk.Label(""));
-            _is_empty = true;
-        }
-
-        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget page=null) {
+        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label = new Gtk.Label (label);
             if (icon != null)
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
@@ -195,7 +190,12 @@ namespace Granite.Widgets {
             this.add (tab_box);
 
             page_container = new TabPageContainer (this);
-            this.page = page;
+            if (page != null) {
+                this.page = page;
+            } else {
+                this.page = new Gtk.Label ("");
+                _is_empty = true;
+            }
 
             restore_data = "";
 
@@ -991,7 +991,7 @@ namespace Granite.Widgets {
         }
 
         private void insert_new_tab_at_end () {
-            var t = new Tab.with_empty_page ();
+            var t = new Tab ();
             notebook.page = (int) this.insert_tab (t, -1);
             this.tab_added (t);
         }
