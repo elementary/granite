@@ -85,7 +85,8 @@ namespace Granite.Widgets {
              * A next/prev month/year event 
              * also triggers a day selected event,
              * so stop the next day selected event
-             * to set the date and close the calendar.
+             * from setting the date and closing
+             * the calendar.
              */
             calendar.next_month.connect (() => {
                 proc_next_day_selected = false;
