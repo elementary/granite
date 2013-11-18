@@ -429,8 +429,7 @@ public class Granite.Demo : Granite.Application {
         });
 
         dynamic_notebook.tab_removed.connect ((t) => {
-            print ("Going to remove %s\n", t.label);
-            return true;
+            print ("Removed tab %s\n", t.label);
         });
 
         return dynamic_notebook;

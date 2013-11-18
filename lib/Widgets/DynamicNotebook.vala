@@ -556,17 +556,13 @@ namespace Granite.Widgets {
         private int max_tab_width = 150;
         private int tab_width_pinned = 18;
 
-        [Deprecated (since=0.3)]
         public signal void tab_added (Tab tab);
-        [Deprecated (since=0.3)]
-        public signal bool tab_removed (Tab tab);
-
+        public signal void tab_removed (Tab tab);
         public signal bool tab_removal_requested (Tab tab);
-        public signal void tab_successfully_added (Tab tab);
-        public signal void tab_successfully_removed (Tab tab);
         Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
-        public signal void tab_moved (Tab tab, int new_pos, bool new_window, int x, int y);
+        public signal void tab_reordered (Tab tab, int new_pos);
+        public signal void tab_moved (Tab tab, int x, int y);
         public signal void tab_duplicated (Tab duplicated_tab);
         public signal void tab_restored (Tab tab);
 
@@ -772,6 +768,8 @@ namespace Granite.Widgets {
 
         ~Notebook () {
             notebook.switch_page.disconnect (on_switch_page);
+            notebook.page_added.disconnect (on_page_added);
+            notebook.page_removed.disconnect (on_page_removed);
             notebook.page_reordered.disconnect (on_page_reordered);
             notebook.create_window.disconnect (on_create_window);
         }
@@ -796,24 +794,24 @@ namespace Granite.Widgets {
             var t = (page as TabPageContainer).tab;
 
             insert_callbacks (t);
-            tab_successfully_added (t);
+            tab_added (t);
         }
 
         void on_page_removed (Gtk.Widget page, uint pagenum) {
             var t = (page as TabPageContainer).tab;
 
             remove_callbacks (t);
-            tab_successfully_removed (t);
+            tab_removed (t);
         }
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
-            tab_moved ((page as TabPageContainer).tab, (int) pagenum, false, -1, -1);
+            tab_reordered ((page as TabPageContainer).tab, (int) pagenum);
             recalc_order ();
         }
 
         unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
             var tab = notebook.get_tab_label (page) as Tab;
-            tab_moved (tab, 0, true, x, y);
+            tab_moved (tab, x, y);
             recalc_order ();
             return (Gtk.Notebook) null;
         }
@@ -910,12 +908,6 @@ namespace Granite.Widgets {
         }
 
         public void remove_tab (Tab tab) {
-            if (Signal.has_handler_pending (this, Signal.lookup ("tab-removed", typeof (DynamicNotebook)), 0, true)) {
-                var sure = tab_removed (tab);
-                if (!sure)
-                    return;
-            }
-
             if (Signal.has_handler_pending (this, Signal.lookup ("tab-removal-requested", typeof (DynamicNotebook)), 0, true)) {
                 var sure = tab_removal_requested (tab);
                 if (!sure)
@@ -974,7 +966,7 @@ namespace Granite.Widgets {
 
         public void set_tab_position (Tab tab, int position) {
             notebook.reorder_child (tab.page_container, position);
-            tab_moved (tab, position, false, -1, -1);
+            tab_reordered (tab, position);
             recalc_order ();
         }
 
@@ -993,7 +985,6 @@ namespace Granite.Widgets {
         private void insert_new_tab_at_end () {
             var t = new Tab ();
             notebook.page = (int) this.insert_tab (t, -1);
-            this.tab_added (t);
         }
 
         public uint insert_tab (Tab tab, int index) {
