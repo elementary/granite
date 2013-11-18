@@ -19,19 +19,19 @@
 
 using Gtk;
 using Gdk;
-    
+
 namespace Granite.Widgets {
 
     /**
      * This class allows users to pick dates from a calendar.
      */
     public class DatePicker : Gtk.Entry, Gtk.Buildable {
-    
+
         /**
          * Desired format of DatePicker
          */
         public string format { get; construct; default = _("%B %e, %Y"); }
-    
+
         /**
          * Dropdown of DatePicker
          */
@@ -42,7 +42,7 @@ namespace Granite.Widgets {
         protected Calendar calendar;
 
         PopOver popover;
-        
+
         private DateTime _date;
 
         /**
@@ -55,26 +55,26 @@ namespace Granite.Widgets {
                 text = _date.format (format);
             }
         }
-        
+
         /**
          * Makes new DatePicker
          */
         construct {
-            
-            dropdown = new Gtk.EventBox();
-            popover = new PopOver();
-            ((Gtk.Box)popover.get_content_area()).add(dropdown);
+
+            dropdown = new Gtk.EventBox ();
+            popover = new PopOver ();
+            ((Gtk.Box) popover.get_content_area ()).add (dropdown);
             calendar = new Calendar ();        
             date = new DateTime.now_local ();
-        
+
             // Entry properties
             can_focus = false;
             editable = false; // user can't edit the entry directly
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("office-calendar-symbolic");
-            
+
             dropdown.add_events (EventMask.FOCUS_CHANGE_MASK);
             dropdown.add (calendar);
-            
+
             // Signals and callbacks
             icon_release.connect (on_icon_press);
             calendar.day_selected_double_click.connect (on_calendar_day_selected);
@@ -90,43 +90,40 @@ namespace Granite.Widgets {
         }
 
         private void on_icon_press (EntryIconPosition position) {
-        
+
             int x, y;
             position_dropdown (out x, out y);
-        
+
             popover.show_all ();
             popover.move_to_coords (x, y);
-            popover.present();
+            popover.present ();
             calendar.grab_focus ();
         }
-        
+
         protected virtual void position_dropdown (out int x, out int y) {
-        
+
             Allocation size;
             Requisition calendar_size;
-            
+
             get_allocation (out size);
             calendar.get_preferred_size (out calendar_size, null);
             get_window ().get_origin (out x, out y);
-            
+
             x += size.x + size.width - 10; //size.x - (calendar_size.width - size.width);
             y += size.y + size.height;
-            
+
             //x = x.clamp (0, int.max (0, Screen.width () - calendar_size.width));
             //y = y.clamp (0, int.max (0, Screen.height () - calendar_size.height));
         }
-        
+
         private void on_calendar_day_selected () {
             date = new DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
             hide_dropdown ();
         }
-        
+
         private void hide_dropdown () {
-        
+
             popover.hide ();
-        }
-                
+        }               
     }
-
 }
-
