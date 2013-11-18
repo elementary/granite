@@ -45,6 +45,8 @@ namespace Granite.Widgets {
 
         private DateTime _date;
 
+        private bool proc_next_day_selected = true;
+
         /**
          * Current Date
          */
@@ -77,7 +79,29 @@ namespace Granite.Widgets {
 
             // Signals and callbacks
             icon_release.connect (on_icon_press);
-            calendar.day_selected_double_click.connect (on_calendar_day_selected);
+            calendar.day_selected.connect (on_calendar_day_selected);
+
+            /*
+             * A next/prev month/year event 
+             * also triggers a day selected event,
+             * so stop the next day selected event
+             * to set the date and close the calendar.
+             */
+            calendar.next_month.connect (() => {
+                proc_next_day_selected = false;
+            });
+
+            calendar.next_year.connect (() => {
+                proc_next_day_selected = false;
+            });
+
+            calendar.prev_month.connect (() => {
+                proc_next_day_selected = false;
+            });
+
+            calendar.prev_year.connect (() => {
+                proc_next_day_selected = false;
+            });
         }
 
         /**
@@ -117,8 +141,12 @@ namespace Granite.Widgets {
         }
 
         private void on_calendar_day_selected () {
-            date = new DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
-            hide_dropdown ();
+            if (proc_next_day_selected) {
+                date = new DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
+                hide_dropdown ();
+            } else {
+                proc_next_day_selected = true;
+            }
         }
 
         private void hide_dropdown () {
