@@ -397,16 +397,22 @@ public class Granite.Demo : Granite.Application {
         tab2.restore_data = "2";
         dynamic_notebook.insert_tab (tab2, -1);
 
-        dynamic_notebook.tab_added.connect ((t) => {
-            t.page = new Gtk.Label (@"Page $i");
-            t.label = @"user$i@elementaryos: ~";
+        dynamic_notebook.new_tab_requested.connect (() => {
+            var t = new Granite.Widgets.Tab (@"user$i@elementaryos: ~",
+                                             new ThemedIcon ("empty"),
+                                             new Gtk.Label (@"Page $i"));
             t.restore_data = i.to_string ();
             i++;
+            dynamic_notebook.insert_tab (t, -1);
         });
 
-        dynamic_notebook.tab_restored.connect ((t) => {
-            print ("Restored tab %s\n", t.label);
-            t.page = new Gtk.Label ("Page " + t.restore_data);
+        dynamic_notebook.tab_restored.connect ((label, data, icon) => {
+            var t = new Granite.Widgets.Tab (label,
+                                             icon,
+                                             new Gtk.Label ("Page " + data));
+            t.restore_data = data;
+            dynamic_notebook.insert_tab (t, -1);
+            print ("Restored tab %s\n", label);
         });
 
         dynamic_notebook.tab_duplicated.connect ((t) => {
