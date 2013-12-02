@@ -69,8 +69,6 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
-    private Gtk.Window window; // both NORMAL and DARK window modes
-
     private Gtk.Grid main_layout; // outer-most container
     private Granite.Widgets.ModeButton mode_button;
     private int dark_mode_index;
@@ -79,7 +77,9 @@ public class Granite.Demo : Granite.Application {
      * Basic app information for Granite.Application. This is used by the About dialog.
      */
     construct {
-        application_id = "demo.granite.org";
+        application_id = "org.pantheon.granite.demo";
+        flags = ApplicationFlags.FLAGS_NONE;
+
         program_name = "Granite Demo";
         app_years = "2011 - 2013";
 
@@ -90,7 +90,7 @@ public class Granite.Demo : Granite.Application {
         help_url = "https://answers.launchpad.net/granite";
         translate_url = "https://translations.launchpad.net/granite";
 
-        about_documenters = { };
+        about_documenters = { null };
         about_artists = { "Daniel P. Fore <daniel@elementaryos.org>" };
         about_authors = {
             "Maxwell Barvian <mbarvian@gmail.com>",
@@ -107,14 +107,11 @@ public class Granite.Demo : Granite.Application {
     }
 
     public override void activate () {
-        window = new Gtk.Window ();
+        var window = new Gtk.Window ();
         window.title = "Granite Demo";
         window.window_position = Gtk.WindowPosition.CENTER;
 
-        window.delete_event.connect (() => {
-            Gtk.main_quit ();
-            return false;
-        });
+        this.add_window (window);
 
         var main_toolbar = new Gtk.Toolbar ();
         main_toolbar.get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
@@ -385,6 +382,7 @@ public class Granite.Demo : Granite.Application {
         dynamic_notebook.allow_restoring = true;
         dynamic_notebook.allow_pinning = true;
         dynamic_notebook.show_icons = true;
+        dynamic_notebook.add_button_tooltip = "New user tab";
 
         var tab = new Granite.Widgets.Tab ("user1@elementaryos: ~",
                                            new ThemedIcon ("empty"),
@@ -450,8 +448,8 @@ public class Granite.Demo : Granite.Application {
     }
 
     public static int main (string[] args) {
-        new Granite.Demo ().run (args);
-        Gtk.main ();
-        return 0;
+        var application = new Granite.Demo ();
+
+        return application.run (args);
     }
 }

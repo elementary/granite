@@ -195,7 +195,7 @@ namespace Granite.Services {
         }
 
         /**
-         * This searches for available contracts of a particular file type.
+         * Returns actions (contracts) applicable to the given mimetypes.
          *
          * @param mime_type Mimetype of file.
          * @return List of contracts that support the given mimetype.
@@ -209,9 +209,9 @@ namespace Granite.Services {
         }
 
         /**
-         * Generate contracts for a list of mimetypes.
+         * Returns actions (contracts) applicable to all given mimetypes.
          *
-         * Only the contracts that support all the mimetypes are returned.
+         * Only the contracts that support all of the mimetypes are returned.
          *
          * @param mime_types Array of mimetypes.
          * @return List of contracts that support the given mimetypes.
@@ -222,6 +222,42 @@ namespace Granite.Services {
             var data = contractor_dbus.get_contracts_by_mimelist (mime_types);
 
             return get_contracts_from_data (data);
+        }
+
+        /**
+         * Returns actions (contracts) applicable to the given file.
+         *
+         * Errors occurring in {@link GLib.File.query_info} method while looking up
+         * the file (e.g. if the file is deleted) are forwarded to the caller.
+         *
+         * @param file An existing file.
+         * @return List of contracts applicable to the given file.
+         */
+        public static Gee.List<Contract> get_contracts_for_file (File file) throws Error {
+            File[] files = { file };
+            return get_contracts_for_files (files);
+        }
+
+        /**
+         * Returns actions (contracts) applicable to all given files.
+         *
+         * Only the contracts that support all of the files are returned.<<BR>>
+         * Errors occurring in {@link GLib.File.query_info} method while looking up
+         * the file (e.g. if the file is deleted) are forwarded to the caller.<<BR>>
+         *
+         * @param files Array of existing files.
+         * @return List of contracts applicable to any of the given files.
+         */
+        public static Gee.List<Contract> get_contracts_for_files (File[] files) throws Error {
+            var mime_types = new Gee.HashSet<string> (); //for automatic deduplication
+
+            foreach (var file in files) {
+                var content_type = file.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+                                                    FileQueryInfoFlags.NONE).get_content_type ();
+                mime_types.add (ContentType.get_mime_type (content_type));
+            }
+
+            return get_contracts_by_mimelist (mime_types.to_array ());
         }
 
         private static Gee.List<Contract> get_contracts_from_data (ContractData[] data) {

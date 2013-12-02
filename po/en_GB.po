@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-19 10:22+0100\n"
-"PO-Revision-Date: 2013-02-25 16:52+0000\n"
+"PO-Revision-Date: 2013-10-19 20:01+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-09-11 05:14+0000\n"
-"X-Generator: Launchpad (build 16761)\n"
+"X-Launchpad-Export-Date: 2013-11-27 05:19+0000\n"
+"X-Generator: Launchpad (build 16845)\n"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:153
 msgid "Developers"
-msgstr ""
+msgstr "Developers"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:163
 msgid "Website"
@@ -63,11 +63,11 @@ msgstr "New Tab"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:480
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Undo Close Tab"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:516
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Closed Tabs"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"

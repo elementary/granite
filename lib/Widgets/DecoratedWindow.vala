@@ -217,17 +217,17 @@ namespace Granite.Widgets {
         }
 
         public override bool button_press_event (Gdk.EventButton e) {
-            if (coords_over_close_button (e.x_root, e.y_root)) {
+            if (coords_over_close_button (e.x_root, e.y_root))
                 return true;
-            }
+            if (e.type == Gdk.EventType.BUTTON_PRESS && e.button == 1)
+                this.begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
 
-            this.begin_move_drag ((int) e.button, (int) e.x_root, (int) e.y_root, e.time);
             return base.button_press_event (e);
         }
 
         public override bool button_release_event (Gdk.EventButton e) {
             bool on_close_button = coords_over_close_button (e.x_root, e.y_root);
-            if(on_close_button) {
+            if (on_close_button) {
                 var event = (Gdk.Event*) (&e);
                 this.delete_event (event->any);
             }
@@ -245,11 +245,11 @@ namespace Granite.Widgets {
         }
 
         private bool coords_over_close_button (double x_root, double y_root) {
-        	int w_x, w_y;
-        	this.get_position(out w_x, out w_y);
-        
-        	int x = (int) x_root - w_x;
-        	int y = (int) y_root - w_y;
+            int w_x, w_y;
+            this.get_position (out w_x, out w_y);
+
+            int x = (int) x_root - w_x;
+            int y = (int) y_root - w_y;
         
             return this.deletable &&
                     x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
