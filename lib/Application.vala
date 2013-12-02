@@ -81,6 +81,8 @@ namespace Granite {
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 
+            add_actions ();
+
             // Deprecated
             Granite.app = this;
         }
@@ -109,13 +111,22 @@ namespace Granite {
 
             set_options ();
 
+            if (ABOUT) {
+                Gtk.init (ref args);
+                handle_about_parameter ();
+
+                return Posix.EXIT_SUCCESS;
+            }
+
             return base.run (args);
         }
 
         protected static bool DEBUG = false;
+        protected static bool ABOUT = false;
 
         protected const OptionEntry[] options = {
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
+            { "about", 'a', 0, OptionArg.NONE, out ABOUT, "Show About dialog", null },
             { null }
         };
 
@@ -151,7 +162,7 @@ namespace Granite {
             assert (parent is Gtk.Window);
 
             var developers_string = _("Developers");
-            
+
             Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
                                                "program_name", program_name,
                                                "version", build_version,
@@ -172,6 +183,64 @@ namespace Granite {
                                                "help", help_url,
                                                "translate", translate_url,
                                                "bug", bug_url);
+        }
+
+        /* Allows reusing the About dialog */
+        private Gtk.Window about_dialog_parent = null;
+
+        private void add_actions () {
+            /* Actions are always executed in the primary instance, provided
+               that the application was registered.
+               Take advantage of this by showing the About dialog using the 
+               main instance, saving memory. */
+            var show_about_action = new SimpleAction ("show-about-dialog", null);
+
+            show_about_action.activate.connect (() => {
+                hold ();
+
+                debug ("The show-about-dialog action was activated");
+
+                if (this.about_dialog_parent == null)
+                    this.about_dialog_parent = new Gtk.Window ();
+
+                show_about (this.about_dialog_parent);
+
+                release ();
+            });
+
+            add_action (show_about_action);
+        }
+
+        private void handle_about_parameter () {
+            try {
+                register ();
+            } catch (Error error) {
+                warning ("Couldn't register application: %s", error.message);
+            }
+
+            activate_action ("show-about-dialog", null);
+
+            if (!this.is_remote) {
+                /* This means that the primary instance was created by running
+                   "app --about".
+                   Manually set up exit conditions and run the main loop of the
+                   application.
+                   This is needed to prevent weird stuff from happening if the
+                   actual application is opened while this is running. */
+                Gtk.Widget about_dialog = this.about_dialog_parent.get_data ("gtk-about-dialog");
+
+                about_dialog.hide.connect (() => {
+                    if (get_windows () == null)
+                        Gtk.main_quit ();
+                });
+
+                window_removed.connect (() => {
+                    if (get_windows () == null)
+                        Gtk.main_quit ();
+                });
+
+                Gtk.main ();
+            }
         }
     }
 }
