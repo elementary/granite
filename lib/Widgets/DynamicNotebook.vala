@@ -560,7 +560,7 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private static const int BUTTON_PADDING = 5; // Padding around the new tab button
+        private static const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
         private static const string CLOSE_BUTTON_STYLE = """
         * {
             -GtkButton-default-border : 0;
@@ -627,15 +627,15 @@ namespace Granite.Widgets {
                 restore_tab_m.sensitive = false;
             });
 
-            Gtk.Box box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            Gtk.Box add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             add_button = new Gtk.Button ();
             add_button.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
             add_button.get_style_context ().add_provider (button_fix, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            box.pack_start (add_button, false, false, BUTTON_PADDING);
-            box.show_all ();
-            this.notebook.set_action_widget (box, Gtk.PackType.START);
+            add_button_box.pack_start (add_button, false, false, ADD_BUTTON_PADDING);
+            add_button_box.show_all ();
+            this.notebook.set_action_widget (add_button_box, Gtk.PackType.START);
 
             restore_button = new Gtk.Button ();
             restore_button.add (new Gtk.Image.from_icon_name ("user-trash-symbolic", Gtk.IconSize.MENU));
