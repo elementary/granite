@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-19 10:22+0100\n"
-"PO-Revision-Date: 2013-10-19 20:05+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2013-12-03 15:02+0000\n"
+"Last-Translator: Pablo Largo <devnix.code@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-27 05:18+0000\n"
-"X-Generator: Launchpad (build 16845)\n"
+"X-Launchpad-Export-Date: 2013-12-04 05:46+0000\n"
+"X-Generator: Launchpad (build 16861)\n"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:153
 msgid "Developers"
@@ -54,7 +54,7 @@ msgstr "Cerrar la otra pestaña"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
 msgid "Close Other Tabs"
-msgstr "Cerrar las otras pestañas"
+msgstr "Cerrar las demás pestañas"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:479
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:507
