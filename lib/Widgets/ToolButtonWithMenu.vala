@@ -39,6 +39,7 @@ namespace Granite.Widgets {
      * - activate a GtkAction if any or popup a menu
      * (used in history navigation buttons and the AppMenu)
      */
+    [Deprecated (replacement = "Gtk.MenuButton", since = "0.3")]
     public class ToolButtonWithMenu : Gtk.ToggleToolButton {
 
         public signal void right_click (Gdk.EventButton ev);
