@@ -22,6 +22,7 @@ namespace Granite.Widgets {
     /**
      * This class provides an easy way to manage tabs.
      */
+    [Deprecated (replacement = "Gtk.Stack", since = "0.3")]
     public class StaticNotebook : Gtk.Box {
 
         private Gtk.Notebook notebook;
