@@ -25,6 +25,8 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.CONTROL_MASK |
                                                      Gdk.ModifierType.MOD1_MASK);
 
+    public delegate void CleanupDelegate ();
+
     private class TabPageContainer : Gtk.EventBox {
         private weak Tab _tab;
 
@@ -94,6 +96,12 @@ namespace Granite.Widgets {
          * the tab should not be restored.
          **/
         public string restore_data { get; set; }
+
+        /**
+         * An optional delegate that is called when the tab is removed from the set
+         * of restorable tabs in DynamicNotebook.
+         */
+        public CleanupDelegate cleanup_delegate = null;
 
         internal TabPageContainer page_container;
         public Gtk.Widget page {
@@ -276,21 +284,28 @@ namespace Granite.Widgets {
         public signal void restored (string label, string restore_data, GLib.Icon? icon);
         public signal void cleared ();
 
+        private int _max_restorable_tabs = 10;
+        public int max_restorable_tabs {
+            get { return _max_restorable_tabs; }
+            set { _max_restorable_tabs = value; }
+        }
+
         internal struct Entry {
             string label;
             string restore_data;
             GLib.Icon? icon;
+            CleanupDelegate? cleanup_delegate;
         }
 
-        private Entry[] closed_tabs;
+        private Gee.LinkedList<Entry?> closed_tabs;
 
         public ClosedTabs () {
-            closed_tabs = {};
+            closed_tabs = new Gee.LinkedList<Entry?> ();
         }
 
         public bool empty {
             get {
-                return closed_tabs.length == 0;
+                return closed_tabs.size == 0;
             }
         }
 
@@ -298,30 +313,37 @@ namespace Granite.Widgets {
             foreach (var entry in closed_tabs)
                 if (tab.restore_data == entry.restore_data)
                     return;
-            Entry tmp = { tab.label, tab.restore_data, tab.icon };
-            closed_tabs += tmp;
+
+            // Insert the element at the end of the list.
+            Entry e = { tab.label, tab.restore_data, tab.icon, tab.cleanup_delegate };
+            closed_tabs.add (e);
+
+            // If the maximum size is exceeded, remove from the beginning of the list.
+            if (closed_tabs.size > max_restorable_tabs) {
+                var elem = closed_tabs.poll_head ();
+                var cleanup_delegate = elem.cleanup_delegate;
+
+                if (cleanup_delegate != null)
+                    cleanup_delegate ();
+            }
         }
 
         public Entry pop () {
-            assert (closed_tabs.length > 0);
-            Entry entry = closed_tabs[closed_tabs.length - 1];
-            closed_tabs.resize (closed_tabs.length - 1);
-            return entry;
+            assert (closed_tabs.size > 0);
+            return closed_tabs.poll_tail ();
         }
 
         public Entry pick (string search) {
             Entry picked = {null, null, null};
-            Entry[] copy = {};
 
-            foreach (var entry in closed_tabs) {
-                if (entry.restore_data != search) {
-                    copy += entry;
-                } else {
-                    picked = entry;
-                }
-            }
+            for (int i = 0; i < closed_tabs.size; i++) {
+                var entry = closed_tabs[i];
 
-            closed_tabs = copy;
+                if (entry.restore_data == search) {
+                    picked = closed_tabs.remove_at (i);
+                    break;
+                 }
+             }
 
             return picked;
         }
@@ -353,7 +375,11 @@ namespace Granite.Widgets {
                     _menu.append (item);
 
                     item.activate.connect (() => {
-                        closed_tabs = {};
+                        foreach (var entry in closed_tabs)
+                            if (entry.cleanup_delegate != null)
+                                entry.cleanup_delegate ();
+
+                        closed_tabs.clear ();
                         cleared ();
                     });
                 }
@@ -463,6 +489,15 @@ namespace Granite.Widgets {
                 restore_tab_m.visible = value;
                 restore_button.visible = value;
             }
+        }
+
+        /**
+         * Set or get the upper limit of the size of the set
+         * of restorable tabs.
+         */
+        public int max_restorable_tabs {
+            get { return closed_tabs.max_restorable_tabs; }
+            set { closed_tabs.max_restorable_tabs = value; }
         }
 
         /**
