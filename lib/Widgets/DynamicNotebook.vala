@@ -287,7 +287,10 @@ namespace Granite.Widgets {
         private int _max_restorable_tabs = 10;
         public int max_restorable_tabs {
             get { return _max_restorable_tabs; }
-            set { _max_restorable_tabs = value; }
+            set {
+                assert (value > 0)
+                _max_restorable_tabs = value;
+            }
         }
 
         internal struct Entry {
