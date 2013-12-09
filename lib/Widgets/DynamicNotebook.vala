@@ -288,7 +288,7 @@ namespace Granite.Widgets {
         public int max_restorable_tabs {
             get { return _max_restorable_tabs; }
             set {
-                assert (value > 0)
+                assert (value > 0);
                 _max_restorable_tabs = value;
             }
         }
