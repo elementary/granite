@@ -25,7 +25,7 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.CONTROL_MASK |
                                                      Gdk.ModifierType.MOD1_MASK);
 
-    public delegate void CleanupDelegate ();
+    public delegate void DroppedDelegate ();
 
     private class TabPageContainer : Gtk.EventBox {
         private weak Tab _tab;
@@ -98,10 +98,13 @@ namespace Granite.Widgets {
         public string restore_data { get; set; }
 
         /**
-         * An optional delegate that is called when the tab is removed from the set
+         * An optional delegate that is called when the tab is dropped from the set
          * of restorable tabs in DynamicNotebook.
+         * A tab is dropped either when Clear All is pressed, or when
+         * the tab is the oldest tab in the set of restorable tabs and
+         * the number of restorable tabs has exceeded the upper limit.
          */
-        public CleanupDelegate cleanup_delegate = null;
+        public DroppedDelegate dropped_callback = null;
 
         internal TabPageContainer page_container;
         public Gtk.Widget page {
@@ -297,7 +300,7 @@ namespace Granite.Widgets {
             string label;
             string restore_data;
             GLib.Icon? icon;
-            CleanupDelegate? cleanup_delegate;
+            DroppedDelegate? dropped_callback;
         }
 
         private Gee.LinkedList<Entry?> closed_tabs;
@@ -318,16 +321,16 @@ namespace Granite.Widgets {
                     return;
 
             // Insert the element at the end of the list.
-            Entry e = { tab.label, tab.restore_data, tab.icon, tab.cleanup_delegate };
+            Entry e = { tab.label, tab.restore_data, tab.icon, tab.dropped_callback };
             closed_tabs.add (e);
 
             // If the maximum size is exceeded, remove from the beginning of the list.
             if (closed_tabs.size > max_restorable_tabs) {
                 var elem = closed_tabs.poll_head ();
-                var cleanup_delegate = elem.cleanup_delegate;
+                var dropped_callback = elem.dropped_callback;
 
-                if (cleanup_delegate != null)
-                    cleanup_delegate ();
+                if (dropped_callback != null)
+                    dropped_callback ();
             }
         }
 
@@ -379,8 +382,8 @@ namespace Granite.Widgets {
 
                     item.activate.connect (() => {
                         foreach (var entry in closed_tabs)
-                            if (entry.cleanup_delegate != null)
-                                entry.cleanup_delegate ();
+                            if (entry.dropped_callback != null)
+                                entry.dropped_callback ();
 
                         closed_tabs.clear ();
                         cleared ();
