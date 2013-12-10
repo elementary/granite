@@ -273,7 +273,7 @@ namespace Granite.Widgets {
             });*/
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
-            close_button.clicked.connect ( () => this.closed () );
+            close_button.clicked.connect (() => this.closed ());
             working = false;
         }
 
@@ -381,9 +381,11 @@ namespace Granite.Widgets {
                     _menu.append (item);
 
                     item.activate.connect (() => {
-                        foreach (var entry in closed_tabs)
-                            if (entry.dropped_callback != null)
+                        foreach (var entry in closed_tabs) {
+                            if (entry.dropped_callback != null) {
                                 entry.dropped_callback ();
+                            }
+                        }
 
                         closed_tabs.clear ();
                         cleared ();
@@ -1010,7 +1012,7 @@ namespace Granite.Widgets {
 
             tab.width_request = tab_width;
             tab.close_button.get_style_context ().add_provider (button_fix,
-                                                         Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             this.recalc_size ();
             this.recalc_order ();
 
@@ -1039,6 +1041,7 @@ namespace Granite.Widgets {
         private void on_tab_closed (Tab tab) {
             if (Signal.has_handler_pending (this, Signal.lookup ("close-tab-requested", typeof (DynamicNotebook)), 0, true)) {
                 var sure = close_tab_requested (tab);
+
                 if (!sure)
                     return;
             }
