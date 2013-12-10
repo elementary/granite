@@ -380,7 +380,7 @@ public class Granite.Demo : Granite.Application {
 
         dynamic_notebook.allow_duplication = true;
         dynamic_notebook.allow_restoring = true;
-	dynamic_notebook.max_restorable_tabs = 5;
+        dynamic_notebook.max_restorable_tabs = 5;
         dynamic_notebook.allow_pinning = true;
         dynamic_notebook.show_icons = true;
         dynamic_notebook.add_button_tooltip = "New user tab";
