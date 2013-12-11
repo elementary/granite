@@ -385,23 +385,21 @@ namespace Granite.Drawing {
             
             try {
                 // Process Rows
-                exponential_blur_rows (pixels, width, height, height / 2, height, 0, width, alpha);
-
                 var th = new Thread<void*>.try (null, () => {
                     exponential_blur_rows (pixels, width, height, 0, height / 2, 0, width, alpha);
                     return null;
                 });
-                
+
+                exponential_blur_rows (pixels, width, height, height / 2, height, 0, width, alpha);
                 th.join ();
                 
                 // Process Columns
-                exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
-
                 var th2 = new Thread<void*>.try (null, () => {
                     exponential_blur_columns (pixels, width, height, 0, width / 2, 0, height, alpha);
                     return null;
                 });
-                
+
+                exponential_blur_columns (pixels, width, height, width / 2, width, 0, height, alpha);
                 th2.join ();
             } catch (Error err) {
                 warning (err.message);
@@ -517,13 +515,12 @@ namespace Granite.Drawing {
             
             try {
                 // Horizontal Pass
-                gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
-
                 var th = new Thread<void*>.try (null, () => {
                     gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, 0, height / 2, shiftar);
                     return null;
                 });
-                
+
+                gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
                 th.join ();
                 
                 // Clear buffer
@@ -541,13 +538,12 @@ namespace Granite.Drawing {
                     }
                 
                 // Vertical Pass
-                gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
-
                 var th2 = new Thread<void*>.try (null, () => {
                     gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, 0, width / 2, shiftar);
                     return null;
                 });
-                
+
+                gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
                 th2.join ();
             } catch (Error err) {
                 message (err.message);
