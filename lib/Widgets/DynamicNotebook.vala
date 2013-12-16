@@ -161,7 +161,7 @@ namespace Granite.Widgets {
             if (icon != null)
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
             else
-                this._icon = new Gtk.Image.from_stock (Gtk.Stock.MISSING_IMAGE, Gtk.IconSize.MENU);
+                this._icon = new Gtk.Image.from_icon_name ("image-missing", Gtk.IconSize.MENU);
             this._working = new Gtk.Spinner ();
             _working.start();
 

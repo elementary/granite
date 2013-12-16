@@ -103,7 +103,7 @@ public class Granite.Widgets.ContractorView : TreeView {
             string message = contractor_installed ? _("Could not contact Contractor. You may need to install it") : _("No action found for this file");
             try {
                 var icon = IconTheme.get_default ().load_icon (
-                    contractor_installed ? Gtk.Stock.DIALOG_ERROR : Gtk.Stock.DIALOG_INFO, 
+                    contractor_installed ? "dialog-error" : "dialog-information", 
                     icon_size, 0);
                 list.set (it, 
                     0, icon, 1, message);
