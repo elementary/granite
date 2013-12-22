@@ -352,7 +352,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         content_scrolled_vbox.pack_start(documenters_label);
         content_scrolled_vbox.pack_start(translators_label);
 
-        close_button = new Button.from_stock(_("Close"));
+        close_button = new Button.with_label(_("Close"));
         close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
         action_area.pack_end (close_button, false, false, 0);
 
