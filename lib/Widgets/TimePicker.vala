@@ -132,6 +132,7 @@ namespace Granite.Widgets {
             minutes_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             minutes_spinbutton.wrap = true;
             minutes_spinbutton.value_changed.connect (() => update_time (false));
+            /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
             
             pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
