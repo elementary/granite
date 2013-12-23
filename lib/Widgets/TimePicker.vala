@@ -24,23 +24,23 @@ namespace Granite.Widgets {
      * This widget allows users to easily pick a time.
      */
     public class TimePicker : Gtk.Entry {
-        
+
         // Signals
         /**
          * Sent when the time got changed
          */
         public signal void time_changed ();
-        
+
         /**
          * Format used in 12h mode
          */
         public string format_12 { get; construct;}
-        
+
         /**
          * Format used in 24h mode
          */
         public string format_24 { get; construct;}
-        
+
         private GLib.DateTime _time = null;
         /**
          * Current time
@@ -73,13 +73,13 @@ namespace Granite.Widgets {
             }
         }
         private string old_string = "";
-        
+
         private Gtk.SpinButton hours_spinbutton;
         private Gtk.SpinButton minutes_spinbutton;
         private Gtk.Switch am_pm_switch;
         private Gtk.Grid am_pm_grid;
         private bool changing_time = false;
-        
+
         private PopOver popover;
 
         construct {
@@ -90,18 +90,18 @@ namespace Granite.Widgets {
             max_length = 8;
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
             icon_release.connect (on_icon_press);
-            
+
             // Creates the popover
             popover = new PopOver ();
             var pop_grid = new Gtk.Grid ();
             pop_grid.column_spacing = 6;
             pop_grid.row_spacing = 6;
             ((Gtk.Box) popover.get_content_area ()).add (pop_grid);
-            
+
             am_pm_grid = new Gtk.Grid ();
             am_pm_grid.column_spacing = 6;
             am_pm_grid.no_show_all = true;
-            
+
             am_pm_switch = new Gtk.Switch ();
             am_pm_switch.notify["active"].connect (() => {
                 if (changing_time == true) {
@@ -119,7 +119,7 @@ namespace Granite.Widgets {
             am_pm_label.justify = Gtk.Justification.RIGHT;
             am_pm_grid.attach (am_pm_label, 0, 0, 1, 1);
             am_pm_grid.attach (am_pm_switch, 1, 0, 1, 1);
-            
+
             if (Granite.DateTime.is_clock_format_12h ()) {
                 hours_spinbutton = new Gtk.SpinButton.with_range (1, 12, 1);
             } else {
@@ -134,23 +134,39 @@ namespace Granite.Widgets {
             minutes_spinbutton.value_changed.connect (() => update_time (false));
             /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
-            
+
             pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
             pop_grid.attach (separation_label, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
             pop_grid.attach (am_pm_grid, 0, 1, 3, 1);
-            
+
             // Connecting to events allowing manual changes
-            add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
+            add_events (Gdk.EventMask.FOCUS_CHANGE_MASK|Gdk.EventMask.SCROLL_MASK);
             focus_out_event.connect (() => {
                 is_unfocused ();
                 return false;
             });
+            scroll_event.connect ((event) => {
+                switch (event.direction) {
+                    case Gdk.ScrollDirection.UP:
+                    case Gdk.ScrollDirection.RIGHT:
+                        _time = _time.add_minutes (1);
+                        break;
+                    case Gdk.ScrollDirection.DOWN:
+                    case Gdk.ScrollDirection.LEFT:
+                        _time = _time.add_minutes (-1);
+                        break;
+                    default:
+                        break;
+                }
+                update_text ();
+                return false;
+            });
             activate.connect (is_unfocused);
-            
+
             update_text ();
         }
-        
+
         /**
          * Creates a new TimePicker.
          *
@@ -160,7 +176,7 @@ namespace Granite.Widgets {
         public TimePicker.with_format (string format_12, string format_24) {
             Object (format_12: format_12, format_24: format_24);
         }
-        
+
         private void update_time (bool is_hour) {
             if (changing_time == true) {
                 return;
@@ -195,7 +211,7 @@ namespace Granite.Widgets {
                 hours_spinbutton.set_value (time.get_hour () - 12);
             else
                 hours_spinbutton.set_value (time.get_hour ());
-                
+
             if (Granite.DateTime.is_clock_format_12h ()) {
                 am_pm_grid.no_show_all = false;
                 am_pm_grid.show_all ();
@@ -210,7 +226,7 @@ namespace Granite.Widgets {
                 am_pm_grid.hide ();
                 hours_spinbutton.set_value (time.get_hour ());
             }
-            
+
             minutes_spinbutton.set_value (time.get_minute ());
             changing_time = false;
 
@@ -225,24 +241,24 @@ namespace Granite.Widgets {
             Gtk.Allocation size;
             get_allocation (out size);
             get_window ().get_origin (out x, out y);
-            
+
             x += size.x + size.width - 10;
             y += size.y + size.height;
         }
-        
+
         private void is_unfocused () {
             if (popover.visible == false && old_string.collate (text) != 0) {
                 old_string = text;
                 parse_time (text.dup ());
             }
         }
-        
+
         private void parse_time (string timestr) {
             string current = "";
             bool is_hours = true;
             bool is_suffix = false;
             bool has_suffix = false;
-            
+
             int? hour = null;
             int? minute = null;
             foreach (var c in timestr.down ().to_utf8 ()) {
@@ -288,7 +304,7 @@ namespace Granite.Widgets {
             }
             update_text ();
         }
-        
+
         private void update_text (bool no_signal = false) {
             if (Granite.DateTime.is_clock_format_12h ())
                 set_text (time.format (format_12));
@@ -299,5 +315,5 @@ namespace Granite.Widgets {
                 time_changed ();
         }
     }
-    
+
 }
