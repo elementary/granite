@@ -12,7 +12,7 @@ Build-Depends: cmake,
 Standards-Version: 3.9.3
 Homepage: https://launchpad.net/granite
 
-Package: libgranite1
+Package: libgranite2
 Architecture: any
 Depends: libgranite-common (>= ${source:Version}),
          ${misc:Depends},
@@ -32,7 +32,7 @@ Architecture: any
 Depends: gir1.2-granite-1.0 (= ${binary:Version}),
          libgee-dev,
          libglib2.0-dev,
-         libgranite1 (= ${binary:Version}),
+         libgranite2 (= ${binary:Version}),
          libgtk-3-dev (>= 3.3.14),
          ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
@@ -73,7 +73,7 @@ Description: extension of GTK+ libraries (common files)
 Package: granite-demo
 Section: misc
 Architecture: any
-Depends: libgranite1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides the
@@ -82,11 +82,11 @@ Description: extension of GTK+ libraries (demo binary)
  .
  This package contains a small demo application to show Granite Widgets.
 
-Package: libgranite1-dbg
+Package: libgranite2-dbg
 Section: debug
 Priority: extra
 Architecture: any
-Depends: libgranite1 (= ${binary:Version}), ${misc:Depends}
+Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (debugging symbols)
  Granite is an extension of GTK+. Among other things, it provides the
