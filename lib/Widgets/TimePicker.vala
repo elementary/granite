@@ -34,12 +34,12 @@ namespace Granite.Widgets {
         /**
          * Format used in 12h mode
          */
-        public string format_12 { get; construct;}
+        public string format_12 { get; construct; }
 
         /**
          * Format used in 24h mode
          */
-        public string format_24 { get; construct;}
+        public string format_24 { get; construct; }
 
         private GLib.DateTime _time = null;
         /**
@@ -114,6 +114,7 @@ namespace Granite.Widgets {
                 }
                 update_text (true);
             });
+
             var am_pm_label = new Gtk.Label (_("PM:"));
             am_pm_label.hexpand = true;
             am_pm_label.justify = Gtk.Justification.RIGHT;
@@ -125,6 +126,7 @@ namespace Granite.Widgets {
             } else {
                 hours_spinbutton = new Gtk.SpinButton.with_range (0, 23, 1);
             }
+
             hours_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             hours_spinbutton.wrap = true;
             hours_spinbutton.value_changed.connect (() => update_time (true));
@@ -146,6 +148,7 @@ namespace Granite.Widgets {
                 is_unfocused ();
                 return false;
             });
+
             scroll_event.connect ((event) => {
                 switch (event.direction) {
                     case Gdk.ScrollDirection.UP:
@@ -162,6 +165,7 @@ namespace Granite.Widgets {
                 update_text ();
                 return false;
             });
+
             activate.connect (is_unfocused);
 
             update_text ();
@@ -181,6 +185,7 @@ namespace Granite.Widgets {
             if (changing_time == true) {
                 return;
             }
+
             if (is_hour == true) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
                 if (Granite.DateTime.is_clock_format_12h ()) {
@@ -201,6 +206,7 @@ namespace Granite.Widgets {
             } else {
                 _time = time.add_minutes (minutes_spinbutton.get_value_as_int () - time.get_minute ());
             }
+
             update_text ();
         }
 
@@ -273,10 +279,12 @@ namespace Granite.Widgets {
                         minute = int.parse (current);
                         current = "";
                     }
+
                     if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && is_suffix == false) {
                         is_suffix = true;
                         current = "%s%c".printf (current, c);
                     }
+
                     if (c.to_string ().contains ("m") && is_suffix == true) {
                         if (hour == null || minute == null)
                             return;
@@ -291,17 +299,21 @@ namespace Granite.Widgets {
                     }
                 }
             }
+
             if (is_hours == false && is_suffix == false && current != "") {
                 minute = int.parse (current);
             }
+
             if (hour == null || minute == null) {
                 update_text ();
                 return;
             }
+
             if (has_suffix == false) {
                 time = time.add_hours (hour - time.get_hour ());
                 time = time.add_minutes (minute - time.get_minute ());
             }
+
             update_text ();
         }
 
