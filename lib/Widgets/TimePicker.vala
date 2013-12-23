@@ -144,7 +144,7 @@ namespace Granite.Widgets {
             focus_out_event.connect (() => {
                 is_unfocused ();
                 return false;
-                });
+            });
             activate.connect (is_unfocused);
             
             update_text ();
