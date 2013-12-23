@@ -55,23 +55,29 @@ namespace Granite.Widgets {
                     } else {
                         am_pm_switch.active = false;
                     }
+
                     update_text (true);
                     changing_time = false;
                 }
+
                 return _time;
             }
+
             set {
                 _time = value;
                 changing_time = true;
+
                 if (_time.get_hour () > 12) {
                     am_pm_switch.active = true;
                 } else {
                     am_pm_switch.active = false;
                 }
+
                 update_text (true);
                 changing_time = false;
             }
         }
+
         private string old_string = "";
 
         private Gtk.SpinButton hours_spinbutton;
@@ -85,8 +91,10 @@ namespace Granite.Widgets {
         construct {
             if (format_12 == null)
                 format_12 = Granite.DateTime.get_default_time_format (true);
+
             if (format_24 == null)
                 format_24 = Granite.DateTime.get_default_time_format (false);
+
             max_length = 8;
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
             icon_release.connect (on_icon_press);
@@ -107,11 +115,13 @@ namespace Granite.Widgets {
                 if (changing_time == true) {
                     return;
                 }
+
                 if (am_pm_switch.active == true) {
                     time = _time.add_hours (12);
                 } else {
                     time = _time.add_hours (-12);
                 }
+
                 update_text (true);
             });
 
@@ -188,6 +198,7 @@ namespace Granite.Widgets {
 
             if (is_hour == true) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
+
                 if (Granite.DateTime.is_clock_format_12h ()) {
                     if (hours_spinbutton.get_value_as_int () == 12 && am_pm_switch.active == false) {
                         _time = _time.add_hours (-_time.get_hour ());
@@ -197,6 +208,7 @@ namespace Granite.Widgets {
                         _time = _time.add_hours (-_time.get_hour () + 12);
                     } else if (hours_spinbutton.get_value_as_int () < 12 && am_pm_switch.active == true) {
                         _time = _time.add_hours (new_hour + 12);
+
                         if (time.get_hour () <= 12)
                             _time = _time.add_hours (12);
                     }
@@ -211,8 +223,8 @@ namespace Granite.Widgets {
         }
 
         private void on_icon_press (Gtk.EntryIconPosition position) {
-            
             changing_time = true;
+
             if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12)
                 hours_spinbutton.set_value (time.get_hour () - 12);
             else
@@ -221,6 +233,7 @@ namespace Granite.Widgets {
             if (Granite.DateTime.is_clock_format_12h ()) {
                 am_pm_grid.no_show_all = false;
                 am_pm_grid.show_all ();
+
                 if (time.get_hour () > 12) {
                     hours_spinbutton.set_value (time.get_hour () - 12);
                 } else if (time.get_hour () == 0) {
@@ -294,6 +307,7 @@ namespace Granite.Widgets {
                         } else {
                             time = time.add_hours (hour + 12 - time.get_hour ());
                         }
+
                         time = time.add_minutes (minute - time.get_minute ());
                         has_suffix = true;
                     }
@@ -322,7 +336,9 @@ namespace Granite.Widgets {
                 set_text (time.format (format_12));
             else
                 set_text (time.format (format_24));
+
             old_string = text;
+
             if (no_signal == false)
                 time_changed ();
         }

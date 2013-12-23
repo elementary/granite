@@ -122,6 +122,7 @@ namespace Granite.DateTime {
             /// TRANSLATORS: a GLib.DateTime format showing the month.
             return _("%b");
         }
+
         return "";
     }
 }
