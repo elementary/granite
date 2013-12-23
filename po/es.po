@@ -7,93 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-08-19 10:22+0100\n"
+"POT-Creation-Date: 2013-12-22 10:43-0600\n"
 "PO-Revision-Date: 2013-12-03 15:02+0000\n"
 "Last-Translator: Pablo Largo <devnix.code@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-13 06:09+0000\n"
-"X-Generator: Launchpad (build 16869)\n"
+"X-Launchpad-Export-Date: 2013-12-23 05:39+0000\n"
+"X-Generator: Launchpad (build 16872)\n"
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:153
+#: /home/david/src/granite/granite/po/../lib//Application.vala:164
 msgid "Developers"
 msgstr "Desarrolladores"
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:163
+#: /home/david/src/granite/granite/po/../lib//Application.vala:174
 msgid "Website"
 msgstr "Sitio web"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
-msgid "Menu"
-msgstr "Menú"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
-msgid "About"
-msgstr "Acerca de"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:117
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:140
-msgid "Close Tab"
-msgstr "Cerrar pestaña"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:142
-msgid "Open in a new Window"
-msgstr "Abrir en una ventana nueva"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:143
-msgid "Duplicate"
-msgstr "Duplicar"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tab"
-msgstr "Cerrar la otra pestaña"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tabs"
-msgstr "Cerrar las demás pestañas"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:479
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:507
-msgid "New Tab"
-msgstr "Pestaña nueva"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:480
-msgid "Undo Close Tab"
-msgstr "Deshacer el cierre de pestaña"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:516
-msgid "Closed Tabs"
-msgstr "Pestañas cerradas"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"No se ha podido contactar con Contractor. Puede que necesite instalarlo"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "No se ha encontrado ninguna acción para este archivo"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
-msgid "%B %e, %Y"
-msgstr "%e de %B de %Y"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
-msgid "Translate This App"
-msgstr "Traducir esta aplicación"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
-msgid "Report a Problem"
-msgstr "Informar de un problema"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
-msgid "%l:%M %p"
-msgstr "%H:%M"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
@@ -117,6 +47,10 @@ msgstr "Documentado por:"
 msgid "Translated by %s"
 msgstr "Traducido por %s"
 
+#: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
+msgstr ""
+
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
 msgstr "Este programa está publicado bajo los términos de la licencia "
@@ -124,3 +58,77 @@ msgstr "Este programa está publicado bajo los términos de la licencia "
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " , esta no tiene NINGUNA GARANTÍA; para más detalles, visite "
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "Traducir esta aplicación"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "Informar de un problema"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "Menú"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "Acerca de"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
+msgid "%B %e, %Y"
+msgstr "%e de %B de %Y"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:170
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:195
+msgid "Close Tab"
+msgstr "Cerrar pestaña"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:198
+msgid "Open in a new Window"
+msgstr "Abrir en una ventana nueva"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:199
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tab"
+msgstr "Cerrar la otra pestaña"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tabs"
+msgstr "Cerrar las demás pestañas"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:350
+msgid "Clear All"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:600
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:634
+msgid "New Tab"
+msgstr "Pestaña nueva"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:601
+msgid "Undo Close Tab"
+msgstr "Deshacer el cierre de pestaña"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:644
+msgid "Closed Tabs"
+msgstr "Pestañas cerradas"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr ""
+"No se ha podido contactar con Contractor. Puede que necesite instalarlo"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "No se ha encontrado ninguna acción para este archivo"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
+msgid "%l:%M %p"
+msgstr "%H:%M"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-23 01:11+0100\n"
+"POT-Creation-Date: 2013-12-23 19:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,6 +178,10 @@ msgstr ""
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
+msgstr ""
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
 msgstr ""
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:456

@@ -7,93 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-19 10:22+0100\n"
+"POT-Creation-Date: 2013-12-22 10:43-0600\n"
 "PO-Revision-Date: 2012-12-28 09:12+0000\n"
 "Last-Translator: Mohammad Zali <mohamadzali@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-13 06:09+0000\n"
-"X-Generator: Launchpad (build 16869)\n"
+"X-Launchpad-Export-Date: 2013-12-23 05:39+0000\n"
+"X-Generator: Launchpad (build 16872)\n"
 "Language: \n"
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:153
+#: /home/david/src/granite/granite/po/../lib//Application.vala:164
 msgid "Developers"
 msgstr ""
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:163
+#: /home/david/src/granite/granite/po/../lib//Application.vala:174
 msgid "Website"
 msgstr "وبگاه"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
-msgid "Menu"
-msgstr "منو"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
-msgid "About"
-msgstr "درباره"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:117
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:140
-msgid "Close Tab"
-msgstr "بستن برگه"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:142
-msgid "Open in a new Window"
-msgstr "باز کردن در پنجره جدید"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:143
-msgid "Duplicate"
-msgstr "تکرار"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tab"
-msgstr ""
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tabs"
-msgstr ""
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:479
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:507
-msgid "New Tab"
-msgstr "برگه جدید"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:480
-msgid "Undo Close Tab"
-msgstr ""
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:516
-msgid "Closed Tabs"
-msgstr ""
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "نمی‌توان با کانترکتور اتصال برقرار کرد. احتمالاً باید آن را نصب کنید"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "هیچ کنشی برای این پرونده پیدا نشد"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
-msgid "%B %e, %Y"
-msgstr ""
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
-msgid "Translate This App"
-msgstr "ترجمه برنامه"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
-msgid "Report a Problem"
-msgstr "گزارش ایراد"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
-msgid "%l:%M %p"
-msgstr ""
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
@@ -117,6 +48,10 @@ msgstr "مستندسازی:"
 msgid "Translated by %s"
 msgstr "ترجمه توسط %s"
 
+#: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
+msgstr ""
+
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
 msgstr "این برنامه طبق مجوز نرم‌افزاری "
@@ -126,3 +61,76 @@ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " منتشر شده است، هیچ گونه تضمینی برای این برنامه ارائه نشده است؛ اطلاعات "
 "بیشتر در "
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "ترجمه برنامه"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "گزارش ایراد"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "منو"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "درباره"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
+msgid "%B %e, %Y"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:170
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:195
+msgid "Close Tab"
+msgstr "بستن برگه"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:198
+msgid "Open in a new Window"
+msgstr "باز کردن در پنجره جدید"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:199
+msgid "Duplicate"
+msgstr "تکرار"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tab"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tabs"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:350
+msgid "Clear All"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:600
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:634
+msgid "New Tab"
+msgstr "برگه جدید"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:601
+msgid "Undo Close Tab"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:644
+msgid "Closed Tabs"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "نمی‌توان با کانترکتور اتصال برقرار کرد. احتمالاً باید آن را نصب کنید"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "هیچ کنشی برای این پرونده پیدا نشد"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
+msgid "%l:%M %p"
+msgstr ""

@@ -7,94 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-08-19 10:22+0100\n"
+"POT-Creation-Date: 2013-12-22 10:43-0600\n"
 "PO-Revision-Date: 2013-08-26 14:34+0000\n"
 "Last-Translator: Stefanos Papanatsios <stefan0spapanatsi0s@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-13 06:09+0000\n"
-"X-Generator: Launchpad (build 16869)\n"
+"X-Launchpad-Export-Date: 2013-12-23 05:38+0000\n"
+"X-Generator: Launchpad (build 16872)\n"
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:153
+#: /home/david/src/granite/granite/po/../lib//Application.vala:164
 msgid "Developers"
 msgstr "Προγραμματιστές"
 
-#: /home/david/src/granite/granite/po/../lib//Application.vala:163
+#: /home/david/src/granite/granite/po/../lib//Application.vala:174
 msgid "Website"
 msgstr "Ιστότοπος"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
-msgid "Menu"
-msgstr "Μενού"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
-msgid "About"
-msgstr "Σχετικά"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:117
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:140
-msgid "Close Tab"
-msgstr "Κλείσιμο καρτέλας"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:142
-msgid "Open in a new Window"
-msgstr "Άνοιγμα σε νέο παράθυρο"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:143
-msgid "Duplicate"
-msgstr "Διπλότυπο"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tab"
-msgstr "Κλείσιμο άλλης καρτέλας"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:191
-msgid "Close Other Tabs"
-msgstr "Κλείσιμο των άλλων καρτελών"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:479
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:507
-msgid "New Tab"
-msgstr "Νέα καρτέλα"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:480
-msgid "Undo Close Tab"
-msgstr "Αναίρεση κλεισίματος καρτέλας"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:516
-msgid "Closed Tabs"
-msgstr "Κλειστές καρτέλες"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία Contractor. Ίσως χρειαστεί να "
-"την εγκαταστήσετε"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "Δεν βρέθηκε ενέργεια γι αυτό το αρχείο"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
-msgid "%B %e, %Y"
-msgstr "%B %e, %Y"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
-msgid "Translate This App"
-msgstr "Μεταφράστε την εφαρμογή"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
-msgid "Report a Problem"
-msgstr "Αναφορά προβλήματος"
-
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
-#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
-msgid "%l:%M %p"
-msgstr "%l:%M %p"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
@@ -118,6 +47,10 @@ msgstr "Τεκμηριωμένο από:"
 msgid "Translated by %s"
 msgstr "Μετάφρασμένο από %s"
 
+#: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
+msgstr ""
+
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
 msgstr "Αυτό το πρόγραμμα δημοσιεύεται υπό τους όρους της "
@@ -126,3 +59,78 @@ msgstr "Αυτό το πρόγραμμα δημοσιεύεται υπό του�
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " αδείας και έρχεται ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ. Για λεπτομέρειες, επισκεφθείτε "
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "Μεταφράστε την εφαρμογή"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "Αναφορά προβλήματος"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "Μενού"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "Σχετικά"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
+msgid "%B %e, %Y"
+msgstr "%B %e, %Y"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:170
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:195
+msgid "Close Tab"
+msgstr "Κλείσιμο καρτέλας"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:198
+msgid "Open in a new Window"
+msgstr "Άνοιγμα σε νέο παράθυρο"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:199
+msgid "Duplicate"
+msgstr "Διπλότυπο"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tab"
+msgstr "Κλείσιμο άλλης καρτέλας"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tabs"
+msgstr "Κλείσιμο των άλλων καρτελών"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:350
+msgid "Clear All"
+msgstr ""
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:600
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:634
+msgid "New Tab"
+msgstr "Νέα καρτέλα"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:601
+msgid "Undo Close Tab"
+msgstr "Αναίρεση κλεισίματος καρτέλας"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:644
+msgid "Closed Tabs"
+msgstr "Κλειστές καρτέλες"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr ""
+"Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία Contractor. Ίσως χρειαστεί να "
+"την εγκαταστήσετε"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "Δεν βρέθηκε ενέργεια γι αυτό το αρχείο"
+
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
+#: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
