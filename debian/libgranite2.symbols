@@ -218,13 +218,20 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_cell_renderer_expander_new@Base 0.2.0
  granite_widgets_cell_renderer_expander_set_is_category_expander@Base 0.2.0
  granite_widgets_closed_tabs_construct@Base 0.2.3
+ granite_widgets_closed_tabs_entry_copy@Base 0.3.0~
+ granite_widgets_closed_tabs_entry_destroy@Base 0.3.0~
+ granite_widgets_closed_tabs_entry_dup@Base 0.3.0~
+ granite_widgets_closed_tabs_entry_free@Base 0.3.0~
+ granite_widgets_closed_tabs_entry_get_type@Base 0.3.0~
  granite_widgets_closed_tabs_get_empty@Base 0.2.3
+ granite_widgets_closed_tabs_get_max_restorable_tabs@Base 0.3.0~
  granite_widgets_closed_tabs_get_menu@Base 0.2.3
  granite_widgets_closed_tabs_get_type@Base 0.2.3
  granite_widgets_closed_tabs_new@Base 0.2.3
  granite_widgets_closed_tabs_pick@Base 0.2.3
  granite_widgets_closed_tabs_pop@Base 0.2.3
  granite_widgets_closed_tabs_push@Base 0.2.3
+ granite_widgets_closed_tabs_set_max_restorable_tabs@Base 0.3.0~
  granite_widgets_collapsible_paned_construct@Base 0.2.0
  granite_widgets_collapsible_paned_get_collapse_mode@Base 0.2.0
  granite_widgets_collapsible_paned_get_type@Base 0.2.0
@@ -278,6 +285,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_get_current@Base 0.2.0
  granite_widgets_dynamic_notebook_get_force_left@Base 0.2.3
  granite_widgets_dynamic_notebook_get_group_name@Base 0.2.0
+ granite_widgets_dynamic_notebook_get_max_restorable_tabs@Base 0.3.0~
  granite_widgets_dynamic_notebook_get_menu@Base 0.2.0
  granite_widgets_dynamic_notebook_get_n_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_get_nth_page@Base 0.2.0
@@ -294,7 +302,6 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_next_page@Base 0.2.0
  granite_widgets_dynamic_notebook_previous_page@Base 0.2.0
  granite_widgets_dynamic_notebook_remove_tab@Base 0.2.0
- granite_widgets_dynamic_notebook_remove_tab_force@Base 0.2.3
  granite_widgets_dynamic_notebook_set_add_button_tooltip@Base 0.2.3
  granite_widgets_dynamic_notebook_set_add_button_visible@Base 0.2.3
  granite_widgets_dynamic_notebook_set_allow_drag@Base 0.2.0
@@ -305,6 +312,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_set_current@Base 0.2.0
  granite_widgets_dynamic_notebook_set_force_left@Base 0.2.3
  granite_widgets_dynamic_notebook_set_group_name@Base 0.2.0
+ granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 0.3.0~
  granite_widgets_dynamic_notebook_set_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_set_show_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_set_tab_position@Base 0.2.0
@@ -441,6 +449,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_status_bar_insert_widget@Base 0.2.0
  granite_widgets_status_bar_new@Base 0.2.0
  granite_widgets_status_bar_set_text@Base 0.2.0
+ granite_widgets_tab_close@Base 0.3.0~
  granite_widgets_tab_construct@Base 0.2.0
  granite_widgets_tab_get_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_get_fixed@Base 0.2.0
