@@ -30,7 +30,7 @@ namespace Granite.Widgets {
         /**
          * Desired format of DatePicker
          */
-        public string format { get; construct; default = _("%B %e, %Y"); }
+        public string format { get; construct; }
 
         /**
          * Dropdown of DatePicker
@@ -43,14 +43,14 @@ namespace Granite.Widgets {
 
         PopOver popover;
 
-        private DateTime _date;
+        private GLib.DateTime _date;
 
         private bool proc_next_day_selected = true;
 
         /**
          * Current Date
          */
-        public DateTime date {
+        public GLib.DateTime date {
             get { return _date; }
             set {
                 _date = value;
@@ -62,12 +62,14 @@ namespace Granite.Widgets {
          * Makes new DatePicker
          */
         construct {
-
+            if (format == null)
+                format = Granite.DateTime.get_default_date_format (false, true, true);
+            
             dropdown = new Gtk.EventBox ();
             popover = new PopOver ();
             ((Gtk.Box) popover.get_content_area ()).add (dropdown);
-            calendar = new Calendar ();        
-            date = new DateTime.now_local ();
+            calendar = new Calendar ();
+            date = new GLib.DateTime.now_local ();
 
             // Entry properties
             can_focus = false;
@@ -110,7 +112,7 @@ namespace Granite.Widgets {
          *
          * @param format desired format of new DatePicker
          */
-        public DatePicker.with_format (string format) {
+        public GLib.DatePicker.with_format (string format) {
             Object (format: format);
         }
 
@@ -143,7 +145,7 @@ namespace Granite.Widgets {
 
         private void on_calendar_day_selected () {
             if (proc_next_day_selected) {
-                date = new DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
+                date = new GLib.DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
                 hide_dropdown ();
             } else {
                 proc_next_day_selected = true;
@@ -151,8 +153,7 @@ namespace Granite.Widgets {
         }
 
         private void hide_dropdown () {
-
             popover.hide ();
-        }               
+        }
     }
 }

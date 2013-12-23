@@ -123,7 +123,7 @@ namespace Granite.Services {
         
         static string get_time () {
         
-            var now = new DateTime.now_local ();
+            var now = new GLib.DateTime.now_local ();
             return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
         }
         
@@ -221,4 +221,3 @@ namespace Granite.Services {
     }
     
 }
-

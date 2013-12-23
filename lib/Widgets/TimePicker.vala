@@ -25,9 +25,6 @@ namespace Granite.Widgets {
      */
     public class TimePicker : Gtk.Entry {
         
-        public static string default_format_12h = _("%l:%M %p");
-        public static string default_format_24h = _("%H:%M");
-        
         // Signals
         /**
          * Sent when the time got changed
@@ -87,9 +84,9 @@ namespace Granite.Widgets {
 
         construct {
             if (format_12 == null)
-                format_12 = default_format_12h;
+                format_12 = Granite.DateTime.get_default_time_format (true);
             if (format_24 == null)
-                format_24 = default_format_24h;
+                format_24 = Granite.DateTime.get_default_time_format (false);
             max_length = 8;
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
             icon_release.connect (on_icon_press);
@@ -123,7 +120,7 @@ namespace Granite.Widgets {
             am_pm_grid.attach (am_pm_label, 0, 0, 1, 1);
             am_pm_grid.attach (am_pm_switch, 1, 0, 1, 1);
             
-            if (is_clock_12h ()) {
+            if (Granite.DateTime.is_clock_format_12h ()) {
                 hours_spinbutton = new Gtk.SpinButton.with_range (1, 12, 1);
             } else {
                 hours_spinbutton = new Gtk.SpinButton.with_range (0, 23, 1);
@@ -169,7 +166,7 @@ namespace Granite.Widgets {
             }
             if (is_hour == true) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
-                if (is_clock_12h ()) {
+                if (Granite.DateTime.is_clock_format_12h ()) {
                     if (hours_spinbutton.get_value_as_int () == 12 && am_pm_switch.active == false) {
                         _time = _time.add_hours (-_time.get_hour ());
                     } else if (hours_spinbutton.get_value_as_int () < 12 && am_pm_switch.active == false) {
@@ -193,12 +190,12 @@ namespace Granite.Widgets {
         private void on_icon_press (Gtk.EntryIconPosition position) {
             
             changing_time = true;
-            if (is_clock_12h () && time.get_hour () > 12)
+            if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12)
                 hours_spinbutton.set_value (time.get_hour () - 12);
             else
                 hours_spinbutton.set_value (time.get_hour ());
                 
-            if (is_clock_12h ()) {
+            if (Granite.DateTime.is_clock_format_12h ()) {
                 am_pm_grid.no_show_all = false;
                 am_pm_grid.show_all ();
                 if (time.get_hour () > 12) {
@@ -230,12 +227,6 @@ namespace Granite.Widgets {
             
             x += size.x + size.width - 10;
             y += size.y + size.height;
-        }
-        
-        private static bool is_clock_12h () {
-            var h24_settings = new Settings ("org.gnome.desktop.interface");
-            var format = h24_settings.get_string ("clock-format");
-            return (format.contains ("12h"));
         }
         
         private void is_unfocused () {
@@ -298,7 +289,7 @@ namespace Granite.Widgets {
         }
         
         private void update_text (bool no_signal = false) {
-            if (is_clock_12h ())
+            if (Granite.DateTime.is_clock_format_12h ())
                 set_text (time.format (format_12));
             else
                 set_text (time.format (format_24));
