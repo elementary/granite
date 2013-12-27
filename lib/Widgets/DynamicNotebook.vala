@@ -694,6 +694,11 @@ namespace Granite.Widgets {
                 new_tab_requested ();
             });
 
+            add_button.button_press_event.connect ((e) => {
+                // Consume double-clicks
+                return e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1;
+            });
+
             restore_button.clicked.connect (() => {
                 var menu = closed_tabs.menu;
                 menu.attach_widget = restore_button;
