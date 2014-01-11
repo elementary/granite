@@ -55,9 +55,9 @@ namespace Granite {
         public string help_url;
         public string translate_url;
 
-        public string[] about_authors;
-        public string[] about_documenters;
-        public string[] about_artists;
+        public string[] about_authors = {};
+        public string[] about_documenters = {};
+        public string[] about_artists = {};
         public string about_comments;
         public string about_translators;
         public string about_license;
