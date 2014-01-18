@@ -3,13 +3,13 @@ Section: libs
 Priority: optional
 Maintainer: Devid Antonio Filoni <d.filoni@ubuntu.com>
 Build-Depends: cmake,
-               debhelper (>= 8),
+               debhelper (>= 9),
                gobject-introspection (>= 1.31.0-2),
                libgee-dev,
                libgirepository1.0-dev,
                libgtk-3-dev (>= 3.3.14),
                valac (>= 0.20.1)
-Standards-Version: 3.9.3
+Standards-Version: 3.9.5
 Homepage: https://launchpad.net/granite
 
 Package: libgranite2
