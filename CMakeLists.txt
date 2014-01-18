@@ -1,7 +1,7 @@
 # Check http://webdev.elementaryos.org/docs/developer-guide/cmake for documentation
 
-cmake_minimum_required (VERSION 2.6)
-cmake_policy (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8)
+cmake_policy (VERSION 2.8)
 project (granite C)
 
 set (PKG_NAME ${CMAKE_PROJECT_NAME})
