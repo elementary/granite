@@ -658,9 +658,8 @@ namespace Granite.Widgets {
 
             if (_tab_bar_behavior == TabBarBehavior.ALWAYS) {
                 notebook.show_tabs = true;
-            } else if (_tab_bar_behavior == TabBarBehavior.SINGLE) {
-                notebook.show_tabs = false;
-            } else if (_tab_bar_behavior == TabBarBehavior.NEVER) {
+            } else if (_tab_bar_behavior == TabBarBehavior.SINGLE ||
+                       _tab_bar_behavior == TabBarBehavior.NEVER) {
                 notebook.show_tabs = false;
             }
 
