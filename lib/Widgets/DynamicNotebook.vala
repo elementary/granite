@@ -595,7 +595,7 @@ namespace Granite.Widgets {
         }
 
         private TabBarBehavior _tab_bar_behavior;
-        
+
         /**
          * The menu appearing when the notebook is clicked on a blank space
          */
