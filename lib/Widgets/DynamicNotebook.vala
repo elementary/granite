@@ -1,6 +1,6 @@
 /***
     Copyright (C) 2011-2013 Tom Beckmann <tom@elementaryos.org>
-
+    
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
@@ -586,9 +586,6 @@ namespace Granite.Widgets {
             set {
                 _tab_bar_behavior = value;
                 update_tabs_visibility ();
-
-                if (value == TabBarBehavior.NEVER)
-                    notebook.show_tabs = false;
             }
 
             get { return _tab_bar_behavior; }
@@ -655,13 +652,7 @@ namespace Granite.Widgets {
 
             this.notebook.scrollable = true;
             this.notebook.show_border = false;
-
-            if (_tab_bar_behavior == TabBarBehavior.ALWAYS) {
-                notebook.show_tabs = true;
-            } else if (_tab_bar_behavior == TabBarBehavior.SINGLE ||
-                       _tab_bar_behavior == TabBarBehavior.NEVER) {
-                notebook.show_tabs = false;
-            }
+            _tab_bar_behavior = TabBarBehavior.ALWAYS;
 
             this.draw.connect ( (ctx) => {
                 this.get_style_context ().render_activity (ctx, 0, 0, this.get_allocated_width (), 27);
@@ -1126,6 +1117,10 @@ namespace Granite.Widgets {
         private void update_tabs_visibility () {
             if (_tab_bar_behavior == TabBarBehavior.SINGLE)
                 notebook.show_tabs = n_tabs > 1;
+            else if (_tab_bar_behavior == TabBarBehavior.NEVER)
+                notebook.show_tabs = false;
+            else if (_tab_bar_behavior == TabBarBehavior.ALWAYS)
+                notebook.show_tabs = true;
         }
     }
 }
