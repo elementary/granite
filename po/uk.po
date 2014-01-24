@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-22 10:43-0600\n"
-"PO-Revision-Date: 2013-01-12 21:42+0000\n"
-"Last-Translator: YoYoZ <yoyoza5@gmail.com>\n"
+"PO-Revision-Date: 2014-01-23 19:40+0000\n"
+"Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-23 05:39+0000\n"
-"X-Generator: Launchpad (build 16872)\n"
+"X-Launchpad-Export-Date: 2014-01-24 06:16+0000\n"
+"X-Generator: Launchpad (build 16914)\n"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:164
 msgid "Developers"
-msgstr ""
+msgstr "Розробники"
 
 #: /home/david/src/granite/granite/po/../lib//Application.vala:174
 msgid "Website"
@@ -27,7 +27,7 @@ msgstr "Веб-сторінка"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
-msgstr "Зроблено:"
+msgstr "Дизайн:"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
@@ -40,16 +40,16 @@ msgstr "Ліцензовано© %s"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
-msgstr "Задокументовано:"
+msgstr "Документація:"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr "Переведено:%s"
+msgstr "Переклад:%s"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 msgid "Close"
-msgstr ""
+msgstr "Закрити"
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
@@ -57,15 +57,15 @@ msgstr "Ця програма розповсюджується на умовах
 
 #: /home/david/src/granite/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " ліцензія, поставляється \"як є\" без гарантій; подробиці на "
+msgstr " ліцензії, поставляється БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ; подробиці на "
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:124
 msgid "Translate This App"
-msgstr "Перекласти цей додаток"
+msgstr "Перекласти цю Програму"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/AboutDialog.vala:129
 msgid "Report a Problem"
-msgstr "Повідомити про проблему"
+msgstr "Повідомити про Проблему"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:48
 #: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:59
@@ -75,7 +75,7 @@ msgstr "Меню"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/AppMenu.vala:82
 msgid "About"
-msgstr "Про програму…"
+msgstr "Про Програму…"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DatePicker.vala:33
 msgid "%B %e, %Y"
@@ -84,11 +84,11 @@ msgstr "%B %e, %Y"
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:170
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:195
 msgid "Close Tab"
-msgstr "Закрити вкладку"
+msgstr "Закрити Вкладку"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:198
 msgid "Open in a new Window"
-msgstr "Відкрити в новому вікні"
+msgstr "Відкрити в новому Вікні"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:199
 msgid "Duplicate"
@@ -96,36 +96,36 @@ msgstr "Дублювати"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
 msgid "Close Other Tab"
-msgstr "Закрити іншу вкладку"
+msgstr "Закрити Іншу Вкладку"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:248
 msgid "Close Other Tabs"
-msgstr "Закрити інші закладки"
+msgstr "Закрити Інші Вкладки"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:350
 msgid "Clear All"
-msgstr ""
+msgstr "Очистити все"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:600
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:634
 msgid "New Tab"
-msgstr "Нова вкладка"
+msgstr "Нова Вкладка"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:601
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Скасувати Закриття Вкладки"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/DynamicNotebook.vala:644
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Закриті Вкладки"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Не можливо з'язатись з Contractor. Можливо треба встановити його"
+msgstr "Не вдалося зв'язатися з Contractor. Можливо його треба встановити"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "No action found for this file"
-msgstr "Для цього файлу немає дій"
+msgstr "Для цього файлу не знайдено дій"
 
 #: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:66
 #: /home/david/src/granite/granite/po/../lib//Widgets/TimePicker.vala:132
