@@ -1,6 +1,6 @@
 /***
     Copyright (C) 2011-2013 Tom Beckmann <tom@elementaryos.org>
-
+    
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
@@ -43,10 +43,10 @@ namespace Granite.Widgets {
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
     public class Tab : Gtk.EventBox {
-
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
+
             set {
                 _label.label = value;
                 _label.set_tooltip_text (value);
@@ -56,6 +56,7 @@ namespace Granite.Widgets {
         private bool _pinned;
         public bool pinned {
             get { return _pinned; }
+
             set {
                 if (pinnable) {
                     if (value != _pinned) {
@@ -64,7 +65,6 @@ namespace Granite.Widgets {
                             close_button.visible = false;
                             _icon.margin_left = 1;
                             _working.margin_left = 1;
-
                         } else {
                             _label.visible = true;
                             _icon.margin_left = 0;
@@ -191,7 +191,7 @@ namespace Granite.Widgets {
             _icon.set_size_request (16, 16);
             _working.set_size_request (16, 16);
             this.visible_window = false;
-            
+
             this.add (tab_box);
 
             page_container = new TabPageContainer (this);
@@ -398,7 +398,6 @@ namespace Granite.Widgets {
     }
 
     public class DynamicNotebook : Gtk.EventBox {
-
         /**
          * number of pages
          */
@@ -517,7 +516,7 @@ namespace Granite.Widgets {
             set {
                 if (value != _add_button_visible) {
                     if (_add_button_visible) {
-                        this.notebook.set_action_widget (null, Gtk.PackType.START);                 
+                        this.notebook.set_action_widget (null, Gtk.PackType.START);
                     } else {
                         this.notebook.set_action_widget (add_button, Gtk.PackType.START);
                     }
@@ -574,6 +573,26 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
+        public enum TabBarBehavior {
+            ALWAYS = 0,
+            SINGLE = 1,
+            NEVER = 2
+        }
+
+        /**
+         * The behavior of the tab bar and its visibility
+        */
+        public TabBarBehavior tab_bar_behavior {
+            set {
+                _tab_bar_behavior = value;
+                update_tabs_visibility ();
+            }
+
+            get { return _tab_bar_behavior; }
+        }
+
+        private TabBarBehavior _tab_bar_behavior;
+
         /**
          * The menu appearing when the notebook is clicked on a blank space
          */
@@ -621,8 +640,8 @@ namespace Granite.Widgets {
          * Create a new dynamic notebook
          */
         public DynamicNotebook () {
-
             this.button_fix = new Gtk.CssProvider ();
+
             try {
                 this.button_fix.load_from_data (CLOSE_BUTTON_STYLE, -1);
             } catch (Error e) { warning (e.message); }
@@ -633,6 +652,7 @@ namespace Granite.Widgets {
 
             this.notebook.scrollable = true;
             this.notebook.show_border = false;
+            _tab_bar_behavior = TabBarBehavior.ALWAYS;
 
             this.draw.connect ( (ctx) => {
                 this.get_style_context ().render_activity (ctx, 0, 0, this.get_allocated_width (), 27);
@@ -727,7 +747,6 @@ namespace Granite.Widgets {
             });
 
             this.key_press_event.connect ((e) => {
-
                 e.state &= MODIFIER_MASK;
 
                 switch (e.keyval) {
@@ -834,6 +853,7 @@ namespace Granite.Widgets {
 
             insert_callbacks (t);
             tab_added (t);
+            update_tabs_visibility ();
         }
 
         void on_page_removed (Gtk.Widget page, uint pagenum) {
@@ -841,6 +861,7 @@ namespace Granite.Widgets {
 
             remove_callbacks (t);
             tab_removed (t);
+            update_tabs_visibility ();
         }
 
         void on_page_reordered (Gtk.Widget page, uint pagenum) {
@@ -866,7 +887,7 @@ namespace Granite.Widgets {
                 }
             }
 
-            for (var p = 0; p < pinned_tabs; p++) {         
+            for (var p = 0; p < pinned_tabs; p++) {
                 int sel = p;
                 for (var i = p; i < this.notebook.get_n_pages (); i++) {
                     if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
@@ -1091,6 +1112,15 @@ namespace Granite.Widgets {
 
         private void on_pin_switch (Tab tab) {
             switch_pin_tab (tab);
+        }
+
+        private void update_tabs_visibility () {
+            if (_tab_bar_behavior == TabBarBehavior.SINGLE)
+                notebook.show_tabs = n_tabs > 1;
+            else if (_tab_bar_behavior == TabBarBehavior.NEVER)
+                notebook.show_tabs = false;
+            else if (_tab_bar_behavior == TabBarBehavior.ALWAYS)
+                notebook.show_tabs = true;
         }
     }
 }

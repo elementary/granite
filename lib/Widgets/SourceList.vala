@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -2206,7 +2206,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             if (data_model.iter_previous (ref new_iter))
                 return data_model.get_item (new_iter);
         }
-        
+
         return null;
     }
 
@@ -2225,7 +2225,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             if (data_model.iter_next (ref new_iter))
                 return data_model.get_item (new_iter);
         }
-        
+
         return null;
     }
 
