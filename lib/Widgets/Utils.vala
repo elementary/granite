@@ -69,6 +69,64 @@ public enum Granite.CloseButtonPosition
     RIGHT
 }
 
+namespace Granite.DateTime {
+    public static string get_default_time_format (bool is_12h = false, bool with_second = false) {
+        if (is_12h == true) {
+            if (with_second == true) {
+                /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
+                return _("%l:%M:%S %p");
+            } else {
+                /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
+                return _("%l:%M %p");
+            }
+        } else {
+            if (with_second == true) {
+                /// TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
+                return _("%H:%M:%S");
+            } else {
+                /// TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
+                return _("%H:%M");
+            }
+        }
+    }
+    
+    private static bool is_clock_format_12h () {
+        var h24_settings = new Settings ("org.gnome.desktop.interface");
+        var format = h24_settings.get_string ("clock-format");
+        return (format.contains ("12h"));
+    }
+    
+    public static string get_default_date_format (bool with_weekday = false, bool with_day = true, bool with_year = false) {
+        if (with_weekday == true && with_day == true && with_year == true) {
+            /// TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+            return _("%a %b %e %Y");
+        } else if (with_weekday == false && with_day == true && with_year == true) {
+            /// TRANSLATORS: a GLib.DateTime format showing the date and year
+            return _("%b %e %Y");
+        } else if (with_weekday == false && with_day == false && with_year == true) {
+            /// TRANSLATORS: a GLib.DateTime format showing the year
+            return _("%Y");
+        } else if (with_weekday == false && with_day == true && with_year == false) {
+            /// TRANSLATORS: a GLib.DateTime format showing the date
+            return _("%b %e");
+        } else if (with_weekday == true && with_day == false && with_year == true) {
+            /// TRANSLATORS: a GLib.DateTime format showing the weekday and year.
+            return _("%a %Y");
+        } else if (with_weekday == true && with_day == false && with_year == false) {
+            /// TRANSLATORS: a GLib.DateTime format showing the weekday
+            return _("%a");
+        } else if (with_weekday == true && with_day == true && with_year == false) {
+            /// TRANSLATORS: a GLib.DateTime format showing the weekday and date
+            return _("%a %b %e");
+        } else if (with_weekday == false && with_day == false && with_year == false) {
+            /// TRANSLATORS: a GLib.DateTime format showing the month.
+            return _("%b");
+        }
+
+        return "";
+    }
+}
+
 /**
  * This class helps to apply CSS to widgets.
  */
