@@ -702,7 +702,7 @@ namespace Granite.Widgets {
             this.notebook.set_action_widget (add_button_box, Gtk.PackType.START);
 
             restore_button = new Gtk.Button ();
-            restore_button.add (new Gtk.Image.from_icon_name ("user-trash-symbolic", Gtk.IconSize.MENU));
+            restore_button.add (new Gtk.Image.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.MENU));
             restore_button.margin_right = 5;
             restore_button.set_relief (Gtk.ReliefStyle.NONE);
             restore_button.tooltip_text = _("Closed Tabs");
