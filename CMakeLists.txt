@@ -42,16 +42,16 @@ set (PKG_DEPS
     gtk+-3.0
     gio-unix-2.0
     posix
-    gee-1.0)
+    gee-0.8)
 
 set (PKG_DEPS_CHECK
     gtk+-3.0>=3.3.14
     gio-unix-2.0
     gthread-2.0
-    gee-1.0)
+    gee-0.8)
 
 # GI dependencies
-set (GI_PKG_DEPS Gtk-3.0 Gee-1.0)
+set (GI_PKG_DEPS Gtk-3.0 Gee-0.8)
 
 # Check for the deps
 find_package (PkgConfig)
