@@ -86,7 +86,7 @@ namespace Granite.Widgets {
         private Gtk.Grid am_pm_grid;
         private bool changing_time = false;
 
-        private PopOver popover;
+        private Gtk.Popover popover;
 
         construct {
             if (format_12 == null)
@@ -100,11 +100,9 @@ namespace Granite.Widgets {
             icon_release.connect (on_icon_press);
 
             // Creates the popover
-            popover = new PopOver ();
             var pop_grid = new Gtk.Grid ();
             pop_grid.column_spacing = 6;
             pop_grid.row_spacing = 6;
-            ((Gtk.Box) popover.get_content_area ()).add (pop_grid);
 
             am_pm_grid = new Gtk.Grid ();
             am_pm_grid.column_spacing = 6;
@@ -151,6 +149,9 @@ namespace Granite.Widgets {
             pop_grid.attach (separation_label, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
             pop_grid.attach (am_pm_grid, 0, 1, 3, 1);
+
+            popover = new Gtk.Popover (this);
+            popover.add (pop_grid);
 
             // Connecting to events allowing manual changes
             add_events (Gdk.EventMask.FOCUS_CHANGE_MASK|Gdk.EventMask.SCROLL_MASK);
@@ -222,7 +223,7 @@ namespace Granite.Widgets {
             update_text ();
         }
 
-        private void on_icon_press (Gtk.EntryIconPosition position) {
+        private void on_icon_press (Gtk.EntryIconPosition position, Gdk.Event event) {
             changing_time = true;
 
             if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12)
@@ -249,20 +250,19 @@ namespace Granite.Widgets {
             minutes_spinbutton.set_value (time.get_minute ());
             changing_time = false;
 
-            int x, y;
-            position_dropdown (out x, out y);
+            Gdk.Rectangle rect = Gdk.Rectangle ();
+            position_dropdown (out rect);
+            popover.pointing_to = rect;
+            popover.position = Gtk.PositionType.BOTTOM;
             popover.show_all ();
-            popover.move_to_coords (x, y);
-            popover.present ();
         }
 
-        protected virtual void position_dropdown (out int x, out int y) {
+        protected virtual void position_dropdown (out Gdk.Rectangle rect) {
             Gtk.Allocation size;
             get_allocation (out size);
-            get_window ().get_origin (out x, out y);
 
-            x += size.x + size.width - 10;
-            y += size.y + size.height;
+            rect.x = size.width - 15;
+            rect.y = size.height;
         }
 
         private void is_unfocused () {

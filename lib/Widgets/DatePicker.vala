@@ -41,7 +41,7 @@ namespace Granite.Widgets {
          */
         protected Calendar calendar;
 
-        PopOver popover;
+        private Gtk.Popover popover;
 
         private GLib.DateTime _date;
 
@@ -66,8 +66,8 @@ namespace Granite.Widgets {
                 format = Granite.DateTime.get_default_date_format (false, true, true);
             
             dropdown = new Gtk.EventBox ();
-            popover = new PopOver ();
-            ((Gtk.Box) popover.get_content_area ()).add (dropdown);
+            popover = new Gtk.Popover (this);
+            popover.add (dropdown);
             calendar = new Calendar ();
             date = new GLib.DateTime.now_local ();
 
@@ -117,30 +117,20 @@ namespace Granite.Widgets {
         }
 
         private void on_icon_press (EntryIconPosition position) {
-
-            int x, y;
-            position_dropdown (out x, out y);
-
+            Gdk.Rectangle rect = Gdk.Rectangle ();
+            position_dropdown (out rect);
+            popover.pointing_to = rect;
+            popover.position = Gtk.PositionType.BOTTOM;
             popover.show_all ();
-            popover.move_to_coords (x, y);
-            popover.present ();
             calendar.grab_focus ();
         }
 
-        protected virtual void position_dropdown (out int x, out int y) {
-
-            Allocation size;
-            Requisition calendar_size;
-
+        protected virtual void position_dropdown (out Gdk.Rectangle rect) {
+            Gtk.Allocation size;
             get_allocation (out size);
-            calendar.get_preferred_size (out calendar_size, null);
-            get_window ().get_origin (out x, out y);
 
-            x += size.x + size.width - 10; //size.x - (calendar_size.width - size.width);
-            y += size.y + size.height;
-
-            //x = x.clamp (0, int.max (0, Screen.width () - calendar_size.width));
-            //y = y.clamp (0, int.max (0, Screen.height () - calendar_size.height));
+            rect.x = size.width - 15;
+            rect.y = size.height;
         }
 
         private void on_calendar_day_selected () {
