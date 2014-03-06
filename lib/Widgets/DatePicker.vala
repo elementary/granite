@@ -27,6 +27,7 @@ namespace Granite.Widgets {
      */
     public class DatePicker : Gtk.Entry, Gtk.Buildable {
 
+        public const int OFFSET = 15;
         /**
          * Desired format of DatePicker
          */
@@ -130,7 +131,7 @@ namespace Granite.Widgets {
             Gtk.Allocation size;
             get_allocation (out size);
 
-            rect.x = size.width - 15;
+            rect.x = size.width - OFFSET;
             rect.y = size.height;
         }
 

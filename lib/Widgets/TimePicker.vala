@@ -25,6 +25,7 @@ namespace Granite.Widgets {
      */
     public class TimePicker : Gtk.Entry {
 
+        public const int OFFSET = 15;
         // Signals
         /**
          * Sent when the time got changed
@@ -262,7 +263,7 @@ namespace Granite.Widgets {
             Gtk.Allocation size;
             get_allocation (out size);
 
-            rect.x = size.width - 15;
+            rect.x = size.width - OFFSET;
             rect.y = size.height;
         }
 
