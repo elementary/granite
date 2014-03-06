@@ -42,7 +42,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
     protected int ARROW_WIDTH;
     protected Gtk.Border PADDINGS;
     double offset = 15.0;
-    const int MARGIN = 12;
+    public const int MARGIN = 12;
     Gtk.Widget menu;
     Gtk.Box hbox;
     Gtk.Box abox;
@@ -493,4 +493,3 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         return base.draw(cr);
     }
 }
-

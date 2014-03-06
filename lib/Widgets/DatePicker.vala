@@ -66,6 +66,7 @@ namespace Granite.Widgets {
                 format = Granite.DateTime.get_default_date_format (false, true, true);
             
             dropdown = new Gtk.EventBox ();
+            dropdown.margin = Granite.Widgets.PopOver.MARGIN;
             popover = new Gtk.Popover (this);
             popover.add (dropdown);
             calendar = new Calendar ();

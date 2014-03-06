@@ -149,6 +149,7 @@ namespace Granite.Widgets {
             pop_grid.attach (separation_label, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
             pop_grid.attach (am_pm_grid, 0, 1, 3, 1);
+            pop_grid.margin = Granite.Widgets.PopOver.MARGIN;
 
             popover = new Gtk.Popover (this);
             popover.add (pop_grid);
