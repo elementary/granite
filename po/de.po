@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-23 19:24+0100\n"
-"PO-Revision-Date: 2013-12-22 18:53+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"PO-Revision-Date: 2014-03-05 14:49+0000\n"
+"Last-Translator: Marco Kemmerling <mar.co@online.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-02-25 06:09+0000\n"
-"X-Generator: Launchpad (build 16926)\n"
+"X-Launchpad-Export-Date: 2014-03-06 06:03+0000\n"
+"X-Generator: Launchpad (build 16948)\n"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Developers"
@@ -65,7 +65,7 @@ msgstr "Neuer Tab"
 
 #: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:601
 msgid "Undo Close Tab"
-msgstr "Tab wieder öffnen"
+msgstr "Geschlossenen Tab wieder öffnen"
 
 #: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:644
 msgid "Closed Tabs"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:135
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:77
