@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-23 19:24+0100\n"
-"PO-Revision-Date: 2014-01-30 06:22+0000\n"
+"PO-Revision-Date: 2014-03-16 07:25+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-02-25 06:10+0000\n"
-"X-Generator: Launchpad (build 16926)\n"
+"X-Launchpad-Export-Date: 2014-03-17 05:00+0000\n"
+"X-Generator: Launchpad (build 16963)\n"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Developers"
@@ -44,7 +44,7 @@ msgstr "以新視窗開啟"
 
 #: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:199
 msgid "Duplicate"
-msgstr "複製"
+msgstr "再製"
 
 #: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:248
 msgid "Close Other Tab"
@@ -91,16 +91,16 @@ msgstr "關於"
 
 #: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:117
 msgid "PM:"
-msgstr ""
+msgstr "下午："
 
 #: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:135
 msgid ":"
-msgstr ""
+msgstr "："
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%p %l:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:80
@@ -110,53 +110,53 @@ msgstr "%p %l:%M"
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:85
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:88
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%Y年%m月%d日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%Y年%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:108
 msgid "%Y"
-msgstr ""
+msgstr "%Y年"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr ""
+msgstr "%b%e日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:114
 msgid "%a %Y"
-msgstr ""
+msgstr "%Y年，%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr ""
+msgstr "%b%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:123
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
