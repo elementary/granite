@@ -112,7 +112,7 @@ namespace Granite.Widgets {
          *
          * @param format desired format of new DatePicker
          */
-        public GLib.DatePicker.with_format (string format) {
+        public DatePicker.with_format (string format) {
             Object (format: format);
         }
 
