@@ -12,6 +12,9 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_application_show_about@Base 0.2.0
  granite_close_button_position_get_type@Base 0.2.3
  granite_collapse_mode_get_type@Base 0.2.0
+ granite_date_time_get_default_date_format@Base 0.3.0~
+ granite_date_time_get_default_time_format@Base 0.3.0~
+ granite_date_time_is_clock_format_12h@Base 0.3.0~
  granite_drawing_buffer_surface_average_color@Base 0.2.0
  granite_drawing_buffer_surface_clear@Base 0.2.0
  granite_drawing_buffer_surface_construct@Base 0.2.0
@@ -291,6 +294,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_get_nth_page@Base 0.2.0
  granite_widgets_dynamic_notebook_get_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_get_show_tabs@Base 0.2.0
+ granite_widgets_dynamic_notebook_get_tab_bar_behavior@Base 0.3.0~
  granite_widgets_dynamic_notebook_get_tab_by_index@Base 0.2.0
  granite_widgets_dynamic_notebook_get_tab_by_widget@Base 0.2.0
  granite_widgets_dynamic_notebook_get_tab_position@Base 0.2.0
@@ -315,8 +319,10 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 0.3.0~
  granite_widgets_dynamic_notebook_set_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_set_show_tabs@Base 0.2.0
+ granite_widgets_dynamic_notebook_set_tab_bar_behavior@Base 0.3.0~
  granite_widgets_dynamic_notebook_set_tab_position@Base 0.2.0
  granite_widgets_dynamic_notebook_set_tabs_closable@Base 0.2.0
+ granite_widgets_dynamic_notebook_tab_bar_behavior_get_type@Base 0.3.0~
  granite_widgets_hcollapsable_paned_construct@Base 0.2.0
  granite_widgets_hcollapsable_paned_get_type@Base 0.2.0
  granite_widgets_hcollapsable_paned_new@Base 0.2.0
@@ -483,24 +489,13 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_thin_paned_new@Base 0.2.0
  granite_widgets_time_picker_construct@Base 0.2.0
  granite_widgets_time_picker_construct_with_format@Base 0.2.0
- granite_widgets_time_picker_get_format@Base 0.2.0
- granite_widgets_time_picker_get_hovered@Base 0.2.0
- granite_widgets_time_picker_get_is_pressed@Base 0.2.0
- granite_widgets_time_picker_get_label@Base 0.2.0
- granite_widgets_time_picker_get_text@Base 0.2.0
+ granite_widgets_time_picker_get_format_12@Base 0.3.0~
+ granite_widgets_time_picker_get_format_24@Base 0.3.0~
  granite_widgets_time_picker_get_time@Base 0.2.0
  granite_widgets_time_picker_get_type@Base 0.2.0
- granite_widgets_time_picker_hours_left_clicked@Base 0.2.0
- granite_widgets_time_picker_hours_right_clicked@Base 0.2.0
- granite_widgets_time_picker_minutes_left_clicked@Base 0.2.0
- granite_widgets_time_picker_minutes_right_clicked@Base 0.2.0
  granite_widgets_time_picker_new@Base 0.2.0
  granite_widgets_time_picker_new_with_format@Base 0.2.0
- granite_widgets_time_picker_set_hovered@Base 0.2.0
- granite_widgets_time_picker_set_is_pressed@Base 0.2.0
- granite_widgets_time_picker_set_label@Base 0.2.0
- granite_widgets_time_picker_set_paddings@Base 0.2.0
- granite_widgets_time_picker_set_text@Base 0.2.0
+ granite_widgets_time_picker_position_dropdown@Base 0.3.0~
  granite_widgets_time_picker_set_time@Base 0.2.0
  granite_widgets_tool_button_with_menu_construct@Base 0.2.0
  granite_widgets_tool_button_with_menu_construct_from_action@Base 0.2.0
