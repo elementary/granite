@@ -317,11 +317,10 @@ namespace Granite.Widgets {
                 return false;
             });
 
-            // Hovering over the close button area causes a leave_notify_event on the whole tab,
-            // thus we need to watch those events independently to avoid misbehavior.
-            // A more proper solution would be setting the "above_child" property of this Tab
-            // to 'true', but for some reason that creates an infinite loop of enter_notify/leave_notify
-            // events at the moment.
+            // Hovering over the close button area causes a leave_notify_event on the tab.
+            // Thus we need to watch those events independently to avoid misbehavior.
+            // A more proper solution would be setting "above_child=true" on this Tab,
+            // but that doesn't let us capture button_press events on the close button.
             close_button.enter_notify_event.connect ((e) => {
                 cursor_over_tab = true;
                 update_close_button_visibility ();
