@@ -156,7 +156,6 @@ namespace Granite.Widgets {
 
         private bool _closable = true;
         internal bool closable {
-            get { return _closable && !pinned; }
             set {
                 if (value == _closable)
                     return;
@@ -356,11 +355,16 @@ namespace Granite.Widgets {
         }
 
         private void update_close_button_visibility () {
-            close_button_revealer.reveal_child = closable && (cursor_over_tab || _is_current_tab);
+            // If the tab is pinned, we don't want the revealer to keep
+            // the size allocation of the close button.
+            close_button_revealer.no_show_all = _pinned;
+            close_button_revealer.visible = !_pinned;
+
+            close_button_revealer.reveal_child = _closable && !_pinned && (cursor_over_tab || _is_current_tab);
         }
 
         private bool close_button_is_visible () {
-            return close_button_revealer.child_revealed;
+            return close_button_revealer.visible && close_button_revealer.child_revealed;
         }
     }
 
