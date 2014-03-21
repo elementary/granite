@@ -227,7 +227,10 @@ namespace Granite.Widgets {
             _label.ellipsize = Pango.EllipsizeMode.END;
             _icon.set_size_request (16, 16);
             _working.set_size_request (16, 16);
-            this.visible_window = false;
+            this.visible_window = true;
+
+            // we do this instead of visible-window=false for event-propagation reasons
+            override_background_color (0, {0, 0, 0, 0});
 
             this.add (tab_box);
 
