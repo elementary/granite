@@ -179,6 +179,7 @@ namespace Granite.Widgets {
         }
 
         private bool cursor_over_tab = false;
+        private bool cursor_over_close_button = false;
         private Gtk.Revealer close_button_revealer;
 
         internal signal void closed ();
@@ -200,6 +201,8 @@ namespace Granite.Widgets {
 
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label = new Gtk.Label (label);
+            this._label.hexpand = true;
+
             if (icon != null)
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
             else
@@ -218,21 +221,27 @@ namespace Granite.Widgets {
             close_button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
             close_button_revealer.add (close_button);
 
-            var tab_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            tab_box.pack_start (close_button_revealer, false);
-            tab_box.pack_start (_label);
-            tab_box.pack_start (_icon, false);
-            tab_box.pack_start (_working, false);
+            var tab_layout = new Gtk.Grid ();
+            tab_layout.hexpand = false;
+            tab_layout.orientation = Gtk.Orientation.HORIZONTAL;
+            tab_layout.add (close_button_revealer);
+            tab_layout.add (_label);
+            tab_layout.add (_icon);
+            tab_layout.add (_working);
             _label.set_tooltip_text (label);
             _label.ellipsize = Pango.EllipsizeMode.END;
             _icon.set_size_request (16, 16);
             _working.set_size_request (16, 16);
+
             this.visible_window = true;
 
-            // we do this instead of visible-window=false for event-propagation reasons
+            // Apply transparent background color to the tab.
+            // We do this instead of visible_window=false for event-propagation reasons.
+            // Otherwise the EventBox would not catch some events in blank areas, like
+            // enter_notify_event and leave_notify_event. above_child=true is not an option.
             override_background_color (0, {0, 0, 0, 0});
 
-            this.add (tab_box);
+            this.add (tab_layout);
 
             page_container = new TabPageContainer (this);
             this.page = page ?? new Gtk.Label("");
@@ -315,30 +324,37 @@ namespace Granite.Widgets {
             });
 
             this.leave_notify_event.connect ((e) => {
+                // We don't want to handle leave_notify events without a prior enter_notify
+                // for event parity reasons.
+                if (!cursor_over_tab)
+                    return false;
+
                 cursor_over_tab = false;
                 update_close_button_visibility ();
                 return false;
             });
 
-            // Hovering over the close button area causes a leave_notify_event on the tab.
-            // Thus we need to watch those events independently to avoid misbehavior.
-            // A more proper solution would be setting "above_child=true" on this Tab,
-            // but that doesn't let us capture button_press events on the close button.
+            // Hovering the close button area causes a leave_notify_event on the tab EventBox.
+            // Because of that we need to watch the events from those widgets independently
+            // to avoid misbehavior. While setting "above_child" to "true" on the tab might
+            // appear to be a more proper solution, that wouldn't let us capture any event
+            // (e.g. button_press) on the button.
             close_button.enter_notify_event.connect ((e) => {
-                cursor_over_tab = true;
+                cursor_over_close_button = true;
                 update_close_button_visibility ();
                 return false;
             });
 
             close_button.leave_notify_event.connect ((e) => {
-                cursor_over_tab = false;
+                // We don't want to handle leave_notify events without a prior enter_notify
+                // for event parity reasons.
+                if (!cursor_over_close_button)
+                    return false;
+
+                cursor_over_close_button = false;
                 update_close_button_visibility ();
                 return false;
             });
-
-            /*this.button_press_event.connect ((e) => {
-                return (e.type == Gdk.EventType.2BUTTON_PRESS || e.button != 1);
-            });*/
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
             close_button.clicked.connect (() => this.closed ());
@@ -362,7 +378,8 @@ namespace Granite.Widgets {
             close_button_revealer.no_show_all = _pinned;
             close_button_revealer.visible = !_pinned;
 
-            close_button_revealer.reveal_child = _closable && !_pinned && (cursor_over_tab || _is_current_tab);
+            close_button_revealer.reveal_child = _closable && !_pinned
+                && (cursor_over_tab || cursor_over_close_button || _is_current_tab);
         }
 
         private bool close_button_is_visible () {
