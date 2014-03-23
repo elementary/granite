@@ -713,7 +713,7 @@ namespace Granite.Widgets {
 
         public signal void tab_added (Tab tab);
         public signal void tab_removed (Tab tab);
-        private unowned Tab? old_tab; //stores a reference for tab_switched
+        private Tab? old_tab; //stores a reference for tab_switched
         public signal void tab_switched (Tab? old_tab, Tab new_tab);
         public signal void tab_reordered (Tab tab, int new_pos);
         public signal void tab_moved (Tab tab, int x, int y);
