@@ -1,0 +1,195 @@
+# Tamil translation for granite
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the granite package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: granite\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-12-23 19:24+0100\n"
+"PO-Revision-Date: 2014-03-23 12:37+0000\n"
+"Last-Translator: SyedKhaleel Jageer <jskcse4@gmail.com>\n"
+"Language-Team: Tamil <ta@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-03-24 06:23+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
+
+#: /home/noelco/granite/po/../lib//Application.vala:164
+msgid "Developers"
+msgstr "உருவாக்குவோர்"
+
+#: /home/noelco/granite/po/../lib//Application.vala:174
+msgid "Website"
+msgstr "வலைத்தளம்"
+
+#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:124
+msgid "Translate This App"
+msgstr "இந்த பயன்பாட்டை மொழிபெயர்"
+
+#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:129
+msgid "Report a Problem"
+msgstr "பிரச்சனையை புகார் செய்"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:170
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:195
+msgid "Close Tab"
+msgstr "தத்தலை மூடுக"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:198
+msgid "Open in a new Window"
+msgstr "புதிய சாளரத்தில் திற"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:199
+msgid "Duplicate"
+msgstr "நகல்பிரதியெடு"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tab"
+msgstr "பிற தாவலை மூடு"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:248
+msgid "Close Other Tabs"
+msgstr "பிற தாவல்களை மூடுக"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:350
+msgid "Clear All"
+msgstr "அனைத்தையும் துடை"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:600
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:634
+msgid "New Tab"
+msgstr "புதிய கீற்று"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:601
+msgid "Undo Close Tab"
+msgstr "மூடிய தாவலை மீளமை"
+
+#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:644
+msgid "Closed Tabs"
+msgstr "மூடப்பட்ட தாவல்"
+
+#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "Could not contact Contractor. You may need to install it"
+msgstr ""
+"ஒப்பந்ததாரரை தொடர்பு கொள்ள முடியவில்லை. நீங்களாக இதை நிறுவ வேண்டும்"
+
+#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
+msgid "No action found for this file"
+msgstr "இந்த கோப்பில் நடவடிக்கை ஏதும் காணப்படவில்லை"
+
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "பட்டி"
+
+#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "பற்றி"
+
+#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:117
+msgid "PM:"
+msgstr "பிப:"
+
+#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:135
+msgid ":"
+msgstr ":"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:77
+msgid "%l:%M:%S %p"
+msgstr "%l:%M:%S %p"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:80
+msgid "%l:%M %p"
+msgstr "%l:%M %p"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:85
+msgid "%H:%M:%S"
+msgstr "%H:%M:%S"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:88
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:102
+msgid "%a %b %e %Y"
+msgstr "%a %b %e %Y"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the date and year
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:105
+msgid "%b %e %Y"
+msgstr "%b %e %Y"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the year
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:108
+msgid "%Y"
+msgstr "%Y"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the date
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:111
+msgid "%b %e"
+msgstr "%b %e"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:114
+msgid "%a %Y"
+msgstr "%a %Y"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:117
+#, c-format
+msgid "%a"
+msgstr "%a"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:120
+msgid "%a %b %e"
+msgstr "%a %b %e"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the month.
+#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:123
+msgid "%b"
+msgstr "%b"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:36
+msgid "Designed by:"
+msgstr "வடிவமைத்தவர்:"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:55
+msgid "Written by:"
+msgstr "எழுதியவர்:"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:93
+#, c-format
+msgid "Copyright © %s"
+msgstr "பதிப்புரிமை © %s"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:111
+msgid "Documented by:"
+msgstr "ஆவணமாக்கியவர்:"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:171
+#, c-format
+msgid "Translated by %s"
+msgstr "%s மூல மொழிபெயர்க்கப்பட்டது"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
+msgstr "மூடு"
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+msgid "This program is published under the terms of the "
+msgstr "இந்த பயன்பாடு நிபந்தனைகளின் கீழ் வெளியிடப்பட்டது "
+
+#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+msgstr ""
+" உரிமம், அது முற்றிலும் உத்திரவாதம் இல்லாமல் வருகிறது; விவரங்களுக்கு, விஜயம் "
