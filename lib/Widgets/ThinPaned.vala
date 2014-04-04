@@ -239,10 +239,15 @@ public class Granite.Widgets.ThinPaned : Gtk.Paned {
 
             get_window ().get_device_position (device, out x, out y, null);
 
-            if (orientation == Gtk.Orientation.HORIZONTAL)
+            Gtk.Allocation allocation;
+            get_allocation (out allocation);
+
+            if (orientation == Gtk.Orientation.HORIZONTAL) {
+                x -= allocation.x;
                 pos = Utils.is_left_to_right (this) ? x : get_allocated_width () - x;
-            else
-                pos = y;
+            } else {
+                pos = y - allocation.y;
+            }
 
             position = pos.clamp (min_position, max_position);
             return true;
