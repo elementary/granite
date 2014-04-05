@@ -20,7 +20,9 @@
 using Gtk;
 
 /**
- * This class provides a simple way to look at contracts from Contractor
+ * This class provides a simple way to look at contracts from Contractor.
+ * It uses a long-obsolete and unused revision of Contractor API and will not
+ * work with stable releases of Contractor.
  */
 [Deprecated (since = "0.2")]
 public class Granite.Widgets.ContractorView : TreeView {
