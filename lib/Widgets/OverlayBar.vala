@@ -27,6 +27,8 @@
  *
  * The Overlay Bar displays a single line of text that can be changed using the "status" property.
  *
+ * {{../../doc/images/OverlayBar.png}}
+ *
  * This widget tries to avoid getting in front of the content being displayed inside the {@link Gtk.Overlay}
  * by moving itself horizontally to the opposite side from the current one when the mouse pointer enters
  * the widget.
