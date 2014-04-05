@@ -54,7 +54,7 @@ namespace Granite.Services {
     }
 
     /**
-     * Provides an easy way to interface with Contractor API from Vala
+     * Provides a convenient GObject wrapper around Contractor's D-bus API
      */
     public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
