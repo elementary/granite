@@ -17,6 +17,17 @@
     Boston, MA 02110-1301 USA.
 ***/
 
+/**
+ * A badge renderer.
+ *
+ * Informs the user quickly on the content of the corresponding view. For example
+ * it might be used to show how much songs are in a playlist or how much updates
+ * are available.
+ *
+ * {{../../doc/images/cellrendererbadge.png}}
+ *
+ * @since 0.2
+ */
 public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
     public string text { get; set; default = ""; }

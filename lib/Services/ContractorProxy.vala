@@ -197,7 +197,7 @@ namespace Granite.Services {
         /**
          * Provides all the contracts.
          *
-         * @return List containing all the contracts available in the system.
+         * @return {@link Gee.List} containing all the contracts available in the system.
          */
         public static Gee.List<Contract> get_all_contracts () throws Error {
             ensure ();
@@ -211,7 +211,7 @@ namespace Granite.Services {
          * Returns actions (contracts) applicable to the given mimetypes.
          *
          * @param mime_type Mimetype of file.
-         * @return List of contracts that support the given mimetype.
+         * @return {@link Gee.List} of contracts that support the given mimetype.
          */
         public static Gee.List<Contract> get_contracts_by_mime (string mime_type) throws Error {
             ensure ();
@@ -227,7 +227,7 @@ namespace Granite.Services {
          * Only the contracts that support all of the mimetypes are returned.
          *
          * @param mime_types Array of mimetypes.
-         * @return List of contracts that support the given mimetypes.
+         * @return {@link Gee.List} of contracts that support the given mimetypes.
          */
         public static Gee.List<Contract> get_contracts_by_mimelist (string[] mime_types) throws Error {
             ensure ();
@@ -244,7 +244,7 @@ namespace Granite.Services {
          * the file (e.g. if the file is deleted) are forwarded to the caller.
          *
          * @param file An existing file.
-         * @return List of contracts applicable to the given file.
+         * @return {@link Gee.List} of contracts applicable to the given file.
          */
         public static Gee.List<Contract> get_contracts_for_file (File file) throws Error {
             File[] files = { file };
@@ -259,7 +259,7 @@ namespace Granite.Services {
          * the file (e.g. if the file is deleted) are forwarded to the caller.<<BR>>
          *
          * @param files Array of existing files.
-         * @return List of contracts applicable to any of the given files.
+         * @return {@link Gee.List} of contracts applicable to any of the given files.
          */
         public static Gee.List<Contract> get_contracts_for_files (File[] files) throws Error {
             var mime_types = new Gee.HashSet<string> (); //for automatic deduplication
