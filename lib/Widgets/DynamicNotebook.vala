@@ -502,6 +502,10 @@ namespace Granite.Widgets {
         }
     }
 
+    /**
+    * Tab bar widget designed for a variable number of tabs.
+    * Supports showing a "New tab" button, restoring closed tabs, "pinning" tabs, and more.
+    */
     public class DynamicNotebook : Gtk.EventBox {
         /**
          * number of pages
