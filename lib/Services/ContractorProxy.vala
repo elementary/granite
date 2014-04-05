@@ -28,6 +28,9 @@ namespace Granite.Services {
         public abstract void execute_with_files (File[] files) throws Error;
     }
 
+    /**
+     * thrown by {@link Granite.Services.ContractorProxy}
+     */
     public errordomain ContractorError {
         SERVICE_NOT_AVAILABLE
     }
@@ -50,6 +53,9 @@ namespace Granite.Services {
         public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
+    /**
+     * Provides a convenient GObject wrapper around Contractor's D-bus API
+     */
     public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
             public string id { get; private set; }
@@ -109,6 +115,13 @@ namespace Granite.Services {
             }
         }
 
+        /**
+         * Emitted when the list of actions available to Contractor changes.
+         * Application should generally request the updated list of actions upon receiving this signal.
+         *
+         * This is not obligatory for frequently updated lists (e.g. in context menus), 
+         * but essential for applications that display action lists without re-requesting them.
+         */
         public signal void contracts_changed ();
 
         private static ContractorDBusAPI contractor_dbus;

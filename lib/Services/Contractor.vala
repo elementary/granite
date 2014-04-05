@@ -25,9 +25,7 @@ namespace Granite.Services {
     }
 
     /**
-     * A way to handle contractor, a way to communicate between apps.
-     * 
-     * /!\ Highly unstable API
+     * Wrapper around a long-obsolete and unused revision of Contractor API
      */
     [Deprecated (replacement = "Granite.Services.ContractorProxy", since = "0.2")]
     public class Contractor : Object {
