@@ -28,6 +28,9 @@ namespace Granite.Services {
         public abstract void execute_with_files (File[] files) throws Error;
     }
 
+    /**
+     * thrown by {@link Granite.Services.ContractorProxy}
+     */
     public errordomain ContractorError {
         SERVICE_NOT_AVAILABLE
     }
@@ -50,6 +53,9 @@ namespace Granite.Services {
         public abstract void execute_with_uri_list (string id, string[] uri) throws Error;
     }
 
+    /**
+     * Provides an easy way to interface with Contractor API from Vala
+     */
     public class ContractorProxy : Object {
         private class GenericContract : Object, Contract {
             public string id { get; private set; }
