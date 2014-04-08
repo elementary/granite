@@ -64,6 +64,15 @@ namespace Granite.Services {
      * thrown by {@link Granite.Services.ContractorProxy}
      */
     public errordomain ContractorError {
+        /**
+         * Usually means that Contractor is not installed or not configured properly
+         *
+         * Contractor is not a compile-time dependency, so it is possible to
+         * install an application that uses it without installing Contractor.
+         *
+         * Upon receiving this error the application should disable its Contractor-related
+         * functionality, which typically means hiding the relevant UI elements.
+         */
         SERVICE_NOT_AVAILABLE
     }
 
