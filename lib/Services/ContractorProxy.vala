@@ -20,11 +20,43 @@
 ***/
 
 namespace Granite.Services {
+    /**
+     * Opaque object representing a Contractor action.
+     * Returned by {@link Granite.Services.ContractorProxy}
+     */
     public interface Contract : Object {
+
+        /**
+         * Returns the display name of the contract, already internationalized
+         *
+         * @return The internationalized value of the 'Name' key in the .contract file.
+         * As of 2014, Contractor uses gettext to handle internationalization.
+         */
         public abstract string get_display_name ();
+
+        /**
+         * Returns the description of the contract, already internationalized
+         *
+         * @return The internationalized value of the 'Description' key in the .contract file.
+         * As of 2014, Contractor uses gettext to handle internationalization.
+         */
         public abstract string get_description ();
+
+        /**
+         * Returns an icon for this contract
+         *
+         * @return {@link Glib.Icon} based on the 'Icon' key in the .contract file.
+         */
         public abstract Icon get_icon ();
+
+        /**
+         * Executes the action on the given file
+         */
         public abstract void execute_with_file (File file) throws Error;
+
+        /**
+         * Executes the action on the given list of files
+         */
         public abstract void execute_with_files (File[] files) throws Error;
     }
 
