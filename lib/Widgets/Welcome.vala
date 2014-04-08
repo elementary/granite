@@ -25,7 +25,7 @@ using Gtk;
  *
  * It can be used to create a list of one-time action items that need to be executed in order to setup the app. 
  *
- * {{../../doc/images/welcome.png}}
+ * {{../../doc/images/Welcome.png}}
  */
 public class Granite.Widgets.Welcome : Gtk.EventBox {
 
