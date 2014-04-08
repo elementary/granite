@@ -23,6 +23,8 @@ namespace Granite.Widgets {
 
     /**
      * This class makes an about dialog which goes in the App Menu on most apps.
+     * 
+     * {{../../doc/images/AboutDialog.png}}
      */
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**

@@ -24,6 +24,8 @@ using Gtk;
  * This class is for making a first-launch screen easily
  *
  * It can be used to create a list of one-time action items that need to be executed in order to setup the app. 
+ *
+ * {{../../doc/images/Welcome.png}}
  */
 public class Granite.Widgets.Welcome : Gtk.EventBox {
 

@@ -30,7 +30,7 @@
  * dialog because it doesn't hide a big part of the screen. And it is closed
  * when it lose focus.
  *
- * {{../../doc/images/popover.png}}
+ * {{../../doc/images/PopOver.png}}
  *
  */
 public class Granite.Widgets.PopOver : Gtk.Dialog
