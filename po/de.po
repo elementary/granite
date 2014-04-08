@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-23 19:24+0100\n"
-"PO-Revision-Date: 2014-03-11 10:03+0000\n"
-"Last-Translator: Simon Dieterle <launchpad-baecc8@simondieterle.net>\n"
+"PO-Revision-Date: 2014-04-07 17:17+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-03-12 05:16+0000\n"
-"X-Generator: Launchpad (build 16963)\n"
+"X-Launchpad-Export-Date: 2014-04-08 06:50+0000\n"
+"X-Generator: Launchpad (build 16976)\n"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Developers"
@@ -122,12 +122,12 @@ msgstr "%H:%M"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr "%a, %e. %B %Y"
+msgstr "%a, %e. %b. %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr "%e. %B %Y"
+msgstr "%e. %b. %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:108
@@ -153,7 +153,7 @@ msgstr "%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr "%a, %e. %B"
+msgstr "%a, %e. %b."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:123
