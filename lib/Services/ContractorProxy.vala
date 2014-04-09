@@ -21,8 +21,7 @@
 
 namespace Granite.Services {
     /**
-     * Opaque object representing a Contractor action.
-     * Returned by {@link Granite.Services.ContractorProxy}
+     * Interface for executing and accessing properties of Contractor actions
      */
     public interface Contract : Object {
 
