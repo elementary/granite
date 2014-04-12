@@ -48,8 +48,9 @@ namespace Granite {
          */
         public string program_name;
         /**
-         * The compiled binary name. This is used to launch the
-         * application from a launcher or the command line.
+         * The compiled binary name, which must match the CMake exec name.
+         * This is used to launch the application from a launcher or the
+         * command line.
          */ 
         public string exec_name;
 
@@ -64,13 +65,15 @@ namespace Granite {
          * 
          * This is either the name of an icon shipped by the icon theme,
          * or the name of an icon shipped with the app (for custom icons).
+         * The name should not include the full path or file extension.
+         * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
          */
         public string app_icon;
         /**
          * The launcher to be associated with this application.
          *
          * This should be the name of a file in /usr/share/applications/.
-         * See http://standards.freedesktop.org/desktop-entry-spec/latest/
+         * See [[http://standards.freedesktop.org/desktop-entry-spec/latest/]]
          * for more information.
          */
         public string app_launcher;
