@@ -29,6 +29,7 @@ namespace Granite.StyleClass {
     public const string POPOVER_BG = "popover_bg";
     public const string HELP_BUTTON = "help_button";
     public const string THIN_PANE_SEPARATOR = "sidebar-pane-separator";
+    public const string OVERLAY_BAR = "overlay-bar";
 
     public const string TITLE_TEXT = "title";
     public const string H1_TEXT = "h1";

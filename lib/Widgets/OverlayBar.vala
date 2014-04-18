@@ -42,7 +42,7 @@
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     private const string FALLBACK_THEME = """
-   .granite-overlay-bar {
+   .overlay-bar {
        background-color: @bg_color;
        border-radius: 3px;
        padding: 3px 6px;
@@ -168,7 +168,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     private void set_default_style () {
         int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
-        Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, "granite-overlay-bar", priority);
+        Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, StyleClass.OVERLAY_BAR, priority);
     }
 
     private bool enter_notify_callback (Gdk.EventCrossing event) {
