@@ -17,6 +17,46 @@
     Boston, MA 02110-1301 USA.
 ***/
 
+public interface Granite.Widgets.SourceListDragSource : SourceList.Item {
+    /**
+     * Determines whether the item is draggable or not.
+     *
+     * @return //true// if the item can be dragged; //false// otherwise.
+     * @since 0.3
+     */
+    public abstract bool item_draggable (); 
+
+    /**
+     * If the item is draggable, this method is called to fill the data
+     * that will be dropped elsewhere during a drag-and-drop operation.
+     *
+     * @param data {@link Gtk.SelectionData} containing source data.
+     * @since 0.3
+     */
+    public abstract void prepare_selection_data (Gtk.SelectionData data);
+}
+
+// TODO param Gdk.DragContext context for querying data actions, etc.
+public interface Granite.Widgets.SourceListDragDest : SourceList.Item {
+    /**
+     * Determines whether data can be dropped onto this item.
+     *
+     * @param data {@link Gtk.SelectionData} containing source data.
+     * @return //true// if the drop is possible; //false// otherwise.
+     * @since 0.3
+     */
+    public abstract bool data_drop_possible (Gtk.SelectionData data);
+
+    /**
+     * If a data drop is deemed possible, then this method is called
+     * when the data is actually dropped onto this item.
+     *
+     * @param data {@link Gtk.SelectionData} containing source data.
+     * @since 0.3
+     */
+    public abstract void data_received (Gtk.SelectionData data);
+}
+
 /**
  * A widget that can display a list of items organized in categories.
  *
@@ -1332,6 +1372,15 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             // Add root-level indentation. New levels will be added by update_item_expansion()
             add_spacer_cell_for_level (1);
+
+            // Enable high-level DnD support
+/*
+            enable_model_drag_dest(target_entries, actions);
+
+            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
+                                      source_targets,
+                                      Gdk.DragAction.MOVE);
+*/
         }
 
         ~Tree () {
