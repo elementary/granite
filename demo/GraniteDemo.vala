@@ -51,22 +51,27 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
-    private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem {
+    private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem,
+        Granite.Widgets.SourceListSortable {
         public SourceListExpandableItem (string name) {
             base (name);
         }
 
-        public override int compare (Granite.Widgets.SourceList.Item a,
-                                     Granite.Widgets.SourceList.Item b)
+        public bool allow_dnd_sorting () {
+            return true;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
         {
-            return strcmp (a.name, b.name);
+            return strcmp (a.name.collate_key (), b.name.collate_key ());
         }
     }
 
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
-    private class SourceListItem : Granite.Widgets.SourceList.Item {
+    private class SourceListItem : Granite.Widgets.SourceList.Item, Granite.Widgets.SourceListDragSource {
         public int page_num { get; set; default = -1; }
         private static Icon? themed_icon;
 
@@ -78,6 +83,13 @@ public class Granite.Demo : Granite.Application {
                 themed_icon = new ThemedIcon.with_default_fallbacks ("help-info-symbolic");
 
             icon = themed_icon;
+        }
+
+        public bool item_draggable () {
+            return true;
+        }
+
+        public void prepare_selection_data (Gtk.SelectionData data) {
         }
     }
 

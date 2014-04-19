@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2012-2013 Victor Eduardo <victoreduardm@gmal.com>
+    Copyright (C) 2012-2014 Victor Eduardo <victoreduardm@gmail.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
@@ -17,7 +17,53 @@
     Boston, MA 02110-1301 USA.
 ***/
 
-public interface Granite.Widgets.SourceListDragSource : SourceList.Item {
+namespace Granite.Widgets {
+
+public interface SourceListSortable : SourceList.ExpandableItem {
+    /**
+     * Emitted after a user has moved an item via DnD.
+     *
+     * @param moved The item that was moved to a different position by the user.
+     * @since 0.3
+     */
+    public signal void user_moved_item (SourceList.Item moved);
+
+    /**
+     * Whether this item will allow users to re-sort its children via
+     * DnD.
+     *
+     * This feature can co-exist with a sort algorithm (implemented
+     * by {@link Granite.Widgets.SourceListSortable.compare}, but keep
+     * in mind that the actual order of the items in the list may not
+     * actually honor the compare method due to users dragging items
+     * and dropping them at different positions.
+     *
+     * @return Whether the item's children can be sorted via DnD.
+     * @since 0.3
+     */
+    public abstract bool allow_dnd_sorting ();
+
+    /**
+     * Should return a negative integer, zero, or a positive integer if ''a'' sorts //before//
+     * ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts //after// ''b'' respectively. If two
+     * items compare as equal, their order in the sorted source list is undefined.
+     *
+     * In order to ensure that the source list behaves as expected, this method must define a
+     * partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
+     * transitive.
+     *
+     * (Same description as {@link Gtk.TreeIterCompareFunc}.)
+     *
+     * @param a First item.
+     * @param b Second item.
+     * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
+     *         or a //positive// integer if //a// sorts before //b//.
+     * @since 0.3
+     */
+    public abstract int compare (SourceList.Item a, SourceList.Item b);
+}
+
+public interface SourceListDragSource : SourceList.Item {
     /**
      * Determines whether the item is draggable or not.
      *
@@ -37,7 +83,7 @@ public interface Granite.Widgets.SourceListDragSource : SourceList.Item {
 }
 
 // TODO param Gdk.DragContext context for querying data actions, etc.
-public interface Granite.Widgets.SourceListDragDest : SourceList.Item {
+public interface SourceListDragDest : SourceList.Item {
     /**
      * Determines whether data can be dropped onto this item.
      *
@@ -153,7 +199,7 @@ public interface Granite.Widgets.SourceListDragDest : SourceList.Item {
  * @since 0.2
  * @see Granite.Widgets.ThinPaned
  */
-public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
+public class SourceList : Gtk.ScrolledWindow {
 
     /**
      * = WORKING INTERNALS =
@@ -459,27 +505,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         /**
-         * Should return a negative integer, zero, or a positive integer if ''a'' sorts //before//
-         * ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts //after// ''b'' respectively. If two
-         * items compare as equal, their order in the sorted source list is undefined.
-         *
-         * In order to ensure that the source list behaves as expected, this method must define a
-         * partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
-         * transitive.
-         *
-         * (Same description as {@link Gtk.TreeIterCompareFunc}.)
-         *
-         * @param a First item.
-         * @param b Second item.
-         * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
-         *         or a //positive// integer if //a// sorts before //b//.
-         * @since 0.2
-         */
-        public virtual int compare (Item a, Item b) {
-            return 0;
-        }
-
-        /**
          * Checks whether the item contains the specified child.
          *
          * This method only considers the item's immediate children.
@@ -643,7 +668,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * for sorting, adding, removing and updating items, eliminating the need of repeatedly dealing with
      * the Gtk.TreeModel API directly.
      */
-    private class DataModel : Gtk.TreeModelFilter {
+    private class DataModel : Gtk.TreeModelFilter, Gtk.TreeDragSource, Gtk.TreeDragDest {
 
         /**
          * An object that references a particular row in a model. This class is a wrapper built around
@@ -1088,7 +1113,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                 // code should only compare items on same hierarchy level
                 assert (item_a.parent == item_b.parent);
 
-                var parent = item_a.parent;
+                var parent = item_a.parent as SourceListSortable;
                 if (parent != null)
                     sort = parent.compare (item_a, item_b);
             }
@@ -1146,8 +1171,80 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             return item_visible;
         }
+
+        /**
+         * TreeDragDest implementation
+         */
+		public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+		    return false;
+		}
+
+		public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+		    // if selection_data contains a ROW:
+		    // 1) make sure no deprecated global sort func is enabled
+		    // 2) evaluate if a sort_func is implemented by either of the rows' parent
+		    // if none of the above conditions are met, allow dropping the item anywhere
+
+            // XXX i'm not sure if this method handles only RESORTING, or if it
+            // also handles DROPS_INTO_CELLS
+
+            // We need to verify the properties of dest's parent
+            if (!dest.up ())
+                return false;
+/*
+gboolean
+gtk_tree_get_row_drag_data (GtkSelectionData *selection_data,
+                            GtkTreeModel **tree_model,
+                            GtkTreePath **path);
+*/
+
+		    var parent_item = get_item_from_path (dest);
+
+            if (parent_item == null)
+                return false;
+
+		    var sortable = parent_item as SourceListSortable;
+
+		    if (sortable != null && sortable.allow_dnd_sorting ()) {
+		        // verify if 
+		    }
+
+		    return false;
+		}
+
+        /**
+         * TreeDragSource overriding
+         */
+		public bool drag_data_delete (Gtk.TreePath path) {
+		    //return base.drag_data_delete (path);
+		    return false;
+		}
+
+		public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
+		    //return base.drag_data_get (path, selection_data);
+		    return true;
+		}
+
+		public bool row_draggable (Gtk.TreePath path) {
+		    //return base.row_draggable (path);
+		    var item = get_item_from_path (path) as SourceListDragSource;
+		    return item != null && item.item_draggable ();
+		}
     }
 
+#if SHOW_IFACs
+	[CCode (cheader_filename = "gtk/gtk.h")]
+	public interface TreeDragDest {
+		public abstract bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data);
+		public abstract bool row_drop_possible (Gtk.TreePath dest_path, Gtk.SelectionData selection_data);
+	}
+	[CCode (cheader_filename = "gtk/gtk.h")]
+	public interface TreeDragSource {
+		public abstract bool drag_data_delete (Gtk.TreePath path);
+		public abstract bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data);
+		public abstract bool row_draggable (Gtk.TreePath path);
+	}
+#endif
 
 
     /**
@@ -1374,6 +1471,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             add_spacer_cell_for_level (1);
 
             // Enable high-level DnD support
+
+
 /*
             enable_model_drag_dest(target_entries, actions);
 
@@ -1381,6 +1480,31 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                                       source_targets,
                                       Gdk.DragAction.MOVE);
 */
+
+            // It Would Be Nice if the target entries and actions were gleaned by querying each 
+            // Sidebar.Entry as it was added, but that's a tad too complicated for our needs
+            // currently
+            var actions = Gdk.DragAction.COPY;
+            Gtk.TargetEntry[] target_entries = new Gtk.TargetEntry[0];
+
+            Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
+                                                 Gtk.TargetFlags.SAME_WIDGET,
+                                                 TargetType.GTK_TREE_MODEL_ROW };
+            target_entries += row_target_entry;
+
+            enable_model_drag_dest (target_entries, actions);
+
+            Gtk.TargetEntry[] source_entries = new Gtk.TargetEntry[0];
+            source_entries += row_target_entry; // XXX this appears to come by default //not needed
+//            {"GTK_TREE_MODEL_ROW", Gtk.TargetFlags.SAME_WIDGET, TargetType.GTK_TREE_MODEL_ROW},
+            //source_entries += target_entries[LibraryWindow.TargetType.TAG_PATH];
+            enable_model_drag_source(Gdk.ModifierType.BUTTON1_MASK, source_entries,
+                Gdk.DragAction.COPY);
+
+        }
+
+        private enum TargetType {
+            GTK_TREE_MODEL_ROW
         }
 
         ~Tree () {
@@ -2326,4 +2450,5 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
         return null;
     }
+}
 }
