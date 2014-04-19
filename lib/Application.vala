@@ -47,6 +47,7 @@ namespace Granite {
          * throughout the application and should be capitalized correctly.
          */
         public string program_name;
+
         /**
          * The compiled binary name, which must match the CMake exec name.
          * This is used to launch the application from a launcher or the
@@ -60,6 +61,7 @@ namespace Granite {
          */
         public string app_copyright;
         public string app_years;
+
         /**
          * Icon to be associated with the application.
          * 
@@ -69,6 +71,7 @@ namespace Granite {
          * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
          */
         public string app_icon;
+
         /**
          * The launcher to be associated with this application.
          *
@@ -85,6 +88,7 @@ namespace Granite {
          * launchpad.net.
          */
         public string main_url;
+
         /**
          * A link to the software's public bug tracker.
          *
@@ -92,12 +96,14 @@ namespace Granite {
          * created on launchpad.net.
          */
         public string bug_url;
+
         /**
          * Link to question and answer site or support forum for the app.
          *
          * Launchpad offers a QA service if one is needed.
          */
         public string help_url;
+
         /**
          * Link to where users can translate the application.
          *
@@ -109,19 +115,24 @@ namespace Granite {
          * Full names of the application authors for the about dialog.
          */
         public string[] about_authors = {};
+
         /**
          * Full names of documenters of the app for the about dialog.
          */
         public string[] about_documenters = {};
+
         /**
          * Names of the designers of the application's user interface.
          */
         public string[] about_artists = {};
+
         public string about_comments;
+
         /**
          * Names of the translators of the application.
          */
         public string about_translators;
+
         /**
          * The copyright license that the work is distributed under.
          */
