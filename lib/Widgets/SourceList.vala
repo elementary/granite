@@ -1176,6 +1176,57 @@ public class SourceList : Gtk.ScrolledWindow {
          * TreeDragDest implementation
          */
 		public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+            message ("____DRAG_DATA_RECEIVED_________");
+
+            // check if we have row data (I'm asssuming this is always the case??)
+            unowned Gtk.TreeModel src_drag_model;
+            unowned Gtk.TreePath src_drag_path;
+
+            // Due to the Gtk.TreeModelFilter implementation of drag_data_get,
+            // the values returned by tree_row_drag_data for GtkModel and GtkPath
+            // correspond to the child model and not the filter.
+            if (Gtk.tree_get_row_drag_data (selection_data, out src_drag_model, out src_drag_path)) {
+                message ("TREE_MODEL_ROW DRAG DATA");
+
+                // if the row comes from our same model, we want to handle DnD sorting here
+                if (src_drag_model == child_tree) {
+                    message ("SAME_MODEL_DRAG");
+
+                    // we don't want to drop things onto the same path as the origin
+                    
+                    // get a child path representation of dest
+                    var child_dest = convert_path_to_child_path (dest);
+                    if (child_dest != null) {
+                        message ("CHILD_DEST_IS_VALID");
+                        /*
+                        if (src_drag_path.compare (child_dest) == 0) {
+                            warning ("SAME_DEST_AS_SOURCE");
+                            return false;
+                        }
+
+                        if (child_dest.get_depth () != src_drag_path.get_depth ())
+                            return false;
+
+                        var sortable = parent_item as SourceListSortable;
+
+                        if (sortable != null && sortable.allow_dnd_sorting ()) {
+                            message ("DnD: PARENT_IS_SORTABLE & ALLOWS_DND_SORTING");
+                            // verify if 
+                            return true;
+                        }
+                        */
+
+                        // just insert the item here
+                        if (child_tree.drag_data_received (child_dest, selection_data)) {
+                            critical ("DRAG_DATA_WAS_RECEIVED");
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            message ("DRAG_DATA_RECEIVED");
+
 		    return false;
 		}
 
@@ -1188,27 +1239,64 @@ public class SourceList : Gtk.ScrolledWindow {
             // XXX i'm not sure if this method handles only RESORTING, or if it
             // also handles DROPS_INTO_CELLS
 
-            // We need to verify the properties of dest's parent
-            if (!dest.up ())
-                return false;
-/*
-gboolean
-gtk_tree_get_row_drag_data (GtkSelectionData *selection_data,
-                            GtkTreeModel **tree_model,
-                            GtkTreePath **path);
-*/
+            message ("____ROW_DROP_POSSIBLE__________");
 
-		    var parent_item = get_item_from_path (dest);
+            message ("DnD: DEST_PATH = %s", dest.to_string ());
+
+            // We need to verify the properties of dest's parent
+            var dest_parent = dest.copy ();
+            if (!dest_parent.up () || dest_parent.get_depth () <= 0)
+                return false;
+
+		    var parent_item = get_item_from_path (dest_parent);
+            message ("DnD: PARENT_PATH = %s", dest_parent.to_string ());
 
             if (parent_item == null)
                 return false;
 
-		    var sortable = parent_item as SourceListSortable;
+            message ("DnD: PARENT_IS_NOT_NULL");
 
-		    if (sortable != null && sortable.allow_dnd_sorting ()) {
-		        // verify if 
-		    }
+            // check if we have row data (I'm asssuming this is always the case??)
+            unowned Gtk.TreeModel src_drag_model;
+            unowned Gtk.TreePath src_drag_path;
 
+            // Due to the Gtk.TreeModelFilter implementation of drag_data_get,
+            // the values returned by tree_row_drag_data for GtkModel and GtkPath
+            // correspond to the child model and not the filter.
+            if (Gtk.tree_get_row_drag_data (selection_data, out src_drag_model, out src_drag_path)) {
+                message ("TREE_MODEL_ROW DRAG DATA");
+
+                // if the row comes from our same model, we want to handle DnD sorting here
+                if (src_drag_model == child_tree) {
+                    message ("SAME_MODEL_DRAG");
+
+                    // we don't want to drop things onto the same path as the origin
+                    
+                    // get a child path representation of dest
+                    var child_dest = convert_path_to_child_path (dest);
+                    if (child_dest != null) {
+                        if (src_drag_path.compare (child_dest) == 0) {
+                            warning ("SAME_DEST_AS_SOURCE");
+                            return false;
+                        }
+
+                        if (child_dest.get_depth () != src_drag_path.get_depth ())
+                            return false;
+
+                        var sortable = parent_item as SourceListSortable;
+
+                        if (sortable != null && sortable.allow_dnd_sorting ()) {
+                            message ("DnD: PARENT_IS_SORTABLE & ALLOWS_DND_SORTING");
+                            // verify if 
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            message ("DnD: NOT_SORTABLE");
+
+            //assert_not_reached ();
 		    return false;
 		}
 
@@ -1216,15 +1304,22 @@ gtk_tree_get_row_drag_data (GtkSelectionData *selection_data,
          * TreeDragSource overriding
          */
 		public bool drag_data_delete (Gtk.TreePath path) {
-		    //return base.drag_data_delete (path);
-		    return false;
+		    // TODO I suppose we'd have to do some kind of item path reinsert or
+		    // path update in the model here?
+		    return base.drag_data_delete (path);
 		}
-
+#if 0
 		public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
-		    //return base.drag_data_get (path, selection_data);
-		    return true;
-		}
+		    return base.drag_data_get (path, selection_data);
+/*            if (selection_data.get_target () == Gdk.Atom.intern_static_string ("GTK_TREE_MODEL_ROW")) {
+                debug ("REQUESTED_TREE_MODEL_ROW DATA");
+                Gtk.tree_set_row_drag_data (selection_data, this, path);
+            }
 
+		    return true;
+*/
+		}
+#endif
 		public bool row_draggable (Gtk.TreePath path) {
 		    //return base.row_draggable (path);
 		    var item = get_item_from_path (path) as SourceListDragSource;
