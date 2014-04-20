@@ -1200,9 +1200,26 @@ public class SourceList : Gtk.ScrolledWindow {
             return item_visible;
         }
 
+
+        private void move_item_to_child_path (Item item, Gtk.TreePath child_path) {
+            // get a list of items whose row references we'll need to update after
+            // moving them to a new location.
+            var need_update_list = new Gee.ArrayList<Item> ();
+            var expandable = item as ExpandableItem;
+
+            if (expandable != null) {
+                foreach (var child_item in expandable.children)
+                    update_row_references (child_item);
+            } else {
+                // Update row reference for item
+
+            }
+        }
+
         /**
          * TreeDragDest implementation
          */
+
         public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
             unowned Gtk.TreeModel model;
             unowned Gtk.TreePath path;
@@ -1216,11 +1233,11 @@ public class SourceList : Gtk.ScrolledWindow {
                 var child_dest = convert_path_to_child_path (dest);
 
                 if (child_dest != null) {
-                    // XXX just insert a new item here
-                    if (child_tree.drag_data_received (child_dest, selection_data)) {
-                        debug ("DRAG_DATA_WAS_RECEIVED");
+                    // New GtkTreeIters will be asigned to the rows at child_dest and its children.
+                    // Let's just re-insert the item here. The rest of bookeeping will be done at
+                    // drag_data_delete after deleting the contents from the previous location.
+                    if (child_tree.drag_data_received (child_dest, selection_data))
                         return true;
-                    }
                 }
             } else {
                 // Data coming from external source/widget was dropped onto this item.
@@ -1271,12 +1288,19 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         /**
-         * TreeDragSource overriding
+         * Override default implementation of TreeDragSource
          */
+
         public bool drag_data_delete (Gtk.TreePath path) {
-            // TODO I suppose we'd have to do some kind of item path reinsert or
-            // path update in the model here?
             return base.drag_data_delete (path);
+            // Make sure we re-build our row references at path since new GtkTreeIters
+            // were already asigned to the row/data at path and all of its children.
+/*
+            var item = get_item_from_path (path);
+
+            update_row_references (item);
+            return true;
+*/
         }
 
         public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
@@ -1544,47 +1568,55 @@ public class SourceList : Gtk.ScrolledWindow {
             // Add root-level indentation. New levels will be added by update_item_expansion()
             add_spacer_cell_for_level (1);
 
-            // Enable high-level DnD support
-
-
-/*
-            enable_model_drag_dest(target_entries, actions);
-
-            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
-                                      source_targets,
-                                      Gdk.DragAction.MOVE);
-*/
-
-            // It Would Be Nice if the target entries and actions were gleaned by querying each
-            // Sidebar.Entry as it was added, but that's a tad too complicated for our needs
-            // currently
-            var actions = Gdk.DragAction.COPY;
-            Gtk.TargetEntry[] target_entries = new Gtk.TargetEntry[0];
-
-            Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
-                                                 Gtk.TargetFlags.SAME_WIDGET,
-                                                 TargetType.GTK_TREE_MODEL_ROW };
-            target_entries += row_target_entry;
-
-            enable_model_drag_dest (target_entries, actions);
-
-            Gtk.TargetEntry[] source_entries = new Gtk.TargetEntry[0];
-            source_entries += row_target_entry; // XXX this appears to come by default //not needed
-//            {"GTK_TREE_MODEL_ROW", Gtk.TargetFlags.SAME_WIDGET, TargetType.GTK_TREE_MODEL_ROW},
-            //source_entries += target_entries[LibraryWindow.TargetType.TAG_PATH];
-            enable_model_drag_source(Gdk.ModifierType.BUTTON1_MASK, source_entries,
-                Gdk.DragAction.COPY);
-
-        }
-
-        private enum TargetType {
-            GTK_TREE_MODEL_ROW
+            // Enable drag and drop
+            configure_drag_and_drop (0, 0, null, null);
         }
 
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
             data_model.item_updated.disconnect (on_model_item_updated);
+        }
+
+        public void configure_drag_and_drop (Gdk.DragAction src_actions,
+                                             Gdk.DragAction dest_actions,
+                                             Gtk.TargetEntry[]? src_entries,
+                                             Gtk.TargetEntry[]? dest_entries)
+        {
+            const Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
+                                                       Gtk.TargetFlags.SAME_WIDGET, 0 };
+
+            // Append GTK_TREE_MODEL_ROW to src_entries and dest_entries to enable row DnD.
+
+            var actual_src_entries = new Gtk.TargetEntry[0];
+            actual_src_entries += row_target_entry;
+
+            if (src_entries != null) {
+                foreach (var target_entry in src_entries)
+                    actual_src_entries += target_entry;
+            }
+
+            var actual_dest_entries = new Gtk.TargetEntry[0];
+            actual_dest_entries += row_target_entry;
+
+            if (dest_entries != null) {
+                foreach (var target_entry in dest_entries)
+                    actual_dest_entries += target_entry;
+            }
+
+            // Make sure the MOVE action flag is always enabled. This is needed for
+            // row DnD reordering to work properly.
+            src_actions |= Gdk.DragAction.MOVE;
+            dest_actions |= Gdk.DragAction.MOVE;
+
+            // Disable any previous DnD configuration
+            unset_rows_drag_source ();
+            unset_rows_drag_dest ();
+
+            // Enable GtkTreeView high-level DnD support
+            enable_model_drag_dest (actual_dest_entries, dest_actions);
+            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK, actual_src_entries,
+                                      src_actions);
         }
 
         private void on_model_item_updated (Item item) {
@@ -2408,6 +2440,14 @@ public class SourceList : Gtk.ScrolledWindow {
     public void stop_editing () {
         if (editing)
             tree.stop_editing ();
+    }
+
+    public void configure_drag_and_drop (Gdk.DragAction src_actions,
+                                         Gdk.DragAction dest_actions,
+                                         Gtk.TargetEntry[]? src_entries,
+                                         Gtk.TargetEntry[]? dest_entries)
+    {
+        tree.configure_drag_and_drop (src_actions, dest_actions, src_entries, dest_entries);
     }
 
     /**
