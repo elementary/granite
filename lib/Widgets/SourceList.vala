@@ -29,16 +29,16 @@ public interface SourceListSortable : SourceList.ExpandableItem {
     public signal void user_moved_item (SourceList.Item moved);
 
     /**
-     * Whether this item will allow users to re-sort its children via
-     * DnD.
+     * Whether this item will allow users to re-arrange its children via DnD.
      *
      * This feature can co-exist with a sort algorithm (implemented
-     * by {@link Granite.Widgets.SourceListSortable.compare}, but keep
+     * by {@link Granite.Widgets.SourceListSortable.compare}), but keep
      * in mind that the actual order of the items in the list may not
-     * actually honor the compare method due to users dragging items
-     * and dropping them at different positions.
+     * actually honor the {@link Granite.Widgets.SourceListSortable.compare}
+     * method due to user interaction (i.e. a user can drag an item to a
+     * different position).
      *
-     * @return Whether the item's children can be sorted via DnD.
+     * @return Whether the item's children can be re-arranged by users.
      * @since 0.3
      */
     public abstract bool allow_dnd_sorting ();
@@ -95,7 +95,8 @@ public interface SourceListDragDest : SourceList.Item {
 
     /**
      * If a data drop is deemed possible, then this method is called
-     * when the data is actually dropped onto this item.
+     * when the data is actually dropped onto this item. Any actions
+     * consequence of the data received should be handled here.
      *
      * @param data {@link Gtk.SelectionData} containing source data.
      * @since 0.3
@@ -1223,9 +1224,16 @@ public class SourceList : Gtk.ScrolledWindow {
                         }
                     }
                 }
+            } else {
+                // selection_data contains something other than another tree row, so most
+                // likely we're dealing with a DnD not originated within the Source List tree.
+                // Let's pass the data to the corresponding item instead, it there's a handler.
+                var drag_dest_item = get_item_from_path (dest) as SourceListDragDest;
+                if (drag_dest_item != null) {
+                    debug ("SourceListDragDest != null");
+                    drag_dest_item.data_received (selection_data);
+                }
             }
-
-            message ("DRAG_DATA_RECEIVED");
 
 		    return false;
 		}
@@ -1292,6 +1300,8 @@ public class SourceList : Gtk.ScrolledWindow {
                         }
                     }
                 }
+            } else {
+                
             }
 
             message ("DnD: NOT_SORTABLE");
