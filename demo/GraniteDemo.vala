@@ -85,7 +85,7 @@ public class Granite.Demo : Granite.Application {
             icon = themed_icon;
         }
 
-        public bool item_draggable () {
+        public bool draggable () {
             return true;
         }
 

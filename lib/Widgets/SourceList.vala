@@ -19,6 +19,11 @@
 
 namespace Granite.Widgets {
 
+/**
+ * An interface for sorting items.
+ *
+ * @since 0.3
+ */
 public interface SourceListSortable : SourceList.ExpandableItem {
     /**
      * Emitted after a user has moved an item via DnD.
@@ -44,45 +49,66 @@ public interface SourceListSortable : SourceList.ExpandableItem {
     public abstract bool allow_dnd_sorting ();
 
     /**
-     * Should return a negative integer, zero, or a positive integer if ''a'' sorts //before//
-     * ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts //after// ''b'' respectively. If two
-     * items compare as equal, their order in the sorted source list is undefined.
+     * Should return a negative integer, zero, or a positive integer if ''a''
+     * sorts //before// ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts
+     * //after// ''b'' respectively. If two items compare as equal, their
+     * order in the sorted source list is undefined.
      *
-     * In order to ensure that the source list behaves as expected, this method must define a
-     * partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
-     * transitive.
+     * In order to ensure that the source list behaves as expected, this
+     * method must define a partial order on the source list tree; i.e. it
+     * must be reflexive, antisymmetric and transitive.
      *
      * (Same description as {@link Gtk.TreeIterCompareFunc}.)
      *
      * @param a First item.
      * @param b Second item.
-     * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
-     *         or a //positive// integer if //a// sorts before //b//.
+     * @return A //negative// integer if //a// sorts after //b//,
+     *         //zero// if //a// equals //b//, or a //positive//
+     *         integer if //a// sorts before //b//.
      * @since 0.3
      */
     public abstract int compare (SourceList.Item a, SourceList.Item b);
 }
 
+/**
+ * An interface for dragging items out of the source list widget.
+ *
+ * @since 0.3
+ */
 public interface SourceListDragSource : SourceList.Item {
     /**
-     * Determines whether the item is draggable or not.
+     * Determines whether this item can be dragged outside the source list widget.
      *
+     * Even if this method returns //false//, the item could still be dragged around
+     * within the source list if its parent allows DnD reordering. This only happens
+     * when the parent implements {@link Granite.Widgets.SourceListSortable}.
+     * 
      * @return //true// if the item can be dragged; //false// otherwise.
      * @since 0.3
+     * @see Granite.Widgets.SourceListSortable
      */
-    public abstract bool item_draggable (); 
+    public abstract bool draggable (); 
 
     /**
-     * If the item is draggable, this method is called to fill the data
-     * that will be dropped elsewhere during a drag-and-drop operation.
+     * If this item can be dragged out if the source list, this method is called when
+     * the drop site requests the data which is dragged.
      *
-     * @param data {@link Gtk.SelectionData} containing source data.
+     * It is the responsibility of this method to fill //selection_data// with the
+     * data in the format which is indicated by {@link Gtk.SelectionData.get_target}.
+     *
+     * @param selection_data {@link Gtk.SelectionData} containing source data.
      * @since 0.3
+     * @see Gtk.SelectionData.set
+     * @see Gtk.SelectionData.set_text
      */
-    public abstract void prepare_selection_data (Gtk.SelectionData data);
+    public abstract void prepare_selection_data (Gtk.SelectionData selection_data);
 }
 
-// TODO param Gdk.DragContext context for querying data actions, etc.
+/**
+ * An interface for receiving DnD data.
+ *
+ * @since 0.3
+ */
 public interface SourceListDragDest : SourceList.Item {
     /**
      * Determines whether data can be dropped onto this item.
@@ -102,6 +128,7 @@ public interface SourceListDragDest : SourceList.Item {
      * @since 0.3
      */
     public abstract void data_received (Gtk.SelectionData data);
+    // TODO param Gdk.DragContext context for querying data actions, etc.
 }
 
 /**
@@ -1176,7 +1203,7 @@ public class SourceList : Gtk.ScrolledWindow {
         /**
          * TreeDragDest implementation
          */
-		public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+        public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
             message ("____DRAG_DATA_RECEIVED_________");
 
             // check if we have row data (I'm asssuming this is always the case??)
@@ -1235,14 +1262,14 @@ public class SourceList : Gtk.ScrolledWindow {
                 }
             }
 
-		    return false;
-		}
+            return false;
+        }
 
-		public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
-		    // if selection_data contains a ROW:
-		    // 1) make sure no deprecated global sort func is enabled
-		    // 2) evaluate if a sort_func is implemented by either of the rows' parent
-		    // if none of the above conditions are met, allow dropping the item anywhere
+        public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+            // if selection_data contains a ROW:
+            // 1) make sure no deprecated global sort func is enabled
+            // 2) evaluate if a sort_func is implemented by either of the rows' parent
+            // if none of the above conditions are met, allow dropping the item anywhere
 
             // XXX i'm not sure if this method handles only RESORTING, or if it
             // also handles DROPS_INTO_CELLS
@@ -1256,7 +1283,7 @@ public class SourceList : Gtk.ScrolledWindow {
             if (!dest_parent.up () || dest_parent.get_depth () <= 0)
                 return false;
 
-		    var parent_item = get_item_from_path (dest_parent);
+            var parent_item = get_item_from_path (dest_parent);
             message ("DnD: PARENT_PATH = %s", dest_parent.to_string ());
 
             if (parent_item == null)
@@ -1307,49 +1334,58 @@ public class SourceList : Gtk.ScrolledWindow {
             message ("DnD: NOT_SORTABLE");
 
             //assert_not_reached ();
-		    return false;
-		}
+            return false;
+        }
 
         /**
          * TreeDragSource overriding
          */
-		public bool drag_data_delete (Gtk.TreePath path) {
-		    // TODO I suppose we'd have to do some kind of item path reinsert or
-		    // path update in the model here?
-		    return base.drag_data_delete (path);
-		}
-#if 0
-		public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
-		    return base.drag_data_get (path, selection_data);
-/*            if (selection_data.get_target () == Gdk.Atom.intern_static_string ("GTK_TREE_MODEL_ROW")) {
-                debug ("REQUESTED_TREE_MODEL_ROW DATA");
-                Gtk.tree_set_row_drag_data (selection_data, this, path);
+        public bool drag_data_delete (Gtk.TreePath path) {
+            // TODO I suppose we'd have to do some kind of item path reinsert or
+            // path update in the model here?
+            return base.drag_data_delete (path);
+        }
+
+        public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
+            // If we're asked for a data about a row, just have the default implementation fill in
+            // selection_data. Please note that it will provide information relative to child_model.
+            if (selection_data.get_target ().name () == "GTK_TREE_MODEL_ROW")
+                return base.drag_data_get (path, selection_data);
+
+            // check if the item at path provides DnD source data
+            var drag_source_item = get_item_from_path (path) as SourceListDragSource;
+            if (drag_source_item != null && drag_source_item.draggable ()) {
+                drag_source_item.prepare_selection_data (selection_data);
+                return true;
             }
 
-		    return true;
-*/
-		}
-#endif
-		public bool row_draggable (Gtk.TreePath path) {
-		    //return base.row_draggable (path);
-		    var item = get_item_from_path (path) as SourceListDragSource;
-		    return item != null && item.item_draggable ();
-		}
-    }
+            return false;
+        }
 
-#if SHOW_IFACs
-	[CCode (cheader_filename = "gtk/gtk.h")]
-	public interface TreeDragDest {
-		public abstract bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data);
-		public abstract bool row_drop_possible (Gtk.TreePath dest_path, Gtk.SelectionData selection_data);
-	}
-	[CCode (cheader_filename = "gtk/gtk.h")]
-	public interface TreeDragSource {
-		public abstract bool drag_data_delete (Gtk.TreePath path);
-		public abstract bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data);
-		public abstract bool row_draggable (Gtk.TreePath path);
-	}
-#endif
+        public bool row_draggable (Gtk.TreePath path) {
+            if (!base.row_draggable (path))
+                return false;
+
+            var item = get_item_from_path (path);
+
+            if (item != null) {
+                // check if the item's parent allows DnD sorting
+                var sortable_item = item as SourceListSortable;
+
+                if (sortable_item != null && sortable_item.allow_dnd_sorting ())
+                    return true;
+
+                // Since the parent item does not allow DnD sorting, there's no
+                // reason to allow dragging it unless the row is actually draggable.
+                var drag_source_item = item as SourceListDragSource;
+
+                if (drag_source_item != null && drag_source_item.draggable ())
+                    return true;
+            }
+
+            return false;
+        }
+    }
 
 
     /**
