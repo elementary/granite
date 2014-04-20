@@ -82,12 +82,12 @@ public interface SourceListDragSource : SourceList.Item {
      * Even if this method returns //false//, the item could still be dragged around
      * within the source list if its parent allows DnD reordering. This only happens
      * when the parent implements {@link Granite.Widgets.SourceListSortable}.
-     * 
+     *
      * @return //true// if the item can be dragged; //false// otherwise.
      * @since 0.3
      * @see Granite.Widgets.SourceListSortable
      */
-    public abstract bool draggable (); 
+    public abstract bool draggable ();
 
     /**
      * If this item can be dragged out if the source list, this method is called when
@@ -1204,136 +1204,69 @@ public class SourceList : Gtk.ScrolledWindow {
          * TreeDragDest implementation
          */
         public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
-            message ("____DRAG_DATA_RECEIVED_________");
+            unowned Gtk.TreeModel model;
+            unowned Gtk.TreePath path;
 
-            // check if we have row data (I'm asssuming this is always the case??)
-            unowned Gtk.TreeModel src_drag_model;
-            unowned Gtk.TreePath src_drag_path;
+            // Check if the user is dragging a row:
+            //
+            // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
+            // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
+            if (Gtk.tree_get_row_drag_data (selection_data, out model, out path) && model == child_tree) {
+                // get a child path representation of dest
+                var child_dest = convert_path_to_child_path (dest);
 
-            // Due to the Gtk.TreeModelFilter implementation of drag_data_get,
-            // the values returned by tree_row_drag_data for GtkModel and GtkPath
-            // correspond to the child model and not the filter.
-            if (Gtk.tree_get_row_drag_data (selection_data, out src_drag_model, out src_drag_path)) {
-                message ("TREE_MODEL_ROW DRAG DATA");
-
-                // if the row comes from our same model, we want to handle DnD sorting here
-                if (src_drag_model == child_tree) {
-                    message ("SAME_MODEL_DRAG");
-
-                    // we don't want to drop things onto the same path as the origin
-                    
-                    // get a child path representation of dest
-                    var child_dest = convert_path_to_child_path (dest);
-                    if (child_dest != null) {
-                        message ("CHILD_DEST_IS_VALID");
-                        /*
-                        if (src_drag_path.compare (child_dest) == 0) {
-                            warning ("SAME_DEST_AS_SOURCE");
-                            return false;
-                        }
-
-                        if (child_dest.get_depth () != src_drag_path.get_depth ())
-                            return false;
-
-                        var sortable = parent_item as SourceListSortable;
-
-                        if (sortable != null && sortable.allow_dnd_sorting ()) {
-                            message ("DnD: PARENT_IS_SORTABLE & ALLOWS_DND_SORTING");
-                            // verify if 
-                            return true;
-                        }
-                        */
-
-                        // just insert the item here
-                        if (child_tree.drag_data_received (child_dest, selection_data)) {
-                            critical ("DRAG_DATA_WAS_RECEIVED");
-                            return true;
-                        }
+                if (child_dest != null) {
+                    // XXX just insert a new item here
+                    if (child_tree.drag_data_received (child_dest, selection_data)) {
+                        debug ("DRAG_DATA_WAS_RECEIVED");
+                        return true;
                     }
                 }
             } else {
+                // Data coming from external source/widget was dropped onto this item.
                 // selection_data contains something other than another tree row, so most
                 // likely we're dealing with a DnD not originated within the Source List tree.
-                // Let's pass the data to the corresponding item instead, it there's a handler.
+                // Let's pass the data to the corresponding item instead, if there's a handler.
                 var drag_dest_item = get_item_from_path (dest) as SourceListDragDest;
-                if (drag_dest_item != null) {
-                    debug ("SourceListDragDest != null");
+                if (drag_dest_item != null)
                     drag_dest_item.data_received (selection_data);
-                }
             }
 
+            // no new row inserted
             return false;
         }
 
         public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
-            // if selection_data contains a ROW:
-            // 1) make sure no deprecated global sort func is enabled
-            // 2) evaluate if a sort_func is implemented by either of the rows' parent
-            // if none of the above conditions are met, allow dropping the item anywhere
+            unowned Gtk.TreeModel model;
+            unowned Gtk.TreePath path;
 
-            // XXX i'm not sure if this method handles only RESORTING, or if it
-            // also handles DROPS_INTO_CELLS
+            // Check if the user is dragging a row:
+            //
+            // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
+            // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
+            if (Gtk.tree_get_row_drag_data (selection_data, out model, out path) && model == child_tree) {
+                // get a child path representation of dest
+                var child_dest = convert_path_to_child_path (dest);
 
-            message ("____ROW_DROP_POSSIBLE__________");
+                // dont allow dropping an item onto itself
+                if (child_dest != null && path.compare (child_dest) != 0) {
+                    // Verify if parent item is sortable
+                    var dest_parent = dest.copy ();
+                    if (!dest_parent.up () || dest_parent.get_depth () <= 0)
+                        return false;
 
-            message ("DnD: DEST_PATH = %s", dest.to_string ());
+                    var sortable = get_item_from_path (dest_parent) as SourceListSortable;
 
-            // We need to verify the properties of dest's parent
-            var dest_parent = dest.copy ();
-            if (!dest_parent.up () || dest_parent.get_depth () <= 0)
-                return false;
-
-            var parent_item = get_item_from_path (dest_parent);
-            message ("DnD: PARENT_PATH = %s", dest_parent.to_string ());
-
-            if (parent_item == null)
-                return false;
-
-            message ("DnD: PARENT_IS_NOT_NULL");
-
-            // check if we have row data (I'm asssuming this is always the case??)
-            unowned Gtk.TreeModel src_drag_model;
-            unowned Gtk.TreePath src_drag_path;
-
-            // Due to the Gtk.TreeModelFilter implementation of drag_data_get,
-            // the values returned by tree_row_drag_data for GtkModel and GtkPath
-            // correspond to the child model and not the filter.
-            if (Gtk.tree_get_row_drag_data (selection_data, out src_drag_model, out src_drag_path)) {
-                message ("TREE_MODEL_ROW DRAG DATA");
-
-                // if the row comes from our same model, we want to handle DnD sorting here
-                if (src_drag_model == child_tree) {
-                    message ("SAME_MODEL_DRAG");
-
-                    // we don't want to drop things onto the same path as the origin
-                    
-                    // get a child path representation of dest
-                    var child_dest = convert_path_to_child_path (dest);
-                    if (child_dest != null) {
-                        if (src_drag_path.compare (child_dest) == 0) {
-                            warning ("SAME_DEST_AS_SOURCE");
-                            return false;
-                        }
-
-                        if (child_dest.get_depth () != src_drag_path.get_depth ())
-                            return false;
-
-                        var sortable = parent_item as SourceListSortable;
-
-                        if (sortable != null && sortable.allow_dnd_sorting ()) {
-                            message ("DnD: PARENT_IS_SORTABLE & ALLOWS_DND_SORTING");
-                            // verify if 
-                            return true;
-                        }
-                    }
+                    if (sortable != null && sortable.allow_dnd_sorting ())
+                        return true;
                 }
             } else {
-                
+                // Data coming from external source/widget is being dragged onto this item.
+                var drag_dest = get_item_from_path (dest) as SourceListDragDest;
+                if (drag_dest != null && drag_dest.data_drop_possible (selection_data))
+                    return true;
             }
 
-            message ("DnD: NOT_SORTABLE");
-
-            //assert_not_reached ();
             return false;
         }
 
@@ -1622,7 +1555,7 @@ public class SourceList : Gtk.ScrolledWindow {
                                       Gdk.DragAction.MOVE);
 */
 
-            // It Would Be Nice if the target entries and actions were gleaned by querying each 
+            // It Would Be Nice if the target entries and actions were gleaned by querying each
             // Sidebar.Entry as it was added, but that's a tad too complicated for our needs
             // currently
             var actions = Gdk.DragAction.COPY;

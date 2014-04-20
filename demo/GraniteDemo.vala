@@ -71,7 +71,7 @@ public class Granite.Demo : Granite.Application {
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
-    private class SourceListItem : Granite.Widgets.SourceList.Item, Granite.Widgets.SourceListDragSource {
+    private class SourceListItem : Granite.Widgets.SourceList.Item, Granite.Widgets.SourceListDragSource, Granite.Widgets.SourceListDragDest {
         public int page_num { get; set; default = -1; }
         private static Icon? themed_icon;
 
@@ -90,6 +90,14 @@ public class Granite.Demo : Granite.Application {
         }
 
         public void prepare_selection_data (Gtk.SelectionData data) {
+        }
+
+        public bool data_drop_possible (Gtk.SelectionData data) {
+            return true;
+        }
+
+        public void data_received (Gtk.SelectionData data) {
+        
         }
     }
 
