@@ -1200,35 +1200,19 @@ public class SourceList : Gtk.ScrolledWindow {
             return item_visible;
         }
 
-
-        private void move_item_to_child_path (Item item, Gtk.TreePath child_path) {
-            // get a list of items whose row references we'll need to update after
-            // moving them to a new location.
-            var need_update_list = new Gee.ArrayList<Item> ();
-            var expandable = item as ExpandableItem;
-
-            if (expandable != null) {
-                foreach (var child_item in expandable.children)
-                    update_row_references (child_item);
-            } else {
-                // Update row reference for item
-
-            }
-        }
-
         /**
          * TreeDragDest implementation
          */
 
         public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
             unowned Gtk.TreeModel model;
-            unowned Gtk.TreePath path;
+            unowned Gtk.TreePath src_path;
 
             // Check if the user is dragging a row:
             //
             // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
             // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
-            if (Gtk.tree_get_row_drag_data (selection_data, out model, out path) && model == child_tree) {
+            if (Gtk.tree_get_row_drag_data (selection_data, out model, out src_path) && model == child_tree) {
                 // get a child path representation of dest
                 var child_dest = convert_path_to_child_path (dest);
 
@@ -1236,7 +1220,7 @@ public class SourceList : Gtk.ScrolledWindow {
                     // New GtkTreeIters will be asigned to the rows at child_dest and its children.
                     // Let's just re-insert the item here. The rest of bookeeping will be done at
                     // drag_data_delete after deleting the contents from the previous location.
-                    if (child_tree.drag_data_received (child_dest, selection_data))
+                    if (child_tree_drag_data_received (child_dest, src_path))
                         return true;
                 }
             } else {
@@ -1253,6 +1237,67 @@ public class SourceList : Gtk.ScrolledWindow {
             return false;
         }
 
+        private bool child_tree_drag_data_received (Gtk.TreePath dest, Gtk.TreePath src_path) {
+            bool retval = false;
+            Gtk.TreeIter src_iter, dest_iter;
+
+            if (!child_tree.get_iter (out src_iter, src_path))
+                return false;
+
+            var prev = dest;
+
+            // Get the path to insert _after_ (dest is the path to insert _before_)
+            if (!prev.prev ()) {
+                // dest was the first spot at the current depth; which means
+                // we are supposed to prepend.
+
+                var parent = dest;
+                Gtk.TreeIter? dest_parent = null;
+
+                if (parent.up () && parent.get_depth () > 0)
+                    child_tree.get_iter (out dest_parent, parent);
+
+                child_tree.prepend (out dest_iter, dest_parent);
+                retval = true;
+            } else if (child_tree.get_iter (out dest_iter, prev)) {
+                var tmp_iter = dest_iter;
+                child_tree.insert_after (out dest_iter, null, tmp_iter);
+                retval = true;
+            }
+
+            // If we succeeded in creating dest_iter, walk src_iter tree branch,
+            // duplicating it below dest_iter.
+            if (retval)
+                recursive_node_copy (src_iter, dest_iter);
+
+            return retval;
+        }
+
+        private void recursive_node_copy (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
+            copy_node_data (src_iter, dest_iter);
+
+            Gtk.TreeIter child;
+            if (child_tree.iter_children (out child, src_iter)) {
+                // Need to create children and recurse. Note our dependence on
+                // persistent iterators here.
+                do {
+                    Gtk.TreeIter copy;
+                    child_tree.append (out copy, dest_iter);
+                    recursive_node_copy (child, copy);
+                } while (child_tree.iter_next (ref child));
+            }
+        }
+
+        private void copy_node_data (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
+            Item item;
+            child_tree.get (src_iter, Column.ITEM, out item, -1);
+            return_if_fail (item != null);
+
+            // update the row reference of item with the new location
+            child_tree.set (dest_iter, Column.ITEM, item, -1);
+            items.set (item, new NodeWrapper (child_tree, dest_iter));
+        }
+
         public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
             unowned Gtk.TreeModel model;
             unowned Gtk.TreePath path;
@@ -1264,44 +1309,43 @@ public class SourceList : Gtk.ScrolledWindow {
             if (Gtk.tree_get_row_drag_data (selection_data, out model, out path) && model == child_tree) {
                 // get a child path representation of dest
                 var child_dest = convert_path_to_child_path (dest);
+                /*
+                FIXME Doesn't work properly for root items (categories)
 
-                // dont allow dropping an item onto itself
-                if (child_dest != null && path.compare (child_dest) != 0) {
-                    // Verify if parent item is sortable
-                    var dest_parent = dest.copy ();
-                    if (!dest_parent.up () || dest_parent.get_depth () <= 0)
-                        return false;
+                // don't allow dropping an item onto itself
+                if (child_dest == null || path.compare (child_dest) == 0)
+                    return false;
 
-                    var sortable = get_item_from_path (dest_parent) as SourceListSortable;
+                // only allow reordering between siblings (i.e. items cannot change their parent)
+                var child_dest_parent = child_dest;
+                var child_src_parent = path;
+                if (!child_dest_parent.up () || !child_src_parent.up ()
+                    || child_dest_parent.compare (child_src_parent) != 0)
+                    return false;
 
-                    if (sortable != null && sortable.allow_dnd_sorting ())
-                        return true;
-                }
-            } else {
-                // Data coming from external source/widget is being dragged onto this item.
-                var drag_dest = get_item_from_path (dest) as SourceListDragDest;
-                if (drag_dest != null && drag_dest.data_drop_possible (selection_data))
-                    return true;
+                */
+
+                // Verify if parent item is sortable
+                var dest_parent = dest;
+                if (!dest_parent.up () || dest_parent.get_depth () <= 0)
+                    return false;
+
+                var sortable = get_item_from_path (dest_parent) as SourceListSortable;
+
+                return sortable != null && sortable.allow_dnd_sorting ();
             }
 
-            return false;
+            // Data coming from external source/widget is being dragged onto this item.
+            var drag_dest = get_item_from_path (dest) as SourceListDragDest;
+            return drag_dest != null && drag_dest.data_drop_possible (selection_data);
         }
 
         /**
          * Override default implementation of TreeDragSource
+         *
+         * drag_data_delete is not overriden because the default implementation
+         * does exactly what we need.
          */
-
-        public bool drag_data_delete (Gtk.TreePath path) {
-            return base.drag_data_delete (path);
-            // Make sure we re-build our row references at path since new GtkTreeIters
-            // were already asigned to the row/data at path and all of its children.
-/*
-            var item = get_item_from_path (path);
-
-            update_row_references (item);
-            return true;
-*/
-        }
 
         public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
             // If we're asked for a data about a row, just have the default implementation fill in
@@ -1327,7 +1371,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
             if (item != null) {
                 // check if the item's parent allows DnD sorting
-                var sortable_item = item as SourceListSortable;
+                var sortable_item = item.parent as SourceListSortable;
 
                 if (sortable_item != null && sortable_item.allow_dnd_sorting ())
                     return true;

@@ -97,7 +97,7 @@ public class Granite.Demo : Granite.Application {
         }
 
         public void data_received (Gtk.SelectionData data) {
-        
+
         }
     }
 
@@ -151,7 +151,7 @@ public class Granite.Demo : Granite.Application {
         main_toolbar.vexpand = false;
 
         // SourceList
-        var sidebar = new Granite.Widgets.SourceList ();
+        var sidebar = new Granite.Widgets.SourceList (new SourceListExpandableItem (""));
         sidebar.width_request = 200;
 
         var page_switcher = new Gtk.Notebook ();
