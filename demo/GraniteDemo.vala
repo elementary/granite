@@ -51,8 +51,35 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
+    private class SourceListRootItem : Granite.Widgets.SourceList.ExpandableItem,
+                                       Granite.Widgets.SourceListSortable
+    {
+        public SourceListRootItem () {
+            base ("SourceListRootItem");
+
+            user_moved_item.connect ((moved) => {
+                message ("Category '%s' moved through DnD", moved.name);
+            });
+        }
+
+        // allow re-ordering main categories through DnD
+        public bool allow_dnd_sorting () {
+            return true;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
+        {
+            // when an item is reordered through DnD, its actual final location
+            // is determined by the compare function, so we want to make sure
+            // it doesn't conflict with the order established by the user
+            return 0;
+        }
+    }
+
     private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem,
-        Granite.Widgets.SourceListSortable {
+                                             Granite.Widgets.SourceListSortable
+    {
         public SourceListExpandableItem (string name) {
             base (name);
         }
@@ -71,7 +98,10 @@ public class Granite.Demo : Granite.Application {
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
-    private class SourceListItem : Granite.Widgets.SourceList.Item, Granite.Widgets.SourceListDragSource, Granite.Widgets.SourceListDragDest {
+    private class SourceListItem : Granite.Widgets.SourceList.Item,
+                                   Granite.Widgets.SourceListDragSource,
+                                   Granite.Widgets.SourceListDragDest
+    {
         public int page_num { get; set; default = -1; }
         private static Icon? themed_icon;
 
@@ -151,7 +181,7 @@ public class Granite.Demo : Granite.Application {
         main_toolbar.vexpand = false;
 
         // SourceList
-        var sidebar = new Granite.Widgets.SourceList (new SourceListExpandableItem (""));
+        var sidebar = new Granite.Widgets.SourceList (new SourceListRootItem ());
         sidebar.width_request = 200;
 
         var page_switcher = new Gtk.Notebook ();
@@ -173,6 +203,9 @@ public class Granite.Demo : Granite.Application {
         sidebar.root.add (widgets_category);
         sidebar.root.add (services_category);
         sidebar.root.expand_all ();
+
+        for (int ctr = 0; ctr < 10; ctr++)
+            services_category.add (new SourceListItem ("Item %i".printf (ctr)));
 
         var sidebar_paned = new Granite.Widgets.ThinPaned ();
         sidebar_paned.pack1 (sidebar, true, false);

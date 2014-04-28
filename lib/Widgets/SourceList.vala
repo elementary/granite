@@ -26,7 +26,10 @@ namespace Granite.Widgets {
  */
 public interface SourceListSortable : SourceList.ExpandableItem {
     /**
-     * Emitted after a user has moved an item via DnD.
+     * Emitted after a user has re-ordered an item via DnD.
+     *
+     * An application that saves the state of its source list may want to update
+     * its settings by connecting a handler for this signal.
      *
      * @param moved The item that was moved to a different position by the user.
      * @since 0.3
@@ -38,10 +41,8 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      *
      * This feature can co-exist with a sort algorithm (implemented
      * by {@link Granite.Widgets.SourceListSortable.compare}), but keep
-     * in mind that the actual order of the items in the list may not
-     * actually honor the {@link Granite.Widgets.SourceListSortable.compare}
-     * method due to user interaction (i.e. a user can drag an item to a
-     * different position).
+     * in mind that the actual order of the items in the list will always
+     * honor that method.
      *
      * @return Whether the item's children can be re-arranged by users.
      * @since 0.3
@@ -59,6 +60,9 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      * must be reflexive, antisymmetric and transitive.
      *
      * (Same description as {@link Gtk.TreeIterCompareFunc}.)
+     *
+     * You should return //zero (0)// when you want any pair of items to
+     * be sortable via DnD.
      *
      * @param a First item.
      * @param b Second item.
@@ -90,7 +94,7 @@ public interface SourceListDragSource : SourceList.Item {
     public abstract bool draggable ();
 
     /**
-     * If this item can be dragged out if the source list, this method is called when
+     * If this item can be dragged out of the source list, this method is called when
      * the drop site requests the data which is dragged.
      *
      * It is the responsibility of this method to fill //selection_data// with the
@@ -1267,14 +1271,25 @@ public class SourceList : Gtk.ScrolledWindow {
 
             // If we succeeded in creating dest_iter, walk src_iter tree branch,
             // duplicating it below dest_iter.
-            if (retval)
+            if (retval) {
                 recursive_node_copy (src_iter, dest_iter);
+
+                // notify that the item was moved
+                Item item;
+                child_tree.get (src_iter, Column.ITEM, out item, -1);
+                return_if_fail (item != null);
+
+                var parent = item.parent as SourceListSortable;
+                return_if_fail (parent != null);
+
+                parent.user_moved_item (item);
+            }
 
             return retval;
         }
 
         private void recursive_node_copy (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
-            copy_node_data (src_iter, dest_iter);
+            move_item (src_iter, dest_iter);
 
             Gtk.TreeIter child;
             if (child_tree.iter_children (out child, src_iter)) {
@@ -1288,7 +1303,7 @@ public class SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        private void copy_node_data (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
+        private void move_item (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
             Item item;
             child_tree.get (src_iter, Column.ITEM, out item, -1);
             return_if_fail (item != null);
@@ -1300,41 +1315,108 @@ public class SourceList : Gtk.ScrolledWindow {
 
         public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
             unowned Gtk.TreeModel model;
-            unowned Gtk.TreePath path;
+            unowned Gtk.TreePath src_path;
 
             // Check if the user is dragging a row:
-            //
             // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
             // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
-            if (Gtk.tree_get_row_drag_data (selection_data, out model, out path) && model == child_tree) {
-                // get a child path representation of dest
+
+            if (Gtk.tree_get_row_drag_data (selection_data, out model, out src_path) && model == child_tree) {
+                // get a representation of dest in the child model
                 var child_dest = convert_path_to_child_path (dest);
-                /*
-                FIXME Doesn't work properly for root items (categories)
 
                 // don't allow dropping an item onto itself
-                if (child_dest == null || path.compare (child_dest) == 0)
+                if (child_dest == null || src_path.compare (child_dest) == 0)
                     return false;
 
-                // only allow reordering between siblings (i.e. items cannot change their parent)
-                var child_dest_parent = child_dest;
-                var child_src_parent = path;
-                if (!child_dest_parent.up () || !child_src_parent.up ()
-                    || child_dest_parent.compare (child_src_parent) != 0)
+                // Only allow DnD between items at the same depth (indentation level)
+                // This doesn't mean their parent is the same.
+                int src_depth = src_path.get_depth ();
+                int dest_depth = child_dest.get_depth ();
+
+                if (src_depth != dest_depth)
                     return false;
 
-                */
-
-                // Verify if parent item is sortable
-                var dest_parent = dest;
-                if (!dest_parent.up () || dest_parent.get_depth () <= 0)
+                // no need to check dest_depth since we know its equal to src_depth
+                if (src_depth < 1)
                     return false;
 
-                var sortable = get_item_from_path (dest_parent) as SourceListSortable;
+                Item? parent = null;
 
-                return sortable != null && sortable.allow_dnd_sorting ();
+                // if the depth is 1, we're talking about the items at root level,
+                // and by definition they share the same parent (root). We don't
+                // need to verify anything else for that specific case
+                if (src_depth == 1) {
+                    parent = root;
+                } else {
+                    // we verified equality above. this must be true
+                    assert (dest_depth > 1);
+
+                    // Only allow reordering between siblings, i.e. items with the same
+                    // parent. We don't want items to change their parent through DnD
+                    // because that would complicate our existing APIs, and may introduce
+                    // unpredictable behavior.
+                    var src_indices = src_path.get_indices ();
+                    var dest_indices = child_dest.get_indices ();
+
+                    // parent index is given by indices[depth-2], where depth > 1
+                    int src_parent_index = src_indices[src_depth - 2];
+                    int dest_parent_index = dest_indices[dest_depth - 2];
+
+                    if (src_parent_index != dest_parent_index)
+                        return false;
+
+                    // get parent. Note that we don't use the child path for this
+                    var dest_parent = dest;
+
+                    if (!dest_parent.up () || dest_parent.get_depth () < 1)
+                        return false;
+
+                    parent = get_item_from_path (dest_parent);
+                }
+
+                var sortable = parent as SourceListSortable;
+
+                if (sortable == null || !sortable.allow_dnd_sorting ())
+                    return false;
+
+                var dest_item = get_item_from_path (dest);
+
+                if (dest_item == null)
+                    return true;
+
+                Item? source_item = null;
+                var filter_src_path = convert_child_path_to_path (src_path);
+
+                if (filter_src_path != null)
+                    source_item = get_item_from_path (filter_src_path);
+
+                if (source_item == null)
+                    return false;
+
+                // If order isn't indifferent (=0), 'dest' has to sort before 'source'.
+                // Otherwise we'd allow the user to move the 'source_item' to a new
+                // location before 'dest_item', but that location would be changed
+                // later by the sort function, making the whole interaction poinless.
+                // We better prevent such reorderings from the start by giving the
+                // user a visual clue about the invalid drop location.
+                if (sortable.compare (dest_item, source_item) >= 0) {
+                    if (!dest.prev ())
+                        return true;
+
+                    // 'source_item' also has to sort 'after' or 'equal' the item currently
+                    // preceding 'dest_item'
+                    var dest_item_prev = get_item_from_path (dest);
+
+                    return dest_item_prev != null
+                        && sortable.compare (dest_item_prev, source_item) <= 0;
+                }
+
+                return false;
             }
 
+            // XXX: this doesn't seem to be honored for any external DnD. We may have to
+            // put this code somewhere else (perhaps in SourceList.Tree).
             // Data coming from external source/widget is being dragged onto this item.
             var drag_dest = get_item_from_path (dest) as SourceListDragDest;
             return drag_dest != null && drag_dest.data_drop_possible (selection_data);
@@ -1981,6 +2063,7 @@ public class SourceList : Gtk.ScrolledWindow {
                                 // normal expandable item that is not selectable (special care is taken to
                                 // not break the activatable/action icons for such cases).
                                 // The expander only works like a visual indicator for these items.
+                                // XXX: this prevents DnD for categories.
                                 bool expander_clicked = is_category
                                     || over_primary_expander (column, path, cell_x)
                                     || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
