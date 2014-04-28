@@ -1409,6 +1409,7 @@ public class SourceList : Gtk.ScrolledWindow {
                     var dest_item_prev = get_item_from_path (dest);
 
                     return dest_item_prev != null
+                        && dest_item_prev != source_item
                         && sortable.compare (dest_item_prev, source_item) <= 0;
                 }
 

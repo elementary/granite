@@ -77,15 +77,35 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
-    private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem,
-                                             Granite.Widgets.SourceListSortable
+    private class SourceListSortableItem : Granite.Widgets.SourceList.ExpandableItem,
+                                           Granite.Widgets.SourceListSortable
     {
-        public SourceListExpandableItem (string name) {
+        public SourceListSortableItem (string name) {
             base (name);
         }
 
         public bool allow_dnd_sorting () {
             return true;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
+        {
+            // while we could impose some restrictions regarding the order of
+            // the items, here we just allow free DnD reordering.
+            return 0;
+        }
+    }
+
+    private class SourceListSortedItem : Granite.Widgets.SourceList.ExpandableItem,
+                                         Granite.Widgets.SourceListSortable
+    {
+        public SourceListSortedItem (string name) {
+            base (name);
+        }
+
+        public bool allow_dnd_sorting () {
+            return false;
         }
 
         public int compare (Granite.Widgets.SourceList.Item a,
@@ -196,8 +216,8 @@ public class Granite.Demo : Granite.Application {
         });
 
         // Main sidebar categories
-        var widgets_category = new SourceListExpandableItem ("Widgets");
-        var services_category = new SourceListExpandableItem ("Services");
+        var widgets_category = new SourceListSortedItem ("Widgets");
+        var services_category = new SourceListSortableItem ("Services");
 
         // Add and expand categories
         sidebar.root.add (widgets_category);
