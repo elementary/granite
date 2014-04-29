@@ -834,7 +834,6 @@ public class SourceList : Gtk.ScrolledWindow {
         private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
 
         private Gtk.TreeStore child_tree;
-        private SourceList.SortFunc? sort_func;
         private unowned SourceList.VisibleFunc? filter_func;
 
         public DataModel () {
@@ -1069,16 +1068,6 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         /**
-         * Sets the sort function, or "unsets" it if null is passed. Please note though
-         * that unsetting the sort function doesn't bring the items back to their initial
-         * order.
-         */
-        public void set_sort_func (owned SourceList.SortFunc? sort_func) {
-            this.sort_func = (owned) sort_func;
-            resort ();
-        }
-
-        /**
          * External "extra" filter method.
          */
         public void set_filter_func (SourceList.VisibleFunc? visible_func) {
@@ -1124,27 +1113,20 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
-            int sort = 0;
+            int order = 0;
 
             Item? item_a, item_b;
             child_tree.get (a, Column.ITEM, out item_a, -1);
             child_tree.get (b, Column.ITEM, out item_b, -1);
 
-            // If the sort function is not null use old sorting API. Otherwise, use each
-            // item's compare() method.
-            if (sort_func != null) {
-                if (item_a != null && item_b != null)
-                    sort = sort_func (item_a, item_b);
-            } else {
-                // code should only compare items on same hierarchy level
-                assert (item_a.parent == item_b.parent);
+            // code should only compare items on same hierarchy level
+            assert (item_a.parent == item_b.parent);
 
-                var parent = item_a.parent as SourceListSortable;
-                if (parent != null)
-                    sort = parent.compare (item_a, item_b);
-            }
+            var parent = item_a.parent as SourceListSortable;
+            if (parent != null)
+                order = parent.compare (item_a, item_b);
 
-            return sort;
+            return order;
         }
 
         private Gtk.TreeIter? get_item_child_iter (Item item) {
@@ -2406,16 +2388,8 @@ public class SourceList : Gtk.ScrolledWindow {
     public virtual signal void item_selected (Item? item) { }
 
     /**
-     * A {@link Granite.Widgets.SourceList.SortFunc} should return a negative integer, zero, or a
-     * positive integer if ''a'' sorts //before// ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts
-     * //after// ''b'' respectively. If two items compare as equal, their order in the sorted
-     * source list is undefined.
-     *
-     * In order to ensure that the source list behaves as expected, the {@link Granite.Widgets.SourceList.SortFunc}
-     * must define a partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
-     * transitive.
-     *
-     * (Same description as {@link Gtk.TreeIterCompareFunc}.)
+     * Deprecated delegate defined for sorting items. It's not relevant for new code
+     * because it's no longer used.
      *
      * @param a First item.
      * @param b Second item.
@@ -2423,7 +2397,7 @@ public class SourceList : Gtk.ScrolledWindow {
      *         or a //positive// integer if //a// sorts before //b//.
      * @since 0.2
      */
-    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
+    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
     public delegate int SortFunc (Item a, Item b);
 
     /**
@@ -2504,7 +2478,8 @@ public class SourceList : Gtk.ScrolledWindow {
     /**
      * Sort direction to use along with the sort function.
      *
-     * @see Granite.Widgets.SourceList.set_sort_func
+     * This property is no longer used. It doesn't do anything.
+     *
      * @since 0.2
      */
     [Deprecated (since = "0.3")]
@@ -2553,13 +2528,17 @@ public class SourceList : Gtk.ScrolledWindow {
     /**
      * Sets the method used for sorting items.
      *
+     * This method is no longer used. It doesn't do anything. Expandable Items
+     * should implement {@link Granite.Widgets.SourceListSortable} to sort their
+     * children. That interface can also be used for sorting categories by
+     * using a custom root item that implements it.
+     *
      * @param sort_func The method to use for sorting items.
-     * @see Granite.Widgets.SourceList.SortFunc
      * @since 0.2
      */
-    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
+    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
     public void set_sort_func (owned SortFunc? sort_func) {
-        data_model.set_sort_func ((owned) sort_func);
+        warning ("set_sort_func is deprecated and doesn't do anything");
     }
 
     /**
