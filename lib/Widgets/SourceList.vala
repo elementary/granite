@@ -135,7 +135,6 @@ public interface SourceListDragDest : SourceList.Item {
      * @since 0.3
      */
     public abstract void data_received (Gtk.SelectionData data);
-    // TODO param Gdk.DragContext context for querying data actions, etc.
 }
 
 /**
@@ -1119,7 +1118,7 @@ public class SourceList : Gtk.ScrolledWindow {
             child_tree.get (a, Column.ITEM, out item_a, -1);
             child_tree.get (b, Column.ITEM, out item_b, -1);
 
-            // code should only compare items on same hierarchy level
+            // code should only compare items at same hierarchy level
             assert (item_a.parent == item_b.parent);
 
             var parent = item_a.parent as SourceListSortable;
@@ -1547,6 +1546,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private CellRendererExpander primary_expander_cell;
         private CellRendererExpander secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
+        private int suggested_dnd_action = 0;
 
         private const string DEFAULT_STYLESHEET = """
             .source-list.badge {
@@ -1690,14 +1690,10 @@ public class SourceList : Gtk.ScrolledWindow {
                 if (current_path == null)
                     return false;
 
-                message ("current_path: %s", current_path.to_string ());
-                message ("suggested_path: %s", suggested_path.to_string ());
                 if (suggested_path.compare (current_path) == 0) {
-                    debug ("Suggested Path and Current Path are the same");
-
-                    // if the source widget is this treeview, we assume we're
+                    // If the source widget is this treeview, we assume we're
                     // just dragging rows around, because at the moment dragging
-                    // rows into other rows (re-parenting) is not implemented
+                    // rows into other rows (re-parenting) is not implemented.
                     var source_widget = Gtk.drag_get_source_widget (context);
                     bool dragging_treemodel_row = (source_widget == this);
 
@@ -1711,21 +1707,19 @@ public class SourceList : Gtk.ScrolledWindow {
                                 set_drag_dest_row (null, Gtk.TreeViewDropPosition.AFTER);
                         }
                     } else {
-                        // determine if external DnD should is allowed by the destination item
-                        var dest = data_model.get_item_from_path (current_path) as SourceListDragDest;
-
-                        if (dest == null /* XXX || !drag_dest.data_drop_possible () */) {
-                            // unset any previously selected dest row
-                            set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
-                            return false;
-                        }
-
                         // for DnD originated on a different widget, we don't want to insert
-                        // between rows, only select the rows themselves (external DnD)
+                        // between rows, only select the rows themselves
                         if (current_pos == Gtk.TreeViewDropPosition.BEFORE)
                             set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE);
                         else if (current_pos == Gtk.TreeViewDropPosition.AFTER)
                             set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
+
+                        var target_list = Gtk.drag_dest_get_target_list (this);
+                        var target = Gtk.drag_dest_find_target (this, context, target_list);
+
+                        // have drag_data_received determine if the data can be dropped
+                        Gtk.drag_get_data (this, context, target, time);
+                        suggested_dnd_action = context.get_suggested_action ();
                     }
 
                     return true;
@@ -1739,6 +1733,28 @@ public class SourceList : Gtk.ScrolledWindow {
                                                  Gtk.SelectionData selection_data,
                                                  uint info, uint time)
         {
+            Gtk.TreePath path;
+            Gtk.TreeViewDropPosition pos;
+
+            if (suggested_dnd_action != 0) {
+                suggested_dnd_action = 0;
+
+                get_drag_dest_row (out path, out pos);
+
+                if (path != null) {
+                    // determine if external DnD is allowed by the item at destination
+                    var dest = data_model.get_item_from_path (path) as SourceListDragDest;
+
+                    if (dest == null || !dest.data_drop_possible (selection_data)) {
+                        // dropping data here is not allowed. unset any previously
+                        // selected destination row
+                        set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
+                        Gdk.drag_status (context, 0, time);
+                        return;
+                    }
+                }
+            }
+
             base.drag_data_received (context, x, y, selection_data, info, time);
         }
 
