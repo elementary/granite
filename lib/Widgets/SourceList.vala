@@ -2103,7 +2103,7 @@ public class SourceList : Gtk.ScrolledWindow {
                     // Cancel any editing operation going on
                     stop_editing ();
 
-                    if (((Gdk.Event*) (&event))->triggers_context_menu ()) {
+                    if (event.button == Gdk.BUTTON_SECONDARY) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         // Check whether an expander (or an equivalent area) was clicked.
