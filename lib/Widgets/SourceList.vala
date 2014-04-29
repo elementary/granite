@@ -1222,8 +1222,6 @@ public class SourceList : Gtk.ScrolledWindow {
 
                 if (child_dest != null) {
                     // New GtkTreeIters will be asigned to the rows at child_dest and its children.
-                    // Let's just re-insert the item here. The rest of bookeeping will be done at
-                    // drag_data_delete after deleting the contents from the previous location.
                     if (child_tree_drag_data_received (child_dest, src_path))
                         return true;
                 }
