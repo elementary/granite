@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2012-2014 Victor Eduardo <victoreduardm@gmail.com>
+    Copyright (C) 2012-2014 Victor Martinez <victoreduardm@gmail.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
@@ -27,9 +27,6 @@ namespace Granite.Widgets {
 public interface SourceListSortable : SourceList.ExpandableItem {
     /**
      * Emitted after a user has re-ordered an item via DnD.
-     *
-     * An application that saves the state of its source list may want to update
-     * its settings by connecting a handler for this signal.
      *
      * @param moved The item that was moved to a different position by the user.
      * @since 0.3
@@ -59,7 +56,8 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      *
      * In order to ensure that the source list behaves as expected, this
      * method must define a partial order on the source list tree; i.e. it
-     * must be reflexive, antisymmetric and transitive.
+     * must be reflexive, antisymmetric and transitive. Otherwise it could
+     * make your application fall into an infinite loop and freeze the UI.
      *
      * (Same description as {@link Gtk.TreeIterCompareFunc}.)
      *
@@ -68,9 +66,9 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      *
      * @param a First item.
      * @param b Second item.
-     * @return A //negative// integer if //a// sorts after //b//,
+     * @return A //negative// integer if //a// sorts before //b//,
      *         //zero// if //a// equals //b//, or a //positive//
-     *         integer if //a// sorts before //b//.
+     *         integer if //a// sorts after //b//.
      * @since 0.3
      */
     public abstract int compare (SourceList.Item a, SourceList.Item b);
@@ -96,8 +94,7 @@ public interface SourceListDragSource : SourceList.Item {
     public abstract bool draggable ();
 
     /**
-     * If this item can be dragged out of the source list, this method is called when
-     * the drop site requests the data which is dragged.
+     * This method is called when the drop site requests the data which is dragged.
      *
      * It is the responsibility of this method to fill //selection_data// with the
      * data in the format which is indicated by {@link Gtk.SelectionData.get_target}.
@@ -112,13 +109,13 @@ public interface SourceListDragSource : SourceList.Item {
 }
 
 /**
- * An interface for receiving DnD data.
+ * An interface for receiving data from other widgets via drag-and-drop.
  *
  * @since 0.3
  */
 public interface SourceListDragDest : SourceList.Item {
     /**
-     * Determines whether data can be dropped onto this item.
+     * Determines whether //data// can be dropped into this item.
      *
      * @param data {@link Gtk.SelectionData} containing source data.
      * @return //true// if the drop is possible; //false// otherwise.
@@ -128,7 +125,7 @@ public interface SourceListDragDest : SourceList.Item {
 
     /**
      * If a data drop is deemed possible, then this method is called
-     * when the data is actually dropped onto this item. Any actions
+     * when the data is actually dropped into this item. Any actions
      * consequence of the data received should be handled here.
      *
      * @param data {@link Gtk.SelectionData} containing source data.
@@ -242,7 +239,7 @@ public class SourceList : Gtk.ScrolledWindow {
      * to deal with items directly on the SourceList widget, it was decided to follow a monitor-like
      * implementation, where the source list permanently monitors its root item and any other
      * child item added to it. The task of monitoring the properties of the items has been
-     * divided between different objects, as shown below:
+     * divided among different objects, as shown below:
      *
      * Monitored by: Object::method that receives the signals indicating the property change.
      * Applied by: Object::method that actually updates the tree to reflect the property changes
@@ -267,7 +264,7 @@ public class SourceList : Gtk.ScrolledWindow {
      *   DataModel::add_item() and DataModel::remove_item()
      *
      * Other features:
-     * - Sorting: this happens on the tree-model level (DataModel). Also see SourceList::SortFunc.
+     * - Sorting: this happens on the tree-model level (DataModel).
      */
 
 
@@ -520,7 +517,11 @@ public class SourceList : Gtk.ScrolledWindow {
          */
         public Gee.Collection<Item> children {
             owned get {
-                return children_list.read_only_view;
+                // Create a copy of the children so that it's safe to iterate it
+                // (e.g. by using foreach) while removing items.
+                var children_list_copy = new Gee.ArrayList<Item> ();
+                children_list_copy.add_all (children_list);
+                return children_list_copy;
             }
         }
 
@@ -606,12 +607,7 @@ public class SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
-            // Create a copy of the children so that it's safe to iterate it
-            // (e.g. by using foreach) while removing items
-            var children_list_copy = new Gee.ArrayList<Item> ();
-            children_list_copy.add_all (children_list);
-
-            foreach (var item in children_list_copy)
+            foreach (var item in children)
                 remove (item);
         }
 
@@ -1201,7 +1197,7 @@ public class SourceList : Gtk.ScrolledWindow {
                         return true;
                 }
             } else {
-                // Data coming from external source/widget was dropped onto this item.
+                // Data coming from external source/widget was dropped into this item.
                 // selection_data contains something other than another tree row, so most
                 // likely we're dealing with a DnD not originated within the Source List tree.
                 // Let's pass the data to the corresponding item instead, if there's a handler.
@@ -1299,7 +1295,7 @@ public class SourceList : Gtk.ScrolledWindow {
             // get a representation of dest in the child model
             var child_dest = convert_path_to_child_path (dest);
 
-            // don't allow dropping an item onto itself
+            // don't allow dropping an item into itself
             if (child_dest == null || src_path.compare (child_dest) == 0)
                 return false;
 
@@ -1673,6 +1669,10 @@ public class SourceList : Gtk.ScrolledWindow {
             data_model.item_updated.disconnect (on_model_item_updated);
         }
 
+        /**
+         * TODO
+         * Fix black stripe under expandable items after an unsuccesful drop.
+         */
         public override bool drag_motion (Gdk.DragContext context, int x, int y, uint time) {
             // call the base signal to get rows with children to spring open
             if (!base.drag_motion (context, x, y, time))
@@ -1729,6 +1729,11 @@ public class SourceList : Gtk.ScrolledWindow {
             return false;
         }
 
+        /**
+         * TODO
+         * If the root item implements SourceListDragDest, forward any data
+         * dropped to the blank area of the source list there.
+         */
         public override void drag_data_received (Gdk.DragContext context, int x, int y,
                                                  Gtk.SelectionData selection_data,
                                                  uint info, uint time)
