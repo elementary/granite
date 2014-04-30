@@ -513,6 +513,10 @@ public class SourceList : Gtk.ScrolledWindow {
         /**
          * The item's children.
          *
+         * This returns a newly-created list containing the children.
+         * It's safe to iterate it while removing items with
+         * {@link Granite.Widgets.SourceList.ExpandableItem.remove}
+         *
          * @since 0.2
          */
         public Gee.Collection<Item> children {
