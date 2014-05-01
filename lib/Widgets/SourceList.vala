@@ -2186,7 +2186,7 @@ public class SourceList : Gtk.ScrolledWindow {
                                 // The expander only works like a visual indicator for these items.
                                 unselectable_item_clicked = is_category
                                     || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
-    
+
                                 if (!unselectable_item_clicked
                                     && over_primary_expander (column, path, cell_x)
                                     && toggle_expansion (item as ExpandableItem))
