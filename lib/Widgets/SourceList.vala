@@ -1711,12 +1711,21 @@ public class SourceList : Gtk.ScrolledWindow {
                         else if (current_pos == Gtk.TreeViewDropPosition.AFTER)
                             set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
 
-                        var target_list = Gtk.drag_dest_get_target_list (this);
-                        var target = Gtk.drag_dest_find_target (this, context, target_list);
+                        // determine if external DnD is supported by the item at destination
+                        var dest = data_model.get_item_from_path (current_path) as SourceListDragDest;
 
-                        // have drag_data_received determine if the data can be dropped
-                        Gtk.drag_get_data (this, context, target, time);
-                        suggested_dnd_action = context.get_suggested_action ();
+                        if (dest != null) {
+                            var target_list = Gtk.drag_dest_get_target_list (this);
+                            var target = Gtk.drag_dest_find_target (this, context, target_list);
+
+                            // have 'drag_get_data' call 'drag_data_received' to determine
+                            // if the data can actually be dropped.
+                            suggested_dnd_action = context.get_suggested_action ();
+                            Gtk.drag_get_data (this, context, target, time);
+                        } else {
+                            // dropping data here is not supported. Unset dest row
+                            set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
+                        }
                     }
                 }
             }
