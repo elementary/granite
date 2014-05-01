@@ -211,8 +211,8 @@ public class Granite.Demo : Granite.Application {
 
         sidebar.item_selected.connect ((item) => {
             var sidebar_item = item as SourceListItem;
-            assert (sidebar_item != null);
-            page_switcher.set_current_page (sidebar_item.page_num);
+            if (sidebar_item != null)
+                page_switcher.set_current_page (sidebar_item.page_num);
         });
 
         // Main sidebar categories
@@ -220,7 +220,7 @@ public class Granite.Demo : Granite.Application {
         var test_category = new SourceListSortableItem ("Test");
 
         for (int ctr = 0; ctr < 10; ctr++) {
-            var item = new SourceListItem ("Item %i".printf (ctr));
+            var item = new SourceListSortableItem ("Item %i".printf (ctr));
             
             for (int i = 0; i < 5; i++)
                 item.add (new SourceListItem ("SubItem %i / %i".printf (ctr, i)));
