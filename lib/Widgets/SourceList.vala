@@ -37,10 +37,10 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      * Whether this item will allow users to re-arrange its children via DnD.
      *
      * This feature can co-exist with a sort algorithm (implemented
-     * by {@link Granite.Widgets.SourceListSortable.compare}), but keep
-     * in mind that the actual order of the items in the list will always
+     * by {@link Granite.Widgets.SourceListSortable.compare}), but
+     * the actual order of the items in the list will always
      * honor that method. The sort function has to be compatible with
-     * the kind of DnD reordering you want to allow, since the user can
+     * the kind of DnD reordering the item wants to allow, since the user can
      * only reorder those items for which //compare// returns 0.
      *
      * @return Whether the item's children can be re-arranged by users.
@@ -56,13 +56,11 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      *
      * In order to ensure that the source list behaves as expected, this
      * method must define a partial order on the source list tree; i.e. it
-     * must be reflexive, antisymmetric and transitive. Otherwise it could
-     * make your application fall into an infinite loop and freeze the UI.
+     * must be reflexive, antisymmetric and transitive. Not complying with
+     * those requirements could make the program fall into an infinite loop
+     * and freeze the user interface.
      *
-     * (Same description as {@link Gtk.TreeIterCompareFunc}.)
-     *
-     * You should return //zero (0)// when you want any pair of items to
-     * be sortable via DnD.
+     * Should return //0// to allow any pair of items to be sortable via DnD.
      *
      * @param a First item.
      * @param b Second item.
@@ -483,7 +481,7 @@ public class SourceList : Gtk.ScrolledWindow {
          * item's children becomes visible, the item will be expanded again. Same applies to items
          * hidden behind a collapsed parent item.
          *
-         * If obtaining the ''actual'' expansion state of an item is important to your needs,
+         * If obtaining the ''actual'' expansion state of an item is important,
          * use {@link Granite.Widgets.SourceList.is_item_expanded} instead.
          *
          * @see Granite.Widgets.SourceList.ExpandableItem.collapsible
@@ -563,7 +561,7 @@ public class SourceList : Gtk.ScrolledWindow {
          *
          * While adding a child item, //the item it's being added to will set itself as the parent//.
          * Please note that items are required to have their //parent// property set to //null// before
-         * being added, so make sure you remove the item from its previous parent before attempting
+         * being added, so make sure the item is removed from its previous parent before attempting
          * to add it to another item. For instance:
          * {{{
          * if (item.parent != null)
@@ -633,13 +631,7 @@ public class SourceList : Gtk.ScrolledWindow {
          *
          * @param inclusive Whether to also collapse this item (true), or only its children (false).
          * @param recursive Whether to recursively collapse all the children (true), or only
-         * immediate children (false). The latter case might appear contradictory, given that collapsing
-         * immediate children will also //visually// collapse non-immediate children, but it makes total
-         * sense once you've understood what the {@link Granite.Widgets.SourceList.ExpandableItem.expanded}
-         * property actually means. If you set //recursive// to //true,// the non-immediate children's
-         * //expanded// property will be set to //false//, and therefore they will __stay collapsed__
-         * the next time their parents are expanded; otherwise (i.e. if //recursive// is //false//),
-         * __their previous expansion state will be restored__ once their parents are expanded again.
+         * immediate children (false).
          * @see Granite.Widgets.SourceList.ExpandableItem.expanded
          * @since 0.2
          */
