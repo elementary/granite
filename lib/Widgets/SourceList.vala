@@ -2692,6 +2692,28 @@ public class SourceList : Gtk.ScrolledWindow {
             tree.stop_editing ();
     }
 
+    /**
+     * Turns Source List into a //drag source// and/or //drop destination//.
+     *
+     * Source List becomes a drag source when //src_entries// is not //null// or empty.
+     * This enables items that implement {@link Granite.Widgets.SourceListDragSource}
+     * to be dragged outside the Source List and drop data into external widgets.
+     *
+     * In a similar way, Source List becomes a drop destination when //dest_entries//
+     * is not //null// or empty. This enables items that implement
+     * {@link Granite.Widgets.SourceListDragDest} to receive data coming from external
+     * widgets.
+     *
+     * @param src_actions the bitmask of possible actions for a drag from this widget.
+     * @param dest_actions a bitmask of possible actions for a drop onto this widget.
+     * @param src_entries an array of {@link Gtk.TargetEntry}s indicating the targets
+     * that the drag will support, or //null//.
+     * @param dest_entries an array of {@link Gtk.TargetEntry}s indicating the drop
+     * types that this widget will accept, or //null//.
+     * @see Granite.Widgets.SourceListDragDest
+     * @see Granite.Widgets.SourceListDragSource
+     * @since 0.3
+     */
     public void configure_drag_and_drop (Gdk.DragAction src_actions,
                                          Gdk.DragAction dest_actions,
                                          Gtk.TargetEntry[]? src_entries,
