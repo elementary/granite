@@ -1658,7 +1658,7 @@ public class SourceList : Gtk.ScrolledWindow {
             selection.set_select_function (select_func);
 
             // Monitor item changes
-            data_model.item_updated.connect_after (on_model_item_updated);
+            enable_item_property_monitor ();
 
             // Add root-level indentation. New levels will be added by update_item_expansion()
             add_spacer_cell_for_level (1);
@@ -1670,7 +1670,7 @@ public class SourceList : Gtk.ScrolledWindow {
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
-            data_model.item_updated.disconnect (on_model_item_updated);
+            disable_item_property_monitor ();
         }
 
         public override bool drag_motion (Gdk.DragContext context, int x, int y, uint time) {
@@ -1801,6 +1801,14 @@ public class SourceList : Gtk.ScrolledWindow {
             enable_model_drag_dest (actual_dest_entries, dest_actions);
             enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK, actual_src_entries,
                                       src_actions);
+        }
+
+        private void enable_item_property_monitor () {
+            data_model.item_updated.connect_after (on_model_item_updated);
+        }
+
+        private void disable_item_property_monitor () {
+            data_model.item_updated.disconnect (on_model_item_updated);
         }
 
         private void on_model_item_updated (Item item) {
@@ -2062,6 +2070,24 @@ public class SourceList : Gtk.ScrolledWindow {
                     collapse_row (path);
                 }
             }
+        }
+
+        public override void row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
+            var item = data_model.get_item (iter) as ExpandableItem;
+            return_if_fail (item != null);
+
+            disable_item_property_monitor ();
+            item.expanded = true;
+            enable_item_property_monitor ();
+        }
+
+        public override void row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
+            var item = data_model.get_item (iter) as ExpandableItem;
+            return_if_fail (item != null);
+
+            disable_item_property_monitor ();
+            item.expanded = false;
+            enable_item_property_monitor ();
         }
 
         public override void row_activated (Gtk.TreePath path, Gtk.TreeViewColumn column) {
