@@ -118,7 +118,7 @@ public class Granite.Demo : Granite.Application {
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
-    private class SourceListItem : Granite.Widgets.SourceList.Item,
+    private class SourceListItem : Granite.Widgets.SourceList.ExpandableItem,
                                    Granite.Widgets.SourceListDragSource,
                                    Granite.Widgets.SourceListDragDest
     {
@@ -217,15 +217,21 @@ public class Granite.Demo : Granite.Application {
 
         // Main sidebar categories
         var widgets_category = new SourceListSortedItem ("Widgets");
-        var services_category = new SourceListSortableItem ("Services");
+        var test_category = new SourceListSortableItem ("Test");
+
+        for (int ctr = 0; ctr < 10; ctr++) {
+            var item = new SourceListItem ("Item %i".printf (ctr));
+            
+            for (int i = 0; i < 5; i++)
+                item.add (new SourceListItem ("SubItem %i / %i".printf (ctr, i)));
+
+            test_category.add (item);
+        }
 
         // Add and expand categories
         sidebar.root.add (widgets_category);
-        sidebar.root.add (services_category);
+        sidebar.root.add (test_category);
         sidebar.root.expand_all ();
-
-        for (int ctr = 0; ctr < 10; ctr++)
-            services_category.add (new SourceListItem ("Item %i".printf (ctr)));
 
         var sidebar_paned = new Granite.Widgets.ThinPaned ();
         sidebar_paned.pack1 (sidebar, true, false);
