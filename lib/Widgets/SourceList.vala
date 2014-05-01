@@ -39,9 +39,9 @@ public interface SourceListSortable : SourceList.ExpandableItem {
      * This feature can co-exist with a sort algorithm (implemented
      * by {@link Granite.Widgets.SourceListSortable.compare}), but keep
      * in mind that the actual order of the items in the list will always
-     * honor that method. The sort function has to be ''compatible with
-     * the kind of DnD reordering you want to allow'', since the user can
-     * only reorder those items for which 'compare' returns 0.
+     * honor that method. The sort function has to be compatible with
+     * the kind of DnD reordering you want to allow, since the user can
+     * only reorder those items for which //compare// returns 0.
      *
      * @return Whether the item's children can be re-arranged by users.
      * @since 0.3
