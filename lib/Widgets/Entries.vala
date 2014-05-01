@@ -26,6 +26,7 @@ namespace Granite.Widgets {
     /**
      * A text entry space with hint and clear icon
      */
+    [Deprecated (since = "0.3", replacement = "Gtk.Entry.placeholder_text")]
     public class HintedEntry : Gtk.Entry {
         public bool has_clear_icon { get; set; default = false; }
 
@@ -84,6 +85,7 @@ namespace Granite.Widgets {
     /**
      * A searchbar with hint-text.
      */
+    [Deprecated (since = "0.3", replacement = "Gtk.SearchEntry")]
     public class SearchBar : HintedEntry {
         private uint timeout_id = 0;
 
