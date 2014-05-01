@@ -1252,6 +1252,15 @@ public class SourceList : Gtk.ScrolledWindow {
                 child_tree.get (src_iter, Column.ITEM, out item, -1);
                 return_val_if_fail (item != null, retval);
 
+                // XXX Workaround:
+                // GtkTreeView automatically collapses expanded items that
+                // are dragged to a new location. Oddly, GtkTreeView doesn't fire
+                // 'row-collapsed' for the respective path, so we cannot keep track
+                // of that behavior via standard means. For now we'll just have
+                // our tree view check the properties of item again and ensure
+                // they're honored
+                update_item (item);
+
                 var parent = item.parent as SourceListSortable;
                 return_val_if_fail (parent != null, retval);
 
@@ -1546,6 +1555,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private CellRendererExpander primary_expander_cell;
         private CellRendererExpander secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
+        private bool unselectable_item_clicked = false;
         private int suggested_dnd_action = 0;
 
         private const string DEFAULT_STYLESHEET = """
@@ -2119,6 +2129,27 @@ public class SourceList : Gtk.ScrolledWindow {
             return base.key_release_event (event);
         }
 
+        public override bool button_release_event (Gdk.EventButton event) {
+            if (unselectable_item_clicked && event.window == get_bin_window ()) {
+                unselectable_item_clicked = false;
+
+                Gtk.TreePath path;
+                Gtk.TreeViewColumn column;
+                int x = (int) event.x, y = (int) event.y, cell_x, cell_y;
+
+                if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
+                    var item = data_model.get_item_from_path (path) as ExpandableItem;
+
+                    if (item != null) {
+                        if (!item.selectable || data_model.is_category (item, null, path))
+                            toggle_expansion (item);
+                    }
+                }
+            }
+
+            return base.button_release_event (event);
+        }
+
         public override bool button_press_event (Gdk.EventButton event) {
             if (event.window != get_bin_window ())
                 return base.button_press_event (event);
@@ -2153,12 +2184,12 @@ public class SourceList : Gtk.ScrolledWindow {
                                 // normal expandable item that is not selectable (special care is taken to
                                 // not break the activatable/action icons for such cases).
                                 // The expander only works like a visual indicator for these items.
-                                // XXX: this prevents DnD for categories.
-                                bool expander_clicked = is_category
-                                    || over_primary_expander (column, path, cell_x)
+                                unselectable_item_clicked = is_category
                                     || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
-
-                                if (expander_clicked && toggle_expansion (item as ExpandableItem))
+    
+                                if (!unselectable_item_clicked
+                                    && over_primary_expander (column, path, cell_x)
+                                    && toggle_expansion (item as ExpandableItem))
                                     return true;
                             }
                         } else if (event.type == Gdk.EventType.2BUTTON_PRESS

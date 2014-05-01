@@ -221,7 +221,8 @@ public class Granite.Demo : Granite.Application {
 
         for (int ctr = 0; ctr < 10; ctr++) {
             var item = new SourceListSortableItem ("Item %i".printf (ctr));
-            
+            item.selectable = ctr % 3 != 0;
+
             for (int i = 0; i < 5; i++)
                 item.add (new SourceListItem ("SubItem %i / %i".printf (ctr, i)));
 
