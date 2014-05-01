@@ -2423,14 +2423,16 @@ public class SourceList : Gtk.ScrolledWindow {
     /**
      * A {@link Granite.Widgets.SourceList.VisibleFunc} should return true if the item should be
      * visible; false otherwise. If //item//'s {@link Granite.Widgets.SourceList.Item.visible}
-     * property is set to //false//, then it won't be displayed even if this method returns true.
+     * property is set to //false//, then it won't be displayed even if this method returns //true//.
      *
-     * It is important to note that the method ''must not modify any property of //item//'',
-     * because doing so would cause re-entrancy, because the widget's internal data model invokes the
-     * method to filter an item again after every property change, resulting in an infinite chain
-     * of recursive calls.
+     * It is important to note that the method ''must not modify any property of //item//''.
+     * Doing so would result in an infinite loop, freezing the application's user interface.
+     * This happens because the source list invokes this method to "filter" an item after
+     * any of its properties changes, so by modifying a property this method would be invoking
+     * itself again.
      *
-     * Usually, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough.
+     * For most use cases, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough.
+     *
      * The advantage of using this method is that its nature is non-destructive, and the
      * changes it makes can be easily reverted (see {@link Granite.Widgets.SourceList.refilter}).
      *
