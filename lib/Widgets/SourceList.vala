@@ -1196,7 +1196,7 @@ public class SourceList : Gtk.ScrolledWindow {
                 var child_dest = convert_path_to_child_path (dest);
 
                 if (child_dest != null) {
-                    // New GtkTreeIters will be asigned to the rows at child_dest and its children.
+                    // New GtkTreeIters will be assigned to the rows at child_dest and its children.
                     if (child_tree_drag_data_received (child_dest, src_path))
                         return true;
                 }
@@ -1250,10 +1250,10 @@ public class SourceList : Gtk.ScrolledWindow {
                 // notify that the item was moved
                 Item item;
                 child_tree.get (src_iter, Column.ITEM, out item, -1);
-                return_if_fail (item != null);
+                return_val_if_fail (item != null, retval);
 
                 var parent = item.parent as SourceListSortable;
-                return_if_fail (parent != null);
+                return_val_if_fail (parent != null, retval);
 
                 parent.user_moved_item (item);
             }
@@ -1673,10 +1673,6 @@ public class SourceList : Gtk.ScrolledWindow {
             data_model.item_updated.disconnect (on_model_item_updated);
         }
 
-        /**
-         * TODO
-         * Fix black stripe under expandable items after an unsuccesful drop.
-         */
         public override bool drag_motion (Gdk.DragContext context, int x, int y, uint time) {
             // call the base signal to get rows with children to spring open
             if (!base.drag_motion (context, x, y, time))
@@ -1725,19 +1721,12 @@ public class SourceList : Gtk.ScrolledWindow {
                         Gtk.drag_get_data (this, context, target, time);
                         suggested_dnd_action = context.get_suggested_action ();
                     }
-
-                    return true;
                 }
             }
 
-            return false;
+            return true;
         }
 
-        /**
-         * TODO
-         * If the root item implements SourceListDragDest, forward any data
-         * dropped to the blank area of the source list there.
-         */
         public override void drag_data_received (Gdk.DragContext context, int x, int y,
                                                  Gtk.SelectionData selection_data,
                                                  uint info, uint time)
@@ -1763,6 +1752,12 @@ public class SourceList : Gtk.ScrolledWindow {
                     }
                 }
             }
+
+            /**
+             * TODO: If the root item implements SourceListDragDest, forward
+             * data dropped into the blank area of the source list there.
+             * Don't forget to document this behavior.
+             */
 
             base.drag_data_received (context, x, y, selection_data, info, time);
         }
