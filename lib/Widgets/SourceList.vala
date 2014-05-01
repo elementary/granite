@@ -223,7 +223,7 @@ public interface SourceListDragDest : SourceList.Item {
  * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
  * {{{
  * var pane = new Granite.Widgets.ThinPaned ();
- * pane.pack1 (source_list, true, false);
+ * pane.pack1 (source_list, false, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
@@ -1687,10 +1687,7 @@ public class SourceList : Gtk.ScrolledWindow {
                 // to only allow drops before or after it, but not into it
                 get_drag_dest_row (out current_path, out current_pos);
 
-                if (current_path == null)
-                    return false;
-
-                if (suggested_path.compare (current_path) == 0) {
+                if (current_path != null && suggested_path.compare (current_path) == 0) {
                     // If the source widget is this treeview, we assume we're
                     // just dragging rows around, because at the moment dragging
                     // rows into other rows (re-parenting) is not implemented.
