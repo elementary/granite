@@ -42,24 +42,100 @@ namespace Granite {
         public string build_version;
         public string build_version_info;
 
+        /**
+         * The user facing name of the application. This name is used
+         * throughout the application and should be capitalized correctly.
+         */
         public string program_name;
+
+        /**
+         * The compiled binary name, which must match the CMake exec name.
+         * This is used to launch the application from a launcher or the
+         * command line.
+         */ 
         public string exec_name;
 
+        /**
+         * Years that the copyright extends to. Usually from the start 
+         * of the project to the most recent modification to it.
+         */
         public string app_copyright;
         public string app_years;
+
+        /**
+         * Icon to be associated with the application.
+         * 
+         * This is either the name of an icon shipped by the icon theme,
+         * or the name of an icon shipped with the app (for custom icons).
+         * The name should not include the full path or file extension.
+         * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
+         */
         public string app_icon;
+
+        /**
+         * The launcher to be associated with this application.
+         *
+         * This should be the name of a file in /usr/share/applications/.
+         * See [[http://standards.freedesktop.org/desktop-entry-spec/latest/]]
+         * for more information.
+         */
         public string app_launcher;
 
+        /**
+         * Main website or homepage for the application.
+         *
+         * If the application has no homepage, one should be created on
+         * launchpad.net.
+         */
         public string main_url;
+
+        /**
+         * A link to the software's public bug tracker.
+         *
+         * If the application does not have a bug tracker, one should be
+         * created on launchpad.net.
+         */
         public string bug_url;
+
+        /**
+         * Link to question and answer site or support forum for the app.
+         *
+         * Launchpad offers a QA service if one is needed.
+         */
         public string help_url;
+
+        /**
+         * Link to where users can translate the application.
+         *
+         * Launchad offers a translation service if one is necessary.
+         */
         public string translate_url;
 
+        /**
+         * Full names of the application authors for the about dialog.
+         */
         public string[] about_authors = {};
+
+        /**
+         * Full names of documenters of the app for the about dialog.
+         */
         public string[] about_documenters = {};
+
+        /**
+         * Names of the designers of the application's user interface.
+         */
         public string[] about_artists = {};
+
         public string about_comments;
+
+        /**
+         * Names of the translators of the application.
+         */
         public string about_translators;
+
+        /**
+         * The copyright license that the work is distributed under.
+         */
         public string about_license;
         public License about_license_type;
 
