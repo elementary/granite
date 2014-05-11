@@ -1626,6 +1626,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
             badge_cell = new CellRendererBadge ();
             badge_cell.xpad = 1;
+            badge_cell.xalign = 1;
             item_column.pack_end (badge_cell, false);
             item_column.set_cell_data_func (badge_cell, badge_cell_data_func);
 
