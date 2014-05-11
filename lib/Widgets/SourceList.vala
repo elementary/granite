@@ -1731,6 +1731,10 @@ public class SourceList : Gtk.ScrolledWindow {
                         }
                     }
                 }
+            } else {
+                // dropping into blank areas of SourceList is not allowed
+                set_drag_dest_row (null, Gtk.TreeViewDropPosition.AFTER);
+                return false;
             }
 
             return true;
