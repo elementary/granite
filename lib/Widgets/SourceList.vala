@@ -1666,8 +1666,9 @@ public class SourceList : Gtk.ScrolledWindow {
             // Add root-level indentation. New levels will be added by update_item_expansion()
             add_spacer_cell_for_level (1);
 
-            // Enable drag and drop
-            configure_drag_and_drop (0, 0, null, null);
+            // Enable basic row drag and drop
+            configure_drag_source (null);
+            configure_drag_dest (null);
         }
 
         ~Tree () {
@@ -1775,45 +1776,35 @@ public class SourceList : Gtk.ScrolledWindow {
             base.drag_data_received (context, x, y, selection_data, info, time);
         }
 
-        public void configure_drag_and_drop (Gdk.DragAction src_actions,
-                                             Gdk.DragAction dest_actions,
-                                             Gtk.TargetEntry[]? src_entries,
-                                             Gtk.TargetEntry[]? dest_entries)
-        {
+        public void configure_drag_source (Gtk.TargetEntry[]? src_entries) {
+            // Append GTK_TREE_MODEL_ROW to src_entries and src_entries to enable row DnD.
+            var entries = append_row_target_entry (src_entries);
+
+            unset_rows_drag_source ();
+            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK, entries, Gdk.DragAction.MOVE);
+        }
+
+        public void configure_drag_dest (Gtk.TargetEntry[]? dest_entries) {
+            // Append GTK_TREE_MODEL_ROW to dest_entries and dest_entries to enable row DnD.
+            var entries = append_row_target_entry (dest_entries);
+
+            unset_rows_drag_dest ();
+            enable_model_drag_dest (entries, Gdk.DragAction.MOVE);
+        }
+
+        private static Gtk.TargetEntry[] append_row_target_entry (Gtk.TargetEntry[]? orig) {
             const Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
                                                        Gtk.TargetFlags.SAME_WIDGET, 0 };
 
-            // Append GTK_TREE_MODEL_ROW to src_entries and dest_entries to enable row DnD.
+            var entries = new Gtk.TargetEntry[0];
+            entries += row_target_entry;
 
-            var actual_src_entries = new Gtk.TargetEntry[0];
-            actual_src_entries += row_target_entry;
-
-            if (src_entries != null) {
-                foreach (var target_entry in src_entries)
-                    actual_src_entries += target_entry;
+            if (orig != null) {
+                foreach (var target_entry in orig)
+                    entries += target_entry;
             }
 
-            var actual_dest_entries = new Gtk.TargetEntry[0];
-            actual_dest_entries += row_target_entry;
-
-            if (dest_entries != null) {
-                foreach (var target_entry in dest_entries)
-                    actual_dest_entries += target_entry;
-            }
-
-            // Make sure the MOVE action flag is always enabled. This is needed for
-            // row DnD reordering to work properly.
-            src_actions |= Gdk.DragAction.MOVE;
-            dest_actions |= Gdk.DragAction.MOVE;
-
-            // Disable any previous DnD configuration
-            unset_rows_drag_source ();
-            unset_rows_drag_dest ();
-
-            // Enable GtkTreeView high-level DnD support
-            enable_model_drag_dest (actual_dest_entries, dest_actions);
-            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK, actual_src_entries,
-                                      src_actions);
+            return entries;
         }
 
         private void enable_item_property_monitor () {
@@ -2690,33 +2681,55 @@ public class SourceList : Gtk.ScrolledWindow {
     }
 
     /**
-     * Turns Source List into a //drag source// and/or //drop destination//.
+     * Turns Source List into a //drag source//.
      *
-     * Source List becomes a drag source when //src_entries// is not //null// or empty.
      * This enables items that implement {@link Granite.Widgets.SourceListDragSource}
      * to be dragged outside the Source List and drop data into external widgets.
      *
-     * In a similar way, Source List becomes a drop destination when //dest_entries//
-     * is not //null// or empty. This enables items that implement
-     * {@link Granite.Widgets.SourceListDragDest} to receive data coming from external
-     * widgets.
-     *
-     * @param src_actions the bitmask of possible actions for a drag from this widget.
-     * @param dest_actions a bitmask of possible actions for a drop onto this widget.
      * @param src_entries an array of {@link Gtk.TargetEntry}s indicating the targets
-     * that the drag will support, or //null//.
-     * @param dest_entries an array of {@link Gtk.TargetEntry}s indicating the drop
-     * types that this widget will accept, or //null//.
-     * @see Granite.Widgets.SourceListDragDest
+     * that the drag will support.
      * @see Granite.Widgets.SourceListDragSource
+     * @see Granite.Widgets.SourceList.disable_drag_source
      * @since 0.3
      */
-    public void configure_drag_and_drop (Gdk.DragAction src_actions,
-                                         Gdk.DragAction dest_actions,
-                                         Gtk.TargetEntry[]? src_entries,
-                                         Gtk.TargetEntry[]? dest_entries)
-    {
-        tree.configure_drag_and_drop (src_actions, dest_actions, src_entries, dest_entries);
+    public void enable_drag_source (Gtk.TargetEntry[] src_entries) {
+        tree.configure_drag_source (src_entries);
+    }
+
+    /**
+     * Undoes the effect of {@link Granite.Widgets.SourceList.enable_drag_source}
+     *
+     * @see Granite.Widgets.SourceList.enable_drag_source
+     * @since 0.3
+     */
+    public void disable_drag_source () {
+        tree.configure_drag_source (null);
+    }
+
+    /**
+     * Turns Source List into a //drop destination//.
+     *
+     * This enables items that implement {@link Granite.Widgets.SourceListDragDest}
+     * to receive data from external widgets via drag-and-drop.
+     *
+     * @param dest_entries an array of {@link Gtk.TargetEntry}s indicating the drop
+     * types that Source List items will accept.
+     * @see Granite.Widgets.SourceListDragDest
+     * @see Granite.Widgets.SourceList.disable_drag_dest
+     * @since 0.3
+     */
+    public void enable_drag_dest (Gtk.TargetEntry[] dest_entries) {
+        tree.configure_drag_dest (dest_entries);
+    }
+
+    /**
+     * Undoes the effect of {@link Granite.Widgets.SourceList.enable_drag_dest}
+     *
+     * @see Granite.Widgets.SourceList.enable_drag_dest
+     * @since 0.3
+     */
+    public void disable_drag_dest () {
+        tree.configure_drag_dest (null);
     }
 
     /**
