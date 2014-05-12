@@ -142,12 +142,13 @@ public class Granite.Demo : Granite.Application {
         public void prepare_selection_data (Gtk.SelectionData data) {
         }
 
-        public bool data_drop_possible (Gtk.SelectionData data) {
+        public bool data_drop_possible (Gdk.DragContext context, Gtk.SelectionData data) {
             return true;
         }
 
-        public void data_received (Gtk.SelectionData data) {
-
+        public Gdk.DragAction data_received (Gdk.DragContext context, Gtk.SelectionData data) {
+            message ("drag data dropped into '%s'", name);
+            return Gdk.DragAction.COPY;
         }
     }
 
