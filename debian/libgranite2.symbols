@@ -457,6 +457,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_status_bar_set_text@Base 0.2.0
  granite_widgets_tab_close@Base 0.3.0~
  granite_widgets_tab_construct@Base 0.2.0
+ granite_widgets_tab_fix_button_theming@Base 0.3.0~
  granite_widgets_tab_get_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_get_fixed@Base 0.2.0
  granite_widgets_tab_get_icon@Base 0.2.0
@@ -473,9 +474,11 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_tab_page_container_get_tab@Base 0.2.3
  granite_widgets_tab_page_container_get_type@Base 0.2.3
  granite_widgets_tab_page_container_new@Base 0.2.3
+ granite_widgets_tab_set_closable@Base 0.3.0~
  granite_widgets_tab_set_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_set_fixed@Base 0.2.0
  granite_widgets_tab_set_icon@Base 0.2.0
+ granite_widgets_tab_set_is_current_tab@Base 0.3.0~
  granite_widgets_tab_set_label@Base 0.2.0
  granite_widgets_tab_set_menu@Base 0.2.0
  granite_widgets_tab_set_page@Base 0.2.0
