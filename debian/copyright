@@ -73,7 +73,11 @@ License: 2-clause BSD
 
 
 Files: debian/*
-Copyright: 2012 Devid Antonio Filoni <d.filoni@ubuntu.com>
+Copyright: 2011-2014 Rico Tzschichholz <ricotz@ubuntu.com>
+           2011-2012 Lucas Baudin <xapantu@gmail.com>
+           2012 Devid Antonio Filoni <d.filoni@ubuntu.com>
+           2012-2014 Sergey Davidoff <sergey@elementaryos.org>
+           2014 Corentin Noël <corentin@elementaryos.org>
 License: GPL-3.0+
 
 
