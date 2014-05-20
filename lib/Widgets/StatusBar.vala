@@ -24,6 +24,7 @@
  *
  * It supports adding widgets at its left and right sides.
  */
+[Deprecated (replacement = "Gtk.ActionBar", since = "0.3")]
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
     private const int ITEM_SPACING = 3;
 
@@ -110,4 +111,3 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
         status_label.set_text (text);
     }
 }
-
