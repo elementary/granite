@@ -21,9 +21,9 @@ Depends: libgranite-common (>= ${source:Version}),
 Pre-Depends: multiarch-support
 Recommends: apport-hooks-elementary, contractor
 Description: extension of GTK+ libraries
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package contains the shared library.
 
@@ -38,9 +38,9 @@ Depends: gir1.2-granite-1.0 (= ${binary:Version}),
          ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (development files)
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package contains the static library and header files.
 
@@ -50,9 +50,9 @@ Architecture: any
 Depends: ${gir:Depends}, ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (introspection files)
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package can be used by other packages using the GIRepository format to
  generate dynamic bindings.
@@ -66,9 +66,9 @@ Replaces: libgranite0 (>> 0.2~)
 Conflicts: libgranite0 (>> 0.2~)
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (common files)
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package contains common files needed by library.
 
@@ -77,9 +77,9 @@ Section: misc
 Architecture: any
 Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package contains a small demo application to show Granite Widgets.
 
@@ -90,8 +90,8 @@ Architecture: any
 Multi-Arch: same
 Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}
 Description: extension of GTK+ libraries (debugging symbols)
- Granite is an extension of GTK+. Among other things, it provides the
- commonly-used widgets such as modeswitchers, welcome screens, AppMenus,
- search bars, and more found in elementary apps.
+ Granite is an extension of GTK+. Among other things, it provides
+ complex widgets and convenience functions designed for use in apps
+ built for elementary OS.
  .
  This package contains debugging symbols.
