@@ -47,6 +47,7 @@ Description: extension of GTK+ libraries (development files)
 Package: gir1.2-granite-1.0
 Section: introspection
 Architecture: any
+Multi-Arch: foreign
 Depends: ${gir:Depends}, ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
 Description: extension of GTK+ libraries (introspection files)
