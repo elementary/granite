@@ -16,35 +16,35 @@ Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
            2012 Victor Eduardo
            2008 Christian Hergert <chris@dronelabs.com>
            2011 Giulio Collura
-License: GPL-3.0+
+License: LGPL-3.0+
 
 
 Files: lib/Widgets/ToolButtonWithMenu.vala
 Copyright: 2011 Mathijs Henquet
-License: GPL-2.0+
+License: LGPL-3.0+
 
 
 Files: demo/main.vala
 Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
            2011-2012 Jaap Broekhuizen <jaapz.b@gmail.com>
-License: GPL-2.0+
+License: LGPL-3.0+
 
 
 Files: lib/Main.vala lib/Widgets/PopOver.vala
        lib/Widgets/StaticNotebook.vala
 Copyright: 2011 Lucas Baudin <xapantu@gmail.com>
-License: GPL-2.0+
+License: LGPL-3.0+
 
 
 Files: lib/Widgets/ContractorView.vala
 Copyright: 2012 Tom Beckmann
-License: GPL-2.0+
+License: LGPL-3.0+
 
 
 Files: lib/Widgets/Welcome.vala
 Copyright: 2012 Victor Eduardo
            2011 Maxwell Barvian
-License: GPL-2.0+
+License: LGPL-3.0+
 
 
 Files: lib/Widgets/widgets-utils.c lib/GtkPatch/gtkpatch-utils.c
@@ -133,6 +133,21 @@ License: LGPL-2.0+
  .
  On Debian systems, the complete text of the GNU Lesser General
  Public License 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+
+License: LGPL-3.0+
+ This package is free software: you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation, either version 3 of the License, or (at your option)
+ any later version.
+ .
+ lazr.restfulclient is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+ for more details.
+ .
+ On Debian systems the complete text of the LGPL, version 3, can be found at
+ /usr/share/common-licenses/LGPL-3.
 
 
 License: 3-clause BSD
