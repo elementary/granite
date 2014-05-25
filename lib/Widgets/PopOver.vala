@@ -493,4 +493,3 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
         return base.draw(cr);
     }
 }
-
