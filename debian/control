@@ -7,7 +7,7 @@ Build-Depends: cmake (>= 2.8),
                gobject-introspection (>= 1.31.0-2),
                libgee-0.8-dev,
                libgirepository1.0-dev,
-               libgtk-3-dev (>= 3.3.14),
+               libgtk-3-dev (>= 3.12),
                valac (>= 0.20.1)
 Standards-Version: 3.9.5
 Homepage: https://launchpad.net/granite
