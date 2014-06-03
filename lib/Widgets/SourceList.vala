@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2012-2013 Victor Eduardo <victoreduardm@gmal.com>
+    Copyright (C) 2012-2014 Victor Martinez <victoreduardm@gmail.com>
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
@@ -16,6 +16,124 @@
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
     Boston, MA 02110-1301 USA.
 ***/
+
+namespace Granite.Widgets {
+
+/**
+ * An interface for sorting items.
+ *
+ * @since 0.3
+ */
+public interface SourceListSortable : SourceList.ExpandableItem {
+    /**
+     * Emitted after a user has re-ordered an item via DnD.
+     *
+     * @param moved The item that was moved to a different position by the user.
+     * @since 0.3
+     */
+    public signal void user_moved_item (SourceList.Item moved);
+
+    /**
+     * Whether this item will allow users to re-arrange its children via DnD.
+     *
+     * This feature can co-exist with a sort algorithm (implemented
+     * by {@link Granite.Widgets.SourceListSortable.compare}), but
+     * the actual order of the items in the list will always
+     * honor that method. The sort function has to be compatible with
+     * the kind of DnD reordering the item wants to allow, since the user can
+     * only reorder those items for which //compare// returns 0.
+     *
+     * @return Whether the item's children can be re-arranged by users.
+     * @since 0.3
+     */
+    public abstract bool allow_dnd_sorting ();
+
+    /**
+     * Should return a negative integer, zero, or a positive integer if ''a''
+     * sorts //before// ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts
+     * //after// ''b'' respectively. If two items compare as equal, their
+     * order in the sorted source list is undefined.
+     *
+     * In order to ensure that the source list behaves as expected, this
+     * method must define a partial order on the source list tree; i.e. it
+     * must be reflexive, antisymmetric and transitive. Not complying with
+     * those requirements could make the program fall into an infinite loop
+     * and freeze the user interface.
+     *
+     * Should return //0// to allow any pair of items to be sortable via DnD.
+     *
+     * @param a First item.
+     * @param b Second item.
+     * @return A //negative// integer if //a// sorts before //b//,
+     *         //zero// if //a// equals //b//, or a //positive//
+     *         integer if //a// sorts after //b//.
+     * @since 0.3
+     */
+    public abstract int compare (SourceList.Item a, SourceList.Item b);
+}
+
+/**
+ * An interface for dragging items out of the source list widget.
+ *
+ * @since 0.3
+ */
+public interface SourceListDragSource : SourceList.Item {
+    /**
+     * Determines whether this item can be dragged outside the source list widget.
+     *
+     * Even if this method returns //false//, the item could still be dragged around
+     * within the source list if its parent allows DnD reordering. This only happens
+     * when the parent implements {@link Granite.Widgets.SourceListSortable}.
+     *
+     * @return //true// if the item can be dragged; //false// otherwise.
+     * @since 0.3
+     * @see Granite.Widgets.SourceListSortable
+     */
+    public abstract bool draggable ();
+
+    /**
+     * This method is called when the drop site requests the data which is dragged.
+     *
+     * It is the responsibility of this method to fill //selection_data// with the
+     * data in the format which is indicated by {@link Gtk.SelectionData.get_target}.
+     *
+     * @param selection_data {@link Gtk.SelectionData} containing source data.
+     * @since 0.3
+     * @see Gtk.SelectionData.set
+     * @see Gtk.SelectionData.set_uris
+     * @see Gtk.SelectionData.set_text
+     */
+    public abstract void prepare_selection_data (Gtk.SelectionData selection_data);
+}
+
+/**
+ * An interface for receiving data from other widgets via drag-and-drop.
+ *
+ * @since 0.3
+ */
+public interface SourceListDragDest : SourceList.Item {
+    /**
+     * Determines whether //data// can be dropped into this item.
+     *
+     * @param context The drag context.
+     * @param data {@link Gtk.SelectionData} containing source data.
+     * @return //true// if the drop is possible; //false// otherwise.
+     * @since 0.3
+     */
+    public abstract bool data_drop_possible (Gdk.DragContext context, Gtk.SelectionData data);
+
+    /**
+     * If a data drop is deemed possible, then this method is called
+     * when the data is actually dropped into this item. Any actions
+     * consequence of the data received should be handled here.
+     *
+     * @param context The drag context.
+     * @param data {@link Gtk.SelectionData} containing source data.
+     * @return The action taken, or //0// to indicate that the dropped data was not accepted.
+     * @since 0.3
+     */
+    public abstract Gdk.DragAction data_received (Gdk.DragContext context, Gtk.SelectionData data);
+}
 
 /**
  * A widget that can display a list of items organized in categories.
@@ -106,14 +224,14 @@
  * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
  * {{{
  * var pane = new Granite.Widgets.ThinPaned ();
- * pane.pack1 (source_list, true, false);
+ * pane.pack1 (source_list, false, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
  * @since 0.2
  * @see Granite.Widgets.ThinPaned
  */
-public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
+public class SourceList : Gtk.ScrolledWindow {
 
     /**
      * = WORKING INTERNALS =
@@ -122,7 +240,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * to deal with items directly on the SourceList widget, it was decided to follow a monitor-like
      * implementation, where the source list permanently monitors its root item and any other
      * child item added to it. The task of monitoring the properties of the items has been
-     * divided between different objects, as shown below:
+     * divided among different objects, as shown below:
      *
      * Monitored by: Object::method that receives the signals indicating the property change.
      * Applied by: Object::method that actually updates the tree to reflect the property changes
@@ -147,7 +265,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      *   DataModel::add_item() and DataModel::remove_item()
      *
      * Other features:
-     * - Sorting: this happens on the tree-model level (DataModel). Also see SourceList::SortFunc.
+     * - Sorting: this happens on the tree-model level (DataModel).
      */
 
 
@@ -366,7 +484,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * item's children becomes visible, the item will be expanded again. Same applies to items
          * hidden behind a collapsed parent item.
          *
-         * If obtaining the ''actual'' expansion state of an item is important to your needs,
+         * If obtaining the ''actual'' expansion state of an item is important,
          * use {@link Granite.Widgets.SourceList.is_item_expanded} instead.
          *
          * @see Granite.Widgets.SourceList.ExpandableItem.collapsible
@@ -396,11 +514,19 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         /**
          * The item's children.
          *
+         * This returns a newly-created list containing the children.
+         * It's safe to iterate it while removing items with
+         * {@link Granite.Widgets.SourceList.ExpandableItem.remove}
+         *
          * @since 0.2
          */
         public Gee.Collection<Item> children {
             owned get {
-                return children_list.read_only_view;
+                // Create a copy of the children so that it's safe to iterate it
+                // (e.g. by using foreach) while removing items.
+                var children_list_copy = new Gee.ArrayList<Item> ();
+                children_list_copy.add_all (children_list);
+                return children_list_copy;
             }
         }
 
@@ -416,27 +542,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         public ExpandableItem (string name = "") {
             base (name);
             editable = false;
-        }
-
-        /**
-         * Should return a negative integer, zero, or a positive integer if ''a'' sorts //before//
-         * ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts //after// ''b'' respectively. If two
-         * items compare as equal, their order in the sorted source list is undefined.
-         *
-         * In order to ensure that the source list behaves as expected, this method must define a
-         * partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
-         * transitive.
-         *
-         * (Same description as {@link Gtk.TreeIterCompareFunc}.)
-         *
-         * @param a First item.
-         * @param b Second item.
-         * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
-         *         or a //positive// integer if //a// sorts before //b//.
-         * @since 0.2
-         */
-        public virtual int compare (Item a, Item b) {
-            return 0;
         }
 
         /**
@@ -459,7 +564,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          *
          * While adding a child item, //the item it's being added to will set itself as the parent//.
          * Please note that items are required to have their //parent// property set to //null// before
-         * being added, so make sure you remove the item from its previous parent before attempting
+         * being added, so make sure the item is removed from its previous parent before attempting
          * to add it to another item. For instance:
          * {{{
          * if (item.parent != null)
@@ -507,12 +612,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public void clear () {
-            // Create a copy of the children so that it's safe to iterate it
-            // (e.g. by using foreach) while removing items
-            var children_list_copy = new Gee.ArrayList<Item> ();
-            children_list_copy.add_all (children_list);
-
-            foreach (var item in children_list_copy)
+            foreach (var item in children)
                 remove (item);
         }
 
@@ -534,13 +634,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          *
          * @param inclusive Whether to also collapse this item (true), or only its children (false).
          * @param recursive Whether to recursively collapse all the children (true), or only
-         * immediate children (false). The latter case might appear contradictory, given that collapsing
-         * immediate children will also //visually// collapse non-immediate children, but it makes total
-         * sense once you've understood what the {@link Granite.Widgets.SourceList.ExpandableItem.expanded}
-         * property actually means. If you set //recursive// to //true,// the non-immediate children's
-         * //expanded// property will be set to //false//, and therefore they will __stay collapsed__
-         * the next time their parents are expanded; otherwise (i.e. if //recursive// is //false//),
-         * __their previous expansion state will be restored__ once their parents are expanded again.
+         * immediate children (false).
          * @see Granite.Widgets.SourceList.ExpandableItem.expanded
          * @since 0.2
          */
@@ -603,7 +697,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      * for sorting, adding, removing and updating items, eliminating the need of repeatedly dealing with
      * the Gtk.TreeModel API directly.
      */
-    private class DataModel : Gtk.TreeModelFilter {
+    private class DataModel : Gtk.TreeModelFilter, Gtk.TreeDragSource, Gtk.TreeDragDest {
 
         /**
          * An object that references a particular row in a model. This class is a wrapper built around
@@ -701,15 +795,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
          */
         private const string ITEM_PARENT_NEEDS_UPDATE = "item-parent-needs-update";
 
-        private Gtk.SortType sort_dir = Gtk.SortType.ASCENDING;
-        public Gtk.SortType sort_direction {
-            get { return sort_dir; }
-            set {
-                sort_dir = value;
-                resort ();
-            }
-        }
-
         private ExpandableItem _root;
 
         /**
@@ -743,7 +828,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private Gee.HashMap<Item, ItemMonitor> monitors = new Gee.HashMap<Item, ItemMonitor> ();
 
         private Gtk.TreeStore child_tree;
-        private SourceList.SortFunc? sort_func;
         private unowned SourceList.VisibleFunc? filter_func;
 
         public DataModel () {
@@ -978,16 +1062,6 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         /**
-         * Sets the sort function, or "unsets" it if null is passed. Please note though
-         * that unsetting the sort function doesn't bring the items back to their initial
-         * order.
-         */
-        public void set_sort_func (owned SourceList.SortFunc? sort_func) {
-            this.sort_func = (owned) sort_func;
-            resort ();
-        }
-
-        /**
          * External "extra" filter method.
          */
         public void set_filter_func (SourceList.VisibleFunc? visible_func) {
@@ -1028,32 +1102,25 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         }
 
         private void resort () {
-            child_tree.set_sort_column_id (Gtk.SortColumn.UNSORTED, sort_direction);
-            child_tree.set_sort_column_id (Gtk.SortColumn.DEFAULT, sort_direction);
+            child_tree.set_sort_column_id (Gtk.SortColumn.UNSORTED, Gtk.SortType.ASCENDING);
+            child_tree.set_sort_column_id (Gtk.SortColumn.DEFAULT, Gtk.SortType.ASCENDING);
         }
 
         private int child_model_sort_func (Gtk.TreeModel model, Gtk.TreeIter a, Gtk.TreeIter b) {
-            int sort = 0;
+            int order = 0;
 
             Item? item_a, item_b;
             child_tree.get (a, Column.ITEM, out item_a, -1);
             child_tree.get (b, Column.ITEM, out item_b, -1);
 
-            // If the sort function is not null use old sorting API. Otherwise, use each
-            // item's compare() method.
-            if (sort_func != null) {
-                if (item_a != null && item_b != null)
-                    sort = sort_func (item_a, item_b);
-            } else {
-                // code should only compare items on same hierarchy level
-                assert (item_a.parent == item_b.parent);
+            // code should only compare items at same hierarchy level
+            assert (item_a.parent == item_b.parent);
 
-                var parent = item_a.parent;
-                if (parent != null)
-                    sort = parent.compare (item_a, item_b);
-            }
+            var parent = item_a.parent as SourceListSortable;
+            if (parent != null)
+                order = parent.compare (item_a, item_b);
 
-            return sort;
+            return order;
         }
 
         private Gtk.TreeIter? get_item_child_iter (Item item) {
@@ -1106,8 +1173,266 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
             return item_visible;
         }
-    }
 
+        /**
+         * TreeDragDest implementation
+         */
+
+        public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+            unowned Gtk.TreeModel model;
+            unowned Gtk.TreePath src_path;
+
+            // Check if the user is dragging a row:
+            //
+            // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
+            // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
+            if (Gtk.tree_get_row_drag_data (selection_data, out model, out src_path) && model == child_tree) {
+                // get a child path representation of dest
+                var child_dest = convert_path_to_child_path (dest);
+
+                if (child_dest != null) {
+                    // New GtkTreeIters will be assigned to the rows at child_dest and its children.
+                    if (child_tree_drag_data_received (child_dest, src_path))
+                        return true;
+                }
+            }
+
+            // no new row inserted
+            return false;
+        }
+
+        private bool child_tree_drag_data_received (Gtk.TreePath dest, Gtk.TreePath src_path) {
+            bool retval = false;
+            Gtk.TreeIter src_iter, dest_iter;
+
+            if (!child_tree.get_iter (out src_iter, src_path))
+                return false;
+
+            var prev = dest;
+
+            // Get the path to insert _after_ (dest is the path to insert _before_)
+            if (!prev.prev ()) {
+                // dest was the first spot at the current depth; which means
+                // we are supposed to prepend.
+
+                var parent = dest;
+                Gtk.TreeIter? dest_parent = null;
+
+                if (parent.up () && parent.get_depth () > 0)
+                    child_tree.get_iter (out dest_parent, parent);
+
+                child_tree.prepend (out dest_iter, dest_parent);
+                retval = true;
+            } else if (child_tree.get_iter (out dest_iter, prev)) {
+                var tmp_iter = dest_iter;
+                child_tree.insert_after (out dest_iter, null, tmp_iter);
+                retval = true;
+            }
+
+            // If we succeeded in creating dest_iter, walk src_iter tree branch,
+            // duplicating it below dest_iter.
+            if (retval) {
+                recursive_node_copy (src_iter, dest_iter);
+
+                // notify that the item was moved
+                Item item;
+                child_tree.get (src_iter, Column.ITEM, out item, -1);
+                return_val_if_fail (item != null, retval);
+
+                // XXX Workaround:
+                // GtkTreeView automatically collapses expanded items that
+                // are dragged to a new location. Oddly, GtkTreeView doesn't fire
+                // 'row-collapsed' for the respective path, so we cannot keep track
+                // of that behavior via standard means. For now we'll just have
+                // our tree view check the properties of item again and ensure
+                // they're honored
+                update_item (item);
+
+                var parent = item.parent as SourceListSortable;
+                return_val_if_fail (parent != null, retval);
+
+                parent.user_moved_item (item);
+            }
+
+            return retval;
+        }
+
+        private void recursive_node_copy (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
+            move_item (src_iter, dest_iter);
+
+            Gtk.TreeIter child;
+            if (child_tree.iter_children (out child, src_iter)) {
+                // Need to create children and recurse. Note our dependence on
+                // persistent iterators here.
+                do {
+                    Gtk.TreeIter copy;
+                    child_tree.append (out copy, dest_iter);
+                    recursive_node_copy (child, copy);
+                } while (child_tree.iter_next (ref child));
+            }
+        }
+
+        private void move_item (Gtk.TreeIter src_iter, Gtk.TreeIter dest_iter) {
+            Item item;
+            child_tree.get (src_iter, Column.ITEM, out item, -1);
+            return_if_fail (item != null);
+
+            // update the row reference of item with the new location
+            child_tree.set (dest_iter, Column.ITEM, item, -1);
+            items.set (item, new NodeWrapper (child_tree, dest_iter));
+        }
+
+        public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
+            unowned Gtk.TreeModel model;
+            unowned Gtk.TreePath src_path;
+
+            // Check if the user is dragging a row:
+            // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
+            // tree_row_drag_data for GtkModel and GtkPath correspond to the child model and not the filter.
+            if (!Gtk.tree_get_row_drag_data (selection_data, out model, out src_path) || model != child_tree)
+                return false;
+
+            // get a representation of dest in the child model
+            var child_dest = convert_path_to_child_path (dest);
+
+            // don't allow dropping an item into itself
+            if (child_dest == null || src_path.compare (child_dest) == 0)
+                return false;
+
+            // Only allow DnD between items at the same depth (indentation level)
+            // This doesn't mean their parent is the same.
+            int src_depth = src_path.get_depth ();
+            int dest_depth = child_dest.get_depth ();
+
+            if (src_depth != dest_depth)
+                return false;
+
+            // no need to check dest_depth since we know its equal to src_depth
+            if (src_depth < 1)
+                return false;
+
+            Item? parent = null;
+
+            // if the depth is 1, we're talking about the items at root level,
+            // and by definition they share the same parent (root). We don't
+            // need to verify anything else for that specific case
+            if (src_depth == 1) {
+                parent = root;
+            } else {
+                // we verified equality above. this must be true
+                assert (dest_depth > 1);
+
+                // Only allow reordering between siblings, i.e. items with the same
+                // parent. We don't want items to change their parent through DnD
+                // because that would complicate our existing APIs, and may introduce
+                // unpredictable behavior.
+                var src_indices = src_path.get_indices ();
+                var dest_indices = child_dest.get_indices ();
+
+                // parent index is given by indices[depth-2], where depth > 1
+                int src_parent_index = src_indices[src_depth - 2];
+                int dest_parent_index = dest_indices[dest_depth - 2];
+
+                if (src_parent_index != dest_parent_index)
+                    return false;
+
+                // get parent. Note that we don't use the child path for this
+                var dest_parent = dest;
+
+                if (!dest_parent.up () || dest_parent.get_depth () < 1)
+                    return false;
+
+                parent = get_item_from_path (dest_parent);
+            }
+
+            var sortable = parent as SourceListSortable;
+
+            if (sortable == null || !sortable.allow_dnd_sorting ())
+                return false;
+
+            var dest_item = get_item_from_path (dest);
+
+            if (dest_item == null)
+                return true;
+
+            Item? source_item = null;
+            var filter_src_path = convert_child_path_to_path (src_path);
+
+            if (filter_src_path != null)
+                source_item = get_item_from_path (filter_src_path);
+
+            if (source_item == null)
+                return false;
+
+            // If order isn't indifferent (=0), 'dest' has to sort before 'source'.
+            // Otherwise we'd allow the user to move the 'source_item' to a new
+            // location before 'dest_item', but that location would be changed
+            // later by the sort function, making the whole interaction poinless.
+            // We better prevent such reorderings from the start by giving the
+            // user a visual clue about the invalid drop location.
+            if (sortable.compare (dest_item, source_item) >= 0) {
+                if (!dest.prev ())
+                    return true;
+
+                // 'source_item' also has to sort 'after' or 'equal' the item currently
+                // preceding 'dest_item'
+                var dest_item_prev = get_item_from_path (dest);
+
+                return dest_item_prev != null
+                    && dest_item_prev != source_item
+                    && sortable.compare (dest_item_prev, source_item) <= 0;
+            }
+
+            return false;
+        }
+
+        /**
+         * Override default implementation of TreeDragSource
+         *
+         * drag_data_delete is not overriden because the default implementation
+         * does exactly what we need.
+         */
+
+        public bool drag_data_get (Gtk.TreePath path, Gtk.SelectionData selection_data) {
+            // If we're asked for a data about a row, just have the default implementation fill in
+            // selection_data. Please note that it will provide information relative to child_model.
+            if (selection_data.get_target () == Gdk.Atom.intern_static_string ("GTK_TREE_MODEL_ROW"))
+                return base.drag_data_get (path, selection_data);
+
+            // check if the item at path provides DnD source data
+            var drag_source_item = get_item_from_path (path) as SourceListDragSource;
+            if (drag_source_item != null && drag_source_item.draggable ()) {
+                drag_source_item.prepare_selection_data (selection_data);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool row_draggable (Gtk.TreePath path) {
+            if (!base.row_draggable (path))
+                return false;
+
+            var item = get_item_from_path (path);
+
+            if (item != null) {
+                // check if the item's parent allows DnD sorting
+                var sortable_item = item.parent as SourceListSortable;
+
+                if (sortable_item != null && sortable_item.allow_dnd_sorting ())
+                    return true;
+
+                // Since the parent item does not allow DnD sorting, there's no
+                // reason to allow dragging it unless the row is actually draggable.
+                var drag_source_item = item as SourceListDragSource;
+
+                if (drag_source_item != null && drag_source_item.draggable ())
+                    return true;
+            }
+
+            return false;
+        }
+    }
 
 
     /**
@@ -1217,6 +1542,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
         private CellRendererExpander primary_expander_cell;
         private CellRendererExpander secondary_expander_cell;
         private Gee.HashMap<int, CellRendererSpacer> spacer_cells; // cells used for left spacing
+        private bool unselectable_item_clicked = false;
 
         private const string DEFAULT_STYLESHEET = """
             .source-list.badge {
@@ -1329,15 +1655,179 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             selection.set_select_function (select_func);
 
             // Monitor item changes
-            data_model.item_updated.connect_after (on_model_item_updated);
+            enable_item_property_monitor ();
 
             // Add root-level indentation. New levels will be added by update_item_expansion()
             add_spacer_cell_for_level (1);
+
+            // Enable basic row drag and drop
+            configure_drag_source (null);
+            configure_drag_dest (null, 0);
         }
 
         ~Tree () {
             text_cell.editing_started.disconnect (on_editing_started);
             text_cell.editing_canceled.disconnect (on_editing_canceled);
+            disable_item_property_monitor ();
+        }
+
+        public override bool drag_motion (Gdk.DragContext context, int x, int y, uint time) {
+            // call the base signal to get rows with children to spring open
+            if (!base.drag_motion (context, x, y, time))
+                return false;
+
+            Gtk.TreePath suggested_path, current_path;
+            Gtk.TreeViewDropPosition suggested_pos, current_pos;
+
+            if (get_dest_row_at_pos (x, y, out suggested_path, out suggested_pos)) {
+                // the base implementation of drag_motion was likely to set a drop
+                // destination row. If that's the case, we configure the row position
+                // to only allow drops before or after it, but not into it
+                get_drag_dest_row (out current_path, out current_pos);
+
+                if (current_path != null && suggested_path.compare (current_path) == 0) {
+                    // If the source widget is this treeview, we assume we're
+                    // just dragging rows around, because at the moment dragging
+                    // rows into other rows (re-parenting) is not implemented.
+                    var source_widget = Gtk.drag_get_source_widget (context);
+                    bool dragging_treemodel_row = (source_widget == this);
+
+                    if (dragging_treemodel_row) {
+                        // we don't allow DnD into other rows, only in between them
+                        // (no row is highlighted)
+                        if (current_pos != Gtk.TreeViewDropPosition.BEFORE) {
+                            if (current_pos == Gtk.TreeViewDropPosition.INTO_OR_BEFORE)
+                                set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.BEFORE);
+                            else
+                                set_drag_dest_row (null, Gtk.TreeViewDropPosition.AFTER);
+                        }
+                    } else {
+                        // for DnD originated on a different widget, we don't want to insert
+                        // between rows, only select the rows themselves
+                        if (current_pos == Gtk.TreeViewDropPosition.BEFORE)
+                            set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.INTO_OR_BEFORE);
+                        else if (current_pos == Gtk.TreeViewDropPosition.AFTER)
+                            set_drag_dest_row (current_path, Gtk.TreeViewDropPosition.INTO_OR_AFTER);
+
+                        // determine if external DnD is supported by the item at destination
+                        var dest = data_model.get_item_from_path (current_path) as SourceListDragDest;
+
+                        if (dest != null) {
+                            var target_list = Gtk.drag_dest_get_target_list (this);
+                            var target = Gtk.drag_dest_find_target (this, context, target_list);
+
+                            // have 'drag_get_data' call 'drag_data_received' to determine
+                            // if the data can actually be dropped.
+                            context.set_data<int> ("suggested-dnd-action", context.get_suggested_action ());
+                            Gtk.drag_get_data (this, context, target, time);
+                        } else {
+                            // dropping data here is not supported. Unset dest row
+                            set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
+                        }
+                    }
+                }
+            } else {
+                // dropping into blank areas of SourceList is not allowed
+                set_drag_dest_row (null, Gtk.TreeViewDropPosition.AFTER);
+                return false;
+            }
+
+            return true;
+        }
+
+        public override void drag_data_received (Gdk.DragContext context, int x, int y,
+                                                 Gtk.SelectionData selection_data,
+                                                 uint info, uint time)
+        {
+            var target_list = Gtk.drag_dest_get_target_list (this);
+            var target = Gtk.drag_dest_find_target (this, context, target_list);
+
+            if (target == Gdk.Atom.intern_static_string ("GTK_TREE_MODEL_ROW")) {
+                base.drag_data_received (context, x, y, selection_data, info, time);
+                return;
+            }
+
+            Gtk.TreePath path;
+            Gtk.TreeViewDropPosition pos;
+
+            if (context.get_data<int> ("suggested-dnd-action") != 0) {
+                context.set_data<int> ("suggested-dnd-action", 0);
+
+                get_drag_dest_row (out path, out pos);
+
+                if (path != null) {
+                    // determine if external DnD is allowed by the item at destination
+                    var dest = data_model.get_item_from_path (path) as SourceListDragDest;
+
+                    if (dest == null || !dest.data_drop_possible (context, selection_data)) {
+                        // dropping data here is not allowed. unset any previously
+                        // selected destination row
+                        set_drag_dest_row (null, Gtk.TreeViewDropPosition.BEFORE);
+                        Gdk.drag_status (context, 0, time);
+                        return;
+                    }
+                }
+
+                Gdk.drag_status (context, context.get_suggested_action (), time);
+            } else {
+                if (get_dest_row_at_pos (x, y, out path, out pos)) {
+                    // Data coming from external source/widget was dropped into this item.
+                    // selection_data contains something other than a tree row; most likely
+                    // we're dealing with a DnD not originated within the Source List tree.
+                    // Let's pass the data to the corresponding item, if there's a handler.
+
+                    var drag_dest = data_model.get_item_from_path (path) as SourceListDragDest;
+
+                    if (drag_dest != null) {
+                        var action = drag_dest.data_received (context, selection_data);
+                        Gtk.drag_finish (context, action != 0, action == Gdk.DragAction.MOVE, time);
+                        return;
+                    }
+                }
+
+                // failure
+                Gtk.drag_finish (context, false, false, time);
+            }
+        }
+
+        public void configure_drag_source (Gtk.TargetEntry[]? src_entries) {
+            // Append GTK_TREE_MODEL_ROW to src_entries and src_entries to enable row DnD.
+            var entries = append_row_target_entry (src_entries);
+
+            unset_rows_drag_source ();
+            enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK, entries, Gdk.DragAction.MOVE);
+        }
+
+        public void configure_drag_dest (Gtk.TargetEntry[]? dest_entries, Gdk.DragAction actions) {
+            // Append GTK_TREE_MODEL_ROW to dest_entries and dest_entries to enable row DnD.
+            var entries = append_row_target_entry (dest_entries);
+
+            unset_rows_drag_dest ();
+
+            // DragAction.MOVE needs to be enabled for row drag-and-drop to work properly
+            enable_model_drag_dest (entries, Gdk.DragAction.MOVE | actions);
+        }
+
+        private static Gtk.TargetEntry[] append_row_target_entry (Gtk.TargetEntry[]? orig) {
+            const Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
+                                                       Gtk.TargetFlags.SAME_WIDGET, 0 };
+
+            var entries = new Gtk.TargetEntry[0];
+            entries += row_target_entry;
+
+            if (orig != null) {
+                foreach (var target_entry in orig)
+                    entries += target_entry;
+            }
+
+            return entries;
+        }
+
+        private void enable_item_property_monitor () {
+            data_model.item_updated.connect_after (on_model_item_updated);
+        }
+
+        private void disable_item_property_monitor () {
             data_model.item_updated.disconnect (on_model_item_updated);
         }
 
@@ -1602,6 +2092,24 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             }
         }
 
+        public override void row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
+            var item = data_model.get_item (iter) as ExpandableItem;
+            return_if_fail (item != null);
+
+            disable_item_property_monitor ();
+            item.expanded = true;
+            enable_item_property_monitor ();
+        }
+
+        public override void row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
+            var item = data_model.get_item (iter) as ExpandableItem;
+            return_if_fail (item != null);
+
+            disable_item_property_monitor ();
+            item.expanded = false;
+            enable_item_property_monitor ();
+        }
+
         public override void row_activated (Gtk.TreePath path, Gtk.TreeViewColumn column) {
             if (column == get_column (Column.ITEM)) {
                 var item = data_model.get_item_from_path (path);
@@ -1625,6 +2133,27 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
             return base.key_release_event (event);
         }
 
+        public override bool button_release_event (Gdk.EventButton event) {
+            if (unselectable_item_clicked && event.window == get_bin_window ()) {
+                unselectable_item_clicked = false;
+
+                Gtk.TreePath path;
+                Gtk.TreeViewColumn column;
+                int x = (int) event.x, y = (int) event.y, cell_x, cell_y;
+
+                if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
+                    var item = data_model.get_item_from_path (path) as ExpandableItem;
+
+                    if (item != null) {
+                        if (!item.selectable || data_model.is_category (item, null, path))
+                            toggle_expansion (item);
+                    }
+                }
+            }
+
+            return base.button_release_event (event);
+        }
+
         public override bool button_press_event (Gdk.EventButton event) {
             if (event.window != get_bin_window ())
                 return base.button_press_event (event);
@@ -1645,7 +2174,7 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                     // Cancel any editing operation going on
                     stop_editing ();
 
-                    if (((Gdk.Event*) (&event))->triggers_context_menu ()) {
+                    if (event.button == Gdk.BUTTON_SECONDARY) {
                         popup_context_menu (item, event);
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         // Check whether an expander (or an equivalent area) was clicked.
@@ -1659,11 +2188,12 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
                                 // normal expandable item that is not selectable (special care is taken to
                                 // not break the activatable/action icons for such cases).
                                 // The expander only works like a visual indicator for these items.
-                                bool expander_clicked = is_category
-                                    || over_primary_expander (column, path, cell_x)
+                                unselectable_item_clicked = is_category
                                     || (!item.selectable && !over_cell (column, path, activatable_cell, cell_x));
 
-                                if (expander_clicked && toggle_expansion (item as ExpandableItem))
+                                if (!unselectable_item_clicked
+                                    && over_primary_expander (column, path, cell_x)
+                                    && toggle_expansion (item as ExpandableItem))
                                     return true;
                             }
                         } else if (event.type == Gdk.EventType.2BUTTON_PRESS
@@ -1945,16 +2475,8 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     public virtual signal void item_selected (Item? item) { }
 
     /**
-     * A {@link Granite.Widgets.SourceList.SortFunc} should return a negative integer, zero, or a
-     * positive integer if ''a'' sorts //before// ''b'', ''a'' sorts //with// ''b'', or ''a'' sorts
-     * //after// ''b'' respectively. If two items compare as equal, their order in the sorted
-     * source list is undefined.
-     *
-     * In order to ensure that the source list behaves as expected, the {@link Granite.Widgets.SourceList.SortFunc}
-     * must define a partial order on the source list tree; i.e. it must be reflexive, antisymmetric and
-     * transitive.
-     *
-     * (Same description as {@link Gtk.TreeIterCompareFunc}.)
+     * Deprecated delegate defined for sorting items. It's not relevant for new code
+     * because it's no longer used.
      *
      * @param a First item.
      * @param b Second item.
@@ -1962,20 +2484,22 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
      *         or a //positive// integer if //a// sorts before //b//.
      * @since 0.2
      */
-    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
+    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
     public delegate int SortFunc (Item a, Item b);
 
     /**
      * A {@link Granite.Widgets.SourceList.VisibleFunc} should return true if the item should be
      * visible; false otherwise. If //item//'s {@link Granite.Widgets.SourceList.Item.visible}
-     * property is set to //false//, then it won't be displayed even if this method returns true.
+     * property is set to //false//, then it won't be displayed even if this method returns //true//.
      *
-     * It is important to note that the method ''must not modify any property of //item//'',
-     * because doing so would cause re-entrancy, because the widget's internal data model invokes the
-     * method to filter an item again after every property change, resulting in an infinite chain
-     * of recursive calls.
+     * It is important to note that the method ''must not modify any property of //item//''.
+     * Doing so would result in an infinite loop, freezing the application's user interface.
+     * This happens because the source list invokes this method to "filter" an item after
+     * any of its properties changes, so by modifying a property this method would be invoking
+     * itself again.
      *
-     * Usually, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough.
+     * For most use cases, modifying the {@link Granite.Widgets.SourceList.Item.visible} property is enough.
+     *
      * The advantage of using this method is that its nature is non-destructive, and the
      * changes it makes can be easily reverted (see {@link Granite.Widgets.SourceList.refilter}).
      *
@@ -2043,12 +2567,16 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     /**
      * Sort direction to use along with the sort function.
      *
-     * @see Granite.Widgets.SourceList.set_sort_func
+     * This property is no longer used. It doesn't do anything.
+     *
      * @since 0.2
      */
+    [Deprecated (since = "0.3")]
     public Gtk.SortType sort_direction {
-        get { return data_model.sort_direction; }
-        set { data_model.sort_direction = value; }
+        get { return Gtk.SortType.ASCENDING; }
+        set {
+            warning ("sort_direction is deprecated and no longer used");
+        }
     }
 
     private Tree tree;
@@ -2089,13 +2617,17 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     /**
      * Sets the method used for sorting items.
      *
+     * This method is no longer used. It doesn't do anything. Expandable Items
+     * should implement {@link Granite.Widgets.SourceListSortable} to sort their
+     * children. That interface can also be used for sorting categories by
+     * using a custom root item that implements it.
+     *
      * @param sort_func The method to use for sorting items.
-     * @see Granite.Widgets.SourceList.SortFunc
      * @since 0.2
      */
-    [Deprecated (replacement = "ExpandableItem.compare", since = "0.2")]
+    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
     public void set_sort_func (owned SortFunc? sort_func) {
-        data_model.set_sort_func ((owned) sort_func);
+        warning ("set_sort_func is deprecated and doesn't do anything");
     }
 
     /**
@@ -2162,6 +2694,59 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
     public void stop_editing () {
         if (editing)
             tree.stop_editing ();
+    }
+
+    /**
+     * Turns Source List into a //drag source//.
+     *
+     * This enables items that implement {@link Granite.Widgets.SourceListDragSource}
+     * to be dragged outside the Source List and drop data into external widgets.
+     *
+     * @param src_entries an array of {@link Gtk.TargetEntry}s indicating the targets
+     * that the drag will support.
+     * @see Granite.Widgets.SourceListDragSource
+     * @see Granite.Widgets.SourceList.disable_drag_source
+     * @since 0.3
+     */
+    public void enable_drag_source (Gtk.TargetEntry[] src_entries) {
+        tree.configure_drag_source (src_entries);
+    }
+
+    /**
+     * Undoes the effect of {@link Granite.Widgets.SourceList.enable_drag_source}
+     *
+     * @see Granite.Widgets.SourceList.enable_drag_source
+     * @since 0.3
+     */
+    public void disable_drag_source () {
+        tree.configure_drag_source (null);
+    }
+
+    /**
+     * Turns Source List into a //drop destination//.
+     *
+     * This enables items that implement {@link Granite.Widgets.SourceListDragDest}
+     * to receive data from external widgets via drag-and-drop.
+     *
+     * @param dest_entries an array of {@link Gtk.TargetEntry}s indicating the drop
+     * types that Source List items will accept.
+     * @param actions a bitmask of possible actions for a drop onto Source List items.
+     * @see Granite.Widgets.SourceListDragDest
+     * @see Granite.Widgets.SourceList.disable_drag_dest
+     * @since 0.3
+     */
+    public void enable_drag_dest (Gtk.TargetEntry[] dest_entries, Gdk.DragAction actions) {
+        tree.configure_drag_dest (dest_entries, actions);
+    }
+
+    /**
+     * Undoes the effect of {@link Granite.Widgets.SourceList.enable_drag_dest}
+     *
+     * @see Granite.Widgets.SourceList.enable_drag_dest
+     * @since 0.3
+     */
+    public void disable_drag_dest () {
+        tree.configure_drag_dest (null, 0);
     }
 
     /**
@@ -2278,4 +2863,5 @@ public class Granite.Widgets.SourceList : Gtk.ScrolledWindow {
 
         return null;
     }
+}
 }

@@ -51,22 +51,77 @@ public class Granite.Demo : Granite.Application {
         }
     }
 
-    private class SourceListExpandableItem : Granite.Widgets.SourceList.ExpandableItem {
-        public SourceListExpandableItem (string name) {
+    private class SourceListRootItem : Granite.Widgets.SourceList.ExpandableItem,
+                                       Granite.Widgets.SourceListSortable
+    {
+        public SourceListRootItem () {
+            base ("SourceListRootItem");
+
+            user_moved_item.connect ((moved) => {
+                message ("Category '%s' moved through DnD", moved.name);
+            });
+        }
+
+        // allow re-ordering main categories through DnD
+        public bool allow_dnd_sorting () {
+            return true;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
+        {
+            // when an item is reordered through DnD, its actual final location
+            // is determined by the compare function, so we want to make sure
+            // it doesn't conflict with the order established by the user
+            return 0;
+        }
+    }
+
+    private class SourceListSortableItem : Granite.Widgets.SourceList.ExpandableItem,
+                                           Granite.Widgets.SourceListSortable
+    {
+        public SourceListSortableItem (string name) {
             base (name);
         }
 
-        public override int compare (Granite.Widgets.SourceList.Item a,
-                                     Granite.Widgets.SourceList.Item b)
+        public bool allow_dnd_sorting () {
+            return true;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
         {
-            return strcmp (a.name, b.name);
+            // while we could impose some restrictions regarding the order of
+            // the items, here we just allow free DnD reordering.
+            return 0;
+        }
+    }
+
+    private class SourceListSortedItem : Granite.Widgets.SourceList.ExpandableItem,
+                                         Granite.Widgets.SourceListSortable
+    {
+        public SourceListSortedItem (string name) {
+            base (name);
+        }
+
+        public bool allow_dnd_sorting () {
+            return false;
+        }
+
+        public int compare (Granite.Widgets.SourceList.Item a,
+                            Granite.Widgets.SourceList.Item b)
+        {
+            return strcmp (a.name.collate_key (), b.name.collate_key ());
         }
     }
 
     /**
      * SourceList item. It stores the number of the corresponding page in the notebook widget.
      */
-    private class SourceListItem : Granite.Widgets.SourceList.Item {
+    private class SourceListItem : Granite.Widgets.SourceList.ExpandableItem,
+                                   Granite.Widgets.SourceListDragSource,
+                                   Granite.Widgets.SourceListDragDest
+    {
         public int page_num { get; set; default = -1; }
         private static Icon? themed_icon;
 
@@ -78,6 +133,22 @@ public class Granite.Demo : Granite.Application {
                 themed_icon = new ThemedIcon.with_default_fallbacks ("help-info-symbolic");
 
             icon = themed_icon;
+        }
+
+        public bool draggable () {
+            return true;
+        }
+
+        public void prepare_selection_data (Gtk.SelectionData data) {
+        }
+
+        public bool data_drop_possible (Gdk.DragContext context, Gtk.SelectionData data) {
+            return true;
+        }
+
+        public Gdk.DragAction data_received (Gdk.DragContext context, Gtk.SelectionData data) {
+            message ("drag data dropped into '%s'", name);
+            return Gdk.DragAction.COPY;
         }
     }
 
@@ -131,7 +202,7 @@ public class Granite.Demo : Granite.Application {
         main_toolbar.vexpand = false;
 
         // SourceList
-        var sidebar = new Granite.Widgets.SourceList ();
+        var sidebar = new Granite.Widgets.SourceList (new SourceListRootItem ());
         sidebar.width_request = 200;
 
         var page_switcher = new Gtk.Notebook ();
@@ -141,17 +212,27 @@ public class Granite.Demo : Granite.Application {
 
         sidebar.item_selected.connect ((item) => {
             var sidebar_item = item as SourceListItem;
-            assert (sidebar_item != null);
-            page_switcher.set_current_page (sidebar_item.page_num);
+            if (sidebar_item != null)
+                page_switcher.set_current_page (sidebar_item.page_num);
         });
 
         // Main sidebar categories
-        var widgets_category = new SourceListExpandableItem ("Widgets");
-        var services_category = new SourceListExpandableItem ("Services");
+        var widgets_category = new SourceListSortedItem ("Widgets");
+        var test_category = new SourceListSortableItem ("Test");
+
+        for (int ctr = 0; ctr < 10; ctr++) {
+            var item = new SourceListSortableItem ("Item %i".printf (ctr));
+            item.selectable = ctr % 3 != 0;
+
+            for (int i = 0; i < 5; i++)
+                item.add (new SourceListItem ("SubItem %i / %i".printf (ctr, i)));
+
+            test_category.add (item);
+        }
 
         // Add and expand categories
         sidebar.root.add (widgets_category);
-        sidebar.root.add (services_category);
+        sidebar.root.add (test_category);
         sidebar.root.expand_all ();
 
         var sidebar_paned = new Granite.Widgets.ThinPaned ();
