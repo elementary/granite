@@ -380,11 +380,20 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_sidebar_paned_get_type@Base 0.2.0
  granite_widgets_sidebar_paned_new@Base 0.2.0
  granite_widgets_source_list_construct@Base 0.2.0
+ granite_widgets_source_list_disable_drag_dest@Base 0.3.0~
+ granite_widgets_source_list_disable_drag_source@Base 0.3.0~
+ granite_widgets_source_list_drag_dest_data_drop_possible@Base 0.3.0~
+ granite_widgets_source_list_drag_dest_data_received@Base 0.3.0~
+ granite_widgets_source_list_drag_dest_get_type@Base 0.3.0~
+ granite_widgets_source_list_drag_source_draggable@Base 0.3.0~
+ granite_widgets_source_list_drag_source_get_type@Base 0.3.0~
+ granite_widgets_source_list_drag_source_prepare_selection_data@Base 0.3.0~
+ granite_widgets_source_list_enable_drag_dest@Base 0.3.0~
+ granite_widgets_source_list_enable_drag_source@Base 0.3.0~
  granite_widgets_source_list_expandable_item_add@Base 0.2.0
  granite_widgets_source_list_expandable_item_clear@Base 0.2.0
  granite_widgets_source_list_expandable_item_collapse_all@Base 0.2.0
  granite_widgets_source_list_expandable_item_collapse_with_parents@Base 0.2.0
- granite_widgets_source_list_expandable_item_compare@Base 0.2.3
  granite_widgets_source_list_expandable_item_construct@Base 0.2.0
  granite_widgets_source_list_expandable_item_contains@Base 0.2.0
  granite_widgets_source_list_expandable_item_expand_all@Base 0.2.0
@@ -440,6 +449,9 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_source_list_set_selected@Base 0.2.0
  granite_widgets_source_list_set_sort_direction@Base 0.2.0
  granite_widgets_source_list_set_sort_func@Base 0.2.0
+ granite_widgets_source_list_sortable_allow_dnd_sorting@Base 0.3.0~
+ granite_widgets_source_list_sortable_compare@Base 0.3.0~
+ granite_widgets_source_list_sortable_get_type@Base 0.3.0~
  granite_widgets_source_list_start_editing_item@Base 0.2.0
  granite_widgets_source_list_stop_editing@Base 0.2.0
  granite_widgets_static_notebook_append_page@Base 0.2.0
