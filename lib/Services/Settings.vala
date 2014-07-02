@@ -155,7 +155,7 @@ namespace Granite.Services {
         
         construct {
         
-            debug ("Loading settings from schema '%s'", schema.schema);
+            debug ("Loading settings from schema '%s'", schema.schema_id);
             
             var obj_class = (ObjectClass) get_type ().class_ref ();
             var properties = obj_class.list_properties ();
@@ -190,7 +190,7 @@ namespace Granite.Services {
         
         void handle_verify_notify (Object sender, ParamSpec property) {
         
-            warning ("Key '%s' failed verification in schema '%s', changing value", property.name, schema.schema);
+            warning ("Key '%s' failed verification in schema '%s', changing value", property.name, schema.schema_id);
         }
         
         private void call_verify (string key) {
@@ -252,7 +252,7 @@ namespace Granite.Services {
                 notify.connect (handle_notify);
                 return;
             } else {
-                debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema);
+                debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema_id);
                 notify.connect (handle_notify);
                 return;
             }
@@ -318,7 +318,7 @@ namespace Granite.Services {
             else if (type.is_a (typeof (SettingsSerializable)))
                 success = schema.set_string (key, (val.get_object () as SettingsSerializable).settings_serialize ());
             else
-                debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema);
+                debug ("Unsupported settings type '%s' for key '%s' in schema '%s'", type.name (), key, schema.schema_id);
             
             if (!success)
                 warning ("Key '%s' could not be written to.", key);
