@@ -185,15 +185,13 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         // Option label
-        var label = new Gtk.Label (Markup.printf_escaped ("<span size='11700'>%s</span>", option_text));
+        var label = new Gtk.Label (option_text);
         label.get_style_context ().add_class ("h3");
-        label.use_markup = true;
         label.halign = Gtk.Align.START;
         label.valign = Gtk.Align.CENTER;
 
         // Description label
-        var description = new Gtk.Label (Markup.printf_escaped ("<span size='11400'>%s</span>", description_text));
-        description.use_markup = true;
+        var description = new Gtk.Label (description_text);
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
 
