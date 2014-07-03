@@ -79,23 +79,19 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         // Box properties
         content.homogeneous = false;
 
-        // Add content-view styling
-        get_style_context().add_class (StyleClass.CONTENT_VIEW);
-
         // Top spacer
         content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
         // Labels
         title_label = new Gtk.Label (title_text);
-        Utils.apply_text_style_to_label (TextStyle.H1, title_label);
+        title_label.get_style_context ().add_class ("h1");
 
         title_label.set_justify (Gtk.Justification.CENTER);
         content.pack_start (title_label, false, true, 0);
 
         subtitle_label = new Gtk.Label (subtitle_text);
-        Utils.apply_text_style_to_label (TextStyle.H2, subtitle_label);
+        subtitle_label.get_style_context ().add_class ("h2");
 
-        subtitle_label.sensitive = false;
         subtitle_label.set_justify (Gtk.Justification.CENTER);
 
         content.pack_start (subtitle_label, false, true, 2);
@@ -189,17 +185,17 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         // Option label
-        var label = new Gtk.Label (Markup.printf_escaped ("<span weight='medium' size='11700'>%s</span>", option_text));
+        var label = new Gtk.Label (Markup.printf_escaped ("<span size='11700'>%s</span>", option_text));
+        label.get_style_context ().add_class ("h3");
         label.use_markup = true;
         label.halign = Gtk.Align.START;
         label.valign = Gtk.Align.CENTER;
 
         // Description label
-        var description = new Gtk.Label (Markup.printf_escaped ("<span weight='medium' size='11400'>%s</span>", description_text));
+        var description = new Gtk.Label (Markup.printf_escaped ("<span size='11400'>%s</span>", description_text));
         description.use_markup = true;
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
-        description.sensitive = false;
 
         // Button
         var button = new Gtk.Button ();
@@ -238,4 +234,3 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         return this.children.index (button);
     }
 }
-
