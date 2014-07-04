@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-23 19:24+0100\n"
-"PO-Revision-Date: 2014-04-15 13:47+0000\n"
-"Last-Translator: Simeon <Unknown>\n"
+"PO-Revision-Date: 2014-07-03 17:44+0000\n"
+"Last-Translator: haeckle <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-02 06:10+0000\n"
-"X-Generator: Launchpad (build 17082)\n"
+"X-Launchpad-Export-Date: 2014-07-04 06:10+0000\n"
+"X-Generator: Launchpad (build 17086)\n"
 
 #: /home/noelco/granite/po/../lib//Application.vala:164
 msgid "Developers"
@@ -23,7 +23,7 @@ msgstr "Entwickler"
 
 #: /home/noelco/granite/po/../lib//Application.vala:174
 msgid "Website"
-msgstr "Webseite"
+msgstr "Internetseite"
 
 #: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:124
 msgid "Translate This App"
@@ -74,7 +74,7 @@ msgstr "Geschlossene Tabs"
 #: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
-"Konnte keine Verbindung zu Contractor herstellen. Sie müssen es "
+"Es konnte keine Verbindung zu Contractor hergestellt werden. Sie müssen es "
 "möglicherweise erst installieren."
 
 #: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
@@ -137,7 +137,7 @@ msgstr "%Y"
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr "%d. %b"
+msgstr "%e. %b."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /home/noelco/granite/po/../lib//Widgets/Utils.vala:114
@@ -171,7 +171,7 @@ msgstr "Geschrieben von:"
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
-msgstr "Copyright © %s"
+msgstr "Urheberrecht © %s"
 
 #: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
