@@ -124,7 +124,8 @@ namespace Granite.Widgets {
 
                 update_text (true);
             });
-
+            
+            /// TRANSLATORS: this will only show up when 12-hours clock is in use
             var am_pm_label = new Gtk.Label (_("PM"));
             am_pm_label.hexpand = true;
             am_pm_label.justify = Gtk.Justification.RIGHT;
