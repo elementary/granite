@@ -7,187 +7,189 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-12-23 19:24+0100\n"
+"POT-Creation-Date: 2014-07-19 16:16-0500\n"
 "PO-Revision-Date: 2014-03-16 07:25+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-02 06:11+0000\n"
-"X-Generator: Launchpad (build 17082)\n"
+"X-Launchpad-Export-Date: 2014-07-20 06:03+0000\n"
+"X-Generator: Launchpad (build 17114)\n"
 
-#: /home/noelco/granite/po/../lib//Application.vala:164
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Application.vala:240
 msgid "Developers"
 msgstr "開發者"
 
-#: /home/noelco/granite/po/../lib//Application.vala:174
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Application.vala:250
 msgid "Website"
 msgstr "網站"
 
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:124
-msgid "Translate This App"
-msgstr "翻譯此程式"
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:129
+msgid "PM"
+msgstr ""
 
-#: /home/noelco/granite/po/../lib//Widgets/AboutDialog.vala:129
-msgid "Report a Problem"
-msgstr "回報問題"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:170
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:195
-msgid "Close Tab"
-msgstr "關閉分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:198
-msgid "Open in a new Window"
-msgstr "以新視窗開啟"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:199
-msgid "Duplicate"
-msgstr "再製"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:248
-msgid "Close Other Tab"
-msgstr "關閉其他分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:248
-msgid "Close Other Tabs"
-msgstr "關閉其他分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:350
-msgid "Clear All"
-msgstr "全部清除"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:600
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:634
-msgid "New Tab"
-msgstr "新增分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:601
-msgid "Undo Close Tab"
-msgstr "重新開啟關閉的分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/DynamicNotebook.vala:644
-msgid "Closed Tabs"
-msgstr "關閉的分頁"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "無法聯絡 Contractor。您可能需要安裝它"
-
-#: /home/noelco/granite/po/../lib//Widgets/ContractorView.vala:103
-msgid "No action found for this file"
-msgstr "沒有動作找到這檔案"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:72
-msgid "Menu"
-msgstr "選單"
-
-#: /home/noelco/granite/po/../lib//Widgets/AppMenu.vala:82
-msgid "About"
-msgstr "關於"
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:117
-msgid "PM:"
-msgstr "下午："
-
-#: /home/noelco/granite/po/../lib//Widgets/TimePicker.vala:135
+#. / TRANSLATORS: separates hours from minutes.
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:149
 msgid ":"
 msgstr "："
 
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "選單"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "關於"
+
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:77
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
 msgstr "%p %l:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:80
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:80
 msgid "%l:%M %p"
 msgstr "%p %l:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:85
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:85
 msgid "%H:%M:%S"
 msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:88
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:88
 msgid "%H:%M"
 msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:102
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
 msgstr "%Y年%m月%d日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:105
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
 msgstr "%Y年%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:108
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:108
 msgid "%Y"
 msgstr "%Y年"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:111
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:111
 msgid "%b %e"
 msgstr "%b%e日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:114
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:114
 msgid "%a %Y"
 msgstr "%Y年，%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:117
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
 msgstr "%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:120
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
 msgstr "%b%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: /home/noelco/granite/po/../lib//Widgets/Utils.vala:123
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:123
 msgid "%b"
 msgstr "%b"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:36
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:215
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:254
+msgid "Close Tab"
+msgstr "關閉分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:257
+msgid "Open in a new Window"
+msgstr "以新視窗開啟"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:258
+msgid "Duplicate"
+msgstr "再製"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:307
+msgid "Close Other Tab"
+msgstr "關閉其他分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:307
+msgid "Close Other Tabs"
+msgstr "關閉其他分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:483
+msgid "Clear All"
+msgstr "全部清除"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:759
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:792
+msgid "New Tab"
+msgstr "新增分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:760
+msgid "Undo Close Tab"
+msgstr "重新開啟關閉的分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:802
+msgid "Closed Tabs"
+msgstr "關閉的分頁"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/ContractorView.vala:105
+msgid "Could not contact Contractor. You may need to install it"
+msgstr "無法聯絡 Contractor。您可能需要安裝它"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/ContractorView.vala:105
+msgid "No action found for this file"
+msgstr "沒有動作找到這檔案"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AboutDialog.vala:126
+msgid "Translate This App"
+msgstr "翻譯此程式"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AboutDialog.vala:131
+msgid "Report a Problem"
+msgstr "回報問題"
+
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
 msgstr "設計："
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:55
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
 msgstr "撰寫："
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:93
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
 msgstr "著作權 © %s"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:111
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
 msgstr "文件："
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:171
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
 msgstr "翻譯：%s"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 msgid "Close"
 msgstr "關閉"
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
 msgstr "本程式是基於 "
 
-#: /home/noelco/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr " 授權條款發布，「絕對沒有任何保證」，詳情請參照 "
