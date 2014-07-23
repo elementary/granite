@@ -126,7 +126,7 @@ namespace Granite.Widgets {
         internal bool show_icon {
             get { return _show_icon; }
             set {
-                _icon.visible = (value && !working);
+                _icon.visible = value && !working;
                 _show_icon = value;
             }
         }
@@ -143,7 +143,7 @@ namespace Granite.Widgets {
             get { return __working; }
             set {
                 __working = _working.visible = value;
-                _icon.visible = (show_icon && !value);
+                _icon.visible = show_icon && !value;
             }
         }
 
