@@ -1068,14 +1068,6 @@ namespace Granite.Widgets {
                 return;
             }
 
-            var pin_state = !tab.pinned;
-            if (pin_state) {
-                tab._icon.visible = !tab.working;
-                tab.closable = tabs_closable;
-            } else {
-                tab._icon.visible = show_icons && !tab.working;
-            }
-
             recalc_order ();
             recalc_size ();
         }
@@ -1145,7 +1137,7 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
 
-            tab._icon.visible = show_icons && !tab.working;
+            tab.show_icon = show_icons;
             tab.duplicate_m.visible = allow_duplication;
             tab.new_window_m.visible = allow_new_window;
             tab.pin_m.visible = allow_pinning;
