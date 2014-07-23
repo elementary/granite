@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-07-19 16:16-0500\n"
-"PO-Revision-Date: 2014-03-13 13:48+0000\n"
+"PO-Revision-Date: 2014-07-22 11:27+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-20 06:02+0000\n"
+"X-Launchpad-Export-Date: 2014-07-23 06:16+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Application.vala:240
@@ -28,7 +28,7 @@ msgstr "Veebileht"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:149
