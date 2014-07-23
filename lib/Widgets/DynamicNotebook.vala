@@ -122,6 +122,15 @@ namespace Granite.Widgets {
             }
         }
 
+        bool _show_icon;
+        internal bool show_icon {
+            get { return _show_icon; }
+            set {
+                _icon.visible = (value && !working);
+                _show_icon = value;
+            }
+        }
+
         internal Gtk.Image _icon;
         public GLib.Icon? icon {
             owned get { return _icon.gicon;  }
@@ -132,7 +141,10 @@ namespace Granite.Widgets {
         bool __working;
         public bool working {
             get { return __working; }
-            set { __working = _working.visible = value; _icon.visible = !value; }
+            set {
+                __working = _working.visible = value;
+                _icon.visible = (show_icon && !value);
+            }
         }
 
         public Pango.EllipsizeMode ellipsize_mode {
@@ -532,7 +544,7 @@ namespace Granite.Widgets {
             get { return _show_icons; }
             set {
                 if (_show_icons != value) {
-                    tabs.foreach ((t) => t._icon.visible = (value && !t.working));
+                    tabs.foreach ((t) => t.show_icon = value);
                 }
                 _show_icons = value;
             }
