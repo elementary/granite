@@ -75,12 +75,6 @@ namespace Granite.Widgets {
         public AboutDialog () {
             Box action_area = (Box) get_action_area ();
 
-//            action_area.margin = 4;
-//            action_area.margin_bottom = 8;
-//            this.get_content_area ().margin = 10;
-//            this.get_content_area ().margin_top = 27;
-//            this.get_content_area ().margin_bottom = 3;
-
             /* help button */
             help_button = new Button.with_label ("?");
             help_button.get_style_context ().add_class ("help_button");
