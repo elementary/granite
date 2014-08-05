@@ -145,6 +145,8 @@ namespace Granite {
         public Application () {
 #if LINUX
             prctl (15, exec_name, 0, 0, 0);
+#elif DragonFly || FreeBSD || NetBSD || OpenBSD
+            setproctitle (exec_name);
 #endif
             Environment.set_prgname (exec_name);
 
@@ -166,6 +168,12 @@ namespace Granite {
 #if LINUX
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
             protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
+#elif DragonFly || FreeBSD
+        [CCode (cheader_filename = "unistd.h", cname = "setproctitle")]
+            protected extern static void setproctitle (string fmt, ...);
+#elif NetBSD || OpenBSD
+        [CCode (cheader_filename = "stdlib.h", cname = "setproctitle")]
+            protected extern static void setproctitle (string fmt, ...);
 #endif
 
         /**
