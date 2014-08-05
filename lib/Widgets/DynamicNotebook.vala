@@ -122,6 +122,16 @@ namespace Granite.Widgets {
             }
         }
 
+        bool _show_icon;
+        internal bool show_icon {
+            get { return _show_icon; }
+
+            set {
+                _icon.visible = value && !working;
+                _show_icon = value;
+            }
+        }
+
         internal Gtk.Image _icon;
         public GLib.Icon? icon {
             owned get { return _icon.gicon;  }
@@ -132,7 +142,11 @@ namespace Granite.Widgets {
         bool __working;
         public bool working {
             get { return __working; }
-            set { __working = _working.visible = value; _icon.visible = !value; }
+
+            set {
+                __working = _working.visible = value;
+                _icon.visible = show_icon && !value;
+            }
         }
 
         public Pango.EllipsizeMode ellipsize_mode {
@@ -532,7 +546,7 @@ namespace Granite.Widgets {
             get { return _show_icons; }
             set {
                 if (_show_icons != value) {
-                    tabs.foreach ((t) => t._icon.visible = (value && !t.working));
+                    tabs.foreach ((t) => t.show_icon = value);
                 }
                 _show_icons = value;
             }
@@ -1056,14 +1070,6 @@ namespace Granite.Widgets {
                 return;
             }
 
-            var pin_state = !tab.pinned;
-            if (pin_state) {
-                tab._icon.visible = !tab.working;
-                tab.closable = tabs_closable;
-            } else {
-                tab._icon.visible = show_icons && !tab.working;
-            }
-
             recalc_order ();
             recalc_size ();
         }
@@ -1133,7 +1139,7 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
 
-            tab._icon.visible = show_icons && !tab.working;
+            tab.show_icon = show_icons;
             tab.duplicate_m.visible = allow_duplication;
             tab.new_window_m.visible = allow_new_window;
             tab.pin_m.visible = allow_pinning;
