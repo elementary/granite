@@ -7,191 +7,191 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-07-19 16:16-0500\n"
-"PO-Revision-Date: 2014-04-20 12:54+0000\n"
+"POT-Creation-Date: 2014-08-06 21:48-0500\n"
+"PO-Revision-Date: 2014-08-06 21:08+0000\n"
 "Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-20 06:03+0000\n"
-"X-Generator: Launchpad (build 17114)\n"
+"X-Launchpad-Export-Date: 2014-08-07 06:08+0000\n"
+"X-Generator: Launchpad (build 17147)\n"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Application.vala:240
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 msgid "Developers"
 msgstr "Fejlesztők"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Application.vala:250
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 msgid "Website"
 msgstr "Weblap"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:129
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "PM"
-msgstr ""
+msgstr "du."
 
 #. / TRANSLATORS: separates hours from minutes.
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/TimePicker.vala:149
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 msgid ":"
 msgstr ":"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:72
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
 msgid "Menu"
 msgstr "Menü"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AppMenu.vala:82
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
 msgid "About"
 msgstr "Névjegy"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:77
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
 msgstr "%p %l.%M.%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:80
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 msgid "%l:%M %p"
 msgstr "%k.%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:85
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 msgid "%H:%M:%S"
 msgstr "%H.%M.%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:88
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 msgid "%H:%M"
 msgstr "%H.%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:102
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
 msgstr "%Y. %b. %e., %a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:105
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
 msgstr "%Y. %b. %e."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:108
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 msgid "%Y"
 msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:111
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 msgid "%b %e"
 msgstr "%b. %e."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:114
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 msgid "%a %Y"
 msgstr "%Y, %a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:117
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
 msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:120
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
 msgstr "%b. %e., %a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/Utils.vala:123
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 msgid "%b"
 msgstr "%b"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:215
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:254
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
 msgid "Close Tab"
 msgstr "Lap bezárása"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:257
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
 msgid "Open in a new Window"
 msgstr "Megnyitás új ablakban"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:258
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 msgid "Duplicate"
 msgstr "Duplikálás"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:307
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tab"
 msgstr "Másik lap bezárása"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:307
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:483
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 msgid "Clear All"
 msgstr "Az összes törlése"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:759
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:792
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:773
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:806
 msgid "New Tab"
 msgstr "Új lap"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:760
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
 msgstr "Lap bezárásának visszavonása"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/DynamicNotebook.vala:802
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:816
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/ContractorView.vala:105
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
 "Nem sikerült a Contractorhoz kapcsolódni. Lehet, hogy telepítenie kell."
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/ContractorView.vala:105
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "No action found for this file"
 msgstr "Nem található művelet a fájlhoz"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AboutDialog.vala:126
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 msgid "Translate This App"
 msgstr "Alkalmazás fordítása"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//Widgets/AboutDialog.vala:131
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
 msgstr "Hibajelentés"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:36
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
 msgstr "Tervezte:"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:55
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
 msgstr "Írta:"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:93
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
 msgstr "Copyright © %s"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:111
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
 msgstr "Dokumentálta:"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:171
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
 msgstr "Fordította: %s"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 msgid "Close"
 msgstr "Bezárás"
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
 msgstr "Ez a program a "
 
-#: /home/xapantu/dev/elementary/jhbuild/bzr/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " licenc feltételeinek megfelelően került kiadásra, melyre nem vonatkozik "
