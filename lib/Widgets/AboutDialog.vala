@@ -92,7 +92,7 @@ namespace Granite.Widgets {
             ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
 
             /* translate button */
-            translate_button = new Button.with_label(_("Translate This App"));
+            translate_button = new Button.with_label(_("Suggest Translations"));
             translate_button.clicked.connect ( () => { activate_link(translate); });
             action_area.pack_start (translate_button, false, false, 0);
 
