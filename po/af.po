@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-09 11:10-0500\n"
-"PO-Revision-Date: 2012-03-24 18:23+0000\n"
-"Last-Translator: Geoffrey De Belie <Unknown>\n"
+"PO-Revision-Date: 2014-08-15 09:29+0000\n"
+"Last-Translator: Jaycee Lock <jaycee.lock@gmail.com>\n"
 "Language-Team: Afrikaans <af@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-10 05:48+0000\n"
+"X-Launchpad-Export-Date: 2014-08-16 06:00+0000\n"
 "X-Generator: Launchpad (build 17156)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 msgid "Developers"
-msgstr ""
+msgstr "Ontwikkelaars"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 msgid "Website"
-msgstr ""
+msgstr "Webwerf"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 msgid "PM"
-msgstr ""
+msgstr "NM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
 msgid "Menu"
-msgstr "Menu"
+msgstr "Kieslys"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
 msgid "About"
@@ -48,93 +48,93 @@ msgstr "Aangaande"
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 msgid "%l:%M %p"
-msgstr ""
+msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%a %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr ""
+msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr ""
+msgstr "%a %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
 msgid "Close Tab"
-msgstr ""
+msgstr "Sluit blad"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
 msgid "Open in a new Window"
-msgstr ""
+msgstr "Maak 'n nuwe Venster oop"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 msgid "Duplicate"
-msgstr ""
+msgstr "Dupliseer"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Maak Ander Blad Toe"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Maak Ander Blaaie Toe"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 msgid "Clear All"
-msgstr ""
+msgstr "Maak Alles Skoon"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:773
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:806
 msgid "New Tab"
-msgstr ""
+msgstr "Nuwe Blad"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
@@ -142,54 +142,55 @@ msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:816
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Toegemaakte Blaaie"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
+msgstr "Kon nie Contractor kontak nie. Jy moet dit dalk nog installeer."
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr ""
+msgstr "Geen aksie gevind vir hierdie leêr nie."
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Stel Vertalings Voor"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
-msgstr ""
+msgstr "Rapporteer 'n Probleem"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
-msgstr ""
+msgstr "Ontwerp deur:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
-msgstr ""
+msgstr "Geskryf deur:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
-msgstr ""
+msgstr "Kopiereg © %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
-msgstr ""
+msgstr "Gedokumenteer deur:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Vertaal deur %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 msgid "Close"
-msgstr ""
+msgstr "Sluit"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
-msgstr ""
+msgstr "Hierdie program is gepubliseer onder die terme van die "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
+" lisensie, dit kom met ABSOLUUT GEEN WAARBORG; vir meer inligting, besoek "
