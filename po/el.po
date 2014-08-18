@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-09 11:10-0500\n"
-"PO-Revision-Date: 2014-08-02 17:53+0000\n"
-"Last-Translator: Stathis Iosifidis <Unknown>\n"
+"PO-Revision-Date: 2014-08-17 08:06+0000\n"
+"Last-Translator: Jim Spentzos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-10 05:48+0000\n"
+"X-Launchpad-Export-Date: 2014-08-18 06:28+0000\n"
 "X-Generator: Launchpad (build 17156)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
@@ -109,11 +109,11 @@ msgstr "%b"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
 msgid "Close Tab"
-msgstr "Κλείσιμο καρτέλας"
+msgstr "Κλείσιμο Καρτέλας"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
 msgid "Open in a new Window"
-msgstr "Άνοιγμα σε νέο παράθυρο"
+msgstr "Άνοιγμα σε νέο Παράθυρο"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 msgid "Duplicate"
@@ -121,11 +121,11 @@ msgstr "Διπλότυπο"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tab"
-msgstr "Κλείσιμο άλλης καρτέλας"
+msgstr "Κλείσιμο της Άλλης Καρτέλας"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 msgid "Close Other Tabs"
-msgstr "Κλείσιμο των άλλων καρτελών"
+msgstr "Κλείσιμο των Άλλων Καρτελών"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 msgid "Clear All"
@@ -134,33 +134,33 @@ msgstr "Εκκαθάριση Όλων"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:773
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:806
 msgid "New Tab"
-msgstr "Νέα καρτέλα"
+msgstr "Νέα Καρτέλα"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
-msgstr "Αναίρεση κλεισίματος καρτέλας"
+msgstr "Αναίρεση Κλεισίματος Καρτέλας"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:816
 msgid "Closed Tabs"
-msgstr "Κλειστές καρτέλες"
+msgstr "Κλειστές Καρτέλες"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
-"Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία Contractor. Ίσως χρειαστεί να "
-"την εγκαταστήσετε"
+"Αδυναμία επικοινωνίας με το Contractor. Μπορεί να χρειάζεται να το "
+"εγκαταστήσετε"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr "Δεν βρέθηκε ενέργεια γι αυτό το αρχείο"
+msgstr "Δεν βρέθηκε ενέργεια για αυτό το αρχείο"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Πρόταση Μεταφράσεων"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
-msgstr "Αναφορά προβλήματος"
+msgstr "Αναφορά Προβλήματος"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
@@ -168,12 +168,12 @@ msgstr "Σχεδιασμένο από:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
-msgstr "Γραμμένο από"
+msgstr "Γραμμένο από:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "Copyright © %s"
-msgstr "Πνευματική ιδιοκτησία © %s"
+msgstr "Πνευματικά δικαιώματα © %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
@@ -195,4 +195,5 @@ msgstr "Αυτό το πρόγραμμα δημοσιεύεται υπό του�
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" αδείας και έρχεται ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ. Για λεπτομέρειες, επισκεφθείτε "
+" αδείας και δεν έρχεται με ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Για λεπτομέρειες, "
+"επισκεφθείτε το "
