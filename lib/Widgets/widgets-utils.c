@@ -67,7 +67,7 @@ void
     if (!dialog)
     {
         //dialog = gtk_about_dialog_new ();
-        dialog = granite_widgets_about_dialog_new ();
+        dialog = GTK_WIDGET (granite_widgets_about_dialog_new ());
         g_object_ref_sink (dialog);
 
         g_signal_connect (dialog, "delete-event",
