@@ -941,7 +941,7 @@ namespace Granite.Widgets {
             notebook.create_window.connect (on_create_window);
         }
 
-        ~Notebook () {
+        ~DynamicNotebook () {
             notebook.switch_page.disconnect (on_switch_page);
             notebook.page_added.disconnect (on_page_added);
             notebook.page_removed.disconnect (on_page_removed);
