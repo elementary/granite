@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-09 11:10-0500\n"
-"PO-Revision-Date: 2014-09-22 13:49+0000\n"
+"PO-Revision-Date: 2014-09-25 19:12+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-23 06:52+0000\n"
+"X-Launchpad-Export-Date: 2014-09-26 05:58+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
@@ -48,7 +48,7 @@ msgstr "Tietoja"
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
