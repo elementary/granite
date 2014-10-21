@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-08-09 11:10-0500\n"
-"PO-Revision-Date: 2014-08-01 07:49+0000\n"
-"Last-Translator: qperroit <quentin.perroit@gmail.com>\n"
+"PO-Revision-Date: 2014-10-20 20:02+0000\n"
+"Last-Translator: RM <l4rt1st-1nc0nnu@laposte.net>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-08-10 05:48+0000\n"
-"X-Generator: Launchpad (build 17156)\n"
+"X-Launchpad-Export-Date: 2014-10-21 06:31+0000\n"
+"X-Generator: Launchpad (build 17203)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 msgid "Developers"
@@ -155,7 +155,7 @@ msgstr "Aucune action n'a été trouvée pour ce fichier"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Proposer des traductions"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
