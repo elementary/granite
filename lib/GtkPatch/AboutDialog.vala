@@ -90,7 +90,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 copyright_label.set_text("");
             }
             else {
-                copyright_label.set_markup ("<span size=\"small\">" + _("Copyright © %s").printf (_copyright.replace("&", "&amp;")) + "</span>\n");
+                copyright_label.set_markup ("<span size=\"small\">" + _("© %s").printf (_copyright.replace("&", "&amp;")) + "</span>\n");
                 copyright_label.show();
             }
         }
