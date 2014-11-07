@@ -7,15 +7,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-08-09 11:10-0500\n"
+"POT-Creation-Date: 2014-10-29 15:12-0500\n"
 "PO-Revision-Date: 2014-10-20 20:02+0000\n"
 "Last-Translator: RM <l4rt1st-1nc0nnu@laposte.net>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-21 06:31+0000\n"
-"X-Generator: Launchpad (build 17203)\n"
+"X-Launchpad-Export-Date: 2014-11-07 06:06+0000\n"
+"X-Generator: Launchpad (build 17231)\n"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
+msgid "Designed by:"
+msgstr "Conçu par :"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
+msgid "Written by:"
+msgstr "Développé par :"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
+#, c-format
+msgid "© %s"
+msgstr ""
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
+msgid "Documented by:"
+msgstr "Documenté par :"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
+#, c-format
+msgid "Translated by %s"
+msgstr "Traduit par %s"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
+msgid "Close"
+msgstr "Fermer"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+msgid "This program is published under the terms of the "
+msgstr "Ce programme est publié conformément à la licence "
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
+msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+msgstr ""
+" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 msgid "Developers"
@@ -24,6 +59,62 @@ msgstr "Développeurs"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 msgid "Website"
 msgstr "Site web"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
+msgid "Close Tab"
+msgstr "Fermer l’onglet"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
+msgid "Open in a new Window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
+msgid "Close Other Tab"
+msgstr "Fermer l'autre onglet"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
+msgid "Close Other Tabs"
+msgstr "Fermer les autres onglets"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
+msgid "Clear All"
+msgstr "Tout effacer"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
+msgid "New Tab"
+msgstr "Nouvel onglet"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
+msgid "Undo Close Tab"
+msgstr "Réouvrir l'onglet fermé"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
+msgid "Closed Tabs"
+msgstr "Onglets fermés"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
+msgid "Suggest Translations"
+msgstr "Proposer des traductions"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
+msgid "Report a Problem"
+msgstr "Signaler un problème"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
+msgid "Menu"
+msgstr "Menu"
+
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
+msgid "About"
+msgstr "À propos"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
@@ -35,15 +126,14 @@ msgstr "PM"
 msgid ":"
 msgstr ":"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
-msgid "Menu"
-msgstr "Menu"
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
+msgid "Could not contact Contractor. You may need to install it"
+msgstr ""
+"Impossible d'accéder à Contractor. Vous avez peut-être besoin de l'installer."
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
-msgid "About"
-msgstr "À propos"
+#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
+msgid "No action found for this file"
+msgstr "Aucune action n'a été trouvée pour ce fichier"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
@@ -105,93 +195,3 @@ msgstr "%a %e %b"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 msgid "%b"
 msgstr "%b"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
-msgid "Close Tab"
-msgstr "Fermer l’onglet"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
-msgid "Open in a new Window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
-msgid "Duplicate"
-msgstr "Dupliquer"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-msgid "Close Other Tab"
-msgstr "Fermer l'autre onglet"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-msgid "Close Other Tabs"
-msgstr "Fermer les autres onglets"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
-msgid "Clear All"
-msgstr "Tout effacer"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:773
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:806
-msgid "New Tab"
-msgstr "Nouvel onglet"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:774
-msgid "Undo Close Tab"
-msgstr "Réouvrir l'onglet fermé"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:816
-msgid "Closed Tabs"
-msgstr "Onglets fermés"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"Impossible d'accéder à Contractor. Vous avez peut-être besoin de l'installer."
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-msgid "No action found for this file"
-msgstr "Aucune action n'a été trouvée pour ce fichier"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
-msgid "Suggest Translations"
-msgstr "Proposer des traductions"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
-msgid "Report a Problem"
-msgstr "Signaler un problème"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Conçu par :"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
-msgid "Written by:"
-msgstr "Développé par :"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
-#, c-format
-msgid "Copyright © %s"
-msgstr "Copyright © %s"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
-msgid "Documented by:"
-msgstr "Documenté par :"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
-#, c-format
-msgid "Translated by %s"
-msgstr "Traduit par %s"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
-msgid "Close"
-msgstr "Fermer"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-msgid "This program is published under the terms of the "
-msgstr "Ce programme est publié conformément à la licence "
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr ""
-" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
