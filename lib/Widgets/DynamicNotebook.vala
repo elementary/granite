@@ -1,6 +1,6 @@
 /***
     Copyright (C) 2011-2013 Tom Beckmann <tom@elementaryos.org>
-    
+
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
@@ -764,6 +764,7 @@ namespace Granite.Widgets {
          */
         public DynamicNotebook () {
             this.notebook = new Gtk.Notebook ();
+            this.notebook.can_focus = false;
             this.visible_window = false;
             this.get_style_context ().add_class ("dynamic-notebook");
 
