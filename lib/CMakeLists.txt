@@ -74,6 +74,12 @@ link_directories (${LIB_PATHS})
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
 
+option (VAPI_COMMENTS "Include comments in the generated vapi file" OFF)
+
+if (VAPI_COMMENTS)
+    set (VALAC_OPTIONS ${VALAC_OPTIONS} --vapi-comments)
+endif ()
+
 vala_precompile (VALA_C ${PKG_NAME}
     ${VALA_SOURCES}
 PACKAGES
