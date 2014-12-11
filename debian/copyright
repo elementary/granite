@@ -56,7 +56,7 @@ Copyright: 2008 Christian Hergert <chris@dronelabs.com>
 License: LGPL-3.0+
 
 
-Files: demo/main.vala
+Files: demo/GraniteDemo.vala
 Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
            2011-2012 Jaap Broekhuizen <jaapz.b@gmail.com>
            2012 Victor Martinez <victor@elementaryos.org>
@@ -85,7 +85,7 @@ Copyright: 2011 Maxwell Barvian <maxwell@elementaryos.org>
 License: LGPL-3.0+
 
 
-Files: lib/Widgets/widgets-utils.c lib/GtkPatch/gtkpatch-utils.c
+Files: lib/Widgets/widgets-utils.c
 Copyright: 2001 CodeFactory AB
            2001-2002 Anders Carlsson
            2003-2004 Matthias Clasen <mclasen@redhat.com>
@@ -94,12 +94,12 @@ License: LGPL-2.0+
 
 Files: cmake/FindGObjectIntrospection.cmake
 Copyright: 2010, Pino Toscano, <pino@kde.org>
-License: 3-clause BSD
+License: BSD-3-clause
 
 
 Files: cmake/ParseArguments.cmake
 Copyright: 2000-2009 Kitware, Inc., Insight Software Consortium
-License: 2-clause BSD
+License: BSD-2-clause
 
 
 Files: cmake/FindVala.cmake
@@ -107,7 +107,7 @@ Files: cmake/FindVala.cmake
        cmake/ValaVersion.cmake
        cmake/README.Vala.rst
 Copyright: 2009-2010 Jakob Westhoff
-License: 2-clause BSD
+License: BSD-2-clause
 
 
 Files: debian/*
@@ -175,7 +175,7 @@ License: LGPL-3.0+
  /usr/share/common-licenses/LGPL-3.
 
 
-License: 3-clause BSD
+License: BSD-3-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -199,7 +199,7 @@ License: 3-clause BSD
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-License: 2-clause BSD
+License: BSD-2-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
  .
