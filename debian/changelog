@@ -1,23 +1,84 @@
-granite (0.3.0) UNRELEASED; urgency=low
+granite (0.3.0-2~experimental1) experimental; urgency=low
+
+  * Fix build on valac 0.25.2 and later by cherrypicking an upstream patch.
+  * debian/control:
+    - Update Standards Version to 3.9.6, no changes needed.
+    - Do not pre-depend on multiarch-support directly.
+    - Provide Vcs-Bzr and Vcs-Browser fields.
+  * debian/copyright:
+    - Fix short names for BSD licenses.
+    - Supply the correct path to granite-demo .vala file.
+    - Drop copyright info for nonexistent lib/GtkPatch/gtkpatch-utils.c
+
+  [ Iain Lane ]
+  * Install typelib files into MA libdir and build-depend on the version of
+    gobject-introspection which started supporting this (Closes: #767090).
+
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Wed, 29 Oct 2014 23:47:21 +0300
+
+granite (0.3.0-1~experimental1) experimental; urgency=low
 
   * New upstream release.
+  * debian/control: update GTK+ dependency, 3.12+ is now required.
+  * debian/watch: replace it with a better watch file written by Bart Martens.
+  * debian/copyright: update copyright information for debian/watch.
 
- -- Rico Tzschichholz <ricotz@ubuntu.com>  Mon, 23 Dec 2013 21:22:42 +0100
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Mon, 26 May 2014 01:35:04 +0400
 
-granite (0.2.3) UNRELEASED; urgency=low
+granite (0.3.0~bzr734-1) experimental; urgency=low
 
-  * New upstream release.
+  * New upstream bzr snapshot (Closes: #722522).
+  * New maintainer (Closes: #748123).
+  * debian/control:
+    - Update package versions in Build-Depends.
+    - Update package descriptions.
+    - Drop gir1.2-glib-2.0, libgee-dev, dh-exec from Build-Depends.
+    - Update Standards Version to 3.9.5:
+      + Drop obsolete DM-Upload-Allowed flag.
+    - Set myself as maintainer.
+    - Rename libgranite0 to libgranite2.
+    - Rename libgranite0-dbg to libgranite2-dbg.
+    - Rename gir1.2-granite-0.1 to gir1.2-granite-1.0.
+    - Add libgranite-common binary package.
+    - Remove Multi-Arch field for libgranite-dev.
+    - Update Depends and Recommends for libgranite2.
+    - Update Depends for libgranite-dev.
+  * debian/copyright:
+    - Update licensing information.
+    - Update copyright years.
+    - Add new copyright holders.
+  * Update symbols files.
+  * Update debian/*.install files.
+  * Drop debian/README.source.
+  * Fix debian/watch.
+  * debian/rules:
+    - Build package with --parallel.
+    - Use xz for compression.
+    - Add --fail-missing to dh_install.
+    - Set check level for dpkg-gensymbols to 1.
+    - Set dbg-package for dh_strip to libgranite2-dbg.
 
- -- Cody Garver <cody@elementaryos.org>  Fri, 30 Aug 2013 09:29:32 -0500
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Thu, 22 May 2014 20:22:06 +0400
 
-granite (0.2.1-1) UNRELEASED; urgency=low
+granite (0.1.0+dfsg-2) experimental; urgency=low
 
-  * New upstream release.
+  * debian/control: set Multi-Arch field to foreign in gir1.2-granite-0.1
+    package section.
+  * debian/rules: use gobject-introspection debhelper sequence.
+  * debian/control: set gobject-introspection minimum version to 1.31.0-2
+    in Build-Depends field.
+  * debian/control: add gir1.2-granite-0.1 (= ${binary:Version}) to
+    libgranite-dev Depends field.
+  * debian/copyright: update Format field.
+  * Bump Standards-Version to 3.9.3.1.
 
- -- Cody Garver <cody@elementaryos.org>  Sat, 20 Jul 2013 07:08:43 -0500
+  [ Luca Falavigna ]
+  * debian/control: add DM-Upload-Allowed field.
 
-granite (0.2.0-1) UNRELEASED; urgency=low
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 02 Sep 2012 17:42:48 +0200
 
-  * Initial release.
+granite (0.1.0+dfsg-1) experimental; urgency=low
 
- -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 10 Nov 2012 22:44:20 +0200
+  * Initial release (Closes: #659539).
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 09 Jun 2012 14:21:24 +0200

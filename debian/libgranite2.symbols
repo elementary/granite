@@ -12,9 +12,9 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_application_show_about@Base 0.2.0
  granite_close_button_position_get_type@Base 0.2.3
  granite_collapse_mode_get_type@Base 0.2.0
- granite_date_time_get_default_date_format@Base 0.3.0~
- granite_date_time_get_default_time_format@Base 0.3.0~
- granite_date_time_is_clock_format_12h@Base 0.3.0~
+ granite_date_time_get_default_date_format@Base 0.3.0
+ granite_date_time_get_default_time_format@Base 0.3.0
+ granite_date_time_is_clock_format_12h@Base 0.3.0
  granite_drawing_buffer_surface_average_color@Base 0.2.0
  granite_drawing_buffer_surface_clear@Base 0.2.0
  granite_drawing_buffer_surface_construct@Base 0.2.0
@@ -221,20 +221,20 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_cell_renderer_expander_new@Base 0.2.0
  granite_widgets_cell_renderer_expander_set_is_category_expander@Base 0.2.0
  granite_widgets_closed_tabs_construct@Base 0.2.3
- granite_widgets_closed_tabs_entry_copy@Base 0.3.0~
- granite_widgets_closed_tabs_entry_destroy@Base 0.3.0~
- granite_widgets_closed_tabs_entry_dup@Base 0.3.0~
- granite_widgets_closed_tabs_entry_free@Base 0.3.0~
- granite_widgets_closed_tabs_entry_get_type@Base 0.3.0~
+ granite_widgets_closed_tabs_entry_copy@Base 0.3.0
+ granite_widgets_closed_tabs_entry_destroy@Base 0.3.0
+ granite_widgets_closed_tabs_entry_dup@Base 0.3.0
+ granite_widgets_closed_tabs_entry_free@Base 0.3.0
+ granite_widgets_closed_tabs_entry_get_type@Base 0.3.0
  granite_widgets_closed_tabs_get_empty@Base 0.2.3
- granite_widgets_closed_tabs_get_max_restorable_tabs@Base 0.3.0~
+ granite_widgets_closed_tabs_get_max_restorable_tabs@Base 0.3.0
  granite_widgets_closed_tabs_get_menu@Base 0.2.3
  granite_widgets_closed_tabs_get_type@Base 0.2.3
  granite_widgets_closed_tabs_new@Base 0.2.3
  granite_widgets_closed_tabs_pick@Base 0.2.3
  granite_widgets_closed_tabs_pop@Base 0.2.3
  granite_widgets_closed_tabs_push@Base 0.2.3
- granite_widgets_closed_tabs_set_max_restorable_tabs@Base 0.3.0~
+ granite_widgets_closed_tabs_set_max_restorable_tabs@Base 0.3.0
  granite_widgets_collapsible_paned_construct@Base 0.2.0
  granite_widgets_collapsible_paned_get_collapse_mode@Base 0.2.0
  granite_widgets_collapsible_paned_get_type@Base 0.2.0
@@ -288,13 +288,13 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_get_current@Base 0.2.0
  granite_widgets_dynamic_notebook_get_force_left@Base 0.2.3
  granite_widgets_dynamic_notebook_get_group_name@Base 0.2.0
- granite_widgets_dynamic_notebook_get_max_restorable_tabs@Base 0.3.0~
+ granite_widgets_dynamic_notebook_get_max_restorable_tabs@Base 0.3.0
  granite_widgets_dynamic_notebook_get_menu@Base 0.2.0
  granite_widgets_dynamic_notebook_get_n_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_get_nth_page@Base 0.2.0
  granite_widgets_dynamic_notebook_get_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_get_show_tabs@Base 0.2.0
- granite_widgets_dynamic_notebook_get_tab_bar_behavior@Base 0.3.0~
+ granite_widgets_dynamic_notebook_get_tab_bar_behavior@Base 0.3.0
  granite_widgets_dynamic_notebook_get_tab_by_index@Base 0.2.0
  granite_widgets_dynamic_notebook_get_tab_by_widget@Base 0.2.0
  granite_widgets_dynamic_notebook_get_tab_position@Base 0.2.0
@@ -316,13 +316,13 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_dynamic_notebook_set_current@Base 0.2.0
  granite_widgets_dynamic_notebook_set_force_left@Base 0.2.3
  granite_widgets_dynamic_notebook_set_group_name@Base 0.2.0
- granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 0.3.0~
+ granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 0.3.0
  granite_widgets_dynamic_notebook_set_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_set_show_tabs@Base 0.2.0
- granite_widgets_dynamic_notebook_set_tab_bar_behavior@Base 0.3.0~
+ granite_widgets_dynamic_notebook_set_tab_bar_behavior@Base 0.3.0
  granite_widgets_dynamic_notebook_set_tab_position@Base 0.2.0
  granite_widgets_dynamic_notebook_set_tabs_closable@Base 0.2.0
- granite_widgets_dynamic_notebook_tab_bar_behavior_get_type@Base 0.3.0~
+ granite_widgets_dynamic_notebook_tab_bar_behavior_get_type@Base 0.3.0
  granite_widgets_hcollapsable_paned_construct@Base 0.2.0
  granite_widgets_hcollapsable_paned_get_type@Base 0.2.0
  granite_widgets_hcollapsable_paned_new@Base 0.2.0
@@ -380,16 +380,16 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_sidebar_paned_get_type@Base 0.2.0
  granite_widgets_sidebar_paned_new@Base 0.2.0
  granite_widgets_source_list_construct@Base 0.2.0
- granite_widgets_source_list_disable_drag_dest@Base 0.3.0~
- granite_widgets_source_list_disable_drag_source@Base 0.3.0~
- granite_widgets_source_list_drag_dest_data_drop_possible@Base 0.3.0~
- granite_widgets_source_list_drag_dest_data_received@Base 0.3.0~
- granite_widgets_source_list_drag_dest_get_type@Base 0.3.0~
- granite_widgets_source_list_drag_source_draggable@Base 0.3.0~
- granite_widgets_source_list_drag_source_get_type@Base 0.3.0~
- granite_widgets_source_list_drag_source_prepare_selection_data@Base 0.3.0~
- granite_widgets_source_list_enable_drag_dest@Base 0.3.0~
- granite_widgets_source_list_enable_drag_source@Base 0.3.0~
+ granite_widgets_source_list_disable_drag_dest@Base 0.3.0+
+ granite_widgets_source_list_disable_drag_source@Base 0.3.0+
+ granite_widgets_source_list_drag_dest_data_drop_possible@Base 0.3.0+
+ granite_widgets_source_list_drag_dest_data_received@Base 0.3.0+
+ granite_widgets_source_list_drag_dest_get_type@Base 0.3.0+
+ granite_widgets_source_list_drag_source_draggable@Base 0.3.0+
+ granite_widgets_source_list_drag_source_get_type@Base 0.3.0+
+ granite_widgets_source_list_drag_source_prepare_selection_data@Base 0.3.0+
+ granite_widgets_source_list_enable_drag_dest@Base 0.3.0+
+ granite_widgets_source_list_enable_drag_source@Base 0.3.0+
  granite_widgets_source_list_expandable_item_add@Base 0.2.0
  granite_widgets_source_list_expandable_item_clear@Base 0.2.0
  granite_widgets_source_list_expandable_item_collapse_all@Base 0.2.0
@@ -449,9 +449,9 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_source_list_set_selected@Base 0.2.0
  granite_widgets_source_list_set_sort_direction@Base 0.2.0
  granite_widgets_source_list_set_sort_func@Base 0.2.0
- granite_widgets_source_list_sortable_allow_dnd_sorting@Base 0.3.0~
- granite_widgets_source_list_sortable_compare@Base 0.3.0~
- granite_widgets_source_list_sortable_get_type@Base 0.3.0~
+ granite_widgets_source_list_sortable_allow_dnd_sorting@Base 0.3.0+
+ granite_widgets_source_list_sortable_compare@Base 0.3.0+
+ granite_widgets_source_list_sortable_get_type@Base 0.3.0+
  granite_widgets_source_list_start_editing_item@Base 0.2.0
  granite_widgets_source_list_stop_editing@Base 0.2.0
  granite_widgets_static_notebook_append_page@Base 0.2.0
@@ -467,9 +467,9 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_status_bar_insert_widget@Base 0.2.0
  granite_widgets_status_bar_new@Base 0.2.0
  granite_widgets_status_bar_set_text@Base 0.2.0
- granite_widgets_tab_close@Base 0.3.0~
+ granite_widgets_tab_close@Base 0.3.0
  granite_widgets_tab_construct@Base 0.2.0
- granite_widgets_tab_fix_button_theming@Base 0.3.0~
+ granite_widgets_tab_fix_button_theming@Base 0.3.0
  granite_widgets_tab_get_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_get_fixed@Base 0.2.0
  granite_widgets_tab_get_icon@Base 0.2.0
@@ -479,6 +479,7 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_tab_get_pinnable@Base 0.2.3
  granite_widgets_tab_get_pinned@Base 0.2.3
  granite_widgets_tab_get_restore_data@Base 0.2.3
+ granite_widgets_tab_get_show_icon@Base 0.3.0+
  granite_widgets_tab_get_type@Base 0.2.0
  granite_widgets_tab_get_working@Base 0.2.0
  granite_widgets_tab_new@Base 0.2.0
@@ -486,17 +487,18 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_tab_page_container_get_tab@Base 0.2.3
  granite_widgets_tab_page_container_get_type@Base 0.2.3
  granite_widgets_tab_page_container_new@Base 0.2.3
- granite_widgets_tab_set_closable@Base 0.3.0~
+ granite_widgets_tab_set_closable@Base 0.3.0
  granite_widgets_tab_set_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_set_fixed@Base 0.2.0
  granite_widgets_tab_set_icon@Base 0.2.0
- granite_widgets_tab_set_is_current_tab@Base 0.3.0~
+ granite_widgets_tab_set_is_current_tab@Base 0.3.0
  granite_widgets_tab_set_label@Base 0.2.0
  granite_widgets_tab_set_menu@Base 0.2.0
  granite_widgets_tab_set_page@Base 0.2.0
  granite_widgets_tab_set_pinnable@Base 0.2.3
  granite_widgets_tab_set_pinned@Base 0.2.3
  granite_widgets_tab_set_restore_data@Base 0.2.3
+ granite_widgets_tab_set_show_icon@Base 0.3.0+
  granite_widgets_tab_set_working@Base 0.2.0
  granite_widgets_thin_paned_construct@Base 0.2.0
  granite_widgets_thin_paned_get_overlay_handle_window@Base 0.2.0
@@ -504,13 +506,13 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_thin_paned_new@Base 0.2.0
  granite_widgets_time_picker_construct@Base 0.2.0
  granite_widgets_time_picker_construct_with_format@Base 0.2.0
- granite_widgets_time_picker_get_format_12@Base 0.3.0~
- granite_widgets_time_picker_get_format_24@Base 0.3.0~
+ granite_widgets_time_picker_get_format_12@Base 0.3.0
+ granite_widgets_time_picker_get_format_24@Base 0.3.0
  granite_widgets_time_picker_get_time@Base 0.2.0
  granite_widgets_time_picker_get_type@Base 0.2.0
  granite_widgets_time_picker_new@Base 0.2.0
  granite_widgets_time_picker_new_with_format@Base 0.2.0
- granite_widgets_time_picker_position_dropdown@Base 0.3.0~
+ granite_widgets_time_picker_position_dropdown@Base 0.3.0
  granite_widgets_time_picker_set_time@Base 0.2.0
  granite_widgets_tool_button_with_menu_construct@Base 0.2.0
  granite_widgets_tool_button_with_menu_construct_from_action@Base 0.2.0
