@@ -764,6 +764,7 @@ namespace Granite.Widgets {
          */
         public DynamicNotebook () {
             this.notebook = new Gtk.Notebook ();
+            this.notebook.can_focus = false;
             this.visible_window = false;
             this.get_style_context ().add_class ("dynamic-notebook");
 
