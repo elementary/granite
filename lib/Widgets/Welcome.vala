@@ -92,6 +92,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle_label = new Gtk.Label (subtitle_text);
         subtitle_label.get_style_context ().add_class ("h2");
 
+        subtitle_label.set_line_wrap (true);
+        subtitle_label.set_line_wrap_mode (Pango.WrapMode.WORD);
         subtitle_label.set_justify (Gtk.Justification.CENTER);
 
         content.pack_start (subtitle_label, false, true, 2);
