@@ -196,6 +196,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         var description = new Gtk.Label (description_text);
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
+        description.set_line_wrap (true);
+        description.set_line_wrap_mode (Pango.WrapMode.WORD);
 
         // Button
         var button = new Gtk.Button ();
