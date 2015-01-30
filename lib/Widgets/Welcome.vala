@@ -92,6 +92,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle_label = new Gtk.Label (subtitle_text);
         subtitle_label.get_style_context ().add_class ("h2");
 
+        subtitle_label.set_line_wrap (true);
+        subtitle_label.set_line_wrap_mode (Pango.WrapMode.WORD);
         subtitle_label.set_justify (Gtk.Justification.CENTER);
 
         content.pack_start (subtitle_label, false, true, 2);
@@ -194,6 +196,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         var description = new Gtk.Label (description_text);
         description.halign = Gtk.Align.START;
         description.valign = Gtk.Align.CENTER;
+        description.set_line_wrap (true);
+        description.set_line_wrap_mode (Pango.WrapMode.WORD);
 
         // Button
         var button = new Gtk.Button ();
