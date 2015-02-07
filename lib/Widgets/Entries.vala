@@ -85,7 +85,7 @@ namespace Granite.Widgets {
     /**
      * A searchbar with hint-text.
      */
-    [Deprecated (since = "0.3", replacement = "Gtk.SearchEntry")]
+    [Deprecated (since = "Gtk+ 3.6", replacement = "Gtk.SearchEntry")]
     public class SearchBar : HintedEntry {
         private uint timeout_id = 0;
 

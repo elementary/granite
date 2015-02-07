@@ -18,8 +18,6 @@
  */
 
 /**
- * /!\ Unstable API
- *
  * PopOver widget. It is a Dialog you can attach to a widget, e.g. a button.
  *
  * It is a dialog you can attach to a widget, to make it look
@@ -33,6 +31,7 @@
  * {{../../doc/images/PopOver.png}}
  *
  */
+[Deprecated (replacement = "Gtk.Popover", since = "Gtk+ 3.12")]
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
     protected int BORDER_RADIUS;

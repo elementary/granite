@@ -26,7 +26,7 @@ namespace Granite.Widgets {
      *
      * {{../../doc/images/LightWindow.png}}
      */
-    [Deprecated (replacement="Gtk.Dialog", since = "0.3")]
+    [Deprecated (replacement="Gtk.Dialog", since = "Gtk+ 3.12")]
     public class LightWindow : DecoratedWindow {
 
         /**

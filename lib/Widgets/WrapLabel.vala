@@ -27,6 +27,7 @@ using Gtk;
  * This is a label which is automatically wrapped.
  * If a line is too long, there will be a line break for instance.
  */
+[Deprecated (replacement = "Gtk.Label", since = "Gtk+ 3.0")]
 public class Granite.Widgets.WrapLabel : Label {
 
     public int m_wrap_width = 0;
