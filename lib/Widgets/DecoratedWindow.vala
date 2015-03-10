@@ -24,7 +24,7 @@ namespace Granite.Widgets {
     /**
      * This class is a standard decorated window.
      */
-    [Deprecated (replacement = "Gtk.Dialog", since = "Gtk+ 3.12")]
+    [Deprecated (replacement = "Gtk.Dialog", since = "0.3")]
     public class DecoratedWindow : CompositedWindow {
 
         const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """

@@ -36,7 +36,7 @@
  * @see Gtk.Paned
  * @since 0.2
  */
-[Deprecated (replacement = "Gtk.Paned", since = "Gtk+ 3.14")]
+[Deprecated (replacement = "Gtk.Paned", since = "0.3")]
 public class Granite.Widgets.ThinPaned : Gtk.Paned {
     private const string STYLE_PROP_OVERLAY_HANDLE_SIZE = "overlay-handle-size";
 

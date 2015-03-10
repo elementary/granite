@@ -31,7 +31,7 @@
  * {{../../doc/images/PopOver.png}}
  *
  */
-[Deprecated (replacement = "Gtk.Popover", since = "Gtk+ 3.12")]
+[Deprecated (replacement = "Gtk.Popover", since = "0.3")]
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
     protected int BORDER_RADIUS;
