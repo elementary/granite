@@ -88,7 +88,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         int y = aligned_area.y + aligned_area.height / 2 - offset;
 
         var state = ctx.get_state ();
-        const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.ACTIVE;
+        const Gtk.StateFlags EXPANDED_FLAG = Gtk.StateFlags.CHECKED;
         ctx.set_state (is_expanded ? state | EXPANDED_FLAG : state & ~EXPANDED_FLAG);
 
         ctx.render_expander (context, x, y, arrow_size, arrow_size);
