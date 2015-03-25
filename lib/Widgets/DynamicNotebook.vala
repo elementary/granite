@@ -737,7 +737,7 @@ namespace Granite.Widgets {
         Gtk.Notebook notebook;
 
         private int tab_width = 150;
-        private static const int MAX_TAB_WIDTH = 150;
+        private static const int MAX_TAB_WIDTH = 174;
         private static const int TAB_WIDTH_PINNED = 18;
 
         public signal void tab_added (Tab tab);
