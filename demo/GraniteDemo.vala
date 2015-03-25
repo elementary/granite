@@ -410,6 +410,14 @@ public class Granite.Demo : Granite.Application {
         welcome.append_with_image (image, "Open", "Select a file.");
         welcome.append ("document-save", "Save", "With a much longer description.");
 
+        welcome.activated.connect ((index) => {
+            var button = welcome.get_button_from_index (index);
+
+            button.title = "You clicked on the button: %d".printf(index);
+            button.description = "This label, description and icon were changed after creating of this button.";
+            button.icon.icon_name = "edit";
+        });
+
         return welcome;
     }
 
