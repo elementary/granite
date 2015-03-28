@@ -23,7 +23,7 @@ using Gtk;
 /**
  * This class is for making a first-launch screen easily
  *
- * It can be used to create a list of one-time action items that need to be executed in order to setup the app. 
+ * It can be used to create a list of one-time action items that need to be executed in order to setup the app.
  *
  * {{../../doc/images/Welcome.png}}
  */
@@ -40,7 +40,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * Box for action items
      */
     protected Gtk.Box options;
-    
+
     /**
      * This is the title of the welcome widget.
      */
@@ -187,43 +187,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
         // Option label
-        var label = new Gtk.Label (option_text);
-        label.get_style_context ().add_class ("h3");
-        label.halign = Gtk.Align.START;
-        label.valign = Gtk.Align.CENTER;
-
-        // Description label
-        var description = new Gtk.Label (description_text);
-        description.halign = Gtk.Align.START;
-        description.valign = Gtk.Align.CENTER;
-        description.set_line_wrap (true);
-        description.set_line_wrap_mode (Pango.WrapMode.WORD);
-
-        // Button
-        var button = new Gtk.Button ();
-        button.set_relief (Gtk.ReliefStyle.NONE);
-
-        // Button contents wrapper
-        var button_contents = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 7);
-
-        // Add left image
-        if (image != null) {
-            image.set_pixel_size (48);
-            button_contents.pack_start (image, false, true, 8);
-        }
-
-        // Add right text wrapper
-        var text_wrapper = new Gtk.Box (Gtk.Orientation.VERTICAL, 3);
-        // top spacing
-        text_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
-        text_wrapper.pack_start (label, false, false, 0);
-        text_wrapper.pack_start (description, false, false, 0);
-        // bottom spacing
-        text_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
-
-        button_contents.pack_start (text_wrapper, false, true, 8);
-
-        button.add (button_contents);
+        var button = new WelcomeButton (image, option_text, description_text);
         children.append (button);
         options.pack_start (button, false, false, 0);
 
@@ -234,5 +198,19 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         });
 
         return this.children.index (button);
+    }
+
+    /**
+     * Returns a welcome button by index
+     *
+     * @param index index of action item to be returned
+     * @return welcome button at //index//, or //null// if //index// is invalid.
+     * @since 0.3
+     */
+    public Granite.Widgets.WelcomeButton? get_button_from_index (int index) {
+        if (index >= 0 && index < children.length ())
+            return children.nth_data (index) as WelcomeButton;
+
+        return null;
     }
 }
