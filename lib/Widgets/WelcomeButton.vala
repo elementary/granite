@@ -23,6 +23,8 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
 
     Gtk.Label button_title;
     Gtk.Label button_description;
+    Gtk.Image? _icon;
+    Gtk.Grid button_grid;
 
     /**
      * Title property of the Welcome Button
@@ -49,46 +51,48 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
      *
      * @since 0.3
      */
-    public Gtk.Image? icon { get; private set; }
+    public Gtk.Image? icon {
+        get { return _icon; }
+        set {
+            if (_icon != null) {
+                _icon.destroy ();
+            }
+            _icon = value;
+            if (_icon != null) {
+                _icon.set_pixel_size (48);
+                _icon.halign = Gtk.Align.CENTER;
+                _icon.valign = Gtk.Align.CENTER;
+                button_grid.attach (_icon, 0, 0, 1, 2);
+            }
+        }
+    }
 
     public WelcomeButton (Gtk.Image? image, string option_text, string description_text) {
-        icon = image;
+        Object (title: option_text, description: description_text, icon: image);
+    }
 
+    construct {
         // Title label
-        button_title = new Gtk.Label (option_text);
+        button_title = new Gtk.Label (null);
         button_title.get_style_context ().add_class ("h3");
         button_title.halign = Gtk.Align.START;
-        button_title.valign = Gtk.Align.CENTER;
+        button_title.valign = Gtk.Align.END;
 
         // Description label
-        button_description = new Gtk.Label (description_text);
+        button_description = new Gtk.Label (null);
         button_description.halign = Gtk.Align.START;
-        button_description.valign = Gtk.Align.CENTER;
+        button_description.valign = Gtk.Align.START;
         button_description.set_line_wrap (true);
         button_description.set_line_wrap_mode (Pango.WrapMode.WORD);
 
-        this.set_relief (Gtk.ReliefStyle.NONE);
+        get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         // Button contents wrapper
-        var button_contents = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 7);
+        button_grid = new Gtk.Grid ();
+        button_grid.column_spacing = 12;
 
-        // Add left image
-        if (icon != null) {
-            icon.set_pixel_size (48);
-            button_contents.pack_start (icon, false, true, 8);
-        }
-
-        // Add right text wrapper
-        var text_wrapper = new Gtk.Box (Gtk.Orientation.VERTICAL, 3);
-        // top spacing
-        text_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
-        text_wrapper.pack_start (button_title, false, false, 0);
-        text_wrapper.pack_start (button_description, false, false, 0);
-        // bottom spacing
-        text_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
-
-        button_contents.pack_start (text_wrapper, false, true, 8);
-
-        this.add (button_contents);
+        button_grid.attach (button_title, 1, 0, 1, 1);
+        button_grid.attach (button_description, 1, 1, 1, 1);
+        this.add (button_grid);
     }
 }
