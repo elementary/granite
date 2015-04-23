@@ -67,6 +67,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     private Gtk.Label title_label;
     private Gtk.Label subtitle_label;
+
     /**
      * Makes new Welcome Page
      *
@@ -74,6 +75,10 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
      * @param subtitle_text subtitle text for new Welcome Page
      */
     public Welcome (string title_text, string subtitle_text) {
+        Object (title: title_text, subtitle: subtitle_text);
+    }
+
+    construct {
         Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
         // Box properties
@@ -83,13 +88,13 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
 
         // Labels
-        title_label = new Gtk.Label (title_text);
+        title_label = new Gtk.Label (null);
         title_label.get_style_context ().add_class ("h1");
 
         title_label.set_justify (Gtk.Justification.CENTER);
         content.pack_start (title_label, false, true, 0);
 
-        subtitle_label = new Gtk.Label (subtitle_text);
+        subtitle_label = new Gtk.Label (null);
         subtitle_label.get_style_context ().add_class ("h2");
 
         subtitle_label.set_line_wrap (true);
