@@ -137,12 +137,14 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Applies colorPrimary property to the screen
+     * @param screen screen to apply the property to
      * @param color the color to apply
      */
-    public void set_color_primary (owned string color) {
+    public void set_color_primary (Gdk.Screen screen, string color) {
+        assert (screen != null);
         if (!color.has_prefix ("#")) {
-            warning ("Color string does not contain hash at the beginning");
-            color = "#" + color;
+            critical ("Color string does not contain hash at the beginning");
+            return;
         }
 
         var css_provider = new Gtk.CssProvider ();
@@ -151,12 +153,13 @@ namespace Granite.Widgets.Utils {
             css_provider.load_from_data (@"@define-color colorPrimary $color;", -1);
         } catch (Error e) {
             warning ("Could not apply primary color: %s\n", e.message);
+            return;
         }
 
         var style_context = new Gtk.StyleContext ();
-        style_context.add_provider_for_screen (Gdk.Screen.get_default (),
-                                                            css_provider,
-                                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        style_context.add_provider_for_screen (screen,
+                                            css_provider,
+                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     /**
