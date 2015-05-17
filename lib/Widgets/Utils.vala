@@ -136,11 +136,10 @@ namespace Granite.Widgets.Utils {
     public extern Gdk.Pixbuf get_close_pixbuf ();
 
     /**
-     * Applies colorPrimary property to the widget
-     * @param widget widget to apply style to (usually it will be Gtk.Window)
+     * Applies colorPrimary property to the screen
      * @param color the color to apply
      */
-    public void set_color_primary (Gtk.Widget widget, owned string color) {
+    public void set_color_primary (owned string color) {
         if (!color.has_prefix ("#")) {
             warning ("Color string does not contain hash at the beginning");
             color = "#" + color;
@@ -154,7 +153,8 @@ namespace Granite.Widgets.Utils {
             warning ("Could not apply primary color: %s\n", e.message);
         }
 
-        widget.get_style_context ().add_provider_for_screen (Gdk.Screen.get_default (),
+        var style_context = new Gtk.StyleContext ();
+        style_context.add_provider_for_screen (Gdk.Screen.get_default (),
                                                             css_provider,
                                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
