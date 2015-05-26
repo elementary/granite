@@ -79,6 +79,7 @@ public class Granite.Demo : Granite.Application {
         create_sourcelist ();
         create_modebutton ();
         create_dynamictab ();
+        create_alert ();
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -113,6 +114,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("tag-new", "SourceList", "A widget that can display a list of items organized in categories.");
         welcome.append ("object-inverse", "ModeButton", "This widget is a multiple option modal switch");
         welcome.append ("document-open", "DynamicNotebook", "Tab bar widget designed for a variable number of tabs.");
+        welcome.append ("dialog-warning", "AlertView", "A View showing that an action is required to function.");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -130,6 +132,10 @@ public class Granite.Demo : Granite.Application {
                 case 3:
                     home_button.show ();
                     main_stack.set_visible_child_name ("dynamictab");
+                    break;
+                case 4:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("alert");
                     break;
             }
         });
@@ -213,6 +219,13 @@ public class Granite.Demo : Granite.Application {
         grid.attach (icon_mode, 1, 1, 1, 1);
         grid.attach (text_mode, 1, 2, 1, 1);
         main_stack.add_named (grid, "modebutton");
+    }
+
+    private void create_alert () {
+        var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
+        main_stack.add_named (alert, "alert");
+        alert.show_action ("Hide this button");
+        alert.action_activated.connect (() => {alert.hide_action ();});
     }
 
     int i;
