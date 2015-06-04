@@ -41,6 +41,7 @@ set (VALA_SOURCES
     Widgets/LightWindow.vala
     Widgets/StatusBar.vala
     Widgets/SidebarPaned.vala
+    Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
