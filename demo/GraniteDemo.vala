@@ -230,8 +230,11 @@ public class Granite.Demo : Granite.Application {
             var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
             var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
             var storage = new Granite.Widgets.StorageBar (size);
-            storage.create_block (size/100, "Music", Granite.Widgets.StorageBar.ItemDescription.AUDIO);
-            storage.margin = 12;
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, size/5);
             grid.add (storage);
         } catch (Error e) {
             critical (e.message);

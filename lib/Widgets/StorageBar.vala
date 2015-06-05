@@ -24,7 +24,37 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         AUDIO,
         VIDEO,
         PHOTO,
-        APP
+        APP;
+
+        public static string? get_class (ItemDescription description) {
+            switch (description) {
+                case ItemDescription.AUDIO:
+                    return "audio";
+                case ItemDescription.VIDEO:
+                    return "video";
+                case ItemDescription.PHOTO:
+                    return "photo";
+                case ItemDescription.APP:
+                    return "app";
+                default:
+                    return null;
+            }
+        }
+
+        public static string get_name (ItemDescription description) {
+            switch (description) {
+                case ItemDescription.AUDIO:
+                    return _("Audio");
+                case ItemDescription.VIDEO:
+                    return _("Videos");
+                case ItemDescription.PHOTO:
+                    return _("Photos");
+                case ItemDescription.APP:
+                    return _("Apps");
+                default:
+                    return _("Others");
+            }
+        }
     }
 
     private uint64 _storage = 0;
@@ -34,7 +64,17 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
         set {
             _storage = value;
+            resize_children ();
             update_size_description ();
+        }
+    }
+
+    public int inner_margin_sides {
+        get {
+            return fillblock_box.margin_start;
+        }
+        set {
+            fillblock_box.margin_end = fillblock_box.margin_start = value;
         }
     }
 
@@ -52,27 +92,85 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         orientation = Gtk.Orientation.VERTICAL;
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
+        description_label.margin_top = 6;
         get_style_context ().add_class ("storage-bar");
         blocks = new GLib.HashTable<int, FillBlock> (null, null);
         fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        fillblock_box.get_style_context ().add_class ("fill-block");
+        fillblock_box.get_style_context ().add_class ("empty-block");
         fillblock_box.hexpand = true;
-        legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        inner_margin_sides = 12;
+        legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
         legend_box.expand = true;
-        fillblock_box.get_style_context ().add_class ("trough");
+        var legend_center_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        legend_center_box.set_center_widget (legend_box);
         var legend_scrolled = new Gtk.ScrolledWindow (null, null);
         legend_scrolled.vscrollbar_policy = Gtk.PolicyType.NEVER;
         legend_scrolled.hexpand = true;
-        legend_scrolled.add (legend_box);
+        legend_scrolled.add (legend_center_box);
         var grid = new Gtk.Grid ();
         grid.attach (legend_scrolled, 0, 0, 1, 1);
         grid.attach (fillblock_box, 0, 1, 1, 1);
         grid.attach (description_label, 0, 2, 1, 1);
         set_center_widget (grid);
+
+        fillblock_box.size_allocate.connect ((allocation) => {
+            // lost_size is here because we use truncation so that it is possible for a full device to have a filed bar.
+            double lost_size = 0;
+            int current_x = allocation.x;
+            for (int i = 0; i < blocks.length; i++) {
+                weak FillBlock block = blocks.get (i);
+                if (block == null || block.visible == false)
+                    continue;
+
+                var new_allocation = Gtk.Allocation ();
+                new_allocation.x = current_x;
+                new_allocation.y = allocation.y;
+                double width = (((double)allocation.width) * (double) block.size / (double) storage) + lost_size;
+                lost_size -= GLib.Math.trunc (lost_size);
+                new_allocation.width = (int) GLib.Math.trunc (width);
+                new_allocation.height = allocation.height;
+                block.size_allocate_with_baseline (new_allocation, block.get_allocated_baseline ());
+
+                lost_size = width - new_allocation.width;
+                current_x += new_allocation.width;
+            }
+        });
+
+        create_default_blocks ();
+    }
+
+    private void create_default_blocks () {
+        var seq = new Sequence<ItemDescription> ();
+        seq.append (ItemDescription.OTHER);
+        seq.append (ItemDescription.AUDIO);
+        seq.append (ItemDescription.VIDEO);
+        seq.append (ItemDescription.PHOTO);
+        seq.append (ItemDescription.APP);
+        seq.sort ((a, b) => {
+            if (a == ItemDescription.OTHER)
+                return 1;
+            if (b == ItemDescription.OTHER)
+                return -1;
+
+            return ItemDescription.get_name (a).collate (ItemDescription.get_name (b));
+        });
+
+        seq.foreach ((description) => {
+            var fill_block = new FillBlock (description, 0);
+            fillblock_box.add (fill_block);
+            legend_box.add (fill_block.legend_item);
+            blocks.set (index, fill_block);
+            index++;
+        });
+        update_size_description ();
     }
 
     private void update_size_description () {
         uint64 user_size = 0;
         foreach (weak FillBlock block in blocks.get_values ()) {
+            if (block.visible == false)
+                continue;
             user_size += block.size;
         }
 
@@ -80,37 +178,14 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         description_label.label = _("%s free out of %s").printf (GLib.format_size (free), GLib.format_size (storage));
     }
 
-    public int create_block (uint64 size, string name, ItemDescription description = ItemDescription.OTHER) {
-        var fill_block = new FillBlock (size, name, description);
-        fillblock_box.add (fill_block);
-        legend_box.add (fill_block.legend_item);
-
-        blocks.set (index, fill_block);
-        update_size_description ();
-        index++;
-        return index - 1;
-    }
-
-    public void update_block_size (int id, uint64 size) {
-        var block = (FillBlock)blocks.get (id);
-        if (block == null) {
-            critical ("children with id %d doesn't exist.", id);
-            return;
+    public void update_block_size (ItemDescription description, uint64 size) {
+        foreach (weak FillBlock block in blocks.get_values ()) {
+            if (block.description == description) {
+                block.size = size;
+                update_size_description ();
+                return;
+            }
         }
-
-        block.size = size;
-        update_size_description ();
-    }
-
-    public void update_block_visibility (int id, bool visibility) {
-        var block = (FillBlock)blocks.get (id);
-        if (block == null) {
-            critical ("children with id %d doesn't exist.", id);
-            return;
-        }
-
-        block.no_show_all = visibility;
-        block.visible = visibility;
     }
 
     public class FillBlock : Gtk.Label {
@@ -121,66 +196,55 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             }
             set {
                 _size = value;
-                size_label.label = GLib.format_size (_size);
-                queue_resize ();
+                if (_size == 0) {
+                    no_show_all = true;
+                    visible = false;
+                    legend_item.no_show_all = true;
+                    legend_item.visible = false;
+                } else {
+                    no_show_all = false;
+                    visible = true;
+                    legend_item.no_show_all = false;
+                    legend_item.visible = true;
+                    size_label.label = GLib.format_size (_size);
+                    queue_resize ();
+                }
             }
         }
 
+        public ItemDescription description { public get; construct set; }
         public Gtk.Grid legend_item { public get; private set; }
         private Gtk.Label name_label;
         private Gtk.Label size_label;
         private Gtk.Label legend_fill;
 
-        public FillBlock (uint64 size, string name, ItemDescription description = ItemDescription.OTHER) {
-            Object (size: size);
-            name_label.label = name;
-            switch (description) {
-                case ItemDescription.AUDIO:
-                    get_style_context ().add_class ("audio");
-                    legend_fill.get_style_context ().add_class ("audio");
-                    break;
-                case ItemDescription.VIDEO:
-                    get_style_context ().add_class ("video");
-                    legend_fill.get_style_context ().add_class ("video");
-                    break;
-                case ItemDescription.PHOTO:
-                    get_style_context ().add_class ("photo");
-                    legend_fill.get_style_context ().add_class ("photo");
-                    break;
-                case ItemDescription.APP:
-                    get_style_context ().add_class ("app");
-                    legend_fill.get_style_context ().add_class ("app");
-                    break;
-                default:
-                    break;
+        public FillBlock (ItemDescription description, uint64 size) {
+            Object (size: size, description: description);
+            var clas = ItemDescription.get_class (description);
+            if (clas != null) {
+                get_style_context ().add_class (clas);
+                legend_fill.get_style_context ().add_class (clas);
             }
+
+            name_label.label = "<b>%s</b>".printf (GLib.Markup.escape_text (ItemDescription.get_name (description)));
         }
 
         construct {
             get_style_context ().add_class ("fill-block");
             legend_item = new Gtk.Grid ();
+            legend_item.column_spacing = 6;
             name_label = new Gtk.Label (null);
+            name_label.halign = Gtk.Align.START;
+            name_label.use_markup = true;
             size_label = new Gtk.Label (null);
+            size_label.halign = Gtk.Align.START;
             legend_fill = new Gtk.Label (null);
             legend_fill.get_style_context ().add_class ("fill-block");
-            legend_item.attach (legend_fill, 0, 0, 1, 2);
+            var legend_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            legend_box.set_center_widget (legend_fill);
+            legend_item.attach (legend_box, 0, 0, 1, 2);
             legend_item.attach (name_label, 1, 0, 1, 1);
             legend_item.attach (size_label, 1, 1, 1, 1);
-        }
-
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            base.get_preferred_width (out minimum_width, out natural_width);
-            var storage_bar = parent as Granite.Widgets.StorageBar;
-            if (storage_bar == null || storage_bar.storage == 0) {
-                return;
-            }
-            Gtk.Allocation allocation;
-            parent.get_allocation (out allocation);
-            warning (storage_bar.storage.to_string ());
-            warning ("%f", (double)storage_bar.storage);
-            double ratio = ((double)size)/((double)storage_bar.storage);
-            minimum_width = (int)GLib.Math.trunc (((double)minimum_width)*ratio);
-            natural_width = (int)GLib.Math.trunc (((double)allocation.width)*ratio);
         }
     }
 }
