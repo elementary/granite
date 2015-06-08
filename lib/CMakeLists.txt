@@ -19,6 +19,7 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+    Widgets/AlertView.vala
     Widgets/Utils.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
