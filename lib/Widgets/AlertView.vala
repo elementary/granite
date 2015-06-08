@@ -30,7 +30,7 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
     public signal void action_activated ();
 
     /**
-     * The first line of text, should be short and do not contain markup.
+     * The first line of text, should be short and not contain markup.
      */
     public string title {
         get {
