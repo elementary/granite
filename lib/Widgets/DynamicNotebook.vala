@@ -320,6 +320,7 @@ namespace Granite.Widgets {
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
+                    new_window_m.sensitive = (num_tabs != 1);
                     pin_m.label = "Pin";
                     if (this.pinned) {
                         pin_m.label = "Unpin";
