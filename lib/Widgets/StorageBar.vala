@@ -18,6 +18,12 @@
  *
  *  Authored by: Corentin Noël <corentin@elementary.io>
  */
+
+/**
+ * An horizontal bar showing the remaining amount of space.
+ *
+ * {{../../doc/images/StorageBar.png}}
+ */
 public class Granite.Widgets.StorageBar : Gtk.Box {
     public enum ItemDescription {
         OTHER,
@@ -84,6 +90,11 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
     private Gtk.Box fillblock_box;
     private Gtk.Box legend_box;
 
+    /**
+     * Creates a new StorageBar widget with the given amount of space.
+     *
+     * @param storage the total amount of space.
+     */
     public StorageBar (uint64 storage) {
         Object (storage: storage);
     }
@@ -178,6 +189,12 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         description_label.label = _("%s free out of %s").printf (GLib.format_size (free), GLib.format_size (storage));
     }
 
+    /**
+     * Update the specified block with a given amount of space.
+     *
+     * @param description the category to update.
+     * @param size the size of the category or 0 to hide.
+     */
     public void update_block_size (ItemDescription description, uint64 size) {
         foreach (weak FillBlock block in blocks.get_values ()) {
             if (block.description == description) {
@@ -188,7 +205,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
     }
 
-    public class FillBlock : Gtk.Label {
+    internal class FillBlock : Gtk.Label {
         private uint64 _size = 0;
         public uint64 size {
             get {
@@ -218,7 +235,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         private Gtk.Label size_label;
         private Gtk.Label legend_fill;
 
-        public FillBlock (ItemDescription description, uint64 size) {
+        internal FillBlock (ItemDescription description, uint64 size) {
             Object (size: size, description: description);
             var clas = ItemDescription.get_class (description);
             if (clas != null) {
