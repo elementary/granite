@@ -264,6 +264,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             size_label.halign = Gtk.Align.START;
             legend_fill = new Gtk.Label (null);
             legend_fill.get_style_context ().add_class ("fill-block");
+            legend_fill.get_style_context ().add_class ("legend");
             var legend_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             legend_box.set_center_widget (legend_fill);
             legend_item.attach (legend_box, 0, 0, 1, 2);
