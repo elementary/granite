@@ -212,7 +212,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
     }
 
-    internal class FillBlock : Gtk.Label {
+    internal class FillBlock : FillRound {
         private uint64 _size = 0;
         public uint64 size {
             get {
@@ -240,7 +240,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         public Gtk.Grid legend_item { public get; private set; }
         private Gtk.Label name_label;
         private Gtk.Label size_label;
-        private Gtk.Label legend_fill;
+        private FillRound legend_fill;
 
         internal FillBlock (ItemDescription description, uint64 size) {
             Object (size: size, description: description);
@@ -254,7 +254,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
 
         construct {
-            get_style_context ().add_class ("fill-block");
+            show_all ();
             legend_item = new Gtk.Grid ();
             legend_item.column_spacing = 6;
             name_label = new Gtk.Label (null);
@@ -262,14 +262,39 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             name_label.use_markup = true;
             size_label = new Gtk.Label (null);
             size_label.halign = Gtk.Align.START;
-            legend_fill = new Gtk.Label (null);
-            legend_fill.get_style_context ().add_class ("fill-block");
+            legend_fill = new FillRound ();
             legend_fill.get_style_context ().add_class ("legend");
             var legend_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             legend_box.set_center_widget (legend_fill);
             legend_item.attach (legend_box, 0, 0, 1, 2);
             legend_item.attach (name_label, 1, 0, 1, 1);
             legend_item.attach (size_label, 1, 1, 1, 1);
+        }
+    }
+
+    internal class FillRound : Gtk.Widget {
+        internal FillRound () {
+            
+        }
+
+        construct {
+            set_has_window (false);
+            var style_context = get_style_context ();
+            style_context.changed.connect (() => {
+                var padding = get_style_context ().get_padding (get_state_flags ());
+                set_size_request (padding.left + padding.right, padding.top + padding.bottom);
+            });
+            style_context.add_class ("fill-block");
+            expand = true;
+        }
+
+        public override bool draw (Cairo.Context cr) {
+            get_style_context ().render_background (cr, 0, 0, get_allocated_width (), get_allocated_height ());
+            return true;
+        }
+
+        public override void size_allocate (Gtk.Allocation allocation) {
+            base.size_allocate (allocation);
         }
     }
 }
