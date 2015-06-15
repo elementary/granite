@@ -114,7 +114,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("tag-new", "SourceList", "A widget that can display a list of items organized in categories.");
         welcome.append ("object-inverse", "ModeButton", "This widget is a multiple option modal switch");
         welcome.append ("document-open", "DynamicNotebook", "Tab bar widget designed for a variable number of tabs.");
-        welcome.append ("document-open", "Storage", "Tab bar widget designed for a variable number of tabs.");
+        welcome.append ("drive-harddisk", "Storage", "Small bar indicating the remaining amount of space.");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
