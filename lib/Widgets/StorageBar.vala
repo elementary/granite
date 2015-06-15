@@ -89,6 +89,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
     private int index = 0;
     private Gtk.Box fillblock_box;
     private Gtk.Box legend_box;
+    private FillBlock free_space;
 
     /**
      * Creates a new StorageBar widget with the given amount of space.
@@ -107,8 +108,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         get_style_context ().add_class ("storage-bar");
         blocks = new GLib.HashTable<int, FillBlock> (null, null);
         fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        fillblock_box.get_style_context ().add_class ("fill-block");
-        fillblock_box.get_style_context ().add_class ("empty-block");
+        fillblock_box.get_style_context ().add_class ("trough");
         fillblock_box.hexpand = true;
         inner_margin_sides = 12;
         legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
@@ -174,18 +174,25 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             blocks.set (index, fill_block);
             index++;
         });
+
+        free_space = new FillBlock (ItemDescription.OTHER, storage);
+        free_space.get_style_context ().add_class ("empty-block");
+        blocks.set (index, free_space);
+        fillblock_box.add (free_space);
+
         update_size_description ();
     }
 
     private void update_size_description () {
         uint64 user_size = 0;
         foreach (weak FillBlock block in blocks.get_values ()) {
-            if (block.visible == false)
+            if (block.visible == false || block == free_space)
                 continue;
             user_size += block.size;
         }
 
         uint64 free = storage - user_size;
+        free_space.size = free;
         description_label.label = _("%s free out of %s").printf (GLib.format_size (free), GLib.format_size (storage));
     }
 
