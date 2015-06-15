@@ -285,7 +285,11 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
 
         public override bool draw (Cairo.Context cr) {
-            get_style_context ().render_background (cr, 0, 0, get_allocated_width (), get_allocated_height ());
+            var width = get_allocated_width ();
+            var height = get_allocated_height ();
+            var context = get_style_context ();
+            context.render_background (cr, 0, 0, width, height);
+            context.render_frame (cr, 0, 0, width, height);
             return true;
         }
 
