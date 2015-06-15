@@ -280,10 +280,6 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         construct {
             set_has_window (false);
             var style_context = get_style_context ();
-            style_context.changed.connect (() => {
-                var padding = get_style_context ().get_padding (get_state_flags ());
-                set_size_request (padding.left + padding.right, padding.top + padding.bottom);
-            });
             style_context.add_class ("fill-block");
             expand = true;
         }
@@ -293,8 +289,22 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             return true;
         }
 
-        public override void size_allocate (Gtk.Allocation allocation) {
-            base.size_allocate (allocation);
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            base.get_preferred_width (out minimum_width, out natural_width);
+            var context = get_style_context ();
+            var padding = context.get_padding (get_state_flags ());
+            minimum_width = int.max ((padding.left + padding.right) * context.get_scale (), minimum_width);
+            minimum_width = int.max (1, minimum_width);
+            natural_width = int.max (minimum_width, natural_width);
+        }
+
+        public override void get_preferred_height (out int minimum_height, out int natural_height) {
+            base.get_preferred_height (out minimum_height, out natural_height);
+            var context = get_style_context ();
+            var padding = context.get_padding (get_state_flags ());
+            minimum_height = int.max ((padding.top + padding.bottom) * context.get_scale (), minimum_height);
+            minimum_height = int.max (1, minimum_height);
+            natural_height = int.max (minimum_height, natural_height);
         }
     }
 }
