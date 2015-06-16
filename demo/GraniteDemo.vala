@@ -80,6 +80,7 @@ public class Granite.Demo : Granite.Application {
         create_modebutton ();
         create_dynamictab ();
         create_alert ();
+        create_storage ();
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -115,6 +116,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("object-inverse", "ModeButton", "This widget is a multiple option modal switch");
         welcome.append ("document-open", "DynamicNotebook", "Tab bar widget designed for a variable number of tabs.");
         welcome.append ("dialog-warning", "AlertView", "A View showing that an action is required to function.");
+        welcome.append ("drive-harddisk", "Storage", "Small bar indicating the remaining amount of space.");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -136,6 +138,10 @@ public class Granite.Demo : Granite.Application {
                 case 4:
                     home_button.show ();
                     main_stack.set_visible_child_name ("alert");
+                    break;
+                case 5:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("storage");
                     break;
             }
         });
@@ -226,6 +232,27 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_named (alert, "alert");
         alert.show_action ("Hide this button");
         alert.action_activated.connect (() => {alert.hide_action ();});
+    }
+
+    private void create_storage () {
+        var grid = new Gtk.Grid ();
+        grid.row_spacing = 6;
+        grid.column_spacing = 12;
+        var file_root = GLib.File.new_for_path ("/");
+        try {
+            var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
+            var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
+            var storage = new Granite.Widgets.StorageBar (size);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, size/5);
+            grid.add (storage);
+        } catch (Error e) {
+            critical (e.message);
+        }
+        main_stack.add_named (grid, "storage");
     }
 
     int i;
