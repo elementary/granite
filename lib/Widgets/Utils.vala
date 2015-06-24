@@ -137,13 +137,13 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Applies colorPrimary property to the screen
+     * @param color the color to apply e.g: #c000ff
      * @param screen screen to apply the property to
-     * @param color the color to apply
      */
-    public void set_color_primary (Gdk.Screen screen, string color) {
+    public void set_color_primary (string color, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         assert (screen != null);
         if (!color.has_prefix ("#")) {
-            critical ("Color string does not contain hash at the beginning");
+            critical ("Color string does not contain hash at the beginning.");
             return;
         }
 
