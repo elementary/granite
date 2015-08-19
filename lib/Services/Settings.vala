@@ -94,6 +94,11 @@ namespace Granite.Services {
     public abstract class Settings : GLib.Object {
     
         /**
+         * Used internally to avoid mutual signal calls.
+         */
+        bool saving_key;
+        
+        /**
          * This signal is to be used in place of the standard {@link GLib.Object.notify} signal.
          *
          * This signal ''only'' emits after a property's value was verified.
@@ -161,7 +166,7 @@ namespace Granite.Services {
             var properties = obj_class.list_properties ();
             foreach (var prop in properties)
                 load_key (prop.name);
-            
+
             start_monitor ();
         }
         
@@ -263,7 +268,7 @@ namespace Granite.Services {
         }
         
         void save_key (string key) {
-            if (key == "schema")
+            if (key == "schema" || saving_key)
                 return;
 
             var obj_class = (ObjectClass) get_type ().class_ref ();
@@ -275,7 +280,7 @@ namespace Granite.Services {
 
             bool success = true;
 
-            stop_monitor ();
+            saving_key = true;
             notify.disconnect (handle_notify);
 
             var type = prop.value_type;
@@ -324,7 +329,7 @@ namespace Granite.Services {
                 warning ("Key '%s' could not be written to.", key);
             
             notify.connect (handle_notify);
-            start_monitor ();
+            saving_key = false;
         }
         
     }
