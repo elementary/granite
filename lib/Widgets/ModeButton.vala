@@ -121,7 +121,7 @@ namespace Granite.Widgets {
             item.add (w);
 
             item.button_press_event.connect (() => {
-                set_active (item.index);
+                selected = item.index;
                 return true;
             });
 
