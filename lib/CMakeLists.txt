@@ -1,5 +1,5 @@
 # increase when you break the API
-set (PKG_SOVERSION 2)
+set (PKG_SOVERSION 3)
 
 # Increase when you add functionality
 set (PKG_SOMINOR 0.1)
