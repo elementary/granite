@@ -14,7 +14,7 @@ Vcs-Bzr: lp:~pantheon-debian/pantheon-debian/granite
 Vcs-Browser: https://code.launchpad.net/~pantheon-debian/pantheon-debian/granite
 Homepage: https://launchpad.net/granite
 
-Package: libgranite2
+Package: libgranite3
 Architecture: any
 Multi-Arch: same
 Depends: libgranite-common (>= ${source:Version}),
@@ -35,7 +35,7 @@ Architecture: any
 Depends: gir1.2-granite-1.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
-         libgranite2 (= ${binary:Version}),
+         libgranite3 (= ${binary:Version}),
          libgtk-3-dev (>= 3.3.14),
          ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
@@ -78,7 +78,7 @@ Description: extension of GTK+ libraries (common files)
 Package: granite-demo
 Section: misc
 Architecture: any
-Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite3 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
@@ -86,12 +86,12 @@ Description: extension of GTK+ libraries (demo binary)
  .
  This package contains a small demo application to show Granite Widgets.
 
-Package: libgranite2-dbg
+Package: libgranite3-dbg
 Section: debug
 Priority: extra
 Architecture: any
 Multi-Arch: same
-Depends: libgranite2 (= ${binary:Version}), ${misc:Depends}
+Depends: libgranite3 (= ${binary:Version}), ${misc:Depends}
 Description: extension of GTK+ libraries (debugging symbols)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
