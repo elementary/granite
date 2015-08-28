@@ -512,7 +512,6 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_tab_get_pinnable@Base 0.2.3
  granite_widgets_tab_get_pinned@Base 0.2.3
  granite_widgets_tab_get_restore_data@Base 0.2.3
- granite_widgets_tab_get_show_icon@Base 0.3.0+
  granite_widgets_tab_get_type@Base 0.2.0
  granite_widgets_tab_get_working@Base 0.2.0
  granite_widgets_tab_new@Base 0.2.0
@@ -531,7 +530,6 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_tab_set_pinnable@Base 0.2.3
  granite_widgets_tab_set_pinned@Base 0.2.3
  granite_widgets_tab_set_restore_data@Base 0.2.3
- granite_widgets_tab_set_show_icon@Base 0.3.0+
  granite_widgets_tab_set_working@Base 0.2.0
  granite_widgets_thin_paned_construct@Base 0.2.0
  granite_widgets_thin_paned_get_overlay_handle_window@Base 0.2.0
