@@ -5,7 +5,7 @@ cmake_policy (VERSION 2.8)
 project (granite C)
 
 set (PKG_NAME ${CMAKE_PROJECT_NAME})
-set (PKG_VERSION 0.3.0)
+set (PKG_VERSION 0.3.1)
 set (API_VERSION 1.0)
 
 # Used to create GObject introspection files

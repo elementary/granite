@@ -40,7 +40,7 @@ public class Granite.Demo : Granite.Application {
         program_name = "Granite Demo";
         app_years = "2011-2015";
 
-        build_version = "0.3.0";
+        build_version = "0.3.1";
         app_icon = "applications-interfacedesign";
         main_url = "https://launchpad.net/granite";
         bug_url = "https://bugs.launchpad.net/granite";
