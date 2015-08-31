@@ -1,5 +1,6 @@
 /*
  *  Copyright (C) 2011-2013 Robert Dyer
+ *                2015 elementary LLC, Rico Tzschichholz
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -51,7 +52,7 @@ namespace Granite.Services {
         /**
          * This level should be used only in cases of unrecoverable errors.
          */
-        FATAL,
+        FATAL
     }
     
     enum ConsoleColor {
@@ -62,7 +63,7 @@ namespace Granite.Services {
         BLUE,
         MAGENTA,
         CYAN,
-        WHITE,
+        WHITE
     }
     
     /**
@@ -70,73 +71,58 @@ namespace Granite.Services {
      * 
      */
     public class Logger : GLib.Object {
-        
+        const string[] LOG_LEVEL_TO_STRING = {
+            "DEBUG",
+            "INFO",
+            "NOTIFY",
+            "WARNING",
+            "ERROR",
+            "FATAL"
+        };
+
         /**
          * This is used to determine which level of LogLevelling should be used.
          */
         public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
-        
-        /**
-         * The name of the app that is logging.
-         */
-        static string AppName { get; set; }
-        
-        static Regex re;
-        
+
+        static Mutex write_mutex;
+
         /**
          * This method initializes the Logger
          * 
          * @param app_name name of app that is logging
          */
         public static void initialize (string app_name) {
-        
-            AppName = app_name;
-            /*try {
-                re = new Regex ("""(.*)\.vala(:\d+): (.*)""");
-            } catch { }*/
-            
-            Log.set_default_handler (glib_log_func);
+            Log.set_default_handler ((GLib.LogFunc) glib_log_func);
         }
-        
-        /**
-         * Formats a message to be logged
-         * 
-         * @param msg message to be formatted
-         */
-        static string format_message (string msg) {
-        
-            if (re != null && re.match (msg)) {
-                var parts = re.split (msg);
-                return "[%s%s] %s".printf (parts[1], parts[2], parts[3]);
-            }
-            return msg;
-        }
-        
+
         /**
          * Logs message using Notify level formatting
          * 
          * @param msg message to be logged
          */
         public static void notification (string msg) {
-            write (LogLevel.NOTIFY, format_message (msg));
+            write (LogLevel.NOTIFY, msg);
         }
         
         static string get_time () {
-        
             var now = new GLib.DateTime.now_local ();
             return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
         }
         
-        static void write (LogLevel level, string msg) {
+        static void write (LogLevel level, owned string msg) {
         
             if (level < DisplayLevel)
                 return;
-                
+
+            write_mutex.lock ();
             set_color_for_level (level);
-            stdout.printf ("[%s %s]", level.to_string ().substring (16), get_time ());
+            stdout.printf ("[%s %s]", LOG_LEVEL_TO_STRING[level], get_time ());
             
             reset_color ();
             stdout.printf (" %s\n", msg);
+
+            write_mutex.unlock ();
         }
         
         static void set_color_for_level (LogLevel level) {
@@ -185,37 +171,48 @@ namespace Granite.Services {
         }
         
         static void glib_log_func (string? d, LogLevelFlags flags, string msg) {
-            var domain = "";
+            string domain;
             if (d != null)
                 domain = "[%s] ".printf (d);
-            
-            var message = msg.replace ("\n", "").replace ("\r", "");
-            message = "%s%s".printf (domain, message);
-            
+            else
+                domain = "";
+
+            string message;
+            if (msg.contains ("\n") || msg.contains ("\r"))
+                message = "%s%s".printf (domain, msg.replace ("\n", "").replace ("\r", ""));
+            else
+                message = "%s%s".printf (domain, msg);
+
+            LogLevel level;
+
+            // Strip internal flags to make it possible to use a switch statement
+            flags = (flags & LogLevelFlags.LEVEL_MASK);
+
             switch (flags) {
                 case LogLevelFlags.LEVEL_CRITICAL:
-                    write (LogLevel.FATAL, format_message (message));
-                    write (LogLevel.FATAL, format_message (AppName + " will not function properly."));
+                    level = LogLevel.FATAL;
                     break;
                 
                 case LogLevelFlags.LEVEL_ERROR:
-                    write (LogLevel.ERROR, format_message (message));
+                    level = LogLevel.ERROR;
                     break;
                 
                 case LogLevelFlags.LEVEL_INFO:
                 case LogLevelFlags.LEVEL_MESSAGE:
-                    write (LogLevel.INFO, format_message (message));
+                    level = LogLevel.INFO;
                     break;
                 
                 case LogLevelFlags.LEVEL_DEBUG:
-                    write (LogLevel.DEBUG, format_message (message));
+                    level = LogLevel.DEBUG;
                     break;
                 
                 case LogLevelFlags.LEVEL_WARNING:
                 default:
-                    write (LogLevel.WARN, format_message (message));
+                    level = LogLevel.WARN;
                     break;
             }
+
+            write (level, message);
         }
         
     }
