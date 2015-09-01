@@ -20,6 +20,7 @@ set (VALA_SOURCES
     Services/IconFactory.vala
     Services/SimpleCommand.vala
     Widgets/AlertView.vala
+    Widgets/Avatar.vala
     Widgets/Utils.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
