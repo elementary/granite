@@ -136,11 +136,27 @@ namespace Granite.Widgets {
         }
 
         /**
+         * Clear selected items
+         */
+        private void clear_selected () {
+            for (int index = 0; index < item_map.size; index++) {
+                var item = item_map[index];
+                if (item != null)
+                    item.set_active (false);
+            }
+        }
+
+        /**
          * Sets item of given index's activity
          *
          * @param new_active_index index of changed item
          */
         public void set_active (int new_active_index) {
+            if (new_active_index == -1) {
+                clear_selected ();
+                return;
+            }
+
             return_if_fail (item_map.has_key (new_active_index));
             var new_item = item_map[new_active_index] as Item;
 
