@@ -141,7 +141,7 @@ namespace Granite.Widgets {
         private void clear_selected () {
             for (int index = 0; index < item_map.size; index++) {
                 var item = item_map[index];
-                if (item != null)
+                if (item != null && item.active)
                     item.set_active (false);
             }
         }
