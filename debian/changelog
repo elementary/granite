@@ -1,3 +1,9 @@
+granite (0.3.1-1) trusty; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Thu, 20 Aug 2015 02:23:34 -0500
+
 granite (0.3.0-2~experimental1) experimental; urgency=low
 
   * Fix build on valac 0.25.2 and later by cherrypicking an upstream patch.

@@ -1,4 +1,4 @@
-libgranite.so.2 libgranite2 #MINVER#
+libgranite.so.3 libgranite3 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
  get_close_pixbuf@Base 0.2.0
  granite_app@Base 0.2.0
@@ -201,6 +201,17 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_about_dialog_set_bug@Base 0.2.0
  granite_widgets_about_dialog_set_help@Base 0.2.0
  granite_widgets_about_dialog_set_translate@Base 0.2.0
+ granite_widgets_alert_view_construct@Base 0.3.1
+ granite_widgets_alert_view_get_description@Base 0.3.1
+ granite_widgets_alert_view_get_icon_name@Base 0.3.1
+ granite_widgets_alert_view_get_title@Base 0.3.1
+ granite_widgets_alert_view_get_type@Base 0.3.1
+ granite_widgets_alert_view_hide_action@Base 0.3.1
+ granite_widgets_alert_view_new@Base 0.3.1
+ granite_widgets_alert_view_set_description@Base 0.3.1
+ granite_widgets_alert_view_set_icon_name@Base 0.3.1
+ granite_widgets_alert_view_set_title@Base 0.3.1
+ granite_widgets_alert_view_show_action@Base 0.3.1
  granite_widgets_app_menu_add_items@Base 0.2.0
  granite_widgets_app_menu_construct@Base 0.2.0
  granite_widgets_app_menu_construct_with_app@Base 0.2.0
@@ -467,6 +478,28 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_status_bar_insert_widget@Base 0.2.0
  granite_widgets_status_bar_new@Base 0.2.0
  granite_widgets_status_bar_set_text@Base 0.2.0
+ granite_widgets_storage_bar_construct@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_construct@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_get_description@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_get_legend_item@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_get_size@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_get_type@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_new@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_set_description@Base 0.3.1
+ granite_widgets_storage_bar_fill_block_set_size@Base 0.3.1
+ granite_widgets_storage_bar_fill_round_construct@Base 0.3.1
+ granite_widgets_storage_bar_fill_round_get_type@Base 0.3.1
+ granite_widgets_storage_bar_fill_round_new@Base 0.3.1
+ granite_widgets_storage_bar_get_inner_margin_sides@Base 0.3.1
+ granite_widgets_storage_bar_get_storage@Base 0.3.1
+ granite_widgets_storage_bar_get_type@Base 0.3.1
+ granite_widgets_storage_bar_item_description_get_class@Base 0.3.1
+ granite_widgets_storage_bar_item_description_get_name@Base 0.3.1
+ granite_widgets_storage_bar_item_description_get_type@Base 0.3.1
+ granite_widgets_storage_bar_new@Base 0.3.1
+ granite_widgets_storage_bar_set_inner_margin_sides@Base 0.3.1
+ granite_widgets_storage_bar_set_storage@Base 0.3.1
+ granite_widgets_storage_bar_update_block_size@Base 0.3.1
  granite_widgets_tab_close@Base 0.3.0
  granite_widgets_tab_construct@Base 0.2.0
  granite_widgets_tab_fix_button_theming@Base 0.3.0
@@ -546,7 +579,17 @@ libgranite.so.2 libgranite2 #MINVER#
  granite_widgets_welcome_append@Base 0.2.0
  granite_widgets_welcome_append_with_image@Base 0.2.0
  granite_widgets_welcome_append_with_pixbuf@Base 0.2.0
+ granite_widgets_welcome_button_construct@Base 0.3.1
+ granite_widgets_welcome_button_get_description@Base 0.3.1
+ granite_widgets_welcome_button_get_icon@Base 0.3.1
+ granite_widgets_welcome_button_get_title@Base 0.3.1
+ granite_widgets_welcome_button_get_type@Base 0.3.1
+ granite_widgets_welcome_button_new@Base 0.3.1
+ granite_widgets_welcome_button_set_description@Base 0.3.1
+ granite_widgets_welcome_button_set_icon@Base 0.3.1
+ granite_widgets_welcome_button_set_title@Base 0.3.1
  granite_widgets_welcome_construct@Base 0.2.0
+ granite_widgets_welcome_get_button_from_index@Base 0.3.1
  granite_widgets_welcome_get_subtitle@Base 0.2.0
  granite_widgets_welcome_get_title@Base 0.2.0
  granite_widgets_welcome_get_type@Base 0.2.0
