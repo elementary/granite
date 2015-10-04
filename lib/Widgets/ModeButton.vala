@@ -139,8 +139,7 @@ namespace Granite.Widgets {
          * Clear selected items
          */
         private void clear_selected () {
-            for (int index = 0; index < item_map.size; index++) {
-                var item = item_map[index];
+            foreach (var item in item_map.values) {
                 if (item != null && item.active)
                     item.set_active (false);
             }
