@@ -104,8 +104,11 @@ public class Granite.Demo : Granite.Application {
             home_button.hide ();
         });
 
+        var avatar = create_avatar ();
+
         headerbar.pack_start (home_button);
         headerbar.pack_end (about_button);
+        headerbar.pack_end (avatar);
         window.set_titlebar (headerbar);
     }
 
@@ -272,6 +275,25 @@ public class Granite.Demo : Granite.Application {
             notebook.insert_tab (tab, i-1);
             i++;
         });
+    }
+
+    private Granite.Widgets.Avatar create_avatar () {
+        var username = GLib.Environment.get_user_name ();
+        var avatar = new Granite.Widgets.Avatar ();
+        var iconfile = @"/var/lib/AccountsService/icons/$username";
+
+        avatar.valign = Gtk.Align.CENTER;
+
+        try {
+            var pixbuf = new Gdk.Pixbuf.from_file (iconfile);
+            avatar.pixbuf = pixbuf.scale_simple (24, 24, Gdk.InterpType.BILINEAR);
+            avatar.set_tooltip_text ("Avatar widget: User image found");
+        } catch (Error e) {
+            avatar.show_default (24);
+            avatar.set_tooltip_text ("Avatar widget: User image not found, using fallback");
+        }
+
+        return avatar;
     }
 
     public static int main (string[] args) {
