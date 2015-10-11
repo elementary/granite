@@ -223,10 +223,16 @@ public class Granite.Demo : Granite.Application {
         expandable_grid_start.expand = true;
         var expandable_grid_end = new Gtk.Grid ();
         expandable_grid_end.expand = true;
+        var clear_button = new Gtk.Button.with_label("Clear Selected");
+        clear_button.clicked.connect (() => {
+            icon_mode.selected = -1;
+            text_mode.selected = -1;
+        });
         grid.attach (expandable_grid_start, 0, 0, 1, 1);
-        grid.attach (expandable_grid_end, 2, 3, 1, 1);
+        grid.attach (expandable_grid_end, 2, 4, 1, 1);
         grid.attach (icon_mode, 1, 1, 1, 1);
         grid.attach (text_mode, 1, 2, 1, 1);
+        grid.attach (clear_button, 1, 3, 1 ,1);
         main_stack.add_named (grid, "modebutton");
     }
 
