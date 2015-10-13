@@ -1138,7 +1138,7 @@ namespace Granite.Widgets {
             return_if_fail (tabs.index (tab) < 0);
 
             var i = 0;
-            if (index == -1)
+            if (index <= -1)
                 i = this.notebook.insert_page (tab.page_container, tab, this.notebook.get_n_pages ());
             else
                 i = this.notebook.insert_page (tab.page_container, tab, index);

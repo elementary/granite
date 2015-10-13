@@ -153,7 +153,7 @@ namespace Granite.Widgets {
          * @param new_active_index index of changed item
          */
         public void set_active (int new_active_index) {
-            if (new_active_index == -1) {
+            if (new_active_index <= -1) {
                 clear_selected ();
                 return;
             }
