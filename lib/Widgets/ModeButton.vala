@@ -143,6 +143,8 @@ namespace Granite.Widgets {
                 if (item != null && item.active)
                     item.set_active (false);
             }
+
+            _selected = -1;
         }
 
         /**
