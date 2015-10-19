@@ -112,7 +112,7 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
 
         image = new Gtk.Image ();
         var image_box = new Gtk.EventBox ();
-        image_box.halign = Gtk.Align.END;
+        image_box.valign = Gtk.Align.START;
         image_box.add (image);
 
         attach (image_box, 1, 1, 1, 2);
