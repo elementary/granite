@@ -116,9 +116,9 @@ namespace Granite.Widgets {
             }
         }
 
-        private int LONG_PRESS_TIME = Gtk.Settings.get_default ().gtk_double_click_time * 2;
-        private int timeout = -1;
-        private uint last_click_time = -1;
+        private uint LONG_PRESS_TIME = (uint) Gtk.Settings.get_default ().gtk_double_click_time * 2U;
+        private uint timeout_id = 0U;
+        private uint last_click_time = 0U;
         private bool has_fetcher = false;
 
         private unowned MenuFetcher _fetcher;
@@ -203,9 +203,9 @@ namespace Granite.Widgets {
                 }
             }
 
-            if (timeout != -1) {
-                Source.remove ((uint) timeout);
-                timeout = -1;
+            if (timeout_id > 0U) {
+                Source.remove (timeout_id);
+                timeout_id = 0U;
             }
 
             return true;
@@ -213,13 +213,13 @@ namespace Granite.Widgets {
 
         private bool on_button_press_event (Gdk.EventButton ev) {
             // If the button is kept pressed, don't make the user wait when there's no action
-            int max_press_time = (myaction != null)? LONG_PRESS_TIME : 0;
+            uint max_press_time = (myaction != null ? LONG_PRESS_TIME : 0U);
 
-            if (timeout == -1 && ev.button == 1) {
+            if (timeout_id == 0U && ev.button == 1) {
                 last_click_time = ev.time;
-                timeout = (int) Timeout.add(max_press_time, () => {
+                timeout_id = Timeout.add (max_press_time, () => {
                     // long click
-                    timeout = -1;
+                    timeout_id = 0U;
                     popup_menu_and_depress_button (ev);
                     return false;
                 });
