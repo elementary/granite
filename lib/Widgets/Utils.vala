@@ -145,8 +145,7 @@ namespace Granite.Widgets.Utils {
         assert (window != null);
 
         var css_provider = new Gtk.CssProvider ();
-        string hex =
-            "#%02x%02x%02x"
+        string hex ="#%02x%02x%02x"
             .printf ((uint)(Math.round (color.red * 255)),
                     (uint)(Math.round (color.green * 255)),
                     (uint)(Math.round (color.blue * 255))).up();
