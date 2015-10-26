@@ -369,6 +369,16 @@ public class Granite.Demo : Granite.Application {
         right_sep.set_expand (true);
         main_toolbar.insert (right_sep, -1);
 
+        // Primary Color Button
+        var primary_color_item = new Gtk.ToolItem ();
+        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
+        primary_color_button.color_set.connect (() => {
+            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
+        });
+
+        primary_color_item.add (primary_color_button);
+        main_toolbar.insert (primary_color_item, -1);
+
         // Search Entry
         var search_entry = new Granite.Widgets.SearchBar ("Search");
         var search_item = new Gtk.ToolItem ();
