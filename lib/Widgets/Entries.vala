@@ -147,17 +147,19 @@ namespace Granite.Widgets {
         }
 
         private void on_changed () {
-            if (timeout_id > 0)
+            if (timeout_id > 0U)
                 Source.remove (timeout_id);
 
             timeout_id = Timeout.add (pause_delay, emit_text_changed);
         }
 
         private bool emit_text_changed () {
+            timeout_id = 0U;
+
             var terms = get_text ();
             text_changed_pause (terms); // Emit signal
 
-            return Source.remove (timeout_id);
+            return false;
         }
     }
 }

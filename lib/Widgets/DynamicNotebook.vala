@@ -122,16 +122,6 @@ namespace Granite.Widgets {
             }
         }
 
-        bool _show_icon;
-        internal bool show_icon {
-            get { return _show_icon; }
-
-            set {
-                _icon.visible = value && !working;
-                _show_icon = value;
-            }
-        }
-
         internal Gtk.Image _icon;
         public GLib.Icon? icon {
             owned get { return _icon.gicon;  }
@@ -145,7 +135,7 @@ namespace Granite.Widgets {
 
             set {
                 __working = _working.visible = value;
-                _icon.visible = show_icon && !value;
+                _icon.visible = !value;
             }
         }
 
@@ -213,14 +203,21 @@ namespace Granite.Widgets {
             }
         """;
 
+        /**
+         * With this you can construct a Tab. It is linked to the page that is shown on focus.
+         * A Tab can have a icon on the right side. You can pass null on the constructor to 
+         * create a tab without a icon.
+         **/
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
             this._label = new Gtk.Label (label);
             this._label.hexpand = true;
 
-            if (icon != null)
+            if (icon != null) {
                 this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
-            else
-                this._icon = new Gtk.Image.from_icon_name ("image-missing", Gtk.IconSize.MENU);
+            } else {
+                this._icon = new Gtk.Image ();
+                this._icon.icon_size = Gtk.IconSize.MENU;
+            }
             this._working = new Gtk.Spinner ();
             _working.start();
 
@@ -247,6 +244,7 @@ namespace Granite.Widgets {
             _icon.set_size_request (16, 16);
             _working.set_size_request (16, 16);
 
+            _icon.visible = true;
             this.visible_window = true;
 
             // Apply transparent background color to the tab.
@@ -320,6 +318,7 @@ namespace Granite.Widgets {
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
+                    new_window_m.sensitive = (num_tabs != 1);
                     pin_m.label = "Pin";
                     if (this.pinned) {
                         pin_m.label = "Unpin";
@@ -542,12 +541,10 @@ namespace Granite.Widgets {
          * Toggle icon display
          */
         bool _show_icons;
+        [Deprecated (since = "0.3.1")]
         public bool show_icons {
             get { return _show_icons; }
             set {
-                if (_show_icons != value) {
-                    tabs.foreach ((t) => t.show_icon = value);
-                }
                 _show_icons = value;
             }
         }
@@ -1141,7 +1138,7 @@ namespace Granite.Widgets {
             return_if_fail (tabs.index (tab) < 0);
 
             var i = 0;
-            if (index == -1)
+            if (index <= -1)
                 i = this.notebook.insert_page (tab.page_container, tab, this.notebook.get_n_pages ());
             else
                 i = this.notebook.insert_page (tab.page_container, tab, index);
@@ -1149,7 +1146,6 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
 
-            tab.show_icon = show_icons;
             tab.duplicate_m.visible = allow_duplication;
             tab.new_window_m.visible = allow_new_window;
             tab.pin_m.visible = allow_pinning;

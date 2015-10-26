@@ -94,6 +94,11 @@ namespace Granite.Services {
     public abstract class Settings : GLib.Object {
     
         /**
+         * Used internally to avoid mutual signal calls.
+         */
+        bool saving_key;
+        
+        /**
          * This signal is to be used in place of the standard {@link GLib.Object.notify} signal.
          *
          * This signal ''only'' emits after a property's value was verified.
@@ -161,7 +166,7 @@ namespace Granite.Services {
             var properties = obj_class.list_properties ();
             foreach (var prop in properties)
                 load_key (prop.name);
-            
+
             start_monitor ();
         }
         
@@ -244,6 +249,10 @@ namespace Granite.Services {
                     set_property (prop.name, schema.get_strv (key));
                 else if(type == typeof (bool))
                     set_property (prop.name, schema.get_boolean (key));
+                else if(type == typeof (int64))
+                    set_property (prop.name, schema.get_value (key).get_int64 ());
+                else if(type == typeof (uint64))
+                    set_property (prop.name, schema.get_value (key).get_uint64 ());
                 else if(type.is_enum ())
                     set_property (prop.name, schema.get_enum (key));
             } else if (type.is_a (typeof (SettingsSerializable))) {
@@ -263,7 +272,7 @@ namespace Granite.Services {
         }
         
         void save_key (string key) {
-            if (key == "schema")
+            if (key == "schema" || saving_key)
                 return;
 
             var obj_class = (ObjectClass) get_type ().class_ref ();
@@ -275,7 +284,7 @@ namespace Granite.Services {
 
             bool success = true;
 
-            stop_monitor ();
+            saving_key = true;
             notify.disconnect (handle_notify);
 
             var type = prop.value_type;
@@ -290,6 +299,14 @@ namespace Granite.Services {
                 } else if(type == typeof (uint)) {
                     if (val.get_uint () != schema.get_uint (key)) {
                         success = schema.set_uint (key, val.get_uint ());
+                    }
+                } else if(type == typeof (int64)) {
+                    if (val.get_int64 () != schema.get_value (key).get_int64 ()) {
+                        success = schema.set_value (key, new Variant.int64 (val.get_int64 ()));
+                    }
+                } else if(type == typeof (uint64)) {
+                    if (val.get_uint64 () != schema.get_value (key).get_uint64 ()) {
+                        success = schema.set_value (key, new Variant.uint64 (val.get_uint64 ()));
                     }
                 } else if(type == typeof (double)) {
                     if (val.get_double () != schema.get_double (key)) {
@@ -324,7 +341,7 @@ namespace Granite.Services {
                 warning ("Key '%s' could not be written to.", key);
             
             notify.connect (handle_notify);
-            start_monitor ();
+            saving_key = false;
         }
         
     }

@@ -1,5 +1,5 @@
 # increase when you break the API
-set (PKG_SOVERSION 2)
+set (PKG_SOVERSION 3)
 
 # Increase when you add functionality
 set (PKG_SOMINOR 0.1)
@@ -19,6 +19,8 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+    Widgets/AlertView.vala
+    Widgets/Avatar.vala
     Widgets/Utils.vala
     Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
@@ -41,6 +43,7 @@ set (VALA_SOURCES
     Widgets/LightWindow.vala
     Widgets/StatusBar.vala
     Widgets/SidebarPaned.vala
+    Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala

@@ -93,7 +93,7 @@ namespace Granite.Widgets {
             label.set_margin_left(5);
             switcher.append(label);
 
-            if(switcher.selected == -1)
+            if (switcher.selected <= -1)
                 switcher.selected = 0;
 
             update_switcher_visibility();

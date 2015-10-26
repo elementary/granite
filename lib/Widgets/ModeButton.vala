@@ -121,7 +121,7 @@ namespace Granite.Widgets {
             item.add (w);
 
             item.button_press_event.connect (() => {
-                set_active (item.index);
+                selected = item.index;
                 return true;
             });
 
@@ -136,11 +136,28 @@ namespace Granite.Widgets {
         }
 
         /**
+         * Clear selected items
+         */
+        private void clear_selected () {
+            foreach (var item in item_map.values) {
+                if (item != null && item.active)
+                    item.set_active (false);
+            }
+
+            _selected = -1;
+        }
+
+        /**
          * Sets item of given index's activity
          *
          * @param new_active_index index of changed item
          */
         public void set_active (int new_active_index) {
+            if (new_active_index <= -1) {
+                clear_selected ();
+                return;
+            }
+
             return_if_fail (item_map.has_key (new_active_index));
             var new_item = item_map[new_active_index] as Item;
 
