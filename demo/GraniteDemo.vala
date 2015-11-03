@@ -106,9 +106,15 @@ public class Granite.Demo : Granite.Application {
 
         var avatar = create_avatar ();
 
+        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
+        primary_color_button.color_set.connect (() => {
+            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
+        });
+
         headerbar.pack_start (home_button);
         headerbar.pack_end (about_button);
         headerbar.pack_end (avatar);
+        headerbar.pack_end (primary_color_button);
         window.set_titlebar (headerbar);
     }
 
