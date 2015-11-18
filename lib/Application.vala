@@ -245,7 +245,14 @@ namespace Granite {
         public virtual void show_about (Gtk.Widget parent) {
             assert (parent is Gtk.Window);
 
-            var developers_string = _("Developers");
+            var developers_string = _("%s's Developers").printf (program_name);
+
+            string copyright_string;
+            if (parent.get_style_context ().get_direction () == Gtk.TextDirection.RTL) {
+                copyright_string = "%s %s".printf (developers_string, app_years);
+            } else {
+                copyright_string = "%s %s".printf (app_years, developers_string);
+            }
 
             Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
                                                "program_name", program_name,
@@ -253,7 +260,7 @@ namespace Granite {
                                                "logo_icon_name", app_icon,
 
                                                "comments", about_comments,
-                                               "copyright", "%s %s %s".printf (app_years, program_name, developers_string),
+                                               "copyright", copyright_string,
                                                "website", main_url,
                                                "website_label", _("Website"),
 
