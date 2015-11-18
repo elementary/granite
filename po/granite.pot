@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 16:01-0600\n"
+"POT-Creation-Date: 2015-11-18 16:35-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,18 +34,18 @@ msgid "© %s"
 msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
-#: ../lib//GtkPatch/AboutDialog.vala:111
+#: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
 msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
-#: ../lib//GtkPatch/AboutDialog.vala:171
+#: ../lib//GtkPatch/AboutDialog.vala:171 ../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
 msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
-#: ../lib//GtkPatch/AboutDialog.vala:355
+#: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 msgid "Close"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgid "Developers"
 msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
-#: ../lib//Application.vala:258
+#: ../lib//Application.vala:258 ../lib//Application.vala:265
 msgid "Website"
 msgstr ""
 
@@ -258,4 +258,14 @@ msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
+msgstr ""
+
+#: ../lib//Application.vala:248
+msgid "%s's Developers"
+msgstr ""
+
+#: ../lib//GtkPatch/AboutDialog.vala:460
+msgid ""
+"This program is published under the terms of the %s license, it comes with "
+"ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
