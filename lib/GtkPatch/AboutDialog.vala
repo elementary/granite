@@ -90,7 +90,11 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 copyright_label.set_text("");
             }
             else {
-                copyright_label.set_markup ("<span size=\"small\">" + _("© %s").printf (_copyright.replace("&", "&amp;")) + "</span>\n");
+                if (copyright_label.get_style_context ().get_direction () == Gtk.TextDirection.RTL) {
+                    copyright_label.set_markup ("<span size=\"small\">" + "%s ©".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
+                } else {
+                    copyright_label.set_markup ("<span size=\"small\">" + "© %s".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
+                }
                 copyright_label.show();
             }
         }
@@ -168,7 +172,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
                 translators_label.set_text("");
             }
             else {
-                translators_label.set_markup("<span size=\"small\">" + _("Translated by %s").printf(_translator_credits.replace("&", "&amp;")) + "</span>");
+                translators_label.set_markup("<span size=\"small\">" + _("Translated by %s").printf(GLib.Markup.escape_text (_translator_credits)) + "</span>");
                 translators_label.show();
             }
         }
@@ -453,7 +457,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
     private void set_generic_license(string url, string license_type)
     {
-        license_label.set_markup("<span size=\"small\">" + _("This program is published under the terms of the ") + license_type + _(" license, it comes with ABSOLUTELY NO WARRANTY; for details, visit ") + "<a href=\"" + url + "\">" + url + "</a></span>\n");
+        license_label.set_markup("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n"));
         license_label.show();
     }
 
@@ -475,7 +479,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
 
             if (website_label != null && website_label != "")
                 website_url_label.set_markup ("<a href=\"%s\" title=\"%s\">%s</a>\n".printf
-                                              (website, website, website_label.replace("&", "&amp;")));
+                                              (website, website, GLib.Markup.escape_text (website_label)));
             else
                 website_url_label.set_markup ("<a href=\"%s\" title=\"%s\">%s</a>\n".printf
                                               (website, website, website));
