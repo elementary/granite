@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-18 16:35-0600\n"
-"PO-Revision-Date: 2015-11-19 04:07+0000\n"
+"PO-Revision-Date: 2015-11-24 07:35+0000\n"
 "Last-Translator: Maxim Taranov <png2378@protonmail.ch>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-20 05:18+0000\n"
+"X-Launchpad-Export-Date: 2015-11-25 05:18+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -42,7 +42,7 @@ msgstr "Документация:"
 #: ../lib//GtkPatch/AboutDialog.vala:171 ../lib//GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr "Перевод — %s"
+msgstr "Переведено %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
@@ -240,27 +240,27 @@ msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "Аудиозаписи"
 
 #: ../lib//Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "Видеозаписи"
 
 #: ../lib//Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "Фотографии"
 
 #: ../lib//Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Приложения"
 
 #: ../lib//Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "Прочее"
 
 #: ../lib//Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s свободно из %s"
 
 #: ../lib//Application.vala:248
 msgid "%s's Developers"
@@ -271,3 +271,6 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Эта программа опубликована в соответствии с условиями лицензии %s и "
+"предоставляется без каких-либо гарантий. Для получения подробной информации "
+"посетите %s"
