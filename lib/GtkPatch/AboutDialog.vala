@@ -424,13 +424,13 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     {
         switch (license_type) {
         case License.GPL_2_0:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL-2.0");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL 2.0");
             break;
         case License.GPL_3_0:
             set_generic_license("http://www.gnu.org/licenses/gpl.html", "GPL");
             break;
         case License.LGPL_2_1:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL-2.1");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL 2.1");
             break;
         case License.LGPL_3_0:
             set_generic_license("http://www.gnu.org/licenses/lgpl.html", "LGPL");
