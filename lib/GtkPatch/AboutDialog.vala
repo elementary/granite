@@ -10,7 +10,7 @@
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General
     Public License along with this library; if not, write to the
     Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -424,25 +424,25 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     {
         switch (license_type) {
         case License.GPL_2_0:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "gpl-2.0");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL 2.0");
             break;
         case License.GPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/gpl.html", "gpl");
+            set_generic_license("http://www.gnu.org/licenses/gpl.html", "GPL");
             break;
         case License.LGPL_2_1:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "lgpl-2.1");
+            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL 2.1");
             break;
         case License.LGPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/lgpl.html", "lgpl");
+            set_generic_license("http://www.gnu.org/licenses/lgpl.html", "LGPL");
             break;
         case License.BSD:
-            set_generic_license("http://opensource.org/licenses/bsd-license.php", "bsd");
+            set_generic_license("http://opensource.org/licenses/bsd-license.php", "BSD");
             break;
         case License.MIT_X11:
-            set_generic_license("http://opensource.org/licenses/mit-license.php", "mit");
+            set_generic_license("http://opensource.org/licenses/mit-license.php", "MIT");
             break;
         case License.ARTISTIC:
-            set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php", "artistic");
+            set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php", "Artistic");
             break;
         default:
             if (license != null && license != "") {
@@ -490,4 +490,3 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
             website_url_label.hide ();
     }
 }
-
