@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-18 16:35-0600\n"
-"PO-Revision-Date: 2015-03-20 11:09+0000\n"
+"PO-Revision-Date: 2015-11-25 10:19+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-19 05:19+0000\n"
+"X-Launchpad-Export-Date: 2015-11-26 05:20+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -238,34 +238,34 @@ msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "오디오"
 
 #: ../lib//Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "비디오"
 
 #: ../lib//Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "사진"
 
 #: ../lib//Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "앱"
 
 #: ../lib//Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "기타"
 
 #: ../lib//Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s개 중에 %s개무료로 사용 가능"
 
 #: ../lib//Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s의 개발자들"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
+msgstr "이 프로그램은 %s의 라이선스에 따라 제공되며, 품질 보증은 전혀 없습니다; 자세한 내용은, %s 를 방문하세요"
