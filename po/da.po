@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-18 16:35-0600\n"
-"PO-Revision-Date: 2014-12-07 18:21+0000\n"
-"Last-Translator: Mickas Jensen <qrank@live.dk>\n"
+"PO-Revision-Date: 2015-11-27 00:44+0000\n"
+"Last-Translator: Jimmy Merrild Krag <jimmy@kragenet.dk>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-19 05:19+0000\n"
+"X-Launchpad-Export-Date: 2015-11-27 05:25+0000\n"
 "X-Generator: Launchpad (build 17850)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -31,7 +31,7 @@ msgstr "Skrevet af:"
 #: ../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "© %s"
-msgstr ""
+msgstr "© %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
@@ -47,22 +47,22 @@ msgstr "Oversat af %s"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
-msgstr "Dette program er publiceret under betingelserne til "
+msgstr "Dette program er frigivet under betingelserne for "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " licens, der er ABSOLUT INGEN GARANTI; for detaljer kan man se "
+msgstr " licens, der ydes ABSOLUT INGEN GARANTI; for detaljer, se "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
 msgid "Developers"
-msgstr ""
+msgstr "Udviklere"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 #: ../lib//Application.vala:258 ../lib//Application.vala:265
@@ -89,34 +89,34 @@ msgstr "Duplikér"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 #: ../lib//Widgets/DynamicNotebook.vala:319
 msgid "Close Other Tab"
-msgstr "Luk Anden Fane"
+msgstr "Luk anden fane"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 #: ../lib//Widgets/DynamicNotebook.vala:319
 msgid "Close Other Tabs"
-msgstr "Luk Andre Faner"
+msgstr "Luk andre faner"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 #: ../lib//Widgets/DynamicNotebook.vala:496
 msgid "Clear All"
-msgstr ""
+msgstr "Ryd alt"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
 #: ../lib//Widgets/DynamicNotebook.vala:780
 #: ../lib//Widgets/DynamicNotebook.vala:813
 msgid "New Tab"
-msgstr "Ny Fane"
+msgstr "Ny fane"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
 #: ../lib//Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
-msgstr "Fortryd luk af faneblad"
+msgstr "Fortryd lukning af faner"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Lukkede faner"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 #: ../lib//Widgets/AboutDialog.vala:95
@@ -126,7 +126,7 @@ msgstr "Foreslå oversættelser"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
-msgstr "Indrapportér et problem"
+msgstr "Rapportér et problem"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
@@ -145,13 +145,13 @@ msgstr "Om"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -168,7 +168,7 @@ msgstr "Ingen handling fundet for denne fil"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 #: ../lib//Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
@@ -192,44 +192,44 @@ msgstr "%H:%M"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%a d. %e. %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%e. %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 #: ../lib//Widgets/Utils.vala:108
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr ""
+msgstr "%e. %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 #: ../lib//Widgets/Utils.vala:114
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
 #: ../lib//Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr ""
+msgstr "%a %e. %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -239,34 +239,36 @@ msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: ../lib//Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "Videoklip"
 
 #: ../lib//Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "Billeder"
 
 #: ../lib//Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Programmer"
 
 #: ../lib//Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "Andet"
 
 #: ../lib//Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s fri af %s"
 
 #: ../lib//Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s's udviklere"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Dette program distribueres under licensbetingelserne i %s, og kommer ABSOLUT "
+"UDEN GARANTI; For yderligere detaljer, se %s."
