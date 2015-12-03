@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-11-18 16:35-0600\n"
-"PO-Revision-Date: 2015-11-19 03:45+0000\n"
-"Last-Translator: Cleiton Floss <cleitonfloss@gmail.com>\n"
+"PO-Revision-Date: 2015-12-02 18:35+0000\n"
+"Last-Translator: Marco Aurélio Krause <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-11-20 05:18+0000\n"
-"X-Generator: Launchpad (build 17850)\n"
+"X-Launchpad-Export-Date: 2015-12-03 05:57+0000\n"
+"X-Generator: Launchpad (build 17856)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36
@@ -251,7 +251,7 @@ msgstr "Fotos"
 
 #: ../lib//Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Aplicativos"
 
 #: ../lib//Widgets/StorageBar.vala:61
 msgid "Other"
@@ -259,14 +259,16 @@ msgstr "Outro"
 
 #: ../lib//Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s livre de %s"
 
 #: ../lib//Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "Desenvolvedores do %s"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Este programa é publicado sob os termos da licença %s, ele vem SEM NENHUMA "
+"GARANTIA; Para mais informações, visite %s"
