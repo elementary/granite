@@ -60,7 +60,7 @@ public class Granite.Demo : Granite.Application {
         };
 
         about_comments = "A demo of the Granite toolkit";
-        about_translators = "Launchpad Translators";
+        about_translators = _("translator-credits");
         about_license_type = Gtk.License.GPL_3_0;
     }
 
