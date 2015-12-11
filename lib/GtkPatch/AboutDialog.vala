@@ -167,7 +167,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     public string translator_credits {
         set {
             _translator_credits = value;
-            if (_translator_credits == null || _translator_credits == "") {
+            if (_translator_credits == null || _translator_credits == "" || _translator_credits == "translator-credits") {
                 translators_label.hide();
                 translators_label.set_text("");
             }
