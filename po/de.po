@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-03 15:16-0200\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2015-12-14 14:47+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-12-05 05:28+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
+"X-Launchpad-Export-Date: 2015-12-15 05:22+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -260,23 +260,23 @@ msgstr "%B"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "Filme"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "Fotos"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Anwendungen"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "Andere"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
@@ -291,6 +291,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Dieses Programm wurde unter den  Bedingungen der %s Lizenz veröffentlicht "
+"und kommt OHNE GEWÄHRLEISTUNG. Für weitere Details besuchen Sie bitte %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -299,7 +301,9 @@ msgstr ""
 "  Eduard Gotwig https://launchpad.net/~gotwig\n"
 "  Eduard Stürmer https://launchpad.net/~eduard-stuermer\n"
 "  Marco Kemmerling https://launchpad.net/~mar-co\n"
+"  Nico Du https://launchpad.net/~nico-d-8\n"
 "  No Name https://launchpad.net/~nonamenoname\n"
+"  Noah Mehling https://launchpad.net/~noahmehling\n"
 "  Philipp Birkl https://launchpad.net/~birklphilipp\n"
 "  Phillip Sz https://launchpad.net/~phillip-sz\n"
 "  Thomas Pitlik https://launchpad.net/~thomaspitlik\n"
