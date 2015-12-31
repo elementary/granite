@@ -79,42 +79,31 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     construct {
-        Gtk.Box content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-        // Box properties
-        content.homogeneous = false;
-
-        // Top spacer
-        content.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
-
-        // Labels
         title_label = new Gtk.Label (null);
+        title_label.justify = Gtk.Justification.CENTER;
+        title_label.hexpand = true;
         title_label.get_style_context ().add_class ("h1");
 
-        title_label.set_justify (Gtk.Justification.CENTER);
-        content.pack_start (title_label, false, true, 0);
-
         subtitle_label = new Gtk.Label (null);
+        subtitle_label.justify = Gtk.Justification.CENTER;
+        subtitle_label.hexpand = true;
+        subtitle_label.wrap = true;
+        subtitle_label.wrap_mode = Pango.WrapMode.WORD;
         subtitle_label.get_style_context ().add_class ("h2");
 
-        subtitle_label.set_line_wrap (true);
-        subtitle_label.set_line_wrap_mode (Pango.WrapMode.WORD);
-        subtitle_label.set_justify (Gtk.Justification.CENTER);
-
-        content.pack_start (subtitle_label, false, true, 2);
-
         // Options wrapper
-        this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 8);
-        var options_wrapper = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 9);
+        options.halign = Gtk.Align.CENTER;
+        options.margin = 12;
 
-        options_wrapper.pack_start (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // left padding
-        options_wrapper.pack_start (this.options, false, false, 0); // actual options
-        options_wrapper.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0); // right padding
-
-        content.pack_start (options_wrapper, false, false, 20);
-
-        // Bottom spacer
-        content.pack_end (new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0), true, true, 0);
+        var content = new Gtk.Grid ();
+        content.expand = true;
+        content.margin_top = 12;
+        content.valign = Gtk.Align.CENTER;
+        content.orientation = Gtk.Orientation.VERTICAL;
+        content.add (title_label);
+        content.add (subtitle_label);
+        content.add (options);
 
         add (content);
     }
