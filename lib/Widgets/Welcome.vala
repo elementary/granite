@@ -154,7 +154,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       * @return index of new item
       */
     public int append (string icon_name, string option_text, string description_text) {
-        Gtk.Image? image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        image.use_fallback = true;
         return append_with_image (image, option_text, description_text);
     }
 
