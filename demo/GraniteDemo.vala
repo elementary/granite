@@ -94,7 +94,7 @@ public class Granite.Demo : Granite.Application {
         headerbar.subtitle = "Demo Window";
         headerbar.show_close_button = true;
 
-        var about_button = new Gtk.Button.from_icon_name ("help-info", Gtk.IconSize.LARGE_TOOLBAR);
+        var about_button = new Gtk.Button.from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR);
         about_button.tooltip_text = "About this application";
         about_button.clicked.connect (() => {show_about (window);});
 
