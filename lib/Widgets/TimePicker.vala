@@ -50,16 +50,7 @@ namespace Granite.Widgets {
         public GLib.DateTime time {
             get {
                 if (_time == null) {
-                    _time = new GLib.DateTime.now_local ();
-                    changing_time = true;
-                    if (_time.get_hour () > 12) {
-                        am_pm_modebutton.selected = 1;
-                    } else {
-                        am_pm_modebutton.selected = 0;
-                    }
-
-                    update_text (true);
-                    changing_time = false;
+                    time = new GLib.DateTime.now_local ();
                 }
 
                 return _time;
@@ -69,7 +60,7 @@ namespace Granite.Widgets {
                 _time = value;
                 changing_time = true;
 
-                if (_time.get_hour () > 12) {
+                if (_time.get_hour () >= 12) {
                     am_pm_modebutton.selected = 1;
                 } else {
                     am_pm_modebutton.selected = 0;
@@ -106,12 +97,13 @@ namespace Granite.Widgets {
             pop_grid.row_spacing = 6;
 
             am_pm_modebutton = new ModeButton ();
+            am_pm_modebutton.no_show_all = true;
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             am_pm_modebutton.append_text (_("AM"));
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             am_pm_modebutton.append_text (_("PM"));
             am_pm_modebutton.mode_changed.connect (mode => {
-                if (changing_time == true) {
+                if (changing_time) {
                     return;
                 }
 
@@ -225,14 +217,15 @@ namespace Granite.Widgets {
         private void on_icon_press (Gtk.EntryIconPosition position, Gdk.Event event) {
             changing_time = true;
 
-            bool hide_am_pm = false;
-
             if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12)
                 hours_spinbutton.set_value (time.get_hour () - 12);
             else
                 hours_spinbutton.set_value (time.get_hour ());
 
             if (Granite.DateTime.is_clock_format_12h ()) {
+                am_pm_modebutton.no_show_all = false;
+                am_pm_modebutton.show_all ();
+
                 if (time.get_hour () > 12) {
                     hours_spinbutton.set_value (time.get_hour () - 12);
                 } else if (time.get_hour () == 0) {
@@ -241,7 +234,7 @@ namespace Granite.Widgets {
                     hours_spinbutton.set_value (time.get_hour ());
                 }
             } else {
-                hide_am_pm = true;
+                am_pm_modebutton.hide ();
                 hours_spinbutton.set_value (time.get_hour ());
             }
 
@@ -257,13 +250,6 @@ namespace Granite.Widgets {
             popover.pointing_to = rect;
             popover.position = Gtk.PositionType.BOTTOM;
             popover.show_all ();
-
-            // must do after popover.show_all ()
-            if (hide_am_pm) {
-                am_pm_modebutton.visible = false;
-            } else {
-                am_pm_modebutton.show_all ();
-            }
         }
 
         protected virtual void position_dropdown (out int x, out int y) {
