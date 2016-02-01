@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-03 15:16-0200\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2016-02-01 02:25+0000\n"
+"Last-Translator: Sadık Poyraz <sadikpoyraz01@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-08 05:21+0000\n"
-"X-Generator: Launchpad (build 17881)\n"
+"X-Launchpad-Export-Date: 2016-02-01 05:22+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -258,31 +258,31 @@ msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "Ses"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "Videolar"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "Fotoğraflar"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Uygulamalar"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s üzerinden ücretsiz %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s's Geliştiriciler"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 msgid ""
@@ -303,6 +303,7 @@ msgstr ""
 "  LesserCure https://launchpad.net/~lessercure\n"
 "  Mesut Yaver https://launchpad.net/~afg-mesut\n"
 "  Mustafa Yılmaz https://launchpad.net/~apshalasha\n"
+"  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
 "  Salih https://launchpad.net/~hernandomtoto\n"
 "  _BaCKDOoR_ https://launchpad.net/~tunaemre\n"
 "  asdasdqwdq qwd qwq https://launchpad.net/~onlycodetr-deactivatedaccount-"
