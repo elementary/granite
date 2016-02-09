@@ -97,6 +97,7 @@ namespace Granite.Widgets {
             pop_grid.row_spacing = 6;
 
             am_pm_modebutton = new ModeButton ();
+            am_pm_modebutton.orientation = Gtk.Orientation.VERTICAL;
             am_pm_modebutton.no_show_all = true;
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             am_pm_modebutton.append_text (_("AM"));
@@ -138,7 +139,7 @@ namespace Granite.Widgets {
             pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
             pop_grid.attach (separation_label, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
-            pop_grid.attach (am_pm_modebutton, 0, 1, 3, 1);
+            pop_grid.attach (am_pm_modebutton, 3, 0, 1, 1);
             pop_grid.margin = MARGIN;
 
             popover = new Gtk.Popover (this);
