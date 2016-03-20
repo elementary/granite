@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-12-03 15:16-0200\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2016-03-19 23:26+0000\n"
+"Last-Translator: chilledfrogs <Unknown>\n"
 "Language-Team: English (Canada) <en_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-02-16 05:21+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-03-20 05:26+0000\n"
+"X-Generator: Launchpad (build 17947)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -31,7 +31,7 @@ msgstr "Written by:"
 #: ../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "© %s"
-msgstr ""
+msgstr "© %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
@@ -136,7 +136,7 @@ msgstr "Closed Tabs"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Suggest Translations"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
@@ -209,13 +209,13 @@ msgstr "%H:%M"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%a %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -227,13 +227,13 @@ msgstr "%Y"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr ""
+msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 #: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
@@ -246,47 +246,49 @@ msgstr "%a"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr ""
+msgstr "%a %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 #: ../lib//Widgets/Utils.vala:123 ../lib/Widgets/Utils.vala:123
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 msgid "Videos"
-msgstr ""
+msgstr "Videos"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 msgid "Photos"
-msgstr ""
+msgstr "Photos"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 msgid "Apps"
-msgstr ""
+msgstr "Apps"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 msgid "Other"
-msgstr ""
+msgstr "Other"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s free out of %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s's Developers"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"This program is published under the terms of the %s license, it comes with "
+"ABSOLUTELY NO WARRANTY; for details, visit %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -294,4 +296,5 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Jeremy Rea https://launchpad.net/~rea-jeremy\n"
 "  Roman P https://launchpad.net/~rxownes\n"
-"  Shawn McTear https://launchpad.net/~syst3mfailur3"
+"  Shawn McTear https://launchpad.net/~syst3mfailur3\n"
+"  chilledfrogs https://launchpad.net/~chilledfrogs"
