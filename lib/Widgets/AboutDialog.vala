@@ -77,7 +77,7 @@ namespace Granite.Widgets {
 
             /* help button */
             help_button = new Button.with_label ("?");
-            help_button.get_style_context ().add_class ("help_button");
+            help_button.get_style_context ().add_class ("circular-button");
 
             help_button.halign = Gtk.Align.CENTER;
             help_button.clicked.connect (() => { activate_link(help); });
