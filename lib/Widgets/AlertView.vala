@@ -86,7 +86,6 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
     construct {
         get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
 
-
         title_label = new Gtk.Label (null);
         title_label.hexpand = true;
         title_label.get_style_context ().add_class ("h2");
