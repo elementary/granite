@@ -85,25 +85,22 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
 
     construct {
         get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
-        row_spacing = 12;
-        column_spacing = 12;
+
 
         title_label = new Gtk.Label (null);
         title_label.hexpand = true;
         title_label.get_style_context ().add_class ("h2");
-        title_label.halign = Gtk.Align.START;
-        title_label.valign = Gtk.Align.START;
+        title_label.xalign = 0;
 
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
         description_label.wrap = true;
-        description_label.justify = Gtk.Justification.FILL;
         description_label.use_markup = true;
-        description_label.halign = Gtk.Align.START;
+        description_label.xalign = 0;
         description_label.valign = Gtk.Align.START;
 
         action_button = new Gtk.Button ();
-        action_button.margin_top = 12;
+        action_button.margin_top = 24;
 
         action_revealer = new Gtk.Revealer ();
         action_revealer.add (action_button);
@@ -112,22 +109,24 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
 
         image = new Gtk.Image ();
         var image_box = new Gtk.EventBox ();
+        image_box.margin_top = 6;
         image_box.valign = Gtk.Align.START;
         image_box.add (image);
 
-        attach (image_box, 1, 1, 1, 2);
-        attach (title_label, 2, 1, 1, 1);
-        attach (description_label, 2, 2, 1, 1);
-        attach (action_revealer, 2, 3, 1, 1);
+        var layout = new Gtk.Grid ();
+        layout.column_spacing = 12;
+        layout.row_spacing = 6;
+        layout.halign = Gtk.Align.CENTER;
+        layout.valign = Gtk.Align.CENTER;
+        layout.vexpand = true;
+        layout.margin = 24;
 
-        // Needed to center the text and image in the window.
-        var left_grid = new Gtk.Grid ();
-        left_grid.expand = true;
-        attach (left_grid, 0, 0, 1, 1);
+        layout.attach (image_box, 1, 1, 1, 2);
+        layout.attach (title_label, 2, 1, 1, 1);
+        layout.attach (description_label, 2, 2, 1, 1);
+        layout.attach (action_revealer, 2, 3, 1, 1);
 
-        var right_grid = new Gtk.Grid ();
-        right_grid.expand = true;
-        attach (right_grid, 3, 4, 1, 1);
+        add (layout);
 
         action_button.clicked.connect (() => {action_activated ();});
     }
