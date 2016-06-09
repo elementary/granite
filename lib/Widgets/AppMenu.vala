@@ -22,17 +22,17 @@ using Gtk;
 using Granite.Services;
 
 namespace Granite.Widgets {
-    
+
 	/**
 	 * An App Menu is the gear menu that goes on the right of the toolbar.
-	 */    
+	 */
     public class AppMenu : ToolButtonWithMenu {
-    
+
         /**
          * Menu item for about page.
          */
         public Gtk.MenuItem about_item;
-    
+
         /**
          * Called when showing about.
          */
@@ -44,7 +44,7 @@ namespace Granite.Widgets {
          * @param menu menu to be turned into an AppMenu.
          */
         public AppMenu (Gtk.Menu menu) {
-        
+
             base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
         }
 
@@ -55,38 +55,38 @@ namespace Granite.Widgets {
          * @param menu menu to be created.
          */
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
-        
+
             base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
-            
+
             this.add_items (menu);
-            
+
             about_item.activate.connect (() => { show_about(get_toplevel()); });
         }
 
         /**
          * Create a new AppMenu, parameters are unused now.
          */
-        [Deprecated (since = "granite-0.1")]
+        [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
         public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");
             base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
         }
-        
+
         /**
          * This method adds makes a properly formatted App Menu menu from given menu
-         * 
+         *
          * @param menu menu to format
          */
         public void add_items (Gtk.Menu menu) {
-            
+
             about_item = new Gtk.MenuItem.with_label (_("About"));
-            
+
             if (menu.get_children ().length () > 0)
                 menu.append (new SeparatorMenuItem ());
             menu.append (about_item);
         }
-        
+
     }
-    
+
 }
 

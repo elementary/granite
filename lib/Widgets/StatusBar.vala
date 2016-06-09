@@ -24,21 +24,21 @@
  *
  * It supports adding widgets at its left and right sides.
  */
-[Deprecated (replacement = "Gtk.ActionBar", since = "0.3")]
+[Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.ActionBar")]
 public class Granite.Widgets.StatusBar : Gtk.Toolbar {
     private const int ITEM_SPACING = 3;
 
     /**
      * Label of status bar
-     */ 
+     */
     private Gtk.Label status_label;
     /**
      * Gtk box on the left
-     */ 
+     */
     private Gtk.Box left_box;
     /**
      * Gtk box on the right
-     */ 
+     */
     private Gtk.Box right_box;
 
     // This prevents a huge vertical padding.
@@ -56,7 +56,7 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
 
     /**
      * Creates a new StatusBar.
-     */ 
+     */
     public StatusBar () {
         // Get rid of the "toolbar" class to avoid inheriting its style.
         // We want the widget to look more like a normal statusbar.
@@ -91,10 +91,10 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
 
     /**
      * Inserts widget in status bar
-     * 
+     *
      * @param widget widget to insert
      * @param use_left_side whether or not to use left_side
-     */ 
+     */
     public void insert_widget (Gtk.Widget widget, bool use_left_side = false) {
         if (use_left_side)
             left_box.pack_start (widget, false, false, ITEM_SPACING);
@@ -104,9 +104,9 @@ public class Granite.Widgets.StatusBar : Gtk.Toolbar {
 
     /**
      * Sets the text of StatusBar
-     * 
+     *
      * @param text text to set Status bar to
-     */ 
+     */
     public void set_text (string text) {
         status_label.set_text (text);
     }

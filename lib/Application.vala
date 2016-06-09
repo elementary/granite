@@ -27,7 +27,7 @@ namespace Granite {
     /**
      * Global deprecated object..
      */
-    [Deprecated (since = "granite-0.1")]
+    [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
     public static Granite.Application app;
 
     /**
@@ -52,11 +52,11 @@ namespace Granite {
          * The compiled binary name, which must match the CMake exec name.
          * This is used to launch the application from a launcher or the
          * command line.
-         */ 
+         */
         public string exec_name;
 
         /**
-         * Years that the copyright extends to. Usually from the start 
+         * Years that the copyright extends to. Usually from the start
          * of the project to the most recent modification to it.
          */
         public string app_copyright;
@@ -64,7 +64,7 @@ namespace Granite {
 
         /**
          * Icon to be associated with the application.
-         * 
+         *
          * This is either the name of an icon shipped by the icon theme,
          * or the name of an icon shipped with the app (for custom icons).
          * The name should not include the full path or file extension.
@@ -282,7 +282,7 @@ namespace Granite {
         private void add_actions () {
             /* Actions are always executed in the primary instance, provided
                that the application was registered.
-               Take advantage of this by showing the About dialog using the 
+               Take advantage of this by showing the About dialog using the
                main instance, saving memory. */
             var show_about_action = new SimpleAction ("show-about-dialog", null);
 

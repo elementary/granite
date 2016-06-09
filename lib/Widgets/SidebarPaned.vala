@@ -19,7 +19,7 @@
  *  Authored by: Victor Eduardo <victoreduardm@gmail.com>
  */
 
-[Deprecated (replacement = "Granite.Widgets.ThinPaned", since = "granite-0.2")]
+[Version (deprecated = true, deprecated_since = "0.2", replacement = "Granite.Widgets.ThinPaned")]
 public class Granite.Widgets.SidebarPaned : ThinPaned {
 }
 

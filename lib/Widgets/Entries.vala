@@ -26,7 +26,7 @@ namespace Granite.Widgets {
     /**
      * A text entry space with hint and clear icon
      */
-    [Deprecated (since = "0.3", replacement = "Gtk.Entry.placeholder_text")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.Entry.placeholder_text")]
     public class HintedEntry : Gtk.Entry {
         public bool has_clear_icon { get; set; default = false; }
 
@@ -63,20 +63,20 @@ namespace Granite.Widgets {
          * These 4 functions must be removed, they are only kept here
          * for API compatibility.
          */
-        [Deprecated (since = "0.2")]
+        [Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
         protected void hint () {
         }
 
-        [Deprecated (since = "0.2")]
+        [Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
         protected void unhint () {
         }
 
-        [Deprecated (since = "0.2", replacement = "Gtk.Entry.get_text")]
+        [Version (deprecated = true, deprecated_since = "0.2", replacement = "Gtk.Entry.get_text")]
         public new string get_text () {
             return text;
         }
 
-        [Deprecated (since = "0.2", replacement = "Gtk.Entry.set_text")]
+        [Version (deprecated = true, deprecated_since = "0.2", replacement = "Gtk.Entry.set_text")]
         public new void set_text (string text) {
             this.text = text;
         }
@@ -85,7 +85,7 @@ namespace Granite.Widgets {
     /**
      * A searchbar with hint-text.
      */
-    [Deprecated (since = "0.3", replacement = "Gtk.SearchEntry")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.SearchEntry")]
     public class SearchBar : HintedEntry {
         private uint timeout_id = 0;
 

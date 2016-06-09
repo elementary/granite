@@ -27,13 +27,13 @@ namespace Granite.Services {
     /**
      * Wrapper around a long-obsolete and unused revision of Contractor API
      */
-    [Deprecated (replacement = "Granite.Services.ContractorProxy", since = "0.2")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Granite.Services.ContractorProxy")]
     public class Contractor : Object {
         internal ContractorDBus contract;
         internal static Contractor? contractor = null;
 
         /**
-         * This creates a new Contractor 
+         * This creates a new Contractor
          */
         public Contractor () {
         }

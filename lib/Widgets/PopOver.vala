@@ -31,7 +31,7 @@
  * {{../../doc/images/PopOver.png}}
  *
  */
-[Deprecated (replacement = "Gtk.Popover", since = "0.3")]
+[Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.Popover")]
 public class Granite.Widgets.PopOver : Gtk.Dialog
 {
     protected int BORDER_RADIUS;
@@ -164,18 +164,18 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 			pointer.ungrab (Gdk.CURRENT_TIME);
 		});
     }
-	  
+
    /**
     * Hides popover
     */
 	public override void hide ()
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-		
+
 		Gtk.device_grab_remove (this, pointer);
 		pointer.ungrab (Gdk.CURRENT_TIME);
 		was_shown = false;
-		
+
 		base.hide ();
 	}
 
@@ -191,44 +191,44 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
 
     /**
     * Grabs focus
-    * 
+    *
     * @return false
     */
 	public override bool map_event (Gdk.EventAny event)
 	{
 		var pointer = Gdk.Display.get_default ().get_device_manager ().get_client_pointer ();
-		pointer.grab (get_window (), Gdk.GrabOwnership.NONE, true, Gdk.EventMask.SMOOTH_SCROLL_MASK | 
-			Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | 
-			Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK | 
+		pointer.grab (get_window (), Gdk.GrabOwnership.NONE, true, Gdk.EventMask.SMOOTH_SCROLL_MASK |
+			Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK |
+			Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK |
 			Gdk.EventMask.POINTER_MOTION_MASK, null, Gdk.CURRENT_TIME);
 		Gtk.device_grab_add (this, pointer, false);
 
 		return false;
 	}
-	
+
 	public override bool button_press_event (Gdk.EventButton event)
 	{
 		if (event_in_window (event))
 			return true;
-		
+
 		return base.button_press_event (event);
 	}
-	
+
 	public override bool button_release_event (Gdk.EventButton event)
 	{
 		if (event_in_window (event))
 			return true;
-		
+
 		hide ();
 		return false;
 	}
-	
+
 	bool event_in_window (Gdk.EventButton event)
 	{
 		int x, y, w, h;
 		get_position (out x, out y);
 		get_size (out w, out h);
-		
+
 		return event.x_root >= x && event.x_root <= x + w &&
 		       event.y_root >= y && event.y_root <= y + h;
 	}
@@ -389,7 +389,7 @@ public class Granite.Widgets.PopOver : Gtk.Dialog
      * position it acording to the width and height of the rectangle.
      */
     public void move_to_rect (Gdk.Rectangle rect, bool show = true)
-    {   
+    {
         if (show)
             show_all();
         compute_pop_position (get_screen (), rect);
