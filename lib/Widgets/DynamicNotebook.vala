@@ -192,7 +192,7 @@ namespace Granite.Widgets {
         internal signal void duplicate ();
         internal signal void pin_switch ();
 
-        private static const string CLOSE_BUTTON_STYLE = """
+        private const string CLOSE_BUTTON_STYLE = """
             * {
                 -GtkButton-default-border : 0;
                 -GtkButton-default-outside-border : 0;
@@ -734,8 +734,8 @@ namespace Granite.Widgets {
         Gtk.Notebook notebook;
 
         private int tab_width = 150;
-        private static const int MAX_TAB_WIDTH = 174;
-        private static const int TAB_WIDTH_PINNED = 18;
+        private const int MAX_TAB_WIDTH = 174;
+        private const int TAB_WIDTH_PINNED = 18;
 
         public signal void tab_added (Tab tab);
         public signal void tab_removed (Tab tab);
@@ -754,7 +754,7 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private static const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
+        private const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
 
         /**
          * Create a new dynamic notebook
