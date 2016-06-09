@@ -24,7 +24,7 @@ namespace Granite.Widgets {
     /**
      * This class is a standard decorated window.
      */
-    [Deprecated (replacement = "Gtk.Dialog", since = "0.3")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.Dialog")]
     public class DecoratedWindow : CompositedWindow {
 
         const string DECORATED_WINDOW_FALLBACK_STYLESHEET = """
@@ -71,7 +71,7 @@ namespace Granite.Widgets {
         private const int SHADOW_BLUR = 15;
         private const int SHADOW_X    = 0;
         private const int SHADOW_Y    = 0;
- 
+
         private const int CLOSE_BUTTON_X = -3;
         private const int CLOSE_BUTTON_Y = -3;
 
@@ -176,7 +176,7 @@ namespace Granite.Widgets {
             ctx.paint ();
             return false;
         }
-        
+
         private void on_size_allocate (Gtk.Allocation alloc) {
                 if (alloc.width == w && h == alloc.height)
                     return;
@@ -235,13 +235,13 @@ namespace Granite.Widgets {
 
             return on_close_button;
         }
-        
+
         public override bool key_press_event (Gdk.EventKey event) {
             if (event.keyval == Gdk.Key.Escape) {
                 this.delete_event (((Gdk.Event*) (&event))->any);
                 return true;
             }
-            
+
             return base.key_press_event (event);
         }
 
@@ -251,7 +251,7 @@ namespace Granite.Widgets {
 
             int x = (int) x_root - w_x;
             int y = (int) y_root - w_y;
-        
+
             return this.deletable &&
                     x > (SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&
                     x < (close_img.get_width () + SHADOW_BLUR / 2 + CLOSE_BUTTON_X) &&

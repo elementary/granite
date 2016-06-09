@@ -22,7 +22,7 @@
  * It uses a long-obsolete and unused revision of Contractor API and will not
  * work with stable releases of Contractor.
  */
-[Deprecated (since = "0.2")]
+[Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
 public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     /**
      * The Hashtable of available contracts
@@ -35,12 +35,12 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
     public delegate void ContractCallback ();
     private string filepath;
     private string filemime;
-    
+
     /**
      * Passes when contract is clicked
      */
     public signal void contract_activated (string contract_name);
-    
+
     /**
      * Makes new Contractor Meu
      *
@@ -52,7 +52,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
         filemime = mime;
         load_items (filename, mime);
     }
-    
+
     /**
      * Adds new item to Contractor Menu
      *
@@ -76,7 +76,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
         insert(item, position);
         item.show ();
     }
-    
+
     /**
      * Deletes a group of menu items
      *
@@ -88,14 +88,14 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
                 remove (item);
         });
     }
-    
+
     private void load_items (string filename, string mime) {
         contracts = Granite.Services.Contractor.get_contract (filename, mime);
         execs = new Gee.HashMap<string,string> ();
-        
+
         for (int i=0;i<contracts.length;i++) {
             execs[contracts[i].lookup ("Name")] = contracts[i].lookup ("Exec");
-            
+
             var item = new Gtk.ImageMenuItem ();
             item.set_always_show_image (true);
             var image = new Gtk.Image.from_icon_name (contracts[i].lookup ("IconName"), Gtk.IconSize.MENU);
@@ -112,7 +112,7 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
             item.show_all ();
         }
     }
-    
+
     /**
      * Updates Contractor menu items
      *
@@ -121,24 +121,24 @@ public class Granite.Widgets.ContractorMenu : Gtk.Menu {
      */
     public void update (string? filename, string? mime) {
         this.foreach ((w) => {remove (w);});
-        
+
         string fn = "";
         string mm = "";
-        
+
         if (filename != null) {
             fn = filename;
             filepath = filename;
         } else {
             fn = filepath;
         }
-        
+
         if (mime != null) {
             mm = mime;
             filemime = mime;
         } else {
             mm = filemime;
         }
-    
+
         load_items (fn, mm);
     }
 }

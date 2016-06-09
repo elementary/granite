@@ -1500,7 +1500,7 @@ public class SourceList : Gtk.ScrolledWindow {
             // Nothing to do. This renderer only adds space.
         }
 
-        [Deprecated (replacement = "Gtk.CellRenderer.get_preferred_size", since = "")]
+        [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
         public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                        out int x_offset, out int y_offset,
                                        out int width, out int height)
@@ -2494,7 +2494,7 @@ public class SourceList : Gtk.ScrolledWindow {
      *         or a //positive// integer if //a// sorts before //b//.
      * @since 0.2
      */
-    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "SourceListSortable.compare")]
     public delegate int SortFunc (Item a, Item b);
 
     /**
@@ -2581,7 +2581,7 @@ public class SourceList : Gtk.ScrolledWindow {
      *
      * @since 0.2
      */
-    [Deprecated (since = "0.3")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
     public Gtk.SortType sort_direction {
         get { return Gtk.SortType.ASCENDING; }
         set {
@@ -2635,7 +2635,7 @@ public class SourceList : Gtk.ScrolledWindow {
      * @param sort_func The method to use for sorting items.
      * @since 0.2
      */
-    [Deprecated (replacement = "SourceListSortable.compare", since = "0.2")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "SourceListSortable.compare")]
     public void set_sort_func (owned SortFunc? sort_func) {
         warning ("set_sort_func is deprecated and doesn't do anything");
     }

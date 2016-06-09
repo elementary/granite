@@ -22,7 +22,7 @@
  *
  * For it to draw an expander, the the {@link Gtk.CellRenderer.is_expander} property must
  * be set to true; otherwise nothing is drawn. The state of the expander (i.e. expanded or
- * collapsed) is controlled by the {@link Gtk.CellRenderer.is_expanded} property. 
+ * collapsed) is controlled by the {@link Gtk.CellRenderer.is_expanded} property.
  *
  * @since 0.2
  */
@@ -96,7 +96,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         revert_style_changes (widget);
     }
 
-    [Deprecated (replacement = "Gtk.CellRenderer.get_preferred_size", since = "")]
+    [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
     public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                    out int x_offset, out int y_offset,
                                    out int width, out int height)

@@ -22,7 +22,7 @@ namespace Granite.Widgets {
     /**
      * This class provides an easy way to manage tabs.
      */
-    [Deprecated (replacement = "Gtk.Stack", since = "0.3")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.Stack")]
     public class StaticNotebook : Gtk.Box {
 
         private Gtk.Notebook notebook;
@@ -46,7 +46,7 @@ namespace Granite.Widgets {
 
         /**
          * This creates a new StaticNotebook
-         * 
+         *
          * @param show_separator whether or not to show a seperator
          */
         public StaticNotebook (bool show_separator = true) {
@@ -60,7 +60,7 @@ namespace Granite.Widgets {
             switcher = new ModeButton();
 
             switcher_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            
+
             if (show_separator) {
                 var left_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
                 var right_separator = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);

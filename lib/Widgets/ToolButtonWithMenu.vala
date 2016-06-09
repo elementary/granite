@@ -39,7 +39,7 @@ namespace Granite.Widgets {
      * - activate a GtkAction if any or popup a menu
      * (used in history navigation buttons and the AppMenu)
      */
-    [Deprecated (replacement = "Gtk.MenuButton", since = "0.3")]
+    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.MenuButton")]
     public class ToolButtonWithMenu : Gtk.ToggleToolButton {
 
         public signal void right_click (Gdk.EventButton ev);
@@ -86,8 +86,8 @@ namespace Granite.Widgets {
         public Gtk.Action? myaction;
         public ulong toggled_sig_id;
 
-        /** 
-         * Delegate function used to populate menu 
+        /**
+         * Delegate function used to populate menu
          */
         public delegate Gtk.Menu MenuFetcher ();
 
@@ -147,7 +147,7 @@ namespace Granite.Widgets {
         }
 
         public ToolButtonWithMenu (Image image, string label, Gtk.Menu menu)
-        {           
+        {
             icon_widget = image;
             label_widget = new Gtk.Label (label);
             (label_widget as Gtk.Label).use_underline = true;
@@ -295,7 +295,7 @@ namespace Granite.Widgets {
             }
 
             menu.attach_widget.get_window ().get_origin (out x, out y);
-            
+
             Allocation allocation;
             menu.attach_widget.get_allocation (out allocation);
 

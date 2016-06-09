@@ -87,14 +87,14 @@ namespace Granite.Widgets {
         }
     }
 
-    [Deprecated (replacement = "Granite.Widgets.CollapsiblePaned", since = "granite-0.2")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Granite.Widgets.CollapsiblePaned")]
     public class HCollapsablePaned : CollapsiblePaned {
         public HCollapsablePaned () {
             base (Gtk.Orientation.HORIZONTAL);
         }
     }
 
-    [Deprecated (replacement = "Granite.Widgets.CollapsiblePaned", since = "granite-0.2")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Granite.Widgets.CollapsiblePaned")]
     public class VCollapsablePaned : CollapsiblePaned {
         public VCollapsablePaned () {
             base (Gtk.Orientation.VERTICAL);

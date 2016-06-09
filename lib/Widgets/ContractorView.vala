@@ -24,21 +24,21 @@ using Gtk;
  * It uses a long-obsolete and unused revision of Contractor API and will not
  * work with stable releases of Contractor.
  */
-[Deprecated (since = "0.2")]
+[Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
 public class Granite.Widgets.ContractorView : TreeView {
-    
+
     /**
      * indicates if it was possible to connect to contractor
      */
     public bool contractor_available;
-    
+
     public delegate void ContractCallback ();
     private Gee.HashMap<int, DelegateWrapper?> outsiders;
     private int[] blacklisted_pos;
     private Gtk.ListStore list;
 
     private struct DelegateWrapper { unowned ContractCallback method; }
-    
+
     /**
      * the index of the currently selected contract
      */
@@ -52,17 +52,17 @@ public class Granite.Widgets.ContractorView : TreeView {
             this.set_cursor (new TreePath.from_string (value.to_string ()), null, false);
         }
     }
-    
+
     /**
      * A contract was launched using double clicking
      */
     public signal void executed ();
-    
+
     /**
      * the original array of contracts returned by contractor
      */
     HashTable<string,string>[] contracts;
-    
+
     /**
      * Create the default ContractorView
      *
@@ -76,17 +76,17 @@ public class Granite.Widgets.ContractorView : TreeView {
         list = new Gtk.ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
         outsiders = new Gee.HashMap<int, DelegateWrapper?> ();
         this.model = list;
-        
+
         /* GUI */
         this.headers_visible = false;
         this.hexpand = true;
-        
+
         /* Events */
-        row_activated.connect (() => { 
+        row_activated.connect (() => {
             run_selected ();
             executed ();
         });
-        
+
         /* View */
         var cell1 = new CellRendererPixbuf ();
         cell1.set_padding (5, 8);
@@ -105,9 +105,9 @@ public class Granite.Widgets.ContractorView : TreeView {
             string message = contractor_installed ? _("Could not contact Contractor. You may need to install it") : _("No action found for this file");
             try {
                 var icon = IconTheme.get_default ().load_icon (
-                    contractor_installed ? "dialog-error" : "dialog-information", 
+                    contractor_installed ? "dialog-error" : "dialog-information",
                     icon_size, 0);
-                list.set (it, 
+                list.set (it,
                     0, icon, 1, message);
             }
             catch (Error e) {
@@ -117,7 +117,7 @@ public class Granite.Widgets.ContractorView : TreeView {
         }
         else {
             contractor_available = true;
-            
+
             for (var i=0; i<this.contracts.length; i++){
                 TreeIter it;
                 list.append (out it);
@@ -125,8 +125,8 @@ public class Granite.Widgets.ContractorView : TreeView {
                 if (show_contract_name)
                     text = "<b>"+this.contracts[i].lookup ("Name")+"</b>\n"+text;
                 try{
-                    list.set (it, 
-                        0, IconTheme.get_default ().load_icon (this.contracts[i].lookup ("IconName"), 
+                    list.set (it,
+                        0, IconTheme.get_default ().load_icon (this.contracts[i].lookup ("IconName"),
                         icon_size, 0), 1, text);
                 }
                 catch (Error e) {
@@ -136,7 +136,7 @@ public class Granite.Widgets.ContractorView : TreeView {
             this.selected = 0;
         }
     }
-    
+
     /**
      * A method to add items to the tree
      *
@@ -151,21 +151,21 @@ public class Granite.Widgets.ContractorView : TreeView {
     public void add_item (string name, string desc, string icon_name, int icon_size, int position, ContractCallback method) {
         TreeIter it;
         list.insert (out it, position);
-        
+
         string text = "<b>" + name + "</b>\n" + desc;
-        
+
         try{
             list.set (it, 0, IconTheme.get_default ().load_icon (icon_name, icon_size, 0), 1, text);
         } catch (Error e) {
             error (e.message);
         }
-        
+
         DelegateWrapper wr = { method };
         outsiders[position] = wr;
-        
+
         this.selected = 0;
     }
-    
+
     public void name_blacklist (string[] names) {
         TreeIter it;
         TreeIter it2;
@@ -174,25 +174,25 @@ public class Granite.Widgets.ContractorView : TreeView {
         int cur_pos = 0;
         list.get_iter_first (out it);
         list.get_iter_first (out it2);
-        
+
         while (true) {
 	        list.get_value (it, 1, out value);
 	        check = list.iter_next (ref it2);
 	        string text = value.get_string ();
-	        
+
 	        if (text[3:text.index_of ("</b>")] in names) {
 	            list.remove (it);
 	            blacklisted_pos += cur_pos;
             }
 	        if (!check)
 	            break;
-	            
+
             it = it2;
-	        cur_pos++;	            
+	        cur_pos++;
         }
     }
-        
-    
+
+
     public void run_selected () {
         if (this.selected in outsiders.keys ) {
             outsiders[this.selected].method ();

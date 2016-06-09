@@ -145,7 +145,7 @@ namespace Granite.Widgets {
         }
 
         bool _fixed;
-        [Deprecated (since=0.3)]
+        [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
         public bool fixed {
             get { return _fixed; }
             set {
@@ -205,7 +205,7 @@ namespace Granite.Widgets {
 
         /**
          * With this you can construct a Tab. It is linked to the page that is shown on focus.
-         * A Tab can have a icon on the right side. You can pass null on the constructor to 
+         * A Tab can have a icon on the right side. You can pass null on the constructor to
          * create a tab without a icon.
          **/
         public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
@@ -541,7 +541,7 @@ namespace Granite.Widgets {
          * Toggle icon display
          */
         bool _show_icons;
-        [Deprecated (since = "0.3.1")]
+        [Version (deprecated = true, deprecated_since = "0.3.1", replacement = "")]
         public bool show_icons {
             get { return _show_icons; }
             set {
