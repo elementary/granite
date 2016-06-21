@@ -282,7 +282,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         // Adjust sizes
         content_hbox.height_request = 160;
         content_scrolled_vbox.width_request = 288;
-        logo_image.set_size_request(128, 128);
 
         name_label = new Label("");
         name_label.halign = Gtk.Align.START;
@@ -402,22 +401,16 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         return text;
     }
 
-    private void update_logo_image()
-    {
-        try {
-            logo_image.set_from_pixbuf(IconTheme.get_default ().load_icon ("application-default-icon", 128, 0));
-        } catch (Error err) {
-            stderr.printf ("Unable to load terminal icon: %s", err.message);
-        }
+    private void update_logo_image () {
+        logo_image.pixel_size = 128;
+
         if (logo_icon_name != null && logo_icon_name != "") {
-            try {
-                logo_image.set_from_pixbuf(IconTheme.get_default ().load_icon (logo_icon_name, 128, 0));
-            } catch (Error err) {
-                stderr.printf ("Unable to load terminal icon: %s", err.message);
-            }
+            logo_image.icon_name = logo_icon_name;
+        } else if (logo != null) {
+            logo_image.pixbuf = logo;
+        } else {
+            logo_image.icon_name = "application-default-icon";
         }
-        else if (logo != null)
-            logo_image.set_from_pixbuf(logo);
     }
 
     private void update_license()
