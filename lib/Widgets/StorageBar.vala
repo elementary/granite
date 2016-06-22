@@ -297,7 +297,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             base.get_preferred_width (out minimum_width, out natural_width);
             var context = get_style_context ();
             var padding = context.get_padding (get_state_flags ());
-            minimum_width = int.max ((padding.left + padding.right) * context.get_scale (), minimum_width);
+            minimum_width = int.max (padding.left + padding.right, minimum_width);
             minimum_width = int.max (1, minimum_width);
             natural_width = int.max (minimum_width, natural_width);
         }
@@ -306,7 +306,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             base.get_preferred_height (out minimum_height, out natural_height);
             var context = get_style_context ();
             var padding = context.get_padding (get_state_flags ());
-            minimum_height = int.max ((padding.top + padding.bottom) * context.get_scale (), minimum_height);
+            minimum_height = int.max (padding.top + padding.bottom, minimum_height);
             minimum_height = int.max (1, minimum_height);
             natural_height = int.max (minimum_height, natural_height);
         }
