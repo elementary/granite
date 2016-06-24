@@ -257,16 +257,17 @@ public class Granite.Demo : Granite.Application {
         try {
             var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
             var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
-            var storage = new Granite.Widgets.StorageBar (size);
+            var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size/2);
             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
             storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, size/5);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size/5);
             grid.add (storage);
         } catch (Error e) {
             critical (e.message);
         }
+
         main_stack.add_named (grid, "storage");
     }
 
