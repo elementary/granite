@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-03 15:16-0200\n"
+"POT-Creation-Date: 2016-06-25 09:41-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
-#: ../lib/GtkPatch/AboutDialog.vala:359
+#: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 msgid "Close"
 msgstr ""
 
@@ -160,12 +160,14 @@ msgstr ""
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
+#: ../lib/Widgets/TimePicker.vala:105
 msgid "PM"
 msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
+#: ../lib/Widgets/TimePicker.vala:137
 msgid ":"
 msgstr ""
 
@@ -255,26 +257,32 @@ msgid "%b"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
+#: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
+#: ../lib/Widgets/StorageBar.vala:58
 msgid "Videos"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
+#: ../lib/Widgets/StorageBar.vala:60
 msgid "Photos"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
+#: ../lib/Widgets/StorageBar.vala:62
 msgid "Apps"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
+#: ../lib/Widgets/StorageBar.vala:66
 msgid "Other"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
+#: ../lib/Widgets/StorageBar.vala:242
 msgid "%s free out of %s"
 msgstr ""
 
@@ -283,6 +291,7 @@ msgid "%s's Developers"
 msgstr ""
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
+#: ../lib/GtkPatch/AboutDialog.vala:453
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
@@ -290,4 +299,13 @@ msgstr ""
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
+msgstr ""
+
+#: ../lib/Widgets/StorageBar.vala:64
+msgid "Files"
+msgstr ""
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: ../lib/Widgets/TimePicker.vala:103
+msgid "AM"
 msgstr ""
