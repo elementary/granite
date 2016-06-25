@@ -30,10 +30,13 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         AUDIO,
         VIDEO,
         PHOTO,
-        APP;
+        APP,
+        FILES = OTHER;
 
         public static string? get_class (ItemDescription description) {
             switch (description) {
+                case ItemDescription.FILES:
+                    return "files";
                 case ItemDescription.AUDIO:
                     return "audio";
                 case ItemDescription.VIDEO:
@@ -57,6 +60,8 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
                     return _("Photos");
                 case ItemDescription.APP:
                     return _("Apps");
+                case ItemDescription.FILES:
+                    return _("Files");
                 default:
                     return _("Other");
             }
@@ -68,11 +73,28 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         get {
             return _storage;
         }
+
         set {
             _storage = value;
             resize_children ();
             update_size_description ();
         }
+    }
+
+    private uint64 _total_usage;
+
+    public uint64 total_usage {
+        get {
+            return _total_usage;
+        }
+
+        set {
+            _total_usage = uint64.min (value, storage);
+            resize_children ();
+            update_size_description ();
+        }
+
+        default = 0;
     }
 
     public int inner_margin_sides {
@@ -90,6 +112,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
     private Gtk.Box fillblock_box;
     private Gtk.Box legend_box;
     private FillBlock free_space;
+    private FillBlock used_space;
 
     /**
      * Creates a new StorageBar widget with the given amount of space.
@@ -98,6 +121,16 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
      */
     public StorageBar (uint64 storage) {
         Object (storage: storage);
+    }
+
+    /**
+     * Creates a new StorageBar widget with the given amount of space.an a larger total usage block
+     *
+     * @param storage the total amount of space.
+     * @param usage the amount of space used.
+     */
+    public StorageBar.with_total_usage (uint64 storage, uint64 total_usage) {
+        Object (storage: storage, total_usage: total_usage);
     }
 
     construct {
@@ -153,15 +186,15 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
 
     private void create_default_blocks () {
         var seq = new Sequence<ItemDescription> ();
-        seq.append (ItemDescription.OTHER);
+        seq.append (ItemDescription.FILES);
         seq.append (ItemDescription.AUDIO);
         seq.append (ItemDescription.VIDEO);
         seq.append (ItemDescription.PHOTO);
         seq.append (ItemDescription.APP);
         seq.sort ((a, b) => {
-            if (a == ItemDescription.OTHER)
+            if (a == ItemDescription.FILES)
                 return 1;
-            if (b == ItemDescription.OTHER)
+            if (b == ItemDescription.FILES)
                 return -1;
 
             return ItemDescription.get_name (a).collate (ItemDescription.get_name (b));
@@ -175,9 +208,14 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             index++;
         });
 
-        free_space = new FillBlock (ItemDescription.OTHER, storage);
+        free_space = new FillBlock (ItemDescription.FILES, storage);
+        used_space = new FillBlock (ItemDescription.FILES, total_usage);
         free_space.get_style_context ().add_class ("empty-block");
-        blocks.set (index, free_space);
+        free_space.get_style_context ().remove_class ("files");
+        used_space.get_style_context ().remove_class ("files");
+        blocks.set (index++, used_space);
+        blocks.set (index++, free_space);
+        fillblock_box.add (used_space);
         fillblock_box.add (free_space);
 
         update_size_description ();
@@ -186,12 +224,20 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
     private void update_size_description () {
         uint64 user_size = 0;
         foreach (weak FillBlock block in blocks.get_values ()) {
-            if (block.visible == false || block == free_space)
+            if (block.visible == false || block == free_space || block == used_space)
                 continue;
             user_size += block.size;
         }
 
-        uint64 free = storage - user_size;
+        uint64 free;
+        if (user_size > total_usage) {
+            free = storage - user_size;
+            used_space.size = 0;
+        } else {
+            free = storage - total_usage;
+            used_space.size = total_usage - user_size;
+        }
+
         free_space.size = free;
         description_label.label = _("%s free out of %s").printf (GLib.format_size (free), GLib.format_size (storage));
     }
@@ -274,7 +320,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
 
     internal class FillRound : Gtk.Widget {
         internal FillRound () {
-            
+
         }
 
         construct {
