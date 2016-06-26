@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2015-12-03 15:16-0200\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"POT-Creation-Date: 2016-06-25 09:41-0500\n"
+"PO-Revision-Date: 2016-06-25 15:23+0000\n"
+"Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-16 04:47+0000\n"
-"X-Generator: Launchpad (build 18097)\n"
+"X-Launchpad-Export-Date: 2016-06-26 05:30+0000\n"
+"X-Generator: Launchpad (build 18111)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -48,7 +48,7 @@ msgstr "Переведено %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
-#: ../lib/GtkPatch/AboutDialog.vala:359
+#: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 msgid "Close"
 msgstr "Закрыть"
 
@@ -162,12 +162,14 @@ msgstr "О программе"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
+#: ../lib/Widgets/TimePicker.vala:105
 msgid "PM"
 msgstr "п. п."
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
+#: ../lib/Widgets/TimePicker.vala:137
 msgid ":"
 msgstr ":"
 
@@ -257,26 +259,32 @@ msgid "%b"
 msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
+#: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
 msgstr "Аудиозаписи"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
+#: ../lib/Widgets/StorageBar.vala:58
 msgid "Videos"
 msgstr "Видеозаписи"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
+#: ../lib/Widgets/StorageBar.vala:60
 msgid "Photos"
 msgstr "Фотографии"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
+#: ../lib/Widgets/StorageBar.vala:62
 msgid "Apps"
 msgstr "Приложения"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
+#: ../lib/Widgets/StorageBar.vala:66
 msgid "Other"
 msgstr "Прочее"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
+#: ../lib/Widgets/StorageBar.vala:242
 msgid "%s free out of %s"
 msgstr "%s свободно из %s"
 
@@ -285,6 +293,7 @@ msgid "%s's Developers"
 msgstr "Разработчики «%s»"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
+#: ../lib/GtkPatch/AboutDialog.vala:453
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
@@ -314,3 +323,12 @@ msgstr ""
 "  slav https://launchpad.net/~slav464\n"
 "  zEvilz https://launchpad.net/~zevilz13\n"
 "  михаил https://launchpad.net/~ded-mixei"
+
+#: ../lib/Widgets/StorageBar.vala:64
+msgid "Files"
+msgstr "Файлы"
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: ../lib/Widgets/TimePicker.vala:103
+msgid "AM"
+msgstr "AM"
