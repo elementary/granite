@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-25 09:41-0500\n"
-"PO-Revision-Date: 2016-02-02 04:04+0000\n"
-"Last-Translator: Sadık Poyraz <sadikpoyraz01@gmail.com>\n"
+"PO-Revision-Date: 2016-06-28 00:47+0000\n"
+"Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:30+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-06-28 05:27+0000\n"
+"X-Generator: Launchpad (build 18115)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -312,6 +312,7 @@ msgstr ""
 "  Hamza https://launchpad.net/~ckr-hamza\n"
 "  Huseyin Erdem https://launchpad.net/~herdem09\n"
 "  LesserCure https://launchpad.net/~lessercure\n"
+"  Melih Güçlü https://launchpad.net/~melihguclu\n"
 "  Mesut Yaver https://launchpad.net/~afg-mesut\n"
 "  Mustafa Yılmaz https://launchpad.net/~apshalasha\n"
 "  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
@@ -325,9 +326,9 @@ msgstr ""
 
 #: ../lib/Widgets/StorageBar.vala:64
 msgid "Files"
-msgstr ""
+msgstr "Dosyalar"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "ÖÖ"
