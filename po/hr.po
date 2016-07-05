@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-25 09:41-0500\n"
-"PO-Revision-Date: 2016-03-27 08:11+0000\n"
-"Last-Translator: zvacet <ikoli@yahoo.com>\n"
+"PO-Revision-Date: 2016-07-04 09:21+0000\n"
+"Last-Translator: Matija <vatroslavbudgie@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:30+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-07-05 05:28+0000\n"
+"X-Generator: Launchpad (build 18115)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -259,32 +259,32 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr ""
+msgstr "Zvuk"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58
 msgid "Videos"
-msgstr ""
+msgstr "Snimke"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60
 msgid "Photos"
-msgstr ""
+msgstr "Fotografije"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62
 msgid "Apps"
-msgstr ""
+msgstr "Aplikacije"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s besplatno iz %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
@@ -296,21 +296,24 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Ovaj program je izdan pod uvjetima %s licence i dolazi bez IKAKVOGA JAMSTVA; "
+"za detalje, posjetite %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ivan Vrljić https://launchpad.net/~vrlja92\n"
+"  Matija https://launchpad.net/~vatroslavbudgie\n"
 "  Sinisa Perovic https://launchpad.net/~sinisa-p\n"
 "  gogo https://launchpad.net/~trebelnik-stefina\n"
 "  zvacet https://launchpad.net/~ivicakolic"
 
 #: ../lib/Widgets/StorageBar.vala:64
 msgid "Files"
-msgstr ""
+msgstr "Datoteke"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "AM"
