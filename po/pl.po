@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-25 09:41-0500\n"
-"PO-Revision-Date: 2015-12-07 11:54+0000\n"
+"PO-Revision-Date: 2016-07-21 15:11+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:30+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-07-22 05:38+0000\n"
+"X-Generator: Launchpad (build 18147)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -309,6 +309,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Adrian Widerski https://launchpad.net/~adrian-widerski\n"
 "  Damian Dygulski https://launchpad.net/~dygulski13\n"
+"  Damian Woźniak https://launchpad.net/~fisz\n"
 "  Daniel Kur https://launchpad.net/~daniel-m-kur\n"
 "  Marcin Kozłowski https://launchpad.net/~kozlowsky-marcin\n"
 "  Oskar M. https://launchpad.net/~oskare3\n"
@@ -321,9 +322,9 @@ msgstr ""
 
 #: ../lib/Widgets/StorageBar.vala:64
 msgid "Files"
-msgstr ""
+msgstr "Pliki"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "Przed południem"
