@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-25 09:41-0500\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2016-07-24 10:23+0000\n"
+"Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:30+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-07-25 05:23+0000\n"
+"X-Generator: Launchpad (build 18147)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -259,36 +259,36 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr ""
+msgstr "Zvok"
 
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58
 msgid "Videos"
-msgstr ""
+msgstr "Video"
 
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60
 msgid "Photos"
-msgstr ""
+msgstr "Fotografije"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62
 msgid "Apps"
-msgstr ""
+msgstr "Aplikacije"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66
 msgid "Other"
-msgstr ""
+msgstr "Ostalo"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s prostega od %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "Razvijalci %s"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453
@@ -296,6 +296,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Ta program je objavljen pod pogoji licence %s in pride BREZ VSAKRŠNE "
+"GARANCIJE; za podrobnosti obiščite %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -308,9 +310,9 @@ msgstr ""
 
 #: ../lib/Widgets/StorageBar.vala:64
 msgid "Files"
-msgstr ""
+msgstr "Datoteke"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "dop."
