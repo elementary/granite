@@ -60,7 +60,7 @@ namespace Granite.Widgets {
                 _time = value;
                 changing_time = true;
 
-                if (_time.get_hour () > 12) {
+                if (_time.get_hour () >= 12) {
                     am_pm_modebutton.set_active (1);
                 } else {
                     am_pm_modebutton.set_active (0);
@@ -133,15 +133,16 @@ namespace Granite.Widgets {
             minutes_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             minutes_spinbutton.wrap = true;
             minutes_spinbutton.value_changed.connect (() => update_time (false));
-            // if the spinbutton value is less than 10, append zero in front of value. '6' becomes '06'
+
+            // If the spinbutton value is less than 10, append zero in front of value. '6' becomes '06'
             minutes_spinbutton.output.connect (() => {
                 var val = minutes_spinbutton.get_value ();
                 if (val < 10) {
                     minutes_spinbutton.set_text ("0" + val.to_string ());
                     return true;
-                } else {
-                    return false;
                 }
+
+                return false;
             });
 
             /// TRANSLATORS: separates hours from minutes.
@@ -227,7 +228,7 @@ namespace Granite.Widgets {
         }
 
         private void on_icon_press (Gtk.EntryIconPosition position, Gdk.Event event) {
-            // if the mode is changed from 12h to 24h or visa versa, the entry updates on icon press
+            // If the mode is changed from 12h to 24h or visa versa, the entry updates on icon press
             update_text ();
             changing_time = true;
 
@@ -247,7 +248,8 @@ namespace Granite.Widgets {
                 } else {
                     hours_spinbutton.set_value (time.get_hour ());
                 }
-                // make sure that bounds are set correctly
+
+                // Make sure that bounds are set correctly
                 hours_spinbutton.set_range (1, 12);
             } else {
                 am_pm_modebutton.no_show_all = true;
