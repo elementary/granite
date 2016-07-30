@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-25 09:41-0500\n"
-"PO-Revision-Date: 2015-12-21 22:13+0000\n"
+"PO-Revision-Date: 2016-07-29 18:12+0000\n"
 "Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:29+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-07-30 05:53+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -315,6 +315,7 @@ msgstr ""
 "  Noah Mehling https://launchpad.net/~noahmehling\n"
 "  Philipp Birkl https://launchpad.net/~birklphilipp\n"
 "  Phillip Sz https://launchpad.net/~phillip-sz\n"
+"  Squiggles https://launchpad.net/~luc-boillat\n"
 "  Thomas Pitlik https://launchpad.net/~thomaspitlik\n"
 "  Tobias Bannert https://launchpad.net/~toba\n"
 "  UweS https://launchpad.net/~uwes\n"
@@ -322,9 +323,9 @@ msgstr ""
 
 #: ../lib/Widgets/StorageBar.vala:64
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "AM"
