@@ -55,12 +55,15 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
                 case ItemDescription.AUDIO:
                     return _("Audio");
                 case ItemDescription.VIDEO:
+                    /// TRANSLATORS: Refers to videos the mime type. Not Videos the app.
                     return _("Videos");
                 case ItemDescription.PHOTO:
+                    /// TRANSLATORS: Refers to photos the mime type. Not Photos the app.
                     return _("Photos");
                 case ItemDescription.APP:
                     return _("Apps");
                 case ItemDescription.FILES:
+                    /// TRANSLATORS: Refers to files the mime type. Not Files the app.
                     return _("Files");
                 default:
                     return _("Other");
