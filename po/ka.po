@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-06-25 09:41-0500\n"
+"POT-Creation-Date: 2016-07-31 09:13-0700\n"
 "PO-Revision-Date: 2015-12-04 01:36+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-06-26 05:29+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-08-01 05:23+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -262,28 +262,30 @@ msgstr "%b"
 msgid "Audio"
 msgstr ""
 
+#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
-#: ../lib/Widgets/StorageBar.vala:58
+#: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 msgid "Videos"
 msgstr ""
 
+#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
-#: ../lib/Widgets/StorageBar.vala:60
+#: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 msgid "Photos"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
-#: ../lib/Widgets/StorageBar.vala:62
+#: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 msgid "Apps"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
-#: ../lib/Widgets/StorageBar.vala:66
+#: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
 msgid "Other"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
-#: ../lib/Widgets/StorageBar.vala:242
+#: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 msgid "%s free out of %s"
 msgstr ""
 
@@ -304,7 +306,8 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Beqa Arabuli https://launchpad.net/~arabulibeqa"
 
-#: ../lib/Widgets/StorageBar.vala:64
+#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
+#: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
 msgstr ""
 
