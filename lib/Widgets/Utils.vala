@@ -140,20 +140,15 @@ namespace Granite.Widgets.Utils {
      * @param window the widget to apply the color
      * @param color the color to apply
      * @param priority the priority of the style provider
+     * 
+     * @return the added {@link Gtk.CssProvider}, or null in case the parsing of
+     *         stylesheet failed.
      */
-    public void set_color_primary (Gtk.Widget window, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
+    public Gtk.CssProvider? set_color_primary (Gtk.Widget window, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
         assert (window != null);
 
-        var css_provider = new Gtk.CssProvider ();
         string hex = color.to_string ();
-        try {
-            css_provider.load_from_data (@"@define-color colorPrimary $hex;", -1);
-        } catch (Error e) {
-            warning ("Could not apply primary color: %s\n", e.message);
-            return;
-        }
-
-        Gtk.StyleContext.add_provider_for_screen (window.get_screen (), css_provider, priority);
+        return set_theming_for_screen (window.get_screen (), @"@define-color colorPrimary $hex;", priority);
     }
 
     /**
