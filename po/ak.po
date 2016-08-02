@@ -1,16 +1,16 @@
-# Japanese translation for granite
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# Akan translation for granite
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-31 09:13-0700\n"
-"PO-Revision-Date: 2016-08-02 01:25+0000\n"
-"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <Unknown>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"PO-Revision-Date: 2016-08-01 21:08+0000\n"
+"Last-Translator: laberba <karabutaworld@gmail.com>\n"
+"Language-Team: Akan <ak@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,12 +20,12 @@ msgstr ""
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
-msgstr "デザイナー:"
+msgstr "Wɔn a woyɛɛ ne fɛ ne:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 #: ../lib//GtkPatch/AboutDialog.vala:55 ../lib/GtkPatch/AboutDialog.vala:55
 msgid "Written by:"
-msgstr "作家:"
+msgstr "Wɔn a woyɛɛ ankasa ne:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #: ../lib//GtkPatch/AboutDialog.vala:93
@@ -37,41 +37,41 @@ msgstr "© %s"
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
 #: ../lib/GtkPatch/AboutDialog.vala:115
 msgid "Documented by:"
-msgstr "執筆者:"
+msgstr "Wɔn a wɔtwerɛ senea ɛyɛ adwuma ne:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #: ../lib//GtkPatch/AboutDialog.vala:171 ../lib//GtkPatch/AboutDialog.vala:175
 #: ../lib/GtkPatch/AboutDialog.vala:175
 #, c-format
 msgid "Translated by %s"
-msgstr "翻訳者: %s"
+msgstr "Wɔn a wɔkyerɛase ne %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 msgid "Close"
-msgstr "閉じる"
+msgstr "Yi"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
-msgstr "このプログラムは次の条件下で公開されています "
+msgstr "Mmera a eda hokwan a wowɔ wɔ dwumadie yi ho ne "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " ライセンスは完全に無保証です。詳細はこちらを参照して下さい "
+msgstr ""
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
 msgid "Developers"
-msgstr "開発者"
+msgstr "Dwumadie Yɛfoɔ"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 #: ../lib//Application.vala:258 ../lib//Application.vala:265
 #: ../lib/Application.vala:265
 msgid "Website"
-msgstr "ウェブサイト"
+msgstr "Website"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
@@ -80,37 +80,37 @@ msgstr "ウェブサイト"
 #: ../lib/Widgets/DynamicNotebook.vala:226
 #: ../lib/Widgets/DynamicNotebook.vala:266
 msgid "Close Tab"
-msgstr "タブを閉じる"
+msgstr "Yi Tab No"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
 #: ../lib//Widgets/DynamicNotebook.vala:269
 #: ../lib/Widgets/DynamicNotebook.vala:269
 msgid "Open in a new Window"
-msgstr "新しいウインドウで開く"
+msgstr "Bue wɔ Window foforɔ mu"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 #: ../lib//Widgets/DynamicNotebook.vala:270
 #: ../lib/Widgets/DynamicNotebook.vala:270
 msgid "Duplicate"
-msgstr "タブを複製"
+msgstr "Yɛ no mmienu"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 #: ../lib//Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:319
 msgid "Close Other Tab"
-msgstr "他のタブを閉じる"
+msgstr "Yi Tab foforɔ no"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 #: ../lib//Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:319
 msgid "Close Other Tabs"
-msgstr "他のタブを閉じる"
+msgstr "Yi Tab Ahoroɔ no"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 #: ../lib//Widgets/DynamicNotebook.vala:496
 #: ../lib/Widgets/DynamicNotebook.vala:496
 msgid "Clear All"
-msgstr "すべてをクリア"
+msgstr "Yi ne nyinaa"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
@@ -119,29 +119,29 @@ msgstr "すべてをクリア"
 #: ../lib/Widgets/DynamicNotebook.vala:780
 #: ../lib/Widgets/DynamicNotebook.vala:813
 msgid "New Tab"
-msgstr "新しいタブ"
+msgstr "Tab Foforɔ"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
 #: ../lib//Widgets/DynamicNotebook.vala:781
 #: ../lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
-msgstr "閉じたタブを復元"
+msgstr "Gyae Tab no yi"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
 #: ../lib/Widgets/DynamicNotebook.vala:823
 msgid "Closed Tabs"
-msgstr "閉じたタブ"
+msgstr "Tab Ahoroɔ a wayi"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr "翻訳を提案する"
+msgstr "Fa Wo Nyereaseɛ To Dwa"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
-msgstr "問題点を報告する"
+msgstr "Fa nsɛnenen bi a w'ahyia to dwa"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
@@ -150,19 +150,19 @@ msgstr "問題点を報告する"
 #: ../lib//Widgets/AppMenu.vala:72 ../lib/Widgets/AppMenu.vala:48
 #: ../lib/Widgets/AppMenu.vala:59 ../lib/Widgets/AppMenu.vala:72
 msgid "Menu"
-msgstr "メニュー"
+msgstr "Menu"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
 #: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
 msgid "About"
-msgstr "情報"
+msgstr "Ɛho Nsɛm"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
 #: ../lib/Widgets/TimePicker.vala:105
 msgid "PM"
-msgstr "午後"
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
@@ -175,25 +175,26 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Contractor との連携ができませんでした。これはインストールする必要があるかもしれません"
+msgstr ""
+"Anhu dwumadie a ne din de Contractor no. Ɛwɔ sɛ wotwe to wo computer no so"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr "アクションするファイルが見つかりません"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr "%p %l:%M:%S"
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 msgid "%l:%M %p"
-msgstr "%p %l:%M"
+msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
@@ -211,25 +212,25 @@ msgstr "%H:%M"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr "%Y年%b%e日(%a)"
+msgstr "%a %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr "%Y年%m月%d日"
+msgstr "%b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 #: ../lib//Widgets/Utils.vala:108 ../lib/Widgets/Utils.vala:108
 msgid "%Y"
-msgstr "%Y年"
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr "%m月%d日"
+msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
@@ -248,7 +249,7 @@ msgstr "%a"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr "%B%e日（%a）"
+msgstr "%a %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -259,29 +260,29 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr "オーディオ"
+msgstr "Audio"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 msgid "Videos"
-msgstr "ビデオ"
+msgstr "Videos"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 msgid "Photos"
-msgstr "フォト"
+msgstr "Mmfonyin Ahoroɔ"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 msgid "Apps"
-msgstr "アプリ"
+msgstr "Dwumadie Ahoroɔ"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
 msgid "Other"
-msgstr "その他"
+msgstr "Foforɔ"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
@@ -290,7 +291,7 @@ msgstr ""
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s's Dwumadie Yɛfoɔ"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453
@@ -303,18 +304,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Archibald Platypus https://launchpad.net/~idi0tf0wl\n"
-"  BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) https://launchpad.net/~balloon\n"
-"  Joji Bronner https://launchpad.net/~jojiinchrist\n"
-"  Masayuki Sugahara https://launchpad.net/~brindflontia\n"
-"  Naoki Kephart https://launchpad.net/~naoki-kephart"
+"  laberba https://launchpad.net/~laberba"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
-msgstr "ファイル"
+msgstr "Files Ahoroɔ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr "午前"
+msgstr "AM"
