@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-31 09:13-0700\n"
-"PO-Revision-Date: 2016-08-03 05:29+0000\n"
+"PO-Revision-Date: 2016-08-03 05:33+0000\n"
 "Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:32+0000\n"
+"X-Launchpad-Export-Date: 2016-08-04 05:31+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -217,7 +217,7 @@ msgstr "%Y年%b%e日(%a)"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr "%Y年%m月%d日"
+msgstr "%Y年%b%e日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -229,7 +229,7 @@ msgstr "%Y年"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr "%m月%d日"
+msgstr "%B%e日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
@@ -290,7 +290,7 @@ msgstr ""
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s の開発者"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453
