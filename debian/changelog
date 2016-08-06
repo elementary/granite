@@ -1,3 +1,9 @@
+granite (0.4.0.1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Sat, 06 Aug 2016 18:42:20 -0500
+
 granite (0.4-1) experimental; urgency=medium
 
   * New upstream release.
