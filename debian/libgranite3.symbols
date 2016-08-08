@@ -220,6 +220,18 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_app_menu_new@Base 0.2.0
  granite_widgets_app_menu_new_with_app@Base 0.2.0
  granite_widgets_app_menu_new_with_urls@Base 0.2.0
+ granite_widgets_avatar_construct@Base 0.4.0
+ granite_widgets_avatar_construct_from_file@Base 0.4.0
+ granite_widgets_avatar_construct_from_pixbuf@Base 0.4.0
+ granite_widgets_avatar_construct_with_default_icon@Base 0.4.0
+ granite_widgets_avatar_get_pixbuf@Base 0.4.0
+ granite_widgets_avatar_get_type@Base 0.4.0
+ granite_widgets_avatar_new@Base 0.4.0
+ granite_widgets_avatar_new_from_file@Base 0.4.0
+ granite_widgets_avatar_new_from_pixbuf@Base 0.4.0
+ granite_widgets_avatar_new_with_default_icon@Base 0.4.0
+ granite_widgets_avatar_set_pixbuf@Base 0.4.0
+ granite_widgets_avatar_show_default@Base 0.4.0
  granite_widgets_cell_renderer_badge_construct@Base 0.2.0
  granite_widgets_cell_renderer_badge_get_text@Base 0.2.0
  granite_widgets_cell_renderer_badge_get_type@Base 0.2.0
@@ -479,6 +491,7 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_status_bar_new@Base 0.2.0
  granite_widgets_status_bar_set_text@Base 0.2.0
  granite_widgets_storage_bar_construct@Base 0.3.1
+ granite_widgets_storage_bar_construct_with_total_usage@Base 0.4.0
  granite_widgets_storage_bar_fill_block_construct@Base 0.3.1
  granite_widgets_storage_bar_fill_block_get_description@Base 0.3.1
  granite_widgets_storage_bar_fill_block_get_legend_item@Base 0.3.1
@@ -492,13 +505,16 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_storage_bar_fill_round_new@Base 0.3.1
  granite_widgets_storage_bar_get_inner_margin_sides@Base 0.3.1
  granite_widgets_storage_bar_get_storage@Base 0.3.1
+ granite_widgets_storage_bar_get_total_usage@Base 0.4.0
  granite_widgets_storage_bar_get_type@Base 0.3.1
  granite_widgets_storage_bar_item_description_get_class@Base 0.3.1
  granite_widgets_storage_bar_item_description_get_name@Base 0.3.1
  granite_widgets_storage_bar_item_description_get_type@Base 0.3.1
  granite_widgets_storage_bar_new@Base 0.3.1
+ granite_widgets_storage_bar_new_with_total_usage@Base 0.4.0
  granite_widgets_storage_bar_set_inner_margin_sides@Base 0.3.1
  granite_widgets_storage_bar_set_storage@Base 0.3.1
+ granite_widgets_storage_bar_set_total_usage@Base 0.4.0
  granite_widgets_storage_bar_update_block_size@Base 0.3.1
  granite_widgets_tab_close@Base 0.3.0
  granite_widgets_tab_construct@Base 0.2.0
@@ -569,6 +585,7 @@ libgranite.so.3 libgranite3 #MINVER#
  granite_widgets_utils_get_css_provider@Base 0.2.0
  granite_widgets_utils_get_default_close_button_position@Base 0.2.3
  granite_widgets_utils_is_left_to_right@Base 0.2.0
+ granite_widgets_utils_set_color_primary@Base 0.4.0
  granite_widgets_utils_set_theming@Base 0.2.0
  granite_widgets_utils_set_theming_for_screen@Base 0.2.0
  granite_widgets_vcollapsable_paned_construct@Base 0.2.0
