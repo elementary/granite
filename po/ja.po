@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-31 09:13-0700\n"
-"PO-Revision-Date: 2016-08-03 05:33+0000\n"
+"PO-Revision-Date: 2016-08-08 00:16+0000\n"
 "Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-04 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-08-08 05:25+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -242,7 +242,7 @@ msgstr "%a %Y"
 #: ../lib//Widgets/Utils.vala:117 ../lib/Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr "%a"
+msgstr "%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
@@ -297,7 +297,7 @@ msgstr "%s の開発者"
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
+msgstr "このプログラムは %s ライセンス条項の元で公開されています。完全に無保証という訳ではありません。詳細は、 %s をご覧ください。"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -307,7 +307,8 @@ msgstr ""
 "  BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) https://launchpad.net/~balloon\n"
 "  Joji Bronner https://launchpad.net/~jojiinchrist\n"
 "  Masayuki Sugahara https://launchpad.net/~brindflontia\n"
-"  Naoki Kephart https://launchpad.net/~naoki-kephart"
+"  Naoki Kephart https://launchpad.net/~naoki-kephart\n"
+"  Ryo Nakano https://launchpad.net/~uq3-him13de-9spzka7"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
