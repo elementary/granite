@@ -79,6 +79,9 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     construct {
+        get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
+        get_style_context ().add_class ("welcome");
+
         title_label = new Gtk.Label (null);
         title_label.justify = Gtk.Justification.CENTER;
         title_label.hexpand = true;
@@ -89,6 +92,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle_label.hexpand = true;
         subtitle_label.wrap = true;
         subtitle_label.wrap_mode = Pango.WrapMode.WORD;
+        subtitle_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         subtitle_label.get_style_context ().add_class ("h2");
 
         // Options wrapper
