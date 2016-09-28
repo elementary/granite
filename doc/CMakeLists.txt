@@ -5,12 +5,15 @@ endforeach ()
 
 # Source files to scan
 set (SRC_DIR "${CMAKE_SOURCE_DIR}/lib")
-set (SRC_FILES ${SRC_DIR}/*.vala ${SRC_DIR}/*/*.vala ${SRC_DIR}/*.vapi)
+file (GLOB SRC_FILES ${SRC_DIR}/*.vala ${SRC_DIR}/*/*.vala)
 
 set (BASE_VALADOC_COMMAND
     valadoc
     ${VALADOC_PKG_OPTS}
     ${SRC_FILES}
+    --vapidir=${SRC_DIR}
+    --pkg config
+    --verbose
     --target-glib=2.32
     --package-name=${PKG_NAME}
     --package-version=${PKG_VERSION})
