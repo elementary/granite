@@ -77,6 +77,7 @@ public class Granite.Demo : Granite.Application {
         create_welcome ();
         create_pickers ();
         create_sourcelist ();
+        create_toast ();
         create_modebutton ();
         create_dynamictab ();
         create_alert ();
@@ -126,6 +127,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("document-open", "DynamicNotebook", "Tab bar widget designed for a variable number of tabs.");
         welcome.append ("dialog-warning", "AlertView", "A View showing that an action is required to function.");
         welcome.append ("drive-harddisk", "Storage", "Small bar indicating the remaining amount of space.");
+        welcome.append ("dialog-information", _("Toasts"), _("Simple in-app notifications"));
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -152,9 +154,15 @@ public class Granite.Demo : Granite.Application {
                     home_button.show ();
                     main_stack.set_visible_child_name ("storage");
                     break;
+                case 6:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("toasts");
+                    break;
             }
         });
-        main_stack.add_named (welcome, "welcome");
+        var scrolled = new Gtk.ScrolledWindow (null, null);
+        scrolled.add (welcome);
+        main_stack.add_named (scrolled, "welcome");
     }
 
     private void create_pickers () {
@@ -211,6 +219,39 @@ public class Granite.Demo : Granite.Application {
             if (item.badge != "" && item.badge != null)
                 item.badge = "";
             label.label = "%s - %s".printf (item.parent.name, item.name);
+        });
+    }
+
+    private void create_toast () {
+        var toast = new Granite.Widgets.Toast (_("Button was pressed!"));
+        toast.set_default_action (_("Do Things"));
+
+        var button = new Gtk.Button.with_label (_("Press Me"));
+
+        var grid = new Gtk.Grid ();
+        grid.orientation = Gtk.Orientation.VERTICAL;
+        grid.margin = 24;
+        grid.halign = Gtk.Align.CENTER;
+        grid.valign = Gtk.Align.CENTER;
+        grid.row_spacing = 6;
+        grid.add (button);
+
+        var overlay = new Gtk.Overlay ();
+        overlay.add_overlay (grid);
+        overlay.add_overlay (toast);
+        
+        main_stack.add_named (overlay, "toasts");
+
+        button.clicked.connect (() => {
+            toast.send_notification ();
+        });
+
+        toast.default_action.connect (() => {
+            var label = new Gtk.Label (_("Did The Thing"));
+            toast.title = _("Already did the thing");
+            toast.set_default_action (null);
+            grid.add (label);
+            grid.show_all ();
         });
     }
 
