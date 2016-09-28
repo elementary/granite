@@ -35,6 +35,7 @@ set (VALA_SOURCES
     Widgets/AppMenu.vala
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
+    Widgets/Toast.vala
     Widgets/ToolButtonWithMenu.vala
     Widgets/PopOver.vala
     Widgets/ContractorView.vala
