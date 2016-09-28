@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-31 09:13-0700\n"
+"POT-Creation-Date: 2016-09-28 11:51-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -311,4 +311,32 @@ msgstr ""
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:130
+msgid "Toasts"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:130
+msgid "Simple in-app notifications"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:226
+msgid "Button was pressed!"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:227
+msgid "Do Things"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:229
+msgid "Press Me"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:250
+msgid "Did The Thing"
+msgstr ""
+
+#: ../demo/GraniteDemo.vala:251
+msgid "Already did the thing"
 msgstr ""
