@@ -1,23 +1,23 @@
 /*
- *  Copyright (C) 2011-2013 Adrien Plazas <kekun.plazas@laposte.net>
+ * Copyright (C) 2011-2016 elementary LLC (https://launchpad.net/granite)
  *
- *  This program or library is free software; you can redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 3 of the License, or (at your option) any later version.
+ * This program or library is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  Lesser General Public License for more details.
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General
- *  Public License along with this library; if not, write to the
- *  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301 USA.
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA.
+ *
+ * Authored by: Adrien Plazas <kekun.plazas@laposte.net>
  */
-
-using Gtk;
 
 namespace Granite.Widgets {
 
@@ -63,9 +63,9 @@ namespace Granite.Widgets {
         }
         string _bug = "";
 
-        private Button help_button;
-        private Button translate_button;
-        private Button bug_button;
+        private Gtk.Button help_button;
+        private Gtk.Button translate_button;
+        private Gtk.Button bug_button;
 
         private Granite.Drawing.BufferSurface buffer;
 
@@ -73,10 +73,10 @@ namespace Granite.Widgets {
          * Creates a new Granite.Widgets.AboutDialog
          */
         public AboutDialog () {
-            Box action_area = (Box) get_action_area ();
+            var action_area = (Gtk.Box) get_action_area ();
 
             /* help button */
-            help_button = new Button.with_label ("?");
+            help_button = new Gtk.Button.with_label ("?");
             help_button.get_style_context ().add_class ("circular");
 
             help_button.halign = Gtk.Align.CENTER;
@@ -92,12 +92,12 @@ namespace Granite.Widgets {
             ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
 
             /* translate button */
-            translate_button = new Button.with_label(_("Suggest Translations"));
+            translate_button = new Gtk.Button.with_label(_("Suggest Translations"));
             translate_button.clicked.connect ( () => { activate_link(translate); });
             action_area.pack_start (translate_button, false, false, 0);
 
             /* bug button */
-            bug_button = new Button.with_label (_("Report a Problem"));
+            bug_button = new Gtk.Button.with_label (_("Report a Problem"));
             bug_button.clicked.connect (() => {
                 try {
                     GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
