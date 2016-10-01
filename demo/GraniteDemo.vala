@@ -99,7 +99,9 @@ public class Granite.Demo : Granite.Application {
         about_button.tooltip_text = "About this application";
         about_button.clicked.connect (() => {show_about (window);});
 
-        home_button = new Gtk.Button.from_icon_name ("go-previous", Gtk.IconSize.LARGE_TOOLBAR);
+        home_button = new Gtk.Button.with_label ("Back");
+        home_button.get_style_context ().add_class ("back-button");
+        home_button.valign = Gtk.Align.CENTER;
         home_button.clicked.connect (() => {
             main_stack.set_visible_child_name ("welcome");
             home_button.hide ();
