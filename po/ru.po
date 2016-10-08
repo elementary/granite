@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-08-02 21:00+0000\n"
-"Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
+"PO-Revision-Date: 2016-10-07 16:05+0000\n"
+"Last-Translator: Sergey Kislyakov <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-29 06:19+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-10-08 06:03+0000\n"
+"X-Generator: Launchpad (build 18227)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -312,6 +312,7 @@ msgstr ""
 "  Artem Anufrij https://launchpad.net/~artem-anufrij\n"
 "  Corpsee https://launchpad.net/~poisoncorpsee\n"
 "  Kirill Ivaha https://launchpad.net/~kirill-ivaha\n"
+"  Kirill Romanov https://launchpad.net/~djaler1\n"
 "  Lapeev Konstantin https://launchpad.net/~coder1c\n"
 "  Maxim Taranov https://launchpad.net/~png2378\n"
 "  Mukusev Vladimir https://launchpad.net/~damon95\n"
@@ -319,6 +320,7 @@ msgstr ""
 "  Ofen https://launchpad.net/~pe4ka911\n"
 "  Pasha. P. Komar https://launchpad.net/~cellachain\n"
 "  Qwiz https://launchpad.net/~qwiz\n"
+"  Sergey Kislyakov https://launchpad.net/~defman21\n"
 "  Victor Makarov https://launchpad.net/~viktis\n"
 "  Yury https://launchpad.net/~kuryzko-yn\n"
 "  mefetran https://launchpad.net/~mefetran\n"
@@ -338,28 +340,28 @@ msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Тосты"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Простые встроенные оповещения"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Кнопка была нажата!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Делать что-то"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Нажми меня"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Что-то сделано"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Уже что-то сделано"
