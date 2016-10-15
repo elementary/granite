@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-08-06 09:27+0000\n"
+"PO-Revision-Date: 2016-10-14 15:39+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-29 06:19+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-10-15 06:04+0000\n"
+"X-Generator: Launchpad (build 18232)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -321,28 +321,28 @@ msgstr "上午"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "吐司"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "簡易程式內通知"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "已按下按鈕！"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "做事情"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "請按我"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "已完成那件事"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "已經做完那件事"
