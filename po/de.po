@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-07-29 18:12+0000\n"
-"Last-Translator: Phillip Sz <Unknown>\n"
+"PO-Revision-Date: 2016-11-27 16:44+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-29 06:18+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-11-28 05:33+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -311,13 +311,14 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Eduard Gotwig https://launchpad.net/~gotwig\n"
 "  Eduard Stürmer https://launchpad.net/~eduard-stuermer\n"
+"  L B https://launchpad.net/~luboii\n"
+"  Maciej Krüger https://launchpad.net/~mkg20001\n"
 "  Marco Kemmerling https://launchpad.net/~mar-co\n"
 "  Nico Du https://launchpad.net/~nico-d-8\n"
 "  No Name https://launchpad.net/~nonamenoname\n"
 "  Noah Mehling https://launchpad.net/~noahmehling\n"
 "  Philipp Birkl https://launchpad.net/~birklphilipp\n"
 "  Phillip Sz https://launchpad.net/~phillip-sz\n"
-"  Squiggles https://launchpad.net/~luc-boillat\n"
 "  Thomas Pitlik https://launchpad.net/~thomaspitlik\n"
 "  Tobias Bannert https://launchpad.net/~toba\n"
 "  UweS https://launchpad.net/~uwes\n"
@@ -339,24 +340,24 @@ msgstr ""
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Einfache Benachrichtigungen in der Anwendung"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Knopf wurde gedrückt!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Sache erledigen"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Drück mich"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Sache erledigt"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Sache bereits erledigt"
