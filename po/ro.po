@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2016-12-14 13:48+0000\n"
+"Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-29 06:19+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-12-15 04:45+0000\n"
+"X-Generator: Launchpad (build 18293)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -31,7 +31,7 @@ msgstr "Scris de:"
 #: ../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "© %s"
-msgstr ""
+msgstr "© %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
@@ -50,7 +50,7 @@ msgstr "Tradus de %s"
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
@@ -66,7 +66,7 @@ msgstr ""
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
 msgid "Developers"
-msgstr ""
+msgstr "Dezvoltatori"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 #: ../lib//Application.vala:258 ../lib//Application.vala:265
@@ -111,7 +111,7 @@ msgstr "Închide celelalte file"
 #: ../lib//Widgets/DynamicNotebook.vala:496
 #: ../lib/Widgets/DynamicNotebook.vala:496
 msgid "Clear All"
-msgstr ""
+msgstr "Șterge tot"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
@@ -126,18 +126,18 @@ msgstr "Filă nouă"
 #: ../lib//Widgets/DynamicNotebook.vala:781
 #: ../lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Resturează fila inchisă"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
 #: ../lib/Widgets/DynamicNotebook.vala:823
 msgid "Closed Tabs"
-msgstr ""
+msgstr "File închise"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Sugerează traduceri"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
@@ -163,14 +163,14 @@ msgstr "Despre"
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
 #: ../lib/Widgets/TimePicker.vala:105
 msgid "PM"
-msgstr ""
+msgstr "p.m."
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
 #: ../lib/Widgets/TimePicker.vala:137
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -188,7 +188,7 @@ msgstr "Nici o acțiune găsită pentru acest fișier"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
@@ -200,98 +200,98 @@ msgstr "%l:%M %p"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 #: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 #: ../lib//Widgets/Utils.vala:88 ../lib/Widgets/Utils.vala:88
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%a %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 #: ../lib//Widgets/Utils.vala:108 ../lib/Widgets/Utils.vala:108
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 msgid "%b %e"
-msgstr ""
+msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 #: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
 #: ../lib//Widgets/Utils.vala:117 ../lib/Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr ""
+msgstr "%a %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 #: ../lib//Widgets/Utils.vala:123 ../lib/Widgets/Utils.vala:123
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 msgid "Videos"
-msgstr ""
+msgstr "Fișiere video"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 msgid "Photos"
-msgstr ""
+msgstr "Fotografii"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 msgid "Apps"
-msgstr ""
+msgstr "Aplicații"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
 msgid "Other"
-msgstr ""
+msgstr "Altele"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s liber din %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s Dezvoltatori"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453
@@ -299,12 +299,15 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Acest program este publicat sub termenii licenţei %s, vine FĂRĂ NICI O "
+"GARANŢIE; pentru detalii vizitează %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Cristian Turcu https://launchpad.net/~cristian-turcu29\n"
+"  Marius Albina https://launchpad.net/~marius-albina\n"
 "  Richard B. https://launchpad.net/~dx-richard\n"
 "  Răzvan Ana https://launchpad.net/~rzvann-u\n"
 "  aodpi https://launchpad.net/~balan-valeriu"
@@ -312,37 +315,37 @@ msgstr ""
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
-msgstr ""
+msgstr "Fișiere"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "a.m."
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Toasturi"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Notificări simple în aplicație"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Butonul a fost apăsat!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Fă chestii"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Apasă-mă"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "A făcut ceva"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Deja ai făcut ceva"
