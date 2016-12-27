@@ -29,6 +29,12 @@ namespace Granite.Widgets {
 
         const int OFFSET = 15;
         const int MARGIN = 6;
+        // Signals
+        /**
+         * Sent when the date got changed
+         */
+        public signal void date_changed ();
+
         /**
          * Desired format of DatePicker
          */
@@ -57,6 +63,7 @@ namespace Granite.Widgets {
             set {
                 _date = value;
                 text = _date.format (format);
+                date_changed ();
             }
         }
 
