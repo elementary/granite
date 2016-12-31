@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2016 elementary LLC. (https://elementary.io)
+ * Copyright (c) 2016-2017 elementary LLC. (https://elementary.io)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the Lesser GNU General Public License as published by
@@ -34,12 +34,12 @@ namespace Granite.Widgets {
 
         /**
          * Emitted when the Toast is closed by activating the close button
-         */ 
+         */
         public signal void closed ();
 
         /**
          * Emitted when the default action button is activated
-         */ 
+         */
         public signal void default_action ();
 
         private Gtk.Label notification_label;
@@ -48,7 +48,7 @@ namespace Granite.Widgets {
 
         /**
          * The notification text label to be displayed inside of #this
-         */ 
+         */
         public string title {
             get {
                 return _title;
@@ -63,7 +63,7 @@ namespace Granite.Widgets {
 
         /**
          * Creates a new Toast with #title as its title
-         */ 
+         */
         public Toast (string title) {
             Object (title: title);
         }
@@ -87,7 +87,7 @@ namespace Granite.Widgets {
                 reveal_child = false;
                 closed ();
             });
-            
+
             notification_label = new Gtk.Label (title);
 
             var notification_box = new Gtk.Grid ();
@@ -105,8 +105,8 @@ namespace Granite.Widgets {
 
         /**
          * Sets the default action button label of #this to #label and hides the
-         * button if #label is #null. 
-         */        
+         * button if #label is #null.
+         */
         public void set_default_action (string? label) {
             if (label == "" || label == null) {
                 default_action_button.no_show_all = true;
@@ -120,7 +120,7 @@ namespace Granite.Widgets {
 
         /**
          * Sends the Toast on behalf of #this
-         */         
+         */
         public void send_notification () {
             reveal_child = true;
         }
