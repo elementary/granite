@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011-2016 elementary LLC (https://launchpad.net/granite)
+ * Copyright (C) 2011-2017 elementary LLC (https://launchpad.net/granite)
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -23,7 +23,7 @@ namespace Granite.Widgets {
 
     /**
      * This class makes an about dialog which goes in the App Menu on most apps.
-     * 
+     *
      * {{../../doc/images/AboutDialog.png}}
      */
     public class AboutDialog : Granite.GtkPatch.AboutDialog {

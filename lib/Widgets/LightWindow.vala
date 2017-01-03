@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012-2013 Granite Developers
+ *  Copyright (C) 2012-2017 Granite Developers
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public

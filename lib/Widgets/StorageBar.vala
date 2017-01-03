@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2011-2015 Granite Developers (https://launchpad.net/granite)
+ *  Copyright (C) 2011-2017 Granite Developers (https://launchpad.net/granite)
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
