@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-03-27 22:32+0000\n"
-"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2017-01-05 20:17+0000\n"
+"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-29 06:19+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2017-01-06 06:01+0000\n"
+"X-Generator: Launchpad (build 18302)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -60,7 +60,8 @@ msgstr "Este programa está publicado bajo los términos de la licencia "
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " , esta no tiene NINGUNA GARANTÍA; para más detalles, visite "
+msgstr ""
+" . Esta viene con ABSOLUTAMENTE NINGUNA GARANTÍA. Para más detalles, visita "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -119,7 +120,7 @@ msgstr "Limpiar todo"
 #: ../lib/Widgets/DynamicNotebook.vala:780
 #: ../lib/Widgets/DynamicNotebook.vala:813
 msgid "New Tab"
-msgstr "Pestaña nueva"
+msgstr "Nueva pestaña"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
 #: ../lib//Widgets/DynamicNotebook.vala:781
@@ -282,7 +283,7 @@ msgstr "Aplicaciones"
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
@@ -310,6 +311,7 @@ msgstr ""
 "  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Christopher https://launchpad.net/~cdhornb\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Félix Brezo https://launchpad.net/~febrezo\n"
 "  Haggen https://launchpad.net/~h2gn\n"
 "  Ignacio Martin Rodriguez https://launchpad.net/~newwen\n"
 "  Israel https://launchpad.net/~isra1998isra\n"
@@ -317,6 +319,7 @@ msgstr ""
 "  Julián Unrrein https://launchpad.net/~junrrein\n"
 "  Lucas https://launchpad.net/~lucasdavidferrero\n"
 "  Pablo Largo https://launchpad.net/~devnix\n"
+"  Raymundo https://launchpad.net/~yotihuanatili\n"
 "  Victor Martinez https://launchpad.net/~victored\n"
 "  bitseater https://launchpad.net/~bitseater\n"
 "  daniel villalobos https://launchpad.net/~elcodigo12-p\n"
@@ -326,37 +329,37 @@ msgstr ""
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
-msgstr ""
+msgstr "Archivos"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Notificación emergente"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Notificaciones simples en aplicaciones"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "¡El botón fue presionado!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Haz cosas"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Presióname"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Hice algo"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Acabo de hacer algo"
