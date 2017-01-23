@@ -148,8 +148,6 @@ namespace Granite {
 #elif DRAGON_FLY || FREE_BSD || NET_BSD || OPEN_BSD
             setproctitle (exec_name);
 #endif
-            Environment.set_prgname (exec_name);
-
             Logger.initialize (program_name);
             Logger.DisplayLevel = LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
