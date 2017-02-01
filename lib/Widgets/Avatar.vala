@@ -55,7 +55,8 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      */
     public Avatar.from_file (string filepath, int icon_size) {
         try {
-            pixbuf = new Gdk.Pixbuf.from_file_at_scale (filepath, icon_size, icon_size, true);
+            var size = icon_size * get_style_context ().get_scale ();
+            pixbuf = new Gdk.Pixbuf.from_file_at_size (filepath, size, size);
         } catch (Error e) {
             show_default (icon_size);
         }
@@ -74,7 +75,8 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         valign = Gtk.Align.CENTER;
         halign = Gtk.Align.CENTER;
         visible_window = false;
-        get_style_context ().add_class (DEFAULT_STYLE);
+        var style_context = get_style_context ();
+        style_context.add_class (DEFAULT_STYLE);
 
         notify["pixbuf"].connect (refresh_size_request);
     }
@@ -85,7 +87,8 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
 
     private void refresh_size_request () {
         if (pixbuf != null) {
-            set_size_request (pixbuf.width + EXTRA_MARGIN * 2, pixbuf.height + EXTRA_MARGIN * 2);
+            var scale_factor = get_style_context ().get_scale ();
+            set_size_request (pixbuf.width / scale_factor + EXTRA_MARGIN * 2, pixbuf.height / scale_factor + EXTRA_MARGIN * 2);
             draw_theme_background = true;
         } else {
             set_size_request (0, 0);
@@ -102,7 +105,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     public void show_default (int icon_size) {
         Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default ();
         try {
-            pixbuf = icon_theme.load_icon (DEFAULT_ICON, icon_size, 0);
+            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, icon_size, get_style_context ().get_scale (), 0);
         } catch (Error e) {
             stderr.printf ("Error setting default avatar icon: %s ", e.message);
         }
@@ -118,21 +121,26 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         unowned Gtk.StyleContext style_context = get_style_context ();
         var width = get_allocated_width () - EXTRA_MARGIN * 2;
         var height = get_allocated_height () - EXTRA_MARGIN * 2;
+        var scale_factor = style_context.get_scale ();
 
         if (draw_theme_background) {
-            var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, Gtk.StateFlags.NORMAL).get_int ();
+            var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, style_context.get_state ()).get_int ();
             var crop_radius = int.min (width / 2, border_radius * width / 100);
 
             Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height, crop_radius);
-            Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN, EXTRA_MARGIN);
+            cr.save ();
+            cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
+            Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN * scale_factor, EXTRA_MARGIN * scale_factor);
             cr.fill_preserve ();
+            cr.restore ();
             style_context.render_background (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
             style_context.render_frame (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
 
         } else {
-            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height, 0);
-            Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN, EXTRA_MARGIN);
-            cr.fill_preserve ();
+            cr.save ();
+            cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
+            style_context.render_icon (cr, pixbuf, EXTRA_MARGIN, EXTRA_MARGIN);
+            cr.restore ();
         }
 
         return Gdk.EVENT_STOP;
