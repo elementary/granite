@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-01-27 19:30+0000\n"
-"Last-Translator: Nikos Raptopoulos <nraptopoulos@gmail.com>\n"
+"PO-Revision-Date: 2017-02-10 10:02+0000\n"
+"Last-Translator: Christos Iatropoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-09 05:38+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:34+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -263,24 +263,24 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr ""
+msgstr "Ήχος"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 msgid "Videos"
-msgstr ""
+msgstr "Βίντεο"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 msgid "Photos"
-msgstr ""
+msgstr "Φωτογραφίες"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 msgid "Apps"
-msgstr ""
+msgstr "Εφαρμογές"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
@@ -320,7 +320,7 @@ msgstr ""
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
-msgstr ""
+msgstr "Αρχεία"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
