@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-03-15 08:48+0000\n"
+"PO-Revision-Date: 2017-03-20 14:22+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-03-19 06:24+0000\n"
-"X-Generator: Launchpad (build 18332)\n"
+"X-Launchpad-Export-Date: 2017-03-22 06:27+0000\n"
+"X-Generator: Launchpad (build 18334)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -300,7 +300,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 "Dette program distribueres under licensbetingelserne i %s, og kommer ABSOLUT "
-"UDEN GARANTI; For yderligere detaljer, se %s."
+"UDEN GARANTI; For yderligere detaljer, se %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
