@@ -5,6 +5,10 @@
 
 You'll need the following dependencies:
 * cmake
+* gobject-introspection
+* libgee-0.8-dev
+* libgirepository1.0-dev
+* libgtk-3-dev
 * valac
 
 It's recommended to create a clean build environment
