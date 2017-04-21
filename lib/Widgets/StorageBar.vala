@@ -79,7 +79,6 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
 
         set {
             _storage = value;
-            resize_children ();
             update_size_description ();
         }
     }
@@ -93,7 +92,6 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
 
         set {
             _total_usage = uint64.min (value, storage);
-            resize_children ();
             update_size_description ();
         }
 
