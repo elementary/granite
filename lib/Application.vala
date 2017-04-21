@@ -186,6 +186,7 @@ namespace Granite {
 
             context.add_main_entries (options, null);
             context.add_group (Gtk.get_option_group (false));
+            context.set_ignore_unknown_options (true);
 
             try {
                 context.parse (ref args);
