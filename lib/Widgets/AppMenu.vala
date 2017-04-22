@@ -26,7 +26,7 @@ namespace Granite.Widgets {
 	/**
 	 * An App Menu is the gear menu that goes on the right of the toolbar.
 	 */
-    [Version (deprecated = true, deprecated_since = "0.4", replacement = "Gtk.MenuButton")]
+    [Version (deprecated = true, deprecated_since = "0.4.1", replacement = "Gtk.MenuButton")]
     public class AppMenu : ToolButtonWithMenu {
 
         /**
