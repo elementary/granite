@@ -22,33 +22,23 @@ set (VALA_SOURCES
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
-    Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
     Widgets/ModeButton.vala
     Widgets/DatePicker.vala
-    Widgets/Entries.vala
     Widgets/TimePicker.vala
     Widgets/CollapsiblePaned.vala
-    Widgets/StaticNotebook.vala
     Widgets/DynamicNotebook.vala
     Widgets/CompositedWindow.vala
     Widgets/AppMenu.vala
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
-    Widgets/ToolButtonWithMenu.vala
-    Widgets/PopOver.vala
     Widgets/ContractorView.vala
     Widgets/ContractorMenu.vala
-    Widgets/DecoratedWindow.vala
-    Widgets/LightWindow.vala
-    Widgets/StatusBar.vala
-    Widgets/SidebarPaned.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
-    Widgets/ThinPaned.vala
     Widgets/OverlayBar.vala
 )
 
