@@ -26,7 +26,7 @@ namespace Granite.Widgets {
 	/**
 	 * An App Menu is the gear menu that goes on the right of the toolbar.
 	 */
-    public class AppMenu : ToolButtonWithMenu {
+    public class AppMenu : Gtk.MenuButton {
 
         /**
          * Menu item for about page.
@@ -44,8 +44,8 @@ namespace Granite.Widgets {
          * @param menu menu to be turned into an AppMenu.
          */
         public AppMenu (Gtk.Menu menu) {
-
-            base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
+            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
+            tooltip_text = _("Menu");
         }
 
         /**
@@ -55,8 +55,8 @@ namespace Granite.Widgets {
          * @param menu menu to be created.
          */
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
-
-            base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
+            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
+            tooltip_text = _("Menu");
 
             this.add_items (menu);
 
@@ -69,7 +69,8 @@ namespace Granite.Widgets {
         [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
         public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {
             critical("This is a deprecated creation method: AppMenu.with_urls");
-            base (new Image.from_icon_name ("open-menu", IconSize.MENU), _("Menu"), menu);
+            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
+            tooltip_text = _("Menu");
         }
 
         /**
