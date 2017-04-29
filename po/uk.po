@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-04-26 15:02+0000\n"
+"PO-Revision-Date: 2017-04-29 18:48+0000\n"
 "Last-Translator: Володимир Білошицький <volbilnexus@gmail.com>\n"
 "Language-Team: Ukrainian "
 "<https://l10n.elementary.io/projects/desktop/granite/uk/>\n"
@@ -345,7 +345,7 @@ msgstr "Кнопка була натиснута!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr "Роблю щось"
+msgstr "Роблю справи"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
@@ -353,7 +353,7 @@ msgstr "Натисни мене"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr "Роблю щось"
+msgstr "Роблю справу"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
