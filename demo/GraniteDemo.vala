@@ -76,6 +76,7 @@ public class Granite.Demo : Granite.Application {
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
         var source_list_view = new SourceListView ();
+        var storage_view = new StorageView ();
         var toast_view = new ToastView ();
 
         main_stack = new Gtk.Stack ();
@@ -83,13 +84,13 @@ public class Granite.Demo : Granite.Application {
 
         create_headerbar ();
         create_welcome ();
-        create_storage ();
 
         main_stack.add_named (alert_view, "alert");
         main_stack.add_named (date_time_picker_view, "pickers");
         main_stack.add_named (dynamic_notebook_view, "dynamictab");
         main_stack.add_named (mode_button_view, "modebutton");
         main_stack.add_named (source_list_view, "sourcelist");
+        main_stack.add_named (storage_view, "storage");
         main_stack.add_named (toast_view, "toasts");
 
         window.add (main_stack);
@@ -174,28 +175,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_storage () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var file_root = GLib.File.new_for_path ("/");
-        try {
-            var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
-            var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
-            var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size/2);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size/5);
-            grid.add (storage);
-        } catch (Error e) {
-            critical (e.message);
-        }
-
-        main_stack.add_named (grid, "storage");
     }
 
     private Granite.Widgets.Avatar create_avatar () {
