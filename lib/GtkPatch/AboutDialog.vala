@@ -254,8 +254,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         // Set the default containers
-        Gtk.Box content_area = (Gtk.Box)get_content_area ();
-        Gtk.Box action_area = (Gtk.Box)get_action_area ();
+        var content_area = (Gtk.Box)get_content_area ();
+        var action_area = (Gtk.Box)get_action_area ();
 
         var content_hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
         var content_right_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
