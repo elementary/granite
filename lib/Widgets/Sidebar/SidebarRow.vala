@@ -67,7 +67,6 @@ namespace Granite.Widgets {
 
             badge_label = new Gtk.Label ("");
             badge_label.get_style_context ().add_class ("badge");
-            badge_label.margin_end = 3;
             badge_label.valign = Gtk.Align.CENTER;
 
             badge_revealer = new Gtk.Revealer ();
@@ -86,6 +85,7 @@ namespace Granite.Widgets {
 
             button_stack = new Gtk.Stack ();
             button_stack.transition_type = Gtk.StackTransitionType.CROSSFADE;
+            button_stack.margin_start = 3;
             button_stack.add (action_button);
             button_stack.add (spinner);
 
@@ -101,8 +101,8 @@ namespace Granite.Widgets {
             layout.attach (icon_revealer, 0, 0, 1, 2);
             layout.attach (row_label, 1, 0, 1, 1);
             layout.attach (indicator_bar, 1, 1, 1, 1);
-            layout.attach (button_revealer, 2, 0, 1, 2);
-            layout.attach (badge_revealer, 3, 0, 1, 2);
+            layout.attach (button_revealer, 3, 0, 1, 2);
+            layout.attach (badge_revealer, 2, 0, 1, 2);
 
             return layout;
         }
@@ -138,7 +138,6 @@ namespace Granite.Widgets {
                     no_show_all = true;
                 }
             });
-
         }
 
         protected void load_data () {
