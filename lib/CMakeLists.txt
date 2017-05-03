@@ -43,6 +43,16 @@ set (VALA_SOURCES
     Widgets/DecoratedWindow.vala
     Widgets/LightWindow.vala
     Widgets/StatusBar.vala
+    Widgets/Sidebar/SidebarParentRowModel.vala
+    Widgets/Sidebar/SidebarHeaderModel.vala
+    Widgets/Sidebar/SidebarExpandableRowModel.vala
+    Widgets/Sidebar/SidebarRowModel.vala
+    Widgets/Sidebar/SidebarHeader.vala
+    Widgets/Sidebar/SidebarExpandableRow.vala
+    Widgets/Sidebar/SidebarRow.vala
+    Widgets/Sidebar/Sidebar.vala
+    Widgets/Sidebar/SidebarStore.vala
+    Widgets/Sidebar/IndicatorBar.vala
     Widgets/SidebarPaned.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
