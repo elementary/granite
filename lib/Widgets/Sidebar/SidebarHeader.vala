@@ -50,7 +50,7 @@ namespace Granite.Widgets {
             disclosure_image_revealer.add (disclosure_image);
 
             row_layout = build_grid ();
-            row_layout.attach (disclosure_image_revealer, 3, 0, 1, 2);
+            row_layout.attach (disclosure_image_revealer, 4, 0, 1, 2);
             set_bold ();
 
             row_box = new Gtk.Button ();
