@@ -15,6 +15,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/DateTimePickerView.vala
     Views/DynamicNotebookView.vala
     Views/ModeButtonView.vala
+    Views/OverlayBarView.vala
     Views/SourceListView.vala
     Views/StorageView.vala
     Views/ToastView.vala
