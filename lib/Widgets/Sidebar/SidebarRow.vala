@@ -231,7 +231,6 @@ namespace Granite.Widgets {
                 return;
             }
 
-            action_image.pixbuf = null;
             action_image.icon_name = action_icon_name;
         }
 
@@ -239,7 +238,7 @@ namespace Granite.Widgets {
             if (action_icon_pixbuf == null) {
                 return;
             }
-            action_image.icon_name = null;
+            
             action_image.pixbuf = action_icon_pixbuf.scale_simple(PIXBUF_ICON_WIDTH, PIXBUF_ICON_HEIGHT, Gdk.InterpType.BILINEAR);
         }
 
