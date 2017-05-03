@@ -37,6 +37,8 @@ namespace Granite.Widgets {
 
         public void bind_model (ListModel? model) {
             base.bind_model (model, walk_model_items);
+            
+            show_all ();
         }
         
         private Gtk.Widget walk_model_items (Object item) {

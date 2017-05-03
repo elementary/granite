@@ -122,8 +122,8 @@ namespace Granite.Widgets {
             model.action_icon_pixbuf_changed.connect (handle_action_icon_pixbuf_changed);
             model.action_visible_changed.connect (handle_action_visible_changed);
             model.indicator_level_changed.connect (handle_indicator_level_changed);
-            model.show.connect (() => { show (); });
-            model.hide.connect (() => { hide (); });
+            model.show.connect (() => { no_show_all = false; show_all (); });
+            model.hide.connect (() => { no_show_all = true; hide (); });
 
             badge_revealer.notify["child-revealed"].connect (handle_badge_revealer_state_changed);
             button_revealer.notify["child-revealed"].connect (handle_button_revealer_state_changed);
@@ -132,8 +132,10 @@ namespace Granite.Widgets {
             realize.connect (() => {
                 if (model.visible) {
                     show_all ();
+                    no_show_all = false;
                 } else {
                     hide ();
+                    no_show_all = true;
                 }
             });
 
