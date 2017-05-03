@@ -75,6 +75,7 @@ namespace Granite.Widgets {
             button_revealer.add (button_stack);
 
             indicator_bar = new IndicatorBar ();
+            indicator_bar.margin_bottom = 2;
 
             var layout = new Gtk.Grid ();
             layout.margin_start = (int) model.level * 6;
@@ -134,9 +135,11 @@ namespace Granite.Widgets {
 
         private void handle_indicator_level_changed (double indicator_level) {
             if (indicator_level < 0) {
+                get_style_context ().remove_class ("indicator-present");
                 indicator_bar.no_show_all = true;
                 indicator_bar.hide ();
             } else {
+                get_style_context ().add_class ("indicator-present");
                 indicator_bar.no_show_all = false;
                 indicator_bar.fill = indicator_level;
                 indicator_bar.show_all ();

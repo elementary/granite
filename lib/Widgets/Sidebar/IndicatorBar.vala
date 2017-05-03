@@ -2,6 +2,7 @@
 namespace Granite.Widgets {
     private class IndicatorBar : Gtk.DrawingArea {
         private uint MARGIN = 4;
+        private int HEIGHT = 4;
 
         private double _fill = 0;
         public double fill {
@@ -23,7 +24,7 @@ namespace Granite.Widgets {
         construct {
             hexpand = true;
 
-            set_size_request (-1, 4);
+            set_size_request (-1, HEIGHT);
         }
 
 
