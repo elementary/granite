@@ -71,6 +71,7 @@ public class Granite.Demo : Granite.Application {
 
         main_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
+        var alert_view = new AlertViewView ();
         var date_time_picker_view = new DateTimePickerView ();
         var mode_button_view = new ModeButtonView ();
         var source_list_view = new SourceListView ();
@@ -82,9 +83,9 @@ public class Granite.Demo : Granite.Application {
         create_headerbar ();
         create_welcome ();
         create_dynamictab ();
-        create_alert ();
         create_storage ();
 
+        main_stack.add_named (alert_view, "alert");
         main_stack.add_named (date_time_picker_view, "pickers");
         main_stack.add_named (mode_button_view, "modebutton");
         main_stack.add_named (source_list_view, "sourcelist");
@@ -172,13 +173,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_alert () {
-        var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
-        main_stack.add_named (alert, "alert");
-        alert.show_action ("Hide this button");
-        alert.action_activated.connect (() => {alert.hide_action ();});
     }
 
     private void create_storage () {
