@@ -20,11 +20,7 @@
 
 public class OverlayBarView : Gtk.Overlay {
     construct {
-        var overlay = new Gtk.Overlay ();
-
-        var overlaybar = new Granite.Widgets.OverlayBar (overlay);
+        var overlaybar = new Granite.Widgets.OverlayBar (this);
         overlaybar.status = "Hover the OverlayBar to change its position";
-
-        add (overlay);
     }
 }
