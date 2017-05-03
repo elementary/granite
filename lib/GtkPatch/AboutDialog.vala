@@ -324,8 +324,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         website_url_label.set_line_wrap (true);
 
         // left and right padding
-        content_hbox.pack_start(new Gtk.Box(Gtk.Orientation.VERTICAL, 0), false, false, 0);
-        content_hbox.pack_end(new Gtk.Box(Gtk.Orientation.VERTICAL, 0), false, false, 0);
+        content_hbox.pack_start (new Gtk.Box (Gtk.Orientation.VERTICAL, 0), false, false, 0);
+        content_hbox.pack_end (new Gtk.Box (Gtk.Orientation.VERTICAL, 0), false, false, 0);
 
         content_hbox.pack_start(logo_vbox);
         content_hbox.pack_start(content_right_box);
@@ -337,7 +337,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         content_right_box.pack_start(title_vbox, false, false, 0);
         content_right_box.pack_start(content_scrolled, true, true, 0);
         // Extra padding between the scrolled window and the action area
-        content_right_box.pack_end(new Gtk.Box(Gtk.Orientation.VERTICAL, 0), false, false, 6);
+        content_right_box.pack_end (new Gtk.Box (Gtk.Orientation.VERTICAL, 0), false, false, 6);
 
         content_scrolled_vbox.pack_start(comments_label);
         content_scrolled_vbox.pack_start(website_url_label);
