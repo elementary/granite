@@ -23,10 +23,5 @@ namespace Granite.Widgets {
         public SidebarHeaderModel (string label, bool expanded) {
             Object (label: label, expanded: expanded);
         }
-
-        public SidebarHeaderModel.with_icon_name (string label, string icon_name, bool expanded) {
-            Object (label: label, icon_name: icon_name, expanded: expanded);
-        }
-
     }
 }
