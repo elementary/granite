@@ -75,7 +75,6 @@ public class Granite.Demo : Granite.Application {
 
         create_headerbar ();
         create_welcome ();
-        create_sourcelist ();
         create_toast ();
         create_modebutton ();
         create_dynamictab ();
@@ -83,8 +82,10 @@ public class Granite.Demo : Granite.Application {
         create_storage ();
 
         var date_time_picker_view = new DateTimePickerView ();
+        var source_list_view = new SourceListView ();
 
         main_stack.add_named (date_time_picker_view, "pickers");
+        main_stack.add_named (source_list_view, "sourcelist");
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -168,42 +169,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_sourcelist () {
-        var label = new Gtk.Label ("No selected item");
-        var source_list = new Granite.Widgets.SourceList ();
-
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.pack1 (source_list, false, false);
-        paned.add2 (label);
-        paned.position = 150;
-
-        var rand = new GLib.Rand ();
-        for (int letter = 'A'; letter <= 'Z'; letter++) {
-            var expandable_letter = new Granite.Widgets.SourceList.ExpandableItem ("Item %c".printf (letter));
-            source_list.root.add (expandable_letter);
-            for (int number = 1; number <= 10; number++) {
-                var number_item = new Granite.Widgets.SourceList.Item ("Subitem %d".printf (number));
-                var val = rand.next_int ();
-                if (val % 7 == 0)
-                    number_item.badge = "1";
-                expandable_letter.add (number_item);
-            }
-        }
-
-        main_stack.add_named (paned, "sourcelist");
-
-        source_list.item_selected.connect ((item) => {
-            if (item == null) {
-                label.label = "No selected item";
-                return;
-            }
-
-            if (item.badge != "" && item.badge != null)
-                item.badge = "";
-            label.label = "%s - %s".printf (item.parent.name, item.name);
-        });
     }
 
     private void create_toast () {

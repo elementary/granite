@@ -12,6 +12,7 @@ set (EXEC_NAME ${PKG_NAME}-demo)
 vala_precompile (VALA_C ${EXEC_NAME}
     GraniteDemo.vala
     Views/DateTimePickerView.vala
+    Views/SourceListView.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES
