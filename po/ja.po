@@ -6,16 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-12-20 13:20+0000\n"
-"Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"PO-Revision-Date: 2017-04-22 11:24+0000\n"
+"Last-Translator: Ryo Nakano <nscnskichiro0911@gmail.com>\n"
+"Language-Team: Japanese "
+"<https://l10n.elementary.io/projects/desktop/granite/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.13-dev\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -175,7 +178,9 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Contractor との連携ができませんでした。これはインストールする必要があるかもしれません"
+msgstr ""
+"Contractor との連携ができませんでした。これはインストールする必要があるかもし"
+"れません"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -242,7 +247,7 @@ msgstr "%a %Y"
 #: ../lib//Widgets/Utils.vala:117 ../lib/Widgets/Utils.vala:117
 #, c-format
 msgid "%a"
-msgstr "%A"
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
@@ -297,7 +302,7 @@ msgstr "%s の開発者"
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr "このプログラムは %s ライセンス条項の元で公開されています。完全に無保証という訳ではありません。詳細は、 %s をご覧ください。"
+msgstr "このプログラムは絶対的な無保証を伴う %s ライセンス条項の元で公開されています。詳細は、 %s をご覧ください"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
