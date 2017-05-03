@@ -77,6 +77,7 @@ public class Granite.Demo : Granite.Application {
         create_welcome ();
         create_pickers ();
         create_sourcelist ();
+        create_sidebar ();
         create_toast ();
         create_modebutton ();
         create_dynamictab ();
@@ -125,6 +126,7 @@ public class Granite.Demo : Granite.Application {
         var welcome = new Granite.Widgets.Welcome ("Sample Window", "This is a demo of the Granite library.");
         welcome.append ("office-calendar", "TimePicker & DatePicker", "Widgets that allows users to easily pick a time or a date.");
         welcome.append ("tag-new", "SourceList", "A widget that can display a list of items organized in categories.");
+        welcome.append ("tag-new", "Sidebar", "A new widget that can display a list of items organized in categories.");
         welcome.append ("object-inverse", "ModeButton", "This widget is a multiple option modal switch");
         welcome.append ("document-open", "DynamicNotebook", "Tab bar widget designed for a variable number of tabs.");
         welcome.append ("dialog-warning", "AlertView", "A View showing that an action is required to function.");
@@ -142,21 +144,25 @@ public class Granite.Demo : Granite.Application {
                     break;
                 case 2:
                     home_button.show ();
-                    main_stack.set_visible_child_name ("modebutton");
+                    main_stack.set_visible_child_name ("sidebar");
                     break;
                 case 3:
                     home_button.show ();
-                    main_stack.set_visible_child_name ("dynamictab");
+                    main_stack.set_visible_child_name ("modebutton");
                     break;
                 case 4:
                     home_button.show ();
-                    main_stack.set_visible_child_name ("alert");
+                    main_stack.set_visible_child_name ("dynamictab");
                     break;
                 case 5:
                     home_button.show ();
-                    main_stack.set_visible_child_name ("storage");
+                    main_stack.set_visible_child_name ("alert");
                     break;
                 case 6:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("storage");
+                    break;
+                case 7:
                     home_button.show ();
                     main_stack.set_visible_child_name ("toasts");
                     break;
@@ -187,6 +193,141 @@ public class Granite.Demo : Granite.Application {
         grid.attach (timepicker, 2, 2, 1, 1);
         main_stack.add_named (grid, "pickers");
     }
+
+    private void create_sidebar () {
+        // AZ:  Each item has a number in its name. I used this number to check the
+        //      items end up in the correct place while in development. This function
+        //      also adds items from all over the place, and with all possible
+        //      methods. I wanted to make sure most code paths are checked.
+        //      So the messy code is on purpose :P
+
+        var store = new Granite.Widgets.SidebarStore ();
+
+        var test1 = new Granite.Widgets.SidebarHeaderModel.with_icon_name ("Item 1", "user-home", false);
+        test1.tooltip_text = "This is a header item";
+        test1.indicator_level = 0.3;
+
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 11", "user-home"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 12", "folder-recent"));
+
+        store.append (test1);
+
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 13", "folder-documents"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 14", "folder-music"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 15", "user-trash"));
+
+        store.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 2", "user-home"));
+
+        var sidebar = new Granite.Widgets.Sidebar ();
+        sidebar.bind_model (store);
+
+        var test4 = new Granite.Widgets.SidebarExpandableRowModel.with_icon_name ("Item 4", "folder-documents", true);
+        test4.children.append (new Granite.Widgets.SidebarRowModel ("Item 41"));
+        test4.children.append (new Granite.Widgets.SidebarRowModel ("Item 42"));
+
+        store.append (test4);
+
+        test4.action_icon_name = "user-home";
+
+        var test43 = new Granite.Widgets.SidebarExpandableRowModel ("Item 43", false);
+        test4.children.append(test43);
+        var test431 = new Granite.Widgets.SidebarRowModel ("Item 431");
+        test431.badge = 9;
+        test43.children.append(test431);
+
+        store.append (new Granite.Widgets.SidebarRowModel ("Item 5"));
+
+        store.insert (2, new Granite.Widgets.SidebarRowModel ("Item 3"));
+
+        var unexpand_button = new Gtk.Button.with_label ("Unexpand");
+
+        unexpand_button.clicked.connect (() => {
+                test4.expanded = false;
+        });
+
+        var toggle_busy_button = new Gtk.Button.with_label ("Toggle busy");
+
+        toggle_busy_button.clicked.connect (() => {
+            test4.busy = !test4.busy;
+        });
+
+        var toggle_badge_button = new Gtk.Button.with_label ("Toggle badge");
+
+        toggle_badge_button.clicked.connect (() => {
+            if (test4.badge == 0) {
+                test4.badge = 100;
+            } else {
+                test4.badge = 0;
+            }
+        });
+
+        var remove_row_button = new Gtk.Button.with_label ("Remove children rows");
+
+        remove_row_button.clicked.connect (() => {
+            test43.children.remove (test431);
+            test1.children.remove_at (0);
+            test1.children.remove_at (0);
+            test1.children.remove_at (0);
+            test1.children.remove_at (0);
+            test1.children.remove_at (0);
+        });
+
+        var toggle_icon_button = new Gtk.Button.with_label ("Toggle icon");
+
+        toggle_icon_button.clicked.connect (() => {
+            if (test4.icon_name != "folder-documents") {
+                test4.icon_name = "folder-documents";
+            } else {
+                test4.icon_name = "";
+            }
+        });
+
+        var toggle_action_button = new Gtk.Button.with_label ("Toggle action button");
+
+        toggle_action_button.clicked.connect (() => {
+            test4.action_visible = !test4.action_visible;
+        });
+
+        var added = false;
+
+        var add_new_row_button = new Gtk.Button.with_label ("Add new row");
+
+        add_new_row_button.clicked.connect (() => {
+            if (!added) {
+                var new_row = new Granite.Widgets.SidebarRowModel ("Item 44");
+
+                new_row.action_icon_name = "user-home";
+                new_row.icon_name = "user-home";
+                new_row.badge = 20;
+
+                test4.children.append (new_row);
+
+                new_row.show ();
+
+                added = true;
+            }
+        });
+
+        var layout = new Gtk.Grid ();
+        layout.row_spacing = 12;
+        layout.orientation = Gtk.Orientation.VERTICAL;
+        layout.width_request = 650;
+        layout.margin = 24;
+        layout.add (unexpand_button);
+        layout.add (toggle_badge_button);
+        layout.add (toggle_action_button);
+        layout.add (toggle_busy_button);
+        layout.add (toggle_icon_button);
+        layout.add (add_new_row_button);
+        layout.add (remove_row_button);
+
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        paned.add (sidebar);
+        paned.add (layout);
+
+        main_stack.add_named (paned, "sidebar");
+    }
+
 
     private void create_sourcelist () {
         var label = new Gtk.Label ("No selected item");
@@ -241,7 +382,7 @@ public class Granite.Demo : Granite.Application {
         var overlay = new Gtk.Overlay ();
         overlay.add_overlay (grid);
         overlay.add_overlay (toast);
-        
+
         main_stack.add_named (overlay, "toasts");
 
         button.clicked.connect (() => {
