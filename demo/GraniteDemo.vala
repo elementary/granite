@@ -75,13 +75,16 @@ public class Granite.Demo : Granite.Application {
 
         create_headerbar ();
         create_welcome ();
-        create_pickers ();
         create_sourcelist ();
         create_toast ();
         create_modebutton ();
         create_dynamictab ();
         create_alert ();
         create_storage ();
+
+        var date_time_picker_view = new DateTimePickerView ();
+
+        main_stack.add_named (date_time_picker_view, "pickers");
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -165,27 +168,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_pickers () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var date_label = new Gtk.Label ("Date:");
-        var datepicker = new Granite.Widgets.DatePicker ();
-        var time_label = new Gtk.Label ("Time:");
-        var timepicker = new Granite.Widgets.TimePicker ();
-        var expandable_grid_start = new Gtk.Grid ();
-        expandable_grid_start.expand = true;
-        var expandable_grid_end = new Gtk.Grid ();
-        expandable_grid_end.expand = true;
-        grid.attach (expandable_grid_start, 0, 0, 1, 1);
-        grid.attach (expandable_grid_end, 3, 3, 1, 1);
-        grid.attach (date_label, 1, 1, 1, 1);
-        grid.attach (datepicker, 2, 1, 1, 1);
-        grid.attach (time_label, 1, 2, 1, 1);
-        grid.attach (timepicker, 2, 2, 1, 1);
-        main_stack.add_named (grid, "pickers");
     }
 
     private void create_sourcelist () {
