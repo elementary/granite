@@ -73,31 +73,28 @@ namespace Granite.Widgets {
          * Creates a new Granite.Widgets.AboutDialog
          */
         public AboutDialog () {
-            var action_area = (Gtk.Box) get_action_area ();
-
-            /* help button */
             help_button = new Gtk.Button.with_label ("?");
+            help_button.halign = Gtk.Align.CENTER;
             help_button.get_style_context ().add_class ("circular");
 
-            help_button.halign = Gtk.Align.CENTER;
-            help_button.clicked.connect (() => { activate_link(help); });
+            translate_button = new Gtk.Button.with_label(_("Suggest Translations"));
 
-            /* Circular help button */
-            help_button.size_allocate.connect ( (alloc) => {
-                help_button.set_size_request (alloc.height, -1);
-            });
+            bug_button = new Gtk.Button.with_label (_("Report a Problem"));
 
+            var action_area = (Gtk.Box) get_action_area ();
             action_area.pack_end (help_button, false, false, 0);
+            action_area.pack_start (bug_button, false, false, 0);
+            action_area.pack_start (translate_button, false, false, 0);
+            action_area.reorder_child (bug_button, 0);
+            action_area.reorder_child (translate_button, 0);
+
             ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
             ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
 
-            /* translate button */
-            translate_button = new Gtk.Button.with_label(_("Suggest Translations"));
-            translate_button.clicked.connect ( () => { activate_link(translate); });
-            action_area.pack_start (translate_button, false, false, 0);
+            height_request = 282;
 
-            /* bug button */
-            bug_button = new Gtk.Button.with_label (_("Report a Problem"));
+            show_all ();
+
             bug_button.clicked.connect (() => {
                 try {
                     GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
@@ -106,14 +103,18 @@ namespace Granite.Widgets {
                     activate_link (bug);
                 }
             });
-            action_area.pack_start (bug_button, false, false, 0);
 
-            action_area.reorder_child (bug_button, 0);
-            action_area.reorder_child (translate_button, 0);
+            help_button.clicked.connect (() => {
+                activate_link (help);
+            });
 
-            this.height_request = 282;
+            help_button.size_allocate.connect ((alloc) => {
+                help_button.set_size_request (alloc.height, -1);
+            });
 
-            show_all ();
+            translate_button.clicked.connect (() => {
+                activate_link (translate);
+            });
         }
     }
 
