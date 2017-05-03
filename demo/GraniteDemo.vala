@@ -69,19 +69,30 @@ public class Granite.Demo : Granite.Application {
         window.window_position = Gtk.WindowPosition.CENTER;
         add_window (window);
 
-        main_stack = new Gtk.Stack ();
-        main_stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
         main_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
         create_headerbar ();
+
+        var alert_view = new AlertViewView ();
+        var date_time_picker_view = new DateTimePickerView ();
+        var dynamic_notebook_view = new DynamicNotebookView ();
+        var mode_button_view = new ModeButtonView ();
+        var source_list_view = new SourceListView ();
+        var storage_view = new StorageView ();
+        var toast_view = new ToastView ();
+
+        main_stack = new Gtk.Stack ();
+        main_stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+
         create_welcome ();
-        create_pickers ();
-        create_sourcelist ();
-        create_toast ();
-        create_modebutton ();
-        create_dynamictab ();
-        create_alert ();
-        create_storage ();
+
+        main_stack.add_named (alert_view, "alert");
+        main_stack.add_named (date_time_picker_view, "pickers");
+        main_stack.add_named (dynamic_notebook_view, "dynamictab");
+        main_stack.add_named (mode_button_view, "modebutton");
+        main_stack.add_named (source_list_view, "sourcelist");
+        main_stack.add_named (storage_view, "storage");
+        main_stack.add_named (toast_view, "toasts");
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -165,172 +176,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_pickers () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var date_label = new Gtk.Label ("Date:");
-        var datepicker = new Granite.Widgets.DatePicker ();
-        var time_label = new Gtk.Label ("Time:");
-        var timepicker = new Granite.Widgets.TimePicker ();
-        var expandable_grid_start = new Gtk.Grid ();
-        expandable_grid_start.expand = true;
-        var expandable_grid_end = new Gtk.Grid ();
-        expandable_grid_end.expand = true;
-        grid.attach (expandable_grid_start, 0, 0, 1, 1);
-        grid.attach (expandable_grid_end, 3, 3, 1, 1);
-        grid.attach (date_label, 1, 1, 1, 1);
-        grid.attach (datepicker, 2, 1, 1, 1);
-        grid.attach (time_label, 1, 2, 1, 1);
-        grid.attach (timepicker, 2, 2, 1, 1);
-        main_stack.add_named (grid, "pickers");
-    }
-
-    private void create_sourcelist () {
-        var label = new Gtk.Label ("No selected item");
-        var source_list = new Granite.Widgets.SourceList ();
-
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.pack1 (source_list, false, false);
-        paned.add2 (label);
-        paned.position = 150;
-
-        var rand = new GLib.Rand ();
-        for (int letter = 'A'; letter <= 'Z'; letter++) {
-            var expandable_letter = new Granite.Widgets.SourceList.ExpandableItem ("Item %c".printf (letter));
-            source_list.root.add (expandable_letter);
-            for (int number = 1; number <= 10; number++) {
-                var number_item = new Granite.Widgets.SourceList.Item ("Subitem %d".printf (number));
-                var val = rand.next_int ();
-                if (val % 7 == 0)
-                    number_item.badge = "1";
-                expandable_letter.add (number_item);
-            }
-        }
-
-        main_stack.add_named (paned, "sourcelist");
-
-        source_list.item_selected.connect ((item) => {
-            if (item == null) {
-                label.label = "No selected item";
-                return;
-            }
-
-            if (item.badge != "" && item.badge != null)
-                item.badge = "";
-            label.label = "%s - %s".printf (item.parent.name, item.name);
-        });
-    }
-
-    private void create_toast () {
-        var toast = new Granite.Widgets.Toast (_("Button was pressed!"));
-        toast.set_default_action (_("Do Things"));
-
-        var button = new Gtk.Button.with_label (_("Press Me"));
-
-        var grid = new Gtk.Grid ();
-        grid.orientation = Gtk.Orientation.VERTICAL;
-        grid.margin = 24;
-        grid.halign = Gtk.Align.CENTER;
-        grid.valign = Gtk.Align.CENTER;
-        grid.row_spacing = 6;
-        grid.add (button);
-
-        var overlay = new Gtk.Overlay ();
-        overlay.add_overlay (grid);
-        overlay.add_overlay (toast);
-        
-        main_stack.add_named (overlay, "toasts");
-
-        button.clicked.connect (() => {
-            toast.send_notification ();
-        });
-
-        toast.default_action.connect (() => {
-            var label = new Gtk.Label (_("Did The Thing"));
-            toast.title = _("Already did the thing");
-            toast.set_default_action (null);
-            grid.add (label);
-            grid.show_all ();
-        });
-    }
-
-    private void create_modebutton () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var icon_mode = new Granite.Widgets.ModeButton ();
-        icon_mode.append_icon ("view-grid-symbolic", Gtk.IconSize.BUTTON);
-        icon_mode.append_icon ("view-list-symbolic", Gtk.IconSize.BUTTON);
-        icon_mode.append_icon ("view-column-symbolic", Gtk.IconSize.BUTTON);
-        var text_mode = new Granite.Widgets.ModeButton ();
-        text_mode.append_text ("Foo");
-        text_mode.append_text ("Bar");
-        var expandable_grid_start = new Gtk.Grid ();
-        expandable_grid_start.expand = true;
-        var expandable_grid_end = new Gtk.Grid ();
-        expandable_grid_end.expand = true;
-        var clear_button = new Gtk.Button.with_label("Clear Selected");
-        clear_button.clicked.connect (() => {
-            icon_mode.selected = -1;
-            text_mode.selected = -1;
-        });
-        grid.attach (expandable_grid_start, 0, 0, 1, 1);
-        grid.attach (expandable_grid_end, 2, 4, 1, 1);
-        grid.attach (icon_mode, 1, 1, 1, 1);
-        grid.attach (text_mode, 1, 2, 1, 1);
-        grid.attach (clear_button, 1, 3, 1 ,1);
-        main_stack.add_named (grid, "modebutton");
-    }
-
-    private void create_alert () {
-        var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
-        main_stack.add_named (alert, "alert");
-        alert.show_action ("Hide this button");
-        alert.action_activated.connect (() => {alert.hide_action ();});
-    }
-
-    private void create_storage () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var file_root = GLib.File.new_for_path ("/");
-        try {
-            var info = file_root.query_filesystem_info (GLib.FileAttribute.FILESYSTEM_SIZE, null);
-            var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
-            var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size/2);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size/5);
-            grid.add (storage);
-        } catch (Error e) {
-            critical (e.message);
-        }
-
-        main_stack.add_named (grid, "storage");
-    }
-
-    int i;
-    private void create_dynamictab () {
-        var notebook = new Granite.Widgets.DynamicNotebook ();
-        notebook.expand = true;
-        for (i = 1; i <= 6; i++) {
-            var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
-            notebook.insert_tab (tab, i-1);
-        }
-        main_stack.add_named (notebook, "dynamictab");
-
-        notebook.new_tab_requested.connect (() => {
-            var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
-            notebook.insert_tab (tab, i-1);
-            i++;
-        });
     }
 
     private Granite.Widgets.Avatar create_avatar () {
