@@ -73,6 +73,7 @@ public class Granite.Demo : Granite.Application {
 
         var alert_view = new AlertViewView ();
         var date_time_picker_view = new DateTimePickerView ();
+        var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
         var source_list_view = new SourceListView ();
         var toast_view = new ToastView ();
@@ -82,11 +83,11 @@ public class Granite.Demo : Granite.Application {
 
         create_headerbar ();
         create_welcome ();
-        create_dynamictab ();
         create_storage ();
 
         main_stack.add_named (alert_view, "alert");
         main_stack.add_named (date_time_picker_view, "pickers");
+        main_stack.add_named (dynamic_notebook_view, "dynamictab");
         main_stack.add_named (mode_button_view, "modebutton");
         main_stack.add_named (source_list_view, "sourcelist");
         main_stack.add_named (toast_view, "toasts");
@@ -195,25 +196,6 @@ public class Granite.Demo : Granite.Application {
         }
 
         main_stack.add_named (grid, "storage");
-    }
-
-    int i;
-    private void create_dynamictab () {
-        var notebook = new Granite.Widgets.DynamicNotebook ();
-        notebook.expand = true;
-        for (i = 1; i <= 6; i++) {
-            var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
-            notebook.insert_tab (tab, i-1);
-        }
-        main_stack.add_named (notebook, "dynamictab");
-
-        notebook.new_tab_requested.connect (() => {
-            var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
-            notebook.insert_tab (tab, i-1);
-            i++;
-        });
     }
 
     private Granite.Widgets.Avatar create_avatar () {
