@@ -57,7 +57,21 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     /**
      * Status text displayed inside the Overlay Bar.
      */
+    [Version (deprecated = true, deprecated_since = "0.4.1", replacement = "OverlayBar.label")]
     public string status {
+        set {
+           status_label.label = value;
+        }
+
+        get {
+            return status_label.label;
+        }
+    }
+
+    /**
+     * Text displayed inside the Overlay Bar.
+     */
+    public string label {
         set {
            status_label.label = value;
         }
