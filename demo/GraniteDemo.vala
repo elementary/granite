@@ -210,6 +210,29 @@ public class Granite.Demo : Granite.Application {
         test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 11", "user-home"));
         test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 12", "folder-recent"));
 
+        const int width = 50;
+        const int height = 50;
+        var drawbuf = new uint8[width*height*3];
+
+        for (int y = 0; y < width; y++) {
+          for (int x = 0; x < height; x++) {
+            uint pixel_index = y * width * 3 + x * 3;
+
+            drawbuf[pixel_index] = (uint8) (y * 255 / height);
+            drawbuf[pixel_index + 1] = (uint8) (128 - (x + y) * 255 / (width * height));
+            drawbuf[pixel_index + 2] = (uint8) (x * 255 / width);
+          }
+        }
+
+        var pixbuf = new Gdk.Pixbuf.from_data (drawbuf, Gdk.Colorspace.RGB, false, 8, width, height, width * 3);
+        var pixbuf_item = new Granite.Widgets.SidebarRowModel.with_icon_pixbuf ("Item 12", pixbuf);
+
+        pixbuf_item.action_icon_pixbuf = pixbuf;
+        pixbuf_item.action_visible = true;
+        pixbuf_item.action_icon_name = "folder-documents";
+
+        test1.children.append (pixbuf_item);
+
         store.append (test1);
 
         test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 13", "folder-documents"));

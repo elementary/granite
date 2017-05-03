@@ -19,13 +19,17 @@
 */
 
 namespace Granite.Widgets {
-    public class SidebarExpandableRowModel : SidebarParentRowModel {        
+    public class SidebarExpandableRowModel : SidebarParentRowModel {
         public SidebarExpandableRowModel (string label, bool expanded) {
             Object (label: label, expanded: expanded);
         }
 
         public SidebarExpandableRowModel.with_icon_name (string label, string icon_name, bool expanded) {
             Object (label: label, icon_name: icon_name, expanded: expanded);
+        }
+
+        public SidebarExpandableRowModel.with_icon_pixbuf (string label, Gdk.Pixbuf icon_pixbuf, bool expanded) {
+            Object (label: label, icon_pixbuf: icon_pixbuf, expanded: expanded);
         }
 
     }

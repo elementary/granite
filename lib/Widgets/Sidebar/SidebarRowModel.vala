@@ -21,9 +21,9 @@
 namespace Granite.Widgets {
     public class SidebarRowModel : GLib.Object {
         public SidebarStore parent_store { get; private set; }
-        
+
         public bool visible { get; private set; default = true; }
-        
+
         // AZ:  I'm not sure how to prevent these from being called from the
         //      outside. It will be overrided as soon as an expand/contract
         //      happens on a parent row.
@@ -39,12 +39,12 @@ namespace Granite.Widgets {
             }
             set {
                 _level = value;
-                
+
                 level_changed (value);
             }
         }
         public signal void level_changed (uint level);
-        
+
         private double _indicator_level = -1;
         public double indicator_level {
             get {
@@ -65,13 +65,13 @@ namespace Granite.Widgets {
             }
             set {
                 _busy = value;
-                
+
                 busy_changed (value);
             }
         }
         public signal void busy_changed (bool busy);
 
-        
+
         private string _label;
         public string label {
             get {
@@ -79,12 +79,12 @@ namespace Granite.Widgets {
             }
             construct set {
                 _label = value;
-                
+
                 label_changed (value);
             }
         }
         public signal void label_changed (string label);
-        
+
         private string _tooltip_text;
         public string tooltip_text {
             get {
@@ -92,38 +92,68 @@ namespace Granite.Widgets {
             }
             construct set {
                 _tooltip_text = value;
-                
+
                 tooltip_text_changed (value);
             }
         }
         public signal void tooltip_text_changed (string tooltip_text);
-        
+
         private string _icon_name = "";
         public string icon_name {
             get {
                 return _icon_name;
             }
             set {
+                _icon_pixbuf = null;
                 _icon_name = value;
-                
+
                 icon_name_changed (value);
             }
         }
         public signal void icon_name_changed (string icon_name);
-        
+
         private string _action_icon_name = "";
         public string action_icon_name {
             get {
                 return _action_icon_name;
             }
             set {
+                _action_icon_pixbuf = null;
                 _action_icon_name = value;
 
                 action_icon_name_changed (value);
             }
         }
         public signal void action_icon_name_changed (string label);
-        
+
+        private Gdk.Pixbuf _icon_pixbuf = null;
+        public Gdk.Pixbuf icon_pixbuf {
+            get {
+                return _icon_pixbuf;
+            }
+            set {
+                _icon_name = null;
+                _icon_pixbuf = value;
+
+                icon_pixbuf_changed (value);
+            }
+        }
+        public signal void icon_pixbuf_changed (Gdk.Pixbuf icon_pixbuf);
+
+        private Gdk.Pixbuf _action_icon_pixbuf = null;
+        public Gdk.Pixbuf action_icon_pixbuf {
+            get {
+                return _action_icon_pixbuf;
+            }
+            set {
+                _action_icon_name = null;
+                _action_icon_pixbuf = value;
+
+                action_icon_pixbuf_changed (value);
+            }
+        }
+        public signal void action_icon_pixbuf_changed (Gdk.Pixbuf action_icon_pixbuf);
+
         private bool _action_visible;
         public bool action_visible {
             get {
@@ -153,24 +183,28 @@ namespace Granite.Widgets {
         public SidebarRowModel (string label) {
             Object(label: label);
         }
-        
+
         public SidebarRowModel.with_icon_name (string label, string icon_name) {
             Object(label: label, icon_name: icon_name);
         }
-        
+
+        public SidebarRowModel.with_icon_pixbuf (string label, Gdk.Pixbuf icon_pixbuf) {
+            Object (label: label, icon_pixbuf: icon_pixbuf);
+        }
+
         construct {
             connect_signals ();
         }
-        
+
         private void connect_signals () {
             hide.connect (handle_hide);
             show.connect (handle_show);
         }
-        
+
         private void handle_hide () {
             visible = false;
         }
-        
+
         private void handle_show () {
             visible = true;
         }
@@ -188,11 +222,11 @@ namespace Granite.Widgets {
 
             parent_store = null;
         }
-        
+
 
         private void handle_parent_store_level_changed (uint level) {
             this.level = level+1;
         }
     }
-    
+
 }

@@ -1,28 +1,27 @@
 namespace Granite.Widgets {
     public class SidebarExpandableRow : SidebarRow {
-        public SidebarExpandableRowModel expandable_model { 
+        public SidebarExpandableRowModel expandable_model {
             get {
                 return (SidebarExpandableRowModel) model;
             }
         }
-        
+
         private Gtk.Button disclosure_button;
         private Gtk.Revealer disclosure_button_revealer;
         private Gtk.Grid row_layout;
-        
+
         public SidebarExpandableRow (SidebarExpandableRowModel model) {
             Object (model: (SidebarRowModel) model);
-            
+
             build_ui ();
             connect_signals ();
             load_data ();
         }
 
-        
         private void build_ui () {
             disclosure_button = new Gtk.Button.from_icon_name ("pan-down-symbolic", Gtk.IconSize.BUTTON);
             disclosure_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_BUTTON);
-            
+
             disclosure_button_revealer = new Gtk.Revealer ();
             disclosure_button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
             disclosure_button_revealer.add (disclosure_button);
@@ -41,7 +40,7 @@ namespace Granite.Widgets {
 
             expandable_model.expanded_changed.connect (update_disclosure_button_icon);
             disclosure_button.clicked.connect (toggle_reveal_children);
-            
+
             disclosure_button_revealer.notify["child-revealed"].connect (handle_disclosure_button_revealer_state_changed);
 
             expandable_model.show.connect (() => { show (); });
@@ -52,10 +51,10 @@ namespace Granite.Widgets {
             base.load_data ();
 
             update_disclosure_button_icon (expandable_model.expanded);
-            
+
             handle_children_items_changed ();
         }
-        
+
         private void handle_disclosure_button_revealer_state_changed () {
             if (!disclosure_button_revealer.reveal_child) {
                 disclosure_button_revealer.visible = false;

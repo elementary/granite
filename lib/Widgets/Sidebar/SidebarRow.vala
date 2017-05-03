@@ -1,8 +1,11 @@
 
 namespace Granite.Widgets {
     public class SidebarRow : Gtk.ListBoxRow {
+        private const int PIXBUF_ICON_WIDTH = 16;
+        private const int PIXBUF_ICON_HEIGHT = 16;
+
         public SidebarRowModel model { get; construct; }
-        
+
         private Gtk.Button action_button;
         private Gtk.Image action_image;
         private Gtk.Image icon;
@@ -18,7 +21,7 @@ namespace Granite.Widgets {
 
         public SidebarRow (SidebarRowModel model) {
             Object (model: model);
-            
+
             build_ui ();
             connect_signals ();
             load_data ();
@@ -31,7 +34,8 @@ namespace Granite.Widgets {
         protected Gtk.Grid build_grid () {
             icon = new Gtk.Image ();
             icon.get_style_context ().add_class ("icon");
-            
+            icon.icon_size = Gtk.IconSize.BUTTON;
+
             icon_revealer = new Gtk.Revealer ();
             icon_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
             icon_revealer.add (icon);
@@ -53,9 +57,10 @@ namespace Granite.Widgets {
 
             action_image = new Gtk.Image ();
             action_image.icon_size = Gtk.IconSize.BUTTON;
-            
+
             action_button = new Gtk.Button ();
             action_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+            action_button.get_style_context ().remove_class (Gtk.STYLE_CLASS_BUTTON);
             action_button.image = action_image;
 
             spinner = new Gtk.Spinner ();
@@ -86,13 +91,15 @@ namespace Granite.Widgets {
             action_button.clicked.connect (() => {
                 model.action_clicked ();
             });
-            
+
             model.badge_changed.connect (handle_badge_changed);
             model.icon_name_changed.connect (handle_icon_name_changed);
+            model.icon_pixbuf_changed.connect (handle_icon_pixbuf_changed);
             model.label_changed.connect (handle_label_changed);
             model.tooltip_text_changed.connect (handle_tooltip_text_changed);
             model.busy_changed.connect (handle_busy_changed);
             model.action_icon_name_changed.connect (handle_action_icon_name_changed);
+            model.action_icon_pixbuf_changed.connect (handle_action_icon_pixbuf_changed);
             model.action_visible_changed.connect (handle_action_visible_changed);
             model.indicator_level_changed.connect (handle_indicator_level_changed);
             model.show.connect (() => { show (); });
@@ -109,7 +116,7 @@ namespace Granite.Widgets {
                     hide ();
                 }
             });
-            
+
         }
 
         protected void load_data () {
@@ -117,7 +124,9 @@ namespace Granite.Widgets {
             handle_label_changed (model.label);
             handle_tooltip_text_changed (model.tooltip_text);
             handle_icon_name_changed (model.icon_name);
+            handle_icon_pixbuf_changed (model.icon_pixbuf);
             handle_action_icon_name_changed (model.action_icon_name);
+            handle_action_icon_pixbuf_changed (model.action_icon_pixbuf);
             handle_action_visible_changed (model.action_visible);
             handle_busy_changed (model.busy);
             handle_indicator_level_changed (model.indicator_level);
@@ -145,11 +154,11 @@ namespace Granite.Widgets {
                 icon_revealer.visible = false;
             }
         }
-        
+
         private void handle_button_revealer_state_changed () {
             if (!button_revealer.reveal_child) {
                 button_revealer.visible = false;
-                
+
                 if (!model.busy) {
                     spinner.active = false;
                 }
@@ -172,7 +181,7 @@ namespace Granite.Widgets {
                 badge_revealer.reveal_child = false;
             }
         }
-        
+
         private void handle_label_changed (string label) {
             row_label.set_text (label);
         }
@@ -184,11 +193,10 @@ namespace Granite.Widgets {
 
             this.tooltip_text = tooltip_text;
         }
-        
+
         private void handle_icon_name_changed (string? icon_name) {
             if (icon_name == null || icon_name == "") {
-                icon_revealer.reveal_child = false;
-                icon_revealer.no_show_all = true;
+                can_hide_icon ();
             } else {
                 icon.icon_name = icon_name;
                 icon_revealer.no_show_all = false;
@@ -197,15 +205,42 @@ namespace Granite.Widgets {
             }
         }
 
+        private void handle_icon_pixbuf_changed (Gdk.Pixbuf? icon_pixbuf) {
+            if (icon_pixbuf == null) {
+                can_hide_icon ();
+            } else {
+                icon.pixbuf = icon_pixbuf.scale_simple(PIXBUF_ICON_WIDTH, PIXBUF_ICON_HEIGHT, Gdk.InterpType.BILINEAR);
+                icon_revealer.no_show_all = false;
+                icon_revealer.show_all ();
+                icon_revealer.reveal_child = true;
+            }
+        }
+
+        private void can_hide_icon () {
+            if (model.icon_pixbuf == null && (model.icon_name == null || model.icon_name == "")) {
+                icon_revealer.reveal_child = false;
+                icon_revealer.no_show_all = true;
+            }
+        }
+
         private void handle_action_icon_name_changed (string? action_icon_name) {
             if (action_icon_name == null) {
                 return;
             }
 
+            action_image.pixbuf = null;
             action_image.icon_name = action_icon_name;
         }
-        
-        private void handle_action_visible_changed (bool action_visible) {            
+
+        private void handle_action_icon_pixbuf_changed (Gdk.Pixbuf? action_icon_pixbuf) {
+            if (action_icon_pixbuf == null) {
+                return;
+            }
+            action_image.icon_name = null;
+            action_image.pixbuf = action_icon_pixbuf.scale_simple(PIXBUF_ICON_WIDTH, PIXBUF_ICON_HEIGHT, Gdk.InterpType.BILINEAR);
+        }
+
+        private void handle_action_visible_changed (bool action_visible) {
             if (action_visible) {
                 show_button_revealer (action_button);
             } else {
@@ -239,7 +274,7 @@ namespace Granite.Widgets {
                 button_revealer.reveal_child = false;
             }
         }
-        
+
         private void switch_button_stack_to (Gtk.Widget item) {
             if (model.busy) {
                 button_stack.visible_child = spinner;
@@ -247,7 +282,7 @@ namespace Granite.Widgets {
                 button_stack.visible_child = item;
             }
         }
-        
+
         public void set_bold () {
             row_label.get_style_context ().add_class ("h4");
         }
