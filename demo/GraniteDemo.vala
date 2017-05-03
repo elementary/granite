@@ -71,6 +71,8 @@ public class Granite.Demo : Granite.Application {
 
         main_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
+        create_headerbar ();
+
         var alert_view = new AlertViewView ();
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
@@ -82,7 +84,6 @@ public class Granite.Demo : Granite.Application {
         main_stack = new Gtk.Stack ();
         main_stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
 
-        create_headerbar ();
         create_welcome ();
 
         main_stack.add_named (alert_view, "alert");
