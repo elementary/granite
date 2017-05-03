@@ -67,8 +67,6 @@ namespace Granite.Widgets {
         private Gtk.Button translate_button;
         private Gtk.Button bug_button;
 
-        private Granite.Drawing.BufferSurface buffer;
-
         /**
          * Creates a new Granite.Widgets.AboutDialog
          */
