@@ -195,6 +195,89 @@ public class Granite.Demo : Granite.Application {
     }
 
     private void create_sidebar () {
+        var sidebar = new Granite.Widgets.Sidebar ();
+
+        var mode = new Granite.Widgets.ModeButton ();
+        mode.append_text ("Real world");
+        mode.append_text ("Stress");
+        
+        var layout = new Gtk.Grid ();
+        layout.row_spacing = 12;
+        layout.orientation = Gtk.Orientation.VERTICAL;
+        layout.width_request = 650;
+        layout.margin = 24;
+        layout.add (mode);
+        
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        paned.add (sidebar);
+        paned.add (layout);
+
+        main_stack.add_named (paned, "sidebar");
+        
+        mode.mode_changed.connect (() => {
+            foreach (var i in layout.get_children ()) {
+                layout.remove (i);
+            }
+            layout.add (mode);
+            
+            if (mode.selected == 0) {
+                create_sidebar_realworld (layout, sidebar);
+            } else {
+                create_sidebar_stress (layout, sidebar);
+            }
+        });
+        
+    }
+    
+    private void create_sidebar_realworld (Gtk.Grid layout, Granite.Widgets.Sidebar sidebar) {
+        var store = new Granite.Widgets.SidebarStore ();
+        
+        var personal = new Granite.Widgets.SidebarHeaderModel ("Personal", true);
+        store.append (personal);
+
+        personal.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Home", "user-home"));
+        personal.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Recent", "folder-recent"));
+        personal.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Documents", "folder-documents"));
+        personal.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Music", "folder-music"));
+        personal.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Trash", "user-trash"));
+        
+        var devices = new Granite.Widgets.SidebarHeaderModel ("Devices", false);
+        store.append(devices);
+        
+        var file_system = new Granite.Widgets.SidebarRowModel.with_icon_name ("File System", "drive-harddisk");
+        file_system.indicator_level = 0.4;
+        devices.children.append (file_system);
+        
+        var removable_drive = new Granite.Widgets.SidebarRowModel.with_icon_name ("Removable Drive", "drive-removable-media");
+        removable_drive.action_icon_name = "media-eject-symbolic";
+        removable_drive.action_visible = true;
+        removable_drive.indicator_level = 0.8;
+        removable_drive.action_clicked.connect (() => {
+            removable_drive.busy = true;
+            
+            Timeout.add(1000, () => {
+                devices.children.remove (removable_drive); 
+                return false; 
+            });
+        });
+        devices.children.append (removable_drive);
+        
+        var inbox = new Granite.Widgets.SidebarExpandableRowModel.with_icon_name ("Inbox", "mail-inbox", false);
+        inbox.badge = 100;
+        store.append(inbox);
+
+        var gmail = new Granite.Widgets.SidebarRowModel.with_icon_name ("Gmail", "mail-inbox");
+        gmail.badge = 50;
+        inbox.children.append(gmail);
+        
+        var yahoo = new Granite.Widgets.SidebarRowModel.with_icon_name ("Yahoo", "mail-inbox");
+        yahoo.badge = 50;
+        inbox.children.append(yahoo);
+
+        sidebar.bind_model (store);
+    }
+    
+    private void create_sidebar_stress (Gtk.Grid layout, Granite.Widgets.Sidebar sidebar) {
         // AZ:  Each item has a number in its name. I used this number to check the
         //      items end up in the correct place while in development. This function
         //      also adds items from all over the place, and with all possible
@@ -203,12 +286,15 @@ public class Granite.Demo : Granite.Application {
 
         var store = new Granite.Widgets.SidebarStore ();
 
-        var test1 = new Granite.Widgets.SidebarHeaderModel.with_icon_name ("Item 1", "user-home", false);
+        var test1 = new Granite.Widgets.SidebarHeaderModel ("Item 1", false);
         test1.tooltip_text = "This is a header item";
         test1.indicator_level = 0.3;
 
         test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 11", "user-home"));
         test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 12", "folder-recent"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 13", "folder-documents"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 14", "folder-music"));
+        test1.children.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 15", "user-trash"));
 
         const int width = 50;
         const int height = 50;
@@ -229,7 +315,7 @@ public class Granite.Demo : Granite.Application {
 
         pixbuf_item.action_icon_pixbuf = pixbuf;
         pixbuf_item.action_visible = true;
-        pixbuf_item.action_icon_name = "folder-documents";
+        pixbuf_item.action_icon_name = "media-eject-symbolic";
 
         test1.children.append (pixbuf_item);
 
@@ -241,7 +327,6 @@ public class Granite.Demo : Granite.Application {
 
         store.append (new Granite.Widgets.SidebarRowModel.with_icon_name ("Item 2", "user-home"));
 
-        var sidebar = new Granite.Widgets.Sidebar ();
         sidebar.bind_model (store);
 
         var test4 = new Granite.Widgets.SidebarExpandableRowModel.with_icon_name ("Item 4", "folder-documents", true);
@@ -250,7 +335,7 @@ public class Granite.Demo : Granite.Application {
 
         store.append (test4);
 
-        test4.action_icon_name = "user-home";
+        test4.action_icon_name = "user-trash-symbolic";
 
         var test43 = new Granite.Widgets.SidebarExpandableRowModel ("Item 43", false);
         test4.children.append(test43);
@@ -331,11 +416,6 @@ public class Granite.Demo : Granite.Application {
             }
         });
 
-        var layout = new Gtk.Grid ();
-        layout.row_spacing = 12;
-        layout.orientation = Gtk.Orientation.VERTICAL;
-        layout.width_request = 650;
-        layout.margin = 24;
         layout.add (unexpand_button);
         layout.add (toggle_badge_button);
         layout.add (toggle_action_button);
@@ -343,12 +423,8 @@ public class Granite.Demo : Granite.Application {
         layout.add (toggle_icon_button);
         layout.add (add_new_row_button);
         layout.add (remove_row_button);
-
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.add (sidebar);
-        paned.add (layout);
-
-        main_stack.add_named (paned, "sidebar");
+        
+        layout.show_all ();
     }
 
 
