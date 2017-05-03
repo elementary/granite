@@ -69,23 +69,26 @@ public class Granite.Demo : Granite.Application {
         window.window_position = Gtk.WindowPosition.CENTER;
         add_window (window);
 
+        main_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+
+        var date_time_picker_view = new DateTimePickerView ();
+        var mode_button_view = new ModeButtonView ();
+        var source_list_view = new SourceListView ();
+        var toast_view = new ToastView ();
+
         main_stack = new Gtk.Stack ();
         main_stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
-        main_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
         create_headerbar ();
         create_welcome ();
-        create_toast ();
-        create_modebutton ();
         create_dynamictab ();
         create_alert ();
         create_storage ();
 
-        var date_time_picker_view = new DateTimePickerView ();
-        var source_list_view = new SourceListView ();
-
         main_stack.add_named (date_time_picker_view, "pickers");
+        main_stack.add_named (mode_button_view, "modebutton");
         main_stack.add_named (source_list_view, "sourcelist");
+        main_stack.add_named (toast_view, "toasts");
 
         window.add (main_stack);
         window.set_default_size (800, 550);
@@ -169,67 +172,6 @@ public class Granite.Demo : Granite.Application {
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private void create_toast () {
-        var toast = new Granite.Widgets.Toast (_("Button was pressed!"));
-        toast.set_default_action (_("Do Things"));
-
-        var button = new Gtk.Button.with_label (_("Press Me"));
-
-        var grid = new Gtk.Grid ();
-        grid.orientation = Gtk.Orientation.VERTICAL;
-        grid.margin = 24;
-        grid.halign = Gtk.Align.CENTER;
-        grid.valign = Gtk.Align.CENTER;
-        grid.row_spacing = 6;
-        grid.add (button);
-
-        var overlay = new Gtk.Overlay ();
-        overlay.add_overlay (grid);
-        overlay.add_overlay (toast);
-        
-        main_stack.add_named (overlay, "toasts");
-
-        button.clicked.connect (() => {
-            toast.send_notification ();
-        });
-
-        toast.default_action.connect (() => {
-            var label = new Gtk.Label (_("Did The Thing"));
-            toast.title = _("Already did the thing");
-            toast.set_default_action (null);
-            grid.add (label);
-            grid.show_all ();
-        });
-    }
-
-    private void create_modebutton () {
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 6;
-        grid.column_spacing = 12;
-        var icon_mode = new Granite.Widgets.ModeButton ();
-        icon_mode.append_icon ("view-grid-symbolic", Gtk.IconSize.BUTTON);
-        icon_mode.append_icon ("view-list-symbolic", Gtk.IconSize.BUTTON);
-        icon_mode.append_icon ("view-column-symbolic", Gtk.IconSize.BUTTON);
-        var text_mode = new Granite.Widgets.ModeButton ();
-        text_mode.append_text ("Foo");
-        text_mode.append_text ("Bar");
-        var expandable_grid_start = new Gtk.Grid ();
-        expandable_grid_start.expand = true;
-        var expandable_grid_end = new Gtk.Grid ();
-        expandable_grid_end.expand = true;
-        var clear_button = new Gtk.Button.with_label("Clear Selected");
-        clear_button.clicked.connect (() => {
-            icon_mode.selected = -1;
-            text_mode.selected = -1;
-        });
-        grid.attach (expandable_grid_start, 0, 0, 1, 1);
-        grid.attach (expandable_grid_end, 2, 4, 1, 1);
-        grid.attach (icon_mode, 1, 1, 1, 1);
-        grid.attach (text_mode, 1, 2, 1, 1);
-        grid.attach (clear_button, 1, 3, 1 ,1);
-        main_stack.add_named (grid, "modebutton");
     }
 
     private void create_alert () {
