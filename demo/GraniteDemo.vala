@@ -74,6 +74,7 @@ public class Granite.Demo : Granite.Application {
         create_headerbar ();
 
         var alert_view = new AlertViewView ();
+        var avatar_view = new AvatarView ();
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
@@ -88,6 +89,7 @@ public class Granite.Demo : Granite.Application {
         create_welcome ();
 
         main_stack.add_named (alert_view, "alert");
+        main_stack.add_named (avatar_view, "avatar");
         main_stack.add_named (date_time_picker_view, "pickers");
         main_stack.add_named (dynamic_notebook_view, "dynamictab");
         main_stack.add_named (mode_button_view, "modebutton");
@@ -120,8 +122,6 @@ public class Granite.Demo : Granite.Application {
             home_button.hide ();
         });
 
-        var avatar = create_avatar ();
-
         var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
@@ -129,7 +129,6 @@ public class Granite.Demo : Granite.Application {
 
         headerbar.pack_start (home_button);
         headerbar.pack_end (about_button);
-        headerbar.pack_end (avatar);
         headerbar.pack_end (primary_color_button);
         window.set_titlebar (headerbar);
     }
@@ -144,6 +143,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("drive-harddisk", "Storage", "Small bar indicating the remaining amount of space.");
         welcome.append ("dialog-information", _("Toasts"), _("Simple in-app notifications"));
         welcome.append ("dialog-information", "OverlayBar", "A floating status bar that displays a single line of text");
+        welcome.append ("avatar-default", "Avatar", "A styled avatar from an image ");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -178,30 +178,15 @@ public class Granite.Demo : Granite.Application {
                     home_button.show ();
                     main_stack.set_visible_child_name ("overlaybar");
                     break;
+                case 8:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("avatar");
+                    break;
             }
         });
         var scrolled = new Gtk.ScrolledWindow (null, null);
         scrolled.add (welcome);
         main_stack.add_named (scrolled, "welcome");
-    }
-
-    private Granite.Widgets.Avatar create_avatar () {
-        var username = GLib.Environment.get_user_name ();
-        var avatar = new Granite.Widgets.Avatar ();
-        var iconfile = @"/var/lib/AccountsService/icons/$username";
-
-        avatar.valign = Gtk.Align.CENTER;
-
-        try {
-            var pixbuf = new Gdk.Pixbuf.from_file (iconfile);
-            avatar.pixbuf = pixbuf.scale_simple (24, 24, Gdk.InterpType.BILINEAR);
-            avatar.set_tooltip_text ("Avatar widget: User image found");
-        } catch (Error e) {
-            avatar.show_default (24);
-            avatar.set_tooltip_text ("Avatar widget: User image not found, using fallback");
-        }
-
-        return avatar;
     }
 
     public static int main (string[] args) {
