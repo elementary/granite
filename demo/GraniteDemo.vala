@@ -77,6 +77,7 @@ public class Granite.Demo : Granite.Application {
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
+        var overlaybar_view = new OverlayBarView ();
         var source_list_view = new SourceListView ();
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
@@ -90,6 +91,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_named (date_time_picker_view, "pickers");
         main_stack.add_named (dynamic_notebook_view, "dynamictab");
         main_stack.add_named (mode_button_view, "modebutton");
+        main_stack.add_named (overlaybar_view, "overlaybar");
         main_stack.add_named (source_list_view, "sourcelist");
         main_stack.add_named (storage_view, "storage");
         main_stack.add_named (toast_view, "toasts");
@@ -141,6 +143,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("dialog-warning", "AlertView", "A View showing that an action is required to function.");
         welcome.append ("drive-harddisk", "Storage", "Small bar indicating the remaining amount of space.");
         welcome.append ("dialog-information", _("Toasts"), _("Simple in-app notifications"));
+        welcome.append ("dialog-information", "OverlayBar", "A floating status bar that displays a single line of text");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -170,6 +173,10 @@ public class Granite.Demo : Granite.Application {
                 case 6:
                     home_button.show ();
                     main_stack.set_visible_child_name ("toasts");
+                    break;
+                case 7:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("overlaybar");
                     break;
             }
         });
