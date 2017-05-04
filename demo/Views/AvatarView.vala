@@ -22,40 +22,31 @@ public class AvatarView : Gtk.Grid {
     construct {
 
         var avatar_menu = new Granite.Widgets.Avatar ();
-        avatar_menu.valign = Gtk.Align.CENTER;
 
         var avatar_large_toolbar = new Granite.Widgets.Avatar ();
-        avatar_large_toolbar.valign = Gtk.Align.CENTER;
 
         var avatar_dnd = new Granite.Widgets.Avatar ();
-        avatar_dnd.valign = Gtk.Align.CENTER;
 
         var avatar_dialog = new Granite.Widgets.Avatar ();
-        avatar_dialog.valign = Gtk.Align.CENTER;
 
         var avatar_default_menu = new Granite.Widgets.Avatar ();
         avatar_default_menu.show_default (16);
-        avatar_default_menu.valign = Gtk.Align.CENTER;
 
         var avatar_default_large_toolbar = new Granite.Widgets.Avatar ();
         avatar_default_large_toolbar.show_default (24);
-        avatar_default_large_toolbar.valign = Gtk.Align.CENTER;
 
         var avatar_default_dnd = new Granite.Widgets.Avatar ();
         avatar_default_dnd.show_default (32);
-        avatar_default_dnd.valign = Gtk.Align.CENTER;
 
         var avatar_default_dialog = new Granite.Widgets.Avatar ();
         avatar_default_dialog.show_default (48);
-        avatar_default_dialog.valign = Gtk.Align.CENTER;
 
         var scale = get_style_context ().get_scale ();
         var username = GLib.Environment.get_user_name ();
         var iconfile = @"/var/lib/AccountsService/icons/$username";
-        Gdk.Pixbuf pixbuf;
 
         try {
-            pixbuf = new Gdk.Pixbuf.from_file (iconfile);
+            var pixbuf = new Gdk.Pixbuf.from_file (iconfile);
             avatar_menu.pixbuf = pixbuf.scale_simple (16 * scale, 16 * scale, Gdk.InterpType.BILINEAR);
             avatar_large_toolbar.pixbuf = pixbuf.scale_simple (24 * scale, 24 * scale, Gdk.InterpType.BILINEAR);
             avatar_dnd.pixbuf = pixbuf.scale_simple (32 * scale, 32 * scale, Gdk.InterpType.BILINEAR);
