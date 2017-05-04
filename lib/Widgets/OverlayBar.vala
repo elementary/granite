@@ -72,12 +72,11 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
      * Text displayed inside the Overlay Bar.
      */
     public string label {
-        set {
-           status_label.label = value;
-        }
-
         get {
             return status_label.label;
+        }
+        set {
+           status_label.label = value;
         }
     }
 
