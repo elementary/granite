@@ -20,7 +20,6 @@
 
 public class AvatarView : Gtk.Grid {
     construct {
-
         var avatar_menu = new Granite.Widgets.Avatar ();
 
         var avatar_large_toolbar = new Granite.Widgets.Avatar ();
