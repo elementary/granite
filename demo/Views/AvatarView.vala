@@ -20,39 +20,24 @@
 
 public class AvatarView : Gtk.Grid {
     construct {
-        var avatar_menu = new Granite.Widgets.Avatar ();
-
-        var avatar_large_toolbar = new Granite.Widgets.Avatar ();
-
-        var avatar_dnd = new Granite.Widgets.Avatar ();
-
-        var avatar_dialog = new Granite.Widgets.Avatar ();
-
-        var avatar_default_menu = new Granite.Widgets.Avatar ();
-        avatar_default_menu.show_default (16);
-
-        var avatar_default_large_toolbar = new Granite.Widgets.Avatar ();
-        avatar_default_large_toolbar.show_default (24);
-
-        var avatar_default_dnd = new Granite.Widgets.Avatar ();
-        avatar_default_dnd.show_default (32);
-
-        var avatar_default_dialog = new Granite.Widgets.Avatar ();
-        avatar_default_dialog.show_default (48);
-
-        var scale = get_style_context ().get_scale ();
         var username = GLib.Environment.get_user_name ();
         var iconfile = @"/var/lib/AccountsService/icons/$username";
 
-        try {
-            var pixbuf = new Gdk.Pixbuf.from_file (iconfile);
-            avatar_menu.pixbuf = pixbuf.scale_simple (16 * scale, 16 * scale, Gdk.InterpType.BILINEAR);
-            avatar_large_toolbar.pixbuf = pixbuf.scale_simple (24 * scale, 24 * scale, Gdk.InterpType.BILINEAR);
-            avatar_dnd.pixbuf = pixbuf.scale_simple (32 * scale, 32 * scale, Gdk.InterpType.BILINEAR);
-            avatar_dialog.pixbuf = pixbuf.scale_simple (48 * scale, 48 * scale, Gdk.InterpType.BILINEAR);
-        } catch (Error e) {
-            warning(e.message);
-        }
+        var avatar_menu = new Granite.Widgets.Avatar.from_file (iconfile, 16);
+
+        var avatar_large_toolbar = new Granite.Widgets.Avatar.from_file (iconfile, 24);
+
+        var avatar_dnd = new Granite.Widgets.Avatar.from_file (iconfile, 32);
+
+        var avatar_dialog = new Granite.Widgets.Avatar.from_file (iconfile, 48);
+
+        var avatar_default_menu = new Granite.Widgets.Avatar.with_default_icon (16);
+
+        var avatar_default_large_toolbar = new Granite.Widgets.Avatar.with_default_icon (24);
+
+        var avatar_default_dnd = new Granite.Widgets.Avatar.with_default_icon (32);
+
+        var avatar_default_dialog = new Granite.Widgets.Avatar.with_default_icon (48);
 
         column_spacing = 12;
         row_spacing = 6;
