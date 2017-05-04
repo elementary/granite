@@ -30,30 +30,51 @@ public class SourceListView : Gtk.Paned {
     }
 
     construct {
-        var label = new Gtk.Label ("No selected item");
+        var music_item = new Granite.Widgets.SourceList.Item ("Music");
+        music_item.badge = "1";
+        music_item.icon = new GLib.ThemedIcon ("library-music");
+
+        var library_category = new Granite.Widgets.SourceList.ExpandableItem ("Libraries");
+        library_category.expand_all ();
+        library_category.add (music_item);
+
+        var my_store_podcast_item = new Granite.Widgets.SourceList.Item ("Podcasts");
+        my_store_podcast_item.icon = new GLib.ThemedIcon ("library-podcast");
+
+        var my_store_music_item = new Granite.Widgets.SourceList.Item ("Music");
+        my_store_music_item.icon = new GLib.ThemedIcon ("library-music");
+
+        var my_store_item = new Granite.Widgets.SourceList.ExpandableItem ("My Store");
+        my_store_item.icon = new GLib.ThemedIcon ("system-software-install");
+        my_store_item.add (my_store_music_item);
+        my_store_item.add (my_store_podcast_item);
+
+        var store_category = new Granite.Widgets.SourceList.ExpandableItem ("Stores");
+        store_category.expand_all ();
+        store_category.add (my_store_item);
+
+        var player1_item = new Granite.Widgets.SourceList.Item ("Player 1");
+        player1_item.icon = new GLib.ThemedIcon ("multimedia-player");
+
+        var player2_item = new Granite.Widgets.SourceList.Item ("Player 2");
+        player2_item.badge = "3";
+        player2_item.icon = new GLib.ThemedIcon ("phone");
+
+        var device_category = new Granite.Widgets.SourceList.ExpandableItem ("Devices");
+        device_category.expand_all ();
+        device_category.add (player1_item);
+        device_category.add (player2_item);
+
         var source_list = new Granite.Widgets.SourceList ();
+        source_list.root.add (library_category);
+        source_list.root.add (store_category);
+        source_list.root.add (device_category);
+
+        var label = new Gtk.Label ("No selected item");
 
         position = 150;
         pack1 (source_list, false, false);
         add2 (label);
-
-        var rand = new GLib.Rand ();
-
-        for (int letter = 'A'; letter <= 'Z'; letter++) {
-            var expandable_letter = new Granite.Widgets.SourceList.ExpandableItem ("Item %c".printf (letter));
-            source_list.root.add (expandable_letter);
-
-            for (int number = 1; number <= 10; number++) {
-                var number_item = new Granite.Widgets.SourceList.Item ("Subitem %d".printf (number));
-                var val = rand.next_int ();
-
-                if (val % 7 == 0) {
-                    number_item.badge = "1";
-                }
-
-                expandable_letter.add (number_item);
-            }
-        }
 
         source_list.item_selected.connect ((item) => {
             if (item == null) {
