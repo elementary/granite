@@ -70,7 +70,6 @@ public class SourceListView : Gtk.Paned {
         source_list.root.add (store_category);
         source_list.root.add (device_category);
 
-
         var label = new Gtk.Label ("No selected item");
 
         position = 150;
