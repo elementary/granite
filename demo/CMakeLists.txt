@@ -12,6 +12,7 @@ set (EXEC_NAME ${PKG_NAME}-demo)
 vala_precompile (VALA_C ${EXEC_NAME}
     GraniteDemo.vala
     Views/AlertViewView.vala
+    Views/AvatarView.vala
     Views/DateTimePickerView.vala
     Views/DynamicNotebookView.vala
     Views/ModeButtonView.vala
