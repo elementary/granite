@@ -118,23 +118,47 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
             return base.draw (cr);
         }
 
+        var avatar_pixel_size = get_allocated_width ();
+        int margin;
+
+        switch (avatar_pixel_size) {
+            case 24:
+                avatar_pixel_size = 16;
+                margin = 2;
+                break;
+            case 32:
+                avatar_pixel_size = 22;
+                margin = 3;
+                break;
+            case 40:
+                avatar_pixel_size = 30;
+                margin = 3;
+                break;
+            case 56:
+                avatar_pixel_size = 42;
+                margin = 5;
+                break;
+            default:
+                avatar_pixel_size = avatar_pixel_size - EXTRA_MARGIN * 3;
+                margin = EXTRA_MARGIN;
+                break;
+        }
+
         unowned Gtk.StyleContext style_context = get_style_context ();
-        var width = get_allocated_width () - EXTRA_MARGIN * 2;
-        var height = get_allocated_height () - EXTRA_MARGIN * 2;
         var scale_factor = style_context.get_scale ();
 
         if (draw_theme_background) {
             var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, style_context.get_state ()).get_int ();
-            var crop_radius = int.min (width / 2, border_radius * width / 100);
+            var crop_radius = int.min (avatar_pixel_size / 2, border_radius * avatar_pixel_size / 100);
 
-            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height, crop_radius);
+            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, margin, margin, avatar_pixel_size, avatar_pixel_size, crop_radius);
             cr.save ();
             cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
-            Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN * scale_factor, EXTRA_MARGIN * scale_factor);
+            Gdk.cairo_set_source_pixbuf (cr, pixbuf, margin * scale_factor, margin * scale_factor);
             cr.fill_preserve ();
             cr.restore ();
-            style_context.render_background (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
-            style_context.render_frame (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
+            style_context.render_background (cr, margin, margin, avatar_pixel_size, avatar_pixel_size);
+            style_context.render_frame (cr, margin, margin, avatar_pixel_size, avatar_pixel_size);
 
         } else {
             cr.save ();
