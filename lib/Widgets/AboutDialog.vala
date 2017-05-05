@@ -75,7 +75,7 @@ namespace Granite.Widgets {
             help_button.halign = Gtk.Align.CENTER;
             help_button.get_style_context ().add_class ("circular");
 
-            translate_button = new Gtk.Button.with_label(_("Suggest Translations"));
+            translate_button = new Gtk.Button.with_label (_("Suggest Translations"));
 
             bug_button = new Gtk.Button.with_label (_("Report a Problem"));
 
