@@ -51,7 +51,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      * Creates a new Avatar from the speficied filepath and icon size
      *
      * @param filepath image to be used
-     * @param size to scale the image
+     * @param pixel_size to scale the image
      */
     public Avatar.from_file (string filepath, int pixel_size) {
         try {
