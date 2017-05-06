@@ -190,10 +190,9 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         children.append (button);
         options.pack_start (button, false, false, 0);
 
-        button.button_release_event.connect (() => {
+        button.clicked.connect (() => {
             int index = this.children.index (button);
             activated (index); // send signal
-            return false;
         });
 
         return this.children.index (button);
