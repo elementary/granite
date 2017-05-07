@@ -38,9 +38,9 @@ public class Granite.Demo : Granite.Application {
         flags = ApplicationFlags.FLAGS_NONE;
 
         program_name = "Granite Demo";
-        app_years = "2011-2016";
+        app_years = "2011-2017";
 
-        build_version = "0.4.0.1";
+        build_version = "0.4.1";
         app_icon = "applications-interfacedesign";
         main_url = "https://github.com/elementary/granite";
         bug_url = "https://github.com/elementary/granite/issues";
