@@ -42,10 +42,10 @@ public class Granite.Demo : Granite.Application {
 
         build_version = "0.4.0.1";
         app_icon = "applications-interfacedesign";
-        main_url = "https://launchpad.net/granite";
-        bug_url = "https://bugs.launchpad.net/granite";
-        help_url = "https://answers.launchpad.net/granite";
-        translate_url = "https://translations.launchpad.net/granite";
+        main_url = "https://github.com/elementary/granite";
+        bug_url = "https://github.com/elementary/granite/issues";
+        help_url = "https://elementaryos.stackexchange.com/questions/tagged/development";
+        translate_url = "https://l10n.elementary.io/projects/desktop/granite";
 
         about_documenters = { null };
         about_artists = { "Daniel Foré <daniel@elementary.io>" };
