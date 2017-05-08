@@ -101,7 +101,6 @@ public class Granite.Demo : Granite.Application {
         paned.add1 (stack_sidebar);
         paned.add2 (main_stack);
 
-        window.window_position = Gtk.WindowPosition.CENTER;
         window.add (paned);
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
