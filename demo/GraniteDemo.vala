@@ -77,8 +77,7 @@ public class Granite.Demo : Granite.Application {
         var overlaybar_view = new OverlayBarView ();
         var source_list_view = new SourceListView ();
         var storage_view = new StorageView ();
-        var toast_view = new ToastView ();
-
+        var toast_view = new ToastView ()
         var welcome = new WelcomeView ();
 
         var main_stack = new Gtk.Stack ();
