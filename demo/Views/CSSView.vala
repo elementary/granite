@@ -18,7 +18,7 @@
  */
 
 public class CSSView : Gtk.Grid {
-    public Gtk.Window window { get; set; }
+    public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
         Object (halign: Gtk.Align.CENTER,
