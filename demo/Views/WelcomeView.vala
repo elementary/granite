@@ -30,7 +30,7 @@ public class WelcomeView : Gtk.Grid {
             switch (index) {
                 case 0:
                     try {
-                        AppInfo.launch_default_for_uri ("https://valadoc.org", null);
+                        AppInfo.launch_default_for_uri ("https://valadoc.org/granite/Granite.html", null);
                     } catch (Error e) {
                         warning ("%s\n", e.message);
                     }
