@@ -70,6 +70,7 @@ public class Granite.Demo : Granite.Application {
 
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
+        var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
@@ -83,6 +84,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (welcome, "welcome", "Welcome");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
+        main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "DatePicker & TimePicker");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
@@ -113,13 +115,7 @@ public class Granite.Demo : Granite.Application {
         about_button.tooltip_text = "About this application";
         about_button.clicked.connect (() => {show_about (window);});
 
-        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
-        primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
-        });
-
         headerbar.pack_end (about_button);
-        headerbar.pack_end (primary_color_button);
         window.set_titlebar (headerbar);
     }
 
