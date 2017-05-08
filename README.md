@@ -1,5 +1,5 @@
 # Granite
-[![Translation status](https://l10n.elementary.io/widgets/desktop/granite/svg-badge.svg)](https://l10n.elementary.io/projects/desktop/?utm_source=widget)
+[![Translation status](https://l10n.elementary.io/widgets/desktop/granite/svg-badge.svg)](https://l10n.elementary.io/projects/desktop/granite/?utm_source=widget)
 
 ## Building, Testing, and Installation
 
