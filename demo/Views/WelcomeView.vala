@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
- * Copyright (c) 2011-2017 elementary LLC. (https://elementary.io)
+ * Copyright (c) 2017 elementary LLC. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,12 +16,6 @@
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
- *
- * Authored by: Lucas Baudin <xapantu@gmail.com>
- *              Jaap Broekhuizen <jaapz.b@gmail.com>
- *              Victor Eduardo <victoreduardm@gmal.com>
- *              Tom Beckmann <tom@elementary.io>
- *              Corentin Noël <corentin@elementary.io>
  */
 
 public class WelcomeView : Gtk.Grid {
