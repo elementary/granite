@@ -75,6 +75,7 @@ public class Granite.Demo : Granite.Application {
 
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
+        var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
@@ -90,6 +91,7 @@ public class Granite.Demo : Granite.Application {
 
         main_stack.add_named (alert_view, "alert");
         main_stack.add_named (avatar_view, "avatar");
+        main_stack.add_named (css_view, "css");
         main_stack.add_named (date_time_picker_view, "pickers");
         main_stack.add_named (dynamic_notebook_view, "dynamictab");
         main_stack.add_named (mode_button_view, "modebutton");
@@ -122,14 +124,8 @@ public class Granite.Demo : Granite.Application {
             home_button.hide ();
         });
 
-        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
-        primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
-        });
-
         headerbar.pack_start (home_button);
         headerbar.pack_end (about_button);
-        headerbar.pack_end (primary_color_button);
         window.set_titlebar (headerbar);
     }
 
@@ -144,6 +140,7 @@ public class Granite.Demo : Granite.Application {
         welcome.append ("dialog-information", _("Toasts"), _("Simple in-app notifications"));
         welcome.append ("dialog-information", "OverlayBar", "A floating status bar that displays a single line of text");
         welcome.append ("avatar-default", "Avatar", "A styled avatar from an image ");
+        welcome.append ("text-css", "Style Classes", "A set of style classes");
         welcome.activated.connect ((index) => {
             switch (index) {
                 case 0:
@@ -181,6 +178,10 @@ public class Granite.Demo : Granite.Application {
                 case 8:
                     home_button.show ();
                     main_stack.set_visible_child_name ("avatar");
+                    break;
+                case 9:
+                    home_button.show ();
+                    main_stack.set_visible_child_name ("css");
                     break;
             }
         });

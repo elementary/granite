@@ -13,6 +13,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     GraniteDemo.vala
     Views/AlertViewView.vala
     Views/AvatarView.vala
+    Views/CSSView.vala
     Views/DateTimePickerView.vala
     Views/DynamicNotebookView.vala
     Views/ModeButtonView.vala
