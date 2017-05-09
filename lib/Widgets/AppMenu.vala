@@ -61,6 +61,7 @@ namespace Granite.Widgets {
             tooltip_text = _("Menu");
 
             this.add_items (menu);
+            menu.show_all ();
 
             about_item.activate.connect (() => { show_about(get_toplevel()); });
         }
