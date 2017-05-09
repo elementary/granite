@@ -31,7 +31,7 @@ public class OverlayBarView : Gtk.Overlay {
 
         var overlaybar = new Granite.Widgets.OverlayBar (this);
         overlaybar.label = "Hover the OverlayBar to change its position";
-
+        
         add (grid);
 
         button.toggled.connect (() => {
