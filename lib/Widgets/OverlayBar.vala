@@ -42,18 +42,18 @@
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     private const string FALLBACK_THEME = """
-       .overlay-bar {
-        background-color: alpha (#333, 0.8);
-        border-radius: 3px;
-        border-width: 0;
-        box-shadow:
-            0 1px 3px alpha (#000, 0.12),
-            0 1px 2px alpha (#000, 0.24);
-        color: #fff;
-        padding: 3px 6px;
-        margin: 6px;
-        text-shadow: 0 1px 2px alpha (#000, 0.6);
-       }
+        .overlay-bar {
+            background-color: alpha (#333, 0.8);
+            border-radius: 3px;
+            border-width: 0;
+            box-shadow:
+                0 1px 3px alpha (#000, 0.12),
+                0 1px 2px alpha (#000, 0.24);
+            color: #fff;
+            padding: 3px 6px;
+            margin: 6px;
+            text-shadow: 0 1px 2px alpha (#000, 0.6);
+        }
     """;
 
     private Gtk.Label status_label;
