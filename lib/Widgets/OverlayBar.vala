@@ -85,12 +85,19 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     }
 
     /**
+     * The {@link Gtk.Overlay which holds the Overlay Bar.
+     */
+    public Gtk.Overlay overlay { get; construct; }
+
+    /**
      * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
     public OverlayBar (Gtk.Overlay overlay) {
-        visible_window = false;
+        Object (overlay: overlay);
+    }
 
-        status_label = new Gtk.Label (null);
+    construct {
+        status_label = new Gtk.Label ("");
         status_label.set_ellipsize (Pango.EllipsizeMode.END);
 
         var grid = new Gtk.Grid ();
