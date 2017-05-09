@@ -1062,7 +1062,7 @@ namespace Granite.Widgets {
                 } else {
                     unpinned_tabs++;
                 }
-            } 
+            }
 
             if (unpinned_tabs == 0) {
                 unpinned_tabs = 1;
