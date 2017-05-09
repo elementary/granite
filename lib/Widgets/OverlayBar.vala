@@ -42,15 +42,19 @@
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
     private const string FALLBACK_THEME = """
-   .overlay-bar {
-       background-color: @bg_color;
-       border-radius: 3px;
-       padding: 3px 6px;
-       margin: 3px;
-       border-style: solid;
-       border-width: 1px;
-       border-color: darker (@bg_color);
-   }""";
+        .overlay-bar {
+            background-color: alpha (#333, 0.8);
+            border-radius: 3px;
+            border-width: 0;
+            box-shadow:
+                0 1px 3px alpha (#000, 0.12),
+                0 1px 2px alpha (#000, 0.24);
+            color: #fff;
+            padding: 3px 6px;
+            margin: 6px;
+            text-shadow: 0 1px 2px alpha (#000, 0.6);
+        }
+    """;
 
     private Gtk.Label status_label;
 
@@ -81,26 +85,46 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     }
 
     /**
+     * The {@link Gtk.Overlay which holds the Overlay Bar.
+     */
+    public Gtk.Overlay overlay { get; construct; }
+
+    /**
      * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
     public OverlayBar (Gtk.Overlay overlay) {
-        visible_window = false;
+        Object (overlay: overlay);
+    }
 
-        status_label = new Gtk.Label (null);
+    construct {
+        status_label = new Gtk.Label ("");
         status_label.set_ellipsize (Pango.EllipsizeMode.END);
-        add (status_label);
-        status_label.show ();
+
+        var grid = new Gtk.Grid ();
+        grid.add (status_label);
+
+        add (grid);
 
         set_halign (Gtk.Align.END);
         set_valign (Gtk.Align.END);
 
-        set_default_style ();
+        int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
+        Granite.Widgets.Utils.set_theming (grid, FALLBACK_THEME, StyleClass.OVERLAY_BAR, priority);
 
-        var ctx = get_style_context ();
-        ctx.changed.connect (update_spacing);
-        ctx.changed.connect_after (queue_resize);
+        var ctx = grid.get_style_context ();
+        var state = ctx.get_state ();
 
-        update_spacing ();
+        var padding = ctx.get_padding (state);
+        status_label.margin_top = padding.top;
+        status_label.margin_bottom = padding.bottom;
+        status_label.margin_left = padding.left;
+        status_label.margin_right = padding.right;
+
+        var margin = ctx.get_margin (state);
+        grid.margin_top = margin.top;
+        grid.margin_bottom = margin.bottom;
+        grid.margin_left = margin.left;
+        grid.margin_right = margin.right;
 
         overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
         overlay.add_overlay (this);
@@ -113,75 +137,6 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
             old_parent.enter_notify_event.disconnect (enter_notify_callback);
         if (parent != null)
             parent.enter_notify_event.connect (enter_notify_callback);
-    }
-
-    public override bool draw (Cairo.Context cr) {
-        var ctx = get_style_context ();
-        ctx.render_background (cr, 0, 0, get_allocated_width (), get_allocated_height ());
-        ctx.render_frame (cr, 0, 0, get_allocated_width (), get_allocated_height ());
-        return base.draw (cr);
-    }
-
-    /*
-      Using Cairo.Context's render_background and render_frame methods
-      requires complementary space-allocator code, to account for the
-      widget's border width.
-
-      The following three methods guarantee that the borders drawn by
-      render_frame don't overlap the text in the widget.
-    */
-
-    public override Gtk.SizeRequestMode get_request_mode () {
-        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
-    }
-
-    public override void get_preferred_width (out int minimum_width, out int natural_width) {
-        Gtk.Requisition label_min_size, label_natural_size;
-        status_label.get_preferred_size (out label_min_size, out label_natural_size);
-
-        var ctx = get_style_context ();
-        var state = ctx.get_state ();
-        var border = ctx.get_border (state);
-
-        int extra_allocation = border.left + border.right;
-        minimum_width = extra_allocation + label_min_size.width;
-        natural_width = extra_allocation + label_natural_size.width;
-    }
-
-    public override void get_preferred_height_for_width (int width, out int minimum_height,
-                                                         out int natural_height) {
-        Gtk.Requisition label_min_size, label_natural_size;
-        status_label.get_preferred_size (out label_min_size, out label_natural_size);
-
-        var ctx = get_style_context ();
-        var state = ctx.get_state ();
-        var border = ctx.get_border (state);
-
-        int extra_allocation = border.top + border.bottom;
-        minimum_height = extra_allocation + label_min_size.height;
-        natural_height = extra_allocation + label_natural_size.height;
-    }
-
-    private void update_spacing () {
-        var ctx = get_style_context ();
-        var state = ctx.get_state ();
-
-        var padding = ctx.get_padding (state);
-        status_label.margin_top = padding.top;
-        status_label.margin_bottom = padding.bottom;
-        status_label.margin_left = padding.left;
-        status_label.margin_right = padding.right;
-
-        var margin = ctx.get_margin (state);
-        margin_top = margin.top;
-        margin_bottom = margin.bottom;
-        margin_left = margin.left;
-        margin_right = margin.right;
-    }
-
-    private void set_default_style () {
-        int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
-        Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, StyleClass.OVERLAY_BAR, priority);
     }
 
     private bool enter_notify_callback (Gdk.EventCrossing event) {
