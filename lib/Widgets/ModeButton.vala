@@ -120,9 +120,10 @@ namespace Granite.Widgets {
             item.scroll_event.connect (on_scroll_event);
             item.add (w);
 
-            item.button_press_event.connect (() => {
-                selected = item.index;
-                return true;
+            item.toggled.connect (() => {
+                if (item.active) {
+                    selected = item.index;
+                }
             });
 
             item_map[index] = item;
