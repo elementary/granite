@@ -730,6 +730,7 @@ namespace Granite.Widgets {
         public Gtk.Menu menu { get; private set; }
 
         private ClosedTabs closed_tabs;
+        private bool cursor_over_notebook = false;
 
         Gtk.Notebook notebook;
 
@@ -932,6 +933,29 @@ namespace Granite.Widgets {
                 return false;
             });
 
+            notebook.enter_notify_event.connect (() => {
+                cursor_over_notebook = true;
+                return false;
+            });
+
+            notebook.leave_notify_event.connect ((e) => {
+                var page = current.page;
+                if (page == null) {
+                    cursor_over_notebook = false;
+                    recalc_size ();
+                    return false;
+                }
+
+                int width = notebook.get_allocated_width ();
+                int height = notebook.get_allocated_height () - page.get_allocated_height ();
+                if (e.x < 0 || e.x > width || e.y < 0 || e.y > height) {
+                    cursor_over_notebook = false;
+                    recalc_size ();
+                }
+
+                return false;
+            });
+
             notebook.switch_page.connect (on_switch_page);
             notebook.page_added.connect (on_page_added);
             notebook.page_removed.connect (on_page_removed);
@@ -1026,8 +1050,9 @@ namespace Granite.Widgets {
         }
 
         private void recalc_size () {
-            if (n_tabs == 0)
+            if (n_tabs == 0 || cursor_over_notebook) {
                 return;
+            }
 
             var pinned_tabs = 0;
             var unpinned_tabs = 0;
@@ -1037,7 +1062,7 @@ namespace Granite.Widgets {
                 } else {
                     unpinned_tabs++;
                 }
-            }
+            } 
 
             if (unpinned_tabs == 0) {
                 unpinned_tabs = 1;
