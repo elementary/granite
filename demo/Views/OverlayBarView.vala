@@ -21,6 +21,6 @@
 public class OverlayBarView : Gtk.Overlay {
     construct {
         var overlaybar = new Granite.Widgets.OverlayBar (this);
-        overlaybar.status = "Hover the OverlayBar to change its position";
+        overlaybar.label = "Hover the OverlayBar to change its position";
     }
 }
