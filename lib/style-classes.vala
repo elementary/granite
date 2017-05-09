@@ -18,9 +18,9 @@
  */
 
 namespace Granite.StyleClass {
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_BADGE")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_BADGE")]
     public const string BADGE = "badge";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_CATEGORY_EXPANDER")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_CATEGORY_EXPANDER")]
     public const string CATEGORY_EXPANDER = "category-expander";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string CONTENT_VIEW = "content-view";
@@ -38,13 +38,13 @@ namespace Granite.StyleClass {
     public const string H3_TEXT = "h3";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string HELP_BUTTON = "help_button";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_OVERLAY_BAR")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_OVERLAY_BAR")]
     public const string OVERLAY_BAR = "overlay-bar";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.STYLE_CLASS_POPOVER")]
     public const string POPOVER = "popover";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string POPOVER_BG = "popover_bg";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_SOURCE_LIST")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_SOURCE_LIST")]
     public const string SOURCE_LIST = "source-list";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string THIN_PANE_SEPARATOR = "sidebar-pane-separator";
