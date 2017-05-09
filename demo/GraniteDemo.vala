@@ -25,8 +25,6 @@
  */
 
 public class Granite.Demo : Granite.Application {
-    Gtk.Window window;
-
     /**
      * Basic app information for Granite.Application. This is used by the About dialog.
      */
@@ -62,11 +60,14 @@ public class Granite.Demo : Granite.Application {
     }
 
     public override void activate () {
-        window = new Gtk.Window ();
-        window.window_position = Gtk.WindowPosition.CENTER;
-        add_window (window);
+        var window = new Gtk.Window ();
 
-        create_headerbar ();
+        var about_button = new Gtk.Button.from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR);
+        about_button.tooltip_text = "About this application";
+
+        var headerbar = new Gtk.HeaderBar ();
+        headerbar.show_close_button = true;
+        headerbar.pack_end (about_button);
 
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
@@ -101,22 +102,17 @@ public class Granite.Demo : Granite.Application {
         paned.add2 (main_stack);
 
         window.add (paned);
-        window.set_default_size (800, 550);
-        window.show_all ();
-    }
-
-    private void create_headerbar () {
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.title = "Granite";
-        headerbar.subtitle = "Demo Window";
-        headerbar.show_close_button = true;
-
-        var about_button = new Gtk.Button.from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR);
-        about_button.tooltip_text = "About this application";
-        about_button.clicked.connect (() => {show_about (window);});
-
-        headerbar.pack_end (about_button);
+        window.set_default_size (900, 600);
+        window.set_size_request (750, 500);
         window.set_titlebar (headerbar);
+        window.title = "Granite Demo";
+        window.show_all ();
+
+        add_window (window);
+
+        about_button.clicked.connect (() => {
+            show_about (window);
+        });
     }
 
     public static int main (string[] args) {
