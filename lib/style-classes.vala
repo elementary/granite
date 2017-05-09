@@ -22,9 +22,9 @@ namespace Granite.StyleClass {
     public const string BADGE = "badge";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_CATEGORY_EXPANDER")]
     public const string CATEGORY_EXPANDER = "category-expander";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_CONTENT_VIEW")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string CONTENT_VIEW = "content-view";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "STYLE_CLASS_CONTENT_VIEW_WINDOW")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string CONTENT_VIEW_WINDOW = "content-view-window";
     [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public const string COMPOSITED = "composited";
@@ -57,8 +57,6 @@ namespace Granite {
     public const string STYLE_CLASS_BADGE = "badge";
     public const string STYLE_CLASS_CARD = "card";
     public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
-    public const string STYLE_CLASS_CONTENT_VIEW = "content-view";
-    public const string STYLE_CLASS_CONTENT_VIEW_WINDOW = "content-view-window";
     public const string STYLE_CLASS_H1_LABEL = "h1";
     public const string STYLE_CLASS_H2_LABEL = "h2";
     public const string STYLE_CLASS_H3_LABEL = "h3";
