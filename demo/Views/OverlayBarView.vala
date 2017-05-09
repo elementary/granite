@@ -21,8 +21,6 @@
 public class OverlayBarView : Gtk.Overlay {
     construct {
         var button = new Gtk.ToggleButton.with_label ("Show Spinner");
-        button.halign = Gtk.Align.CENTER;
-        button.valign = Gtk.Align.CENTER;
 
         var grid = new Gtk.Grid ();
         grid.halign = Gtk.Align.CENTER;
