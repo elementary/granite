@@ -39,28 +39,32 @@ namespace Granite {
         public string build_data_dir;
         public string build_pkg_data_dir;
         public string build_release_name;
-        public string build_version;
         public string build_version_info;
+
+        /**
+         * The version number of the application.
+         */
+        public string build_version { get; set; }
 
         /**
          * The user facing name of the application. This name is used
          * throughout the application and should be capitalized correctly.
          */
-        public string program_name;
+        public string program_name { get; set; }
 
         /**
          * The compiled binary name, which must match the CMake exec name.
          * This is used to launch the application from a launcher or the
          * command line.
          */
-        public string exec_name;
+        public string exec_name { get; set; }
 
         /**
          * Years that the copyright extends to. Usually from the start
          * of the project to the most recent modification to it.
          */
-        public string app_copyright;
-        public string app_years;
+        public string app_copyright { get; set; }
+        public string app_years { get; set; }
 
         /**
          * Icon to be associated with the application.
@@ -70,7 +74,7 @@ namespace Granite {
          * The name should not include the full path or file extension.
          * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
          */
-        public string app_icon;
+        public string app_icon { get; set; }
 
         /**
          * The launcher to be associated with this application.
@@ -79,7 +83,7 @@ namespace Granite {
          * See [[http://standards.freedesktop.org/desktop-entry-spec/latest/]]
          * for more information.
          */
-        public string app_launcher;
+        public string app_launcher { get; set; }
 
         /**
          * Main website or homepage for the application.
@@ -87,7 +91,7 @@ namespace Granite {
          * If the application has no homepage, one should be created on
          * launchpad.net.
          */
-        public string main_url;
+        public string main_url { get; set; }
 
         /**
          * A link to the software's public bug tracker.
@@ -95,49 +99,49 @@ namespace Granite {
          * If the application does not have a bug tracker, one should be
          * created on launchpad.net.
          */
-        public string bug_url;
+        public string bug_url { get; set; }
 
         /**
          * Link to question and answer site or support forum for the app.
          *
          * Launchpad offers a QA service if one is needed.
          */
-        public string help_url;
+        public string help_url { get; set; }
 
         /**
          * Link to where users can translate the application.
          *
          * Launchad offers a translation service if one is necessary.
          */
-        public string translate_url;
+        public string translate_url { get; set; }
 
         /**
          * Full names of the application authors for the about dialog.
          */
-        public string[] about_authors = {};
+        public string[] about_authors { get; set; }
 
         /**
          * Full names of documenters of the app for the about dialog.
          */
-        public string[] about_documenters = {};
+        public string[] about_documenters { get; set; }
 
         /**
          * Names of the designers of the application's user interface.
          */
-        public string[] about_artists = {};
+        public string[] about_artists { get; set; }
 
-        public string about_comments;
+        public string about_comments { get; set; }
 
         /**
          * Names of the translators of the application.
          */
-        public string about_translators;
+        public string about_translators { get; set; }
 
         /**
          * The copyright license that the work is distributed under.
          */
-        public string about_license;
-        public License about_license_type;
+        public string about_license { get; set; }
+        public License about_license_type { get; set; }
 
         /**
          * This creates a new Application class

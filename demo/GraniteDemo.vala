@@ -28,21 +28,23 @@ public class Granite.Demo : Granite.Application {
     /**
      * Basic app information for Granite.Application. This is used by the About dialog.
      */
+    public Demo () {
+        Object (about_comments: "A demo of the Granite toolkit",
+                about_license_type: Gtk.License.GPL_3_0,
+                about_translators: _("translator-credits"),
+                app_icon: "applications-interfacedesign",
+                app_years: "2011-2017",
+                application_id: "org.pantheon.granite.demo",
+                bug_url: "https://github.com/elementary/granite/issues",
+                build_version: "0.4.1",
+                flags: ApplicationFlags.FLAGS_NONE,
+                help_url: "https://elementaryos.stackexchange.com/questions/tagged/development",
+                main_url: "https://github.com/elementary/granite",
+                program_name: "Granite Demo",
+                translate_url: "https://l10n.elementary.io/projects/desktop/granite");
+    }
+
     construct {
-        application_id = "org.pantheon.granite.demo";
-        flags = ApplicationFlags.FLAGS_NONE;
-
-        program_name = "Granite Demo";
-        app_years = "2011-2017";
-
-        build_version = "0.4.1";
-        app_icon = "applications-interfacedesign";
-        main_url = "https://github.com/elementary/granite";
-        bug_url = "https://github.com/elementary/granite/issues";
-        help_url = "https://elementaryos.stackexchange.com/questions/tagged/development";
-        translate_url = "https://l10n.elementary.io/projects/desktop/granite";
-
-        about_documenters = { null };
         about_artists = { "Daniel Foré <daniel@elementary.io>" };
         about_authors = {
             "Maxwell Barvian <mbarvian@gmail.com>",
@@ -53,10 +55,6 @@ public class Granite.Demo : Granite.Application {
             "Tom Beckmann <tombeckmann@online.de>",
             "Corentin Noël <corentin@elementary.io>"
         };
-
-        about_comments = "A demo of the Granite toolkit";
-        about_translators = _("translator-credits");
-        about_license_type = Gtk.License.GPL_3_0;
     }
 
     public override void activate () {
