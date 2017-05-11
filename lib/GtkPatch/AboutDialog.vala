@@ -249,7 +249,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         deletable = false; // Hide the window's close button when possible
         set_default_response (Gtk.ResponseType.CANCEL);
 
-        Granite.Widgets.Utils.set_theming (this, STYLESHEET, null, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Granite.Widgets.Utils.set_theming (this, STYLESHEET, null,
+                                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         logo_image = new Gtk.Image ();
 
