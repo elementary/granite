@@ -17,11 +17,7 @@
     Boston, MA 02110-1301 USA.
 ***/
 
-using Gtk;
-using Gdk;
-
-public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
-{
+public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     /**
      * The people who contributed artwork to the program, as a null-terminated array of strings.
      */
@@ -128,20 +124,20 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     }
     string _license = "";
 
-    public License license_type {
+    public Gtk.License license_type {
         set { _license_type = value; update_license(); }
         get { return _license_type; }
     }
-    License _license_type = License.UNKNOWN;
+    Gtk.License _license_type = Gtk.License.UNKNOWN;
 
     /**
      * A logo for the about box.
      */
-    public Pixbuf logo {
+    public Gdk.Pixbuf logo {
         set { _logo = value; update_logo_image(); }
         get { return _logo; }
     }
-    Pixbuf _logo = null;
+    Gdk.Pixbuf _logo = null;
 
     /**
      * A named icon to use as the logo for the about box.
@@ -223,17 +219,17 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     }
 
     // UI elements
-    private Image logo_image;
-    private Label name_label;
-    private Label copyright_label;
-    private Label comments_label;
-    private Label authors_label;
-    private Label artists_label;
-    private Label documenters_label;
-    private Label translators_label;
-    private Label license_label;
-    private Label website_url_label;
-    private Button close_button;
+    private Gtk.Image logo_image;
+    private Gtk.Label name_label;
+    private Gtk.Label copyright_label;
+    private Gtk.Label comments_label;
+    private Gtk.Label authors_label;
+    private Gtk.Label artists_label;
+    private Gtk.Label documenters_label;
+    private Gtk.Label translators_label;
+    private Gtk.Label license_label;
+    private Gtk.Label website_url_label;
+    private Gtk.Button close_button;
 
     private const string STYLESHEET = """
         * {
@@ -246,76 +242,51 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
     /**
      * Creates a new Granite.AboutDialog
      */
-    public AboutDialog()
-    {
+    public AboutDialog () {
         title = "";
         has_resize_grip = false;
         resizable = false;
         deletable = false; // Hide the window's close button when possible
-        set_default_response(ResponseType.CANCEL);
-
+        set_default_response (Gtk.ResponseType.CANCEL);
 
         Granite.Widgets.Utils.set_theming (this, STYLESHEET, null,
                                            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        // Set the default containers
-        Box content_area = (Box)get_content_area();
-        Box action_area = (Box)get_action_area();
+        logo_image = new Gtk.Image ();
 
-        var content_hbox = new Box(Orientation.HORIZONTAL, 12);
-        var content_right_box = new Box(Orientation.VERTICAL, 0);
-        var content_scrolled = new ScrolledWindow(null, new Adjustment(0, 0, 100, 1, 10, 0));
-        var content_scrolled_vbox = new Box(Orientation.VERTICAL, 0);
-        var title_vbox = new Box(Orientation.VERTICAL, 0);
-        var logo_vbox = new Box(Orientation.VERTICAL, 0);
-
-        content_scrolled.shadow_type = ShadowType.NONE;
-        content_scrolled.hscrollbar_policy = PolicyType.NEVER;
-        content_scrolled.vscrollbar_policy = PolicyType.AUTOMATIC;
-
-        content_area.pack_start(content_hbox, true, true, 0);
-
-        logo_image = new Image();
-        logo_vbox.pack_start(logo_image, false, false, 12);
-        logo_vbox.pack_end(new Box(Orientation.VERTICAL, 0), true, true, 0);
-
-        // Adjust sizes
-        content_hbox.height_request = 160;
-        content_scrolled_vbox.width_request = 288;
-
-        name_label = new Label("");
+        name_label = new Gtk.Label ("");
         name_label.halign = Gtk.Align.START;
-        name_label.set_line_wrap(true);
-        name_label.set_selectable(true);
+        name_label.set_line_wrap (true);
+        name_label.set_selectable (true);
 
         Granite.Widgets.Utils.apply_text_style_to_label (TextStyle.H2, name_label);
 
-        copyright_label = new Label("");
-        copyright_label.set_selectable(true);
+        copyright_label = new Gtk.Label ("");
+        copyright_label.set_selectable (true);
         copyright_label.halign = Gtk.Align.START;
-        copyright_label.set_line_wrap(true);
+        copyright_label.set_line_wrap (true);
 
-        comments_label = new Label("");
-        comments_label.set_selectable(true);
+        comments_label = new Gtk.Label ("");
+        comments_label.set_selectable (true);
         comments_label.halign = Gtk.Align.START;
         comments_label.set_line_wrap(true);
 
-        authors_label = new Label("");
-        authors_label.set_selectable(true);
+        authors_label = new Gtk.Label ("");
+        authors_label.set_selectable (true);
         authors_label.halign = Gtk.Align.START;
-        authors_label.set_line_wrap(true);
+        authors_label.set_line_wrap (true);
 
-        artists_label = new Label("");
-        artists_label.set_selectable(true);
+        artists_label = new Gtk.Label ("");
+        artists_label.set_selectable (true);
         artists_label.halign = Gtk.Align.START;
         artists_label.set_line_wrap(true);
 
-        documenters_label = new Label("");
+        documenters_label = new Gtk.Label ("");
         documenters_label.set_selectable(true);
         documenters_label.halign = Gtk.Align.START;
         documenters_label.set_line_wrap(true);
 
-        translators_label = new Label("");
+        translators_label = new Gtk.Label ("");
         translators_label.set_selectable(true);
         translators_label.halign = Gtk.Align.START;
         translators_label.set_line_wrap(true);
@@ -324,47 +295,51 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         license_label.set_selectable(true);
         license_label.wrap = true;
 
-        website_url_label = new Label ("");
+        website_url_label = new Gtk.Label ("");
         website_url_label.set_selectable (true);
         website_url_label.halign = Gtk.Align.START;
         website_url_label.set_line_wrap (true);
 
-        // left and right padding
-        content_hbox.pack_start(new Box(Orientation.VERTICAL, 0), false, false, 0);
-        content_hbox.pack_end(new Box(Orientation.VERTICAL, 0), false, false, 0);
-
-        content_hbox.pack_start(logo_vbox);
-        content_hbox.pack_start(content_right_box);
-
-        content_scrolled.add_with_viewport(content_scrolled_vbox);
-
-        title_vbox.pack_start(name_label, false, false, 12); //FIXME
-
-        content_right_box.pack_start(title_vbox, false, false, 0);
-        content_right_box.pack_start(content_scrolled, true, true, 0);
-        // Extra padding between the scrolled window and the action area
-        content_right_box.pack_end(new Box(Orientation.VERTICAL, 0), false, false, 6);
-
+        var content_scrolled_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         content_scrolled_vbox.pack_start(comments_label);
         content_scrolled_vbox.pack_start(website_url_label);
-
         content_scrolled_vbox.pack_start(copyright_label);
         content_scrolled_vbox.pack_start(license_label);
-
         content_scrolled_vbox.pack_start(authors_label);
         content_scrolled_vbox.pack_start(artists_label);
         content_scrolled_vbox.pack_start(documenters_label);
         content_scrolled_vbox.pack_start(translators_label);
 
-        close_button = new Button.with_label(_("Close"));
-        close_button.clicked.connect(() => { response(ResponseType.CANCEL); });
-        action_area.pack_end (close_button, false, false, 0);
+        var content_scrolled = new Gtk.ScrolledWindow (null, null);
+        content_scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
+        content_scrolled.vexpand = true;
+        content_scrolled.width_request = 344;
+        content_scrolled.add (content_scrolled_vbox);
 
-        close_button.grab_focus();
+        var grid = new Gtk.Grid ();
+        grid.column_spacing = 12;
+        grid.row_spacing = 12;
+        grid.height_request = 136;
+        grid.margin = 12;
+        grid.attach (logo_image, 0, 0, 1, 2);
+        grid.attach (name_label, 1, 0, 1, 1);
+        grid.attach (content_scrolled, 1, 1, 1, 1);
+
+        var content_area = (Gtk.Box) get_content_area ();
+        content_area.add (grid);
+
+        close_button = new Gtk.Button.with_label (_("Close"));
+        close_button.clicked.connect (() => {
+            response (Gtk.ResponseType.CANCEL);
+        });
+
+        close_button.grab_focus ();
+
+        var action_area = (Gtk.Box) get_action_area ();
+        action_area.pack_end (close_button, false, false, 0);
     }
 
-    private string set_string_from_string_array(string title, string[] peoples,bool tooltip=false)
-    {
+    private string set_string_from_string_array (string title, string[] peoples,bool tooltip=false) {
         if (tooltip)
             return string.joinv ("\n",peoples);
 
@@ -414,28 +389,27 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         }
     }
 
-    private void update_license()
-    {
+    private void update_license () {
         switch (license_type) {
-        case License.GPL_2_0:
+        case Gtk.License.GPL_2_0:
             set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL 2.0");
             break;
-        case License.GPL_3_0:
+        case Gtk.License.GPL_3_0:
             set_generic_license("http://www.gnu.org/licenses/gpl.html", "GPL");
             break;
-        case License.LGPL_2_1:
+        case Gtk.License.LGPL_2_1:
             set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL 2.1");
             break;
-        case License.LGPL_3_0:
+        case Gtk.License.LGPL_3_0:
             set_generic_license("http://www.gnu.org/licenses/lgpl.html", "LGPL");
             break;
-        case License.BSD:
+        case Gtk.License.BSD:
             set_generic_license("http://opensource.org/licenses/bsd-license.php", "BSD");
             break;
-        case License.MIT_X11:
+        case Gtk.License.MIT_X11:
             set_generic_license("http://opensource.org/licenses/mit-license.php", "MIT");
             break;
-        case License.ARTISTIC:
+        case Gtk.License.ARTISTIC:
             set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php", "Artistic");
             break;
         default:
@@ -449,8 +423,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog
         }
     }
 
-    private void set_generic_license(string url, string license_type)
-    {
+    private void set_generic_license (string url, string license_type) {
         license_label.set_markup("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n"));
         license_label.show();
     }

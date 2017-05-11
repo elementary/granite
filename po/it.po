@@ -6,16 +6,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-07-27 12:07+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2017-05-03 18:00+0000\n"
+"Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
+"Language-Team: Italian "
+"<https://l10n.elementary.io/projects/desktop/granite/it/>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.13-dev\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -176,7 +179,8 @@ msgstr ":"
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
-"Non è possibile contattare Contractor. Potrebbe essere necessario installarlo"
+"Non è stato possibile contattare Contractor. Potrebbe essere necessario "
+"installarlo"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -188,19 +192,19 @@ msgstr "Nessuna azione trovata per questo file"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 msgid "%l:%M:%S %p"
-msgstr "%l.%M.%S %P"
+msgstr "%l:%M:%S %P"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 msgid "%l:%M %p"
-msgstr "%l.%M %p"
+msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 #: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
 msgid "%H:%M:%S"
-msgstr "%k.%M.%S"
+msgstr "%k:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
@@ -249,7 +253,7 @@ msgstr "%a"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr "%a %b %e"
+msgstr "%a %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -335,28 +339,28 @@ msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Notifiche toast"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Semplici notifiche all'interno di applicazioni"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Il tasto è stato premuto!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Fai cose"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Premimi"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Ha fatto la cosa"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Ha già fatto la cosa"

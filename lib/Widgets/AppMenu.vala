@@ -47,6 +47,7 @@ namespace Granite.Widgets {
         public AppMenu (Gtk.Menu menu) {
             image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
             tooltip_text = _("Menu");
+            set_popup (menu);
         }
 
         /**
@@ -60,6 +61,7 @@ namespace Granite.Widgets {
             tooltip_text = _("Menu");
 
             this.add_items (menu);
+            menu.show_all ();
 
             about_item.activate.connect (() => { show_about(get_toplevel()); });
         }
@@ -86,6 +88,7 @@ namespace Granite.Widgets {
             if (menu.get_children ().length () > 0)
                 menu.append (new SeparatorMenuItem ());
             menu.append (about_item);
+            set_popup (menu);
         }
 
     }
