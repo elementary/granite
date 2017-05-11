@@ -226,6 +226,7 @@ namespace Granite {
          *
          * @return app_menu
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.MenuButton")]
         public AppMenu create_appmenu (Gtk.Menu menu) {
 
             AppMenu app_menu = new AppMenu.with_app (this, menu);
