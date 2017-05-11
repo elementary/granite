@@ -334,7 +334,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
 
         close_button.grab_focus ();
 
-        var action_area = (Gtk.Box)get_action_area ();
+        var action_area = (Gtk.Box) get_action_area ();
         action_area.pack_end (close_button, false, false, 0);
     }
 
