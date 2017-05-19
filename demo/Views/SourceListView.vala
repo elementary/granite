@@ -24,11 +24,7 @@
  *              Corentin Noël <corentin@elementary.io>
  */
 
-public class SourceListView : Gtk.Paned {
-    public SourceListView () {
-        Object (orientation: Gtk.Orientation.HORIZONTAL);
-    }
-
+public class SourceListView : Gtk.Frame {
     construct {
         var music_item = new Granite.Widgets.SourceList.Item ("Music");
         music_item.badge = "1";
@@ -72,9 +68,13 @@ public class SourceListView : Gtk.Paned {
 
         var label = new Gtk.Label ("No selected item");
 
-        position = 150;
-        pack1 (source_list, false, false);
-        add2 (label);
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+        paned.position = 130;
+        paned.pack1 (source_list, false, false);
+        paned.add2 (label);
+
+        margin = 48;
+        add (paned);
 
         source_list.item_selected.connect ((item) => {
             if (item == null) {

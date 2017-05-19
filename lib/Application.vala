@@ -17,11 +17,6 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-using Gtk;
-
-using Granite.Services;
-using Granite.Widgets;
-
 namespace Granite {
 
     /**
@@ -137,7 +132,7 @@ namespace Granite {
          * The copyright license that the work is distributed under.
          */
         public string about_license;
-        public License about_license_type;
+        public Gtk.License about_license_type;
 
         /**
          * This creates a new Application class
@@ -148,12 +143,12 @@ namespace Granite {
 #elif DRAGON_FLY || FREE_BSD || NET_BSD || OPEN_BSD
             setproctitle (exec_name);
 #endif
-            Logger.initialize (program_name);
-            Logger.DisplayLevel = LogLevel.INFO;
+            Granite.Services.Logger.initialize (program_name);
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
             var un = Posix.utsname ();
             message ("Kernel version: %s", (string) un.release);
-            Logger.DisplayLevel = LogLevel.WARN;
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 
@@ -216,7 +211,7 @@ namespace Granite {
         protected virtual void set_options () {
 
             if (DEBUG)
-                Logger.DisplayLevel = LogLevel.DEBUG;
+                Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
         }
 
         /**
@@ -226,9 +221,10 @@ namespace Granite {
          *
          * @return app_menu
          */
-        public AppMenu create_appmenu (Gtk.Menu menu) {
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.MenuButton")]
+        public Granite.Widgets.AppMenu create_appmenu (Gtk.Menu menu) {
 
-            AppMenu app_menu = new AppMenu.with_app (this, menu);
+            var app_menu = new Granite.Widgets.AppMenu.with_app (this, menu);
             app_menu.show_about.connect (show_about);
 
             return app_menu;

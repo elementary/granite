@@ -51,24 +51,24 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      * Creates a new Avatar from the speficied filepath and icon size
      *
      * @param filepath image to be used
-     * @param size to scale the image
+     * @param pixel_size to scale the image
      */
-    public Avatar.from_file (string filepath, int icon_size) {
+    public Avatar.from_file (string filepath, int pixel_size) {
         try {
-            var size = icon_size * get_style_context ().get_scale ();
+            var size = pixel_size * get_style_context ().get_scale ();
             pixbuf = new Gdk.Pixbuf.from_file_at_size (filepath, size, size);
         } catch (Error e) {
-            show_default (icon_size);
+            show_default (pixel_size);
         }
     }
 
     /**
      * Creates a new Avatar with the default icon from theme without applying the css style
      *
-     * @param icon_size size of the icon to be loaded
+     * @param pixel_size size of the icon to be loaded
      */
-    public Avatar.with_default_icon (int icon_size) {
-        show_default (icon_size);
+    public Avatar.with_default_icon (int pixel_size) {
+        show_default (pixel_size);
     }
 
     construct {
@@ -100,12 +100,12 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     /**
      * Load the default avatar icon from theme into the widget without applying the css style
      *
-     * @param icon_size size of the icon to be loaded
+     * @param pixel_size size of the icon to be loaded
      */
-    public void show_default (int icon_size) {
+    public void show_default (int pixel_size) {
         Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default ();
         try {
-            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, icon_size, get_style_context ().get_scale (), 0);
+            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, pixel_size, get_style_context ().get_scale (), 0);
         } catch (Error e) {
             stderr.printf ("Error setting default avatar icon: %s ", e.message);
         }
