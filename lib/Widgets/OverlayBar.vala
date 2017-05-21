@@ -85,7 +85,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     }
 
     /**
-     * The {@link Gtk.Overlay which holds the Overlay Bar.
+     * The {@link Gtk.Overlay} which holds the Overlay Bar.
      */
     public Gtk.Overlay overlay { get; construct; }
 
