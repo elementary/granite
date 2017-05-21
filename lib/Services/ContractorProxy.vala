@@ -44,7 +44,7 @@ namespace Granite.Services {
         /**
          * Returns an icon for this contract
          *
-         * @return {@link Glib.Icon} based on the 'Icon' key in the .contract file.
+         * @return {@link GLib.Icon} based on the 'Icon' key in the .contract file.
          */
         public abstract Icon get_icon ();
 
