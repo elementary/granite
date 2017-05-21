@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-04-22 11:24+0000\n"
+"PO-Revision-Date: 2017-05-07 12:44+0000\n"
 "Last-Translator: Ryo Nakano <nscnskichiro0911@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://l10n.elementary.io/projects/desktop/granite/ja/>\n"
@@ -63,7 +63,7 @@ msgstr "このプログラムは次の条件下で公開されています "
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " ライセンスは完全に無保証です。詳細はこちらを参照して下さい "
+msgstr " ライセンスは絶対的に無保証を伴っています。詳細はこちらを参照して下さい。 "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -291,7 +291,7 @@ msgstr "その他"
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 msgid "%s free out of %s"
-msgstr "%s のうち %s の空き容量"
+msgstr "%s 空き / %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
@@ -302,7 +302,7 @@ msgstr "%s の開発者"
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr "このプログラムは絶対的な無保証を伴う %s ライセンス条項の元で公開されています。詳細は、 %s をご覧ください"
+msgstr "このプログラムは絶対的な無保証を伴う %s ライセンス条項の元で公開されています。詳細は次のページをご覧ください。 %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
