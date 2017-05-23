@@ -15,7 +15,6 @@ set (VALA_SOURCES
     Services/Logger.vala
     Services/Paths.vala
     Services/System.vala
-    Services/Contractor.vala
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
@@ -33,8 +32,6 @@ set (VALA_SOURCES
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
-    Widgets/ContractorView.vala
-    Widgets/ContractorMenu.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
