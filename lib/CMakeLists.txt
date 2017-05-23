@@ -39,6 +39,7 @@ set (VALA_SOURCES
     Widgets/PopOver.vala
     Widgets/DecoratedWindow.vala
     Widgets/LightWindow.vala
+    Widgets/SeekBar.vala
     Widgets/StatusBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
