@@ -17,7 +17,7 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-[Version (deprecated = true, deprecated_since = "0.5.0", replacement = "")]
+[Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
 public enum Granite.TextStyle {
     /**
      * Highest level header
@@ -224,7 +224,7 @@ namespace Granite.Widgets.Utils {
      * @param text_style text style to apply
      * @param label label to apply style to
      */
-    [Version (deprecated = true, deprecated_since = "0.5.0", replacement = "")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {
         var style_provider = new Gtk.CssProvider ();
         var style_context = label.get_style_context ();
