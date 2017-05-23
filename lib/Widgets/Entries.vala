@@ -58,28 +58,6 @@ namespace Granite.Widgets {
             else
                 set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, null);
         }
-
-        /*
-         * These 4 functions must be removed, they are only kept here
-         * for API compatibility.
-         */
-        [Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
-        protected void hint () {
-        }
-
-        [Version (deprecated = true, deprecated_since = "0.2", replacement = "")]
-        protected void unhint () {
-        }
-
-        [Version (deprecated = true, deprecated_since = "0.2", replacement = "Gtk.Entry.get_text")]
-        public new string get_text () {
-            return text;
-        }
-
-        [Version (deprecated = true, deprecated_since = "0.2", replacement = "Gtk.Entry.set_text")]
-        public new void set_text (string text) {
-            this.text = text;
-        }
     }
 
     /**
