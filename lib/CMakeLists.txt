@@ -41,7 +41,6 @@ set (VALA_SOURCES
 
 set (C_SOURCES
     Widgets/widgets-utils.c
-    Widgets/close-button.c
 )
 
 ######################
