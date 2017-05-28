@@ -32,24 +32,24 @@ public class CSSView : Gtk.Grid {
         header1.margin_top = 12;
         header1.margin_start = 24;
         header1.margin_end = 24;
-        header1.get_style_context ().add_class ("h1");
+        header1.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
         var header2 = new Gtk.Label ("\"h2\" Style Class");
-        header2.get_style_context ().add_class ("h2");
+        header2.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var header3 = new Gtk.Label ("\"h3\" Style Class");
-        header3.get_style_context ().add_class ("h3");
+        header3.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
         var header4 = new Gtk.Label ("\"h4\" Style Class");
         header4.margin_bottom = 12  ;
-        header4.get_style_context ().add_class ("h4");
+        header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var card_label = new Gtk.Label ("\"card\" style class:");
         card_label.halign = Gtk.Align.END;
 
         var card = new Gtk.Grid ();
         card.orientation = Gtk.Orientation.VERTICAL;
-        card.get_style_context ().add_class ("card");
+        card.get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
         card.add (header1);
         card.add (header2);
         card.add (header3);
@@ -60,7 +60,7 @@ public class CSSView : Gtk.Grid {
 
         var back_button = new Gtk.Button.with_label ("Back Button");
         back_button.halign = Gtk.Align.START;
-        back_button.get_style_context ().add_class ("back-button");
+        back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
         var primary_color_label = new Gtk.Label ("Set HeaderBar color:");
         primary_color_label.halign = Gtk.Align.END;
