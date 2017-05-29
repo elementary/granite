@@ -256,10 +256,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
 
         name_label = new Gtk.Label ("");
         name_label.halign = Gtk.Align.START;
+        name_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         name_label.set_line_wrap (true);
         name_label.set_selectable (true);
-
-        Granite.Widgets.Utils.apply_text_style_to_label (TextStyle.H2, name_label);
 
         copyright_label = new Gtk.Label ("");
         copyright_label.set_selectable (true);
