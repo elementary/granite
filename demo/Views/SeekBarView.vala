@@ -19,11 +19,14 @@
  */
 
 public class SeekBarView : Gtk.Grid {
-    construct {
-        margin = 24;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
 
+    public SeekBarView () {
+        Object (halign: Gtk.Align.CENTER,
+                valign: Gtk.Align.CENTER,
+                margin: 24);
+    }
+
+    construct {
         var seek_bar = new Granite.Widgets.SeekBar(100);
         add (seek_bar);
 
