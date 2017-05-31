@@ -20,10 +20,22 @@
 
 public class SeekBarView : Gtk.Grid {
     construct {
-        var seekbar = new Granite.Widgets.SeekBar ();
-
         margin = 24;
+        halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
-        add (seekbar);
+
+        var seek_bar = new Granite.Widgets.SeekBar(100);
+        add (seek_bar);
+
+        double progress = 0.0;
+        Timeout.add (500, () => {
+            if (progress >= 1.0) {
+                progress = 0.0;
+                seek_bar.set_progress (0.0);
+            } else {
+                progress += 0.1;
+                seek_bar.set_progress (progress);
+            }
+        });
     }
 }
