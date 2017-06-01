@@ -25,26 +25,63 @@
  */
 
 public class Granite.Widgets.SeekBar : Gtk.Grid {
+    /*
+     * The time of the full duration of the playback.
+     */
+    public double playback_duration { get; construct set; }
+
+    /*
+     * The progression of the playback as a decimal from 0.0 to 1.0.
+     */
+    public double playback_progress { get; private set; }
+
+    /*
+     * If the mouse is grabbing the scale button.
+     */
+    public bool is_grabbing { get; private set; }
+
+
+    /*
+     * Emitted when the scale's window is hovered over.
+     */
+    public signal void scale_hover (Gdk.EventCrossing event);
+
+    /*
+     * Emitted when the pointer leaves the scale's window.
+     */
+    public signal void scale_leave (Gdk.EventCrossing event);
+
+    /*
+     * Emitted when the pointer moves over the scale.
+     */
+    public signal void scale_motion (Gdk.EventMotion event);
+
+    /*
+     * Emitted when the scale button is pressed.
+     */
+    public signal void scale_button_press (Gdk.EventButton event);
+
+    /*
+     * Emitted when the scale button is released.
+     */
+    public signal void scale_button_release (Gdk.EventButton event);
+
+    /*
+     * Emitted when a scroll action is performed on the scale.
+     */
+    public signal void scroll_action (Gtk.ScrollType scroll, double new_value);
+
+    /*
+     * Emitted when the region has been allocated for the scale.
+     */
+    //public signal void scale_size_allocate (Gtk.Allocation alloc_rect);
+
     private Gtk.Label progression_label;
     private Gtk.Label time_label;
     private Gtk.Scale scale;
 
-    public double playback_duration { get; construct set; }
-    public double playback_progress { get; private set; }
-
-    public bool released { get; private set; }
-
-    public signal void scale_hover (Gdk.EventCrossing event);
-    public signal void scale_press (Gdk.EventButton event);
-    public signal void scale_leave (Gdk.EventCrossing event);
-    public signal void scale_motion (Gdk.EventMotion event);
-    public signal void scale_release (Gdk.EventButton event);
-    public signal void range_values_changed ();
-    public signal void scroll_action (Gtk.ScrollType scroll, double new_value);
-    //public signal void scale_size_allocate (Gtk.Allocation alloc_rect);
-
     /*
-     * Creates a new SeekBar with a fixed playback duration
+     * Creates a new SeekBar with a fixed playback duration.
      * */
     public SeekBar (double playback_duration) {
         Object (playback_duration: playback_duration);
@@ -69,22 +106,22 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         scale.events |= Gdk.EventMask.LEAVE_NOTIFY_MASK;
         scale.events |= Gdk.EventMask.ENTER_NOTIFY_MASK;
 
-        released = true;
+        is_grabbing = false;
 
         set_duration (playback_duration);
         set_progress (0);
 
         /* signals */
         scale.button_press_event.connect ((event) => {
-            released = false;
-            scale_press (event);
+            is_grabbing = true;
+            scale_button_press (event);
             return false;
         });
 
         scale.button_release_event.connect ((event) => {
-            released = true;
+            is_grabbing = false;
             set_progress (scale.get_value ());
-            scale_release (event);
+            scale_button_release (event);
             return false;
         });
 
@@ -104,10 +141,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
             return false;
         });
 
-        scale.value_changed.connect (() => {
-            range_values_changed ();
-        });
-
         scale.change_value.connect ((scroll, new_value) => {
             scroll_action (scroll, new_value);
             return false;
@@ -123,7 +156,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     }
 
     /*
-     * Sets the progress of the SeekBar, with a value between 0.0 and 1.0
+     * Sets the progress of the SeekBar, with a value between 0.0 and 1.0.
      * */
     public void set_progress (double progress) {
         if (progress < 0.0) {
@@ -141,7 +174,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     }
 
     /*
-     * Sets the duration of the SeekBar with a value greater than 0.0
+     * Sets the duration of the SeekBar with a value greater than 0.0.
      * */
     private void set_duration (double duration) {
         if (duration < 0.0) {
