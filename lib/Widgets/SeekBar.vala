@@ -95,10 +95,13 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         column_spacing = 6;
         halign = Gtk.Align.CENTER;
         progression_label = new Gtk.Label ("");
+        progression_label.get_style_context ().add_class ("progression-label");
         time_label = new Gtk.Label ("");
+        time_label.get_style_context ().add_class ("time-label");
         progression_label.margin_right = time_label.margin_left = 3;
 
         scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 1, 0.1);
+        scale.get_style_context ().add_class ("scale");
         scale.hexpand = true;
         scale.draw_value = false;
         scale.can_focus = false;
