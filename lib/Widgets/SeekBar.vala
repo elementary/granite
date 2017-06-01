@@ -36,9 +36,30 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     public double playback_progress { get; private set; }
 
     /*
-     * If the mouse is grabbing the scale button.
+     * If the pointer is grabbing the scale button.
      */
     public bool is_grabbing { get; private set; }
+
+    /*
+     * If the pointer is hovering over the scale.
+     */
+    public bool is_hovering { get; private set; }
+
+
+    /*
+     * The left label that displays the time progressed.
+     */
+    public Gtk.Label progression_label { get; private set; }
+
+    /*
+     * The right label that displays the total duration time.
+     */
+    public Gtk.Label time_label {  get; private set;  }
+
+    /*
+     * The time of the full duration of the playback.
+     */
+    public Gtk.Scale scale {  get; private set;  }
 
 
     /*
@@ -76,10 +97,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
      */
     //public signal void scale_size_allocate (Gtk.Allocation alloc_rect);
 
-    private Gtk.Label progression_label;
-    private Gtk.Label time_label;
-    private Gtk.Scale scale;
-
     /*
      * Creates a new SeekBar with a fixed playback duration.
      * */
@@ -110,6 +127,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         scale.events |= Gdk.EventMask.ENTER_NOTIFY_MASK;
 
         is_grabbing = false;
+        is_hovering = false;
 
         set_duration (playback_duration);
         set_progress (0);
@@ -129,11 +147,13 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         });
 
         scale.enter_notify_event.connect ((event) => {
+            is_hovering = true;
             scale_hover (event);
             return false;
         });
 
         scale.leave_notify_event.connect ((event) => {
+            is_hovering = false;
             scale_leave (event);
             return false;
         });
@@ -191,12 +211,20 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
         base.get_preferred_width (out minimum_width, out natural_width);
-        minimum_width = 200;
-        if (natural_width < 600)
-            natural_width = 600;
+
+        if (parent.get_window () == null)
+            return;
+        var width = parent.get_window ().get_width ();
+        if (width > 0 && width >= minimum_width) {
+            natural_width = width;
+        }
     }
 
-    private string seconds_to_time (int seconds) {
+
+    /*
+     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
+     */
+    public string seconds_to_time (int seconds) {
         int hours = seconds / 3600;
         string min = normalize_time ((seconds % 3600) / 60);
         string sec = normalize_time (seconds % 60);
