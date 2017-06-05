@@ -42,11 +42,16 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      */
     public string? file {
         set {
-            filename = value;
-            try {
-                var size = pixel_size * get_style_context ().get_scale ();
-                pixbuf = new Gdk.Pixbuf.from_file_at_size (value, size, size);
-            } catch (Error e) {
+            if (filename != null) {
+                filename = value;
+
+                try {
+                    var size = pixel_size * get_style_context ().get_scale ();
+                    pixbuf = new Gdk.Pixbuf.from_file_at_size (value, size, size);
+                } catch (Error e) {
+                    show_default (pixel_size);
+                }
+            } else {
                 show_default (pixel_size);
             }
         }
