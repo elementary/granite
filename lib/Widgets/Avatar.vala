@@ -50,7 +50,6 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
                 show_default (pixel_size);
             }
         }
-
         get {
             return filename;
         }
