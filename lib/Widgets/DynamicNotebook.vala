@@ -1135,7 +1135,7 @@ namespace Granite.Widgets {
         }
 
         public uint insert_tab (Tab tab, int index) {
-            return_if_fail (tabs.index (tab) < 0);
+            return_val_if_fail (tabs.index (tab) < 0, 0);
 
             var i = 0;
             if (index <= -1)
