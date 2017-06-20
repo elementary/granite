@@ -248,7 +248,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
 
         name_label = new AboutLabel ("");
         name_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        
+
         copyright_label = new AboutLabel ("");
 
         comments_label = new AboutLabel ("");
