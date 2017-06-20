@@ -231,89 +231,56 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     private Gtk.Label website_url_label;
     private Gtk.Button close_button;
 
-    private const string STYLESHEET = """
-        * {
-            -GtkDialog-action-area-border: 12px;
-            -GtkDialog-button-spacing: 10px;
-            -GtkDialog-content-area-border: 0;
-        }
-    """;
-
     /**
      * Creates a new Granite.AboutDialog
      */
     public AboutDialog () {
-        title = "";
-        has_resize_grip = false;
-        resizable = false;
-        deletable = false; // Hide the window's close button when possible
-        set_default_response (Gtk.ResponseType.CANCEL);
+        Object (border_width: 5,
+                deletable: false,
+                resizable: false,
+                title: null);
+    }
 
-        Granite.Widgets.Utils.set_theming (this, STYLESHEET, null,
-                                           Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    construct {
+        set_default_response (Gtk.ResponseType.CANCEL);
 
         logo_image = new Gtk.Image ();
 
-        name_label = new Gtk.Label ("");
-        name_label.halign = Gtk.Align.START;
-        name_label.set_line_wrap (true);
-        name_label.set_selectable (true);
+        name_label = new AboutLabel ("");
+        name_label.get_style_context ().add_class (Granite.StyleClass.H2_TEXT);
 
-        Granite.Widgets.Utils.apply_text_style_to_label (TextStyle.H2, name_label);
+        copyright_label = new AboutLabel ("");
 
-        copyright_label = new Gtk.Label ("");
-        copyright_label.set_selectable (true);
-        copyright_label.halign = Gtk.Align.START;
-        copyright_label.set_line_wrap (true);
+        comments_label = new AboutLabel ("");
 
-        comments_label = new Gtk.Label ("");
-        comments_label.set_selectable (true);
-        comments_label.halign = Gtk.Align.START;
-        comments_label.set_line_wrap(true);
+        authors_label = new AboutLabel ("");
 
-        authors_label = new Gtk.Label ("");
-        authors_label.set_selectable (true);
-        authors_label.halign = Gtk.Align.START;
-        authors_label.set_line_wrap (true);
+        artists_label = new AboutLabel ("");
 
-        artists_label = new Gtk.Label ("");
-        artists_label.set_selectable (true);
-        artists_label.halign = Gtk.Align.START;
-        artists_label.set_line_wrap(true);
+        documenters_label = new AboutLabel ("");
 
-        documenters_label = new Gtk.Label ("");
-        documenters_label.set_selectable(true);
-        documenters_label.halign = Gtk.Align.START;
-        documenters_label.set_line_wrap(true);
+        translators_label = new AboutLabel ("");
 
-        translators_label = new Gtk.Label ("");
-        translators_label.set_selectable(true);
-        translators_label.halign = Gtk.Align.START;
-        translators_label.set_line_wrap(true);
+        license_label = new AboutLabel ("");
 
-        license_label = new Widgets.WrapLabel("");
-        license_label.set_selectable(true);
+        website_url_label = new AboutLabel ("");
 
-        website_url_label = new Gtk.Label ("");
-        website_url_label.set_selectable (true);
-        website_url_label.halign = Gtk.Align.START;
-        website_url_label.set_line_wrap (true);
-
-        var content_scrolled_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_scrolled_vbox.pack_start(comments_label);
-        content_scrolled_vbox.pack_start(website_url_label);
-        content_scrolled_vbox.pack_start(copyright_label);
-        content_scrolled_vbox.pack_start(license_label);
-        content_scrolled_vbox.pack_start(authors_label);
-        content_scrolled_vbox.pack_start(artists_label);
-        content_scrolled_vbox.pack_start(documenters_label);
-        content_scrolled_vbox.pack_start(translators_label);
+        var content_scrolled_grid = new Gtk.Grid ();
+        content_scrolled_grid.orientation = Gtk.Orientation.VERTICAL;
+        content_scrolled_grid.add (comments_label);
+        content_scrolled_grid.add (website_url_label);
+        content_scrolled_grid.add (copyright_label);
+        content_scrolled_grid.add (license_label);
+        content_scrolled_grid.add (authors_label);
+        content_scrolled_grid.add (artists_label);
+        content_scrolled_grid.add (documenters_label);
+        content_scrolled_grid.add (translators_label);
 
         var content_scrolled = new Gtk.ScrolledWindow (null, null);
         content_scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
         content_scrolled.vexpand = true;
-        content_scrolled.width_request = 344;
-        content_scrolled.add (content_scrolled_vbox);
+        content_scrolled.width_request = 330;
+        content_scrolled.add (content_scrolled_grid);
 
         var grid = new Gtk.Grid ();
         grid.column_spacing = 12;
@@ -336,6 +303,16 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
 
         var action_area = (Gtk.Box) get_action_area ();
         action_area.pack_end (close_button, false, false, 0);
+    }
+
+    private class AboutLabel : Gtk.Label {
+        public AboutLabel (string label) {
+            Object (label: label,
+                    max_width_chars: 48,
+                    selectable: true,
+                    wrap: true,
+                    xalign: 0);
+        }
     }
 
     private string set_string_from_string_array (string title, string[] peoples,bool tooltip=false) {
