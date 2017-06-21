@@ -139,10 +139,10 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
         description_label.margin_top = 6;
-        get_style_context ().add_class ("storage-bar");
+        get_style_context ().add_class (Granite.STYLE_CLASS_STORAGEBAR);
         blocks = new GLib.HashTable<int, FillBlock> (null, null);
         fillblock_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        fillblock_box.get_style_context ().add_class ("trough");
+        fillblock_box.get_style_context ().add_class (Gtk.STYLE_CLASS_TROUGH);
         fillblock_box.hexpand = true;
         inner_margin_sides = 12;
         legend_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);

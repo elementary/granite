@@ -53,6 +53,7 @@ namespace Granite.StyleClass {
 }
 
 namespace Granite {
+    public const string STYLE_CLASS_AVATAR = "avatar";
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     public const string STYLE_CLASS_BADGE = "badge";
     public const string STYLE_CLASS_CARD = "card";
@@ -63,4 +64,6 @@ namespace Granite {
     public const string STYLE_CLASS_H4_LABEL = "h4";
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
+    public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
+    public const string STYLE_CLASS_WELCOME = "welcome";
 }
