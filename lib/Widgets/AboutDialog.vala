@@ -94,12 +94,7 @@ namespace Granite.Widgets {
             show_all ();
 
             bug_button.clicked.connect (() => {
-                try {
-                    GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
-                } catch (Error e) {
-                    warning ("Could Not Launch 'apport-bug'.");
-                    activate_link (bug);
-                }
+                activate_link (bug);
             });
 
             help_button.clicked.connect (() => {
