@@ -80,20 +80,22 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
 
     construct {
         get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
-        get_style_context ().add_class ("welcome");
+        get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
 
         title_label = new Gtk.Label (null);
         title_label.justify = Gtk.Justification.CENTER;
         title_label.hexpand = true;
-        title_label.get_style_context ().add_class ("h1");
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
 
         subtitle_label = new Gtk.Label (null);
         subtitle_label.justify = Gtk.Justification.CENTER;
         subtitle_label.hexpand = true;
         subtitle_label.wrap = true;
         subtitle_label.wrap_mode = Pango.WrapMode.WORD;
-        subtitle_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-        subtitle_label.get_style_context ().add_class ("h2");
+
+        var subtitle_label_context = subtitle_label.get_style_context ();
+        subtitle_label_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        subtitle_label_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         // Options wrapper
         this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 9);
