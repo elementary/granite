@@ -25,7 +25,6 @@
  */
 public class Granite.Widgets.Avatar : Gtk.EventBox {
     private const string DEFAULT_ICON = "avatar-default";
-    private const string DEFAULT_STYLE = "avatar";
     private const int EXTRA_MARGIN = 4;
     private bool draw_theme_background = true;
 
@@ -76,7 +75,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         halign = Gtk.Align.CENTER;
         visible_window = false;
         var style_context = get_style_context ();
-        style_context.add_class (DEFAULT_STYLE);
+        style_context.add_class (Granite.STYLE_CLASS_AVATAR);
 
         notify["pixbuf"].connect (refresh_size_request);
     }

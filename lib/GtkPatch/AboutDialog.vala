@@ -247,7 +247,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         logo_image = new Gtk.Image ();
 
         name_label = new AboutLabel ("");
-        name_label.get_style_context ().add_class (Granite.StyleClass.H2_TEXT);
+        name_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         copyright_label = new AboutLabel ("");
 
