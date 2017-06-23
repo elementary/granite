@@ -46,6 +46,12 @@ set (VALA_SOURCES
     Widgets/CellRendererBadge.vala
     Widgets/ThinPaned.vala
     Widgets/OverlayBar.vala
+    Widgets/HeaderLabel.vala
+
+    Widgets/SettingsSidebar/AbstractSettingsPage.vala
+    Widgets/SettingsSidebar/AbstractSimpleSettingsPage.vala
+    Widgets/SettingsSidebar/SettingsSidebar.vala
+    Widgets/SettingsSidebar/SettingsSidebarRow.vala
 )
 
 set (C_SOURCES
