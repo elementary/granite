@@ -24,9 +24,7 @@ public class SeekBarView : Gtk.Grid {
     private Gtk.Label preview_label;
 
     public SeekBarView () {
-        Object (halign: Gtk.Align.CENTER,
-                valign: Gtk.Align.CENTER,
-                margin: 24);
+        Object (valign: Gtk.Align.CENTER);
     }
 
     construct {
@@ -41,7 +39,7 @@ public class SeekBarView : Gtk.Grid {
         preview_popover.show_all ();
         preview_popover.set_visible (false);
 
-        var seek_bar = new Granite.Widgets.SeekBar(100);
+        var seek_bar = new Granite.Widgets.SeekBar (100);
 
         preview_popover.relative_to = seek_bar.scale;
 
@@ -49,8 +47,8 @@ public class SeekBarView : Gtk.Grid {
             update_pointing ((int) event.x);
             if (!seek_bar.is_grabbing) {
                 var duration_decimal = (event.x / ((double) event.window.get_width ()));
-                var duration_mins = seek_bar.seconds_to_time ((int) (duration_decimal*seek_bar.playback_duration));
-                preview_label.label = duration_mins.to_string();
+                var duration_mins = seek_bar.seconds_to_time ((int) (duration_decimal * seek_bar.playback_duration));
+                preview_label.label = duration_mins.to_string ();
             }
         });
 
@@ -71,9 +69,9 @@ public class SeekBarView : Gtk.Grid {
         });
 
         seek_bar.scroll_action.connect ((scroll, new_value) => {
-            if (new_value >= 0.0 && new_value <=1.0) {
-                var duration_mins = seek_bar.seconds_to_time ((int) (new_value*seek_bar.playback_duration));
-                preview_label.label = duration_mins.to_string();
+            if (new_value >= 0.0 && new_value <= 1.0) {
+                var duration_mins = seek_bar.seconds_to_time ((int) (new_value * seek_bar.playback_duration));
+                preview_label.label = duration_mins.to_string ();
             }
         });
 

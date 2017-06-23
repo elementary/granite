@@ -38,29 +38,27 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     /*
      * If the pointer is grabbing the scale button.
      */
-    public bool is_grabbing { get; private set; }
+    public bool is_grabbing { get; private set; default = false; }
 
     /*
      * If the pointer is hovering over the scale.
      */
-    public bool is_hovering { get; private set; }
-
+    public bool is_hovering { get; private set; default = false; }
 
     /*
      * The left label that displays the time progressed.
      */
-    public Gtk.Label progression_label { get; private set; }
+    public Gtk.Label progression_label { get; construct set; }
 
     /*
      * The right label that displays the total duration time.
      */
-    public Gtk.Label time_label {  get; private set;  }
+    public Gtk.Label time_label { get; construct set; }
 
     /*
      * The time of the full duration of the playback.
      */
-    public Gtk.Scale scale {  get; private set;  }
-
+    public Gtk.Scale scale { get; construct set; }
 
     /*
      * Emitted when the scale's window is hovered over.
@@ -110,10 +108,10 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         /* GUI */
         orientation = Gtk.Orientation.HORIZONTAL;
         column_spacing = 6;
-        halign = Gtk.Align.CENTER;
+
         progression_label = new Gtk.Label ("");
-        progression_label.get_style_context ().add_class ("progression-label");
         time_label = new Gtk.Label ("");
+        progression_label.get_style_context ().add_class ("progression-label");
         time_label.get_style_context ().add_class ("time-label");
         progression_label.margin_right = time_label.margin_left = 3;
 
@@ -125,9 +123,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         scale.events |= Gdk.EventMask.POINTER_MOTION_MASK;
         scale.events |= Gdk.EventMask.LEAVE_NOTIFY_MASK;
         scale.events |= Gdk.EventMask.ENTER_NOTIFY_MASK;
-
-        is_grabbing = false;
-        is_hovering = false;
 
         set_duration (playback_duration);
         set_progress (0);
@@ -185,8 +180,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         if (progress < 0.0) {
             warning ("Progress value less than zero, progress set to 0.0");
             progress = 0.0;
-        }
-        else if (progress > 1.0) {
+        } else if (progress > 1.0) {
             warning ("Progress value greater than zero, progress set to 1.0");
             progress = 1.0;
         }
@@ -219,7 +213,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
             natural_width = width;
         }
     }
-
 
     /*
      * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
