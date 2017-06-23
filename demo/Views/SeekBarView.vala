@@ -24,7 +24,8 @@ public class SeekBarView : Gtk.Grid {
     private Gtk.Label preview_label;
 
     public SeekBarView () {
-        Object (valign: Gtk.Align.CENTER);
+        Object (valign: Gtk.Align.CENTER,
+                margin: 24);
     }
 
     construct {
@@ -43,36 +44,42 @@ public class SeekBarView : Gtk.Grid {
 
         preview_popover.relative_to = seek_bar.scale;
 
-        seek_bar.scale_motion.connect ((event) => {
+        seek_bar.scale.motion_notify_event.connect ((event) => {
             update_pointing ((int) event.x);
             if (!seek_bar.is_grabbing) {
                 var duration_decimal = (event.x / ((double) event.window.get_width ()));
-                var duration_mins = seek_bar.seconds_to_time ((int) (duration_decimal * seek_bar.playback_duration));
+                var duration_mins = Granite.Widgets.SeekBar.seconds_to_time ((int) (duration_decimal * seek_bar.playback_duration));
                 preview_label.label = duration_mins.to_string ();
             }
+            return false;
         });
 
-        seek_bar.scale_hover.connect (() => {
+        seek_bar.scale.enter_notify_event.connect (() => {
             preview_popover.set_visible (true);
+            return false;
         });
 
-        seek_bar.scale_leave.connect (() => {
+        seek_bar.scale.leave_notify_event.connect (() => {
             preview_popover.set_visible (false);
+            return false;
         });
 
-        seek_bar.scale_button_press.connect (() => {
+        seek_bar.scale.button_press_event.connect (() => {
             preview_label.height_request = 50;
+            return false;
         });
 
-        seek_bar.scale_button_release.connect (() => {
+        seek_bar.scale.button_release_event.connect (() => {
             preview_label.height_request = 0;
+            return false;
         });
 
-        seek_bar.scroll_action.connect ((scroll, new_value) => {
+        seek_bar.scale.change_value.connect ((scroll, new_value) => {
             if (new_value >= 0.0 && new_value <= 1.0) {
-                var duration_mins = seek_bar.seconds_to_time ((int) (new_value * seek_bar.playback_duration));
+                var duration_mins = Granite.Widgets.SeekBar.seconds_to_time ((int) (new_value * seek_bar.playback_duration));
                 preview_label.label = duration_mins.to_string ();
             }
+            return false;
         });
 
         add (seek_bar);

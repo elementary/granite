@@ -16,10 +16,10 @@
  */
 
 /**
- * This widget is a playback statusbar that contains a gtk.scale widget and
- * two labels showing the current time and the time remaining.
+ * This widget is a playback statusbar that contains a Gtk.Scale widget and
+ * two labels displaying the current progression and the total duration.
  *
- * Granite.SeekBar will get the style class .app-notification
+ * Granite.SeekBar will get the style class .seek-bar
  *
  * {{../../doc/images/SeekBar.png}}
  */
@@ -61,41 +61,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     public Gtk.Scale scale { get; construct set; }
 
     /*
-     * Emitted when the scale's window is hovered over.
-     */
-    public signal void scale_hover (Gdk.EventCrossing event);
-
-    /*
-     * Emitted when the pointer leaves the scale's window.
-     */
-    public signal void scale_leave (Gdk.EventCrossing event);
-
-    /*
-     * Emitted when the pointer moves over the scale.
-     */
-    public signal void scale_motion (Gdk.EventMotion event);
-
-    /*
-     * Emitted when the scale button is pressed.
-     */
-    public signal void scale_button_press (Gdk.EventButton event);
-
-    /*
-     * Emitted when the scale button is released.
-     */
-    public signal void scale_button_release (Gdk.EventButton event);
-
-    /*
-     * Emitted when a scroll action is performed on the scale.
-     */
-    public signal void scroll_action (Gtk.ScrollType scroll, double new_value);
-
-    /*
-     * Emitted when the region has been allocated for the scale.
-     */
-    //public signal void scale_size_allocate (Gtk.Allocation alloc_rect);
-
-    /*
      * Creates a new SeekBar with a fixed playback duration.
      * */
     public SeekBar (double playback_duration) {
@@ -127,45 +92,31 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         set_duration (playback_duration);
         set_progress (0);
 
-        /* signals */
-        scale.button_press_event.connect ((event) => {
+        /* signal property setting */
+        scale.button_press_event.connect (() => {
             is_grabbing = true;
-            scale_button_press (event);
             return false;
         });
 
-        scale.button_release_event.connect ((event) => {
+        scale.button_release_event.connect (() => {
             is_grabbing = false;
             set_progress (scale.get_value ());
-            scale_button_release (event);
             return false;
         });
 
-        scale.enter_notify_event.connect ((event) => {
+        scale.enter_notify_event.connect (() => {
             is_hovering = true;
-            scale_hover (event);
             return false;
         });
 
-        scale.leave_notify_event.connect ((event) => {
+        scale.leave_notify_event.connect (() => {
             is_hovering = false;
-            scale_leave (event);
             return false;
         });
 
-        scale.motion_notify_event.connect ((event) => {
+        scale.motion_notify_event.connect (() => {
             set_progress (scale.get_value ());
-            scale_motion (event);
             return false;
-        });
-
-        scale.change_value.connect ((scroll, new_value) => {
-            scroll_action (scroll, new_value);
-            return false;
-        });
-
-        scale.size_allocate.connect ((alloc_rect) => {
-            //scale_size_allocate (alloc_rect);
         });
 
         add (progression_label);
@@ -174,20 +125,20 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     }
 
     /*
-     * Sets the progress of the SeekBar, with a value between 0.0 and 1.0.
+     * Sets the progress of the SeekBar with a value between 0.0 and 1.0.
      * */
     public void set_progress (double progress) {
         if (progress < 0.0) {
-            warning ("Progress value less than zero, progress set to 0.0");
+            warning ("Progress value less than 0.0, progress set to 0.0");
             progress = 0.0;
         } else if (progress > 1.0) {
-            warning ("Progress value greater than zero, progress set to 1.0");
+            warning ("Progress value greater than 1.0, progress set to 1.0");
             progress = 1.0;
         }
 
         this.playback_progress = progress;
         scale.set_value (playback_progress);
-        progression_label.label = seconds_to_time ((int) (playback_progress*playback_duration));
+        progression_label.label = seconds_to_time ((int) (playback_progress * playback_duration));
     }
 
     /*
@@ -206,8 +157,15 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
         base.get_preferred_width (out minimum_width, out natural_width);
 
-        if (parent.get_window () == null)
+        if (parent == null) {
             return;
+        }
+
+        var window = parent.get_window ();
+        if (window == null) {
+            return;
+        }
+
         var width = parent.get_window ().get_width ();
         if (width > 0 && width >= minimum_width) {
             natural_width = width;
@@ -217,7 +175,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     /*
      * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
      */
-    public string seconds_to_time (int seconds) {
+    public static string seconds_to_time (int seconds) {
         int hours = seconds / 3600;
         string min = normalize_time ((seconds % 3600) / 60);
         string sec = normalize_time (seconds % 60);
@@ -229,7 +187,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         }
     }
 
-    private string normalize_time (int time) {
+    private static string normalize_time (int time) {
         if (time < 10) {
             return "0%d".printf (time);
         } else {
