@@ -46,8 +46,6 @@ namespace Granite.Widgets {
         private Gtk.Button default_action_button;
         private string _title;
         private uint timeout_id;
-        private const uint DURATION_LONG = 3500;
-        private const uint DURATION_SHORT = 2000;
 
         /**
          * The notification text label to be displayed inside of #this
@@ -133,9 +131,9 @@ namespace Granite.Widgets {
                 uint duration;
 
                 if (default_action_button.visible) {
-                    duration = DURATION_LONG;
+                    duration = 3500;
                 } else {
-                    duration = DURATION_SHORT;
+                    duration = 2000;
                 }
 
                 timeout_id = GLib.Timeout.add (duration, () => {
