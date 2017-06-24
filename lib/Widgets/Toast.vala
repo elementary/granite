@@ -45,6 +45,7 @@ namespace Granite.Widgets {
         private Gtk.Label notification_label;
         private Gtk.Button default_action_button;
         private string _title;
+        private uint timeout_id;
         private const uint DURATION_LONG = 3500;
         private const uint DURATION_SHORT = 2000;
 
@@ -85,6 +86,7 @@ namespace Granite.Widgets {
             default_action_button.no_show_all = true;
             default_action_button.clicked.connect (() => {
                 reveal_child = false;
+                Source.remove (timeout_id);
                 default_action ();
             });
 
@@ -92,6 +94,7 @@ namespace Granite.Widgets {
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
                 reveal_child = false;
+                Source.remove (timeout_id);
                 closed ();
             });
 
@@ -138,7 +141,7 @@ namespace Granite.Widgets {
                     duration = DURATION_SHORT;
                 }
 
-                GLib.Timeout.add (duration, () => {
+                timeout_id = GLib.Timeout.add (duration, () => {
                     reveal_child = false;
                     return false;
                 });
