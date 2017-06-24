@@ -45,6 +45,8 @@ namespace Granite.Widgets {
         private Gtk.Label notification_label;
         private Gtk.Button default_action_button;
         private string _title;
+        private const uint DURATION_LONG = 3500;
+        private const uint DURATION_SHORT = 2000;
 
         /**
          * The notification text label to be displayed inside of #this
@@ -60,6 +62,11 @@ namespace Granite.Widgets {
                 _title = value;
             }
         }
+
+        /**
+         * The duration until #this is automatically dismissed
+         */
+        public uint duration { get; set; }
 
         /**
          * Creates a new Toast with #title as its title
@@ -122,7 +129,20 @@ namespace Granite.Widgets {
          * Sends the Toast on behalf of #this
          */
         public void send_notification () {
-            reveal_child = true;
+            if (!child_revealed) {
+                reveal_child = true;
+
+                if (default_action_button.visible) {
+                    duration = DURATION_LONG;
+                } else {
+                    duration = DURATION_SHORT;
+                }
+
+                GLib.Timeout.add (duration, () => {
+                    reveal_child = false;
+                    return false;
+                });
+            }
         }
     }
 }
