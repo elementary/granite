@@ -138,7 +138,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
 
         this.playback_progress = progress;
         scale.set_value (playback_progress);
-        progression_label.label = seconds_to_time ((int) (playback_progress * playback_duration));
+        progression_label.label = DateTime.seconds_to_time ((int) (playback_progress * playback_duration));
     }
 
     /*
@@ -151,7 +151,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         }
 
         this.playback_duration = duration;
-        time_label.label = seconds_to_time ((int) duration);
+        time_label.label = DateTime.seconds_to_time ((int) duration);
     }
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
@@ -171,28 +171,4 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
             natural_width = width;
         }
     }
-
-    /*
-     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
-     */
-    public static string seconds_to_time (int seconds) {
-        int hours = seconds / 3600;
-        string min = normalize_time ((seconds % 3600) / 60);
-        string sec = normalize_time (seconds % 60);
-
-        if (hours > 0) {
-            return ("%d:%s:%s".printf (hours, min, sec));
-        } else {
-            return ("%s:%s".printf (min, sec));
-        }
-    }
-
-    private static string normalize_time (int time) {
-        if (time < 10) {
-            return "0%d".printf (time);
-        } else {
-            return "%d".printf (time);
-        }
-    }
 }
-
