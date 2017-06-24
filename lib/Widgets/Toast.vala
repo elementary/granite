@@ -65,11 +65,6 @@ namespace Granite.Widgets {
         }
 
         /**
-         * The duration until #this is automatically dismissed
-         */
-        public uint duration { get; set; }
-
-        /**
          * Creates a new Toast with #title as its title
          */
         public Toast (string title) {
@@ -134,6 +129,8 @@ namespace Granite.Widgets {
         public void send_notification () {
             if (!child_revealed) {
                 reveal_child = true;
+
+                uint duration;
 
                 if (default_action_button.visible) {
                     duration = DURATION_LONG;
