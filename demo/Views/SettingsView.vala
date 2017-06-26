@@ -28,6 +28,8 @@ public class SettingsView : Granite.SimpleSettingsPage {
         );
 
         var label = new Gtk.Label ("This is the content area where settings would go!");
+        label.hexpand = true;
+        label.vexpand = true;
 
         content_area.add (label);
 

@@ -57,21 +57,24 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     construct {
         var header_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        header_icon.valign = Gtk.Align.START;
 
         var header_label = new Gtk.Label (title);
+        header_label.xalign = 0;
         header_label.get_style_context ().add_class ("h2");
 
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;
-        header_area.add (header_icon);
-        header_area.add (header_label);
+        header_area.row_spacing = 3;
+        header_area.attach (header_icon, 0, 0, 1, 2);
+        header_area.attach (header_label, 1, 0, 1, 1);
 
         if (description != null) {
-            var description_icon = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-            description_icon.xalign = 0;
-            description_icon.tooltip_text = description;
+            var description_label = new Gtk.Label (description);
+            description_label.xalign = 0;
+            description_label.wrap = true;
 
-            header_area.add (description_icon);
+            header_area.attach (description_label, 1, 1, 1, 1);
         }
 
         if (activatable) {
@@ -79,7 +82,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
             status_switch.hexpand = true;
             status_switch.halign = Gtk.Align.END;
             status_switch.valign = Gtk.Align.CENTER;
-            header_area.add (status_switch);
+            header_area.attach (status_switch, 2, 0, 1, 1);
         }
 
         content_area = new Gtk.Grid ();
