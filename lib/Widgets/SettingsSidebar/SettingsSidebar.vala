@@ -42,7 +42,7 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
 
             var page = (SettingsPage) child;
 
-            var row = new SettingsSidebarRow (page.icon_name, page.title);
+            var row = new SettingsSidebarRow.from_icon_name (page.icon_name, page.title);
             row.name = name;
             row.header = page.header;
 

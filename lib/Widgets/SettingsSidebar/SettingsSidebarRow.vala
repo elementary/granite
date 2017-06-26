@@ -37,6 +37,8 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         }
     }
 
+    public Gtk.Widget display_widget { get; construct; }
+
     public string? header { get; set; }
 
     public string icon_name {
@@ -45,7 +47,7 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         }
         set {
             _icon_name = value;
-            icon.icon_name = value;
+            ((Gtk.Image) display_widget).icon_name = value;
         } 
     }
 
@@ -67,14 +69,20 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         }
     }
 
-    private Gtk.Image icon;
     private Gtk.Image status_icon;
     private Gtk.Label status_label;
     private Gtk.Label title_label;
     private string _icon_name;
     private string _title;
 
-    public SettingsSidebarRow (string icon_name, string title) {
+    public SettingsSidebarRow (Gtk.Widget display_widget, string title) {
+        Object (
+            display_widget: display_widget,
+            title: title
+        );
+    }
+
+    public SettingsSidebarRow.from_icon_name (string icon_name, string title) {
         Object (
             icon_name: icon_name,
             title: title
@@ -82,8 +90,10 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     }
 
     construct {
-        icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND);
-        icon.pixel_size = 32;
+        if (icon_name != null) {
+            display_widget = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND);
+            ((Gtk.Image) display_widget).pixel_size = 32;
+        }
 
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
@@ -102,7 +112,7 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
         var overlay = new Gtk.Overlay ();
         overlay.width_request = 38;
-        overlay.add (icon);
+        overlay.add (display_widget);
         overlay.add_overlay (status_icon);
 
         var grid = new Gtk.Grid ();
