@@ -30,8 +30,9 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     }
 
     public StatusType status_type { get; set; default = StatusType.NONE; } // Making the enum nullable seems to break it
+    public Gtk.Widget? display_widget { get; construct; }
     public string? header { get; construct; }
-    public string icon_name { get; construct; }
+    public string? icon_name { get; construct; }
     public string status { get; set; }
     public string title { get; construct; }
 }
