@@ -63,10 +63,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         content_area = new Gtk.Grid ();
         content_area.column_spacing = 12;
         content_area.row_spacing = 12;
+        content_area.vexpand = true;
 
         action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        action_area.vexpand = true;
-        action_area.valign = Gtk.Align.END;
         action_area.set_layout (Gtk.ButtonBoxStyle.END);
         action_area.set_spacing (6);
 

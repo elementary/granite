@@ -84,6 +84,7 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
     public SettingsSidebarRow.from_icon_name (string icon_name, string title) {
         Object (
+            display_widget: new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND),
             icon_name: icon_name,
             title: title
         );
@@ -91,7 +92,6 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
     construct {
         if (icon_name != null) {
-            display_widget = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND);
             ((Gtk.Image) display_widget).pixel_size = 32;
         }
 
