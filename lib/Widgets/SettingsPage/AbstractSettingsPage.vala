@@ -17,7 +17,18 @@
 * Boston, MA 02110-1301 USA
 */
 
+/**
+ * AbstractSettingsPage is a #Gtk.ScrolledWindow subclass with properties used
+ * by other Granite settings widgets.
+ */
+
 public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
+    /**
+     * An icon name associated with #this
+     */
     public string? icon_name { get; construct; }
+    /**
+     * A title associated with #this
+     */
     public string title { get; construct; }
 }
