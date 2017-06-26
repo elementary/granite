@@ -48,8 +48,9 @@ set (VALA_SOURCES
     Widgets/OverlayBar.vala
     Widgets/HeaderLabel.vala
 
-    Widgets/SettingsSidebar/AbstractSettingsPage.vala
-    Widgets/SettingsSidebar/AbstractSimpleSettingsPage.vala
+    Widgets/SettingsPage/AbstractSettingsPage.vala
+    Widgets/SettingsPage/AbstractSimpleSettingsPage.vala
+
     Widgets/SettingsSidebar/SettingsSidebar.vala
     Widgets/SettingsSidebar/SettingsSidebarRow.vala
 )
