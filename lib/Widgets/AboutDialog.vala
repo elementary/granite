@@ -26,6 +26,7 @@ namespace Granite.Widgets {
      *
      * {{../../doc/images/AboutDialog.png}}
      */
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.
