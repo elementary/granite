@@ -42,7 +42,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     public Gtk.Grid content_area { get; construct; }
 
     /**
-     * A #Gtk.Switch that appears in the header area when #this.activable is #true
+     * A #Gtk.Switch that appears in the header area when #this.activatable is #true
      */
     public Gtk.Switch status_switch { get; construct; }
 
