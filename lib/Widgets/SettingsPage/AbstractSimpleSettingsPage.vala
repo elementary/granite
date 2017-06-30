@@ -144,7 +144,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         action_area.set_layout (Gtk.ButtonBoxStyle.END);
-        action_area.set_spacing (6);
+        action_area.spacing = 6;
 
         var grid = new Gtk.Grid ();
         grid.margin = 12;
