@@ -27,13 +27,48 @@ public class SettingsView : Granite.SimpleSettingsPage {
             title: "SimpleSettingsPage"
         );
 
-        var label = new Gtk.Label ("This is the content area where settings would go!");
-        label.hexpand = true;
-        label.vexpand = true;
+        var icon_label = new Gtk.Label ("Icon Name:");
+        icon_label.xalign = 1;
 
-        content_area.add (label);
+        var icon_entry = new Gtk.Entry ();
+        icon_entry.hexpand = true;
+        icon_entry.placeholder_text = "This page's icon name";
+        icon_entry.text = "preferences-system";
+
+        var title_label = new Gtk.Label ("Title:");
+        title_label.xalign = 1;
+
+        var title_entry = new Gtk.Entry ();
+        title_entry.hexpand = true;
+        title_entry.placeholder_text = "This page's title";
+
+        var description_label = new Gtk.Label ("Description:");
+        description_label.xalign = 1;
+
+        var description_entry = new Gtk.Entry ();
+        description_entry.hexpand = true;
+        description_entry.placeholder_text = "This page's description";
+
+        content_area.attach (icon_label, 0, 0, 1, 1);
+        content_area.attach (icon_entry, 1, 0, 1, 1);
+        content_area.attach (title_label, 0, 1, 1, 1);
+        content_area.attach (title_entry, 1, 1, 1, 1);
+        content_area.attach (description_label, 0, 2, 1, 1);
+        content_area.attach (description_entry, 1, 2, 1, 1);
 
         var button = new Gtk.Button.with_label ("Test Button");
+
+        description_entry.changed.connect (() => {
+            description = description_entry.text;
+        });
+
+        icon_entry.changed.connect (() => {
+            icon_name = icon_entry.text;
+        });
+
+        title_entry.changed.connect (() => {
+            title = title_entry.text;
+        });
 
         action_area.add (button);
     }

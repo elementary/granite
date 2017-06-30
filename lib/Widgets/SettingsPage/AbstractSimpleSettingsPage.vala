@@ -24,6 +24,13 @@
  */
 
 public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
+    private Gtk.Image header_icon;
+    private Gtk.Label description_label;
+    private Gtk.Label title_label;
+    private string _description;
+    private string _icon_name;
+    private string _title;
+
     /**
      * A #Gtk.ButtonBox used as the action area for #this
      */
@@ -47,7 +54,47 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * Creates a #Gtk.Label with a page description in the header of #this
      */
-    public string description { get; construct; }
+    public string description {
+        get {
+            return _description;
+        } 
+        construct set {
+            if (description_label != null) {
+                description_label.label = value;
+            }
+            _description = value;
+        }
+    }
+
+    /**
+     * An icon name associated with #this
+     */
+    public string icon_name {
+        get {
+            return _icon_name;
+        } 
+        construct set {
+            if (header_icon != null) {
+                header_icon.icon_name = value;
+            }
+            _icon_name = value;
+        }
+    }
+
+    /**
+     * A title associated with #this
+     */
+    public string title {
+        get {
+            return _title;
+        } 
+        construct set {
+            if (title_label != null) {
+                title_label.label = value;
+            }
+            _title = value;
+        }
+    }
 
     /**
      * Creates a new SimpleSettingsPage
@@ -60,21 +107,22 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     }
 
     construct {
-        var header_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        header_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        header_icon.pixel_size = 48;
         header_icon.valign = Gtk.Align.START;
 
-        var header_label = new Gtk.Label (title);
-        header_label.xalign = 0;
-        header_label.get_style_context ().add_class ("h2");
+        title_label = new Gtk.Label (title);
+        title_label.xalign = 0;
+        title_label.get_style_context ().add_class ("h2");
 
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;
         header_area.row_spacing = 3;
         header_area.attach (header_icon, 0, 0, 1, 2);
-        header_area.attach (header_label, 1, 0, 1, 1);
+        header_area.attach (title_label, 1, 0, 1, 1);
 
         if (description != null) {
-            var description_label = new Gtk.Label (description);
+            description_label = new Gtk.Label (description);
             description_label.xalign = 0;
             description_label.wrap = true;
 

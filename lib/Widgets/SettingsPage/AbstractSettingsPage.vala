@@ -27,6 +27,7 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
      * An icon name associated with #this
      */
     public string? icon_name { get; construct set; }
+
     /**
      * A title associated with #this
      */
