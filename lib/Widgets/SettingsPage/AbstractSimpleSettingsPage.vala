@@ -27,12 +27,12 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * A #Gtk.ButtonBox used as the action area for #this
      */
-    public Gtk.ButtonBox action_area;
+    public Gtk.ButtonBox action_area { get; construct; }
 
     /**
      * A #Gtk.Grid used as the content area for #this
      */
-    public Gtk.Grid content_area;
+    public Gtk.Grid content_area { get; construct; }
 
     /**
      * A #Gtk.Switch that appears in the header area when #this.activable is #true
