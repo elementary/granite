@@ -33,7 +33,7 @@ public class SettingsView : Granite.SimpleSettingsPage {
         var icon_entry = new Gtk.Entry ();
         icon_entry.hexpand = true;
         icon_entry.placeholder_text = "This page's icon name";
-        icon_entry.text = "preferences-system";
+        icon_entry.text = icon_name;
 
         var title_label = new Gtk.Label ("Title:");
         title_label.xalign = 1;
