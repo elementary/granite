@@ -37,12 +37,16 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * A #Gtk.Switch that appears in the header area when #this.activable is #true
      */
-    public Gtk.Switch? status_switch;
+    public Gtk.Switch status_switch;
 
     /**
      * Creates a #Gtk.Switch #status_switch in the header of #this
      */
     public bool activatable { get; construct; }
+
+    /**
+     * Creates a #Gtk.Label with a page description in the header of #this
+     */
     public string description { get; construct; }
 
     /**
