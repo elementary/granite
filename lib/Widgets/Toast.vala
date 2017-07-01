@@ -79,7 +79,9 @@ namespace Granite.Widgets {
             default_action_button.no_show_all = true;
             default_action_button.clicked.connect (() => {
                 reveal_child = false;
-                Source.remove (timeout_id);
+                if (timeout_id != 0) {
+                    Source.remove (timeout_id);
+                }
                 default_action ();
             });
 
@@ -87,7 +89,9 @@ namespace Granite.Widgets {
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
                 reveal_child = false;
-                Source.remove (timeout_id);
+                if (timeout_id != 0) {
+                    Source.remove (timeout_id);
+                }
                 closed ();
             });
 
@@ -138,6 +142,7 @@ namespace Granite.Widgets {
 
                 timeout_id = GLib.Timeout.add (duration, () => {
                     reveal_child = false;
+                    timeout_id = 0;
                     return false;
                 });
             }
