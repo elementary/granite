@@ -293,12 +293,13 @@ namespace Granite.Widgets.Utils {
      * @return the schema name
      */
     public string? get_button_layout_schema () {
-        var schemas = GLib.Settings.list_schemas ();
+        var sss = SettingsSchemaSource.get_default ();
 
-        if (PANTHEON_SETTINGS_PATH in schemas)
+        if (sss.lookup (PANTHEON_SETTINGS_PATH, false) != null) {
             return PANTHEON_SETTINGS_PATH;
-        else if (WM_SETTINGS_PATH in schemas)
+        } else if (sss.lookup (WM_SETTINGS_PATH, false) != null) {
             return WM_SETTINGS_PATH;
+        }
 
         warning ("No schema indicating the button-layout is installed.");
         return null;
