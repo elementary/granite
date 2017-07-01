@@ -64,7 +64,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
 
     private void load_image (string filepath, int pixel_size) {
         try {
-            var size = pixel_size * get_style_context ().get_scale ();
+            var size = pixel_size * get_scale_factor ();
             pixbuf = new Gdk.Pixbuf.from_file_at_size (filepath, size, size);
         } catch (Error e) {
             show_default (pixel_size);
