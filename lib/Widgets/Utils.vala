@@ -40,7 +40,9 @@ public enum Granite.TextStyle {
     H3;
 
     /**
-     * Gets style sheet of text style
+     * Converts this to a CSS style string that could be used with e.g: {@link Granite.Widgets.Utils.set_theming}.
+     *
+     * @param style_class the style class used for this
      *
      * @return CSS of text style
      */
@@ -66,7 +68,7 @@ public enum Granite.TextStyle {
 
 /**
  * An enum used to derermine where the window manager currently displays it's close button on windows.
- * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}
+ * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
  */
 public enum Granite.CloseButtonPosition
 {
