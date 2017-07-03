@@ -67,7 +67,7 @@ public enum Granite.TextStyle {
 }
 
 /**
- * An enum used to derermine where the window manager currently displays it's close button on windows.
+ * An enum used to derermine where the window manager currently displays its close button on windows.
  * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
  */
 public enum Granite.CloseButtonPosition
@@ -187,9 +187,9 @@ namespace Granite.Widgets.Utils {
     /**
      * Applies colorPrimary property to the window. The colorPrimary property currently changes
      * the color of the {@link Gtk.HeaderBar} and it's children so that the application window
-     * can have a so called "brand color".
+     * can have a so-called "brand color".
      *
-     * Note that this currently only works with the egtk theme elementary OS uses.
+     * Note that this currently only works with the default stylesheet that elementary OS uses.
      *
      * @param window the widget to apply the color, for most cases the widget will be actually the {@link Gtk.Window} itself
      * @param color the color to apply
