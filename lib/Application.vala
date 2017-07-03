@@ -237,6 +237,7 @@ namespace Granite {
          *
          * @param parent This widget is the window that is calling the about page being created.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public virtual void show_about (Gtk.Widget parent) {
             assert (parent is Gtk.Window);
 
