@@ -45,6 +45,7 @@ namespace Granite.Widgets {
         private Gtk.Label notification_label;
         private Gtk.Button default_action_button;
         private string _title;
+        private uint timeout_id;
 
         /**
          * The notification text label to be displayed inside of #this
@@ -78,6 +79,10 @@ namespace Granite.Widgets {
             default_action_button.no_show_all = true;
             default_action_button.clicked.connect (() => {
                 reveal_child = false;
+                if (timeout_id != 0) {
+                    Source.remove (timeout_id);
+                    timeout_id = 0;
+                }
                 default_action ();
             });
 
@@ -85,6 +90,10 @@ namespace Granite.Widgets {
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
                 reveal_child = false;
+                if (timeout_id != 0) {
+                    Source.remove (timeout_id);
+                    timeout_id = 0;
+                }
                 closed ();
             });
 
@@ -122,7 +131,23 @@ namespace Granite.Widgets {
          * Sends the Toast on behalf of #this
          */
         public void send_notification () {
-            reveal_child = true;
+            if (!child_revealed) {
+                reveal_child = true;
+
+                uint duration;
+
+                if (default_action_button.visible) {
+                    duration = 3500;
+                } else {
+                    duration = 2000;
+                }
+
+                timeout_id = GLib.Timeout.add (duration, () => {
+                    reveal_child = false;
+                    timeout_id = 0;
+                    return false;
+                });
+            }
         }
     }
 }
