@@ -81,6 +81,7 @@ namespace Granite.Widgets {
                 reveal_child = false;
                 if (timeout_id != 0) {
                     Source.remove (timeout_id);
+                    timeout_id = 0;
                 }
                 default_action ();
             });
@@ -91,6 +92,7 @@ namespace Granite.Widgets {
                 reveal_child = false;
                 if (timeout_id != 0) {
                     Source.remove (timeout_id);
+                    timeout_id = 0;
                 }
                 closed ();
             });
