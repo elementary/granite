@@ -19,17 +19,16 @@
  *
  */
 
-/**
- * Toasts are small in-app notifications that provide feedback about an operation
- * in a small popup. They only fill the space required to show the message and do
- * not block the UI.
- *
- * Granite.Widgets.Toast will get the style class .app-notification
- *
- * {{../../doc/images/Toast.png}}
- */
-
 namespace Granite.Widgets {
+    /**
+     * Toasts are small in-app notifications that provide feedback about an operation
+     * in a small popup. They only fill the space required to show the message and do
+     * not block the UI.
+     *
+     * Granite.Widgets.Toast will get the style class .app-notification
+     *
+     * {{../../doc/images/Toast.png}}
+     */
     public class Toast : Gtk.Revealer {
 
         /**

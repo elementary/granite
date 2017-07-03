@@ -23,24 +23,26 @@ public enum Granite.TextStyle {
      * Highest level header
      */
     TITLE,
-    
+
     /**
      * Second highest header
      */
     H1,
-    
+
     /**
      * Third highest header
      */
     H2,
-    
+
     /**
      * Fourth Highest Header
      */
     H3;
 
     /**
-     * Gets style sheet of text style
+     * Converts this to a CSS style string that could be used with e.g: {@link Granite.Widgets.Utils.set_theming}.
+     *
+     * @param style_class the style class used for this
      *
      * @return CSS of text style
      */
@@ -64,13 +66,34 @@ public enum Granite.TextStyle {
     }
 }
 
+/**
+ * An enum used to derermine where the window manager currently displays its close button on windows.
+ * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
+ */
 public enum Granite.CloseButtonPosition
 {
     LEFT,
     RIGHT
 }
 
+/**
+ * The DateTime namespace contains useful functions for
+ * getting the default translated format for either date and time.
+ */
 namespace Granite.DateTime {
+    /**
+     * Gets a default translated time format.
+     * The function constructs a new string interpreting the //is_12h// and //with_second// parameters
+     * so that it can be used with formatting functions like {@link GLib.DateTime.format}.
+     *
+     * The returned string is formatted and translated. This function is mostly used to display
+     * the time in various user interfaces like the time displayed in the top panel.
+     *
+     * @param is_12h if the returned string should be formatted in 12h format
+     * @param with_second if the returned string should include seconds
+     *
+     * @return the formatted and located time string.
+     */
     public static string get_default_time_format (bool is_12h = false, bool with_second = false) {
         if (is_12h == true) {
             if (with_second == true) {
@@ -90,13 +113,34 @@ namespace Granite.DateTime {
             }
         }
     }
-    
+
+    /**
+     * Gets the //clock-format// key from //org.gnome.desktop.interface// schema
+     * and determines if the clock format is 12h based
+     *
+     * @return true if the clock format is 12h based, false otherwise.
+     */
     private static bool is_clock_format_12h () {
         var h24_settings = new Settings ("org.gnome.desktop.interface");
         var format = h24_settings.get_string ("clock-format");
         return (format.contains ("12h"));
     }
-    
+
+    /**
+     * Gets the default translated date format.
+     * The function constructs a new string interpreting the //with_weekday//, //with_day// and //with_year// parameters
+     * so that it can be used with formatting functions like {@link GLib.DateTime.format}.
+     *
+     * As the {@link Granite.DateTime.get_default_time_format}, the returned string is formatted, translated and is also mostly used to display
+     * the date in various user interfaces like the date displayed in the top panel.
+     *
+     * @param with_weekday if the returned string should contain the abbreviated weekday name
+     * @param with_day if the returned string should contain contain the day of the month as a decimal number (range 1 to 31)
+     * @param with_year if the returned string should contain the year as a decimal number including the century
+     *
+     * @return returns the formatted and located date string. If for some reason, the function could not determine the format to use,
+     *         an empty string will be returned.
+     */
     public static string get_default_date_format (bool with_weekday = false, bool with_day = true, bool with_year = false) {
         if (with_weekday == true && with_day == true && with_year == true) {
             /// TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
@@ -129,19 +173,28 @@ namespace Granite.DateTime {
 }
 
 /**
- * This class helps to apply CSS to widgets.
+ * This namespace contains functions to apply CSS stylesheets to widgets.
  */
 namespace Granite.Widgets.Utils {
 
+    /**
+     * This method should be not used in newly written Granite applications and you should
+     * consider it deprecated.
+     */
     [CCode (cname="get_close_pixbuf")]
     public extern Gdk.Pixbuf get_close_pixbuf ();
 
     /**
-     * Applies colorPrimary property to the window
-     * @param window the widget to apply the color
+     * Applies colorPrimary property to the window. The colorPrimary property currently changes
+     * the color of the {@link Gtk.HeaderBar} and it's children so that the application window
+     * can have a so-called "brand color".
+     *
+     * Note that this currently only works with the default stylesheet that elementary OS uses.
+     *
+     * @param window the widget to apply the color, for most cases the widget will be actually the {@link Gtk.Window} itself
      * @param color the color to apply
-     * @param priority the priority of the style provider
-     * 
+     * @param priority priorty of change, by default {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
+     *
      * @return the added {@link Gtk.CssProvider}, or null in case the parsing of
      *         stylesheet failed.
      */
@@ -153,12 +206,14 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Applies the stylesheet to the widget
-     * 
+     * Applies the //stylesheet// to the widget.
+     *
      * @param widget widget to apply style to
-     * @param stylesheet style to apply to screen
-     * @param class_name class name to add style to
-     * @param priority priorty of change
+     * @param stylesheet CSS style to apply to the widget
+     * @param class_name class name to add style to, pass null if no class should be applied to the //widget//
+     * @param priority priorty of change, for most cases this will be {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
+     *
+     * @return the {@link Gtk.CssProvider} that was applied to the //widget//.
      */
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
@@ -176,12 +231,14 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Applies a stylesheet to the given screen. This will affects all the
+     * Applies a stylesheet to the given //screen//. This will affect all the
      * widgets which are part of that screen.
-     * 
-     * @param screen Screen to apply style to
-     * @param stylesheet style to apply to screen
-     * @param priority priorty of change
+     *
+     * @param screen screen to apply style to, use {@link Gtk.Widget.get_screen} in order to get the screen that the widget is on
+     * @param stylesheet CSS style to apply to screen
+     * @param priority priorty of change, for most cases this will be {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
+     *
+     * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
      */
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -193,6 +250,12 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
+     * Constructs a new {@link Gtk.CssProvider} that will store the //stylesheet// data.
+     * This function uses {@link Gtk.CssProvider.load_from_data} internally so if this method fails
+     * then a warning will be thrown and null returned as a result.
+     *
+     * @param stylesheet CSS style to apply to the returned provider
+     *
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
      *         //stylesheet// failed.
      */
@@ -211,6 +274,11 @@ namespace Granite.Widgets.Utils {
         return provider;
     }
 
+    /**
+     * Determines if the widget should be drawn from left to right or otherwise.
+     *
+     * @return true if the widget should be drawn from left to right, false otherwise.
+     */
     internal bool is_left_to_right (Gtk.Widget widget) {
         var dir = widget.get_direction ();
         if (dir == Gtk.TextDirection.NONE)
@@ -220,7 +288,7 @@ namespace Granite.Widgets.Utils {
 
     /**
      * This method applies given text style to given label
-     * 
+     *
      * @param text_style text style to apply
      * @param label label to apply style to
      */
@@ -287,10 +355,10 @@ namespace Granite.Widgets.Utils {
     /**
      * This methods returns the schema used by {@link Granite.Widgets.Utils.get_default_close_button_position}
      * to determine the close button placement. It will first check for the pantheon/gala schema and then fallback
-     * to the default gnome one. If neither is available, NULL is returned. Make sure to check for this case, 
+     * to the default gnome one. If neither is available, null is returned. Make sure to check for this case,
      * as otherwise your program may crash on startup.
      *
-     * @return the schema name
+     * @return the schema name. If the layout could not be determined, a warning will be thrown and null will be returned
      */
     public string? get_button_layout_schema () {
         var sss = SettingsSchemaSource.get_default ();
