@@ -18,13 +18,6 @@
  */
 
 namespace Granite {
-
-    /**
-     * Global deprecated object..
-     */
-    [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
-    public static Granite.Application app;
-
     /**
      * This is the base class for all Granite-based apps. It has methods that help
      * to create a great deal of an app's functionality.
@@ -153,9 +146,6 @@ namespace Granite {
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
 
             add_actions ();
-
-            // Deprecated
-            Granite.app = this;
         }
 
 #if LINUX
