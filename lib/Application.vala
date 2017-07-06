@@ -34,7 +34,6 @@ namespace Granite {
          * The user facing name of the application. This name is used
          * throughout the application and should be capitalized correctly.
          */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string program_name;
 
         /**
