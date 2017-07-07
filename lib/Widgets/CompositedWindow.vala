@@ -23,7 +23,21 @@ using Gdk;
 namespace Granite.Widgets {
 
     /**
-     * A transparent window without decorations and so on. Useful for any kinds of overlays and similar things
+     * CompositedWindow is an invisible window without decorations or background.
+     *
+     * It is useful for handling different situations where the user has to
+     * "pick" something or select an area on the screen, although it can be used in other scenarios too.
+     * Most of the times the window will act as a surface to receive mouse / key press events from the user.
+     *
+     * CompositedWindow does not and will not try to set any default size. You are responsible to
+     * set it's size to e.g: the window's //screen// size to have the window cover the enire //screen// area.
+     *
+     * Note that you should provide a way for the user to exit the window since it's invisible.
+     * You can do that by connecting to {@link Gtk.Window.key_press_event} signal and seeing if
+     * e.g: the user pressed an Escape key. You should always {@link Gtk.Window.destroy} the window after
+     * it's not needed.
+     *
+     * Do not forget to call {@link Gtk.Window.show_all} to actually start receiving events.
      */
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
@@ -44,4 +58,3 @@ namespace Granite.Widgets {
         }
     }
 }
-
