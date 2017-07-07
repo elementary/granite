@@ -26,48 +26,20 @@
 
 public class Granite.Demo : Granite.Application {
     /**
-     * Basic app information for Granite.Application. This is used by the About dialog.
+     * Basic app information for Granite.Application.
      */
     construct {
         application_id = "org.pantheon.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
 
         program_name = "Granite Demo";
-        app_years = "2011-2017";
 
         build_version = "0.4.1";
         app_icon = "applications-interfacedesign";
-        main_url = "https://github.com/elementary/granite";
-        bug_url = "https://github.com/elementary/granite/issues";
-        help_url = "https://elementaryos.stackexchange.com/questions/tagged/development";
-        translate_url = "https://l10n.elementary.io/projects/desktop/granite";
-
-        about_documenters = { null };
-        about_artists = { "Daniel Foré <daniel@elementary.io>" };
-        about_authors = {
-            "Maxwell Barvian <mbarvian@gmail.com>",
-            "Daniel Foré <daniel@elementary.io>",
-            "Avi Romanoff <aviromanoff@gmail.com>",
-            "Lucas Baudin <xapantu@gmail.com>",
-            "Victor Eduardo <victoreduardm@gmail.com>",
-            "Tom Beckmann <tombeckmann@online.de>",
-            "Corentin Noël <corentin@elementary.io>"
-        };
-
-        about_comments = "A demo of the Granite toolkit";
-        about_translators = _("translator-credits");
-        about_license_type = Gtk.License.GPL_3_0;
     }
 
     public override void activate () {
         var window = new Gtk.Window ();
-
-        var about_button = new Gtk.Button.from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR);
-        about_button.tooltip_text = "About this application";
-
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.show_close_button = true;
-        headerbar.pack_end (about_button);
 
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
@@ -104,15 +76,10 @@ public class Granite.Demo : Granite.Application {
         window.add (paned);
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
-        window.set_titlebar (headerbar);
         window.title = "Granite Demo";
         window.show_all ();
 
         add_window (window);
-
-        about_button.clicked.connect (() => {
-            show_about (window);
-        });
     }
 
     public static int main (string[] args) {
