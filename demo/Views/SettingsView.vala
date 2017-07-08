@@ -1,5 +1,4 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*-
+/*
  * Copyright (c) 2017 elementary LLC. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
