@@ -33,11 +33,11 @@ namespace Granite.Widgets {
      * set it's size to e.g: the window's //screen// size to have the window cover the enire //screen// area.
      *
      * Note that you should provide a way for the user to exit the window since it's invisible.
-     * You can do that by connecting to {@link Gtk.Window.key_press_event} signal and seeing if
-     * e.g: the user pressed an Escape key. You should always {@link Gtk.Window.destroy} the window after
+     * You can do that by connecting to {@link Gtk.Widget.key_press_event} signal and seeing if
+     * e.g: the user pressed an Escape key. You should always {@link Gtk.Widget.destroy} the window after
      * it's not needed.
      *
-     * Do not forget to call {@link Gtk.Window.show_all} to actually start receiving events.
+     * Do not forget to call {@link Gtk.Widget.show_all} to actually start receiving events.
      */
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
