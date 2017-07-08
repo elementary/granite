@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 elementary LLC. (http://launchpad.net/switchboard-plug-security-privacy)
+* Copyright (c) 2017 elementary LLC. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
