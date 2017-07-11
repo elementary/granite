@@ -48,6 +48,7 @@ public class Granite.Demo : Granite.Application {
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
+        var settings_view = new SettingsView ();
         var source_list_view = new SourceListView ();
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
@@ -62,6 +63,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
+        main_stack.add_titled (settings_view, "settings", "SettingsPage");
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
