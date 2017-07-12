@@ -17,6 +17,10 @@
 * Boston, MA 02110-1301 USA
 */
 
+/**
+ * AbstractSettingsPage is a #Gtk.ScrolledWindow subclass with properties used
+ * by other Granite settings widgets.
+ */
 public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     public const string DISABLED = _("Disabled");
     public const string ENABLED = _("Enabled");
@@ -29,10 +33,21 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
         NONE
     }
 
-    public StatusType status_type { get; set; default = StatusType.NONE; } // Making the enum nullable seems to break it
+    public StatusType status_type { get; set; default = StatusType.NONE; }
+
     public Gtk.Widget? display_widget { get; construct; }
+
     public string? header { get; construct; }
-    public string? icon_name { get; construct; }
+
     public string status { get; set; }
-    public string title { get; construct; }
+
+    /**
+     * An icon name associated with #this
+     */
+    public string? icon_name { get; construct set; }
+
+    /**
+     * A title associated with #this
+     */
+    public string title { get; construct set; }
 }
