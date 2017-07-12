@@ -28,8 +28,6 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     private Gtk.Label description_label;
     private Gtk.Label title_label;
     private string _description;
-    private string _icon_name;
-    private string _title;
 
     /**
      * A #Gtk.ButtonBox used as the action area for #this

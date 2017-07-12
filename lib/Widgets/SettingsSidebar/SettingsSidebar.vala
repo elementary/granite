@@ -40,7 +40,7 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
 
             stack.child_get (child, "name", out name, null);
 
-            var page = (SimpleSettingsPage) child;
+            var page = (SettingsPage) child;
 
             SettingsSidebarRow row;
 

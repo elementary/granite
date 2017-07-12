@@ -17,11 +17,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-public class SettingsPage : Granite.SimpleSettingsPage {
+public class SettingsPage : Granite.SettingsPage {
     public SettingsPage () {
         Object (
-            activatable: true,
-            description: "This is a demo of Granite's SimpleSettingsPage"
+            icon_name: "preferences-desktop",
+            title: "Second Test Page"
         );
     }
 
@@ -41,25 +41,16 @@ public class SettingsPage : Granite.SimpleSettingsPage {
         title_entry.hexpand = true;
         title_entry.placeholder_text = "This page's title";
 
-        var description_label = new Gtk.Label ("Description:");
-        description_label.xalign = 1;
-
-        var description_entry = new Gtk.Entry ();
-        description_entry.hexpand = true;
-        description_entry.placeholder_text = "This page's description";
-
+        var content_area = new Gtk.Grid ();
+        content_area.column_spacing = 12;
+        content_area.row_spacing = 12;
+        content_area.margin = 12;
         content_area.attach (icon_label, 0, 0, 1, 1);
         content_area.attach (icon_entry, 1, 0, 1, 1);
         content_area.attach (title_label, 0, 1, 1, 1);
         content_area.attach (title_entry, 1, 1, 1, 1);
-        content_area.attach (description_label, 0, 2, 1, 1);
-        content_area.attach (description_entry, 1, 2, 1, 1);
 
-        var button = new Gtk.Button.with_label ("Test Button");
-
-        description_entry.changed.connect (() => {
-            description = description_entry.text;
-        });
+        add (content_area);
 
         icon_entry.changed.connect (() => {
             icon_name = icon_entry.text;
@@ -68,7 +59,5 @@ public class SettingsPage : Granite.SimpleSettingsPage {
         title_entry.changed.connect (() => {
             title = title_entry.text;
         });
-
-        action_area.add (button);
     }
 }

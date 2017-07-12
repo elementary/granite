@@ -19,13 +19,9 @@
 
 public class SettingsView : Gtk.Paned {
     construct {
-        var settings_page = new SettingsPage ();
-        settings_page.icon_name = "preferences-system";
-        settings_page.title = "First Test Page";
+        var settings_page = new SimpleSettingsPage ();
 
         var settings_page_two = new SettingsPage ();
-        settings_page_two.icon_name = "preferences-desktop";
-        settings_page_two.title = "Second Test Page";
 
         var stack = new Gtk.Stack ();
         stack.add_named (settings_page, "settings_page");

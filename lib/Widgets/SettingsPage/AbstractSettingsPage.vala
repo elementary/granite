@@ -22,6 +22,9 @@
  * by other Granite settings widgets.
  */
 public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
+    protected string _icon_name;
+    protected string _title;
+
     public const string DISABLED = _("Disabled");
     public const string ENABLED = _("Enabled");
 
@@ -44,10 +47,24 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     /**
      * An icon name associated with #this
      */
-    public string? icon_name { get; construct set; }
+    public string? icon_name {
+        get {
+            return _icon_name;
+        } 
+        construct set {
+            _icon_name = value;
+        }
+    }
 
     /**
      * A title associated with #this
      */
-    public string title { get; construct set; }
+    public string title {
+        get {
+            return _title;
+        } 
+        construct set {
+            _title = value;
+        }
+    }
 }

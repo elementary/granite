@@ -25,6 +25,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
 
     Views/SettingsView/SettingsView.vala
     Views/SettingsView/SettingsPage.vala
+    Views/SettingsView/SimpleSettingsPage.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES
