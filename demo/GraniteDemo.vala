@@ -63,7 +63,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
-        main_stack.add_titled (settings_view, "settings", "SettingsPage");
+        main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");

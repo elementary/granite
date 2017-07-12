@@ -18,11 +18,13 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/DynamicNotebookView.vala
     Views/ModeButtonView.vala
     Views/OverlayBarView.vala
-    Views/SettingsView.vala
     Views/SourceListView.vala
     Views/StorageView.vala
     Views/ToastView.vala
     Views/WelcomeView.vala
+
+    Views/SettingsView/SettingsView.vala
+    Views/SettingsView/SettingsPage.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES

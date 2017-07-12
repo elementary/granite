@@ -40,7 +40,7 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
 
             stack.child_get (child, "name", out name, null);
 
-            var page = (SettingsPage) child;
+            var page = (SimpleSettingsPage) child;
 
             SettingsSidebarRow row;
 
@@ -53,8 +53,10 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
             row.name = name;
             row.header = page.header;
 
+            page.bind_property ("icon-name", row, "icon-name", BindingFlags.DEFAULT);
             page.bind_property ("status", row, "status", BindingFlags.DEFAULT);
             page.bind_property ("status-type", row, "status-type", BindingFlags.DEFAULT);
+            page.bind_property ("title", row, "title", BindingFlags.DEFAULT);
 
             if (page.status != null) {
                 row.status = page.status;

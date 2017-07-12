@@ -17,15 +17,15 @@
  * Boston, MA 02111-1307, USA.
  */
 
-public class SettingsView : Granite.SimpleSettingsPage {
-    public SettingsView () {
+public class SettingsPage : Granite.SimpleSettingsPage {
+    public SettingsPage () {
         Object (
             activatable: true,
-            description: "This is a demo of Granite's SimpleSettingsPage",
-            icon_name: "preferences-system",
-            title: "SimpleSettingsPage"
+            description: "This is a demo of Granite's SimpleSettingsPage"
         );
+    }
 
+    construct {
         var icon_label = new Gtk.Label ("Icon Name:");
         icon_label.xalign = 1;
 
