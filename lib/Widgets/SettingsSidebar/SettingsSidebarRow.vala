@@ -48,6 +48,7 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         set {
             _icon_name = value;
             ((Gtk.Image) display_widget).icon_name = value;
+            ((Gtk.Image) display_widget).pixel_size = 32;
         } 
     }
 
@@ -91,10 +92,6 @@ public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     }
 
     construct {
-        if (icon_name != null) {
-            ((Gtk.Image) display_widget).pixel_size = 32;
-        }
-
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.xalign = 0;
