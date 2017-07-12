@@ -17,7 +17,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
-public class SettingsView : Gtk.Frame {
+public class SettingsView : Gtk.Paned {
     construct {
         var settings_page = new SettingsPage ();
         settings_page.icon_name = "preferences-system";
@@ -33,11 +33,7 @@ public class SettingsView : Gtk.Frame {
 
         var settings_sidebar = new Granite.SettingsSidebar (stack);
 
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.add (settings_sidebar);
-        paned.add (stack);
-
-        margin = 24;
-        add (paned);
+        add (settings_sidebar);
+        add (stack);
     }
 }
