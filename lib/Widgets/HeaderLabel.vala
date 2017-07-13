@@ -17,7 +17,15 @@
 * Boston, MA 02110-1301 USA
 */
 
+
+/**
+ * HeaderLabel is a start-aligned Gtk.Label with the Granite H4 style class
+ */
 public class Granite.HeaderLabel : Gtk.Label {
+
+    /**
+     * Create a new HeaderLabel
+     */
     public HeaderLabel (string label) {
         Object (
             halign: Gtk.Align.START,
@@ -27,6 +35,6 @@ public class Granite.HeaderLabel : Gtk.Label {
     }
 
     construct {
-        get_style_context ().add_class ("h4");
+        get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
     }
 }
