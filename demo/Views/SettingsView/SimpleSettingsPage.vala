@@ -22,6 +22,7 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
         Object (
             activatable: true,
             description: "This is a demo of Granite's SimpleSettingsPage",
+            header: "Simple Pages",
             icon_name: "preferences-system",
             title: "First Test Page"
         );
@@ -59,12 +60,30 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
 
         var button = new Gtk.Button.with_label ("Test Button");
 
+        if (status_switch.active) {
+            status_type = Granite.SettingsPage.StatusType.SUCCESS;
+            status = _("Enabled");
+        } else {
+            status_type = Granite.SettingsPage.StatusType.OFFLINE;
+            status = _("Disabled");
+        }
+
         description_entry.changed.connect (() => {
             description = description_entry.text;
         });
 
         icon_entry.changed.connect (() => {
             icon_name = icon_entry.text;
+        });
+
+        status_switch.notify["active"].connect (() => {
+            if (status_switch.active) {
+                status_type = Granite.SettingsPage.StatusType.SUCCESS;
+                status = _("Enabled");
+            } else {
+                status_type = Granite.SettingsPage.StatusType.OFFLINE;
+                status = _("Disabled");
+            }
         });
 
         title_entry.changed.connect (() => {

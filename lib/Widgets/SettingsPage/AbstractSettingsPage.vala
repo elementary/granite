@@ -25,9 +25,6 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     protected string _icon_name;
     protected string _title;
 
-    public const string DISABLED = _("Disabled");
-    public const string ENABLED = _("Enabled");
-
     public enum StatusType {
         ERROR,
         OFFLINE,

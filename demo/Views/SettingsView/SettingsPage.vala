@@ -20,20 +20,14 @@
 public class SettingsPage : Granite.SettingsPage {
     public SettingsPage () {
         Object (
-            icon_name: "preferences-desktop",
-            title: "Second Test Page"
+            display_widget: new Granite.Widgets.Avatar.from_file ("/var/lib/AccountsService/icons/%s".printf (Environment.get_user_name ()), 32),
+            header: "Manual Pages",
+            status: Environment.get_user_name (),
+            title: "Avatar Test Page"
         );
     }
 
     construct {
-        var icon_label = new Gtk.Label ("Icon Name:");
-        icon_label.xalign = 1;
-
-        var icon_entry = new Gtk.Entry ();
-        icon_entry.hexpand = true;
-        icon_entry.placeholder_text = "This page's icon name";
-        icon_entry.text = icon_name;
-
         var title_label = new Gtk.Label ("Title:");
         title_label.xalign = 1;
 
@@ -45,16 +39,10 @@ public class SettingsPage : Granite.SettingsPage {
         content_area.column_spacing = 12;
         content_area.row_spacing = 12;
         content_area.margin = 12;
-        content_area.attach (icon_label, 0, 0, 1, 1);
-        content_area.attach (icon_entry, 1, 0, 1, 1);
         content_area.attach (title_label, 0, 1, 1, 1);
         content_area.attach (title_entry, 1, 1, 1, 1);
 
         add (content_area);
-
-        icon_entry.changed.connect (() => {
-            icon_name = icon_entry.text;
-        });
 
         title_entry.changed.connect (() => {
             title = title_entry.text;
