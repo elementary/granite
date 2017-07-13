@@ -17,9 +17,23 @@
 * Boston, MA 02110-1301 USA
 */
 
+/**
+ * SettingsSidebar acts as a controller for a Gtk.Stack; it shows a row of buttons
+ * to switch between the various pages of the associated stack widget.
+ *
+ * All the content for the rows comes from the child properties of a Granite.SettingsPage
+ * inside of the Gtk.Stack
+ *
+ */
 public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
+    /**
+     * The Gtk.Stack to control
+     */
     public Gtk.Stack stack { get; construct; }
 
+    /**
+     * Create a new SettingsSidebar
+     */
     public SettingsSidebar (Gtk.Stack stack) {
         Object (
             hscrollbar_policy: Gtk.PolicyType.NEVER,

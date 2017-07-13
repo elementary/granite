@@ -17,7 +17,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-public class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
+private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     public SettingsPage.StatusType status_type {
         set {
             switch (value) {

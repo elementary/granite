@@ -33,12 +33,24 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
         NONE
     }
 
+    /**
+     * Selects a colored icon to be displayed in a Granite.SettingsSidebar
+     */
     public StatusType status_type { get; set; default = StatusType.NONE; }
 
+    /**
+     * A widget to display in place of an icon in a Granite.SettingsSidebar
+     */
     public Gtk.Widget? display_widget { get; construct; }
 
+    /**
+     * A header to be sorted under in a Granite.SettingsSidebar
+     */
     public string? header { get; construct; }
 
+    /**
+     * An status string associated with #this
+     */
     public string status { get; set; }
 
     /**
