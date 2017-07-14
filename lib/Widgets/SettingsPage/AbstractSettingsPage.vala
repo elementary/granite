@@ -25,6 +25,9 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     protected string _icon_name;
     protected string _title;
 
+    /**
+     * Used to display a status icon overlayed on the display_widget in a Granite.SettingsSidebar
+     */
     public enum StatusType {
         ERROR,
         OFFLINE,
@@ -49,12 +52,12 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     public string? header { get; construct; }
 
     /**
-     * An status string associated with #this
+     * A status string to be displayed underneath the title in a Granite.SettingsSidebar
      */
     public string status { get; set; }
 
     /**
-     * An icon name associated with #this
+     * An icon name to be displayed in a Granite.SettingsSidebar
      */
     public string? icon_name {
         get {
@@ -66,7 +69,7 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     }
 
     /**
-     * A title associated with #this
+     * A title to be displayed in a Granite.SettingsSidebar
      */
     public string title {
         get {
