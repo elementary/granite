@@ -53,33 +53,35 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
 
             stack.child_get (child, "name", out name, null);
 
-            var page = (SettingsPage) child;
+            if (child is SettingsPage) {
+                var page = (SettingsPage) child;
 
-            SettingsSidebarRow row;
+                SettingsSidebarRow row;
 
-            if (page.icon_name != null) {
-                row = new SettingsSidebarRow.from_icon_name (page.icon_name, page.title);
-            } else {
-                row = new SettingsSidebarRow (page.display_widget, page.title);
+                if (page.icon_name != null) {
+                    row = new SettingsSidebarRow.from_icon_name (page.icon_name, page.title);
+                } else {
+                    row = new SettingsSidebarRow (page.display_widget, page.title);
+                }
+
+                row.name = name;
+                row.header = page.header;
+
+                page.bind_property ("icon-name", row, "icon-name", BindingFlags.DEFAULT);
+                page.bind_property ("status", row, "status", BindingFlags.DEFAULT);
+                page.bind_property ("status-type", row, "status-type", BindingFlags.DEFAULT);
+                page.bind_property ("title", row, "title", BindingFlags.DEFAULT);
+
+                if (page.status != null) {
+                    row.status = page.status;
+                }
+
+                if (page.status_type != SettingsPage.StatusType.NONE) {
+                    row.status_type = page.status_type;
+                }
+
+                listbox.add (row);
             }
-
-            row.name = name;
-            row.header = page.header;
-
-            page.bind_property ("icon-name", row, "icon-name", BindingFlags.DEFAULT);
-            page.bind_property ("status", row, "status", BindingFlags.DEFAULT);
-            page.bind_property ("status-type", row, "status-type", BindingFlags.DEFAULT);
-            page.bind_property ("title", row, "title", BindingFlags.DEFAULT);
-
-            if (page.status != null) {
-                row.status = page.status;
-            }
-
-            if (page.status_type != SettingsPage.StatusType.NONE) {
-                row.status_type = page.status_type;
-            }
-
-            listbox.add (row);
         }
 
         listbox.row_selected.connect ((row) => {
