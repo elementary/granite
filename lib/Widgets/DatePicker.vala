@@ -17,9 +17,6 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-using Gtk;
-using Gdk;
-
 namespace Granite.Widgets {
 
     /**
@@ -47,7 +44,7 @@ namespace Granite.Widgets {
         /**
          * The Calendar to create the DatePicker
          */
-        protected Calendar calendar;
+        protected Gtk.Calendar calendar;
 
         private Gtk.Popover popover;
 
@@ -78,7 +75,7 @@ namespace Granite.Widgets {
             dropdown.margin = MARGIN;
             popover = new Gtk.Popover (this);
             popover.add (dropdown);
-            calendar = new Calendar ();
+            calendar = new Gtk.Calendar ();
             date = new GLib.DateTime.now_local ();
 
             // Entry properties
@@ -86,7 +83,7 @@ namespace Granite.Widgets {
             editable = false; // user can't edit the entry directly
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("office-calendar-symbolic");
 
-            dropdown.add_events (EventMask.FOCUS_CHANGE_MASK);
+            dropdown.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             dropdown.add (calendar);
 
             // Signals and callbacks
@@ -126,16 +123,16 @@ namespace Granite.Widgets {
             Object (format: format);
         }
 
-        private void on_icon_press (EntryIconPosition position) {
+        private void on_icon_press (Gtk.EntryIconPosition position) {
             Gdk.Rectangle rect = Gdk.Rectangle ();
-            position_dropdown (out rect);
+            position_dropdown (ref rect);
             popover.pointing_to = rect;
             popover.position = Gtk.PositionType.BOTTOM;
             popover.show_all ();
             calendar.grab_focus ();
         }
 
-        protected virtual void position_dropdown (out Gdk.Rectangle rect) {
+        protected virtual void position_dropdown (ref Gdk.Rectangle rect) {
             Gtk.Allocation size;
             get_allocation (out size);
 
