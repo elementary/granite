@@ -21,36 +21,29 @@ set (VALA_SOURCES
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
-    Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
     Widgets/ModeButton.vala
     Widgets/DatePicker.vala
-    Widgets/Entries.vala
     Widgets/TimePicker.vala
     Widgets/CollapsiblePaned.vala
-    Widgets/StaticNotebook.vala
     Widgets/DynamicNotebook.vala
     Widgets/CompositedWindow.vala
     Widgets/AppMenu.vala
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
-    Widgets/ToolButtonWithMenu.vala
-    Widgets/PopOver.vala
-    Widgets/DecoratedWindow.vala
-    Widgets/LightWindow.vala
-    Widgets/StatusBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
-    Widgets/ThinPaned.vala
     Widgets/OverlayBar.vala
+
+    Widgets/SettingsPage/AbstractSettingsPage.vala
+    Widgets/SettingsPage/AbstractSimpleSettingsPage.vala
 )
 
 set (C_SOURCES
     Widgets/widgets-utils.c
-    Widgets/close-button.c
 )
 
 ######################

@@ -25,10 +25,13 @@
  */
 public class Granite.Widgets.Avatar : Gtk.EventBox {
     private const string DEFAULT_ICON = "avatar-default";
-    private const string DEFAULT_STYLE = "avatar";
     private const int EXTRA_MARGIN = 4;
     private bool draw_theme_background = true;
     private string? filename;
+
+    private bool is_default = false;
+    private string? orig_filename = null;
+    private int? orig_pixel_size = null;
 
     public Gdk.Pixbuf? pixbuf { get; set; }
 
@@ -41,16 +44,10 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      * The "file" property can be used to set a new avatar image from a file path.
      */
     public string? file {
-        set {
+        set {        
             if (filename != null) {
                 filename = value;
-
-                try {
-                    var size = pixel_size * get_style_context ().get_scale ();
-                    pixbuf = new Gdk.Pixbuf.from_file_at_size (value, size, size);
-                } catch (Error e) {
-                    show_default (pixel_size);
-                }
+                load_image (filename, pixel_size);
             } else {
                 show_default (pixel_size);
             }
@@ -87,6 +84,8 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
             pixel_size: pixel_size,
             file: filename
         );
+        orig_filename = filename;
+        orig_pixel_size = pixel_size;
     }
 
     /**
@@ -97,6 +96,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     public Avatar.with_default_icon (int pixel_size) {
         Object (pixel_size: pixel_size);
         show_default (pixel_size);
+        orig_pixel_size = pixel_size;
     }
 
     construct {
@@ -104,18 +104,29 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         halign = Gtk.Align.CENTER;
         visible_window = false;
         var style_context = get_style_context ();
-        style_context.add_class (DEFAULT_STYLE);
+        style_context.add_class (Granite.STYLE_CLASS_AVATAR);
 
         notify["pixbuf"].connect (refresh_size_request);
+        Gdk.Screen.get_default ().monitors_changed.connect (dpi_change);
     }
 
     ~Avatar () {
         notify["pixbuf"].disconnect (refresh_size_request);
+        Gdk.Screen.get_default ().monitors_changed.disconnect (dpi_change);
+    }
+    
+    private void load_image (string filename, int pixel_size) {
+        try {
+            var size = pixel_size * get_scale_factor ();
+            pixbuf = new Gdk.Pixbuf.from_file_at_size (filename, size, size);
+        } catch (Error e) {
+            show_default (pixel_size);
+        }
     }
 
     private void refresh_size_request () {
         if (pixbuf != null) {
-            var scale_factor = get_style_context ().get_scale ();
+            var scale_factor = get_scale_factor ();
             set_size_request (pixbuf.width / scale_factor + EXTRA_MARGIN * 2, pixbuf.height / scale_factor + EXTRA_MARGIN * 2);
             draw_theme_background = true;
         } else {
@@ -123,6 +134,16 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         }
 
         queue_draw ();
+    }
+
+    private void dpi_change () {
+        if (is_default && orig_pixel_size != null) {
+            show_default (orig_pixel_size);
+        } else {
+            if (orig_filename != null && orig_pixel_size != null) {
+                load_image (orig_filename, orig_pixel_size);
+            }
+        }
     }
 
     /**
@@ -133,12 +154,13 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     public void show_default (int pixel_size) {
         Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default ();
         try {
-            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, pixel_size, get_style_context ().get_scale (), 0);
+            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, pixel_size, get_scale_factor (), 0);
         } catch (Error e) {
             stderr.printf ("Error setting default avatar icon: %s ", e.message);
         }
 
         draw_theme_background = false;
+        is_default = true;
     }
 
     public override bool draw (Cairo.Context cr) {
@@ -149,7 +171,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         unowned Gtk.StyleContext style_context = get_style_context ();
         var width = get_allocated_width () - EXTRA_MARGIN * 2;
         var height = get_allocated_height () - EXTRA_MARGIN * 2;
-        var scale_factor = style_context.get_scale ();
+        var scale_factor = get_scale_factor ();
 
         if (draw_theme_background) {
             var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, style_context.get_state ()).get_int ();
