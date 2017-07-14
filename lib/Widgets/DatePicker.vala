@@ -124,18 +124,19 @@ namespace Granite.Widgets {
         }
 
         private void on_icon_press (Gtk.EntryIconPosition position) {
-            Gdk.Rectangle rect = Gdk.Rectangle ();
-            position_dropdown (ref rect);
+            Gdk.Rectangle rect;
+            position_dropdown (out rect);
             popover.pointing_to = rect;
             popover.position = Gtk.PositionType.BOTTOM;
             popover.show_all ();
             calendar.grab_focus ();
         }
 
-        protected virtual void position_dropdown (ref Gdk.Rectangle rect) {
+        protected virtual void position_dropdown (out Gdk.Rectangle rect) {
             Gtk.Allocation size;
             get_allocation (out size);
 
+            rect = new Gdk.Rectangle ();
             rect.x = size.width - OFFSET;
             rect.y = size.height;
         }
