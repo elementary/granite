@@ -7,10 +7,13 @@ set (PKG_SOMINOR 0.1)
 set (VALA_SOURCES
     style-classes.vala
     Application.vala
+
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
+
     GtkPatch/AboutDialog.vala
+
     Services/Settings.vala
     Services/Logger.vala
     Services/Paths.vala
@@ -18,6 +21,9 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+
+    Widgets/AbstractSettingsPage.vala
+    Widgets/AbstractSimpleSettingsPage.vala
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
@@ -38,12 +44,8 @@ set (VALA_SOURCES
     Widgets/CellRendererBadge.vala
     Widgets/OverlayBar.vala
     Widgets/HeaderLabel.vala
-
-    Widgets/SettingsPage/AbstractSettingsPage.vala
-    Widgets/SettingsPage/AbstractSimpleSettingsPage.vala
-
-    Widgets/SettingsSidebar/SettingsSidebar.vala
-    Widgets/SettingsSidebar/SettingsSidebarRow.vala
+    Widgets/SettingsSidebar.vala
+    Widgets/SettingsSidebarRow.vala
 )
 
 set (C_SOURCES
