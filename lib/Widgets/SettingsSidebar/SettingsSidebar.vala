@@ -23,7 +23,6 @@
  *
  * All the content for the rows comes from the child properties of a Granite.SettingsPage
  * inside of the Gtk.Stack
- *
  */
 public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     /**
