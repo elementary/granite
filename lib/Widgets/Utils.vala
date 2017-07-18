@@ -80,14 +80,6 @@ public enum Granite.CloseButtonPosition
  * This namespace contains functions to apply CSS stylesheets to widgets.
  */
 namespace Granite.Widgets.Utils {
-
-    /**
-     * This method should be not used in newly written Granite applications and you should
-     * consider it deprecated.
-     */
-    [CCode (cname="get_close_pixbuf")]
-    public extern Gdk.Pixbuf get_close_pixbuf ();
-
     /**
      * Applies colorPrimary property to the window. The colorPrimary property currently changes
      * the color of the {@link Gtk.HeaderBar} and it's children so that the application window
