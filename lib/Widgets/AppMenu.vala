@@ -67,16 +67,6 @@ namespace Granite.Widgets {
         }
 
         /**
-         * Create a new AppMenu, parameters are unused now.
-         */
-        [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
-        public AppMenu.with_urls (Gtk.Menu menu, string help_url, string translate_url, string bug_url) {
-            critical("This is a deprecated creation method: AppMenu.with_urls");
-            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
-            tooltip_text = _("Menu");
-        }
-
-        /**
          * This method adds makes a properly formatted App Menu menu from given menu
          *
          * @param menu menu to format
