@@ -7,6 +7,7 @@ set (PKG_SOMINOR 0.1)
 set (VALA_SOURCES
     StyleClass.vala
     Application.vala
+    DateTime.vala
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
