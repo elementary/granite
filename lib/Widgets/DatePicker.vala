@@ -136,7 +136,7 @@ namespace Granite.Widgets {
             Gtk.Allocation size;
             get_allocation (out size);
 
-            rect = new Gdk.Rectangle ();
+            rect = Gdk.Rectangle ();
             rect.x = size.width - OFFSET;
             rect.y = size.height;
         }
