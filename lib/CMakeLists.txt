@@ -5,7 +5,7 @@ set (PKG_SOVERSION 4)
 set (PKG_SOMINOR 0.2)
 
 set (VALA_SOURCES
-    style-classes.vala
+    StyleClass.vala
     Application.vala
     DateTime.vala
     Drawing/Color.vala
