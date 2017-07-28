@@ -18,7 +18,7 @@
 */
 
 /**
- * AbstractSettingsPage is a #Gtk.ScrolledWindow subclass with properties used
+ * AbstractSettingsPage is a {@link Gtk.ScrolledWindow} subclass with properties used
  * by other Granite settings widgets.
  */
 public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
