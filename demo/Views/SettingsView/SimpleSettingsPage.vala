@@ -60,13 +60,7 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
 
         var button = new Gtk.Button.with_label ("Test Button");
 
-        if (status_switch.active) {
-            status_type = Granite.SettingsPage.StatusType.SUCCESS;
-            status = _("Enabled");
-        } else {
-            status_type = Granite.SettingsPage.StatusType.OFFLINE;
-            status = _("Disabled");
-        }
+        update_status ();
 
         description_entry.changed.connect (() => {
             description = description_entry.text;
@@ -76,20 +70,22 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
             icon_name = icon_entry.text;
         });
 
-        status_switch.notify["active"].connect (() => {
-            if (status_switch.active) {
-                status_type = Granite.SettingsPage.StatusType.SUCCESS;
-                status = _("Enabled");
-            } else {
-                status_type = Granite.SettingsPage.StatusType.OFFLINE;
-                status = _("Disabled");
-            }
-        });
+        status_switch.notify["active"].connect (update_status);
 
         title_entry.changed.connect (() => {
             title = title_entry.text;
         });
 
         action_area.add (button);
+    }
+
+    private void update_status () {
+        if (status_switch.active) {
+            status_type = Granite.SettingsPage.StatusType.SUCCESS;
+            status = _("Enabled");
+        } else {
+            status_type = Granite.SettingsPage.StatusType.OFFLINE;
+            status = _("Disabled");
+        }
     }
 }
