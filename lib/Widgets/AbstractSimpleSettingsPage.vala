@@ -67,7 +67,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * An icon name associated with #this
      */
-    public string icon_name {
+    public new string icon_name {
         get {
             return _icon_name;
         } 
@@ -82,7 +82,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * A title associated with #this
      */
-    public string title {
+    public new string title {
         get {
             return _title;
         } 
