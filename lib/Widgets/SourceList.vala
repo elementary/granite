@@ -2561,21 +2561,6 @@ public class SourceList : Gtk.ScrolledWindow {
         get { return tree.editing; }
     }
 
-    /**
-     * Sort direction to use along with the sort function.
-     *
-     * This property is no longer used. It doesn't do anything.
-     *
-     * @since 0.2
-     */
-    [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
-    public Gtk.SortType sort_direction {
-        get { return Gtk.SortType.ASCENDING; }
-        set {
-            warning ("sort_direction is deprecated and no longer used");
-        }
-    }
-
     private Tree tree;
     private DataModel data_model = new DataModel ();
 
