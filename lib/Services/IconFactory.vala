@@ -42,7 +42,7 @@ namespace Granite.Services {
         }
 
         /**
-         * Attempts to load a symbolic icon for the given {@link Glib.Icon} 
+         * Attempts to load a symbolic icon for the given {@link GLib.Icon} 
          * with graceful fallback on the non-symbolic variant if the symbolic one
          * does not exist.
          * 

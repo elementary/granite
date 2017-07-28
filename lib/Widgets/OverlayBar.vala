@@ -57,11 +57,13 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     """;
 
     private Gtk.Label status_label;
+    private Gtk.Revealer revealer;
+    private Gtk.Spinner spinner;
 
     /**
      * Status text displayed inside the Overlay Bar.
      */
-    [Version (deprecated = true, deprecated_since = "0.4.1", replacement = "OverlayBar.label")]
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "OverlayBar.label")]
     public string status {
         set {
            status_label.label = value;
@@ -85,7 +87,20 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     }
 
     /**
-     * The {@link Gtk.Overlay which holds the Overlay Bar.
+     * Whether to display a {@link Gtk.Spinner} inside the Overlay Bar.
+     */
+    public bool active {
+        get {
+            return spinner.active;
+        }
+        set {
+            spinner.active = value;
+            revealer.reveal_child = value;
+        }
+    }
+
+    /**
+     * The {@link Gtk.Overlay} which holds the Overlay Bar.
      */
     public Gtk.Overlay overlay { get; construct; }
 
@@ -100,8 +115,16 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         status_label = new Gtk.Label ("");
         status_label.set_ellipsize (Pango.EllipsizeMode.END);
 
+        spinner = new Gtk.Spinner ();
+
+        revealer = new Gtk.Revealer ();
+        revealer.reveal_child = false;
+        revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT;
+        revealer.add (spinner);
+
         var grid = new Gtk.Grid ();
         grid.add (status_label);
+        grid.add (revealer);
 
         add (grid);
 
@@ -119,6 +142,7 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         status_label.margin_bottom = padding.bottom;
         status_label.margin_left = padding.left;
         status_label.margin_right = padding.right;
+        spinner.margin_right = padding.right;
 
         var margin = ctx.get_margin (state);
         grid.margin_top = margin.top;

@@ -74,7 +74,7 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
     construct {
         // Title label
         button_title = new Gtk.Label (null);
-        button_title.get_style_context ().add_class ("h3");
+        button_title.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
         button_title.halign = Gtk.Align.START;
         button_title.valign = Gtk.Align.END;
 

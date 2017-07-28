@@ -2485,19 +2485,6 @@ public class SourceList : Gtk.ScrolledWindow {
     public virtual signal void item_selected (Item? item) { }
 
     /**
-     * Deprecated delegate defined for sorting items. It's not relevant for new code
-     * because it's no longer used.
-     *
-     * @param a First item.
-     * @param b Second item.
-     * @return A //negative// integer if //a// sorts after //b//, //zero// if //a// equals //b//,
-     *         or a //positive// integer if //a// sorts before //b//.
-     * @since 0.2
-     */
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "SourceListSortable.compare")]
-    public delegate int SortFunc (Item a, Item b);
-
-    /**
      * A {@link Granite.Widgets.SourceList.VisibleFunc} should return true if the item should be
      * visible; false otherwise. If //item//'s {@link Granite.Widgets.SourceList.Item.visible}
      * property is set to //false//, then it won't be displayed even if this method returns //true//.
@@ -2574,21 +2561,6 @@ public class SourceList : Gtk.ScrolledWindow {
         get { return tree.editing; }
     }
 
-    /**
-     * Sort direction to use along with the sort function.
-     *
-     * This property is no longer used. It doesn't do anything.
-     *
-     * @since 0.2
-     */
-    [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
-    public Gtk.SortType sort_direction {
-        get { return Gtk.SortType.ASCENDING; }
-        set {
-            warning ("sort_direction is deprecated and no longer used");
-        }
-    }
-
     private Tree tree;
     private DataModel data_model = new DataModel ();
 
@@ -2622,22 +2594,6 @@ public class SourceList : Gtk.ScrolledWindow {
      */
     public bool has_item (Item item) {
         return data_model.has_item (item);
-    }
-
-    /**
-     * Sets the method used for sorting items.
-     *
-     * This method is no longer used. It doesn't do anything. Expandable Items
-     * should implement {@link Granite.Widgets.SourceListSortable} to sort their
-     * children. That interface can also be used for sorting categories by
-     * using a custom root item that implements it.
-     *
-     * @param sort_func The method to use for sorting items.
-     * @since 0.2
-     */
-    [Version (deprecated = true, deprecated_since = "0.2", replacement = "SourceListSortable.compare")]
-    public void set_sort_func (owned SortFunc? sort_func) {
-        warning ("set_sort_func is deprecated and doesn't do anything");
     }
 
     /**

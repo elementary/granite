@@ -17,19 +17,7 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-using Gtk;
-
-using Granite.Services;
-using Granite.Widgets;
-
 namespace Granite {
-
-    /**
-     * Global deprecated object..
-     */
-    [Version (deprecated = true, deprecated_since = "0.1", replacement = "")]
-    public static Granite.Application app;
-
     /**
      * This is the base class for all Granite-based apps. It has methods that help
      * to create a great deal of an app's functionality.
@@ -59,7 +47,9 @@ namespace Granite {
          * Years that the copyright extends to. Usually from the start
          * of the project to the most recent modification to it.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string app_copyright;
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string app_years;
 
         /**
@@ -70,6 +60,7 @@ namespace Granite {
          * The name should not include the full path or file extension.
          * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string app_icon;
 
         /**
@@ -87,6 +78,7 @@ namespace Granite {
          * If the application has no homepage, one should be created on
          * launchpad.net.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string main_url;
 
         /**
@@ -95,6 +87,7 @@ namespace Granite {
          * If the application does not have a bug tracker, one should be
          * created on launchpad.net.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string bug_url;
 
         /**
@@ -102,6 +95,7 @@ namespace Granite {
          *
          * Launchpad offers a QA service if one is needed.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string help_url;
 
         /**
@@ -109,35 +103,42 @@ namespace Granite {
          *
          * Launchad offers a translation service if one is necessary.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string translate_url;
 
         /**
          * Full names of the application authors for the about dialog.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string[] about_authors = {};
 
         /**
          * Full names of documenters of the app for the about dialog.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string[] about_documenters = {};
 
         /**
          * Names of the designers of the application's user interface.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string[] about_artists = {};
-
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string about_comments;
 
         /**
          * Names of the translators of the application.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string about_translators;
 
         /**
          * The copyright license that the work is distributed under.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public string about_license;
-        public License about_license_type;
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public Gtk.License about_license_type;
 
         /**
          * This creates a new Application class
@@ -148,19 +149,14 @@ namespace Granite {
 #elif DRAGON_FLY || FREE_BSD || NET_BSD || OPEN_BSD
             setproctitle (exec_name);
 #endif
-            Logger.initialize (program_name);
-            Logger.DisplayLevel = LogLevel.INFO;
+            Granite.Services.Logger.initialize (program_name);
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
             var un = Posix.utsname ();
             message ("Kernel version: %s", (string) un.release);
-            Logger.DisplayLevel = LogLevel.WARN;
+            Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
-
-            add_actions ();
-
-            // Deprecated
-            Granite.app = this;
         }
 
 #if LINUX
@@ -194,29 +190,20 @@ namespace Granite {
 
             set_options ();
 
-            if (ABOUT) {
-                Gtk.init (ref args);
-                handle_about_parameter ();
-
-                return Posix.EXIT_SUCCESS;
-            }
-
             return base.run (args);
         }
 
         protected static bool DEBUG = false;
-        protected static bool ABOUT = false;
 
         protected const OptionEntry[] options = {
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
-            { "about", 'a', 0, OptionArg.NONE, out ABOUT, "Show About dialog", null },
             { null }
         };
 
         protected virtual void set_options () {
 
             if (DEBUG)
-                Logger.DisplayLevel = LogLevel.DEBUG;
+                Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
         }
 
         /**
@@ -226,9 +213,10 @@ namespace Granite {
          *
          * @return app_menu
          */
-        public AppMenu create_appmenu (Gtk.Menu menu) {
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.MenuButton")]
+        public Granite.Widgets.AppMenu create_appmenu (Gtk.Menu menu) {
 
-            AppMenu app_menu = new AppMenu.with_app (this, menu);
+            var app_menu = new Granite.Widgets.AppMenu.with_app (this, menu);
             app_menu.show_about.connect (show_about);
 
             return app_menu;
@@ -241,6 +229,7 @@ namespace Granite {
          *
          * @param parent This widget is the window that is calling the about page being created.
          */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
         public virtual void show_about (Gtk.Widget parent) {
             assert (parent is Gtk.Window);
 
@@ -273,64 +262,6 @@ namespace Granite {
                                                "help", help_url,
                                                "translate", translate_url,
                                                "bug", bug_url);
-        }
-
-        /* Allows reusing the About dialog */
-        private Gtk.Window about_dialog_parent = null;
-
-        private void add_actions () {
-            /* Actions are always executed in the primary instance, provided
-               that the application was registered.
-               Take advantage of this by showing the About dialog using the
-               main instance, saving memory. */
-            var show_about_action = new SimpleAction ("show-about-dialog", null);
-
-            show_about_action.activate.connect (() => {
-                hold ();
-
-                debug ("The show-about-dialog action was activated");
-
-                if (this.about_dialog_parent == null)
-                    this.about_dialog_parent = new Gtk.Window ();
-
-                show_about (this.about_dialog_parent);
-
-                release ();
-            });
-
-            add_action (show_about_action);
-        }
-
-        private void handle_about_parameter () {
-            try {
-                register ();
-            } catch (Error error) {
-                warning ("Couldn't register application: %s", error.message);
-            }
-
-            activate_action ("show-about-dialog", null);
-
-            if (!this.is_remote) {
-                /* This means that the primary instance was created by running
-                   "app --about".
-                   Manually set up exit conditions and run the main loop of the
-                   application.
-                   This is needed to prevent weird stuff from happening if the
-                   actual application is opened while this is running. */
-                Gtk.Widget about_dialog = this.about_dialog_parent.get_data ("gtk-about-dialog");
-
-                about_dialog.hide.connect (() => {
-                    if (get_windows () == null)
-                        Gtk.main_quit ();
-                });
-
-                window_removed.connect (() => {
-                    if (get_windows () == null)
-                        Gtk.main_quit ();
-                });
-
-                Gtk.main ();
-            }
         }
     }
 }

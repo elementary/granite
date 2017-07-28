@@ -23,9 +23,11 @@ namespace Granite.Widgets {
 
     /**
      * This class makes an about dialog which goes in the App Menu on most apps.
+     * This class is deprecated. Applications should instead provide an Appstream appdata.xml file to describe their metadata
      *
      * {{../../doc/images/AboutDialog.png}}
      */
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.
@@ -67,53 +69,47 @@ namespace Granite.Widgets {
         private Gtk.Button translate_button;
         private Gtk.Button bug_button;
 
-        private Granite.Drawing.BufferSurface buffer;
-
         /**
          * Creates a new Granite.Widgets.AboutDialog
          */
         public AboutDialog () {
-            var action_area = (Gtk.Box) get_action_area ();
-
-            /* help button */
             help_button = new Gtk.Button.with_label ("?");
+            help_button.halign = Gtk.Align.CENTER;
             help_button.get_style_context ().add_class ("circular");
 
-            help_button.halign = Gtk.Align.CENTER;
-            help_button.clicked.connect (() => { activate_link(help); });
+            translate_button = new Gtk.Button.with_label (_("Suggest Translations"));
 
-            /* Circular help button */
-            help_button.size_allocate.connect ( (alloc) => {
-                help_button.set_size_request (alloc.height, -1);
-            });
-
-            action_area.pack_end (help_button, false, false, 0);
-            ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
-            ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
-
-            /* translate button */
-            translate_button = new Gtk.Button.with_label(_("Suggest Translations"));
-            translate_button.clicked.connect ( () => { activate_link(translate); });
-            action_area.pack_start (translate_button, false, false, 0);
-
-            /* bug button */
             bug_button = new Gtk.Button.with_label (_("Report a Problem"));
-            bug_button.clicked.connect (() => {
-                try {
-                    GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
-                } catch (Error e) {
-                    warning ("Could Not Launch 'apport-bug'.");
-                    activate_link (bug);
-                }
-            });
-            action_area.pack_start (bug_button, false, false, 0);
 
+            var action_area = (Gtk.Box) get_action_area ();
+            action_area.pack_end (help_button, false, false, 0);
+            action_area.pack_start (bug_button, false, false, 0);
+            action_area.pack_start (translate_button, false, false, 0);
             action_area.reorder_child (bug_button, 0);
             action_area.reorder_child (translate_button, 0);
 
-            this.height_request = 282;
+            ((Gtk.ButtonBox) action_area).set_child_secondary (help_button, true);
+            ((Gtk.ButtonBox) action_area).set_child_non_homogeneous (help_button, true);
+
+            height_request = 282;
 
             show_all ();
+
+            bug_button.clicked.connect (() => {
+                activate_link (bug);
+            });
+
+            help_button.clicked.connect (() => {
+                activate_link (help);
+            });
+
+            help_button.size_allocate.connect ((alloc) => {
+                help_button.set_size_request (alloc.height, -1);
+            });
+
+            translate_button.clicked.connect (() => {
+                activate_link (translate);
+            });
         }
     }
 
