@@ -106,6 +106,12 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * The {@link Gtk.ButtonsType} value to display a set of buttons
      * in the dialog.
      * 
+     * By design, some actions are not acceptable and such action values will not be added to the dialog, these include:
+     *
+     *  * {@link Gtk.ButtonsType.OK}
+     *  * {@link Gtk.ButtonsType.YES_NO}
+     *  * {@link Gtk.ButtonsType.OK_CANCEL}
+     *
      * If you wish to provide more specific actions for your dialog
      * pass a {@link Gtk.ButtonsType.NONE} to {@link Granite.MessageDialog} and manually
      * add those actions with {@link Gtk.Dialog.add_buttons} or {@link Gtk.Dialog.add_action_widget}.
@@ -115,22 +121,16 @@ public class Granite.MessageDialog : Gtk.Dialog {
             switch (value) {
                 case Gtk.ButtonsType.NONE:
                     break;
-                case Gtk.ButtonsType.OK:
-                    add_button (_("_OK"), Gtk.ResponseType.OK);
-                    break;
                 case Gtk.ButtonsType.CLOSE:
                     add_button (_("_Close"), Gtk.ResponseType.CLOSE);
                     break;
                 case Gtk.ButtonsType.CANCEL:
                     add_button (_("_Cancel"), Gtk.ResponseType.CANCEL);
                     break;
+                case Gtk.ButtonsType.OK:
                 case Gtk.ButtonsType.YES_NO:
-                    add_button (_("_No"), Gtk.ResponseType.NO);
-                    add_button (_("_Yes"), Gtk.ResponseType.YES);
-                    break;
                 case Gtk.ButtonsType.OK_CANCEL:
-                    add_button (_("_Cancel"), Gtk.ResponseType.CANCEL);
-                    add_button (_("_OK"), Gtk.ResponseType.OK);
+                    warning ("Unsupported GtkButtonsType value");
                     break;
                 default:
                     warning ("Unknown GtkButtonsType");
