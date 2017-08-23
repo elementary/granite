@@ -133,7 +133,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
                     warning ("Unsupported GtkButtonsType value");
                     break;
                 default:
-                    warning ("Unknown GtkButtonsType");
+                    warning ("Unknown GtkButtonsType value");
                     break;
             }
         }
