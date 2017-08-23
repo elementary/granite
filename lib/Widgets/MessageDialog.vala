@@ -160,7 +160,8 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param image_icon the {@link GLib.Icon} that is displayed on the left side of the dialog
-     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE}
+     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE},
+     *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
     public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.NONE) {
         Object (
@@ -187,7 +188,8 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param icon_name the icon name to create the dialog image with
-     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE}
+     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE},
+     *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
     public MessageDialog.from_icon_name (string primary_text, string secondary_text, string icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.NONE) {
         Object (
@@ -207,6 +209,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
         primary_label = new Gtk.Label (null);
         primary_label.get_style_context ().add_class ("primary");
+        primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
         primary_label.xalign = 0;
