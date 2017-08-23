@@ -23,6 +23,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/StorageView.vala
     Views/ToastView.vala
     Views/WelcomeView.vala
+    Views/MessageDialogView.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES

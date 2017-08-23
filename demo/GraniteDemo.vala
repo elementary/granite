@@ -53,6 +53,7 @@ public class Granite.Demo : Granite.Application {
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var welcome = new WelcomeView ();
+        var message_dialog_view = new MessageDialogView ();
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
@@ -67,6 +68,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
+        main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
