@@ -19,6 +19,12 @@
  */
 
 public class MessageDialogView : Gtk.Grid {
+    public Gtk.Window window { get; construct; }
+
+    public MessageDialogView (Gtk.Window window) {
+        Object (window: window);
+    }
+
     construct {
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
@@ -31,6 +37,7 @@ public class MessageDialogView : Gtk.Grid {
 
     private void show_message_dialog () {
         var message_dialog = new Granite.MessageDialog.from_icon_name ("This is a primary text", "This is a secondary, multiline, long text. This text usually extends the primary text and prints e.g: the details of an error.", "applications-development", Gtk.ButtonsType.CLOSE);
+        message_dialog.transient_for = window;
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
         custom_widget.show ();

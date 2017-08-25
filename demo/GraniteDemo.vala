@@ -53,7 +53,7 @@ public class Granite.Demo : Granite.Application {
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var welcome = new WelcomeView ();
-        var message_dialog_view = new MessageDialogView ();
+        var message_dialog_view = new MessageDialogView (window);
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
