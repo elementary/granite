@@ -160,14 +160,15 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param image_icon the {@link GLib.Icon} that is displayed on the left side of the dialog
-     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE},
+     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.NONE) {
+    public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
             resizable: false,
             deletable: false,
             skip_taskbar_hint: true,
+            transient_for: null,
             primary_text: primary_text,
             secondary_text: secondary_text,
             image_icon: image_icon,
@@ -188,14 +189,15 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param icon_name the icon name to create the dialog image with
-     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.NONE},
+     * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog.from_icon_name (string primary_text, string secondary_text, string icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.NONE) {
+    public MessageDialog.from_icon_name (string primary_text, string secondary_text, string icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
             resizable: false,
             deletable: false,
             skip_taskbar_hint: true,
+            transient_for: null,
             primary_text: primary_text,
             secondary_text: secondary_text,
             image_icon: new ThemedIcon (icon_name),
