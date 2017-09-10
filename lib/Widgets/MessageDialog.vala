@@ -74,15 +74,22 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * The {@link GLib.Icon} that is used to display the image
-     * on the left side of the dialog.
+     * on the left side of the dialog or null if no image is displayed.
      */
-    public GLib.Icon image_icon { 
+    public GLib.Icon? image_icon { 
         owned get {
             return image.gicon;
         }
         
         set {
-            image.set_from_gicon (value, Gtk.IconSize.DIALOG);
+            if (value != null) {
+                image.set_from_gicon (value, Gtk.IconSize.DIALOG);
+                image.no_show_all = false;
+                image.visible = true;
+            } else {
+                image.no_show_all = true;
+                image.visible = false;
+            }
         }
     }
 
@@ -173,11 +180,11 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * 
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
-     * @param image_icon the {@link GLib.Icon} that is displayed on the left side of the dialog
+     * @param image_icon the {@link GLib.Icon} that is displayed on the left side of the dialog, null if the icon should not be displayed
      * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
+    public MessageDialog (string primary_text, string secondary_text, GLib.Icon? image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
             resizable: false,
             deletable: false,
