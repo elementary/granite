@@ -238,7 +238,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         secondary_label.xalign = 0;
 
         custom_bin = new SingleWidgetBin ();
-        custom_bin.add.connect (() => secondary_label.margin_bottom = 24);
+        custom_bin.add.connect (() => secondary_label.margin_bottom = 18);
         custom_bin.remove.connect (() => secondary_label.margin_bottom = 0);
 
         var message_grid = new Gtk.Grid ();
