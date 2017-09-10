@@ -224,7 +224,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         image.valign = Gtk.Align.START;
 
         primary_label = new Gtk.Label (null);
-        primary_label.get_style_context ().add_class ("primary");
+        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
         primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
