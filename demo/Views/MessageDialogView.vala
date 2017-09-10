@@ -21,29 +21,42 @@
 public class MessageDialogView : Gtk.Grid {
     public Gtk.Window window { get; construct; }
 
+    private Granite.Widgets.Toast toast;
+
     public MessageDialogView (Gtk.Window window) {
         Object (window: window);
     }
 
     construct {
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-
         var button = new Gtk.Button.with_label ("Show MessageDialog");
-        button.clicked.connect (show_message_dialog);
+        button.halign = Gtk.Align.CENTER;
+        button.valign = Gtk.Align.CENTER;
+        button.expand = true;
 
-        add (button);
+        button.clicked.connect (show_message_dialog);
+        
+        toast = new Granite.Widgets.Toast ("Did something");
+
+        attach (toast, 0, 0, 1, 1);
+        attach (button, 0, 1, 1, 1);
     }
 
     private void show_message_dialog () {
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("This is a primary text", "This is a secondary, multiline, long text. This text usually extends the primary text and prints e.g: the details of an error.", "applications-development", Gtk.ButtonsType.CLOSE);
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("Primary text providing basic information and a suggestion", "Secondary text providing further details. Also includes information that explains any unobvious consequences of actions.", "dialog-warning", Gtk.ButtonsType.CANCEL);
         message_dialog.transient_for = window;
+        
+        var suggested_button = new Gtk.Button.with_label ("Suggested Action");
+        suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
-        custom_widget.show ();
 
         message_dialog.custom_bin.add (custom_widget);
-        message_dialog.run ();
+        message_dialog.show_all ();
+        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
+            toast.send_notification ();
+        }
+        
         message_dialog.destroy ();
     }
 }
