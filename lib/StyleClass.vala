@@ -66,7 +66,7 @@ namespace Granite {
     /**
      * Style class for primary label text in a dialog
      */
-    public const string STYLE_CLASS_PRIMARY = "primary";
+    public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
     public const string STYLE_CLASS_WELCOME = "welcome";
