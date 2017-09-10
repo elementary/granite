@@ -28,7 +28,7 @@
  * 
  * ''Example''<<BR>>
  * {{{
- *   var message_dialog = new Granite.MessageDialog.from_icon_name (
+ *   var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
  *      "This is a primary text",
  *      "This is a secondary, multiline, long text. This text usually extends the primary text and prints e.g: the details of an error.",
  *      "applications-development",
@@ -38,7 +38,7 @@
  *   var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
  *   custom_widget.show ();
  *
- *   message_dialog.message_grid.attach (custom_widget, 1, 2, 1, 1);
+ *   message_dialog.custom_bin.add (custom_widget);
  *   message_dialog.run ();
  *   message_dialog.destroy ();
  * }}}
@@ -113,7 +113,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
      *  * {@link Gtk.ButtonsType.OK_CANCEL}
      *
      * If you wish to provide more specific actions for your dialog
-     * pass a {@link Gtk.ButtonsType.NONE} to {@link Granite.MessageDialog} and manually
+     * pass a {@link Gtk.ButtonsType.NONE} to {@link Granite.MessageDialog.MessageDialog} and manually
      * add those actions with {@link Gtk.Dialog.add_buttons} or {@link Gtk.Dialog.add_action_widget}.
      */
     public Gtk.ButtonsType buttons { 
@@ -140,18 +140,32 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     /**
-     * The message grid that contains all the message widgets: the {@link Granite.MessageDialog.primary_label},
-     * {@link Granite.MessageDialog.secondary_label} and the image widget.
+     * The custom area to add custom widgets.
      * 
-     * This grid can be used to add any custom widget to the message area such as a {@link Gtk.ComboBox} or {@link Gtk.CheckButton}.
+     * This bin can be used to add any custom widget to the message area such as a {@link Gtk.ComboBox} or {@link Gtk.CheckButton}.
      * Note that after adding such widget you will need to call {@link Gtk.Widget.show} or {@link Gtk.Widget.show_all} on the widget itself for it to appear in the dialog.
+     * 
+     * If you want to add multiple widgets to this area, create a new container such as {@link Gtk.Grid} or {@link Gtk.Box} and then add it to the custom bin.
+     * 
+     * When adding a custom widget to the custom bin, the {@link Granite.MessageDialog.secondary_label}'s bottom margin will be expanded automatically
+     * to compensate for the additional widget in the dialog.
+     * Removing the previously added widget will remove the bottom margin.
+     * 
+     * If you don't want to have any margin between your custom widget and the {@link Granite.MessageDialog.secondary_label}, simply add your custom widget
+     * and then set the {@link Gtk.Label.margin_bottom} of {@link Granite.MessageDialog.secondary_label} to 0.
      */
-    public Gtk.Grid message_grid { get; construct; }
+    public Gtk.Bin custom_bin { get; construct; }
 
     /**
      * The image that's displayed in the dialog.
      */
     private Gtk.Image image;
+
+    /**
+     * SingleWidgetBin is only used within this class for creating a Bin that
+     * holds only one widget.
+     */
+    private class SingleWidgetBin : Gtk.Bin {}
 
     /**
      * Constructs a new {@link Granite.MessageDialog}.
@@ -177,7 +191,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     /**
-     * Constructs a new {@link Granite.MessageDialog} with an icon name as it's icon.
+     * Constructs a new {@link Granite.MessageDialog} with an icon name as it's icon displayed in the image.
      * This constructor is same as the main one but with a difference that 
      * you can pass an icon name string instead of manually creating the {@link GLib.Icon}.
      * 
@@ -188,11 +202,11 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * 
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
-     * @param icon_name the icon name to create the dialog image with
+     * @param image_icon_name the icon name to create the dialog image with
      * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog.from_icon_name (string primary_text, string secondary_text, string icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
+    public MessageDialog.with_image_from_icon_name (string primary_text, string secondary_text, string image_icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
             resizable: false,
             deletable: false,
@@ -200,7 +214,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
             transient_for: null,
             primary_text: primary_text,
             secondary_text: secondary_text,
-            image_icon: new ThemedIcon (icon_name),
+            image_icon: new ThemedIcon (image_icon_name),
             buttons: buttons
         );
     }
@@ -223,13 +237,18 @@ public class Granite.MessageDialog : Gtk.Dialog {
         secondary_label.wrap = true;
         secondary_label.xalign = 0;
 
-        message_grid = new Gtk.Grid ();
+        custom_bin = new SingleWidgetBin ();
+        custom_bin.add.connect (() => secondary_label.margin_bottom = 24);
+        custom_bin.remove.connect (() => secondary_label.margin_bottom = 0);
+
+        var message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
         message_grid.row_spacing = 6;
         message_grid.margin_left = message_grid.margin_right = 12;
         message_grid.attach (image, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
+        message_grid.attach (custom_bin, 1, 2, 1, 1);
         message_grid.show_all ();
 
         get_content_area ().add (message_grid);
