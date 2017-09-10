@@ -36,13 +36,13 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     private void show_message_dialog () {
-        var message_dialog = new Granite.MessageDialog.from_icon_name ("This is a primary text", "This is a secondary, multiline, long text. This text usually extends the primary text and prints e.g: the details of an error.", "applications-development", Gtk.ButtonsType.CLOSE);
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("This is a primary text", "This is a secondary, multiline, long text. This text usually extends the primary text and prints e.g: the details of an error.", "applications-development", Gtk.ButtonsType.CLOSE);
         message_dialog.transient_for = window;
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
         custom_widget.show ();
 
-        message_dialog.message_grid.attach (custom_widget, 1, 2, 1, 1);
+        message_dialog.custom_bin.add (custom_widget);
         message_dialog.run ();
         message_dialog.destroy ();
     }
