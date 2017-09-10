@@ -63,6 +63,10 @@ namespace Granite {
     public const string STYLE_CLASS_H3_LABEL = "h3";
     public const string STYLE_CLASS_H4_LABEL = "h4";
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
+    /**
+     * Style class for primary label text in a dialog
+     */
+    public const string STYLE_CLASS_PRIMARY = "primary";
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
     public const string STYLE_CLASS_WELCOME = "welcome";
