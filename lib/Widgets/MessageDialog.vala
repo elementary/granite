@@ -177,7 +177,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog (string primary_text, string secondary_text, GLib.Icon? image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
+    public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
             resizable: false,
             deletable: false,
