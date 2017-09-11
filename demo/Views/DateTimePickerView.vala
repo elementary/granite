@@ -26,6 +26,10 @@
 
 public class DateTimePickerView : Gtk.Grid {
     construct {
+        var pickers_label = new Gtk.Label ("Picker Widgets");
+        pickers_label.xalign = 0;
+        pickers_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
         var date_label = new Gtk.Label ("DatePicker:");
         date_label.halign = Gtk.Align.END;
 
@@ -35,6 +39,11 @@ public class DateTimePickerView : Gtk.Grid {
         time_label.halign = Gtk.Align.END;
 
         var timepicker = new Granite.Widgets.TimePicker ();
+
+        var formatting_label = new Gtk.Label ("String Formatting");
+        formatting_label.margin_top = 6;
+        formatting_label.xalign = 0;
+        formatting_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var current_time_label = new Gtk.Label ("Localized time:");
         current_time_label.halign = Gtk.Align.END;
@@ -60,13 +69,15 @@ public class DateTimePickerView : Gtk.Grid {
         row_spacing = 6;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
+        attach (pickers_label, 0, 0, 1, 1);
         attach (date_label, 0, 1, 1, 1);
         attach (datepicker, 1, 1, 1, 1);
         attach (time_label, 0, 2, 1, 1);
         attach (timepicker, 1, 2, 1, 1);
-        attach (current_time_label, 0, 3, 1, 1);
-        attach (current_time, 1, 3, 1, 1);
-        attach (current_date_label, 0, 4, 1, 1);
-        attach (current_date, 1, 4, 1, 1);
+        attach (formatting_label, 0, 3, 1, 1);
+        attach (current_time_label, 0, 4, 1, 1);
+        attach (current_time, 1, 4, 1, 1);
+        attach (current_date_label, 0, 5, 1, 1);
+        attach (current_date, 1, 5, 1, 1);
     }
 }
