@@ -85,15 +85,18 @@ public class SeekBarView : Gtk.Grid {
 
         int progress = 0;
         Timeout.add (500, () => {
-            if (seek_bar.is_grabbing) return true;
+            if (seek_bar.is_grabbing) {
+                return true;
+            }
 
             if (progress >= 10) {
                 progress = 0;
-                seek_bar.set_progress (0.0);
+                seek_bar.playback_progress = 0.0;
             } else {
                 progress += 1;
-                seek_bar.set_progress (progress / 10.0);
+                seek_bar.playback_progress = progress / 10.0;
             }
+            return true;
         });
     }
 
