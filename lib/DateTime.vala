@@ -58,7 +58,7 @@ namespace Granite.DateTime {
     /**
      * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and @return a localized, relative date and time string
      */
-    private string get_relative_datetime (GLib.DateTime date_time) {
+    public string get_relative_datetime (GLib.DateTime date_time) {
         var now = new GLib.DateTime.now_local ();
         var diff = now.difference (date_time);
 

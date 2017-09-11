@@ -65,6 +65,15 @@ public class DateTimePickerView : Gtk.Grid {
         current_date.tooltip_text = date_format;
         current_date.xalign = 0;
 
+        var relative_datetime_label = new Gtk.Label ("Relative datetime:");
+        relative_datetime_label.halign = Gtk.Align.END;
+
+        var relative_datetime = new Gtk.Label (Granite.DateTime.get_relative_datetime (datepicker.date));
+        relative_datetime.xalign = 0;
+
+        datepicker.changed.connect (() =>  relative_datetime.label = Granite.DateTime.get_relative_datetime (datepicker.date));
+        timepicker.changed.connect (() =>  relative_datetime.label = Granite.DateTime.get_relative_datetime (timepicker.time));
+
         column_spacing = 12;
         row_spacing = 6;
         halign = Gtk.Align.CENTER;
@@ -79,5 +88,7 @@ public class DateTimePickerView : Gtk.Grid {
         attach (current_time, 1, 4, 1, 1);
         attach (current_date_label, 0, 5, 1, 1);
         attach (current_date, 1, 5, 1, 1);
+        attach (relative_datetime_label, 0, 6, 1, 1);
+        attach (relative_datetime, 1, 6, 1, 1);
     }
 }
