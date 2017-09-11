@@ -25,6 +25,10 @@
  */
 
 public class DateTimePickerView : Gtk.Grid {
+    private Gtk.Label relative_datetime;
+    private Granite.Widgets.DatePicker datepicker;
+    private Granite.Widgets.TimePicker timepicker;
+
     construct {
         var pickers_label = new Gtk.Label ("Picker Widgets");
         pickers_label.xalign = 0;
@@ -33,12 +37,12 @@ public class DateTimePickerView : Gtk.Grid {
         var date_label = new Gtk.Label ("DatePicker:");
         date_label.halign = Gtk.Align.END;
 
-        var datepicker = new Granite.Widgets.DatePicker ();
+        datepicker = new Granite.Widgets.DatePicker ();
 
         var time_label = new Gtk.Label ("TimePicker:");
         time_label.halign = Gtk.Align.END;
 
-        var timepicker = new Granite.Widgets.TimePicker ();
+        timepicker = new Granite.Widgets.TimePicker ();
 
         var formatting_label = new Gtk.Label ("String Formatting");
         formatting_label.margin_top = 6;
@@ -68,11 +72,12 @@ public class DateTimePickerView : Gtk.Grid {
         var relative_datetime_label = new Gtk.Label ("Relative datetime:");
         relative_datetime_label.halign = Gtk.Align.END;
 
-        var relative_datetime = new Gtk.Label (Granite.DateTime.get_relative_datetime (datepicker.date));
+        relative_datetime = new Gtk.Label ("");
         relative_datetime.xalign = 0;
 
-        datepicker.changed.connect (() =>  relative_datetime.label = Granite.DateTime.get_relative_datetime (datepicker.date));
-        timepicker.changed.connect (() =>  relative_datetime.label = Granite.DateTime.get_relative_datetime (timepicker.time));
+        set_selected_datetime ();
+        datepicker.changed.connect (() => set_selected_datetime ());
+        timepicker.changed.connect (() => set_selected_datetime ());
 
         column_spacing = 12;
         row_spacing = 6;
@@ -90,5 +95,13 @@ public class DateTimePickerView : Gtk.Grid {
         attach (current_date, 1, 5, 1, 1);
         attach (relative_datetime_label, 0, 6, 1, 1);
         attach (relative_datetime, 1, 6, 1, 1);
+    }
+
+    private void set_selected_datetime () {
+        var selected_date_time = datepicker.date;
+        selected_date_time = selected_date_time.add_hours (timepicker.time.get_hour ());
+        selected_date_time = selected_date_time.add_minutes (timepicker.time.get_minute ());
+
+        relative_datetime.label = Granite.DateTime.get_relative_datetime (selected_date_time);
     }
 }
