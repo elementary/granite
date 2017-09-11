@@ -56,6 +56,37 @@ namespace Granite.DateTime {
     }
 
     /**
+     * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and @return a localized, relative date and time string
+     */
+    private string get_relative_datetime (GLib.DateTime date_time) {
+        var now = new GLib.DateTime.now_local ();
+        var diff = now.difference (date_time);
+
+        if (is_same_day (date_time, now)) {
+            if (diff < TimeSpan.MINUTE) {
+                return _("Now");
+            } else if (diff < TimeSpan.HOUR) {
+                var minutes = diff / TimeSpan.MINUTE;
+                return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
+            } else if (diff < 12 * TimeSpan.HOUR) {
+                int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
+                return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+            } else {
+                var format = Granite.DateTime.get_default_time_format (is_clock_format_12h (), false);
+                return date_time.format (format);
+            }
+        } else if (is_same_day (date_time.add_days (1), now)) {
+            return _("Yesterday");
+        } else if (diff < 6 * TimeSpan.DAY) {
+            return date_time.format ("%a");
+        } else if (date_time.get_year () == now.get_year ()) {
+            return date_time.format (_("%b %-e"));
+        } else {
+            return date_time.format ("%x");
+        }
+    }
+
+    /**
      * Gets the //clock-format// key from //org.gnome.desktop.interface// schema
      * and determines if the clock format is 12h based
      *
@@ -65,6 +96,16 @@ namespace Granite.DateTime {
         var h24_settings = new Settings ("org.gnome.desktop.interface");
         var format = h24_settings.get_string ("clock-format");
         return (format.contains ("12h"));
+    }
+
+    /**
+     * Compare two {@link GLib.DateTime} and @return true if they occur on the same day of the same year
+     */
+    public bool is_same_day (GLib.DateTime day1, GLib.DateTime day2) {
+        if (day1.get_day_of_year () == day2.get_day_of_year () && day1.get_year () == day2.get_year ()) {
+            return true;
+        }
+        return false;
     }
 
     /**
