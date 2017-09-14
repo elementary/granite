@@ -103,7 +103,12 @@ namespace Granite.DateTime {
     }
 
     /**
-     * Compare two {@link GLib.DateTime} and @return true if they occur on the same day of the same year
+     * Compare two {@link GLib.DateTime} and return true if they occur on the same day of the same year
+     *
+     * @param day1 a {@link GLib.DateTime} to compare against day2
+     * @param day2 a {@link GLib.DateTime} to compare against day1
+     *
+     * @return true if day1 and day2 occur on the same day of the same year. False otherwise
      */
     public static bool is_same_day (GLib.DateTime day1, GLib.DateTime day2) {
         if (day1.get_day_of_year () == day2.get_day_of_year () && day1.get_year () == day2.get_year ()) {
