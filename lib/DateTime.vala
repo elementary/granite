@@ -68,20 +68,32 @@ namespace Granite.DateTime {
         var diff = now.difference (date_time);
 
         if (is_same_day (date_time, now)) {
-            if (diff < TimeSpan.MINUTE) {
-                return _("Now");
-            } else if (diff < TimeSpan.HOUR) {
-                var minutes = diff / TimeSpan.MINUTE;
-                return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
-            } else if (diff < 12 * TimeSpan.HOUR) {
-                int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+            if (diff > 0) {
+                if (diff < TimeSpan.MINUTE) {
+                    return _("Now");
+                } else if (diff < TimeSpan.HOUR) {
+                    var minutes = diff / TimeSpan.MINUTE;
+                    return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
+                } else if (diff < 12 * TimeSpan.HOUR) {
+                    int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
+                    return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+                }
             } else {
-                return date_time.format (get_default_time_format (is_clock_format_12h (), false));
+                diff = -1 * diff;
+                if (diff < TimeSpan.HOUR) {
+                    var minutes = diff / TimeSpan.MINUTE;
+                    return ngettext ("%dm from now", "%dm from now", (ulong) (minutes)).printf ((int) (minutes));
+                } else if (diff < 12 * TimeSpan.HOUR) {
+                    int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
+                    return ngettext ("%dh from now", "%dh from now", (ulong) rounded).printf (rounded);
+                }
             }
+            return date_time.format (get_default_time_format (is_clock_format_12h (), false));
         } else if (is_same_day (date_time.add_days (1), now)) {
             return _("Yesterday");
-        } else if (diff < 6 * TimeSpan.DAY) {
+        } else if (is_same_day (date_time.add_days (-1), now)) {
+            return _("Tomorrow");
+        } else if (diff < 6 * TimeSpan.DAY && diff > -6 * TimeSpan.DAY) {
             return date_time.format (get_default_date_format (true, false, false));
         } else if (date_time.get_year () == now.get_year ()) {
             return date_time.format (get_default_date_format (false, true, false));
