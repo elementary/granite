@@ -157,6 +157,8 @@ namespace Granite {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
+
+            handle_local_options.connect (on_handle_local_options);
         }
 
 #if LINUX
@@ -176,21 +178,15 @@ namespace Granite {
          * @param args array of arguments
          */
         public new int run (string[] args) {
-
-            // parse commandline options
-            var context = new OptionContext ("");
-
-            context.add_main_entries (options, null);
-            context.add_group (Gtk.get_option_group (false));
-            context.set_ignore_unknown_options (true);
-
-            try {
-                context.parse (ref args);
-            } catch { }
-
-            set_options ();
+            add_main_option_entries (options);
 
             return base.run (args);
+        }
+
+        private int on_handle_local_options (VariantDict options) {
+            set_options ();
+
+            return -1;
         }
 
         protected static bool DEBUG = false;
