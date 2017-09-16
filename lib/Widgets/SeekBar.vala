@@ -104,8 +104,6 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     }
 
     construct {
-        get_style_context ().add_class ("seek-bar");
-
         /* GUI */
         orientation = Gtk.Orientation.HORIZONTAL;
         column_spacing = 6;

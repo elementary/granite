@@ -35,6 +35,7 @@ public class SeekBarView : Gtk.Grid {
         preview_popover.valign = Gtk.Align.CENTER;
 
         preview_label = new Gtk.Label ("");
+        preview_label.margin = 5;
         preview_popover.add (preview_label);
         preview_popover.show_all ();
         preview_popover.set_visible (false);
@@ -64,12 +65,12 @@ public class SeekBarView : Gtk.Grid {
         });
 
         seek_bar.scale.button_press_event.connect (() => {
-            preview_label.height_request = 50;
+            preview_label.margin = 10;
             return false;
         });
 
         seek_bar.scale.button_release_event.connect (() => {
-            preview_label.height_request = 0;
+            preview_label.margin = 5;
             return false;
         });
 
