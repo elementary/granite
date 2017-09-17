@@ -35,7 +35,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         get {
             return _playback_duration;
         }
-        construct set {
+        set {
             double duration = value;
             if (duration < 0.0) {
                 warning ("Duration value less than zero, duration set to 0.0");
@@ -43,7 +43,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
             }
 
             _playback_duration = duration;
-            time_label.label = DateTime.seconds_to_time ((int) duration);
+            duration_label.label = DateTime.seconds_to_time ((int) duration);
         }
     }
 
@@ -89,7 +89,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     /*
      * The right label that displays the total duration time.
      */
-    public Gtk.Label time_label { get; construct set; }
+    public Gtk.Label duration_label { get; construct set; }
 
     /*
      * The time of the full duration of the playback.
@@ -109,10 +109,10 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         column_spacing = 6;
 
         progression_label = new Gtk.Label ("");
-        time_label = new Gtk.Label ("");
+        duration_label = new Gtk.Label ("");
         progression_label.get_style_context ().add_class ("progression-label");
-        time_label.get_style_context ().add_class ("time-label");
-        progression_label.margin_right = time_label.margin_left = 3;
+        duration_label.get_style_context ().add_class ("duration-label");
+        progression_label.margin_right = duration_label.margin_left = 3;
 
         scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 1, 0.1);
         scale.get_style_context ().add_class ("scale");
@@ -152,7 +152,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
 
         add (progression_label);
         add (scale);
-        add (time_label);
+        add (duration_label);
     }
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
