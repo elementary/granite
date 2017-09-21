@@ -38,7 +38,7 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         set {
             double duration = value;
             if (duration < 0.0) {
-                warning ("Duration value less than zero, duration set to 0.0");
+                debug ("Duration value less than zero, duration set to 0.0");
                 duration = 0.0;
             }
 
@@ -57,10 +57,10 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
         set {
             double progress = value;
             if (progress < 0.0) {
-                warning ("Progress value less than 0.0, progress set to 0.0");
+                debug ("Progress value less than 0.0, progress set to 0.0");
                 progress = 0.0;
             } else if (progress > 1.0) {
-                warning ("Progress value greater than 1.0, progress set to 1.0");
+                debug ("Progress value greater than 1.0, progress set to 1.0");
                 progress = 1.0;
             }
 
