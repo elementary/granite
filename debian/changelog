@@ -1,3 +1,9 @@
+granite (0.5) UNRELEASED; urgency=medium
+
+  * Pre-release version bump
+
+ -- Cody Garver <cody@elementary.io>  Fri, 22 Sep 2017 11:51:41 -0500
+
 granite (0.4.1) xenial; urgency=medium
 
   * New upstream release.

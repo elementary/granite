@@ -1,4 +1,4 @@
-libgranite.so.3 libgranite3 #MINVER#
+libgranite.so.4 libgranite4 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
  get_close_pixbuf@Base 0.2.0
  granite_app@Base 0.2.0
