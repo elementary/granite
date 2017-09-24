@@ -229,7 +229,7 @@ public class Granite.AsyncImage : Gtk.Image {
      * Sets the image to display a {@link GLib.File} with requested width and height.
      * 
      * ''Note that this method is not a wrapper to the main'' {@link Granite.AsyncImage.set_from_gicon_async} ''method''. Internally, it only creates
-     * a {@link Gdk.Pixbuf} with an {@link GLib.InputStream}, loads it asynchronously and sets the {@link Gtk.Image}'s pixbuf to the result.
+     * a {@link Gdk.Pixbuf} with an {@link GLib.InputStream}, loads it asynchronously and sets the {@link Gtk.Image}'s surface to the result.
      * 
      * This method will reset the {@link Granite.AsyncImage.gicon_async} and {@link Granite.AsyncImage.size_async} properties to their
      * default values and will not make the {@link Granite.AsyncImage} update the image when the scale factor or icon theme changes.
