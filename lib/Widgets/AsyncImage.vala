@@ -44,8 +44,8 @@
  * AsyncImage has also it's own cache for already loaded icons. If you attempt to load the same icon at the same size
  * AsyncImage will look it up and if it's available, will set it immediately.
  * 
- * If you want to detect when the image was actually loaded into the {@link Gdk.Pixbuf} you can connect to
- * the {@link GLib.Object.notify} signal for {@link Gtk.Image.pixbuf}.
+ * If you want to detect when the image was actually loaded into the {@link Cairo.Surface} you can connect to
+ * the {@link GLib.Object.notify} signal for {@link Gtk.Image.surface}.
  */
 public class Granite.AsyncImage : Gtk.Image {
     private class CacheEntry {
