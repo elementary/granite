@@ -304,7 +304,7 @@ public class Granite.AsyncImage : Gtk.Image {
             if (info.is_symbolic ()) {
                 pixbuf = yield info.load_symbolic_for_context_async (style_context, cancellable);
             } else {
-                pixbuf = info.load_icon ();
+                pixbuf = yield info.load_icon_async ();
             }
 
             surface = Gdk.cairo_surface_create_from_pixbuf (pixbuf, current_scale_factor, null);
