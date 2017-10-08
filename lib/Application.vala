@@ -178,14 +178,16 @@ namespace Granite {
          * @param args array of arguments
          */
         public new int run (string[] args) {
-            add_main_option_entries (options);
+            var option_group = new OptionGroup ("granite", "Granite Options", _("Show Granite Options"));
+            option_group.add_entries (options);
+
+            add_option_group ((owned)option_group);
 
             return base.run (args);
         }
 
         private int on_handle_local_options (VariantDict options) {
             set_options ();
-
             return -1;
         }
 
