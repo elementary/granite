@@ -60,6 +60,10 @@ namespace Granite.Widgets {
             set {
                 _date = value;
                 text = _date.format (format);
+                proc_next_day_selected = false;
+                calendar.select_month (value.get_month () - 1, value.get_year ());
+                proc_next_day_selected = false;
+                calendar.select_day (value.get_day_of_month ());
                 date_changed ();
             }
         }
