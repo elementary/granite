@@ -299,7 +299,15 @@ namespace Granite.Widgets {
             });
 
             this.button_press_event.connect ((e) => {
-                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
+                if (e.button == 2 && close_button_is_visible ()) {
+                    e.state &= MODIFIER_MASK;
+
+                    if  (e.state == 0) {
+                        this.closed ();
+                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
+                        this.close_others ();
+                    }
+                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
                 } else if (e.button == 3) {
                     menu.popup (null, null, null, 3, e.time);
@@ -311,20 +319,6 @@ namespace Granite.Widgets {
                     if (this.pinned) {
                         pin_m.label = "Unpin";
                     }
-                } else {
-                    return false;
-                }
-
-                return true;
-            });
-
-            this.button_release_event.connect ((e) => {
-                e.state &= MODIFIER_MASK;
-
-                if (e.button == 2 && e.state == 0 && close_button_is_visible ()) {
-                    this.closed ();
-                } else if (e.button == 2 && e.state == Gdk.ModifierType.SHIFT_MASK && close_button_is_visible ()) {
-                    this.close_others ();
                 } else {
                     return false;
                 }
