@@ -808,7 +808,11 @@ namespace Granite.Widgets {
             add_button.margin_end = 6;
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
-            add_button.show ();
+
+            //FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
+            var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            add_button_box.add (add_button);
+            add_button_box.show_all ();
 
             Tab.fix_button_theming (add_button);
 
@@ -819,7 +823,7 @@ namespace Granite.Widgets {
             restore_button.sensitive = false;
             restore_button.show ();
 
-            notebook.set_action_widget (add_button, Gtk.PackType.START);
+            notebook.set_action_widget (add_button_box, Gtk.PackType.START);
             notebook.set_action_widget (restore_button, Gtk.PackType.END);
 
 
