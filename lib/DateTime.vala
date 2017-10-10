@@ -88,6 +88,7 @@ namespace Granite.DateTime {
                     return ngettext ("%dh from now", "%dh from now", (ulong) rounded).printf (rounded);
                 }
             }
+
             return date_time.format (get_default_time_format (is_clock_format_12h (), false));
         } else if (is_same_day (date_time.add_days (1), now)) {
             return _("Yesterday");
