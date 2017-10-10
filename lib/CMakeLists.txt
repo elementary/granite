@@ -46,6 +46,7 @@ set (VALA_SOURCES
     Widgets/HeaderLabel.vala
     Widgets/SettingsSidebar.vala
     Widgets/SettingsSidebarRow.vala
+    Widgets/MessageDialog.vala
 )
 
 set (C_SOURCES

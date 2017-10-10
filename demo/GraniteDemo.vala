@@ -53,13 +53,14 @@ public class Granite.Demo : Granite.Application {
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var welcome = new WelcomeView ();
+        var message_dialog_view = new MessageDialogView (window);
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
-        main_stack.add_titled (date_time_picker_view, "pickers", "DatePicker & TimePicker");
+        main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
@@ -67,6 +68,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
+        main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
