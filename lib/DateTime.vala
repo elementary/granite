@@ -82,10 +82,10 @@ namespace Granite.DateTime {
                 diff = -1 * diff;
                 if (diff < TimeSpan.HOUR) {
                     var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("%dm from now", "%dm from now", (ulong) (minutes)).printf ((int) (minutes));
+                    return ngettext ("in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
                 } else if (diff < 12 * TimeSpan.HOUR) {
                     int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("%dh from now", "%dh from now", (ulong) rounded).printf (rounded);
+                    return ngettext ("in %dh", "in %dh", (ulong) rounded).printf (rounded);
                 }
             }
 
