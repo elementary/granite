@@ -315,13 +315,21 @@ namespace Granite.Widgets {
                     }
 
                     if (c.to_string ().contains ("m") && is_suffix == true) {
-                        if (hour == null || minute == null)
+                        if (hour == null) {
                             return;
+                        } else if (minute == null) {
+                            minute = 0;
+                        }
+
                         // We can imagine that some will try to set it to "19:00 am"
-                        if (current.contains ("a") || hour > 12) {
+                        if (current.contains ("a") || hour >= 12) {
                             time = time.add_hours (hour - time.get_hour ());
                         } else {
                             time = time.add_hours (hour + 12 - time.get_hour ());
+                        }
+
+                        if (current.contains ("a") && hour == 12) {
+                            time = time.add_hours (-12);
                         }
 
                         time = time.add_minutes (minute - time.get_minute ());
@@ -332,6 +340,20 @@ namespace Granite.Widgets {
 
             if (is_hours == false && is_suffix == false && current != "") {
                 minute = int.parse (current);
+            }
+
+            if (hour == null) {
+                if (current.length < 3) {
+                    hour = int.parse (current);
+                    minute = 0;
+                } else if (current.length == 4) {
+                    hour = int.parse (current.slice (0, 2));
+                    minute = int.parse (current.slice (2,4));
+                    if (hour > 23 || minute > 59) {
+                        hour = null;
+                        minute = null;
+                    }
+                }
             }
 
             if (hour == null || minute == null) {
