@@ -62,12 +62,12 @@ namespace Granite.Widgets {
                     if (value != _pinned) {
                         if (value) {
                             _label.visible = false;
-                            _icon.margin_left = 1;
-                            _working.margin_left = 1;
+                            _icon.margin_start = 1;
+                            _working.margin_start = 1;
                         } else {
                             _label.visible = true;
-                            _icon.margin_left = 0;
-                            _working.margin_left = 0;
+                            _icon.margin_start = 0;
+                            _working.margin_start = 0;
                         }
 
                         _pinned = value;
@@ -194,11 +194,6 @@ namespace Granite.Widgets {
 
         private const string CLOSE_BUTTON_STYLE = """
             * {
-                -GtkButton-default-border : 0;
-                -GtkButton-default-outside-border : 0;
-                -GtkButton-inner-border: 0;
-                -GtkWidget-focus-line-width : 0;
-                -GtkWidget-focus-padding : 0;
                 padding: 0;
             }
         """;
@@ -221,8 +216,7 @@ namespace Granite.Widgets {
             this._working = new Gtk.Spinner ();
             _working.start();
 
-            var close_button = new Gtk.Button ();
-            close_button.add (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
+            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             close_button.tooltip_text = _("Close Tab");
             close_button.relief = Gtk.ReliefStyle.NONE;
 
@@ -485,12 +479,7 @@ namespace Granite.Widgets {
                 var _menu = new Gtk.Menu ();
 
                 foreach (var entry in closed_tabs) {
-                    var item = new Gtk.ImageMenuItem.with_label (entry.label);
-                    item.set_always_show_image (true);
-                    if (entry.icon != null) {
-                        var icon = new Gtk.Image.from_gicon (entry.icon, Gtk.IconSize.MENU);
-                        item.set_image (icon);
-                    }
+                    var item = new Gtk.MenuItem.with_label (entry.label);
                     _menu.prepend (item);
 
                     item.activate.connect (() => {
@@ -814,24 +803,29 @@ namespace Granite.Widgets {
                 restore_tab_m.sensitive = false;
             });
 
-            Gtk.Box add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            add_button = new Gtk.Button ();
-            add_button.add (new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU));
+            add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
+            add_button.margin_start = 6;
+            add_button.margin_end = 6;
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
-            Tab.fix_button_theming (add_button);
-            add_button_box.pack_start (add_button, false, false, ADD_BUTTON_PADDING);
-            add_button_box.show_all ();
-            this.notebook.set_action_widget (add_button_box, Gtk.PackType.START);
 
-            restore_button = new Gtk.Button ();
-            restore_button.add (new Gtk.Image.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.MENU));
-            restore_button.margin_right = 5;
-            restore_button.set_relief (Gtk.ReliefStyle.NONE);
+            //FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
+            var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            add_button_box.add (add_button);
+            add_button_box.show_all ();
+
+            Tab.fix_button_theming (add_button);
+
+            restore_button = new Gtk.Button.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.MENU);
+            restore_button.margin_end = 6;
+            restore_button.relief = Gtk.ReliefStyle.NONE;
             restore_button.tooltip_text = _("Closed Tabs");
             restore_button.sensitive = false;
-            this.notebook.set_action_widget (restore_button, Gtk.PackType.END);
-            restore_button.show_all ();
+            restore_button.show ();
+
+            notebook.set_action_widget (add_button_box, Gtk.PackType.START);
+            notebook.set_action_widget (restore_button, Gtk.PackType.END);
+
 
             add_button.clicked.connect (() => {
                 new_tab_requested ();
