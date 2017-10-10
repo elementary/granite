@@ -25,6 +25,8 @@
  * inside of the Gtk.Stack
  */
 public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
+    private Gtk.ListBox listbox;
+
     /**
      * The Gtk.Stack to control
      */
@@ -42,11 +44,32 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     }
 
     construct {
-        var listbox = new Gtk.ListBox ();
+        listbox = new Gtk.ListBox ();
         listbox.activate_on_single_click = true;
         listbox.selection_mode = Gtk.SelectionMode.SINGLE;
 
         add (listbox);
+
+        on_sidebar_changed ();
+        stack.add.connect (on_sidebar_changed);
+        stack.remove.connect (on_sidebar_changed);
+
+        listbox.row_selected.connect ((row) => {
+            stack.visible_child_name = ((SettingsSidebarRow) row).name;
+        });
+
+        listbox.set_header_func ((row, before) => {
+            var header = ((SettingsSidebarRow) row).header;
+            if (header != null) {
+                row.set_header (new HeaderLabel (header));
+            }
+        });
+    }
+
+    private void on_sidebar_changed () {
+        foreach (unowned Gtk.Widget listbox_child in listbox.get_children ()) {
+            listbox_child.destroy ();
+        }
 
         foreach (unowned Gtk.Widget child in stack.get_children ()) {
             string name;
@@ -84,15 +107,6 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
             }
         }
 
-        listbox.row_selected.connect ((row) => {
-            stack.visible_child_name = ((SettingsSidebarRow) row).name;
-        });
-
-        listbox.set_header_func ((row, before) => {
-            var header = ((SettingsSidebarRow) row).header;
-            if (header != null) {
-                row.set_header (new HeaderLabel (header));
-            }
-        });
+        listbox.show_all ();
     }
 }
