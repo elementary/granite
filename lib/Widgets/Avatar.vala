@@ -27,12 +27,35 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     private const string DEFAULT_ICON = "avatar-default";
     private const int EXTRA_MARGIN = 4;
     private bool draw_theme_background = true;
+    private string? filename;
 
     private bool is_default = false;
     private string? orig_filename = null;
     private int? orig_pixel_size = null;
 
     public Gdk.Pixbuf? pixbuf { get; set; }
+
+    /**
+     * The "pixel-size" property can be used to specify a fixed size.
+     */
+    public int pixel_size { get; construct; }
+
+    /**
+     * The "file" property can be used to set a new avatar image from a file path.
+     */
+    public string? file {
+        set {        
+            if (filename != null) {
+                filename = value;
+                load_image (filename, pixel_size);
+            } else {
+                show_default (pixel_size);
+            }
+        }
+        get {
+            return filename;
+        }
+    }
 
     /**
      * Makes new Avatar widget
@@ -53,22 +76,16 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     /**
      * Creates a new Avatar from the speficied filepath and icon size
      *
-     * @param filepath image to be used
+     * @param filename image to be used
      * @param pixel_size to scale the image
      */
-    public Avatar.from_file (string filepath, int pixel_size) {
-        load_image (filepath, pixel_size);
-        orig_filename = filepath;
+    public Avatar.from_file (string filename, int pixel_size) {
+        Object (
+            pixel_size: pixel_size,
+            file: filename
+        );
+        orig_filename = filename;
         orig_pixel_size = pixel_size;
-    }
-
-    private void load_image (string filepath, int pixel_size) {
-        try {
-            var size = pixel_size * get_scale_factor ();
-            pixbuf = new Gdk.Pixbuf.from_file_at_size (filepath, size, size);
-        } catch (Error e) {
-            show_default (pixel_size);
-        }
     }
 
     /**
@@ -77,6 +94,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
      * @param pixel_size size of the icon to be loaded
      */
     public Avatar.with_default_icon (int pixel_size) {
+        Object (pixel_size: pixel_size);
         show_default (pixel_size);
         orig_pixel_size = pixel_size;
     }
@@ -95,6 +113,15 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     ~Avatar () {
         notify["pixbuf"].disconnect (refresh_size_request);
         Gdk.Screen.get_default ().monitors_changed.disconnect (dpi_change);
+    }
+    
+    private void load_image (string filename, int pixel_size) {
+        try {
+            var size = pixel_size * get_scale_factor ();
+            pixbuf = new Gdk.Pixbuf.from_file_at_size (filename, size, size);
+        } catch (Error e) {
+            show_default (pixel_size);
+        }
     }
 
     private void refresh_size_request () {
