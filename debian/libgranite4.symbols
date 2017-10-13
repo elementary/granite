@@ -11,7 +11,9 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_collapse_mode_get_type@Base 0.2.0
  granite_date_time_get_default_date_format@Base 0.3.0
  granite_date_time_get_default_time_format@Base 0.3.0
+ granite_date_time_get_relative_datetime@Base 0.5
  granite_date_time_is_clock_format_12h@Base 0.3.0
+ granite_date_time_is_same_day@Base 0.5
  granite_drawing_buffer_surface_average_color@Base 0.2.0
  granite_drawing_buffer_surface_clear@Base 0.2.0
  granite_drawing_buffer_surface_construct@Base 0.2.0
