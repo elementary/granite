@@ -182,6 +182,9 @@ public class Granite.AsyncImage : Gtk.Image {
      * Use {@link GLib.ThemedIcon} or {@link Granite.AsyncImage.set_from_icon_name_async} to load the image
      * from an icon name.
      * 
+     * If the ``icon`` is a {@link GLib.FileIcon} then the image will be loaded using  the {@link Granite.AsyncImage.set_from_file_async}
+     * method with the supplied size for both ``width`` and ``height`` with preserving the aspect ratio of the image.
+     * 
      * @param icon the {@link GLib.Icon} to display in the image
      * @param size the size of the icon, ``0`` will clear the {@link Gtk.Image.pixbuf}, ``-1`` to load the default size
      * @param cancellable the cancellable to stop loading the icon
@@ -248,7 +251,9 @@ public class Granite.AsyncImage : Gtk.Image {
         gicon_async = null;
         size_async = -1;
 
-        set_size_request (width, height);
+        if (auto_size_request) {
+            set_size_request (width, height);
+        }
 
         try {
             var stream = yield file.read_async ();
@@ -276,6 +281,12 @@ public class Granite.AsyncImage : Gtk.Image {
                     return;
                 }
             }
+        }
+
+        if (icon is FileIcon) {
+            print ("SEEEET\n");
+            yield set_from_file_async (((FileIcon)icon).file, size, size, true);
+            return;
         }
 
         var style_context = get_style_context ();
@@ -319,7 +330,7 @@ public class Granite.AsyncImage : Gtk.Image {
     }
 
     private async void update (bool bypass_cache = false) {
-        if (gicon_async != null && gicon_async is ThemedIcon) {
+        if (gicon_async != null && (gicon_async is ThemedIcon || gicon_async is FileIcon)) {
             try {
                 yield set_from_gicon_async_internal (gicon_async, size_async, null, bypass_cache);
             } catch (Error e) {
