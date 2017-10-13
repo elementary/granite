@@ -18,10 +18,10 @@
 */
 
 /**
- * AsyncImage is an {@link Gtk.Image} that provides a way to load
+ * AsyncImage is a {@link Gtk.Image} that provides a way to load
  * icons and images asynchronously without blocking the main GTK thread.
  * 
- * AsyncImage can be used to improve your's GTK interface performance that
+ * AsyncImage can be used to improve your GTK interface's performance that
  * has a lot of images to load and populate e.g: the applications menu and
  * an icon chooser.
  * 
@@ -41,7 +41,7 @@
  * the current icon and it's size which will or is currently displayed. Note that those two properties will return
  * meaningful results //''only''// when you call {@link Granite.AsyncImage.set_from_gicon_async} and it's wrappers.
  * 
- * AsyncImage has also it's own cache for already loaded icons. If you attempt to load the same icon at the same size
+ * AsyncImage has also its own cache for already loaded icons. If you attempt to load the same icon at the same size
  * AsyncImage will look it up and if it's available, will set it immediately.
  * 
  * If you want to detect when the image was actually loaded into the {@link Cairo.Surface} you can connect to
@@ -204,7 +204,7 @@ public class Granite.AsyncImage : Gtk.Image {
     /**
      * A wrapper for {@link Granite.AsyncImage.set_from_gicon_async} to display an icon name.
      * 
-     * This is a convinience method for setting an icon name with a desired {@link Gtk.IconSize}. Note that you'll not be
+     * This is a convenience method for setting an icon name with a desired {@link Gtk.IconSize}. Note that you'll not be
      * able to change the icon size afterwards with {@link Gtk.Image.pixel_size} or {@link Gtk.Image.icon_size}. You will
      * have to call one of the {@link Granite.AsyncImage} set_from_ methods to change it's size.
      * 
