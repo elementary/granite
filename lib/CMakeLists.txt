@@ -1,8 +1,8 @@
 # increase when you break the API
-set (PKG_SOVERSION 3)
+set (PKG_SOVERSION 4)
 
 # Increase when you add functionality
-set (PKG_SOMINOR 0.1)
+set (PKG_SOMINOR 0.2)
 
 set (VALA_SOURCES
     StyleClass.vala
