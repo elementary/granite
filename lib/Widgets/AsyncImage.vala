@@ -284,7 +284,6 @@ public class Granite.AsyncImage : Gtk.Image {
         }
 
         if (icon is FileIcon) {
-            print ("SEEEET\n");
             yield set_from_file_async (((FileIcon)icon).file, size, size, true);
             return;
         }
