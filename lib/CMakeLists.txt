@@ -11,6 +11,7 @@ set (VALA_SOURCES
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
+    Drawing/Palette.vala
     GtkPatch/AboutDialog.vala
     Services/Settings.vala
     Services/Logger.vala
