@@ -751,21 +751,25 @@ namespace Granite.Widgets {
          * Create a new dynamic notebook
          */
         public DynamicNotebook () {
-            this.notebook = new Gtk.Notebook ();
-            this.notebook.can_focus = false;
-            this.visible_window = false;
-            this.get_style_context ().add_class ("dynamic-notebook");
+            
+        }
 
-            this.notebook.scrollable = true;
-            this.notebook.show_border = false;
+        construct {
+            notebook = new Gtk.Notebook ();
+            notebook.can_focus = false;
+            visible_window = false;
+            get_style_context ().add_class ("dynamic-notebook");
+
+            notebook.scrollable = true;
+            notebook.show_border = false;
             _tab_bar_behavior = TabBarBehavior.ALWAYS;
 
-            this.draw.connect ( (ctx) => {
-                this.get_style_context ().render_activity (ctx, 0, 0, this.get_allocated_width (), 27);
+            draw.connect ( (ctx) => {
+                get_style_context ().render_activity (ctx, 0, 0, get_allocated_width (), 27);
                 return false;
             });
 
-            this.add (this.notebook);
+            add (notebook);
 
             menu = new Gtk.Menu ();
             new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
@@ -789,7 +793,7 @@ namespace Granite.Widgets {
                     return;
                 restore_button.sensitive = !closed_tabs.empty;
                 restore_tab_m.sensitive = !closed_tabs.empty;
-                this.tab_restored (label, restore_data, icon);
+                tab_restored (label, restore_data, icon);
             });
 
             closed_tabs.cleared.connect (() => {
@@ -834,17 +838,17 @@ namespace Granite.Widgets {
                 var menu = closed_tabs.menu;
                 menu.attach_widget = restore_button;
                 menu.show_all ();
-                menu.popup (null, null, this.restore_menu_position, 1, 0);
+                menu.popup (null, null, restore_menu_position, 1, 0);
             });
 
             restore_tab_m.visible = allow_restoring;
             restore_button.visible = allow_restoring;
 
-            this.size_allocate.connect (() => {
-                this.recalc_size ();
+            size_allocate.connect (() => {
+                recalc_size ();
             });
 
-            this.button_press_event.connect ((e) => {
+            button_press_event.connect ((e) => {
                 if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
                     new_tab_requested ();
                 } else if (e.button == 2 && allow_restoring) {
@@ -857,7 +861,7 @@ namespace Granite.Widgets {
                 return false;
             });
 
-            this.key_press_event.connect ((e) => {
+            key_press_event.connect ((e) => {
                 e.state &= MODIFIER_MASK;
 
                 switch (e.keyval) {
