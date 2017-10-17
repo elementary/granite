@@ -16,6 +16,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/CSSView.vala
     Views/DateTimePickerView.vala
     Views/DynamicNotebookView.vala
+    Views/MessageDialogView.vala
     Views/ModeButtonView.vala
     Views/OverlayBarView.vala
     Views/SeekBarView.vala
@@ -23,6 +24,10 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/StorageView.vala
     Views/ToastView.vala
     Views/WelcomeView.vala
+    Views/SettingsView/SettingsView.vala
+    Views/SettingsView/SettingsPage.vala
+    Views/SettingsView/SimpleSettingsPage.vala
+    
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES

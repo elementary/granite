@@ -17,9 +17,6 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-using Gtk;
-using Gdk;
-
 namespace Granite.Widgets {
 
     /**
@@ -47,7 +44,7 @@ namespace Granite.Widgets {
         /**
          * The Calendar to create the DatePicker
          */
-        protected Calendar calendar;
+        protected Gtk.Calendar calendar;
 
         private Gtk.Popover popover;
 
@@ -63,6 +60,10 @@ namespace Granite.Widgets {
             set {
                 _date = value;
                 text = _date.format (format);
+                proc_next_day_selected = false;
+                calendar.select_month (value.get_month () - 1, value.get_year ());
+                proc_next_day_selected = false;
+                calendar.select_day (value.get_day_of_month ());
                 date_changed ();
             }
         }
@@ -78,7 +79,7 @@ namespace Granite.Widgets {
             dropdown.margin = MARGIN;
             popover = new Gtk.Popover (this);
             popover.add (dropdown);
-            calendar = new Calendar ();
+            calendar = new Gtk.Calendar ();
             date = new GLib.DateTime.now_local ();
 
             // Entry properties
@@ -86,7 +87,7 @@ namespace Granite.Widgets {
             editable = false; // user can't edit the entry directly
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("office-calendar-symbolic");
 
-            dropdown.add_events (EventMask.FOCUS_CHANGE_MASK);
+            dropdown.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             dropdown.add (calendar);
 
             // Signals and callbacks
@@ -126,8 +127,8 @@ namespace Granite.Widgets {
             Object (format: format);
         }
 
-        private void on_icon_press (EntryIconPosition position) {
-            Gdk.Rectangle rect = Gdk.Rectangle ();
+        private void on_icon_press (Gtk.EntryIconPosition position) {
+            Gdk.Rectangle rect;
             position_dropdown (out rect);
             popover.pointing_to = rect;
             popover.position = Gtk.PositionType.BOTTOM;
@@ -139,6 +140,7 @@ namespace Granite.Widgets {
             Gtk.Allocation size;
             get_allocation (out size);
 
+            rect = Gdk.Rectangle ();
             rect.x = size.width - OFFSET;
             rect.y = size.height;
         }

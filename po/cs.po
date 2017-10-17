@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-05-17 23:17+0000\n"
-"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
+"PO-Revision-Date: 2017-07-22 12:05+0000\n"
+"Last-Translator: Tonda Pavlík <kontakt@playton.cz>\n"
 "Language-Team: Czech "
-"<https://l10n.elementary.io/projects/desktop/granite/cs/>\n"
+"<https://weblate.elementary.io/projects/desktop/granite/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -95,7 +95,7 @@ msgstr "Otevřít v novém okně"
 #: ../lib//Widgets/DynamicNotebook.vala:270
 #: ../lib/Widgets/DynamicNotebook.vala:270
 msgid "Duplicate"
-msgstr "Zdvojit"
+msgstr "Duplikovat"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
 #: ../lib//Widgets/DynamicNotebook.vala:319
@@ -220,7 +220,7 @@ msgstr "%a %b %e %Y"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 msgid "%b %e %Y"
-msgstr "%b %e %Y"
+msgstr "%b. %e. %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -289,7 +289,7 @@ msgstr "Ostatní"
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 msgid "%s free out of %s"
-msgstr "% volných z %"
+msgstr "%s volných z %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
@@ -327,11 +327,11 @@ msgstr "Soubory"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr "dop."
+msgstr "dopoledne"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Toasty"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"

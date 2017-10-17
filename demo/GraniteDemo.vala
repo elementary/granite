@@ -26,48 +26,20 @@
 
 public class Granite.Demo : Granite.Application {
     /**
-     * Basic app information for Granite.Application. This is used by the About dialog.
+     * Basic app information for Granite.Application.
      */
     construct {
         application_id = "org.pantheon.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
 
         program_name = "Granite Demo";
-        app_years = "2011-2017";
 
         build_version = "0.4.1";
         app_icon = "applications-interfacedesign";
-        main_url = "https://github.com/elementary/granite";
-        bug_url = "https://github.com/elementary/granite/issues";
-        help_url = "https://elementaryos.stackexchange.com/questions/tagged/development";
-        translate_url = "https://l10n.elementary.io/projects/desktop/granite";
-
-        about_documenters = { null };
-        about_artists = { "Daniel Foré <daniel@elementary.io>" };
-        about_authors = {
-            "Maxwell Barvian <mbarvian@gmail.com>",
-            "Daniel Foré <daniel@elementary.io>",
-            "Avi Romanoff <aviromanoff@gmail.com>",
-            "Lucas Baudin <xapantu@gmail.com>",
-            "Victor Eduardo <victoreduardm@gmail.com>",
-            "Tom Beckmann <tombeckmann@online.de>",
-            "Corentin Noël <corentin@elementary.io>"
-        };
-
-        about_comments = "A demo of the Granite toolkit";
-        about_translators = _("translator-credits");
-        about_license_type = Gtk.License.GPL_3_0;
     }
 
     public override void activate () {
         var window = new Gtk.Window ();
-
-        var about_button = new Gtk.Button.from_icon_name ("dialog-information", Gtk.IconSize.LARGE_TOOLBAR);
-        about_button.tooltip_text = "About this application";
-
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.show_close_button = true;
-        headerbar.pack_end (about_button);
 
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
@@ -77,24 +49,28 @@ public class Granite.Demo : Granite.Application {
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
         var seekbar_view = new SeekBarView ();
+        var settings_view = new SettingsView ();
         var source_list_view = new SourceListView ();
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var welcome = new WelcomeView ();
+        var message_dialog_view = new MessageDialogView (window);
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
-        main_stack.add_titled (date_time_picker_view, "pickers", "DatePicker & TimePicker");
+        main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
+        main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
+        main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
@@ -106,15 +82,10 @@ public class Granite.Demo : Granite.Application {
         window.add (paned);
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
-        window.set_titlebar (headerbar);
         window.title = "Granite Demo";
         window.show_all ();
 
         add_window (window);
-
-        about_button.clicked.connect (() => {
-            show_about (window);
-        });
     }
 
     public static int main (string[] args) {

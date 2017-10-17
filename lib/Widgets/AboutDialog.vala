@@ -23,9 +23,11 @@ namespace Granite.Widgets {
 
     /**
      * This class makes an about dialog which goes in the App Menu on most apps.
+     * This class is deprecated. Applications should instead provide an Appstream appdata.xml file to describe their metadata
      *
      * {{../../doc/images/AboutDialog.png}}
      */
+    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
     public class AboutDialog : Granite.GtkPatch.AboutDialog {
         /**
          * The URL for the link to the website of the program.
@@ -94,12 +96,7 @@ namespace Granite.Widgets {
             show_all ();
 
             bug_button.clicked.connect (() => {
-                try {
-                    GLib.Process.spawn_command_line_async ("apport-bug %i".printf (Posix.getpid ()));
-                } catch (Error e) {
-                    warning ("Could Not Launch 'apport-bug'.");
-                    activate_link (bug);
-                }
+                activate_link (bug);
             });
 
             help_button.clicked.connect (() => {

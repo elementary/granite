@@ -5,12 +5,15 @@ set (PKG_SOVERSION 3)
 set (PKG_SOMINOR 0.1)
 
 set (VALA_SOURCES
-    style-classes.vala
+    StyleClass.vala
     Application.vala
+    DateTime.vala
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
+
     GtkPatch/AboutDialog.vala
+
     Services/Settings.vala
     Services/Logger.vala
     Services/Paths.vala
@@ -18,40 +21,37 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+
+    Widgets/AbstractSettingsPage.vala
+    Widgets/AbstractSimpleSettingsPage.vala
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
-    Widgets/WrapLabel.vala
     Widgets/AboutDialog.vala
     Widgets/ModeButton.vala
     Widgets/DatePicker.vala
-    Widgets/Entries.vala
     Widgets/TimePicker.vala
     Widgets/CollapsiblePaned.vala
-    Widgets/StaticNotebook.vala
     Widgets/DynamicNotebook.vala
     Widgets/CompositedWindow.vala
     Widgets/AppMenu.vala
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
-    Widgets/ToolButtonWithMenu.vala
-    Widgets/PopOver.vala
-    Widgets/DecoratedWindow.vala
-    Widgets/LightWindow.vala
     Widgets/SeekBar.vala
-    Widgets/StatusBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
-    Widgets/ThinPaned.vala
     Widgets/OverlayBar.vala
+    Widgets/HeaderLabel.vala
+    Widgets/SettingsSidebar.vala
+    Widgets/SettingsSidebarRow.vala
+    Widgets/MessageDialog.vala
 )
 
 set (C_SOURCES
     Widgets/widgets-utils.c
-    Widgets/close-button.c
 )
 
 ######################
