@@ -52,14 +52,9 @@ public class AsyncImageView : Gtk.Grid {
         });
 
         foreach (string name in icons) {
-            var image = new Granite.AsyncImage (false, true);
-            try {
-                yield image.set_from_icon_name_async (name, Gtk.IconSize.DIALOG, null);
-                flow_box.add (image);
-                flow_box.show_all ();
-            } catch (Error e) {
-                warning (e.message);
-            }
+            var image = new Granite.AsyncImage.from_icon_name_async (name, Gtk.IconSize.DIALOG);
+            flow_box.add (image);
+            flow_box.show_all ();
         }
     }
 }
