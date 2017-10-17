@@ -17,15 +17,18 @@
  * Boston, MA 02111-1307, USA.
  */
 
-public class SettingsView : Granite.SimpleSettingsPage {
-    public SettingsView () {
+public class SimpleSettingsPage : Granite.SimpleSettingsPage {
+    public SimpleSettingsPage () {
         Object (
             activatable: true,
             description: "This is a demo of Granite's SimpleSettingsPage",
+            header: "Simple Pages",
             icon_name: "preferences-system",
-            title: "SimpleSettingsPage"
+            title: "First Test Page"
         );
+    }
 
+    construct {
         var icon_label = new Gtk.Label ("Icon Name:");
         icon_label.xalign = 1;
 
@@ -57,6 +60,8 @@ public class SettingsView : Granite.SimpleSettingsPage {
 
         var button = new Gtk.Button.with_label ("Test Button");
 
+        update_status ();
+
         description_entry.changed.connect (() => {
             description = description_entry.text;
         });
@@ -65,10 +70,22 @@ public class SettingsView : Granite.SimpleSettingsPage {
             icon_name = icon_entry.text;
         });
 
+        status_switch.notify["active"].connect (update_status);
+
         title_entry.changed.connect (() => {
             title = title_entry.text;
         });
 
         action_area.add (button);
+    }
+
+    private void update_status () {
+        if (status_switch.active) {
+            status_type = Granite.SettingsPage.StatusType.SUCCESS;
+            status = _("Enabled");
+        } else {
+            status_type = Granite.SettingsPage.StatusType.OFFLINE;
+            status = _("Disabled");
+        }
     }
 }
