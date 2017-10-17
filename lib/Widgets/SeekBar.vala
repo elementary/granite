@@ -24,7 +24,7 @@
  * {{../../doc/images/SeekBar.png}}
  */
 
-public class Granite.Widgets.SeekBar : Gtk.Grid {
+public class Granite.SeekBar : Gtk.Grid {
     private double _playback_duration;
     private double _playback_progress;
 
@@ -104,9 +104,8 @@ public class Granite.Widgets.SeekBar : Gtk.Grid {
     }
 
     construct {
-        /* GUI */
-        orientation = Gtk.Orientation.HORIZONTAL;
         column_spacing = 6;
+        get_style_context ().add_class (Granite.STYLE_CLASS_SEEKBAR);
 
         progression_label = new Gtk.Label ("");
         duration_label = new Gtk.Label ("");

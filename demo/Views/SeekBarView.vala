@@ -40,7 +40,7 @@ public class SeekBarView : Gtk.Grid {
         preview_popover.show_all ();
         preview_popover.set_visible (false);
 
-        var seek_bar = new Granite.Widgets.SeekBar (100);
+        var seek_bar = new Granite.SeekBar (100);
 
         preview_popover.relative_to = seek_bar.scale;
 
