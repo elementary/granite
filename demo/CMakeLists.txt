@@ -24,7 +24,6 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/StorageView.vala
     Views/ToastView.vala
     Views/WelcomeView.vala
-    Views/MessageDialogView.vala
     Views/AsyncImageView.vala
     Views/SettingsView/SettingsView.vala
     Views/SettingsView/SettingsPage.vala
