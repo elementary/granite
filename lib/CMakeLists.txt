@@ -38,6 +38,7 @@ set (VALA_SOURCES
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
+    Widgets/SeekBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala

@@ -19,6 +19,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/MessageDialogView.vala
     Views/ModeButtonView.vala
     Views/OverlayBarView.vala
+    Views/SeekBarView.vala
     Views/SourceListView.vala
     Views/StorageView.vala
     Views/ToastView.vala
