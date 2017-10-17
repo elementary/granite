@@ -257,7 +257,7 @@ public class Granite.AsyncImage : Gtk.Image {
 
         try {
             var stream = yield file.read_async ();
-            var pixbuf = yield new Gdk.Pixbuf.from_stream_at_scale_async (stream, width, height, preserve_aspect_ratio, cancellable);
+            var pixbuf = yield new Gdk.Pixbuf.from_stream_at_scale_async (stream, width * current_scale_factor, height * current_scale_factor, preserve_aspect_ratio, cancellable);
             surface = Gdk.cairo_surface_create_from_pixbuf (pixbuf, current_scale_factor, null);
             reset_size_request ();
         } catch (Error e) {
