@@ -28,31 +28,29 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     private Gtk.Label description_label;
     private Gtk.Label title_label;
     private string _description;
-    private string _icon_name;
-    private string _title;
 
     /**
-     * A #Gtk.ButtonBox used as the action area for #this
+     * A {@link Gtk.ButtonbBox} used as the action area for #this
      */
     public Gtk.ButtonBox action_area { get; construct; }
 
     /**
-     * A #Gtk.Grid used as the content area for #this
+     * A {@link Gtk.Grid} used as the content area for #this
      */
     public Gtk.Grid content_area { get; construct; }
 
     /**
-     * A #Gtk.Switch that appears in the header area when #this.activatable is #true. #status_switch will be #null when #this.activatable is #false
+     * A {@link Gtk.Switch} that appears in the header area when #this.activatable is #true. #status_switch will be #null when #this.activatable is #false
      */
     public Gtk.Switch? status_switch { get; construct; }
 
     /**
-     * Creates a #Gtk.Switch #status_switch in the header of #this
+     * Creates a {@link Gtk.Switch} #status_switch in the header of #this
      */
     public bool activatable { get; construct; }
 
     /**
-     * Creates a #Gtk.Label with a page description in the header of #this
+     * Creates a {@link Gtk.Label} with a page description in the header of #this
      */
     public string description {
         get {
@@ -69,7 +67,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * An icon name associated with #this
      */
-    public string icon_name {
+    public new string icon_name {
         get {
             return _icon_name;
         } 
@@ -84,7 +82,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     /**
      * A title associated with #this
      */
-    public string title {
+    public new string title {
         get {
             return _title;
         } 

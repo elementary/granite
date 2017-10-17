@@ -140,15 +140,15 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         var padding = ctx.get_padding (state);
         status_label.margin_top = padding.top;
         status_label.margin_bottom = padding.bottom;
-        status_label.margin_left = padding.left;
-        status_label.margin_right = padding.right;
-        spinner.margin_right = padding.right;
+        status_label.margin_start = padding.left;
+        status_label.margin_end = padding.right;
+        spinner.margin_end = padding.right;
 
         var margin = ctx.get_margin (state);
         grid.margin_top = margin.top;
         grid.margin_bottom = margin.bottom;
-        grid.margin_left = margin.left;
-        grid.margin_right = margin.right;
+        grid.margin_start = margin.left;
+        grid.margin_end = margin.right;
 
         overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
         overlay.add_overlay (this);
