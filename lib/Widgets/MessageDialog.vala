@@ -244,7 +244,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         var message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
         message_grid.row_spacing = 6;
-        message_grid.margin_left = message_grid.margin_right = 12;
+        message_grid.margin_start = message_grid.margin_end = 12;
         message_grid.attach (image, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
@@ -254,7 +254,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         get_content_area ().add (message_grid);
 
         var action_area = get_action_area ();
-        action_area.margin_right = 6;
+        action_area.margin_end = 6;
         action_area.margin_bottom = 6;
         action_area.margin_top = 14;
     }
