@@ -6,12 +6,12 @@ vapidir = join_paths (get_option('datadir'),'vala','vapi')
 GIR_NAME= VERSIONED_CAMEL_CASE_NAME+'.gir'
 TYPELIB_NAME= VERSIONED_CAMEL_CASE_NAME+'.typelib'
 VAPI_NAME = VERSIONED_PROJECT_NAME+'.vapi'
-
+INCLUDE_DIR = join_paths (get_option ('includedir'), VERSIONED_PROJECT_NAME)
 conf = configuration_data()
 conf.set('PREFIX', get_option('prefix'))
 conf.set('exec_prefix', get_option('prefix'))
 conf.set('libdir', join_paths (get_option ('prefix'),get_option ('libdir')))
-conf.set('includedir', join_paths (get_option ('includedir'), VERSIONED_PROJECT_NAME))
+conf.set('includedir', INCLUDE_DIR)
 conf.set('DOLLAR', '$')
 conf.set('PKG_NAME', PROJECT_NAME)
 conf.set('PKG_VERSION', PROJECT_VERSION)
@@ -46,7 +46,7 @@ sources = files ([
 inc_libh = include_directories ('.')
 inc_libh_dep = declare_dependency (include_directories : inc_libh)
 
-lib = library(VERSIONED_PROJECT_NAME,
+lib = library(PROJECT_NAME,
 	valasources
 	+sources
 	+drawing_files
@@ -69,7 +69,7 @@ lib = library(VERSIONED_PROJECT_NAME,
 	install : true,
 	install_dir : [
 		get_option('libdir'),
-		join_paths (get_option('includedir'),VERSIONED_PROJECT_NAME),
+		join_paths (get_option('includedir'),PROJECT_NAME),
 		vapidir,
 		true
 	])
