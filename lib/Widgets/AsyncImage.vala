@@ -185,6 +185,10 @@ public class Granite.AsyncImage : Gtk.Image {
      * If the ``icon`` is a {@link GLib.FileIcon} then the image will be loaded using  the {@link Granite.AsyncImage.set_from_file_async}
      * method with the supplied size for both ``width`` and ``height`` with preserving the aspect ratio of the image.
      * 
+     * If the {@link Granite.AsyncImage.load_on_realize} is ``true``, the error will never be thrown in this method since
+     * the loading will happen internally in the AsyncImage when the {@link Gtk.Widget.realize} signal is invoked.
+     * In this case, a warning will be printed with relevant information about a fauilure.
+     * 
      * @param icon the {@link GLib.Icon} to display in the image
      * @param size the size of the icon, ``0`` will clear the {@link Gtk.Image.pixbuf}, ``-1`` to load the default size
      * @param cancellable the cancellable to stop loading the icon
@@ -200,7 +204,11 @@ public class Granite.AsyncImage : Gtk.Image {
         }
 
         if (!load_on_realize) {
-            yield set_from_gicon_async_internal (gicon_async, size_async, cancellable, false);
+            try {
+                yield set_from_gicon_async_internal (gicon_async, size_async, cancellable, false);
+            } catch (Error e) {
+                throw e;
+            }
         }
     }
 
@@ -210,6 +218,8 @@ public class Granite.AsyncImage : Gtk.Image {
      * This is a convenience method for setting an icon name with a desired {@link Gtk.IconSize}. Note that you'll not be
      * able to change the icon size afterwards with {@link Gtk.Image.pixel_size} or {@link Gtk.Image.icon_size}. You will
      * have to call one of the {@link Granite.AsyncImage} set_from_ methods to change it's size.
+     * 
+     * See {@link Granite.AsyncImage.set_from_gicon_async} for more details.
      * 
      * @param icon_name the icon name to display in the image
      * @param icon_size the {@link Gtk.IconSize} as the size for the image
@@ -223,9 +233,12 @@ public class Granite.AsyncImage : Gtk.Image {
             warning ("Invalid icon size %d", icon_size);
             return;
         }
-        
 
-        yield set_from_gicon_async (new ThemedIcon (icon_name), int.min (width, height), cancellable);
+        try {
+            yield set_from_gicon_async (new ThemedIcon (icon_name), int.min (width, height), cancellable);
+        } catch (Error e) {
+            throw e;
+        }
     }
 
     /**
@@ -284,7 +297,12 @@ public class Granite.AsyncImage : Gtk.Image {
         }
 
         if (icon is FileIcon) {
-            yield set_from_file_async (((FileIcon)icon).file, size, size, true);
+            try {
+                yield set_from_file_async (((FileIcon)icon).file, size, size, true);
+            } catch (Error e) {
+                throw e;
+            }
+            
             return;
         }
 
