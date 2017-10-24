@@ -48,6 +48,7 @@ set (VALA_SOURCES
     Widgets/SettingsSidebar.vala
     Widgets/SettingsSidebarRow.vala
     Widgets/MessageDialog.vala
+    Widgets/AsyncImage.vala
 )
 
 set (C_SOURCES
