@@ -79,7 +79,7 @@ public class Granite.AsyncImage : Gtk.Image {
     public bool auto_size_request { construct; private get; }
 
     /**
-     * The current icon that will or is displayed in the image.
+     * The icon that will be or is currently displayed in the image.
      * 
      * Note that this property is by default and will be ``null`` if you didn't call the {@link Granite.AsyncImage.set_from_gicon_async} or it's wrappers.
      */
