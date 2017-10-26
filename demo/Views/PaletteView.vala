@@ -69,7 +69,6 @@ public class PaletteView : Gtk.Grid {
 
         try {
             var pixbuf = new Gdk.Pixbuf.from_file (file.get_path ());
-            var palette = new Granite.Drawing.Palette.from_pixbuf (pixbuf);
 
             var new_width = pixbuf.width / (pixbuf.height / image.get_allocated_height ());
             pixbuf = pixbuf.scale_simple (new_width, image.get_allocated_height (), Gdk.InterpType.BILINEAR);
@@ -77,10 +76,11 @@ public class PaletteView : Gtk.Grid {
             image.width_request = pixbuf.width;
             image.set_from_pixbuf (pixbuf);
 
+            var palette = new Granite.Drawing.Palette.from_pixbuf (pixbuf);
+            set_colors (palette);
+
             drag_label.visible = false;
             drag_label.no_show_all = true;
-
-            set_colors (palette);
         } catch (Error e) {
             warning ("Error on file input: %s", e.message);
         }
