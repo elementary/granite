@@ -51,16 +51,16 @@ public class PaletteView : Gtk.Grid {
         overlay.add (image);
         overlay.add_overlay (drag_label);
 
-        var grid = new Gtk.Grid ();
-        grid.orientation = Gtk.Orientation.VERTICAL;
-
         color_box = new Gtk.Grid ();
         color_box.halign = Gtk.Align.CENTER;
         color_box.hexpand = true;
 
+        var grid = new Gtk.Grid ();
+        grid.orientation = Gtk.Orientation.VERTICAL;
+
         grid.add (overlay);
         grid.add (color_box);
-        this.add (grid);
+        add (grid);
     }
 
     private void on_drag_data_received (Gdk.DragContext drag_context, int x, int y, Gtk.SelectionData data, uint info, uint time) {
@@ -99,7 +99,8 @@ public class PaletteView : Gtk.Grid {
         add_swatch (palette.dark_vibrant_swatch, "Dark vibrant color");
         add_swatch (palette.muted_swatch, "Muted color");
         add_swatch (palette.dark_muted_swatch, "Dark muted color");
-        this.show_all ();
+
+        show_all ();
     }
 
     private void add_swatch (Granite.Drawing.Palette.Swatch? swatch, string tooltip) {
@@ -108,7 +109,6 @@ public class PaletteView : Gtk.Grid {
         var box = new Gtk.EventBox ();
         box.set_size_request (48, 48);
         box.tooltip_text = tooltip;
-
 
         try {
             var provider = new Gtk.CssProvider ();
