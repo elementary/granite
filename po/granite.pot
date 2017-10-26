@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-10 13:10-0700\n"
+"POT-Creation-Date: 2017-10-16 19:04-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,6 +131,8 @@ msgstr ""
 #: ../lib/Widgets/DynamicNotebook.vala:813
 #: ../lib/Widgets/DynamicNotebook.vala:771
 #: ../lib/Widgets/DynamicNotebook.vala:804
+#: ../lib/Widgets/DynamicNotebook.vala:775
+#: ../lib/Widgets/DynamicNotebook.vala:808
 msgid "New Tab"
 msgstr ""
 
@@ -138,6 +140,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:781
 #: ../lib/Widgets/DynamicNotebook.vala:781
 #: ../lib/Widgets/DynamicNotebook.vala:772
+#: ../lib/Widgets/DynamicNotebook.vala:776
 msgid "Undo Close Tab"
 msgstr ""
 
@@ -145,6 +148,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:823
 #: ../lib/Widgets/DynamicNotebook.vala:823
 #: ../lib/Widgets/DynamicNotebook.vala:816
+#: ../lib/Widgets/DynamicNotebook.vala:820
 msgid "Closed Tabs"
 msgstr ""
 
@@ -420,4 +424,12 @@ msgstr ""
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
+msgstr ""
+
+#: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
+msgid "Enabled"
+msgstr ""
+
+#: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
+msgid "Disabled"
 msgstr ""
