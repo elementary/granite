@@ -22,6 +22,7 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/SourceListView.vala
     Views/StorageView.vala
     Views/ToastView.vala
+    Views/PaletteView.vala
     Views/WelcomeView.vala
     Views/MessageDialogView.vala
 CUSTOM_VAPIS

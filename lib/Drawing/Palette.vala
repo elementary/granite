@@ -23,7 +23,7 @@
  * 
  * The API itself is mostly similar and based on the original [[https://android.googlesource.com/platform/frameworks/support.git/+/master/v7/palette/src/main/java/android/support/v7/graphics/Palette.java|Android implementation.]] It uses the [[https://en.wikipedia.org/wiki/Median_cut|median cut algorithm]] to determine most dominant, vibrant or muted colors.
  */
-public class Granite.Palette : Object {
+public class Granite.Drawing.Palette : Object {
     const double TARGET_DARK_LUMA = 0.26;
 
     const double MAX_DARK_LUMA = 0.45;
