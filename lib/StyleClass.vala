@@ -67,6 +67,10 @@ namespace Granite {
      * Style class for primary label text in a {@link Granite.MessageDialog}
      */
     public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
+    /**
+     * Style class for a a {@link Granite.SeekBar}
+     */
+    public const string STYLE_CLASS_SEEKBAR = "seek-bar";
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
     public const string STYLE_CLASS_WELCOME = "welcome";

@@ -12,7 +12,9 @@ set (VALA_SOURCES
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
     Drawing/Palette.vala
+
     GtkPatch/AboutDialog.vala
+
     Services/Settings.vala
     Services/Logger.vala
     Services/Paths.vala
@@ -20,6 +22,9 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+
+    Widgets/AbstractSettingsPage.vala
+    Widgets/AbstractSimpleSettingsPage.vala
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
@@ -34,15 +39,17 @@ set (VALA_SOURCES
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
+    Widgets/SeekBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
     Widgets/OverlayBar.vala
+    Widgets/HeaderLabel.vala
+    Widgets/SettingsSidebar.vala
+    Widgets/SettingsSidebarRow.vala
     Widgets/MessageDialog.vala
-
-    Widgets/SettingsPage/AbstractSettingsPage.vala
-    Widgets/SettingsPage/AbstractSimpleSettingsPage.vala
+    Widgets/AsyncImage.vala
 )
 
 set (C_SOURCES
