@@ -86,11 +86,12 @@ namespace Granite.Drawing {
         /**
          * Constructs a new {@link Granite.Drawing.Color} from a string.
          *
-         * The string can be either one of: 
-         * - A standard name (Taken from the X11 rgb.txt file). 
-         * - A hexadecimal value in the form “#rgb”, “#rrggbb”, “#rrrgggbbb” or ”#rrrrggggbbbb” 
-         * - A RGB color in the form “rgb(r,g,b)” (In this case the color will have full opacity) 
-         * - A RGBA color in the form “rgba(r,g,b,a)”
+         * The string can be either one of:
+         *
+         * * A standard name (Taken from the X11 rgb.txt file).
+         * * A hexadecimal value in the form “#rgb”, “#rrggbb”, “#rrrgggbbb” or ”#rrrrggggbbbb”
+         * * A RGB color in the form “rgb(r,g,b)” (In this case the color will have full opacity)
+         * * A RGBA color in the form “rgba(r,g,b,a)”
          *
          * For more details on formatting and how this function works see {@link Gdk.RGBA.parse}
          *
