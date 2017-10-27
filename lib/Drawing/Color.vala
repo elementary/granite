@@ -86,6 +86,14 @@ namespace Granite.Drawing {
         /**
          * Constructs a new {@link Granite.Drawing.Color} from a string.
          *
+         * The string can be either one of: 
+         * - A standard name (Taken from the X11 rgb.txt file). 
+         * - A hexadecimal value in the form “#rgb”, “#rrggbb”, “#rrrgggbbb” or ”#rrrrggggbbbb” 
+         * - A RGB color in the form “rgb(r,g,b)” (In this case the color will have full opacity) 
+         * - A RGBA color in the form “rgba(r,g,b,a)”
+         *
+         * For more details on formatting and how this function works see {@link Gdk.RGBA.parse}
+         *
          * @param color the string specifying the color
          */
         public Color.from_string (string color) {
@@ -477,8 +485,10 @@ namespace Granite.Drawing {
          * r, g, and b are represented as integers in the range 0 to 255, and a is represented as
          * floating point value in the range 0 to 1.
          *
-         * Note that this string representation may lose some precision, since r, g and b are represented
+         * Note: that this string representation may lose some precision, since r, g and b are represented
          * as 8-bit integers. If this is a concern, you should use a different representation.
+         *
+         * This returns the same string as a {@link Gdk.RGBA} would return in {@link Gdk.RGBA.to_string}
          *
          * @return the text string
          */
