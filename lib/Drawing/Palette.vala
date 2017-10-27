@@ -20,7 +20,7 @@
 /**
  * The Palette class is used to extract most dominant colors (so called swatches)
  * from an image.
- * 
+ *
  * The API itself is mostly similar and based on the original [[https://android.googlesource.com/platform/frameworks/support.git/+/master/v7/palette/src/main/java/android/support/v7/graphics/Palette.java|Android implementation.]] It uses the [[https://en.wikipedia.org/wiki/Median_cut|median cut algorithm]] to determine most dominant, vibrant or muted colors.
  */
 public class Granite.Drawing.Palette : Object {
@@ -195,7 +195,7 @@ public class Granite.Drawing.Palette : Object {
             uint8 red = pixels[offset];
             uint8 green = pixels[offset + 1];
             uint8 blue = pixels[offset + 2];
-            
+
             var color = new Color (red, green, blue);
             int rgb = color.to_rgb ();
             if (histogram.has_key (rgb)) {
@@ -276,7 +276,7 @@ public class Granite.Drawing.Palette : Object {
             b = (int)Math.round (blue_sum / (float)population);
 
             var color = new Swatch ((uint8)r, (uint8)g, (uint8)b, population);
-            
+
             var list = new Gee.ArrayList<Swatch> ();
             list.add (color);
             return list;
@@ -289,12 +289,15 @@ public class Granite.Drawing.Palette : Object {
 
         int mid = pixels.size / 2;
 
-        var first = quantize (pixels.slice (0, mid), depth + 1, max_depth);
-        var second = quantize (pixels.slice (mid + 1, pixels.size - 1), depth + 1, max_depth);
-
         var swatches = new Gee.ArrayList<Swatch> ();
+
+        var first = quantize (pixels.slice (0, mid), depth + 1, max_depth);
         swatches.add_all (first);
-        swatches.add_all (second);
+
+        if (mid + 1 < pixels.size - 1) {
+            var second = quantize (pixels.slice (mid + 1, pixels.size - 1), depth + 1, max_depth);
+            swatches.add_all (second);
+        }
 
         return swatches;
     }
@@ -470,7 +473,7 @@ public class Granite.Drawing.Palette : Object {
     private static double create_comparasion_value (double saturation,
                                             double target_saturation,
                                             double luma,
-                                            double target_luma, 
+                                            double target_luma,
                                             double population,
                                             double max_population) {
         double[6] vals = new double[6];
