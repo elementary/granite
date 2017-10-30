@@ -7,6 +7,21 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_application_run@Base 0.2.0
  granite_application_set_options@Base 0.2.0
  granite_application_show_about@Base 0.2.0
+ granite_async_image_construct@Base 0.5
+ granite_async_image_construct_from_gicon_async@Base 0.5
+ granite_async_image_construct_from_icon_name_async@Base 0.5
+ granite_async_image_get_gicon_async@Base 0.5
+ granite_async_image_get_size_async@Base 0.5
+ granite_async_image_get_type@Base 0.5
+ granite_async_image_new@Base 0.5
+ granite_async_image_new_from_gicon_async@Base 0.5
+ granite_async_image_new_from_icon_name_async@Base 0.5
+ granite_async_image_set_from_file_async@Base 0.5
+ granite_async_image_set_from_file_finish@Base 0.5
+ granite_async_image_set_from_gicon_async@Base 0.5
+ granite_async_image_set_from_gicon_finish@Base 0.5
+ granite_async_image_set_from_icon_name_async@Base 0.5
+ granite_async_image_set_from_icon_name_finish@Base 0.5
  granite_close_button_position_get_type@Base 0.2.3
  granite_collapse_mode_get_type@Base 0.2.0
  granite_date_time_get_default_date_format@Base 0.3.0
@@ -14,6 +29,8 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_date_time_get_relative_datetime@Base 0.5
  granite_date_time_is_clock_format_12h@Base 0.3.0
  granite_date_time_is_same_day@Base 0.5
+ granite_date_time_normalize_time@Base 0.5
+ granite_date_time_seconds_to_time@Base 0.5
  granite_drawing_buffer_surface_average_color@Base 0.2.0
  granite_drawing_buffer_surface_clear@Base 0.2.0
  granite_drawing_buffer_surface_construct@Base 0.2.0
@@ -88,6 +105,9 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_gtk_patch_about_dialog_set_version@Base 0.2.0
  granite_gtk_patch_about_dialog_set_website@Base 0.2.0
  granite_gtk_patch_about_dialog_set_website_label@Base 0.2.0
+ granite_header_label_construct@Base 0.5
+ granite_header_label_get_type@Base 0.5
+ granite_header_label_new@Base 0.5
  granite_message_dialog_construct@Base 0.5
  granite_message_dialog_construct_with_image_from_icon_name@Base 0.5
  granite_message_dialog_get_custom_bin@Base 0.5
@@ -102,6 +122,21 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_message_dialog_set_image_icon@Base 0.5
  granite_message_dialog_set_primary_text@Base 0.5
  granite_message_dialog_set_secondary_text@Base 0.5
+ granite_seek_bar_construct@Base 0.5
+ granite_seek_bar_get_duration_label@Base 0.5
+ granite_seek_bar_get_is_grabbing@Base 0.5
+ granite_seek_bar_get_is_hovering@Base 0.5
+ granite_seek_bar_get_playback_duration@Base 0.5
+ granite_seek_bar_get_playback_progress@Base 0.5
+ granite_seek_bar_get_progression_label@Base 0.5
+ granite_seek_bar_get_scale@Base 0.5
+ granite_seek_bar_get_type@Base 0.5
+ granite_seek_bar_new@Base 0.5
+ granite_seek_bar_set_duration_label@Base 0.5
+ granite_seek_bar_set_playback_duration@Base 0.5
+ granite_seek_bar_set_playback_progress@Base 0.5
+ granite_seek_bar_set_progression_label@Base 0.5
+ granite_seek_bar_set_scale@Base 0.5
  granite_services_console_color_get_type@Base 0.2.0
  granite_services_contract_data_copy@Base 0.2.0
  granite_services_contract_data_destroy@Base 0.2.0
@@ -192,11 +227,36 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_services_system_open_files@Base 0.2.0
  granite_services_system_open_uri@Base 0.2.0
  granite_settings_page_construct@Base 0.5
+ granite_settings_page_get_display_widget@Base 0.5
+ granite_settings_page_get_header@Base 0.5
  granite_settings_page_get_icon_name@Base 0.5
+ granite_settings_page_get_status@Base 0.5
+ granite_settings_page_get_status_type@Base 0.5
  granite_settings_page_get_title@Base 0.5
  granite_settings_page_get_type@Base 0.5
  granite_settings_page_set_icon_name@Base 0.5
+ granite_settings_page_set_status@Base 0.5
+ granite_settings_page_set_status_type@Base 0.5
  granite_settings_page_set_title@Base 0.5
+ granite_settings_page_status_type_get_type@Base 0.5
+ granite_settings_sidebar_construct@Base 0.5
+ granite_settings_sidebar_get_stack@Base 0.5
+ granite_settings_sidebar_get_type@Base 0.5
+ granite_settings_sidebar_new@Base 0.5
+ granite_settings_sidebar_row_construct@Base 0.5
+ granite_settings_sidebar_row_construct_from_icon_name@Base 0.5
+ granite_settings_sidebar_row_get_display_widget@Base 0.5
+ granite_settings_sidebar_row_get_header@Base 0.5
+ granite_settings_sidebar_row_get_icon_name@Base 0.5
+ granite_settings_sidebar_row_get_title@Base 0.5
+ granite_settings_sidebar_row_get_type@Base 0.5
+ granite_settings_sidebar_row_new@Base 0.5
+ granite_settings_sidebar_row_new_from_icon_name@Base 0.5
+ granite_settings_sidebar_row_set_header@Base 0.5
+ granite_settings_sidebar_row_set_icon_name@Base 0.5
+ granite_settings_sidebar_row_set_status@Base 0.5
+ granite_settings_sidebar_row_set_status_type@Base 0.5
+ granite_settings_sidebar_row_set_title@Base 0.5
  granite_simple_settings_page_construct@Base 0.5
  granite_simple_settings_page_get_action_area@Base 0.5
  granite_simple_settings_page_get_activatable@Base 0.5
