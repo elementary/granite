@@ -13,4 +13,4 @@ override_dh_makeshlibs:
 	dh_makeshlibs -- -c1
 
 override_dh_strip:
-	dh_strip --dbg-package=libgranite3-dbg
+	dh_strip --dbg-package=libgranite4-dbg
