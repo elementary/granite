@@ -751,7 +751,7 @@ namespace Granite.Widgets {
          * Create a new dynamic notebook
          */
         public DynamicNotebook () {
-            
+
         }
 
         construct {
