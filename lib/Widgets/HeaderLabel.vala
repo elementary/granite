@@ -28,13 +28,13 @@ public class Granite.HeaderLabel : Gtk.Label {
      */
     public HeaderLabel (string label) {
         Object (
-            halign: Gtk.Align.START,
-            label: label,
-            xalign: 0
+            label: label
         );
     }
 
     construct {
+        halign = Gtk.Align.START;
+        xalign = 0;
         get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
     }
 }
