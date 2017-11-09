@@ -64,6 +64,10 @@ namespace Granite.Widgets {
          * Makes new ModeButton
          */
         public ModeButton () {
+            
+        }
+
+        construct {
             homogeneous = true;
             spacing = 0;
             can_focus = false;
