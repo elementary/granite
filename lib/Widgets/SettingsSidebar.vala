@@ -59,13 +59,13 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
      */
     public SettingsSidebar (Gtk.Stack stack) {
         Object (
-            hscrollbar_policy: Gtk.PolicyType.NEVER,
-            stack: stack,
-            width_request: 200
+            stack: stack
         );
     }
 
     construct {
+        hscrollbar_policy = Gtk.PolicyType.NEVER;
+        width_request = 200;
         listbox = new Gtk.ListBox ();
         listbox.activate_on_single_click = true;
         listbox.selection_mode = Gtk.SelectionMode.SINGLE;
