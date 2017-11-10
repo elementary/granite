@@ -33,6 +33,28 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     public Gtk.Stack stack { get; construct; }
 
     /**
+     * The name of the currently visible Granite.SettingsPage
+     */
+    public string? visible_child_name {
+        get {
+            var selected_row = listbox.get_selected_row ();
+
+            if (selected_row == null) {
+                return null;
+            } else {
+                return ((SettingsSidebarRow) selected_row).name;
+            }
+        }
+        set {
+            foreach (unowned Gtk.Widget listbox_child in listbox.get_children ()) {
+                if (((SettingsSidebarRow) listbox_child).name == value) {
+                    listbox.select_row ((Gtk.ListBoxRow) listbox_child);
+                }
+            }
+        }
+    }
+
+    /**
      * Create a new SettingsSidebar
      */
     public SettingsSidebar (Gtk.Stack stack) {
