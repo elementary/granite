@@ -338,7 +338,7 @@ msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr "Pop-up"
+msgstr "Pop-ups"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
