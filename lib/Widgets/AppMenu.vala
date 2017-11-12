@@ -45,8 +45,6 @@ namespace Granite.Widgets {
          * @param menu menu to be turned into an AppMenu.
          */
         public AppMenu (Gtk.Menu menu) {
-            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
-            tooltip_text = _("Menu");
             set_popup (menu);
         }
 
@@ -57,13 +55,15 @@ namespace Granite.Widgets {
          * @param menu menu to be created.
          */
         public AppMenu.with_app (Granite.Application? application, Gtk.Menu menu) {
-            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
-            tooltip_text = _("Menu");
-
             this.add_items (menu);
             menu.show_all ();
 
             about_item.activate.connect (() => { show_about(get_toplevel()); });
+        }
+
+        construct {
+            image = new Gtk.Image.from_icon_name ("open-menu", IconSize.MENU);
+            tooltip_text = _("Menu");
         }
 
         /**
