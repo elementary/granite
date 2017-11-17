@@ -54,14 +54,38 @@ namespace Granite.StyleClass {
 
 namespace Granite {
     public const string STYLE_CLASS_AVATAR = "avatar";
+    /**
+     * Style class for shaping a {@link Gtk.Button}
+     */
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
+    /**
+     * Style class for numbered badges as in a {@link Granite.Widgets.SourceList}
+     */
     public const string STYLE_CLASS_BADGE = "badge";
+    /**
+     * Style class for adding a small shadow to a container such as for image thumbnails
+     */
     public const string STYLE_CLASS_CARD = "card";
     public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
+    /**
+     * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
+     */
     public const string STYLE_CLASS_H1_LABEL = "h1";
+    /**
+     * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
+     */
     public const string STYLE_CLASS_H2_LABEL = "h2";
+    /**
+     * Style class for small primary text
+     */
     public const string STYLE_CLASS_H3_LABEL = "h3";
+    /**
+     * Style class for a {@link Granite.HeaderLabel}
+     */
     public const string STYLE_CLASS_H4_LABEL = "h4";
+    /**
+     * Style class for a {@link Granite.Widgets.OverlayBar}
+     */
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
     /**
      * Style class for primary label text in a {@link Granite.MessageDialog}
@@ -71,7 +95,16 @@ namespace Granite {
      * Style class for a a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
+    /**
+     * Style class for a {@link Granite.Widgets.SourceList}
+     */
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
+    /**
+     * Style class for a {@link Granite.Widgets.Granite.Widgets.StorageBar}
+     */
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
+    /**
+     * Style class for a {@link Granite.Widgets.Welcome}
+     */
     public const string STYLE_CLASS_WELCOME = "welcome";
 }
