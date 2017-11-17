@@ -64,6 +64,8 @@ namespace Granite {
     public const string STYLE_CLASS_BADGE = "badge";
     /**
      * Style class for adding a small shadow to a container such as for image thumbnails
+     *
+     * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
     public const string STYLE_CLASS_CARD = "card";
     public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
