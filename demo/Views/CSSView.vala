@@ -60,10 +60,7 @@ public class CSSView : Gtk.Grid {
         var terminal = new Gtk.TextView ();
         terminal.buffer.text = "[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo";
         terminal.pixels_below_lines = 3;
-        terminal.top_margin = 12;
-        terminal.right_margin = 12;
-        terminal.bottom_margin = 12;
-        terminal.left_margin = 12;
+        terminal.border_width = 12;
         terminal.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
 
         var back_button_label = new Gtk.Label ("\"back-button\" style class:");
