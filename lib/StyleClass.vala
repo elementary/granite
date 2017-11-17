@@ -68,10 +68,18 @@ namespace Granite {
      */
     public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     /**
-     * Style class for a a {@link Granite.SeekBar}
+     * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
+    /**
+     * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
+     * text color, background color, selection highlighting, and selecting the system monospace font.
+     *
+     * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
+     * interal padding will need to be set with margin properties like {@link Gtk.TextView.left_margin }
+     */
+    public const string STYLE_CLASS_TERMINAL = "terminal";
     public const string STYLE_CLASS_WELCOME = "welcome";
 }
