@@ -78,7 +78,7 @@ namespace Granite {
      * text color, background color, selection highlighting, and selecting the system monospace font.
      *
      * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
-     * interal padding will need to be set with margin properties like {@link Gtk.TextView.left_margin }
+     * interal padding will need to be set with {@link Gtk.Container.border_width}
      */
     public const string STYLE_CLASS_TERMINAL = "terminal";
     public const string STYLE_CLASS_WELCOME = "welcome";
