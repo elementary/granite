@@ -16,14 +16,6 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 set (RESOURCES_DIR ${CMAKE_INSTALL_PREFIX}/share/${PKG_NAME}/)
 set (GETTEXT_PACKAGE ${PKG_NAME})
 
-set (CPACK_PACKAGE_VERSION ${PKG_VERSION})
-set (CPACK_SOURCE_GENERATOR "TGZ")
-set (CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}")
-set (CPACK_SOURCE_IGNORE_FILES "/build/;/.bzr/;/.bzrignore;~$;${CPACK_SOURCE_IGNORE_FILES}")
-
-include (CPack)
-add_custom_target (dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
-
 find_package (Vala REQUIRED)
 include (ValaVersion)
 include (ValaPrecompile)
