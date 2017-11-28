@@ -33,17 +33,39 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     public Gtk.Stack stack { get; construct; }
 
     /**
+     * The name of the currently visible Granite.SettingsPage
+     */
+    public string? visible_child_name {
+        get {
+            var selected_row = listbox.get_selected_row ();
+
+            if (selected_row == null) {
+                return null;
+            } else {
+                return ((SettingsSidebarRow) selected_row).name;
+            }
+        }
+        set {
+            foreach (unowned Gtk.Widget listbox_child in listbox.get_children ()) {
+                if (((SettingsSidebarRow) listbox_child).name == value) {
+                    listbox.select_row ((Gtk.ListBoxRow) listbox_child);
+                }
+            }
+        }
+    }
+
+    /**
      * Create a new SettingsSidebar
      */
     public SettingsSidebar (Gtk.Stack stack) {
         Object (
-            hscrollbar_policy: Gtk.PolicyType.NEVER,
-            stack: stack,
-            width_request: 200
+            stack: stack
         );
     }
 
     construct {
+        hscrollbar_policy = Gtk.PolicyType.NEVER;
+        width_request = 200;
         listbox = new Gtk.ListBox ();
         listbox.activate_on_single_click = true;
         listbox.selection_mode = Gtk.SelectionMode.SINGLE;

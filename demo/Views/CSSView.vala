@@ -13,8 +13,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA.
  */
 
 public class CSSView : Gtk.Grid {
@@ -55,6 +55,14 @@ public class CSSView : Gtk.Grid {
         card.add (header3);
         card.add (header4);
 
+        var terminal_label = new Gtk.Label ("\"terminal\" style class:");
+
+        var terminal = new Gtk.TextView ();
+        terminal.buffer.text = "[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo";
+        terminal.pixels_below_lines = 3;
+        terminal.border_width = 12;
+        terminal.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
+
         var back_button_label = new Gtk.Label ("\"back-button\" style class:");
         back_button_label.halign = Gtk.Align.END;
 
@@ -71,10 +79,12 @@ public class CSSView : Gtk.Grid {
         row_spacing = 24;
         attach (card_label, 0, 0, 1, 1);
         attach (card, 1, 0, 1, 1);
-        attach (back_button_label, 0, 1, 1, 1);
-        attach (back_button, 1, 1, 1, 1);
-        attach (primary_color_label, 0, 2, 1, 1);
-        attach (primary_color_button, 1, 2, 1, 1);
+        attach (terminal_label, 0, 1, 1, 1);
+        attach (terminal, 1, 1, 1, 1);
+        attach (back_button_label, 0, 2, 1, 1);
+        attach (back_button, 1, 2, 1, 1);
+        attach (primary_color_label, 0, 3, 1, 1);
+        attach (primary_color_button, 1, 3, 1, 1);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);

@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA.
  *
  * Authored by: Lucas Baudin <xapantu@gmail.com>
  *              Jaap Broekhuizen <jaapz.b@gmail.com>
@@ -34,7 +34,7 @@ public class Granite.Demo : Granite.Application {
 
         program_name = "Granite Demo";
 
-        build_version = "0.4.1";
+        build_version = "0.5";
         app_icon = "applications-interfacedesign";
     }
 

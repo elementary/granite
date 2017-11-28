@@ -541,6 +541,9 @@ public class SourceList : Gtk.ScrolledWindow {
          */
         public ExpandableItem (string name = "") {
             base (name);
+        }
+
+        construct {
             editable = false;
         }
 
@@ -831,9 +834,13 @@ public class SourceList : Gtk.ScrolledWindow {
         private unowned SourceList.VisibleFunc? filter_func;
 
         public DataModel () {
-            var child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
-            Object (child_model: child_tree, virtual_root: null);
-            this.child_tree = child_tree;
+            
+        }
+
+        construct {
+            child_tree = new Gtk.TreeStore (Column.N_COLUMNS, Column.ITEM.type ());
+            child_model = child_tree;
+            virtual_root = null;
 
             child_tree.set_default_sort_func (child_model_sort_func);
             resort ();
@@ -1455,6 +1462,10 @@ public class SourceList : Gtk.ScrolledWindow {
         private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
 
         public CellRendererIcon () {
+            
+        }
+
+        construct {
             mode = Gtk.CellRendererMode.ACTIVATABLE;
             stock_size = ICON_SIZE;
             follow_state = true;
@@ -1518,7 +1529,7 @@ public class SourceList : Gtk.ScrolledWindow {
      */
     private class Tree : Gtk.TreeView {
 
-        public DataModel data_model { get; set; }
+        public DataModel data_model { get; construct set; }
 
         public signal void item_selected (Item? item);
 
@@ -1588,10 +1599,13 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         public Tree (DataModel data_model) {
+            Object (data_model: data_model);
+        }
+
+        construct {
             Utils.set_theming (this, DEFAULT_STYLESHEET, StyleClass.SOURCE_LIST,
                                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
 
-            this.data_model = data_model;
             set_model (data_model);
 
             halign = valign = Gtk.Align.FILL;
@@ -1676,8 +1690,6 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         ~Tree () {
-            text_cell.editing_started.disconnect (on_editing_started);
-            text_cell.editing_canceled.disconnect (on_editing_canceled);
             disable_item_property_monitor ();
         }
 
@@ -2572,7 +2584,9 @@ public class SourceList : Gtk.ScrolledWindow {
      */
     public SourceList (ExpandableItem root = new ExpandableItem ()) {
         this.root = root;
+    }
 
+    construct {
         push_composite_child ();
         tree = new Tree (data_model);
         tree.set_composite_name ("treeview");
