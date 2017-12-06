@@ -29,14 +29,19 @@ namespace Granite.Widgets {
 
 
     private class TabPageContainer : Gtk.EventBox {
-        private weak Tab _tab;
+        private unowned Tab _tab = null;
 
-        public Tab tab {
+        public unowned Tab tab {
             get { return _tab; }
+            set { _tab = value; }
         }
 
         public TabPageContainer (Tab tab) {
-            this._tab = tab;
+            Object (tab: tab);
+        }
+
+        construct {
+            add (new Gtk.Grid ());
         }
     }
 
@@ -96,7 +101,7 @@ namespace Granite.Widgets {
          * the application to restore the data into the restored tab. Let it empty if
          * the tab should not be restored.
          **/
-        public string restore_data { get; set; }
+        public string restore_data { get; set; default=""; }
 
         /**
          * An optional delegate that is called when the tab is dropped from the set
@@ -204,17 +209,21 @@ namespace Granite.Widgets {
          * A Tab can have a icon on the right side. You can pass null on the constructor to
          * create a tab without a icon.
          **/
-        public Tab (string label="", GLib.Icon? icon=null, Gtk.Widget? page=null) {
-            this._label = new Gtk.Label (label);
-            this._label.hexpand = true;
-
-            if (icon != null) {
-                this._icon = new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU);
-            } else {
-                this._icon = new Gtk.Image ();
-                this._icon.icon_size = Gtk.IconSize.MENU;
+        public Tab (string? label = null, GLib.Icon? icon = null, Gtk.Widget? page = null) {
+            Object (label: label, icon: icon);
+            if (page != null) {
+                this.page = page;
             }
-            this._working = new Gtk.Spinner ();
+        }
+
+        construct {
+            _label = new Gtk.Label (null);
+            _label.hexpand = true;
+
+            _icon = new Gtk.Image ();
+            _icon.icon_size = Gtk.IconSize.MENU;
+
+            _working = new Gtk.Spinner ();
             _working.start();
 
             var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
@@ -240,7 +249,7 @@ namespace Granite.Widgets {
             _working.set_size_request (16, 16);
 
             _icon.visible = true;
-            this.visible_window = true;
+            visible_window = true;
 
             // Apply transparent background color to the tab.
             // We do this instead of visible_window=false for event-propagation reasons.
@@ -248,14 +257,10 @@ namespace Granite.Widgets {
             // enter_notify_event and leave_notify_event. above_child=true is not an option.
             override_background_color (0, {0, 0, 0, 0});
 
-            this.add (tab_layout);
+            add (tab_layout);
+            show_all ();
 
             page_container = new TabPageContainer (this);
-            this.page = page ?? new Gtk.Label("");
-
-            restore_data = "";
-
-            this.show_all ();
 
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
@@ -421,6 +426,10 @@ namespace Granite.Widgets {
         private Gee.LinkedList<Entry?> closed_tabs;
 
         public ClosedTabs () {
+            
+        }
+
+        construct {
             closed_tabs = new Gee.LinkedList<Entry?> ();
         }
 
@@ -752,7 +761,7 @@ namespace Granite.Widgets {
          * Create a new dynamic notebook
          */
         public DynamicNotebook () {
-            
+
         }
 
         construct {

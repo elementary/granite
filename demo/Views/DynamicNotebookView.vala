@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA.
  *
  * Authored by: Lucas Baudin <xapantu@gmail.com>
  *              Jaap Broekhuizen <jaapz.b@gmail.com>
@@ -28,6 +28,7 @@ public class DynamicNotebookView : Gtk.Grid {
     construct {
         var notebook = new Granite.Widgets.DynamicNotebook ();
         notebook.expand = true;
+        notebook.allow_restoring = true;
 
         int i;
 
@@ -42,6 +43,17 @@ public class DynamicNotebookView : Gtk.Grid {
             var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
             notebook.insert_tab (tab, i-1);
             i++;
+        });
+
+        notebook.close_tab_requested.connect ((tab) => {
+            tab.restore_data = ((Gtk.Label)(tab.page)).label;
+            return true;
+        });
+
+        notebook.tab_restored.connect ((label, data, icon) => {
+            var page = new Gtk.Label (data);
+            var tab = new Granite.Widgets.Tab (label, icon, page);
+            notebook.insert_tab (tab, i-1);
         });
 
         add (notebook);

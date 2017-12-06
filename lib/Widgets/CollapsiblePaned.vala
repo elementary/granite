@@ -43,6 +43,9 @@ namespace Granite.Widgets {
 
         public CollapsiblePaned (Gtk.Orientation orientation) {
             this.orientation = orientation;
+        }
+
+        construct {
             button_press_event.connect (detect_toggle);
         }
 
