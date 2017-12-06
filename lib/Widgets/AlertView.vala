@@ -89,13 +89,14 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         title_label = new Gtk.Label (null);
         title_label.hexpand = true;
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        title_label.max_width_chars = 45;
+        title_label.max_width_chars = 75;
         title_label.wrap = true;
         title_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
         title_label.xalign = 0;
 
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
+        description_label.max_width_chars = 75;
         description_label.wrap = true;
         description_label.use_markup = true;
         description_label.xalign = 0;
