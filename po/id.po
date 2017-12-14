@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-08-22 10:48+0000\n"
-"Last-Translator: Aprianto Nursetiawan <noersetiawan@gmail.com>\n"
+"PO-Revision-Date: 2017-12-15 00:10+0000\n"
+"Last-Translator: Liffindra Angga Zaaldian <liffindra.zaaldian@icloud.com>\n"
 "Language-Team: Indonesian "
 "<https://weblate.elementary.io/projects/desktop/granite/id/>\n"
 "Language: id\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 2.17.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
-msgstr "Didesain oleh:"
+msgstr "Dirancang oleh:"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 #: ../lib//GtkPatch/AboutDialog.vala:55 ../lib/GtkPatch/AboutDialog.vala:55
@@ -106,7 +106,7 @@ msgstr "Tutup Tab Lainnya"
 #: ../lib//Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:319
 msgid "Close Other Tabs"
-msgstr "Tutup Tab Lainnya"
+msgstr "Tutup Semua Tab Lainnya"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
 #: ../lib//Widgets/DynamicNotebook.vala:496
@@ -157,7 +157,7 @@ msgstr "Menu"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
 #: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
 msgid "About"
-msgstr "Keterangan"
+msgstr "Tentang"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
@@ -177,13 +177,13 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Tak tersambung ke Contractor. Anda perlu memasangnya"
+msgstr "Tidak dapat menghubungi Contractor. Anda mungkin perlu memasangnya"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr "Tidak ada aksi untuk berkas ini"
+msgstr "Tidak ada tindakan yang ditemukan untuk berkas ini"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
@@ -300,8 +300,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"Program ini diterbitkan berdasarkan persyaratan lisensi %s, dilengkapi "
-"dengan BENAR-BENAR TIDAK ADA JAMINAN; Untuk rinciannya, kunjungi %s"
+"Program ini diterbitkan di bawah persyaratan lisensi %s, program ini BENAR-"
+"BENAR TIDAK ADA JAMINAN; Untuk rinciannya, kunjungi %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -329,7 +329,7 @@ msgstr "Munculan"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr "Notifikasi dalam aplikasi sederhana"
+msgstr "Pemberitahuan di dalam aplikasi yang sederhana"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
