@@ -77,7 +77,7 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
         stack.remove.connect (on_sidebar_changed);
 
         listbox.row_selected.connect ((row) => {
-            stack.visible_child_name = ((SettingsSidebarRow) row).name;
+            stack.visible_child = ((SettingsSidebarRow) row).page;
         });
 
         listbox.set_header_func ((row, before) => {
@@ -89,45 +89,16 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     }
 
     private void on_sidebar_changed () {
-        foreach (unowned Gtk.Widget listbox_child in listbox.get_children ()) {
+        listbox.get_children ().foreach ((listbox_child) => {
             listbox_child.destroy ();
-        }
+        });
 
-        foreach (unowned Gtk.Widget child in stack.get_children ()) {
-            string name;
-
-            stack.child_get (child, "name", out name, null);
-
+        stack.get_children ().foreach ((child) => {
             if (child is SettingsPage) {
-                var page = (SettingsPage) child;
-
-                SettingsSidebarRow row;
-
-                if (page.icon_name != null) {
-                    row = new SettingsSidebarRow.from_icon_name (page.icon_name, page.title);
-                } else {
-                    row = new SettingsSidebarRow (page.display_widget, page.title);
-                }
-
-                row.name = name;
-                row.header = page.header;
-
-                page.bind_property ("icon-name", row, "icon-name", BindingFlags.DEFAULT);
-                page.bind_property ("status", row, "status", BindingFlags.DEFAULT);
-                page.bind_property ("status-type", row, "status-type", BindingFlags.DEFAULT);
-                page.bind_property ("title", row, "title", BindingFlags.DEFAULT);
-
-                if (page.status != null) {
-                    row.status = page.status;
-                }
-
-                if (page.status_type != SettingsPage.StatusType.NONE) {
-                    row.status_type = page.status_type;
-                }
-
+                var row = new SettingsSidebarRow ((SettingsPage) child);
                 listbox.add (row);
             }
-        }
+        });
 
         listbox.show_all ();
     }
