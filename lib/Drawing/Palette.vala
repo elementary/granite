@@ -101,6 +101,15 @@ public class Granite.Drawing.Palette : Object {
         }
     }
 
+    public const uint8 MAX_QUALITY = 10;
+    public const uint8 MIN_QUALITY = 1;
+    public const uint8 DEFAULT_QUALITY = 5;
+
+    public const uint16 MAX_COLORS = 256;
+    public const uint16 DEFAULT_COLORS = 64;
+    public const uint16 MIN_COLORS = 2;
+
+
     private Gee.List<Swatch> _swatches;
     public Gee.List<Swatch> swatches {
         owned get {
@@ -121,13 +130,33 @@ public class Granite.Drawing.Palette : Object {
 
     private int max_population = 0;
 
-    public Gdk.Pixbuf? pixbuf { get; construct; }
-    public int max_depth { get; construct; }
-    public int quality { get; construct; }
+    public Gdk.Pixbuf? pixbuf { get; construct set; }
+    public uint8[] pixel_data { get; set; }
+
+    private uint8 _quality = DEFAULT_QUALITY;
+    public uint8 quality {
+        get {
+            return _quality;
+        }
+
+        construct set {
+            _quality = value.clamp (MIN_QUALITY, MAX_QUALITY);
+        }
+    }
+
+    private uint16 _max_colors = DEFAULT_COLORS;
+    public uint16 max_colors { 
+        get {
+            return _max_colors;
+        }
+
+        construct set {
+            _max_colors = value.clamp (MIN_COLORS, MAX_COLORS);
+        }
+    }
 
     private Gee.HashMap<int, int> histogram;
-    private uint8[] pixel_data;
-    private bool has_alpha;
+    public bool has_alpha { get; construct set; }
 
     private enum ColorComponent {
         RED,
@@ -137,7 +166,22 @@ public class Granite.Drawing.Palette : Object {
 
     construct {
         histogram = new Gee.HashMap<int, int> ();
+    }
 
+    public Palette () {
+
+    }
+
+    public Palette.from_pixbuf (Gdk.Pixbuf pixbuf, uint16 max_colors = DEFAULT_COLORS, uint8 quality = DEFAULT_QUALITY) {
+        Object (pixbuf: pixbuf, max_colors: max_colors, quality: quality);
+    }
+
+    public Palette.from_data (owned uint8[] pixels, bool has_alpha, uint16 max_colors = DEFAULT_COLORS, uint8 quality = DEFAULT_QUALITY) {
+        this.pixel_data = pixels;
+        Object (has_alpha: has_alpha, max_colors: max_colors, quality: quality);
+    }
+
+    public async void generate_async () {
         Gee.List<Color> pixels;
         if (pixbuf != null) {
             pixels = convert_pixels_to_rgb (pixbuf.get_pixels_with_length (), pixbuf.has_alpha);
@@ -145,7 +189,8 @@ public class Granite.Drawing.Palette : Object {
             pixels = convert_pixels_to_rgb (pixel_data, has_alpha);
         }
 
-        _swatches = quantize (pixels, 0, max_depth);
+        uint8 max_depth = (uint8)Math.log2 (max_colors);
+        _swatches = yield quantize (pixels, 0, max_depth);
         _swatches.sort ((c1, c2) => {
             return c2.population - c1.population;
         });
@@ -164,18 +209,10 @@ public class Granite.Drawing.Palette : Object {
         create_swatch_targets ();
     }
 
-    public Palette.from_pixbuf (Gdk.Pixbuf pixbuf, int max_depth = 6, int quality = 5) {
-        Object (pixbuf: pixbuf, max_depth: max_depth, quality: quality);
-    }
-
-    public Palette.from_data (owned uint8[] pixels, bool has_alpha, int max_depth = 6, int quality = 5) {
-        this.pixel_data = pixels;
-        this.has_alpha = has_alpha;
-        Object (max_depth: max_depth, quality: quality);
-    }
-
-    private Palette () {
-
+    public void generate_sync () {
+        var loop = new MainLoop ();
+        generate_async.begin (() => loop.quit ());
+        loop.run ();
     }
 
     private Gee.ArrayList<Color> convert_pixels_to_rgb (uint8[] pixels, bool has_alpha) {
@@ -189,6 +226,8 @@ public class Granite.Drawing.Palette : Object {
         }
 
         int i = 0;
+        int inc = MAX_QUALITY + MIN_QUALITY - quality;
+
         int count = pixels.length / factor;
         while (i < count) {
             int offset = i * factor;
@@ -204,7 +243,7 @@ public class Granite.Drawing.Palette : Object {
                 histogram[rgb] = 1;
             }
 
-            i += 5;
+            i += inc;
         }
 
         histogram.@foreach ((entry) => {
@@ -252,7 +291,7 @@ public class Granite.Drawing.Palette : Object {
     }
 
     // TODO: Perhaps abstract this?
-    private Gee.List<Swatch> quantize (Gee.List<Color> pixels, int depth = 0, int max_depth = 16) {
+    private async Gee.List<Swatch> quantize (Gee.List<Color> pixels, uint8 depth = 0, uint8 max_depth = 16) {
         if (depth == max_depth) {
             int r = 0, g = 0, b = 0;
             int population = 0;
@@ -291,11 +330,11 @@ public class Granite.Drawing.Palette : Object {
 
         var swatches = new Gee.ArrayList<Swatch> ();
 
-        var first = quantize (pixels.slice (0, mid), depth + 1, max_depth);
+        var first = yield quantize (pixels.slice (0, mid), depth + 1, max_depth);
         swatches.add_all (first);
 
         if (mid + 1 < pixels.size - 1) {
-            var second = quantize (pixels.slice (mid + 1, pixels.size - 1), depth + 1, max_depth);
+            var second = yield quantize (pixels.slice (mid + 1, pixels.size - 1), depth + 1, max_depth);
             swatches.add_all (second);
         }
 
@@ -497,10 +536,11 @@ public class Granite.Drawing.Palette : Object {
     }
 
     private static double weighted_mean (double[] values) {
-        double satscore = values[0] * values[1];
-        double lumscore = values[2] * values[3];
-        double popscore = values[4] * values[5];
+        double score = 0.0;
+        for (int i = 0; i < values.length; i += 2) {
+            score += values[i] * values[i + 1];
+        }
 
-        return satscore + lumscore + popscore;
+        return score;
     }
 }

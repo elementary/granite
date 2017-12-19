@@ -77,7 +77,9 @@ public class PaletteView : Gtk.Grid {
             image.set_from_pixbuf (pixbuf);
 
             var palette = new Granite.Drawing.Palette.from_pixbuf (pixbuf);
-            set_colors (palette);
+            palette.generate_async.begin (() => {
+                set_colors (palette);
+            });
 
             drag_label.visible = false;
             drag_label.no_show_all = true;
