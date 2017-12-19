@@ -41,6 +41,8 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
     public string? header { get; set; }
 
+    public unowned SettingsPage page { get; construct; }
+
     public string icon_name {
         get {
             return _icon_name;
@@ -78,23 +80,14 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     private string _icon_name;
     private string _title;
 
-    public SettingsSidebarRow (Gtk.Widget display_widget, string title) {
+    public SettingsSidebarRow (SettingsPage page) {
         Object (
-            display_widget: display_widget,
-            title: title
-        );
-    }
-
-    public SettingsSidebarRow.from_icon_name (string icon_name, string title) {
-        Object (
-            display_widget: new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND),
-            icon_name: icon_name,
-            title: title
+            page: page
         );
     }
 
     construct {
-        title_label = new Gtk.Label (title);
+        title_label = new Gtk.Label (page.title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.xalign = 0;
         title_label.get_style_context ().add_class ("h3");
@@ -109,6 +102,13 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         status_label.ellipsize = Pango.EllipsizeMode.END;
         status_label.xalign = 0;
 
+        if (page.icon_name != null) {
+            display_widget = new Gtk.Image ();
+            icon_name = page.icon_name;
+        } else {
+            display_widget = page.display_widget;
+        }
+
         var overlay = new Gtk.Overlay ();
         overlay.width_request = 38;
         overlay.add (display_widget);
@@ -122,5 +122,19 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         grid.attach (status_label, 1, 1, 1, 1);
 
         add (grid);
+
+        header = page.header;
+        page.bind_property ("icon-name", this, "icon-name", BindingFlags.DEFAULT);
+        page.bind_property ("status", this, "status", BindingFlags.DEFAULT);
+        page.bind_property ("status-type", this, "status-type", BindingFlags.DEFAULT);
+        page.bind_property ("title", this, "title", BindingFlags.DEFAULT);
+
+        if (page.status != null) {
+            status = page.status;
+        }
+
+        if (page.status_type != SettingsPage.StatusType.NONE) {
+            status_type = page.status_type;
+        }
     }
 }

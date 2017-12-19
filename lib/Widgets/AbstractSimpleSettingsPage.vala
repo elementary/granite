@@ -66,6 +66,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * An icon name associated with #this
+     * Deprecated: Use #SettingsPage.icon_name instead.
      */
     public new string icon_name {
         get {
@@ -81,6 +82,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * A title associated with #this
+     * Deprecated: Use #SettingsPage.title instead.
      */
     public new string title {
         get {
@@ -96,12 +98,10 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * Creates a new SimpleSettingsPage
+     * Deprecated: Subclass this instead.
      */
     public SimpleSettingsPage () {
-        Object (activatable: activatable,
-                icon_name: icon_name,
-                description: description,
-                title: title);
+        
     }
 
     construct {
@@ -153,5 +153,17 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         grid.add (action_area);
 
         add (grid);
+
+        notify["icon-name"].connect (() => {
+            if (header_icon != null) {
+                header_icon.icon_name = icon_name;
+            }
+        });
+
+        notify["title"].connect (() => {
+            if (title_label != null) {
+                title_label.label = title;
+            }
+        });
     }
 }
