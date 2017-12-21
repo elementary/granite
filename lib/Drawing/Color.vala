@@ -144,7 +144,7 @@ namespace Granite.Drawing {
         }
 
         /**
-         * Conststructs a new {@link Granite.Drawing.Color} from an integer.
+         * Constructs a new {@link Granite.Drawing.Color} from an integer.
          * 
          * This constructor should be used when deserializing the previously serialized
          * color by {@link Granite.Drawing.Color.to_int}.
@@ -158,10 +158,10 @@ namespace Granite.Drawing {
          * @param color the integer specyfying the color
          */
         public Color.from_int (int color) {
-            R = (double)red_from_int (color) / uint8.MAX;
-            G = (double)green_from_int (color) / uint8.MAX;
-            B = (double)blue_from_int (color) / uint8.MAX;
-            A = (double)alpha_from_int (color) / uint8.MAX;
+            R = (double)red_from_int (color) / (double)uint8.MAX;
+            G = (double)green_from_int (color) / (double)uint8.MAX;
+            B = (double)blue_from_int (color) / (double)uint8.MAX;
+            A = (double)alpha_from_int (color) / (double)uint8.MAX;
         }
 
         /**
