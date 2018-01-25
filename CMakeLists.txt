@@ -9,7 +9,7 @@ set (PKG_VERSION 0.5)
 set (API_VERSION 1.0)
 
 # Used to create GObject introspection files
-set (PKG_GIR_NAME Granite)
+set (PKG_GIR_NAME Granite-${API_VERSION})
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
