@@ -50,7 +50,7 @@ find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
 set (VALAC_OPTIONS
-     --thread
+     --hide-internal
      --target-glib=2.32)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
