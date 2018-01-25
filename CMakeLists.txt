@@ -20,7 +20,7 @@ find_package (Vala REQUIRED)
 include (ValaVersion)
 include (ValaPrecompile)
 
-ensure_vala_version ("0.23.2" MINIMUM)
+ensure_vala_version ("0.34.7" MINIMUM)
 
 #
 # Packages in PKG_DEPS are used with the vala compiler and other related tools (not versioned.)
