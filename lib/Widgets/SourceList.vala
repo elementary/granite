@@ -1186,13 +1186,8 @@ public class SourceList : Gtk.ScrolledWindow {
          */
 
         public bool drag_data_received (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
-#if VALA_0_26
             Gtk.TreeModel model;
             Gtk.TreePath src_path;
-#else
-            unowned Gtk.TreeModel model;
-            unowned Gtk.TreePath src_path;
-#endif
 
             // Check if the user is dragging a row:
             //
@@ -1295,13 +1290,8 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         public bool row_drop_possible (Gtk.TreePath dest, Gtk.SelectionData selection_data) {
-#if VALA_0_26
             Gtk.TreeModel model;
             Gtk.TreePath src_path;
-#else
-            unowned Gtk.TreeModel model;
-            unowned Gtk.TreePath src_path;
-#endif
 
             // Check if the user is dragging a row:
             // Due to Gtk.TreeModelFilter's implementation of drag_data_get the values returned by
