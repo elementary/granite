@@ -17,6 +17,11 @@
  *  Boston, MA 02110-1301 USA.
  */
 
+namespace Granite {
+    // https://bugzilla.gnome.org/show_bug.cgi?id=767718
+    public delegate void WidgetsDroppedDelegate ();
+}
+
 namespace Granite.Widgets {
 
     // a mask to ignore modifiers like num lock or caps lock that are irrelevant to keyboard shortcuts
@@ -24,8 +29,6 @@ namespace Granite.Widgets {
                                                      Gdk.ModifierType.SUPER_MASK |
                                                      Gdk.ModifierType.CONTROL_MASK |
                                                      Gdk.ModifierType.MOD1_MASK);
-
-    public delegate void DroppedDelegate ();
 
     private class TabPageContainer : Gtk.EventBox {
         private unowned Tab _tab = null;
@@ -109,7 +112,7 @@ namespace Granite.Widgets {
          * the tab is the oldest tab in the set of restorable tabs and
          * the number of restorable tabs has exceeded the upper limit.
          */
-        public DroppedDelegate dropped_callback = null;
+        public WidgetsDroppedDelegate dropped_callback = null;
 
         internal TabPageContainer page_container;
         public Gtk.Widget page {
@@ -419,7 +422,7 @@ namespace Granite.Widgets {
             string label;
             string restore_data;
             GLib.Icon? icon;
-            DroppedDelegate? dropped_callback;
+            WidgetsDroppedDelegate? dropped_callback;
         }
 
         private Gee.LinkedList<Entry?> closed_tabs;
