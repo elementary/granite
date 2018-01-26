@@ -27,7 +27,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_date_time_get_default_date_format@Base 0.3.0
  granite_date_time_get_default_time_format@Base 0.3.0
  granite_date_time_get_relative_datetime@Base 0.5
- granite_date_time_is_clock_format_12h@Base 0.3.0
  granite_date_time_is_same_day@Base 0.5
  granite_date_time_normalize_time@Base 0.5
  granite_date_time_seconds_to_time@Base 0.5
@@ -52,6 +51,8 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_color_brighten_val@Base 0.2.0
  granite_drawing_color_construct@Base 0.2.0
  granite_drawing_color_construct_from_gdk@Base 0.2.0
+ granite_drawing_color_construct_from_rgba@Base 0.5
+ granite_drawing_color_construct_from_string@Base 0.5
  granite_drawing_color_darken_by_sat@Base 0.2.0
  granite_drawing_color_darken_val@Base 0.2.0
  granite_drawing_color_get_hue@Base 0.2.0
@@ -61,6 +62,8 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_color_multiply_sat@Base 0.2.0
  granite_drawing_color_new@Base 0.2.0
  granite_drawing_color_new_from_gdk@Base 0.2.0
+ granite_drawing_color_new_from_rgba@Base 0.5
+ granite_drawing_color_new_from_string@Base 0.5
  granite_drawing_color_set_alpha@Base 0.2.0
  granite_drawing_color_set_hue@Base 0.2.0
  granite_drawing_color_set_max_sat@Base 0.2.0
@@ -69,6 +72,7 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_color_set_min_value@Base 0.2.0
  granite_drawing_color_set_sat@Base 0.2.0
  granite_drawing_color_set_val@Base 0.2.0
+ granite_drawing_color_to_string@Base 0.5
  granite_drawing_utilities_average_color@Base 0.2.0
  granite_drawing_utilities_cairo_rounded_rectangle@Base 0.2.0
  granite_drawing_utilities_construct@Base 0.2.0
@@ -137,26 +141,13 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_seek_bar_set_playback_progress@Base 0.5
  granite_seek_bar_set_progression_label@Base 0.5
  granite_seek_bar_set_scale@Base 0.5
- granite_services_console_color_get_type@Base 0.2.0
- granite_services_contract_data_copy@Base 0.2.0
- granite_services_contract_data_destroy@Base 0.2.0
- granite_services_contract_data_dup@Base 0.2.0
- granite_services_contract_data_free@Base 0.2.0
- granite_services_contract_data_get_type@Base 0.2.0
  granite_services_contract_execute_with_file@Base 0.2.0
  granite_services_contract_execute_with_files@Base 0.2.0
  granite_services_contract_get_description@Base 0.2.0
  granite_services_contract_get_display_name@Base 0.2.0
  granite_services_contract_get_icon@Base 0.2.0
  granite_services_contract_get_type@Base 0.2.0
- granite_services_contractor_dbus_api_execute_with_uri@Base 0.2.0
- granite_services_contractor_dbus_api_execute_with_uri_list@Base 0.2.0
- granite_services_contractor_dbus_api_get_contracts_by_mime@Base 0.2.0
- granite_services_contractor_dbus_api_get_contracts_by_mimelist@Base 0.2.0
- granite_services_contractor_dbus_api_get_type@Base 0.2.0
- granite_services_contractor_dbus_api_list_all_contracts@Base 0.2.0
  granite_services_contractor_dbus_api_proxy_get_type@Base 0.2.0
- granite_services_contractor_dbus_api_register_object@Base 0.2.0
  granite_services_contractor_error_quark@Base 0.2.0
  granite_services_contractor_proxy_get_all_contracts@Base 0.2.0
  granite_services_contractor_proxy_get_contracts_by_mime@Base 0.2.0
@@ -242,6 +233,7 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_settings_sidebar_construct@Base 0.5
  granite_settings_sidebar_get_stack@Base 0.5
  granite_settings_sidebar_get_type@Base 0.5
+ granite_settings_sidebar_get_visible_child_name@Base 0.5
  granite_settings_sidebar_new@Base 0.5
  granite_settings_sidebar_row_construct@Base 0.5
  granite_settings_sidebar_row_construct_from_icon_name@Base 0.5
@@ -257,6 +249,7 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_settings_sidebar_row_set_status@Base 0.5
  granite_settings_sidebar_row_set_status_type@Base 0.5
  granite_settings_sidebar_row_set_title@Base 0.5
+ granite_settings_sidebar_set_visible_child_name@Base 0.5
  granite_simple_settings_page_construct@Base 0.5
  granite_simple_settings_page_get_action_area@Base 0.5
  granite_simple_settings_page_get_activatable@Base 0.5
@@ -320,21 +313,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_cell_renderer_expander_get_type@Base 0.2.0
  granite_widgets_cell_renderer_expander_new@Base 0.2.0
  granite_widgets_cell_renderer_expander_set_is_category_expander@Base 0.2.0
- granite_widgets_closed_tabs_construct@Base 0.2.3
- granite_widgets_closed_tabs_entry_copy@Base 0.3.0
- granite_widgets_closed_tabs_entry_destroy@Base 0.3.0
- granite_widgets_closed_tabs_entry_dup@Base 0.3.0
- granite_widgets_closed_tabs_entry_free@Base 0.3.0
- granite_widgets_closed_tabs_entry_get_type@Base 0.3.0
- granite_widgets_closed_tabs_get_empty@Base 0.2.3
- granite_widgets_closed_tabs_get_max_restorable_tabs@Base 0.3.0
- granite_widgets_closed_tabs_get_menu@Base 0.2.3
- granite_widgets_closed_tabs_get_type@Base 0.2.3
- granite_widgets_closed_tabs_new@Base 0.2.3
- granite_widgets_closed_tabs_pick@Base 0.2.3
- granite_widgets_closed_tabs_pop@Base 0.2.3
- granite_widgets_closed_tabs_push@Base 0.2.3
- granite_widgets_closed_tabs_set_max_restorable_tabs@Base 0.3.0
  granite_widgets_collapsible_paned_construct@Base 0.2.0
  granite_widgets_collapsible_paned_get_collapse_mode@Base 0.2.0
  granite_widgets_collapsible_paned_get_type@Base 0.2.0
@@ -481,7 +459,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_source_list_item_set_editable@Base 0.2.0
  granite_widgets_source_list_item_set_icon@Base 0.2.0
  granite_widgets_source_list_item_set_name@Base 0.2.0
- granite_widgets_source_list_item_set_parent@Base 0.2.0
  granite_widgets_source_list_item_set_selectable@Base 0.2.0
  granite_widgets_source_list_item_set_visible@Base 0.2.0
  granite_widgets_source_list_new@Base 0.2.0
@@ -498,17 +475,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_source_list_stop_editing@Base 0.2.0
  granite_widgets_storage_bar_construct@Base 0.3.1
  granite_widgets_storage_bar_construct_with_total_usage@Base 0.4.0
- granite_widgets_storage_bar_fill_block_construct@Base 0.3.1
- granite_widgets_storage_bar_fill_block_get_description@Base 0.3.1
- granite_widgets_storage_bar_fill_block_get_legend_item@Base 0.3.1
- granite_widgets_storage_bar_fill_block_get_size@Base 0.3.1
- granite_widgets_storage_bar_fill_block_get_type@Base 0.3.1
- granite_widgets_storage_bar_fill_block_new@Base 0.3.1
- granite_widgets_storage_bar_fill_block_set_description@Base 0.3.1
- granite_widgets_storage_bar_fill_block_set_size@Base 0.3.1
- granite_widgets_storage_bar_fill_round_construct@Base 0.3.1
- granite_widgets_storage_bar_fill_round_get_type@Base 0.3.1
- granite_widgets_storage_bar_fill_round_new@Base 0.3.1
  granite_widgets_storage_bar_get_inner_margin_sides@Base 0.3.1
  granite_widgets_storage_bar_get_storage@Base 0.3.1
  granite_widgets_storage_bar_get_total_usage@Base 0.4.0
@@ -524,7 +490,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_storage_bar_update_block_size@Base 0.3.1
  granite_widgets_tab_close@Base 0.3.0
  granite_widgets_tab_construct@Base 0.2.0
- granite_widgets_tab_fix_button_theming@Base 0.3.0
  granite_widgets_tab_get_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_get_fixed@Base 0.2.0
  granite_widgets_tab_get_icon@Base 0.2.0
@@ -537,15 +502,9 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_tab_get_type@Base 0.2.0
  granite_widgets_tab_get_working@Base 0.2.0
  granite_widgets_tab_new@Base 0.2.0
- granite_widgets_tab_page_container_construct@Base 0.2.3
- granite_widgets_tab_page_container_get_tab@Base 0.2.3
- granite_widgets_tab_page_container_get_type@Base 0.2.3
- granite_widgets_tab_page_container_new@Base 0.2.3
- granite_widgets_tab_set_closable@Base 0.3.0
  granite_widgets_tab_set_ellipsize_mode@Base 0.2.0
  granite_widgets_tab_set_fixed@Base 0.2.0
  granite_widgets_tab_set_icon@Base 0.2.0
- granite_widgets_tab_set_is_current_tab@Base 0.3.0
  granite_widgets_tab_set_label@Base 0.2.0
  granite_widgets_tab_set_menu@Base 0.2.0
  granite_widgets_tab_set_page@Base 0.2.0
@@ -574,7 +533,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_widgets_utils_get_button_layout_schema@Base 0.2.3
  granite_widgets_utils_get_css_provider@Base 0.2.0
  granite_widgets_utils_get_default_close_button_position@Base 0.2.3
- granite_widgets_utils_is_left_to_right@Base 0.2.0
  granite_widgets_utils_set_color_primary@Base 0.4.0
  granite_widgets_utils_set_theming@Base 0.2.0
  granite_widgets_utils_set_theming_for_screen@Base 0.2.0
