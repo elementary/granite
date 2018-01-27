@@ -28,7 +28,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_date_time_get_default_time_format@Base 0.3.0
  granite_date_time_get_relative_datetime@Base 0.5
  granite_date_time_is_same_day@Base 0.5
- granite_date_time_normalize_time@Base 0.5
  granite_date_time_seconds_to_time@Base 0.5
  granite_drawing_buffer_surface_average_color@Base 0.2.0
  granite_drawing_buffer_surface_clear@Base 0.2.0
@@ -48,9 +47,12 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_buffer_surface_new_with_buffer_surface@Base 0.2.0
  granite_drawing_buffer_surface_new_with_surface@Base 0.2.0
  granite_drawing_color_add_hue@Base 0.2.0
+ granite_drawing_color_alpha_from_int@Base 0.5
+ granite_drawing_color_blue_from_int@Base 0.5
  granite_drawing_color_brighten_val@Base 0.2.0
  granite_drawing_color_construct@Base 0.2.0
  granite_drawing_color_construct_from_gdk@Base 0.2.0
+ granite_drawing_color_construct_from_int@Base 0.5
  granite_drawing_color_construct_from_rgba@Base 0.5
  granite_drawing_color_construct_from_string@Base 0.5
  granite_drawing_color_darken_by_sat@Base 0.2.0
@@ -59,11 +61,14 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_color_get_sat@Base 0.2.0
  granite_drawing_color_get_type@Base 0.2.0
  granite_drawing_color_get_val@Base 0.2.0
+ granite_drawing_color_green_from_int@Base 0.5
  granite_drawing_color_multiply_sat@Base 0.2.0
  granite_drawing_color_new@Base 0.2.0
  granite_drawing_color_new_from_gdk@Base 0.2.0
+ granite_drawing_color_new_from_int@Base 0.5
  granite_drawing_color_new_from_rgba@Base 0.5
  granite_drawing_color_new_from_string@Base 0.5
+ granite_drawing_color_red_from_int@Base 0.5
  granite_drawing_color_set_alpha@Base 0.2.0
  granite_drawing_color_set_hue@Base 0.2.0
  granite_drawing_color_set_max_sat@Base 0.2.0
@@ -72,6 +77,7 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_drawing_color_set_min_value@Base 0.2.0
  granite_drawing_color_set_sat@Base 0.2.0
  granite_drawing_color_set_val@Base 0.2.0
+ granite_drawing_color_to_int@Base 0.5
  granite_drawing_color_to_string@Base 0.5
  granite_drawing_utilities_average_color@Base 0.2.0
  granite_drawing_utilities_cairo_rounded_rectangle@Base 0.2.0
@@ -235,20 +241,6 @@ libgranite.so.4 libgranite4 #MINVER#
  granite_settings_sidebar_get_type@Base 0.5
  granite_settings_sidebar_get_visible_child_name@Base 0.5
  granite_settings_sidebar_new@Base 0.5
- granite_settings_sidebar_row_construct@Base 0.5
- granite_settings_sidebar_row_construct_from_icon_name@Base 0.5
- granite_settings_sidebar_row_get_display_widget@Base 0.5
- granite_settings_sidebar_row_get_header@Base 0.5
- granite_settings_sidebar_row_get_icon_name@Base 0.5
- granite_settings_sidebar_row_get_title@Base 0.5
- granite_settings_sidebar_row_get_type@Base 0.5
- granite_settings_sidebar_row_new@Base 0.5
- granite_settings_sidebar_row_new_from_icon_name@Base 0.5
- granite_settings_sidebar_row_set_header@Base 0.5
- granite_settings_sidebar_row_set_icon_name@Base 0.5
- granite_settings_sidebar_row_set_status@Base 0.5
- granite_settings_sidebar_row_set_status_type@Base 0.5
- granite_settings_sidebar_row_set_title@Base 0.5
  granite_settings_sidebar_set_visible_child_name@Base 0.5
  granite_simple_settings_page_construct@Base 0.5
  granite_simple_settings_page_get_action_area@Base 0.5
