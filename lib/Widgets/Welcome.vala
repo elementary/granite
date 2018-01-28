@@ -1,6 +1,7 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
- *                          Victor Eduardo <victoreduardm@gmal.com>
+ *  Copyright (C) 2018 elementary LLC. (https://elementary.io)
+ *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *                2011-2013 Victor Eduardo <victoreduardm@gmal.com>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -18,50 +19,84 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-using Gtk;
-
 /**
  * This class is for making a first-launch screen easily
  *
  * It can be used to create a list of one-time action items that need to be executed in order to setup the app.
  *
+ * Granite.Widgets.Welcome will get the style class `welcome`.
+ *
  * {{../../doc/images/Welcome.png}}
+ * 
+ * {{{
+ * public class WelcomeView : Gtk.Grid {
+ *     construct {
+ *         var welcome = new Granite.Widgets.Welcome ("Granite Demo", "This is a demo of the Granite library.");
+ *         welcome.append ("text-x-vala", "Visit Valadoc", "The canonical source for Vala API references.");
+ *         welcome.append ("text-x-source", "Get Granite Source", "Granite's source code is hosted on GitHub.");
+ *
+ *         add (welcome);
+ *
+ *         welcome.activated.connect ((index) => {
+ *             switch (index) {
+ *                 case 0:
+ *                     try {
+ *                         AppInfo.launch_default_for_uri ("https://valadoc.org/granite/Granite.html", null);
+ *                     } catch (Error e) {
+ *                         warning (e.message);
+ *                     }
+ *
+ *                     break;
+ *                 case 1:
+ *                     try {
+ *                         AppInfo.launch_default_for_uri ("https://github.com/elementary/granite", null);
+ *                     } catch (Error e) {
+ *                         warning (e.message);
+ *                     }
+ *
+ *                     break;
+ *             }
+ *         });
+ *     }
+ * }
+ * }}}
+ *
  */
 public class Granite.Widgets.Welcome : Gtk.EventBox {
 
-    // Signals
     public signal void activated (int index);
 
     /**
      * List of buttons for action items
      */
     protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
-    /**
-     * Box for action items
-     */
-    protected Gtk.Box options;
 
     /**
-     * This is the title of the welcome widget.
+     * Grid for action items
+     */
+    protected Gtk.Grid options;
+
+    /**
+     * This is the title of the welcome widget. It should use Title Case.
      */
     public string title {
         get {
-            return title_label.get_label ();
+            return title_label.label;
         }
         set {
-            title_label.set_label (value);
+            title_label.label = value;
         }
     }
 
     /**
-     * This is the subtitle of the welcome widget.
+     * This is the subtitle of the welcome widget. It should use sentence case.
      */
     public string subtitle {
         get {
-            return subtitle_label.get_label ();
+            return subtitle_label.label;
         }
         set {
-            subtitle_label.set_label (value);
+            subtitle_label.label = value;
         }
     }
 
@@ -97,16 +132,17 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle_label_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         subtitle_label_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        // Options wrapper
-        this.options = new Gtk.Box (Gtk.Orientation.VERTICAL, 9);
+        options = new Gtk.Grid ();
+        options.orientation = Gtk.Orientation.VERTICAL;
+        options.row_spacing = 12;
         options.halign = Gtk.Align.CENTER;
-        options.margin = 12;
+        options.margin_top = 24;
 
         var content = new Gtk.Grid ();
         content.expand = true;
-        content.margin_top = 12;
-        content.valign = Gtk.Align.CENTER;
+        content.margin = 12;
         content.orientation = Gtk.Orientation.VERTICAL;
+        content.valign = Gtk.Align.CENTER;
         content.add (title_label);
         content.add (subtitle_label);
         content.add (options);
@@ -152,11 +188,11 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
      /**
-      * Appends new action item to welcome page with icon
+      * Appends new action item to welcome page with a {@link Gtk.Image.from_icon_name}
       *
-      * @param icon_name icon to be set as icon for action item
-      * @param option_text text to be set as the header for action item
-      * @param description_text text to be set as description for action item
+      * @param icon_name named icon to be set as icon for action item
+      * @param option_text text to be set as the title for action item. It should use Title Case.
+      * @param description_text text to be set as description for action item. It should use sentence case.
       * @return index of new item
       */
     public int append (string icon_name, string option_text, string description_text) {
@@ -166,7 +202,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
      /**
-      * Appends new action item to welcome page with Gtk.Pixbuf icon
+      * Appends new action item to welcome page with a {link Gdk.Pixbuf} icon
       *
       * @param pixbuf pixbuf to be set as icon for action item
       * @param option_text text to be set as the header for action item
@@ -179,7 +215,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
      /**
-      * Appends new action item to welcome page with Gtk.Image icon
+      * Appends new action item to welcome page with a {@link Gtk.Image} icon
       *
       * @param image image to be set as icon for action item
       * @param option_text text to be set as the header for action item
@@ -190,7 +226,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         // Option label
         var button = new WelcomeButton (image, option_text, description_text);
         children.append (button);
-        options.pack_start (button, false, false, 0);
+        options.add (button);
 
         button.clicked.connect (() => {
             int index = this.children.index (button);
