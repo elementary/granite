@@ -46,6 +46,46 @@ namespace Granite.Drawing {
         public double A;
 
         /**
+         * Extracts the alpha value from the integer value
+         * serialized by {@link Granite.Drawing.Color.to_int}.
+         * 
+         * @return the alpha channel value as a uint8 ranging from 0 - 255.
+         */
+        public static uint8 alpha_from_int (int color) {
+            return (uint8)((color >> 24) & 0xFF);
+        }
+
+        /**
+         * Extracts the red value from the integer value
+         * serialized by {@link Granite.Drawing.Color.to_int}.
+         * 
+         * @return the red channel value as a uint8 ranging from 0 - 255.
+         */
+        public static uint8 red_from_int (int color) {
+            return (uint8)((color >> 16) & 0xFF);
+        }
+
+        /**
+         * Extracts the green value from the integer value
+         * serialized by {@link Granite.Drawing.Color.to_int}.
+         * 
+         * @return the green channel value as a uint8 ranging from 0 - 255.
+         */
+        public static uint8 green_from_int (int color) {
+            return (uint8)((color >> 8) & 0xFF);
+        }
+
+        /**
+         * Extracts the blue value from the integer value
+         * serialized by {@link Granite.Drawing.Color.to_int}.
+         * 
+         * @return the blue channel value as a uint8 ranging from 0 - 255.
+         */
+        public static uint8 blue_from_int (int color) {
+            return (uint8)(color & 0xFF);
+        }
+        
+        /**
          * Constructs a new {@link Granite.Drawing.Color} with the supplied values.
          *
          * @param R the value of the red channel as a double
@@ -101,6 +141,27 @@ namespace Granite.Drawing {
             Gdk.RGBA rgba = Gdk.RGBA ();
             rgba.parse (color);
             set_from_rgba (rgba);
+        }
+
+        /**
+         * Constructs a new {@link Granite.Drawing.Color} from an integer.
+         * 
+         * This constructor should be used when deserializing the previously serialized
+         * color by {@link Granite.Drawing.Color.to_int}.
+         * 
+         * For more details on what format the color integer representation has, see {@link Granite.Drawing.Color.to_int}.
+         * 
+         * If you would like to deserialize the A, R, G and B values from the integer without
+         * creating a new instance of {@link Granite.Drawing.Color}, you can use the available
+         * //*_from_int// static method collection such as {@link Granite.Drawing.Color.alpha_from_int}.
+         * 
+         * @param color the integer specyfying the color
+         */
+        public Color.from_int (int color) {
+            R = (double)red_from_int (color) / (double)uint8.MAX;
+            G = (double)green_from_int (color) / (double)uint8.MAX;
+            B = (double)blue_from_int (color) / (double)uint8.MAX;
+            A = (double)alpha_from_int (color) / (double)uint8.MAX;
         }
 
         /**
@@ -496,6 +557,36 @@ namespace Granite.Drawing {
         public string to_string () {
             Gdk.RGBA rgba = {R, G, B, A};
             return rgba.to_string ();
+        }
+
+        /**
+         * Converts this to a 32 bit integer.
+         * 
+         * This function can be useful for serializing the color so that it can be stored
+         * and retrieved easily with hash tables and lists.
+         * 
+         * The returned integer will contain the four channels
+         * that define the {@link Granite.Drawing.Color} class: alpha, red, green and blue.
+         * 
+         * Each channel is represented by 8 bits.
+         * The first 8 bits of the integer conatin the alpha channel while all other 24 bits represent
+         * red, green and blue channels respectively.
+         * 
+         * The format written as a string would look like this:
+         * 
+         * //AAAAAAAA RRRRRRRR GGGGGGGG BBBBBBBB//
+         * 
+         * where //A// is one bit of alpha chnnel, //R// of red channel, //G// of green channel and //B// of blue channel.
+         * 
+         * @return a 32 bit integer representing this
+         */
+        public int to_int () {
+            uint8 red = (uint8)(R * uint8.MAX);
+            uint8 green = (uint8)(G * uint8.MAX);
+            uint8 blue = (uint8)(B * uint8.MAX);
+            uint8 alpha = (uint8)(A * uint8.MAX);
+
+            return (alpha << 24) | (red << 16) | (green << 8) | blue;
         }
 
         private void set_from_rgba (Gdk.RGBA color) {
