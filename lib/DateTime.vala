@@ -173,7 +173,8 @@ namespace Granite.DateTime {
     }
 
     /*
-     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
+     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40).
+     * Output of negative seconds is prepended with minus character.
      *
      * @param seconds the number of seconds to convert into ISO 8601
      *
@@ -182,7 +183,7 @@ namespace Granite.DateTime {
     public static string seconds_to_time (int seconds) {
         int sign = 1;
         if (seconds < 0) {
-            seconds = - seconds;
+            seconds = -seconds;
             sign = -1;
         }
 
