@@ -81,7 +81,18 @@ public class Granite.Demo : Granite.Application {
         paned.add1 (stack_sidebar);
         paned.add2 (main_stack);
 
+        // creating custom titlebar
+        var theme_button = new Gtk.Button.from_icon_name ("object-inverse");
+        theme_button.clicked.connect(() => {
+            var window_settings = Gtk.Settings.get_default ();
+            window_settings.gtk_application_prefer_dark_theme = !window_settings.gtk_application_prefer_dark_theme;
+        });
+        var header = new Gtk.HeaderBar ();
+        header.show_close_button = true;
+        header.pack_end (theme_button);
+
         window.add (paned);
+        window.set_titlebar (header);
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
         window.title = "Granite Demo";
