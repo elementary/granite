@@ -1,4 +1,6 @@
 # Granite
+Granite is an extension of GTK+. Among other things, it provides complex widgets and convenience functions designed for use in apps built for elementary OS.
+
 [![Packaging status](https://repology.org/badge/tiny-repos/granite.svg)](https://repology.org/metapackage/granite)
 [![Translation status](https://l10n.elementary.io/widgets/desktop/granite/svg-badge.svg)](https://l10n.elementary.io/projects/desktop/granite/?utm_source=widget)
 
