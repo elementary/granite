@@ -49,6 +49,13 @@ namespace Granite.Widgets {
             get { return _selected; }
             set { set_active (value); }
         }
+        
+        /**
+         * Controls whether the user can deselect an item by clicking it again.
+         * This property does not prevent programmatic deselection of the
+         * current item.
+         */
+        public bool can_deselect { get; set; default = true; }
 
         /**
          * Read-only length of current ModeButton
@@ -127,6 +134,11 @@ namespace Granite.Widgets {
             item.toggled.connect (() => {
                 if (item.active) {
                     selected = item.index;
+                } else if (selected == item.index && !can_deselect) {
+                    // If the selected index still references this item, then it
+                    // was toggled by the user, not programmatically.
+                    // -> Reactivate the item to prevent an empty selection.
+                    item.active = true;
                 }
             });
 
@@ -144,12 +156,15 @@ namespace Granite.Widgets {
          * Clear selected items
          */
         private void clear_selected () {
+            // Update _selected before deactivating the selected item to let it
+            // know that it is being deactivated programmatically, not by the
+            // user.
+            _selected = -1;
+
             foreach (var item in item_map.values) {
                 if (item != null && item.active)
                     item.set_active (false);
             }
-
-            _selected = -1;
         }
 
         /**
@@ -175,10 +190,14 @@ namespace Granite.Widgets {
 
                 // Unselect the previous item
                 var old_item = item_map[_selected] as Item;
+
+                // Update _selected before deactivating the selected item to let
+                // it know that it is being deactivated programmatically, not by
+                // the user.
+                _selected = new_active_index;
+
                 if (old_item != null)
                     old_item.set_active (false);
-
-                _selected = new_active_index;
 
                 mode_changed (new_item.get_child ());
             }
