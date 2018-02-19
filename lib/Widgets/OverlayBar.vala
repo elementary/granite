@@ -169,6 +169,8 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         else
             set_halign (Gtk.Align.START);
 
+        queue_resize ();
+
         return false;
     }
 }
