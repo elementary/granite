@@ -37,7 +37,7 @@ set (PKG_DEPS
     gee-0.8)
 
 set (PKG_DEPS_CHECK
-    gtk+-3.0>=3.14
+    gtk+-3.0>=3.22
     gio-unix-2.0
     gthread-2.0
     gee-0.8)

@@ -107,9 +107,9 @@ public class Granite.SeekBar : Gtk.Grid {
         column_spacing = 6;
         get_style_context ().add_class (Granite.STYLE_CLASS_SEEKBAR);
 
-        progression_label = new Gtk.Label ("");
-        duration_label = new Gtk.Label ("");
-        progression_label.margin_right = duration_label.margin_left = 3;
+        progression_label = new Gtk.Label (null);
+        duration_label = new Gtk.Label (null);
+        progression_label.margin_start = duration_label.margin_end = 3;
 
         scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 1, 0.1);
         scale.hexpand = true;
