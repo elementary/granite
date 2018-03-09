@@ -1,4 +1,4 @@
-/*
+/*  Copyright (C) 2018 elementary LLC. (https://elementary.io)
  *  Copyright (C) 2012 ammonkey <am.monkeyd@gmail.com>
  *  Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
  *
@@ -34,8 +34,7 @@
  * the widget.
  *
  * For this widget to function correctly, the event {@link Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
- * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
- * but you have to be careful not to unset the event for the {@link Gtk.Overlay} at a later stage.
+ * for the parent {@link Gtk.Overlay}. It is the responsibility of the parent to add this widget to itself.
  *
  * @see Gtk.Overlay
  */
@@ -99,17 +98,6 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         }
     }
 
-    /**
-     * The {@link Gtk.Overlay} which holds the Overlay Bar.
-     */
-    public Gtk.Overlay overlay { get; construct; }
-
-    /**
-     * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
-     */
-    public OverlayBar (Gtk.Overlay overlay) {
-        Object (overlay: overlay);
-    }
 
     construct {
         status_label = new Gtk.Label ("");
@@ -149,9 +137,6 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         grid.margin_bottom = margin.bottom;
         grid.margin_start = margin.left;
         grid.margin_end = margin.right;
-
-        overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
-        overlay.add_overlay (this);
     }
 
     public override void parent_set (Gtk.Widget? old_parent) {
