@@ -98,17 +98,12 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
             revealer.reveal_child = value;
         }
     }
-
-    /**
-     * The {@link Gtk.Overlay} which holds the Overlay Bar.
-     */
-    public Gtk.Overlay overlay { get; construct; }
-
     /**
      * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
     public OverlayBar (Gtk.Overlay overlay) {
-        Object (overlay: overlay);
+        overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+        overlay.add_overlay (this);
     }
 
     construct {
@@ -149,9 +144,6 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         grid.margin_bottom = margin.bottom;
         grid.margin_start = margin.left;
         grid.margin_end = margin.right;
-
-        overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
-        overlay.add_overlay (this);
     }
 
     public override void parent_set (Gtk.Widget? old_parent) {
