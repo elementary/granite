@@ -49,13 +49,6 @@ namespace Granite.Widgets {
             get { return _selected; }
             set { set_active (value); }
         }
-        
-        /**
-         * Controls whether the user can deselect an item by clicking it again.
-         * This property does not prevent programmatic deselection of the
-         * current item.
-         */
-        public bool can_deselect { get; set; default = true; }
 
         /**
          * Read-only length of current ModeButton
@@ -134,7 +127,7 @@ namespace Granite.Widgets {
             item.toggled.connect (() => {
                 if (item.active) {
                     selected = item.index;
-                } else if (selected == item.index && !can_deselect) {
+                } else if (selected == item.index) {
                     // If the selected index still references this item, then it
                     // was toggled by the user, not programmatically.
                     // -> Reactivate the item to prevent an empty selection.

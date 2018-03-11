@@ -30,7 +30,6 @@ public class ModeButtonView : Gtk.Grid {
         icon_mode.append_icon ("view-grid-symbolic", Gtk.IconSize.BUTTON);
         icon_mode.append_icon ("view-list-symbolic", Gtk.IconSize.BUTTON);
         icon_mode.append_icon ("view-column-symbolic", Gtk.IconSize.BUTTON);
-        icon_mode.can_deselect = false;
 
         var text_mode = new Granite.Widgets.ModeButton ();
         text_mode.append_text ("Foo");
