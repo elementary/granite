@@ -64,7 +64,7 @@ namespace Granite.Widgets {
          * Makes new ModeButton
          */
         public ModeButton () {
-            
+
         }
 
         construct {
@@ -155,8 +155,9 @@ namespace Granite.Widgets {
             _selected = -1;
 
             foreach (var item in item_map.values) {
-                if (item != null && item.active)
+                if (item != null && item.active) {
                     item.set_active (false);
+                }
             }
         }
 
@@ -178,8 +179,9 @@ namespace Granite.Widgets {
                 assert (new_item.index == new_active_index);
                 new_item.set_active (true);
 
-                if (_selected == new_active_index)
+                if (_selected == new_active_index) {
                     return;
+                }
 
                 // Unselect the previous item
                 var old_item = item_map[_selected] as Item;
@@ -189,8 +191,9 @@ namespace Granite.Widgets {
                 // the user.
                 _selected = new_active_index;
 
-                if (old_item != null)
+                if (old_item != null) {
                     old_item.set_active (false);
+                }
 
                 mode_changed (new_item.get_child ());
             }
@@ -236,8 +239,9 @@ namespace Granite.Widgets {
         public void clear_children () {
             foreach (weak Gtk.Widget button in get_children ()) {
                 button.hide ();
-                if (button.get_parent () != null)
+                if (button.get_parent () != null) {
                     base.remove (button);
+                }
             }
 
             item_map.clear ();
@@ -268,12 +272,14 @@ namespace Granite.Widgets {
             uint n_children = children.length ();
 
             var selected_item = item_map[selected];
-            if (selected_item == null)
+            if (selected_item == null) {
                 return false;
+            }
 
             int new_item = children.index (selected_item);
-            if (new_item < 0)
+            if (new_item < 0) {
                 return false;
+            }
 
             do {
                 new_item += offset;
