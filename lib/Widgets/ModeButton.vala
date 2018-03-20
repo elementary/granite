@@ -64,7 +64,7 @@ namespace Granite.Widgets {
          * Makes new ModeButton
          */
         public ModeButton () {
-            
+
         }
 
         construct {
@@ -127,6 +127,11 @@ namespace Granite.Widgets {
             item.toggled.connect (() => {
                 if (item.active) {
                     selected = item.index;
+                } else if (selected == item.index) {
+                    // If the selected index still references this item, then it
+                    // was toggled by the user, not programmatically.
+                    // -> Reactivate the item to prevent an empty selection.
+                    item.active = true;
                 }
             });
 
@@ -144,12 +149,16 @@ namespace Granite.Widgets {
          * Clear selected items
          */
         private void clear_selected () {
-            foreach (var item in item_map.values) {
-                if (item != null && item.active)
-                    item.set_active (false);
-            }
-
+            // Update _selected before deactivating the selected item to let it
+            // know that it is being deactivated programmatically, not by the
+            // user.
             _selected = -1;
+
+            foreach (var item in item_map.values) {
+                if (item != null && item.active) {
+                    item.set_active (false);
+                }
+            }
         }
 
         /**
@@ -170,15 +179,21 @@ namespace Granite.Widgets {
                 assert (new_item.index == new_active_index);
                 new_item.set_active (true);
 
-                if (_selected == new_active_index)
+                if (_selected == new_active_index) {
                     return;
+                }
 
                 // Unselect the previous item
                 var old_item = item_map[_selected] as Item;
-                if (old_item != null)
-                    old_item.set_active (false);
 
+                // Update _selected before deactivating the selected item to let
+                // it know that it is being deactivated programmatically, not by
+                // the user.
                 _selected = new_active_index;
+
+                if (old_item != null) {
+                    old_item.set_active (false);
+                }
 
                 mode_changed (new_item.get_child ());
             }
@@ -224,8 +239,9 @@ namespace Granite.Widgets {
         public void clear_children () {
             foreach (weak Gtk.Widget button in get_children ()) {
                 button.hide ();
-                if (button.get_parent () != null)
+                if (button.get_parent () != null) {
                     base.remove (button);
+                }
             }
 
             item_map.clear ();
@@ -256,12 +272,14 @@ namespace Granite.Widgets {
             uint n_children = children.length ();
 
             var selected_item = item_map[selected];
-            if (selected_item == null)
+            if (selected_item == null) {
                 return false;
+            }
 
             int new_item = children.index (selected_item);
-            if (new_item < 0)
+            if (new_item < 0) {
                 return false;
+            }
 
             do {
                 new_item += offset;
