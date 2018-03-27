@@ -28,9 +28,13 @@ public class OverlayBarView : Gtk.Overlay {
         grid.valign = Gtk.Align.CENTER;
         grid.add (button);
 
-        var overlaybar = new Granite.Widgets.OverlayBar (this);
+        /* Need to listen to ENTER events to enable overlaybar dodge function */
+        add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+
+        var overlaybar = new Granite.Widgets.OverlayBar ();
         overlaybar.label = "Hover the OverlayBar to change its position";
-        
+        add_overlay (overlaybar);
+
         add (grid);
 
         button.toggled.connect (() => {
