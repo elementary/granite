@@ -873,8 +873,11 @@ namespace Granite.Widgets {
                     case Gdk.Key.@w:
                     case Gdk.Key.@W:
                         if (e.state == Gdk.ModifierType.CONTROL_MASK) {
-                            if (!tabs_closable) break;
-                            remove_tab (current);
+                            if (!tabs_closable) {
+                                break;
+                            }
+
+                            current.close ();
                             return true;
                         }
 
