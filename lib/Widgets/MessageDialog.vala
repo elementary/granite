@@ -179,10 +179,6 @@ public class Granite.MessageDialog : Gtk.Dialog {
      */
     public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
-            resizable: false,
-            deletable: false,
-            skip_taskbar_hint: true,
-            transient_for: null,
             primary_text: primary_text,
             secondary_text: secondary_text,
             image_icon: image_icon,
@@ -208,10 +204,6 @@ public class Granite.MessageDialog : Gtk.Dialog {
      */
     public MessageDialog.with_image_from_icon_name (string primary_text, string secondary_text, string image_icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
         Object (
-            resizable: false,
-            deletable: false,
-            skip_taskbar_hint: true,
-            transient_for: null,
             primary_text: primary_text,
             secondary_text: secondary_text,
             image_icon: new ThemedIcon (image_icon_name),
@@ -220,6 +212,10 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     construct {
+        resizable = false;
+        deletable = false;
+        skip_taskbar_hint = true;
+
         image = new Gtk.Image ();
         image.valign = Gtk.Align.START;
 
