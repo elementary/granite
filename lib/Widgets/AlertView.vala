@@ -73,7 +73,7 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
     /**
      * The icon name
      */
-    public string icon_name {
+    public string? icon_name {
         owned get {
             return image.icon_name;
         }
