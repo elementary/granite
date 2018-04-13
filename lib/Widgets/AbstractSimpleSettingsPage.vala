@@ -110,6 +110,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         header_icon.valign = Gtk.Align.START;
 
         title_label = new Gtk.Label (title);
+        title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.xalign = 0;
         title_label.get_style_context ().add_class ("h2");
 
