@@ -80,8 +80,11 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         set {
             if (value != null && value != "") {
                 image.set_from_icon_name (value, Gtk.IconSize.DIALOG);
+                image.no_show_all = false;
+                image.show ();
             } else {
-                image.destroy ();
+                image.no_show_all = true;
+                image.hide ();
             }
         }
     }
