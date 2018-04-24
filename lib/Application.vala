@@ -157,6 +157,8 @@ namespace Granite {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
+
+            handle_local_options.connect (on_handle_local_options);
         }
 
 #if LINUX
@@ -176,21 +178,17 @@ namespace Granite {
          * @param args array of arguments
          */
         public new int run (string[] args) {
+            var option_group = new OptionGroup ("granite", "Granite Options", _("Show Granite Options"));
+            option_group.add_entries (options);
 
-            // parse commandline options
-            var context = new OptionContext ("");
-
-            context.add_main_entries (options, null);
-            context.add_group (Gtk.get_option_group (false));
-            context.set_ignore_unknown_options (true);
-
-            try {
-                context.parse (ref args);
-            } catch { }
-
-            set_options ();
+            add_option_group ((owned)option_group);
 
             return base.run (args);
+        }
+
+        private int on_handle_local_options (VariantDict options) {
+            set_options ();
+            return -1;
         }
 
         protected static bool DEBUG = false;
@@ -236,7 +234,7 @@ namespace Granite {
             var developers_string = _("%s's Developers").printf (program_name);
 
             string copyright_string;
-            if (parent.get_style_context ().get_direction () == Gtk.TextDirection.RTL) {
+            if (Gtk.StateFlags.DIR_RTL in parent.get_style_context ().get_state ()) {
                 copyright_string = "%s %s".printf (developers_string, app_years);
             } else {
                 copyright_string = "%s %s".printf (app_years, developers_string);

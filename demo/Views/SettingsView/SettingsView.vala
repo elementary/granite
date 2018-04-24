@@ -1,5 +1,4 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*-
+/*
  * Copyright (c) 2017 elementary LLC. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
@@ -18,23 +17,19 @@
  * Boston, MA 02110-1301 USA.
  */
 
-public class OverlayBarView : Gtk.Overlay {
+public class SettingsView : Gtk.Paned {
     construct {
-        var button = new Gtk.ToggleButton.with_label ("Show Spinner");
+        var settings_page = new SimpleSettingsPage ();
 
-        /* This is necessary to workaround an issue in the stylesheet with buttons packed directly into overlays */
-        var grid = new Gtk.Grid ();
-        grid.halign = Gtk.Align.CENTER;
-        grid.valign = Gtk.Align.CENTER;
-        grid.add (button);
+        var settings_page_two = new SettingsPage ();
 
-        var overlaybar = new Granite.Widgets.OverlayBar (this);
-        overlaybar.label = "Hover the OverlayBar to change its position";
-        
-        add (grid);
+        var stack = new Gtk.Stack ();
+        stack.add_named (settings_page, "settings_page");
+        stack.add_named (settings_page_two, "settings_page_two");
 
-        button.toggled.connect (() => {
-            overlaybar.active = button.active;
-        });
+        var settings_sidebar = new Granite.SettingsSidebar (stack);
+
+        add (settings_sidebar);
+        add (stack);
     }
 }

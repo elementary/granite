@@ -14,8 +14,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA.
  *
  * Authored by: Lucas Baudin <xapantu@gmail.com>
  *              Jaap Broekhuizen <jaapz.b@gmail.com>
@@ -34,7 +34,7 @@ public class Granite.Demo : Granite.Application {
 
         program_name = "Granite Demo";
 
-        build_version = "0.4.1";
+        build_version = "0.5";
         app_icon = "applications-interfacedesign";
     }
 
@@ -48,25 +48,31 @@ public class Granite.Demo : Granite.Application {
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
+        var seekbar_view = new SeekBarView ();
         var settings_view = new SettingsView ();
         var source_list_view = new SourceListView ();
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var welcome = new WelcomeView ();
+        var message_dialog_view = new MessageDialogView (window);
+        var async_image_view = new AsyncImageView ();
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
-        main_stack.add_titled (date_time_picker_view, "pickers", "DatePicker & TimePicker");
+        main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
-        main_stack.add_titled (settings_view, "settings", "SettingsPage");
+        main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
+        main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
+        main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
+        main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
@@ -75,13 +81,34 @@ public class Granite.Demo : Granite.Application {
         paned.add1 (stack_sidebar);
         paned.add2 (main_stack);
 
+        var theme_button = new Gtk.Button.from_icon_name ("object-inverse");
+        theme_button.tooltip_text = ("Use dark style");
+        theme_button.valign = Gtk.Align.CENTER;
+
+        var headerbar = new Gtk.HeaderBar ();
+        headerbar.get_style_context ().add_class ("default-decoration");
+        headerbar.show_close_button = true;
+        headerbar.pack_end (theme_button);
+
         window.add (paned);
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
+        window.set_titlebar (headerbar);
         window.title = "Granite Demo";
         window.show_all ();
 
         add_window (window);
+
+        theme_button.clicked.connect (() => {
+            var window_settings = Gtk.Settings.get_default ();
+            window_settings.gtk_application_prefer_dark_theme = !window_settings.gtk_application_prefer_dark_theme;
+
+            if (window_settings.gtk_application_prefer_dark_theme) {
+                theme_button.tooltip_text = ("Use light style");
+            } else {
+                theme_button.tooltip_text = ("Use dark style");
+            }
+        });
     }
 
     public static int main (string[] args) {

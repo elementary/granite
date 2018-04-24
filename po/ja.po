@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-05-07 12:44+0000\n"
-"Last-Translator: Ryo Nakano <nscnskichiro0911@gmail.com>\n"
+"PO-Revision-Date: 2017-09-03 00:14+0000\n"
+"Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
 "Language-Team: Japanese "
-"<https://l10n.elementary.io/projects/desktop/granite/ja/>\n"
+"<https://weblate.elementary.io/projects/desktop/granite/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -63,7 +63,7 @@ msgstr "このプログラムは次の条件下で公開されています "
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " ライセンスは絶対的に無保証を伴っています。詳細はこちらを参照して下さい。 "
+msgstr " ライセンスは絶対的な無保証を伴っています。詳細はこちらを参照してください。 "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248

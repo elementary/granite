@@ -86,7 +86,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
                 copyright_label.set_text("");
             }
             else {
-                if (copyright_label.get_style_context ().get_direction () == Gtk.TextDirection.RTL) {
+                if (Gtk.StateFlags.DIR_RTL in copyright_label.get_style_context ().get_state ()) {
                     copyright_label.set_markup ("<span size=\"small\">" + "%s ©".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
                 } else {
                     copyright_label.set_markup ("<span size=\"small\">" + "© %s".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
@@ -229,7 +229,6 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     private Gtk.Label translators_label;
     private Gtk.Label license_label;
     private Gtk.Label website_url_label;
-    private Gtk.Button close_button;
 
     /**
      * Creates a new Granite.AboutDialog
@@ -294,15 +293,8 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         var content_area = (Gtk.Box) get_content_area ();
         content_area.add (grid);
 
-        close_button = new Gtk.Button.with_label (_("Close"));
-        close_button.clicked.connect (() => {
-            response (Gtk.ResponseType.CANCEL);
-        });
-
+        var close_button = add_button (_("Close"), Gtk.ResponseType.CANCEL);
         close_button.grab_focus ();
-
-        var action_area = (Gtk.Box) get_action_area ();
-        action_area.pack_end (close_button, false, false, 0);
     }
 
     private class AboutLabel : Gtk.Label {

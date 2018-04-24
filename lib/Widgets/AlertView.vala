@@ -25,6 +25,22 @@
  * It can be used to show an empty view or hiding a panel when this one is disabled.
  *
  * {{../../doc/images/AlertView.png}}
+ *
+ * ''Example''<<BR>>
+ * {{{
+ * public class AlertViewView : Gtk.Grid {
+ *     construct {
+ *         var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
+ *         alert.show_action ("Hide this button");
+ *
+ *         alert.action_activated.connect (() => {
+ *             alert.hide_action ();
+ *         });
+ *
+ *         add (alert);
+ *     }
+ * }
+ * }}}
  */
 public class Granite.Widgets.AlertView : Gtk.Grid {
     public signal void action_activated ();
@@ -89,13 +105,14 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         title_label = new Gtk.Label (null);
         title_label.hexpand = true;
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        title_label.max_width_chars = 45;
+        title_label.max_width_chars = 75;
         title_label.wrap = true;
         title_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
         title_label.xalign = 0;
 
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;
+        description_label.max_width_chars = 75;
         description_label.wrap = true;
         description_label.use_markup = true;
         description_label.xalign = 0;

@@ -28,31 +28,29 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     private Gtk.Label description_label;
     private Gtk.Label title_label;
     private string _description;
-    private string _icon_name;
-    private string _title;
 
     /**
-     * A #Gtk.ButtonBox used as the action area for #this
+     * A {@link Gtk.ButtonbBox} used as the action area for #this
      */
     public Gtk.ButtonBox action_area { get; construct; }
 
     /**
-     * A #Gtk.Grid used as the content area for #this
+     * A {@link Gtk.Grid} used as the content area for #this
      */
     public Gtk.Grid content_area { get; construct; }
 
     /**
-     * A #Gtk.Switch that appears in the header area when #this.activatable is #true. #status_switch will be #null when #this.activatable is #false
+     * A {@link Gtk.Switch} that appears in the header area when #this.activatable is #true. #status_switch will be #null when #this.activatable is #false
      */
     public Gtk.Switch? status_switch { get; construct; }
 
     /**
-     * Creates a #Gtk.Switch #status_switch in the header of #this
+     * Creates a {@link Gtk.Switch} #status_switch in the header of #this
      */
     public bool activatable { get; construct; }
 
     /**
-     * Creates a #Gtk.Label with a page description in the header of #this
+     * Creates a {@link Gtk.Label} with a page description in the header of #this
      */
     public string description {
         get {
@@ -68,8 +66,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * An icon name associated with #this
+     * Deprecated: Use #SettingsPage.icon_name instead.
      */
-    public string icon_name {
+    public new string icon_name {
         get {
             return _icon_name;
         } 
@@ -83,8 +82,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * A title associated with #this
+     * Deprecated: Use #SettingsPage.title instead.
      */
-    public string title {
+    public new string title {
         get {
             return _title;
         } 
@@ -98,12 +98,10 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     /**
      * Creates a new SimpleSettingsPage
+     * Deprecated: Subclass this instead.
      */
     public SimpleSettingsPage () {
-        Object (activatable: activatable,
-                icon_name: icon_name,
-                description: description,
-                title: title);
+        
     }
 
     construct {
@@ -112,6 +110,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         header_icon.valign = Gtk.Align.START;
 
         title_label = new Gtk.Label (title);
+        title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.xalign = 0;
         title_label.get_style_context ().add_class ("h2");
 
@@ -155,5 +154,17 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         grid.add (action_area);
 
         add (grid);
+
+        notify["icon-name"].connect (() => {
+            if (header_icon != null) {
+                header_icon.icon_name = icon_name;
+            }
+        });
+
+        notify["title"].connect (() => {
+            if (title_label != null) {
+                title_label.label = title;
+            }
+        });
     }
 }

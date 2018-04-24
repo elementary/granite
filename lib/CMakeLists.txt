@@ -1,8 +1,8 @@
 # increase when you break the API
-set (PKG_SOVERSION 3)
+set (PKG_SOVERSION 4)
 
 # Increase when you add functionality
-set (PKG_SOMINOR 0.1)
+set (PKG_SOMINOR 0)
 
 set (VALA_SOURCES
     StyleClass.vala
@@ -11,7 +11,9 @@ set (VALA_SOURCES
     Drawing/Color.vala
     Drawing/BufferSurface.vala
     Drawing/Utilities.vala
+
     GtkPatch/AboutDialog.vala
+
     Services/Settings.vala
     Services/Logger.vala
     Services/Paths.vala
@@ -19,6 +21,9 @@ set (VALA_SOURCES
     Services/ContractorProxy.vala
     Services/IconFactory.vala
     Services/SimpleCommand.vala
+
+    Widgets/AbstractSettingsPage.vala
+    Widgets/AbstractSimpleSettingsPage.vala
     Widgets/AlertView.vala
     Widgets/Avatar.vala
     Widgets/Utils.vala
@@ -33,14 +38,17 @@ set (VALA_SOURCES
     Widgets/Welcome.vala
     Widgets/WelcomeButton.vala
     Widgets/Toast.vala
+    Widgets/SeekBar.vala
     Widgets/StorageBar.vala
     Widgets/SourceList.vala
     Widgets/CellRendererExpander.vala
     Widgets/CellRendererBadge.vala
     Widgets/OverlayBar.vala
-
-    Widgets/SettingsPage/AbstractSettingsPage.vala
-    Widgets/SettingsPage/AbstractSimpleSettingsPage.vala
+    Widgets/HeaderLabel.vala
+    Widgets/SettingsSidebar.vala
+    Widgets/SettingsSidebarRow.vala
+    Widgets/MessageDialog.vala
+    Widgets/AsyncImage.vala
 )
 
 set (C_SOURCES
@@ -81,6 +89,8 @@ PACKAGES
     ${PKG_DEPS}
 GENERATE_HEADER
     ${PKG_NAME}
+GENERATE_GIR
+    ${PKG_GIR_NAME}
 GENERATE_VAPI
     ${PKG_NAME}
 CUSTOM_VAPIS
@@ -114,5 +124,7 @@ include (FindGObjectIntrospection)
 
 if (INTROSPECTION_FOUND)
     include (GObjectIntrospectionMacros)
-    add_target_gir (${PKG_NAME} ${PKG_GIR_NAME} ${PKG_NAME}.h "${VALA_C}" "${DEPS_CFLAGS}" ${API_VERSION} ${GI_PKG_DEPS})
+    add_custom_command(TARGET ${PKG_NAME} COMMAND ${INTROSPECTION_COMPILER} ${CMAKE_CURRENT_BINARY_DIR}/${PKG_GIR_NAME}.gir -o ${CMAKE_CURRENT_BINARY_DIR}/${PKG_GIR_NAME}.typelib)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_GIR_NAME}.gir DESTINATION ${INTROSPECTION_GIRDIR})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKG_GIR_NAME}.typelib DESTINATION ${INTROSPECTION_TYPELIBDIR})
 endif ()

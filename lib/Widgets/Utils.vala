@@ -260,9 +260,9 @@ namespace Granite.Widgets.Utils {
         var sss = SettingsSchemaSource.get_default ();
 
         if (sss != null) {
-            if (sss.lookup (PANTHEON_SETTINGS_PATH, false) != null) {
+            if (sss.lookup (PANTHEON_SETTINGS_PATH, true) != null) {
                 return PANTHEON_SETTINGS_PATH;
-            } else if (sss.lookup (WM_SETTINGS_PATH, false) != null) {
+            } else if (sss.lookup (WM_SETTINGS_PATH, true) != null) {
                 return WM_SETTINGS_PATH;
             }
         }

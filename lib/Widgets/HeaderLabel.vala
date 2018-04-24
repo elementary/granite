@@ -17,19 +17,24 @@
 * Boston, MA 02110-1301 USA
 */
 
+
 /**
- * AbstractSettingsPage is a #Gtk.ScrolledWindow subclass with properties used
- * by other Granite settings widgets.
+ * HeaderLabel is a start-aligned Gtk.Label with the Granite H4 style class
  */
-
-public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
-    /**
-     * An icon name associated with #this
-     */
-    public string? icon_name { get; construct set; }
+public class Granite.HeaderLabel : Gtk.Label {
 
     /**
-     * A title associated with #this
+     * Create a new HeaderLabel
      */
-    public string title { get; construct set; }
+    public HeaderLabel (string label) {
+        Object (
+            label: label
+        );
+    }
+
+    construct {
+        halign = Gtk.Align.START;
+        xalign = 0;
+        get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+    }
 }

@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-06-18 21:17+0000\n"
+"PO-Revision-Date: 2017-11-11 16:27+0000\n"
 "Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch "
-"<https://l10n.elementary.io/projects/desktop/granite/nl/>\n"
+"<https://weblate.elementary.io/projects/desktop/granite/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -262,24 +262,24 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56
 msgid "Audio"
-msgstr ""
+msgstr "Geluid"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 msgid "Videos"
-msgstr ""
+msgstr "Video's"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 msgid "Photos"
-msgstr ""
+msgstr "Afbeeldingen"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 msgid "Apps"
-msgstr ""
+msgstr "Toepassingen"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
@@ -289,11 +289,11 @@ msgstr "Andere"
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s vrij van de %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 msgid "%s's Developers"
-msgstr ""
+msgstr "%s's ontwikkelaars"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453
@@ -301,6 +301,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Dit programma is uitgebracht onder de termen en voorwaarden van de %s "
+"licentie, het komt met ABSOLUUT GEEN GARANTIES; voor details, bekijk %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -327,37 +329,37 @@ msgstr ""
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 msgid "Files"
-msgstr ""
+msgstr "Bestanden"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Pop-ups"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Simpele in-app meldingen"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Knop werd ingedrukt!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Doe dingen"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
-msgstr ""
+msgstr "Klik mij"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Deed het ding"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Reeds het ding gedaan"

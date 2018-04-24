@@ -16,13 +16,18 @@ vala_precompile (VALA_C ${EXEC_NAME}
     Views/CSSView.vala
     Views/DateTimePickerView.vala
     Views/DynamicNotebookView.vala
+    Views/MessageDialogView.vala
     Views/ModeButtonView.vala
     Views/OverlayBarView.vala
-    Views/SettingsView.vala
+    Views/SeekBarView.vala
     Views/SourceListView.vala
     Views/StorageView.vala
     Views/ToastView.vala
     Views/WelcomeView.vala
+    Views/AsyncImageView.vala
+    Views/SettingsView/SettingsView.vala
+    Views/SettingsView/SettingsPage.vala
+    Views/SettingsView/SimpleSettingsPage.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../lib/${PKG_NAME}.vapi
 PACKAGES
@@ -32,6 +37,8 @@ OPTIONS
 )
 
 add_executable (${EXEC_NAME} ${VALA_C})
+# The demo app is of course using deprecated widgets
+set_target_properties(${EXEC_NAME} PROPERTIES COMPILE_FLAGS -Wno-deprecated-declarations)
 target_link_libraries (${EXEC_NAME} ${PKG_NAME} ${DEPS_LIBRARIES})
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite-demo.desktop DESTINATION share/applications)
