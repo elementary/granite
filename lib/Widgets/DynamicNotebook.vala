@@ -120,12 +120,19 @@ namespace Granite.Widgets {
                 return page_container.get_child ();
             }
             set {
-                if (page_container.get_child () != null)
-                    page_container.remove (page_container.get_child ());
-                if (value.get_parent () != null)
-                    value.reparent (page_container);
-                else
+                weak Gtk.Widget container_child = page_container.get_child ();
+                if (container_child != null) {
+                    page_container.remove (container_child);
+                }
+
+                weak Gtk.Container? value_parent = value.get_parent ();
+                if (value_parent != null) {
+                    value_parent.remove (value);
                     page_container.add (value);
+                } else {
+                    page_container.add (value);
+                }
+
                 page_container.show_all ();
             }
         }
@@ -318,7 +325,7 @@ namespace Granite.Widgets {
                 } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
                 } else if (e.button == 3) {
-                    menu.popup (null, null, null, 3, e.time);
+                    menu.popup_at_pointer (e);
                     uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
@@ -641,9 +648,9 @@ namespace Granite.Widgets {
             set {
                 if (value != _add_button_visible) {
                     if (_add_button_visible) {
-                        this.notebook.set_action_widget (null, Gtk.PackType.START);
+                        notebook.remove (add_button);
                     } else {
-                        this.notebook.set_action_widget (add_button, Gtk.PackType.START);
+                        notebook.set_action_widget (add_button, Gtk.PackType.START);
                     }
 
                     _add_button_visible = value;
@@ -843,7 +850,7 @@ namespace Granite.Widgets {
                 var menu = closed_tabs.menu;
                 menu.attach_widget = restore_button;
                 menu.show_all ();
-                menu.popup (null, null, restore_menu_position, 1, 0);
+                menu.popup_at_widget (restore_button, Gdk.Gravity.SOUTH_EAST, Gdk.Gravity.NORTH_EAST, null);
             });
 
             restore_tab_m.visible = allow_restoring;
@@ -860,7 +867,7 @@ namespace Granite.Widgets {
                     restore_last_tab ();
                     return true;
                 } else if (e.button == 3) {
-                    menu.popup (null, null, null, 3, e.time);
+                    menu.popup_at_pointer (e);
                 }
 
                 return false;
@@ -953,15 +960,6 @@ namespace Granite.Widgets {
             notebook.page_removed.disconnect (on_page_removed);
             notebook.page_reordered.disconnect (on_page_reordered);
             notebook.create_window.disconnect (on_create_window);
-        }
-
-        void restore_menu_position (Gtk.Menu menu, out int x, out int y, out bool p) {
-            Gtk.Allocation button_alloc, menu_alloc;
-            restore_button.get_allocation (out button_alloc);
-            menu.get_allocation (out menu_alloc);
-            restore_button.get_window ().get_origin (out x, out y);
-            x += button_alloc.x - menu_alloc.width + button_alloc.width + 5;
-            y += button_alloc.y + button_alloc.height + 1;
         }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
