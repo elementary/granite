@@ -34,10 +34,34 @@
  * the widget.
  *
  * For this widget to function correctly, the event {@link Gdk.EventMask.ENTER_NOTIFY_MASK} must be set
- * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically,
- * but you have to be careful not to unset the event for the {@link Gtk.Overlay} at a later stage.
+ * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically, if
+ * the parent is supplied as a parameter, but you have to be careful not to unset the event for
+ * the {@link Gtk.Overlay} at a later stage.
  *
  * @see Gtk.Overlay
+ *
+ * ''Example''<<BR>>
+ * {{{
+ * public class OverlayBarView : Gtk.Overlay {
+ *     construct {
+ *         var button = new Gtk.ToggleButton.with_label ("Show Spinner");
+ * 
+ *         var grid = new Gtk.Grid ();
+ *         grid.halign = Gtk.Align.CENTER;
+ *         grid.valign = Gtk.Align.CENTER;
+ *         grid.add (button);
+ * 
+ *         var overlaybar = new Granite.Widgets.OverlayBar (this);
+ *         overlaybar.label = "Hover the OverlayBar to change its position";
+ *         
+ *         add (grid);
+ * 
+ *         button.toggled.connect (() => {
+ *             overlaybar.active = button.active;
+ *         });
+ *     }
+ * }
+ * }}}
  */
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
@@ -59,6 +83,12 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
     private Gtk.Label status_label;
     private Gtk.Revealer revealer;
     private Gtk.Spinner spinner;
+
+    /**
+     * overlay: Deprecated property, always returns null.
+     */
+    [Version (deprecated = true, deprecated_since = "0.5.1", replacement = "")]
+    public Gtk.Overlay? overlay { get; construct; }
 
     /**
      * Status text displayed inside the Overlay Bar.
@@ -98,20 +128,18 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
             revealer.reveal_child = value;
         }
     }
-
-    /**
-     * The {@link Gtk.Overlay} which holds the Overlay Bar.
-     */
-    public Gtk.Overlay overlay { get; construct; }
-
     /**
      * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
-    public OverlayBar (Gtk.Overlay overlay) {
-        Object (overlay: overlay);
+    public OverlayBar (Gtk.Overlay? overlay = null) {
+        if (overlay != null) {
+            overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+            overlay.add_overlay (this);
+        }
     }
 
     construct {
+        overlay = null;
         status_label = new Gtk.Label ("");
         status_label.set_ellipsize (Pango.EllipsizeMode.END);
 
@@ -149,9 +177,6 @@ public class Granite.Widgets.OverlayBar : Gtk.EventBox {
         grid.margin_bottom = margin.bottom;
         grid.margin_start = margin.left;
         grid.margin_end = margin.right;
-
-        overlay.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
-        overlay.add_overlay (this);
     }
 
     public override void parent_set (Gtk.Widget? old_parent) {

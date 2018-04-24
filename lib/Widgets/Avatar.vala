@@ -22,6 +22,25 @@
 /**
  * The Avatar widget allowes to theme & crop images with css BORDER_RADIUS property in the .avatar class.
  *
+ * ''Example''<<BR>>
+ * {{{
+ * public class AvatarView : Gtk.Grid {
+ *     construct {
+ *         var username = GLib.Environment.get_user_name ();
+ *         var iconfile = @"/var/lib/AccountsService/icons/$username";
+ *
+ *         var avatar_dialog = new Granite.Widgets.Avatar.from_file (iconfile, 48);
+ *
+ *         var avatar_default_dialog = new Granite.Widgets.Avatar.with_default_icon (48);
+ *
+ *         row_spacing = 6;
+ *         halign = Gtk.Align.CENTER;
+ *         valign = Gtk.Align.CENTER;
+ *         attach (avatar_dialog, 0, 0, 1, 1);
+ *         attach (avatar_default_dialog, 0, 1, 1, 1);
+ *     }
+ * }
+ * }}}
  */
 public class Granite.Widgets.Avatar : Gtk.EventBox {
     private const string DEFAULT_ICON = "avatar-default";
