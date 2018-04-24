@@ -310,17 +310,12 @@ public class Granite.AsyncImage : Gtk.Image {
         var theme = Gtk.IconTheme.get_for_screen (style_context.get_screen ());
 
         var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.USE_BUILTIN;
-        switch (style_context.get_direction ()) {
-            case Gtk.TextDirection.NONE:
-                break;
-            case Gtk.TextDirection.LTR:
-                flags |= Gtk.IconLookupFlags.DIR_LTR;
-                break;
-            case Gtk.TextDirection.RTL:
-                flags |= Gtk.IconLookupFlags.DIR_RTL;
-                break;
+        if (Gtk.StateFlags.DIR_RTL in style_context.get_state ()) {
+            flags |= Gtk.IconLookupFlags.DIR_RTL;
+        } else {
+            flags |= Gtk.IconLookupFlags.DIR_LTR;
         }
-        
+
         var info = theme.lookup_by_gicon_for_scale (icon, size, current_scale_factor, flags);
         if (info == null) {
             reset_size_request ();
