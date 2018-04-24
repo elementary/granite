@@ -1458,7 +1458,6 @@ public class SourceList : Gtk.ScrolledWindow {
         construct {
             mode = Gtk.CellRendererMode.ACTIVATABLE;
             stock_size = ICON_SIZE;
-            follow_state = true;
         }
 
         public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
@@ -2291,15 +2290,9 @@ public class SourceList : Gtk.ScrolledWindow {
             if (item != null) {
                 var menu = item.get_context_menu ();
                 if (menu != null) {
-                    var time = (event != null) ? event.time : Gtk.get_current_event_time ();
-                    var button = (event != null) ? event.button : 0;
-
-                    menu.attach_to_widget (this, null);
-
-                    if (event != null) {
-                        menu.popup (null, null, null, button, time);
-                    } else {
-                        menu.popup (null, null, menu_position_func, button, time);
+                    menu.attach_widget = this;
+                    menu.popup_at_pointer (event);
+                    if (event == null) {
                         menu.select_first (false);
                     }
 
@@ -2308,50 +2301,6 @@ public class SourceList : Gtk.ScrolledWindow {
             }
 
             return false;
-        }
-
-        /**
-         * Positions a menu based on an item's coordinates.
-         *
-         * This function is only used for menu pop-ups triggered by events other than button
-         * presses (e.g. key-press events). Since such events provide no coordinates, it is
-         * assumed that the item in question is the one currently selected.
-         */
-        private void menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            push_in = true;
-            x = y = 0;
-
-            if (selected_item == null || !get_realized ())
-                return;
-
-            var path = data_model.get_item_path (selected_item);
-            if (path == null)
-                return;
-
-            // Try to find the position of the item
-            Gdk.Rectangle item_bin_coords;
-            get_cell_area (path, get_column (Column.ITEM), out item_bin_coords);
-
-            int item_y = item_bin_coords.y + item_bin_coords.height / 2;
-            int item_x = item_bin_coords.x;
-
-            bool is_ltr = Utils.is_left_to_right (this);
-
-            if (is_ltr)
-                item_x += item_bin_coords.width - 6;
-
-            int widget_x, widget_y;
-            convert_bin_window_to_widget_coords (item_x, item_y, out widget_x, out widget_y);
-
-            get_window ().get_origin (out x, out y);
-            x += widget_x.clamp (0, get_allocated_width ());
-            y += widget_y.clamp (0, get_allocated_height ());
-
-            if (!is_ltr) {
-                Gtk.Requisition menu_req;
-                menu.get_preferred_size (out menu_req, null);
-                y -= menu_req.width;
-            }
         }
 
         private static Item? get_item_from_model (Gtk.TreeModel model, Gtk.TreeIter iter) {
@@ -2577,10 +2526,7 @@ public class SourceList : Gtk.ScrolledWindow {
     }
 
     construct {
-        push_composite_child ();
         tree = new Tree (data_model);
-        tree.set_composite_name ("treeview");
-        pop_composite_child ();
 
         set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         add (tree);

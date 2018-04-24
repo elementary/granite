@@ -234,7 +234,7 @@ namespace Granite {
             var developers_string = _("%s's Developers").printf (program_name);
 
             string copyright_string;
-            if (parent.get_style_context ().get_direction () == Gtk.TextDirection.RTL) {
+            if (Gtk.StateFlags.DIR_RTL in parent.get_style_context ().get_state ()) {
                 copyright_string = "%s %s".printf (developers_string, app_years);
             } else {
                 copyright_string = "%s %s".printf (app_years, developers_string);
