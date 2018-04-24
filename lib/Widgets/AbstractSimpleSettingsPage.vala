@@ -117,15 +117,18 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;
         header_area.row_spacing = 3;
-        header_area.attach (header_icon, 0, 0, 1, 2);
-        header_area.attach (title_label, 1, 0, 1, 1);
+
+        header_area.attach (title_label, 1, 0);
 
         if (description != null) {
             description_label = new Gtk.Label (description);
             description_label.xalign = 0;
             description_label.wrap = true;
 
-            header_area.attach (description_label, 1, 1, 1, 1);
+            header_area.attach (header_icon, 0, 0, 1, 2);
+            header_area.attach (description_label, 1, 1);
+        } else {
+            header_area.attach (header_icon, 0, 0);
         }
 
         if (activatable) {
@@ -133,7 +136,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
             status_switch.hexpand = true;
             status_switch.halign = Gtk.Align.END;
             status_switch.valign = Gtk.Align.CENTER;
-            header_area.attach (status_switch, 2, 0, 1, 1);
+            header_area.attach (status_switch, 2, 0);
         }
 
         content_area = new Gtk.Grid ();
