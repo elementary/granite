@@ -236,6 +236,7 @@ namespace Granite.Widgets {
 
             var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             close_button.tooltip_text = _("Close Tab");
+            close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
 
             close_button_revealer = new Gtk.Revealer ();
