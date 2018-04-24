@@ -211,7 +211,7 @@ public class Granite.SeekBar : Gtk.Grid {
 
         progression_label = new Gtk.Label ("");
         duration_label = new Gtk.Label ("");
-        progression_label.margin_right = duration_label.margin_left = 3;
+        progression_label.margin_end = duration_label.margin_start = 3;
 
         scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 1, 0.1);
         scale.hexpand = true;
