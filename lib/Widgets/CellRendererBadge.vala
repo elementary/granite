@@ -88,7 +88,6 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
         border = ctx.get_border (state);
 
         text_layout = widget.create_pango_layout (text);
-        text_layout.set_font_description (ctx.get_font (state));
 
         ctx.restore ();
 
