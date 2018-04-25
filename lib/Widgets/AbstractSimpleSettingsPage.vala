@@ -158,6 +158,11 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         add (grid);
 
+        set_action_area_visibility ();
+
+        action_area.add.connect (set_action_area_visibility);
+        action_area.remove.connect (set_action_area_visibility);
+
         notify["icon-name"].connect (() => {
             if (header_icon != null) {
                 header_icon.icon_name = icon_name;
@@ -169,5 +174,15 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
                 title_label.label = title;
             }
         });
+    }
+
+    private void set_action_area_visibility () {
+        if (action_area.get_children () != null) {
+            action_area.no_show_all = false;
+            action_area.show ();
+        } else {
+            action_area.no_show_all = true;
+            action_area.hide ();
+        }
     }
 }
