@@ -207,12 +207,6 @@ namespace Granite.Widgets {
         internal signal void duplicate ();
         internal signal void pin_switch ();
 
-        private const string CLOSE_BUTTON_STYLE = """
-            * {
-                padding: 0;
-            }
-        """;
-
         /**
          * With this you can construct a Tab. It is linked to the page that is shown on focus.
          * A Tab can have a icon on the right side. You can pass null on the constructor to
@@ -228,18 +222,22 @@ namespace Granite.Widgets {
         construct {
             _label = new Gtk.Label (null);
             _label.hexpand = true;
+            _label.tooltip_text = label;
+            _label.ellipsize = Pango.EllipsizeMode.END;
 
             _icon = new Gtk.Image ();
             _icon.icon_size = Gtk.IconSize.MENU;
+            _icon.visible = true;
+            _icon.set_size_request (16, 16);
 
             _working = new Gtk.Spinner ();
+            _working.set_size_request (16, 16);
             _working.start();
 
             var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             close_button.tooltip_text = _("Close Tab");
+            close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
-
-            fix_button_theming (close_button);
 
             close_button_revealer = new Gtk.Revealer ();
             close_button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
@@ -252,19 +250,8 @@ namespace Granite.Widgets {
             tab_layout.add (_label);
             tab_layout.add (_icon);
             tab_layout.add (_working);
-            _label.set_tooltip_text (label);
-            _label.ellipsize = Pango.EllipsizeMode.END;
-            _icon.set_size_request (16, 16);
-            _working.set_size_request (16, 16);
 
-            _icon.visible = true;
             visible_window = true;
-
-            // Apply transparent background color to the tab.
-            // We do this instead of visible_window=false for event-propagation reasons.
-            // Otherwise the EventBox would not catch some events in blank areas, like
-            // enter_notify_event and leave_notify_event. above_child=true is not an option.
-            override_background_color (0, {0, 0, 0, 0});
 
             add (tab_layout);
             show_all ();
@@ -389,11 +376,6 @@ namespace Granite.Widgets {
 
         public void close () {
             closed ();
-        }
-
-        internal static void fix_button_theming (Gtk.Widget button) {
-            Utils.set_theming (button, CLOSE_BUTTON_STYLE, null,
-                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
 
         private void update_close_button_visibility () {
@@ -814,8 +796,6 @@ namespace Granite.Widgets {
             });
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
-            add_button.margin_start = 6;
-            add_button.margin_end = 6;
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
 
@@ -824,10 +804,8 @@ namespace Granite.Widgets {
             add_button_box.add (add_button);
             add_button_box.show_all ();
 
-            Tab.fix_button_theming (add_button);
-
             restore_button = new Gtk.Button.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.MENU);
-            restore_button.margin_end = 6;
+            restore_button.margin_end = 3;
             restore_button.relief = Gtk.ReliefStyle.NONE;
             restore_button.tooltip_text = _("Closed Tabs");
             restore_button.sensitive = false;
