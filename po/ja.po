@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-09-03 00:14+0000\n"
-"Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
+"PO-Revision-Date: 2018-05-04 00:05+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/desktop/granite/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -139,12 +139,12 @@ msgstr "閉じたタブ"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 msgid "Suggest Translations"
-msgstr "翻訳を提案する"
+msgstr "翻訳を提案"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
 msgid "Report a Problem"
-msgstr "問題点を報告する"
+msgstr "問題を報告"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
@@ -178,9 +178,7 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"Contractor との連携ができませんでした。これはインストールする必要があるかもし"
-"れません"
+msgstr "Contractor との連携ができませんでした。Contractor をインストールする必要があるかもしれません"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -216,7 +214,7 @@ msgstr "%H:%M"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 msgid "%a %b %e %Y"
-msgstr "%Y年%b%e日(%a)"
+msgstr "%Y年%b%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
@@ -253,7 +251,7 @@ msgstr "%a"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 msgid "%a %b %e"
-msgstr "%B%e日（%a）"
+msgstr "%B%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -336,7 +334,7 @@ msgstr "シンプルなアプリ内通知"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr "ボタンが押されました!"
+msgstr "ボタンが押されました！"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
