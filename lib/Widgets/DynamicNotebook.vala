@@ -925,19 +925,19 @@ namespace Granite.Widgets {
                 return false;
             });
 
+            destroy.connect (() => {
+		        notebook.switch_page.disconnect (on_switch_page);
+		        notebook.page_added.disconnect (on_page_added);
+		        notebook.page_removed.disconnect (on_page_removed);
+		        notebook.page_reordered.disconnect (on_page_reordered);
+		        notebook.create_window.disconnect (on_create_window);
+            });
+
             notebook.switch_page.connect (on_switch_page);
             notebook.page_added.connect (on_page_added);
             notebook.page_removed.connect (on_page_removed);
             notebook.page_reordered.connect (on_page_reordered);
             notebook.create_window.connect (on_create_window);
-        }
-
-        ~DynamicNotebook () {
-            notebook.switch_page.disconnect (on_switch_page);
-            notebook.page_added.disconnect (on_page_added);
-            notebook.page_removed.disconnect (on_page_removed);
-            notebook.page_reordered.disconnect (on_page_reordered);
-            notebook.create_window.disconnect (on_create_window);
         }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
