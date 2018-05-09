@@ -21,7 +21,7 @@ Depends: libgranite-common (>= ${source:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Pre-Depends: ${misc:Pre-Depends}
-Recommends: apport-hooks-elementary, contractor
+Recommends: contractor
 Description: extension of GTK+ libraries
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
