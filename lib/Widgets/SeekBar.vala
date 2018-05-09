@@ -170,7 +170,6 @@ public class Granite.SeekBar : Gtk.Grid {
             scale.set_value (progress);
             progression_label.label = DateTime.seconds_to_time ((int) (progress * playback_duration));
         }
-        default = 0.0;
     }
 
     /*
@@ -251,6 +250,8 @@ public class Granite.SeekBar : Gtk.Grid {
         add (progression_label);
         add (scale);
         add (duration_label);
+
+        playback_progress = 0.0;
     }
 
     public override void get_preferred_width (out int minimum_width, out int natural_width) {
