@@ -109,7 +109,7 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         }
     }
 
-    private uint64 _total_usage;
+    private uint64 _total_usage = 0;
 
     public uint64 total_usage {
         get {
@@ -120,8 +120,6 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
             _total_usage = uint64.min (value, storage);
             update_size_description ();
         }
-
-        default = 0;
     }
 
     public int inner_margin_sides {
