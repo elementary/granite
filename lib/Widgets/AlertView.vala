@@ -25,6 +25,22 @@
  * It can be used to show an empty view or hiding a panel when this one is disabled.
  *
  * {{../../doc/images/AlertView.png}}
+ *
+ * ''Example''<<BR>>
+ * {{{
+ * public class AlertViewView : Gtk.Grid {
+ *     construct {
+ *         var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
+ *         alert.show_action ("Hide this button");
+ *
+ *         alert.action_activated.connect (() => {
+ *             alert.hide_action ();
+ *         });
+ *
+ *         add (alert);
+ *     }
+ * }
+ * }}}
  */
 public class Granite.Widgets.AlertView : Gtk.Grid {
     public signal void action_activated ();

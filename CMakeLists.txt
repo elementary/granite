@@ -9,7 +9,7 @@ set (PKG_VERSION 0.5)
 set (API_VERSION 1.0)
 
 # Used to create GObject introspection files
-set (PKG_GIR_NAME Granite)
+set (PKG_GIR_NAME Granite-${API_VERSION})
 
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/)
 
@@ -20,7 +20,7 @@ find_package (Vala REQUIRED)
 include (ValaVersion)
 include (ValaPrecompile)
 
-ensure_vala_version ("0.23.2" MINIMUM)
+ensure_vala_version ("0.34.7" MINIMUM)
 
 #
 # Packages in PKG_DEPS are used with the vala compiler and other related tools (not versioned.)
@@ -37,7 +37,7 @@ set (PKG_DEPS
     gee-0.8)
 
 set (PKG_DEPS_CHECK
-    gtk+-3.0>=3.14
+    gtk+-3.0>=3.22
     gio-unix-2.0
     gthread-2.0
     gee-0.8)
@@ -50,7 +50,7 @@ find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
 set (VALAC_OPTIONS
-     --thread
+     --hide-internal
      --target-glib=2.32)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
