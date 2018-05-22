@@ -3,14 +3,8 @@
 %:
 	dh $@ --parallel --with gir
 
-override_dh_builddeb:
-	dh_builddeb -- -Zxz
-
-override_dh_install:
-	dh_install --fail-missing
-
 override_dh_makeshlibs:
 	dh_makeshlibs -- -c1
 
-override_dh_strip:
-	dh_strip --dbg-package=libgranite4-dbg
+override_dh_missing:
+	dh_missing --fail-missing --list-missing
