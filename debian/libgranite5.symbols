@@ -1,4 +1,4 @@
-libgranite.so.4 libgranite4 #MINVER#
+libgranite.so.5 libgranite5 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
  granite_application_DEBUG@Base 0.2.0
  granite_application_construct@Base 0.2.0
