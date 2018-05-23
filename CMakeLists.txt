@@ -50,6 +50,7 @@ find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
 set (VALAC_OPTIONS
+     --abi-stability
      --hide-internal
      --target-glib=2.32)
 
