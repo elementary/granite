@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: granite
-Source: https://launchpad.net/granite
+Source: https://github.com/elementary/granite
 
 
 Files: *
@@ -116,6 +116,7 @@ Copyright: 2011-2014 Rico Tzschichholz <ricotz@ubuntu.com>
            2012 Devid Antonio Filoni <d.filoni@ubuntu.com>
            2012-2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
            2014 Corentin Noël <corentin@elementaryos.org>
+           2015-2018 Cody Garver <cody@elementary.io>
 License: GPL-3.0+
 
 
