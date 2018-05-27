@@ -172,7 +172,7 @@ namespace Granite.DateTime {
         return "";
     }
 
-    /*
+    /**
      * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
      *
      * @param seconds the number of seconds to convert into ISO 8601
