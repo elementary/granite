@@ -173,29 +173,28 @@ namespace Granite.DateTime {
     }
 
     /**
-     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40)
+     * Converts seconds into the ISO 8601 standard date format for minutes (e.g. 100s to 01:40).
+     * Output of negative seconds is prepended with minus character.
      *
      * @param seconds the number of seconds to convert into ISO 8601
      *
      * @return returns an ISO 8601 formatted string
      */
     public static string seconds_to_time (int seconds) {
+        int sign = 1;
+        if (seconds < 0) {
+            seconds = -seconds;
+            sign = -1;
+        }
+
         int hours = seconds / 3600;
-        string min = normalize_time ((seconds % 3600) / 60);
-        string sec = normalize_time (seconds % 60);
+        int min = (seconds % 3600) / 60;
+        int sec = (seconds % 60);
 
         if (hours > 0) {
-            return ("%d:%s:%s".printf (hours, min, sec));
+            return ("%d:%02d:%02d".printf (sign * hours, min, sec));
         } else {
-            return ("%s:%s".printf (min, sec));
-        }
-    }
-
-    private static string normalize_time (int time) {
-        if (time < 10) {
-            return "0%d".printf (time);
-        } else {
-            return "%d".printf (time);
+            return ("%02d:%02d".printf (sign * min, sec));
         }
     }
 }
