@@ -20,7 +20,7 @@ find_package (Vala REQUIRED)
 include (ValaVersion)
 include (ValaPrecompile)
 
-ensure_vala_version ("0.34.7" MINIMUM)
+ensure_vala_version ("0.40" MINIMUM)
 
 #
 # Packages in PKG_DEPS are used with the vala compiler and other related tools (not versioned.)
@@ -37,7 +37,7 @@ set (PKG_DEPS
     gee-0.8)
 
 set (PKG_DEPS_CHECK
-    gtk+-3.0>=3.14
+    gtk+-3.0>=3.22
     gio-unix-2.0
     gthread-2.0
     gee-0.8)

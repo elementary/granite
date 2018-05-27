@@ -37,6 +37,8 @@ OPTIONS
 )
 
 add_executable (${EXEC_NAME} ${VALA_C})
+# The demo app is of course using deprecated widgets
+set_target_properties(${EXEC_NAME} PROPERTIES COMPILE_FLAGS -Wno-deprecated-declarations)
 target_link_libraries (${EXEC_NAME} ${PKG_NAME} ${DEPS_LIBRARIES})
 install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/granite-demo.desktop DESTINATION share/applications)
