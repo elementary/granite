@@ -51,6 +51,8 @@ public class SourceListView : Gtk.Frame {
 
         var player1_item = new Granite.Widgets.SourceList.Item ("Player 1");
         player1_item.icon = new GLib.ThemedIcon ("multimedia-player");
+        player1_item.activatable = new GLib.ThemedIcon ("user-available");
+        player1_item.activatable_tooltip = "Connected";
 
         var player2_item = new Granite.Widgets.SourceList.Item ("Player 2");
         player2_item.badge = "3";
@@ -61,10 +63,18 @@ public class SourceListView : Gtk.Frame {
         device_category.add (player1_item);
         device_category.add (player2_item);
 
+        var playlist1_item = new Granite.Widgets.SourceList.Item ("My Favourite Songs");
+        playlist1_item.icon = new GLib.ThemedIcon ("audio-x-playlist");
+        playlist1_item.editable = true;
+
+        var playlist_category = new Granite.Widgets.SourceList.ExpandableItem ("Playlists");
+        playlist_category.add (playlist1_item);
+
         var source_list = new Granite.Widgets.SourceList ();
         source_list.root.add (library_category);
         source_list.root.add (store_category);
         source_list.root.add (device_category);
+        source_list.root.add (playlist_category);
 
         var label = new Gtk.Label ("No selected item");
 

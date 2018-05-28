@@ -327,6 +327,14 @@ public class SourceList : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
+         * The item's tooltip. If set to null (default), the tooltip for the item will be the
+         * contents of the {@link Granite.Widgets.SourceList.Item.name} property
+         *
+         * @since 5.0
+         */
+        public string? tooltip { get; set; default = null; }
+
+        /**
          * A badge shown next to the item's name.
          *
          * It can be used for displaying the number of unread messages in the "Inbox" item,
@@ -389,6 +397,13 @@ public class SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public Icon activatable { get; set; }
+
+        /**
+         * The tooltip for the activatable icon.
+         *
+         * @since 5.0
+         */
+        public string activatable_tooltip { get; set; default = ""; }
 
         /**
          * Creates a new {@link Granite.Widgets.SourceList.Item}.
@@ -834,7 +849,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private unowned SourceList.VisibleFunc? filter_func;
 
         public DataModel () {
-            
+
         }
 
         construct {
@@ -1452,7 +1467,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
 
         public CellRendererIcon () {
-            
+
         }
 
         construct {
@@ -1676,6 +1691,9 @@ public class SourceList : Gtk.ScrolledWindow {
             // Enable basic row drag and drop
             configure_drag_source (null);
             configure_drag_dest (null, 0);
+
+            query_tooltip.connect (on_query_tooltip);
+            has_tooltip = true;
         }
 
         ~Tree () {
@@ -1817,6 +1835,47 @@ public class SourceList : Gtk.ScrolledWindow {
 
             // DragAction.MOVE needs to be enabled for row drag-and-drop to work properly
             enable_model_drag_dest (entries, Gdk.DragAction.MOVE | actions);
+        }
+
+        private bool on_query_tooltip (int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip) {
+
+            Gtk.TreePath path;
+            Gtk.TreeViewColumn column;
+            int cell_x, cell_y;
+
+            if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
+                var item = data_model.get_item_from_path (path);
+
+                // This is needed because the treeview adds an offset at the beginning of every level
+                Gdk.Rectangle start_cell_area;
+                get_cell_area (path, get_column (0), out start_cell_area);
+                cell_x -= start_cell_area.x;
+
+                if (item != null && column == get_column (Column.ITEM)) {
+                    set_tooltip_row (tooltip, path);
+
+                    if (over_cell (column, path, text_cell, cell_x)) {
+                        if (item.tooltip == null) {
+                            tooltip.set_markup (item.name);
+                        } else if (item.tooltip == "") {
+                            return false;
+                        } else {
+                            tooltip.set_markup (item.tooltip);
+                        }
+
+                        return true;
+                    } else if (over_cell (column, path, activatable_cell, cell_x)) {
+                        if (item.activatable_tooltip == "") {
+                            return false;
+                        } else {
+                            tooltip.set_markup (item.activatable_tooltip);
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static Gtk.TargetEntry[] append_row_target_entry (Gtk.TargetEntry[]? orig) {
