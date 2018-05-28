@@ -1838,7 +1838,6 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         private bool on_query_tooltip (int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip) {
-
             Gtk.TreePath path;
             Gtk.TreeViewColumn column;
             int cell_x, cell_y;
