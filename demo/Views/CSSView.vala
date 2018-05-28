@@ -76,14 +76,35 @@ public class CSSView : Gtk.Grid {
         var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
 
         var accent_color_label = new Gtk.Label ("Accent colored labels and icons:");
+        accent_color_label.halign = Gtk.Align.END;
 
         var accent_color_icon = new Gtk.Image.from_icon_name ("emoji-body-symbolic", Gtk.IconSize.MENU);
         accent_color_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 
         var accent_color_string = new Gtk.Label ("Lorem ipsum dolor sit amet");
-        accent_color_string.hexpand = true;
-        accent_color_string.xalign = 0;
         accent_color_string.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+
+        var accent_color_grid = new Gtk.Grid ();
+        accent_color_grid.column_spacing = 6;
+        accent_color_grid.add (accent_color_icon);
+        accent_color_grid.add (accent_color_string);
+
+        var mode_switch_label = new Gtk.Label ("Mode switch:");
+        mode_switch_label.halign = Gtk.Align.END;
+
+        var mode_switch_icon_primary = new Gtk.Image.from_icon_name ("display-brightness-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+
+        var mode_switch = new Gtk.Switch ();
+        mode_switch.valign = Gtk.Align.CENTER;
+        mode_switch.get_style_context ().add_class (Granite.STYLE_CLASS_MODE_SWITCH);
+
+        var mode_switch_icon_secondary = new Gtk.Image.from_icon_name ("weather-clear-night-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+
+        var mode_switch_grid = new Gtk.Grid ();
+        mode_switch_grid.column_spacing = 6;
+        mode_switch_grid.add (mode_switch_icon_primary);
+        mode_switch_grid.add (mode_switch);
+        mode_switch_grid.add (mode_switch_icon_secondary);
 
         column_spacing = 12;
         row_spacing = 24;
@@ -93,11 +114,12 @@ public class CSSView : Gtk.Grid {
         attach (terminal, 1, 1, 2, 1);
         attach (back_button_label, 0, 2, 1, 1);
         attach (back_button, 1, 2, 2, 1);
-        attach (primary_color_label, 0, 3, 1, 1);
-        attach (primary_color_button, 1, 3, 2, 1);
-        attach (accent_color_label, 0, 4, 1, 1);
-        attach (accent_color_icon, 1, 4, 1, 1);
-        attach (accent_color_string, 2, 4, 1, 1);
+        attach (mode_switch_label, 0, 3);
+        attach (mode_switch_grid, 1, 3);
+        attach (primary_color_label, 0, 4);
+        attach (primary_color_button, 1, 4, 2, 1);
+        attach (accent_color_label, 0, 5);
+        attach (accent_color_grid, 1, 5);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
