@@ -262,7 +262,7 @@ namespace Granite.Widgets {
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
             var close_other_m = new Gtk.MenuItem.with_label ("");
             pin_m = new Gtk.MenuItem.with_label ("");
-            new_window_m = new Gtk.MenuItem.with_label (_("Open in a new Window"));
+            new_window_m = new Gtk.MenuItem.with_label (_("Open in a New Window"));
             duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
             menu.append (close_other_m);
             menu.append (close_m);
