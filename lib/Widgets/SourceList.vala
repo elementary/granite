@@ -328,7 +328,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
         /**
          * The item's tooltip. If set to null (default), the tooltip for the item will be the
-         * contents of the {@link Granite.Widgets.SourceList.Item.name} property
+         * contents of the {@link Granite.Widgets.SourceList.Item.name} property.
          *
          * @since 5.0
          */
