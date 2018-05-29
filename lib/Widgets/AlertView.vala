@@ -75,10 +75,17 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
      */
     public string icon_name {
         owned get {
-            return image.icon_name;
+            return image.icon_name ?? "";
         }
         set {
-            image.set_from_icon_name (value, Gtk.IconSize.DIALOG);
+            if (value != null && value != "") {
+                image.set_from_icon_name (value, Gtk.IconSize.DIALOG);
+                image.no_show_all = false;
+                image.show ();
+            } else {
+                image.no_show_all = true;
+                image.hide ();
+            }
         }
     }
 
@@ -127,10 +134,8 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         action_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
 
         image = new Gtk.Image ();
-        var image_box = new Gtk.EventBox ();
-        image_box.margin_top = 6;
-        image_box.valign = Gtk.Align.START;
-        image_box.add (image);
+        image.margin_top = 6;
+        image.valign = Gtk.Align.START;
 
         var layout = new Gtk.Grid ();
         layout.column_spacing = 12;
@@ -140,7 +145,7 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         layout.vexpand = true;
         layout.margin = 24;
 
-        layout.attach (image_box, 1, 1, 1, 2);
+        layout.attach (image, 1, 1, 1, 2);
         layout.attach (title_label, 2, 1, 1, 1);
         layout.attach (description_label, 2, 2, 1, 1);
         layout.attach (action_revealer, 2, 3, 1, 1);
