@@ -52,7 +52,7 @@ pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 set (VALAC_OPTIONS
      --abi-stability
      --hide-internal
-     --target-glib=2.32)
+     --target-glib=2.50)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set (VALAC_OPTIONS ${VALAC_OPTIONS} --define=LINUX)

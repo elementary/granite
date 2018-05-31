@@ -14,7 +14,7 @@ set (BASE_VALADOC_COMMAND
     --vapidir=${SRC_DIR}
     --pkg config
     --verbose
-    --target-glib=2.32
+    --target-glib=2.50
     --package-name=${PKG_NAME}
     --package-version=${PKG_VERSION})
 
