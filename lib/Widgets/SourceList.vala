@@ -1692,7 +1692,7 @@ public class SourceList : Gtk.ScrolledWindow {
             configure_drag_source (null);
             configure_drag_dest (null, 0);
 
-            query_tooltip.connect (on_query_tooltip);
+            query_tooltip.connect_after (on_query_tooltip);
             has_tooltip = true;
         }
 
@@ -1839,37 +1839,42 @@ public class SourceList : Gtk.ScrolledWindow {
 
         private bool on_query_tooltip (int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip) {
             Gtk.TreePath path;
-            Gtk.TreeViewColumn column;
-            int cell_x, cell_y;
+            Gtk.TreeViewColumn column = get_column (Column.ITEM);
 
-            if (get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
-                var item = data_model.get_item_from_path (path);
+            get_tooltip_context (ref x, ref y, keyboard_tooltip, null, out path, null);
+            if (path == null) {
+                return false;
+            }
 
-                // This is needed because the treeview adds an offset at the beginning of every level
+            var item = data_model.get_item_from_path (path);
+            if (item != null) {
+                bool should_show = false;
+
                 Gdk.Rectangle start_cell_area;
-                get_cell_area (path, get_column (0), out start_cell_area);
-                cell_x -= start_cell_area.x;
+                get_cell_area (path, column, out start_cell_area);
 
-                if (item != null && column == get_column (Column.ITEM)) {
-                    set_tooltip_row (tooltip, path);
+                set_tooltip_row (tooltip, path);
 
-                    if (over_cell (column, path, text_cell, cell_x)) {
-                        if (item.tooltip == null) {
-                            tooltip.set_markup (item.name);
-                        } else if (item.tooltip == "") {
-                            return false;
-                        } else {
-                            tooltip.set_markup (item.tooltip);
-                        }
+                if (item.tooltip == null) {
+                    tooltip.set_markup (item.name);
+                    should_show = true;
+                } else if (item.tooltip != "") {
+                    tooltip.set_markup (item.tooltip);
+                    should_show = true;
+                }
 
+                if (keyboard_tooltip) {
+                    return should_show;
+                }
+
+                if (over_cell (column, path, text_cell, x - start_cell_area.x)) {
+                    return should_show;
+                } else if (over_cell (column, path, activatable_cell, x - start_cell_area.x)) {
+                    if (item.activatable_tooltip == "") {
+                        return false;
+                    } else {
+                        tooltip.set_markup (item.activatable_tooltip);
                         return true;
-                    } else if (over_cell (column, path, activatable_cell, cell_x)) {
-                        if (item.activatable_tooltip == "") {
-                            return false;
-                        } else {
-                            tooltip.set_markup (item.activatable_tooltip);
-                            return true;
-                        }
                     }
                 }
             }
