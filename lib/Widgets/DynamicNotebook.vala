@@ -411,7 +411,7 @@ namespace Granite.Widgets {
             string label;
             string restore_data;
             GLib.Icon? icon;
-            WidgetsDroppedDelegate? dropped_callback;
+            weak WidgetsDroppedDelegate? dropped_callback;
         }
 
         private Gee.LinkedList<Entry?> closed_tabs;
@@ -442,7 +442,7 @@ namespace Granite.Widgets {
             // If the maximum size is exceeded, remove from the beginning of the list.
             if (closed_tabs.size > max_restorable_tabs) {
                 var elem = closed_tabs.poll_head ();
-                var dropped_callback = elem.dropped_callback;
+                unowned WidgetsDroppedDelegate? dropped_callback = elem.dropped_callback;
 
                 if (dropped_callback != null)
                     dropped_callback ();

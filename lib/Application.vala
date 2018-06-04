@@ -163,13 +163,13 @@ namespace Granite {
 
 #if LINUX
         [CCode (cheader_filename = "sys/prctl.h", cname = "prctl")]
-            protected extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
+        extern static int prctl (int option, string arg2, ulong arg3, ulong arg4, ulong arg5);
 #elif DRAGON_FLY || FREE_BSD
         [CCode (cheader_filename = "unistd.h", cname = "setproctitle")]
-            protected extern static void setproctitle (string fmt, ...);
+        extern static void setproctitle (string fmt, ...);
 #elif NET_BSD || OPEN_BSD
         [CCode (cheader_filename = "stdlib.h", cname = "setproctitle")]
-            protected extern static void setproctitle (string fmt, ...);
+        extern static void setproctitle (string fmt, ...);
 #endif
 
         /**
