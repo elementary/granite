@@ -20,7 +20,7 @@ find_package (Vala REQUIRED)
 include (ValaVersion)
 include (ValaPrecompile)
 
-ensure_vala_version ("0.34.7" MINIMUM)
+ensure_vala_version ("0.40" MINIMUM)
 
 #
 # Packages in PKG_DEPS are used with the vala compiler and other related tools (not versioned.)
@@ -50,8 +50,9 @@ find_package (PkgConfig)
 pkg_check_modules (DEPS REQUIRED ${PKG_DEPS_CHECK})
 
 set (VALAC_OPTIONS
+     --abi-stability
      --hide-internal
-     --target-glib=2.32)
+     --target-glib=2.50)
 
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     set (VALAC_OPTIONS ${VALAC_OPTIONS} --define=LINUX)

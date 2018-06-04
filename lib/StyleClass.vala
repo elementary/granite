@@ -90,6 +90,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_H4_LABEL = "h4";
     /**
+     * Style class for a {@link Gtk.Switch} used to change between two modes rather than active and inactive states
+     */
+    public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
+    /**
      * Style class for a {@link Granite.Widgets.OverlayBar}
      */
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
