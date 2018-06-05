@@ -34,7 +34,7 @@ public class Granite.Demo : Granite.Application {
 
         program_name = "Granite Demo";
 
-        build_version = "0.5";
+        build_version = "5.0";
         app_icon = "applications-interfacedesign";
     }
 
