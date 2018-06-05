@@ -1,8 +1,8 @@
-granite (0.5.1) UNRELEASED; urgency=medium
+granite (5.0) bionic; urgency=medium
 
-  * Pre-release version bump.
+  * New upstream release.
 
- -- Cody Garver <cody@elementary.io>  Sat, 03 Feb 2018 00:32:49 -0600
+ -- Cody Garver <cody@elementary.io>  Tue, 05 Jun 2018 03:00:33 -0500
 
 granite (0.5) xenial; urgency=medium
 
