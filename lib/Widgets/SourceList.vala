@@ -327,6 +327,19 @@ public class SourceList : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
+         * Markup to be used instead of {@link Granite.Widgets.SourceList.ExpandableItem.name}
+         * This would mean that &, <, etc have to be escaped in the text, but basic formatting
+         * can be done on the item with HTML style tags.
+         *
+         * Note: Only the {@link Granite.Widgets.SourceList.ExpandableItem.name} property
+         * is modified for editable items. So this property will be need to updated and
+         * reformatted with editable items.
+         *
+         * @since 5.0
+         */
+         public string? markup { get; set; default = null; }
+
+        /**
          * A badge shown next to the item's name.
          *
          * It can be used for displaying the number of unread messages in the "Inbox" item,
@@ -834,7 +847,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private unowned SourceList.VisibleFunc? filter_func;
 
         public DataModel () {
-            
+
         }
 
         construct {
@@ -1452,7 +1465,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private const Gtk.IconSize ICON_SIZE = Gtk.IconSize.MENU;
 
         public CellRendererIcon () {
-            
+
         }
 
         construct {
@@ -2333,17 +2346,27 @@ public class SourceList : Gtk.ScrolledWindow {
 
             var text = new StringBuilder ();
             var weight = Pango.Weight.NORMAL;
+            bool use_markup = false;
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                text.append (item.name);
+                if (item.markup != null) {
+                    text.append (item.markup);
+                    use_markup = true;
+                } else {
+                    text.append (item.name);
+                }
 
                 if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
             }
 
             text_renderer.weight = weight;
-            text_renderer.text = text.str;
+            if (use_markup) {
+                text_renderer.markup = text.str;
+            } else {
+                text_renderer.text = text.str;
+            }
         }
 
         private void badge_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
