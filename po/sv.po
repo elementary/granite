@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2016-07-20 13:45+0000\n"
-"Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2018-06-13 00:06+0000\n"
+"Last-Translator: Richard Sjöqvist <richard@spiro.se>\n"
+"Language-Team: Swedish "
+"<https://weblate.elementary.io/projects/desktop/granite/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -299,6 +301,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"Detta program publiceras enligt licensvillkoren i %s, det levereras med "
+"ABSOLUT INGEN GARANTI. För detaljer, besök %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -324,7 +328,7 @@ msgstr "Filer"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
