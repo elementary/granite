@@ -2200,6 +2200,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
                     if (event.button == Gdk.BUTTON_SECONDARY) {
                         popup_context_menu (item, event);
+                        return true;
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         // Check whether an expander (or an equivalent area) was clicked.
                         bool is_expandable = item is ExpandableItem;
