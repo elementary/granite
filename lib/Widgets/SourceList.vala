@@ -417,6 +417,10 @@ public class SourceList : Gtk.ScrolledWindow {
         /**
          * Invoked when the item is secondary-clicked or when the usual menu keys are pressed.
          *
+         * Note that since Granite 5.0, right clicking on an item no longer selects/activates it, so
+         * any context menu items should be actioned on the item instance rather than the selected item
+         * in the SourceList
+         *
          * @return A {@link Gtk.Menu} or //null// if nothing should be displayed.
          * @since 0.2
          */
