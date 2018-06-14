@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2018-06-06 00:08+0000\n"
+"PO-Revision-Date: 2018-06-14 08:30+0000\n"
 "Last-Translator: Csepi Árpád <banderaszkormos@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/desktop/granite/hu/>\n"
@@ -332,7 +332,7 @@ msgstr "de."
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Felugró"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
@@ -340,11 +340,11 @@ msgstr "Egyszerű alkalmazáson belüli értesítések"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Gombnyomás történt!"
 
 #: ../demo/GraniteDemo.vala:227
 msgid "Do Things"
-msgstr ""
+msgstr "Dolgokat csinálni"
 
 #: ../demo/GraniteDemo.vala:229
 msgid "Press Me"
@@ -352,8 +352,8 @@ msgstr "Nyomj meg"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr ""
+msgstr "Csinálta a dolgot"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
-msgstr ""
+msgstr "Már megtette"
