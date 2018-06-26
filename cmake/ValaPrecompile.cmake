@@ -27,7 +27,7 @@
 # either expressed or implied, of Jakob Westhoff
 ##
 
-include(ParseArguments)
+include(CMakeParseArguments)
 find_package(Vala REQUIRED)
 
 ##
@@ -114,7 +114,7 @@ find_package(Vala REQUIRED)
 ##
 
 macro(vala_precompile output target_name)
-    parse_arguments(ARGS "TARGET;PACKAGES;OPTIONS;DIRECTORY;GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI;CUSTOM_VAPIS" "" ${ARGN})
+    cmake_parse_arguments(ARGS "" "DIRECTORY;GENERATE_GIR;GENERATE_SYMBOLS;GENERATE_HEADER;GENERATE_VAPI" "PACKAGES;OPTIONS;CUSTOM_VAPIS" ${ARGN})
 
     if(ARGS_DIRECTORY)
         set(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${ARGS_DIRECTORY})
@@ -130,7 +130,7 @@ macro(vala_precompile output target_name)
     set(out_files "")
     set(out_files_display "")
     set(${output} "")
-    foreach(src ${ARGS_DEFAULT_ARGS})
+    foreach(src ${ARGS_UNPARSED_ARGUMENTS})
         list(APPEND in_files "${CMAKE_CURRENT_SOURCE_DIR}/${src}")
         string(REPLACE ".vala" ".c" src ${src})
         string(REPLACE ".gs" ".c" src ${src})
