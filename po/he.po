@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-28 11:51-0700\n"
-"PO-Revision-Date: 2017-04-25 17:29+0000\n"
+"PO-Revision-Date: 2018-07-11 00:08+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew "
-"<https://l10n.elementary.io/projects/desktop/granite/he/>\n"
+"Language-Team: Hebrew <https://weblate.elementary.io/projects/desktop/"
+"granite/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=plural=n==1 ? 0 : (n>2||n==0) ? 1 : 2;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -331,7 +332,7 @@ msgstr "צנימים"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr "התרעות פשוטות בתוך היישום"
+msgstr "התראות פשוטות בתוך היישום"
 
 #: ../demo/GraniteDemo.vala:226
 msgid "Button was pressed!"
@@ -347,7 +348,7 @@ msgstr "נא ללחוץ עלי"
 
 #: ../demo/GraniteDemo.vala:250
 msgid "Did The Thing"
-msgstr "הדבר נעשה"
+msgstr "משהו בוצע"
 
 #: ../demo/GraniteDemo.vala:251
 msgid "Already did the thing"
