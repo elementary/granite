@@ -24,18 +24,10 @@
  *              Corentin Noël <corentin@elementary.io>
  */
 
-public class Granite.Demo : Granite.Application {
-    /**
-     * Basic app information for Granite.Application.
-     */
+public class Granite.Demo : Gtk.Application {
     construct {
-        application_id = "org.pantheon.granite.demo";
+        application_id = "io.elementary.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
-
-        program_name = "Granite Demo";
-
-        build_version = "5.0";
-        app_icon = "applications-interfacedesign";
     }
 
     public override void activate () {
