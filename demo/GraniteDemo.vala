@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
- * Copyright (c) 2011-2015 Granite Developers (https://launchpad.net/granite)
+ * Copyright (c) 2011-2018 elementary, Inc. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,18 +24,10 @@
  *              Corentin Noël <corentin@elementary.io>
  */
 
-public class Granite.Demo : Granite.Application {
-    /**
-     * Basic app information for Granite.Application.
-     */
+public class Granite.Demo : Gtk.Application {
     construct {
-        application_id = "org.pantheon.granite.demo";
+        application_id = "io.elementary.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
-
-        program_name = "Granite Demo";
-
-        build_version = "5.0";
-        app_icon = "applications-interfacedesign";
     }
 
     public override void activate () {
