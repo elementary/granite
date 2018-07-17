@@ -22,6 +22,7 @@ namespace Granite {
      * This is the base class for all Granite-based apps. It has methods that help
      * to create a great deal of an app's functionality.
      */
+    [Version (deprecated = true, deprecated_since = "0.5.0", replacement = "Gtk.Application")]
     public abstract class Application : Gtk.Application {
 
         public string build_data_dir;
