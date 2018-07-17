@@ -92,8 +92,6 @@ public class CSSView : Gtk.Grid {
         var mode_switch_label = new Gtk.Label ("Mode switch:");
         mode_switch_label.halign = Gtk.Align.END;
 
-        var gtk_settings = Gtk.Settings.get_default ();
-
         var mode_switch = new Granite.ModeSwitch ("display-brightness-symbolic", "weather-clear-night-symbolic");
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
