@@ -73,14 +73,18 @@ public class Granite.Demo : Gtk.Application {
         paned.add1 (stack_sidebar);
         paned.add2 (main_stack);
 
-        var theme_button = new Gtk.Button.from_icon_name ("object-inverse");
-        theme_button.tooltip_text = ("Use dark style");
-        theme_button.valign = Gtk.Align.CENTER;
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        mode_switch.primary_icon_tooltip_text = ("Light background");
+        mode_switch.secondary_icon_tooltip_text = ("Dark background");
+        mode_switch.valign = Gtk.Align.CENTER;
+        mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
         headerbar.show_close_button = true;
-        headerbar.pack_end (theme_button);
+        headerbar.pack_end (mode_switch);
 
         window.add (paned);
         window.set_default_size (900, 600);
@@ -90,17 +94,6 @@ public class Granite.Demo : Gtk.Application {
         window.show_all ();
 
         add_window (window);
-
-        theme_button.clicked.connect (() => {
-            var window_settings = Gtk.Settings.get_default ();
-            window_settings.gtk_application_prefer_dark_theme = !window_settings.gtk_application_prefer_dark_theme;
-
-            if (window_settings.gtk_application_prefer_dark_theme) {
-                theme_button.tooltip_text = ("Use light style");
-            } else {
-                theme_button.tooltip_text = ("Use dark style");
-            }
-        });
     }
 
     public static int main (string[] args) {
