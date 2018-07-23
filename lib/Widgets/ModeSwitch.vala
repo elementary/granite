@@ -37,7 +37,7 @@ public class Granite.ModeSwitch : Gtk.Grid {
     public bool active { get; set; }
 
     /**
-     * The {@link GLic.Icon} to use for the primary icon for the switch.
+     * The {@link GLib.Icon} to use for the primary icon for the switch.
      */
     public GLib.Icon primary_icon_gicon { get; construct set; }
 
@@ -52,7 +52,7 @@ public class Granite.ModeSwitch : Gtk.Grid {
     public string primary_icon_tooltip_text { get; set; }
 
     /**
-     * The {@link GLic.Icon} to use for the secondary icon for the switch.
+     * The {@link GLib.Icon} to use for the secondary icon for the switch.
      */
     public GLib.Icon secondary_icon_gicon { get; construct set; }
 
