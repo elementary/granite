@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-30 09:06-0700\n"
-"PO-Revision-Date: 2018-07-31 00:18+0000\n"
+"PO-Revision-Date: 2018-08-01 00:04+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -413,7 +413,7 @@ msgstr "すでに何かをしました"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr "Granite のオプションを表示"
+msgstr "Granite のオプションを表示します"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
