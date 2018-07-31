@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-30 09:06-0700\n"
-"PO-Revision-Date: 2018-07-13 00:03+0000\n"
+"PO-Revision-Date: 2018-07-31 00:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -413,58 +413,56 @@ msgstr "すでに何かをしました"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Granite のオプションを表示"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "たった今"
 
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
+msgstr[0] "%d 分前"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
+msgstr[0] "%d 時間前"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
+msgstr[0] "% 分以内"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
+msgstr[0] "%d 時間以内"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "昨日"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "明日"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "閉じる"
+msgstr "閉じる(_C)"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "キャンセル(_C)"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "新しいウィンドウで開く"
