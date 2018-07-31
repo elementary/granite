@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 10:27-0700\n"
+"POT-Creation-Date: 2018-07-30 09:06-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,7 @@ msgstr ""
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 #: ../lib//Application.vala:258 ../lib//Application.vala:265
 #: ../lib/Application.vala:265 ../lib/Application.vala:251
+#: ../lib/Application.vala:252
 msgid "Website"
 msgstr ""
 
@@ -340,7 +341,7 @@ msgid "%s free out of %s"
 msgstr ""
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
-#: ../lib/Application.vala:234
+#: ../lib/Application.vala:234 ../lib/Application.vala:235
 msgid "%s's Developers"
 msgstr ""
 
@@ -395,7 +396,7 @@ msgstr ""
 msgid "Already did the thing"
 msgstr ""
 
-#: ../lib/Application.vala:181
+#: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
 msgstr ""
 
