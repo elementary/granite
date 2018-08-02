@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-30 09:06-0700\n"
-"PO-Revision-Date: 2018-08-02 00:00+0000\n"
+"PO-Revision-Date: 2018-08-02 07:11+0000\n"
 "Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/desktop/granite/"
 "cs/>\n"
@@ -423,57 +423,55 @@ msgstr "Nyní"
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "před %d minutou"
-msgstr[1] "před %d minutami"
-msgstr[2] "před %d minutami"
+msgstr[0] "před %d min"
+msgstr[1] "před %d min"
+msgstr[2] "před %d min"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "před %d hodinou"
-msgstr[1] "před %d hodinami"
-msgstr[2] "před %d hodinami"
+msgstr[0] "před %d h"
+msgstr[1] "před %d h"
+msgstr[2] "před %d h"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "za %d minutu"
-msgstr[1] "za %d minuty"
-msgstr[2] "za %d minuty"
+msgstr[0] "za %d min"
+msgstr[1] "za %d min"
+msgstr[2] "za %d min"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "za %d h"
+msgstr[1] "za %d h"
+msgstr[2] "za %d h"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Včera"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Zítra"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Zavřít"
+msgstr "_Zavřít"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Zrušit"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Povoleno"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Vypnuto"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "Otevřít v novém okně"
