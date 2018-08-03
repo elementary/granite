@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 09:06-0700\n"
+"POT-Creation-Date: 2018-08-02 17:16-0700\n"
 "PO-Revision-Date: 2018-07-31 20:25+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/desktop/"
@@ -473,3 +473,15 @@ msgstr "Išjungta"
 #: ../lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
 msgstr "Atverti naujame lange"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: ../lib/DateTime.vala:148
+#, fuzzy
+msgid "%a, %b %e, %Y"
+msgstr "%Y %b %e, %a"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: ../lib/DateTime.vala:166
+#, fuzzy
+msgid "%a, %b %e"
+msgstr "%a, %b %e"

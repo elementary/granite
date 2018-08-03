@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 09:06-0700\n"
+"POT-Creation-Date: 2018-08-02 17:16-0700\n"
 "PO-Revision-Date: 2017-06-17 08:24+0000\n"
 "Last-Translator: Rajeev Kumar <irajeevankumar@gmail.com>\n"
 "Language-Team: Tamil <https://l10n.elementary.io/projects/desktop/granite/ta/"
@@ -461,3 +461,15 @@ msgstr ""
 #, fuzzy
 msgid "Open in a New Window"
 msgstr "புதிய சாளரத்தில் திற"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: ../lib/DateTime.vala:148
+#, fuzzy
+msgid "%a, %b %e, %Y"
+msgstr "%a %b %e %Y"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: ../lib/DateTime.vala:166
+#, fuzzy
+msgid "%a, %b %e"
+msgstr "%a %b %e"

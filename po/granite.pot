@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 09:06-0700\n"
+"POT-Creation-Date: 2018-08-02 17:16-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -454,4 +454,14 @@ msgstr ""
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: ../lib/DateTime.vala:148
+msgid "%a, %b %e, %Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: ../lib/DateTime.vala:166
+msgid "%a, %b %e"
 msgstr ""
