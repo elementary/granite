@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-01 00:04+0000\n"
+"PO-Revision-Date: 2018-08-04 09:32+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -469,12 +469,10 @@ msgstr "新しいウィンドウで開く"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%Y年%b%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
 msgstr "%b%e日 (%a)"
