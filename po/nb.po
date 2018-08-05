@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-01 00:04+0000\n"
+"PO-Revision-Date: 2018-08-05 00:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "desktop/granite/nb/>\n"
@@ -447,9 +447,8 @@ msgid "Tomorrow"
 msgstr "I morgen"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Lukk"
+msgstr "_Lukk"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
@@ -464,9 +463,8 @@ msgid "Disabled"
 msgstr "Avskrudd"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
-msgstr "Åpne i et nytt vindu"
+msgstr "Åpne i nytt vindu"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
