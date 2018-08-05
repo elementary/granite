@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-05 07:09+0000\n"
+"PO-Revision-Date: 2018-08-06 00:04+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/desktop/"
 "granite/he/>\n"
@@ -479,7 +479,7 @@ msgstr "פתיחה בחלון חדש"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a ‏%e ב%b‏ %Y"
+msgstr "%a, ‏%e ב%b‏ %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
