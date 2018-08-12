@@ -162,6 +162,16 @@ public class Granite.MessageDialog : Gtk.Dialog {
     private Gtk.Image image;
 
     /**
+     * The {@link Gtk.TextView} used to display an additional error message.
+     */
+    private Gtk.TextView? details_view;
+
+    /**
+     * The {@link Gtk.Expander} used to hold the error details view.
+     */
+    private Gtk.Expander? expander;
+
+    /**
      * SingleWidgetBin is only used within this class for creating a Bin that
      * holds only one widget.
      */
@@ -252,5 +262,46 @@ public class Granite.MessageDialog : Gtk.Dialog {
         var action_area = get_action_area ();
         action_area.margin = 6;
         action_area.margin_top = 14;
+    }
+
+    /**
+     * Shows a terminal-like widget for error details that can be expanded by the user.
+     * 
+     * This method can be useful to provide the user extended error details in a
+     * terminal-like text view. Note that this method adds the widget itself
+     * to {@link Granite.MessageDialog.custom_bin}. Calling this method with a manually added widget
+     * to {@link Granite.MessageDialog.custom_bin} will result in a critical message and no
+     * addition.
+     * 
+     * Subsequent calls to this method will change the error message to a new one.
+     * 
+     * @param error_message the detailed error message to display
+     */
+    public void show_error_expander (string error_message) {
+        if (custom_bin.get_child () != expander) {
+            critical ("Cannot add an error expander to non-empty custom bin.");
+            return;
+        }
+
+        if (details_view == null) {
+            details_view = new Gtk.TextView ();
+            details_view.editable = false;
+            details_view.pixels_below_lines = 3;
+            details_view.wrap_mode = Gtk.WrapMode.WORD;
+            details_view.get_style_context ().add_class ("terminal");
+
+            var scroll_box = new Gtk.ScrolledWindow (null, null);
+            scroll_box.margin_top = 12;
+            scroll_box.min_content_height = 70;
+            scroll_box.add (details_view);
+
+            expander = new Gtk.Expander (_("Details"));
+            expander.add (scroll_box);
+
+            custom_bin.add (expander);
+            custom_bin.show_all ();
+        }
+
+        details_view.buffer.text = error_message;
     }
 }
