@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-14 17:44+0000\n"
+"PO-Revision-Date: 2018-08-15 00:08+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/desktop/"
 "granite/da/>\n"
@@ -474,9 +474,9 @@ msgstr "Åbn i et Nyt Vindue"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a, %b %e, %Y"
+msgstr "%a, %e %b, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
+msgstr "%a, %e %b"
