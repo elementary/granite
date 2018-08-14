@@ -162,6 +162,11 @@ public class Granite.MessageDialog : Gtk.Dialog {
     private Gtk.Image image;
 
     /**
+     * The main grid that's used to contain all dialog widgets.
+     */
+    private Gtk.Grid message_grid;
+
+    /**
      * The {@link Gtk.TextView} used to display an additional error message.
      */
     private Gtk.TextView? details_view;
@@ -247,7 +252,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         custom_bin.add.connect (() => secondary_label.margin_bottom = 18);
         custom_bin.remove.connect (() => secondary_label.margin_bottom = 0);
 
-        var message_grid = new Gtk.Grid ();
+        message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
         message_grid.row_spacing = 6;
         message_grid.margin_start = message_grid.margin_end = 12;
@@ -268,27 +273,22 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * Shows a terminal-like widget for error details that can be expanded by the user.
      * 
      * This method can be useful to provide the user extended error details in a
-     * terminal-like text view. Note that this method adds the widget itself
-     * to {@link Granite.MessageDialog.custom_bin}. Calling this method with a manually added widget
-     * to {@link Granite.MessageDialog.custom_bin} will result in a critical message and no
-     * addition.
+     * terminal-like text view. Calling this method will not add any widgets to the
+     * {@link Granite.MessageDialog.custom_bin}.
      * 
      * Subsequent calls to this method will change the error message to a new one.
      * 
      * @param error_message the detailed error message to display
      */
-    public void show_error_expander (string error_message) {
-        if (custom_bin.get_child () != expander) {
-            critical ("Cannot add an error expander to non-empty custom bin.");
-            return;
-        }
-
+    public void show_error_details (string error_message) {
         if (details_view == null) {
+            secondary_label.margin_bottom = 18;
+
             details_view = new Gtk.TextView ();
             details_view.editable = false;
             details_view.pixels_below_lines = 3;
             details_view.wrap_mode = Gtk.WrapMode.WORD;
-            details_view.get_style_context ().add_class ("terminal");
+            details_view.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
 
             var scroll_box = new Gtk.ScrolledWindow (null, null);
             scroll_box.margin_top = 12;
@@ -298,8 +298,8 @@ public class Granite.MessageDialog : Gtk.Dialog {
             expander = new Gtk.Expander (_("Details"));
             expander.add (scroll_box);
 
-            custom_bin.add (expander);
-            custom_bin.show_all ();
+            message_grid.attach (expander, 1, 2, 1, 1);
+            message_grid.show_all ();
         }
 
         details_view.buffer.text = error_message;
