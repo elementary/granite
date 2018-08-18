@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-18 12:56+0000\n"
+"PO-Revision-Date: 2018-08-19 00:08+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://weblate.elementary.io/projects/desktop/"
 "granite/de/>\n"
@@ -430,14 +430,14 @@ msgstr "Jetzt"
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%dm her"
-msgstr[1] "%dm her"
+msgstr[0] "vor %dm"
+msgstr[1] "vor %dm"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%dh her"
-msgstr[1] "%dh her"
+msgstr[0] "vor %dh"
+msgstr[1] "vor %dh"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
