@@ -1,3 +1,9 @@
+granite (5.1.0) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Thu, 23 Aug 2018 18:55:51 -0500
+
 granite (5.0) bionic; urgency=medium
 
   * New upstream release.
