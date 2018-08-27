@@ -259,7 +259,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         message_grid.attach (image, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
-        message_grid.attach (custom_bin, 1, 2, 1, 1);
+        message_grid.attach (custom_bin, 1, 3, 1, 1);
         message_grid.show_all ();
 
         get_content_area ().add (message_grid);
