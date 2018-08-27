@@ -68,6 +68,7 @@ namespace Granite.Widgets {
             }
 
         }
+
         private bool changing_time = false;
         private string old_string = "";
         private Gtk.Popover popover;
