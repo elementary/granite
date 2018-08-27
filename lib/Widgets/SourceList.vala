@@ -219,17 +219,16 @@ public interface SourceListDragDest : SourceList.Item {
  * {@link Granite.Widgets.SourceList.item_selected} the most important, as it indicates that
  * the selection was modified.
  *
- * It is strongly recommended to pack the source list into the GUI using the
- * {@link Granite.Widgets.ThinPaned} widget. It has aesthetic advantages and offers a wider
- * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
+ * Pack the source list into the GUI using the {@link Gtk.Paned} widget. 
+ * This is usually done as follows:
  * {{{
- * var pane = new Granite.Widgets.ThinPaned ();
+ * var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
  * pane.pack1 (source_list, false, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
  * @since 0.2
- * @see Granite.Widgets.ThinPaned
+ * @see Gtk.Paned
  */
 public class SourceList : Gtk.ScrolledWindow {
 
