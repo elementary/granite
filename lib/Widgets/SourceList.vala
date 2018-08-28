@@ -219,17 +219,16 @@ public interface SourceListDragDest : SourceList.Item {
  * {@link Granite.Widgets.SourceList.item_selected} the most important, as it indicates that
  * the selection was modified.
  *
- * It is strongly recommended to pack the source list into the GUI using the
- * {@link Granite.Widgets.ThinPaned} widget. It has aesthetic advantages and offers a wider
- * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
+ * Pack the source list into the GUI using the {@link Gtk.Paned} widget. 
+ * This is usually done as follows:
  * {{{
- * var pane = new Granite.Widgets.ThinPaned ();
+ * var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
  * pane.pack1 (source_list, false, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
  * @since 0.2
- * @see Granite.Widgets.ThinPaned
+ * @see Gtk.Paned
  */
 public class SourceList : Gtk.ScrolledWindow {
 
@@ -416,6 +415,10 @@ public class SourceList : Gtk.ScrolledWindow {
 
         /**
          * Invoked when the item is secondary-clicked or when the usual menu keys are pressed.
+         *
+         * Note that since Granite 5.0, right clicking on an item no longer selects/activates it, so
+         * any context menu items should be actioned on the item instance rather than the selected item
+         * in the SourceList
          *
          * @return A {@link Gtk.Menu} or //null// if nothing should be displayed.
          * @since 0.2
@@ -2200,6 +2203,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
                     if (event.button == Gdk.BUTTON_SECONDARY) {
                         popup_context_menu (item, event);
+                        return true;
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         // Check whether an expander (or an equivalent area) was clicked.
                         bool is_expandable = item is ExpandableItem;
