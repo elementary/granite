@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
 "PO-Revision-Date: 2018-08-29 15:55+0000\n"
-"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
+"\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "desktop/granite/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -390,7 +391,7 @@ msgstr "Faça coisas"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
-msgstr "Me pressione"
+msgstr "Pressione-me"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
