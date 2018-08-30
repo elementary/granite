@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2017-02-12 16:55+0000\n"
-"Last-Translator: Leonardo Lemos <Unknown>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2018-08-29 19:31+0000\n"
+"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
+"desktop/granite/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -59,13 +61,13 @@ msgstr "Fechar"
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid "This program is published under the terms of the "
-msgstr "Este programa é publico sob os termos de licença "
+msgstr "Este programa é publicado sob os termos do "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" , não possuindo, portanto, nenhuma garantia. Para mais detalhes, visite "
+" licença, vem com ABSOLUTAMENTE NENHUMA GARANTIA; para detalhes, visite "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -97,7 +99,7 @@ msgstr "Fechar aba"
 #: ../lib/Widgets/DynamicNotebook.vala:269
 #: ../lib/Widgets/DynamicNotebook.vala:263
 msgid "Open in a new Window"
-msgstr "Abrir uma nova janela"
+msgstr "Abrir em uma nova janela"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 #: ../lib//Widgets/DynamicNotebook.vala:270
@@ -153,7 +155,7 @@ msgstr "Nova aba"
 #: ../lib/Widgets/DynamicNotebook.vala:776
 #: ../lib/Widgets/DynamicNotebook.vala:770
 msgid "Undo Close Tab"
-msgstr "Desfazer aba fechada"
+msgstr "Desfazer fechar aba"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
@@ -211,7 +213,7 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Não foi possível contactar Contractor. Você pode precisar instalá-lo"
+msgstr "Não foi possível contactar o Contractor. Você pode precisar instalá-lo"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -358,18 +360,7 @@ msgstr ""
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Anderson Felippe https://launchpad.net/~adfelippe\n"
-"  Andre Philippe https://launchpad.net/~andrephilippebr\n"
-"  Arthur Bergamaschi https://launchpad.net/~arthurbergmz\n"
-"  Cleiton Floss https://launchpad.net/~cleitonfloss\n"
-"  DavyS https://launchpad.net/~davysson\n"
-"  Eduardo Souza https://launchpad.net/~eduardo.souza\n"
-"  Leonardo Lemos https://launchpad.net/~leonardolemos\n"
-"  Marco Aurélio Krause https://launchpad.net/~fxhelp-br\n"
-"  Murilo Venturoso https://launchpad.net/~muriloventuroso\n"
-"  Venneto https://launchpad.net/~venneto"
+msgstr "translator-credits"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
@@ -400,7 +391,7 @@ msgstr "Faça coisas"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
-msgstr "Me pressione"
+msgstr "Pressione-me"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
@@ -412,74 +403,70 @@ msgstr "Já fez a coisa"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Exibir opções do Granite"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Agora"
 
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%dm atrás"
+msgstr[1] "%dm atrás"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%dh atrás"
+msgstr[1] "%dh atrás"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "em %dm"
+msgstr[1] "em %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "em %dh"
+msgstr[1] "em %dh"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Ontem"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Amanhã"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Fechar"
+msgstr "_Fechar"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Habilitado"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Desabilitado"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
-msgstr "Abrir uma nova janela"
+msgstr "Abrir em uma nova janela"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %b %e"
