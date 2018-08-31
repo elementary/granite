@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-30 00:06+0000\n"
+"PO-Revision-Date: 2018-08-31 11:55+0000\n"
 "Last-Translator: Robin Lahtinen <robin.lahtinen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/desktop/"
 "granite/fi/>\n"
@@ -379,7 +379,7 @@ msgstr "AM"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Ponnahdusilmoitukset"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
