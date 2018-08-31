@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-31 11:55+0000\n"
+"PO-Revision-Date: 2018-09-01 00:08+0000\n"
 "Last-Translator: Robin Lahtinen <robin.lahtinen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/desktop/"
 "granite/fi/>\n"
@@ -422,8 +422,8 @@ msgstr[1] "%d min sitten"
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%d t sitten"
-msgstr[1] "%d t sitten"
+msgstr[0] "%d tuntia sitten"
+msgstr[1] "%d tuntia sitten"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
@@ -434,8 +434,8 @@ msgstr[1] "%d min päästä"
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "%d t päästä"
-msgstr[1] "%d t päästä"
+msgstr[0] "%d tunnin päästä"
+msgstr[1] "%d tunnin päästä"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
