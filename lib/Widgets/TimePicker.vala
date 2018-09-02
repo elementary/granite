@@ -372,30 +372,43 @@ namespace Granite.Widgets {
 		}
 
 		private void parse_time (string timestr) {
-			stdout.printf (" %s\n", "parse time");
 			string current = "";
 			bool is_hours = true;
+			bool is_minutes = false;
+			bool is_seconds = false;
 			bool is_suffix = false;
 			bool has_suffix = false;
 
 			int? hour = null;
 			int? minute = null;
+			int? second = null;
 			foreach (var c in timestr.down ().to_utf8 ()) {
 				if (c.isdigit ()) {
 					current = "%s%c".printf (current, c);
+					stderr.printf ("is digit: %s\n", current);
 				} else {
-					if (is_hours == true && is_suffix == false && current != "") {
+					stderr.printf ("%s\n", "is not digit");
+					if (is_hours && !is_suffix && !is_minutes && !is_seconds && (current != "")) {
 						is_hours = false;
+						is_minutes = true;
 						hour = int.parse (current);
+						stderr.printf ("parse hour: %s\n", current);
 						current = "";
-					} else if (is_hours == false && is_suffix == false && current != "") {
+					} else if (is_minutes && !is_hours && !is_suffix && !is_seconds && (current != "")) {
+						is_minutes = false;
 						minute = int.parse (current);
+						stderr.printf ("parse minute: %s\n", current);
+						current = "";
+					} else if (is_seconds && !is_hours && !is_suffix && !is_minutes && (current != "")) {
+						is_seconds = false;
+						second = int.parse (current);
+						stderr.printf ("parse second: %s\n", current);
 						current = "";
 					}
-
-					if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && is_suffix == false) {
+					if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && !is_suffix) {
 						is_suffix = true;
 						current = "%s%c".printf (current, c);
+						stderr.printf ("%s\n", current);
 					}
 
 					if (c.to_string ().contains ("m") && is_suffix == true) {
@@ -422,32 +435,60 @@ namespace Granite.Widgets {
 				}
 			}
 
-			if (is_hours == false && is_suffix == false && current != "") {
+			stderr.printf ("outside loop: %s\n", current);
+
+			if (!is_hours && !is_suffix && !is_seconds && (current != "")) {
 				minute = int.parse (current);
+				stderr.printf ("outside loop parse minute: %s\n", current);
+			}
+
+			if (!is_hours && !is_suffix && !is_minutes && (current != "")) {
+				second = int.parse (current);
+				stderr.printf ("outside loop parse second: %s\n", current);
 			}
 
 			if (hour == null) {
 				if (current.length < 3) {
 					hour = int.parse (current);
+					stderr.printf ("< 3 parse hour: %s\n", current);
 					minute = 0;
+					second = 0;
 				} else if (current.length == 4) {
 					hour = int.parse (current.slice (0, 2));
+					stderr.printf ("== 4 parse hour: %d\n", hour);
 					minute = int.parse (current.slice (2,4));
+					stderr.printf ("== 4 parse minute: %d\n", minute);					
+					second =0;
 					if (hour > 23 || minute > 59) {
 						hour = null;
 						minute = null;
 					}
+				} else if (current.length == 6) {
+					hour = int.parse (current.slice (0, 2));
+					stderr.printf ("== 6 parse hour: %d\n", hour);
+					minute = int.parse (current.slice (2,4));
+					stderr.printf ("== 6 parse minute: %d\n", minute);					
+					second = int.parse (current.slice (4,6));
+					stderr.printf ("== 6 parse minute: %d\n", second);										
+					if (hour > 23 || minute > 59 || second > 59) {
+						hour = null;
+						minute = null;
+						second = null;
+					}
 				}
 			}
 
-			if (hour == null || minute == null) {
+			if (hour == null || minute == null || second == null)  {
+				stderr.printf ("%s\n", "updating text, all three null");
 				update_text ();
 				return;
 			}
 
 			if (has_suffix == false) {
+				stderr.printf ("%s\n", "outside loop suffix is false");
 				time = time.add_hours (hour - time.get_hour ());
 				time = time.add_minutes (minute - time.get_minute ());
+				time = time.add_seconds (second - time.get_second ());
 			}
 
 			update_text ();
