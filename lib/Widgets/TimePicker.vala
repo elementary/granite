@@ -244,7 +244,6 @@ namespace Granite.Widgets {
 		 * @param with_seconds Should the format include seconds. For example: "%l:%M:$S %p" or "%H:%M:%S".
 		 */
 		public TimePicker.with_second (bool with_second) {
-			//stdout.printf (" %s\n", "with_second constructor");
 			Object (show_seconds: with_second);
 		}
 
