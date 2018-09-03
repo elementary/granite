@@ -59,7 +59,6 @@ namespace Granite.Widgets {
 			
 			set {
 				_show_seconds = value;
-				//stdout.printf (" %s\n", "property setter");
 				update_formatting ();
 				update_text ();
 			} 
@@ -69,8 +68,6 @@ namespace Granite.Widgets {
 			format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
 			format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
 			max_length = show_seconds ? 11 : 8;
-			//stdout.printf (" %s\n", "update formatting");
-			//stdout.printf (" show string : %s\n", show_seconds.to_string());
 		}
 
 		private GLib.DateTime _time = null;
@@ -106,6 +103,7 @@ namespace Granite.Widgets {
 		private Gtk.SpinButton hours_spinbutton;
 		private Gtk.SpinButton minutes_spinbutton;
 		private Gtk.SpinButton seconds_spinbutton;
+		private Gtk.Label separation_label_min;
 		private Gtk.Label separation_label_sec;
 		private ModeButton am_pm_modebutton;
 		private bool changing_time = false;
@@ -113,16 +111,7 @@ namespace Granite.Widgets {
 		private Gtk.Popover popover;
 
 		construct {
-			//stdout.printf (" %s\n", "constructor");
 			update_formatting ();
-			//  if (format_12 == null)
-			//  	format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
-
-			//  if (format_24 == null)
-			//  	format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);
-
-			//  max_length = show_seconds ? 11 : 8;
-
 			secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
 			icon_release.connect (on_icon_press);
 
@@ -195,8 +184,8 @@ namespace Granite.Widgets {
 				return false;
 			});
 
-			/// TRANSLATORS: separates hours from minutes.
-			var separation_label_min = new Gtk.Label (_(":"));
+			/// TRANSLATORS: separates hours from minutes and minutes from seconds
+			separation_label_min = new Gtk.Label (_(":"));
 			separation_label_sec = new Gtk.Label (_(":"));
 
 			pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
@@ -451,7 +440,7 @@ namespace Granite.Widgets {
 				} else if (current.length == 4) {
 					hour = int.parse (current.slice (0, 2));
 					minute = int.parse (current.slice (2,4));
-					second =0;
+					second = 0;
 					if (hour > 23 || minute > 59) {
 						hour = null;
 						minute = null;
