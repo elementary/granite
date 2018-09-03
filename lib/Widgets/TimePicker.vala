@@ -393,6 +393,7 @@ namespace Granite.Widgets {
 						current = "";
 					} else if (is_minutes && !is_hours && !is_suffix && !is_seconds && (current != "")) {
 						is_minutes = false;
+						if (show_seconds) { is_seconds = true; }
 						minute = int.parse (current);
 						current = "";
 					} else if (is_seconds && !is_hours && !is_suffix && !is_minutes && (current != "")) {
@@ -408,11 +409,12 @@ namespace Granite.Widgets {
 					if (c.to_string ().contains ("m") && is_suffix == true) {
 						if (hour == null) {
 							return;
-						} else if (minute == null) {
+						}
+						if (minute == null) {
 							minute = 0;
-							if (second == null) {
-								second = 0;
-							}
+						}
+						if (second == null) {
+							second = 0;
 						}
 
 						// We can imagine that some will try to set it to "19:00 am"
@@ -465,6 +467,8 @@ namespace Granite.Widgets {
 					}
 				}
 			}
+
+			if (!show_seconds) second = 0;
 
 			if (hour == null || minute == null || second == null)  {
 				update_text ();

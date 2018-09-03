@@ -46,11 +46,9 @@ public class DateTimePickerView : Gtk.Grid {
 		
 		timepicker = new Granite.Widgets.TimePicker ();
 		
-		var show_seconds_label = new Gtk.Label ("Seconds:");        
-		show_seconds_label.halign = Gtk.Align.END;
-
 		show_seconds = new Gtk.Switch ();
 		show_seconds.halign = Gtk.Align.START;
+		show_seconds.set_tooltip_text ("Show Seconds");
 		show_seconds.notify["active"].connect (() => {
 			timepicker.show_seconds = show_seconds.active;
 		});
@@ -61,6 +59,7 @@ public class DateTimePickerView : Gtk.Grid {
 		time_label_with_seconds.halign = Gtk.Align.END;
 
 		timepicker_with_seconds = new Granite.Widgets.TimePicker.with_second (true);
+		timepicker_with_seconds.set_tooltip_text ("TimePicker Example using with_second create method");
 
 		var formatting_label = new Gtk.Label ("String Formatting");
 		formatting_label.margin_top = 6;
@@ -110,8 +109,7 @@ public class DateTimePickerView : Gtk.Grid {
 		attach (time_label, 0, 2, 1, 1);
 		attach (timepicker, 1, 2, 1, 1);
 		
-		attach (show_seconds_label, 0, 3, 1, 1);
-		attach (show_seconds, 1, 3, 1, 1);
+		attach (show_seconds, 2, 2, 1, 1);
 
 		attach (time_label_with_seconds, 0, 4, 1, 1);
 		attach (timepicker_with_seconds, 1, 4, 1, 1);
