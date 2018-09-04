@@ -331,24 +331,9 @@ namespace Granite.Widgets {
             }
 
             changing_time = false;
-
-            //  Gdk.Rectangle rect = Gdk.Rectangle ();
-            //  int x = 0;
-            //  int y = 0;
-            //  position_dropdown (out x, out y);
-            //  rect.x = x;
-            //  rect.y = y;
             popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);			
             popover.show_all ();
         }
-
-        //  protected virtual void position_dropdown (out int x, out int y) {
-        //  	Gtk.Allocation size;
-        //  	get_allocation (out size);
-
-        //  	x = size.width - OFFSET;
-        //  	y = size.height;
-        //  }
 
         private void is_unfocused () {
             if (popover.visible == false && old_string.collate (text) != 0) {
