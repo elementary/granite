@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *	Copyright (C) 2018 elementary, Inc. (https://elementary.io),
+ *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -26,7 +27,6 @@ namespace Granite.Widgets {
 	public class TimePicker : Gtk.Entry {
 
 		const int OFFSET = 15;
-		const int MARGIN = 6;
 
 		private enum TimeComponent {
 			HOUR,
@@ -105,20 +105,14 @@ namespace Granite.Widgets {
 		private Gtk.SpinButton seconds_spinbutton;
 		private Gtk.Label separation_label_min;
 		private Gtk.Label separation_label_sec;
+		private Gtk.Popover popover;
 		private ModeButton am_pm_modebutton;
 		private bool changing_time = false;
-
-		private Gtk.Popover popover;
 
 		construct {
 			update_formatting ();
 			secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
 			icon_release.connect (on_icon_press);
-
-			// Creates the popover
-			var pop_grid = new Gtk.Grid ();
-			pop_grid.column_spacing = 6; 
-			pop_grid.row_spacing = 6;
 
 			am_pm_modebutton = new ModeButton ();
 			am_pm_modebutton.orientation = Gtk.Orientation.VERTICAL;
@@ -188,15 +182,20 @@ namespace Granite.Widgets {
 			separation_label_min = new Gtk.Label (_(":"));
 			separation_label_sec = new Gtk.Label (_(":"));
 
+			// Creates the popover
+			var pop_grid = new Gtk.Grid ();
+			pop_grid.column_spacing = 6; 
+			pop_grid.row_spacing = 6;
 			pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
 			pop_grid.attach (separation_label_min, 1, 0, 1, 1);
 			pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
 			pop_grid.attach (separation_label_sec, 3, 0, 1, 1);			
 			pop_grid.attach (seconds_spinbutton, 4, 0, 1, 1);
 			pop_grid.attach (am_pm_modebutton, 5, 0, 1, 1);
-			pop_grid.margin = MARGIN;
+			pop_grid.margin = 6;
 
 			popover = new Gtk.Popover (this);
+			popover.position = Gtk.PositionType.BOTTOM;			
 			popover.add (pop_grid);
 
 			// Connecting to events allowing manual changes
@@ -333,24 +332,23 @@ namespace Granite.Widgets {
 
 			changing_time = false;
 
-			Gdk.Rectangle rect = Gdk.Rectangle ();
-			int x = 0;
-			int y = 0;
-			position_dropdown (out x, out y);
-			rect.x = x;
-			rect.y = y;
-			popover.pointing_to = rect;
-			popover.position = Gtk.PositionType.BOTTOM;
+			//  Gdk.Rectangle rect = Gdk.Rectangle ();
+			//  int x = 0;
+			//  int y = 0;
+			//  position_dropdown (out x, out y);
+			//  rect.x = x;
+			//  rect.y = y;
+			popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);			
 			popover.show_all ();
 		}
 
-		protected virtual void position_dropdown (out int x, out int y) {
-			Gtk.Allocation size;
-			get_allocation (out size);
+		//  protected virtual void position_dropdown (out int x, out int y) {
+		//  	Gtk.Allocation size;
+		//  	get_allocation (out size);
 
-			x = size.width - OFFSET;
-			y = size.height;
-		}
+		//  	x = size.width - OFFSET;
+		//  	y = size.height;
+		//  }
 
 		private void is_unfocused () {
 			if (popover.visible == false && old_string.collate (text) != 0) {
