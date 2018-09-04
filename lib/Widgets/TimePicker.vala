@@ -43,12 +43,22 @@ namespace Granite.Widgets {
         /**
          * Format used in 12h mode
          */
-        public string format_12 { get; private set; }
+        public string format_12 { get; construct set; }
 
         /**
          * Format used in 24h mode
          */
-        public string format_24 { get; private set; }
+        public string format_24 { get; construct set; }
+
+        /**
+         * Custom format used in 12h mode
+         */
+        public string custom_format_12 { get; construct set; }
+
+        /**
+         * Custom format used in 24h mode
+         */
+        public string custom_format_24 { get; construct set; }
 
         private bool _show_seconds = false;
         /**
@@ -228,21 +238,30 @@ namespace Granite.Widgets {
          * @param format_24 The desired custom 24h format. For example "%H:%M".
          */
         public TimePicker.with_format (string format_12, string format_24) {
-            Object (format_12: format_12, format_24: format_24);
+            Object (custom_format_12: format_12, custom_format_24: format_24);
         }
 
         /**
          * Creates a new TimePicker.
          *
-         * @param with_seconds Should the format include seconds. For example: "%l:%M:$S %p" or "%H:%M:%S".
+         * @param with_seconds Should the format include seconds. For example: "%l:%M:%S %p" or "%H:%M:%S".
          */
         public TimePicker.with_second (bool with_second) {
             Object (show_seconds: with_second);
         }
 
         private void update_formatting () {
-            format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
-            format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
+            if (custom_format_12 != null) {
+                format_12 = custom_format_12;               
+            } else {
+                format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
+            }
+
+            if (custom_format_24 != null) {
+                format_24 = custom_format_24;               
+            } else {
+                format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
+            }
             max_length = show_seconds ? 11 : 8;
         }
 
@@ -467,5 +486,4 @@ namespace Granite.Widgets {
                 time_changed ();
         }
     }
-
 }
