@@ -64,12 +64,6 @@ namespace Granite.Widgets {
             } 
         }
 
-        private void update_formatting () {
-            format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
-            format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
-            max_length = show_seconds ? 11 : 8;
-        }
-
         private GLib.DateTime _time = null;
         /**
          * Current time
@@ -244,6 +238,12 @@ namespace Granite.Widgets {
          */
         public TimePicker.with_second (bool with_second) {
             Object (show_seconds: with_second);
+        }
+
+        private void update_formatting () {
+            format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
+            format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
+            max_length = show_seconds ? 11 : 8;
         }
 
         private void update_time (TimeComponent time_component) {
