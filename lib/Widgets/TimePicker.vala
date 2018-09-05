@@ -475,7 +475,7 @@ namespace Granite.Widgets {
         }
 
         private void update_text (bool no_signal = false) {
-            if (Granite.DateTime.is_clock_format_12h ()) 
+            if (Granite.DateTime.is_clock_format_12h ())
                 set_text (time.format (format_12));
             else
                 set_text (time.format (format_24));
