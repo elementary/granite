@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2017-05-03 18:00+0000\n"
-"Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
-"Language-Team: Italian <https://l10n.elementary.io/projects/desktop/granite/"
-"it/>\n"
+"PO-Revision-Date: 2018-09-06 00:08+0000\n"
+"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
+"Language-Team: Italian <https://weblate.elementary.io/projects/desktop/"
+"granite/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -474,7 +474,7 @@ msgstr ""
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Disabilitato"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 #, fuzzy
