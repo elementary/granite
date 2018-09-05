@@ -66,7 +66,7 @@ namespace Granite.Widgets {
          */
         public bool show_seconds { 
             get { return _show_seconds; }
-            
+
             set {
                 _show_seconds = value;
                 update_formatting ();
@@ -158,7 +158,7 @@ namespace Granite.Widgets {
             seconds_spinbutton = new Gtk.SpinButton.with_range (0, 59, 1);
             seconds_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             seconds_spinbutton.wrap = true;
-            seconds_spinbutton.value_changed.connect (() => update_time (TimeComponent.SECOND));						
+            seconds_spinbutton.value_changed.connect (() => update_time (TimeComponent.SECOND));
 
             // If the spinbutton value is less than 10, append zero in front of value. '6' becomes '06'
             minutes_spinbutton.output.connect (() => {
@@ -170,7 +170,7 @@ namespace Granite.Widgets {
 
                 return false;
             });
-            
+
             // If the spinbutton value is less than 10, append zero in front of value. '6' becomes '06'
             seconds_spinbutton.output.connect (() => {
                 var val = seconds_spinbutton.get_value ();
@@ -193,13 +193,13 @@ namespace Granite.Widgets {
             pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
             pop_grid.attach (separation_label_min, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
-            pop_grid.attach (separation_label_sec, 3, 0, 1, 1);			
+            pop_grid.attach (separation_label_sec, 3, 0, 1, 1);
             pop_grid.attach (seconds_spinbutton, 4, 0, 1, 1);
             pop_grid.attach (am_pm_modebutton, 5, 0, 1, 1);
             pop_grid.margin = 6;
 
             popover = new Gtk.Popover (this);
-            popover.position = Gtk.PositionType.BOTTOM;			
+            popover.position = Gtk.PositionType.BOTTOM;
             popover.add (pop_grid);
 
             // Connecting to events allowing manual changes
@@ -246,21 +246,21 @@ namespace Granite.Widgets {
          *
          * @param with_seconds Should the format include seconds. For example: "%l:%M:%S %p" or "%H:%M:%S".
          */
-        public TimePicker.with_second (bool with_second) {
-            Object (show_seconds: with_second);
+        public TimePicker.with_second () {
+            Object (show_seconds: true);
         }
 
         private void update_formatting () {
             if (custom_format_12 != null) {
-                format_12 = custom_format_12;               
+                format_12 = custom_format_12;
             } else {
                 format_12 = Granite.DateTime.get_default_time_format (true, show_seconds);
             }
 
             if (custom_format_24 != null) {
-                format_24 = custom_format_24;               
+                format_24 = custom_format_24;
             } else {
-                format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);				
+                format_24 = Granite.DateTime.get_default_time_format (false, show_seconds);
             }
             max_length = show_seconds ? 11 : 8;
         }
@@ -350,7 +350,7 @@ namespace Granite.Widgets {
             }
 
             changing_time = false;
-            popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);			
+            popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
             popover.show_all ();
         }
 

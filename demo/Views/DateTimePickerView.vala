@@ -44,29 +44,28 @@ public class DateTimePickerView : Gtk.Grid {
 
         var time_label = new Gtk.Label ("TimePicker:");
         time_label.halign = Gtk.Align.END;
-        
+
         timepicker = new Granite.Widgets.TimePicker ();
-        
+
         show_seconds = new Gtk.Switch ();
         show_seconds.halign = Gtk.Align.START;
-        show_seconds.set_tooltip_text ("Show Seconds");
+        show_seconds.tooltip_text = "Show Seconds";
         show_seconds.notify["active"].connect (() => {
             timepicker.show_seconds = show_seconds.active;
         });
-        show_seconds.set_active (false);        
-
+        show_seconds.active = false;
 
         var time_label_with_seconds = new Gtk.Label ("TimePicker with second:");
         time_label_with_seconds.halign = Gtk.Align.END;
 
-        timepicker_with_seconds = new Granite.Widgets.TimePicker.with_second (true);
-        timepicker_with_seconds.set_tooltip_text ("TimePicker Example using with_second create method");
+        timepicker_with_seconds = new Granite.Widgets.TimePicker.with_second ();
+        timepicker_with_seconds.tooltip_text = "TimePicker Example using with_second create method";
 
         var time_label_with_format = new Gtk.Label ("TimePicker with format:");
         time_label_with_format.halign = Gtk.Align.END;
 
         timepicker_with_format = new Granite.Widgets.TimePicker.with_format ("%l:%M %p", "%H:%M");
-        timepicker_with_format.set_tooltip_text ("TimePicker Example using %l:%M %p and  %H:%M");
+        timepicker_with_format.tooltip_text = "TimePicker Example using %l:%M %p and  %H:%M";
 
         var formatting_label = new Gtk.Label ("String Formatting");
         formatting_label.margin_top = 6;
@@ -104,10 +103,8 @@ public class DateTimePickerView : Gtk.Grid {
         timepicker.changed.connect (() => set_selected_datetime ());
         timepicker_with_seconds.changed.connect (() => set_selected_datetime_with_seconds ());
 
-        
-
         column_spacing = 12;
-        row_spacing = 9;
+        row_spacing = 6;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
         attach (pickers_label, 0, 0, 1, 1);
@@ -143,5 +140,5 @@ public class DateTimePickerView : Gtk.Grid {
         selected_date_time = selected_date_time.add_minutes (timepicker_with_seconds.time.get_minute ());
 
         relative_datetime.label = Granite.DateTime.get_relative_datetime (selected_date_time);
-    }    
+    }
 }
