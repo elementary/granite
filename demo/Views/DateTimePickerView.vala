@@ -26,8 +26,12 @@
 
 public class DateTimePickerView : Gtk.Grid {
     private Gtk.Label relative_datetime;
+    private Gtk.Label current_time;
     private Granite.Widgets.DatePicker datepicker;
     private Granite.Widgets.TimePicker timepicker;
+    private Granite.Widgets.TimePicker timepicker_with_format;
+    private string time_format;
+    private string date_format;
 
     construct {
         var pickers_label = new Gtk.Label ("Picker Widgets");
@@ -44,6 +48,12 @@ public class DateTimePickerView : Gtk.Grid {
 
         timepicker = new Granite.Widgets.TimePicker ();
 
+        var time_label_with_format = new Gtk.Label ("TimePicker (with_format):");
+        time_label_with_format.halign = Gtk.Align.END;
+
+        timepicker_with_format = new Granite.Widgets.TimePicker.with_format ("%l:%M %p", "%H:%M");
+        timepicker_with_format.tooltip_text = "TimePicker Example using %l:%M %p and  %H:%M";
+
         var formatting_label = new Gtk.Label ("String Formatting");
         formatting_label.margin_top = 6;
         formatting_label.xalign = 0;
@@ -54,16 +64,16 @@ public class DateTimePickerView : Gtk.Grid {
 
         var now = new DateTime.now_local ();
         var settings = new Settings ("org.gnome.desktop.interface");
-        var time_format = Granite.DateTime.get_default_time_format (settings.get_enum ("clock-format") == 1, false);
+        time_format = Granite.DateTime.get_default_time_format (settings.get_enum ("clock-format") == 1, false);
 
-        var current_time = new Gtk.Label (now.format (time_format));
+        current_time = new Gtk.Label (now.format (time_format));
         current_time.tooltip_text = time_format;
         current_time.xalign = 0;
 
         var current_date_label = new Gtk.Label ("Localized date:");
         current_date_label.halign = Gtk.Align.END;
 
-        var date_format = Granite.DateTime.get_default_date_format (true, true, true);
+        date_format = Granite.DateTime.get_default_date_format (true, true, true);
 
         var current_date = new Gtk.Label (now.format (date_format));
         current_date.tooltip_text = date_format;
@@ -75,9 +85,10 @@ public class DateTimePickerView : Gtk.Grid {
         relative_datetime = new Gtk.Label ("");
         relative_datetime.xalign = 0;
 
-        set_selected_datetime ();
-        datepicker.changed.connect (() => set_selected_datetime ());
-        timepicker.changed.connect (() => set_selected_datetime ());
+        set_selected_datetime (timepicker.time);
+        datepicker.changed.connect (() => set_selected_datetime (timepicker.time));
+        timepicker.changed.connect (() => set_selected_datetime (timepicker.time));
+        timepicker_with_format.changed.connect (() => set_selected_datetime (timepicker_with_format.time));
 
         column_spacing = 12;
         row_spacing = 6;
@@ -88,19 +99,22 @@ public class DateTimePickerView : Gtk.Grid {
         attach (datepicker, 1, 1, 1, 1);
         attach (time_label, 0, 2, 1, 1);
         attach (timepicker, 1, 2, 1, 1);
-        attach (formatting_label, 0, 3, 1, 1);
-        attach (current_time_label, 0, 4, 1, 1);
-        attach (current_time, 1, 4, 1, 1);
-        attach (current_date_label, 0, 5, 1, 1);
-        attach (current_date, 1, 5, 1, 1);
-        attach (relative_datetime_label, 0, 6, 1, 1);
-        attach (relative_datetime, 1, 6, 1, 1);
+        attach (time_label_with_format, 0, 3, 1, 1);
+        attach (timepicker_with_format, 1, 3, 1, 1);
+        attach (formatting_label, 0, 4, 1, 1);
+        attach (current_time_label, 0, 5, 1, 1);
+        attach (current_time, 1, 5, 1, 1);
+        attach (current_date_label, 0, 6, 1, 1);
+        attach (current_date, 1, 6, 1, 1);
+        attach (relative_datetime_label, 0, 7, 1, 1);
+        attach (relative_datetime, 1, 7, 1, 1);
     }
 
-    private void set_selected_datetime () {
+    private void set_selected_datetime (DateTime timepicker_time) {
+        current_time.label = timepicker_time.format (time_format);
         var selected_date_time = datepicker.date;
-        selected_date_time = selected_date_time.add_hours (timepicker.time.get_hour ());
-        selected_date_time = selected_date_time.add_minutes (timepicker.time.get_minute ());
+        selected_date_time = selected_date_time.add_hours (timepicker_time.get_hour ());
+        selected_date_time = selected_date_time.add_minutes (timepicker_time.get_minute ());
 
         relative_datetime.label = Granite.DateTime.get_relative_datetime (selected_date_time);
     }

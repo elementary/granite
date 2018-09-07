@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2018 elementary, Inc. (https://elementary.io),
-                  2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *	Copyright (C) 2018 elementary, Inc. (https://elementary.io),
+ *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -25,6 +25,8 @@ namespace Granite.Widgets {
      * This widget allows users to easily pick a time.
      */
     public class TimePicker : Gtk.Entry {
+
+        // Signals
         /**
          * Sent when the time got changed
          */
@@ -66,15 +68,15 @@ namespace Granite.Widgets {
                 update_text (true);
                 changing_time = false;
             }
-
         }
 
-        private bool changing_time = false;
         private string old_string = "";
-        private Gtk.Popover popover;
+
         private Gtk.SpinButton hours_spinbutton;
         private Gtk.SpinButton minutes_spinbutton;
+        private Gtk.Popover popover;
         private ModeButton am_pm_modebutton;
+        private bool changing_time = false;
 
         /**
          * Creates a new TimePicker.
@@ -132,7 +134,6 @@ namespace Granite.Widgets {
             hours_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             hours_spinbutton.wrap = true;
             hours_spinbutton.value_changed.connect (() => update_time (true));
-
             minutes_spinbutton = new Gtk.SpinButton.with_range (0, 59, 1);
             minutes_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             minutes_spinbutton.wrap = true;
@@ -152,6 +153,7 @@ namespace Granite.Widgets {
             /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
 
+            // Creates the popover
             var pop_grid = new Gtk.Grid ();
             pop_grid.column_spacing = 6;
             pop_grid.row_spacing = 6;
@@ -195,11 +197,11 @@ namespace Granite.Widgets {
         }
 
         private void update_time (bool is_hour) {
-            if (changing_time == true) {
+            if (changing_time) {
                 return;
             }
 
-            if (is_hour == true) {
+            if (is_hour) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
 
                 if (Granite.DateTime.is_clock_format_12h ()) {
@@ -267,7 +269,7 @@ namespace Granite.Widgets {
         }
 
         private void is_unfocused () {
-            if (popover.visible == false && old_string.collate (text) != 0) {
+            if (!popover.visible && old_string.collate (text) != 0) {
                 old_string = text;
                 parse_time (text.dup ());
             }
@@ -285,21 +287,23 @@ namespace Granite.Widgets {
                 if (c.isdigit ()) {
                     current = "%s%c".printf (current, c);
                 } else {
-                    if (is_hours == true && is_suffix == false && current != "") {
-                        is_hours = false;
-                        hour = int.parse (current);
-                        current = "";
-                    } else if (is_hours == false && is_suffix == false && current != "") {
-                        minute = int.parse (current);
-                        current = "";
+                    if (!is_suffix) {
+                        if (is_hours && current != "") {
+                            is_hours = false;
+                            hour = int.parse (current);
+                            current = "";
+                        } else if (!is_hours && current != "") {
+                            minute = int.parse (current);
+                            current = "";
+                        }
+
+                        if ((c.to_string ().contains ("a") || c.to_string ().contains ("p"))) {
+                            is_suffix = true;
+                            current = "%s%c".printf (current, c);
+                        }
                     }
 
-                    if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && is_suffix == false) {
-                        is_suffix = true;
-                        current = "%s%c".printf (current, c);
-                    }
-
-                    if (c.to_string ().contains ("m") && is_suffix == true) {
+                    if (c.to_string ().contains ("m") && is_suffix) {
                         if (hour == null) {
                             return;
                         } else if (minute == null) {
@@ -323,7 +327,7 @@ namespace Granite.Widgets {
                 }
             }
 
-            if (is_hours == false && is_suffix == false && current != "") {
+            if (!is_hours && is_suffix && current != "") {
                 minute = int.parse (current);
             }
 
@@ -346,7 +350,7 @@ namespace Granite.Widgets {
                 return;
             }
 
-            if (has_suffix == false) {
+            if (!has_suffix) {
                 time = time.add_hours (hour - time.get_hour ());
                 time = time.add_minutes (minute - time.get_minute ());
             }
