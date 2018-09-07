@@ -1,6 +1,6 @@
 /*
- *	Copyright (C) 2018 elementary, Inc. (https://elementary.io),
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *  Copyright (C) 2018 elementary, Inc. (https://elementary.io),
+ *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -70,13 +70,12 @@ namespace Granite.Widgets {
             }
         }
 
+        private bool changing_time = false;
         private string old_string = "";
-
         private Gtk.SpinButton hours_spinbutton;
         private Gtk.SpinButton minutes_spinbutton;
         private Gtk.Popover popover;
         private ModeButton am_pm_modebutton;
-        private bool changing_time = false;
 
         /**
          * Creates a new TimePicker.
@@ -134,6 +133,7 @@ namespace Granite.Widgets {
             hours_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             hours_spinbutton.wrap = true;
             hours_spinbutton.value_changed.connect (() => update_time (true));
+
             minutes_spinbutton = new Gtk.SpinButton.with_range (0, 59, 1);
             minutes_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             minutes_spinbutton.wrap = true;
@@ -153,7 +153,6 @@ namespace Granite.Widgets {
             /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
 
-            // Creates the popover
             var pop_grid = new Gtk.Grid ();
             pop_grid.column_spacing = 6;
             pop_grid.row_spacing = 6;
@@ -327,7 +326,7 @@ namespace Granite.Widgets {
                 }
             }
 
-            if (!is_hours && is_suffix && current != "") {
+            if (!is_hours && !is_suffix && current != "") {
                 minute = int.parse (current);
             }
 
