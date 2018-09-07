@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2018 elementary, Inc. (https://elementary.io),
- *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+                  2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -66,13 +66,14 @@ namespace Granite.Widgets {
                 update_text (true);
                 changing_time = false;
             }
+
         }
 
         private bool changing_time = false;
         private string old_string = "";
+        private Gtk.Popover popover;
         private Gtk.SpinButton hours_spinbutton;
         private Gtk.SpinButton minutes_spinbutton;
-        private Gtk.Popover popover;
         private ModeButton am_pm_modebutton;
 
         /**
