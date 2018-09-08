@@ -55,6 +55,16 @@ public class CSSView : Gtk.Grid {
         card.add (header3);
         card.add (header4);
 
+        var checker_label = new Gtk.Label ("\"checkerboard\" style class:");
+
+        var checker_image = new Gtk.Image.from_icon_name ("dialog-information",  Gtk.IconSize.DND);
+        checker_image.hexpand = true;
+        checker_image.margin = 6;
+
+        var checker_grid = new Gtk.Grid ();
+        checker_grid.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        checker_grid.add (checker_image);
+
         var terminal_label = new Gtk.Label ("\"terminal\" style class:");
 
         var terminal = new Gtk.TextView ();
@@ -101,16 +111,18 @@ public class CSSView : Gtk.Grid {
         row_spacing = 24;
         attach (card_label, 0, 0, 1, 1);
         attach (card, 1, 0, 2, 1);
-        attach (terminal_label, 0, 1, 1, 1);
-        attach (terminal, 1, 1, 2, 1);
-        attach (back_button_label, 0, 2, 1, 1);
-        attach (back_button, 1, 2, 2, 1);
-        attach (mode_switch_label, 0, 3);
-        attach (mode_switch, 1, 3);
-        attach (primary_color_label, 0, 4);
-        attach (primary_color_button, 1, 4, 2, 1);
-        attach (accent_color_label, 0, 5);
-        attach (accent_color_grid, 1, 5);
+        attach (checker_label, 0, 1);
+        attach (checker_grid, 1, 1, 2, 1);
+        attach (terminal_label, 0, 2);
+        attach (terminal, 1, 2, 2, 1);
+        attach (back_button_label, 0, 3);
+        attach (back_button, 1, 3, 2, 1);
+        attach (mode_switch_label, 0, 4);
+        attach (mode_switch, 1, 4);
+        attach (primary_color_label, 0, 5);
+        attach (primary_color_button, 1, 5, 2, 1);
+        attach (accent_color_label, 0, 6);
+        attach (accent_color_grid, 1, 6);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
