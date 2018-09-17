@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-09-17 14:55+0000\n"
+"PO-Revision-Date: 2018-09-19 00:08+0000\n"
 "Last-Translator: Nuno Alexandre MS ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/desktop/"
 "granite/pt/>\n"
@@ -214,13 +214,13 @@ msgstr ":"
 msgid "Could not contact Contractor. You may need to install it"
 msgstr ""
 "Não foi possível ligar ao Contractor. Pode ser necessário instalar a "
-"aplicação."
+"aplicação"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr "Não foi encontrada uma ação para este ficheiro."
+msgstr "Não foi encontrada nenhuma ação para este ficheiro"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
