@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-02-05 00:10+0000\n"
-"Last-Translator: Jovennan <jovennan@gmail.com>\n"
+"PO-Revision-Date: 2018-09-17 14:55+0000\n"
+"Last-Translator: Nuno Alexandre MS ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/desktop/"
 "granite/pt/>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -416,74 +416,70 @@ msgstr "Já fiz coisas"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Mostrar as opções do Granite"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Agora"
 
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Há %dm"
+msgstr[1] "Há %dm"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Há %dm"
+msgstr[1] "Há %dm"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dentro de %dm"
+msgstr[1] "Dentro de %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dentro de %dm"
+msgstr[1] "Dentro de %dm"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Ontem"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Amanhã"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Fechar"
+msgstr "_Fechar"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Ativado"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Desativado"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
-msgstr "Abrir numa nova janela"
+msgstr "Abrir numa Nova Janela"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%a, %e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
 msgstr "%a, %e %b"
