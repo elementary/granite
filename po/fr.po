@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-29 16:40+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"PO-Revision-Date: 2018-09-25 00:01+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/desktop/"
 "granite/fr/>\n"
 "Language: fr\n"
@@ -347,7 +347,7 @@ msgstr "%s libres sur %s"
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 #: ../lib/Application.vala:234 ../lib/Application.vala:235
 msgid "%s's Developers"
-msgstr "Dévelopeurs de %s"
+msgstr "Développeurs de %s"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453 ../lib/GtkPatch/AboutDialog.vala:403
@@ -396,11 +396,11 @@ msgstr "Simples notifications à l'intérieur de l'application"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
-msgstr "Le boutton a été appuyé !"
+msgstr "Le bouton a été appuyé !"
 
 #: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
 msgid "Do Things"
-msgstr "Faire des choses"
+msgstr "Fais quelque-chose"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
