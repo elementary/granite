@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-04 09:32+0000\n"
+"PO-Revision-Date: 2018-10-08 00:04+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -318,14 +318,14 @@ msgstr "オーディオ"
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr "ビデオ"
+msgstr "動画"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 #: ../lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr "フォト"
+msgstr "写真"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
