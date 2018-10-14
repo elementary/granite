@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-29 19:31+0000\n"
-"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"PO-Revision-Date: 2018-10-15 00:05+0000\n"
+"Last-Translator: Leonardo <leonardo@elementary.io>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "desktop/granite/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -254,14 +254,14 @@ msgstr "%H:%M"
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %e de %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 #: ../lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%b %e %Y"
+msgstr "%e de %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -275,7 +275,7 @@ msgstr "%Y"
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 #: ../lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%b %e"
+msgstr "%e de %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
@@ -297,7 +297,7 @@ msgstr "%a"
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %e de %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -464,9 +464,9 @@ msgstr "Abrir em uma nova janela"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a, %b %e %Y"
+msgstr "%a, %e de %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
+msgstr "%a, %e de %b"
