@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 19:04-0700\n"
+"POT-Creation-Date: 2018-08-02 17:16-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgstr ""
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
-#: ../lib/GtkPatch/AboutDialog.vala:297
+#: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
 msgstr ""
 
@@ -74,6 +74,7 @@ msgstr ""
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
 #: ../lib//Application.vala:258 ../lib//Application.vala:265
 #: ../lib/Application.vala:265 ../lib/Application.vala:251
+#: ../lib/Application.vala:252
 msgid "Website"
 msgstr ""
 
@@ -85,6 +86,8 @@ msgstr ""
 #: ../lib/Widgets/DynamicNotebook.vala:266
 #: ../lib/Widgets/DynamicNotebook.vala:220
 #: ../lib/Widgets/DynamicNotebook.vala:260
+#: ../lib/Widgets/DynamicNotebook.vala:238
+#: ../lib/Widgets/DynamicNotebook.vala:262
 msgid "Close Tab"
 msgstr ""
 
@@ -99,6 +102,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:270
 #: ../lib/Widgets/DynamicNotebook.vala:270
 #: ../lib/Widgets/DynamicNotebook.vala:264
+#: ../lib/Widgets/DynamicNotebook.vala:266
 msgid "Duplicate"
 msgstr ""
 
@@ -106,6 +110,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:315
+#: ../lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tab"
 msgstr ""
 
@@ -113,6 +118,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:319
 #: ../lib/Widgets/DynamicNotebook.vala:315
+#: ../lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tabs"
 msgstr ""
 
@@ -120,6 +126,7 @@ msgstr ""
 #: ../lib//Widgets/DynamicNotebook.vala:496
 #: ../lib/Widgets/DynamicNotebook.vala:496
 #: ../lib/Widgets/DynamicNotebook.vala:487
+#: ../lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
 msgstr ""
 
@@ -133,6 +140,8 @@ msgstr ""
 #: ../lib/Widgets/DynamicNotebook.vala:804
 #: ../lib/Widgets/DynamicNotebook.vala:775
 #: ../lib/Widgets/DynamicNotebook.vala:808
+#: ../lib/Widgets/DynamicNotebook.vala:769
+#: ../lib/Widgets/DynamicNotebook.vala:800
 msgid "New Tab"
 msgstr ""
 
@@ -141,6 +150,7 @@ msgstr ""
 #: ../lib/Widgets/DynamicNotebook.vala:781
 #: ../lib/Widgets/DynamicNotebook.vala:772
 #: ../lib/Widgets/DynamicNotebook.vala:776
+#: ../lib/Widgets/DynamicNotebook.vala:770
 msgid "Undo Close Tab"
 msgstr ""
 
@@ -149,6 +159,7 @@ msgstr ""
 #: ../lib/Widgets/DynamicNotebook.vala:823
 #: ../lib/Widgets/DynamicNotebook.vala:816
 #: ../lib/Widgets/DynamicNotebook.vala:820
+#: ../lib/Widgets/DynamicNotebook.vala:810
 msgid "Closed Tabs"
 msgstr ""
 
@@ -171,6 +182,7 @@ msgstr ""
 #: ../lib//Widgets/AppMenu.vala:72 ../lib/Widgets/AppMenu.vala:48
 #: ../lib/Widgets/AppMenu.vala:59 ../lib/Widgets/AppMenu.vala:72
 #: ../lib/Widgets/AppMenu.vala:49 ../lib/Widgets/AppMenu.vala:61
+#: ../lib/Widgets/AppMenu.vala:66
 msgid "Menu"
 msgstr ""
 
@@ -292,45 +304,50 @@ msgid "%b"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
-#: ../lib/Widgets/StorageBar.vala:56
+#: ../lib/Widgets/StorageBar.vala:56 ../lib/Widgets/StorageBar.vala:82
 msgid "Audio"
 msgstr ""
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
 #: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
+#: ../lib/Widgets/StorageBar.vala:85
 msgid "Videos"
 msgstr ""
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
+#: ../lib/Widgets/StorageBar.vala:88
 msgid "Photos"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
+#: ../lib/Widgets/StorageBar.vala:90
 msgid "Apps"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
+#: ../lib/Widgets/StorageBar.vala:95
 msgid "Other"
 msgstr ""
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
-#: ../lib/Widgets/StorageBar.vala:243
+#: ../lib/Widgets/StorageBar.vala:243 ../lib/Widgets/StorageBar.vala:267
 msgid "%s free out of %s"
 msgstr ""
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
-#: ../lib/Application.vala:234
+#: ../lib/Application.vala:234 ../lib/Application.vala:235
 msgid "%s's Developers"
 msgstr ""
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453 ../lib/GtkPatch/AboutDialog.vala:403
+#: ../lib/GtkPatch/AboutDialog.vala:395
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
@@ -342,6 +359,7 @@ msgstr ""
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
+#: ../lib/Widgets/StorageBar.vala:93
 msgid "Files"
 msgstr ""
 
@@ -378,7 +396,7 @@ msgstr ""
 msgid "Already did the thing"
 msgstr ""
 
-#: ../lib/Application.vala:181
+#: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
 msgstr ""
 
@@ -432,4 +450,18 @@ msgstr ""
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
+msgstr ""
+
+#: ../lib/Widgets/DynamicNotebook.vala:265
+msgid "Open in a New Window"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: ../lib/DateTime.vala:148
+msgid "%a, %b %e, %Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: ../lib/DateTime.vala:166
+msgid "%a, %b %e"
 msgstr ""

@@ -30,6 +30,7 @@ set (VALA_SOURCES
     Widgets/Utils.vala
     Widgets/AboutDialog.vala
     Widgets/ModeButton.vala
+    Widgets/ModeSwitch.vala
     Widgets/DatePicker.vala
     Widgets/TimePicker.vala
     Widgets/CollapsiblePaned.vala

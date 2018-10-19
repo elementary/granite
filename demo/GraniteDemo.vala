@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
- * Copyright (c) 2011-2015 Granite Developers (https://launchpad.net/granite)
+ * Copyright (c) 2011-2018 elementary, Inc. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,18 +24,10 @@
  *              Corentin Noël <corentin@elementary.io>
  */
 
-public class Granite.Demo : Granite.Application {
-    /**
-     * Basic app information for Granite.Application.
-     */
+public class Granite.Demo : Gtk.Application {
     construct {
-        application_id = "org.pantheon.granite.demo";
+        application_id = "io.elementary.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
-
-        program_name = "Granite Demo";
-
-        build_version = "0.5";
-        app_icon = "applications-interfacedesign";
     }
 
     public override void activate () {
@@ -65,7 +57,7 @@ public class Granite.Demo : Granite.Application {
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
-        main_stack.add_titled (mode_button_view, "modebutton", "ModeButton");
+        main_stack.add_titled (mode_button_view, "selection_controls", "Selection Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
         main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
@@ -83,14 +75,18 @@ public class Granite.Demo : Granite.Application {
         paned.add1 (stack_sidebar);
         paned.add2 (main_stack);
 
-        var theme_button = new Gtk.Button.from_icon_name ("object-inverse");
-        theme_button.tooltip_text = ("Use dark style");
-        theme_button.valign = Gtk.Align.CENTER;
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        mode_switch.primary_icon_tooltip_text = ("Light background");
+        mode_switch.secondary_icon_tooltip_text = ("Dark background");
+        mode_switch.valign = Gtk.Align.CENTER;
+        mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
         headerbar.show_close_button = true;
-        headerbar.pack_end (theme_button);
+        headerbar.pack_end (mode_switch);
 
         window.add (paned);
         window.set_default_size (900, 600);
@@ -100,17 +96,6 @@ public class Granite.Demo : Granite.Application {
         window.show_all ();
 
         add_window (window);
-
-        theme_button.clicked.connect (() => {
-            var window_settings = Gtk.Settings.get_default ();
-            window_settings.gtk_application_prefer_dark_theme = !window_settings.gtk_application_prefer_dark_theme;
-
-            if (window_settings.gtk_application_prefer_dark_theme) {
-                theme_button.tooltip_text = ("Use light style");
-            } else {
-                theme_button.tooltip_text = ("Use dark style");
-            }
-        });
     }
 
     public static int main (string[] args) {
