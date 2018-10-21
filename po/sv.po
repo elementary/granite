@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-10-20 00:10+0000\n"
+"PO-Revision-Date: 2018-10-21 10:12+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/desktop/"
 "granite/sv/>\n"
@@ -66,7 +66,8 @@ msgstr "Det här programmet är utgivet under vilkoren i "
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " licensen, och ges INGEN SOM HELST GARANTI; för detaljer, besök "
+msgstr ""
+" licensen, och det medföljer INGA SOM HELST GARANTIER; för detaljer, besök "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -206,47 +207,47 @@ msgstr "e.m."
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
 #: ../lib/Widgets/TimePicker.vala:137
 msgid ":"
-msgstr "."
+msgstr ":"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "Kan inte kontakta Contractor. Du kan behöva installera programmet."
+msgstr "Kan inte kontakta Contractor. Du kan behöva installera programmet"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "No action found for this file"
-msgstr "Kunde inte hitta någon möjlig handling för den här filen"
+msgstr "Kunde inte hitta någon möjlig åtgärd för den här filen"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr "%l.%M.%S %p"
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 #: ../lib/DateTime.vala:45
 msgid "%l:%M %p"
-msgstr "%k.%M"
+msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 #: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
 #: ../lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr "%H.%M.%S"
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 #: ../lib//Widgets/Utils.vala:88 ../lib/Widgets/Utils.vala:88
 #: ../lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr "%H.%M"
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
@@ -322,7 +323,7 @@ msgstr "Videor"
 #: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
 #: ../lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr "Bilder"
+msgstr "Foton"
 
 #: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
@@ -382,106 +383,102 @@ msgstr "Filer"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103
 msgid "AM"
-msgstr "AM"
+msgstr "f.m."
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "Toasts"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "Simpla notifikationer inuti programmet"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
-msgstr ""
+msgstr "Knappen blev nedtryckt!"
 
 #: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
 msgid "Do Things"
-msgstr ""
+msgstr "Gör saker"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
-msgstr ""
+msgstr "Trycka på mig"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
-msgstr ""
+msgstr "Gjorde saken"
 
 #: ../demo/GraniteDemo.vala:251 ../demo/Views/ToastView.vala:51
 msgid "Already did the thing"
-msgstr ""
+msgstr "Har redan gjort saken"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Visa val för Granite"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Nu"
 
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%dm sedan"
+msgstr[1] "%dm sedan"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%dh sedan"
+msgstr[1] "%dh sedan"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "om %dm"
+msgstr[1] "om %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "om %dh"
+msgstr[1] "om %dh"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Igår"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Imorgon"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Stäng"
+msgstr "_Stäng"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Avbryt"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Aktiverad"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Inaktiverad"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "Öppna i ett nytt fönster"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %b %e, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %b %e"
