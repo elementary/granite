@@ -230,7 +230,7 @@ msgstr "%l:%M:%S %p"
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 #: ../lib/DateTime.vala:45
 msgid "%l:%M %p"
-msgstr "%H:%M"
+msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
