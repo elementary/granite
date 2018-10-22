@@ -266,6 +266,10 @@ namespace Granite.Widgets {
             popover.show_all ();
         }
 
+        [Version (deprecated = true, deprecated_since = "5.2.0")]
+        protected virtual void position_dropdown (out int x, out int y) {
+        }
+
         private void is_unfocused () {
             if (popover.visible == false && old_string.collate (text) != 0) {
                 old_string = text;
