@@ -79,7 +79,7 @@ public enum Granite.CloseButtonPosition
 /**
  * Converts a {@link Gtk.accelerator_parse} style accel string to a human-readable string.
  *
- * @param accel an accelerator label like “<Control>a” or “<Super_L>Right”
+ * @param accel an accelerator label like “<Control>a” or “<Super>Right”
  *
  * @return a human-readable string like "Ctrl + A" or "⌘ + →"
  */
@@ -129,16 +129,16 @@ public string[] accel_to_string (string accel) {
 /**
  * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}
  *
- * @param description
+ * @param description a standard tooltip text string
  *
- * @param an array of accelerator labels like {"<Control>a", "<Super_L>Right"}
+ * @param a string array of accelerator labels like {"<Control>a", "<Super>Right"}
  *
  * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
  */
 public string markup_accel_tooltip (string description, string[] accels) {
     int i = 0;
     foreach (string accel in accels) {
-        string[] keys = parse_accelerator (accel);
+        string[] keys = accel_to_string (accel);
         accels[i] = string.joinv (" + ", keys);
         i++;
     }
