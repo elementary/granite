@@ -83,7 +83,7 @@ public enum Granite.CloseButtonPosition
  *
  * @return a human-readable string like "Ctrl + A" or "⌘ + →"
  */
-public string[] accel_to_string (string accel) {
+public string accel_to_string (string accel) {
     uint accel_key;
     Gdk.ModifierType accel_mods;
     Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
@@ -121,9 +121,9 @@ public string[] accel_to_string (string accel) {
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
             break;
-     }
+    }
 
-    return arr;
+    return string.joinv (" + ", arr);
 }
 
 /**
@@ -138,8 +138,7 @@ public string[] accel_to_string (string accel) {
 public string markup_accel_tooltip (string description, string[] accels) {
     int i = 0;
     foreach (string accel in accels) {
-        string[] keys = accel_to_string (accel);
-        accels[i] = string.joinv (" + ", keys);
+        accels[i] = accel_to_string (accel);
         i++;
     }
 
