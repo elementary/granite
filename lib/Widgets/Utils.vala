@@ -142,7 +142,8 @@ public string markup_accel_tooltip (string description, string[] accels) {
         i++;
     }
 
-    var accel_label = string.joinv (", ", accels);
+    ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+    var accel_label = string.joinv (_(", "), accels);
 
     return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (description, accel_label);
 }
