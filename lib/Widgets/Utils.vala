@@ -83,7 +83,7 @@ public enum Granite.CloseButtonPosition
  *
  * @return a human-readable string like "Ctrl + A" or "⌘ + →"
  */
-public string accel_to_string (string accel) {
+public static string accel_to_string (string accel) {
     uint accel_key;
     Gdk.ModifierType accel_mods;
     Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
@@ -135,7 +135,7 @@ public string accel_to_string (string accel) {
  *
  * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
  */
-public string markup_accel_tooltip (string description, string[] accels) {
+public static string markup_accel_tooltip (string description, string[] accels) {
     int i = 0;
     foreach (string accel in accels) {
         accels[i] = accel_to_string (accel);
