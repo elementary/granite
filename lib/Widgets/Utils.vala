@@ -77,6 +77,78 @@ public enum Granite.CloseButtonPosition
 }
 
 /**
+ * Converts a {@link Gtk.accelerator_parse} style accel string to a human-readable string.
+ *
+ * @param accel an accelerator label like “<Control>a” or “<Super_L>Right”
+ *
+ * @return a human-readable string like "Ctrl + A" or "⌘ + →"
+ */
+public string[] accel_to_string (string accel) {
+    uint accel_key;
+    Gdk.ModifierType accel_mods;
+    Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
+
+    string[] arr = {};
+    if (Gdk.ModifierType.SUPER_MASK in accel_mods) {
+        arr += "⌘";
+    }
+
+    if (Gdk.ModifierType.SHIFT_MASK in accel_mods) {
+        arr += _("Shift");
+    }
+
+    if (Gdk.ModifierType.CONTROL_MASK in accel_mods) {
+        arr += _("Ctrl");
+    }
+
+    if (Gdk.ModifierType.MOD1_MASK in accel_mods) {
+        arr += _("Alt");
+    }
+
+    switch (accel_key) {
+        case Gdk.Key.Up:
+            arr += "↑";
+            break;
+        case Gdk.Key.Down:
+            arr += "↓";
+            break;
+        case Gdk.Key.Left:
+            arr += "←";
+            break;
+        case Gdk.Key.Right:
+            arr += "→";
+            break;
+        default:
+            arr += Gtk.accelerator_get_label (accel_key, 0);
+            break;
+     }
+
+    return arr;
+}
+
+/**
+ * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}
+ *
+ * @param description
+ *
+ * @param an array of accelerator labels like {"<Control>a", "<Super_L>Right"}
+ *
+ * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
+ */
+public string markup_accel_tooltip (string description, string[] accels) {
+    int i = 0;
+    foreach (string accel in accels) {
+        string[] keys = parse_accelerator (accel);
+        accels[i] = string.joinv (" + ", keys);
+        i++;
+    }
+
+    var accel_label = string.joinv (", ", accels);
+
+    return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (description, accel_label);
+}
+
+/**
  * This namespace contains functions to apply CSS stylesheets to widgets.
  */
 namespace Granite.Widgets.Utils {
