@@ -76,6 +76,8 @@ public enum Granite.CloseButtonPosition
     RIGHT
 }
 
+namespace Granite {
+
 /**
  * Converts a {@link Gtk.accelerator_parse} style accel string to a human-readable string.
  *
@@ -146,6 +148,8 @@ public static string markup_accel_tooltip (string description, string[] accels) 
     var accel_label = string.joinv (_(", "), accels);
 
     return "%s\n<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (description, accel_label);
+}
+
 }
 
 /**
