@@ -150,7 +150,7 @@ public static string markup_accel_tooltip (string[] accels, string? description 
     var markup = "<span weight=\"600\" size=\"smaller\" alpha=\"75%\">%s</span>".printf (accel_label);
 
     if (description != null && description != "") {
-        return string.join ("\n", description, markup);
+        markup = string.join ("\n", description, markup);
     }
 
     return markup;
