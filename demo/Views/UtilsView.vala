@@ -23,10 +23,10 @@ public class UtilsView : Gtk.Grid {
         tooltip_markup_label.halign = Gtk.Align.END;
 
         var button_one = new Gtk.Button.from_icon_name ("mail-reply-all", Gtk.IconSize.LARGE_TOOLBAR);
-        button_one.tooltip_markup = Granite.markup_accel_tooltip ("Reply All", {"<Ctrl><Shift>R"});
+        button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, "Reply All");
 
-        var button_two = new Gtk.Button.from_icon_name ("color-fill", Gtk.IconSize.LARGE_TOOLBAR);
-        button_two.tooltip_markup = Granite.markup_accel_tooltip ("Spill color bucket", {"<Super>R", "<Ctrl><Shift>Up"});
+        var button_two = new Gtk.Button.with_label ("Label Buttons");
+        button_two.tooltip_markup = Granite.markup_accel_tooltip ({"<Super>R", "<Ctrl><Shift>Up"});
 
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;
