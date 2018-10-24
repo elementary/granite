@@ -129,7 +129,12 @@ public static string accel_to_string (string accel) {
 }
 
 /**
- * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}
+ * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}. This method uses {@link Granite.accel_to_string}.
+ *
+ * Example:
+ *
+ * Description
+ * Shortcut 1, Shortcut 2
  *
  * @param a string array of accelerator labels like {"<Control>a", "<Super>Right"}
  *
@@ -138,10 +143,8 @@ public static string accel_to_string (string accel) {
  * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
  */
 public static string markup_accel_tooltip (string[] accels, string? description = null) {
-    int i = 0;
-    foreach (string accel in accels) {
-        accels[i] = accel_to_string (accel);
-        i++;
+    for (int i = 0; i < accels.length; i++) {
+       accels[i] = accel_to_string (accels[i]); 
     }
 
     ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
