@@ -153,12 +153,18 @@ public static string accel_to_string (string accel) {
  * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
  */
 public static string markup_accel_tooltip (string[] accels, string? description = null) {
+    string[] unique_accels = {};
+
     for (int i = 0; i < accels.length; i++) {
-       accels[i] = accel_to_string (accels[i]);
+        var accel_string = accel_to_string (accels[i]);
+
+        if (!(accel_string in unique_accels)) {
+            unique_accels += accel_string;
+        }
     }
 
     ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-    var accel_label = string.joinv (_(", "), accels);
+    var accel_label = string.joinv (_(", "), unique_accels);
 
     var markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
 
