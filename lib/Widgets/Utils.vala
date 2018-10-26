@@ -121,9 +121,11 @@ public static string accel_to_string (string accel) {
             arr += "→";
             break;
         case Gdk.Key.minus:
+        case Gdk.Key.KP_Subtract:
             ///TRANSLATORS: This is a non-symbol representation of the "-" key
-            arr += "Minus";
+            arr += _("Minus");
             break;
+        case Gdk.Key.KP_Add:
         case Gdk.Key.plus:
             ///TRANSLATORS: This is a non-symbol representation of the "+" key
             arr += _("Plus");
