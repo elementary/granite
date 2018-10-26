@@ -189,16 +189,24 @@ namespace Granite.Widgets {
         internal Gtk.MenuItem duplicate_m;
         internal Gtk.MenuItem pin_m;
 
+        private void update_close_button_tooltip () {
+            string[] accels = {};
+            if (_is_current_tab) accels = {"<Ctrl>W"};
+            close_button.tooltip_markup = markup_accel_tooltip (accels, _("Close Tab"));
+        }
+
         private bool _is_current_tab = false;
         internal bool is_current_tab {
             set {
                 _is_current_tab = value;
+                update_close_button_tooltip ();
                 update_close_button_visibility ();
             }
         }
 
         private bool cursor_over_tab = false;
         private bool cursor_over_close_button = false;
+        private Gtk.Button close_button;
         private Gtk.Revealer close_button_revealer;
 
         internal signal void closed ();
@@ -234,8 +242,8 @@ namespace Granite.Widgets {
             _working.set_size_request (16, 16);
             _working.start();
 
-            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
-            close_button.tooltip_markup = markup_accel_tooltip ({"<Ctrl>W"}, _("Close Tab"));
+            close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+            update_close_button_tooltip ();
             close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
 
