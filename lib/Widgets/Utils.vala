@@ -120,6 +120,16 @@ public static string accel_to_string (string accel) {
         case Gdk.Key.Right:
             arr += "→";
             break;
+        case Gdk.Key.minus:
+        case Gdk.Key.KP_Subtract:
+            ///TRANSLATORS: This is a non-symbol representation of the "-" key
+            arr += _("Minus");
+            break;
+        case Gdk.Key.KP_Add:
+        case Gdk.Key.plus:
+            ///TRANSLATORS: This is a non-symbol representation of the "+" key
+            arr += _("Plus");
+            break;
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
             break;
@@ -148,14 +158,23 @@ public static string markup_accel_tooltip (string[]? accels, string? description
         parts += description;
     }
     if (accels != null &&  accels.length > 0) {
+        string[] unique_accels = {};
+
         for (int i = 0; i < accels.length; i++) {
-           accels[i] = accel_to_string (accels[i]);
+            var accel_string = accel_to_string (accels[i]);
+
+            if (!(accel_string in unique_accels)) {
+                unique_accels += accel_string;
+            }
         }
 
         ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-        var accel_label = string.joinv (_(", "), accels);
+        var accel_label = string.joinv (_(", "), unique_accels);
+
+        var markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
 
         var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+        
         parts += accel_markup;
     }
     return string.joinv ("\n", parts);
