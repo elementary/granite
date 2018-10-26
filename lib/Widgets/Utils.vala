@@ -120,6 +120,16 @@ public static string accel_to_string (string accel) {
         case Gdk.Key.Right:
             arr += "→";
             break;
+        case Gdk.Key.minus:
+        case Gdk.Key.KP_Subtract:
+            ///TRANSLATORS: This is a non-symbol representation of the "-" key
+            arr += _("Minus");
+            break;
+        case Gdk.Key.KP_Add:
+        case Gdk.Key.plus:
+            ///TRANSLATORS: This is a non-symbol representation of the "+" key
+            arr += _("Plus");
+            break;
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
             break;
