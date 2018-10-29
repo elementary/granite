@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-10-08 00:04+0000\n"
+"PO-Revision-Date: 2018-10-30 00:04+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -131,7 +131,7 @@ msgstr "他のタブを閉じる"
 #: ../lib/Widgets/DynamicNotebook.vala:487
 #: ../lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
-msgstr "すべてをクリア"
+msgstr "すべて消去"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
