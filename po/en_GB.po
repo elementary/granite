@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-10-25 07:28+0000\n"
+"PO-Revision-Date: 2018-10-26 00:03+0000\n"
 "Last-Translator: Ciaran Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://weblate.elementary.io/"
 "projects/desktop/granite/en_GB/>\n"
@@ -66,7 +66,7 @@ msgstr "This program is published under the terms of the "
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+msgstr " licence, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
