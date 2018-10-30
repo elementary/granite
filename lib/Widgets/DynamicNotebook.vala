@@ -676,6 +676,11 @@ namespace Granite.Widgets {
         // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
         string _add_button_tooltip;
 
+        public string add_button_tooltip_markup {
+            owned get { return add_button.get_tooltip_markup (); }
+            set { add_button.tooltip_markup = value; }
+        }
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
