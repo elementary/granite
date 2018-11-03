@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-06-16 00:09+0000\n"
-"Last-Translator: martin fromont <martin.fromont1@gmail.com>\n"
+"PO-Revision-Date: 2018-11-03 00:07+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French (Canada) <https://weblate.elementary.io/projects/"
 "desktop/granite/fr_CA/>\n"
 "Language: fr_CA\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -227,7 +227,7 @@ msgstr "Aucune action n'a été trouvée pour ce fichier"
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr "%H:%M:%S"
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
