@@ -13,7 +13,20 @@ add_project_arguments(
     language: ['c']
 )
 
+if build_machine.system() == 'linux'
+    vala_os_arg = ['--define=LINUX']
+elif build_machine.system() == 'dragonfly'
+    vala_os_arg = ['--define=DRAGON_FLY']
+elif build_machine.system() == 'freebsd'
+    vala_os_arg = ['--define=FREE_BSD']
+elif build_machine.system() == 'netbsd'
+    vala_os_arg = ['--define=NET_BSD']
+else
+    vala_os_arg = []
+endif
+
 add_project_arguments(
+    vala_os_arg,
     '--abi-stability',
     '--hide-internal',
     '--target-glib=2.50',
@@ -26,21 +39,6 @@ libgranite_deps = [
     dependency('gio-unix-2.0'),
     dependency('gtk+-3.0', version: '>=3.22'),
 ]
-
-resources_dir = join_paths(
-    get_option('prefix'),
-    get_option('datadir'),
-    meson.project_name()
-)
-
-conf = configuration_data()
-conf.set('RESOURCES_DIR', resources_dir)
-
-config_header = configure_file(
-    input: 'lib/config.h.in',
-    output: 'config.h',
-    configuration: conf
-)
 
 pkgconfig = import('pkgconfig')
 i18n = import('i18n')

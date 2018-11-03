@@ -69,8 +69,6 @@ libgranite = library(
 
     libgranite_sources,
 
-    'config.vapi',
-
     dependencies: [
         libgranite_deps,
         meson.get_compiler('c').find_library('m'),
