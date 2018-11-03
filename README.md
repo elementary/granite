@@ -1,49 +1,59 @@
 # Granite
-Granite is a companion library for GTK+ and GLib. Among other things, it provides complex widgets and convenience functions designed for use in apps built for elementary OS.
+Granite is a companion library for GTK+ and GLib. Among other things, it
+provides complex widgets and convenience functions designed for use in apps
+built for elementary OS.
 
 [![Packaging status](https://repology.org/badge/tiny-repos/granite.svg)](https://repology.org/metapackage/granite)
 [![Translation status](https://l10n.elementary.io/widgets/desktop/granite/svg-badge.svg)](https://l10n.elementary.io/projects/desktop/granite/?utm_source=widget)
 
+
 ## Building, Testing, and Installation
 
 You'll need the following dependencies:
-* cmake
+* meson
 * gobject-introspection
 * libgee-0.8-dev
 * libgirepository1.0-dev
 * libgtk-3-dev
 * valac
 
-It's recommended to create a clean build environment
+Run `meson build` to configure the build environment:
 
-    mkdir build
-    cd build/
-    
-Run `cmake` to configure the build environment and then `make all test` to build
+    meson build --prefix=/usr
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-    make
-    
-To install, use `make install`
+This command creates a `build` directory. For all following commands, change to
+the build directory before running them.
 
-    sudo make install
+To build granite, use `ninja`:
 
-To see a demo app of Granite's widgets, use 'granite-demo'
+    ninja
+
+To install, use `ninja install`
+
+    ninja install
+
+To see a demo app of Granite's widgets, run `granite-demo` after installing it:
 
     granite-demo
 
+
 ## Documentation
 
-Documentation for all of the classes and functions in Granite is available [on Valadoc](https://valadoc.org/granite/Granite.html)
+Documentation for all of the classes and functions in Granite is available
+[on Valadoc](https://valadoc.org/granite/Granite.html)
 
-To generate Vala documentation from this repository, use `make valadocs`
+The additional requirements for building the documentation are:
+
+* valadoc
+* gtk-doc
+
+To generate Vala documentation from this repository, use `ninja doc/valadoc` in
+the build directory:
 
     make valadocs
 
-To generate C documentation from this repository, use `make cdocs`
+To generate C documentation from this repository, use `ninja doc/cdocs` in
+the build directory:
 
     make cdocs
 
-To generate both C and Vala documentation at once, use `make docs`
-
-    make docs

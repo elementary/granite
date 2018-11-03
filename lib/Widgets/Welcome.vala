@@ -26,7 +26,7 @@
  *
  * Granite.Widgets.Welcome will get the style class `welcome`.
  *
- * {{../../doc/images/Welcome.png}}
+ * {{../doc/images/Welcome.png}}
  *
  * ''Example''<<BR>>
  * {{{

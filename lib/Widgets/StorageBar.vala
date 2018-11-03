@@ -22,7 +22,7 @@
 /**
  * An horizontal bar showing the remaining amount of space.
  *
- * {{../../doc/images/StorageBar.png}}
+ * {{../doc/images/StorageBar.png}}
  *
  * ''Example''<<BR>>
  * {{{

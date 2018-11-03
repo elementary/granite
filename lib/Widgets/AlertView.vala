@@ -24,7 +24,7 @@
  *
  * It can be used to show an empty view or hiding a panel when this one is disabled.
  *
- * {{../../doc/images/AlertView.png}}
+ * {{../doc/images/AlertView.png}}
  *
  * ''Example''<<BR>>
  * {{{
