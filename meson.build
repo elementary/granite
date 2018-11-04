@@ -4,6 +4,8 @@ project(
     version: '5.2.1'
 )
 
+rdnn = 'io.elementary.' + meson.project_name()
+
 if meson.get_compiler('vala').version() < '0.40.0'
     error('vala compiler version 0.40.0 or newer is required.')
 endif
@@ -47,5 +49,8 @@ subdir('lib')
 subdir('demo')
 subdir('icons')
 subdir('po')
+subdir('data')
 subdir('doc')
+
+meson.add_install_script('meson/post_install.py')
 

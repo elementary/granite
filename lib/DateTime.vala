@@ -104,13 +104,13 @@ namespace Granite.DateTime {
     }
 
     /**
-     * Gets the //clock-format// key from //org.gnome.desktop.interface// schema
+     * Gets the //clock-format// key from //io.elementary.granite// schema
      * and determines if the clock format is 12h based
      *
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        var h24_settings = new Settings ("io.elementary.desktop.wingpanel.datetime");
+        var h24_settings = new Settings ("io.elementary.granite");
         var format = h24_settings.get_string ("clock-format");
         return (format.contains ("12h"));
     }

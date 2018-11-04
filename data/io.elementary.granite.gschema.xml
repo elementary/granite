@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <enum id="io.elementary.granite.clock-formats">
+    <value nick="12h" value="0" />
+    <value nick="24h" value="1" />
+    <value nick="ISO8601" value="2" />
+  </enum>
+  <schema id="io.elementary.granite" path="/io/elementary/granite/">
+    <key name="clock-format" enum="io.elementary.granite.clock-formats">
+      <default>"12h"</default>
+      <summary>Whether the clock displays in 12h or 24h format</summary>
+      <description>Whether the clock displays in 12h or 24h format</description>
+    </key>
+  </schema>
+</schemalist>
