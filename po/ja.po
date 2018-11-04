@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-10-30 00:04+0000\n"
+"PO-Revision-Date: 2018-11-04 00:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -193,7 +193,7 @@ msgstr "メニュー"
 #: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
 #: ../lib/Widgets/AppMenu.vala:76
 msgid "About"
-msgstr "情報"
+msgstr "このアプリケーションについて"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
