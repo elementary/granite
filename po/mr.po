@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 17:16-0700\n"
+"POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2018-10-13 13:07+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/desktop/"
@@ -190,14 +190,14 @@ msgstr "आमची माहिती"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105
+#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137
+#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ":"
 
@@ -205,8 +205,7 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"कॉन्ट्रॅक्टरशी संपर्क साधू शकत नाही. आपल्याला ते इन्स्टॉल करावे लागू शकते"
+msgstr "कॉन्ट्रॅक्टरशी संपर्क साधू शकत नाही. आपल्याला ते इन्स्टॉल करावे लागू शकते"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -348,8 +347,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"हा प्रोग्राम %s परवान्याच्या अटींनुसार प्रकाशित झाला आहे, तो कोणत्याही "
-"प्रकारच्या हमीसह येत नाही; अधिक माहितीसाठी %s ला भेट द्या"
+"हा प्रोग्राम %s परवान्याच्या अटींनुसार प्रकाशित झाला आहे, तो कोणत्याही प्रकारच्या हमीसह "
+"येत नाही; अधिक माहितीसाठी %s ला भेट द्या"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -362,7 +361,7 @@ msgid "Files"
 msgstr "फाईल्स"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103
+#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
 msgstr "AM"
 
@@ -471,3 +470,30 @@ msgstr "%a, %b %e, %Y"
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
 msgstr "%a, %b %e"
+
+#: ../lib/Widgets/Utils.vala:99
+msgid "Shift"
+msgstr ""
+
+#: ../lib/Widgets/Utils.vala:103
+msgid "Ctrl"
+msgstr ""
+
+#: ../lib/Widgets/Utils.vala:107
+msgid "Alt"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: ../lib/Widgets/Utils.vala:126
+msgid "Minus"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: ../lib/Widgets/Utils.vala:131
+msgid "Plus"
+msgstr ""
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: ../lib/Widgets/Utils.vala:172
+msgid ", "
+msgstr ""
