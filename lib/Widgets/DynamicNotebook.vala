@@ -189,10 +189,29 @@ namespace Granite.Widgets {
         internal Gtk.MenuItem duplicate_m;
         internal Gtk.MenuItem pin_m;
 
+        private string[] _current_close_button_tooltip_accels;
+        internal string[] current_close_button_tooltip_accels {
+            set {
+                _current_close_button_tooltip_accels = value;
+                update_close_button_tooltip ();
+            }
+        }
+
+        private string _close_button_tooltip;
+        internal string close_button_tooltip {
+            set {
+                _close_button_tooltip = value;
+                update_close_button_tooltip ();
+            }
+        }
+
         private void update_close_button_tooltip () {
             string[] accels = {};
-            if (_is_current_tab) accels = {"<Ctrl>W"};
-            close_button.tooltip_markup = markup_accel_tooltip (accels, _("Close Tab"));
+            if (_is_current_tab) {
+                accels = _current_close_button_tooltip_accels;
+            }
+
+            close_button.tooltip_markup = markup_accel_tooltip (accels, _close_button_tooltip);
         }
 
         private bool _is_current_tab = false;
@@ -425,7 +444,7 @@ namespace Granite.Widgets {
         private Gee.LinkedList<Entry?> closed_tabs;
 
         public ClosedTabs () {
-            
+
         }
 
         construct {
@@ -679,6 +698,40 @@ namespace Granite.Widgets {
         public string add_button_tooltip_markup {
             owned get { return add_button.get_tooltip_markup (); }
             set { add_button.tooltip_markup = value; }
+        }
+
+        /**
+         * The text shown in the close button tooltip
+         */
+        private string _close_button_tooltip = _("Close Tab");
+        public string close_button_tooltip {
+            get { return _close_button_tooltip; }
+            set {
+                if (value != _close_button_tooltip) {
+                    tabs.foreach ((t) => {
+                        t.close_button_tooltip = value;
+                    });
+                }
+
+                _close_button_tooltip = value;
+            }
+        }
+
+        /**
+         * The accels shown in the current close button tooltip
+         */
+        private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
+        public string[] current_close_button_tooltip_accels {
+            get { return _current_close_button_tooltip_accels; }
+            set {
+                if (value != _current_close_button_tooltip_accels) {
+                    tabs.foreach ((t) => {
+                        t.current_close_button_tooltip_accels = value;
+                    });
+                }
+
+                _current_close_button_tooltip_accels = value;
+            }
         }
 
         public Tab current {
@@ -1148,6 +1201,8 @@ namespace Granite.Widgets {
             tab.pin_m.visible = allow_pinning;
             tab.pinnable = allow_pinning;
             tab.pinned = false;
+            tab.current_close_button_tooltip_accels = _current_close_button_tooltip_accels;
+            tab.close_button_tooltip = _close_button_tooltip;
 
             tab.width_request = tab_width;
             this.recalc_size ();
