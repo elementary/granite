@@ -47,13 +47,13 @@ The additional requirements for building the documentation are:
 * valadoc
 * gtk-doc
 
-To generate Vala documentation from this repository, use `ninja doc/valadoc` in
-the build directory:
+To generate Vala documentation from this repository, run this command in the
+build directory:
 
-    make valadocs
+    ninja doc/valadoc
 
-To generate C documentation from this repository, use `ninja doc/cdocs` in
-the build directory:
+To generate C documentation from this repository, run this command in the build
+directory:
 
-    make cdocs
+    ninja doc/cdocs
 
