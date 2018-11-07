@@ -152,27 +152,30 @@ public static string accel_to_string (string accel) {
  *
  * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
  */
-public static string markup_accel_tooltip (string[] accels, string? description = null) {
-    string[] unique_accels = {};
-
-    for (int i = 0; i < accels.length; i++) {
-        var accel_string = accel_to_string (accels[i]);
-
-        if (!(accel_string in unique_accels)) {
-            unique_accels += accel_string;
-        }
-    }
-
-    ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-    var accel_label = string.joinv (_(", "), unique_accels);
-
-    var markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
-
+public static string markup_accel_tooltip (string[]? accels, string? description = null) {
+    string[] parts = {};
     if (description != null && description != "") {
-        markup = string.join ("\n", description, markup);
+        parts += description;
     }
+    if (accels != null &&  accels.length > 0) {
+        string[] unique_accels = {};
 
-    return markup;
+        for (int i = 0; i < accels.length; i++) {
+            var accel_string = accel_to_string (accels[i]);
+
+            if (!(accel_string in unique_accels)) {
+                unique_accels += accel_string;
+            }
+        }
+
+        ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+        var accel_label = string.joinv (_(", "), unique_accels);
+
+        var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+
+        parts += accel_markup;
+    }
+    return string.joinv ("\n", parts);
 }
 
 }
