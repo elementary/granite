@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-11-07 08:06+0000\n"
+"PO-Revision-Date: 2018-11-22 00:02+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/desktop/"
 "granite/ja/>\n"
@@ -24,13 +24,13 @@ msgstr ""
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
 #: ../lib/GtkPatch/AboutDialog.vala:32
 msgid "Designed by:"
-msgstr "デザイナー:"
+msgstr "デザイン担当："
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
 #: ../lib//GtkPatch/AboutDialog.vala:55 ../lib/GtkPatch/AboutDialog.vala:55
 #: ../lib/GtkPatch/AboutDialog.vala:51
 msgid "Written by:"
-msgstr "作成者:"
+msgstr "作成者："
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
 #: ../lib//GtkPatch/AboutDialog.vala:93
@@ -42,14 +42,14 @@ msgstr "© %s"
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
 #: ../lib/GtkPatch/AboutDialog.vala:115 ../lib/GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
-msgstr "執筆者:"
+msgstr "ドキュメント執筆者："
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
 #: ../lib//GtkPatch/AboutDialog.vala:171 ../lib//GtkPatch/AboutDialog.vala:175
 #: ../lib/GtkPatch/AboutDialog.vala:175 ../lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr "翻訳者: %s"
+msgstr "翻訳担当：%s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
