@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-09-06 02:34+0000\n"
-"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
+"PO-Revision-Date: 2018-11-07 23:08+0000\n"
+"Last-Translator: Marco De Paolini <marco.depaolini@gmail.com>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/desktop/"
 "granite/it/>\n"
 "Language: it\n"
@@ -491,27 +491,27 @@ msgstr "%a %e %b"
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../lib/Widgets/Utils.vala:103
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../lib/Widgets/Utils.vala:107
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: ../lib/Widgets/Utils.vala:126
 msgid "Minus"
-msgstr ""
+msgstr "Meno"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: ../lib/Widgets/Utils.vala:131
 msgid "Plus"
-msgstr ""
+msgstr "Più"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: ../lib/Widgets/Utils.vala:172
 msgid ", "
-msgstr ""
+msgstr ", "
