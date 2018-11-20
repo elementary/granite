@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2018-11-20 21:22+0000\n"
-"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
+"Last-Translator: Cristian Molina <megatux@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/desktop/"
 "granite/es/>\n"
 "Language: es\n"
@@ -463,9 +463,8 @@ msgid "Tomorrow"
 msgstr "Mañana"
 
 #: ../lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "Cerrar"
+msgstr "_Cerrar"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
@@ -480,13 +479,11 @@ msgid "Disabled"
 msgstr "Desactivado"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "Abrir en una ventana nueva"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%a %e de %b de %Y"
 
