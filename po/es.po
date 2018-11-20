@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2018-11-20 21:22+0000\n"
-"Last-Translator: haggen svastian <h2gn@openmailbox.org>\n"
+"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/desktop/"
 "granite/es/>\n"
 "Language: es\n"
@@ -433,26 +433,26 @@ msgstr "Ahora"
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hace %dm"
+msgstr[1] "hace %dm"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hace %dh"
+msgstr[1] "hace %dh"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "en %dm"
+msgstr[1] "en %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "en %dh"
+msgstr[1] "en %dh"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
@@ -469,15 +469,15 @@ msgstr "Cerrar"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Activado"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivado"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 #, fuzzy
