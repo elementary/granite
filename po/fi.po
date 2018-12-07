@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-09-01 00:08+0000\n"
-"Last-Translator: Robin Lahtinen <robin.lahtinen@gmail.com>\n"
+"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"PO-Revision-Date: 2018-12-07 05:24+0000\n"
+"Last-Translator: Veli-Pekka Samuli Finnilä <vpf@tuta.io>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/desktop/"
 "granite/fi/>\n"
 "Language: fi\n"
@@ -199,14 +199,14 @@ msgstr "Tietoja"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105
+#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137
+#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ":"
 
@@ -373,7 +373,7 @@ msgid "Files"
 msgstr "Tiedostot"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103
+#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
 msgstr "AM"
 
@@ -474,3 +474,30 @@ msgstr "%a %e. %Bta %Y"
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
 msgstr "%a, %e. %b"
+
+#: ../lib/Widgets/Utils.vala:99
+msgid "Shift"
+msgstr "Vaihto"
+
+#: ../lib/Widgets/Utils.vala:103
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: ../lib/Widgets/Utils.vala:107
+msgid "Alt"
+msgstr "Alt"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: ../lib/Widgets/Utils.vala:126
+msgid "Minus"
+msgstr "Miinus"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: ../lib/Widgets/Utils.vala:131
+msgid "Plus"
+msgstr "Plus"
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: ../lib/Widgets/Utils.vala:172
+msgid ", "
+msgstr ", "
