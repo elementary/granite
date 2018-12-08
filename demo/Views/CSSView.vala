@@ -55,6 +55,16 @@ public class CSSView : Gtk.Grid {
         card.add (header3);
         card.add (header4);
 
+        var checker_label = new Gtk.Label ("\"checkerboard\" style class:");
+
+        var checker_image = new Gtk.Image.from_icon_name ("dialog-information",  Gtk.IconSize.DND);
+        checker_image.hexpand = true;
+        checker_image.margin = 6;
+
+        var checker_grid = new Gtk.Grid ();
+        checker_grid.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        checker_grid.add (checker_image);
+
         var terminal_label = new Gtk.Label ("\"terminal\" style class:");
 
         var terminal = new Gtk.TextView ();
@@ -89,24 +99,16 @@ public class CSSView : Gtk.Grid {
         accent_color_grid.add (accent_color_icon);
         accent_color_grid.add (accent_color_string);
 
-        var mode_switch_label = new Gtk.Label ("Mode switch:");
-        mode_switch_label.halign = Gtk.Align.END;
-
-        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
-        mode_switch.primary_icon_tooltip_text = ("Light background");
-        mode_switch.secondary_icon_tooltip_text = ("Dark background");
-        mode_switch.valign = Gtk.Align.CENTER;
-
         column_spacing = 12;
         row_spacing = 24;
         attach (card_label, 0, 0, 1, 1);
         attach (card, 1, 0, 2, 1);
-        attach (terminal_label, 0, 1, 1, 1);
-        attach (terminal, 1, 1, 2, 1);
-        attach (back_button_label, 0, 2, 1, 1);
-        attach (back_button, 1, 2, 2, 1);
-        attach (mode_switch_label, 0, 3);
-        attach (mode_switch, 1, 3);
+        attach (checker_label, 0, 1);
+        attach (checker_grid, 1, 1, 2, 1);
+        attach (terminal_label, 0, 2);
+        attach (terminal, 1, 2, 2, 1);
+        attach (back_button_label, 0, 3);
+        attach (back_button, 1, 3, 2, 1);
         attach (primary_color_label, 0, 4);
         attach (primary_color_button, 1, 4, 2, 1);
         attach (accent_color_label, 0, 5);

@@ -1,9 +1,17 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 17:16-0700\n"
+"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"PO-Revision-Date: 2018-09-15 00:10+0000\n"
+"Last-Translator: Carmina16 <mistresssilvara@hotmail.com>\n"
+"Language-Team: Occidental <https://weblate.elementary.io/projects/desktop/"
+"granite/ie/>\n"
+"Language: ie\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -34,14 +42,14 @@ msgstr ""
 #: ../lib/GtkPatch/AboutDialog.vala:175 ../lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Traductet per %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 #: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
-msgstr ""
+msgstr "Cluder"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
@@ -182,14 +190,14 @@ msgstr ""
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105
+#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137
+#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ""
 
@@ -351,7 +359,7 @@ msgid "Files"
 msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103
+#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
 msgstr ""
 
@@ -417,38 +425,65 @@ msgstr[1] ""
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Yer"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Deman"
 
 #: ../lib/Widgets/MessageDialog.vala:125
 msgid "_Close"
-msgstr ""
+msgstr "_Cluder"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_Anullar"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "Activ"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "Ínactiv"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
-msgstr ""
+msgstr "Aperter in un nov fenestre"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr ""
+msgstr "%a, %e.%m.%y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
+msgstr "%a, %e %b"
+
+#: ../lib/Widgets/Utils.vala:99
+msgid "Shift"
+msgstr ""
+
+#: ../lib/Widgets/Utils.vala:103
+msgid "Ctrl"
+msgstr ""
+
+#: ../lib/Widgets/Utils.vala:107
+msgid "Alt"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: ../lib/Widgets/Utils.vala:126
+msgid "Minus"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: ../lib/Widgets/Utils.vala:131
+msgid "Plus"
+msgstr ""
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: ../lib/Widgets/Utils.vala:172
+msgid ", "
 msgstr ""

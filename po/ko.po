@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-04 03:40+0000\n"
+"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"PO-Revision-Date: 2018-11-08 13:03+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://weblate.elementary.io/projects/desktop/"
 "granite/ko/>\n"
@@ -199,14 +199,14 @@ msgstr "소개"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105
+#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr "오후"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137
+#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ":"
 
@@ -227,7 +227,7 @@ msgstr "이 파일로 수행할 동작이 없습니다"
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr "%p %l시:%M분:%S"
+msgstr "%p %l시:%M:%S초"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
@@ -255,7 +255,7 @@ msgstr "%H:%M"
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr "%Y년 %b %e일 (%a)"
+msgstr "%Y년 %b %e일 %a요일"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
@@ -269,7 +269,7 @@ msgstr "%Y년 %b %e일"
 #: ../lib//Widgets/Utils.vala:108 ../lib/Widgets/Utils.vala:108
 #: ../lib/DateTime.vala:154
 msgid "%Y"
-msgstr "%Y"
+msgstr "%Y년"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
@@ -283,7 +283,7 @@ msgstr "%b %e일"
 #: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
 #: ../lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr "%a %Y"
+msgstr "%Y년 %a요일"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
@@ -291,14 +291,14 @@ msgstr "%a %Y"
 #: ../lib/DateTime.vala:163
 #, c-format
 msgid "%a"
-msgstr "%a"
+msgstr "%a요일"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr "%b %e일 (%a)"
+msgstr "%b %e일 %a요일"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -375,7 +375,7 @@ msgid "Files"
 msgstr "파일"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103
+#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
 msgstr "오전"
 
@@ -397,7 +397,7 @@ msgstr "실행하세요"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
-msgstr "나를 누르세요"
+msgstr "누르세요"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
@@ -466,9 +466,36 @@ msgstr "새 창에서 열기"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%Y년 %b %e일 (%a)"
+msgstr "%Y년 %b %e일 %a요일"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%b %e일 (%a)"
+msgstr "%b %e일 %a요일"
+
+#: ../lib/Widgets/Utils.vala:99
+msgid "Shift"
+msgstr "Shift"
+
+#: ../lib/Widgets/Utils.vala:103
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: ../lib/Widgets/Utils.vala:107
+msgid "Alt"
+msgstr "Alt"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: ../lib/Widgets/Utils.vala:126
+msgid "Minus"
+msgstr "마이너스"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: ../lib/Widgets/Utils.vala:131
+msgid "Plus"
+msgstr "플러스"
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: ../lib/Widgets/Utils.vala:172
+msgid ", "
+msgstr ", "
