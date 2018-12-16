@@ -157,24 +157,31 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     if (description != null && description != "") {
         parts += description;
     }
+
     if (accels != null &&  accels.length > 0) {
         string[] unique_accels = {};
 
         for (int i = 0; i < accels.length; i++) {
-            var accel_string = accel_to_string (accels[i]);
+            if (accels[i] == "") {
+                continue;
+            }
 
+            var accel_string = accel_to_string (accels[i]);
             if (!(accel_string in unique_accels)) {
                 unique_accels += accel_string;
             }
         }
 
-        ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-        var accel_label = string.joinv (_(", "), unique_accels);
+        if (unique_accels.length > 0) {
+            ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+            var accel_label = string.joinv (_(", "), unique_accels);
 
-        var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+            var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
 
-        parts += accel_markup;
+            parts += accel_markup;
+        }
     }
+
     return string.joinv ("\n", parts);
 }
 
