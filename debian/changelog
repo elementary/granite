@@ -1,3 +1,9 @@
+granite (5.2.3) UNRELEASED; urgency=medium
+
+  * Pre-release version bump.
+
+ -- Cody Garver <cody@elementary.io>  Mon, 17 Dec 2018 08:50:06 -0600
+
 granite (5.2.2) bionic; urgency=medium
 
   * New upstream release.
