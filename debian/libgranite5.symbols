@@ -1,5 +1,6 @@
 libgranite.so.5 libgranite5 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
+ granite_accel_to_string@Base 5.2.3
  granite_application_DEBUG@Base 0.2.0
  granite_application_construct@Base 0.2.0
  granite_application_create_appmenu@Base 0.2.0
@@ -118,6 +119,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_header_label_construct@Base 0.5
  granite_header_label_get_type@Base 0.5
  granite_header_label_new@Base 0.5
+ granite_markup_accel_tooltip@Base 5.2.3
  granite_message_dialog_construct@Base 0.5
  granite_message_dialog_construct_with_image_from_icon_name@Base 0.5
  granite_message_dialog_get_custom_bin@Base 0.5
@@ -132,6 +134,25 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_message_dialog_set_image_icon@Base 0.5
  granite_message_dialog_set_primary_text@Base 0.5
  granite_message_dialog_set_secondary_text@Base 0.5
+ granite_mode_switch_construct@Base 5.2.3
+ granite_mode_switch_construct_from_icon_name@Base 5.2.3
+ granite_mode_switch_get_active@Base 5.2.3
+ granite_mode_switch_get_primary_icon_gicon@Base 5.2.3
+ granite_mode_switch_get_primary_icon_name@Base 5.2.3
+ granite_mode_switch_get_primary_icon_tooltip_text@Base 5.2.3
+ granite_mode_switch_get_secondary_icon_gicon@Base 5.2.3
+ granite_mode_switch_get_secondary_icon_name@Base 5.2.3
+ granite_mode_switch_get_secondary_icon_tooltip_text@Base 5.2.3
+ granite_mode_switch_get_type@Base 5.2.3
+ granite_mode_switch_new@Base 5.2.3
+ granite_mode_switch_new_from_icon_name@Base 5.2.3
+ granite_mode_switch_set_active@Base 5.2.3
+ granite_mode_switch_set_primary_icon_gicon@Base 5.2.3
+ granite_mode_switch_set_primary_icon_name@Base 5.2.3
+ granite_mode_switch_set_primary_icon_tooltip_text@Base 5.2.3
+ granite_mode_switch_set_secondary_icon_gicon@Base 5.2.3
+ granite_mode_switch_set_secondary_icon_name@Base 5.2.3
+ granite_mode_switch_set_secondary_icon_tooltip_text@Base 5.2.3
  granite_seek_bar_construct@Base 0.5
  granite_seek_bar_get_duration_label@Base 0.5
  granite_seek_bar_get_is_grabbing@Base 0.5
@@ -440,6 +461,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_source_list_item_get_context_menu@Base 0.2.0
  granite_widgets_source_list_item_get_editable@Base 0.2.0
  granite_widgets_source_list_item_get_icon@Base 0.2.0
+ granite_widgets_source_list_item_get_markup@Base 5.2.3
  granite_widgets_source_list_item_get_name@Base 0.2.0
  granite_widgets_source_list_item_get_parent@Base 0.2.0
  granite_widgets_source_list_item_get_selectable@Base 0.2.0
@@ -450,6 +472,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_source_list_item_set_badge@Base 0.2.0
  granite_widgets_source_list_item_set_editable@Base 0.2.0
  granite_widgets_source_list_item_set_icon@Base 0.2.0
+ granite_widgets_source_list_item_set_markup@Base 5.2.3
  granite_widgets_source_list_item_set_name@Base 0.2.0
  granite_widgets_source_list_item_set_selectable@Base 0.2.0
  granite_widgets_source_list_item_set_visible@Base 0.2.0
