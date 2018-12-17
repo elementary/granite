@@ -27,7 +27,7 @@ namespace Granite.Widgets {
      *
      * Granite.Widgets.Toast will get the style class .app-notification
      *
-     * {{../../doc/images/Toast.png}}
+     * {{../doc/images/Toast.png}}
      */
     public class Toast : Gtk.Revealer {
 
