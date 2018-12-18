@@ -122,6 +122,7 @@ libgranite_dep = declare_dependency(
 granite_pc = pkgconfig.generate(
     libgranite,
     name: 'granite',
+    requires: libgranite_deps,
     subdirs: ['granite'],
     description: 'elementary\'s Application Framework',
     version: meson.project_version(),
