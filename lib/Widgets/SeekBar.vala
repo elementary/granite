@@ -21,7 +21,7 @@
  *
  * Granite.SeekBar will get the style class .seek-bar
  *
- * {{../../doc/images/SeekBar.png}}
+ * {{../doc/images/SeekBar.png}}
  *
  * ''Example''<<BR>>
  * {{{
