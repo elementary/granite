@@ -47,7 +47,7 @@ namespace Granite.DateTime {
         } else {
             if (with_second == true) {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
-                return _("%-H:%M:%S");
+                return _("%H:%M:%S");
             } else {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
                 return _("%H:%M");
