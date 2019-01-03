@@ -130,6 +130,9 @@ public static string accel_to_string (string accel) {
             ///TRANSLATORS: This is a non-symbol representation of the "+" key
             arr += _("Plus");
             break;
+        case Gdk.Key.Return:
+            arr += _("Enter");
+            break;
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
             break;
