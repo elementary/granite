@@ -315,7 +315,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
             message_grid.show_all ();
 
             if (custom_bin.get_child () != null) {
-                custom_bin.margin_top = 6;
+                custom_bin.margin_top = 12;
             }
         }
 
