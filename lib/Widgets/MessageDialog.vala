@@ -249,8 +249,20 @@ public class Granite.MessageDialog : Gtk.Dialog {
         secondary_label.xalign = 0;
 
         custom_bin = new SingleWidgetBin ();
-        custom_bin.add.connect (() => secondary_label.margin_bottom = 18);
-        custom_bin.remove.connect (() => secondary_label.margin_bottom = 0);
+        custom_bin.add.connect (() => {
+            secondary_label.margin_bottom = 18;
+            if (expander != null) {
+                custom_bin.margin_top = 6;
+            }
+        });
+
+        custom_bin.remove.connect (() => {
+            secondary_label.margin_bottom = 0;
+
+            if (expander != null) {
+                custom_bin.margin_top = 0;
+            }
+        });
 
         message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
@@ -285,6 +297,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
             secondary_label.margin_bottom = 18;
 
             details_view = new Gtk.TextView ();
+            details_view.border_width = 6;
             details_view.editable = false;
             details_view.pixels_below_lines = 3;
             details_view.wrap_mode = Gtk.WrapMode.WORD;
@@ -300,6 +313,10 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
             message_grid.attach (expander, 1, 2, 1, 1);
             message_grid.show_all ();
+
+            if (custom_bin.get_child () != null) {
+                custom_bin.margin_top = 6;
+            }
         }
 
         details_view.buffer.text = error_message;
