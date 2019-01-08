@@ -4,11 +4,11 @@ services:
  - docker
 
 env:
- - DEPENDENCY_PACKAGES="cmake gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-3-dev valac"
+ - DEPENDENCY_PACKAGES="meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-3-dev valac"
 
 install:
  - docker pull elementary/docker:juno-unstable
- - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && cmake . && env CTEST_OUTPUT_ON_FAILURE=true make"
+ - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && meson build && cd build && ninja"
 
 script:
  - echo BUILDS PASSED

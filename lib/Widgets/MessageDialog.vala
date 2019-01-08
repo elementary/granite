@@ -43,7 +43,7 @@
  *   message_dialog.destroy ();
  * }}}
  * 
- * {{../../doc/images/MessageDialog.png}}
+ * {{../doc/images/MessageDialog.png}}
  */
 public class Granite.MessageDialog : Gtk.Dialog {
     /**

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-08-15 00:08+0000\n"
+"PO-Revision-Date: 2018-12-11 00:05+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/desktop/"
 "granite/da/>\n"
@@ -329,7 +329,7 @@ msgstr "Billeder"
 #: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
 #: ../lib/Widgets/StorageBar.vala:90
 msgid "Apps"
-msgstr "Programmer"
+msgstr "Apps"
 
 #: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
@@ -389,7 +389,7 @@ msgstr "Toasts"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr "Simple notifikationer inden i programmet"
+msgstr "Enkle notifikationer i appen"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
@@ -483,7 +483,7 @@ msgstr "%a, %e %b"
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../lib/Widgets/Utils.vala:103
 msgid "Ctrl"
