@@ -22,6 +22,9 @@
  * getting the default translated format for either date and time.
  */
 namespace Granite.DateTime {
+    private const string GNOME_DESKTOP_SCHEMA = "org.gnome.desktop.interface";
+    private const string WINGPANEL_DATETIME_SCHEMA = "io.elementary.desktop.wingpanel.datetime";
+
     /**
      * Gets a default translated time format.
      * The function constructs a new string interpreting the //is_12h// and //with_second// parameters
@@ -110,9 +113,21 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        var h24_settings = new Settings ("io.elementary.desktop.wingpanel.datetime");
-        var format = h24_settings.get_string ("clock-format");
-        return (format.contains ("12h"));
+        SettingsSchemaSource? source = SettingsSchemaSource.get_default ();
+        bool use_wingpanel_schema = false;
+
+        if (source != null) { // If we have a valid SettingsSchemaSource
+            use_wingpanel_schema = (source.lookup (WINGPANEL_DATETIME_SCHEMA, true) != null);
+        }
+
+        Settings h24_settings = new Settings (use_wingpanel_schema ? WINGPANEL_DATETIME_SCHEMA : GNOME_DESKTOP_SCHEMA);
+                
+        if (h24_settings != null) {
+            var format = h24_settings.get_string ("clock-format");
+            return format.contains ("12h");
+        } else { // Neither schema exists
+            return false;
+        }
     }
 
     /**
