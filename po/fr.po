@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-12-11 07:15+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"PO-Revision-Date: 2019-01-14 00:08+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/desktop/"
 "granite/fr/>\n"
 "Language: fr\n"
@@ -67,7 +67,7 @@ msgstr "Ce programme est publié conformément à la licence "
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
+" , il est distribué SANS AUCUNE GARANTIE ; pour plus de détails, visitez "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -155,7 +155,7 @@ msgstr "Nouvel onglet"
 #: ../lib/Widgets/DynamicNotebook.vala:776
 #: ../lib/Widgets/DynamicNotebook.vala:770
 msgid "Undo Close Tab"
-msgstr "Réouvrir l'onglet fermé"
+msgstr "Rouvrir l'onglet fermé"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
@@ -227,14 +227,14 @@ msgstr "Aucune action n'a été trouvée pour ce fichier"
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 #: ../lib/DateTime.vala:45
 msgid "%l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
@@ -357,7 +357,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 "Ce programme est publié sous les termes de la licence %s, il est distribué "
-"avec AUCUNE GARANTIE; pour plus de détails, veuillez visiter %s"
+"avec AUCUNE GARANTIE ; pour plus de détails, veuillez visiter %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
