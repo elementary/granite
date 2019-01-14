@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-11-07 17:20+0000\n"
+"PO-Revision-Date: 2019-01-15 00:05+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/desktop/"
 "granite/ca/>\n"
@@ -226,42 +226,42 @@ msgstr "No s'ha trobat cap acció per a aquest fitxer"
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%H.%M.%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 #: ../lib/DateTime.vala:45
 msgid "%l:%M %p"
-msgstr "%H:%M"
+msgstr "%H.%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
 #: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
 #: ../lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr "%H:%M:%S"
+msgstr "%H.%M.%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 #: ../lib//Widgets/Utils.vala:88 ../lib/Widgets/Utils.vala:88
 #: ../lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr "%H:%M"
+msgstr "%H.%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr "%a %e de %b de %Y"
+msgstr "%a %e %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 #: ../lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%e de %b de %Y"
+msgstr "%e %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -275,14 +275,14 @@ msgstr "%Y"
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 #: ../lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%e de %b"
+msgstr "%e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 #: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
 #: ../lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr "%a %Y"
+msgstr "%a, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
@@ -297,7 +297,7 @@ msgstr "%a"
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr "%a %e de %b"
+msgstr "%a, %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -467,12 +467,12 @@ msgstr "Obre en una finestra nova"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a %e, %B de %Y"
+msgstr "%a %e, %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a %e %b"
+msgstr "%a, %e %b"
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
