@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-11-29 00:02+0000\n"
+"PO-Revision-Date: 2019-01-15 12:39+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
@@ -212,7 +212,7 @@ msgstr ":"
 #: ../lib//Widgets/ContractorView.vala:105
 #: ../lib/Widgets/ContractorView.vala:105
 msgid "Could not contact Contractor. You may need to install it"
-msgstr "无法连接 Contractor，您可能需要先安装它。"
+msgstr "无法连接 Contractor，您可能需要先安装它"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -377,7 +377,7 @@ msgstr "上午"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr ""
+msgstr "提醒视图"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
