@@ -163,8 +163,29 @@ namespace Granite.Services {
                 error (e.message);
             }
         }
-        
-    }
-    
-}
 
+        private static GLib.SettingsSchema? privacy_settings_schema = null;
+        private static GLib.Settings? privacy_settings = null;
+
+        /**
+         * Returns whether privacy mode is enabled in the system settings or not.
+         *
+         * Checks the "remember_recent_files" key in "org.gnome.desktop.privacy", returning false if the schema does not exist.
+         */
+        public static bool is_privacy_mode_enabled () {
+            if (privacy_settings_schema == null) {
+                privacy_settings_schema = SettingsSchemaSource.get_default ().lookup ("org.gnome.desktop.privacy", true);
+            }
+
+            if (privacy_settings_schema != null && privacy_settings_schema.has_key ("remember-recent-files")) {
+                if (privacy_settings == null) {
+                    privacy_settings = new GLib.Settings ("org.gnome.desktop.privacy");
+                }
+
+                return privacy_settings.get_boolean ("remember-recent-files");
+            }
+
+            return false;
+        }
+    }
+}
