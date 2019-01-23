@@ -168,11 +168,12 @@ namespace Granite.Services {
         private static GLib.Settings? privacy_settings = null;
 
         /**
-         * Returns whether privacy mode is enabled in the system settings or not.
+         * Returns whether history is enabled within the Security and Privacy system settings or not. A value of true
+         * means that you should store information such as the last opened file or a history within the app.
          *
-         * Checks the "remember_recent_files" key in "org.gnome.desktop.privacy", returning false if the schema does not exist.
+         * Checks the "remember_recent_files" key in "org.gnome.desktop.privacy", returning true if the schema does not exist.
          */
-        public static bool is_privacy_mode_enabled () {
+        public static bool history_is_enabled () {
             if (privacy_settings_schema == null) {
                 privacy_settings_schema = SettingsSchemaSource.get_default ().lookup ("org.gnome.desktop.privacy", true);
             }
@@ -185,7 +186,7 @@ namespace Granite.Services {
                 return privacy_settings.get_boolean ("remember-recent-files");
             }
 
-            return false;
+            return true;
         }
     }
 }
