@@ -61,7 +61,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     }
 
     /**
-    * Creates a new Avatar from the speficied pixbuf
+    * Creates a new Avatar from the specified pixbuf
     *
     * @param pixbuf image to be used
     */
@@ -70,7 +70,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     }
 
     /**
-     * Creates a new Avatar from the speficied filepath and icon size
+     * Creates a new Avatar from the specified filepath and icon size
      *
      * @param filepath image to be used
      * @param pixel_size to scale the image
