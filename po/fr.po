@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-02 17:16-0700\n"
-"PO-Revision-Date: 2018-08-29 16:40+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"PO-Revision-Date: 2019-01-14 00:08+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/desktop/"
 "granite/fr/>\n"
 "Language: fr\n"
@@ -67,7 +67,7 @@ msgstr "Ce programme est publié conformément à la licence "
 #: ../lib//GtkPatch/AboutDialog.vala:456
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" , il est distribué SANS AUCUNE GARANTIE; pour plus de détails, visitez "
+" , il est distribué SANS AUCUNE GARANTIE ; pour plus de détails, visitez "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -155,7 +155,7 @@ msgstr "Nouvel onglet"
 #: ../lib/Widgets/DynamicNotebook.vala:776
 #: ../lib/Widgets/DynamicNotebook.vala:770
 msgid "Undo Close Tab"
-msgstr "Réouvrir l'onglet fermé"
+msgstr "Rouvrir l'onglet fermé"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
 #: ../lib//Widgets/DynamicNotebook.vala:823
@@ -198,14 +198,14 @@ msgstr "À propos"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105
+#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137
+#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ":"
 
@@ -234,7 +234,7 @@ msgstr "%H:%M:%S"
 #: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
 #: ../lib/DateTime.vala:45
 msgid "%l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
@@ -347,7 +347,7 @@ msgstr "%s libres sur %s"
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 #: ../lib/Application.vala:234 ../lib/Application.vala:235
 msgid "%s's Developers"
-msgstr "Dévelopeurs de %s"
+msgstr "Développeurs de %s"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453 ../lib/GtkPatch/AboutDialog.vala:403
@@ -357,7 +357,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 "Ce programme est publié sous les termes de la licence %s, il est distribué "
-"avec AUCUNE GARANTIE; pour plus de détails, veuillez visiter %s"
+"avec AUCUNE GARANTIE ; pour plus de détails, veuillez visiter %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -382,7 +382,7 @@ msgid "Files"
 msgstr "Fichiers"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103
+#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
 msgstr "AM"
 
@@ -396,11 +396,11 @@ msgstr "Simples notifications à l'intérieur de l'application"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
-msgstr "Le boutton a été appuyé !"
+msgstr "Le bouton a été appuyé !"
 
 #: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
 msgid "Do Things"
-msgstr "Faire des choses"
+msgstr "Fais quelque-chose"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
@@ -483,3 +483,30 @@ msgstr "%a %e %b %Y"
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
 msgstr "%a %e %b"
+
+#: ../lib/Widgets/Utils.vala:99
+msgid "Shift"
+msgstr "Maj"
+
+#: ../lib/Widgets/Utils.vala:103
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: ../lib/Widgets/Utils.vala:107
+msgid "Alt"
+msgstr "Alt"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: ../lib/Widgets/Utils.vala:126
+msgid "Minus"
+msgstr "Moins"
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: ../lib/Widgets/Utils.vala:131
+msgid "Plus"
+msgstr "Plus"
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: ../lib/Widgets/Utils.vala:172
+msgid ", "
+msgstr ", "

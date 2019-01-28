@@ -27,7 +27,7 @@
  *
  * The Overlay Bar displays a single line of text that can be changed using the "status" property.
  *
- * {{../../doc/images/OverlayBar.png}}
+ * {{../doc/images/OverlayBar.png}}
  *
  * This widget tries to avoid getting in front of the content being displayed inside the {@link Gtk.Overlay}
  * by moving itself horizontally to the opposite side from the current one when the mouse pointer enters
@@ -37,8 +37,6 @@
  * for the parent {@link Gtk.Overlay}. Overlay Bar's constructor takes care of this automatically, if
  * the parent is supplied as a parameter, but you have to be careful not to unset the event for
  * the {@link Gtk.Overlay} at a later stage.
- *
- * @see Gtk.Overlay
  *
  * ''Example''<<BR>>
  * {{{
@@ -62,6 +60,9 @@
  *     }
  * }
  * }}}
+ *
+ * @see Gtk.Overlay
+ *
  */
 public class Granite.Widgets.OverlayBar : Gtk.EventBox {
 
