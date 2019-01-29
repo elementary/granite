@@ -273,11 +273,13 @@ namespace Granite.Widgets {
         private void is_unfocused () {
             if (popover.visible == false && old_string.collate (text) != 0) {
                 old_string = text;
-                parse_time (text.dup ());
+                time = parse_time (text.dup ());
             }
         }
 
-        private void parse_time (string timestr) {
+        private GLib.DateTime parse_time (string timestr) {
+            var date_time = new GLib.DateTime.now_local ();
+
             string current = "";
             bool is_hours = true;
             bool is_suffix = false;
@@ -305,23 +307,23 @@ namespace Granite.Widgets {
 
                     if (c.to_string ().contains ("m") && is_suffix == true) {
                         if (hour == null) {
-                            return;
+                            return date_time;
                         } else if (minute == null) {
                             minute = 0;
                         }
 
                         // We can imagine that some will try to set it to "19:00 am"
                         if (current.contains ("a") || hour >= 12) {
-                            time = time.add_hours (hour - time.get_hour ());
+                            date_time = date_time.add_hours (hour - date_time.get_hour ());
                         } else {
-                            time = time.add_hours (hour + 12 - time.get_hour ());
+                            date_time = date_time.add_hours (hour + 12 - date_time.get_hour ());
                         }
 
                         if (current.contains ("a") && hour == 12) {
-                            time = time.add_hours (-12);
+                            date_time = date_time.add_hours (-12);
                         }
 
-                        time = time.add_minutes (minute - time.get_minute ());
+                        date_time = date_time.add_minutes (minute - date_time.get_minute ());
                         has_suffix = true;
                     }
                 }
@@ -347,15 +349,16 @@ namespace Granite.Widgets {
 
             if (hour == null || minute == null) {
                 update_text ();
-                return;
+                return date_time;
             }
 
             if (has_suffix == false) {
-                time = time.add_hours (hour - time.get_hour ());
-                time = time.add_minutes (minute - time.get_minute ());
+                date_time = date_time.add_hours (hour - date_time.get_hour ());
+                date_time = date_time.add_minutes (minute - date_time.get_minute ());
             }
 
             update_text ();
+            return date_time;
         }
 
         private void update_text (bool no_signal = false) {
