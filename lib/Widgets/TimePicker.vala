@@ -307,7 +307,7 @@ namespace Granite.Widgets {
                         }
                     }
 
-                    if (c.to_string ().contains ("m") && is_suffix == true) {
+                    if (c.to_string ().contains ("m") && is_suffix) {
                         if (hour == null) {
                             return;
                         } else if (minute == null) {
