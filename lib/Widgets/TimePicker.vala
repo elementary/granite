@@ -195,11 +195,11 @@ namespace Granite.Widgets {
         }
 
         private void update_time (bool is_hour) {
-            if (changing_time == true) {
+            if (changing_time) {
                 return;
             }
 
-            if (is_hour == true) {
+            if (is_hour) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
 
                 if (Granite.DateTime.is_clock_format_12h ()) {
@@ -271,7 +271,7 @@ namespace Granite.Widgets {
         }
 
         private void is_unfocused () {
-            if (popover.visible == false && old_string.collate (text) != 0) {
+            if (!popover.visible && old_string.collate (text) != 0) {
                 old_string = text;
                 time = parse_time (text.dup ());
             }
@@ -291,21 +291,25 @@ namespace Granite.Widgets {
                 if (c.isdigit ()) {
                     current = "%s%c".printf (current, c);
                 } else {
-                    if (is_hours == true && is_suffix == false && current != "") {
-                        is_hours = false;
-                        hour = int.parse (current);
-                        current = "";
-                    } else if (is_hours == false && is_suffix == false && current != "") {
-                        minute = int.parse (current);
-                        current = "";
+                    if (!is_suffix) {
+                        if (current != "") {
+                            if (is_hours) {
+                                is_hours = false;
+                                hour = int.parse (current);
+                                current = "";
+                            } else {
+                                minute = int.parse (current);
+                                current = "";
+                            }
+                        }
+
+                        if (c.to_string ().contains ("a") || c.to_string ().contains ("p")) {
+                            is_suffix = true;
+                            current = "%s%c".printf (current, c);
+                        }
                     }
 
-                    if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && is_suffix == false) {
-                        is_suffix = true;
-                        current = "%s%c".printf (current, c);
-                    }
-
-                    if (c.to_string ().contains ("m") && is_suffix == true) {
+                    if (c.to_string ().contains ("m") && is_suffix) {
                         if (hour == null) {
                             return date_time;
                         } else if (minute == null) {
