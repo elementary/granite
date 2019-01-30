@@ -290,16 +290,18 @@ namespace Granite.Widgets {
                     current = "%s%c".printf (current, c);
                 } else {
                     if (!is_suffix) {
-                        if (is_hours && current != "") {
-                            is_hours = false;
-                            hour = int.parse (current);
-                            current = "";
-                        } else if (!is_hours && current != "") {
-                            minute = int.parse (current);
-                            current = "";
+                        if (current != "") {
+                            if (is_hours) {
+                                is_hours = false;
+                                hour = int.parse (current);
+                                current = "";
+                            } else {
+                                minute = int.parse (current);
+                                current = "";
+                            }
                         }
 
-                        if ((c.to_string ().contains ("a") || c.to_string ().contains ("p"))) {
+                        if (c.to_string ().contains ("a") || c.to_string ().contains ("p")) {
                             is_suffix = true;
                             current = "%s%c".printf (current, c);
                         }
