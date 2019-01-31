@@ -26,7 +26,7 @@ public class UtilsView : Gtk.Grid {
         button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, "Reply All");
 
         var button_two = new Gtk.Button.with_label ("Label Buttons");
-        button_two.tooltip_markup = Granite.markup_accel_tooltip ({"<Super>R", "<Ctrl><Shift>Up"});
+        button_two.tooltip_markup = Granite.markup_accel_tooltip ({"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return"});
 
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;

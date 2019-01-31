@@ -51,6 +51,7 @@ public class MessageDialogView : Gtk.Grid {
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
 
+        message_dialog.show_error_details ("The details of a possible error.");
         message_dialog.custom_bin.add (custom_widget);
         message_dialog.show_all ();
         if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {

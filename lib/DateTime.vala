@@ -39,10 +39,10 @@ namespace Granite.DateTime {
         if (is_12h == true) {
             if (with_second == true) {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
-                return _("%l:%M:%S %p");
+                return _("%-l:%M:%S %p");
             } else {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
-                return _("%l:%M %p");
+                return _("%-l:%M %p");
             }
         } else {
             if (with_second == true) {
