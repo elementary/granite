@@ -685,19 +685,34 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
+        private string _add_button_tooltip = _("New Tab");
+
        /**
         * The text shown in the add button tooltip
         */
         public string add_button_tooltip {
-            get { _add_button_tooltip = add_button.tooltip_text; return _add_button_tooltip; }
-            set { add_button.tooltip_text = value; }
+            get { return _add_button_tooltip; }
+            set {
+                _add_button_tooltip = value;
+                update_add_button_tooltip ();
+            }
         }
-        // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
-        string _add_button_tooltip;
 
-        public string add_button_tooltip_markup {
-            owned get { return add_button.get_tooltip_markup (); }
-            set { add_button.tooltip_markup = value; }
+        private string[] _add_button_tooltip_accels = {"<Ctrl>T"};
+
+        /**
+        * The accels shown in the add button tooltip
+        */
+        public string[] add_button_tooltip_accels {
+            get { return _add_button_tooltip_accels; }
+            set {
+                _add_button_tooltip_accels = value;
+                update_add_button_tooltip ();
+            }
+        }
+
+        private void update_add_button_tooltip () {
+            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _add_button_tooltip);
         }
 
         private string _close_button_tooltip = _("Close Tab");
@@ -719,7 +734,7 @@ namespace Granite.Widgets {
         }
 
         private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
-        
+
         /**
         * The accels shown in the current close button tooltip
         */
@@ -865,7 +880,7 @@ namespace Granite.Widgets {
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
             add_button.relief = Gtk.ReliefStyle.NONE;
-            add_button.tooltip_markup = markup_accel_tooltip ({"<Ctrl>T"}, _("New Tab"));
+            update_add_button_tooltip ();
 
             //FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
             var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
