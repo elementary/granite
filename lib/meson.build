@@ -11,6 +11,7 @@ libgranite_sources = files(
 
     'Services/ContractorProxy.vala',
     'Services/IconFactory.vala',
+    'Services/ISaveWindowStateMixin.vala',
     'Services/Logger.vala',
     'Services/Paths.vala',
     'Services/Settings.vala',
