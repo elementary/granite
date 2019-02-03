@@ -700,10 +700,11 @@ namespace Granite.Widgets {
             set { add_button.tooltip_markup = value; }
         }
 
-        /**
-         * The text shown in the close button tooltip
-         */
         private string _close_button_tooltip = _("Close Tab");
+
+        /**
+        * The text shown in the close button tooltip
+        */
         public string close_button_tooltip {
             get { return _close_button_tooltip; }
             set {
@@ -717,10 +718,11 @@ namespace Granite.Widgets {
             }
         }
 
-        /**
-         * The accels shown in the current close button tooltip
-         */
         private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
+        
+        /**
+        * The accels shown in the current close button tooltip
+        */
         public string[] current_close_button_tooltip_accels {
             get { return _current_close_button_tooltip_accels; }
             set {
