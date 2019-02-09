@@ -197,21 +197,13 @@ namespace Granite.Widgets {
             }
         }
 
-        private string _close_button_tooltip;
-        internal string close_button_tooltip {
-            set {
-                _close_button_tooltip = value;
-                update_close_button_tooltip ();
-            }
-        }
-
         private void update_close_button_tooltip () {
             string[] accels = {};
             if (_is_current_tab) {
                 accels = _current_close_button_tooltip_accels;
             }
 
-            close_button.tooltip_markup = markup_accel_tooltip (accels, _close_button_tooltip);
+            close_button.tooltip_markup = markup_accel_tooltip (accels, _("Close Tab"));
         }
 
         private bool _is_current_tab = false;
@@ -685,19 +677,6 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
-        private string _add_button_tooltip = _("New Tab");
-
-       /**
-        * The text shown in the add button tooltip
-        */
-        public string add_button_tooltip {
-            get { return _add_button_tooltip; }
-            set {
-                _add_button_tooltip = value;
-                update_add_button_tooltip ();
-            }
-        }
-
         private string[] _add_button_tooltip_accels = {"<Ctrl>T"};
 
         /**
@@ -712,25 +691,7 @@ namespace Granite.Widgets {
         }
 
         private void update_add_button_tooltip () {
-            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _add_button_tooltip);
-        }
-
-        private string _close_button_tooltip = _("Close Tab");
-
-        /**
-        * The text shown in the close button tooltip
-        */
-        public string close_button_tooltip {
-            get { return _close_button_tooltip; }
-            set {
-                if (value != _close_button_tooltip) {
-                    tabs.foreach ((t) => {
-                        t.close_button_tooltip = value;
-                    });
-                }
-
-                _close_button_tooltip = value;
-            }
+            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _("New Tab"));
         }
 
         private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
@@ -1219,7 +1180,6 @@ namespace Granite.Widgets {
             tab.pinnable = allow_pinning;
             tab.pinned = false;
             tab.current_close_button_tooltip_accels = _current_close_button_tooltip_accels;
-            tab.close_button_tooltip = _close_button_tooltip;
 
             tab.width_request = tab_width;
             this.recalc_size ();
