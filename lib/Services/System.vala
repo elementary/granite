@@ -30,7 +30,7 @@ namespace Granite.Services {
          *
          * @param uri the URI to open
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "GLib.AppInfo.launch_default_for_uri")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "GLib.AppInfo.launch_default_for_uri")]
         public static void open_uri (string uri) {
             try {
                 GLib.AppInfo.launch_default_for_uri (uri, null);
@@ -44,7 +44,7 @@ namespace Granite.Services {
          *
          * @param file the {@link GLib.File} to open
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "GLib.AppInfo.launch_default_for_uri")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "GLib.AppInfo.launch_default_for_uri")]
         public static void open (File file) {
             try {
                 GLib.AppInfo.launch_default_for_uri (file.get_uri (), null);
@@ -58,7 +58,7 @@ namespace Granite.Services {
          *
          * @param files an array of {@link GLib.File} to open
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "GLib.AppInfo.launch_default_for_uri")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "GLib.AppInfo.launch_default_for_uri")]
         public static void open_files (File[] files) {
             foreach (unowned GLib.File file in files) {
                 try {
@@ -74,7 +74,7 @@ namespace Granite.Services {
          *
          * @param app the {@link GLib.File} representing the application to launch
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "GLib.AppInfo.launch")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "GLib.AppInfo.launch")]
         public static void launch (File app) {
             launch_with_files (app, new File[] {});
         }
@@ -84,7 +84,7 @@ namespace Granite.Services {
          *
          * @param command the command to execute
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "AppInfo.create_from_commandline")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "AppInfo.create_from_commandline")]
         public static bool execute_command (string command) {
             try {
                 var info = AppInfo.create_from_commandline (command, "", 0);
@@ -103,7 +103,7 @@ namespace Granite.Services {
          * @param app the {@link GLib.File} representing the application to launch
          * @param files an array of {@link GLib.File} to open
          */
-        [Version (deprecated = true, deprecated_since = "5.2.3", replacement = "GLib.AppInfo.launch")]
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "GLib.AppInfo.launch")]
         public static void launch_with_files (File? app, File[] files) {
             if (app != null && !app.query_exists ()) {
                 warning ("Application '%s' doesn't exist", app.get_path ());
