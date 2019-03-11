@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:24+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Khalid <kmoj86@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -57,7 +57,7 @@ msgstr "ترجم من قبل %s"
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 #: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
-msgstr ""
+msgstr "إغلاق"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
