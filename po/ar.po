@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:35+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -511,14 +511,14 @@ msgstr "Alt"
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: ../lib/Widgets/Utils.vala:126
 msgid "Minus"
-msgstr ""
+msgstr "ناقص"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: ../lib/Widgets/Utils.vala:131
 msgid "Plus"
-msgstr ""
+msgstr "زائد"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: ../lib/Widgets/Utils.vala:172
 msgid ", "
-msgstr ""
+msgstr "،"
