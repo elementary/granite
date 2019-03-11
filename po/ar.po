@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:28+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -355,6 +355,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"هذا التطبيق تم نشره وفق بنود الرخصة %s، كما يأتي قطعاً بدون أي ضمانة؛ للمزيد "
+"من التفاصيل، زُر %s"
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -370,12 +372,12 @@ msgstr ""
 #: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
 #: ../lib/Widgets/StorageBar.vala:93
 msgid "Files"
-msgstr ""
+msgstr "ملفات"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr ""
+msgstr "قبل الظهر"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
