@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:24+0000\n"
-"Last-Translator: Khalid <kmoj86@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -131,7 +131,7 @@ msgstr "إغلاق علامات التبويب الأخرى"
 #: ../lib/Widgets/DynamicNotebook.vala:487
 #: ../lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
-msgstr ""
+msgstr "مسح الكل"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
@@ -170,7 +170,7 @@ msgstr "التبويبات المغلقة"
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 #: ../lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
-msgstr ""
+msgstr "إقترح ترجمات"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
@@ -200,7 +200,7 @@ msgstr "عن البرنامج"
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
 #: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr ""
+msgstr "بعد الظهر"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
