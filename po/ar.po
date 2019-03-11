@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2019-03-11 20:33+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"PO-Revision-Date: 2019-03-11 20:35+0000\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -494,19 +494,19 @@ msgstr "%a %e %b %Y"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr ""
+msgstr "%a, %b %e"
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr "شفت"
+msgstr "Shift"
 
 #: ../lib/Widgets/Utils.vala:103
 msgid "Ctrl"
-msgstr "تحكم"
+msgstr "Ctrl"
 
 #: ../lib/Widgets/Utils.vala:107
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: ../lib/Widgets/Utils.vala:126
