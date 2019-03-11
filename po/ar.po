@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:26+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -226,7 +226,7 @@ msgstr "لم يُعثر على فعل لهذا المللف"
 #: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
 #: ../lib/DateTime.vala:42
 msgid "%l:%M:%S %p"
-msgstr ""
+msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
