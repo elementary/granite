@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:33+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -414,39 +414,55 @@ msgstr "أظهر خيارات Granite"
 
 #: ../lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "الآن"
 
 #: ../lib/DateTime.vala:76
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "منذ %dm"
+msgstr[1] "منذ %dm"
+msgstr[2] "منذ %dm"
+msgstr[3] "منذ %dm"
+msgstr[4] "منذ %dm"
+msgstr[5] "منذ %dm"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "منذ %dh"
+msgstr[1] "منذ %dh"
+msgstr[2] "منذ %dh"
+msgstr[3] "منذ %dh"
+msgstr[4] "منذ %dh"
+msgstr[5] "منذ %dh"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "في تمام %dm"
+msgstr[1] "في تمام %dm"
+msgstr[2] "في تمام %dm"
+msgstr[3] "في تمام %dm"
+msgstr[4] "في تمام %dm"
+msgstr[5] "في تمام %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "في تمام %dh"
+msgstr[1] "في تمام %dh"
+msgstr[2] "في تمام %dh"
+msgstr[3] "في تمام %dh"
+msgstr[4] "في تمام %dh"
+msgstr[5] "في تمام %dh"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "البارحة"
 
 #: ../lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "غداً"
 
 #: ../lib/Widgets/MessageDialog.vala:125
 #, fuzzy
@@ -455,15 +471,15 @@ msgstr "إغلاق تبويب"
 
 #: ../lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "ألغي"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
 msgid "Enabled"
-msgstr ""
+msgstr "مُفعل"
 
 #: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
 msgid "Disabled"
-msgstr ""
+msgstr "مُعطل"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 #, fuzzy
@@ -473,7 +489,7 @@ msgstr "افتح في نافذة جديدة"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr ""
+msgstr "%a %e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
@@ -482,11 +498,11 @@ msgstr ""
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr ""
+msgstr "شفت"
 
 #: ../lib/Widgets/Utils.vala:103
 msgid "Ctrl"
-msgstr ""
+msgstr "تحكم"
 
 #: ../lib/Widgets/Utils.vala:107
 msgid "Alt"
