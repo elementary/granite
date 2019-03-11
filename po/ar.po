@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
 "PO-Revision-Date: 2019-03-11 20:29+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -385,23 +385,23 @@ msgstr ""
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
-msgstr ""
+msgstr "تنبيهات بسيطة داخل التطبيق"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
-msgstr ""
+msgstr "الزر كان مضغوط!"
 
 #: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
 msgid "Do Things"
-msgstr ""
+msgstr "إفعل أشياء"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
-msgstr ""
+msgstr "إضغطني"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
-msgstr ""
+msgstr "تم فعل الشيء"
 
 #: ../demo/GraniteDemo.vala:251 ../demo/Views/ToastView.vala:51
 msgid "Already did the thing"
