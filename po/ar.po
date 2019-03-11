@@ -8,15 +8,18 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2019-03-11 20:24+0000\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
+"ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
 #: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
@@ -34,7 +37,7 @@ msgstr "كتبها:"
 #: ../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "© %s"
-msgstr ""
+msgstr "© %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
@@ -54,7 +57,7 @@ msgstr "ترجم من قبل %s"
 #: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
 #: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
-msgstr ""
+msgstr "إغلاق"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
@@ -128,7 +131,7 @@ msgstr "إغلاق علامات التبويب الأخرى"
 #: ../lib/Widgets/DynamicNotebook.vala:487
 #: ../lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
-msgstr ""
+msgstr "مسح الكل"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
@@ -167,7 +170,7 @@ msgstr "التبويبات المغلقة"
 #: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
 #: ../lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
-msgstr ""
+msgstr "إقترح ترجمات"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
 #: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
@@ -197,7 +200,7 @@ msgstr "عن البرنامج"
 #: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
 #: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr ""
+msgstr "مساء"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
