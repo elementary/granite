@@ -309,7 +309,7 @@ msgstr "%b"
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56 ../lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr "صوت"
+msgstr "الصوت"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
