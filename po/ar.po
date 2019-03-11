@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2019-03-11 20:36+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"PO-Revision-Date: 2019-03-12 21:26+0000\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -37,7 +37,7 @@ msgstr "كتبها:"
 #: ../lib//GtkPatch/AboutDialog.vala:93
 #, c-format
 msgid "© %s"
-msgstr "حقوق النسخ %s"
+msgstr "حقوق النسخ© %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
 #: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
@@ -335,7 +335,7 @@ msgstr "تطبيقات"
 #: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
 #: ../lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr "أخرى"
+msgstr "أُخرى"
 
 #: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
