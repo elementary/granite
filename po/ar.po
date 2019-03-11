@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2019-03-11 20:24+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"PO-Revision-Date: 2019-03-11 20:26+0000\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
 "Language: ar\n"
@@ -207,7 +207,7 @@ msgstr "مساء"
 #: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
 #: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
 #: ../lib//Widgets/ContractorView.vala:105
@@ -240,49 +240,49 @@ msgstr "%l:%M %p"
 #: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
 #: ../lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
 #: ../lib//Widgets/Utils.vala:88 ../lib/Widgets/Utils.vala:88
 #: ../lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr ""
+msgstr "%a %e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 #: ../lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
 #: ../lib//Widgets/Utils.vala:108 ../lib/Widgets/Utils.vala:108
 #: ../lib/DateTime.vala:154
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 #: ../lib/DateTime.vala:157
 msgid "%b %e"
-msgstr ""
+msgstr "%e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
 #: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
 #: ../lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
@@ -290,26 +290,26 @@ msgstr ""
 #: ../lib/DateTime.vala:163
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr ""
+msgstr "%a %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 #: ../lib//Widgets/Utils.vala:123 ../lib/Widgets/Utils.vala:123
 #: ../lib/DateTime.vala:169
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56 ../lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr ""
+msgstr "صوت"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
