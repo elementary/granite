@@ -192,17 +192,19 @@ const string DESKTOP_SCHEMA = "io.elementary.desktop";
 const string DARK_KEY = "prefer-dark";
 
 /**
- * Determines whether the user has set an OS-wide dark style preference
- *
- * @return true if a dark style is preferred, or false otherwise
+ * Whether the user has set an OS-wide dark style preference.
  */
-public bool prefer_dark () {
-    if (SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false) != null) {
-        var desktop_settings = new Settings (DESKTOP_SCHEMA);
-        return desktop_settings.get_boolean (DARK_KEY);
-    }
+public bool prefer_dark {
+    get {
+        var lookup = SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false);
 
-    return false;
+        if (lookup != null) {
+            var desktop_settings = new Settings (DESKTOP_SCHEMA);
+            return desktop_settings.get_boolean (DARK_KEY);
+        }
+
+        return false;
+    }
 }
 
 }
