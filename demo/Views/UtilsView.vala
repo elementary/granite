@@ -32,7 +32,7 @@ public class UtilsView : Gtk.Grid {
         prefer_dark_label.halign = Gtk.Align.END;
 
         string prefer_dark_string;
-        if (Granite.prefer_dark {
+        if (Granite.Services.System.prefer_dark == true) {
             prefer_dark_string = "Dark";
         } else {
             prefer_dark_string = "Default";
