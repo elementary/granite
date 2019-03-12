@@ -188,6 +188,23 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     return string.joinv ("\n", parts);
 }
 
+const string DESKTOP_SCHEMA = "io.elementary.desktop";
+const string DARK_KEY = "prefer-dark";
+
+/**
+ * Determines whether the user has set an OS-wide dark style preference
+ *
+ * @return true if a dark style is preferred, or false otherwise
+ */
+public bool prefer_dark () {
+    if (SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false) != null) {
+        var desktop_settings = new Settings (DESKTOP_SCHEMA);
+        return desktop_settings.get_boolean (DARK_KEY);
+    }
+
+    return false;
+}
+
 }
 
 /**

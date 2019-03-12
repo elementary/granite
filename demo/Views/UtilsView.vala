@@ -28,10 +28,26 @@ public class UtilsView : Gtk.Grid {
         var button_two = new Gtk.Button.with_label ("Label Buttons");
         button_two.tooltip_markup = Granite.markup_accel_tooltip ({"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return"});
 
+        var prefer_dark_label = new Gtk.Label ("Prefer Style:");
+        prefer_dark_label.halign = Gtk.Align.END;
+
+        string prefer_dark_string;
+        if (Granite.prefer_dark ()) {
+            prefer_dark_string = "Dark";
+        } else {
+            prefer_dark_string = "Default";
+        }
+
+        var prefer_dark_result = new Gtk.Label (prefer_dark_string);
+
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;
-        add (tooltip_markup_label);
-        add (button_one);
-        add (button_two);
+        row_spacing = 12;
+
+        attach (tooltip_markup_label, 0, 0);
+        attach (button_one, 1, 0);
+        attach (button_two, 2, 0);
+        attach (prefer_dark_label, 0, 1);
+        attach (prefer_dark_result, 1, 1);
     }
 }
