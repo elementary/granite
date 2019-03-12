@@ -120,6 +120,14 @@ public static string accel_to_string (string accel) {
         case Gdk.Key.Right:
             arr += "→";
             break;
+        case Gdk.Key.Alt_L:
+            ///TRANSLATORS: The Alt key on the left side of the keyboard
+            arr += "Alt (Left)";
+            break;
+        case Gdk.Key.Alt_R:
+            ///TRANSLATORS: The Alt key on the right side of the keyboard
+            arr += "Alt (Right)";
+            break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
             ///TRANSLATORS: This is a non-symbol representation of the "-" key
@@ -132,6 +140,14 @@ public static string accel_to_string (string accel) {
             break;
         case Gdk.Key.Return:
             arr += _("Enter");
+            break;
+        case Gdk.Key.Shift_L:
+            ///TRANSLATORS: The Shift key on the left side of the keyboard
+            arr += "Shift (Left)";
+            break;
+        case Gdk.Key.Shift_R:
+            ///TRANSLATORS: The Shift key on the right side of the keyboard
+            arr += "Shift (Right)";
             break;
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
