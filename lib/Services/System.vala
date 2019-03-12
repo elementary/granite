@@ -28,20 +28,54 @@ namespace Granite.Services {
         const string DESKTOP_SCHEMA = "io.elementary.desktop";
         const string DARK_KEY = "prefer-dark";
 
+        private static GLib.Settings? desktop_settings;
+
         /**
          * Whether the user has set an OS-wide dark style preference.
+         * 
+         * If the GSetting schema that contains the setting does not
+         * exist, this will return false.
          */
         public static bool prefer_dark {
             get {
-                var lookup = SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false);
+                if (!ensure_desktop_settings ()) {
+                    return false;
+                }
 
+                return desktop_settings.get_boolean (DARK_KEY);
+            }
+        }
+
+        /**
+         * Notifies about the dark style setting being changed. See {@link Granite.Services.System.prefer_dark}.
+         * If the GSetting schema that contains the setting does not
+         * exist, this will not connect and cb will never be called.
+         * 
+         * @param cb the callback function to call when the prefer-dark key changes
+         * 
+         * @return true if successfully connected, false if no schema exists
+         */
+        public static bool notify_style_change (Callback cb) {
+            if (!ensure_desktop_settings ()) {
+                return false;
+            }
+
+            desktop_settings.changed[DARK_KEY].connect (cb);
+            return true;
+        }
+
+        private static bool ensure_desktop_settings () {
+            if (desktop_settings == null) {
+                var lookup = SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false);
                 if (lookup != null) {
-                    var desktop_settings = new GLib.Settings (DESKTOP_SCHEMA);
-                    return desktop_settings.get_boolean (DARK_KEY);
+                    desktop_settings = new GLib.Settings (DESKTOP_SCHEMA);
+                    return true;
                 }
 
                 return false;
             }
+
+            return true;
         }
 
         /**
