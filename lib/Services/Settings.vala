@@ -117,7 +117,7 @@ namespace Granite.Services {
          *
          * @param schema the name of the schema to interact with
          */
-        public Settings (string schema) {
+        protected Settings (string schema) {
             Object (schema: new GLib.Settings (schema));
         }
         
@@ -127,7 +127,7 @@ namespace Granite.Services {
          * @param schema the name of the schema to interact with
          * @param backend the desired backend to use
          */
-        public Settings.with_backend (string schema, SettingsBackend backend) {
+        protected Settings.with_backend (string schema, SettingsBackend backend) {
             Object (schema: new GLib.Settings.with_backend (schema, backend));
         }
         
@@ -139,7 +139,7 @@ namespace Granite.Services {
          * @param backend the desired backend to use
          * @param path the path to use
          */
-        public Settings.with_backend_and_path (string schema, SettingsBackend backend, string path) {
+        protected Settings.with_backend_and_path (string schema, SettingsBackend backend, string path) {
             Object (schema: new GLib.Settings.with_backend_and_path (schema, backend, path));
         }
         
@@ -154,7 +154,7 @@ namespace Granite.Services {
          * @param schema the name of the schema to interact with
          * @param path the path to use
          */
-        public Settings.with_path (string schema, string path) {
+        protected Settings.with_path (string schema, string path) {
             Object (schema: new GLib.Settings.with_path (schema, path));
         }
         

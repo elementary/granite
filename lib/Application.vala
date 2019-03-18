@@ -144,7 +144,7 @@ namespace Granite {
         /**
          * This creates a new Application class
          */
-        public Application () {
+        protected Application () {
 #if LINUX
             prctl (15, exec_name, 0, 0, 0);
 #elif DRAGON_FLY || FREE_BSD || NET_BSD || OPEN_BSD
