@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-12-11 00:05+0000\n"
+"PO-Revision-Date: 2019-03-17 17:27+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish <https://weblate.elementary.io/projects/desktop/"
-"granite/da/>\n"
+"Language-Team: Danish <https://l10n.elementary.io/projects/desktop/granite/"
+"da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-03-22 06:27+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -487,23 +487,23 @@ msgstr "Shift"
 
 #: ../lib/Widgets/Utils.vala:103
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: ../lib/Widgets/Utils.vala:107
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: ../lib/Widgets/Utils.vala:126
 msgid "Minus"
-msgstr ""
+msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: ../lib/Widgets/Utils.vala:131
 msgid "Plus"
-msgstr ""
+msgstr "Plus"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: ../lib/Widgets/Utils.vala:172
 msgid ", "
-msgstr ""
+msgstr ", "

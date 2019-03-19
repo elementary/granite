@@ -100,7 +100,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
      * Creates a new SimpleSettingsPage
      * Deprecated: Subclass this instead.
      */
-    public SimpleSettingsPage () {
+    protected SimpleSettingsPage () {
         
     }
 
