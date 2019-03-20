@@ -122,11 +122,11 @@ public static string accel_to_string (string accel) {
             break;
         case Gdk.Key.Alt_L:
             ///TRANSLATORS: The Alt key on the left side of the keyboard
-            arr += "Alt (Left)";
+            arr += _("Left Alt");
             break;
         case Gdk.Key.Alt_R:
             ///TRANSLATORS: The Alt key on the right side of the keyboard
-            arr += "Alt (Right)";
+            arr += _("Right Alt");
             break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
@@ -143,11 +143,11 @@ public static string accel_to_string (string accel) {
             break;
         case Gdk.Key.Shift_L:
             ///TRANSLATORS: The Shift key on the left side of the keyboard
-            arr += "Shift (Left)";
+            arr += _("Left Shift");
             break;
         case Gdk.Key.Shift_R:
             ///TRANSLATORS: The Shift key on the right side of the keyboard
-            arr += "Shift (Right)";
+            arr += _("Right Shift");
             break;
         default:
             arr += Gtk.accelerator_get_label (accel_key, 0);
