@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"POT-Creation-Date: 2019-03-20 18:41-0700\n"
 "PO-Revision-Date: 2018-11-08 03:18+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
@@ -20,337 +20,145 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
-#: ../lib//GtkPatch/AboutDialog.vala:36 ../lib/GtkPatch/AboutDialog.vala:36
-#: ../lib/GtkPatch/AboutDialog.vala:32
-msgid "Designed by:"
-msgstr "Projetado por:"
+#: lib/Application.vala:182
+msgid "Show Granite Options"
+msgstr "Exibir opções do Granite"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:55
-#: ../lib//GtkPatch/AboutDialog.vala:55 ../lib/GtkPatch/AboutDialog.vala:55
-#: ../lib/GtkPatch/AboutDialog.vala:51
-msgid "Written by:"
-msgstr "Escrito por:"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:93
-#: ../lib//GtkPatch/AboutDialog.vala:93
+#: lib/Application.vala:235
 #, c-format
-msgid "© %s"
-msgstr "%s ©"
+msgid "%s's Developers"
+msgstr "Desenvolvedores do %s"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:111
-#: ../lib//GtkPatch/AboutDialog.vala:111 ../lib//GtkPatch/AboutDialog.vala:115
-#: ../lib/GtkPatch/AboutDialog.vala:115 ../lib/GtkPatch/AboutDialog.vala:111
-msgid "Documented by:"
-msgstr "Documentado por:"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:171
-#: ../lib//GtkPatch/AboutDialog.vala:171 ../lib//GtkPatch/AboutDialog.vala:175
-#: ../lib/GtkPatch/AboutDialog.vala:175 ../lib/GtkPatch/AboutDialog.vala:171
-#, c-format
-msgid "Translated by %s"
-msgstr "Traduzido por %s"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
-#: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
-#: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
-#: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
-msgid "Close"
-msgstr "Fechar"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-#: ../lib//GtkPatch/AboutDialog.vala:456
-msgid "This program is published under the terms of the "
-msgstr "Este programa é publicado sob os termos do "
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-#: ../lib//GtkPatch/AboutDialog.vala:456
-msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr ""
-" licença, vem com ABSOLUTAMENTE NENHUMA GARANTIA; para detalhes, visite "
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
-#: ../lib//Application.vala:248
-msgid "Developers"
-msgstr "Desenvolvedores"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
-#: ../lib//Application.vala:258 ../lib//Application.vala:265
-#: ../lib/Application.vala:265 ../lib/Application.vala:251
-#: ../lib/Application.vala:252
+#: lib/Application.vala:252
 msgid "Website"
 msgstr "Website"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
-#: ../lib//Widgets/DynamicNotebook.vala:226
-#: ../lib//Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:226
-#: ../lib/Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:220
-#: ../lib/Widgets/DynamicNotebook.vala:260
-#: ../lib/Widgets/DynamicNotebook.vala:238
-#: ../lib/Widgets/DynamicNotebook.vala:262
-msgid "Close Tab"
-msgstr "Fechar aba"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
-#: ../lib//Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:263
-msgid "Open in a new Window"
-msgstr "Abrir em uma nova janela"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
-#: ../lib//Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:264
-#: ../lib/Widgets/DynamicNotebook.vala:266
-msgid "Duplicate"
-msgstr "Duplicar"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tab"
-msgstr "Fechar outra aba"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tabs"
-msgstr "Fechar outras abas"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
-#: ../lib//Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:487
-#: ../lib/Widgets/DynamicNotebook.vala:488
-msgid "Clear All"
-msgstr "Limpar tudo"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
-#: ../lib//Widgets/DynamicNotebook.vala:780
-#: ../lib//Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:780
-#: ../lib/Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:771
-#: ../lib/Widgets/DynamicNotebook.vala:804
-#: ../lib/Widgets/DynamicNotebook.vala:775
-#: ../lib/Widgets/DynamicNotebook.vala:808
-#: ../lib/Widgets/DynamicNotebook.vala:769
-#: ../lib/Widgets/DynamicNotebook.vala:800
-msgid "New Tab"
-msgstr "Nova aba"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
-#: ../lib//Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:772
-#: ../lib/Widgets/DynamicNotebook.vala:776
-#: ../lib/Widgets/DynamicNotebook.vala:770
-msgid "Undo Close Tab"
-msgstr "Desfazer fechar aba"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
-#: ../lib//Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:816
-#: ../lib/Widgets/DynamicNotebook.vala:820
-#: ../lib/Widgets/DynamicNotebook.vala:810
-msgid "Closed Tabs"
-msgstr "Abas fechadas"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
-#: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
-#: ../lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Sugerir traduções"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
-#: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
-#: ../lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Relatar um problema"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
-#: ../lib//Widgets/AppMenu.vala:48 ../lib//Widgets/AppMenu.vala:59
-#: ../lib//Widgets/AppMenu.vala:72 ../lib/Widgets/AppMenu.vala:48
-#: ../lib/Widgets/AppMenu.vala:59 ../lib/Widgets/AppMenu.vala:72
-#: ../lib/Widgets/AppMenu.vala:49 ../lib/Widgets/AppMenu.vala:61
-#: ../lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menu"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
-#: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
-#: ../lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Sobre"
-
-#. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
-#: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
-msgid "PM"
-msgstr "PM"
-
-#. / TRANSLATORS: separates hours from minutes.
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
-#: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
-msgid ":"
-msgstr ":"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "Não foi possível contactar o Contractor. Você pode precisar instalá-lo"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "No action found for this file"
-msgstr "Nenhuma ação encontrada para este arquivo"
-
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:77
-#: ../lib//Widgets/Utils.vala:77 ../lib/Widgets/Utils.vala:77
-#: ../lib/DateTime.vala:42
-msgid "%l:%M:%S %p"
+#: lib/DateTime.vala:42
+#, fuzzy
+msgid "%-l:%M:%S %p"
 msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:80
-#: ../lib//Widgets/Utils.vala:80 ../lib/Widgets/Utils.vala:80
-#: ../lib/DateTime.vala:45
-msgid "%l:%M %p"
+#: lib/DateTime.vala:45
+#, fuzzy
+msgid "%-l:%M %p"
 msgstr "%l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:85
-#: ../lib//Widgets/Utils.vala:85 ../lib/Widgets/Utils.vala:85
-#: ../lib/DateTime.vala:50
+#: lib/DateTime.vala:50
 msgid "%H:%M:%S"
 msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:88
-#: ../lib//Widgets/Utils.vala:88 ../lib/Widgets/Utils.vala:88
-#: ../lib/DateTime.vala:53
+#: lib/DateTime.vala:53
 msgid "%H:%M"
 msgstr "%H:%M"
 
+#: lib/DateTime.vala:73
+msgid "Now"
+msgstr "Agora"
+
+#: lib/DateTime.vala:76
+#, c-format
+msgid "%dm ago"
+msgid_plural "%dm ago"
+msgstr[0] "%dm atrás"
+msgstr[1] "%dm atrás"
+
+#: lib/DateTime.vala:79
+#, c-format
+msgid "%dh ago"
+msgid_plural "%dh ago"
+msgstr[0] "%dh atrás"
+msgstr[1] "%dh atrás"
+
+#: lib/DateTime.vala:85
+#, c-format
+msgid "in %dm"
+msgid_plural "in %dm"
+msgstr[0] "em %dm"
+msgstr[1] "em %dm"
+
+#: lib/DateTime.vala:88
+#, c-format
+msgid "in %dh"
+msgid_plural "in %dh"
+msgstr[0] "em %dh"
+msgstr[1] "em %dh"
+
+#: lib/DateTime.vala:94
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: lib/DateTime.vala:96
+msgid "Tomorrow"
+msgstr "Amanhã"
+
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
-#: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
-#: ../lib/DateTime.vala:148
-msgid "%a %b %e %Y"
+#: lib/DateTime.vala:148
+msgid "%a, %b %e, %Y"
 msgstr "%a, %e de %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
-#: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
-#: ../lib/DateTime.vala:151
+#: lib/DateTime.vala:151
 msgid "%b %e %Y"
 msgstr "%e de %b de %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
-#: ../lib//Widgets/Utils.vala:108 ../lib/Widgets/Utils.vala:108
-#: ../lib/DateTime.vala:154
+#: lib/DateTime.vala:154
 msgid "%Y"
 msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:111
-#: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
-#: ../lib/DateTime.vala:157
+#: lib/DateTime.vala:157
 msgid "%b %e"
 msgstr "%e de %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
-#: ../lib//Widgets/Utils.vala:114 ../lib/Widgets/Utils.vala:114
-#: ../lib/DateTime.vala:160
+#: lib/DateTime.vala:160
 msgid "%a %Y"
 msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:117
-#: ../lib//Widgets/Utils.vala:117 ../lib/Widgets/Utils.vala:117
-#: ../lib/DateTime.vala:163
+#: lib/DateTime.vala:163
 #, c-format
 msgid "%a"
 msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
-#: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
-#: ../lib/DateTime.vala:166
-msgid "%a %b %e"
+#: lib/DateTime.vala:166
+msgid "%a, %b %e"
 msgstr "%a, %e de %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
-#: ../lib//Widgets/Utils.vala:123 ../lib/Widgets/Utils.vala:123
-#: ../lib/DateTime.vala:169
+#: lib/DateTime.vala:169
 msgid "%b"
 msgstr "%b"
 
-#: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
-#: ../lib/Widgets/StorageBar.vala:56 ../lib/Widgets/StorageBar.vala:82
-msgid "Audio"
-msgstr "Áudio"
+#: lib/GtkPatch/AboutDialog.vala:32
+msgid "Designed by:"
+msgstr "Projetado por:"
 
-#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
-#: ../lib//Widgets/StorageBar.vala:55 ../lib/Widgets/StorageBar.vala:55
-#: ../lib/Widgets/StorageBar.vala:58 ../lib/Widgets/StorageBar.vala:59
-#: ../lib/Widgets/StorageBar.vala:85
-msgid "Videos"
-msgstr "Vídeos"
+#: lib/GtkPatch/AboutDialog.vala:51
+msgid "Written by:"
+msgstr "Escrito por:"
 
-#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
-#: ../lib//Widgets/StorageBar.vala:57 ../lib/Widgets/StorageBar.vala:57
-#: ../lib/Widgets/StorageBar.vala:60 ../lib/Widgets/StorageBar.vala:62
-#: ../lib/Widgets/StorageBar.vala:88
-msgid "Photos"
-msgstr "Fotos"
+#: lib/GtkPatch/AboutDialog.vala:111
+msgid "Documented by:"
+msgstr "Documentado por:"
 
-#: ../lib//Widgets/StorageBar.vala:59 ../lib/Widgets/StorageBar.vala:59
-#: ../lib/Widgets/StorageBar.vala:62 ../lib/Widgets/StorageBar.vala:64
-#: ../lib/Widgets/StorageBar.vala:90
-msgid "Apps"
-msgstr "Aplicativos"
+#: lib/GtkPatch/AboutDialog.vala:171
+#, c-format
+msgid "Translated by %s"
+msgstr "Traduzido por %s"
 
-#: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
-#: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
-#: ../lib/Widgets/StorageBar.vala:95
-msgid "Other"
-msgstr "Outro"
+#: lib/GtkPatch/AboutDialog.vala:296
+msgid "Close"
+msgstr "Fechar"
 
-#: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
-#: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
-#: ../lib/Widgets/StorageBar.vala:243 ../lib/Widgets/StorageBar.vala:267
-msgid "%s free out of %s"
-msgstr "%s livre de %s"
-
-#: ../lib//Application.vala:248 ../lib/Application.vala:248
-#: ../lib/Application.vala:234 ../lib/Application.vala:235
-msgid "%s's Developers"
-msgstr "Desenvolvedores do %s"
-
-#: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
-#: ../lib/GtkPatch/AboutDialog.vala:453 ../lib/GtkPatch/AboutDialog.vala:403
-#: ../lib/GtkPatch/AboutDialog.vala:395
+#: lib/GtkPatch/AboutDialog.vala:395
+#, c-format
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
@@ -358,142 +166,225 @@ msgstr ""
 "Este programa é publicado sob os termos da licença %s, ele vem SEM NENHUMA "
 "GARANTIA; Para mais informações, visite %s"
 
-#: ../demo/GraniteDemo.vala:63
-msgid "translator-credits"
-msgstr "translator-credits"
+#: lib/Widgets/AboutDialog.vala:80
+msgid "Suggest Translations"
+msgstr "Sugerir traduções"
 
-#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
-#: ../lib/Widgets/StorageBar.vala:64 ../lib/Widgets/StorageBar.vala:67
-#: ../lib/Widgets/StorageBar.vala:93
-msgid "Files"
-msgstr "Arquivos"
+#: lib/Widgets/AboutDialog.vala:82
+msgid "Report a Problem"
+msgstr "Relatar um problema"
 
-#. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: ../lib/Widgets/TimePicker.vala:103 ../lib/Widgets/TimePicker.vala:106
-msgid "AM"
-msgstr "AM"
+#: lib/Widgets/AppMenu.vala:66
+msgid "Menu"
+msgstr "Menu"
 
-#: ../demo/GraniteDemo.vala:130
-msgid "Toasts"
-msgstr "Toasts"
+#: lib/Widgets/AppMenu.vala:76
+msgid "About"
+msgstr "Sobre"
 
-#: ../demo/GraniteDemo.vala:130
-msgid "Simple in-app notifications"
-msgstr "Notificações simples em aplicativos"
+#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+msgid "Close Tab"
+msgstr "Fechar aba"
 
-#: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
-msgid "Button was pressed!"
-msgstr "Um botão foi pressionado!"
-
-#: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
-msgid "Do Things"
-msgstr "Faça coisas"
-
-#: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
-msgid "Press Me"
-msgstr "Pressione-me"
-
-#: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
-msgid "Did The Thing"
-msgstr "Fez a coisa"
-
-#: ../demo/GraniteDemo.vala:251 ../demo/Views/ToastView.vala:51
-msgid "Already did the thing"
-msgstr "Já fez a coisa"
-
-#: ../lib/Application.vala:181 ../lib/Application.vala:182
-msgid "Show Granite Options"
-msgstr "Exibir opções do Granite"
-
-#: ../lib/DateTime.vala:73
-msgid "Now"
-msgstr "Agora"
-
-#: ../lib/DateTime.vala:76
-msgid "%dm ago"
-msgid_plural "%dm ago"
-msgstr[0] "%dm atrás"
-msgstr[1] "%dm atrás"
-
-#: ../lib/DateTime.vala:79
-msgid "%dh ago"
-msgid_plural "%dh ago"
-msgstr[0] "%dh atrás"
-msgstr[1] "%dh atrás"
-
-#: ../lib/DateTime.vala:85
-msgid "in %dm"
-msgid_plural "in %dm"
-msgstr[0] "em %dm"
-msgstr[1] "em %dm"
-
-#: ../lib/DateTime.vala:88
-msgid "in %dh"
-msgid_plural "in %dh"
-msgstr[0] "em %dh"
-msgstr[1] "em %dh"
-
-#: ../lib/DateTime.vala:94
-msgid "Yesterday"
-msgstr "Ontem"
-
-#: ../lib/DateTime.vala:96
-msgid "Tomorrow"
-msgstr "Amanhã"
-
-#: ../lib/Widgets/MessageDialog.vala:125
-msgid "_Close"
-msgstr "_Fechar"
-
-#: ../lib/Widgets/MessageDialog.vala:128
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-#: ../demo/Views/SettingsView/SimpleSettingsPage.vala:85
-msgid "Enabled"
-msgstr "Habilitado"
-
-#: ../demo/Views/SettingsView/SimpleSettingsPage.vala:88
-msgid "Disabled"
-msgstr "Desabilitado"
-
-#: ../lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
 msgstr "Abrir em uma nova janela"
 
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: ../lib/DateTime.vala:148
-msgid "%a, %b %e, %Y"
-msgstr "%a, %e de %b de %Y"
+#: lib/Widgets/DynamicNotebook.vala:266
+msgid "Duplicate"
+msgstr "Duplicar"
 
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: ../lib/DateTime.vala:166
-msgid "%a, %b %e"
-msgstr "%a, %e de %b"
+#: lib/Widgets/DynamicNotebook.vala:317
+msgid "Close Other Tab"
+msgstr "Fechar outra aba"
 
-#: ../lib/Widgets/Utils.vala:99
+#: lib/Widgets/DynamicNotebook.vala:317
+msgid "Close Other Tabs"
+msgstr "Fechar outras abas"
+
+#: lib/Widgets/DynamicNotebook.vala:488
+msgid "Clear All"
+msgstr "Limpar tudo"
+
+#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+msgid "New Tab"
+msgstr "Nova aba"
+
+#: lib/Widgets/DynamicNotebook.vala:770
+msgid "Undo Close Tab"
+msgstr "Desfazer fechar aba"
+
+#: lib/Widgets/DynamicNotebook.vala:810
+msgid "Closed Tabs"
+msgstr "Abas fechadas"
+
+#: lib/Widgets/MessageDialog.vala:125
+msgid "_Close"
+msgstr "_Fechar"
+
+#: lib/Widgets/MessageDialog.vala:128
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: lib/Widgets/MessageDialog.vala:311
+msgid "Details"
+msgstr ""
+
+#: lib/Widgets/StorageBar.vala:82
+msgid "Audio"
+msgstr "Áudio"
+
+#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
+#: lib/Widgets/StorageBar.vala:85
+msgid "Videos"
+msgstr "Vídeos"
+
+#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
+#: lib/Widgets/StorageBar.vala:88
+msgid "Photos"
+msgstr "Fotos"
+
+#: lib/Widgets/StorageBar.vala:90
+msgid "Apps"
+msgstr "Aplicativos"
+
+#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
+#: lib/Widgets/StorageBar.vala:93
+msgid "Files"
+msgstr "Arquivos"
+
+#: lib/Widgets/StorageBar.vala:95
+msgid "Other"
+msgstr "Outro"
+
+#: lib/Widgets/StorageBar.vala:267
+#, c-format
+msgid "%s free out of %s"
+msgstr "%s livre de %s"
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: lib/Widgets/TimePicker.vala:106
+msgid "AM"
+msgstr "AM"
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: lib/Widgets/TimePicker.vala:108
+msgid "PM"
+msgstr "PM"
+
+#. / TRANSLATORS: separates hours from minutes.
+#: lib/Widgets/TimePicker.vala:153
+msgid ":"
+msgstr ":"
+
+#: lib/Widgets/Utils.vala:99
 msgid "Shift"
 msgstr "Shift"
 
-#: ../lib/Widgets/Utils.vala:103
+#: lib/Widgets/Utils.vala:103
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: ../lib/Widgets/Utils.vala:107
+#: lib/Widgets/Utils.vala:107
 msgid "Alt"
 msgstr "Alt"
 
+#. /TRANSLATORS: The Alt key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:125
+msgid "Left Alt"
+msgstr ""
+
+#. /TRANSLATORS: The Alt key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:129
+msgid "Right Alt"
+msgstr ""
+
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: ../lib/Widgets/Utils.vala:126
+#: lib/Widgets/Utils.vala:134
 msgid "Minus"
 msgstr "Menos"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: ../lib/Widgets/Utils.vala:131
+#: lib/Widgets/Utils.vala:139
 msgid "Plus"
 msgstr "Mais"
 
+#: lib/Widgets/Utils.vala:142
+msgid "Enter"
+msgstr ""
+
+#. /TRANSLATORS: The Shift key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:146
+#, fuzzy
+msgid "Left Shift"
+msgstr "Shift"
+
+#. /TRANSLATORS: The Shift key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:150
+#, fuzzy
+msgid "Right Shift"
+msgstr "Shift"
+
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: ../lib/Widgets/Utils.vala:172
+#: lib/Widgets/Utils.vala:196
 msgid ", "
 msgstr ", "
+
+#~ msgid "© %s"
+#~ msgstr "%s ©"
+
+#~ msgid "This program is published under the terms of the "
+#~ msgstr "Este programa é publicado sob os termos do "
+
+#~ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
+#~ msgstr ""
+#~ " licença, vem com ABSOLUTAMENTE NENHUMA GARANTIA; para detalhes, visite "
+
+#~ msgid "Developers"
+#~ msgstr "Desenvolvedores"
+
+#~ msgid "Open in a new Window"
+#~ msgstr "Abrir em uma nova janela"
+
+#~ msgid "Could not contact Contractor. You may need to install it"
+#~ msgstr ""
+#~ "Não foi possível contactar o Contractor. Você pode precisar instalá-lo"
+
+#~ msgid "No action found for this file"
+#~ msgstr "Nenhuma ação encontrada para este arquivo"
+
+#~ msgid "%a %b %e %Y"
+#~ msgstr "%a, %e de %b de %Y"
+
+#~ msgid "%a %b %e"
+#~ msgstr "%a, %e de %b"
+
+#~ msgid "translator-credits"
+#~ msgstr "translator-credits"
+
+#~ msgid "Toasts"
+#~ msgstr "Toasts"
+
+#~ msgid "Simple in-app notifications"
+#~ msgstr "Notificações simples em aplicativos"
+
+#~ msgid "Button was pressed!"
+#~ msgstr "Um botão foi pressionado!"
+
+#~ msgid "Do Things"
+#~ msgstr "Faça coisas"
+
+#~ msgid "Press Me"
+#~ msgstr "Pressione-me"
+
+#~ msgid "Did The Thing"
+#~ msgstr "Fez a coisa"
+
+#~ msgid "Already did the thing"
+#~ msgstr "Já fez a coisa"
+
+#~ msgid "Enabled"
+#~ msgstr "Habilitado"
+
+#~ msgid "Disabled"
+#~ msgstr "Desabilitado"
