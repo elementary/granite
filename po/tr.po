@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-11-10 00:02+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://weblate.elementary.io/projects/desktop/"
-"granite/tr/>\n"
+"PO-Revision-Date: 2019-03-30 21:51+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
+"tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -60,11 +60,13 @@ msgstr "Kapat"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
+#, fuzzy
 msgid "This program is published under the terms of the "
 msgstr "Bu program  şartları altında yayınlanmaktadır "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
+#, fuzzy
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
 " lisansının koşulları altında yayınlanmıştır, size HİÇBİR GARANTİ "
@@ -255,14 +257,14 @@ msgstr "%H:%M"
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr "%a %b %e %Y"
+msgstr "%e %B %Y %A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 #: ../lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%e %b %Y"
+msgstr "%e %B %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -276,7 +278,7 @@ msgstr "%Y"
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 #: ../lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%e %b"
+msgstr "%e %B"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
@@ -298,7 +300,7 @@ msgstr "%a"
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr "%a %e %b"
+msgstr "%e %B %A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
@@ -342,7 +344,7 @@ msgstr "Diğer"
 #: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
 #: ../lib/Widgets/StorageBar.vala:243 ../lib/Widgets/StorageBar.vala:267
 msgid "%s free out of %s"
-msgstr "%s üzerinden ücretsiz %s"
+msgstr "Boş alan: %s - Toplam alan: %s"
 
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 #: ../lib/Application.vala:234 ../lib/Application.vala:235
@@ -486,12 +488,12 @@ msgstr "Yeni bir pencerede aç"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a, %b %e, %Y"
+msgstr "%e %B %Y %A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: ../lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
+msgstr "%e %B %A"
 
 #: ../lib/Widgets/Utils.vala:99
 msgid "Shift"
@@ -508,14 +510,14 @@ msgstr "Alt"
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: ../lib/Widgets/Utils.vala:126
 msgid "Minus"
-msgstr ""
+msgstr "Eksi"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: ../lib/Widgets/Utils.vala:131
 msgid "Plus"
-msgstr ""
+msgstr "Artı"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: ../lib/Widgets/Utils.vala:172
 msgid ", "
-msgstr ""
+msgstr ", "
