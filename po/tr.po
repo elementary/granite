@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2019-03-30 21:51+0000\n"
+"PO-Revision-Date: 2019-04-06 20:52+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
 "tr/>\n"
@@ -49,7 +49,7 @@ msgstr "Belgeleyen:"
 #: ../lib/GtkPatch/AboutDialog.vala:175 ../lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr "Çeviri %s"
+msgstr "Çeviren: %s"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
 #: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
@@ -60,17 +60,14 @@ msgstr "Kapat"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
-#, fuzzy
 msgid "This program is published under the terms of the "
-msgstr "Bu program  şartları altında yayınlanmaktadır "
+msgstr "Bu program lisans koşulları altında yayınlanmaktadır "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
 #: ../lib//GtkPatch/AboutDialog.vala:456
-#, fuzzy
 msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 msgstr ""
-" lisansının koşulları altında yayınlanmıştır, size HİÇBİR GARANTİ "
-"vermemektedir; detaylar için şurayı ziyaret edin: "
+" KESİNLİKLE HİÇBİR GARANTİ vermemektedir; detaylar için şurayı ziyaret edin: "
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
 #: ../lib//Application.vala:248
@@ -102,7 +99,7 @@ msgstr "Sekmeyi Kapat"
 #: ../lib/Widgets/DynamicNotebook.vala:269
 #: ../lib/Widgets/DynamicNotebook.vala:263
 msgid "Open in a new Window"
-msgstr "Yeni pencerede aç"
+msgstr "Yeni Pencerede Aç"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
 #: ../lib//Widgets/DynamicNotebook.vala:270
@@ -349,7 +346,7 @@ msgstr "Boş alan: %s - Toplam alan: %s"
 #: ../lib//Application.vala:248 ../lib/Application.vala:248
 #: ../lib/Application.vala:234 ../lib/Application.vala:235
 msgid "%s's Developers"
-msgstr "%s's Geliştiriciler"
+msgstr "%s Geliştiricileri"
 
 #: ../lib//GtkPatch/AboutDialog.vala:460 ../lib/GtkPatch/AboutDialog.vala:460
 #: ../lib/GtkPatch/AboutDialog.vala:453 ../lib/GtkPatch/AboutDialog.vala:403
@@ -358,8 +355,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"Bu program %s lisans şartları altında yayınlanmakta olup, kesinlikle hiçbir "
-"garanti vermemektedir. Ayrıntılar için, %s adresini ziyaret edin."
+"Bu program %s lisans şartları altında yayınlanmakta olup, KESİNLİKLE HİÇBİR "
+"GARANTİ vermemektedir; Ayrıntılar için, %s adresini ziyaret edin."
 
 #: ../demo/GraniteDemo.vala:63
 msgid "translator-credits"
@@ -399,7 +396,7 @@ msgstr "ÖÖ"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Toasts"
-msgstr "Uygulama İçi Bildirimler"
+msgstr "Bildirimler"
 
 #: ../demo/GraniteDemo.vala:130
 msgid "Simple in-app notifications"
@@ -407,11 +404,11 @@ msgstr "Basit uygulama içi bildirimler"
 
 #: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
 msgid "Button was pressed!"
-msgstr "Butona basıldı!"
+msgstr "Düğmeye basıldı!"
 
 #: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
 msgid "Do Things"
-msgstr "Birşeyler yap"
+msgstr "Birşeyler Yap"
 
 #: ../demo/GraniteDemo.vala:229 ../demo/Views/ToastView.vala:32
 msgid "Press Me"
@@ -419,11 +416,11 @@ msgstr "Tıklayın"
 
 #: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
 msgid "Did The Thing"
-msgstr "Şeyi yaptı"
+msgstr "Şeyi Yaptı"
 
 #: ../demo/GraniteDemo.vala:251 ../demo/Views/ToastView.vala:51
 msgid "Already did the thing"
-msgstr "Zaten bunu yaptınız"
+msgstr "Zaten bunu yaptı"
 
 #: ../lib/Application.vala:181 ../lib/Application.vala:182
 msgid "Show Granite Options"
@@ -483,7 +480,7 @@ msgstr "Devre Dışı"
 
 #: ../lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
-msgstr "Yeni bir pencerede aç"
+msgstr "Yeni Pencerede Aç"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: ../lib/DateTime.vala:148
