@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2018-11-09 13:14+0000\n"
-"Last-Translator: Nuno Alexandre MS Ribeiro <nuno.anarresti@gmail.com>\n"
-"Language-Team: Portuguese <https://weblate.elementary.io/projects/desktop/"
+"PO-Revision-Date: 2019-04-06 20:52+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -426,25 +426,25 @@ msgstr "Agora"
 msgid "%dm ago"
 msgid_plural "%dm ago"
 msgstr[0] "Há %dm"
-msgstr[1] "Há %dm"
+msgstr[1] "%dm atrás"
 
 #: ../lib/DateTime.vala:79
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "Há %dm"
-msgstr[1] "Há %dm"
+msgstr[0] "%dh atrás"
+msgstr[1] "%dh atrás"
 
 #: ../lib/DateTime.vala:85
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "Dentro de %dm"
-msgstr[1] "Dentro de %dm"
+msgstr[0] "Em %dm"
+msgstr[1] "Em %dm"
 
 #: ../lib/DateTime.vala:88
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "Dentro de %dm"
-msgstr[1] "Dentro de %dm"
+msgstr[0] "em %dm"
+msgstr[1] "em %dm"
 
 #: ../lib/DateTime.vala:94
 msgid "Yesterday"
