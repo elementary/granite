@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-06 10:49-0800\n"
-"PO-Revision-Date: 2019-01-15 12:39+0000\n"
+"PO-Revision-Date: 2019-04-06 20:52+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
-"Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
+"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:36
@@ -253,14 +253,14 @@ msgstr "%H:%M"
 #: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
 #: ../lib/DateTime.vala:148
 msgid "%a %b %e %Y"
-msgstr "%Y年%b%e日 星期%a"
+msgstr "%Y年%m月%d日 星期%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:105
 #: ../lib//Widgets/Utils.vala:105 ../lib/Widgets/Utils.vala:105
 #: ../lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%Y年%b%e日"
+msgstr "%Y年%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:108
@@ -274,7 +274,7 @@ msgstr "%Y年"
 #: ../lib//Widgets/Utils.vala:111 ../lib/Widgets/Utils.vala:111
 #: ../lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%b%e日"
+msgstr "%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:114
@@ -296,14 +296,14 @@ msgstr "星期%a"
 #: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
 #: ../lib/DateTime.vala:166
 msgid "%a %b %e"
-msgstr "%b%e日 星期%a"
+msgstr "%m月%d日 星期%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:123
 #: ../lib//Widgets/Utils.vala:123 ../lib/Widgets/Utils.vala:123
 #: ../lib/DateTime.vala:169
 msgid "%b"
-msgstr "%b"
+msgstr "%m月"
 
 #: ../lib//Widgets/StorageBar.vala:53 ../lib/Widgets/StorageBar.vala:53
 #: ../lib/Widgets/StorageBar.vala:56 ../lib/Widgets/StorageBar.vala:82
