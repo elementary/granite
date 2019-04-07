@@ -87,6 +87,20 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     /**
+     * The {@link GLib.Icon} that is used to display a badge over the image
+     * on the left side of the dialog.
+     */
+    public GLib.Icon badge_icon {
+        owned get {
+            return badge.gicon;
+        }
+
+        set {
+            badge.set_from_gicon (value, Gtk.IconSize.LARGE_TOOLBAR);
+        }
+    }
+
+    /**
      * The {@link Gtk.Label} that displays the {@link Granite.MessageDialog.primary_text}.
      * 
      * Most of the times, you will only want to modify the {@link Granite.MessageDialog.primary_text} string, 
@@ -162,6 +176,11 @@ public class Granite.MessageDialog : Gtk.Dialog {
     private Gtk.Image image;
 
     /**
+     * The badge that's displayed in the dialog.
+     */
+    private Gtk.Image badge;
+
+    /**
      * The main grid that's used to contain all dialog widgets.
      */
     private Gtk.Grid message_grid;
@@ -232,7 +251,15 @@ public class Granite.MessageDialog : Gtk.Dialog {
         skip_taskbar_hint = true;
 
         image = new Gtk.Image ();
-        image.valign = Gtk.Align.START;
+
+        badge = new Gtk.Image ();
+        badge.halign = badge.valign = Gtk.Align.END;
+        badge.pixel_size = 24;
+
+        var overlay = new Gtk.Overlay ();
+        overlay.valign = Gtk.Align.START;
+        overlay.add (image);
+        overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
@@ -268,7 +295,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         message_grid.column_spacing = 12;
         message_grid.row_spacing = 6;
         message_grid.margin_start = message_grid.margin_end = 12;
-        message_grid.attach (image, 0, 0, 1, 2);
+        message_grid.attach (overlay, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
         message_grid.attach (custom_bin, 1, 3, 1, 1);
