@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
 "PO-Revision-Date: 2019-04-06 20:52+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -26,178 +26,12 @@ msgstr "Granite Ayarlarını Göster"
 
 #: lib/Application.vala:235
 #, c-format
-msgid "Translated by %s"
-msgstr "Çeviren: %s"
+msgid "%s's Developers"
+msgstr "%s Geliştiricileri"
 
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:355
-#: ../lib//GtkPatch/AboutDialog.vala:355 ../lib//GtkPatch/AboutDialog.vala:359
-#: ../lib/GtkPatch/AboutDialog.vala:359 ../lib/GtkPatch/AboutDialog.vala:358
-#: ../lib/GtkPatch/AboutDialog.vala:297 ../lib/GtkPatch/AboutDialog.vala:296
-msgid "Close"
-msgstr "Kapat"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-#: ../lib//GtkPatch/AboutDialog.vala:456
-msgid "This program is published under the terms of the "
-msgstr "Bu program lisans koşulları altında yayınlanmaktadır "
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//GtkPatch/AboutDialog.vala:456
-#: ../lib//GtkPatch/AboutDialog.vala:456
-msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-msgstr ""
-" KESİNLİKLE HİÇBİR GARANTİ vermemektedir; detaylar için şurayı ziyaret edin: "
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:248
-#: ../lib//Application.vala:248
-msgid "Developers"
-msgstr "Geliştiriciler"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Application.vala:258
-#: ../lib//Application.vala:258 ../lib//Application.vala:265
-#: ../lib/Application.vala:265 ../lib/Application.vala:251
-#: ../lib/Application.vala:252
+#: lib/Application.vala:252
 msgid "Website"
 msgstr "Web sitesi"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
-#: ../lib//Widgets/DynamicNotebook.vala:226
-#: ../lib//Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:226
-#: ../lib/Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:220
-#: ../lib/Widgets/DynamicNotebook.vala:260
-#: ../lib/Widgets/DynamicNotebook.vala:238
-#: ../lib/Widgets/DynamicNotebook.vala:262
-msgid "Close Tab"
-msgstr "Sekmeyi Kapat"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
-#: ../lib//Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:263
-msgid "Open in a new Window"
-msgstr "Yeni Pencerede Aç"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
-#: ../lib//Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:264
-#: ../lib/Widgets/DynamicNotebook.vala:266
-msgid "Duplicate"
-msgstr "Çoğalt"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tab"
-msgstr "Diğer Sekmeyi Kapat"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tabs"
-msgstr "Diğer Sekmeleri Kapat"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
-#: ../lib//Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:487
-#: ../lib/Widgets/DynamicNotebook.vala:488
-msgid "Clear All"
-msgstr "Tümünü Temizle"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
-#: ../lib//Widgets/DynamicNotebook.vala:780
-#: ../lib//Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:780
-#: ../lib/Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:771
-#: ../lib/Widgets/DynamicNotebook.vala:804
-#: ../lib/Widgets/DynamicNotebook.vala:775
-#: ../lib/Widgets/DynamicNotebook.vala:808
-#: ../lib/Widgets/DynamicNotebook.vala:769
-#: ../lib/Widgets/DynamicNotebook.vala:800
-msgid "New Tab"
-msgstr "Yeni Sekme"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
-#: ../lib//Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:772
-#: ../lib/Widgets/DynamicNotebook.vala:776
-#: ../lib/Widgets/DynamicNotebook.vala:770
-msgid "Undo Close Tab"
-msgstr "Kapanan Sekmeyi Tekrar Aç"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
-#: ../lib//Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:816
-#: ../lib/Widgets/DynamicNotebook.vala:820
-#: ../lib/Widgets/DynamicNotebook.vala:810
-msgid "Closed Tabs"
-msgstr "Kapatılan Sekmeler"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
-#: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
-#: ../lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Çeviri Öner"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
-#: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
-#: ../lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Sorun Bildir"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
-#: ../lib//Widgets/AppMenu.vala:48 ../lib//Widgets/AppMenu.vala:59
-#: ../lib//Widgets/AppMenu.vala:72 ../lib/Widgets/AppMenu.vala:48
-#: ../lib/Widgets/AppMenu.vala:59 ../lib/Widgets/AppMenu.vala:72
-#: ../lib/Widgets/AppMenu.vala:49 ../lib/Widgets/AppMenu.vala:61
-#: ../lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menü"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
-#: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
-#: ../lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Hakkında"
-
-#. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
-#: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
-msgid "PM"
-msgstr "ÖS"
-
-#. / TRANSLATORS: separates hours from minutes.
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
-#: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
-msgid ":"
-msgstr ":"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "Could not contact Contractor. You may need to install it"
-msgstr "Contractor'a erişilemedi. Yüklemeniz gerekebilir"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "No action found for this file"
-msgstr "Bu dosya için eylem bulunamadı"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -262,17 +96,9 @@ msgid "Tomorrow"
 msgstr "Yarın"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-<<<<<<< HEAD
 #: lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a, %b %e, %Y"
-=======
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
-#: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
-#: ../lib/DateTime.vala:148
-msgid "%a %b %e %Y"
 msgstr "%e %B %Y %A"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
@@ -301,17 +127,9 @@ msgid "%a"
 msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-<<<<<<< HEAD
 #: lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
-=======
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
-#: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
-#: ../lib/DateTime.vala:166
-msgid "%a %b %e"
 msgstr "%e %B %A"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
@@ -330,7 +148,6 @@ msgstr "Yazan:"
 msgid "Documented by:"
 msgstr "Belgeleyen:"
 
-<<<<<<< HEAD
 #: lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
@@ -339,18 +156,6 @@ msgstr "Çeviri %s"
 #: lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
 msgstr "Kapat"
-=======
-#: ../lib//Widgets/StorageBar.vala:196 ../lib/Widgets/StorageBar.vala:196
-#: ../lib/Widgets/StorageBar.vala:242 ../lib/Widgets/StorageBar.vala:245
-#: ../lib/Widgets/StorageBar.vala:243 ../lib/Widgets/StorageBar.vala:267
-msgid "%s free out of %s"
-msgstr "Boş alan: %s - Toplam alan: %s"
-
-#: ../lib//Application.vala:248 ../lib/Application.vala:248
-#: ../lib/Application.vala:234 ../lib/Application.vala:235
-msgid "%s's Developers"
-msgstr "%s Geliştiricileri"
->>>>>>> weblate/master
 
 #: lib/GtkPatch/AboutDialog.vala:395
 #, c-format
@@ -373,43 +178,26 @@ msgstr "Sorun Bildir"
 msgid "Menu"
 msgstr "Menü"
 
-<<<<<<< HEAD
 #: lib/Widgets/AppMenu.vala:76
 msgid "About"
 msgstr "Hakkında"
-=======
-#: ../demo/GraniteDemo.vala:130
-msgid "Toasts"
-msgstr "Bildirimler"
->>>>>>> weblate/master
 
 #: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
 msgid "Close Tab"
 msgstr "Sekmeyi Kapat"
 
-<<<<<<< HEAD
 #: lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
-msgstr "Yeni bir pencerede aç"
+msgstr "Yeni Pencerede Aç"
 
 #: lib/Widgets/DynamicNotebook.vala:266
 msgid "Duplicate"
 msgstr "Çoğalt"
-=======
-#: ../demo/GraniteDemo.vala:226 ../demo/Views/ToastView.vala:29
-msgid "Button was pressed!"
-msgstr "Düğmeye basıldı!"
-
-#: ../demo/GraniteDemo.vala:227 ../demo/Views/ToastView.vala:30
-msgid "Do Things"
-msgstr "Birşeyler Yap"
->>>>>>> weblate/master
 
 #: lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tab"
 msgstr "Diğer Sekmeyi Kapat"
 
-<<<<<<< HEAD
 #: lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tabs"
 msgstr "Diğer Sekmeleri Kapat"
@@ -417,15 +205,6 @@ msgstr "Diğer Sekmeleri Kapat"
 #: lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
 msgstr "Tümünü Temizle"
-=======
-#: ../demo/GraniteDemo.vala:250 ../demo/Views/ToastView.vala:50
-msgid "Did The Thing"
-msgstr "Şeyi Yaptı"
-
-#: ../demo/GraniteDemo.vala:251 ../demo/Views/ToastView.vala:51
-msgid "Already did the thing"
-msgstr "Zaten bunu yaptı"
->>>>>>> weblate/master
 
 #: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
 msgid "New Tab"
@@ -478,7 +257,6 @@ msgstr "Dosyalar"
 msgid "Other"
 msgstr "Diğer"
 
-<<<<<<< HEAD
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
 msgid "%s free out of %s"
@@ -493,21 +271,6 @@ msgstr "ÖÖ"
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
 msgstr "ÖS"
-=======
-#: ../lib/Widgets/DynamicNotebook.vala:265
-msgid "Open in a New Window"
-msgstr "Yeni Pencerede Aç"
-
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: ../lib/DateTime.vala:148
-msgid "%a, %b %e, %Y"
-msgstr "%e %B %Y %A"
-
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: ../lib/DateTime.vala:166
-msgid "%a, %b %e"
-msgstr "%e %B %A"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
@@ -565,25 +328,21 @@ msgstr "Shift"
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196
 msgid ", "
-<<<<<<< HEAD
-msgstr ""
-
-#~ msgid "© %s"
-#~ msgstr "© %s"
+msgstr ", "
 
 #~ msgid "This program is published under the terms of the "
-#~ msgstr "Bu program  şartları altında yayınlanmaktadır "
+#~ msgstr "Bu program lisans koşulları altında yayınlanmaktadır "
 
 #~ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 #~ msgstr ""
-#~ " lisansının koşulları altında yayınlanmıştır, size HİÇBİR GARANTİ "
-#~ "vermemektedir; detaylar için şurayı ziyaret edin: "
+#~ " KESİNLİKLE HİÇBİR GARANTİ vermemektedir; detaylar için şurayı ziyaret "
+#~ "edin: "
 
 #~ msgid "Developers"
 #~ msgstr "Geliştiriciler"
 
 #~ msgid "Open in a new Window"
-#~ msgstr "Yeni pencerede aç"
+#~ msgstr "Yeni Pencerede Aç"
 
 #~ msgid "Could not contact Contractor. You may need to install it"
 #~ msgstr "Contractor'a erişilemedi. Yüklemeniz gerekebilir"
@@ -592,61 +351,22 @@ msgstr ""
 #~ msgstr "Bu dosya için eylem bulunamadı"
 
 #~ msgid "%a %b %e %Y"
-#~ msgstr "%a %b %e %Y"
+#~ msgstr "%e %B %Y %A"
 
 #~ msgid "%a %b %e"
-#~ msgstr "%a %e %b"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  Ahmet Çiçek https://launchpad.net/~ahmetcck35\n"
-#~ "  Ayhan Kuru https://launchpad.net/~ayhankuru\n"
-#~ "  Emre Kucukarpaci https://launchpad.net/~ekkucukarpaci\n"
-#~ "  Ferhat TUNÇTAN https://launchpad.net/~ferhattnctn66\n"
-#~ "  Hamza https://launchpad.net/~ckr-hamza\n"
-#~ "  Huseyin Erdem https://launchpad.net/~herdem09\n"
-#~ "  LesserCure https://launchpad.net/~lessercure\n"
-#~ "  Melih Güçlü https://launchpad.net/~melihguclu\n"
-#~ "  Mesut Yaver https://launchpad.net/~afg-mesut\n"
-#~ "  MuHa Aliss https://launchpad.net/~muha.aliss\n"
-#~ "  Mustafa Yılmaz https://launchpad.net/~apshalasha\n"
-#~ "  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
-#~ "  Salih https://launchpad.net/~hernandomtoto\n"
-#~ "  _BaCKDOoR_ https://launchpad.net/~tunaemre\n"
-#~ "  asdasdqwdq qwd qwq https://launchpad.net/~onlycodetr-deactivatedaccount-"
-#~ "deactivatedaccount\n"
-#~ "  kulkke https://launchpad.net/~kulkke\n"
-#~ "  Çağdaş https://launchpad.net/~onlost\n"
-#~ "  Çağdaş Alagöz https://launchpad.net/~cagdasalagoz\n"
-#~ "  İbrahim Ethem Göl https://launchpad.net/~ethem578"
+#~ msgstr "%e %B %A"
 
 #~ msgid "Toasts"
-#~ msgstr "Uygulama İçi Bildirimler"
-
-#~ msgid "Simple in-app notifications"
-#~ msgstr "Basit uygulama içi bildirimler"
+#~ msgstr "Bildirimler"
 
 #~ msgid "Button was pressed!"
-#~ msgstr "Butona basıldı!"
+#~ msgstr "Düğmeye basıldı!"
 
 #~ msgid "Do Things"
-#~ msgstr "Birşeyler yap"
-
-#~ msgid "Press Me"
-#~ msgstr "Tıklayın"
+#~ msgstr "Birşeyler Yap"
 
 #~ msgid "Did The Thing"
-#~ msgstr "Şeyi yaptı"
+#~ msgstr "Şeyi Yaptı"
 
 #~ msgid "Already did the thing"
-#~ msgstr "Zaten bunu yaptınız"
-
-#~ msgid "Enabled"
-#~ msgstr "Etkin"
-
-#~ msgid "Disabled"
-#~ msgstr "Devre Dışı"
-=======
-msgstr ", "
->>>>>>> weblate/master
+#~ msgstr "Zaten bunu yaptı"

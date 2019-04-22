@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
 "PO-Revision-Date: 2019-04-21 08:31+0000\n"
 "Last-Translator: Nils K <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
@@ -99,7 +99,7 @@ msgstr "I morgen"
 #: lib/DateTime.vala:148
 #, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a %e. %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
@@ -131,7 +131,7 @@ msgstr "%a"
 #: lib/DateTime.vala:166
 #, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
@@ -264,7 +264,6 @@ msgstr "Annet"
 msgid "%s free out of %s"
 msgstr "%s ledig av %s"
 
-<<<<<<< HEAD
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
@@ -279,17 +278,6 @@ msgstr "PM"
 #: lib/Widgets/TimePicker.vala:153
 msgid ":"
 msgstr ":"
-=======
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: ../lib/DateTime.vala:148
-msgid "%a, %b %e, %Y"
-msgstr "%a %e. %b %Y"
-
-#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: ../lib/DateTime.vala:166
-msgid "%a, %b %e"
-msgstr "%a %e %b"
->>>>>>> weblate/master
 
 #: lib/Widgets/Utils.vala:99
 msgid "Shift"

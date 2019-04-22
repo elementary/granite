@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
 "PO-Revision-Date: 2019-04-06 20:52+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -92,17 +92,9 @@ msgid "Tomorrow"
 msgstr "明天"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-<<<<<<< HEAD
 #: lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
 msgstr "%Y年%b%e日 星期%a"
-=======
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:102
-#: ../lib//Widgets/Utils.vala:102 ../lib/Widgets/Utils.vala:102
-#: ../lib/DateTime.vala:148
-msgid "%a %b %e %Y"
-msgstr "%Y年%m月%d日 星期%a"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
@@ -131,17 +123,9 @@ msgid "%a"
 msgstr "星期%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-<<<<<<< HEAD
 #: lib/DateTime.vala:166
 msgid "%a, %b %e"
 msgstr "%b%e日 星期%a"
-=======
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/Utils.vala:120
-#: ../lib//Widgets/Utils.vala:120 ../lib/Widgets/Utils.vala:120
-#: ../lib/DateTime.vala:166
-msgid "%a %b %e"
-msgstr "%m月%d日 星期%a"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
@@ -340,6 +324,12 @@ msgstr "Shift"
 msgid ", "
 msgstr ", "
 
+#~ msgid "%a %b %e %Y"
+#~ msgstr "%Y年%m月%d日 星期%a"
+
+#~ msgid "%a %b %e"
+#~ msgstr "%m月%d日 星期%a"
+
 #~ msgid "© %s"
 #~ msgstr "© %s"
 
@@ -360,12 +350,6 @@ msgstr ", "
 
 #~ msgid "No action found for this file"
 #~ msgstr "未发现此文件的动作"
-
-#~ msgid "%a %b %e %Y"
-#~ msgstr "%Y年%b%e日 星期%a"
-
-#~ msgid "%a %b %e"
-#~ msgstr "%b%e日 星期%a"
 
 #~ msgid "translator-credits"
 #~ msgstr ""

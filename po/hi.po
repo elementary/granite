@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-06 10:49-0800\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
 "PO-Revision-Date: 2019-04-12 13:25+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Hindi <https://l10n.elementary.io/projects/desktop/granite/hi/"
@@ -32,148 +32,6 @@ msgstr ""
 #: lib/Application.vala:252
 msgid "Website"
 msgstr "वेबसाइट"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:229
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:268
-#: ../lib//Widgets/DynamicNotebook.vala:226
-#: ../lib//Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:226
-#: ../lib/Widgets/DynamicNotebook.vala:266
-#: ../lib/Widgets/DynamicNotebook.vala:220
-#: ../lib/Widgets/DynamicNotebook.vala:260
-#: ../lib/Widgets/DynamicNotebook.vala:238
-#: ../lib/Widgets/DynamicNotebook.vala:262
-msgid "Close Tab"
-msgstr "टैब बंद करें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:271
-#: ../lib//Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:269
-#: ../lib/Widgets/DynamicNotebook.vala:263
-msgid "Open in a new Window"
-msgstr "नए विंडो में खोलें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:272
-#: ../lib//Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:270
-#: ../lib/Widgets/DynamicNotebook.vala:264
-#: ../lib/Widgets/DynamicNotebook.vala:266
-msgid "Duplicate"
-msgstr "प्रतिलिपि(डुप्लीकेट)"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tab"
-msgstr "दूसरा टैब बंद करें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:321
-#: ../lib//Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:319
-#: ../lib/Widgets/DynamicNotebook.vala:315
-#: ../lib/Widgets/DynamicNotebook.vala:317
-msgid "Close Other Tabs"
-msgstr "अन्य टैब बंद करें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:497
-#: ../lib//Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:496
-#: ../lib/Widgets/DynamicNotebook.vala:487
-#: ../lib/Widgets/DynamicNotebook.vala:488
-msgid "Clear All"
-msgstr "सबको हटायें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:782
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:815
-#: ../lib//Widgets/DynamicNotebook.vala:780
-#: ../lib//Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:780
-#: ../lib/Widgets/DynamicNotebook.vala:813
-#: ../lib/Widgets/DynamicNotebook.vala:771
-#: ../lib/Widgets/DynamicNotebook.vala:804
-#: ../lib/Widgets/DynamicNotebook.vala:775
-#: ../lib/Widgets/DynamicNotebook.vala:808
-#: ../lib/Widgets/DynamicNotebook.vala:769
-#: ../lib/Widgets/DynamicNotebook.vala:800
-msgid "New Tab"
-msgstr "नया टैब"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:783
-#: ../lib//Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:781
-#: ../lib/Widgets/DynamicNotebook.vala:772
-#: ../lib/Widgets/DynamicNotebook.vala:776
-#: ../lib/Widgets/DynamicNotebook.vala:770
-msgid "Undo Close Tab"
-msgstr ""
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/DynamicNotebook.vala:825
-#: ../lib//Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:823
-#: ../lib/Widgets/DynamicNotebook.vala:816
-#: ../lib/Widgets/DynamicNotebook.vala:820
-#: ../lib/Widgets/DynamicNotebook.vala:810
-msgid "Closed Tabs"
-msgstr ""
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:95
-#: ../lib//Widgets/AboutDialog.vala:95 ../lib/Widgets/AboutDialog.vala:95
-#: ../lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "अनुवाद के सुझाव"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AboutDialog.vala:100
-#: ../lib//Widgets/AboutDialog.vala:100 ../lib/Widgets/AboutDialog.vala:100
-#: ../lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "समस्या का वर्णन करें"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:48
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:59
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:72
-#: ../lib//Widgets/AppMenu.vala:48 ../lib//Widgets/AppMenu.vala:59
-#: ../lib//Widgets/AppMenu.vala:72 ../lib/Widgets/AppMenu.vala:48
-#: ../lib/Widgets/AppMenu.vala:59 ../lib/Widgets/AppMenu.vala:72
-#: ../lib/Widgets/AppMenu.vala:49 ../lib/Widgets/AppMenu.vala:61
-#: ../lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "सूची"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/AppMenu.vala:82
-#: ../lib//Widgets/AppMenu.vala:82 ../lib/Widgets/AppMenu.vala:82
-#: ../lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "जानकारी"
-
-#. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:129
-#: ../lib//Widgets/TimePicker.vala:129 ../lib/Widgets/TimePicker.vala:129
-#: ../lib/Widgets/TimePicker.vala:105 ../lib/Widgets/TimePicker.vala:108
-msgid "PM"
-msgstr "अपराह्न"
-
-#. / TRANSLATORS: separates hours from minutes.
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/TimePicker.vala:149
-#: ../lib//Widgets/TimePicker.vala:149 ../lib/Widgets/TimePicker.vala:149
-#: ../lib/Widgets/TimePicker.vala:137 ../lib/Widgets/TimePicker.vala:153
-msgid ":"
-msgstr ":"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "Could not contact Contractor. You may need to install it"
-msgstr ""
-"व्यवस्थापक से संपर्क करें नहीं किया जा सका। इसे इनस्टॉल करने की आवश्यकता हो "
-"सकती है"
-
-#: /tmp/tmp.nk1L7TnOTp/granite/po/../lib//Widgets/ContractorView.vala:105
-#: ../lib//Widgets/ContractorView.vala:105
-#: ../lib/Widgets/ContractorView.vala:105
-msgid "No action found for this file"
-msgstr "इस फ़ाइल के लिए कोई कार्रवाई नहीं मिली"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -286,17 +144,10 @@ msgstr "डिज़ाइन करने वाले:"
 msgid "Written by:"
 msgstr "लेखक:"
 
-<<<<<<< HEAD
 #: lib/GtkPatch/AboutDialog.vala:111
+#, fuzzy
 msgid "Documented by:"
-msgstr ""
-=======
-#: ../lib//Widgets/StorageBar.vala:61 ../lib/Widgets/StorageBar.vala:61
-#: ../lib/Widgets/StorageBar.vala:66 ../lib/Widgets/StorageBar.vala:69
-#: ../lib/Widgets/StorageBar.vala:95
-msgid "Other"
-msgstr "अन्य"
->>>>>>> weblate/master
+msgstr "डिज़ाइन करने वाले:"
 
 #: lib/GtkPatch/AboutDialog.vala:171
 #, c-format
@@ -320,7 +171,7 @@ msgstr "अनुवाद के सुझाव"
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
-msgstr "समस्या का वर्णन करें।"
+msgstr "समस्या का वर्णन करें"
 
 #: lib/Widgets/AppMenu.vala:66
 msgid "Menu"
@@ -370,7 +221,7 @@ msgstr ""
 #: lib/Widgets/MessageDialog.vala:125
 #, fuzzy
 msgid "_Close"
-msgstr "बंद करें"
+msgstr "(_C)बंद करें"
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
@@ -384,16 +235,10 @@ msgstr ""
 msgid "Audio"
 msgstr ""
 
-<<<<<<< HEAD
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
 msgstr ""
-=======
-#: ../lib/Widgets/MessageDialog.vala:125
-msgid "_Close"
-msgstr "(_C)बंद करें"
->>>>>>> weblate/master
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
@@ -409,15 +254,9 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-<<<<<<< HEAD
 #: lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr ""
-=======
-#: ../lib/Widgets/DynamicNotebook.vala:265
-msgid "Open in a New Window"
-msgstr "नए विंडो में खोलें"
->>>>>>> weblate/master
+msgstr "अन्य"
 
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
@@ -490,18 +329,18 @@ msgstr ""
 msgid ", "
 msgstr ""
 
-#~ msgid "© %s"
-#~ msgstr "© %s"
-
 #~ msgid "Open in a new Window"
 #~ msgstr "नए विंडो में खोलें"
 
 #~ msgid "Could not contact Contractor. You may need to install it"
 #~ msgstr ""
-#~ "व्यवस्थापक से संपर्क करें नहीं किया जा सका। इसे इनस्टॉल करने की आवश्यकता हो सकती है।"
+#~ "व्यवस्थापक से संपर्क करें नहीं किया जा सका। इसे इनस्टॉल करने की आवश्यकता हो सकती है"
 
 #~ msgid "No action found for this file"
-#~ msgstr "इस फ़ाइल के लिए कोई कार्रवाई नहीं मिली।"
+#~ msgstr "इस फ़ाइल के लिए कोई कार्रवाई नहीं मिली"
+
+#~ msgid "© %s"
+#~ msgstr "© %s"
 
 #~ msgid "translator-credits"
 #~ msgstr ""
