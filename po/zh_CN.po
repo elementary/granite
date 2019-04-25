@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 18:41-0700\n"
-"PO-Revision-Date: 2019-01-15 12:39+0000\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"PO-Revision-Date: 2019-04-06 20:52+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
-"Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
+"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -99,7 +99,7 @@ msgstr "%Y年%b%e日 星期%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%Y年%b%e日"
+msgstr "%Y年%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:154
@@ -109,7 +109,7 @@ msgstr "%Y年"
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%b%e日"
+msgstr "%m月%d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:160
@@ -130,7 +130,7 @@ msgstr "%b%e日 星期%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
 msgid "%b"
-msgstr "%b"
+msgstr "%m月"
 
 #: lib/GtkPatch/AboutDialog.vala:32
 msgid "Designed by:"
@@ -324,6 +324,12 @@ msgstr "Shift"
 msgid ", "
 msgstr ", "
 
+#~ msgid "%a %b %e %Y"
+#~ msgstr "%Y年%m月%d日 星期%a"
+
+#~ msgid "%a %b %e"
+#~ msgstr "%m月%d日 星期%a"
+
 #~ msgid "© %s"
 #~ msgstr "© %s"
 
@@ -344,12 +350,6 @@ msgstr ", "
 
 #~ msgid "No action found for this file"
 #~ msgstr "未发现此文件的动作"
-
-#~ msgid "%a %b %e %Y"
-#~ msgstr "%Y年%b%e日 星期%a"
-
-#~ msgid "%a %b %e"
-#~ msgstr "%b%e日 星期%a"
 
 #~ msgid "translator-credits"
 #~ msgstr ""

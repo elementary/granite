@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-20 18:41-0700\n"
-"PO-Revision-Date: 2018-11-10 00:02+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://weblate.elementary.io/projects/desktop/"
-"granite/tr/>\n"
+"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"PO-Revision-Date: 2019-04-06 20:52+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
+"tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -27,7 +27,7 @@ msgstr "Granite Ayarlarını Göster"
 #: lib/Application.vala:235
 #, c-format
 msgid "%s's Developers"
-msgstr "%s's Geliştiriciler"
+msgstr "%s Geliştiricileri"
 
 #: lib/Application.vala:252
 msgid "Website"
@@ -98,12 +98,12 @@ msgstr "Yarın"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr "%a, %b %e, %Y"
+msgstr "%e %B %Y %A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%e %b %Y"
+msgstr "%e %B %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:154
@@ -113,7 +113,7 @@ msgstr "%Y"
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%e %b"
+msgstr "%e %B"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:160
@@ -129,7 +129,7 @@ msgstr "%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
+msgstr "%e %B %A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
@@ -163,8 +163,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"Bu program %s lisans şartları altında yayınlanmakta olup, kesinlikle hiçbir "
-"garanti vermemektedir. Ayrıntılar için, %s adresini ziyaret edin."
+"Bu program %s lisans şartları altında yayınlanmakta olup, KESİNLİKLE HİÇBİR "
+"GARANTİ vermemektedir; Ayrıntılar için, %s adresini ziyaret edin."
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
@@ -188,7 +188,7 @@ msgstr "Sekmeyi Kapat"
 
 #: lib/Widgets/DynamicNotebook.vala:265
 msgid "Open in a New Window"
-msgstr "Yeni bir pencerede aç"
+msgstr "Yeni Pencerede Aç"
 
 #: lib/Widgets/DynamicNotebook.vala:266
 msgid "Duplicate"
@@ -302,12 +302,12 @@ msgstr ""
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
 msgid "Minus"
-msgstr ""
+msgstr "Eksi"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:139
 msgid "Plus"
-msgstr ""
+msgstr "Artı"
 
 #: lib/Widgets/Utils.vala:142
 msgid "Enter"
@@ -328,24 +328,21 @@ msgstr "Shift"
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196
 msgid ", "
-msgstr ""
-
-#~ msgid "© %s"
-#~ msgstr "© %s"
+msgstr ", "
 
 #~ msgid "This program is published under the terms of the "
-#~ msgstr "Bu program  şartları altında yayınlanmaktadır "
+#~ msgstr "Bu program lisans koşulları altında yayınlanmaktadır "
 
 #~ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
 #~ msgstr ""
-#~ " lisansının koşulları altında yayınlanmıştır, size HİÇBİR GARANTİ "
-#~ "vermemektedir; detaylar için şurayı ziyaret edin: "
+#~ " KESİNLİKLE HİÇBİR GARANTİ vermemektedir; detaylar için şurayı ziyaret "
+#~ "edin: "
 
 #~ msgid "Developers"
 #~ msgstr "Geliştiriciler"
 
 #~ msgid "Open in a new Window"
-#~ msgstr "Yeni pencerede aç"
+#~ msgstr "Yeni Pencerede Aç"
 
 #~ msgid "Could not contact Contractor. You may need to install it"
 #~ msgstr "Contractor'a erişilemedi. Yüklemeniz gerekebilir"
@@ -354,58 +351,22 @@ msgstr ""
 #~ msgstr "Bu dosya için eylem bulunamadı"
 
 #~ msgid "%a %b %e %Y"
-#~ msgstr "%a %b %e %Y"
+#~ msgstr "%e %B %Y %A"
 
 #~ msgid "%a %b %e"
-#~ msgstr "%a %e %b"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  Ahmet Çiçek https://launchpad.net/~ahmetcck35\n"
-#~ "  Ayhan Kuru https://launchpad.net/~ayhankuru\n"
-#~ "  Emre Kucukarpaci https://launchpad.net/~ekkucukarpaci\n"
-#~ "  Ferhat TUNÇTAN https://launchpad.net/~ferhattnctn66\n"
-#~ "  Hamza https://launchpad.net/~ckr-hamza\n"
-#~ "  Huseyin Erdem https://launchpad.net/~herdem09\n"
-#~ "  LesserCure https://launchpad.net/~lessercure\n"
-#~ "  Melih Güçlü https://launchpad.net/~melihguclu\n"
-#~ "  Mesut Yaver https://launchpad.net/~afg-mesut\n"
-#~ "  MuHa Aliss https://launchpad.net/~muha.aliss\n"
-#~ "  Mustafa Yılmaz https://launchpad.net/~apshalasha\n"
-#~ "  Sadık Poyraz https://launchpad.net/~sadikpoyraz01\n"
-#~ "  Salih https://launchpad.net/~hernandomtoto\n"
-#~ "  _BaCKDOoR_ https://launchpad.net/~tunaemre\n"
-#~ "  asdasdqwdq qwd qwq https://launchpad.net/~onlycodetr-deactivatedaccount-"
-#~ "deactivatedaccount\n"
-#~ "  kulkke https://launchpad.net/~kulkke\n"
-#~ "  Çağdaş https://launchpad.net/~onlost\n"
-#~ "  Çağdaş Alagöz https://launchpad.net/~cagdasalagoz\n"
-#~ "  İbrahim Ethem Göl https://launchpad.net/~ethem578"
+#~ msgstr "%e %B %A"
 
 #~ msgid "Toasts"
-#~ msgstr "Uygulama İçi Bildirimler"
-
-#~ msgid "Simple in-app notifications"
-#~ msgstr "Basit uygulama içi bildirimler"
+#~ msgstr "Bildirimler"
 
 #~ msgid "Button was pressed!"
-#~ msgstr "Butona basıldı!"
+#~ msgstr "Düğmeye basıldı!"
 
 #~ msgid "Do Things"
-#~ msgstr "Birşeyler yap"
-
-#~ msgid "Press Me"
-#~ msgstr "Tıklayın"
+#~ msgstr "Birşeyler Yap"
 
 #~ msgid "Did The Thing"
-#~ msgstr "Şeyi yaptı"
+#~ msgstr "Şeyi Yaptı"
 
 #~ msgid "Already did the thing"
-#~ msgstr "Zaten bunu yaptınız"
-
-#~ msgid "Enabled"
-#~ msgstr "Etkin"
-
-#~ msgid "Disabled"
-#~ msgstr "Devre Dışı"
+#~ msgstr "Zaten bunu yaptı"
