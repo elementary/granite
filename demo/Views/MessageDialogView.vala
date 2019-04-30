@@ -42,7 +42,12 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     private void show_message_dialog () {
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("Basic Information and a Suggestion", "Further details, including information that explains any unobvious consequences of actions.", "phone", Gtk.ButtonsType.CANCEL);
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            "Basic Information and a Suggestion",
+            "Further details, including information that explains any unobvious consequences of actions.",
+            "phone",
+            Gtk.ButtonsType.CANCEL
+        );
         message_dialog.badge_icon = new ThemedIcon ("dialog-information");
         message_dialog.transient_for = window;
 

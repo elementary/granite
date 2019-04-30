@@ -87,8 +87,8 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     /**
-     * The {@link GLib.Icon} that is used to display a badge over the image
-     * on the left side of the dialog.
+     * The {@link GLib.Icon} that is used to display a badge, bottom-end aligned,
+     * over the image on the left side of the dialog.
      */
     public GLib.Icon badge_icon {
         owned get {
