@@ -236,7 +236,7 @@ private static double sanitize_color (double color) {
  *
  * @param bg_color any {@link Gdk.RGBA} background color
  *
- * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 0.0}).
+ * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 1.0}).
  */
 public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
     Gdk.RGBA gdk_white = { 1.0, 1.0, 1.0, 1.0 };
