@@ -204,6 +204,68 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     return string.joinv ("\n", parts);
 }
 
+private double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
+    var bg_luminance = get_luminance (bg_color);
+    var fg_luminance = get_luminance (fg_color);
+
+    if (bg_luminance > fg_luminance) {
+        return (bg_luminance + 0.05) / (fg_luminance + 0.05);
+    }
+
+    return (fg_luminance + 0.05) / (bg_luminance + 0.05);
+}
+
+private double get_luminance (Gdk.RGBA color) {
+    var red = sanitize_color (color.red) * 0.2126;
+    var green = sanitize_color (color.green) * 0.7152;
+    var blue = sanitize_color (color.blue) * 0.0722;
+
+    return (red + green + blue);
+}
+
+private double sanitize_color (double color) {
+    if (color <= 0.03928) {
+        return color / 12.92;
+    }
+
+    return Math.pow ((color + 0.055) / 1.055, 2.4);
+}
+
+/**
+ * Takes a {@link Gdk.RGBA} background color and returns a suitably-contrasting foreground color, i.e. for determining text color on a colored background.
+ *
+ * @param bg_color a {@link Gdk.RGBA} background color
+ *
+ * @return a contrasting {@link Gdk.RGBA} foreground color
+ */
+public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
+    var gdk_white = Gdk.RGBA ();
+    gdk_white.parse ("#fff");
+
+    var gdk_black = Gdk.RGBA ();
+    gdk_black.parse ("#000");
+
+    var contrast_with_white = contrast_ratio (
+        bg_color,
+        gdk_white
+    );
+    var contrast_with_black = contrast_ratio (
+        bg_color,
+        gdk_black
+    );
+
+    // Default to white
+    var fg_color = gdk_white;
+
+    // NOTE: We cheat and add 3 to contrast when checking against black,
+    // because white generally looks better on a colored background
+    if ( contrast_with_black > (contrast_with_white + 3) ) {
+        fg_color = gdk_black;
+    }
+
+    return fg_color;
+}
+
 }
 
 /**
