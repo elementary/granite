@@ -204,7 +204,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     return string.joinv ("\n", parts);
 }
 
-private double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
+private static double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
     var bg_luminance = get_luminance (bg_color);
     var fg_luminance = get_luminance (fg_color);
 
@@ -215,15 +215,15 @@ private double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
     return (fg_luminance + 0.05) / (bg_luminance + 0.05);
 }
 
-private double get_luminance (Gdk.RGBA color) {
+private static double get_luminance (Gdk.RGBA color) {
     var red = sanitize_color (color.red) * 0.2126;
     var green = sanitize_color (color.green) * 0.7152;
     var blue = sanitize_color (color.blue) * 0.0722;
 
-    return (red + green + blue);
+    return red + green + blue;
 }
 
-private double sanitize_color (double color) {
+private static double sanitize_color (double color) {
     if (color <= 0.03928) {
         return color / 12.92;
     }
@@ -232,18 +232,15 @@ private double sanitize_color (double color) {
 }
 
 /**
- * Takes a {@link Gdk.RGBA} background color and returns a suitably-contrasting foreground color, i.e. for determining text color on a colored background.
+ * Takes a {@link Gdk.RGBA} background color and returns a suitably-contrasting foreground color, i.e. for determining text color on a colored background. There is a slight bias toward returning white, as white generally looks better on a wider range of colored backgrounds than black.
  *
- * @param bg_color a {@link Gdk.RGBA} background color
+ * @param bg_color any {@link Gdk.RGBA} background color
  *
- * @return a contrasting {@link Gdk.RGBA} foreground color
+ * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 0.0}).
  */
 public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
-    var gdk_white = Gdk.RGBA ();
-    gdk_white.parse ("#fff");
-
-    var gdk_black = Gdk.RGBA ();
-    gdk_black.parse ("#000");
+    Gdk.RGBA gdk_white = { 1.0, 1.0, 1.0, 1.0 };
+    Gdk.RGBA gdk_black = { 0.0, 0.0, 0.0, 1.0 };
 
     var contrast_with_white = contrast_ratio (
         bg_color,
