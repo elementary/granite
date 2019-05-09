@@ -20,21 +20,14 @@
 public class UtilsView : Gtk.Grid {
     private const string CSS = """
         .contrast-demo {
-            padding: 0.5em 1em;
-        }
-
-        .dark {
-            background-color: %s;
+            background: %s;
             color: %s;
-        }
-
-        .light {
-            background-color: %s;
-            color: %s;
+            text-shadow: none;
         }
     """;
     private const string DARK_BG = "#273445";
-    private const string LIGHT_BG = "#d1ff82";
+
+    private Gtk.StyleContext demo_label_style_context;
 
     construct {
         var tooltip_markup_label = new Gtk.Label ("Markup Accel Tooltips:");
@@ -49,19 +42,12 @@ public class UtilsView : Gtk.Grid {
         var contrasting_foreground_color_label = new Gtk.Label ("Contrasting Foreground Color:");
         contrasting_foreground_color_label.halign = Gtk.Align.END;
 
-        var color_demo_dark = new Gtk.Label ("Dark Background");
+        var contrast_demo_button = new Gtk.Button ();
+        contrast_demo_button.label = "Contrast Demo";
 
-        var color_demo_dark_context = color_demo_dark.get_style_context ();
-        color_demo_dark_context.add_class (Granite.STYLE_CLASS_CARD);
-        color_demo_dark_context.add_class ("contrast-demo");
-        color_demo_dark_context.add_class ("dark");
-
-        var color_demo_light = new Gtk.Label ("Light Background");
-
-        var color_demo_light_context = color_demo_light.get_style_context ();
-        color_demo_light_context.add_class (Granite.STYLE_CLASS_CARD);
-        color_demo_light_context.add_class ("contrast-demo");
-        color_demo_light_context.add_class ("light");
+        demo_label_style_context = contrast_demo_button.get_style_context ();
+        demo_label_style_context.add_class ("contrast-demo");
+        demo_label_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
 
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;
@@ -71,27 +57,41 @@ public class UtilsView : Gtk.Grid {
         attach (tooltip_button_one, 1, 0);
         attach (tooltip_button_two, 2, 0);
         attach (contrasting_foreground_color_label, 0, 1);
-        attach (color_demo_dark, 1, 1);
-        attach (color_demo_light, 2, 1);
+        attach (contrast_demo_button, 1, 1, 2);
 
+        var gdk_demo_bg = Gdk.RGBA ();
+        gdk_demo_bg.parse (DARK_BG);
+
+        style_contrast_demo (gdk_demo_bg);
+
+        contrast_demo_button.clicked.connect (() => {
+            var dialog = new Gtk.ColorSelectionDialog ("");
+            dialog.deletable = false;
+            dialog.transient_for = (Gtk.Window) get_toplevel ();
+
+            unowned Gtk.ColorSelection widget = dialog.get_color_selection ();
+            widget.current_rgba = gdk_demo_bg;
+
+            widget.color_changed.connect (() => {
+                style_contrast_demo (widget.current_rgba);
+                gdk_demo_bg = widget.current_rgba;
+            });
+
+            dialog.run ();
+            dialog.destroy ();
+        });
+    }
+
+    private void style_contrast_demo (Gdk.RGBA bg_color) {
         var provider = new Gtk.CssProvider ();
         try {
-            var gdk_dark_bg = Gdk.RGBA ();
-            gdk_dark_bg.parse (DARK_BG);
-
-            var gdk_light_bg = Gdk.RGBA ();
-            gdk_light_bg.parse (LIGHT_BG);
-
             var css = CSS.printf (
-                DARK_BG,
-                Granite.contrasting_foreground_color (gdk_dark_bg).to_string (),
-                LIGHT_BG,
-                Granite.contrasting_foreground_color (gdk_light_bg).to_string ()
+                bg_color.to_string (),
+                Granite.contrasting_foreground_color (bg_color).to_string ()
             );
 
             provider.load_from_data (css, css.length);
-            Gtk.StyleContext.add_provider_for_screen (
-                Gdk.Screen.get_default (),
+            demo_label_style_context.add_provider (
                 provider,
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
