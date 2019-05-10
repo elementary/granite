@@ -18,13 +18,15 @@
  */
 
 public class CSSView : Gtk.Grid {
-    public Gtk.Window window { get; construct; }
+    public Gtk.HeaderBar headerbar { get; construct; }
 
-    public CSSView (Gtk.Window window) {
-        Object (halign: Gtk.Align.CENTER,
-                valign: Gtk.Align.CENTER,
-                margin: 24,
-                window: window);
+    public CSSView (Gtk.HeaderBar headerbar) {
+        Object (
+            halign: Gtk.Align.CENTER,
+            valign: Gtk.Align.CENTER,
+            margin: 24,
+            headerbar: headerbar
+        );
     }
 
     construct {
@@ -115,7 +117,7 @@ public class CSSView : Gtk.Grid {
         attach (accent_color_grid, 1, 5);
 
         primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
+            Granite.Widgets.Utils.set_brand_color ((Gtk.Widget) headerbar, primary_color_button.rgba);
         });
     }
 }

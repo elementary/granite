@@ -33,9 +33,13 @@ public class Granite.Demo : Gtk.Application {
     public override void activate () {
         var window = new Gtk.Window ();
 
+        var headerbar = new Gtk.HeaderBar ();
+        headerbar.get_style_context ().add_class ("default-decoration");
+        headerbar.show_close_button = true;
+
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
-        var css_view = new CSSView (window);
+        var css_view = new CSSView (headerbar);
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var mode_button_view = new ModeButtonView ();
@@ -83,9 +87,6 @@ public class Granite.Demo : Gtk.Application {
         mode_switch.valign = Gtk.Align.CENTER;
         mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.get_style_context ().add_class ("default-decoration");
-        headerbar.show_close_button = true;
         headerbar.pack_end (mode_switch);
 
         window.add (paned);

@@ -272,19 +272,15 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
  * This namespace contains functions to apply CSS stylesheets to widgets.
  */
 namespace Granite.Widgets.Utils {
-    private static Gdk.RGBA invert_color (Gdk.RGBA color) {
-        color = {1.0 - color.red, 1.0 - color.green, 1.0 - color.blue, color.alpha};
-
-        return color;
-    }
-
     /**
-     * Sets the colorPrimary, textColorPrimary, and textColorPrimaryShadow Gtk.CSS variables for the window.
-     * In the elementary stylesheet, these variables affect the background and foreground colors of the
-     * {@link Gtk.HeaderBar} so the application window can have a distinct brand color.
+     * Applies colorPrimary property to the window. The colorPrimary property currently changes
+     * the color of the {@link Gtk.HeaderBar} and it's children so that the application window
+     * can have a so-called "brand color".
+     *
+     * Note that this currently only works with the default stylesheet that elementary OS uses.
      *
      * @param window the widget to apply the color, for most cases the widget will be actually the {@link Gtk.Window} itself
-     * @param color the brand color to apply
+     * @param color the color to apply
      * @param priority priorty of change, by default {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
      *
      * @return the added {@link Gtk.CssProvider}, or null in case the parsing of
@@ -293,19 +289,77 @@ namespace Granite.Widgets.Utils {
     public Gtk.CssProvider? set_color_primary (Gtk.Widget window, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
         assert (window != null);
 
+        string hex = color.to_string ();
+        return set_theming_for_screen (window.get_screen (), @"@define-color colorPrimary $hex;", priority);
+    }
+
+    /**
+     * Attempts to set the given Gtk stylesheet variant on the given widget and its children.
+     *
+     * @param widget the {@link Gtk.Widget} on which to apply the stylesheet variant
+     * @param variant variant to load, for example, "dark", or null for the default
+     */
+    public static void set_variant (Gtk.Widget widget, string? variant = null) {
+        var gtk_settings = Gtk.Settings.get_default ();
+
+        try {
+            var css_provider = Gtk.CssProvider.get_named (gtk_settings.gtk_theme_name, variant);
+            widget.get_style_context ().add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        } catch (Error e) {}
+
+        if (widget is Gtk.Container) {
+            var container = (Gtk.Container) widget;
+            container.forall ((child) => {
+                set_variant (child, variant);
+            });
+        }
+    }
+
+    /**
+     * Sets the colorPrimary Gtk.CSS variables for the given titlebar, as well as the light or dark stylesheet
+     * variant for the titlebar depending on the luminance of the provided color. In the elementary stylesheet,
+     * this affects the background and foreground colors of the titlebar.
+     *
+     * @param titlebar the titlebar {@link Gtk.Widget} on which to apply the brand color
+     * @param color the brand color to apply
+     * @param priority priorty of change, by default {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
+     *
+     * @return true if successful, false if not.
+     */
+    public static bool set_brand_color (Gtk.Widget titlebar, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
+        assert (titlebar != null);
+
         string bg = color.to_string ();
         string fg = contrasting_foreground_color (color).to_string ();
-        string fg_shadow = invert_color (contrasting_foreground_color (color)).to_string ();
 
-        return set_theming_for_screen (
-            window.get_screen (),
+        var provider = set_theming (
+            titlebar,
             @"
                 @define-color colorPrimary $bg;
-                @define-color textColorPrimary $fg;
-                @define-color textColorPrimaryShadow alpha($fg_shadow, 0.4);
             ",
+            null,
             priority
         );
+
+        // FIXME: can't use both set_variant and set_theming
+        if (provider != null) {
+            switch (fg) {
+                case "rgb(255,255,255)":
+                    // Light text on dark bg
+                    set_variant (titlebar, "dark");
+                    critical ("dark: %s on %s", fg, bg);
+                    break;
+                default:
+                    // Dark text on light bg
+                    set_variant (titlebar);
+                    critical ("light: %s on %s", fg, bg);
+                    break;
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
