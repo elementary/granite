@@ -317,16 +317,20 @@ namespace Granite.Widgets.Utils {
 
     /**
      * Sets the colorPrimary Gtk.CSS variable for the given {@link Gtk.HeaderBar}, as well as the light or dark
-     * stylesheet variant for the titlebar depending on the luminance of the provided color. In the elementary
+     * stylesheet variant for the headerbar depending on the luminance of the provided color. In the elementary
      * stylesheet, this affects the background and foreground colors of the {@link Gtk.HeaderBar}.
      *
      * @param titlebar the headerbar {@link Gtk.HeaderBar} on which to apply the brand color
      * @param color the brand color to apply
      * @param priority priorty of change, by default {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
      *
-     * @return true if successful, false if not.
+     * @return //true// if successful, //false// if not.
      */
-    public static bool set_brand_color (Gtk.HeaderBar headerbar, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
+    public static bool set_brand_color (
+        Gtk.HeaderBar headerbar,
+        Gdk.RGBA color,
+        int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    ) {
         assert (headerbar != null);
 
         string bg = color.to_string ();
@@ -334,9 +338,7 @@ namespace Granite.Widgets.Utils {
 
         var provider = set_theming (
             headerbar,
-            @"
-                @define-color colorPrimary $bg;
-            ",
+            @"@define-color colorPrimary $bg;",
             null,
             priority
         );
@@ -344,6 +346,8 @@ namespace Granite.Widgets.Utils {
         // FIXME: can't use both set_variant and set_theming
         if (provider != null) {
             switch (fg) {
+                // FIXME: This seems dirty/indirect. New reusable method to
+                // determine if a color is light or dark?
                 case "rgb(255,255,255)":
                     // Light text on dark bg
                     set_variant (headerbar, "dark");
