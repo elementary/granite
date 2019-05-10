@@ -117,7 +117,7 @@ public class CSSView : Gtk.Grid {
         attach (accent_color_grid, 1, 5);
 
         primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_brand_color ((Gtk.Widget) headerbar, primary_color_button.rgba);
+            Granite.Widgets.Utils.set_brand_color (headerbar, primary_color_button.rgba);
         });
     }
 }

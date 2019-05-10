@@ -316,24 +316,24 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Sets the colorPrimary Gtk.CSS variables for the given titlebar, as well as the light or dark stylesheet
-     * variant for the titlebar depending on the luminance of the provided color. In the elementary stylesheet,
-     * this affects the background and foreground colors of the titlebar.
+     * Sets the colorPrimary Gtk.CSS variable for the given {@link Gtk.HeaderBar}, as well as the light or dark
+     * stylesheet variant for the titlebar depending on the luminance of the provided color. In the elementary
+     * stylesheet, this affects the background and foreground colors of the {@link Gtk.HeaderBar}.
      *
-     * @param titlebar the titlebar {@link Gtk.Widget} on which to apply the brand color
+     * @param titlebar the headerbar {@link Gtk.HeaderBar} on which to apply the brand color
      * @param color the brand color to apply
      * @param priority priorty of change, by default {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
      *
      * @return true if successful, false if not.
      */
-    public static bool set_brand_color (Gtk.Widget titlebar, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
-        assert (titlebar != null);
+    public static bool set_brand_color (Gtk.HeaderBar headerbar, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
+        assert (headerbar != null);
 
         string bg = color.to_string ();
         string fg = contrasting_foreground_color (color).to_string ();
 
         var provider = set_theming (
-            titlebar,
+            headerbar,
             @"
                 @define-color colorPrimary $bg;
             ",
@@ -346,12 +346,12 @@ namespace Granite.Widgets.Utils {
             switch (fg) {
                 case "rgb(255,255,255)":
                     // Light text on dark bg
-                    set_variant (titlebar, "dark");
+                    set_variant (headerbar, "dark");
                     critical ("dark: %s on %s", fg, bg);
                     break;
                 default:
                     // Dark text on light bg
-                    set_variant (titlebar);
+                    set_variant (headerbar);
                     critical ("light: %s on %s", fg, bg);
                     break;
             }
