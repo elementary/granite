@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-22 16:46-0700\n"
-"PO-Revision-Date: 2019-04-21 08:31+0000\n"
-"Last-Translator: Nils K <slx@nilsk.net>\n"
+"PO-Revision-Date: 2019-05-05 00:32+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite/nb/>\n"
 "Language: nb\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:38+0000\n"
 
 #: lib/Application.vala:182
@@ -230,7 +230,7 @@ msgstr "_Avbryt"
 
 #: lib/Widgets/MessageDialog.vala:311
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -294,12 +294,12 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:125
 msgid "Left Alt"
-msgstr ""
+msgstr "Venstre Alt-tast"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:129
 msgid "Right Alt"
-msgstr ""
+msgstr "Høyre Alt-tast"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
@@ -312,8 +312,9 @@ msgid "Plus"
 msgstr "Pluss"
 
 #: lib/Widgets/Utils.vala:142
+#, fuzzy
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:146

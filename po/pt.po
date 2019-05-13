@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-22 16:46-0700\n"
-"PO-Revision-Date: 2019-04-06 20:52+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"PO-Revision-Date: 2019-05-05 01:32+0000\n"
+"Last-Translator: Nuno Alexandre MS Ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite/pt/>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -35,15 +35,13 @@ msgstr "Página Web"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%I:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%I:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -70,22 +68,22 @@ msgstr[1] "%dm atrás"
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%dh atrás"
-msgstr[1] "%dh atrás"
+msgstr[0] "há %dh"
+msgstr[1] "há %dh"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "Em %dm"
-msgstr[1] "Em %dm"
+msgstr[0] "em %dm"
+msgstr[1] "em %dm"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "em %dm"
-msgstr[1] "em %dm"
+msgstr[0] "em %d"
+msgstr[1] "em %d"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
@@ -228,7 +226,7 @@ msgstr "_Cancelar"
 
 #: lib/Widgets/MessageDialog.vala:311
 msgid "Details"
-msgstr ""
+msgstr "Detalhes"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -292,12 +290,12 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:125
 msgid "Left Alt"
-msgstr ""
+msgstr "Alt Esquerdo"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:129
 msgid "Right Alt"
-msgstr ""
+msgstr "Alt Direito"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
@@ -311,19 +309,17 @@ msgstr "Mais"
 
 #: lib/Widgets/Utils.vala:142
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:146
-#, fuzzy
 msgid "Left Shift"
-msgstr "Shift"
+msgstr "Shift Esquerdo"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:150
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Shift direito"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196
