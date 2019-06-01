@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-22 16:46-0700\n"
-"PO-Revision-Date: 2018-12-25 16:15+0000\n"
+"PO-Revision-Date: 2019-05-04 14:32+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://weblate.elementary.io/projects/desktop/"
-"granite/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite/"
+"he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -36,15 +36,13 @@ msgstr "אתר אינטרנט"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -237,7 +235,7 @@ msgstr "_ביטול"
 
 #: lib/Widgets/MessageDialog.vala:311
 msgid "Details"
-msgstr ""
+msgstr "פרטים"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -301,12 +299,12 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:125
 msgid "Left Alt"
-msgstr ""
+msgstr "Alt שמאלי"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:129
 msgid "Right Alt"
-msgstr ""
+msgstr "Alt ימני"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
@@ -320,19 +318,17 @@ msgstr "פלוס"
 
 #: lib/Widgets/Utils.vala:142
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:146
-#, fuzzy
 msgid "Left Shift"
-msgstr "Shift"
+msgstr "Shift שמאלי"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:150
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Shift ימני"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-22 16:46-0700\n"
-"PO-Revision-Date: 2019-04-06 20:52+0000\n"
+"PO-Revision-Date: 2019-05-05 06:32+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -35,15 +35,13 @@ msgstr "Web sitesi"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -63,29 +61,29 @@ msgstr "Şimdi"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%dm önce"
-msgstr[1] "%dm önce"
+msgstr[0] "%d dk. önce"
+msgstr[1] "%d dk. önce"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%dh önce"
-msgstr[1] "%dh önce"
+msgstr[0] "%d sa. önce"
+msgstr[1] "%d sa. önce"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "%dm içinde"
-msgstr[1] "%dm içinde"
+msgstr[0] "%d dk. içinde"
+msgstr[1] "%d dk. içinde"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "%dh içinde"
-msgstr[1] "%dh içinde"
+msgstr[0] "%d sa. içinde"
+msgstr[1] "%d sa. içinde"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
@@ -151,7 +149,7 @@ msgstr "Belgeleyen:"
 #: lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr "Çeviri %s"
+msgstr "Çeviren: %s"
 
 #: lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
@@ -164,7 +162,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 "Bu program %s lisans şartları altında yayınlanmakta olup, KESİNLİKLE HİÇBİR "
-"GARANTİ vermemektedir; Ayrıntılar için, %s adresini ziyaret edin."
+"GARANTİ vermemektedir. Ayrıntılar için, %s adresini ziyaret edin"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
@@ -228,7 +226,7 @@ msgstr "_İptal"
 
 #: lib/Widgets/MessageDialog.vala:311
 msgid "Details"
-msgstr ""
+msgstr "Ayrıntılar"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -260,12 +258,12 @@ msgstr "Diğer"
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
 msgid "%s free out of %s"
-msgstr "%s üzerinden ücretsiz %s"
+msgstr "%2$s alanın %1$s bölümü boş"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr "ÖÖ"
+msgstr "ÖÖ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
@@ -292,12 +290,12 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:125
 msgid "Left Alt"
-msgstr ""
+msgstr "Sol Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:129
 msgid "Right Alt"
-msgstr ""
+msgstr "Sağ Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
@@ -311,19 +309,17 @@ msgstr "Artı"
 
 #: lib/Widgets/Utils.vala:142
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:146
-#, fuzzy
 msgid "Left Shift"
-msgstr "Shift"
+msgstr "Sol Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:150
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Sağ Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196
