@@ -33,7 +33,6 @@ add_project_arguments(
     '--abi-stability',
     '--hide-internal',
     '--target-glib=' + glib_min_version,
-    '--thread',
     language: ['vala']
 )
 
