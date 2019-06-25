@@ -111,9 +111,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
+        title_label.selectable = true;
         title_label.xalign = 0;
         title_label.get_style_context ().add_class ("h2");
-        title_label.set_selectable(true);
 
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;
@@ -123,9 +123,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         if (description != null) {
             description_label = new Gtk.Label (description);
+            description_label.selectable = true;
             description_label.xalign = 0;
             description_label.wrap = true;
-            description_label.set_selectable(true);
 
             header_area.attach (header_icon, 0, 0, 1, 2);
             header_area.attach (description_label, 1, 1);
