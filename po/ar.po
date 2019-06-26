@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"POT-Creation-Date: 2019-06-26 22:43+0200\n"
 "PO-Revision-Date: 2019-03-12 21:26+0000\n"
 "Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
@@ -236,16 +236,16 @@ msgstr "التراجع عن إغلاق تبويب"
 msgid "Closed Tabs"
 msgstr "التبويبات المغلقة"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:139
 #, fuzzy
 msgid "_Close"
 msgstr "إغلاق تبويب"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
 msgstr "ألغي"
 
-#: lib/Widgets/MessageDialog.vala:311
+#: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
 msgstr ""
 

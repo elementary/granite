@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"POT-Creation-Date: 2019-06-26 22:43+0200\n"
 "PO-Revision-Date: 2016-10-27 12:56+0000\n"
 "Last-Translator: Адмирал АнимЕ <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -217,16 +217,16 @@ msgstr "Отмени затварянето на подпрозореца"
 msgid "Closed Tabs"
 msgstr "Затворени подпрозорци"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:139
 #, fuzzy
 msgid "_Close"
 msgstr "Затваряне"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:311
+#: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
 msgstr ""
 

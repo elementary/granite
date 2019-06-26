@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"POT-Creation-Date: 2019-06-26 22:43+0200\n"
 "PO-Revision-Date: 2019-05-04 17:32+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
@@ -212,15 +212,15 @@ msgstr "閉じたタブを復元"
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: lib/Widgets/MessageDialog.vala:311
+#: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
 msgstr "詳細"
 
