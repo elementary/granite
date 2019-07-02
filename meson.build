@@ -1,7 +1,8 @@
 project(
     'granite',
     'vala', 'c',
-    version: '5.2.2'
+    meson_version: '>= 0.48.2',
+    version: '5.2.3'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.40.0')
@@ -32,7 +33,6 @@ add_project_arguments(
     '--abi-stability',
     '--hide-internal',
     '--target-glib=' + glib_min_version,
-    '--thread',
     language: ['vala']
 )
 
