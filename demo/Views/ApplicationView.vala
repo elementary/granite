@@ -20,10 +20,17 @@
 public class ApplicationView : Gtk.Grid {
     construct {
         var progress_visible_label = new Gtk.Label ("Show Progress:");
+
         var progress_visible_switch = new Gtk.Switch ();
+        progress_visible_switch.valign = Gtk.Align.CENTER;
+
         var progress_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 0, 1, 0.05);
+
         var badge_visible_label = new Gtk.Label ("Show Badge:");
+
         var badge_visible_switch = new Gtk.Switch ();
+        badge_visible_switch.valign = Gtk.Align.CENTER;
+
         var badge_spin = new Gtk.SpinButton.with_range (0, int64.MAX, 1);
 
         column_spacing = 12;
@@ -31,12 +38,15 @@ public class ApplicationView : Gtk.Grid {
         orientation = Gtk.Orientation.VERTICAL;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
-        attach (progress_visible_label, 0, 0, 1, 1);
-        attach (progress_visible_switch, 1, 0, 1, 1);
-        attach (progress_scale, 0, 1, 2, 1);
-        attach (badge_visible_label, 0, 2, 1, 1);
-        attach (badge_visible_switch, 1, 2, 1, 1);
-        attach (badge_spin, 0, 3, 2, 1);
+        attach (progress_visible_label, 0, 0);
+        attach (progress_visible_switch, 1, 0);
+        attach (progress_scale, 2, 0);
+        attach (badge_visible_label, 0, 1);
+        attach (badge_visible_switch, 1, 1);
+        attach (badge_spin, 2, 1);
+
+        progress_visible_switch.bind_property ("active", progress_scale, "sensitive", GLib.BindingFlags.SYNC_CREATE);
+        badge_visible_switch.bind_property ("active", badge_spin, "sensitive", GLib.BindingFlags.SYNC_CREATE);
 
         progress_scale.value_changed.connect (() => {
             Granite.Services.Application.set_progress.begin (progress_scale.get_value (), (obj, res) => {
