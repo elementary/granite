@@ -111,6 +111,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
+        title_label.selectable = true;
         title_label.xalign = 0;
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
@@ -122,6 +123,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
         if (description != null) {
             description_label = new Gtk.Label (description);
+            description_label.selectable = true;
             description_label.xalign = 0;
             description_label.wrap = true;
 
