@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 elementary LLC. (https://elementary.io)
+* Copyright 2017-2019 elementary, Inc. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -101,7 +101,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
      * Deprecated: Subclass this instead.
      */
     protected SimpleSettingsPage () {
-        
+
     }
 
     construct {
@@ -113,7 +113,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         title_label.ellipsize = Pango.EllipsizeMode.END;
         title_label.selectable = true;
         title_label.xalign = 0;
-        title_label.get_style_context ().add_class ("h2");
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var header_area = new Gtk.Grid ();
         header_area.column_spacing = 12;

@@ -1,25 +1,16 @@
-# Romanian translation for granite
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-26 22:43+0200\n"
-"PO-Revision-Date: 2017-05-28 09:20+0000\n"
-"Last-Translator: Plugaru Tudor <plugaru.tudor@gmail.com>\n"
-"Language-Team: Romanian <https://l10n.elementary.io/projects/desktop/granite/"
-"ro/>\n"
-"Language: ro\n"
+"PO-Revision-Date: 2019-06-26 18:53+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: szl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14\n"
-"X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: lib/Application.vala:182
 msgid "Show Granite Options"
@@ -28,33 +19,31 @@ msgstr ""
 #: lib/Application.vala:235
 #, c-format
 msgid "%s's Developers"
-msgstr "%s Dezvoltatori"
+msgstr ""
 
 #: lib/Application.vala:252
 msgid "Website"
-msgstr "Website"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr "%H:%M:%S"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr "%H:%M"
+msgstr ""
 
 #: lib/DateTime.vala:73
 msgid "Now"
@@ -102,67 +91,65 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr "%b %e %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:154
 msgid "%Y"
-msgstr "%Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:157
 msgid "%b %e"
-msgstr "%b %e"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr "%a %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:163
 #, c-format
 msgid "%a"
-msgstr "%a"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
 msgid "%b"
-msgstr "%b"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:32
 msgid "Designed by:"
-msgstr "Proiectat de:"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:51
 msgid "Written by:"
-msgstr "Scris de:"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
-msgstr "Documentat de:"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr "Tradus de %s"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
-msgstr "Închide"
+msgstr ""
 
 #: lib/GtkPatch/AboutDialog.vala:395
 #, c-format
@@ -170,66 +157,62 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"Acest program este publicat sub termenii licenţei %s, vine FĂRĂ NICI O "
-"GARANŢIE; pentru detalii vizitează %s"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
-msgstr "Sugerează traduceri"
+msgstr ""
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
-msgstr "Raportează o Problemă"
+msgstr ""
 
 #: lib/Widgets/AppMenu.vala:66
 msgid "Menu"
-msgstr "Meniu"
+msgstr ""
 
 #: lib/Widgets/AppMenu.vala:76
 msgid "About"
-msgstr "Despre"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
 msgid "Close Tab"
-msgstr "Închide fila"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:265
-#, fuzzy
 msgid "Open in a New Window"
-msgstr "Deschide într-o fereastră nouă"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:266
 msgid "Duplicate"
-msgstr "Duplichează"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tab"
-msgstr "Închide cealaltă filă"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:317
 msgid "Close Other Tabs"
-msgstr "Închide celelalte file"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:488
 msgid "Clear All"
-msgstr "Șterge tot"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
 msgid "New Tab"
-msgstr "Filă nouă"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:770
 msgid "Undo Close Tab"
-msgstr "Resturează fila inchisă"
+msgstr ""
 
 #: lib/Widgets/DynamicNotebook.vala:810
 msgid "Closed Tabs"
-msgstr "File închise"
+msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:139
-#, fuzzy
 msgid "_Close"
-msgstr "Închide"
+msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
@@ -241,50 +224,50 @@ msgstr ""
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr "Fișiere video"
+msgstr ""
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr "Fotografii"
+msgstr ""
 
 #: lib/Widgets/StorageBar.vala:90
 msgid "Apps"
-msgstr "Aplicații"
+msgstr ""
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: lib/Widgets/StorageBar.vala:93
 msgid "Files"
-msgstr "Fișiere"
+msgstr ""
 
 #: lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr "Altele"
+msgstr ""
 
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
 msgid "%s free out of %s"
-msgstr "%s liber din %s"
+msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr "a.m."
+msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr "p.m."
+msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
 msgid ":"
-msgstr ":"
+msgstr ""
 
 #: lib/Widgets/Utils.vala:99
 msgid "Shift"
@@ -336,62 +319,3 @@ msgstr ""
 #: lib/Widgets/Utils.vala:196
 msgid ", "
 msgstr ""
-
-#~ msgid "© %s"
-#~ msgstr "© %s"
-
-#~ msgid "This program is published under the terms of the "
-#~ msgstr "Acest program este publicat în conformitate cu condiţiile de "
-
-#~ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-#~ msgstr ""
-#~ " licență, acesta vine cu ABSOLUT NICI O GARANȚIE; pentru detalii, "
-#~ "vizitați "
-
-#~ msgid "Developers"
-#~ msgstr "Dezvoltatori"
-
-#~ msgid "Open in a new Window"
-#~ msgstr "Deschide într-o fereastră nouă"
-
-#~ msgid "Could not contact Contractor. You may need to install it"
-#~ msgstr "Nu pot contacta Contractor. E nevoie sa îl instalezi."
-
-#~ msgid "No action found for this file"
-#~ msgstr "Nici o acțiune găsită pentru acest fișier"
-
-#~ msgid "%a %b %e %Y"
-#~ msgstr "%a %b %e %Y"
-
-#~ msgid "%a %b %e"
-#~ msgstr "%a %b %e"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  Cristian Turcu https://launchpad.net/~cristian-turcu29\n"
-#~ "  Marius Albina https://launchpad.net/~marius-albina\n"
-#~ "  Richard B. https://launchpad.net/~dx-richard\n"
-#~ "  Răzvan Ana https://launchpad.net/~rzvann-u\n"
-#~ "  aodpi https://launchpad.net/~balan-valeriu"
-
-#~ msgid "Toasts"
-#~ msgstr "Toasturi"
-
-#~ msgid "Simple in-app notifications"
-#~ msgstr "Notificări simple în aplicație"
-
-#~ msgid "Button was pressed!"
-#~ msgstr "Butonul a fost apăsat!"
-
-#~ msgid "Do Things"
-#~ msgstr "Fă chestii"
-
-#~ msgid "Press Me"
-#~ msgstr "Apasă-mă"
-
-#~ msgid "Did The Thing"
-#~ msgstr "A făcut ceva"
-
-#~ msgid "Already did the thing"
-#~ msgstr "Deja ai făcut ceva"
