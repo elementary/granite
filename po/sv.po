@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"POT-Creation-Date: 2019-06-26 22:43+0200\n"
 "PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/desktop/"
@@ -218,15 +218,15 @@ msgstr "Ångra stängning av flik"
 msgid "Closed Tabs"
 msgstr "Stängda flikar"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
 msgstr "_Stäng"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: lib/Widgets/MessageDialog.vala:311
+#: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
 msgstr ""
 

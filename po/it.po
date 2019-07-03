@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-22 16:46-0700\n"
+"POT-Creation-Date: 2019-06-26 22:43+0200\n"
 "PO-Revision-Date: 2018-11-07 23:08+0000\n"
 "Last-Translator: Marco De Paolini <marco.depaolini@gmail.com>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/desktop/"
@@ -218,15 +218,15 @@ msgstr "Annulla chiusura della scheda"
 msgid "Closed Tabs"
 msgstr "Schede chiuse"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
 msgstr "_Annulla"
 
-#: lib/Widgets/MessageDialog.vala:311
+#: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
 msgstr ""
 
