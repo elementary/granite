@@ -389,7 +389,7 @@ namespace Granite.Widgets {
         }
 
         private bool close_button_is_visible () {
-            return close_button_revealer.visible && close_button_revealer.child_revealed;
+            return close_button_revealer.visible && close_button_revealer.reveal_child;
         }
     }
 
