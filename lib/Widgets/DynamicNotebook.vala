@@ -203,6 +203,7 @@ namespace Granite.Widgets {
 
         internal signal void closed ();
         internal signal void close_others ();
+        internal signal void close_others_right ();
         internal signal void new_window ();
         internal signal void duplicate ();
         internal signal void pin_switch ();
@@ -261,10 +262,12 @@ namespace Granite.Widgets {
             menu = new Gtk.Menu ();
             var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
             var close_other_m = new Gtk.MenuItem.with_label ("");
+            var close_other_right_m = new Gtk.MenuItem.with_label ("");
             pin_m = new Gtk.MenuItem.with_label ("");
             new_window_m = new Gtk.MenuItem.with_label (_("Open in a New Window"));
             duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
             menu.append (close_other_m);
+            menu.append (close_other_right_m);
             menu.append (close_m);
             menu.append (new_window_m);
             menu.append (duplicate_m);
@@ -273,6 +276,7 @@ namespace Granite.Widgets {
 
             close_m.activate.connect (() => closed () );
             close_other_m.activate.connect (() => close_others () );
+            close_other_right_m.activate.connect (() => close_others_right () );
             new_window_m.activate.connect (() => new_window () );
             duplicate_m.activate.connect (() => duplicate () );
             pin_m.activate.connect (() => pinned = !pinned);
@@ -313,9 +317,13 @@ namespace Granite.Widgets {
                     this.duplicate ();
                 } else if (e.button == 3) {
                     menu.popup_at_pointer (e);
-                    uint num_tabs = (this.get_parent () as Gtk.Container).get_children ().length ();
+                    var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
+                    uint num_tabs = dynamic_notebook.n_tabs;
+                    uint tab_position = dynamic_notebook.get_tab_position (this);
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
+                    close_other_right_m.label = ngettext (_("Close Tab to the right"), _("Close Tabs to the right"), num_tabs - 1 - tab_position);
+                    close_other_right_m.sensitive = (tab_position < num_tabs - 1);
                     new_window_m.sensitive = (num_tabs != 1);
                     pin_m.label = "Pin";
                     if (this.pinned) {
@@ -1149,6 +1157,7 @@ namespace Granite.Widgets {
         private void insert_callbacks (Tab tab) {
             tab.closed.connect (on_tab_closed);
             tab.close_others.connect (on_close_others);
+            tab.close_others_right.connect (on_close_others_right);
             tab.new_window.connect (on_new_window);
             tab.duplicate.connect (on_duplicate);
             tab.pin_switch.connect (on_pin_switch);
@@ -1157,6 +1166,7 @@ namespace Granite.Widgets {
         private void remove_callbacks (Tab tab) {
             tab.closed.disconnect (on_tab_closed);
             tab.close_others.disconnect (on_close_others);
+            tab.close_others_right.disconnect (on_close_others_right);
             tab.new_window.disconnect (on_new_window);
             tab.duplicate.disconnect (on_duplicate);
             tab.pin_switch.disconnect (on_pin_switch);
@@ -1184,18 +1194,23 @@ namespace Granite.Widgets {
             }
         }
 
-        private void on_close_others (Tab tab) {
-            var num = 0; //save num, in case a tab refused to close so we don't end up in an infinite loop
-
-            for (var j = 0; j < tabs.length (); j++) {
-                if (tab != tabs.nth_data (j)) {
-                    tabs.nth_data (j).closed ();
-                    if (num == n_tabs) break;
-                    j--;
+        private void on_close_others (Tab clickedTab) {
+            tabs.copy ().foreach ((tab) => {
+                if (tab != clickedTab) {
+                    tab.closed ();
                 }
+            });
+        }
 
-                num = n_tabs;
-            }
+        private void on_close_others_right (Tab clickedTab) {
+            var toTheRight = false; 
+
+            tabs.copy ().foreach ((tab) => {
+                if (toTheRight)
+                    tab.closed ();
+                if (tab == clickedTab) 
+                    toTheRight = true;
+            });
         }
 
         private void on_new_window (Tab tab) {
