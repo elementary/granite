@@ -1206,10 +1206,12 @@ namespace Granite.Widgets {
             var is_to_the_right = false; 
 
             tabs.copy ().foreach ((tab) => {
-                if (is_to_the_right)
+                if (is_to_the_right) {
                     tab.closed ();
-                if (tab == clicked_tab) 
-                is_to_the_right = true;
+                }
+                if (tab == clicked_tab) {
+                    is_to_the_right = true;
+                }
             });
         }
 
