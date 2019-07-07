@@ -301,9 +301,8 @@ namespace Granite.Widgets {
             });
 
             this.button_press_event.connect ((e) => {
-                if (e.button == 2 && close_button_is_visible ()) {
+                if (e.button == 2) {
                     e.state &= MODIFIER_MASK;
-
                     if  (e.state == 0) {
                         this.closed ();
                     } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
@@ -386,10 +385,6 @@ namespace Granite.Widgets {
 
             close_button_revealer.reveal_child = _closable && !_pinned
                 && (cursor_over_tab || cursor_over_close_button || _is_current_tab);
-        }
-
-        private bool close_button_is_visible () {
-            return close_button_revealer.visible && close_button_revealer.child_revealed;
         }
     }
 
