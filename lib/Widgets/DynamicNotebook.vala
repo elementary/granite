@@ -44,6 +44,15 @@ namespace Granite.Widgets {
 
         construct {
             add (new Gtk.Grid ());
+
+            // delay tabs resizing until cursor leaves tab-bar
+            // tab_bar-area = DynamicNotebook-area - TabPageContainer-area
+            this.enter_notify_event.connect ((e) => {
+                var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
+                dynamic_notebook.check_to_expand_tabs ();
+                return false;
+            });
+
         }
     }
 
@@ -253,6 +262,7 @@ namespace Granite.Widgets {
             tab_layout.add (_working);
 
             visible_window = true;
+            hexpand = true;
 
             add (tab_layout);
             show_all ();
@@ -308,7 +318,8 @@ namespace Granite.Widgets {
                 if (e.button == 2) {
                     e.state &= MODIFIER_MASK;
                     if  (e.state == 0) {
-                        this.closed ();
+                        ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook)
+                        .close_tab_and_keep_width (this);
                     } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
                         this.close_others ();
                     }
@@ -375,7 +386,10 @@ namespace Granite.Widgets {
             });
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
-            close_button.clicked.connect (() => this.closed ());
+            close_button.clicked.connect (() => {
+                ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook)
+                .close_tab_and_keep_width (this);
+            });
             working = false;
 
             update_close_button_visibility ();
@@ -721,9 +735,9 @@ namespace Granite.Widgets {
 
         Gtk.Notebook notebook;
 
-        private int tab_width = 150;
-        private const int MAX_TAB_WIDTH = 174;
+        private const int TAB_MIN_WIDTH = 100;
         private const int TAB_WIDTH_PINNED = 18;
+        private bool need_to_expand_tabs = false;
 
         public signal void tab_added (Tab tab);
         public signal void tab_removed (Tab tab);
@@ -754,7 +768,7 @@ namespace Granite.Widgets {
         construct {
             notebook = new Gtk.Notebook ();
             notebook.can_focus = false;
-            visible_window = false;
+            visible_window = true; // needed to check if cursor_over_notebook
             get_style_context ().add_class ("dynamic-notebook");
 
             notebook.scrollable = true;
@@ -817,14 +831,13 @@ namespace Granite.Widgets {
             notebook.set_action_widget (add_button_box, Gtk.PackType.START);
             notebook.set_action_widget (restore_button, Gtk.PackType.END);
 
+            //  delay tabs resizing until cursor leaves tab-bar
+            //  tab_bar-area = DynamicNotebook-area - TabPageContainer-are
+            leave_notify_event.connect ((e) => { check_to_expand_tabs (); return false; });
+            add_button.enter_notify_event.connect (() => { check_to_expand_tabs (); return false; });
 
             add_button.clicked.connect (() => {
                 new_tab_requested ();
-            });
-
-            add_button.button_press_event.connect ((e) => {
-                // Consume double-clicks
-                return e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1;
             });
 
             restore_button.clicked.connect (() => {
@@ -837,20 +850,10 @@ namespace Granite.Widgets {
             restore_tab_m.visible = allow_restoring;
             restore_button.visible = allow_restoring;
 
-            size_allocate.connect (() => {
-                recalc_size ();
-            });
-
             button_press_event.connect ((e) => {
-                if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
-                    new_tab_requested ();
-                } else if (e.button == 2 && allow_restoring) {
-                    restore_last_tab ();
-                    return true;
-                } else if (e.button == 3) {
+                if (e.button == 3) {
                     menu.popup_at_pointer (e);
                 }
-
                 return false;
             });
 
@@ -1012,43 +1015,6 @@ namespace Granite.Widgets {
             }
         }
 
-        private void recalc_size () {
-            if (n_tabs == 0)
-                return;
-
-            var pinned_tabs = 0;
-            var unpinned_tabs = 0;
-            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
-                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
-                    pinned_tabs++;
-                } else {
-                    unpinned_tabs++;
-                }
-            }
-
-            if (unpinned_tabs == 0) {
-                unpinned_tabs = 1;
-            }
-
-            var offset = 130;
-            this.tab_width = (this.get_allocated_width () - offset - pinned_tabs * TAB_WIDTH_PINNED) / unpinned_tabs;
-            if (tab_width > MAX_TAB_WIDTH)
-                tab_width = MAX_TAB_WIDTH;
-
-            if (tab_width < 0)
-                tab_width = 0;
-
-            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
-                this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
-
-                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
-                    this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = TAB_WIDTH_PINNED;
-                }
-            }
-
-            this.notebook.resize_children ();
-        }
-
         private void restore_last_tab () {
             if (!allow_restoring || closed_tabs.empty)
                 return;
@@ -1065,7 +1031,8 @@ namespace Granite.Widgets {
             }
 
             recalc_order ();
-            recalc_size ();
+            tab.width_request = TAB_MIN_WIDTH;
+            tab.hexpand = false;
         }
 
         public void remove_tab (Tab tab) {
@@ -1124,11 +1091,7 @@ namespace Granite.Widgets {
         public uint insert_tab (Tab tab, int index) {
             return_val_if_fail (tabs.index (tab) < 0, 0);
 
-            var i = 0;
-            if (index <= -1)
-                i = this.notebook.insert_page (tab.page_container, tab, this.notebook.get_n_pages ());
-            else
-                i = this.notebook.insert_page (tab.page_container, tab, index);
+            index = this.notebook.insert_page (tab.page_container, tab,  (index <= -1) ? this.notebook.get_n_pages () : index);
 
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
@@ -1139,14 +1102,63 @@ namespace Granite.Widgets {
             tab.pinnable = allow_pinning;
             tab.pinned = false;
 
-            tab.width_request = tab_width;
-            this.recalc_size ();
+            tab.hexpand = !need_to_expand_tabs;
+            tab.width_request = TAB_MIN_WIDTH;
+            //  //  ** only needed if hovering over add_button does not cause tab resizing **
+            //  if (need_to_expand_tabs) {
+            //      unowned List<Tab> list = tabs;
+            //      var current_tab_width = list.last ().data.get_allocated_width ();
+            //      for (; list != null; list = list.next) { 
+            //          var tab_loop = list.data;
+            //          if (!tab_loop.pinned) {
+            //              tab_loop.width_request = current_tab_width;
+            //          }
+            //      }
+            //  } else {
+            //      tab.width_request = TAB_MIN_WIDTH;
+            //  }
             this.recalc_order ();
 
             if (!tabs_closable)
                 tab.closable = false;
 
-            return i;
+            return index;
+        }
+
+        // close a tab, keep the width of the other tabs and set need_to_expand flag
+        internal void close_tab_and_keep_width (Tab clicked_tab) {
+            debug("close tab with delayed resize!");
+            if (n_tabs > 2) {
+                need_to_expand_tabs = true;
+
+                unowned List<Tab> list = tabs;
+                var current_tab_width = list.last ().data.get_allocated_width ();
+                for (; list != null; list = list.next) {
+                    var tab = list.data;
+                    if (!tab.pinned) {
+                        tab.width_request = current_tab_width;
+                        tab.hexpand = false;
+                    }
+                }
+            } else { // Automatically resize if only one tab
+                check_to_expand_tabs ();
+            }
+            clicked_tab.closed ();
+        }
+
+        // check if tabs have to be expanded
+        internal void check_to_expand_tabs () {
+            if (!need_to_expand_tabs)
+                return;
+            debug("resize tabs!");
+            need_to_expand_tabs = false;
+            for (unowned List<Tab> list = tabs; list != null; list = list.next) {
+                var tab = list.data;
+                if (!tab.pinned){
+                    tab.hexpand = true;
+                    tab.width_request = TAB_MIN_WIDTH;
+                }
+            }
         }
 
         private void insert_callbacks (Tab tab) {
