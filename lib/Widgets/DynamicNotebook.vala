@@ -1194,22 +1194,22 @@ namespace Granite.Widgets {
             }
         }
 
-        private void on_close_others (Tab clickedTab) {
+        private void on_close_others (Tab clicked_tab) {
             tabs.copy ().foreach ((tab) => {
-                if (tab != clickedTab) {
+                if (tab != clicked_tab) {
                     tab.closed ();
                 }
             });
         }
 
-        private void on_close_others_right (Tab clickedTab) {
-            var toTheRight = false; 
+        private void on_close_others_right (Tab clicked_tab) {
+            var is_to_the_right = false; 
 
             tabs.copy ().foreach ((tab) => {
-                if (toTheRight)
+                if (is_to_the_right)
                     tab.closed ();
-                if (tab == clickedTab) 
-                    toTheRight = true;
+                if (tab == clicked_tab) 
+                is_to_the_right = true;
             });
         }
 
