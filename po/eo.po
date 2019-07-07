@@ -214,12 +214,7 @@ msgstr ""
 msgid "Closed Tabs"
 msgstr ""
 
-<<<<<<< HEAD
 #: lib/Widgets/MessageDialog.vala:139
-#, fuzzy
-=======
-#: lib/Widgets/MessageDialog.vala:125
->>>>>>> weblate/master
 msgid "_Close"
 msgstr "_Fermi langeton"
 
