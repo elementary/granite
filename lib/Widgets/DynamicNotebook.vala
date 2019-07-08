@@ -1199,16 +1199,11 @@ namespace Granite.Widgets {
         }
 
         private void on_close_others_right (Tab clicked_tab) {
-            var is_to_the_right = false; 
+            unowned List<Tab> list = tabs.find (clicked_tab).next;
 
-            tabs.copy ().foreach ((tab) => {
-                if (is_to_the_right) {
-                    tab.closed ();
-                }
-                if (tab == clicked_tab) {
-                    is_to_the_right = true;
-                }
-            });
+            for (; list != null; list = list.next) {
+                list.data.closed ();
+            }
         }
 
         private void on_new_window (Tab tab) {
