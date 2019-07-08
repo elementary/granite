@@ -62,15 +62,23 @@ public class Granite.AccelMenuLabel : Gtk.Grid {
         label.hexpand = true;
         label.xalign = 0;
 
-        var accel_label = new Gtk.Label (
-            Granite.accel_to_string (
-                ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0]
-            )
-        );
-        accel_label.get_style_context ().add_class (Gtk.STYLE_CLASS_ACCELERATOR);
-
         column_spacing = 3;
         add (label);
-        add (accel_label);
+
+        string[] accels = Granite.accel_to_string (
+            ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0]
+        ).split (" + ");
+
+        if (accels[0] != "") {
+            foreach (unowned string accel in accels) {
+                if (accel == "") {
+                    continue;
+                }
+                var accel_label = new Gtk.Label (accel);
+                accel_label.get_style_context ().add_class ("keycap");
+                accel_label.get_style_context ().add_class (Gtk.STYLE_CLASS_ACCELERATOR);
+                add (accel_label);
+            }
+        }
     }
 }
