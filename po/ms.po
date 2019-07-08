@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:43+0200\n"
+"POT-Creation-Date: 2019-07-08 08:41-0700\n"
 "PO-Revision-Date: 2015-12-04 01:36+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -180,40 +180,49 @@ msgstr "Menu"
 msgid "About"
 msgstr "Perihal"
 
-#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+#: lib/Widgets/DynamicNotebook.vala:239 lib/Widgets/DynamicNotebook.vala:263
 msgid "Close Tab"
 msgstr "Tutup Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:267
 #, fuzzy
 msgid "Open in a New Window"
 msgstr "BUka dalam Tetingkap baru"
 
-#: lib/Widgets/DynamicNotebook.vala:266
+#: lib/Widgets/DynamicNotebook.vala:268
 msgid "Duplicate"
 msgstr "Gandakan"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tab"
 msgstr "Tutup Tab Lain"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tabs"
 msgstr "Tutup Tab Lain"
 
-#: lib/Widgets/DynamicNotebook.vala:488
+#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tab to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tabs to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
 msgstr "Kosongkan Semua"
 
-#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+#: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
 msgstr "Tab Baru"
 
-#: lib/Widgets/DynamicNotebook.vala:770
+#: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
 msgstr "Buat Asal Tutup Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:810
+#: lib/Widgets/DynamicNotebook.vala:814
 msgid "Closed Tabs"
 msgstr "Tab Ditutup"
 

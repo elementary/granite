@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:43+0200\n"
+"POT-Creation-Date: 2019-07-08 08:41-0700\n"
 "PO-Revision-Date: 2019-05-04 17:32+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
@@ -176,39 +176,48 @@ msgstr "メニュー"
 msgid "About"
 msgstr "このアプリケーションについて"
 
-#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+#: lib/Widgets/DynamicNotebook.vala:239 lib/Widgets/DynamicNotebook.vala:263
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:267
 msgid "Open in a New Window"
 msgstr "新しいウィンドウで開く"
 
-#: lib/Widgets/DynamicNotebook.vala:266
+#: lib/Widgets/DynamicNotebook.vala:268
 msgid "Duplicate"
 msgstr "タブを複製"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tab"
 msgstr "他のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tabs"
 msgstr "他のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:488
+#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tab to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tabs to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
 msgstr "すべて消去"
 
-#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+#: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: lib/Widgets/DynamicNotebook.vala:770
+#: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
 msgstr "閉じたタブを復元"
 
-#: lib/Widgets/DynamicNotebook.vala:810
+#: lib/Widgets/DynamicNotebook.vala:814
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
