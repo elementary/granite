@@ -4,6 +4,7 @@ executable(
     'GraniteDemo.vala',
 
     'Views/AlertViewView.vala',
+    'Views/ApplicationView.vala',
     'Views/AsyncImageView.vala',
     'Views/AvatarView.vala',
     'Views/CSSView.vala',
@@ -34,7 +35,7 @@ applications_dir = join_paths(
 )
 
 install_data(
-    'granite-demo.desktop',
+    'io.elementary.granite.demo.desktop',
     install_dir: applications_dir
 )
 

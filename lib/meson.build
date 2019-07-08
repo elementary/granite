@@ -9,6 +9,7 @@ libgranite_sources = files(
 
     'GtkPatch/AboutDialog.vala',
 
+    'Services/Application.vala',
     'Services/ContractorProxy.vala',
     'Services/IconFactory.vala',
     'Services/Logger.vala',
