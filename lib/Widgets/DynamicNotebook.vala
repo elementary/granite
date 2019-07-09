@@ -1191,11 +1191,12 @@ namespace Granite.Widgets {
         }
 
         private void on_close_others (Tab clicked_tab) {
-            tabs.copy ().foreach ((tab) => {
+            for (unowned List<Tab> list = tabs; list != null; list = list.next) {
+                var tab = list.data;
                 if (tab != clicked_tab) {
                     tab.closed ();
                 }
-            });
+            }
         }
 
         private void on_close_others_right (Tab clicked_tab) {
