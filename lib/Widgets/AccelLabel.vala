@@ -78,6 +78,7 @@ public class Granite.AccelLabel : Gtk.Grid {
     construct {
         var label = new Gtk.Label (label);
         label.hexpand = true;
+        label.margin_end = 6;
         label.xalign = 0;
 
         column_spacing = 3;
@@ -113,7 +114,6 @@ public class Granite.AccelLabel : Gtk.Grid {
 
                 var accel_label_context = accel_label.get_style_context ();
                 accel_label_context.add_class (Granite.STYLE_CLASS_KEYCAP);
-                accel_label_context.add_class (Gtk.STYLE_CLASS_ACCELERATOR);
 
                 add (accel_label);
             }
