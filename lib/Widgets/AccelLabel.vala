@@ -29,7 +29,7 @@
  * {{{
  *   var copy_menuitem = new Gtk.MenuItem ();
  *   copy_menuitem.set_action_name (ACTION_PREFIX + ACTION_COPY);
- *   copy_menuitem.add (new Granite.AccelLabel.from_action (_("Copy"), copy_menuitem.action_name));
+ *   copy_menuitem.add (new Granite.AccelLabel.from_action_name (_("Copy"), copy_menuitem.action_name));
  * }}}
  *
  */
@@ -68,7 +68,7 @@ public class Granite.AccelLabel : Gtk.Grid {
      * @param label displayed to the user as the menu item name
      * @param action_name name of the {@link GLib.Action} used to retrieve action accelerators
      */
-    public AccelLabel.from_action (string label, string action_name) {
+    public AccelLabel.from_action_name (string label, string action_name) {
         Object (
             label: label,
             action_name: action_name
