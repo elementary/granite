@@ -98,7 +98,7 @@ public class Granite.AccelLabel : Gtk.Grid {
                     continue;
                 }
                 var accel_label = new Gtk.Label (accel);
-                accel_label.get_style_context ().add_class ("keycap");
+                accel_label.get_style_context ().add_class (Granite.STYLE_CLASS_KEYCAP);
                 accel_label.get_style_context ().add_class (Gtk.STYLE_CLASS_ACCELERATOR);
                 add (accel_label);
             }
