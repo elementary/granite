@@ -37,12 +37,12 @@ public class Granite.AccelLabel : Gtk.Grid {
     /**
      * The name of the {@link GLib.Action} used to retrieve action accelerators
      */
-    public string action_name { get; construct; }
+    public string action_name { get; construct set; }
 
     /**
      * A {@link Gtk.accelerator_parse} style accel string like “<Control>a” or “<Super>Right”
      */
-    public string accel_string { get; construct; }
+    public string? accel_string { get; construct set; }
 
     /**
      * The user-facing menu item label
@@ -55,7 +55,7 @@ public class Granite.AccelLabel : Gtk.Grid {
      * @param label displayed to the user as the menu item name
      * @param accel an accelerator label like “<Control>a” or “<Super>Right”
      */
-    public AccelLabel (string label, string accel_string) {
+    public AccelLabel (string label, string? accel_string = null) {
         Object (
             label: label,
             accel_string: accel_string
@@ -83,7 +83,19 @@ public class Granite.AccelLabel : Gtk.Grid {
         column_spacing = 3;
         add (label);
 
-        string[] accels;
+        update_accels ();
+
+        notify["accel-string"].connect (update_accels);
+        notify["action-name"].connect (update_accels);
+    }
+
+    private void update_accels () {
+        GLib.List<unowned Gtk.Widget> list = get_children ();
+        for (int i = 0; i < list.length () - 1; i++) {
+            list.nth_data (i).destroy ();
+        }
+
+        string[] accels = {""};
         if (accel_string != null && accel_string != "") {
             accels = Granite.accel_to_string (accel_string).split (" + ");
         } else if (action_name != null && action_name != "") {
@@ -98,10 +110,14 @@ public class Granite.AccelLabel : Gtk.Grid {
                     continue;
                 }
                 var accel_label = new Gtk.Label (accel);
-                accel_label.get_style_context ().add_class (Granite.STYLE_CLASS_KEYCAP);
-                accel_label.get_style_context ().add_class (Gtk.STYLE_CLASS_ACCELERATOR);
+
+                var accel_label_context = accel_label.get_style_context ();
+                accel_label_context.add_class (Granite.STYLE_CLASS_KEYCAP);
+                accel_label_context.add_class (Gtk.STYLE_CLASS_ACCELERATOR);
+
                 add (accel_label);
             }
         }
+        show_all ();
     }
 }
