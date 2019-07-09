@@ -21,7 +21,7 @@ libgranite_sources = files(
     'Widgets/AboutDialog.vala',
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
-    'Widgets/AccelMenuLabel.vala',
+    'Widgets/AccelLabel.vala',
     'Widgets/AlertView.vala',
     'Widgets/AppMenu.vala',
     'Widgets/AsyncImage.vala',

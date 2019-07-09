@@ -18,7 +18,7 @@
 */
 
 /**
- * AccelMenuLabel is meant to be used as a {@link Gtk.MenuItem} child for displaying
+ * AccelLabel is meant to be used as a {@link Gtk.MenuItem} child for displaying
  * a {@link GLib.Action}'s accelerator alongside the Menu Item label.
  *
  * The class itself is similar to it's Gtk equivalent {@link Gtk.AccelLabel}
@@ -29,15 +29,20 @@
  * {{{
  *   var copy_menuitem = new Gtk.MenuItem ();
  *   copy_menuitem.set_action_name (ACTION_PREFIX + ACTION_COPY);
- *   copy_menuitem.add (new Granite.AccelMenuLabel (_("Copy"), copy_menuitem.action_name));
+ *   copy_menuitem.add (new Granite.AccelLabel.from_action (_("Copy"), copy_menuitem.action_name));
  * }}}
  *
  */
-public class Granite.AccelMenuLabel : Gtk.Grid {
+public class Granite.AccelLabel : Gtk.Grid {
     /**
      * The name of the {@link GLib.Action} used to retrieve action accelerators
      */
     public string action_name { get; construct; }
+
+    /**
+     * A {@link Gtk.accelerator_parse} style accel string like “<Control>a” or “<Super>Right”
+     */
+    public string accel_string { get; construct; }
 
     /**
      * The user-facing menu item label
@@ -45,12 +50,25 @@ public class Granite.AccelMenuLabel : Gtk.Grid {
     public string label { get; construct; }
 
     /**
-     * Creates a new AccelMenuLabel from a label and an action name
+     * Creates a new AccelLabel from a label and an accelerator string
+     *
+     * @param label displayed to the user as the menu item name
+     * @param accel an accelerator label like “<Control>a” or “<Super>Right”
+     */
+    public AccelLabel (string label, string accel_string) {
+        Object (
+            label: label,
+            accel_string: accel_string
+        );
+    }
+
+    /**
+     * Creates a new AccelLabel from a label and an action name
      *
      * @param label displayed to the user as the menu item name
      * @param action_name name of the {@link GLib.Action} used to retrieve action accelerators
      */
-    public AccelMenuLabel (string label, string action_name) {
+    public AccelLabel.from_action (string label, string action_name) {
         Object (
             label: label,
             action_name: action_name
@@ -65,9 +83,14 @@ public class Granite.AccelMenuLabel : Gtk.Grid {
         column_spacing = 3;
         add (label);
 
-        string[] accels = Granite.accel_to_string (
-            ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0]
-        ).split (" + ");
+        string[] accels;
+        if (accel_string != null && accel_string != "") {
+            accels = Granite.accel_to_string (accel_string).split (" + ");
+        } else if (action_name != null && action_name != "") {
+            accels = Granite.accel_to_string (
+                ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0]
+            ).split (" + ");
+        }
 
         if (accels[0] != "") {
             foreach (unowned string accel in accels) {
