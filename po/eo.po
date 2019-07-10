@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:43+0200\n"
-"PO-Revision-Date: 2018-10-22 00:03+0000\n"
-"Last-Translator: Jesse ALTER <jesse@jessealter.com>\n"
-"Language-Team: Esperanto <https://weblate.elementary.io/projects/desktop/"
+"POT-Creation-Date: 2019-07-08 08:41-0700\n"
+"PO-Revision-Date: 2019-07-03 14:49+0000\n"
+"Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
+"Language-Team: Esperanto <https://l10n.elementary.io/projects/desktop/"
 "granite/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -35,15 +35,13 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M %p"
+msgstr "%I:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%I:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -180,152 +178,160 @@ msgstr "Menuo"
 msgid "About"
 msgstr "Pri"
 
-#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+#: lib/Widgets/DynamicNotebook.vala:239 lib/Widgets/DynamicNotebook.vala:263
 msgid "Close Tab"
 msgstr "Fermi langeton"
 
-#: lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:267
 msgid "Open in a New Window"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:266
+#: lib/Widgets/DynamicNotebook.vala:268
 msgid "Duplicate"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tab"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tabs"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:488
+#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tab to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tabs to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+#: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:770
+#: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:810
+#: lib/Widgets/DynamicNotebook.vala:814
 msgid "Closed Tabs"
 msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:139
-#, fuzzy
 msgid "_Close"
-msgstr "Fermi langeton"
+msgstr "_Fermi langeton"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr ""
+msgstr "_Rezigni"
 
 #: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
-msgstr ""
+msgstr "Detaloj"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr ""
+msgstr "Aŭdaĵoj"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr ""
+msgstr "Videoj"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr ""
+msgstr "Fotoj"
 
 #: lib/Widgets/StorageBar.vala:90
 msgid "Apps"
-msgstr ""
+msgstr "Aplikaĵoj"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: lib/Widgets/StorageBar.vala:93
 msgid "Files"
-msgstr ""
+msgstr "Dosieroj"
 
 #: lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr ""
+msgstr "Alia"
 
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
 msgid "%s free out of %s"
-msgstr ""
+msgstr "%s liberaj el %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr ""
+msgstr "matene"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr ""
+msgstr "posttagmeze"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
 msgid ":"
-msgstr ""
+msgstr "a"
 
 #: lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr ""
+msgstr "Maj."
 
 #: lib/Widgets/Utils.vala:103
 msgid "Ctrl"
-msgstr ""
+msgstr "Stir."
 
 #: lib/Widgets/Utils.vala:107
 msgid "Alt"
-msgstr ""
+msgstr "Alt."
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:125
 msgid "Left Alt"
-msgstr ""
+msgstr "Maldekstra Alt."
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:129
 msgid "Right Alt"
-msgstr ""
+msgstr "Dekstra Alt."
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:134
 msgid "Minus"
-msgstr ""
+msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:139
 msgid "Plus"
-msgstr ""
+msgstr "Plus"
 
 #: lib/Widgets/Utils.vala:142
 msgid "Enter"
-msgstr ""
+msgstr "Enigo"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:146
 msgid "Left Shift"
-msgstr ""
+msgstr "Maldekstra Maj."
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:150
 msgid "Right Shift"
-msgstr ""
+msgstr "Dekstra Maj."
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:196
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "This program is published under the terms of the "
 #~ msgstr ""

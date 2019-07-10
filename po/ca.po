@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:43+0200\n"
+"POT-Creation-Date: 2019-07-08 08:41-0700\n"
 "PO-Revision-Date: 2019-04-30 19:38+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite/"
@@ -180,39 +180,48 @@ msgstr "Menú"
 msgid "About"
 msgstr "Quant a"
 
-#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+#: lib/Widgets/DynamicNotebook.vala:239 lib/Widgets/DynamicNotebook.vala:263
 msgid "Close Tab"
 msgstr "Tanca la pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:267
 msgid "Open in a New Window"
 msgstr "Obre en una finestra nova"
 
-#: lib/Widgets/DynamicNotebook.vala:266
+#: lib/Widgets/DynamicNotebook.vala:268
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tab"
 msgstr "Tanca l'altra pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tabs"
 msgstr "Tanca les altres pestanyes"
 
-#: lib/Widgets/DynamicNotebook.vala:488
+#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tab to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:325
+msgid "Close Tabs to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
 msgstr "Neteja-ho tot"
 
-#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+#: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
 msgstr "Pestanya nova"
 
-#: lib/Widgets/DynamicNotebook.vala:770
+#: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
 msgstr "Desfés el tancament de la pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:810
+#: lib/Widgets/DynamicNotebook.vala:814
 msgid "Closed Tabs"
 msgstr "Pestanyes tancades"
 

@@ -332,6 +332,7 @@ namespace Granite.Widgets {
                     uint tab_position = dynamic_notebook.get_tab_position (this);
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
+                    /// TRANSLATORS: This will close tabs to the left in right-to-left environments
                     close_other_right_m.label = ngettext (_("Close Tab to the Right"), _("Close Tabs to the Right"), num_tabs - 1 - tab_position);
                     close_other_right_m.sensitive = (tab_position < num_tabs - 1);
                     new_window_m.sensitive = (num_tabs != 1);
@@ -1210,16 +1211,11 @@ namespace Granite.Widgets {
         }
 
         private void on_close_others_right (Tab clicked_tab) {
-            var is_to_the_right = false; 
+            unowned List<Tab> list = tabs.find (clicked_tab).next;
 
-            tabs.copy ().foreach ((tab) => {
-                if (is_to_the_right) {
-                    tab.closed ();
-                }
-                if (tab == clicked_tab) {
-                    is_to_the_right = true;
-                }
-            });
+            for (; list != null; list = list.next) {
+                list.data.closed ();
+            }
         }
 
         private void on_new_window (Tab tab) {
