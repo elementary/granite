@@ -317,6 +317,8 @@ namespace Granite.Widgets {
             this.button_press_event.connect ((e) => {
                 if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
+                } else if (e.button == 2) {
+                    return true; // consume middle-click, prevent event propagation to DynamicNotebook
                 } else if (e.button == 3) {
                     menu.popup_at_pointer (e);
                     var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
