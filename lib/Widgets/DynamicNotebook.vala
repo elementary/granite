@@ -315,15 +315,7 @@ namespace Granite.Widgets {
             });
 
             this.button_press_event.connect ((e) => {
-                if (e.button == 2) {
-                    e.state &= MODIFIER_MASK;
-                    if  (e.state == 0) {
-                        ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook)
-                        .close_tab_and_keep_width (this);
-                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
-                        this.close_others ();
-                    }
-                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
+                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
                 } else if (e.button == 3) {
                     menu.popup_at_pointer (e);
@@ -346,6 +338,22 @@ namespace Granite.Widgets {
 
                 return true;
             });
+
+            this.button_release_event.connect ((e) => {
+                if (e.button == 2) {
+                    e.state &= MODIFIER_MASK;
+                    if  (e.state == 0) {
+                        ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook)
+                        .close_tab_and_keep_width (this);
+                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
+                        this.close_others ();
+                    }
+                } else {
+                    return false;
+                }
+                return true;
+            });
+
 
             this.enter_notify_event.connect ((e) => {
                 cursor_over_tab = true;
