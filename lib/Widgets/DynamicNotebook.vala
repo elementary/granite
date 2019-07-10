@@ -1143,7 +1143,7 @@ namespace Granite.Widgets {
                 need_to_expand_tabs = true;
 
                 unowned List<Tab> list = tabs;
-                var current_tab_width = list.last ().data.get_allocated_width ();
+                var current_tab_width = clicked_tab.get_allocated_width ();
                 for (; list != null; list = list.next) {
                     var tab = list.data;
                     if (!tab.pinned) {
