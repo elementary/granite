@@ -342,7 +342,7 @@ namespace Granite.Widgets {
             });
 
             this.button_release_event.connect ((e) => {
-                if (e.button == 2) {
+                if (e.button == 2 && cursor_over_tab) {
                     e.state &= MODIFIER_MASK;
                     if  (e.state == 0) {
                         ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook)
