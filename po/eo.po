@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-08 08:41-0700\n"
-"PO-Revision-Date: 2019-07-03 14:49+0000\n"
+"PO-Revision-Date: 2019-07-14 16:28+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/desktop/"
 "granite/eo/>\n"
@@ -22,16 +22,16 @@ msgstr ""
 
 #: lib/Application.vala:182
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Montri opciojn de Granito"
 
 #: lib/Application.vala:235
 #, c-format
 msgid "%s's Developers"
-msgstr ""
+msgstr "Programistoj de %s"
 
 #: lib/Application.vala:252
 msgid "Website"
-msgstr ""
+msgstr "Retejo"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -46,110 +46,110 @@ msgstr "%I:%M %p"
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Nun"
 
 #: lib/DateTime.vala:76
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Antaŭ %d minuto"
+msgstr[1] "Antaŭ %d minutoj"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Antaŭ %d horo"
+msgstr[1] "Antaŭ %d horoj"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Post %d minuto"
+msgstr[1] "Post %d minutoj"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Post %d horo"
+msgstr[1] "Post %d horoj"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Hieraŭ"
 
 #: lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Morgaŭ"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr ""
+msgstr "%a, %Y-%b-%e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%Y-%b-%e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:154
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:157
 msgid "%b %e"
-msgstr ""
+msgstr "%b-%e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:163
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr ""
+msgstr "%a, %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: lib/GtkPatch/AboutDialog.vala:32
 msgid "Designed by:"
-msgstr ""
+msgstr "Fasonita de:"
 
 #: lib/GtkPatch/AboutDialog.vala:51
 msgid "Written by:"
-msgstr ""
+msgstr "Skribita de:"
 
 #: lib/GtkPatch/AboutDialog.vala:111
 msgid "Documented by:"
-msgstr ""
+msgstr "Dokumentita de:"
 
 #: lib/GtkPatch/AboutDialog.vala:171
 #, c-format
 msgid "Translated by %s"
-msgstr ""
+msgstr "Tradukita de %s"
 
 #: lib/GtkPatch/AboutDialog.vala:296
 msgid "Close"
@@ -161,10 +161,12 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
+"La programo estas publikita laŭ la kondiĉoj de la permesilo %s, ĝi venas "
+"ENTUTE SEN GARANTIO; pliaj detaloj haveblaj ĉe %s"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
-msgstr ""
+msgstr "Sugesti tradukojn"
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
@@ -184,44 +186,44 @@ msgstr "Fermi langeton"
 
 #: lib/Widgets/DynamicNotebook.vala:267
 msgid "Open in a New Window"
-msgstr ""
+msgstr "Malfermi en nova fenestro"
 
 #: lib/Widgets/DynamicNotebook.vala:268
 msgid "Duplicate"
-msgstr ""
+msgstr "Duobligi"
 
 #: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Fermi la alian langeton"
 
 #: lib/Widgets/DynamicNotebook.vala:322
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Fermi la aliajn langetojn"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Fermi la dekstran langeton"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Fermi la dekstrajn langetojn"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
-msgstr ""
+msgstr "Forviŝi ĉion"
 
 #: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
-msgstr ""
+msgstr "Nova langeto"
 
 #: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Malfari fermon de langeto"
 
 #: lib/Widgets/DynamicNotebook.vala:814
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Fermi langetojn"
 
 #: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
