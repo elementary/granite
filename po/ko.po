@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-08 08:41-0700\n"
-"PO-Revision-Date: 2019-05-04 19:32+0000\n"
+"PO-Revision-Date: 2019-07-14 16:28+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/desktop/granite/"
 "ko/>\n"
@@ -199,11 +199,11 @@ msgstr "다른 탭 닫기"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "오른쪽으로 탭 닫기"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "오른쪽으로 탭 닫기"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
