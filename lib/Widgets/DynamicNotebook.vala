@@ -1200,11 +1200,16 @@ namespace Granite.Widgets {
         }
 
         private void on_close_others_right (Tab clicked_tab) {
-            unowned List<Tab> list = tabs.find (clicked_tab).next;
+            var is_to_the_right = false; 
 
-            for (; list != null; list = list.next) {
-                list.data.closed ();
-            }
+            tabs.copy ().foreach ((tab) => {
+                if (is_to_the_right) {
+                    tab.closed ();
+                }
+                if (tab == clicked_tab) {
+                    is_to_the_right = true;
+                }
+            });
         }
 
         private void on_new_window (Tab tab) {
