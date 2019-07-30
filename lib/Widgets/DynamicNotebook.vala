@@ -51,6 +51,8 @@ namespace Granite.Widgets {
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
     public class Tab : Gtk.EventBox {
+        public unowned DynamicNotebook? dynamic_notebook { get; set; default = null;}
+
         Gtk.Label _label;
         public string label {
             get { return _label.label;  }
@@ -283,7 +285,10 @@ namespace Granite.Widgets {
 
             set_events (Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect ((e) => {
-                var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
+                if (dynamic_notebook == null) {
+                    return false;
+                }
+
                 switch (e.direction) {
                     case Gdk.ScrollDirection.UP:
                     case Gdk.ScrollDirection.LEFT:
@@ -418,7 +423,7 @@ namespace Granite.Widgets {
         private Gee.LinkedList<Entry?> closed_tabs;
 
         public ClosedTabs () {
-            
+
         }
 
         construct {
@@ -1069,8 +1074,10 @@ namespace Granite.Widgets {
         public void remove_tab (Tab tab) {
             var pos = get_tab_position (tab);
 
-            if (pos != -1)
+            if (pos != -1) {
                 notebook.remove_page (pos);
+                tab.dynamic_notebook = null;
+            }
         }
 
         public void next_page () {
@@ -1121,6 +1128,8 @@ namespace Granite.Widgets {
 
         public uint insert_tab (Tab tab, int index) {
             return_val_if_fail (tabs.index (tab) < 0, 0);
+
+            tab.dynamic_notebook = this;
 
             var i = 0;
             if (index <= -1)
@@ -1196,7 +1205,7 @@ namespace Granite.Widgets {
         }
 
         private void on_close_others_right (Tab clicked_tab) {
-            var is_to_the_right = false; 
+            var is_to_the_right = false;
 
             tabs.copy ().foreach ((tab) => {
                 if (is_to_the_right) {
