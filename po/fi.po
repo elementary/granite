@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 08:41-0700\n"
-"PO-Revision-Date: 2019-05-01 00:38+0000\n"
+"POT-Creation-Date: 2019-07-30 10:38-0700\n"
+"PO-Revision-Date: 2019-07-18 00:24+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
 "fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -205,11 +205,11 @@ msgstr "Sulje muut välilehdet"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Sulje välilehti oikealta"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Sulje välilehdet oikealta"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
@@ -318,22 +318,27 @@ msgstr "Miinus"
 msgid "Plus"
 msgstr "Plus"
 
-#: lib/Widgets/Utils.vala:142
+#. /TRANSLATORS: This is a non-symbol representation of the "=" key
+#: lib/Widgets/Utils.vala:144
+msgid "Equals"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:147
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:146
+#: lib/Widgets/Utils.vala:151
 msgid "Left Shift"
 msgstr "Vasen Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:155
 msgid "Right Shift"
 msgstr "Oikea Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:196
+#: lib/Widgets/Utils.vala:201
 msgid ", "
 msgstr ", "
 

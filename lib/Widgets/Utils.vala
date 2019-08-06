@@ -138,6 +138,11 @@ public static string accel_to_string (string accel) {
             ///TRANSLATORS: This is a non-symbol representation of the "+" key
             arr += _("Plus");
             break;
+        case Gdk.Key.KP_Equal:
+        case Gdk.Key.equal:
+            ///TRANSLATORS: This is a non-symbol representation of the "=" key
+            arr += _("Equals");
+            break;
         case Gdk.Key.Return:
             arr += _("Enter");
             break;

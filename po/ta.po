@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 08:41-0700\n"
+"POT-Creation-Date: 2019-07-30 10:38-0700\n"
 "PO-Revision-Date: 2017-06-17 08:24+0000\n"
 "Last-Translator: Rajeev Kumar <irajeevankumar@gmail.com>\n"
 "Language-Team: Tamil <https://l10n.elementary.io/projects/desktop/granite/ta/"
@@ -320,22 +320,27 @@ msgstr ""
 msgid "Plus"
 msgstr ""
 
-#: lib/Widgets/Utils.vala:142
+#. /TRANSLATORS: This is a non-symbol representation of the "=" key
+#: lib/Widgets/Utils.vala:144
+msgid "Equals"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:147
 msgid "Enter"
 msgstr ""
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:146
+#: lib/Widgets/Utils.vala:151
 msgid "Left Shift"
 msgstr ""
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:155
 msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:196
+#: lib/Widgets/Utils.vala:201
 msgid ", "
 msgstr ""
 
