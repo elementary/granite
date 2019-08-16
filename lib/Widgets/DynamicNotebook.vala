@@ -38,12 +38,23 @@ namespace Granite.Widgets {
             set { _tab = value; }
         }
 
+        DynamicNotebook dynamic_notebook {
+            get { return (get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
+        }
+
         public TabPageContainer (Tab tab) {
             Object (tab: tab);
         }
 
         construct {
             add (new Gtk.Grid ());
+
+            // delay tabs resizing until cursor leaves tab-bar
+            // tab_bar-area = DynamicNotebook-area - TabPageContainer-area
+            this.enter_notify_event.connect ((e) => {
+                dynamic_notebook.check_to_recalc_size ();
+                return false;
+            });
         }
     }
 
@@ -135,6 +146,10 @@ namespace Granite.Widgets {
 
                 page_container.show_all ();
             }
+        }
+
+        DynamicNotebook dynamic_notebook {
+            get { return (get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
         }
 
         internal Gtk.Image _icon;
@@ -281,23 +296,19 @@ namespace Granite.Widgets {
             duplicate_m.activate.connect (() => duplicate () );
             pin_m.activate.connect (() => pinned = !pinned);
 
+            add_events (Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect ((e) => {
-                var notebook = (this.get_parent () as Gtk.Notebook);
                 switch (e.direction) {
                     case Gdk.ScrollDirection.UP:
                     case Gdk.ScrollDirection.LEFT:
-                        if (notebook.page > 0) {
-                            notebook.page--;
-                            return true;
-                        }
+                        dynamic_notebook.previous_page ();
+                        return true;
                         break;
 
                     case Gdk.ScrollDirection.DOWN:
                     case Gdk.ScrollDirection.RIGHT:
-                        if (notebook.page < notebook.get_n_pages ()) {
-                            notebook.page++;
-                            return true;
-                        }
+                        dynamic_notebook.next_page ();
+                        return true;
                         break;
                 }
 
@@ -305,18 +316,12 @@ namespace Granite.Widgets {
             });
 
             this.button_press_event.connect ((e) => {
-                if (e.button == 2) {
-                    e.state &= MODIFIER_MASK;
-                    if  (e.state == 0) {
-                        this.closed ();
-                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
-                        this.close_others ();
-                    }
-                } else if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
+                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
                     this.duplicate ();
+                } else if (e.button == 2) {
+                    return true; // consume middle-click, prevent event propagation to DynamicNotebook
                 } else if (e.button == 3) {
                     menu.popup_at_pointer (e);
-                    var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
                     uint num_tabs = dynamic_notebook.n_tabs;
                     uint tab_position = dynamic_notebook.get_tab_position (this);
                     close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
@@ -333,6 +338,20 @@ namespace Granite.Widgets {
                     return false;
                 }
 
+                return true;
+            });
+
+            this.button_release_event.connect ((e) => {
+                if (e.button == 2 && cursor_over_tab) {
+                    e.state &= MODIFIER_MASK;
+                    if  (e.state == 0) {
+                        dynamic_notebook.close_tab_and_keep_width (this);
+                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
+                        this.close_others ();
+                    }
+                } else {
+                    return false;
+                }
                 return true;
             });
 
@@ -376,7 +395,7 @@ namespace Granite.Widgets {
             });
 
             page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
-            close_button.clicked.connect (() => this.closed ());
+            close_button.clicked.connect (() => { dynamic_notebook.close_tab_and_keep_width (this); });
             working = false;
 
             update_close_button_visibility ();
@@ -722,9 +741,11 @@ namespace Granite.Widgets {
 
         Gtk.Notebook notebook;
 
-        private int tab_width = 150;
-        private const int MAX_TAB_WIDTH = 174;
+        private const int MIN_TAB_WIDTH = 80;
+        private const int MAX_TAB_WIDTH = 220;
         private const int TAB_WIDTH_PINNED = 18;
+        private int tab_width = MAX_TAB_WIDTH;
+        private bool wait_to_recalc_size = false;
 
         public signal void tab_added (Tab tab);
         public signal void tab_removed (Tab tab);
@@ -755,7 +776,7 @@ namespace Granite.Widgets {
         construct {
             notebook = new Gtk.Notebook ();
             notebook.can_focus = false;
-            visible_window = false;
+            visible_window = true; // needed for leave_notify event
             get_style_context ().add_class ("dynamic-notebook");
 
             notebook.scrollable = true;
@@ -818,6 +839,11 @@ namespace Granite.Widgets {
             notebook.set_action_widget (add_button_box, Gtk.PackType.START);
             notebook.set_action_widget (restore_button, Gtk.PackType.END);
 
+            //  delay tabs resizing until cursor leaves tab-bar
+            //  tab_bar-area = DynamicNotebook-area - TabPageContainer-are
+            leave_notify_event.connect ((e) => { check_to_recalc_size ();  return false; });
+            add_button.enter_notify_event.connect (() => { check_to_recalc_size (); return false; });
+
 
             add_button.clicked.connect (() => {
                 new_tab_requested ();
@@ -839,7 +865,9 @@ namespace Granite.Widgets {
             restore_button.visible = allow_restoring;
 
             size_allocate.connect (() => {
-                recalc_size ();
+                if (!wait_to_recalc_size) {
+                    recalc_size ();
+                }
             });
 
             button_press_event.connect ((e) => {
@@ -1019,7 +1047,7 @@ namespace Granite.Widgets {
 
             var pinned_tabs = 0;
             var unpinned_tabs = 0;
-            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
+            for (var i = 0; i < n_tabs; i++) {
                 if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
                     pinned_tabs++;
                 } else {
@@ -1027,24 +1055,14 @@ namespace Granite.Widgets {
                 }
             }
 
-            if (unpinned_tabs == 0) {
-                unpinned_tabs = 1;
+            if (unpinned_tabs != 0) {
+                var offset = 130;
+                tab_width = (this.get_allocated_width () - offset - pinned_tabs * TAB_WIDTH_PINNED) / unpinned_tabs;
+                tab_width = tab_width > MAX_TAB_WIDTH ? MAX_TAB_WIDTH : tab_width < MIN_TAB_WIDTH ? MIN_TAB_WIDTH : tab_width;
             }
 
-            var offset = 130;
-            this.tab_width = (this.get_allocated_width () - offset - pinned_tabs * TAB_WIDTH_PINNED) / unpinned_tabs;
-            if (tab_width > MAX_TAB_WIDTH)
-                tab_width = MAX_TAB_WIDTH;
-
-            if (tab_width < 0)
-                tab_width = 0;
-
-            for (var i = 0; i < this.notebook.get_n_pages (); i++) {
-                this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = tab_width;
-
-                if ((this.notebook.get_tab_label (this.notebook.get_nth_page (i)) as Tab).pinned) {
-                    this.notebook.get_tab_label (this.notebook.get_nth_page (i)).width_request = TAB_WIDTH_PINNED;
-                }
+            foreach (var tab in tabs.copy ()) {
+                tab.width_request = tab.pinned ? TAB_WIDTH_PINNED : tab_width;
             }
 
             this.notebook.resize_children ();
@@ -1125,11 +1143,7 @@ namespace Granite.Widgets {
         public uint insert_tab (Tab tab, int index) {
             return_val_if_fail (tabs.index (tab) < 0, 0);
 
-            var i = 0;
-            if (index <= -1)
-                i = this.notebook.insert_page (tab.page_container, tab, this.notebook.get_n_pages ());
-            else
-                i = this.notebook.insert_page (tab.page_container, tab, index);
+            index = this.notebook.insert_page (tab.page_container, tab,  index <= -1 ? n_tabs : index);
 
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
@@ -1147,7 +1161,20 @@ namespace Granite.Widgets {
             if (!tabs_closable)
                 tab.closable = false;
 
-            return i;
+            return index;
+        }
+
+        internal void close_tab_and_keep_width (Tab clicked_tab) {
+            wait_to_recalc_size = true;
+            clicked_tab.closed ();
+        }
+
+        internal void check_to_recalc_size () {
+            if (!wait_to_recalc_size)
+                return;
+
+            recalc_size ();
+            wait_to_recalc_size = false;
         }
 
         private void insert_callbacks (Tab tab) {
