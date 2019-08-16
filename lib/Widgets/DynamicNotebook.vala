@@ -281,7 +281,7 @@ namespace Granite.Widgets {
             duplicate_m.activate.connect (() => duplicate () );
             pin_m.activate.connect (() => pinned = !pinned);
 
-            set_events (Gdk.EventMask.SCROLL_MASK);
+            add_events (Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect ((e) => {
                 var dynamic_notebook = ((this.get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook);
                 switch (e.direction) {
