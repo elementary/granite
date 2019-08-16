@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-08 08:41-0700\n"
-"PO-Revision-Date: 2019-05-04 20:32+0000\n"
+"PO-Revision-Date: 2019-07-14 16:28+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/desktop/"
 "granite/lt/>\n"
@@ -209,11 +209,11 @@ msgstr "Užverti kitas korteles"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Užverti kortelę iš dešinės"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Užverti korteles iš dešinės"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
