@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-08 08:41-0700\n"
-"PO-Revision-Date: 2019-05-04 19:32+0000\n"
+"POT-Creation-Date: 2019-07-30 10:38-0700\n"
+"PO-Revision-Date: 2019-07-14 16:28+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/desktop/granite/"
 "ko/>\n"
@@ -199,11 +199,11 @@ msgstr "다른 탭 닫기"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "오른쪽으로 탭 닫기"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "오른쪽으로 탭 닫기"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
@@ -312,22 +312,27 @@ msgstr "마이너스"
 msgid "Plus"
 msgstr "플러스"
 
-#: lib/Widgets/Utils.vala:142
+#. /TRANSLATORS: This is a non-symbol representation of the "=" key
+#: lib/Widgets/Utils.vala:144
+msgid "Equals"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:147
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:146
+#: lib/Widgets/Utils.vala:151
 msgid "Left Shift"
 msgstr "왼쪽 Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:155
 msgid "Right Shift"
 msgstr "오른쪽 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:196
+#: lib/Widgets/Utils.vala:201
 msgid ", "
 msgstr ", "
 
