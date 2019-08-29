@@ -18,6 +18,7 @@ executable(
     'Views/SettingsView/SettingsView.vala',
     'Views/SettingsView/SimpleSettingsPage.vala',
     'Views/SourceListView.vala',
+    'Views/SplitWindowView.vala',
     'Views/StorageView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',

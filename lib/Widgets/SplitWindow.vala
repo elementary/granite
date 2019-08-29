@@ -110,7 +110,7 @@
  * }
  * }}}
  */
-public class Granite.Widgets.SplitWindow : Gtk.ApplicationWindow {
+public class Granite.Widgets.SplitWindow : Gtk.Window {
 
     private Gtk.Paned header_paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
     private Gtk.Paned paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
@@ -183,11 +183,7 @@ public class Granite.Widgets.SplitWindow : Gtk.ApplicationWindow {
      *
      * @param a Gtk.Application
      */
-    public SplitWindow (Gtk.Application application) {
-        Object (
-            application: application
-        );
-    }
+    public SplitWindow () {}
 
     construct {
         var header_provider = new Gtk.CssProvider ();

@@ -43,6 +43,7 @@ public class Granite.Demo : Gtk.Application {
         var seekbar_view = new SeekBarView ();
         var settings_view = new SettingsView ();
         var source_list_view = new SourceListView ();
+        var split_window_view = new SplitWindowView ();
         var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
@@ -63,6 +64,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
         main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
         main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
+        main_stack.add_titled (split_window_view, "splitwindow", "SplitWindow");
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
