@@ -40,6 +40,7 @@ libgranite_sources = files(
     'Widgets/SettingsSidebarRow.vala',
     'Widgets/SettingsSidebar.vala',
     'Widgets/SourceList.vala',
+    'Widgets/SplitWindow.vala',
     'Widgets/StorageBar.vala',
     'Widgets/TimePicker.vala',
     'Widgets/Toast.vala',
