@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
- * Copyright (c) 2017 elementary LLC. (https://elementary.io)
+ * Copyright (c) 2019 Alex Angelou
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -32,8 +32,30 @@ public class SplitWindowView : Gtk.Grid {
 
     private void show_split_dialog () {
         var welcome = new Granite.Widgets.Welcome ("Split Window demo", "Show yourself around");
-        welcome.append ("text-x-vala", "Read the code", "Read the code of this demo on GitHub");
-        welcome.set_size_request (450, 400);
+        welcome.append ("text-x-vala", "Visit Valadoc", "The canonical source for Vala API references.");
+        welcome.append ("text-x-source", "Read the code", "Read the source of this demo on GitHub.");
+        welcome.set_size_request (400, 400);
+
+        welcome.activated.connect ((index) => {
+            switch (index) {
+                case 0:
+                    try {
+                        AppInfo.launch_default_for_uri ("https://valadoc.org//Granite.html", null);
+                    } catch (Error e) {
+                        warning (e.message);
+                    }
+
+                    break;
+                case 1:
+                    try {
+                        AppInfo.launch_default_for_uri ("https://github.com/aggalex/granite/tree/split-window", null);
+                    } catch (Error e) {
+                        warning (e.message);
+                    }
+
+                    break;
+            }
+        });
 
         var provider = new Gtk.CssProvider ();
         try {
