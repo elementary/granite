@@ -114,6 +114,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     /**
+     * Style class for a {@link Granite.Widgets.SplitWindow}
+     */
+    public const string STYLE_CLASS_SPLIT_WINDOW = "split-window";
+    /**
      * Style class for a {@link Granite.Widgets.Granite.Widgets.StorageBar}
      */
     public const string STYLE_CLASS_STORAGEBAR = "storage-bar";

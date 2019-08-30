@@ -186,40 +186,7 @@ public class Granite.Widgets.SplitWindow : Gtk.Window {
     public SplitWindow () {}
 
     construct {
-        var header_provider = new Gtk.CssProvider ();
-        try {
-            // header_provider.load_from_path ("HeaderBar.css");
-            header_provider.load_from_data ("""
-                .sidebar-header {
-                    background-color: shade (@bg_color, 0.92);
-                    color: mix (@bg_color, @text_color, 0.77);
-                }
-
-                .sidebar-header:dir(ltr) {
-                    border-top-right-radius: 0;
-                }
-
-                .sidebar-header:dir(rtl) {
-                    border-top-left-radius: 0;
-                }
-
-                .main-view-header:dir(ltr) {
-                    border-top-left-radius: 0;
-                }
-
-                .main-view-header:dir(rtl) {
-                    border-top-right-radius: 0;
-                }
-
-                paned {
-                    background-color: @bg_color;
-                    border-top-left-radius: 4px;
-                    border-top-right-radius: 4px;
-                }
-            """);
-        } catch (Error e) {
-            assert_not_reached ();
-        }
+        get_style_context ().add_class (Granite.STYLE_CLASS_SPLIT_WINDOW);
 
         main_separator.no_show_all = true;
         main_separator.hide ();
@@ -236,7 +203,7 @@ public class Granite.Widgets.SplitWindow : Gtk.Window {
         sidebar_header_context.add_class ("titlebar");
         sidebar_header_context.add_class ("default-decoration");
         sidebar_header_context.add_class (Gtk.STYLE_CLASS_FLAT);
-        sidebar_header_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        // sidebar_header_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         mainbox_header.has_subtitle = false;
         mainbox_header.decoration_layout = ":maximize";
@@ -247,26 +214,10 @@ public class Granite.Widgets.SplitWindow : Gtk.Window {
         mainbox_header_context.add_class ("titlebar");
         mainbox_header_context.add_class ("default-decoration");
         mainbox_header_context.add_class (Gtk.STYLE_CLASS_FLAT);
-        mainbox_header_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        // mainbox_header_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         header_paned.pack1 (sidebar_header, false, false);
         header_paned.pack2 (mainbox_header, true, false);
-
-        var sidebar_provider = new Gtk.CssProvider ();
-        try {
-            // sidebar_provider.load_from_path ("Sidebar.css");
-            sidebar_provider.load_from_data ("""
-                .sidebar {
-                    border-bottom-left-radius: 4px;
-                }
-
-                .sidebar:dir(rtl) {
-                    border-bottom-right-radius: 4px;
-                }
-            """);
-        } catch (Error e) {
-            assert_not_reached ();
-        }
 
         sidebar.margin_bottom = 4;
 
@@ -275,30 +226,13 @@ public class Granite.Widgets.SplitWindow : Gtk.Window {
         sidebar_box_wrapper.pack_start (sidebar, true, true, 0);
 
         unowned Gtk.StyleContext sidebar_wrapper_style_context = sidebar_box_wrapper.get_style_context ();
-        sidebar_wrapper_style_context.add_provider (sidebar_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        // sidebar_wrapper_style_context.add_provider (sidebar_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         sidebar_wrapper_style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
 
-        var main_provider = new Gtk.CssProvider ();
-        try {
-            // main_provider.load_from_path ("MainBox.css");
-            main_provider.load_from_data ("""
-                .main_box:dir(rtl) {
-                    border-bottom-left-radius: 4px;
-                }
-
-                .main_box:dir(ltr) {
-                    border-bottom-right-radius: 4px;
-                }
-            """);
-        } catch (Error e) {
-            assert_not_reached ();
-        }
-
-        main_box.get_style_context ().add_class ("main_box");
+        main_box.get_style_context ().add_class ("main-box");
         main_box.margin_bottom = 4;
 
         var main_box_wrapper = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        main_box_wrapper.get_style_context ().add_provider (main_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         main_box_wrapper.get_style_context ().add_class ("main_box");
         main_box_wrapper.pack_start (main_separator, false, false, 0);
         main_box_wrapper.pack_start (main_box, true, true, 0);
@@ -311,9 +245,12 @@ public class Granite.Widgets.SplitWindow : Gtk.Window {
 
         unowned Gtk.StyleContext header_paned_context = header_paned.get_style_context ();
         header_paned_context.remove_class ("titlebar");
-        header_paned_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        header_paned_context.add_class ("titlebar-paned");
+        // header_paned_context.add_provider (header_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        get_style_context ().add_class ("rounded");
+        var style_context = get_style_context ();
+        style_context.add_class ("rounded");
+        style_context.add_class ("split-window");
 
         paned.bind_property ("position", header_paned, "position", GLib.SettingsBindFlags.BIDIRECTIONAL);
     }
