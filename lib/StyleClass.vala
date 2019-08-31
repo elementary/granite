@@ -74,6 +74,10 @@ namespace Granite {
     public const string STYLE_CLASS_CARD = "card";
     public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
     /**
+     * Style class for checkered backgrounds to represent transparency in images
+     */
+    public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "h1";

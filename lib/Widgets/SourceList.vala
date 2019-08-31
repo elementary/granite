@@ -219,17 +219,16 @@ public interface SourceListDragDest : SourceList.Item {
  * {@link Granite.Widgets.SourceList.item_selected} the most important, as it indicates that
  * the selection was modified.
  *
- * It is strongly recommended to pack the source list into the GUI using the
- * {@link Granite.Widgets.ThinPaned} widget. It has aesthetic advantages and offers a wider
- * re-size handle than {@link Gtk.Paned}. This is usually done as follows:
+ * Pack the source list into the GUI using the {@link Gtk.Paned} widget.
+ * This is usually done as follows:
  * {{{
- * var pane = new Granite.Widgets.ThinPaned ();
+ * var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
  * pane.pack1 (source_list, false, false);
  * pane.pack2 (content_area, true, false);
  * }}}
  *
  * @since 0.2
- * @see Granite.Widgets.ThinPaned
+ * @see Gtk.Paned
  */
 public class SourceList : Gtk.ScrolledWindow {
 
@@ -330,9 +329,22 @@ public class SourceList : Gtk.ScrolledWindow {
          * The item's tooltip. If set to null (default), the tooltip for the item will be the
          * contents of the {@link Granite.Widgets.SourceList.Item.name} property.
          *
-         * @since 5.0
+         * @since 5.3
          */
         public string? tooltip { get; set; default = null; }
+
+        /**
+         * Markup to be used instead of {@link Granite.Widgets.SourceList.ExpandableItem.name}
+         * This would mean that &, <, etc have to be escaped in the text, but basic formatting
+         * can be done on the item with HTML style tags.
+         *
+         * Note: Only the {@link Granite.Widgets.SourceList.ExpandableItem.name} property
+         * is modified for editable items. So this property will be need to updated and
+         * reformatted with editable items.
+         *
+         * @since 5.0
+         */
+         public string? markup { get; set; default = null; }
 
         /**
          * A badge shown next to the item's name.
@@ -418,6 +430,10 @@ public class SourceList : Gtk.ScrolledWindow {
 
         /**
          * Invoked when the item is secondary-clicked or when the usual menu keys are pressed.
+         *
+         * Note that since Granite 5.0, right clicking on an item no longer selects/activates it, so
+         * any context menu items should be actioned on the item instance rather than the selected item
+         * in the SourceList
          *
          * @return A {@link Gtk.Menu} or //null// if nothing should be displayed.
          * @since 0.2
@@ -2250,6 +2266,7 @@ public class SourceList : Gtk.ScrolledWindow {
 
                     if (event.button == Gdk.BUTTON_SECONDARY) {
                         popup_context_menu (item, event);
+                        return true;
                     } else if (event.button == Gdk.BUTTON_PRIMARY) {
                         // Check whether an expander (or an equivalent area) was clicked.
                         bool is_expandable = item is ExpandableItem;
@@ -2396,17 +2413,27 @@ public class SourceList : Gtk.ScrolledWindow {
 
             var text = new StringBuilder ();
             var weight = Pango.Weight.NORMAL;
+            bool use_markup = false;
 
             var item = get_item_from_model (model, iter);
             if (item != null) {
-                text.append (item.name);
+                if (item.markup != null) {
+                    text.append (item.markup);
+                    use_markup = true;
+                } else {
+                    text.append (item.name);
+                }
 
                 if (data_model.is_category (item, iter))
                     weight = Pango.Weight.BOLD;
             }
 
             text_renderer.weight = weight;
-            text_renderer.text = text.str;
+            if (use_markup) {
+                text_renderer.markup = text.str;
+            } else {
+                text_renderer.text = text.str;
+            }
         }
 
         private void badge_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,

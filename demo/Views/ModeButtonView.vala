@@ -26,6 +26,10 @@
 
 public class ModeButtonView : Gtk.Grid {
     construct {
+        var mode_button_label = new Gtk.Label ("ModeButton");
+        mode_button_label.halign = Gtk.Align.START;
+        mode_button_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
         var icon_mode = new Granite.Widgets.ModeButton ();
         icon_mode.append_icon ("view-grid-symbolic", Gtk.IconSize.BUTTON);
         icon_mode.append_icon ("view-list-symbolic", Gtk.IconSize.BUTTON);
@@ -37,13 +41,27 @@ public class ModeButtonView : Gtk.Grid {
 
         var clear_button = new Gtk.Button.with_label("Clear Selected");
 
+        var mode_switch_label = new Gtk.Label ("ModeSwitch");
+        mode_switch_label.halign = Gtk.Align.START;
+        mode_switch_label.margin_top = 12;
+        mode_switch_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
+        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        mode_switch.primary_icon_tooltip_text = ("Light background");
+        mode_switch.secondary_icon_tooltip_text = ("Dark background");
+        mode_switch.valign = Gtk.Align.CENTER;
+
         column_spacing = 12;
         row_spacing = 6;
+        orientation = Gtk.Orientation.VERTICAL;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
-        attach (icon_mode, 1, 1, 1, 1);
-        attach (text_mode, 1, 2, 1, 1);
-        attach (clear_button, 1, 3, 1 ,1);
+        add (mode_button_label);
+        add (icon_mode);
+        add (text_mode);
+        add (clear_button);
+        add (mode_switch_label);
+        add (mode_switch);
 
         clear_button.clicked.connect (() => {
             icon_mode.selected = -1;

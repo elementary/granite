@@ -76,6 +76,203 @@ public enum Granite.CloseButtonPosition
     RIGHT
 }
 
+namespace Granite {
+
+/**
+ * Converts a {@link Gtk.accelerator_parse} style accel string to a human-readable string.
+ *
+ * @param accel an accelerator label like “<Control>a” or “<Super>Right”
+ *
+ * @return a human-readable string like "Ctrl + A" or "⌘ + →"
+ */
+public static string accel_to_string (string accel) {
+    uint accel_key;
+    Gdk.ModifierType accel_mods;
+    Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
+
+    string[] arr = {};
+    if (Gdk.ModifierType.SUPER_MASK in accel_mods) {
+        arr += "⌘";
+    }
+
+    if (Gdk.ModifierType.SHIFT_MASK in accel_mods) {
+        arr += _("Shift");
+    }
+
+    if (Gdk.ModifierType.CONTROL_MASK in accel_mods) {
+        arr += _("Ctrl");
+    }
+
+    if (Gdk.ModifierType.MOD1_MASK in accel_mods) {
+        arr += _("Alt");
+    }
+
+    switch (accel_key) {
+        case Gdk.Key.Up:
+            arr += "↑";
+            break;
+        case Gdk.Key.Down:
+            arr += "↓";
+            break;
+        case Gdk.Key.Left:
+            arr += "←";
+            break;
+        case Gdk.Key.Right:
+            arr += "→";
+            break;
+        case Gdk.Key.Alt_L:
+            ///TRANSLATORS: The Alt key on the left side of the keyboard
+            arr += _("Left Alt");
+            break;
+        case Gdk.Key.Alt_R:
+            ///TRANSLATORS: The Alt key on the right side of the keyboard
+            arr += _("Right Alt");
+            break;
+        case Gdk.Key.minus:
+        case Gdk.Key.KP_Subtract:
+            ///TRANSLATORS: This is a non-symbol representation of the "-" key
+            arr += _("Minus");
+            break;
+        case Gdk.Key.KP_Add:
+        case Gdk.Key.plus:
+            ///TRANSLATORS: This is a non-symbol representation of the "+" key
+            arr += _("Plus");
+            break;
+        case Gdk.Key.KP_Equal:
+        case Gdk.Key.equal:
+            ///TRANSLATORS: This is a non-symbol representation of the "=" key
+            arr += _("Equals");
+            break;
+        case Gdk.Key.Return:
+            arr += _("Enter");
+            break;
+        case Gdk.Key.Shift_L:
+            ///TRANSLATORS: The Shift key on the left side of the keyboard
+            arr += _("Left Shift");
+            break;
+        case Gdk.Key.Shift_R:
+            ///TRANSLATORS: The Shift key on the right side of the keyboard
+            arr += _("Right Shift");
+            break;
+        default:
+            arr += Gtk.accelerator_get_label (accel_key, 0);
+            break;
+    }
+
+    return string.joinv (" + ", arr);
+}
+
+/**
+ * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}. This method uses {@link Granite.accel_to_string}.
+ *
+ * Example:
+ *
+ * Description
+ * Shortcut 1, Shortcut 2
+ *
+ * @param a string array of accelerator labels like {"<Control>a", "<Super>Right"}
+ *
+ * @param description a standard tooltip text string
+ *
+ * @return {@link Pango} markup with the description label on one line and a list of human-readable accels on a new line
+ */
+public static string markup_accel_tooltip (string[]? accels, string? description = null) {
+    string[] parts = {};
+    if (description != null && description != "") {
+        parts += description;
+    }
+
+    if (accels != null &&  accels.length > 0) {
+        string[] unique_accels = {};
+
+        for (int i = 0; i < accels.length; i++) {
+            if (accels[i] == "") {
+                continue;
+            }
+
+            var accel_string = accel_to_string (accels[i]);
+            if (!(accel_string in unique_accels)) {
+                unique_accels += accel_string;
+            }
+        }
+
+        if (unique_accels.length > 0) {
+            ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+            var accel_label = string.joinv (_(", "), unique_accels);
+
+            var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+
+            parts += accel_markup;
+        }
+    }
+
+    return string.joinv ("\n", parts);
+}
+
+private static double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
+    // From WCAG 2.0 https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+    var bg_luminance = get_luminance (bg_color);
+    var fg_luminance = get_luminance (fg_color);
+
+    if (bg_luminance > fg_luminance) {
+        return (bg_luminance + 0.05) / (fg_luminance + 0.05);
+    }
+
+    return (fg_luminance + 0.05) / (bg_luminance + 0.05);
+}
+
+private static double get_luminance (Gdk.RGBA color) {
+    // Values from WCAG 2.0 https://www.w3.org/TR/WCAG20/#relativeluminancedef
+    var red = sanitize_color (color.red) * 0.2126;
+    var green = sanitize_color (color.green) * 0.7152;
+    var blue = sanitize_color (color.blue) * 0.0722;
+
+    return red + green + blue;
+}
+
+private static double sanitize_color (double color) {
+    // From WCAG 2.0 https://www.w3.org/TR/WCAG20/#relativeluminancedef
+    if (color <= 0.03928) {
+        return color / 12.92;
+    }
+
+    return Math.pow ((color + 0.055) / 1.055, 2.4);
+}
+
+/**
+ * Takes a {@link Gdk.RGBA} background color and returns a suitably-contrasting foreground color, i.e. for determining text color on a colored background. There is a slight bias toward returning white, as white generally looks better on a wider range of colored backgrounds than black.
+ *
+ * @param bg_color any {@link Gdk.RGBA} background color
+ *
+ * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 1.0}).
+ */
+public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
+    Gdk.RGBA gdk_white = { 1.0, 1.0, 1.0, 1.0 };
+    Gdk.RGBA gdk_black = { 0.0, 0.0, 0.0, 1.0 };
+
+    var contrast_with_white = contrast_ratio (
+        bg_color,
+        gdk_white
+    );
+    var contrast_with_black = contrast_ratio (
+        bg_color,
+        gdk_black
+    );
+
+    // Default to white
+    var fg_color = gdk_white;
+
+    // NOTE: We cheat and add 3 to contrast when checking against black,
+    // because white generally looks better on a colored background
+    if ( contrast_with_black > (contrast_with_white + 3) ) {
+        fg_color = gdk_black;
+    }
+
+    return fg_color;
+}
+
+}
+
 /**
  * This namespace contains functions to apply CSS stylesheets to widgets.
  */

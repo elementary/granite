@@ -43,7 +43,7 @@
  *   message_dialog.destroy ();
  * }}}
  * 
- * {{../../doc/images/MessageDialog.png}}
+ * {{../doc/images/MessageDialog.png}}
  */
 public class Granite.MessageDialog : Gtk.Dialog {
     /**
@@ -83,6 +83,20 @@ public class Granite.MessageDialog : Gtk.Dialog {
         
         set {
             image.set_from_gicon (value, Gtk.IconSize.DIALOG);
+        }
+    }
+
+    /**
+     * The {@link GLib.Icon} that is used to display a badge, bottom-end aligned,
+     * over the image on the left side of the dialog.
+     */
+    public GLib.Icon badge_icon {
+        owned get {
+            return badge.gicon;
+        }
+
+        set {
+            badge.set_from_gicon (value, Gtk.IconSize.LARGE_TOOLBAR);
         }
     }
 
@@ -162,6 +176,26 @@ public class Granite.MessageDialog : Gtk.Dialog {
     private Gtk.Image image;
 
     /**
+     * The badge that's displayed in the dialog.
+     */
+    private Gtk.Image badge;
+
+    /**
+     * The main grid that's used to contain all dialog widgets.
+     */
+    private Gtk.Grid message_grid;
+
+    /**
+     * The {@link Gtk.TextView} used to display an additional error message.
+     */
+    private Gtk.TextView? details_view;
+
+    /**
+     * The {@link Gtk.Expander} used to hold the error details view.
+     */
+    private Gtk.Expander? expander;
+
+    /**
      * SingleWidgetBin is only used within this class for creating a Bin that
      * holds only one widget.
      */
@@ -217,7 +251,15 @@ public class Granite.MessageDialog : Gtk.Dialog {
         skip_taskbar_hint = true;
 
         image = new Gtk.Image ();
-        image.valign = Gtk.Align.START;
+
+        badge = new Gtk.Image ();
+        badge.halign = badge.valign = Gtk.Align.END;
+        badge.pixel_size = 24;
+
+        var overlay = new Gtk.Overlay ();
+        overlay.valign = Gtk.Align.START;
+        overlay.add (image);
+        overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
@@ -234,17 +276,29 @@ public class Granite.MessageDialog : Gtk.Dialog {
         secondary_label.xalign = 0;
 
         custom_bin = new SingleWidgetBin ();
-        custom_bin.add.connect (() => secondary_label.margin_bottom = 18);
-        custom_bin.remove.connect (() => secondary_label.margin_bottom = 0);
+        custom_bin.add.connect (() => {
+            secondary_label.margin_bottom = 18;
+            if (expander != null) {
+                custom_bin.margin_top = 6;
+            }
+        });
 
-        var message_grid = new Gtk.Grid ();
+        custom_bin.remove.connect (() => {
+            secondary_label.margin_bottom = 0;
+
+            if (expander != null) {
+                custom_bin.margin_top = 0;
+            }
+        });
+
+        message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
         message_grid.row_spacing = 6;
         message_grid.margin_start = message_grid.margin_end = 12;
-        message_grid.attach (image, 0, 0, 1, 2);
+        message_grid.attach (overlay, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
-        message_grid.attach (custom_bin, 1, 2, 1, 1);
+        message_grid.attach (custom_bin, 1, 3, 1, 1);
         message_grid.show_all ();
 
         get_content_area ().add (message_grid);
@@ -252,5 +306,46 @@ public class Granite.MessageDialog : Gtk.Dialog {
         var action_area = get_action_area ();
         action_area.margin = 6;
         action_area.margin_top = 14;
+    }
+
+    /**
+     * Shows a terminal-like widget for error details that can be expanded by the user.
+     * 
+     * This method can be useful to provide the user extended error details in a
+     * terminal-like text view. Calling this method will not add any widgets to the
+     * {@link Granite.MessageDialog.custom_bin}.
+     * 
+     * Subsequent calls to this method will change the error message to a new one.
+     * 
+     * @param error_message the detailed error message to display
+     */
+    public void show_error_details (string error_message) {
+        if (details_view == null) {
+            secondary_label.margin_bottom = 18;
+
+            details_view = new Gtk.TextView ();
+            details_view.border_width = 6;
+            details_view.editable = false;
+            details_view.pixels_below_lines = 3;
+            details_view.wrap_mode = Gtk.WrapMode.WORD;
+            details_view.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
+
+            var scroll_box = new Gtk.ScrolledWindow (null, null);
+            scroll_box.margin_top = 12;
+            scroll_box.min_content_height = 70;
+            scroll_box.add (details_view);
+
+            expander = new Gtk.Expander (_("Details"));
+            expander.add (scroll_box);
+
+            message_grid.attach (expander, 1, 2, 1, 1);
+            message_grid.show_all ();
+
+            if (custom_bin.get_child () != null) {
+                custom_bin.margin_top = 12;
+            }
+        }
+
+        details_view.buffer.text = error_message;
     }
 }

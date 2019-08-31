@@ -115,7 +115,7 @@ namespace Granite.Services {
                 foreach (var path in xdg_data_dirs.split (":"))
                     dirs.append (File.new_for_path (path));
             }
-            xdg_data_dir_folders = dirs.copy ();            
+            xdg_data_dir_folders = (owned) dirs;
             
             // set the XDG Base Directory specified directories to use
             user_config_folder = xdg_config_home_folder.get_child (app_name);

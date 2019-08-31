@@ -25,6 +25,7 @@ namespace Granite.Services {
     /**
      * This class provides an easy way to access symbolic icons.
      */
+    [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "")]
     public class IconFactory : GLib.Object {
 
         private Gtk.IconTheme icon_theme;
@@ -56,6 +57,7 @@ namespace Granite.Services {
          * or a new reference to an internal icon, so you must not modify the icon.
          * Returns null if the icon was not found in the theme hierarchy.
          */
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "")]
         public Gdk.Pixbuf? load_symbolic_icon_from_gicon (Gtk.StyleContext style, GLib.Icon gicon, int size) {
             Gdk.Pixbuf px = null;
 
@@ -94,6 +96,7 @@ namespace Granite.Services {
          * or a new reference to an internal icon, so you must not modify the icon.
          * Returns null if the icon was not found in the theme hierarchy.
          */
+        [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "")]
         public Gdk.Pixbuf? load_symbolic_icon (Gtk.StyleContext style, string iconname, int size) {
             ThemedIcon themed_icon = new ThemedIcon.with_default_fallbacks (iconname);
             

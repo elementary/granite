@@ -42,15 +42,22 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     private void show_message_dialog () {
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("Primary text providing basic information and a suggestion", "Secondary text providing further details. Also includes information that explains any unobvious consequences of actions.", "dialog-warning", Gtk.ButtonsType.CANCEL);
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            "Basic Information and a Suggestion",
+            "Further details, including information that explains any unobvious consequences of actions.",
+            "phone",
+            Gtk.ButtonsType.CANCEL
+        );
+        message_dialog.badge_icon = new ThemedIcon ("dialog-information");
         message_dialog.transient_for = window;
-        
+
         var suggested_button = new Gtk.Button.with_label ("Suggested Action");
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
 
+        message_dialog.show_error_details ("The details of a possible error.");
         message_dialog.custom_bin.add (custom_widget);
         message_dialog.show_all ();
         if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {

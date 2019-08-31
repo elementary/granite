@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *  Copyright (C) 2018 elementary, Inc. (https://elementary.io),
+                  2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -24,10 +25,6 @@ namespace Granite.Widgets {
      * This widget allows users to easily pick a time.
      */
     public class TimePicker : Gtk.Entry {
-
-        const int OFFSET = 15;
-        const int MARGIN = 6;
-        // Signals
         /**
          * Sent when the time got changed
          */
@@ -69,32 +66,38 @@ namespace Granite.Widgets {
                 update_text (true);
                 changing_time = false;
             }
+
         }
 
+        private bool changing_time = false;
         private string old_string = "";
-
+        private Gtk.Popover popover;
         private Gtk.SpinButton hours_spinbutton;
         private Gtk.SpinButton minutes_spinbutton;
         private ModeButton am_pm_modebutton;
-        private bool changing_time = false;
 
-        private Gtk.Popover popover;
+        /**
+         * Creates a new TimePicker.
+         *
+         * @param format_12 The desired custom 12h format. For example "%l:%M %p".
+         * @param format_24 The desired custom 24h format. For example "%H:%M".
+         */
+        public TimePicker.with_format (string format_12, string format_24) {
+            Object (format_12: format_12, format_24: format_24);
+        }
 
         construct {
-            if (format_12 == null)
+            if (format_12 == null) {
                 format_12 = Granite.DateTime.get_default_time_format (true);
+            }
 
-            if (format_24 == null)
+            if (format_24 == null) {
                 format_24 = Granite.DateTime.get_default_time_format (false);
+            }
 
             max_length = 8;
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
             icon_release.connect (on_icon_press);
-
-            // Creates the popover
-            var pop_grid = new Gtk.Grid ();
-            pop_grid.column_spacing = 6;
-            pop_grid.row_spacing = 6;
 
             am_pm_modebutton = new ModeButton ();
             am_pm_modebutton.orientation = Gtk.Orientation.VERTICAL;
@@ -129,6 +132,7 @@ namespace Granite.Widgets {
             hours_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             hours_spinbutton.wrap = true;
             hours_spinbutton.value_changed.connect (() => update_time (true));
+
             minutes_spinbutton = new Gtk.SpinButton.with_range (0, 59, 1);
             minutes_spinbutton.orientation = Gtk.Orientation.VERTICAL;
             minutes_spinbutton.wrap = true;
@@ -148,13 +152,17 @@ namespace Granite.Widgets {
             /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
 
+            var pop_grid = new Gtk.Grid ();
+            pop_grid.column_spacing = 6;
+            pop_grid.row_spacing = 6;
             pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
             pop_grid.attach (separation_label, 1, 0, 1, 1);
             pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
             pop_grid.attach (am_pm_modebutton, 3, 0, 1, 1);
-            pop_grid.margin = MARGIN;
+            pop_grid.margin = 6;
 
             popover = new Gtk.Popover (this);
+            popover.position = Gtk.PositionType.BOTTOM;
             popover.add (pop_grid);
 
             // Connecting to events allowing manual changes
@@ -186,22 +194,12 @@ namespace Granite.Widgets {
             update_text ();
         }
 
-        /**
-         * Creates a new TimePicker.
-         *
-         * @param format_12 The desired custom 12h format. For example "%l:%M %p".
-         * @param format_24 The desired custom 24h format. For example "%H:%M".
-         */
-        public TimePicker.with_format (string format_12, string format_24) {
-            Object (format_12: format_12, format_24: format_24);
-        }
-
         private void update_time (bool is_hour) {
-            if (changing_time == true) {
+            if (changing_time) {
                 return;
             }
 
-            if (is_hour == true) {
+            if (is_hour) {
                 var new_hour = hours_spinbutton.get_value_as_int () - time.get_hour ();
 
                 if (Granite.DateTime.is_clock_format_12h ()) {
@@ -214,8 +212,9 @@ namespace Granite.Widgets {
                     } else if (hours_spinbutton.get_value_as_int () < 12 && am_pm_modebutton.selected == 1) {
                         _time = _time.add_hours (new_hour + 12);
 
-                        if (time.get_hour () <= 12)
+                        if (time.get_hour () <= 12) {
                             _time = _time.add_hours (12);
+                        }
                     }
                 } else {
                     _time = _time.add_hours (new_hour);
@@ -232,10 +231,11 @@ namespace Granite.Widgets {
             update_text ();
             changing_time = true;
 
-            if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12)
+            if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12) {
                 hours_spinbutton.set_value (time.get_hour () - 12);
-            else
+            } else {
                 hours_spinbutton.set_value (time.get_hour ());
+            }
 
             if (Granite.DateTime.is_clock_format_12h ()) {
                 am_pm_modebutton.no_show_all = false;
@@ -262,27 +262,16 @@ namespace Granite.Widgets {
             minutes_spinbutton.set_value (time.get_minute ());
             changing_time = false;
 
-            Gdk.Rectangle rect = Gdk.Rectangle ();
-            int x = 0;
-            int y = 0;
-            position_dropdown (out x, out y);
-            rect.x = x;
-            rect.y = y;
-            popover.pointing_to = rect;
-            popover.position = Gtk.PositionType.BOTTOM;
+            popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
             popover.show_all ();
         }
 
+        [Version (deprecated = true, deprecated_since = "5.2.0")]
         protected virtual void position_dropdown (out int x, out int y) {
-            Gtk.Allocation size;
-            get_allocation (out size);
-
-            x = size.width - OFFSET;
-            y = size.height;
         }
 
         private void is_unfocused () {
-            if (popover.visible == false && old_string.collate (text) != 0) {
+            if (!popover.visible && old_string.collate (text) != 0) {
                 old_string = text;
                 parse_time (text.dup ());
             }
@@ -300,21 +289,25 @@ namespace Granite.Widgets {
                 if (c.isdigit ()) {
                     current = "%s%c".printf (current, c);
                 } else {
-                    if (is_hours == true && is_suffix == false && current != "") {
-                        is_hours = false;
-                        hour = int.parse (current);
-                        current = "";
-                    } else if (is_hours == false && is_suffix == false && current != "") {
-                        minute = int.parse (current);
-                        current = "";
+                    if (!is_suffix) {
+                        if (current != "") {
+                            if (is_hours) {
+                                is_hours = false;
+                                hour = int.parse (current);
+                                current = "";
+                            } else {
+                                minute = int.parse (current);
+                                current = "";
+                            }
+                        }
+
+                        if (c.to_string ().contains ("a") || c.to_string ().contains ("p")) {
+                            is_suffix = true;
+                            current = "%s%c".printf (current, c);
+                        }
                     }
 
-                    if ((c.to_string ().contains ("a") || c.to_string ().contains ("p")) && is_suffix == false) {
-                        is_suffix = true;
-                        current = "%s%c".printf (current, c);
-                    }
-
-                    if (c.to_string ().contains ("m") && is_suffix == true) {
+                    if (c.to_string ().contains ("m") && is_suffix) {
                         if (hour == null) {
                             return;
                         } else if (minute == null) {
@@ -370,15 +363,17 @@ namespace Granite.Widgets {
         }
 
         private void update_text (bool no_signal = false) {
-            if (Granite.DateTime.is_clock_format_12h ())
+            if (Granite.DateTime.is_clock_format_12h ()) {
                 set_text (time.format (format_12));
-            else
+            } else {
                 set_text (time.format (format_24));
+            }
 
             old_string = text;
 
-            if (no_signal == false)
+            if (no_signal == false) {
                 time_changed ();
+            }
         }
     }
 

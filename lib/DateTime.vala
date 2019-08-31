@@ -39,10 +39,10 @@ namespace Granite.DateTime {
         if (is_12h == true) {
             if (with_second == true) {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
-                return _("%l:%M:%S %p");
+                return _("%-l:%M:%S %p");
             } else {
                 /// TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
-                return _("%l:%M %p");
+                return _("%-l:%M %p");
             }
         } else {
             if (with_second == true) {
@@ -145,7 +145,7 @@ namespace Granite.DateTime {
     public static string get_default_date_format (bool with_weekday = false, bool with_day = true, bool with_year = false) {
         if (with_weekday == true && with_day == true && with_year == true) {
             /// TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-            return _("%a %b %e %Y");
+            return _("%a, %b %e, %Y");
         } else if (with_weekday == false && with_day == true && with_year == true) {
             /// TRANSLATORS: a GLib.DateTime format showing the date and year
             return _("%b %e %Y");
@@ -163,7 +163,7 @@ namespace Granite.DateTime {
             return _("%a");
         } else if (with_weekday == true && with_day == true && with_year == false) {
             /// TRANSLATORS: a GLib.DateTime format showing the weekday and date
-            return _("%a %b %e");
+            return _("%a, %b %e");
         } else if (with_weekday == false && with_day == false && with_year == false) {
             /// TRANSLATORS: a GLib.DateTime format showing the month.
             return _("%b");
