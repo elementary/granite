@@ -45,7 +45,8 @@ public class DynamicNotebookView : Gtk.Grid {
         notebook.new_tab_requested.connect (() => {
             var page = new Gtk.Label ("Page %d".printf (i));
             var tab = new Granite.Widgets.Tab (
-                "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
+                "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page
+            );
             notebook.insert_tab (tab, i-1);
             i++;
         });
