@@ -45,7 +45,7 @@ public class AsyncImageView : Gtk.Grid {
         });
 
         var icons = new Gee.ArrayList<string> ();
-        
+
         var icon_theme = Gtk.IconTheme.get_default ();
         icon_theme.list_icons ("Applications").@foreach ((name) => {
             icons.add (name);
