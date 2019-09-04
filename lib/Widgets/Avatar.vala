@@ -119,7 +119,10 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
     private void refresh_size_request () {
         if (pixbuf != null) {
             var scale_factor = get_scale_factor ();
-            set_size_request (pixbuf.width / scale_factor + EXTRA_MARGIN * 2, pixbuf.height / scale_factor + EXTRA_MARGIN * 2);
+            set_size_request (
+                pixbuf.width / scale_factor + EXTRA_MARGIN * 2,
+                pixbuf.height / scale_factor + EXTRA_MARGIN * 2
+            );
             draw_theme_background = true;
         } else {
             set_size_request (0, 0);
@@ -166,10 +169,20 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         var scale_factor = get_scale_factor ();
 
         if (draw_theme_background) {
-            var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, style_context.get_state ()).get_int ();
+            var border_radius = style_context.get_property (
+                Gtk.STYLE_PROPERTY_BORDER_RADIUS,
+                style_context.get_state ()
+            ).get_int ();
             var crop_radius = int.min (width / 2, border_radius * width / 100);
 
-            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height, crop_radius);
+            Granite.Drawing.Utilities.cairo_rounded_rectangle (
+                cr,
+                EXTRA_MARGIN,
+                EXTRA_MARGIN,
+                width,
+                height,
+                crop_radius
+            );
             cr.save ();
             cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
             Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN * scale_factor, EXTRA_MARGIN * scale_factor);

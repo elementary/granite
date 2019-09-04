@@ -53,7 +53,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
                 ((Gtk.Image) display_widget).icon_name = value;
                 ((Gtk.Image) display_widget).pixel_size = 32;
             }
-        } 
+        }
     }
 
     public string status {

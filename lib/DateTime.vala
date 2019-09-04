@@ -132,17 +132,22 @@ namespace Granite.DateTime {
      * The function constructs a new string interpreting the //with_weekday//, //with_day// and //with_year// parameters
      * so that it can be used with formatting functions like {@link GLib.DateTime.format}.
      *
-     * As the {@link Granite.DateTime.get_default_time_format}, the returned string is formatted, translated and is also mostly used to display
-     * the date in various user interfaces like the date displayed in the top panel.
+     * As the {@link Granite.DateTime.get_default_time_format}, the returned string is formatted, translated and is
+     * also mostly used to display the date in various user interfaces like the date displayed in the top panel.
      *
      * @param with_weekday if the returned string should contain the abbreviated weekday name
-     * @param with_day if the returned string should contain contain the day of the month as a decimal number (range 1 to 31)
+     * @param with_day if the returned string should contain contain the day of the month as a decimal number
+     * (range 1 to 31)
      * @param with_year if the returned string should contain the year as a decimal number including the century
      *
-     * @return returns the formatted and located date string. If for some reason, the function could not determine the format to use,
-     *         an empty string will be returned.
+     * @return returns the formatted and located date string. If for some reason, the function could not determine the
+     * format to use, an empty string will be returned.
      */
-    public static string get_default_date_format (bool with_weekday = false, bool with_day = true, bool with_year = false) {
+    public static string get_default_date_format (
+        bool with_weekday = false,
+        bool with_day = true,
+        bool with_year = false
+    ) {
         if (with_weekday == true && with_day == true && with_year == true) {
             /// TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
             return _("%a, %b %e, %Y");

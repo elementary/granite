@@ -62,7 +62,7 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     public string? icon_name {
         get {
             return _icon_name;
-        } 
+        }
         construct set {
             _icon_name = value;
         }
@@ -74,7 +74,7 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     public string title {
         get {
             return _title;
-        } 
+        }
         construct set {
             _title = value;
         }

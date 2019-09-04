@@ -159,8 +159,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public void set_item_visible (uint index, bool val) {
         if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
-            children.nth_data(index).set_no_show_all (!val);
-            children.nth_data(index).set_visible (val);
+            children.nth_data (index).set_no_show_all (!val);
+            children.nth_data (index).set_visible (val);
         }
     }
 

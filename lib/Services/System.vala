@@ -114,7 +114,11 @@ namespace Granite.Services {
 
             // make sure all files are mounted
             foreach (var f in files) {
-                if (f.get_path () != null && f.get_path () != "" && (f.is_native () || path_is_mounted (f.get_path ()))) {
+                if (
+                    f.get_path () != null
+                    && f.get_path () != ""
+                    && (f.is_native () || path_is_mounted (f.get_path ()))
+                ) {
                     mounted_files.append (f);
                     continue;
                 }
@@ -133,9 +137,13 @@ namespace Granite.Services {
 
         static bool path_is_mounted (string path) {
             foreach (var m in VolumeMonitor.get ().get_mounts ())
-                if (m.get_root () != null && m.get_root ().get_path () != null && path.contains (m.get_root ().get_path ()))
+                if (
+                    m.get_root () != null
+                    && m.get_root ().get_path () != null
+                    && path.contains (m.get_root ().get_path ())
+                ) {
                     return true;
-
+                }
             return false;
         }
 
@@ -186,11 +194,15 @@ namespace Granite.Services {
          * Returns whether history is enabled within the Security and Privacy system settings or not. A value of true
          * means that you should store information such as the last opened file or a history within the app.
          *
-         * Checks the "remember_recent_files" key in "org.gnome.desktop.privacy", returning true if the schema does not exist.
+         * Checks the "remember_recent_files" key in "org.gnome.desktop.privacy",
+         * returning true if the schema does not exist.
          */
         public static bool history_is_enabled () {
             if (privacy_settings_schema == null) {
-                privacy_settings_schema = SettingsSchemaSource.get_default ().lookup ("org.gnome.desktop.privacy", true);
+                privacy_settings_schema = SettingsSchemaSource.get_default ().lookup (
+                    "org.gnome.desktop.privacy",
+                    true
+                );
             }
 
             if (privacy_settings_schema != null && privacy_settings_schema.has_key ("remember-recent-files")) {

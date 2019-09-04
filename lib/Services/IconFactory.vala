@@ -43,10 +43,10 @@ namespace Granite.Services {
         }
 
         /**
-         * Attempts to load a symbolic icon for the given {@link GLib.Icon} 
+         * Attempts to load a symbolic icon for the given {@link GLib.Icon}
          * with graceful fallback on the non-symbolic variant if the symbolic one
          * does not exist.
-         * 
+         *
          * Note that the resulting pixbuf may not be exactly the requested size;
          * an icon theme may have icons that differ slightly from their nominal sizes,
          * and in addition GTK+ will avoid scaling icons that it considers sufficiently close
@@ -77,13 +77,13 @@ namespace Granite.Services {
         /**
          * Loads a symbolic icon for the given icon name with a better chance
          * for loading a symbolic icon in case of fallback than with {@link Gtk.IconTheme.load_icon}
-         * 
+         *
          * Note that the resulting pixbuf may not be exactly the requested size;
          * an icon theme may have icons that differ slightly from their nominal sizes,
          * and in addition GTK+ will avoid scaling icons that it considers sufficiently close
          * to the requested size or for which the source image would have to be scaled up too far
          * (this maintains sharpness).
-         * 
+         *
          * Due to the way {@link Gtk.IconLookupFlags.GENERIC_FALLBACK} works, Gtk readily
          * falls back to the non-symbolic icon if the exact match for the provided name is not found,
          * and only after that fails tries to look up alternative names of the icon itself.
@@ -91,7 +91,7 @@ namespace Granite.Services {
          * name chosen after all the fallbacks, and returns the symbolic one if it's present.
          * This gives a better chance of getting a symbolic icon in case of fallbacks than
          * when using {@link Gtk.IconTheme.load_icon}
-         * 
+         *
          * @return a {@link Gdk.Pixbuf} with the rendered icon; this may be a newly created icon
          * or a new reference to an internal icon, so you must not modify the icon.
          * Returns null if the icon was not found in the theme hierarchy.
@@ -99,9 +99,9 @@ namespace Granite.Services {
         [Version (deprecated = true, deprecated_since = "5.2.4", replacement = "")]
         public Gdk.Pixbuf? load_symbolic_icon (Gtk.StyleContext style, string iconname, int size) {
             ThemedIcon themed_icon = new ThemedIcon.with_default_fallbacks (iconname);
-            
+
             return load_symbolic_icon_from_gicon (style, (GLib.Icon) themed_icon, size);
         }
-    
+
     }
 }

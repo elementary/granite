@@ -47,8 +47,7 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
     public override void get_preferred_width (Gtk.Widget widget,
                                               out int minimum_size,
-                                              out int natural_size)
-    {
+                                              out int natural_size) {
         update_layout_properties (widget);
 
         int width = text_logical_rect.width;
@@ -61,8 +60,7 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
-                                                         out int natural_height)
-    {
+                                                         out int natural_height) {
         update_layout_properties (widget);
 
         int height = text_logical_rect.height;
@@ -96,8 +94,7 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
-    {
+                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
         update_layout_properties (widget);
 
         Gdk.Rectangle aligned_area = get_aligned_area (widget, flags, cell_area);
@@ -135,8 +132,7 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
     [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.CellRenderer.get_preferred_size")]
     public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                    out int x_offset, out int y_offset,
-                                   out int width, out int height)
-    {
+                                   out int width, out int height) {
         assert_not_reached ();
     }
 }

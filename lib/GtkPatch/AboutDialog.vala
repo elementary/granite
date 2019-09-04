@@ -25,12 +25,13 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         set {
             _artists = value;
             if (_artists == null || _artists.length == 0) {
-                artists_label.hide();
-                artists_label.set_text("");
-            }
-            else {
-                artists_label.set_markup(set_string_from_string_array("<span size=\"small\">" + _("Designed by:") + "</span>\n", _artists));
-                artists_label.show();
+                artists_label.hide ();
+                artists_label.set_text ("");
+            } else {
+                artists_label.set_markup (
+                    set_string_from_string_array ("<span size=\"small\">" + _("Designed by:") + "</span>\n", _artists)
+                );
+                artists_label.show ();
             }
         }
         get { return _artists; }
@@ -44,12 +45,13 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         set {
             _authors = value;
             if (_authors == null || _authors.length == 0) {
-                authors_label.hide();
-                authors_label.set_text("");
-            }
-            else {
-                authors_label.set_markup(set_string_from_string_array("<span size=\"small\">" + _("Written by:") + "</span>\n", _authors));
-                authors_label.show();
+                authors_label.hide ();
+                authors_label.set_text ("");
+            } else {
+                authors_label.set_markup (
+                    set_string_from_string_array ("<span size=\"small\">" + _("Written by:") + "</span>\n", _authors)
+                );
+                authors_label.show ();
             }
         }
         get { return _authors; }
@@ -63,12 +65,11 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         set {
             _comments = value;
             if (_comments == null || _comments == "") {
-                comments_label.hide();
-                comments_label.set_text("");
-            }
-            else {
-                comments_label.set_text(_comments + "\n");
-                comments_label.show();
+                comments_label.hide ();
+                comments_label.set_text ("");
+            } else {
+                comments_label.set_text (_comments + "\n");
+                comments_label.show ();
             }
         }
         get { return _comments; }
@@ -82,16 +83,19 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         set {
             _copyright = value;
             if (_copyright == null || _copyright == "") {
-                copyright_label.hide();
-                copyright_label.set_text("");
-            }
-            else {
+                copyright_label.hide ();
+                copyright_label.set_text ("");
+            } else {
                 if (Gtk.StateFlags.DIR_RTL in copyright_label.get_style_context ().get_state ()) {
-                    copyright_label.set_markup ("<span size=\"small\">" + "%s ©".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
+                    copyright_label.set_markup (
+                        "<span size=\"small\">" + "%s ©".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n"
+                    );
                 } else {
-                    copyright_label.set_markup ("<span size=\"small\">" + "© %s".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n");
+                    copyright_label.set_markup (
+                        "<span size=\"small\">" + "© %s".printf (GLib.Markup.escape_text (_copyright)) + "</span>\n"
+                    );
                 }
-                copyright_label.show();
+                copyright_label.show ();
             }
         }
         get { return _copyright; }
@@ -104,11 +108,13 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     public string[] documenters {
         set {
             _documenters = value;
-            if (documenters.length == 0 || documenters == null)
-                documenters_label.hide();
-            else {
-                documenters_label.show();
-                documenters_label.set_markup(set_string_from_string_array("<span size=\"small\">"+_("Documented by:")+"</span>\n", documenters));
+            if (documenters.length == 0 || documenters == null) {
+                documenters_label.hide ();
+            } else {
+                documenters_label.show ();
+                documenters_label.set_markup (
+                    set_string_from_string_array ("<span size=\"small\">"+_("Documented by:")+"</span>\n", documenters)
+                );
             }
         }
         get { return _documenters; }
@@ -119,13 +125,13 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * The license of the program.
      */
     public string license {
-        set { _license = value; update_license(); }
+        set { _license = value; update_license (); }
         get { return _license; }
     }
     string _license = "";
 
     public Gtk.License license_type {
-        set { _license_type = value; update_license(); }
+        set { _license_type = value; update_license (); }
         get { return _license_type; }
     }
     Gtk.License _license_type = Gtk.License.UNKNOWN;
@@ -134,7 +140,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * A logo for the about box.
      */
     public Gdk.Pixbuf logo {
-        set { _logo = value; update_logo_image(); }
+        set { _logo = value; update_logo_image (); }
         get { return _logo; }
     }
     Gdk.Pixbuf _logo = null;
@@ -143,7 +149,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * A named icon to use as the logo for the about box.
      */
     public string logo_icon_name {
-        set { _logo_icon_name = value; update_logo_image(); }
+        set { _logo_icon_name = value; update_logo_image (); }
         get { return _logo_icon_name; }
     }
     string _logo_icon_name = "";
@@ -152,7 +158,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * The name of the program.
      */
     public string program_name {
-        set { _program_name = value; set_name_and_version(); }
+        set { _program_name = value; set_name_and_version (); }
         get { return _program_name; }
     }
     string _program_name = "";
@@ -163,13 +169,20 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     public string translator_credits {
         set {
             _translator_credits = value;
-            if (_translator_credits == null || _translator_credits == "" || _translator_credits == "translator-credits") {
-                translators_label.hide();
-                translators_label.set_text("");
-            }
-            else {
-                translators_label.set_markup("<span size=\"small\">" + _("Translated by %s").printf(GLib.Markup.escape_text (_translator_credits)) + "</span>");
-                translators_label.show();
+            if (
+                _translator_credits == null
+                || _translator_credits == ""
+                || _translator_credits == "translator-credits"
+            ) {
+                translators_label.hide ();
+                translators_label.set_text ("");
+            } else {
+                translators_label.set_markup (
+                    "<span size=\"small\">"
+                    + _("Translated by %s").printf (GLib.Markup.escape_text (_translator_credits))
+                    + "</span>"
+                );
+                translators_label.show ();
             }
         }
         get { return _translator_credits; }
@@ -180,7 +193,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * The version of the program.
      */
     public string version {
-        set { _version = value; set_name_and_version(); }
+        set { _version = value; set_name_and_version (); }
         get { return _version; }
     }
     string _version = "";
@@ -189,7 +202,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * The URL for the link to the website of the program.
      */
     public string website {
-        set { _website = value; update_website(); }
+        set { _website = value; update_website (); }
         get { return _website; }
     }
     string _website = "";
@@ -198,7 +211,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
      * The label for the link to the website of the program.
      */
     public string website_label {
-        set { _website_label = value; update_website(); }
+        set { _website_label = value; update_website (); }
         get { return _website_label; }
     }
     string _website_label = "";
@@ -207,10 +220,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     public virtual signal bool activate_link (string uri) {
         // Improve error management FIXME
         bool result = false;
-        if (uri != null)
-        {
+        if (uri != null) {
             try {
-                result = Gtk.show_uri(get_screen(), uri, Gtk.get_current_event_time());
+                result = Gtk.show_uri (get_screen (), uri, Gtk.get_current_event_time ());
             } catch (Error err) {
                 stderr.printf ("Unable to open the URI: %s", err.message);
             }
@@ -311,18 +323,18 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         if (tooltip)
             return string.joinv ("\n",peoples);
 
-        string text  = "";
-        string name  = "";
-        string email = "" ;
+        string text = "";
+        string name = "";
+        string email = "";
         string _person_data;
         bool email_started= false;
         text += title + "<span size=\"small\">";
-        for (int i= 0;i<peoples.length;i++){
+        for (int i= 0; i<peoples.length; i++) {
             if (peoples[i] == null)
                 break;
             _person_data = peoples[i];
 
-            for (int j=0;j< _person_data.length;j++){
+            for (int j=0; j< _person_data.length; j++) {
 
                 if ( _person_data.get (j) == '<')
                     email_started = true;
@@ -360,53 +372,51 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     private void update_license () {
         switch (license_type) {
         case Gtk.License.GPL_2_0:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL 2.0");
+            set_generic_license ("http://www.gnu.org/licenses/old-licenses/gpl-2.0.html", "GPL 2.0");
             break;
         case Gtk.License.GPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/gpl.html", "GPL");
+            set_generic_license ("http://www.gnu.org/licenses/gpl.html", "GPL");
             break;
         case Gtk.License.LGPL_2_1:
-            set_generic_license("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL 2.1");
+            set_generic_license ("http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html", "LGPL 2.1");
             break;
         case Gtk.License.LGPL_3_0:
-            set_generic_license("http://www.gnu.org/licenses/lgpl.html", "LGPL");
+            set_generic_license ("http://www.gnu.org/licenses/lgpl.html", "LGPL");
             break;
         case Gtk.License.BSD:
-            set_generic_license("http://opensource.org/licenses/bsd-license.php", "BSD");
+            set_generic_license ("http://opensource.org/licenses/bsd-license.php", "BSD");
             break;
         case Gtk.License.MIT_X11:
-            set_generic_license("http://opensource.org/licenses/mit-license.php", "MIT");
+            set_generic_license ("http://opensource.org/licenses/mit-license.php", "MIT");
             break;
         case Gtk.License.ARTISTIC:
-            set_generic_license("http://opensource.org/licenses/artistic-license-2.0.php", "Artistic");
+            set_generic_license ("http://opensource.org/licenses/artistic-license-2.0.php", "Artistic");
             break;
         default:
             if (license != null && license != "") {
-                license_label.set_markup(license + "\n");
-                license_label.show();
+                license_label.set_markup (license + "\n");
+                license_label.show ();
             }
             else
-                license_label.hide();
+                license_label.hide ();
             break;
         }
     }
 
     private void set_generic_license (string url, string license_type) {
-        license_label.set_markup("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n"));
-        license_label.show();
+        license_label.set_markup ("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n"));
+        license_label.show ();
     }
 
-    private void set_name_and_version()
-    {
-        if (program_name != null && program_name != "")
-        {
-            name_label.set_text(program_name);
+    private void set_name_and_version () {
+        if (program_name != null && program_name != "") {
+            name_label.set_text (program_name);
             if (version != null && version != "")
-                name_label.set_text(name_label.get_text() + " " + version);
-            name_label.show();
+                name_label.set_text (name_label.get_text () + " " + version);
+            name_label.show ();
+        } else {
+            name_label.hide ();
         }
-        else
-            name_label.hide();
     }
 
     private void update_website () {

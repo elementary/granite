@@ -95,7 +95,7 @@ namespace Granite.Widgets {
          * @return index of new item
          */
         public int append_text (string text) {
-            return append (new Gtk.Label(text));
+            return append (new Gtk.Label (text));
         }
 
         /**

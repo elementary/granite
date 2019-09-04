@@ -23,7 +23,8 @@ namespace Granite.Widgets {
 
     /**
      * This class makes an about dialog which goes in the App Menu on most apps.
-     * This class is deprecated. Applications should instead provide an Appstream appdata.xml file to describe their metadata
+     * This class is deprecated. Applications should instead provide an Appstream appdata.xml file to describe their
+     * metadata.
      *
      * {{../doc/images/AboutDialog.png}}
      */

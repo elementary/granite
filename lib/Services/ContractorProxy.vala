@@ -159,7 +159,7 @@ namespace Granite.Services {
          * Emitted when the list of actions available to Contractor changes.
          * Application should generally request the updated list of actions upon receiving this signal.
          *
-         * This is not obligatory for frequently updated lists (e.g. in context menus), 
+         * This is not obligatory for frequently updated lists (e.g. in context menus),
          * but essential for applications that display action lists without re-requesting them.
          */
         public signal void contracts_changed ();
