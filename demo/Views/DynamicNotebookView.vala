@@ -34,13 +34,18 @@ public class DynamicNotebookView : Gtk.Grid {
 
         for (i = 1; i <= 6; i++) {
             var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
+            var tab = new Granite.Widgets.Tab (
+                "Tab %d".printf (i),
+                new ThemedIcon ("mail-mark-important-symbolic"),
+                page
+            );
             notebook.insert_tab (tab, i-1);
         }
 
         notebook.new_tab_requested.connect (() => {
             var page = new Gtk.Label ("Page %d".printf (i));
-            var tab = new Granite.Widgets.Tab ("Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
+            var tab = new Granite.Widgets.Tab (
+                "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page);
             notebook.insert_tab (tab, i-1);
             i++;
         });
