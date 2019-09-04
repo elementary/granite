@@ -7,8 +7,14 @@ env:
  - DEPENDENCY_PACKAGES="meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-3-dev valac"
 
 install:
- - docker pull elementary/docker:juno-unstable
- - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && meson build && cd build && ninja"
+ - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && meson build && ninja -C build"
 
-script:
- - echo BUILDS PASSED
+jobs:
+  include:
+    - stage: "Test"
+      script:
+        - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "cd /tmp/build-dir && ninja test -C build"
+
+    - stage: "Lint"
+      script:
+        - docker run -v "$PWD":/var/opt/vala-lint elementary/docker:vala-lint io.elementary.vala-lint -d .
