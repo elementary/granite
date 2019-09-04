@@ -24,26 +24,26 @@ using Granite.Services;
 namespace Granite.Drawing {
 
     /**
-     * A class containing an rgba color and methods for more powerful color manipulation.
+     * A class containing an RGBA color and methods for more powerful color manipulation.
      */
     public class Color : GLib.Object, SettingsSerializable {
 
         /**
          * The value of the red channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double r;
+        public double R;
         /**
          * The value of the green channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double g;
+        public double G;
         /**
          * The value of the blue channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double b;
+        public double B;
         /**
          * The value of the alpha channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double a;
+        public double A;
 
         /**
          * Extracts the alpha value from the integer value
@@ -88,17 +88,17 @@ namespace Granite.Drawing {
         /**
          * Constructs a new {@link Granite.Drawing.Color} with the supplied values.
          *
-         * @param r the value of the red channel as a double
-         * @param g the value of the green channel as a double
-         * @param b the value of the blue channel as a double
-         * @param a the value of the alpha channel as a double
+         * @param R the value of the red channel as a double
+         * @param G the value of the green channel as a double
+         * @param B the value of the blue channel as a double
+         * @param A the value of the alpha channel as a double
          */
-        public Color (double r, double g, double b, double a) {
+        public Color (double R, double G, double B, double A) {
 
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            this.a = a;
+            this.R = R;
+            this.G = G;
+            this.B = B;
+            this.A = A;
         }
 
         /**
@@ -108,10 +108,10 @@ namespace Granite.Drawing {
          */
         public Color.from_gdk (Gdk.Color color) {
 
-            r = color.red / (double) uint16.MAX;
-            g = color.green / (double) uint16.MAX;
-            b = color.blue / (double) uint16.MAX;
-            a = 1.0;
+            R = color.red / (double) uint16.MAX;
+            G = color.green / (double) uint16.MAX;
+            B = color.blue / (double) uint16.MAX;
+            A = 1.0;
         }
 
         /**
@@ -149,8 +149,8 @@ namespace Granite.Drawing {
          * This constructor should be used when deserializing the previously serialized
          * color by {@link Granite.Drawing.Color.to_int}.
          *
-         * For more details on what format the color integer representation has, see
-         * {@link Granite.Drawing.Color.to_int}.
+         * For more details on what format the color integer representation has,
+         * see {@link Granite.Drawing.Color.to_int}.
          *
          * If you would like to deserialize the A, R, G and B values from the integer without
          * creating a new instance of {@link Granite.Drawing.Color}, you can use the available
@@ -159,10 +159,10 @@ namespace Granite.Drawing {
          * @param color the integer specyfying the color
          */
         public Color.from_int (int color) {
-            r = (double)red_from_int (color) / (double)uint8.MAX;
-            g = (double)green_from_int (color) / (double)uint8.MAX;
-            b = (double)blue_from_int (color) / (double)uint8.MAX;
-            a = (double)alpha_from_int (color) / (double)uint8.MAX;
+            R = (double)red_from_int (color) / (double)uint8.MAX;
+            G = (double)green_from_int (color) / (double)uint8.MAX;
+            B = (double)blue_from_int (color) / (double)uint8.MAX;
+            A = (double)alpha_from_int (color) / (double)uint8.MAX;
         }
 
         /**
@@ -175,9 +175,9 @@ namespace Granite.Drawing {
         public Color set_hue (double hue) requires (hue >= 0 && hue <= 360) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             h = hue;
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -192,9 +192,9 @@ namespace Granite.Drawing {
         public Color set_sat (double sat) requires (sat >= 0 && sat <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             s = sat;
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -209,9 +209,9 @@ namespace Granite.Drawing {
         public Color set_val (double val) requires (val >= 0 && val <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = val;
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -225,7 +225,7 @@ namespace Granite.Drawing {
          */
         public Color set_alpha (double alpha) requires (alpha >= 0 && alpha <= 1) {
 
-            a = alpha;
+            A = alpha;
             return this;
         }
 
@@ -236,7 +236,7 @@ namespace Granite.Drawing {
         public double get_hue () {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             return h;
         }
 
@@ -247,7 +247,7 @@ namespace Granite.Drawing {
         public double get_sat () {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             return s;
         }
 
@@ -259,7 +259,7 @@ namespace Granite.Drawing {
         public double get_val () {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             return v;
         }
 
@@ -273,9 +273,9 @@ namespace Granite.Drawing {
         public Color add_hue (double val) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             h = (((h + val) % 360) + 360) % 360;
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -290,9 +290,9 @@ namespace Granite.Drawing {
         public Color set_min_sat (double sat) requires (sat >= 0 && sat <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             s = double.max (s, sat);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -307,9 +307,9 @@ namespace Granite.Drawing {
         public Color set_min_value (double val) requires (val >= 0 && val <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = double.max (v, val);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -324,9 +324,9 @@ namespace Granite.Drawing {
         public Color set_max_sat (double sat) requires (sat >= 0 && sat <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             s = double.min (s, sat);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -341,9 +341,9 @@ namespace Granite.Drawing {
         public Color set_max_val (double val) requires (val >= 0 && val <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = double.min (v, val);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -357,9 +357,9 @@ namespace Granite.Drawing {
          */
         public Color multiply_sat (double amount) requires (amount >= 0) {
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             s = double.min (1, s * amount);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -374,9 +374,9 @@ namespace Granite.Drawing {
         public Color brighten_val (double amount) requires (amount >= 0 && amount <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = double.min (1, v + (1 - v) * amount);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -391,9 +391,9 @@ namespace Granite.Drawing {
         public Color darken_val (double amount) requires (amount >= 0 && amount <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = double.max (0, v - (1 - v) * amount);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -408,9 +408,9 @@ namespace Granite.Drawing {
         public Color darken_by_sat (double amount) requires (amount >= 0 && amount <= 1) {
 
             double h, s, v;
-            rgb_to_hsv (r, g, b, out h, out s, out v);
+            rgb_to_hsv (R, G, B, out h, out s, out v);
             v = double.max (0, v - amount * s);
-            hsv_to_rgb (h, s, v, out r, out g, out b);
+            hsv_to_rgb (h, s, v, out R, out G, out B);
 
             return this;
         }
@@ -520,10 +520,10 @@ namespace Granite.Drawing {
          */
         public string settings_serialize () {
 
-            return "%d;;%d;;%d;;%d".printf ((int) (r * uint8.MAX),
-                (int) (g * uint8.MAX),
-                (int) (b * uint8.MAX),
-                (int) (a * uint8.MAX));
+            return "%d;;%d;;%d;;%d".printf ((int) (R * uint8.MAX),
+                (int) (G * uint8.MAX),
+                (int) (B * uint8.MAX),
+                (int) (A * uint8.MAX));
         }
 
         /**
@@ -533,10 +533,10 @@ namespace Granite.Drawing {
 
             var parts = s.split (";;");
 
-            r = double.min (uint8.MAX, double.max (0, int.parse (parts [0]))) / uint8.MAX;
-            g = double.min (uint8.MAX, double.max (0, int.parse (parts [1]))) / uint8.MAX;
-            b = double.min (uint8.MAX, double.max (0, int.parse (parts [2]))) / uint8.MAX;
-            a = double.min (uint8.MAX, double.max (0, int.parse (parts [3]))) / uint8.MAX;
+            R = double.min (uint8.MAX, double.max (0, int.parse (parts [0]))) / uint8.MAX;
+            G = double.min (uint8.MAX, double.max (0, int.parse (parts [1]))) / uint8.MAX;
+            B = double.min (uint8.MAX, double.max (0, int.parse (parts [2]))) / uint8.MAX;
+            A = double.min (uint8.MAX, double.max (0, int.parse (parts [3]))) / uint8.MAX;
         }
 
         /**
@@ -554,7 +554,7 @@ namespace Granite.Drawing {
          * @return the text string
          */
         public string to_string () {
-            Gdk.RGBA rgba = {r, g, b, a};
+            Gdk.RGBA rgba = {R, G, B, A};
             return rgba.to_string ();
         }
 
@@ -575,25 +575,25 @@ namespace Granite.Drawing {
          *
          * //AAAAAAAA RRRRRRRR GGGGGGGG BBBBBBBB//
          *
-         * where //A// is one bit of alpha chnnel,//R// of red channel, //G// of green channel and
-         * //B// of blue channel.
+         * where //A// is one bit of alpha chnnel, //R// of red channel,
+         * //G// of green channel and //B// of blue channel.
          *
          * @return a 32 bit integer representing this
          */
         public int to_int () {
-            uint8 red = (uint8)(r * uint8.MAX);
-            uint8 green = (uint8)(g * uint8.MAX);
-            uint8 blue = (uint8)(b * uint8.MAX);
-            uint8 alpha = (uint8)(a * uint8.MAX);
+            uint8 red = (uint8)(R * uint8.MAX);
+            uint8 green = (uint8)(G * uint8.MAX);
+            uint8 blue = (uint8)(B * uint8.MAX);
+            uint8 alpha = (uint8)(A * uint8.MAX);
 
             return (alpha << 24) | (red << 16) | (green << 8) | blue;
         }
 
         private void set_from_rgba (Gdk.RGBA color) {
-            r = color.red;
-            g = color.green;
-            b = color.blue;
-            a = color.alpha;
+            R = color.red;
+            G = color.green;
+            B = color.blue;
+            A = color.alpha;
         }
     }
 }
