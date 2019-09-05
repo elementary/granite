@@ -17,4 +17,4 @@ jobs:
 
     - stage: "Lint"
       script:
-        - docker run -v "$PWD":/var/opt/vala-lint elementary/docker:vala-lint io.elementary.vala-lint -d .
+        - docker run -v "$PWD":/app valalang/lint io.elementary.vala-lint -d .
