@@ -38,8 +38,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
 
     public override void get_preferred_width (Gtk.Widget widget,
                                               out int minimum_size,
-                                              out int natural_size)
-    {
+                                              out int natural_size) {
         apply_style_changes (widget);
         minimum_size = natural_size = get_arrow_size (widget) + 2 * (int) xpad;
         revert_style_changes (widget);
@@ -47,8 +46,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                          out int minimum_height,
-                                                         out int natural_height)
-    {
+                                                         out int natural_height) {
         apply_style_changes (widget);
         minimum_height = natural_height = get_arrow_size (widget) + 2 * (int) ypad;
         revert_style_changes (widget);
@@ -72,8 +70,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     }
 
     public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
-    {
+                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
         if (!is_expander)
             return;
 
@@ -99,8 +96,7 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
     public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                    out int x_offset, out int y_offset,
-                                   out int width, out int height)
-    {
+                                   out int width, out int height) {
         assert_not_reached ();
     }
 

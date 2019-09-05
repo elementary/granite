@@ -23,9 +23,9 @@ using Granite.Services;
 
 namespace Granite.Widgets {
 
-	/**
-	 * An App Menu is the gear menu that goes on the right of the toolbar.
-	 */
+  /**
+   * An App Menu is the gear menu that goes on the right of the toolbar.
+   */
     [Version (deprecated = true, deprecated_since = "0.4.1", replacement = "Gtk.MenuButton")]
     public class AppMenu : Gtk.MenuButton {
 
@@ -37,7 +37,7 @@ namespace Granite.Widgets {
         /**
          * Called when showing about.
          */
-        public signal void show_about(Gtk.Widget w);
+        public signal void show_about (Gtk.Widget w);
 
         /**
          * Makes new AppMenu.
@@ -58,7 +58,7 @@ namespace Granite.Widgets {
             this.add_items (menu);
             menu.show_all ();
 
-            about_item.activate.connect (() => { show_about(get_toplevel()); });
+            about_item.activate.connect (() => { show_about (get_toplevel ()); });
         }
 
         construct {

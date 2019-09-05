@@ -50,7 +50,7 @@ namespace Granite.Widgets {
             decorated = false;
             resizable = false;
 
-            set_visual (get_screen ().get_rgba_visual());
+            set_visual (get_screen ().get_rgba_visual ());
 
             // Set up css provider
             Utils.set_theming (this, STYLESHEET, StyleClass.COMPOSITED,

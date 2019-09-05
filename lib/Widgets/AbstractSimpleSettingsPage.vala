@@ -40,7 +40,8 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     public Gtk.Grid content_area { get; construct; }
 
     /**
-     * A {@link Gtk.Switch} that appears in the header area when #this.activatable is #true. #status_switch will be #null when #this.activatable is #false
+     * A {@link Gtk.Switch} that appears in the header area when #this.activatable is #true.
+     * #status_switch will be #null when #this.activatable is #false
      */
     public Gtk.Switch? status_switch { get; construct; }
 
@@ -55,7 +56,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     public string description {
         get {
             return _description;
-        } 
+        }
         construct set {
             if (description_label != null) {
                 description_label.label = value;
@@ -71,7 +72,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     public new string icon_name {
         get {
             return _icon_name;
-        } 
+        }
         construct set {
             if (header_icon != null) {
                 header_icon.icon_name = value;
@@ -87,7 +88,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     public new string title {
         get {
             return _title;
-        } 
+        }
         construct set {
             if (title_label != null) {
                 title_label.label = value;

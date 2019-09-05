@@ -53,8 +53,12 @@ namespace Granite.Widgets {
             if (collapse_mode == CollapseMode.NONE)
                 return false;
 
-            if (event.time < (last_click_time + Gtk.Settings.get_default ().gtk_double_click_time) && event.type != Gdk.EventType.2BUTTON_PRESS)
+            if (
+                event.time < (last_click_time + Gtk.Settings.get_default ().gtk_double_click_time)
+                && event.type != Gdk.EventType.2BUTTON_PRESS
+            ) {
                 return true;
+            }
 
             if (event.type == Gdk.EventType.2BUTTON_PRESS && event.window == get_handle_window ()) {
                 accept_position ();
@@ -76,8 +80,9 @@ namespace Granite.Widgets {
                     requested_position = 0;
                 }
 
+                // change requested_position back to be non-relative
                 if (collapse_mode == CollapseMode.LAST)
-                    requested_position = max_position - requested_position; // change requested_position back to be non-relative
+                    requested_position = max_position - requested_position;
 
                 set_position (requested_position);
 
