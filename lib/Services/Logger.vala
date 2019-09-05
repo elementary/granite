@@ -83,7 +83,7 @@ namespace Granite.Services {
         /**
          * This is used to determine which level of LogLevelling should be used.
          */
-        public static LogLevel display_level { get; set; default = LogLevel.WARN; }
+        public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
 
         static Mutex write_mutex;
 
@@ -117,7 +117,7 @@ namespace Granite.Services {
 
         static void write (LogLevel level, owned string msg) {
 
-            if (level < display_level)
+            if (level < DisplayLevel)
                 return;
 
             write_mutex.lock ();
