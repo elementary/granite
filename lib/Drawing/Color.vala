@@ -31,19 +31,19 @@ namespace Granite.Drawing {
         /**
          * The value of the red channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double R;
+        public double R; // vala-lint=naming-convention
         /**
          * The value of the green channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double G;
+        public double G; // vala-lint=naming-convention
         /**
          * The value of the blue channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double B;
+        public double B; // vala-lint=naming-convention
         /**
          * The value of the alpha channel, with 0 being the lowest value and 1.0 being the greatest value.
          */
-        public double A;
+        public double A; // vala-lint=naming-convention
 
         /**
          * Extracts the alpha value from the integer value
@@ -93,7 +93,7 @@ namespace Granite.Drawing {
          * @param B the value of the blue channel as a double
          * @param A the value of the alpha channel as a double
          */
-        public Color (double R, double G, double B, double A) {
+        public Color (double R, double G, double B, double A) { // vala-lint=naming-convention
 
             this.R = R;
             this.G = G;
@@ -597,4 +597,3 @@ namespace Granite.Drawing {
         }
     }
 }
-

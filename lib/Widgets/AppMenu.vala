@@ -80,8 +80,5 @@ namespace Granite.Widgets {
             menu.append (about_item);
             set_popup (menu);
         }
-
     }
-
 }
-

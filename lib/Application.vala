@@ -192,9 +192,9 @@ namespace Granite {
             return -1;
         }
 
-        protected static bool DEBUG = false;
+        protected static bool DEBUG = false; // vala-lint=naming-convention
 
-        protected const OptionEntry[] options = {
+        protected const OptionEntry[] options = { // vala-lint=naming-convention
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
             { null }
         };

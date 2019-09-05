@@ -807,7 +807,7 @@ namespace Granite.Widgets {
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
 
-            //FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
+            //FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20 // vala-lint=note
             var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             add_button_box.add (add_button);
             add_button_box.show_all ();

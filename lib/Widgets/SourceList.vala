@@ -1096,7 +1096,7 @@ public class SourceList : Gtk.ScrolledWindow {
          * The caller must pass an iter or path pointing to the item, but not both
          * (one of them must be null.)
          *
-         * TODO: instead of checking the position of the iter or path, we should simply
+         * In the future, instead of checking the position of the iter or path, we should simply
          * check whether the item's parent is the root item and whether the item is
          * expandable. We don't do so right now because vala still allows client code
          * to access the Item.parent property, even though its setter is defined as internal.

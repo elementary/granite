@@ -99,8 +99,5 @@ namespace Granite.Drawing {
                              bTotal / uint8.MAX / pixels,
                              1).set_val (0.8).multiply_sat (1.15);
         }
-
     }
-
 }
-

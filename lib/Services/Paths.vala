@@ -147,8 +147,5 @@ namespace Granite.Services {
 
             return false;
         }
-
     }
-
 }
-

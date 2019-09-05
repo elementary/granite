@@ -696,8 +696,5 @@ namespace Granite.Drawing {
 
             return kernel;
         }
-
     }
-
 }
-

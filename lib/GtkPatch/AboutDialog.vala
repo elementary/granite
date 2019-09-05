@@ -113,7 +113,10 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
             } else {
                 documenters_label.show ();
                 documenters_label.set_markup (
-                    set_string_from_string_array ("<span size=\"small\">"+_("Documented by:")+"</span>\n", documenters)
+                    set_string_from_string_array (
+                        "<span size=\"small\">" + _("Documented by:") + "</span>\n",
+                        documenters
+                    )
                 );
             }
         }
@@ -218,7 +221,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
 
     // Signals
     public virtual signal bool activate_link (string uri) {
-        // Improve error management FIXME
+        // Improve error management FIXME // vala-lint=note
         bool result = false;
         if (uri != null) {
             try {
@@ -319,9 +322,9 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         }
     }
 
-    private string set_string_from_string_array (string title, string[] peoples,bool tooltip=false) {
+    private string set_string_from_string_array (string title, string[] peoples, bool tooltip=false) {
         if (tooltip)
-            return string.joinv ("\n",peoples);
+            return string.joinv ("\n", peoples);
 
         string text = "";
         string name = "";
@@ -329,12 +332,12 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
         string _person_data;
         bool email_started= false;
         text += title + "<span size=\"small\">";
-        for (int i= 0; i<peoples.length; i++) {
+        for (int i = 0; i < peoples.length; i++) {
             if (peoples[i] == null)
                 break;
             _person_data = peoples[i];
 
-            for (int j=0; j< _person_data.length; j++) {
+            for (int j = 0; j < _person_data.length; j++) {
 
                 if ( _person_data.get (j) == '<')
                     email_started = true;
@@ -350,7 +353,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
             if (email == "")
                 text += "<u>%s</u>\n".printf (name.strip ());
             else
-                text += "<a href=\"mailto:%s\" title=\"%s\">%s</a>\n".printf (email,email,name.strip ());
+                text += "<a href=\"mailto:%s\" title=\"%s\">%s</a>\n".printf (email, email, name.strip ());
             email = ""; name =""; email_started=false;
         }
         text += "</span>";
@@ -404,7 +407,7 @@ public class Granite.GtkPatch.AboutDialog : Gtk.Dialog {
     }
 
     private void set_generic_license (string url, string license_type) {
-        license_label.set_markup ("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n"));
+        license_label.set_markup ("<span size=\"small\">" + _("This program is published under the terms of the %s license, it comes with ABSOLUTELY NO WARRANTY; for details, visit %s").printf (license_type, "<a href=\"" + url + "\">" + url + "</a></span>\n")); // vala-lint=line-length
         license_label.show ();
     }
 

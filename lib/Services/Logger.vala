@@ -83,7 +83,7 @@ namespace Granite.Services {
         /**
          * This is used to determine which level of LogLevelling should be used.
          */
-        public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
+        public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; } // vala-lint=naming-convention
 
         static Mutex write_mutex;
 

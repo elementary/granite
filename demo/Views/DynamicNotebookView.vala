@@ -39,7 +39,7 @@ public class DynamicNotebookView : Gtk.Grid {
                 new ThemedIcon ("mail-mark-important-symbolic"),
                 page
             );
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
         }
 
         notebook.new_tab_requested.connect (() => {
@@ -47,7 +47,7 @@ public class DynamicNotebookView : Gtk.Grid {
             var tab = new Granite.Widgets.Tab (
                 "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page
             );
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
             i++;
         });
 
@@ -59,7 +59,7 @@ public class DynamicNotebookView : Gtk.Grid {
         notebook.tab_restored.connect ((label, data, icon) => {
             var page = new Gtk.Label (data);
             var tab = new Granite.Widgets.Tab (label, icon, page);
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
         });
 
         add (notebook);

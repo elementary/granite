@@ -35,8 +35,8 @@ namespace Granite.Widgets {
      */
     public class CollapsiblePaned : Gtk.Paned {
         public CollapseMode collapse_mode { get; set; default = CollapseMode.NONE; }
-        //public signal void shrink(); //TODO: Make the default action overwritable
-        //public new signal void expand(int saved_state); //TODO same
+        //public signal void shrink(); //TODO: Make the default action overwritable // vala-lint=note
+        //public new signal void expand(int saved_state); //TODO same // vala-lint=note
 
         private int saved_state = 10;
         private uint last_click_time = 0;

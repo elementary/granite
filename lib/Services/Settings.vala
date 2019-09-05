@@ -362,8 +362,5 @@ namespace Granite.Services {
             notify.connect (handle_notify);
             saving_key = false;
         }
-
     }
-
 }
-
