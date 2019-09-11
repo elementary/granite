@@ -34,7 +34,7 @@ public class MessageDialogView : Gtk.Grid {
         button.expand = true;
 
         button.clicked.connect (show_message_dialog);
-        
+
         toast = new Granite.Widgets.Toast ("Did something");
 
         attach (toast, 0, 0, 1, 1);
@@ -63,7 +63,7 @@ public class MessageDialogView : Gtk.Grid {
         if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
             toast.send_notification ();
         }
-        
+
         message_dialog.destroy ();
     }
 }

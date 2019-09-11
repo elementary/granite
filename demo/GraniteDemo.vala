@@ -79,7 +79,10 @@ public class Granite.Demo : Gtk.Application {
 
         var gtk_settings = Gtk.Settings.get_default ();
 
-        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        var mode_switch = new Granite.ModeSwitch.from_icon_name (
+            "display-brightness-symbolic",
+            "weather-clear-night-symbolic"
+        );
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
