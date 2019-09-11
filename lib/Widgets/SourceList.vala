@@ -1883,7 +1883,9 @@ public class SourceList : Gtk.ScrolledWindow {
                     return should_show;
                 }
 
-                if (over_cell (column, path, text_cell, x - start_cell_area.x)) {
+                if (over_cell (column, path, text_cell, x - start_cell_area.x) ||
+                    over_cell (column, path, icon_cell, x - start_cell_area.x)) {
+
                     return should_show;
                 } else if (over_cell (column, path, activatable_cell, x - start_cell_area.x)) {
                     if (item.activatable_tooltip == "") {
