@@ -78,6 +78,13 @@ public class Granite.Demo : Gtk.Application {
         paned.add2 (main_stack);
 
         var gtk_settings = Gtk.Settings.get_default ();
+        var granite_settings = Granite.Settings.get_default ();
+
+        critical (granite_settings.prefers_color_scheme);
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            critical (granite_settings.prefers_color_scheme);
+        });
 
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
@@ -86,7 +93,7 @@ public class Granite.Demo : Gtk.Application {
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
-        mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        // mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
