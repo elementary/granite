@@ -82,10 +82,6 @@ public class Granite.Demo : Gtk.Application {
 
         critical (granite_settings.prefers_color_scheme);
 
-        granite_settings.notify["prefers-color-scheme"].connect (() => {
-            critical (granite_settings.prefers_color_scheme);
-        });
-
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
             "weather-clear-night-symbolic"

@@ -14,7 +14,25 @@ namespace Granite {
     public class Settings : Object{
         public string prefers_color_scheme { get; private set; }
 
-        private Pantheon.AccountsService pantheon_act;
+        private string? _time_format = null;
+        public string time_format {
+            get {
+                if (_time_format == null) {
+                    setup_time_format ();
+                }
+                return _time_format;
+            }
+        }
+
+        private string? _user_path = null;
+        private string user_path {
+            get {
+                if (_user_path == null) {
+                    setup_user_path ();
+                }
+                return _user_path;
+            }
+        }
 
         private static GLib.Once<Granite.Settings> instance;
         public static unowned Granite.Settings get_default () {
@@ -23,17 +41,27 @@ namespace Granite {
             });
         }
 
+        private FDO.Accounts? accounts_service = null;
+        private Pantheon.AccountsService? pantheon_act = null;
+
         private Settings () {}
 
-        construct {
+        private void setup_user_path () {
             try {
-                var accounts_service = GLib.Bus.get_proxy_sync<FDO.Accounts> (
+                accounts_service = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
                    "org.freedesktop.Accounts",
                    "/org/freedesktop/Accounts"
                 );
-                var user_path = accounts_service.find_user_by_name (GLib.Environment.get_user_name ());
 
+                _user_path = accounts_service.find_user_by_name (GLib.Environment.get_user_name ());
+            } catch (Error e) {
+                critical (e.message);
+            }
+        }
+
+        private void setup_time_format () {
+            try {
                 pantheon_act = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
                     "org.freedesktop.Accounts",
@@ -41,14 +69,7 @@ namespace Granite {
                     GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
                 );
 
-                prefers_color_scheme = pantheon_act.prefers_color_scheme;
-
-                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    string preference;
-                    changed_properties.lookup ("PrefersColorScheme", "s", out preference);
-
-                    prefers_color_scheme = preference;
-                });
+                _time_format = pantheon_act.time_format;
             } catch (Error e) {
                 critical (e.message);
             }
