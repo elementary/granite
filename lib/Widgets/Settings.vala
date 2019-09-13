@@ -78,6 +78,12 @@ namespace Granite {
                 );
 
                 _prefers_color_scheme = pantheon_act.prefers_color_scheme;
+
+                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
+                    string prefers_color_scheme;
+                    changed_properties.lookup ("PrefersColorScheme", "s", out prefers_color_scheme);
+                    _prefers_color_scheme = time_format;
+                });
             } catch (Error e) {
                 critical (e.message);
             }
@@ -93,6 +99,12 @@ namespace Granite {
                 );
 
                 _time_format = pantheon_act.time_format;
+
+                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
+                    string time_format;
+                    changed_properties.lookup ("TimeFormat", "s", out time_format);
+                    _time_format = time_format;
+                });
             } catch (Error e) {
                 critical (e.message);
             }

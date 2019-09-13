@@ -80,7 +80,11 @@ public class Granite.Demo : Gtk.Application {
         var gtk_settings = Gtk.Settings.get_default ();
         var granite_settings = Granite.Settings.get_default ();
 
-        critical (granite_settings.prefers_color_scheme);
+        critical (granite_settings.time_format);
+
+        granite_settings.notify["time-format"].connect (() => {
+            critical (granite_settings.time_format);
+        });
 
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
