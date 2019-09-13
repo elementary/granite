@@ -12,13 +12,16 @@ namespace Granite {
     }
 
     public class Settings : Object{
-        private string? _prefers_color_scheme = null;
-        public string prefers_color_scheme {
+        private bool? _user_prefers_dark = null;
+        public bool user_prefers_dark {
             get {
-                if (_prefers_color_scheme == null) {
-                    setup_prefers_color_scheme ();
+                if (_user_prefers_dark == null) {
+                    setup_user_prefers_dark ();
                 }
-                return _prefers_color_scheme;
+                return _user_prefers_dark;
+            }
+            private set {
+                _user_prefers_dark = value;
             }
         }
 
@@ -30,6 +33,9 @@ namespace Granite {
                 }
                 return _time_format;
             }
+            private set {
+                _time_format = value;
+            }
         }
 
         private string? _user_path = null;
@@ -39,6 +45,9 @@ namespace Granite {
                     setup_user_path ();
                 }
                 return _user_path;
+            }
+            private set {
+                _user_path = value;
             }
         }
 
@@ -68,7 +77,7 @@ namespace Granite {
             }
         }
 
-        private void setup_prefers_color_scheme () {
+        private void setup_user_prefers_dark () {
             try {
                 pantheon_act = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
@@ -77,12 +86,12 @@ namespace Granite {
                     GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
                 );
 
-                _prefers_color_scheme = pantheon_act.prefers_color_scheme;
+                user_prefers_dark = pantheon_act.prefers_color_scheme == "dark";
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
                     string prefers_color_scheme;
                     changed_properties.lookup ("PrefersColorScheme", "s", out prefers_color_scheme);
-                    _prefers_color_scheme = time_format;
+                    user_prefers_dark = prefers_color_scheme == "dark";
                 });
             } catch (Error e) {
                 critical (e.message);
@@ -98,12 +107,12 @@ namespace Granite {
                     GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
                 );
 
-                _time_format = pantheon_act.time_format;
+                time_format = pantheon_act.time_format;
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    string time_format;
-                    changed_properties.lookup ("TimeFormat", "s", out time_format);
-                    _time_format = time_format;
+                    string _time_format;
+                    changed_properties.lookup ("TimeFormat", "s", out _time_format);
+                    time_format = _time_format;
                 });
             } catch (Error e) {
                 critical (e.message);
