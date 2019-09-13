@@ -12,7 +12,15 @@ namespace Granite {
     }
 
     public class Settings : Object{
-        public string prefers_color_scheme { get; private set; }
+        private string? _prefers_color_scheme = null;
+        public string prefers_color_scheme {
+            get {
+                if (_prefers_color_scheme == null) {
+                    setup_prefers_color_scheme ();
+                }
+                return _prefers_color_scheme;
+            }
+        }
 
         private string? _time_format = null;
         public string time_format {
@@ -55,6 +63,21 @@ namespace Granite {
                 );
 
                 _user_path = accounts_service.find_user_by_name (GLib.Environment.get_user_name ());
+            } catch (Error e) {
+                critical (e.message);
+            }
+        }
+
+        private void setup_prefers_color_scheme () {
+            try {
+                pantheon_act = GLib.Bus.get_proxy_sync (
+                    GLib.BusType.SYSTEM,
+                    "org.freedesktop.Accounts",
+                    user_path,
+                    GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
+                );
+
+                _prefers_color_scheme = pantheon_act.prefers_color_scheme;
             } catch (Error e) {
                 critical (e.message);
             }
