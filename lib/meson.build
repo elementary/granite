@@ -103,11 +103,12 @@ custom_target(
     command: [
         g_ir_compiler,
         '--shared-library',
-        libgranite.full_path(),
+        '@PLAINNAME@',
         '--output',
         '@OUTPUT@',
         join_paths(meson.current_build_dir(), granite_gir),
     ],
+    input: libgranite,
     output: granite_typelib,
     depends: libgranite,
     install: true,

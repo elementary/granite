@@ -37,7 +37,9 @@ public class UtilsView : Gtk.Grid {
         tooltip_button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, "Reply All");
 
         var tooltip_button_two = new Gtk.Button.with_label ("Label Buttons");
-        tooltip_button_two.tooltip_markup = Granite.markup_accel_tooltip ({"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return"});
+        tooltip_button_two.tooltip_markup = Granite.markup_accel_tooltip (
+            {"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return"}
+        );
 
         var contrasting_foreground_color_label = new Gtk.Label ("Contrasting Foreground Color:");
         contrasting_foreground_color_label.halign = Gtk.Align.END;

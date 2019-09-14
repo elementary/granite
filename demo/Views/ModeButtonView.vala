@@ -39,14 +39,17 @@ public class ModeButtonView : Gtk.Grid {
         text_mode.append_text ("Foo");
         text_mode.append_text ("Bar");
 
-        var clear_button = new Gtk.Button.with_label("Clear Selected");
+        var clear_button = new Gtk.Button.with_label ("Clear Selected");
 
         var mode_switch_label = new Gtk.Label ("ModeSwitch");
         mode_switch_label.halign = Gtk.Align.START;
         mode_switch_label.margin_top = 12;
         mode_switch_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        var mode_switch = new Granite.ModeSwitch.from_icon_name (
+            "display-brightness-symbolic",
+            "weather-clear-night-symbolic"
+        );
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
