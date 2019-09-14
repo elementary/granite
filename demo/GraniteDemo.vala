@@ -33,7 +33,7 @@ public class Granite.Demo : Gtk.Application {
     public override void activate () {
         var window = new Gtk.Window ();
 
-        var accellabel_view = new AccelLabelView ();
+        var accel_label_view = new AccelLabelView ();
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
         var css_view = new CSSView (window);
@@ -54,7 +54,7 @@ public class Granite.Demo : Gtk.Application {
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
-        main_stack.add_titled (accellabel_view, "accellabel", "AccelLabel");
+        main_stack.add_titled (accel_label_view, "accel_label", "accel_label");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
