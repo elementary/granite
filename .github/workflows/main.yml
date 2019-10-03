@@ -17,6 +17,9 @@ jobs:
         apt update
         apt install -y meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-3-dev valac
     - name: Build
+      env:
+        DESTDIR: out
       run: |
         meson build
         ninja -C build
+        ninja -C build install
