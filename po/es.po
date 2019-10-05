@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-30 10:38-0700\n"
-"PO-Revision-Date: 2019-05-05 03:32+0000\n"
-"Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
+"PO-Revision-Date: 2019-09-13 02:22+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:182
@@ -35,15 +35,13 @@ msgstr "Sitio web"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%H:%M"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -205,11 +203,11 @@ msgstr "Cerrar las demás pestañas"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Cerrar la pestaña a la derecha"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Cerrar las pestañas a la derecha"
 
 #: lib/Widgets/DynamicNotebook.vala:492
 msgid "Clear All"
@@ -217,7 +215,7 @@ msgstr "Limpiar todo"
 
 #: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
 msgid "New Tab"
-msgstr "Nueva pestaña"
+msgstr "Pestaña nueva"
 
 #: lib/Widgets/DynamicNotebook.vala:774
 msgid "Undo Close Tab"
@@ -274,12 +272,12 @@ msgstr "%s disponibles de %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr "AM"
+msgstr "a. m."
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr "PM"
+msgstr "p. m."
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
@@ -288,7 +286,7 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:99
 msgid "Shift"
-msgstr "Shift"
+msgstr "Mayús"
 
 #: lib/Widgets/Utils.vala:103
 msgid "Ctrl"
@@ -321,7 +319,7 @@ msgstr "Más"
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:144
 msgid "Equals"
-msgstr ""
+msgstr "Igual"
 
 #: lib/Widgets/Utils.vala:147
 msgid "Enter"
@@ -329,15 +327,13 @@ msgstr "Intro"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:151
-#, fuzzy
 msgid "Left Shift"
-msgstr "Shift"
+msgstr "Mayús izquierda"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:155
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Mayús derecha"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:201
