@@ -296,24 +296,18 @@ namespace Granite.Widgets {
             duplicate_m.activate.connect (() => duplicate () );
             pin_m.activate.connect (() => pinned = !pinned);
 
+            add_events (Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect ((e) => {
-                var notebook = (this.get_parent () as Gtk.Notebook);
                 switch (e.direction) {
                     case Gdk.ScrollDirection.UP:
                     case Gdk.ScrollDirection.LEFT:
-                        if (notebook.page > 0) {
-                            notebook.page--;
-                            return true;
-                        }
-                        break;
+                        dynamic_notebook.previous_page ();
+                        return true;
 
                     case Gdk.ScrollDirection.DOWN:
                     case Gdk.ScrollDirection.RIGHT:
-                        if (notebook.page < notebook.get_n_pages ()) {
-                            notebook.page++;
-                            return true;
-                        }
-                        break;
+                        dynamic_notebook.next_page ();
+                        return true;
                 }
 
                 return false;
