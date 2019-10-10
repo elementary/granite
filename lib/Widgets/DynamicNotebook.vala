@@ -347,11 +347,11 @@ namespace Granite.Widgets {
                     } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
                         this.close_others ();
                     }
-                } else {
-                    return false;
+
+                    return true;
                 }
 
-                return true;
+                return false;
             });
 
             this.enter_notify_event.connect ((e) => {
