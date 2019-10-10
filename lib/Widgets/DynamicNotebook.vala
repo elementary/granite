@@ -50,7 +50,7 @@ namespace Granite.Widgets {
             add (new Gtk.Grid ());
 
             // delay tabs resizing until cursor leaves tab-bar
-            // tab_bar-area = DynamicNotebook-area - TabPageContainer-area
+            // tab_bar-area = DynamicNotebook-area - TabPageContainer-area - add_button
             this.enter_notify_event.connect ((e) => {
                 dynamic_notebook.check_to_recalc_size ();
                 return false;
@@ -303,13 +303,11 @@ namespace Granite.Widgets {
                     case Gdk.ScrollDirection.LEFT:
                         dynamic_notebook.previous_page ();
                         return true;
-                        break;
 
                     case Gdk.ScrollDirection.DOWN:
                     case Gdk.ScrollDirection.RIGHT:
                         dynamic_notebook.next_page ();
                         return true;
-                        break;
                 }
 
                 return false;
@@ -344,7 +342,7 @@ namespace Granite.Widgets {
             this.button_release_event.connect ((e) => {
                 if (e.button == 2 && cursor_over_tab) {
                     e.state &= MODIFIER_MASK;
-                    if  (e.state == 0) {
+                    if (e.state == 0) {
                         dynamic_notebook.close_tab_and_keep_width (this);
                     } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
                         this.close_others ();
@@ -352,6 +350,7 @@ namespace Granite.Widgets {
                 } else {
                     return false;
                 }
+
                 return true;
             });
 
@@ -440,7 +439,7 @@ namespace Granite.Widgets {
         private Gee.LinkedList<Entry?> closed_tabs;
 
         public ClosedTabs () {
-            
+
         }
 
         construct {
@@ -840,8 +839,8 @@ namespace Granite.Widgets {
             notebook.set_action_widget (restore_button, Gtk.PackType.END);
 
             //  delay tabs resizing until cursor leaves tab-bar
-            //  tab_bar-area = DynamicNotebook-area - TabPageContainer-are
-            leave_notify_event.connect ((e) => { check_to_recalc_size ();  return false; });
+            //  tab_bar-area = DynamicNotebook-area - TabPageContainer-area - add_button
+            leave_notify_event.connect ((e) => { check_to_recalc_size (); return false; });
             add_button.enter_notify_event.connect (() => { check_to_recalc_size (); return false; });
 
 
@@ -1069,8 +1068,9 @@ namespace Granite.Widgets {
         }
 
         private void restore_last_tab () {
-            if (!allow_restoring || closed_tabs.empty)
+            if (!allow_restoring || closed_tabs.empty) {
                 return;
+            }
 
             var restored = closed_tabs.pop ();
             restore_button.sensitive = !closed_tabs.empty;
@@ -1143,7 +1143,7 @@ namespace Granite.Widgets {
         public uint insert_tab (Tab tab, int index) {
             return_val_if_fail (tabs.index (tab) < 0, 0);
 
-            index = this.notebook.insert_page (tab.page_container, tab,  index <= -1 ? n_tabs : index);
+            index = this.notebook.insert_page (tab.page_container, tab, index <= -1 ? n_tabs : index);
 
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable  (tab.page_container, this.allow_new_window);
@@ -1170,8 +1170,9 @@ namespace Granite.Widgets {
         }
 
         internal void check_to_recalc_size () {
-            if (!wait_to_recalc_size)
+            if (!wait_to_recalc_size) {
                 return;
+            }
 
             recalc_size ();
             wait_to_recalc_size = false;
@@ -1199,8 +1200,9 @@ namespace Granite.Widgets {
             if (Signal.has_handler_pending (this, Signal.lookup ("close-tab-requested", typeof (DynamicNotebook)), 0, true)) {
                 var sure = close_tab_requested (tab);
 
-                if (!sure)
+                if (!sure) {
                     return;
+                }
             }
 
             var pos = get_tab_position (tab);
