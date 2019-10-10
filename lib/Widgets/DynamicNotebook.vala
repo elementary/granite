@@ -289,13 +289,11 @@ namespace Granite.Widgets {
                     case Gdk.ScrollDirection.LEFT:
                         dynamic_notebook.previous_page ();
                         return true;
-                        break;
 
                     case Gdk.ScrollDirection.DOWN:
                     case Gdk.ScrollDirection.RIGHT:
                         dynamic_notebook.next_page ();
                         return true;
-                        break;
                 }
 
                 return false;
