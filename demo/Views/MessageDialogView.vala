@@ -34,7 +34,7 @@ public class MessageDialogView : Gtk.Grid {
         button.expand = true;
 
         button.clicked.connect (show_message_dialog);
-        
+
         toast = new Granite.Widgets.Toast ("Did something");
 
         attach (toast, 0, 0, 1, 1);
@@ -43,7 +43,7 @@ public class MessageDialogView : Gtk.Grid {
 
     private void show_message_dialog () {
         var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-            "Basic Information and a Suggestion",
+            "Basic information and a suggestion",
             "Further details, including information that explains any unobvious consequences of actions.",
             "phone",
             Gtk.ButtonsType.CANCEL
@@ -63,7 +63,7 @@ public class MessageDialogView : Gtk.Grid {
         if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
             toast.send_notification ();
         }
-        
+
         message_dialog.destroy ();
     }
 }

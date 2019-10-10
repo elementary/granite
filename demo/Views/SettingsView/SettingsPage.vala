@@ -21,7 +21,10 @@ public class SettingsPage : Granite.SettingsPage {
     public SettingsPage () {
         var user_name = Environment.get_user_name ();
         Object (
-            display_widget: new Granite.Widgets.Avatar.from_file ("/var/lib/AccountsService/icons/%s".printf (user_name), 32),
+            display_widget: new Granite.Widgets.Avatar.from_file (
+                "/var/lib/AccountsService/icons/%s".printf (user_name),
+                32
+            ),
             header: "Manual Pages",
             status: user_name,
             title: "Avatar Test Page"
