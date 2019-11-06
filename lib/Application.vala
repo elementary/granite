@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -192,17 +193,18 @@ namespace Granite {
             return -1;
         }
 
-        protected static bool DEBUG = false;
+        protected static bool debug = false;
 
         protected const OptionEntry[] options = {
-            { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
+            { "debug", 'd', 0, OptionArg.NONE, out debug, "Enable debug logging", null },
             { null }
         };
 
         protected virtual void set_options () {
 
-            if (DEBUG)
+            if (debug) {
                 Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+            }
         }
 
         /**
