@@ -6,10 +6,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     container:
       image: elementary/docker:unstable
-    
+
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
@@ -20,15 +20,3 @@ jobs:
       run: |
         meson build
         ninja -C build
-
-  lint:
-
-    runs-on: ubuntu-latest
-    
-    container:
-      image: valalang/lint
-      
-    steps:
-    - uses: actions/checkout@v1
-    - name: Lint
-      run: io.elementary.vala-lint -d .
