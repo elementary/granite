@@ -195,7 +195,7 @@ namespace Granite {
 
         protected static bool debug = false;
 
-        protected const OptionEntry[] options = {
+        protected const OptionEntry[] options = { // vala-lint=naming-convention
             { "debug", 'd', 0, OptionArg.NONE, out debug, "Enable debug logging", null },
             { null }
         };
@@ -243,26 +243,28 @@ namespace Granite {
                 copyright_string = "%s %s".printf (app_years, developers_string);
             }
 
-            Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
-                                               "program_name", program_name,
-                                               "version", build_version,
-                                               "logo_icon_name", app_icon,
+            Granite.Widgets.show_about_dialog (
+                (Gtk.Window) parent,
+                "program_name", program_name,
+                "version", build_version,
+                "logo_icon_name", app_icon,
 
-                                               "comments", about_comments,
-                                               "copyright", copyright_string,
-                                               "website", main_url,
-                                               "website_label", _("Website"),
+                "comments", about_comments,
+                "copyright", copyright_string,
+                "website", main_url,
+                "website_label", _("Website"),
 
-                                               "authors", about_authors,
-                                               "documenters", about_documenters,
-                                               "artists", about_artists,
-                                               "translator_credits", about_translators,
-                                               "license", about_license,
-                                               "license_type", about_license_type,
+                "authors", about_authors,
+                "documenters", about_documenters,
+                "artists", about_artists,
+                "translator_credits", about_translators,
+                "license", about_license,
+                "license_type", about_license_type,
 
-                                               "help", help_url,
-                                               "translate", translate_url,
-                                               "bug", bug_url);
+                "help", help_url,
+                "translate", translate_url,
+                "bug", bug_url
+            );
         }
     }
 }
