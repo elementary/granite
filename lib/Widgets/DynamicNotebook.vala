@@ -25,10 +25,12 @@ namespace Granite {
 namespace Granite.Widgets {
 
     // a mask to ignore modifiers like num lock or caps lock that are irrelevant to keyboard shortcuts
-    internal const Gdk.ModifierType MODIFIER_MASK = (Gdk.ModifierType.SHIFT_MASK |
-                                                     Gdk.ModifierType.SUPER_MASK |
-                                                     Gdk.ModifierType.CONTROL_MASK |
-                                                     Gdk.ModifierType.MOD1_MASK);
+    internal const Gdk.ModifierType MODIFIER_MASK = (
+        Gdk.ModifierType.SHIFT_MASK |
+        Gdk.ModifierType.SUPER_MASK |
+        Gdk.ModifierType.CONTROL_MASK |
+        Gdk.ModifierType.MOD1_MASK
+    );
 
     private class TabPageContainer : Gtk.EventBox {
         private unowned Tab _tab = null;
