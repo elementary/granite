@@ -25,33 +25,44 @@ namespace Granite.Services {
     namespace Application {
         [DBus (name = "com.canonical.Unity.LauncherEntry")]
         private class UnityLauncherEntry : GLib.Object {
+            private static AsyncMutex? instance_mutex = null;
             private static UnityLauncherEntry instance;
             internal static async unowned UnityLauncherEntry get_instance () throws GLib.Error {
-                lock (instance) {
-                    if (instance != null)
-                        return instance;
-
-                    weak GLib.Application app = GLib.Application.get_default ();
-                    if (app == null) {
-                        throw new GLib.IOError.FAILED ("No GApplication has been defined");
-                    }
-
-                    if (app.application_id == null) {
-                        throw new GLib.IOError.FAILED ("The GApplication has no application-id defined");
-                    }
-
-                    var local_instance = new UnityLauncherEntry ();
-                    local_instance.app_uri = "application://%s.desktop".printf (app.application_id);
-                    var object_path = new GLib.ObjectPath ("/com/canonical/unity/launcherentry/%u".printf (local_instance.app_uri.hash ()));
-                    try {
-                        var session_connection = yield GLib.Bus.@get (GLib.BusType.SESSION, null);
-                        session_connection.register_object (object_path, local_instance);
-                        instance = local_instance;
-                    } catch (GLib.Error e) {
-                        throw e;
-                    }
+                if (instance_mutex == null) {
+                    instance_mutex = new AsyncMutex ();
                 }
 
+                yield instance_mutex.lock ();
+
+                if (instance != null) {
+                    instance_mutex.unlock ();
+                    return instance;
+                }
+
+                weak GLib.Application app = GLib.Application.get_default ();
+                if (app == null) {
+                    instance_mutex.unlock ();
+                    throw new GLib.IOError.FAILED ("No GApplication has been defined");
+                }
+
+                if (app.application_id == null) {
+                    instance_mutex.unlock ();
+                    throw new GLib.IOError.FAILED ("The GApplication has no application-id defined");
+                }
+
+                var local_instance = new UnityLauncherEntry ();
+                local_instance.app_uri = "application://%s.desktop".printf (app.application_id);
+                var object_path = new GLib.ObjectPath ("/com/canonical/unity/launcherentry/%u".printf (local_instance.app_uri.hash ()));
+                try {
+                    var session_connection = yield GLib.Bus.@get (GLib.BusType.SESSION, null);
+                    session_connection.register_object (object_path, local_instance);
+                    instance = local_instance;
+                } catch (GLib.Error e) {
+                    instance_mutex.unlock ();
+                    throw e;
+                }
+
+                instance_mutex.unlock ();
                 return instance;
             }
 
