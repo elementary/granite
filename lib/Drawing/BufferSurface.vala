@@ -252,8 +252,8 @@ namespace Granite.Drawing {
             uint8 *pixels = original.get_data ();
             var buffer = new uint8[w * h * channels];
 
-            var vmin = new int[int.max (w, h)];
-            var vmax = new int[int.max (w, h)];
+            var v_min = new int[int.max (w, h)];
+            var v_max = new int[int.max (w, h)];
 
             var div = 2 * radius + 1;
             var dv = new uint8[256 * div];
@@ -262,25 +262,25 @@ namespace Granite.Drawing {
 
             while (process_count-- > 0) {
                 for (var x = 0; x < w; x++) {
-                    vmin[x] = int.min (x + radius + 1, w - 1);
-                    vmax[x] = int.max (x - radius, 0);
+                    v_min[x] = int.min (x + radius + 1, w - 1);
+                    v_max[x] = int.max (x - radius, 0);
                 }
 
                 for (var y = 0; y < h; y++) {
-                    var asum = 0, rsum = 0, gsum = 0, bsum = 0;
+                    var a_sum = 0, r_sum = 0, g_sum = 0, b_sum = 0;
 
                     uint32 cur_pixel = y * w * channels;
 
-                    asum += radius * pixels[cur_pixel + 0];
-                    rsum += radius * pixels[cur_pixel + 1];
-                    gsum += radius * pixels[cur_pixel + 2];
-                    bsum += radius * pixels[cur_pixel + 3];
+                    a_sum += radius * pixels[cur_pixel + 0];
+                    r_sum += radius * pixels[cur_pixel + 1];
+                    g_sum += radius * pixels[cur_pixel + 2];
+                    b_sum += radius * pixels[cur_pixel + 3];
 
                     for (var i = 0; i <= radius; i++) {
-                        asum += pixels[cur_pixel + 0];
-                        rsum += pixels[cur_pixel + 1];
-                        gsum += pixels[cur_pixel + 2];
-                        bsum += pixels[cur_pixel + 3];
+                        a_sum += pixels[cur_pixel + 0];
+                        r_sum += pixels[cur_pixel + 1];
+                        g_sum += pixels[cur_pixel + 2];
+                        b_sum += pixels[cur_pixel + 3];
 
                         cur_pixel += channels;
                     }
@@ -288,43 +288,43 @@ namespace Granite.Drawing {
                     cur_pixel = y * w * channels;
 
                     for (var x = 0; x < w; x++) {
-                        uint32 p1 = (y * w + vmin[x]) * channels;
-                        uint32 p2 = (y * w + vmax[x]) * channels;
+                        uint32 p1 = (y * w + v_min[x]) * channels;
+                        uint32 p2 = (y * w + v_max[x]) * channels;
 
-                        buffer[cur_pixel + 0] = dv[asum];
-                        buffer[cur_pixel + 1] = dv[rsum];
-                        buffer[cur_pixel + 2] = dv[gsum];
-                        buffer[cur_pixel + 3] = dv[bsum];
+                        buffer[cur_pixel + 0] = dv[a_sum];
+                        buffer[cur_pixel + 1] = dv[r_sum];
+                        buffer[cur_pixel + 2] = dv[g_sum];
+                        buffer[cur_pixel + 3] = dv[b_sum];
 
-                        asum += pixels[p1 + 0] - pixels[p2 + 0];
-                        rsum += pixels[p1 + 1] - pixels[p2 + 1];
-                        gsum += pixels[p1 + 2] - pixels[p2 + 2];
-                        bsum += pixels[p1 + 3] - pixels[p2 + 3];
+                        a_sum += pixels[p1 + 0] - pixels[p2 + 0];
+                        r_sum += pixels[p1 + 1] - pixels[p2 + 1];
+                        g_sum += pixels[p1 + 2] - pixels[p2 + 2];
+                        b_sum += pixels[p1 + 3] - pixels[p2 + 3];
 
                         cur_pixel += channels;
                     }
                 }
 
                 for (var y = 0; y < h; y++) {
-                    vmin[y] = int.min (y + radius + 1, h - 1) * w;
-                    vmax[y] = int.max (y - radius, 0) * w;
+                    v_min[y] = int.min (y + radius + 1, h - 1) * w;
+                    v_max[y] = int.max (y - radius, 0) * w;
                 }
 
                 for (var x = 0; x < w; x++) {
-                    var asum = 0, rsum = 0, gsum = 0, bsum = 0;
+                    var a_sum = 0, r_sum = 0, g_sum = 0, b_sum = 0;
 
                     uint32 cur_pixel = x * channels;
 
-                    asum += radius * buffer[cur_pixel + 0];
-                    rsum += radius * buffer[cur_pixel + 1];
-                    gsum += radius * buffer[cur_pixel + 2];
-                    bsum += radius * buffer[cur_pixel + 3];
+                    a_sum += radius * buffer[cur_pixel + 0];
+                    r_sum += radius * buffer[cur_pixel + 1];
+                    g_sum += radius * buffer[cur_pixel + 2];
+                    b_sum += radius * buffer[cur_pixel + 3];
 
                     for (var i = 0; i <= radius; i++) {
-                        asum += buffer[cur_pixel + 0];
-                        rsum += buffer[cur_pixel + 1];
-                        gsum += buffer[cur_pixel + 2];
-                        bsum += buffer[cur_pixel + 3];
+                        a_sum += buffer[cur_pixel + 0];
+                        r_sum += buffer[cur_pixel + 1];
+                        g_sum += buffer[cur_pixel + 2];
+                        b_sum += buffer[cur_pixel + 3];
 
                         cur_pixel += w * channels;
                     }
@@ -332,18 +332,18 @@ namespace Granite.Drawing {
                     cur_pixel = x * channels;
 
                     for (var y = 0; y < h; y++) {
-                        uint32 p1 = (x + vmin[y]) * channels;
-                        uint32 p2 = (x + vmax[y]) * channels;
+                        uint32 p1 = (x + v_min[y]) * channels;
+                        uint32 p2 = (x + v_max[y]) * channels;
 
-                        pixels[cur_pixel + 0] = dv[asum];
-                        pixels[cur_pixel + 1] = dv[rsum];
-                        pixels[cur_pixel + 2] = dv[gsum];
-                        pixels[cur_pixel + 3] = dv[bsum];
+                        pixels[cur_pixel + 0] = dv[a_sum];
+                        pixels[cur_pixel + 1] = dv[r_sum];
+                        pixels[cur_pixel + 2] = dv[g_sum];
+                        pixels[cur_pixel + 3] = dv[b_sum];
 
-                        asum += buffer[p1 + 0] - buffer[p2 + 0];
-                        rsum += buffer[p1 + 1] - buffer[p2 + 1];
-                        gsum += buffer[p1 + 2] - buffer[p2 + 2];
-                        bsum += buffer[p1 + 3] - buffer[p2 + 3];
+                        a_sum += buffer[p1 + 0] - buffer[p2 + 0];
+                        r_sum += buffer[p1 + 1] - buffer[p2 + 1];
+                        g_sum += buffer[p1 + 2] - buffer[p2 + 2];
+                        b_sum += buffer[p1 + 3] - buffer[p2 + 3];
 
                         cur_pixel += w * channels;
                     }
