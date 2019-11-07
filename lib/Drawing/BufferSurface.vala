@@ -23,13 +23,11 @@ using Cairo;
 using Posix;
 
 namespace Granite.Drawing {
-
     /**
      * A buffer containing an internal Cairo-usable surface and context, designed
      * for usage with large, rarely updated draw operations.
      */
     public class BufferSurface : GLib.Object {
-
         private Surface _surface;
         /**
          * The {@link Cairo.Surface} which will store the results of all drawing operations
@@ -37,8 +35,10 @@ namespace Granite.Drawing {
          */
         public Surface surface {
             get {
-                if (_surface == null)
+                if (_surface == null) {
                     _surface = new ImageSurface (Format.ARGB32, width, height);
+                }
+
                 return _surface;
             }
             private set { _surface = value; }
@@ -60,8 +60,10 @@ namespace Granite.Drawing {
          */
         public Cairo.Context context {
             get {
-                if (_context == null)
+                if (_context == null) {
                     _context = new Cairo.Context (surface);
+                }
+
                 return _context;
             }
         }
@@ -73,7 +75,6 @@ namespace Granite.Drawing {
          * @param height the height of the {@link Granite.Drawing.BufferSurface}, in pixels
          */
         public BufferSurface (int width, int height) requires (width >= 0 && height >= 0) {
-
             this.width = width;
             this.height = height;
         }
@@ -87,7 +88,6 @@ namespace Granite.Drawing {
          * @param model the {@link Cairo.Surface} to use as a model for the internal {@link Cairo.Surface}
          */
         public BufferSurface.with_surface (int width, int height, Surface model) requires (model != null) {
-
             this (width, height);
             surface = new Surface.similar (model, Content.COLOR_ALPHA, width, height);
         }
@@ -101,7 +101,6 @@ namespace Granite.Drawing {
          * @param model the {@link Granite.Drawing.BufferSurface} to use as a model for the internal {@link Cairo.Surface}
          */
         public BufferSurface.with_buffer_surface (int width, int height, BufferSurface model) requires (model != null) {
-
             this (width, height);
             surface = new Surface.similar (model.surface, Content.COLOR_ALPHA, width, height);
         }
@@ -110,7 +109,6 @@ namespace Granite.Drawing {
          * Clears the internal {@link Cairo.Surface}, making all pixels fully transparent.
          */
         public void clear () {
-
             context.save ();
 
             _context.set_source_rgba (0, 0, 0, 0);
@@ -126,7 +124,6 @@ namespace Granite.Drawing {
          * @return the {@link Gdk.Pixbuf}
          */
         public Gdk.Pixbuf load_to_pixbuf () {
-
             var image_surface = new ImageSurface (Format.ARGB32, width, height);
             var cr = new Cairo.Context (image_surface);
 
@@ -178,7 +175,6 @@ namespace Granite.Drawing {
          * @return the {@link Granite.Drawing.Color} with the averaged color
          */
         public Drawing.Color average_color () {
-
             var b_total = 0.0;
             var g_total = 0.0;
             var r_total = 0.0;
@@ -231,16 +227,17 @@ namespace Granite.Drawing {
          * @param process_count the number of times to perform the operation
          */
         public void fast_blur (int radius, int process_count = 1) {
-
-            if (radius < 1 || process_count < 1)
+            if (radius < 1 || process_count < 1) {
                 return;
+            }
 
             var w = width;
             var h = height;
             var channels = 4;
 
-            if (radius > w - 1 || radius > h - 1)
+            if (radius > w - 1 || radius > h - 1) {
                 return;
+            }
 
             var original = new ImageSurface (Format.ARGB32, w, h);
             var cr = new Cairo.Context (original);
@@ -257,8 +254,10 @@ namespace Granite.Drawing {
 
             var div = 2 * radius + 1;
             var dv = new uint8[256 * div];
-            for (var i = 0; i < dv.length; i++)
+
+            for (var i = 0; i < dv.length; i++) {
                 dv[i] = (uint8) (i / div);
+            }
 
             while (process_count-- > 0) {
                 for (var x = 0; x < w; x++) {
@@ -369,9 +368,9 @@ namespace Granite.Drawing {
          * @param radius the blur radius
          */
         public void exponential_blur (int radius) {
-
-            if (radius < 1)
+            if (radius < 1) {
                 return;
+            }
 
             var alpha = (int) ((1 << ALPHA_PRECISION) * (1.0 - Math.exp (-2.3 / (radius + 1.0))));
             var height = this.height;
@@ -426,7 +425,6 @@ namespace Granite.Drawing {
             int end_y,
             int alpha
         ) {
-
             for (var column_index = start_col; column_index < end_col; column_index++) {
                 // blur columns
                 uint8 *column = pixels + column_index * 4;
@@ -437,12 +435,14 @@ namespace Granite.Drawing {
                 var z_blue = column[3] << PARAM_PRECISION;
 
                 // Top to Bottom
-                for (var index = width * (start_y + 1); index < (end_y - 1) * width; index += width)
+                for (var index = width * (start_y + 1); index < (end_y - 1) * width; index += width) {
                     exponential_blur_inner (&column[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
+                }
 
                 // Bottom to Top
-                for (var index = (end_y - 2) * width; index >= start_y; index -= width)
+                for (var index = (end_y - 2) * width; index >= start_y; index -= width) {
                     exponential_blur_inner (&column[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
+                }
             }
         }
 
@@ -456,7 +456,6 @@ namespace Granite.Drawing {
             int end_x,
             int alpha
         ) {
-
             for (var row_index = start_row; row_index < end_row; row_index++) {
                 // Get a pointer to our current row
                 uint8* row = pixels + row_index * width * 4;
@@ -484,7 +483,6 @@ namespace Granite.Drawing {
             ref int z_blue,
             int alpha
         ) {
-
             z_alpha += (alpha * ((pixel[0] << PARAM_PRECISION) - z_alpha)) >> ALPHA_PRECISION;
             z_red += (alpha * ((pixel[1] << PARAM_PRECISION) - z_red)) >> ALPHA_PRECISION;
             z_green += (alpha * ((pixel[2] << PARAM_PRECISION) - z_green)) >> ALPHA_PRECISION;
@@ -505,7 +503,6 @@ namespace Granite.Drawing {
          * @param radius the blur radius
          */
         public void gaussian_blur (int radius) {
-
             var gauss_width = radius * 2 + 1;
             var kernel = build_gaussian_kernel (gauss_width);
 
@@ -527,8 +524,9 @@ namespace Granite.Drawing {
             var buffer_b = new double[size];
 
             // Copy image to double[] for faster horizontal pass
-            for (var i = 0; i < size; i++)
+            for (var i = 0; i < size; i++) {
                 buffer_a[i] = (double) src[i];
+            }
 
             // Precompute horizontal shifts
             var shiftar = new int[int.max (width, height), gauss_width];
@@ -618,8 +616,9 @@ namespace Granite.Drawing {
             }
 
             // Save blurred image to original uint8[]
-            for (var i = 0; i < size; i++)
+            for (var i = 0; i < size; i++) {
                 src[i] = (uint8) buffer_a[i];
+            }
 
             original.mark_dirty ();
 
@@ -640,7 +639,6 @@ namespace Granite.Drawing {
             int end_row,
             int[,] shift
         ) {
-
             uint32 cur_pixel = start_row * width * 4;
 
             for (var y = start_row; y < end_row; y++) {
@@ -670,7 +668,6 @@ namespace Granite.Drawing {
             int end_col,
             int[,] shift
         ) {
-
             uint32 cur_pixel = start_col * 4;
 
             for (var y = 0; y < height; y++) {
@@ -691,7 +688,6 @@ namespace Granite.Drawing {
         }
 
         static double[] build_gaussian_kernel (int gauss_width) requires (gauss_width % 2 == 1) {
-
             var kernel = new double[gauss_width];
 
             // Maximum value of curve
@@ -711,15 +707,16 @@ namespace Granite.Drawing {
 
             // normalize the values
             var gauss_sum = 0.0;
-            foreach (var d in kernel)
-                gauss_sum += d;
 
-            for (var i = 0; i < kernel.length; i++)
+            foreach (var d in kernel) {
+                gauss_sum += d;
+            }
+
+            for (var i = 0; i < kernel.length; i++) {
                 kernel[i] = kernel[i] / gauss_sum;
+            }
 
             return kernel;
         }
-
     }
-
 }
