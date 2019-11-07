@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2018 elementary LLC. (https://elementary.io)
- *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
- *                2011-2013 Victor Eduardo <victoreduardm@gmal.com>
+ *  Copyright (C) 2018–2019 elementary, Inc. (https://elementary.io)
+ *                2011–2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *                2011–2013 Victor Eduardo <victoreduardm@gmal.com>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -159,8 +159,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public void set_item_visible (uint index, bool val) {
         if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
-            children.nth_data(index).set_no_show_all (!val);
-            children.nth_data(index).set_visible (val);
+            children.nth_data (index).set_no_show_all (!val);
+            children.nth_data (index).set_visible (val);
         }
     }
 
