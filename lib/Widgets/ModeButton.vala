@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2008-2013 Christian Hergert <chris@dronelabs.com>,
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2008–2013 Christian Hergert <chris@dronelabs.com>,
  *                          Giulio Collura <random.cpp@gmail.com>,
  *                          Victor Eduardo <victoreduardm@gmail.com>,
  *                          ammonkey <am.monkeyd@gmail.com>
@@ -95,7 +96,7 @@ namespace Granite.Widgets {
          * @return index of new item
          */
         public int append_text (string text) {
-            return append (new Gtk.Label(text));
+            return append (new Gtk.Label (text));
         }
 
         /**

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 elementary LLC. (https://elementary.io)
+* Copyright (c) 2017–2019 elementary, Inc. (https://elementary.io)
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
@@ -53,7 +53,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
                 ((Gtk.Image) display_widget).icon_name = value;
                 ((Gtk.Image) display_widget).pixel_size = 32;
             }
-        } 
+        }
     }
 
     public string status {
