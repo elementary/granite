@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011-2017 elementary LLC (https://launchpad.net/granite)
+ * Copyright (c) 2011–2019 elementary, Inc. (https://elementary.io)
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
