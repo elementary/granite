@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -74,7 +75,7 @@ namespace Granite.Widgets {
         construct {
             if (format == null)
                 format = Granite.DateTime.get_default_date_format (false, true, true);
-            
+
             dropdown = new Gtk.EventBox ();
             dropdown.margin = MARGIN;
             popover = new Gtk.Popover (this);
@@ -95,7 +96,7 @@ namespace Granite.Widgets {
             calendar.day_selected.connect (on_calendar_day_selected);
 
             /*
-             * A next/prev month/year event 
+             * A next/prev month/year event
              * also triggers a day selected event,
              * so stop the next day selected event
              * from setting the date and closing
