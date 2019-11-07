@@ -179,9 +179,9 @@ namespace Granite.Drawing {
          */
         public Drawing.Color average_color () {
 
-            var bTotal = 0.0;
-            var gTotal = 0.0;
-            var rTotal = 0.0;
+            var b_total = 0.0;
+            var g_total = 0.0;
+            var r_total = 0.0;
 
             var w = width;
             var h = height;
@@ -208,17 +208,19 @@ namespace Granite.Drawing {
                 var sat = delta == 0 ? 0.0 : delta / max;
                 var score = 0.2 + 0.8 * sat;
 
-                bTotal += b * score;
-                gTotal += g * score;
-                rTotal += r * score;
+                b_total += b * score;
+                g_total += g * score;
+                r_total += r * score;
 
                 data += 4;
             }
 
-            return new Drawing.Color (rTotal / uint8.MAX / length,
-                             gTotal / uint8.MAX / length,
-                             bTotal / uint8.MAX / length,
-                             1).set_val (0.8).multiply_sat (1.15);
+            return new Drawing.Color (
+                r_total / uint8.MAX / length,
+                g_total / uint8.MAX / length,
+                b_total / uint8.MAX / length,
+                1
+            ).set_val (0.8).multiply_sat (1.15);
         }
 
         /**
@@ -356,8 +358,8 @@ namespace Granite.Drawing {
             context.set_operator (Operator.OVER);
         }
 
-        const int AlphaPrecision = 16;
-        const int ParamPrecision = 7;
+        const int ALPHA_PRECISION = 16;
+        const int PARAM_PRECISION = 7;
 
         /**
          * Performs a blur operation on the internal {@link Cairo.Surface}, using an
@@ -371,7 +373,7 @@ namespace Granite.Drawing {
             if (radius < 1)
                 return;
 
-            var alpha = (int) ((1 << AlphaPrecision) * (1.0 - Math.exp (-2.3 / (radius + 1.0))));
+            var alpha = (int) ((1 << ALPHA_PRECISION) * (1.0 - Math.exp (-2.3 / (radius + 1.0))));
             var height = this.height;
             var width = this.width;
 
@@ -418,29 +420,29 @@ namespace Granite.Drawing {
             uint8* pixels,
             int width,
             int height,
-            int startCol,
-            int endCol,
-            int startY,
-            int endY,
+            int start_col,
+            int end_col,
+            int start_y,
+            int end_y,
             int alpha
         ) {
 
-            for (var columnIndex = startCol; columnIndex < endCol; columnIndex++) {
+            for (var column_index = start_col; column_index < end_col; column_index++) {
                 // blur columns
-                uint8 *column = pixels + columnIndex * 4;
+                uint8 *column = pixels + column_index * 4;
 
-                var zA = column[0] << ParamPrecision;
-                var zR = column[1] << ParamPrecision;
-                var zG = column[2] << ParamPrecision;
-                var zB = column[3] << ParamPrecision;
+                var z_alpha = column[0] << PARAM_PRECISION;
+                var z_red = column[1] << PARAM_PRECISION;
+                var z_green = column[2] << PARAM_PRECISION;
+                var z_blue = column[3] << PARAM_PRECISION;
 
                 // Top to Bottom
-                for (var index = width * (startY + 1); index < (endY - 1) * width; index += width)
-                    exponential_blur_inner (&column[index * 4], ref zA, ref zR, ref zG, ref zB, alpha);
+                for (var index = width * (start_y + 1); index < (end_y - 1) * width; index += width)
+                    exponential_blur_inner (&column[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
 
                 // Bottom to Top
-                for (var index = (endY - 2) * width; index >= startY; index -= width)
-                    exponential_blur_inner (&column[index * 4], ref zA, ref zR, ref zG, ref zB, alpha);
+                for (var index = (end_y - 2) * width; index >= start_y; index -= width)
+                    exponential_blur_inner (&column[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
             }
         }
 
@@ -448,50 +450,50 @@ namespace Granite.Drawing {
             uint8* pixels,
             int width,
             int height,
-            int startRow,
-            int endRow,
-            int startX,
-            int endX,
+            int start_row,
+            int end_row,
+            int start_x,
+            int end_x,
             int alpha
         ) {
 
-            for (var rowIndex = startRow; rowIndex < endRow; rowIndex++) {
+            for (var row_index = start_row; row_index < end_row; row_index++) {
                 // Get a pointer to our current row
-                uint8* row = pixels + rowIndex * width * 4;
+                uint8* row = pixels + row_index * width * 4;
 
-                var zA = row[startX + 0] << ParamPrecision;
-                var zR = row[startX + 1] << ParamPrecision;
-                var zG = row[startX + 2] << ParamPrecision;
-                var zB = row[startX + 3] << ParamPrecision;
+                var z_alpha = row[start_x + 0] << PARAM_PRECISION;
+                var z_red = row[start_x + 1] << PARAM_PRECISION;
+                var z_green = row[start_x + 2] << PARAM_PRECISION;
+                var z_blue = row[start_x + 3] << PARAM_PRECISION;
 
                 // Left to Right
-                for (var index = startX + 1; index < endX; index++)
-                    exponential_blur_inner (&row[index * 4], ref zA, ref zR, ref zG, ref zB, alpha);
+                for (var index = start_x + 1; index < end_x; index++)
+                    exponential_blur_inner (&row[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
 
                 // Right to Left
-                for (var index = endX - 2; index >= startX; index--)
-                    exponential_blur_inner (&row[index * 4], ref zA, ref zR, ref zG, ref zB, alpha);
+                for (var index = end_x - 2; index >= start_x; index--)
+                    exponential_blur_inner (&row[index * 4], ref z_alpha, ref z_red, ref z_green, ref z_blue, alpha);
             }
         }
 
         private static inline void exponential_blur_inner (
             uint8* pixel,
-            ref int zA,
-            ref int zR,
-            ref int zG,
-            ref int zB,
+            ref int z_alpha,
+            ref int z_red,
+            ref int z_green,
+            ref int z_blue,
             int alpha
         ) {
 
-            zA += (alpha * ((pixel[0] << ParamPrecision) - zA)) >> AlphaPrecision;
-            zR += (alpha * ((pixel[1] << ParamPrecision) - zR)) >> AlphaPrecision;
-            zG += (alpha * ((pixel[2] << ParamPrecision) - zG)) >> AlphaPrecision;
-            zB += (alpha * ((pixel[3] << ParamPrecision) - zB)) >> AlphaPrecision;
+            z_alpha += (alpha * ((pixel[0] << PARAM_PRECISION) - z_alpha)) >> ALPHA_PRECISION;
+            z_red += (alpha * ((pixel[1] << PARAM_PRECISION) - z_red)) >> ALPHA_PRECISION;
+            z_green += (alpha * ((pixel[2] << PARAM_PRECISION) - z_green)) >> ALPHA_PRECISION;
+            z_blue += (alpha * ((pixel[3] << PARAM_PRECISION) - z_blue)) >> ALPHA_PRECISION;
 
-            pixel[0] = (uint8) (zA >> ParamPrecision);
-            pixel[1] = (uint8) (zR >> ParamPrecision);
-            pixel[2] = (uint8) (zG >> ParamPrecision);
-            pixel[3] = (uint8) (zB >> ParamPrecision);
+            pixel[0] = (uint8) (z_alpha >> PARAM_PRECISION);
+            pixel[1] = (uint8) (z_red >> PARAM_PRECISION);
+            pixel[2] = (uint8) (z_green >> PARAM_PRECISION);
+            pixel[3] = (uint8) (z_blue >> PARAM_PRECISION);
         }
 
         /**
@@ -504,8 +506,8 @@ namespace Granite.Drawing {
          */
         public void gaussian_blur (int radius) {
 
-            var gausswidth = radius * 2 + 1;
-            var kernel = build_gaussian_kernel (gausswidth);
+            var gauss_width = radius * 2 + 1;
+            var kernel = build_gaussian_kernel (gauss_width);
 
             var width = this.width;
             var height = this.height;
@@ -521,17 +523,17 @@ namespace Granite.Drawing {
 
             var size = height * original.get_stride ();
 
-            var abuffer = new double[size];
-            var bbuffer = new double[size];
+            var buffer_a = new double[size];
+            var buffer_b = new double[size];
 
             // Copy image to double[] for faster horizontal pass
             for (var i = 0; i < size; i++)
-                abuffer[i] = (double) src[i];
+                buffer_a[i] = (double) src[i];
 
             // Precompute horizontal shifts
-            var shiftar = new int[int.max (width, height), gausswidth];
+            var shiftar = new int[int.max (width, height), gauss_width];
             for (var x = 0; x < width; x++)
-                for (var k = 0; k < gausswidth; k++) {
+                for (var k = 0; k < gauss_width; k++) {
                     var shift = k - radius;
                     if (x + shift <= 0 || x + shift >= width)
                         shiftar[x, k] = 0;
@@ -543,10 +545,10 @@ namespace Granite.Drawing {
                 // Horizontal Pass
                 var th = new Thread<void*>.try (null, () => {
                     gaussian_blur_horizontal (
-                        abuffer,
-                        bbuffer,
+                        buffer_a,
+                        buffer_b,
                         kernel,
-                        gausswidth,
+                        gauss_width,
                         width,
                         height,
                         0,
@@ -557,10 +559,10 @@ namespace Granite.Drawing {
                 });
 
                 gaussian_blur_horizontal (
-                    abuffer,
-                    bbuffer,
+                    buffer_a,
+                    buffer_b,
                     kernel,
-                    gausswidth,
+                    gauss_width,
                     width,
                     height,
                     height / 2,
@@ -570,12 +572,12 @@ namespace Granite.Drawing {
                 th.join ();
 
                 // Clear buffer
-                memset (abuffer, 0, sizeof (double) * size);
+                memset (buffer_a, 0, sizeof (double) * size);
 
                 // Precompute vertical shifts
-                shiftar = new int[int.max (width, height), gausswidth];
+                shiftar = new int[int.max (width, height), gauss_width];
                 for (var y = 0; y < height; y++)
-                    for (var k = 0; k < gausswidth; k++) {
+                    for (var k = 0; k < gauss_width; k++) {
                         var shift = k - radius;
                         if (y + shift <= 0 || y + shift >= height)
                             shiftar[y, k] = 0;
@@ -585,11 +587,31 @@ namespace Granite.Drawing {
 
                 // Vertical Pass
                 var th2 = new Thread<void*>.try (null, () => {
-                    gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, 0, width / 2, shiftar);
+                    gaussian_blur_vertical (
+                        buffer_b,
+                        buffer_a,
+                        kernel,
+                        gauss_width,
+                        width,
+                        height,
+                        0,
+                        width / 2,
+                        shiftar
+                    );
                     return null;
                 });
 
-                gaussian_blur_vertical (bbuffer, abuffer, kernel, gausswidth, width, height, width / 2, width, shiftar);
+                gaussian_blur_vertical (
+                    buffer_b,
+                    buffer_a,
+                    kernel,
+                    gauss_width,
+                    width,
+                    height,
+                    width / 2,
+                    width,
+                    shiftar
+                );
                 th2.join ();
             } catch (Error err) {
                 message (err.message);
@@ -597,7 +619,7 @@ namespace Granite.Drawing {
 
             // Save blurred image to original uint8[]
             for (var i = 0; i < size; i++)
-                src[i] = (uint8) abuffer[i];
+                src[i] = (uint8) buffer_a[i];
 
             original.mark_dirty ();
 
@@ -611,19 +633,19 @@ namespace Granite.Drawing {
             double* src,
             double* dest,
             double* kernel,
-            int gausswidth,
+            int gauss_width,
             int width,
             int height,
-            int startRow,
-            int endRow,
+            int start_row,
+            int end_row,
             int[,] shift
         ) {
 
-            uint32 cur_pixel = startRow * width * 4;
+            uint32 cur_pixel = start_row * width * 4;
 
-            for (var y = startRow; y < endRow; y++) {
+            for (var y = start_row; y < end_row; y++) {
                 for (var x = 0; x < width; x++) {
-                    for (var k = 0; k < gausswidth; k++) {
+                    for (var k = 0; k < gauss_width; k++) {
                         var source = cur_pixel + shift[x, k];
 
                         dest[cur_pixel + 0] += src[source + 0] * kernel[k];
@@ -641,19 +663,19 @@ namespace Granite.Drawing {
             double* src,
             double* dest,
             double* kernel,
-            int gausswidth,
+            int gauss_width,
             int width,
             int height,
-            int startCol,
-            int endCol,
+            int start_col,
+            int end_col,
             int[,] shift
         ) {
 
-            uint32 cur_pixel = startCol * 4;
+            uint32 cur_pixel = start_col * 4;
 
             for (var y = 0; y < height; y++) {
-                for (var x = startCol; x < endCol; x++) {
-                    for (var k = 0; k < gausswidth; k++) {
+                for (var x = start_col; x < end_col; x++) {
+                    for (var k = 0; k < gauss_width; k++) {
                         var source = cur_pixel + shift[y, k];
 
                         dest[cur_pixel + 0] += src[source + 0] * kernel[k];
@@ -664,36 +686,36 @@ namespace Granite.Drawing {
 
                     cur_pixel += 4;
                 }
-                cur_pixel += (width - endCol + startCol) * 4;
+                cur_pixel += (width - end_col + start_col) * 4;
             }
         }
 
-        static double[] build_gaussian_kernel (int gausswidth) requires (gausswidth % 2 == 1) {
+        static double[] build_gaussian_kernel (int gauss_width) requires (gauss_width % 2 == 1) {
 
-            var kernel = new double[gausswidth];
+            var kernel = new double[gauss_width];
 
             // Maximum value of curve
             var sd = 255.0;
 
             // width of curve
-            var range = gausswidth;
+            var range = gauss_width;
 
             // Average value of curve
             var mean = range / sd;
 
-            for (var i = 0; i < gausswidth / 2 + 1; i++) {
-                kernel[gausswidth - i - 1] = kernel[i] = Math.pow (
+            for (var i = 0; i < gauss_width / 2 + 1; i++) {
+                kernel[gauss_width - i - 1] = kernel[i] = Math.pow (
                     Math.sin (((i + 1) * (Math.PI / 2) - mean) / range), 2
                 ) * sd;
             }
 
             // normalize the values
-            var gaussSum = 0.0;
+            var gauss_sum = 0.0;
             foreach (var d in kernel)
-                gaussSum += d;
+                gauss_sum += d;
 
             for (var i = 0; i < kernel.length; i++)
-                kernel[i] = kernel[i] / gaussSum;
+                kernel[i] = kernel[i] / gauss_sum;
 
             return kernel;
         }
