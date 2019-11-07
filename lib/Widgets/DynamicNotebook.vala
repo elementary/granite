@@ -1216,14 +1216,12 @@ namespace Granite.Widgets {
         }
 
         private void on_tab_closed (Tab tab) {
-            if (
-                Signal.has_handler_pending (
-                    this,
-                    Signal.lookup ("close-tab-requested", typeof (DynamicNotebook)),
-                    0,
-                    true
-                )
-            ) {
+            if (Signal.has_handler_pending (
+                this,
+                Signal.lookup ("close-tab-requested", typeof (DynamicNotebook)),
+                0,
+                true
+            )) {
                 var sure = close_tab_requested (tab);
 
                 if (!sure) {
