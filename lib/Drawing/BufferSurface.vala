@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Robert Dyer,
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2011-2013 Robert Dyer,
  *                          Rico Tzschichholz <ricotz@ubuntu.com>
  *
  *  This program or library is free software; you can redistribute it
@@ -413,7 +414,16 @@ namespace Granite.Drawing {
             context.set_operator (Operator.OVER);
         }
 
-        void exponential_blur_columns (uint8* pixels, int width, int height, int startCol, int endCol, int startY, int endY, int alpha) {
+        void exponential_blur_columns (
+            uint8* pixels,
+            int width,
+            int height,
+            int startCol,
+            int endCol,
+            int startY,
+            int endY,
+            int alpha
+        ) {
 
             for (var columnIndex = startCol; columnIndex < endCol; columnIndex++) {
                 // blur columns
@@ -434,7 +444,16 @@ namespace Granite.Drawing {
             }
         }
 
-        void exponential_blur_rows (uint8* pixels, int width, int height, int startRow, int endRow, int startX, int endX, int alpha) {
+        void exponential_blur_rows (
+            uint8* pixels,
+            int width,
+            int height,
+            int startRow,
+            int endRow,
+            int startX,
+            int endX,
+            int alpha
+        ) {
 
             for (var rowIndex = startRow; rowIndex < endRow; rowIndex++) {
                 // Get a pointer to our current row
@@ -455,7 +474,14 @@ namespace Granite.Drawing {
             }
         }
 
-        private static inline void exponential_blur_inner (uint8* pixel, ref int zA, ref int zR, ref int zG, ref int zB, int alpha) {
+        private static inline void exponential_blur_inner (
+            uint8* pixel,
+            ref int zA,
+            ref int zR,
+            ref int zG,
+            ref int zB,
+            int alpha
+        ) {
 
             zA += (alpha * ((pixel[0] << ParamPrecision) - zA)) >> AlphaPrecision;
             zR += (alpha * ((pixel[1] << ParamPrecision) - zR)) >> AlphaPrecision;
@@ -516,11 +542,31 @@ namespace Granite.Drawing {
             try {
                 // Horizontal Pass
                 var th = new Thread<void*>.try (null, () => {
-                    gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, 0, height / 2, shiftar);
+                    gaussian_blur_horizontal (
+                        abuffer,
+                        bbuffer,
+                        kernel,
+                        gausswidth,
+                        width,
+                        height,
+                        0,
+                        height / 2,
+                        shiftar
+                    );
                     return null;
                 });
 
-                gaussian_blur_horizontal (abuffer, bbuffer, kernel, gausswidth, width, height, height / 2, height, shiftar);
+                gaussian_blur_horizontal (
+                    abuffer,
+                    bbuffer,
+                    kernel,
+                    gausswidth,
+                    width,
+                    height,
+                    height / 2,
+                    height,
+                    shiftar
+                );
                 th.join ();
 
                 // Clear buffer
@@ -561,7 +607,17 @@ namespace Granite.Drawing {
             context.set_operator (Operator.OVER);
         }
 
-        void gaussian_blur_horizontal (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startRow, int endRow, int[,] shift) {
+        void gaussian_blur_horizontal (
+            double* src,
+            double* dest,
+            double* kernel,
+            int gausswidth,
+            int width,
+            int height,
+            int startRow,
+            int endRow,
+            int[,] shift
+        ) {
 
             uint32 cur_pixel = startRow * width * 4;
 
@@ -581,7 +637,17 @@ namespace Granite.Drawing {
             }
         }
 
-        void gaussian_blur_vertical (double* src, double* dest, double* kernel, int gausswidth, int width, int height, int startCol, int endCol, int[,] shift) {
+        void gaussian_blur_vertical (
+            double* src,
+            double* dest,
+            double* kernel,
+            int gausswidth,
+            int width,
+            int height,
+            int startCol,
+            int endCol,
+            int[,] shift
+        ) {
 
             uint32 cur_pixel = startCol * 4;
 
@@ -615,8 +681,11 @@ namespace Granite.Drawing {
             // Average value of curve
             var mean = range / sd;
 
-            for (var i = 0; i < gausswidth / 2 + 1; i++)
-                kernel[gausswidth - i - 1] = kernel[i] = Math.pow (Math.sin (((i + 1) * (Math.PI / 2) - mean) / range), 2) * sd;
+            for (var i = 0; i < gausswidth / 2 + 1; i++) {
+                kernel[gausswidth - i - 1] = kernel[i] = Math.pow (
+                    Math.sin (((i + 1) * (Math.PI / 2) - mean) / range), 2
+                ) * sd;
+            }
 
             // normalize the values
             var gaussSum = 0.0;
@@ -632,4 +701,3 @@ namespace Granite.Drawing {
     }
 
 }
-
