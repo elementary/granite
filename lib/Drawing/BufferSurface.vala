@@ -570,7 +570,7 @@ namespace Granite.Drawing {
                 th.join ();
 
                 // Clear buffer
-                memset (abuffer, 0, sizeof(double) * size);
+                memset (abuffer, 0, sizeof (double) * size);
 
                 // Precompute vertical shifts
                 shiftar = new int[int.max (width, height), gausswidth];
