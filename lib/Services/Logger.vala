@@ -1,6 +1,7 @@
 /*
- *  Copyright (C) 2011-2013 Robert Dyer
- *                2015-2017 elementary LLC, Rico Tzschichholz
+ *  Copyright (c) 2015–2019 elementary, Inc.
+ *                2015–2017 Rico Tzschichholz
+ *                2011–2013 Robert Dyer
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -19,7 +20,6 @@
  */
 
 namespace Granite.Services {
-
     /**
      * LogLevel:
      */
@@ -83,7 +83,11 @@ namespace Granite.Services {
         /**
          * This is used to determine which level of LogLevelling should be used.
          */
-        public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
+        public static LogLevel DisplayLevel { // vala-lint=naming-convention
+            get;
+            set;
+            default = LogLevel.WARN;
+        }
 
         static Mutex write_mutex;
 
@@ -107,7 +111,12 @@ namespace Granite.Services {
 
         static string get_time () {
             var now = new GLib.DateTime.now_local ();
-            return "%.2d:%.2d:%.2d.%.6d".printf (now.get_hour (), now.get_minute (), now.get_second (), now.get_microsecond ());
+            return "%.2d:%.2d:%.2d.%.6d".printf (
+                now.get_hour (),
+                now.get_minute (),
+                now.get_second (),
+                now.get_microsecond ()
+            );
         }
 
         static void write (LogLevel level, owned string msg) {
@@ -162,10 +171,10 @@ namespace Granite.Services {
             set_color (color, false);
         }
 
-        static void set_color (ConsoleColor color, bool isForeground) {
+        static void set_color (ConsoleColor color, bool is_foreground) {
 
             var color_code = color + 30 + 60;
-            if (!isForeground)
+            if (!is_foreground)
                 color_code += 10;
             stdout.printf ("\x001b[%dm", color_code);
         }
