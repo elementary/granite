@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 elementary LLC. (https://elementary.io)
+* Copyright (c) 2017–2019 elementary, Inc. (https://elementary.io)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -19,13 +19,13 @@
 
 /**
  * MessageDialog is an elementary OS styled dialog used to display a message to the user.
- * 
+ *
  * The class itself is similar to it's Gtk equivalent {@link Gtk.MessageDialog}
  * but follows elementary OS design conventions.
- * 
+ *
  * See [[https://elementary.io/docs/human-interface-guidelines#dialogs|The Human Interface Guidelines for dialogs]]
  * for more detailed disscussion on the dialog wording and design.
- * 
+ *
  * ''Example''<<BR>>
  * {{{
  *   var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
@@ -42,14 +42,14 @@
  *   message_dialog.run ();
  *   message_dialog.destroy ();
  * }}}
- * 
+ *
  * {{../doc/images/MessageDialog.png}}
  */
 public class Granite.MessageDialog : Gtk.Dialog {
     /**
      * The primary text, title of the dialog.
      */
-    public string primary_text { 
+    public string primary_text {
         get {
             return primary_label.label;
         }
@@ -62,13 +62,13 @@ public class Granite.MessageDialog : Gtk.Dialog {
     /**
      * The secondary text, body of the dialog.
      */
-    public string secondary_text { 
+    public string secondary_text {
         get {
             return secondary_label.label;
         }
 
         set {
-            secondary_label.label = value; 
+            secondary_label.label = value;
         }
     }
 
@@ -76,11 +76,11 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * The {@link GLib.Icon} that is used to display the image
      * on the left side of the dialog.
      */
-    public GLib.Icon image_icon { 
+    public GLib.Icon image_icon {
         owned get {
             return image.gicon;
         }
-        
+
         set {
             image.set_from_gicon (value, Gtk.IconSize.DIALOG);
         }
@@ -102,8 +102,8 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * The {@link Gtk.Label} that displays the {@link Granite.MessageDialog.primary_text}.
-     * 
-     * Most of the times, you will only want to modify the {@link Granite.MessageDialog.primary_text} string, 
+     *
+     * Most of the times, you will only want to modify the {@link Granite.MessageDialog.primary_text} string,
      * this is available to set additional properites like {@link Gtk.Label.use_markup} if you wish to do so.
      */
     public Gtk.Label primary_label { get; construct; }
@@ -111,7 +111,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
     /**
      * The {@link Gtk.Label} that displays the {@link Granite.MessageDialog.secondary_text}.
      *
-     * Most of the times, you will only want to modify the {@link Granite.MessageDialog.secondary_text} string, 
+     * Most of the times, you will only want to modify the {@link Granite.MessageDialog.secondary_text} string,
      * this is available to set additional properites like {@link Gtk.Label.use_markup} if you wish to do so.
      */
     public Gtk.Label secondary_label { get; construct; }
@@ -119,7 +119,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
     /**
      * The {@link Gtk.ButtonsType} value to display a set of buttons
      * in the dialog.
-     * 
+     *
      * By design, some actions are not acceptable and such action values will not be added to the dialog, these include:
      *
      *  * {@link Gtk.ButtonsType.OK}
@@ -130,7 +130,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
      * pass a {@link Gtk.ButtonsType.NONE} to {@link Granite.MessageDialog.MessageDialog} and manually
      * add those actions with {@link Gtk.Dialog.add_buttons} or {@link Gtk.Dialog.add_action_widget}.
      */
-    public Gtk.ButtonsType buttons { 
+    public Gtk.ButtonsType buttons {
         construct {
             switch (value) {
                 case Gtk.ButtonsType.NONE:
@@ -155,16 +155,16 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * The custom area to add custom widgets.
-     * 
+     *
      * This bin can be used to add any custom widget to the message area such as a {@link Gtk.ComboBox} or {@link Gtk.CheckButton}.
      * Note that after adding such widget you will need to call {@link Gtk.Widget.show} or {@link Gtk.Widget.show_all} on the widget itself for it to appear in the dialog.
-     * 
+     *
      * If you want to add multiple widgets to this area, create a new container such as {@link Gtk.Grid} or {@link Gtk.Box} and then add it to the custom bin.
-     * 
+     *
      * When adding a custom widget to the custom bin, the {@link Granite.MessageDialog.secondary_label}'s bottom margin will be expanded automatically
      * to compensate for the additional widget in the dialog.
      * Removing the previously added widget will remove the bottom margin.
-     * 
+     *
      * If you don't want to have any margin between your custom widget and the {@link Granite.MessageDialog.secondary_label}, simply add your custom widget
      * and then set the {@link Gtk.Label.margin_bottom} of {@link Granite.MessageDialog.secondary_label} to 0.
      */
@@ -204,14 +204,19 @@ public class Granite.MessageDialog : Gtk.Dialog {
     /**
      * Constructs a new {@link Granite.MessageDialog}.
      * See {@link Gtk.Dialog} for more details.
-     * 
+     *
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param image_icon the {@link GLib.Icon} that is displayed on the left side of the dialog
      * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog (string primary_text, string secondary_text, GLib.Icon image_icon, Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
+    public MessageDialog (
+        string primary_text,
+        string secondary_text,
+        GLib.Icon image_icon,
+        Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE
+    ) {
         Object (
             primary_text: primary_text,
             secondary_text: secondary_text,
@@ -222,21 +227,26 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * Constructs a new {@link Granite.MessageDialog} with an icon name as it's icon displayed in the image.
-     * This constructor is same as the main one but with a difference that 
+     * This constructor is same as the main one but with a difference that
      * you can pass an icon name string instead of manually creating the {@link GLib.Icon}.
-     * 
+     *
      * The {@link Granite.MessageDialog.image_icon} will store the created icon
      * so you can retrieve it later with {@link GLib.Icon.to_string}.
-     * 
+     *
      * See {@link Gtk.Dialog} for more details.
-     * 
+     *
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
      * @param image_icon_name the icon name to create the dialog image with
      * @param buttons the {@link Gtk.ButtonsType} value that decides what buttons to use, defaults to {@link Gtk.ButtonsType.CLOSE},
      *        see {@link Granite.MessageDialog.buttons} on details and what values are accepted
      */
-    public MessageDialog.with_image_from_icon_name (string primary_text, string secondary_text, string image_icon_name = "dialog-information", Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE) {
+    public MessageDialog.with_image_from_icon_name (
+        string primary_text,
+        string secondary_text,
+        string image_icon_name = "dialog-information",
+        Gtk.ButtonsType buttons = Gtk.ButtonsType.CLOSE
+    ) {
         Object (
             primary_text: primary_text,
             secondary_text: secondary_text,
@@ -310,13 +320,13 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * Shows a terminal-like widget for error details that can be expanded by the user.
-     * 
+     *
      * This method can be useful to provide the user extended error details in a
      * terminal-like text view. Calling this method will not add any widgets to the
      * {@link Granite.MessageDialog.custom_bin}.
-     * 
+     *
      * Subsequent calls to this method will change the error message to a new one.
-     * 
+     *
      * @param error_message the detailed error message to display
      */
     public void show_error_details (string error_message) {
