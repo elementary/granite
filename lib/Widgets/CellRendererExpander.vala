@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012-2017 Granite Developers
+ *  Copyright (C) 2012–2019 elementary, Inc. (https://elementary.io)
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -36,19 +36,21 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
 
-    public override void get_preferred_width (Gtk.Widget widget,
-                                              out int minimum_size,
-                                              out int natural_size)
-    {
+    public override void get_preferred_width (
+        Gtk.Widget widget,
+        out int minimum_size,
+        out int natural_size
+    ) {
         apply_style_changes (widget);
         minimum_size = natural_size = get_arrow_size (widget) + 2 * (int) xpad;
         revert_style_changes (widget);
     }
 
-    public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
-                                                         out int minimum_height,
-                                                         out int natural_height)
-    {
+    public override void get_preferred_height_for_width (
+        Gtk.Widget widget, int width,
+        out int minimum_height,
+        out int natural_height
+    ) {
         apply_style_changes (widget);
         minimum_height = natural_height = get_arrow_size (widget) + 2 * (int) ypad;
         revert_style_changes (widget);
@@ -71,11 +73,16 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         return arrow_size;
     }
 
-    public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                 Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
-    {
-        if (!is_expander)
+    public override void render (
+        Cairo.Context context,
+        Gtk.Widget widget,
+        Gdk.Rectangle bg_area,
+        Gdk.Rectangle cell_area,
+        Gtk.CellRendererState flags
+    ) {
+        if (!is_expander) {
             return;
+        }
 
         unowned Gtk.StyleContext ctx = apply_style_changes (widget);
 
@@ -97,10 +104,14 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
     }
 
     [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
-    public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                   out int x_offset, out int y_offset,
-                                   out int width, out int height)
-    {
+    public override void get_size (
+        Gtk.Widget widget,
+        Gdk.Rectangle? cell_area,
+        out int x_offset,
+        out int y_offset,
+        out int width,
+        out int height
+    ) {
         assert_not_reached ();
     }
 
