@@ -1,6 +1,5 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*-
- * Copyright (c) 2011-2017 elementary LLC. (https://elementary.io)
+/*
+ * Copyright (c) 2011–2019 elementary, Inc. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -39,7 +38,7 @@ public class DynamicNotebookView : Gtk.Grid {
                 new ThemedIcon ("mail-mark-important-symbolic"),
                 page
             );
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
         }
 
         notebook.new_tab_requested.connect (() => {
@@ -47,7 +46,7 @@ public class DynamicNotebookView : Gtk.Grid {
             var tab = new Granite.Widgets.Tab (
                 "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page
             );
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
             i++;
         });
 
@@ -59,7 +58,7 @@ public class DynamicNotebookView : Gtk.Grid {
         notebook.tab_restored.connect ((label, data, icon) => {
             var page = new Gtk.Label (data);
             var tab = new Granite.Widgets.Tab (label, icon, page);
-            notebook.insert_tab (tab, i-1);
+            notebook.insert_tab (tab, i - 1);
         });
 
         add (notebook);
