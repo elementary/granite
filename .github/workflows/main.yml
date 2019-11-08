@@ -6,10 +6,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     container:
       image: elementary/docker:unstable
-    
+
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
