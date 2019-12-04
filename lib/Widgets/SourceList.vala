@@ -327,6 +327,14 @@ public class SourceList : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
+         * The item's tooltip. If set to null (default), the tooltip for the item will be the
+         * contents of the {@link Granite.Widgets.SourceList.Item.name} property.
+         *
+         * @since 5.3
+         */
+        public string? tooltip { get; set; default = null; }
+
+        /**
          * Markup to be used instead of {@link Granite.Widgets.SourceList.ExpandableItem.name}
          * This would mean that &, <, etc have to be escaped in the text, but basic formatting
          * can be done on the item with HTML style tags.
@@ -402,6 +410,13 @@ public class SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public Icon activatable { get; set; }
+
+        /**
+         * The tooltip for the activatable icon.
+         *
+         * @since 5.0
+         */
+        public string activatable_tooltip { get; set; default = ""; }
 
         /**
          * Creates a new {@link Granite.Widgets.SourceList.Item}.
@@ -1725,6 +1740,9 @@ public class SourceList : Gtk.ScrolledWindow {
             // Enable basic row drag and drop
             configure_drag_source (null);
             configure_drag_dest (null, 0);
+
+            query_tooltip.connect_after (on_query_tooltip);
+            has_tooltip = true;
         }
 
         ~Tree () {
@@ -1870,6 +1888,53 @@ public class SourceList : Gtk.ScrolledWindow {
 
             // DragAction.MOVE needs to be enabled for row drag-and-drop to work properly
             enable_model_drag_dest (entries, Gdk.DragAction.MOVE | actions);
+        }
+
+        private bool on_query_tooltip (int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip) {
+            Gtk.TreePath path;
+            Gtk.TreeViewColumn column = get_column (Column.ITEM);
+
+            get_tooltip_context (ref x, ref y, keyboard_tooltip, null, out path, null);
+            if (path == null) {
+                return false;
+            }
+
+            var item = data_model.get_item_from_path (path);
+            if (item != null) {
+                bool should_show = false;
+
+                Gdk.Rectangle start_cell_area;
+                get_cell_area (path, column, out start_cell_area);
+
+                set_tooltip_row (tooltip, path);
+
+                if (item.tooltip == null) {
+                    tooltip.set_markup (item.name);
+                    should_show = true;
+                } else if (item.tooltip != "") {
+                    tooltip.set_markup (item.tooltip);
+                    should_show = true;
+                }
+
+                if (keyboard_tooltip) {
+                    return should_show;
+                }
+
+                if (over_cell (column, path, text_cell, x - start_cell_area.x) ||
+                    over_cell (column, path, icon_cell, x - start_cell_area.x)) {
+
+                    return should_show;
+                } else if (over_cell (column, path, activatable_cell, x - start_cell_area.x)) {
+                    if (item.activatable_tooltip == "") {
+                        return false;
+                    } else {
+                        tooltip.set_markup (item.activatable_tooltip);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static Gtk.TargetEntry[] append_row_target_entry (Gtk.TargetEntry[]? orig) {
