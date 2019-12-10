@@ -84,7 +84,11 @@ namespace Granite {
  *
  * @return a human-readable string like "Ctrl + A" or "⌘ + →"
  */
-public static string accel_to_string (string accel) {
+public static string accel_to_string (string? accel) {
+    if (accel == null) {
+        return "";
+    }
+
     uint accel_key;
     Gdk.ModifierType accel_mods;
     Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
