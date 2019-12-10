@@ -100,9 +100,7 @@ public class Granite.AccelLabel : Gtk.Grid {
         if (accel_string != null && accel_string != "") {
             accels = Granite.accel_to_string (accel_string).split (" + ");
         } else if (action_name != null && action_name != "") {
-            accels = Granite.accel_to_string (
-                ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0]
-            ).split (" + ");
+            accel_string = ((Gtk.Application) GLib.Application.get_default ()).get_accels_for_action (action_name)[0];
         }
 
         if (accels[0] != "") {
