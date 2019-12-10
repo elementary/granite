@@ -56,6 +56,7 @@ pkgconfig = import('pkgconfig')
 i18n = import('i18n')
 
 subdir('lib')
+subdir('data')
 subdir('demo')
 subdir('icons')
 subdir('po')
