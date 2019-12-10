@@ -12,12 +12,14 @@
   <releases>
     <release version="5.3.0" date="2019-12-09" urgency="medium">
       <description>
-        <p>Improvements:</p>
+        <p>New features</p>
         <ul>
           <li>Add tooltips to source list items and their actions</li>
-          <li>Fix issues with launcher badges not showing</li>
-          <li>Delay tab resizing when closing tabs</li>
           <li>New AccelLabel widget for use in menus and popovers</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Delay tab resizing when closing tabs</li>
           <li>Updated translations</li>
         </ul>
       </description>
