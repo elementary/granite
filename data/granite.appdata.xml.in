@@ -7,7 +7,7 @@
   <name>Granite</name>
   <summary>Build consistent and usable apps more quickly and easily</summary>
   <description>
-    <p>Granite is a companion library for Gtk and GLib. Among other things, it provides complex widgets and convenience functions designed for use in apps built for elementary OS.</p>
+    <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
     <release version="5.3.0" date="2019-12-09" urgency="medium">
