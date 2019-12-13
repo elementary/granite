@@ -1,3 +1,52 @@
+granite (5.3.0) bionic; urgency=medium
+
+  * Release 5.3.0 (#365)
+  * Add Release to Actions
+  * Delete AUTHORS
+  * Update translation template
+  * Add Appdata and Translations (#363)
+  * AccelLabel and Utils: Add null checks (#362)
+  * Add tooltip support for SourceList (#187)
+  * Add Lint to CI (#325)
+  * DynamicNotebook: Lint (#334)
+  * Application: Lint (#341)
+  * BufferSurface: Lint (#343)
+  * AboutDialog: Lint (#352)
+  * Drawing Utilities: Lint (#353)
+  * Drawing Color: Lint (#354)
+  * IconFactory: Lint (#355)
+  * Logger: Lint (#356)
+  * AppMenu: Lint (#357)
+  * Abstract Settings Pages: Lint (#358)
+  * AsyncImage: Lint (#351)
+  * MessageDialog: Lint (#350)
+  * CellRenderers: Lint (#349)
+  * SimpleCommand: Lint (#348)
+  * CompositedWindow: Lint (#347)
+  * SettingsSidebarRow: Lint (#346)
+  * Settings: Lint (#345)
+  * Paths: Lint (#344)
+  * SourceList: Lint (#342)
+  * DatePicker: Lint (#340)
+  * ModeButton: Lint (#339)
+  * Welcome: Lint (#336)
+  * TimePicker: Lint (#338)
+  * Utils: Lint (#337)
+  * Demo Views: Lint (#335)
+  * Use async mutex for badge synchronisation (#333)
+  * Add Gettext Updates to Actions
+  * Delay tab resizing when closing tabs and larger min/max tab width
+    (#311)
+  * Add AccelLabel (#300)
+  * MessageDialogView: Sentence-case primary label (#329)
+  * run installation in CI (#327)
+  * Use GitHub CI (#324)
+  * Delete FUNDING.yml
+  * Delete CODE_OF_CONDUCT.md
+  * Use window-close-symbolic in toasts (#323)
+
+ -- Cody Garver <cody@elementary.io>  Fri, 13 Dec 2019 19:43:38 +0000
+
 granite (5.2.5) bionic; urgency=medium
 
   * New upstream release.
