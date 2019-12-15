@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-12-13 15:07+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"PO-Revision-Date: 2019-12-16 18:07+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
 "Language: fr\n"
@@ -44,11 +44,12 @@ msgstr "Nouvelles fonctionnalités"
 
 #: data/granite.appdata.xml.in:17
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Ajout d'infobulles aux éléments des listes et leurs actions"
 
 #: data/granite.appdata.xml.in:18
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
+"Nouveau widget AccelLabel pour l'utilisation dans les menus et fenêtres popup"
 
 #: data/granite.appdata.xml.in:20
 msgid "Improvements:"
@@ -56,7 +57,7 @@ msgstr "Améliorations :"
 
 #: data/granite.appdata.xml.in:22
 msgid "Delay tab resizing when closing tabs"
-msgstr ""
+msgstr "Retardement du redimensionnement des onglets lors de leur fermeture"
 
 #: data/granite.appdata.xml.in:23
 msgid "Updated translations"
