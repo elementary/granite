@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2018-08-18 13:41+0000\n"
-"Last-Translator: Jernej Virag <jernej@virag.si>\n"
-"Language-Team: Slovenian <https://weblate.elementary.io/projects/desktop/"
+"PO-Revision-Date: 2019-12-20 00:44+0000\n"
+"Last-Translator: Marko <marko.dolar@gmail.com>\n"
+"Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
 "granite/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.0.1\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -61,13 +61,13 @@ msgid "Now"
 msgstr "Zdaj"
 
 #: lib/DateTime.vala:76
-#, fuzzy, c-format
+#, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "Pred %m"
-msgstr[1] "Pred %m"
-msgstr[2] "Pred %m"
-msgstr[3] "Pred %m"
+msgstr[0] "Pred %d"
+msgstr[1] "Pred %d"
+msgstr[2] "Pred %d"
+msgstr[3] "Pred %d"
 
 #: lib/DateTime.vala:79
 #, c-format
@@ -214,11 +214,11 @@ msgstr "Zapri druge zavihke"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:332
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Zapri zavihek na desni"
 
 #: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Zapri zavihke na desni"
 
 #: lib/Widgets/DynamicNotebook.vala:517
 msgid "Clear All"
@@ -246,7 +246,7 @@ msgstr "Prekliči"
 
 #: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -310,12 +310,12 @@ msgstr ""
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Levi Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Desni Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:137
@@ -339,17 +339,17 @@ msgstr ""
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:154
 msgid "Left Shift"
-msgstr ""
+msgstr "Levi Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:158
 msgid "Right Shift"
-msgstr ""
+msgstr "Desni Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:204
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "© %s"
 #~ msgstr "© %s"
