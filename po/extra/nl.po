@@ -8,53 +8,57 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-12-10 12:56-0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-12-27 15:07+0000\n"
+"Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
+"Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
-msgstr ""
+msgstr "Granite"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Bouw snel en makkelijk stabiele, bruikbare apps"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Een bibliotheek voor GTK en GLib, die complexe widgets en gemakkelijke "
+"methodes biedt, ontworpen voor gebruik in apps voor elementary OS."
 
 #: data/granite.appdata.xml.in:15
 msgid "New features"
-msgstr ""
+msgstr "Nieuwe functies"
 
 #: data/granite.appdata.xml.in:17
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Helpteksten toegevoegd aan items in de bronnenlijst en hun acties"
 
 #: data/granite.appdata.xml.in:18
 msgid "New AccelLabel widget for use in menus and popovers"
-msgstr ""
+msgstr "Een nieuwe AccelLabel widget voor gebruik in menu’s en als pop-up tekst"
 
 #: data/granite.appdata.xml.in:20
 msgid "Improvements:"
-msgstr ""
+msgstr "Verbeteringen:"
 
 #: data/granite.appdata.xml.in:22
 msgid "Delay tab resizing when closing tabs"
-msgstr ""
+msgstr "Vertraag het aanpassen van de tab grootte bij het sluiten van tabs"
 
 #: data/granite.appdata.xml.in:23
 msgid "Updated translations"
-msgstr ""
+msgstr "Bijgewerkte vertalingen"
 
 #: data/granite.appdata.xml.in:29
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
