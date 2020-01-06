@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-12-29 05:21+0000\n"
-"Last-Translator: Marko <marko.dolar@gmail.com>\n"
+"PO-Revision-Date: 2020-01-08 00:07+0000\n"
+"Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/sl/>\n"
 "Language: sl\n"
@@ -59,6 +59,5 @@ msgid "Updated translations"
 msgstr "Posodobljeni prevodi"
 
 #: data/granite.appdata.xml.in:29
-#, fuzzy
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
