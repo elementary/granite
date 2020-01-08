@@ -73,19 +73,19 @@ namespace Granite.DateTime {
                     return _("Now");
                 } else if (diff < TimeSpan.HOUR) {
                     var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
+                    return ngettext ("%d min ago", "%d min ago", (ulong) (minutes)).printf ((int) (minutes));
                 } else if (diff < 12 * TimeSpan.HOUR) {
                     int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+                    return ngettext ("%d h ago", "%d h ago", (ulong) rounded).printf (rounded);
                 }
             } else {
                 diff = -1 * diff;
                 if (diff < TimeSpan.HOUR) {
                     var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
+                    return ngettext ("in %d min", "in %d min", (ulong) (minutes)).printf ((int) (minutes));
                 } else if (diff < 12 * TimeSpan.HOUR) {
                     int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("in %dh", "in %dh", (ulong) rounded).printf (rounded);
+                    return ngettext ("in %d h", "in %d h", (ulong) rounded).printf (rounded);
                 }
             }
 
