@@ -1,0 +1,68 @@
+# French translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-10 22:08+0000\n"
+"PO-Revision-Date: 2019-12-16 18:07+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fr/>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+#: data/granite.appdata.xml.in:7
+msgid "Granite"
+msgstr "Granite"
+
+#: data/granite.appdata.xml.in:8
+msgid "Build consistent and usable apps more quickly and easily"
+msgstr ""
+"Construire des applications cohérentes et utilisables plus rapidement et "
+"facilement"
+
+#: data/granite.appdata.xml.in:10
+msgid ""
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
+msgstr ""
+"Une bibliothèque accompagnant GTK et GLib qui fournit des widgets complexes "
+"et des méthodes pratiques conçu pour être utilisé dans les applications "
+"fabriquées pour elementary OS."
+
+#: data/granite.appdata.xml.in:15
+msgid "New features"
+msgstr "Nouvelles fonctionnalités"
+
+#: data/granite.appdata.xml.in:17
+msgid "Add tooltips to source list items and their actions"
+msgstr "Ajout d'infobulles aux éléments des listes et leurs actions"
+
+#: data/granite.appdata.xml.in:18
+msgid "New AccelLabel widget for use in menus and popovers"
+msgstr ""
+"Nouveau widget AccelLabel pour l'utilisation dans les menus et fenêtres popup"
+
+#: data/granite.appdata.xml.in:20
+msgid "Improvements:"
+msgstr "Améliorations :"
+
+#: data/granite.appdata.xml.in:22
+msgid "Delay tab resizing when closing tabs"
+msgstr "Retardement du redimensionnement des onglets lors de leur fermeture"
+
+#: data/granite.appdata.xml.in:23
+msgid "Updated translations"
+msgstr "Mise à jour des traductions"
+
+#: data/granite.appdata.xml.in:29
+msgid "elementary, Inc."
+msgstr "elementary, Inc."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:43+0200\n"
+"POT-Creation-Date: 2019-12-10 22:08+0000\n"
 "PO-Revision-Date: 2019-03-17 17:27+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -20,16 +20,16 @@ msgstr ""
 "X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-03-22 06:27+0000\n"
 
-#: lib/Application.vala:182
+#: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Vis Granite Valgmuligheder"
 
-#: lib/Application.vala:235
+#: lib/Application.vala:237
 #, c-format
 msgid "%s's Developers"
 msgstr "%s's udviklere"
 
-#: lib/Application.vala:252
+#: lib/Application.vala:255
 msgid "Website"
 msgstr "Hjemmeside"
 
@@ -136,28 +136,28 @@ msgstr "%a, %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:32
+#: lib/GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
 msgstr "Designet af:"
 
-#: lib/GtkPatch/AboutDialog.vala:51
+#: lib/GtkPatch/AboutDialog.vala:60
 msgid "Written by:"
 msgstr "Skrevet af:"
 
-#: lib/GtkPatch/AboutDialog.vala:111
+#: lib/GtkPatch/AboutDialog.vala:137
 msgid "Documented by:"
 msgstr "Dokumenteret af:"
 
-#: lib/GtkPatch/AboutDialog.vala:171
+#: lib/GtkPatch/AboutDialog.vala:202
 #, c-format
 msgid "Translated by %s"
 msgstr "Oversat af %s"
 
-#: lib/GtkPatch/AboutDialog.vala:296
+#: lib/GtkPatch/AboutDialog.vala:333
 msgid "Close"
 msgstr "Luk"
 
-#: lib/GtkPatch/AboutDialog.vala:395
+#: lib/GtkPatch/AboutDialog.vala:446
 #, c-format
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
@@ -182,39 +182,48 @@ msgstr "Menu"
 msgid "About"
 msgstr "Om"
 
-#: lib/Widgets/DynamicNotebook.vala:238 lib/Widgets/DynamicNotebook.vala:262
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
 msgid "Close Tab"
 msgstr "Luk faneblad"
 
-#: lib/Widgets/DynamicNotebook.vala:265
+#: lib/Widgets/DynamicNotebook.vala:285
 msgid "Open in a New Window"
 msgstr "Åbn i et Nyt Vindue"
 
-#: lib/Widgets/DynamicNotebook.vala:266
+#: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
 msgstr "Duplikér"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
 msgstr "Luk andet faneblad"
 
-#: lib/Widgets/DynamicNotebook.vala:317
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
 msgstr "Luk andre faneblade"
 
-#: lib/Widgets/DynamicNotebook.vala:488
+#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
+#: lib/Widgets/DynamicNotebook.vala:332
+msgid "Close Tab to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:333
+msgid "Close Tabs to the Right"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:517
 msgid "Clear All"
 msgstr "Ryd alt"
 
-#: lib/Widgets/DynamicNotebook.vala:769 lib/Widgets/DynamicNotebook.vala:800
+#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
 msgid "New Tab"
 msgstr "Nyt faneblad"
 
-#: lib/Widgets/DynamicNotebook.vala:770
+#: lib/Widgets/DynamicNotebook.vala:801
 msgid "Undo Close Tab"
 msgstr "Fortryd lukning af faneblad"
 
-#: lib/Widgets/DynamicNotebook.vala:810
+#: lib/Widgets/DynamicNotebook.vala:841
 msgid "Closed Tabs"
 msgstr "Lukkede faneblade"
 
@@ -226,7 +235,7 @@ msgstr "_Luk"
 msgid "_Cancel"
 msgstr "_Annuller"
 
-#: lib/Widgets/MessageDialog.vala:338
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr ""
 
@@ -277,56 +286,61 @@ msgstr "PM"
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:99
+#: lib/Widgets/Utils.vala:102
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:103
+#: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:107
+#: lib/Widgets/Utils.vala:110
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:125
+#: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
 msgstr ""
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:129
+#: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
 msgstr ""
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:134
+#: lib/Widgets/Utils.vala:137
 msgid "Minus"
 msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:139
+#: lib/Widgets/Utils.vala:142
 msgid "Plus"
 msgstr "Plus"
 
-#: lib/Widgets/Utils.vala:142
+#. /TRANSLATORS: This is a non-symbol representation of the "=" key
+#: lib/Widgets/Utils.vala:147
+msgid "Equals"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:150
 msgid "Enter"
 msgstr ""
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:146
+#: lib/Widgets/Utils.vala:154
 #, fuzzy
 msgid "Left Shift"
 msgstr "Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:158
 #, fuzzy
 msgid "Right Shift"
 msgstr "Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:196
+#: lib/Widgets/Utils.vala:204
 msgid ", "
 msgstr ", "
 

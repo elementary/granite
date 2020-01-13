@@ -1,6 +1,6 @@
 /*
- *  Copyright (C) 2018 elementary, Inc. (https://elementary.io),
-                  2011-2013 Maxwell Barvian <maxwell@elementaryos.org>,
+ *  Copyright (C) 2018–2019 elementary, Inc. (https://elementary.io),
+                  2011–2013 Maxwell Barvian <maxwell@elementaryos.org>,
  *                          Corentin Noël <tintou@mailoo.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -166,7 +166,7 @@ namespace Granite.Widgets {
             popover.add (pop_grid);
 
             // Connecting to events allowing manual changes
-            add_events (Gdk.EventMask.FOCUS_CHANGE_MASK|Gdk.EventMask.SCROLL_MASK);
+            add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.SCROLL_MASK);
             focus_out_event.connect (() => {
                 is_unfocused ();
                 return false;
@@ -341,7 +341,7 @@ namespace Granite.Widgets {
                     minute = 0;
                 } else if (current.length == 4) {
                     hour = int.parse (current.slice (0, 2));
-                    minute = int.parse (current.slice (2,4));
+                    minute = int.parse (current.slice (2, 4));
                     if (hour > 23 || minute > 59) {
                         hour = null;
                         minute = null;

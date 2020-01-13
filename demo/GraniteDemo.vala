@@ -33,6 +33,7 @@ public class Granite.Demo : Gtk.Application {
     public override void activate () {
         var window = new Gtk.Window ();
 
+        var accel_label_view = new AccelLabelView ();
         var alert_view = new AlertViewView ();
         var avatar_view = new AvatarView ();
         var css_view = new CSSView (window);
@@ -49,9 +50,11 @@ public class Granite.Demo : Gtk.Application {
         var welcome = new WelcomeView ();
         var message_dialog_view = new MessageDialogView (window);
         var async_image_view = new AsyncImageView ();
+        var application_view = new ApplicationView ();
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (welcome, "welcome", "Welcome");
+        main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
@@ -67,6 +70,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (utils_view, "utils", "Utils");
         main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
         main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
+        main_stack.add_titled (application_view, "application", "Application");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
@@ -77,7 +81,10 @@ public class Granite.Demo : Gtk.Application {
 
         var gtk_settings = Gtk.Settings.get_default ();
 
-        var mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
+        var mode_switch = new Granite.ModeSwitch.from_icon_name (
+            "display-brightness-symbolic",
+            "weather-clear-night-symbolic"
+        );
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;

@@ -2,7 +2,7 @@ project(
     'granite',
     'vala', 'c',
     meson_version: '>= 0.48.2',
-    version: '5.2.3'
+    version: '5.3.0'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.40.0')
@@ -56,6 +56,7 @@ pkgconfig = import('pkgconfig')
 i18n = import('i18n')
 
 subdir('lib')
+subdir('data')
 subdir('demo')
 subdir('icons')
 subdir('po')

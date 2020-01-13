@@ -1,0 +1,60 @@
+# Greek translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-10 22:08+0000\n"
+"PO-Revision-Date: 2019-12-10 12:56-0800\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/granite.appdata.xml.in:7
+msgid "Granite"
+msgstr ""
+
+#: data/granite.appdata.xml.in:8
+msgid "Build consistent and usable apps more quickly and easily"
+msgstr ""
+
+#: data/granite.appdata.xml.in:10
+msgid ""
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
+msgstr ""
+
+#: data/granite.appdata.xml.in:15
+msgid "New features"
+msgstr ""
+
+#: data/granite.appdata.xml.in:17
+msgid "Add tooltips to source list items and their actions"
+msgstr ""
+
+#: data/granite.appdata.xml.in:18
+msgid "New AccelLabel widget for use in menus and popovers"
+msgstr ""
+
+#: data/granite.appdata.xml.in:20
+msgid "Improvements:"
+msgstr ""
+
+#: data/granite.appdata.xml.in:22
+msgid "Delay tab resizing when closing tabs"
+msgstr ""
+
+#: data/granite.appdata.xml.in:23
+msgid "Updated translations"
+msgstr ""
+
+#: data/granite.appdata.xml.in:29
+msgid "elementary, Inc."
+msgstr ""

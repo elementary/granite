@@ -48,7 +48,9 @@ public class SeekBarView : Gtk.Grid {
             update_pointing ((int) event.x);
             if (!seek_bar.is_grabbing) {
                 var duration_decimal = (event.x / ((double) event.window.get_width ()));
-                var duration_mins = Granite.DateTime.seconds_to_time ((int) (duration_decimal * seek_bar.playback_duration));
+                var duration_mins = Granite.DateTime.seconds_to_time (
+                    (int) (duration_decimal * seek_bar.playback_duration)
+                );
                 preview_label.label = duration_mins.to_string ();
             }
             return false;

@@ -85,7 +85,7 @@ namespace Granite.Widgets {
                 default_action ();
             });
 
-            var close_button = new Gtk.Button.from_icon_name ("close-symbolic", Gtk.IconSize.MENU);
+            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
                 reveal_child = false;
