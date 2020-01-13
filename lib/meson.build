@@ -9,6 +9,8 @@ libgranite_sources = files(
 
     'GtkPatch/AboutDialog.vala',
 
+    'Services/Application.vala',
+    'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
     'Services/IconFactory.vala',
     'Services/Logger.vala',
@@ -20,6 +22,7 @@ libgranite_sources = files(
     'Widgets/AboutDialog.vala',
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
+    'Widgets/AccelLabel.vala',
     'Widgets/AlertView.vala',
     'Widgets/AppMenu.vala',
     'Widgets/AsyncImage.vala',
@@ -101,11 +104,12 @@ custom_target(
     command: [
         g_ir_compiler,
         '--shared-library',
-        libgranite.full_path(),
+        '@PLAINNAME@',
         '--output',
         '@OUTPUT@',
         join_paths(meson.current_build_dir(), granite_gir),
     ],
+    input: libgranite,
     output: granite_typelib,
     depends: libgranite,
     install: true,

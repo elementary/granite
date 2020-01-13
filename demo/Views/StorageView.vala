@@ -1,6 +1,5 @@
-// -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
-/*-
- * Copyright (c) 2011-2017 elementary LLC. (https://elementary.io)
+/*
+ * Copyright (c) 2011–2019 elementary, Inc. (https://elementary.io)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -33,12 +32,12 @@ public class StorageView : Gtk.Grid {
 
             var size = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_SIZE);
 
-            var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size/2);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size/40);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size/30);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size/20);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size/10);
-            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size/5);
+            var storage = new Granite.Widgets.StorageBar.with_total_usage (size, size / 2);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.AUDIO, size / 40);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.VIDEO, size / 30);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.APP, size / 20);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.PHOTO, size / 10);
+            storage.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size / 5);
 
             add (storage);
         } catch (Error e) {

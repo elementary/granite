@@ -41,7 +41,7 @@ public class CSSView : Gtk.Grid {
         header3.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
         var header4 = new Gtk.Label ("\"h4\" Style Class");
-        header4.margin_bottom = 12  ;
+        header4.margin_bottom = 12;
         header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var card_label = new Gtk.Label ("\"card\" style class:");
@@ -57,7 +57,7 @@ public class CSSView : Gtk.Grid {
 
         var checker_label = new Gtk.Label ("\"checkerboard\" style class:");
 
-        var checker_image = new Gtk.Image.from_icon_name ("dialog-information",  Gtk.IconSize.DND);
+        var checker_image = new Gtk.Image.from_icon_name ("dialog-information", Gtk.IconSize.DND);
         checker_image.hexpand = true;
         checker_image.margin = 6;
 

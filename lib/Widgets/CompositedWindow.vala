@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -41,8 +42,7 @@ namespace Granite.Widgets {
      */
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
-        private const string STYLESHEET =
-            ".composited { background-color: rgba (0,0,0,0); }";
+        private const string STYLESHEET = ".composited { background-color: rgba (0,0,0,0); }";
 
         construct {
             // Window properties
@@ -50,11 +50,15 @@ namespace Granite.Widgets {
             decorated = false;
             resizable = false;
 
-            set_visual (get_screen ().get_rgba_visual());
+            set_visual (get_screen ().get_rgba_visual ());
 
             // Set up css provider
-            Utils.set_theming (this, STYLESHEET, StyleClass.COMPOSITED,
-                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            Utils.set_theming (
+                this,
+                STYLESHEET,
+                StyleClass.COMPOSITED,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
         }
     }
 }
