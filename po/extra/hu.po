@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
+"POT-Creation-Date: 2020-01-17 22:41+0000\n"
 "PO-Revision-Date: 2019-12-10 12:56-0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -31,30 +31,34 @@ msgid ""
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
 
-#: data/granite.appdata.xml.in:15
-msgid "New features"
-msgstr ""
-
-#: data/granite.appdata.xml.in:17
-msgid "Add tooltips to source list items and their actions"
-msgstr ""
-
-#: data/granite.appdata.xml.in:18
-msgid "New AccelLabel widget for use in menus and popovers"
-msgstr ""
-
-#: data/granite.appdata.xml.in:20
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:29
 msgid "Improvements:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:22
-msgid "Delay tab resizing when closing tabs"
+#: data/granite.appdata.xml.in:17
+msgid "Better align labels in settings sidebars"
 msgstr ""
 
-#: data/granite.appdata.xml.in:23
+#: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
 msgid "Updated translations"
 msgstr ""
 
-#: data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:24
+msgid "New features"
+msgstr ""
+
+#: data/granite.appdata.xml.in:26
+msgid "Add tooltips to source list items and their actions"
+msgstr ""
+
+#: data/granite.appdata.xml.in:27
+msgid "New AccelLabel widget for use in menus and popovers"
+msgstr ""
+
+#: data/granite.appdata.xml.in:31
+msgid "Delay tab resizing when closing tabs"
+msgstr ""
+
+#: data/granite.appdata.xml.in:38
 msgid "elementary, Inc."
 msgstr ""
