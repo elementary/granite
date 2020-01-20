@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-12-16 18:07+0000\n"
+"POT-Creation-Date: 2020-01-17 22:41+0000\n"
+"PO-Revision-Date: 2020-01-19 22:07+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
@@ -38,31 +38,36 @@ msgstr ""
 "et des méthodes pratiques conçu pour être utilisé dans les applications "
 "fabriquées pour elementary OS."
 
-#: data/granite.appdata.xml.in:15
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:29
+msgid "Improvements:"
+msgstr "Améliorations :"
+
+#: data/granite.appdata.xml.in:17
+msgid "Better align labels in settings sidebars"
+msgstr ""
+"Meilleur alignement des étiquettes dans les barres latérales de paramètres"
+
+#: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
+msgid "Updated translations"
+msgstr "Mise à jour des traductions"
+
+#: data/granite.appdata.xml.in:24
 msgid "New features"
 msgstr "Nouvelles fonctionnalités"
 
-#: data/granite.appdata.xml.in:17
+#: data/granite.appdata.xml.in:26
 msgid "Add tooltips to source list items and their actions"
 msgstr "Ajout d'infobulles aux éléments des listes et leurs actions"
 
-#: data/granite.appdata.xml.in:18
+#: data/granite.appdata.xml.in:27
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 "Nouveau widget AccelLabel pour l'utilisation dans les menus et fenêtres popup"
 
-#: data/granite.appdata.xml.in:20
-msgid "Improvements:"
-msgstr "Améliorations :"
-
-#: data/granite.appdata.xml.in:22
+#: data/granite.appdata.xml.in:31
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retardement du redimensionnement des onglets lors de leur fermeture"
 
-#: data/granite.appdata.xml.in:23
-msgid "Updated translations"
-msgstr "Mise à jour des traductions"
-
-#: data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:38
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-12-18 19:12+0000\n"
+"POT-Creation-Date: 2020-01-17 22:41+0000\n"
+"PO-Revision-Date: 2020-01-19 22:07+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/tr/>\n"
@@ -37,31 +37,35 @@ msgstr ""
 "tasarlanmış, karmaşık widget'lar için kolaylık sağlayan yardımcı bir GTK ve "
 "GLib kitaplığı."
 
-#: data/granite.appdata.xml.in:15
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:29
+msgid "Improvements:"
+msgstr "İyileştirmeler:"
+
+#: data/granite.appdata.xml.in:17
+msgid "Better align labels in settings sidebars"
+msgstr "Etiketler, ayar kenar çubuklarında daha iyi hizalandı"
+
+#: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
+msgid "Updated translations"
+msgstr "Çeviriler güncellendi"
+
+#: data/granite.appdata.xml.in:24
 msgid "New features"
 msgstr "Yeni özellikler"
 
-#: data/granite.appdata.xml.in:17
+#: data/granite.appdata.xml.in:26
 msgid "Add tooltips to source list items and their actions"
 msgstr "Kaynak liste öğelerine ve eylemlerine araç ipuçları eklendi"
 
-#: data/granite.appdata.xml.in:18
+#: data/granite.appdata.xml.in:27
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 "Menülerde ve açılır pencerelerde kullanım için yeni AccelLabel pencere öğesi"
 
-#: data/granite.appdata.xml.in:20
-msgid "Improvements:"
-msgstr "İyileştirmeler:"
-
-#: data/granite.appdata.xml.in:22
+#: data/granite.appdata.xml.in:31
 msgid "Delay tab resizing when closing tabs"
 msgstr "Sekmeleri kapatırken sekme yeniden boyutlandırmasını geciktir"
 
-#: data/granite.appdata.xml.in:23
-msgid "Updated translations"
-msgstr "Çeviriler güncellendi"
-
-#: data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:38
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

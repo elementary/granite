@@ -10,10 +10,11 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="5.3.1" date="2020-01-20" urgency="medium">
+    <release version="5.3.1" date="2020-01-17" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
+          <li>Better align labels in settings sidebars</li>
           <li>Make AccelLabel.label settable</li>
           <li>Updated translations</li>
         </ul>
