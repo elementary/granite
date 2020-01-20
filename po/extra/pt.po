@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-17 22:41+0000\n"
-"PO-Revision-Date: 2019-12-18 19:12+0000\n"
+"PO-Revision-Date: 2020-01-21 09:25+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -43,7 +43,7 @@ msgstr "Melhorias:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Better align labels in settings sidebars"
-msgstr ""
+msgstr "Melhor alinhamento das etiquetas nas definições das barras laterais"
 
 #: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
 msgid "Updated translations"
