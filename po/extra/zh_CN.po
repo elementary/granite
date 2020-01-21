@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-17 22:41+0000\n"
+"POT-Creation-Date: 2020-01-21 09:27+0000\n"
 "PO-Revision-Date: 2019-12-16 18:07+0000\n"
 "Last-Translator: Daniel Foré <daniel@elementary.io>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -33,7 +33,7 @@ msgid ""
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
 msgid "Improvements:"
 msgstr ""
 
@@ -41,26 +41,30 @@ msgstr ""
 msgid "Better align labels in settings sidebars"
 msgstr ""
 
-#: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
+#: data/granite.appdata.xml.in:18
+msgid "Make AccelLabel.label settable"
+msgstr ""
+
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
 msgstr ""
 
-#: data/granite.appdata.xml.in:24
+#: data/granite.appdata.xml.in:25
 msgid "New features"
 msgstr ""
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:27
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:28
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 
-#: data/granite.appdata.xml.in:31
+#: data/granite.appdata.xml.in:32
 msgid "Delay tab resizing when closing tabs"
 msgstr ""
 
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:39
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

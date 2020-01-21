@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-17 22:41+0000\n"
+"POT-Creation-Date: 2020-01-21 09:27+0000\n"
 "PO-Revision-Date: 2020-01-21 09:25+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr ""
 "mètodes de conveniència dissenyats per usar-los en aplicacions creades per a "
 "l'elementary OS."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
 msgid "Improvements:"
 msgstr "Millores:"
 
@@ -44,28 +44,32 @@ msgstr "Millores:"
 msgid "Better align labels in settings sidebars"
 msgstr "Millora de l'alineació de les etiquetes a les barres laterals"
 
-#: data/granite.appdata.xml.in:18 data/granite.appdata.xml.in:32
+#: data/granite.appdata.xml.in:18
+msgid "Make AccelLabel.label settable"
+msgstr ""
+
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/granite.appdata.xml.in:24
+#: data/granite.appdata.xml.in:25
 msgid "New features"
 msgstr "Funcions noves"
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:27
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 "Addició d'informació d'ajuda als elements de la llista d'origen i les seves "
 "accions"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:28
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Giny nou AccelLabel per usar-lo en menús i finestres emergents"
 
-#: data/granite.appdata.xml.in:31
+#: data/granite.appdata.xml.in:32
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retard del canvi de mida de la pestanya quan es tanquen les pestanyes"
 
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:39
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
