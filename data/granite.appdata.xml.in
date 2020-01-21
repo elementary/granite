@@ -15,6 +15,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Better align labels in settings sidebars</li>
+          <li>Make AccelLabel.label settable</li>
           <li>Updated translations</li>
         </ul>
       </description>

@@ -47,7 +47,7 @@ public class Granite.AccelLabel : Gtk.Grid {
     /**
      * The user-facing menu item label
      */
-    public string label { get; construct; }
+    public string label { get; construct set; }
 
     /**
      * Creates a new AccelLabel from a label and an accelerator string
@@ -88,6 +88,8 @@ public class Granite.AccelLabel : Gtk.Grid {
 
         notify["accel-string"].connect (update_accels);
         notify["action-name"].connect (update_accels);
+
+        bind_property ("label", label, "label");
     }
 
     private void update_accels () {
