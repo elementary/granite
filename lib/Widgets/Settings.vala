@@ -11,7 +11,7 @@ namespace Granite {
         public abstract string find_user_by_name (string username) throws GLib.Error;
     }
 
-    public class Settings : Object{
+    public class Settings : Object {
         private bool? _user_prefers_dark = null;
         public bool user_prefers_dark {
             get {
