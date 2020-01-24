@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2011-2013 Maxwell Barvian <maxwell@elementaryos.org>
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -192,17 +193,18 @@ namespace Granite {
             return -1;
         }
 
-        protected static bool DEBUG = false;
+        protected static bool DEBUG = false; // vala-lint=naming-convention
 
-        protected const OptionEntry[] options = {
+        protected const OptionEntry[] options = { // vala-lint=naming-convention
             { "debug", 'd', 0, OptionArg.NONE, out DEBUG, "Enable debug logging", null },
             { null }
         };
 
         protected virtual void set_options () {
 
-            if (DEBUG)
+            if (DEBUG) {
                 Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+            }
         }
 
         /**
@@ -241,26 +243,28 @@ namespace Granite {
                 copyright_string = "%s %s".printf (app_years, developers_string);
             }
 
-            Granite.Widgets.show_about_dialog ((Gtk.Window) parent,
-                                               "program_name", program_name,
-                                               "version", build_version,
-                                               "logo_icon_name", app_icon,
+            Granite.Widgets.show_about_dialog (
+                (Gtk.Window) parent,
+                "program_name", program_name,
+                "version", build_version,
+                "logo_icon_name", app_icon,
 
-                                               "comments", about_comments,
-                                               "copyright", copyright_string,
-                                               "website", main_url,
-                                               "website_label", _("Website"),
+                "comments", about_comments,
+                "copyright", copyright_string,
+                "website", main_url,
+                "website_label", _("Website"),
 
-                                               "authors", about_authors,
-                                               "documenters", about_documenters,
-                                               "artists", about_artists,
-                                               "translator_credits", about_translators,
-                                               "license", about_license,
-                                               "license_type", about_license_type,
+                "authors", about_authors,
+                "documenters", about_documenters,
+                "artists", about_artists,
+                "translator_credits", about_translators,
+                "license", about_license,
+                "license_type", about_license_type,
 
-                                               "help", help_url,
-                                               "translate", translate_url,
-                                               "bug", bug_url);
+                "help", help_url,
+                "translate", translate_url,
+                "bug", bug_url
+            );
         }
     }
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 elementary LLC. (https://elementary.io)
+* Copyright (c) 2017–2019 elementary, Inc. (https://elementary.io)
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
@@ -53,7 +53,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
                 ((Gtk.Image) display_widget).icon_name = value;
                 ((Gtk.Image) display_widget).pixel_size = 32;
             }
-        } 
+        }
     }
 
     public string status {
@@ -89,8 +89,9 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     construct {
         title_label = new Gtk.Label (page.title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
+        title_label.vexpand = true;
         title_label.xalign = 0;
-        title_label.get_style_context ().add_class ("h3");
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
         status_icon = new Gtk.Image ();
         status_icon.halign = Gtk.Align.END;
@@ -100,6 +101,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         status_label.no_show_all = true;
         status_label.use_markup = true;
         status_label.ellipsize = Pango.EllipsizeMode.END;
+        status_label.vexpand = true;
         status_label.xalign = 0;
 
         if (page.icon_name != null) {

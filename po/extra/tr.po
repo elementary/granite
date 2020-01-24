@@ -1,0 +1,75 @@
+# Turkish translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-21 09:27+0000\n"
+"PO-Revision-Date: 2020-01-19 22:07+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+#: data/granite.appdata.xml.in:7
+msgid "Granite"
+msgstr "Granite"
+
+#: data/granite.appdata.xml.in:8
+msgid "Build consistent and usable apps more quickly and easily"
+msgstr ""
+"Tutarlı ve kullanışlı uygulamaları daha hızlı ve kolay bir şekilde oluşturun"
+
+#: data/granite.appdata.xml.in:10
+msgid ""
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
+msgstr ""
+"elementary OS sistemi için tasarlanan uygulamalarda kullanılmak üzere "
+"tasarlanmış, karmaşık widget'lar için kolaylık sağlayan yardımcı bir GTK ve "
+"GLib kitaplığı."
+
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
+msgid "Improvements:"
+msgstr "İyileştirmeler:"
+
+#: data/granite.appdata.xml.in:17
+msgid "Better align labels in settings sidebars"
+msgstr "Etiketler, ayar kenar çubuklarında daha iyi hizalandı"
+
+#: data/granite.appdata.xml.in:18
+msgid "Make AccelLabel.label settable"
+msgstr ""
+
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
+msgid "Updated translations"
+msgstr "Çeviriler güncellendi"
+
+#: data/granite.appdata.xml.in:25
+msgid "New features"
+msgstr "Yeni özellikler"
+
+#: data/granite.appdata.xml.in:27
+msgid "Add tooltips to source list items and their actions"
+msgstr "Kaynak liste öğelerine ve eylemlerine araç ipuçları eklendi"
+
+#: data/granite.appdata.xml.in:28
+msgid "New AccelLabel widget for use in menus and popovers"
+msgstr ""
+"Menülerde ve açılır pencerelerde kullanım için yeni AccelLabel pencere öğesi"
+
+#: data/granite.appdata.xml.in:32
+msgid "Delay tab resizing when closing tabs"
+msgstr "Sekmeleri kapatırken sekme yeniden boyutlandırmasını geciktir"
+
+#: data/granite.appdata.xml.in:39
+msgid "elementary, Inc."
+msgstr "elementary, Inc."

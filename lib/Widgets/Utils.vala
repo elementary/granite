@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012-2017 Granite Developers
+ *  Copyright (C) 2012–2019 elementary, Inc.
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -70,8 +70,7 @@ public enum Granite.TextStyle {
  * An enum used to derermine where the window manager currently displays its close button on windows.
  * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
  */
-public enum Granite.CloseButtonPosition
-{
+public enum Granite.CloseButtonPosition {
     LEFT,
     RIGHT
 }
@@ -85,7 +84,11 @@ namespace Granite {
  *
  * @return a human-readable string like "Ctrl + A" or "⌘ + →"
  */
-public static string accel_to_string (string accel) {
+public static string accel_to_string (string? accel) {
+    if (accel == null) {
+        return "";
+    }
+
     uint accel_key;
     Gdk.ModifierType accel_mods;
     Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
@@ -182,7 +185,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
         parts += description;
     }
 
-    if (accels != null &&  accels.length > 0) {
+    if (accels != null && accels.length > 0) {
         string[] unique_accels = {};
 
         for (int i = 0; i < accels.length; i++) {
@@ -291,7 +294,11 @@ namespace Granite.Widgets.Utils {
      * @return the added {@link Gtk.CssProvider}, or null in case the parsing of
      *         stylesheet failed.
      */
-    public Gtk.CssProvider? set_color_primary (Gtk.Widget window, Gdk.RGBA color, int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION) {
+    public Gtk.CssProvider? set_color_primary (
+        Gtk.Widget window,
+        Gdk.RGBA color,
+        int priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    ) {
         assert (window != null);
 
         string hex = color.to_string ();

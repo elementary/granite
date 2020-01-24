@@ -1,5 +1,6 @@
 /*
- *  Copyright (C) 2012-2014 Victor Martinez <victoreduardm@gmail.com>
+ *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *                2012-2014 Victor Martinez <victoreduardm@gmail.com>
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -219,7 +220,7 @@ public interface SourceListDragDest : SourceList.Item {
  * {@link Granite.Widgets.SourceList.item_selected} the most important, as it indicates that
  * the selection was modified.
  *
- * Pack the source list into the GUI using the {@link Gtk.Paned} widget. 
+ * Pack the source list into the GUI using the {@link Gtk.Paned} widget.
  * This is usually done as follows:
  * {{{
  * var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
@@ -326,6 +327,14 @@ public class SourceList : Gtk.ScrolledWindow {
         public string name { get; set; default = ""; }
 
         /**
+         * The item's tooltip. If set to null (default), the tooltip for the item will be the
+         * contents of the {@link Granite.Widgets.SourceList.Item.name} property.
+         *
+         * @since 5.3
+         */
+        public string? tooltip { get; set; default = null; }
+
+        /**
          * Markup to be used instead of {@link Granite.Widgets.SourceList.ExpandableItem.name}
          * This would mean that &, <, etc have to be escaped in the text, but basic formatting
          * can be done on the item with HTML style tags.
@@ -401,6 +410,13 @@ public class SourceList : Gtk.ScrolledWindow {
          * @since 0.2
          */
         public Icon activatable { get; set; }
+
+        /**
+         * The tooltip for the activatable icon.
+         *
+         * @since 5.0
+         */
+        public string activatable_tooltip { get; set; default = ""; }
 
         /**
          * Creates a new {@link Granite.Widgets.SourceList.Item}.
@@ -1476,10 +1492,14 @@ public class SourceList : Gtk.ScrolledWindow {
             stock_size = ICON_SIZE;
         }
 
-        public override bool activate (Gdk.Event event, Gtk.Widget widget, string path,
-                                       Gdk.Rectangle background_area, Gdk.Rectangle cell_area,
-                                       Gtk.CellRendererState flags)
-        {
+        public override bool activate (
+            Gdk.Event event,
+            Gtk.Widget widget,
+            string path,
+            Gdk.Rectangle background_area,
+            Gdk.Rectangle cell_area,
+            Gtk.CellRendererState flags
+        ) {
             activated (path);
             return true;
         }
@@ -1504,23 +1524,35 @@ public class SourceList : Gtk.ScrolledWindow {
             min_size = natural_size = 2 * (int) xpad;
         }
 
-        public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
-                                                             out int min_height, out int natural_height)
-        {
+        public override void get_preferred_height_for_width (
+            Gtk.Widget widget,
+            int width,
+            out int min_height,
+            out int natural_height
+        ) {
             min_height = natural_height = 2 * (int) ypad;
         }
 
-        public override void render (Cairo.Context context, Gtk.Widget widget, Gdk.Rectangle bg_area,
-                                     Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
-        {
+        public override void render (
+            Cairo.Context context,
+            Gtk.Widget widget,
+            Gdk.Rectangle bg_area,
+            Gdk.Rectangle cell_area,
+            Gtk.CellRendererState flags
+        ) {
             // Nothing to do. This renderer only adds space.
         }
 
         [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
-        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                       out int x_offset, out int y_offset,
-                                       out int width, out int height)
-        {
+        public override void get_size (
+            Gtk.Widget widget,
+            Gdk.Rectangle?
+            cell_area,
+            out int x_offset,
+            out int y_offset,
+            out int width,
+            out int height
+        ) {
             assert_not_reached ();
         }
     }
@@ -1584,23 +1616,35 @@ public class SourceList : Gtk.ScrolledWindow {
         private const string STYLE_PROP_EXPANDER_SPACING = "expander-spacing";
 
         static construct {
-            install_style_property (new ParamSpecInt (STYLE_PROP_LEVEL_INDENTATION,
-                                                      "Level Indentation",
-                                                      "Space to add at the beginning of every indentation level. Must be an even number.",
-                                                      1, 50, 6,
-                                                      ParamFlags.READABLE));
+            install_style_property (new ParamSpecInt (
+                STYLE_PROP_LEVEL_INDENTATION,
+                "Level Indentation",
+                "Space to add at the beginning of every indentation level. Must be an even number.",
+                1,
+                50,
+                6,
+                ParamFlags.READABLE
+            ));
 
-            install_style_property (new ParamSpecInt (STYLE_PROP_LEFT_PADDING,
-                                                      "Left Padding",
-                                                      "Padding added to the left side of the tree. Must be an even number.",
-                                                      1, 50, 4,
-                                                      ParamFlags.READABLE));
+            install_style_property (new ParamSpecInt (
+                STYLE_PROP_LEFT_PADDING,
+                "Left Padding",
+                "Padding added to the left side of the tree. Must be an even number.",
+                1,
+                50,
+                4,
+                ParamFlags.READABLE
+            ));
 
-            install_style_property (new ParamSpecInt (STYLE_PROP_EXPANDER_SPACING,
-                                                      "Expander Spacing",
-                                                      "Space added between an item and its expander. Must be an even number.",
-                                                      1, 50, 4,
-                                                      ParamFlags.READABLE));
+            install_style_property (new ParamSpecInt (
+                STYLE_PROP_EXPANDER_SPACING,
+                "Expander Spacing",
+                "Space added between an item and its expander. Must be an even number.",
+                1,
+                50,
+                4,
+                ParamFlags.READABLE
+            ));
         }
 
         public Tree (DataModel data_model) {
@@ -1608,8 +1652,12 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         construct {
-            Utils.set_theming (this, DEFAULT_STYLESHEET, StyleClass.SOURCE_LIST,
-                               Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+            Utils.set_theming (
+                this,
+                DEFAULT_STYLESHEET,
+                StyleClass.SOURCE_LIST,
+                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK
+            );
 
             set_model (data_model);
 
@@ -1692,6 +1740,9 @@ public class SourceList : Gtk.ScrolledWindow {
             // Enable basic row drag and drop
             configure_drag_source (null);
             configure_drag_dest (null, 0);
+
+            query_tooltip.connect_after (on_query_tooltip);
+            has_tooltip = true;
         }
 
         ~Tree () {
@@ -1762,10 +1813,14 @@ public class SourceList : Gtk.ScrolledWindow {
             return true;
         }
 
-        public override void drag_data_received (Gdk.DragContext context, int x, int y,
-                                                 Gtk.SelectionData selection_data,
-                                                 uint info, uint time)
-        {
+        public override void drag_data_received (
+            Gdk.DragContext context,
+            int x,
+            int y,
+            Gtk.SelectionData selection_data,
+            uint info,
+            uint time
+        ) {
             var target_list = Gtk.drag_dest_get_target_list (this);
             var target = Gtk.drag_dest_find_target (this, context, target_list);
 
@@ -1835,9 +1890,59 @@ public class SourceList : Gtk.ScrolledWindow {
             enable_model_drag_dest (entries, Gdk.DragAction.MOVE | actions);
         }
 
+        private bool on_query_tooltip (int x, int y, bool keyboard_tooltip, Gtk.Tooltip tooltip) {
+            Gtk.TreePath path;
+            Gtk.TreeViewColumn column = get_column (Column.ITEM);
+
+            get_tooltip_context (ref x, ref y, keyboard_tooltip, null, out path, null);
+            if (path == null) {
+                return false;
+            }
+
+            var item = data_model.get_item_from_path (path);
+            if (item != null) {
+                bool should_show = false;
+
+                Gdk.Rectangle start_cell_area;
+                get_cell_area (path, column, out start_cell_area);
+
+                set_tooltip_row (tooltip, path);
+
+                if (item.tooltip == null) {
+                    tooltip.set_markup (item.name);
+                    should_show = true;
+                } else if (item.tooltip != "") {
+                    tooltip.set_markup (item.tooltip);
+                    should_show = true;
+                }
+
+                if (keyboard_tooltip) {
+                    return should_show;
+                }
+
+                if (over_cell (column, path, text_cell, x - start_cell_area.x) ||
+                    over_cell (column, path, icon_cell, x - start_cell_area.x)) {
+
+                    return should_show;
+                } else if (over_cell (column, path, activatable_cell, x - start_cell_area.x)) {
+                    if (item.activatable_tooltip == "") {
+                        return false;
+                    } else {
+                        tooltip.set_markup (item.activatable_tooltip);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private static Gtk.TargetEntry[] append_row_target_entry (Gtk.TargetEntry[]? orig) {
-            const Gtk.TargetEntry row_target_entry = { "GTK_TREE_MODEL_ROW",
-                                                       Gtk.TargetFlags.SAME_WIDGET, 0 };
+            const Gtk.TargetEntry row_target_entry = { // vala-lint=naming-convention
+                "GTK_TREE_MODEL_ROW",
+                Gtk.TargetFlags.SAME_WIDGET,
+                0
+            };
 
             var entries = new Gtk.TargetEntry[0];
             entries += row_target_entry;
@@ -1866,9 +1971,10 @@ public class SourceList : Gtk.ScrolledWindow {
                 update_expansion (expandable_item);
         }
 
-        private void add_spacer_cell_for_level (int level, bool check_previous = true)
-            requires (level > 0)
-        {
+        private void add_spacer_cell_for_level (
+            int level,
+            bool check_previous = true
+        ) requires (level > 0) {
             if (spacer_cells == null)
                 spacer_cells = new Gee.HashMap<int, CellRendererSpacer> ();
 
@@ -1920,9 +2026,12 @@ public class SourceList : Gtk.ScrolledWindow {
         /**
          * Evaluates whether the item at the specified path can be selected or not.
          */
-        private bool select_func (Gtk.TreeSelection selection, Gtk.TreeModel model,
-                                  Gtk.TreePath path, bool path_currently_selected)
-        {
+        private bool select_func (
+            Gtk.TreeSelection selection,
+            Gtk.TreeModel model,
+            Gtk.TreePath path,
+            bool path_currently_selected
+        ) {
             bool selectable = false;
             var item = data_model.get_item_from_path (path);
 
@@ -2224,13 +2333,14 @@ public class SourceList : Gtk.ScrolledWindow {
                                     && toggle_expansion (item as ExpandableItem))
                                     return true;
                             }
-                        } else if (event.type == Gdk.EventType.2BUTTON_PRESS
+                        } else if (
+                            event.type == Gdk.EventType.2BUTTON_PRESS
                             && !is_category // Main categories are *not* editable
                             && item.editable
                             && item.selectable
                             && over_cell (column, path, text_cell, cell_x)
-                            && start_editing_item (item))
-                        {
+                            && start_editing_item (item)
+                        ) {
                             // The user double-clicked over the text cell, and editing started successfully.
                             return true;
                         }
@@ -2326,9 +2436,12 @@ public class SourceList : Gtk.ScrolledWindow {
             return data_model.get_item (iter);
         }
 
-        private static void spacer_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                                   Gtk.TreeModel model, Gtk.TreeIter iter)
-        {
+        private static void spacer_cell_data_func (
+            Gtk.CellLayout layout,
+            Gtk.CellRenderer renderer,
+            Gtk.TreeModel model,
+            Gtk.TreeIter iter
+        ) {
             var spacer = renderer as CellRendererSpacer;
             assert (spacer != null);
             assert (spacer.level > 0);
@@ -2342,9 +2455,12 @@ public class SourceList : Gtk.ScrolledWindow {
             renderer.visible = spacer.level <= level;
         }
 
-        private void name_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                          Gtk.TreeModel model, Gtk.TreeIter iter)
-        {
+        private void name_cell_data_func (
+            Gtk.CellLayout layout,
+            Gtk.CellRenderer renderer,
+            Gtk.TreeModel model,
+            Gtk.TreeIter iter
+        ) {
             var text_renderer = renderer as Gtk.CellRendererText;
             assert (text_renderer != null);
 
@@ -2373,9 +2489,12 @@ public class SourceList : Gtk.ScrolledWindow {
             }
         }
 
-        private void badge_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                           Gtk.TreeModel model, Gtk.TreeIter iter)
-        {
+        private void badge_cell_data_func (
+            Gtk.CellLayout layout,
+            Gtk.CellRenderer renderer,
+            Gtk.TreeModel model,
+            Gtk.TreeIter iter
+        ) {
             var badge_renderer = renderer as CellRendererBadge;
             assert (badge_renderer != null);
 
@@ -2397,9 +2516,11 @@ public class SourceList : Gtk.ScrolledWindow {
             badge_renderer.text = text;
         }
 
-        private void icon_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                          Gtk.TreeModel model, Gtk.TreeIter iter)
-        {
+        private void icon_cell_data_func (
+            Gtk.CellLayout layout,
+            Gtk.CellRenderer renderer,
+            Gtk.TreeModel model, Gtk.TreeIter iter
+        ) {
             var icon_renderer = renderer as CellRendererIcon;
             assert (icon_renderer != null);
 
@@ -2430,9 +2551,12 @@ public class SourceList : Gtk.ScrolledWindow {
         /**
          * Controls expander visibility.
          */
-        private void expander_cell_data_func (Gtk.CellLayout layout, Gtk.CellRenderer renderer,
-                                              Gtk.TreeModel model, Gtk.TreeIter iter)
-        {
+        private void expander_cell_data_func (
+            Gtk.CellLayout layout,
+            Gtk.CellRenderer renderer,
+            Gtk.TreeModel model,
+            Gtk.TreeIter iter
+        ) {
             var item = get_item_from_model (model, iter);
             if (item != null) {
                 // Gtk.CellRenderer.is_expander takes into account whether the item has children or not.
@@ -2711,9 +2835,12 @@ public class SourceList : Gtk.ScrolledWindow {
      * @return //true// if successful; //false// otherwise.
      * @since 0.2
      */
-    public bool scroll_to_item (Item item, bool expand_parents = true, bool use_align = false, float row_align = 0)
-        requires (has_item (item))
-    {
+    public bool scroll_to_item (
+        Item item,
+        bool expand_parents = true,
+        bool use_align = false,
+        float row_align = 0
+    ) requires (has_item (item)) {
         if (expand_parents && item.parent != null)
             item.parent.expand_with_parents ();
 

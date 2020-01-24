@@ -10,6 +10,7 @@ libgranite_sources = files(
     'GtkPatch/AboutDialog.vala',
 
     'Services/Application.vala',
+    'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
     'Services/IconFactory.vala',
     'Services/Logger.vala',
@@ -21,6 +22,7 @@ libgranite_sources = files(
     'Widgets/AboutDialog.vala',
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
+    'Widgets/AccelLabel.vala',
     'Widgets/AlertView.vala',
     'Widgets/AppMenu.vala',
     'Widgets/AsyncImage.vala',

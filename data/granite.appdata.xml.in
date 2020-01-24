@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 elementary, Inc. <contact@elementary.io> -->
+<component>
+  <id>io.elementary.granite</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-3.0</project_license>
+  <name>Granite</name>
+  <summary>Build consistent and usable apps more quickly and easily</summary>
+  <description>
+    <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
+  </description>
+  <releases>
+    <release version="5.3.1" date="2020-01-17" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Better align labels in settings sidebars</li>
+          <li>Make AccelLabel.label settable</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="5.3.0" date="2019-12-12" urgency="medium">
+      <description>
+        <p>New features</p>
+        <ul>
+          <li>Add tooltips to source list items and their actions</li>
+          <li>New AccelLabel widget for use in menus and popovers</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Delay tab resizing when closing tabs</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
+  <developer_name>elementary, Inc.</developer_name>
+  <url type="homepage">https://elementary.io</url>
+  <url type="bugtracker">https://github.com/elementary/granite/issues</url>
+</component>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 10:38-0700\n"
+"POT-Creation-Date: 2019-12-10 22:08+0000\n"
 "PO-Revision-Date: 2019-07-14 16:28+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/desktop/granite/"
@@ -20,16 +20,16 @@ msgstr ""
 "X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:182
+#: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Granite 옵션 보이기"
 
-#: lib/Application.vala:235
+#: lib/Application.vala:237
 #, c-format
 msgid "%s's Developers"
 msgstr "%s 개발자들"
 
-#: lib/Application.vala:252
+#: lib/Application.vala:255
 msgid "Website"
 msgstr "웹 사이트"
 
@@ -130,28 +130,28 @@ msgstr "%b %e일 %a요일"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:32
+#: lib/GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
 msgstr "디자인:"
 
-#: lib/GtkPatch/AboutDialog.vala:51
+#: lib/GtkPatch/AboutDialog.vala:60
 msgid "Written by:"
 msgstr "작성:"
 
-#: lib/GtkPatch/AboutDialog.vala:111
+#: lib/GtkPatch/AboutDialog.vala:137
 msgid "Documented by:"
 msgstr "문서:"
 
-#: lib/GtkPatch/AboutDialog.vala:171
+#: lib/GtkPatch/AboutDialog.vala:202
 #, c-format
 msgid "Translated by %s"
 msgstr "번역 %s"
 
-#: lib/GtkPatch/AboutDialog.vala:296
+#: lib/GtkPatch/AboutDialog.vala:333
 msgid "Close"
 msgstr "닫기"
 
-#: lib/GtkPatch/AboutDialog.vala:395
+#: lib/GtkPatch/AboutDialog.vala:446
 #, c-format
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
@@ -176,48 +176,48 @@ msgstr "메뉴"
 msgid "About"
 msgstr "소개"
 
-#: lib/Widgets/DynamicNotebook.vala:239 lib/Widgets/DynamicNotebook.vala:263
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
 msgid "Close Tab"
 msgstr "탭 닫기"
 
-#: lib/Widgets/DynamicNotebook.vala:267
+#: lib/Widgets/DynamicNotebook.vala:285
 msgid "Open in a New Window"
 msgstr "새 창에서 열기"
 
-#: lib/Widgets/DynamicNotebook.vala:268
+#: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
 msgstr "복제"
 
-#: lib/Widgets/DynamicNotebook.vala:322
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
 msgstr "다른 탭 닫기"
 
-#: lib/Widgets/DynamicNotebook.vala:322
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
 msgstr "다른 탭 닫기"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:332
 msgid "Close Tab to the Right"
 msgstr "오른쪽으로 탭 닫기"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tabs to the Right"
 msgstr "오른쪽으로 탭 닫기"
 
-#: lib/Widgets/DynamicNotebook.vala:492
+#: lib/Widgets/DynamicNotebook.vala:517
 msgid "Clear All"
 msgstr "모두 지우기"
 
-#: lib/Widgets/DynamicNotebook.vala:773 lib/Widgets/DynamicNotebook.vala:804
+#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
 msgid "New Tab"
 msgstr "새 탭"
 
-#: lib/Widgets/DynamicNotebook.vala:774
+#: lib/Widgets/DynamicNotebook.vala:801
 msgid "Undo Close Tab"
 msgstr "닫힌 탭 다시 열기"
 
-#: lib/Widgets/DynamicNotebook.vala:814
+#: lib/Widgets/DynamicNotebook.vala:841
 msgid "Closed Tabs"
 msgstr "닫힌 탭"
 
@@ -229,7 +229,7 @@ msgstr "닫기"
 msgid "_Cancel"
 msgstr "취소"
 
-#: lib/Widgets/MessageDialog.vala:338
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr "세부 사항"
 
@@ -280,59 +280,59 @@ msgstr "오후"
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:99
+#: lib/Widgets/Utils.vala:102
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:103
+#: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:107
+#: lib/Widgets/Utils.vala:110
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:125
+#: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
 msgstr "왼쪽 Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:129
+#: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
 msgstr "오른쪽 Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:134
+#: lib/Widgets/Utils.vala:137
 msgid "Minus"
 msgstr "마이너스"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:139
+#: lib/Widgets/Utils.vala:142
 msgid "Plus"
 msgstr "플러스"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:144
+#: lib/Widgets/Utils.vala:147
 msgid "Equals"
 msgstr ""
 
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:150
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:151
+#: lib/Widgets/Utils.vala:154
 msgid "Left Shift"
 msgstr "왼쪽 Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:155
+#: lib/Widgets/Utils.vala:158
 msgid "Right Shift"
 msgstr "오른쪽 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:201
+#: lib/Widgets/Utils.vala:204
 msgid ", "
 msgstr ", "
 
