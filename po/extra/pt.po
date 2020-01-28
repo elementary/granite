@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 09:27+0000\n"
-"PO-Revision-Date: 2020-01-21 09:25+0000\n"
+"PO-Revision-Date: 2020-01-29 18:08+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -47,7 +47,7 @@ msgstr "Melhor alinhamento das etiquetas nas definições das barras laterais"
 
 #: data/granite.appdata.xml.in:18
 msgid "Make AccelLabel.label settable"
-msgstr ""
+msgstr "Tornar o AccelLabel.label regulável"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
