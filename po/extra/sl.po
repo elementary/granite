@@ -8,31 +8,33 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 09:27+0000\n"
-"PO-Revision-Date: 2020-01-08 00:07+0000\n"
-"Last-Translator: Jernej Virag <jernej@virag.si>\n"
+"PO-Revision-Date: 2020-03-02 23:09+0000\n"
+"Last-Translator: Marko <marko.dolar@gmail.com>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.9.1\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
-msgstr ""
+msgstr "Granit"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Oblikujte konsistentne in uporabne aplikacije hitreje in lažje"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Spremljevalna knjižnica za GTK in GLib, ki nudi kompleksne gradnike in "
+"priročne metode, narejene za uporabo v aplikacijah za elementary OS."
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
 msgid "Improvements:"
@@ -40,11 +42,11 @@ msgstr "Izboljšave:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Better align labels in settings sidebars"
-msgstr ""
+msgstr "Boljša poravnava besedila v stranski vrstici za nastavitve"
 
 #: data/granite.appdata.xml.in:18
 msgid "Make AccelLabel.label settable"
-msgstr ""
+msgstr "Nastavljiv AccelLabel.label"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
@@ -52,19 +54,19 @@ msgstr "Posodobljeni prevodi"
 
 #: data/granite.appdata.xml.in:25
 msgid "New features"
-msgstr ""
+msgstr "Nove zmožnosti"
 
 #: data/granite.appdata.xml.in:27
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Dodaj namige h SourceList elementom in njihovim akcijam"
 
 #: data/granite.appdata.xml.in:28
 msgid "New AccelLabel widget for use in menus and popovers"
-msgstr ""
+msgstr "Nov AccelLabel  gradnik za uporabo v menijih in pojavnimi okni"
 
 #: data/granite.appdata.xml.in:32
 msgid "Delay tab resizing when closing tabs"
-msgstr ""
+msgstr "Zakasnitev spremembe velikosti zavihkov ob zaprtju zavihka"
 
 #: data/granite.appdata.xml.in:39
 msgid "elementary, Inc."
