@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 09:27+0000\n"
-"PO-Revision-Date: 2020-01-23 11:08+0000\n"
+"PO-Revision-Date: 2020-03-05 14:09+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nl/>\n"
@@ -25,7 +25,7 @@ msgstr "Granite"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr "Bouw snel en makkelijk stabiele, bruikbare apps"
+msgstr "Bouw sneller en gemakkelijker stabiele en bruikbare apps"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
@@ -45,7 +45,7 @@ msgstr "Een betere plaatsing van labels in de instellingen zijpanelen"
 
 #: data/granite.appdata.xml.in:18
 msgid "Make AccelLabel.label settable"
-msgstr "AccelLabel.label is nu instelbaar"
+msgstr "Maak AccelLabel.label instelbaar"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
