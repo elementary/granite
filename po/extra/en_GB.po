@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 09:27+0000\n"
-"PO-Revision-Date: 2019-12-10 12:56-0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-03-19 18:09+0000\n"
+"Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
+"Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
+"desktop/granite-extra/en_GB/>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -26,14 +28,12 @@ msgid "Build consistent and usable apps more quickly and easily"
 msgstr "Build consistent and usable apps more quickly and easily"
 
 #: data/granite.appdata.xml.in:10
-#, fuzzy
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
-"Granite is a companion library for Gtk and GLib. Among other things, it "
-"provides complex widgets and convenience functions designed for use in apps "
-"built for elementary OS."
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
 msgid "Improvements:"
@@ -41,11 +41,11 @@ msgstr "Improvements:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Better align labels in settings sidebars"
-msgstr ""
+msgstr "Better align labels in settings sidebars"
 
 #: data/granite.appdata.xml.in:18
 msgid "Make AccelLabel.label settable"
-msgstr ""
+msgstr "Make AccelLabel.label settable"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
 msgid "Updated translations"
@@ -53,7 +53,7 @@ msgstr "Updated translations"
 
 #: data/granite.appdata.xml.in:25
 msgid "New features"
-msgstr ""
+msgstr "New features"
 
 #: data/granite.appdata.xml.in:27
 msgid "Add tooltips to source list items and their actions"
