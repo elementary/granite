@@ -1,3 +1,15 @@
+granite (5.3.1) bionic; urgency=medium
+
+  * Release 5.3.1 (#379)
+  * Update translation files
+  * Update translation template
+  * AccelLabel: make label settable (#373)
+  * Update translation files
+  * Update translation template
+  * SettingsSidebarRow: center align with no subtitle (#372)
+
+ -- Cody Garver <cody@elementary.io>  Thu, 02 Apr 2020 00:22:50 +0000
+
 granite (5.3.0) bionic; urgency=medium
 
   * Release 5.3.0 (#365)
