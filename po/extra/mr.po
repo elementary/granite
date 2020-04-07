@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-21 09:27+0000\n"
-"PO-Revision-Date: 2020-02-06 20:08+0000\n"
+"PO-Revision-Date: 2020-04-05 22:10+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/mr/>\n"
@@ -70,4 +70,4 @@ msgstr "टॅब बंद करताना टॅबचे आकार ब�
 
 #: data/granite.appdata.xml.in:39
 msgid "elementary, Inc."
-msgstr "एलिमेंटरी, Inc."
+msgstr "एलिमेंटरी,Inc."
