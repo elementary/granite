@@ -56,50 +56,99 @@ namespace Granite.DateTime {
     }
 
     /**
+     * Defines the accuracy with which {@link Granite.DateTime.get_relative_datetime}
+     * should format the relative date and time string.
+     */
+    public enum RelativeAccuracy {
+        AUTO,
+        DAY,
+        TIME
+    }
+
+    /**
      * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and returns a location, relative date and
      * time string. Results appear as natural-language strings like "Now", "5m ago", "Yesterday"
      *
      * @param date_time a {@link GLib.DateTime} to compare against {@link GLib.DateTime.now_local}
+     * @param accuracy the {@link GLib.DateTime.RelativeDateTimeAccuracy} of the returned time string
      *
      * @return a localized, relative date and time string
      */
-    public static string get_relative_datetime (GLib.DateTime date_time) {
+    public static string get_relative_datetime (GLib.DateTime date_time, RelativeAccuracy accuracy = RelativeAccuracy.AUTO) {
         var now = new GLib.DateTime.now_local ();
         var diff = now.difference (date_time);
 
         if (is_same_day (date_time, now)) {
-            if (diff > 0) {
-                if (diff < TimeSpan.MINUTE) {
-                    return _("Now");
-                } else if (diff < TimeSpan.HOUR) {
-                    var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
-                } else if (diff < 12 * TimeSpan.HOUR) {
-                    int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
-                }
+            if (accuracy == RelativeAccuracy.DAY) {
+                return _("Today");
             } else {
-                diff = -1 * diff;
-                if (diff < TimeSpan.HOUR) {
-                    var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
-                } else if (diff < 12 * TimeSpan.HOUR) {
-                    int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("in %dh", "in %dh", (ulong) rounded).printf (rounded);
+                if (diff > 0) {
+                    if (diff < TimeSpan.MINUTE) {
+                        return _("Now");
+                    } else if (diff < TimeSpan.HOUR) {
+                        var minutes = diff / TimeSpan.MINUTE;
+                        return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
+                    } else if (diff < 12 * TimeSpan.HOUR) {
+                        int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
+                        return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+                    }
+                } else {
+                    diff = -1 * diff;
+                    if (diff < TimeSpan.HOUR) {
+                        var minutes = diff / TimeSpan.MINUTE;
+                        return ngettext ("in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
+                    } else if (diff < 12 * TimeSpan.HOUR) {
+                        int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
+                        return ngettext ("in %dh", "in %dh", (ulong) rounded).printf (rounded);
+                    }
                 }
+
+                return date_time.format (get_default_time_format (is_clock_format_12h (), false));
             }
 
-            return date_time.format (get_default_time_format (is_clock_format_12h (), false));
         } else if (is_same_day (date_time.add_days (1), now)) {
-            return _("Yesterday");
+            if (accuracy == RelativeAccuracy.TIME) {
+                return _("Yesterday at %s").printf (
+                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                );
+            } else {
+                return _("Yesterday");
+            }
         } else if (is_same_day (date_time.add_days (-1), now)) {
-            return _("Tomorrow");
+            if (accuracy == RelativeAccuracy.TIME) {
+                return _("Tomorrow at %s").printf (
+                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                );
+            } else {
+                return _("Tomorrow");
+            }
         } else if (diff < 6 * TimeSpan.DAY && diff > -6 * TimeSpan.DAY) {
-            return date_time.format (get_default_date_format (true, false, false));
+            if (accuracy == RelativeAccuracy.TIME) {
+                return _("%s at %s").printf (
+                    date_time.format (get_default_date_format (true, false, false)),
+                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                );
+            } else {
+                return date_time.format (get_default_date_format (true, false, false));
+            }
         } else if (date_time.get_year () == now.get_year ()) {
-            return date_time.format (get_default_date_format (false, true, false));
+            if (accuracy == RelativeAccuracy.TIME) {
+                return _("%s at %s").printf (
+                    date_time.format (get_default_date_format (false, true, false)),
+                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                );
+            } else {
+                return date_time.format (get_default_date_format (false, true, false));
+            }
         } else {
-            return date_time.format ("%x");
+            if (accuracy == RelativeAccuracy.TIME) {
+                return _("%s at %s").printf (
+                    date_time.format ("%x"),
+                    date_time.format ("%X")
+                );
+            } else {
+                return date_time.format ("%x");
+            }
         }
     }
 
