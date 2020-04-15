@@ -26,8 +26,7 @@
 
 public class DateTimePickerView : Gtk.Grid {
     private Gtk.Label relative_datetime;
-    private Gtk.Label relative_datetime_day;
-    private Gtk.Label relative_datetime_time;
+    private Gtk.Label relative_date;
     private Granite.Widgets.DatePicker datepicker;
     private Granite.Widgets.TimePicker timepicker;
 
@@ -77,17 +76,11 @@ public class DateTimePickerView : Gtk.Grid {
         relative_datetime = new Gtk.Label ("");
         relative_datetime.xalign = 0;
 
-        var relative_datetime_day_label = new Gtk.Label ("Relative datetime with accuracy [day]:");
-        relative_datetime_day_label.halign = Gtk.Align.END;
+        var relative_date_label = new Gtk.Label ("Relative date:");
+        relative_date_label.halign = Gtk.Align.END;
 
-        relative_datetime_day = new Gtk.Label ("");
-        relative_datetime_day.xalign = 0;
-
-        var relative_datetime_time_label = new Gtk.Label ("Relative datetime with accuracy [time]:");
-        relative_datetime_time_label.halign = Gtk.Align.END;
-
-        relative_datetime_time = new Gtk.Label ("");
-        relative_datetime_time.xalign = 0;
+        relative_date = new Gtk.Label ("");
+        relative_date.xalign = 0;
 
         set_selected_datetime ();
         datepicker.changed.connect (() => set_selected_datetime ());
@@ -109,10 +102,8 @@ public class DateTimePickerView : Gtk.Grid {
         attach (current_date, 1, 5, 1, 1);
         attach (relative_datetime_label, 0, 6, 1, 1);
         attach (relative_datetime, 1, 6, 1, 1);
-        attach (relative_datetime_day_label, 0, 7, 1, 1);
-        attach (relative_datetime_day, 1, 7, 1, 1);
-        attach (relative_datetime_time_label, 0, 8, 1, 1);
-        attach (relative_datetime_time, 1, 8, 1, 1);
+        attach (relative_date_label, 0, 7, 1, 1);
+        attach (relative_date, 1, 7, 1, 1);
     }
 
     private void set_selected_datetime () {
@@ -121,7 +112,6 @@ public class DateTimePickerView : Gtk.Grid {
         selected_date_time = selected_date_time.add_minutes (timepicker.time.get_minute ());
 
         relative_datetime.label = Granite.DateTime.get_relative_datetime (selected_date_time);
-        relative_datetime_day.label = Granite.DateTime.get_relative_datetime_with_accuracy (selected_date_time, Granite.DateTime.RelativeAccuracy.DAY);
-        relative_datetime_time.label = Granite.DateTime.get_relative_datetime_with_accuracy (selected_date_time, Granite.DateTime.RelativeAccuracy.TIME);
+        relative_date.label = Granite.DateTime.get_relative_date (selected_date_time);
     }
 }
