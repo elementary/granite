@@ -71,19 +71,19 @@ public class DateTimePickerView : Gtk.Grid {
         current_date.tooltip_text = date_format;
         current_date.xalign = 0;
 
-        var relative_datetime_label = new Gtk.Label ("Relative datetime (auto):");
+        var relative_datetime_label = new Gtk.Label ("Relative datetime:");
         relative_datetime_label.halign = Gtk.Align.END;
 
         relative_datetime = new Gtk.Label ("");
         relative_datetime.xalign = 0;
 
-        var relative_datetime_day_label = new Gtk.Label ("Relative datetime (day):");
+        var relative_datetime_day_label = new Gtk.Label ("Relative datetime with accuracy [day]:");
         relative_datetime_day_label.halign = Gtk.Align.END;
 
         relative_datetime_day = new Gtk.Label ("");
         relative_datetime_day.xalign = 0;
 
-        var relative_datetime_time_label = new Gtk.Label ("Relative datetime (time):");
+        var relative_datetime_time_label = new Gtk.Label ("Relative datetime with accuracy [time]:");
         relative_datetime_time_label.halign = Gtk.Align.END;
 
         relative_datetime_time = new Gtk.Label ("");
@@ -121,7 +121,7 @@ public class DateTimePickerView : Gtk.Grid {
         selected_date_time = selected_date_time.add_minutes (timepicker.time.get_minute ());
 
         relative_datetime.label = Granite.DateTime.get_relative_datetime (selected_date_time);
-        relative_datetime_day.label = Granite.DateTime.get_relative_datetime (selected_date_time, Granite.DateTime.RelativeAccuracy.DAY);
-        relative_datetime_time.label = Granite.DateTime.get_relative_datetime (selected_date_time, Granite.DateTime.RelativeAccuracy.TIME);
+        relative_datetime_day.label = Granite.DateTime.get_relative_datetime_with_accuracy (selected_date_time, Granite.DateTime.RelativeAccuracy.DAY);
+        relative_datetime_time.label = Granite.DateTime.get_relative_datetime_with_accuracy (selected_date_time, Granite.DateTime.RelativeAccuracy.TIME);
     }
 }

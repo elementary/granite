@@ -56,11 +56,23 @@ namespace Granite.DateTime {
     }
 
     /**
+     * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and returns a location, relative date and
+     * time string. Results appear as natural-language strings like "Now", "5m ago", "Yesterday"
+     *
+     * @param date_time a {@link GLib.DateTime} to compare against {@link GLib.DateTime.now_local}
+     *
+     * @return a localized, relative date and time string
+     */
+    public static string get_relative_datetime (GLib.DateTime date_time) {
+        return get_relative_datetime_with_accuracy (date_time, RelativeAccuracy.DEFAULT);
+    }
+
+    /**
      * Defines the accuracy with which {@link Granite.DateTime.get_relative_datetime}
      * should format the relative date and time string.
      */
     public enum RelativeAccuracy {
-        AUTO,
+        DEFAULT,
         DAY,
         TIME
     }
@@ -70,11 +82,11 @@ namespace Granite.DateTime {
      * time string. Results appear as natural-language strings like "Now", "5m ago", "Yesterday"
      *
      * @param date_time a {@link GLib.DateTime} to compare against {@link GLib.DateTime.now_local}
-     * @param accuracy the {@link GLib.DateTime.RelativeDateTimeAccuracy} of the returned time string
+     * @param accuracy the {@link GLib.DateTime.RelativeAccuracy} of the returned time string
      *
      * @return a localized, relative date and time string
      */
-    public static string get_relative_datetime (GLib.DateTime date_time, RelativeAccuracy accuracy = RelativeAccuracy.AUTO) {
+     public static string get_relative_datetime_with_accuracy (GLib.DateTime date_time, RelativeAccuracy accuracy) {
         var now = new GLib.DateTime.now_local ();
         var diff = now.difference (date_time);
 
@@ -123,22 +135,28 @@ namespace Granite.DateTime {
                 return _("Tomorrow");
             }
         } else if (diff < 6 * TimeSpan.DAY && diff > -6 * TimeSpan.DAY) {
-            if (accuracy == RelativeAccuracy.TIME) {
-                return _("%s at %s").printf (
-                    date_time.format (get_default_date_format (true, false, false)),
-                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
-                );
-            } else {
-                return date_time.format (get_default_date_format (true, false, false));
+            switch (accuracy) {
+                case RelativeAccuracy.TIME:
+                    return _("%s at %s").printf (
+                        date_time.format (get_default_date_format (true, true, false)),
+                        date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                    );
+                case RelativeAccuracy.DAY:
+                    return date_time.format (get_default_date_format (true, true, false));
+                default:
+                    return date_time.format (get_default_date_format (true, false, false));
             }
         } else if (date_time.get_year () == now.get_year ()) {
-            if (accuracy == RelativeAccuracy.TIME) {
-                return _("%s at %s").printf (
-                    date_time.format (get_default_date_format (false, true, false)),
-                    date_time.format (get_default_time_format (is_clock_format_12h (), false))
-                );
-            } else {
-                return date_time.format (get_default_date_format (false, true, false));
+            switch (accuracy) {
+                case RelativeAccuracy.TIME:
+                    return _("%s at %s").printf (
+                        date_time.format (get_default_date_format (false, true, false)),
+                        date_time.format (get_default_time_format (is_clock_format_12h (), false))
+                    );
+                case RelativeAccuracy.DAY:
+                    return date_time.format (get_default_date_format (true, true, false));
+                default:
+                    return date_time.format (get_default_date_format (false, true, false));
             }
         } else {
             if (accuracy == RelativeAccuracy.TIME) {
