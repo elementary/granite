@@ -104,12 +104,12 @@ namespace Granite.DateTime {
     }
 
     /**
-     * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and returns a location, relative date string.
+     * Compares a {@link GLib.DateTime} to {@link GLib.DateTime.now_local} and returns a location relative date string.
      * Results appear as natural-language strings like "Today", "Yesterday", "Fri, Apr 17".
      *
      * @param date_time a {@link GLib.DateTime} to compare against {@link GLib.DateTime.now_local}
      *
-     * @return a localized, relative date and time string
+     * @return a localized, relative date string
      */
     public static string get_relative_date (GLib.DateTime date_time) {
         var now = new GLib.DateTime.now_local ();
