@@ -2,8 +2,7 @@
 namespace Granite {
     [DBus (name = "io.elementary.pantheon.AccountsService")]
     private interface Pantheon.AccountsService : Object {
-        public abstract string prefers_color_scheme { owned get; set; }
-        public abstract string time_format { owned get; set; }
+        public abstract uint prefers_color_scheme { owned get; set; }
     }
 
     [DBus (name = "org.freedesktop.Accounts")]
@@ -22,19 +21,6 @@ namespace Granite {
             }
             private set {
                 _user_prefers_dark = value;
-            }
-        }
-
-        private string? _time_format = null;
-        public string time_format {
-            get {
-                if (_time_format == null) {
-                    setup_time_format ();
-                }
-                return _time_format;
-            }
-            private set {
-                _time_format = value;
             }
         }
 
@@ -86,33 +72,12 @@ namespace Granite {
                     GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
                 );
 
-                user_prefers_dark = pantheon_act.prefers_color_scheme == "dark";
+                user_prefers_dark = pantheon_act.prefers_color_scheme == 1;
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    string prefers_color_scheme;
-                    changed_properties.lookup ("PrefersColorScheme", "s", out prefers_color_scheme);
-                    user_prefers_dark = prefers_color_scheme == "dark";
-                });
-            } catch (Error e) {
-                critical (e.message);
-            }
-        }
-
-        private void setup_time_format () {
-            try {
-                pantheon_act = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SYSTEM,
-                    "org.freedesktop.Accounts",
-                    user_path,
-                    GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
-                );
-
-                time_format = pantheon_act.time_format;
-
-                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    string _time_format;
-                    changed_properties.lookup ("TimeFormat", "s", out _time_format);
-                    time_format = _time_format;
+                    uint prefers_color_scheme;
+                    changed_properties.lookup ("PrefersColorScheme", "u", out prefers_color_scheme);
+                    user_prefers_dark = prefers_color_scheme == 1;
                 });
             } catch (Error e) {
                 critical (e.message);
