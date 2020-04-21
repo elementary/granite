@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-08-29 17:22+0000\n"
+"PO-Revision-Date: 2020-01-25 15:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -190,11 +190,11 @@ msgstr "タブを複製"
 
 #: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
-msgstr "他のタブを閉じる"
+msgstr "ほかのタブを閉じる"
 
 #: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
-msgstr "他のタブを閉じる"
+msgstr "ほかのタブを閉じる"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:332
@@ -258,7 +258,7 @@ msgstr "ファイル"
 
 #: lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr "その他"
+msgstr "そのほか"
 
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
