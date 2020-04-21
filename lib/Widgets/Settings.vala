@@ -10,8 +10,15 @@ namespace Granite {
         public abstract string find_user_by_name (string username) throws GLib.Error;
     }
 
+    /**
+     * Granite.Settings provides a way to share Pantheon desktop settings with applications.
+     */
     public class Settings : Object {
         private bool? _user_prefers_dark = null;
+
+        /**
+         * Whether the user would prefer if apps use a dark color scheme
+         */
         public bool user_prefers_dark {
             get {
                 if (_user_prefers_dark == null) {
