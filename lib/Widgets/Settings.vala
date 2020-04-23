@@ -14,20 +14,38 @@ namespace Granite {
      * Granite.Settings provides a way to share Pantheon desktop settings with applications.
      */
     public class Settings : Object {
-        private bool? _user_prefers_dark = null;
+        /**
+         * Possible color scheme preferences expressed by the user
+         */
+        public enum ColorScheme {
+            /**
+             * The user has not expressed a color scheme preference. Apps should decide on a color scheme on their own.
+             */
+            NO_PREFERENCE,
+            /**
+             * The user prefers apps to use a dark color scheme.
+             */
+            DARK,
+            /**
+             * The user prefers a light color scheme.
+             */
+            LIGHT
+        }
+
+        private ColorScheme? _prefers_color_scheme = ColorScheme.NO_PREFERENCE;
 
         /**
-         * Whether the user would prefer if apps use a dark color scheme
+         * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
          */
-        public bool user_prefers_dark {
+        public ColorScheme prefers_color_scheme {
             get {
-                if (_user_prefers_dark == null) {
-                    setup_user_prefers_dark ();
+                if (_prefers_color_scheme == null) {
+                    setup_prefers_color_scheme ();
                 }
-                return _user_prefers_dark;
+                return _prefers_color_scheme;
             }
             private set {
-                _user_prefers_dark = value;
+                _prefers_color_scheme = value;
             }
         }
 
@@ -70,7 +88,7 @@ namespace Granite {
             }
         }
 
-        private void setup_user_prefers_dark () {
+        private void setup_prefers_color_scheme () {
             try {
                 pantheon_act = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
@@ -79,12 +97,11 @@ namespace Granite {
                     GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
                 );
 
-                user_prefers_dark = pantheon_act.prefers_color_scheme == 1;
+                prefers_color_scheme = (ColorScheme) pantheon_act.prefers_color_scheme;
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
                     int prefers_color_scheme;
                     changed_properties.lookup ("PrefersColorScheme", "i", out prefers_color_scheme);
-                    user_prefers_dark = prefers_color_scheme == 1;
                 });
             } catch (Error e) {
                 critical (e.message);
