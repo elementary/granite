@@ -434,7 +434,7 @@ namespace Granite.Widgets.Utils {
             return false;
         }
 
-        var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
+        var layout = new GLib.Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
         var parts = layout.split (":");
 
         if (parts.length < 2) {
