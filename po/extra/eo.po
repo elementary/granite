@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 09:27+0000\n"
+"POT-Creation-Date: 2020-04-23 22:51+0000\n"
 "PO-Revision-Date: 2020-03-17 14:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/desktop/"
@@ -36,38 +36,54 @@ msgstr ""
 "kromprogrametojn kaj oportunajn metodojn fasonitaj por uzo ĉe aplikaĵoj "
 "faritaj por elementary OS."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
+#: data/granite.appdata.xml.in:15
+#, fuzzy
+#| msgid "New features"
+msgid "New features:"
+msgstr "Novaj funkcioj"
+
+#: data/granite.appdata.xml.in:17
+msgid "New Settings class to share Pantheon desktop settings with apps"
+msgstr ""
+
+#: data/granite.appdata.xml.in:18
+msgid ""
+"Introduced Settings.prefers_color_scheme to get a user's color scheme "
+"preference, i.e. for a dark style"
+msgstr ""
+
+#: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:39
 msgid "Improvements:"
 msgstr "Plibonigoj:"
 
-#: data/granite.appdata.xml.in:17
+#: data/granite.appdata.xml.in:26
 msgid "Better align labels in settings sidebars"
 msgstr "Pli bone liniigi etikedojn ĉe agordaraj flankbretoj"
 
-#: data/granite.appdata.xml.in:18
+#: data/granite.appdata.xml.in:27
 msgid "Make AccelLabel.label settable"
 msgstr "Nun AccelLabel.label agordeblas"
 
-#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
+#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:42
 msgid "Updated translations"
 msgstr "Ĝisdatigitaj tradukoj"
 
-#: data/granite.appdata.xml.in:25
+#: data/granite.appdata.xml.in:34
 msgid "New features"
 msgstr "Novaj funkcioj"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:36
 msgid "Add tooltips to source list items and their actions"
 msgstr "Aldoni ŝpruchelpilojn al fontlistaj elementoj kaj ĝiaj agadoj"
 
-#: data/granite.appdata.xml.in:28
+#: data/granite.appdata.xml.in:37
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Nova AccelLabel kromprogrameto uzota ĉe menuoj kaj ŝprucfenestroj"
 
-#: data/granite.appdata.xml.in:32
+#: data/granite.appdata.xml.in:41
 msgid "Delay tab resizing when closing tabs"
 msgstr "Malfruigi langetan ferman ampleksiĝon"
 
-#: data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:48
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

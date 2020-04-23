@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 09:27+0000\n"
+"POT-Creation-Date: 2020-04-23 22:51+0000\n"
 "PO-Revision-Date: 2020-03-01 15:09+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -33,38 +33,52 @@ msgid ""
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
-msgid "Improvements:"
+#: data/granite.appdata.xml.in:15
+msgid "New features:"
 msgstr ""
 
 #: data/granite.appdata.xml.in:17
-msgid "Better align labels in settings sidebars"
+msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 
 #: data/granite.appdata.xml.in:18
-msgid "Make AccelLabel.label settable"
+msgid ""
+"Introduced Settings.prefers_color_scheme to get a user's color scheme "
+"preference, i.e. for a dark style"
 msgstr ""
 
-#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:33
-msgid "Updated translations"
+#: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:39
+msgid "Improvements:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:25
-msgid "New features"
+#: data/granite.appdata.xml.in:26
+msgid "Better align labels in settings sidebars"
 msgstr ""
 
 #: data/granite.appdata.xml.in:27
+msgid "Make AccelLabel.label settable"
+msgstr ""
+
+#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:42
+msgid "Updated translations"
+msgstr ""
+
+#: data/granite.appdata.xml.in:34
+msgid "New features"
+msgstr ""
+
+#: data/granite.appdata.xml.in:36
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 
-#: data/granite.appdata.xml.in:28
+#: data/granite.appdata.xml.in:37
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 
-#: data/granite.appdata.xml.in:32
+#: data/granite.appdata.xml.in:41
 msgid "Delay tab resizing when closing tabs"
 msgstr ""
 
-#: data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:48
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
