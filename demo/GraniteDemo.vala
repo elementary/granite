@@ -106,6 +106,10 @@ public class Granite.Demo : Gtk.Application {
         window.show_all ();
 
         add_window (window);
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+        });
     }
 
     public static int main (string[] args) {

@@ -99,10 +99,9 @@ namespace Granite {
 
                 prefers_color_scheme = (ColorScheme) pantheon_act.prefers_color_scheme;
 
-                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    int color_scheme;
-                    changed_properties.lookup ("PrefersColorScheme", "i", out color_scheme);
-                    prefers_color_scheme = (ColorScheme) color_scheme;
+                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed, invalid) => {
+                    var color_scheme = changed.lookup_value ("PrefersColorScheme", new VariantType ("i"));
+                    prefers_color_scheme = (ColorScheme) color_scheme.get_int32 ();
                 });
             } catch (Error e) {
                 critical (e.message);
