@@ -14,8 +14,8 @@
       <description>
         <p>New features:</p>
         <ul>
-          <li>New Granite.Settings class to share Pantheon desktop settings with apps</li>
-          <li>New Granite.Settings.prefers_color_scheme to get a user's color scheme preference, i.e. for a dark style</li>
+          <li>New Settings class to share Pantheon desktop settings with apps</li>
+          <li>Introduced Settings.prefers_color_scheme to get a user's color scheme preference, i.e. for a dark style</li>
         </ul>
       </description>
     </release>
