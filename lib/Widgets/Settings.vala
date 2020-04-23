@@ -2,7 +2,7 @@
 namespace Granite {
     [DBus (name = "io.elementary.pantheon.AccountsService")]
     private interface Pantheon.AccountsService : Object {
-        public abstract uint prefers_color_scheme { owned get; set; }
+        public abstract int prefers_color_scheme { owned get; set; }
     }
 
     [DBus (name = "org.freedesktop.Accounts")]
@@ -32,7 +32,7 @@ namespace Granite {
             LIGHT
         }
 
-        private ColorScheme? _prefers_color_scheme = ColorScheme.NO_PREFERENCE;
+        private ColorScheme? _prefers_color_scheme = null;
 
         /**
          * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
@@ -100,8 +100,9 @@ namespace Granite {
                 prefers_color_scheme = (ColorScheme) pantheon_act.prefers_color_scheme;
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    int prefers_color_scheme;
-                    changed_properties.lookup ("PrefersColorScheme", "i", out prefers_color_scheme);
+                    int color_scheme;
+                    changed_properties.lookup ("PrefersColorScheme", "i", out color_scheme);
+                    prefers_color_scheme = (ColorScheme) color_scheme;
                 });
             } catch (Error e) {
                 critical (e.message);
