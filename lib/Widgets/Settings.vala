@@ -82,8 +82,8 @@ namespace Granite {
                 user_prefers_dark = pantheon_act.prefers_color_scheme == 1;
 
                 ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed_properties, invalidated_properties) => {
-                    uint prefers_color_scheme;
-                    changed_properties.lookup ("PrefersColorScheme", "u", out prefers_color_scheme);
+                    int prefers_color_scheme;
+                    changed_properties.lookup ("PrefersColorScheme", "i", out prefers_color_scheme);
                     user_prefers_dark = prefers_color_scheme == 1;
                 });
             } catch (Error e) {
