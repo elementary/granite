@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-23 22:51+0000\n"
-"PO-Revision-Date: 2020-01-23 11:08+0000\n"
+"PO-Revision-Date: 2020-04-25 11:10+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,20 +37,22 @@ msgstr ""
 "l'elementary OS."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New features"
 msgid "New features:"
-msgstr "Funcions noves"
+msgstr "Funcions noves:"
 
 #: data/granite.appdata.xml.in:17
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
+"Classe nova de paràmetres per compartir els paràmetres del Pantheon amb les "
+"aplicacions"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
+"Introducció de Settings.prefers_color_scheme per obtenir la preferència de "
+"l'esquema de colors de l'usuari, és a dir, per a un estil fosc"
 
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:39
 msgid "Improvements:"
