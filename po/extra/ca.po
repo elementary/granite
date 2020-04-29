@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-23 22:51+0000\n"
+"POT-Creation-Date: 2020-04-29 22:17+0000\n"
 "PO-Revision-Date: 2020-04-25 11:10+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,40 +54,50 @@ msgstr ""
 "Introducció de Settings.prefers_color_scheme per obtenir la preferència de "
 "l'esquema de colors de l'usuari, és a dir, per a un estil fosc"
 
-#: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:20
+msgid "Deprecations:"
+msgstr ""
+
+#: data/granite.appdata.xml.in:22
+msgid ""
+"It is now recommended to use GLib.Settings instead of Granite.Services."
+"Settings"
+msgstr ""
+
+#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:43
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:30
 msgid "Better align labels in settings sidebars"
 msgstr "Millora de l'alineació de les etiquetes a les barres laterals"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:31
 msgid "Make AccelLabel.label settable"
 msgstr "Es pot configurar AccelLabel.label."
 
-#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:42
+#: data/granite.appdata.xml.in:32 data/granite.appdata.xml.in:46
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/granite.appdata.xml.in:34
+#: data/granite.appdata.xml.in:38
 msgid "New features"
 msgstr "Funcions noves"
 
-#: data/granite.appdata.xml.in:36
+#: data/granite.appdata.xml.in:40
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 "Addició d'informació d'ajuda als elements de la llista d'origen i les seves "
 "accions"
 
-#: data/granite.appdata.xml.in:37
+#: data/granite.appdata.xml.in:41
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Giny nou AccelLabel per usar-lo en menús i finestres emergents"
 
-#: data/granite.appdata.xml.in:41
+#: data/granite.appdata.xml.in:45
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retard del canvi de mida de la pestanya quan es tanquen les pestanyes"
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:52
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
