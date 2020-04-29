@@ -1,3 +1,14 @@
+granite (5.4.0) bionic; urgency=medium
+
+  * Release 5.4.0 (#387)
+  * 5.4.0 version bump (#383)
+  * Update translation files
+  * Update translation template
+  * Get prefers color scheme from accountsservice (#319)
+  * Settings: Deprecate and suggest GLib.Settings (#376)
+
+ -- Cody Garver <cody@elementary.io>  Wed, 29 Apr 2020 22:17:58 +0000
+
 granite (5.3.1) bionic; urgency=medium
 
   * Release 5.3.1 (#379)
