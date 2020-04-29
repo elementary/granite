@@ -91,7 +91,7 @@ namespace Granite.Services {
      *  1. When the corresponding key of one of the properties of the subclass changes, it will also verify the data and change it, if necessary,
      *     before loading it into as the corresponding property's value.
      */
-    [Version (deprecated = true, deprecated_since = "5.3.2", replacement = "GLib.Settings")]
+    [Version (deprecated = true, deprecated_since = "5.4.0", replacement = "GLib.Settings")]
     public abstract class Settings : GLib.Object {
 
         /**
