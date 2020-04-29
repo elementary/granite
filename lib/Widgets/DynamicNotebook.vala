@@ -718,6 +718,14 @@ namespace Granite.Widgets {
             set { notebook.group_name = value; }
         }
 
+        /**
+         * Controls the Gtk.Notebook tab bar position
+         */
+        public Gtk.PositionType tab_bar_position {
+            set { notebook.tab_pos = value; }
+            get { return notebook.tab_pos; }
+        }
+
         public enum TabBarBehavior {
             ALWAYS = 0,
             SINGLE = 1,
