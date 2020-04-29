@@ -10,12 +10,16 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="5.4.0" date="2020-04-22" urgency="medium">
+    <release version="5.4.0" date="2020-04-29" urgency="medium">
       <description>
         <p>New features:</p>
         <ul>
           <li>New Settings class to share Pantheon desktop settings with apps</li>
           <li>Introduced Settings.prefers_color_scheme to get a user's color scheme preference, i.e. for a dark style</li>
+        </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>It is now recommended to use GLib.Settings instead of Granite.Services.Settings</li>
         </ul>
       </description>
     </release>
