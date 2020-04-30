@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-29 22:17+0000\n"
-"PO-Revision-Date: 2020-04-27 00:10+0000\n"
+"PO-Revision-Date: 2020-05-02 11:10+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -57,13 +57,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:20
 msgid "Deprecations:"
-msgstr ""
+msgstr "Depreciações:"
 
 #: data/granite.appdata.xml.in:22
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"Recomenda-se agora a utilização de GLib.Settings em vez de "
+"Granite.Services.Settings"
 
 #: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:43
 msgid "Improvements:"
