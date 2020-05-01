@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-23 22:51+0000\n"
+"POT-Creation-Date: 2020-04-29 22:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -44,38 +44,48 @@ msgid ""
 "preference, i.e. for a dark style"
 msgstr ""
 
-#: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:20
+msgid "Deprecations:"
+msgstr ""
+
+#: data/granite.appdata.xml.in:22
+msgid ""
+"It is now recommended to use GLib.Settings instead of Granite.Services."
+"Settings"
+msgstr ""
+
+#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:43
 msgid "Improvements:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:30
 msgid "Better align labels in settings sidebars"
 msgstr ""
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:31
 msgid "Make AccelLabel.label settable"
 msgstr ""
 
-#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:42
+#: data/granite.appdata.xml.in:32 data/granite.appdata.xml.in:46
 msgid "Updated translations"
 msgstr ""
 
-#: data/granite.appdata.xml.in:34
+#: data/granite.appdata.xml.in:38
 msgid "New features"
 msgstr ""
 
-#: data/granite.appdata.xml.in:36
+#: data/granite.appdata.xml.in:40
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 
-#: data/granite.appdata.xml.in:37
+#: data/granite.appdata.xml.in:41
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 
-#: data/granite.appdata.xml.in:41
+#: data/granite.appdata.xml.in:45
 msgid "Delay tab resizing when closing tabs"
 msgstr ""
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:52
 msgid "elementary, Inc."
 msgstr ""
