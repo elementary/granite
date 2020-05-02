@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-29 22:17+0000\n"
-"PO-Revision-Date: 2020-04-25 11:10+0000\n"
+"PO-Revision-Date: 2020-05-03 13:10+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,13 +54,13 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:20
 msgid "Deprecations:"
-msgstr ""
+msgstr "非推奨:"
 
 #: data/granite.appdata.xml.in:22
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
-msgstr ""
+msgstr "Granite.Services.Settings の代替として GLib.Settings の使用を推奨します"
 
 #: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:43
 msgid "Improvements:"
