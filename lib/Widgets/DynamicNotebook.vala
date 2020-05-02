@@ -75,6 +75,12 @@ namespace Granite.Widgets {
             }
         }
 
+        public string tooltip {
+            set {
+                _label.set_tooltip_text (value);
+            }
+        }
+
         private bool _pinned = false;
         public bool pinned {
             get { return _pinned; }
