@@ -123,11 +123,17 @@ libgranite_dep = declare_dependency(
     include_directories: [include_directories('.')],
 )
 
+gsettings_desktop_schemas_dep = [
+    dependency('gsettings-desktop-schemas', version: '>= 3.27.1')
+]
+
+pc_deps = libgranite_deps + gsettings_desktop_schemas_dep
+
 # generate pkgconfig file
 granite_pc = pkgconfig.generate(
     libgranite,
     name: 'granite',
-    requires: libgranite_deps,
+    requires: pc_deps,
     subdirs: ['granite'],
     description: 'elementary\'s Application Framework',
     version: meson.project_version(),
