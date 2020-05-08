@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
+"POT-Creation-Date: 2020-05-08 22:02+0000\n"
 "PO-Revision-Date: 2019-05-14 23:14+0000\n"
 "Last-Translator: Carmina16 <mistresssilvara@hotmail.com>\n"
 "Language-Team: Occidental <https://l10n.elementary.io/projects/desktop/"
@@ -206,15 +206,15 @@ msgstr ""
 msgid "Clear All"
 msgstr "Vacuar omni"
 
-#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
+#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
 msgid "New Tab"
 msgstr "Nov carte"
 
-#: lib/Widgets/DynamicNotebook.vala:801
+#: lib/Widgets/DynamicNotebook.vala:796
 msgid "Undo Close Tab"
 msgstr "Defar: Cluder un carte"
 
-#: lib/Widgets/DynamicNotebook.vala:841
+#: lib/Widgets/DynamicNotebook.vala:836
 msgid "Closed Tabs"
 msgstr "Cluder cartes"
 
