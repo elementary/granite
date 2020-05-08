@@ -50,7 +50,7 @@ public class CSSView : Gtk.Grid {
         var card = new Gtk.Grid ();
         card.orientation = Gtk.Orientation.VERTICAL;
 
-        var card_context = card.get_style_context ();
+        unowned Gtk.StyleContext card_context = card.get_style_context ();
         card_context.add_class (Granite.STYLE_CLASS_CARD);
         card_context.add_class (Granite.STYLE_CLASS_ROUNDED);
 
