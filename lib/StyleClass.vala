@@ -110,6 +110,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     /**
+     * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
+     */
+    public const string STYLE_CLASS_ROUNDED = "rounded";
+    /**
      * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";

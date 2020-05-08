@@ -44,12 +44,16 @@ public class CSSView : Gtk.Grid {
         header4.margin_bottom = 12;
         header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var card_label = new Gtk.Label ("\"card\" style class:");
+        var card_label = new Gtk.Label ("\"card\" with \"rounded\" style class:");
         card_label.halign = Gtk.Align.END;
 
         var card = new Gtk.Grid ();
         card.orientation = Gtk.Orientation.VERTICAL;
-        card.get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
+
+        unowned Gtk.StyleContext card_context = card.get_style_context ();
+        card_context.add_class (Granite.STYLE_CLASS_CARD);
+        card_context.add_class (Granite.STYLE_CLASS_ROUNDED);
+
         card.add (header1);
         card.add (header2);
         card.add (header3);
