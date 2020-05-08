@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 22:17+0000\n"
+"POT-Creation-Date: 2020-05-08 22:02+0000\n"
 "PO-Revision-Date: 2020-05-02 11:10+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
@@ -37,17 +37,21 @@ msgstr ""
 "métodos práticos projetados para uso em aplicações criadas para o elementary "
 "OS."
 
-#: data/granite.appdata.xml.in:15
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:23
 msgid "New features:"
 msgstr "Novas funcionalidades:"
 
 #: data/granite.appdata.xml.in:17
+msgid "New STYLE_CLASS_ROUNDED constant"
+msgstr ""
+
+#: data/granite.appdata.xml.in:25
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Definições de nova classe para partilhar as definições do ambiente de "
 "trabalho Pantheon com aplicações"
 
-#: data/granite.appdata.xml.in:18
+#: data/granite.appdata.xml.in:26
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -55,52 +59,52 @@ msgstr ""
 "Introdução de Settings.prefers_color_scheme para obter a preferência de um "
 "esquema de cores do utilizador, ou seja, para um estilo escuro"
 
-#: data/granite.appdata.xml.in:20
+#: data/granite.appdata.xml.in:28
 msgid "Deprecations:"
 msgstr "Depreciações:"
 
-#: data/granite.appdata.xml.in:22
+#: data/granite.appdata.xml.in:30
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
-"Recomenda-se agora a utilização de GLib.Settings em vez de "
-"Granite.Services.Settings"
+"Recomenda-se agora a utilização de GLib.Settings em vez de Granite.Services."
+"Settings"
 
-#: data/granite.appdata.xml.in:28 data/granite.appdata.xml.in:43
+#: data/granite.appdata.xml.in:36 data/granite.appdata.xml.in:51
 msgid "Improvements:"
 msgstr "Melhorias:"
 
-#: data/granite.appdata.xml.in:30
+#: data/granite.appdata.xml.in:38
 msgid "Better align labels in settings sidebars"
 msgstr "Melhor alinhamento das etiquetas nas definições das barras laterais"
 
-#: data/granite.appdata.xml.in:31
+#: data/granite.appdata.xml.in:39
 msgid "Make AccelLabel.label settable"
 msgstr "Tornar o AccelLabel.label regulável"
 
-#: data/granite.appdata.xml.in:32 data/granite.appdata.xml.in:46
+#: data/granite.appdata.xml.in:40 data/granite.appdata.xml.in:54
 msgid "Updated translations"
 msgstr "Traduções atualizadas"
 
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:46
 msgid "New features"
 msgstr "Novas funcionalidades"
 
-#: data/granite.appdata.xml.in:40
+#: data/granite.appdata.xml.in:48
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 "Adicionar dicas de ferramentas aos itens da lista de opções de fornecimento "
 "e suas ações"
 
-#: data/granite.appdata.xml.in:41
+#: data/granite.appdata.xml.in:49
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Novo widget AccelLabel para uso em menus e janelas emergentes"
 
-#: data/granite.appdata.xml.in:45
+#: data/granite.appdata.xml.in:53
 msgid "Delay tab resizing when closing tabs"
 msgstr "Atraso no redimensionamento do separador ao fechar os separadores"
 
-#: data/granite.appdata.xml.in:52
+#: data/granite.appdata.xml.in:60
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
