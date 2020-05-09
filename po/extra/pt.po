@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-08 22:02+0000\n"
-"PO-Revision-Date: 2020-05-02 11:10+0000\n"
+"PO-Revision-Date: 2020-05-11 19:07+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -43,7 +43,7 @@ msgstr "Novas funcionalidades:"
 
 #: data/granite.appdata.xml.in:17
 msgid "New STYLE_CLASS_ROUNDED constant"
-msgstr ""
+msgstr "Nova constante STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:25
 msgid "New Settings class to share Pantheon desktop settings with apps"
