@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-08 22:02+0000\n"
+"POT-Creation-Date: 2020-05-11 19:08+0000\n"
 "PO-Revision-Date: 2020-03-02 23:09+0000\n"
 "Last-Translator: Marko <marko.dolar@gmail.com>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
@@ -36,68 +36,76 @@ msgstr ""
 "Spremljevalna knjižnica za GTK in GLib, ki nudi kompleksne gradnike in "
 "priročne metode, narejene za uporabo v aplikacijah za elementary OS."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:23
+#: data/granite.appdata.xml.in:15
+msgid "New Style Constants:"
+msgstr ""
+
+#: data/granite.appdata.xml.in:17
+msgid "STYLE_CLASS_COLOR_BUTTON"
+msgstr ""
+
+#: data/granite.appdata.xml.in:18
+msgid "STYLE_CLASS_ROUNDED"
+msgstr ""
+
+#: data/granite.appdata.xml.in:24
 #, fuzzy
 #| msgid "New features"
 msgid "New features:"
 msgstr "Nove zmožnosti"
 
-#: data/granite.appdata.xml.in:17
-msgid "New STYLE_CLASS_ROUNDED constant"
-msgstr ""
-
-#: data/granite.appdata.xml.in:25
+#: data/granite.appdata.xml.in:26
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:27
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
 
-#: data/granite.appdata.xml.in:28
+#: data/granite.appdata.xml.in:29
 msgid "Deprecations:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:30
+#: data/granite.appdata.xml.in:31
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
 
-#: data/granite.appdata.xml.in:36 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:52
 msgid "Improvements:"
 msgstr "Izboljšave:"
 
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:39
 msgid "Better align labels in settings sidebars"
 msgstr "Boljša poravnava besedila v stranski vrstici za nastavitve"
 
-#: data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:40
 msgid "Make AccelLabel.label settable"
 msgstr "Nastavljiv AccelLabel.label"
 
-#: data/granite.appdata.xml.in:40 data/granite.appdata.xml.in:54
+#: data/granite.appdata.xml.in:41 data/granite.appdata.xml.in:55
 msgid "Updated translations"
 msgstr "Posodobljeni prevodi"
 
-#: data/granite.appdata.xml.in:46
+#: data/granite.appdata.xml.in:47
 msgid "New features"
 msgstr "Nove zmožnosti"
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:49
 msgid "Add tooltips to source list items and their actions"
 msgstr "Dodaj namige h SourceList elementom in njihovim akcijam"
 
-#: data/granite.appdata.xml.in:49
+#: data/granite.appdata.xml.in:50
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Nov AccelLabel  gradnik za uporabo v menijih in pojavnimi okni"
 
-#: data/granite.appdata.xml.in:53
+#: data/granite.appdata.xml.in:54
 msgid "Delay tab resizing when closing tabs"
 msgstr "Zakasnitev spremembe velikosti zavihkov ob zaprtju zavihka"
 
-#: data/granite.appdata.xml.in:60
+#: data/granite.appdata.xml.in:61
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
