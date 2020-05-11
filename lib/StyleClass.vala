@@ -77,6 +77,10 @@ namespace Granite {
      * Style class for checkered backgrounds to represent transparency in images
      */
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
+        /**
+     * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
+     */
+    public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
