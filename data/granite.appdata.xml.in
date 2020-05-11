@@ -12,9 +12,10 @@
   <releases>
     <release version="5.5.0" date="2020-05-07" urgency="medium">
       <description>
-        <p>New features:</p>
+        <p>New Style Constants:</p>
         <ul>
-          <li>New STYLE_CLASS_ROUNDED constant</li>
+          <li>STYLE_CLASS_COLOR_BUTTON</li>
+          <li>STYLE_CLASS_ROUNDED</li>
         </ul>
       </description>
     </release>
