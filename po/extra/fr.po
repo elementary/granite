@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 19:08+0000\n"
-"PO-Revision-Date: 2020-05-11 19:07+0000\n"
+"PO-Revision-Date: 2020-05-13 08:10+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fr/>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,17 +40,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Nouvelles constantes de style :"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:18
-#, fuzzy
-#| msgid "New STYLE_CLASS_ROUNDED constant"
 msgid "STYLE_CLASS_ROUNDED"
-msgstr "Nouvelle constante STYLE_CLASS_ROUNDED"
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:24
 msgid "New features:"
