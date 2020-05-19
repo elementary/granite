@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 19:08+0000\n"
-"PO-Revision-Date: 2020-04-27 00:10+0000\n"
+"PO-Revision-Date: 2020-05-21 13:11+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/pt_BR/>\n"
@@ -39,15 +39,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Novas constantes de estilo:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:24
 msgid "New features:"
@@ -69,13 +69,14 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:29
 msgid "Deprecations:"
-msgstr ""
+msgstr "Depreciações:"
 
 #: data/granite.appdata.xml.in:31
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"Agora é recomendado usar GLib.Settings em vez de Granite.Services.Settings"
 
 #: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:52
 msgid "Improvements:"
