@@ -78,6 +78,7 @@ public class Granite.Avatar : Gtk.Grid {
 
         name_label = new Gtk.Label (get_initials ());
         name_label.halign = name_label.valign = Gtk.Align.CENTER;
+        name_label.use_markup = true;
 
         var overlay_grid = new AvatarOverlay ();
 
@@ -180,7 +181,10 @@ public class Granite.Avatar : Gtk.Grid {
             initials += names[names.length - 1].substring (0, 1).up ();
         }
 
-        return (initials);
+        var font_size = (int) (0.35 * pixel_size);
+        var markup = """<span font="%i">%s</span>""".printf (font_size, initials);
+
+        return (markup);
     }
 
     // We have to do this so Gtk knows we want this specific grid and not all grids
