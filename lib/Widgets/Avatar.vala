@@ -1,190 +1,192 @@
 /*
- *  Copyright (C) 2015-2017 Granite Developers (https://launchpad.net/granite)
- *
- *  This program or library is free software; you can redistribute it
- *  and/or modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 3 of the License, or (at your option) any later version.
- *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *  Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General
- *  Public License along with this library; if not, write to the
- *  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- *  Boston, MA 02110-1301 USA.
- *
- *  Authored by: Felipe Escoto <felescoto95@hotmail.com>, Rico Tzschichholz <ricotz@ubuntu.com>
- */
+* Copyright 2020 elementary, Inc. (https://elementary.io)
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published by
+* the Free Software Foundation, either version 2.1 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Library General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*/
 
-/**
- * The Avatar widget allowes to theme & crop images with css BORDER_RADIUS property in the .avatar class.
- *
- * ''Example''<<BR>>
- * {{{
- * public class AvatarView : Gtk.Grid {
- *     construct {
- *         var username = GLib.Environment.get_user_name ();
- *         var iconfile = @"/var/lib/AccountsService/icons/$username";
- *
- *         var avatar_dialog = new Granite.Widgets.Avatar.from_file (iconfile, 48);
- *
- *         var avatar_default_dialog = new Granite.Widgets.Avatar.with_default_icon (48);
- *
- *         row_spacing = 6;
- *         halign = Gtk.Align.CENTER;
- *         valign = Gtk.Align.CENTER;
- *         attach (avatar_dialog, 0, 0, 1, 1);
- *         attach (avatar_default_dialog, 0, 1, 1, 1);
- *     }
- * }
- * }}}
- */
-public class Granite.Widgets.Avatar : Gtk.EventBox {
-    private const string DEFAULT_ICON = "avatar-default";
-    private const int EXTRA_MARGIN = 4;
-    private bool draw_theme_background = true;
-
-    private bool is_default = false;
-    private string? orig_filename = null;
-    private int? orig_pixel_size = null;
-
-    public Gdk.Pixbuf? pixbuf { get; set; }
-
+public class Granite.Avatar : Gtk.Grid {
     /**
-     * Makes new Avatar widget
-     *
+     * The size in pixels to render the widget at. Avatars are always square
      */
-    public Avatar () {
-    }
+    public int pixel_size { get; construct set; }
 
     /**
-    * Creates a new Avatar from the specified pixbuf
-    *
-    * @param pixbuf image to be used
-    */
-    public Avatar.from_pixbuf (Gdk.Pixbuf pixbuf) {
-        Object (pixbuf: pixbuf);
-    }
-
-    /**
-     * Creates a new Avatar from the specified filepath and icon size
-     *
-     * @param filepath image to be used
-     * @param pixel_size to scale the image
+     * The file name to load as the avatar image. Used with {@link Gdk.Pixbuf.from_file_at_scale}
      */
-    public Avatar.from_file (string filepath, int pixel_size) {
-        load_image (filepath, pixel_size);
-        orig_filename = filepath;
-        orig_pixel_size = pixel_size;
-    }
+    public string? icon_file { get; construct set; }
 
-    private void load_image (string filepath, int pixel_size) {
-        try {
-            var size = pixel_size * get_scale_factor ();
-            pixbuf = new Gdk.Pixbuf.from_file_at_size (filepath, size, size);
-        } catch (Error e) {
-            show_default (pixel_size);
-        }
+    /**
+     * The full name of the individual (i.e. "John Doe") to use for generating initials
+     */
+    public string full_name { get; construct set; }
+
+    private Gtk.Label name_label;
+    private unowned Gtk.StyleContext overlay_style_context;
+
+    /**
+     * Creates a new Avatar from the specified name, pixel size, and optional image file path
+     *
+     * @param full_name The full name of the individual (i.e. "John Doe")
+     * @param pixel_size The size in pixels to render the widget at
+     * @param icon_file the file name to load as the avatar image. Used with {@link Gdk.Pixbuf.from_file_at_scale} 
+     */
+    public Avatar (string full_name, int pixel_size, string? icon_file = null) {
+        Object (
+            full_name: full_name,
+            icon_file: icon_file,
+            pixel_size: pixel_size
+        );
     }
 
     /**
-     * Creates a new Avatar with the default icon from theme without applying the css style
+     * Creates a new Avatar from a LibFolks Individual and the specified pixel size
      *
-     * @param pixel_size size of the icon to be loaded
+     * @param individual The {@link Folks.Individual } to get display name and avatar information from
+     * @param pixel_size The size in pixels to render the widget at
      */
-    public Avatar.with_default_icon (int pixel_size) {
-        show_default (pixel_size);
-        orig_pixel_size = pixel_size;
-    }
+    public Avatar.from_individual (Folks.Individual individual, int pixel_size) {
+        Object (
+            full_name: individual.display_name,
+            pixel_size: pixel_size
+        );
 
-    construct {
-        valign = Gtk.Align.CENTER;
-        halign = Gtk.Align.CENTER;
-        visible_window = false;
-        var style_context = get_style_context ();
-        style_context.add_class (Granite.STYLE_CLASS_AVATAR);
-
-        notify["pixbuf"].connect (refresh_size_request);
-        Gdk.Screen.get_default ().monitors_changed.connect (dpi_change);
-    }
-
-    ~Avatar () {
-        notify["pixbuf"].disconnect (refresh_size_request);
-        Gdk.Screen.get_default ().monitors_changed.disconnect (dpi_change);
-    }
-
-    private void refresh_size_request () {
-        if (pixbuf != null) {
-            var scale_factor = get_scale_factor ();
-            set_size_request (pixbuf.width / scale_factor + EXTRA_MARGIN * 2, pixbuf.height / scale_factor + EXTRA_MARGIN * 2);
-            draw_theme_background = true;
-        } else {
-            set_size_request (0, 0);
-        }
-
-        queue_draw ();
-    }
-
-    private void dpi_change () {
-        if (is_default && orig_pixel_size != null) {
-            show_default (orig_pixel_size);
-        } else {
-            if (orig_filename != null && orig_pixel_size != null) {
-                load_image (orig_filename, orig_pixel_size);
+        if (individual.avatar != null) {
+            try {
+                individual.avatar.load (pixel_size, null);
+                icon_file = individual.avatar.to_string ();
+            } catch (Error e) {
+                critical (e.message);
             }
         }
     }
 
-    /**
-     * Load the default avatar icon from theme into the widget without applying the css style
-     *
-     * @param pixel_size size of the icon to be loaded
-     */
-    public void show_default (int pixel_size) {
-        Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default ();
-        try {
-            pixbuf = icon_theme.load_icon_for_scale (DEFAULT_ICON, pixel_size, get_scale_factor (), 0);
-        } catch (Error e) {
-            stderr.printf ("Error setting default avatar icon: %s ", e.message);
-        }
+    construct {
+        set_css_name (Granite.STYLE_CLASS_AVATAR);
 
-        draw_theme_background = false;
-        is_default = true;
+        name_label = new Gtk.Label (get_initials ());
+        name_label.halign = name_label.valign = Gtk.Align.CENTER;
+
+        var overlay_grid = new AvatarOverlay ();
+
+        overlay_style_context = overlay_grid.get_style_context ();
+
+        var overlay = new Gtk.Overlay ();
+        overlay.add (name_label);
+        overlay.add_overlay (overlay_grid);
+
+        halign = valign = Gtk.Align.CENTER;
+        add (overlay);
+
+        notify["icon-file"].connect (() => {
+            queue_draw ();
+        });
+
+        notify["full-name"].connect (() => {
+            queue_draw ();
+        });
+
+        notify["pixel-size"].connect (() => {
+            queue_draw ();
+        });
+    }
+
+    public override Gtk.SizeRequestMode get_request_mode () {
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+    }
+
+    public override void get_preferred_height_for_width (int width, out int minimum_height, out int natural_height) {
+        minimum_height = natural_height = pixel_size;
     }
 
     public override bool draw (Cairo.Context cr) {
-        if (pixbuf == null) {
+        unowned Gtk.StyleContext style_context = get_style_context ();
+        height_request = width_request = pixel_size;
+
+        var border = style_context.get_border (style_context.get_state ());
+
+        if (icon_file == null || icon_file == "") {
+            name_label.label = get_initials ();
+            name_label.height_request = pixel_size - (border.top + border.bottom);
+            name_label.width_request = pixel_size - (border.left + border.right);
             return base.draw (cr);
         }
 
-        unowned Gtk.StyleContext style_context = get_style_context ();
-        var width = get_allocated_width () - EXTRA_MARGIN * 2;
-        var height = get_allocated_height () - EXTRA_MARGIN * 2;
-        var scale_factor = get_scale_factor ();
-
-        if (draw_theme_background) {
+        try {
+            var size = pixel_size * get_scale_factor ();
             var border_radius = style_context.get_property (Gtk.STYLE_PROPERTY_BORDER_RADIUS, style_context.get_state ()).get_int ();
-            var crop_radius = int.min (width / 2, border_radius * width / 100);
+            var crop_radius = int.min (pixel_size / 2, border_radius * pixel_size / 100);
 
-            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height, crop_radius);
+            style_context.render_background (cr, 0, 0, pixel_size, pixel_size);
+            style_context.render_frame (cr, 0, 0, pixel_size, pixel_size);
+
+            Granite.Drawing.Utilities.cairo_rounded_rectangle (cr, 0, 0, pixel_size, pixel_size, crop_radius);
             cr.save ();
+
+            var pixbuf = new Gdk.Pixbuf.from_file_at_scale (icon_file, size, size, true);
             cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
-            Gdk.cairo_set_source_pixbuf (cr, pixbuf, EXTRA_MARGIN * scale_factor, EXTRA_MARGIN * scale_factor);
+            Gdk.cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+
             cr.fill_preserve ();
             cr.restore ();
-            style_context.render_background (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
-            style_context.render_frame (cr, EXTRA_MARGIN, EXTRA_MARGIN, width, height);
 
-        } else {
-            cr.save ();
-            cr.scale (1.0 / scale_factor, 1.0 / scale_factor);
-            style_context.render_icon (cr, pixbuf, EXTRA_MARGIN, EXTRA_MARGIN);
-            cr.restore ();
+            overlay_style_context.render_background (
+                cr,
+                border.left, border.top,
+                pixel_size - (border.left + border.right), pixel_size - (border.top + border.bottom)
+            );
+            overlay_style_context.render_frame (
+                cr,
+                border.left, border.top,
+                pixel_size - (border.left + border.right), pixel_size - (border.top + border.bottom)
+            );
+
+            name_label.label = "";
+        } catch (Error e) {
+            critical (e.message);
+            return base.draw (cr);
         }
 
         return Gdk.EVENT_STOP;
+    }
+
+    private string get_initials () {
+        if (full_name == "" || full_name == null) {
+            full_name = "?";
+        }
+
+        var names = full_name.split (" ");
+
+        string initials;
+        if (names[0].length > 1) {
+            initials = names[0].substring (0, 1).up ();
+        } else {
+            initials = names[0];
+        }
+
+        if (names.length > 1) {
+            initials += names[names.length - 1].substring (0, 1).up ();
+        }
+
+        return (initials);
+    }
+
+    // We have to do this so Gtk knows we want this specific grid and not all grids
+    private class AvatarOverlay : Gtk.Grid {
+        construct {
+            set_css_name ("avatar-overlay");
+        }
     }
 }

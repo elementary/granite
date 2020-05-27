@@ -20,24 +20,24 @@
 
 public class AvatarView : Gtk.Grid {
     construct {
-        var username = GLib.Environment.get_user_name ();
-        var iconfile = @"/var/lib/AccountsService/icons/$username";
+        var realname = GLib.Environment.get_real_name ();
+        var iconfile = "/var/lib/AccountsService/icons/%s".printf (GLib.Environment.get_user_name ());
 
-        var avatar_menu = new Granite.Widgets.Avatar.from_file (iconfile, 16);
+        var avatar_menu = new Granite.Avatar (realname, 24, iconfile);
 
-        var avatar_large_toolbar = new Granite.Widgets.Avatar.from_file (iconfile, 24);
+        var avatar_large_toolbar = new Granite.Avatar (realname, 32, iconfile);
 
-        var avatar_dnd = new Granite.Widgets.Avatar.from_file (iconfile, 32);
+        var avatar_dnd = new Granite.Avatar (realname, 48, iconfile);
 
-        var avatar_dialog = new Granite.Widgets.Avatar.from_file (iconfile, 48);
+        var avatar_dialog = new Granite.Avatar (realname, 64, iconfile);
 
-        var avatar_default_menu = new Granite.Widgets.Avatar.with_default_icon (16);
+        var avatar_default_menu = new Granite.Avatar (realname, 24);
 
-        var avatar_default_large_toolbar = new Granite.Widgets.Avatar.with_default_icon (24);
+        var avatar_default_large_toolbar = new Granite.Avatar (realname, 32);
 
-        var avatar_default_dnd = new Granite.Widgets.Avatar.with_default_icon (32);
+        var avatar_default_dnd = new Granite.Avatar (realname, 48);
 
-        var avatar_default_dialog = new Granite.Widgets.Avatar.with_default_icon (48);
+        var avatar_default_dialog = new Granite.Avatar (realname, 64);
 
         column_spacing = 12;
         row_spacing = 6;
@@ -45,15 +45,15 @@ public class AvatarView : Gtk.Grid {
         valign = Gtk.Align.CENTER;
         attach (avatar_menu, 0, 0, 1, 1);
         attach (avatar_default_menu, 0, 1, 1, 1);
-        attach (new Gtk.Label ("16px"), 0, 2, 1, 1);
+        attach (new Gtk.Label ("24px"), 0, 2, 1, 1);
         attach (avatar_large_toolbar, 1, 0, 1, 1);
         attach (avatar_default_large_toolbar, 1, 1, 1, 1);
-        attach (new Gtk.Label ("24px"), 1, 2, 1, 1);
+        attach (new Gtk.Label ("32px"), 1, 2, 1, 1);
         attach (avatar_dnd, 2, 0, 1, 1);
         attach (avatar_default_dnd, 2, 1, 1, 1);
-        attach (new Gtk.Label ("32px"), 2, 2, 1, 1);
+        attach (new Gtk.Label ("48px"), 2, 2, 1, 1);
         attach (avatar_dialog, 3, 0, 1, 1);
         attach (avatar_default_dialog, 3, 1, 1, 1);
-        attach (new Gtk.Label ("48px"), 3, 2, 1, 1);
+        attach (new Gtk.Label ("64px"), 3, 2, 1, 1);
     }
 }
