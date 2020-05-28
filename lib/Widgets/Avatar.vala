@@ -51,28 +51,6 @@ public class Granite.Avatar : Gtk.Grid {
         );
     }
 
-    /**
-     * Creates a new Avatar from a LibFolks Individual and the specified pixel size
-     *
-     * @param individual The {@link Folks.Individual } to get display name and avatar information from
-     * @param pixel_size The size in pixels to render the widget at
-     */
-    public Avatar.from_individual (Folks.Individual individual, int pixel_size) {
-        Object (
-            full_name: individual.display_name,
-            pixel_size: pixel_size
-        );
-
-        if (individual.avatar != null) {
-            try {
-                individual.avatar.load (pixel_size, null);
-                icon_file = individual.avatar.to_string ();
-            } catch (Error e) {
-                critical (e.message);
-            }
-        }
-    }
-
     construct {
         set_css_name (Granite.STYLE_CLASS_AVATAR);
 

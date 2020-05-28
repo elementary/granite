@@ -37,7 +37,6 @@ add_project_arguments(
 )
 
 libgranite_deps = [
-    dependency('folks'),
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),
     dependency('gio-unix-2.0', version: '>=' + glib_min_version),
