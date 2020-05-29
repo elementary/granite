@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 19:08+0000\n"
-"PO-Revision-Date: 2020-04-05 22:10+0000\n"
+"PO-Revision-Date: 2020-05-29 13:11+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/mr/>\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/mr/>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,41 +37,43 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
-msgstr ""
+msgstr "नवीन शैलीतील स्थिर :"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:24
-#, fuzzy
-#| msgid "New features"
 msgid "New features:"
-msgstr "नवीन वैशिष्टये"
+msgstr "नवीन वैशिष्टये:"
 
 #: data/granite.appdata.xml.in:26
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
+"अ‍ॅप्‍ससह पँथिओन डेस्कटॉप सेटिंग्ज सामायिक करण्यासाठी नवीन सेटिंग्ज क्लास"
 
 #: data/granite.appdata.xml.in:27
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
+"वापरकर्त्याची रंगसंगती प्राधान्य मिळविण्यासाठी Settings.prefers_color_scheme "
+"सादर केले, उदा. गडद शैलीसाठी"
 
 #: data/granite.appdata.xml.in:29
 msgid "Deprecations:"
-msgstr ""
+msgstr "घसारा:"
 
 #: data/granite.appdata.xml.in:31
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"आता Granite.Services.Settings ऐवजी GLib.Settings  वापरण्याची शिफारस केली जाते"
 
 #: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:52
 msgid "Improvements:"
