@@ -460,6 +460,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the schema name. If the layout could not be determined, a warning will be thrown and null will be returned
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public string? get_button_layout_schema () {
         var sss = SettingsSchemaSource.get_default ();
 
