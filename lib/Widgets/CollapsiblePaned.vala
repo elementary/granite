@@ -33,6 +33,7 @@ namespace Granite.Widgets {
      * A paned that can be easily collapsed by double-clicking over the pane separator.
      * If it was previously collapsed, it is expanded, and vice-versa.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.Window")]
     public class CollapsiblePaned : Gtk.Paned {
         public CollapseMode collapse_mode { get; set; default = CollapseMode.NONE; }
         //public signal void shrink(); //TODO: Make the default action overwritable
