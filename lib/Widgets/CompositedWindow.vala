@@ -40,6 +40,7 @@ namespace Granite.Widgets {
      *
      * Do not forget to call {@link Gtk.Widget.show_all} to actually start receiving events.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.Window")]
     public class CompositedWindow : Gtk.Window, Gtk.Buildable {
 
         private const string STYLESHEET = ".composited { background-color: rgba (0,0,0,0); }";
