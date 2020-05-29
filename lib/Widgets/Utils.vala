@@ -340,6 +340,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.StyleContext.add_provider_for_screen")]
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
 
