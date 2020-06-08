@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-08 22:02+0000\n"
-"PO-Revision-Date: 2020-01-25 15:08+0000\n"
+"PO-Revision-Date: 2020-06-07 12:11+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -140,7 +140,7 @@ msgstr "作成者:"
 
 #: lib/GtkPatch/AboutDialog.vala:137
 msgid "Documented by:"
-msgstr "ドキュメント執筆者:"
+msgstr "ドキュメント担当:"
 
 #: lib/GtkPatch/AboutDialog.vala:202
 #, c-format
@@ -156,9 +156,7 @@ msgstr "閉じる"
 msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"このプログラムは絶対的な無保証を伴う %s ライセンス条項の元で公開されていま"
-"す。詳細は次のページをご覧ください。 %s"
+msgstr "このプログラムは、%s ライセンス条項の元で公開されています。保証は一切ありません。詳細は、%s をご覧ください"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
@@ -166,7 +164,7 @@ msgstr "翻訳を提案"
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
-msgstr "問題を報告"
+msgstr "不具合を報告"
 
 #: lib/Widgets/AppMenu.vala:66
 msgid "Menu"
