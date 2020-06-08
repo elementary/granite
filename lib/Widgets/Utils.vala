@@ -359,6 +359,7 @@ namespace Granite.Widgets.Utils {
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
      *         //stylesheet// failed.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.CssProvider.load_from_data")]
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();
 
