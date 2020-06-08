@@ -415,6 +415,7 @@ namespace Granite.Widgets.Utils {
      *         or there was no close value in the button-layout string, false will be returned. The position
      *         will be LEFT in that case.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public bool get_default_close_button_position (out CloseButtonPosition position) {
         // default value
         position = CloseButtonPosition.LEFT;
