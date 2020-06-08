@@ -376,18 +376,6 @@ namespace Granite.Widgets.Utils {
     }
 
     /**
-     * Determines if the widget should be drawn from left to right or otherwise.
-     *
-     * @return true if the widget should be drawn from left to right, false otherwise.
-     */
-    internal bool is_left_to_right (Gtk.Widget widget) {
-        var dir = widget.get_direction ();
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-        return dir == Gtk.TextDirection.LTR;
-    }
-
-    /**
      * This method applies given text style to given label
      *
      * @param text_style text style to apply
