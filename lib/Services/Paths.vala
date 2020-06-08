@@ -25,6 +25,7 @@ namespace Granite.Services {
      * A class for interacting with frequently-used directories, following the
      * XDG Base Directory specification: [[http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html]]
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "GLib.Environment")]
     public class Paths : GLib.Object {
 
         /**
