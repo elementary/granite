@@ -341,6 +341,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.StyleContext.add_provider_for_screen")]
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
 
@@ -360,6 +361,7 @@ namespace Granite.Widgets.Utils {
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
      *         //stylesheet// failed.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.CssProvider.load_from_data")]
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();
 
@@ -373,18 +375,6 @@ namespace Granite.Widgets.Utils {
         }
 
         return provider;
-    }
-
-    /**
-     * Determines if the widget should be drawn from left to right or otherwise.
-     *
-     * @return true if the widget should be drawn from left to right, false otherwise.
-     */
-    internal bool is_left_to_right (Gtk.Widget widget) {
-        var dir = widget.get_direction ();
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-        return dir == Gtk.TextDirection.LTR;
     }
 
     /**
@@ -426,6 +416,7 @@ namespace Granite.Widgets.Utils {
      *         or there was no close value in the button-layout string, false will be returned. The position
      *         will be LEFT in that case.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public bool get_default_close_button_position (out CloseButtonPosition position) {
         // default value
         position = CloseButtonPosition.LEFT;
