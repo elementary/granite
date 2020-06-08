@@ -2382,7 +2382,12 @@ public class SourceList : Gtk.ScrolledWindow {
                     // Add a pixel so that the expander area is a bit wider
                     int expander_width = get_cell_width (primary_expander_cell) + 1;
 
-                    if (Utils.is_left_to_right (this)) {
+                    var dir = get_direction ();
+                    if (dir == Gtk.TextDirection.NONE) {
+                        dir = Gtk.Widget.get_default_direction ();
+                    }
+
+                    if (dir == Gtk.TextDirection.LTR) {
                         int indentation_offset = cell_x + cell_width;
                         return x >= indentation_offset && x <= indentation_offset + expander_width;
                     }
