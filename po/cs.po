@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-08 22:02+0000\n"
-"PO-Revision-Date: 2020-05-29 13:11+0000\n"
+"PO-Revision-Date: 2020-06-07 12:11+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite/cs/"
 ">\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: lib/Application.vala:183
 msgid "Show Granite Options"
-msgstr "Zobrazit možnosti Granite"
+msgstr "Zobrazit volby pro Granite"
 
 #: lib/Application.vala:237
 #, c-format
@@ -35,13 +35,11 @@ msgstr "Webová stránka"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
 msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
 msgstr "%H:%M"
 
@@ -167,12 +165,12 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"Tento program je publikován s podmínkami licence %s, není dodáván s "
-"ABSOLUTNĚ ŽÁDNOU ZÁRUKOU; pro více informací navštivte %s"
+"Tento program je vydáván pod licencí %s, nejsou na něj poskytovány ABSOLUTNĚ "
+"ŽÁDNÉ ZÁRUKY. Podrobnosti viz %s"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
-msgstr "Pomoc s překladem"
+msgstr "Pomoci s překladem"
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
@@ -200,7 +198,7 @@ msgstr "Duplikovat"
 
 #: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
-msgstr "Zavřít jinou kartu"
+msgstr "Zavřít druhou kartu"
 
 #: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
@@ -209,11 +207,11 @@ msgstr "Zavřít ostatní karty"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:332
 msgid "Close Tab to the Right"
-msgstr "Zavřít kartu vpravo"
+msgstr "Zavřít kartu napravo"
 
 #: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tabs to the Right"
-msgstr "Zavřít karty vpravo"
+msgstr "Zavřít karty napravo"
 
 #: lib/Widgets/DynamicNotebook.vala:517
 msgid "Clear All"
@@ -278,12 +276,12 @@ msgstr "%s volných z %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr "dopoledne"
+msgstr "dop."
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr "odpoledne"
+msgstr "odp."
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
