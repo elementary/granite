@@ -98,24 +98,26 @@ install_data(
     install_dir: include_dir
 )
 
-# typelib generation isn't automated yet
-g_ir_compiler = find_program('g-ir-compiler')
-custom_target(
-    granite_typelib,
-    command: [
-        g_ir_compiler,
-        '--shared-library',
-        '@PLAINNAME@',
-        '--output',
-        '@OUTPUT@',
-        join_paths(meson.current_build_dir(), granite_gir),
-    ],
-    input: libgranite,
-    output: granite_typelib,
-    depends: libgranite,
-    install: true,
-    install_dir: join_paths(get_option('libdir'), 'girepository-1.0'),
-)
+if get_option('introspection')
+    # typelib generation isn't automated yet
+    g_ir_compiler = find_program('g-ir-compiler')
+    custom_target(
+        granite_typelib,
+        command: [
+            g_ir_compiler,
+            '--shared-library',
+            '@PLAINNAME@',
+            '--output',
+            '@OUTPUT@',
+            join_paths(meson.current_build_dir(), granite_gir),
+        ],
+        input: libgranite,
+        output: granite_typelib,
+        depends: libgranite,
+        install: true,
+        install_dir: join_paths(get_option('libdir'), 'girepository-1.0'),
+    )
+endif
 
 libgranite_dep = declare_dependency(
     link_with: libgranite,
