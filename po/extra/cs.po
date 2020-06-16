@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-11 19:08+0000\n"
-"PO-Revision-Date: 2020-05-11 19:07+0000\n"
+"PO-Revision-Date: 2020-06-07 12:11+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/cs/>\n"
+"Language-Team: Czech <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,15 +38,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Nové konstanty stylu:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:24
 msgid "New features:"
@@ -55,22 +55,27 @@ msgstr "Nové funkce:"
 #: data/granite.appdata.xml.in:26
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
+"Nová třída Nastavení, pro sdílení nastavení desktopového prostředí Pantheon "
+"s aplikacemi"
 
 #: data/granite.appdata.xml.in:27
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
+"Zavedeno Settings.prefers_color_scheme pro získání uživatelových předvoleb "
+"ohledně schématu barev, tj. pro tmavý styl"
 
 #: data/granite.appdata.xml.in:29
 msgid "Deprecations:"
-msgstr ""
+msgstr "Opuštěno:"
 
 #: data/granite.appdata.xml.in:31
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"Nyní je doporučeno použít GLib.Settings namísto Granite.Services.Settings"
 
 #: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:52
 msgid "Improvements:"
@@ -78,11 +83,11 @@ msgstr "Vylepšení:"
 
 #: data/granite.appdata.xml.in:39
 msgid "Better align labels in settings sidebars"
-msgstr ""
+msgstr "Lepší zarovnání štítků v postranních panelech nastavení"
 
 #: data/granite.appdata.xml.in:40
 msgid "Make AccelLabel.label settable"
-msgstr ""
+msgstr "AccelLabel.label je možné nastavit"
 
 #: data/granite.appdata.xml.in:41 data/granite.appdata.xml.in:55
 msgid "Updated translations"
@@ -90,19 +95,21 @@ msgstr "Aktualizovány překlady"
 
 #: data/granite.appdata.xml.in:47
 msgid "New features"
-msgstr ""
+msgstr "Nové funkce"
 
 #: data/granite.appdata.xml.in:49
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Přidány nástrojové tipy pro položky zdrojového seznamu a jejich akce"
 
 #: data/granite.appdata.xml.in:50
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
+"Nový ovládací prvek AccelLabel widget pro použití v nabídkách a dialozích "
+"vyskakujících po najetí  ukazatelem myši"
 
 #: data/granite.appdata.xml.in:54
 msgid "Delay tab resizing when closing tabs"
-msgstr ""
+msgstr "Při zavírání karet je zařazena prodleva pro změnu velikosti karty"
 
 #: data/granite.appdata.xml.in:61
 msgid "elementary, Inc."
