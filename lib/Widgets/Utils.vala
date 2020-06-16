@@ -315,6 +315,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //widget//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
         var css_provider = get_css_provider (stylesheet);
