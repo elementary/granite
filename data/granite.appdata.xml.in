@@ -17,6 +17,18 @@
           <li>STYLE_CLASS_COLOR_BUTTON</li>
           <li>STYLE_CLASS_ROUNDED</li>
         </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead</li>
+          <li>Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline instead</li>
+          <li>Old unused utilities like get_button_layout_schema, get_default_close_button_position, and Granite.Services.Paths</li>
+          <li>Old unused widgets like CollapsiblePaned and CompositedWindow</li>
+        </ul>
+        <p>Other Changes:</p>
+        <ul>
+          <li>Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default</li>
+          <li>Updated translations</li>
+        </ul>
       </description>
     </release>
     <release version="5.4.0" date="2020-04-29" urgency="medium">
