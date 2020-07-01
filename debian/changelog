@@ -1,3 +1,32 @@
+granite (5.5.0) bionic; urgency=medium
+
+  * Release 5.5.0 (#412)
+  * Update translation template
+  * Update granite.appdata.xml.in
+  * SourceList: Rewrite default style (#411)
+  * Deprecate get_button_layout_schema (#403)
+  * Deprecate Utils.set_theming (#404)
+  * Deprecate CollapsiblePaned (#402)
+  * Deprecate get_default_close_button_position (#407)
+  * Deprecate set_theming_for_screen (#408)
+  * SourceList: move only usage of is_left_to_right (#406)
+  * Deprecate get_css_provider (#405)
+  * Deprecate Granite.Services.Paths (#401)
+  * Deprecate Composited Window (#400)
+  * SimpleCommand: Mark as deprecated (#397)
+  * Update translation files
+  * Update translation template
+  * StyleClass: Add color-button (#393)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * StyleClass: Add .rounded style constant (#392)
+  * DynamicNotebook: Get rid of the big spinner (#391)
+  * Update translation files
+  * Update translation template
+
+ -- Cody Garver <cody@elementary.io>  Wed, 01 Jul 2020 16:28:33 +0000
+
 granite (5.4.0) bionic; urgency=medium
 
   * Release 5.4.0 (#387)
