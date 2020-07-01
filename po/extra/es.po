@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-11 19:08+0000\n"
+"POT-Creation-Date: 2020-06-30 20:02+0000\n"
 "PO-Revision-Date: 2020-05-13 08:10+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/es/>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,17 +48,55 @@ msgstr "STYLE_CLASS_COLOR_BUTTON"
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
+#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:41
+msgid "Deprecations:"
+msgstr "Obsolescencias:"
+
+#: data/granite.appdata.xml.in:22
+msgid ""
+"Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
+msgstr ""
+
+#: data/granite.appdata.xml.in:23
+msgid ""
+"Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
+"instead"
+msgstr ""
+
 #: data/granite.appdata.xml.in:24
+msgid ""
+"Old unused utilities like get_button_layout_schema, "
+"get_default_close_button_position, and Granite.Services.Paths"
+msgstr ""
+
+#: data/granite.appdata.xml.in:25
+msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
+msgstr ""
+
+#: data/granite.appdata.xml.in:27
+msgid "Other Changes:"
+msgstr ""
+
+#: data/granite.appdata.xml.in:29
+msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
+msgstr ""
+
+#: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:53
+#: data/granite.appdata.xml.in:67
+msgid "Updated translations"
+msgstr "Traducciones actualizadas"
+
+#: data/granite.appdata.xml.in:36
 msgid "New features:"
 msgstr "Funcionalidades nuevas:"
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:38
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Clase nueva para Configuración que permite compartir las preferencias del "
 "escritorio con las aplicaciones"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:39
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -66,11 +104,7 @@ msgstr ""
 "Se añadió Settings.prefers_color_scheme para obtener la preferencia de "
 "combinación de colores (tema claro/oscuro) del usuario"
 
-#: data/granite.appdata.xml.in:29
-msgid "Deprecations:"
-msgstr "Obsolescencias:"
-
-#: data/granite.appdata.xml.in:31
+#: data/granite.appdata.xml.in:43
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
@@ -78,41 +112,37 @@ msgstr ""
 "Ahora se recomienda emplear GLib.Settings en lugar de Granite.Services."
 "Settings"
 
-#: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:52
+#: data/granite.appdata.xml.in:49 data/granite.appdata.xml.in:64
 msgid "Improvements:"
 msgstr "Mejoras:"
 
-#: data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:51
 msgid "Better align labels in settings sidebars"
 msgstr "Alinear mejor las etiquetas en las barras laterales de configuración"
 
-#: data/granite.appdata.xml.in:40
+#: data/granite.appdata.xml.in:52
 msgid "Make AccelLabel.label settable"
 msgstr "Hacer AccelLabel.label configurable"
 
-#: data/granite.appdata.xml.in:41 data/granite.appdata.xml.in:55
-msgid "Updated translations"
-msgstr "Traducciones actualizadas"
-
-#: data/granite.appdata.xml.in:47
+#: data/granite.appdata.xml.in:59
 msgid "New features"
 msgstr "Nuevas características"
 
-#: data/granite.appdata.xml.in:49
+#: data/granite.appdata.xml.in:61
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 "Añadir información sobre herramientas a los elementos de la lista de origen "
 "y sus acciones"
 
-#: data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:62
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 "Nuevo «widget» de «AccelLabel» para usar en menús y ventanas emergentes"
 
-#: data/granite.appdata.xml.in:54
+#: data/granite.appdata.xml.in:66
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retraso en el cambio de tamaño de la pestaña al cerrar las pestañas"
 
-#: data/granite.appdata.xml.in:61
+#: data/granite.appdata.xml.in:73
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
