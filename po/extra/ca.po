@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 20:02+0000\n"
-"PO-Revision-Date: 2020-05-13 08:10+0000\n"
+"PO-Revision-Date: 2020-07-04 10:12+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,30 +56,35 @@ msgstr "Obsolescències:"
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
+"Diverses utilitats de temàtica. Useu Gtk.CssProvider i Gtk.StyleContext."
 
 #: data/granite.appdata.xml.in:23
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granit.Services.SimpleCommand. En lloc seu useu "
+"GLib.AppInfo.create_from_commandline."
 
 #: data/granite.appdata.xml.in:24
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"Utilitats antigues no utilitzades com ara get_button_layout_schema, "
+"get_default_close_button_position i Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:25
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
-msgstr ""
+msgstr "Ginys antics no usats com ara CollapsiblePaned i CompositedWindow"
 
 #: data/granite.appdata.xml.in:27
 msgid "Other Changes:"
-msgstr ""
+msgstr "Altres canvis:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
-msgstr ""
+msgstr "Granite.SourceList ara obté Gtk.STYLE_CLASS_SIDEBAR per defecte."
 
 #: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:53
 #: data/granite.appdata.xml.in:67
