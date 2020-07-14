@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 20:02+0000\n"
-"PO-Revision-Date: 2020-06-07 12:11+0000\n"
+"PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/cs/>\n"
+"Language-Team: Czech <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,30 +56,37 @@ msgstr "Opuštěno:"
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
+"Několik nástrojů pro motivy vzhledu. Použití Gtk.CssProvider a "
+"Gtk.StyleContext namísto toho"
 
 #: data/granite.appdata.xml.in:23
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granite.Services.SimpleCommand. Použití GLib.AppInfo.create_from_commandline "
+"namísto toho"
 
 #: data/granite.appdata.xml.in:24
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"Staré nepoužívané nástroje jako get_button_layout_schema, "
+"get_default_close_button_position a Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:25
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
-msgstr ""
+msgstr "Staré nepoužívané prvky jako CollapsiblePaned a CompositedWindow"
 
 #: data/granite.appdata.xml.in:27
 msgid "Other Changes:"
-msgstr ""
+msgstr "Ostatní změny:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr ""
+"Granite.SourceList nyní ve výchozím stavu dostává Gtk.STYLE_CLASS_SIDEBAR"
 
 #: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:53
 #: data/granite.appdata.xml.in:67
