@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 20:02+0000\n"
-"PO-Revision-Date: 2020-05-13 08:10+0000\n"
+"PO-Revision-Date: 2020-07-25 02:12+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/es/>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,9 +32,9 @@ msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
-"Una biblioteca complementaria para GTK y GLib que proporciona widgets "
-"complejos y métodos convenientes diseñados para su uso en aplicaciones para "
-"elementary OS."
+"Una biblioteca complementaria para GTK y GLib que proporciona elementos "
+"gráficos complejos y métodos de practicidad diseñados para su uso en "
+"aplicaciones para elementary OS."
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
@@ -56,30 +56,40 @@ msgstr "Obsolescencias:"
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
+"Varias utilidades para temas. Utilice en su lugar Gtk.CssProvider y "
+"Gtk.StyleContext"
 
 #: data/granite.appdata.xml.in:23
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granite.Services.SimpleCommand. Utiliec en su lugar "
+"GLib.AppInfo.create_from_commandline"
 
 #: data/granite.appdata.xml.in:24
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"Utilidades antiguas no utilizadas, como get_button_layout_schema, "
+"get_default_close_button_position y Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:25
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr ""
+"Elementos gráficos antiguos y desusados, como CollapsiblePaned y "
+"CompositedWindow"
 
 #: data/granite.appdata.xml.in:27
 msgid "Other Changes:"
-msgstr ""
+msgstr "Otros cambios:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr ""
+"Granite.SourceList ahora recibe Gtk.STYLE_CLASS_SIDEBAR de manera "
+"predeterminada"
 
 #: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:53
 #: data/granite.appdata.xml.in:67
@@ -126,18 +136,18 @@ msgstr "Hacer AccelLabel.label configurable"
 
 #: data/granite.appdata.xml.in:59
 msgid "New features"
-msgstr "Nuevas características"
+msgstr "Funcionalidades nuevas"
 
 #: data/granite.appdata.xml.in:61
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
-"Añadir información sobre herramientas a los elementos de la lista de origen "
-"y sus acciones"
+"Se añadieron descripciones emergentes a los elementos de la lista de "
+"orígenes y a sus acciones"
 
 #: data/granite.appdata.xml.in:62
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
-"Nuevo «widget» de «AccelLabel» para usar en menús y ventanas emergentes"
+"Nuevo elemento gráfico, AccelLabel, para usar en menús y ventanas emergentes"
 
 #: data/granite.appdata.xml.in:66
 msgid "Delay tab resizing when closing tabs"
