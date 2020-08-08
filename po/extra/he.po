@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-30 20:02+0000\n"
-"PO-Revision-Date: 2020-05-02 11:10+0000\n"
+"PO-Revision-Date: 2020-08-09 05:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,15 +37,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "New Style Constants:"
-msgstr ""
+msgstr "קבועי סגנון חדשים:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:41
 msgid "Deprecations:"
@@ -54,31 +54,35 @@ msgstr "נזנחו:"
 #: data/granite.appdata.xml.in:22
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
-msgstr ""
+msgstr "מגוון כלי עיצוב. יש להשתמש ב־Gtk.CssProvider וב־Gtk.StyleContext במקום"
 
 #: data/granite.appdata.xml.in:23
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granite.Services.SimpleCommand. יש להשתמש ב־"
+"GLib.AppInfo.create_from_commandline במקום"
 
 #: data/granite.appdata.xml.in:24
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"כלים ישנים שלא היו בשימוש כמו get_button_layout_schema,‏ "
+"get_default_close_button_position ו־Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:25
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
-msgstr ""
+msgstr "וידג׳טים ישנים שלא היו בשימוש כמו CollapsiblePaned ו־CompositedWindow"
 
 #: data/granite.appdata.xml.in:27
 msgid "Other Changes:"
-msgstr ""
+msgstr "שינויים אחרים:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
-msgstr ""
+msgstr "Granite.SourceList מקבל מעתה Gtk.STYLE_CLASS_SIDEBAR כבררת מחדל"
 
 #: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:53
 #: data/granite.appdata.xml.in:67
