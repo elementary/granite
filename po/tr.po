@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-08 22:02+0000\n"
-"PO-Revision-Date: 2019-12-14 21:07+0000\n"
+"PO-Revision-Date: 2020-08-15 09:13+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
 "tr/>\n"
@@ -219,7 +219,7 @@ msgstr "Yeni Sekme"
 
 #: lib/Widgets/DynamicNotebook.vala:796
 msgid "Undo Close Tab"
-msgstr "Kapanan Sekmeyi Tekrar Aç"
+msgstr "Kapanan Sekmeyi Geri Al"
 
 #: lib/Widgets/DynamicNotebook.vala:836
 msgid "Closed Tabs"
