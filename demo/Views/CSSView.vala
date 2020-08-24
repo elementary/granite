@@ -84,13 +84,16 @@ public class CSSView : Gtk.Grid {
         back_button.halign = Gtk.Align.START;
         back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
-        var warmth_label = new Gtk.Label ("\"warmth\" style class:");
-        warmth_label.halign = Gtk.Align.END;
+        var warmth_label = new Gtk.Label ("\"warmth\" style class:") {
+            halign = Gtk.Align.END
+        };
 
-        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10);
-        warmth_scale.draw_value = false;
-        warmth_scale.has_origin = false;
-        warmth_scale.inverted = true;
+        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
+            draw_value = false,
+            has_origin = false,
+            hexpand = true,
+            inverted = true
+        };
         warmth_scale.get_style_context ().add_class (Granite.STYLE_CLASS_WARMTH);
 
         var primary_color_label = new Gtk.Label ("Set HeaderBar color:");
