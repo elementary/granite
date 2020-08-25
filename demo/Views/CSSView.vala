@@ -84,6 +84,19 @@ public class CSSView : Gtk.Grid {
         back_button.halign = Gtk.Align.START;
         back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
+        var warmth_label = new Gtk.Label ("\"warmth\" style class:") {
+            halign = Gtk.Align.END
+        };
+
+        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
+            draw_value = false,
+            has_origin = false,
+            hexpand = true,
+            inverted = true
+        };
+        warmth_scale.set_value (6000);
+        warmth_scale.get_style_context ().add_class (Granite.STYLE_CLASS_WARMTH);
+
         var primary_color_label = new Gtk.Label ("Set HeaderBar color:");
         primary_color_label.halign = Gtk.Align.END;
 
@@ -113,10 +126,12 @@ public class CSSView : Gtk.Grid {
         attach (terminal, 1, 2, 2, 1);
         attach (back_button_label, 0, 3);
         attach (back_button, 1, 3, 2, 1);
-        attach (primary_color_label, 0, 4);
-        attach (primary_color_button, 1, 4, 2, 1);
-        attach (accent_color_label, 0, 5);
-        attach (accent_color_grid, 1, 5);
+        attach (warmth_label, 0, 4);
+        attach (warmth_scale, 1, 4);
+        attach (primary_color_label, 0, 5);
+        attach (primary_color_button, 1, 5, 2, 1);
+        attach (accent_color_label, 0, 6);
+        attach (accent_color_grid, 1, 6);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
