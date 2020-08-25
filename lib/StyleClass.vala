@@ -145,4 +145,8 @@ namespace Granite {
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
     public const string STYLE_CLASS_WARMTH = "warmth";
+    /**
+     * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
+     */
+    public const string STYLE_CLASS_TEMPERATURE = "temperature";
 }

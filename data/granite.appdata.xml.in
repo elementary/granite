@@ -15,6 +15,7 @@
         <p>New Style Constants:</p>
         <ul>
           <li>STYLE_CLASS_WARMTH for scales</li>
+          <li>STYLE_CLASS_TEMPERATURE for scales</li>
         </ul>
         <p>Other Changes:</p>
         <ul>
