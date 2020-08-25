@@ -106,6 +106,7 @@ public class CSSView : Gtk.Grid {
             has_origin = false,
             hexpand = true
         };
+        temperature_scale.set_value (0);
         temperature_scale.get_style_context ().add_class (Granite.STYLE_CLASS_TEMPERATURE);
 
         var primary_color_label = new Gtk.Label ("Set HeaderBar color:");
