@@ -94,6 +94,7 @@ public class CSSView : Gtk.Grid {
             hexpand = true,
             inverted = true
         };
+        warmth_scale.set_value (6000);
         warmth_scale.get_style_context ().add_class (Granite.STYLE_CLASS_WARMTH);
 
         var primary_color_label = new Gtk.Label ("Set HeaderBar color:");
