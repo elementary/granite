@@ -83,8 +83,8 @@ public class CSSView : Gtk.Grid {
         };
 
         var terminal = new Gtk.TextView () {
-            pixels_below_lines = 3,
-            border_width = 12
+            border_width = 12,
+            pixels_below_lines = 3
         };
         terminal.buffer.text = "[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo";
         terminal.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
