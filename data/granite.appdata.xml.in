@@ -10,6 +10,18 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
+    <release version="5.5.1" date="2020-08-25" urgency="medium">
+      <description>
+        <p>New Style Constants:</p>
+        <ul>
+          <li>STYLE_CLASS_WARMTH for scales</li>
+        </ul>
+        <p>Other Changes:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="5.5.0" date="2020-06-30" urgency="medium">
       <description>
         <p>New Style Constants:</p>
