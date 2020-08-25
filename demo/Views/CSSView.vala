@@ -147,6 +147,7 @@ public class CSSView : Gtk.Grid {
 
         column_spacing = 12;
         row_spacing = 24;
+
         attach (card_label, 0, 0);
         attach (card, 1, 0, 2);
         attach (checker_label, 0, 1);
