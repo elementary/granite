@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 15:49+0000\n"
+"POT-Creation-Date: 2020-08-25 16:13+0000\n"
 "PO-Revision-Date: 2020-07-02 02:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
@@ -35,7 +35,7 @@ msgstr ""
 "elementary OS 向けのアプリでの利用のためにデザインされた複雑なウィジェットや"
 "便利なメソッドを提供する、GTK と GLib の共有ライブラリです。"
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
 msgid "New Style Constants:"
 msgstr "スタイル用の新しい定数:"
 
@@ -43,35 +43,39 @@ msgstr "スタイル用の新しい定数:"
 msgid "STYLE_CLASS_WARMTH for scales"
 msgstr ""
 
-#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:18
+msgid "STYLE_CLASS_TEMPERATURE for scales"
+msgstr ""
+
+#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:40
 msgid "Other Changes:"
 msgstr "そのほかの変更点:"
 
-#: data/granite.appdata.xml.in:21 data/granite.appdata.xml.in:42
-#: data/granite.appdata.xml.in:65 data/granite.appdata.xml.in:79
+#: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:43
+#: data/granite.appdata.xml.in:66 data/granite.appdata.xml.in:80
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:30
 msgid "STYLE_CLASS_COLOR_BUTTON"
 msgstr "STYLE_CLASS_COLOR_BUTTON"
 
-#: data/granite.appdata.xml.in:30
+#: data/granite.appdata.xml.in:31
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
-#: data/granite.appdata.xml.in:32 data/granite.appdata.xml.in:53
+#: data/granite.appdata.xml.in:33 data/granite.appdata.xml.in:54
 msgid "Deprecations:"
 msgstr "非推奨:"
 
-#: data/granite.appdata.xml.in:34
+#: data/granite.appdata.xml.in:35
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
 "テーマ設定に関する複数のユーティリティー。今後は、Gtk.CssProvider と Gtk."
 "StyleContext を使用してください"
 
-#: data/granite.appdata.xml.in:35
+#: data/granite.appdata.xml.in:36
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
@@ -79,7 +83,7 @@ msgstr ""
 "Granite.Services.SimpleCommand。今後は、GLib.AppInfo.create_from_commandline "
 "を使用してください"
 
-#: data/granite.appdata.xml.in:36
+#: data/granite.appdata.xml.in:37
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
@@ -87,26 +91,26 @@ msgstr ""
 "get_button_layout_schema、get_default_close_button_position、Granite."
 "Services.Paths などの、不使用のユーティリティー"
 
-#: data/granite.appdata.xml.in:37
+#: data/granite.appdata.xml.in:38
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr "CollapsiblePaned、CompositedWindow などの、不使用のウィジェット"
 
-#: data/granite.appdata.xml.in:41
+#: data/granite.appdata.xml.in:42
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr ""
 "Granite.SourceList にデフォルトで Gtk.STYLE_CLASS_SIDEBAR を適用されるように"
 "変更"
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:49
 msgid "New features:"
 msgstr "新機能:"
 
-#: data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:51
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Pantheon デスクトップの設定をアプリと共有できる、新しい Settings クラスを追加"
 
-#: data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:52
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -114,41 +118,41 @@ msgstr ""
 "ダークスタイルなどの用途を想定した、ユーザーの配色設定を取得できる Settings."
 "prefers_color_scheme を導入"
 
-#: data/granite.appdata.xml.in:55
+#: data/granite.appdata.xml.in:56
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
 "Granite.Services.Settings の代替として GLib.Settings の使用を推奨します"
 
-#: data/granite.appdata.xml.in:61 data/granite.appdata.xml.in:76
+#: data/granite.appdata.xml.in:62 data/granite.appdata.xml.in:77
 msgid "Improvements:"
 msgstr "改善点:"
 
-#: data/granite.appdata.xml.in:63
+#: data/granite.appdata.xml.in:64
 msgid "Better align labels in settings sidebars"
 msgstr "設定サイドバーに表示されるラベルの配置を改善"
 
-#: data/granite.appdata.xml.in:64
+#: data/granite.appdata.xml.in:65
 msgid "Make AccelLabel.label settable"
 msgstr "AccelLabel.label を書き込み可能に変更"
 
-#: data/granite.appdata.xml.in:71
+#: data/granite.appdata.xml.in:72
 msgid "New features"
 msgstr "新機能"
 
-#: data/granite.appdata.xml.in:73
+#: data/granite.appdata.xml.in:74
 msgid "Add tooltips to source list items and their actions"
 msgstr "ソースリストの項目とアクションにツールチップを追加"
 
-#: data/granite.appdata.xml.in:74
+#: data/granite.appdata.xml.in:75
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "メニューとポップオーバーで利用できる AccelLabel ウィジェットを追加"
 
-#: data/granite.appdata.xml.in:78
+#: data/granite.appdata.xml.in:79
 msgid "Delay tab resizing when closing tabs"
 msgstr "タブを閉じる際に、タブサイズの復元を遅延させるように修正"
 
-#: data/granite.appdata.xml.in:85
+#: data/granite.appdata.xml.in:86
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

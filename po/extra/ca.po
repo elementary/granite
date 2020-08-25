@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 15:49+0000\n"
+"POT-Creation-Date: 2020-08-25 16:13+0000\n"
 "PO-Revision-Date: 2020-07-04 10:12+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
@@ -36,7 +36,7 @@ msgstr ""
 "mètodes de conveniència dissenyats per usar-los en aplicacions creades per a "
 "l'elementary OS."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
 msgid "New Style Constants:"
 msgstr "Constants d'estil noves:"
 
@@ -44,34 +44,38 @@ msgstr "Constants d'estil noves:"
 msgid "STYLE_CLASS_WARMTH for scales"
 msgstr ""
 
-#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:18
+msgid "STYLE_CLASS_TEMPERATURE for scales"
+msgstr ""
+
+#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:40
 msgid "Other Changes:"
 msgstr "Altres canvis:"
 
-#: data/granite.appdata.xml.in:21 data/granite.appdata.xml.in:42
-#: data/granite.appdata.xml.in:65 data/granite.appdata.xml.in:79
+#: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:43
+#: data/granite.appdata.xml.in:66 data/granite.appdata.xml.in:80
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/granite.appdata.xml.in:29
+#: data/granite.appdata.xml.in:30
 msgid "STYLE_CLASS_COLOR_BUTTON"
 msgstr "STYLE_CLASS_COLOR_BUTTON"
 
-#: data/granite.appdata.xml.in:30
+#: data/granite.appdata.xml.in:31
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
-#: data/granite.appdata.xml.in:32 data/granite.appdata.xml.in:53
+#: data/granite.appdata.xml.in:33 data/granite.appdata.xml.in:54
 msgid "Deprecations:"
 msgstr "Obsolescències:"
 
-#: data/granite.appdata.xml.in:34
+#: data/granite.appdata.xml.in:35
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
 "Diverses utilitats de temàtica. Useu Gtk.CssProvider i Gtk.StyleContext."
 
-#: data/granite.appdata.xml.in:35
+#: data/granite.appdata.xml.in:36
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
@@ -79,7 +83,7 @@ msgstr ""
 "Granit.Services.SimpleCommand. En lloc seu useu GLib.AppInfo."
 "create_from_commandline."
 
-#: data/granite.appdata.xml.in:36
+#: data/granite.appdata.xml.in:37
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
@@ -87,25 +91,25 @@ msgstr ""
 "Utilitats antigues no utilitzades com ara get_button_layout_schema, "
 "get_default_close_button_position i Granite.Services.Paths"
 
-#: data/granite.appdata.xml.in:37
+#: data/granite.appdata.xml.in:38
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr "Ginys antics no usats com ara CollapsiblePaned i CompositedWindow"
 
-#: data/granite.appdata.xml.in:41
+#: data/granite.appdata.xml.in:42
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr "Granite.SourceList ara obté Gtk.STYLE_CLASS_SIDEBAR per defecte."
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:49
 msgid "New features:"
 msgstr "Funcions noves:"
 
-#: data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:51
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Classe nova de paràmetres per compartir els paràmetres del Pantheon amb les "
 "aplicacions"
 
-#: data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:52
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -113,43 +117,43 @@ msgstr ""
 "Introducció de Settings.prefers_color_scheme per obtenir la preferència de "
 "l'esquema de colors de l'usuari, és a dir, per a un estil fosc"
 
-#: data/granite.appdata.xml.in:55
+#: data/granite.appdata.xml.in:56
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
 "Ara es recomana usar GLib.Settings en lloc de Granite.Services.Settings."
 
-#: data/granite.appdata.xml.in:61 data/granite.appdata.xml.in:76
+#: data/granite.appdata.xml.in:62 data/granite.appdata.xml.in:77
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/granite.appdata.xml.in:63
+#: data/granite.appdata.xml.in:64
 msgid "Better align labels in settings sidebars"
 msgstr "Millora de l'alineació de les etiquetes a les barres laterals"
 
-#: data/granite.appdata.xml.in:64
+#: data/granite.appdata.xml.in:65
 msgid "Make AccelLabel.label settable"
 msgstr "Es pot configurar AccelLabel.label."
 
-#: data/granite.appdata.xml.in:71
+#: data/granite.appdata.xml.in:72
 msgid "New features"
 msgstr "Funcions noves"
 
-#: data/granite.appdata.xml.in:73
+#: data/granite.appdata.xml.in:74
 msgid "Add tooltips to source list items and their actions"
 msgstr ""
 "Addició d'informació d'ajuda als elements de la llista d'origen i les seves "
 "accions"
 
-#: data/granite.appdata.xml.in:74
+#: data/granite.appdata.xml.in:75
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Giny nou AccelLabel per usar-lo en menús i finestres emergents"
 
-#: data/granite.appdata.xml.in:78
+#: data/granite.appdata.xml.in:79
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retard del canvi de mida de la pestanya quan es tanquen les pestanyes"
 
-#: data/granite.appdata.xml.in:85
+#: data/granite.appdata.xml.in:86
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
