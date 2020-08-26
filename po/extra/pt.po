@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-25 16:13+0000\n"
-"PO-Revision-Date: 2020-07-04 10:12+0000\n"
+"PO-Revision-Date: 2020-08-27 18:56+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -43,11 +43,11 @@ msgstr "Novas constantes de estilo:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_WARMTH for scales"
-msgstr ""
+msgstr "STYLE_CLASS_WARMTH para escalas"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_TEMPERATURE for scales"
-msgstr ""
+msgstr "STYLE_CLASS_TEMPERATURE para escalas"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:40
 msgid "Other Changes:"
