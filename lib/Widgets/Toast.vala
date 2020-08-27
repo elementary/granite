@@ -132,21 +132,25 @@ namespace Granite.Widgets {
         public void send_notification () {
             if (!child_revealed) {
                 reveal_child = true;
-
-                uint duration;
-
-                if (default_action_button.visible) {
-                    duration = 3500;
-                } else {
-                    duration = 2000;
+            } else {
+                if (timeout_id != 0) {
+                    Source.remove (timeout_id);
                 }
-
-                timeout_id = GLib.Timeout.add (duration, () => {
-                    reveal_child = false;
-                    timeout_id = 0;
-                    return false;
-                });
             }
+
+            uint duration;
+
+            if (default_action_button.visible) {
+                duration = 3500;
+            } else {
+                duration = 2000;
+            }
+
+            timeout_id = GLib.Timeout.add (duration, () => {
+                reveal_child = false;
+                timeout_id = 0;
+                return false;
+            });
         }
     }
 }
