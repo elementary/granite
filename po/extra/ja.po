@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-27 19:00+0000\n"
-"PO-Revision-Date: 2020-08-27 18:56+0000\n"
+"PO-Revision-Date: 2020-08-29 20:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +53,7 @@ msgstr "そのほかの変更点:"
 
 #: data/granite.appdata.xml.in:22
 msgid "Toasts now reset their timeout when sending a new notification"
-msgstr ""
+msgstr "新しい通知があった場合に、トーストの表示時間のタイムアウトがリセットされるように変更"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:44
 #: data/granite.appdata.xml.in:67 data/granite.appdata.xml.in:81
