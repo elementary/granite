@@ -1,1 +1,2 @@
 option('documentation', type: 'boolean', value: false, description: 'generate documentation with gtk-doc and valadoc')
+option('demo', type: 'boolean', value: true, description: 'generate demo')
