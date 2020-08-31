@@ -50,3 +50,7 @@ The additional requirements for building the documentation are:
 To generate gtk-doc and valadoc documentation for this project, pass the
 additional `-Ddocumentation=true` flag to meson, and run `ninja` as before.
 
+## Demo
+
+To disable generate demo for this project, pass the additional `-Ddemo=false` 
+flag to meson,and run `ninja` as before.
