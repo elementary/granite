@@ -130,7 +130,7 @@ namespace Granite.Widgets {
             timeout_id = GLib.Timeout.add (duration, () => {
                 reveal_child = false;
                 timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
