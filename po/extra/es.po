@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-27 19:00+0000\n"
-"PO-Revision-Date: 2020-07-25 02:12+0000\n"
+"PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/es/>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,11 +42,11 @@ msgstr "Constantes de estilos nuevas:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_WARMTH for scales"
-msgstr ""
+msgstr "STYLE_CLASS_WARMTH para controles deslizantes"
 
 #: data/granite.appdata.xml.in:18
 msgid "STYLE_CLASS_TEMPERATURE for scales"
-msgstr ""
+msgstr "STYLE_CLASS_TEMPERATURE para controles deslizantes"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:41
 msgid "Other Changes:"
@@ -55,6 +55,8 @@ msgstr "Otros cambios:"
 #: data/granite.appdata.xml.in:22
 msgid "Toasts now reset their timeout when sending a new notification"
 msgstr ""
+"Los avisos emergentes ahora restablecen su límite de tiempo al enviar una "
+"notificación nueva"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:44
 #: data/granite.appdata.xml.in:67 data/granite.appdata.xml.in:81
@@ -140,7 +142,7 @@ msgstr "Mejoras:"
 
 #: data/granite.appdata.xml.in:65
 msgid "Better align labels in settings sidebars"
-msgstr "Alinear mejor las etiquetas en las barras laterales de configuración"
+msgstr "Se alinean mejor las etiquetas en las barras laterales de configuración"
 
 #: data/granite.appdata.xml.in:66
 msgid "Make AccelLabel.label settable"
