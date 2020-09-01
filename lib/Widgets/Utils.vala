@@ -131,6 +131,17 @@ public static string accel_to_string (string? accel) {
             ///TRANSLATORS: The Alt key on the right side of the keyboard
             arr += _("Right Alt");
             break;
+        case Gdk.Key.backslash:
+            arr += "\\";
+            break;
+        case Gdk.Key.Control_R:
+            ///TRANSLATORS: The Ctrl key on the right side of the keyboard
+            arr += _("Right Ctrl");
+            break;
+        case Gdk.Key.Control_L:
+            ///TRANSLATORS: The Ctrl key on the left side of the keyboard
+            arr += _("Left Ctrl");
+            break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
             ///TRANSLATORS: This is a non-symbol representation of the "-" key
