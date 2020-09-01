@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-27 19:00+0000\n"
-"PO-Revision-Date: 2020-08-27 18:56+0000\n"
+"PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -56,6 +56,8 @@ msgstr "Outras alterações:"
 #: data/granite.appdata.xml.in:22
 msgid "Toasts now reset their timeout when sending a new notification"
 msgstr ""
+"Agora as notificações Toast repõem o seu tempo limite ao enviar uma nova "
+"notificação"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:44
 #: data/granite.appdata.xml.in:67 data/granite.appdata.xml.in:81
