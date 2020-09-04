@@ -55,6 +55,14 @@ namespace Granite.Widgets {
 
         private bool proc_next_day_selected = true;
 
+        private const string CSS = """
+            calendar
+            {
+                background: transparent;
+                padding: 3px;
+            }
+        """;
+
         /**
          * Current Date
          */
@@ -93,6 +101,14 @@ namespace Granite.Widgets {
 
             dropdown.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
             dropdown.add (calendar);
+
+            var provider = new Gtk.CssProvider ();
+            try {
+                provider.load_from_data (CSS, CSS.length);
+                calendar.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                critical (e.message);
+            }
 
             // Signals and callbacks
             icon_release.connect (on_icon_press);
