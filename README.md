@@ -28,9 +28,9 @@ To build granite, use `ninja`:
 
     ninja
 
-To install, use `ninja install`
+To install, use `sudo ninja install`
 
-    ninja install
+    sudo ninja install
 
 To see a demo app of Granite's widgets, run `granite-demo` after installing it:
 
