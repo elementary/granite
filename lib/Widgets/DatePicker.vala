@@ -51,6 +51,8 @@ namespace Granite.Widgets {
 
         private GLib.DateTime _date;
 
+        private GLib.DateTime today;
+
         private bool proc_next_day_selected = true;
 
         /**
@@ -82,6 +84,7 @@ namespace Granite.Widgets {
             popover.add (dropdown);
             calendar = new Gtk.Calendar ();
             date = new GLib.DateTime.now_local ();
+            today = new GLib.DateTime.now_local ();
 
             // Entry properties
             can_focus = false;
@@ -94,6 +97,10 @@ namespace Granite.Widgets {
             // Signals and callbacks
             icon_release.connect (on_icon_press);
             calendar.day_selected.connect (on_calendar_day_selected);
+            calendar.month_changed.connect (on_calendar_month_changed);
+
+            // mark today
+            on_calendar_month_changed ();
 
             /*
              * A next/prev month/year event
@@ -157,6 +164,15 @@ namespace Granite.Widgets {
 
         private void hide_dropdown () {
             popover.hide ();
+        }
+
+        private void on_calendar_month_changed () {
+            if (calendar.year == today.get_year () && calendar.month == today.get_month () - 1) {
+                calendar.mark_day (today.get_day_of_month ());
+            }
+            else {
+                calendar.clear_marks ();
+            }
         }
     }
 }
