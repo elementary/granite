@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-01-05 00:31+0000\n"
-"Last-Translator: Simon Dagfinrud <semonje@gmail.com>\n"
-"Language-Team: Norwegian Nynorsk <https://weblate.elementary.io/projects/"
+"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"PO-Revision-Date: 2020-07-04 10:12+0000\n"
+"Last-Translator: Martin Myrvold <myrvold.martin@gmail.com>\n"
+"Language-Team: Norwegian Nynorsk <https://l10n.elementary.io/projects/"
 "desktop/granite/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -35,13 +35,11 @@ msgstr "Nettstad"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
 msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
 msgstr "%l:%M %p"
 
@@ -63,15 +61,15 @@ msgstr "No"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "for %dm sidan"
-msgstr[1] "for %dm sidan"
+msgstr[0] "%dm sidan"
+msgstr[1] "%dm sidan"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "for %dh sidan"
-msgstr[1] "for %dh sidan"
+msgstr[0] "%dh sidan"
+msgstr[1] "%dh sidan"
 
 #: lib/DateTime.vala:85
 #, c-format
@@ -205,25 +203,25 @@ msgstr "Lukk andre faner"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:332
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Lukk fana til høgre"
 
 #: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Lukk faner til høgre"
 
 #: lib/Widgets/DynamicNotebook.vala:517
 msgid "Clear All"
 msgstr "Fjern alt"
 
-#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
+#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: lib/Widgets/DynamicNotebook.vala:801
+#: lib/Widgets/DynamicNotebook.vala:796
 msgid "Undo Close Tab"
 msgstr "Gjer om lukking av fana"
 
-#: lib/Widgets/DynamicNotebook.vala:841
+#: lib/Widgets/DynamicNotebook.vala:836
 msgid "Closed Tabs"
 msgstr "Lukka faner"
 
@@ -237,7 +235,7 @@ msgstr "_Avbryt"
 
 #: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -301,46 +299,58 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Venstre Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Høgre Alt"
+
+#. /TRANSLATORS: The Ctrl key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:139
+#, fuzzy
+#| msgid "Right Alt"
+msgid "Right Ctrl"
+msgstr "Høgre Alt"
+
+#. /TRANSLATORS: The Ctrl key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:143
+#, fuzzy
+#| msgid "Left Alt"
+msgid "Left Ctrl"
+msgstr "Venstre Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:148
 msgid "Minus"
 msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:153
 msgid "Plus"
 msgstr "Pluss"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr ""
+msgstr "Er lik"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
-#, fuzzy
+#: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
-msgstr "Shift"
+msgstr "Venstre Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
-#, fuzzy
+#: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Høgre Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:204
+#: lib/Widgets/Utils.vala:215
 msgid ", "
 msgstr ", "
 

@@ -795,11 +795,6 @@ namespace Granite.Widgets {
             notebook.show_border = false;
             _tab_bar_behavior = TabBarBehavior.ALWAYS;
 
-            draw.connect ( (ctx) => {
-                get_style_context ().render_activity (ctx, 0, 0, get_allocated_width (), 27);
-                return false;
-            });
-
             add (notebook);
 
             menu = new Gtk.Menu ();

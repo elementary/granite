@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2020-01-25 15:08+0000\n"
+"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -140,7 +140,7 @@ msgstr "作成者:"
 
 #: lib/GtkPatch/AboutDialog.vala:137
 msgid "Documented by:"
-msgstr "ドキュメント執筆者:"
+msgstr "ドキュメント担当:"
 
 #: lib/GtkPatch/AboutDialog.vala:202
 #, c-format
@@ -157,8 +157,8 @@ msgid ""
 "This program is published under the terms of the %s license, it comes with "
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
-"このプログラムは絶対的な無保証を伴う %s ライセンス条項の元で公開されていま"
-"す。詳細は次のページをご覧ください。 %s"
+"このプログラムは、%s ライセンス条項の元で公開されています。保証は一切ありませ"
+"ん。詳細は、%s をご覧ください"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
@@ -166,7 +166,7 @@ msgstr "翻訳を提案"
 
 #: lib/Widgets/AboutDialog.vala:82
 msgid "Report a Problem"
-msgstr "問題を報告"
+msgstr "不具合を報告"
 
 #: lib/Widgets/AppMenu.vala:66
 msgid "Menu"
@@ -209,15 +209,15 @@ msgstr "右側のタブを閉じる"
 msgid "Clear All"
 msgstr "すべて消去"
 
-#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
+#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: lib/Widgets/DynamicNotebook.vala:801
+#: lib/Widgets/DynamicNotebook.vala:796
 msgid "Undo Close Tab"
 msgstr "閉じたタブを復元"
 
-#: lib/Widgets/DynamicNotebook.vala:841
+#: lib/Widgets/DynamicNotebook.vala:836
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
@@ -302,37 +302,47 @@ msgstr "左 Alt"
 msgid "Right Alt"
 msgstr "右 Alt"
 
+#. /TRANSLATORS: The Ctrl key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:139
+msgid "Right Ctrl"
+msgstr "右 Ctrl"
+
+#. /TRANSLATORS: The Ctrl key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:143
+msgid "Left Ctrl"
+msgstr "左 Ctrl"
+
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:148
 msgid "Minus"
 msgstr "マイナス"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:153
 msgid "Plus"
 msgstr "プラス"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:158
 msgid "Equals"
 msgstr "イコール"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:161
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
 msgstr "左 Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
 msgstr "右 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:204
+#: lib/Widgets/Utils.vala:215
 msgid ", "
 msgstr "、 "
 
