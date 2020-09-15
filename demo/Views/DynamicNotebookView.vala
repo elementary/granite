@@ -38,6 +38,7 @@ public class DynamicNotebookView : Gtk.Grid {
                 new ThemedIcon ("mail-mark-important-symbolic"),
                 page
             );
+            tab.tooltip = "Customizable tooltip %d".printf (i);
             notebook.insert_tab (tab, i - 1);
         }
 
@@ -46,6 +47,7 @@ public class DynamicNotebookView : Gtk.Grid {
             var tab = new Granite.Widgets.Tab (
                 "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page
             );
+            tab.tooltip = "Customizable tooltip %d".printf (i);
             notebook.insert_tab (tab, i - 1);
             i++;
         });
