@@ -20,6 +20,7 @@
         <p>Other Changes:</p>
         <ul>
           <li>Toasts now reset their timeout when sending a new notification</li>
+          <li>Make tab tooltips of DynamicNotebook settable</li>
           <li>Updated translations</li>
         </ul>
       </description>
