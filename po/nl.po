@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"POT-Creation-Date: 2020-09-16 15:07+0000\n"
 "PO-Revision-Date: 2019-12-27 15:07+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/granite/nl/"
@@ -180,48 +180,48 @@ msgstr "Menu"
 msgid "About"
 msgstr "Over"
 
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
 msgid "Close Tab"
 msgstr "Tabblad sluiten"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:294
 msgid "Open in a New Window"
 msgstr "Open in een nieuw venster"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:295
 msgid "Duplicate"
 msgstr "Kopiëren"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tab"
 msgstr "Sluit andere tab"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tabs"
 msgstr "Andere tabs sluiten"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
 msgstr "Sluit het tabblad aan de rechterkant"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
 msgstr "Sluit de tabbladen aan de rechterkant"
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
 msgstr "Wis allen"
 
-#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
+#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
 msgid "New Tab"
 msgstr "Nieuwe tab"
 
-#: lib/Widgets/DynamicNotebook.vala:796
+#: lib/Widgets/DynamicNotebook.vala:805
 msgid "Undo Close Tab"
 msgstr "Open laatst gesloten tab"
 
-#: lib/Widgets/DynamicNotebook.vala:836
+#: lib/Widgets/DynamicNotebook.vala:845
 msgid "Closed Tabs"
 msgstr "Gesloten tabs"
 
