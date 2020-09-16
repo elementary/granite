@@ -75,6 +75,9 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * The (plain) text that will be shown in a tooltip when the tab is hovered.
+         **/
         public string tooltip {
             set {
                 _label.set_tooltip_text (value);
