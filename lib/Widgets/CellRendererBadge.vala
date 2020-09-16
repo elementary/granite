@@ -138,16 +138,4 @@ public class Granite.Widgets.CellRendererBadge : Gtk.CellRenderer {
 
         ctx.render_layout (context, x, y, text_layout);
     }
-
-    [Version (deprecated = true, deprecated_since = "0.3", replacement = "Gtk.CellRenderer.get_preferred_size")]
-    public override void get_size (
-        Gtk.Widget widget,
-        Gdk.Rectangle? cell_area,
-        out int x_offset,
-        out int y_offset,
-        out int width,
-        out int height
-    ) {
-        assert_not_reached ();
-    }
 }

@@ -103,18 +103,6 @@ public class Granite.Widgets.CellRendererExpander : Gtk.CellRenderer {
         revert_style_changes (widget);
     }
 
-    [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
-    public override void get_size (
-        Gtk.Widget widget,
-        Gdk.Rectangle? cell_area,
-        out int x_offset,
-        out int y_offset,
-        out int width,
-        out int height
-    ) {
-        assert_not_reached ();
-    }
-
     private unowned Gtk.StyleContext apply_style_changes (Gtk.Widget widget) {
         unowned Gtk.StyleContext ctx = widget.get_style_context ();
         ctx.save ();
