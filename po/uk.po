@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-16 15:07+0000\n"
-"PO-Revision-Date: 2020-09-20 20:14+0000\n"
+"PO-Revision-Date: 2020-09-22 14:23+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite/uk/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: lib/Application.vala:183
 msgid "Show Granite Options"
-msgstr ""
+msgstr "Показати параметри Granite"
 
 #: lib/Application.vala:237
 #, c-format
@@ -32,19 +32,17 @@ msgstr "%s's Розробники"
 
 #: lib/Application.vala:255
 msgid "Website"
-msgstr "Веб-сторінка"
+msgstr "Вебсайт"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -58,53 +56,52 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Зараз"
 
 #: lib/DateTime.vala:76
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dхв тому"
+msgstr[1] "%dхв тому"
+msgstr[2] "%dхв тому"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dгод тому"
+msgstr[1] "%dгод тому"
+msgstr[2] "%dгод тому"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "за %dхв"
+msgstr[1] "за %dхв"
+msgstr[2] "за %dхв"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "за %dгод"
+msgstr[1] "за %dгод"
+msgstr[2] "за %dгод"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчора"
 
 #: lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Завтра"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %b %e, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
@@ -134,9 +131,8 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
@@ -145,20 +141,20 @@ msgstr "%b"
 
 #: lib/GtkPatch/AboutDialog.vala:36
 msgid "Designed by:"
-msgstr "Дизайн:"
+msgstr "Розроблено:"
 
 #: lib/GtkPatch/AboutDialog.vala:60
 msgid "Written by:"
-msgstr "Автор:"
+msgstr "Створено:"
 
 #: lib/GtkPatch/AboutDialog.vala:137
 msgid "Documented by:"
-msgstr "Документація:"
+msgstr "Задокументовано:"
 
 #: lib/GtkPatch/AboutDialog.vala:202
 #, c-format
 msgid "Translated by %s"
-msgstr "Переклад: %s"
+msgstr "Перекладено %s"
 
 #: lib/GtkPatch/AboutDialog.vala:333
 msgid "Close"
@@ -171,7 +167,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY; for details, visit %s"
 msgstr ""
 "Ця програма опублікована відповідно до умов %s ліцензії, вона поставляється "
-"БЕЗ ЖОДНИХ ГАРАНТІЙ; для докладної інформації відвідайте %s"
+"БЕЗ ЖОДНИХ ГАРАНТІЙ; докладніші відомості на сторінці %s"
 
 #: lib/Widgets/AboutDialog.vala:80
 msgid "Suggest Translations"
@@ -194,7 +190,6 @@ msgid "Close Tab"
 msgstr "Закрити вкладку"
 
 #: lib/Widgets/DynamicNotebook.vala:294
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "Відкрити у новому вікні"
 
@@ -213,11 +208,11 @@ msgstr "Закрити інші вкладки"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Закрити вкладку праворуч"
 
 #: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Закрити вкладки праворуч"
 
 #: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
@@ -236,17 +231,16 @@ msgid "Closed Tabs"
 msgstr "Закриті вкладки"
 
 #: lib/Widgets/MessageDialog.vala:139
-#, fuzzy
 msgid "_Close"
-msgstr "Закрити"
+msgstr "_Закрити"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr ""
+msgstr "_Скасувати"
 
 #: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Подробиці"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -260,11 +254,11 @@ msgstr "Відео"
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr "Фотографії"
+msgstr "Світлини"
 
 #: lib/Widgets/StorageBar.vala:90
 msgid "Apps"
-msgstr "Додатки"
+msgstr "Застосунки"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: lib/Widgets/StorageBar.vala:93
@@ -283,12 +277,12 @@ msgstr "%s вільно з %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:106
 msgid "AM"
-msgstr "AM"
+msgstr "ДП"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "PM"
-msgstr "PM"
+msgstr "ПП"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:153
