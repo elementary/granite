@@ -2,7 +2,7 @@ project(
     'granite',
     'vala', 'c',
     meson_version: '>= 0.48.2',
-    version: '5.3.0'
+    version: '5.5.0'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.40.0')
@@ -70,4 +70,3 @@ meson.add_install_script(
     join_paths(meson.current_source_dir(), 'meson', 'post_install.py'),
     '--iconsdir', icons_dir,
 )
-

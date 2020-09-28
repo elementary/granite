@@ -131,6 +131,17 @@ public static string accel_to_string (string? accel) {
             ///TRANSLATORS: The Alt key on the right side of the keyboard
             arr += _("Right Alt");
             break;
+        case Gdk.Key.backslash:
+            arr += "\\";
+            break;
+        case Gdk.Key.Control_R:
+            ///TRANSLATORS: The Ctrl key on the right side of the keyboard
+            arr += _("Right Ctrl");
+            break;
+        case Gdk.Key.Control_L:
+            ///TRANSLATORS: The Ctrl key on the left side of the keyboard
+            arr += _("Left Ctrl");
+            break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
             ///TRANSLATORS: This is a non-symbol representation of the "-" key
@@ -315,6 +326,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //widget//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -340,6 +352,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.StyleContext.add_provider_for_screen")]
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
 
@@ -359,6 +372,7 @@ namespace Granite.Widgets.Utils {
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
      *         //stylesheet// failed.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.CssProvider.load_from_data")]
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();
 
@@ -372,18 +386,6 @@ namespace Granite.Widgets.Utils {
         }
 
         return provider;
-    }
-
-    /**
-     * Determines if the widget should be drawn from left to right or otherwise.
-     *
-     * @return true if the widget should be drawn from left to right, false otherwise.
-     */
-    internal bool is_left_to_right (Gtk.Widget widget) {
-        var dir = widget.get_direction ();
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-        return dir == Gtk.TextDirection.LTR;
     }
 
     /**
@@ -425,6 +427,7 @@ namespace Granite.Widgets.Utils {
      *         or there was no close value in the button-layout string, false will be returned. The position
      *         will be LEFT in that case.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public bool get_default_close_button_position (out CloseButtonPosition position) {
         // default value
         position = CloseButtonPosition.LEFT;
@@ -434,7 +437,7 @@ namespace Granite.Widgets.Utils {
             return false;
         }
 
-        var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
+        var layout = new GLib.Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
         var parts = layout.split (":");
 
         if (parts.length < 2) {
@@ -460,6 +463,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the schema name. If the layout could not be determined, a warning will be thrown and null will be returned
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public string? get_button_layout_schema () {
         var sss = SettingsSchemaSource.get_default ();
 

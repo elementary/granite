@@ -75,6 +75,15 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * The (plain) text that will be shown in a tooltip when the tab is hovered.
+         **/
+        public string tooltip {
+            set {
+                _label.set_tooltip_text (value);
+            }
+        }
+
         private bool _pinned = false;
         public bool pinned {
             get { return _pinned; }
@@ -788,11 +797,6 @@ namespace Granite.Widgets {
             notebook.scrollable = true;
             notebook.show_border = false;
             _tab_bar_behavior = TabBarBehavior.ALWAYS;
-
-            draw.connect ( (ctx) => {
-                get_style_context ().render_activity (ctx, 0, 0, get_allocated_width (), 27);
-                return false;
-            });
 
             add (notebook);
 

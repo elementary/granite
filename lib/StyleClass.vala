@@ -78,6 +78,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
     /**
+     * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
+     */
+    public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "h1";
@@ -110,6 +114,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     /**
+     * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
+     */
+    public const string STYLE_CLASS_ROUNDED = "rounded";
+    /**
      * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
@@ -133,4 +141,12 @@ namespace Granite {
      * Style class for a {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_WELCOME = "welcome";
+    /**
+     * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
+     */
+    public const string STYLE_CLASS_WARMTH = "warmth";
+    /**
+     * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
+     */
+    public const string STYLE_CLASS_TEMPERATURE = "temperature";
 }

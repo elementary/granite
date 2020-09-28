@@ -10,7 +10,56 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="5.3.1" date="2020-01-17" urgency="medium">
+    <release version="5.5.1" date="2020-08-25" urgency="medium">
+      <description>
+        <p>New Style Constants:</p>
+        <ul>
+          <li>STYLE_CLASS_WARMTH for scales</li>
+          <li>STYLE_CLASS_TEMPERATURE for scales</li>
+        </ul>
+        <p>Other Changes:</p>
+        <ul>
+          <li>Toasts now reset their timeout when sending a new notification</li>
+          <li>Make tab tooltips of DynamicNotebook settable</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="5.5.0" date="2020-06-30" urgency="medium">
+      <description>
+        <p>New Style Constants:</p>
+        <ul>
+          <li>STYLE_CLASS_COLOR_BUTTON</li>
+          <li>STYLE_CLASS_ROUNDED</li>
+        </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead</li>
+          <li>Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline instead</li>
+          <li>Old unused utilities like get_button_layout_schema, get_default_close_button_position, and Granite.Services.Paths</li>
+          <li>Old unused widgets like CollapsiblePaned and CompositedWindow</li>
+        </ul>
+        <p>Other Changes:</p>
+        <ul>
+          <li>Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="5.4.0" date="2020-04-29" urgency="medium">
+      <description>
+        <p>New features:</p>
+        <ul>
+          <li>New Settings class to share Pantheon desktop settings with apps</li>
+          <li>Introduced Settings.prefers_color_scheme to get a user's color scheme preference, i.e. for a dark style</li>
+        </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>It is now recommended to use GLib.Settings instead of Granite.Services.Settings</li>
+        </ul>
+      </description>
+    </release>
+    <release version="5.3.1" date="2020-04-01" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>

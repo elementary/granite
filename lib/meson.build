@@ -39,6 +39,7 @@ libgranite_sources = files(
     'Widgets/ModeSwitch.vala',
     'Widgets/OverlayBar.vala',
     'Widgets/SeekBar.vala',
+    'Widgets/Settings.vala',
     'Widgets/SettingsSidebarRow.vala',
     'Widgets/SettingsSidebar.vala',
     'Widgets/SourceList.vala',
