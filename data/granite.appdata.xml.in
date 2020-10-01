@@ -12,10 +12,10 @@
   <releases>
     <release version="5.5.1" date="2020-08-25" urgency="medium">
       <description>
-        <p>New Style Constants:</p>
+        <p>New Constants:</p>
         <ul>
-          <li>STYLE_CLASS_WARMTH for scales</li>
-          <li>STYLE_CLASS_TEMPERATURE for scales</li>
+          <li>STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales</li>
+          <li>TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent animations</li>
         </ul>
         <p>Other Changes:</p>
         <ul>
