@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-10-01 20:45+0000\n"
 "PO-Revision-Date: 2019-12-10 12:56-0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -31,16 +31,18 @@ msgid ""
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
-msgid "New Style Constants:"
+#: data/granite.appdata.xml.in:15
+msgid "New Constants:"
 msgstr ""
 
 #: data/granite.appdata.xml.in:17
-msgid "STYLE_CLASS_WARMTH for scales"
+msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr ""
 
 #: data/granite.appdata.xml.in:18
-msgid "STYLE_CLASS_TEMPERATURE for scales"
+msgid ""
+"TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
+"animations"
 msgstr ""
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:42
@@ -58,6 +60,10 @@ msgstr ""
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:45
 #: data/granite.appdata.xml.in:68 data/granite.appdata.xml.in:82
 msgid "Updated translations"
+msgstr ""
+
+#: data/granite.appdata.xml.in:30
+msgid "New Style Constants:"
 msgstr ""
 
 #: data/granite.appdata.xml.in:32
