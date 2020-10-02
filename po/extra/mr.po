@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-10-01 20:45+0000\n"
 "PO-Revision-Date: 2020-05-29 13:11+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite-"
@@ -35,16 +35,20 @@ msgstr ""
 "GTK आणि GLib साठी एक सहयोगी लायब्ररी जी प्राथमिक ओएससाठी तयार केलेल्या अ‍ॅप्समध्ये "
 "वापरण्यासाठी डिझाइन केलेले जटिल विजेट आणि सोयीच्या पद्धती प्रदान करते."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:30
-msgid "New Style Constants:"
+#: data/granite.appdata.xml.in:15
+#, fuzzy
+#| msgid "New Style Constants:"
+msgid "New Constants:"
 msgstr "नवीन शैलीतील स्थिर :"
 
 #: data/granite.appdata.xml.in:17
-msgid "STYLE_CLASS_WARMTH for scales"
+msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr ""
 
 #: data/granite.appdata.xml.in:18
-msgid "STYLE_CLASS_TEMPERATURE for scales"
+msgid ""
+"TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
+"animations"
 msgstr ""
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:42
@@ -63,6 +67,10 @@ msgstr ""
 #: data/granite.appdata.xml.in:68 data/granite.appdata.xml.in:82
 msgid "Updated translations"
 msgstr "अद्ययावत भाषांतर"
+
+#: data/granite.appdata.xml.in:30
+msgid "New Style Constants:"
+msgstr "नवीन शैलीतील स्थिर :"
 
 #: data/granite.appdata.xml.in:32
 msgid "STYLE_CLASS_COLOR_BUTTON"
