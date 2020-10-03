@@ -42,6 +42,8 @@
  * }
  * }}}
  */
+
+[Version (deprecated = true, deprecated_since = "6.0.0", replacement = "Hdy.Avatar")]
 public class Granite.Widgets.Avatar : Gtk.EventBox {
     private const string DEFAULT_ICON = "avatar-default";
     private const int EXTRA_MARGIN = 4;
