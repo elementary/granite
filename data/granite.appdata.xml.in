@@ -10,8 +10,12 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="5.5.1" date="2020-08-25" urgency="medium">
+    <release version="6.0.0" date="2020-08-25" urgency="medium">
       <description>
+        <p>Deprecations:</p>
+        <ul>
+          <li>Granite.Widgets.Avatar. Use Hdy.Avatar instead</li>
+        </ul>
         <p>New Constants:</p>
         <ul>
           <li>STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales</li>
