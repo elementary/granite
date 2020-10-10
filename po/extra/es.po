@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-01 20:45+0000\n"
-"PO-Revision-Date: 2020-09-29 06:14+0000\n"
+"PO-Revision-Date: 2020-10-08 14:14+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/es/>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,22 +37,20 @@ msgstr ""
 "aplicaciones para elementary OS."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New Style Constants:"
 msgid "New Constants:"
-msgstr "Constantes de estilos nuevas:"
+msgstr "Constantes nuevas:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid "STYLE_CLASS_TEMPERATURE for scales"
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
-msgstr "STYLE_CLASS_TEMPERATURE para controles deslizantes"
+msgstr "STYLE_CLASS_WARMTH y STYLE_CLASS_TEMPERATURE para controles deslizantes"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
 msgstr ""
+"TRANSITION_DURATION_OPEN y TRANSITION_DURATION_CLOSE para una coherencia en "
+"las animaciones"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:42
 msgid "Other Changes:"
@@ -163,7 +161,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:67
 msgid "Make AccelLabel.label settable"
-msgstr "Hacer AccelLabel.label configurable"
+msgstr "AccelLabel.label es definible"
 
 #: data/granite.appdata.xml.in:74
 msgid "New features"
