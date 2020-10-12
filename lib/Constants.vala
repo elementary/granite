@@ -57,6 +57,8 @@ namespace Granite {
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
     public const string STYLE_CLASS_ACCENT = "accent";
+
+    [Version (deprecated = true, deprecated_since = "6.0.0", replacement = "")]
     public const string STYLE_CLASS_AVATAR = "avatar";
     /**
      * Style class for shaping a {@link Gtk.Button}
