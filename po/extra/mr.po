@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-01 20:45+0000\n"
-"PO-Revision-Date: 2020-05-29 13:11+0000\n"
+"PO-Revision-Date: 2020-10-11 18:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/mr/>\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/mr/>\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,32 +36,31 @@ msgstr ""
 "वापरण्यासाठी डिझाइन केलेले जटिल विजेट आणि सोयीच्या पद्धती प्रदान करते."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New Style Constants:"
 msgid "New Constants:"
-msgstr "नवीन शैलीतील स्थिर :"
+msgstr "नवीन निरंतर:"
 
 #: data/granite.appdata.xml.in:17
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
-msgstr ""
+msgstr "स्केलसाठी STYLE_CLASS_WARMTH आणि STYLE_CLASS_TEMPERATURE"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
 msgstr ""
+"सुसंगत अ‍ॅनिमेशनसाठी TRANSITION_DURATION_OPEN आणि TRANSITION_DURATION_CLOSE"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:42
 msgid "Other Changes:"
-msgstr ""
+msgstr "इतर बदल :"
 
 #: data/granite.appdata.xml.in:22
 msgid "Toasts now reset their timeout when sending a new notification"
-msgstr ""
+msgstr "नवीन सूचना पाठविताना टोस्ट आता त्यांचे टाईमआऊट रीसेट करतात"
 
 #: data/granite.appdata.xml.in:23
 msgid "Make tab tooltips of DynamicNotebook settable"
-msgstr ""
+msgstr "डायनॅमिक नोटबुकचे टॅब टूलटिप व्यवस्थित करण्यायोग्य बनवा"
 
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:45
 #: data/granite.appdata.xml.in:68 data/granite.appdata.xml.in:82
