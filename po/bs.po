@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"POT-Creation-Date: 2020-09-16 15:07+0000\n"
 "PO-Revision-Date: 2018-11-09 07:37+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/desktop/"
@@ -187,48 +187,48 @@ msgstr "Izbornik"
 msgid "About"
 msgstr "Informacije"
 
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
 msgid "Close Tab"
 msgstr "Zatvori karticu"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:294
 msgid "Open in a New Window"
 msgstr "Otvori u novom prozoru"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:295
 msgid "Duplicate"
 msgstr "Udvostruči"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tab"
 msgstr "Zatvori drugu karticu"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tabs"
 msgstr "Zatvori druge kartice"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
 msgstr "Izbriši sve"
 
-#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
+#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
 msgid "New Tab"
 msgstr "Nova kartica"
 
-#: lib/Widgets/DynamicNotebook.vala:796
+#: lib/Widgets/DynamicNotebook.vala:805
 msgid "Undo Close Tab"
 msgstr "Ponovo otvori zatvorenu karticu"
 
-#: lib/Widgets/DynamicNotebook.vala:836
+#: lib/Widgets/DynamicNotebook.vala:845
 msgid "Closed Tabs"
 msgstr "Zatvorene kartice"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"POT-Creation-Date: 2020-09-16 15:07+0000\n"
 "PO-Revision-Date: 2020-08-09 05:13+0000\n"
 "Last-Translator: imgradeone Yan <imgradeone@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -174,48 +174,48 @@ msgstr "菜单"
 msgid "About"
 msgstr "关于"
 
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
 msgid "Close Tab"
 msgstr "关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:294
 msgid "Open in a New Window"
 msgstr "在新窗口中打开"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:295
 msgid "Duplicate"
 msgstr "复制"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tab"
 msgstr "关闭其他标签"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tabs"
 msgstr "关闭其他标签"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
 msgstr "全部清除"
 
-#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
+#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
 msgid "New Tab"
 msgstr "新标签"
 
-#: lib/Widgets/DynamicNotebook.vala:796
+#: lib/Widgets/DynamicNotebook.vala:805
 msgid "Undo Close Tab"
 msgstr "撤消关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:836
+#: lib/Widgets/DynamicNotebook.vala:845
 msgid "Closed Tabs"
 msgstr "已关闭的标签"
 

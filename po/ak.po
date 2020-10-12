@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 21:42+0000\n"
+"POT-Creation-Date: 2020-09-16 15:07+0000\n"
 "PO-Revision-Date: 2016-10-08 17:19+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -182,49 +182,49 @@ msgstr "Menu"
 msgid "About"
 msgstr "Ɛho Nsɛm"
 
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
 msgid "Close Tab"
 msgstr "Yi Tab no fi hɔ"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:294
 #, fuzzy
 msgid "Open in a New Window"
 msgstr "Bue wɔ Window foforɔ mu"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:295
 msgid "Duplicate"
 msgstr "Yɛ no mmienu"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tab"
 msgstr "Yi Tab a ɛka ho no"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tabs"
 msgstr "Yi Tab ahoroɔ a ɛka ho no"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
 msgstr "Yi ne nyinaa"
 
-#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
+#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
 msgid "New Tab"
 msgstr "Tab Foforɔ"
 
-#: lib/Widgets/DynamicNotebook.vala:796
+#: lib/Widgets/DynamicNotebook.vala:805
 msgid "Undo Close Tab"
 msgstr "Gyae Tab no yi"
 
-#: lib/Widgets/DynamicNotebook.vala:836
+#: lib/Widgets/DynamicNotebook.vala:845
 msgid "Closed Tabs"
 msgstr "Tab Ahoroɔ a woayi"
 

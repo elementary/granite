@@ -1,6 +1,5 @@
 lib/Application.vala
 lib/DateTime.vala
-lib/StyleClass.vala
 
 lib/Drawing/BufferSurface.vala
 lib/Drawing/Color.vala
