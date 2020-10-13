@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-16 15:07+0000\n"
-"PO-Revision-Date: 2019-09-08 10:22+0000\n"
+"PO-Revision-Date: 2020-10-11 18:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite/"
 "mr/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: lib/Application.vala:183
 msgid "Show Granite Options"
@@ -309,17 +309,13 @@ msgstr "उजवा Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
-#, fuzzy
-#| msgid "Right Alt"
 msgid "Right Ctrl"
-msgstr "उजवा Alt"
+msgstr "उजवा Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
-#, fuzzy
-#| msgid "Left Alt"
 msgid "Left Ctrl"
-msgstr "डावे Alt"
+msgstr "डावे Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
