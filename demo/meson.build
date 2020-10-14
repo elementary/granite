@@ -7,7 +7,6 @@ executable(
     'Views/AlertViewView.vala',
     'Views/ApplicationView.vala',
     'Views/AsyncImageView.vala',
-    'Views/AvatarView.vala',
     'Views/CSSView.vala',
     'Views/DateTimePickerView.vala',
     'Views/DynamicNotebookView.vala',
