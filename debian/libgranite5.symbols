@@ -1,5 +1,16 @@
 libgranite.so.5 libgranite5 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
+ granite_accel_label_construct@Base 5.5.0
+ granite_accel_label_construct_from_action_name@Base 5.5.0
+ granite_accel_label_get_accel_string@Base 5.5.0
+ granite_accel_label_get_action_name@Base 5.5.0
+ granite_accel_label_get_label@Base 5.5.0
+ granite_accel_label_get_type@Base 5.5.0
+ granite_accel_label_new@Base 5.5.0
+ granite_accel_label_new_from_action_name@Base 5.5.0
+ granite_accel_label_set_accel_string@Base 5.5.0
+ granite_accel_label_set_action_name@Base 5.5.0
+ granite_accel_label_set_label@Base 5.5.0
  granite_accel_to_string@Base 5.2.3
  granite_application_DEBUG@Base 0.2.0
  granite_application_construct@Base 0.2.0
@@ -25,6 +36,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_async_image_set_from_icon_name_finish@Base 0.5
  granite_close_button_position_get_type@Base 0.2.3
  granite_collapse_mode_get_type@Base 0.2.0
+ granite_contrasting_foreground_color@Base 5.5.0
  granite_date_time_get_default_date_format@Base 0.3.0
  granite_date_time_get_default_time_format@Base 0.3.0
  granite_date_time_get_relative_datetime@Base 0.5
@@ -122,6 +134,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_markup_accel_tooltip@Base 5.2.3
  granite_message_dialog_construct@Base 0.5
  granite_message_dialog_construct_with_image_from_icon_name@Base 0.5
+ granite_message_dialog_get_badge_icon@Base 5.5.0
  granite_message_dialog_get_custom_bin@Base 0.5
  granite_message_dialog_get_image_icon@Base 0.5
  granite_message_dialog_get_primary_label@Base 0.5
@@ -131,9 +144,11 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_message_dialog_get_type@Base 0.5
  granite_message_dialog_new@Base 0.5
  granite_message_dialog_new_with_image_from_icon_name@Base 0.5
+ granite_message_dialog_set_badge_icon@Base 5.5.0
  granite_message_dialog_set_image_icon@Base 0.5
  granite_message_dialog_set_primary_text@Base 0.5
  granite_message_dialog_set_secondary_text@Base 0.5
+ granite_message_dialog_show_error_details@Base 5.5.0
  granite_mode_switch_construct@Base 5.2.3
  granite_mode_switch_construct_from_icon_name@Base 5.2.3
  granite_mode_switch_get_active@Base 5.2.3
@@ -168,6 +183,14 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_seek_bar_set_playback_progress@Base 0.5
  granite_seek_bar_set_progression_label@Base 0.5
  granite_seek_bar_set_scale@Base 0.5
+ granite_services_application_set_badge@Base 5.5.0
+ granite_services_application_set_badge_finish@Base 5.5.0
+ granite_services_application_set_badge_visible@Base 5.5.0
+ granite_services_application_set_badge_visible_finish@Base 5.5.0
+ granite_services_application_set_progress@Base 5.5.0
+ granite_services_application_set_progress_finish@Base 5.5.0
+ granite_services_application_set_progress_visible@Base 5.5.0
+ granite_services_application_set_progress_visible_finish@Base 5.5.0
  granite_services_contract_execute_with_file@Base 0.2.0
  granite_services_contract_execute_with_files@Base 0.2.0
  granite_services_contract_get_description@Base 0.2.0
@@ -238,12 +261,16 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_services_system_construct@Base 0.2.0
  granite_services_system_execute_command@Base 0.2.0
  granite_services_system_get_type@Base 0.2.0
+ granite_services_system_history_is_enabled@Base 5.5.0
  granite_services_system_launch@Base 0.2.0
  granite_services_system_launch_with_files@Base 0.2.0
  granite_services_system_new@Base 0.2.0
  granite_services_system_open@Base 0.2.0
  granite_services_system_open_files@Base 0.2.0
  granite_services_system_open_uri@Base 0.2.0
+ granite_settings_get_default@Base 5.5.0
+ granite_settings_get_prefers_color_scheme@Base 5.5.0
+ granite_settings_get_type@Base 5.5.0
  granite_settings_page_construct@Base 0.5
  granite_settings_page_get_display_widget@Base 0.5
  granite_settings_page_get_header@Base 0.5
@@ -359,7 +386,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_dynamic_notebook_get_menu@Base 0.2.0
  granite_widgets_dynamic_notebook_get_n_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_get_nth_page@Base 0.2.0
- granite_widgets_dynamic_notebook_get_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_get_show_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_get_tab_bar_behavior@Base 0.3.0
  granite_widgets_dynamic_notebook_get_tab_by_index@Base 0.2.0
@@ -384,7 +410,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_dynamic_notebook_set_force_left@Base 0.2.3
  granite_widgets_dynamic_notebook_set_group_name@Base 0.2.0
  granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 0.3.0
- granite_widgets_dynamic_notebook_set_show_icons@Base 0.2.0
  granite_widgets_dynamic_notebook_set_show_tabs@Base 0.2.0
  granite_widgets_dynamic_notebook_set_tab_bar_behavior@Base 0.3.0
  granite_widgets_dynamic_notebook_set_tab_position@Base 0.2.0
@@ -457,6 +482,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_source_list_is_item_expanded@Base 0.2.0
  granite_widgets_source_list_item_construct@Base 0.2.0
  granite_widgets_source_list_item_get_activatable@Base 0.2.0
+ granite_widgets_source_list_item_get_activatable_tooltip@Base 5.5.0
  granite_widgets_source_list_item_get_badge@Base 0.2.0
  granite_widgets_source_list_item_get_context_menu@Base 0.2.0
  granite_widgets_source_list_item_get_editable@Base 0.2.0
@@ -465,16 +491,19 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_source_list_item_get_name@Base 0.2.0
  granite_widgets_source_list_item_get_parent@Base 0.2.0
  granite_widgets_source_list_item_get_selectable@Base 0.2.0
+ granite_widgets_source_list_item_get_tooltip@Base 5.5.0
  granite_widgets_source_list_item_get_type@Base 0.2.0
  granite_widgets_source_list_item_get_visible@Base 0.2.0
  granite_widgets_source_list_item_new@Base 0.2.0
  granite_widgets_source_list_item_set_activatable@Base 0.2.0
+ granite_widgets_source_list_item_set_activatable_tooltip@Base 5.5.0
  granite_widgets_source_list_item_set_badge@Base 0.2.0
  granite_widgets_source_list_item_set_editable@Base 0.2.0
  granite_widgets_source_list_item_set_icon@Base 0.2.0
  granite_widgets_source_list_item_set_markup@Base 5.2.3
  granite_widgets_source_list_item_set_name@Base 0.2.0
  granite_widgets_source_list_item_set_selectable@Base 0.2.0
+ granite_widgets_source_list_item_set_tooltip@Base 5.5.0
  granite_widgets_source_list_item_set_visible@Base 0.2.0
  granite_widgets_source_list_new@Base 0.2.0
  granite_widgets_source_list_refilter@Base 0.2.0
@@ -506,7 +535,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_tab_close@Base 0.3.0
  granite_widgets_tab_construct@Base 0.2.0
  granite_widgets_tab_get_ellipsize_mode@Base 0.2.0
- granite_widgets_tab_get_fixed@Base 0.2.0
  granite_widgets_tab_get_icon@Base 0.2.0
  granite_widgets_tab_get_label@Base 0.2.0
  granite_widgets_tab_get_menu@Base 0.2.0
@@ -518,7 +546,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_tab_get_working@Base 0.2.0
  granite_widgets_tab_new@Base 0.2.0
  granite_widgets_tab_set_ellipsize_mode@Base 0.2.0
- granite_widgets_tab_set_fixed@Base 0.2.0
  granite_widgets_tab_set_icon@Base 0.2.0
  granite_widgets_tab_set_label@Base 0.2.0
  granite_widgets_tab_set_menu@Base 0.2.0
@@ -526,6 +553,7 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_tab_set_pinnable@Base 0.2.3
  granite_widgets_tab_set_pinned@Base 0.2.3
  granite_widgets_tab_set_restore_data@Base 0.2.3
+ granite_widgets_tab_set_tooltip@Base 5.5.0
  granite_widgets_tab_set_working@Base 0.2.0
  granite_widgets_time_picker_construct@Base 0.2.0
  granite_widgets_time_picker_construct_with_format@Base 0.2.0
