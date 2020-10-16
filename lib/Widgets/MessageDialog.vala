@@ -312,10 +312,6 @@ public class Granite.MessageDialog : Gtk.Dialog {
         message_grid.show_all ();
 
         get_content_area ().add (message_grid);
-
-        var action_area = get_action_area ();
-        action_area.margin = 6;
-        action_area.margin_top = 14;
     }
 
     /**
