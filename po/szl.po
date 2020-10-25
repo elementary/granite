@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-08 22:02+0000\n"
+"POT-Creation-Date: 2020-09-16 15:07+0000\n"
 "PO-Revision-Date: 2020-02-25 22:09+0000\n"
 "Last-Translator: gkkulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/desktop/granite/"
@@ -178,48 +178,48 @@ msgstr "Myni"
 msgid "About"
 msgstr "Informacyje"
 
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
 msgid "Close Tab"
 msgstr "Zawarcie karty"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:294
 msgid "Open in a New Window"
 msgstr "Ôtwōrz we nowym ôknie"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:295
 msgid "Duplicate"
 msgstr "Tupluj"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tab"
 msgstr "Zawrzij inkszo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:337
 msgid "Close Other Tabs"
 msgstr "Zawrzij inksze karty"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Close Tab to the Right"
 msgstr "Zawrzij karta z prawyj"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:342
 msgid "Close Tabs to the Right"
 msgstr "Zawrzij karty z prawyj"
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:526
 msgid "Clear All"
 msgstr "Wysnoż wszyjsko"
 
-#: lib/Widgets/DynamicNotebook.vala:795 lib/Widgets/DynamicNotebook.vala:826
+#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
 msgid "New Tab"
 msgstr "Nowo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:796
+#: lib/Widgets/DynamicNotebook.vala:805
 msgid "Undo Close Tab"
 msgstr "Prziwrōć zawarto karta"
 
-#: lib/Widgets/DynamicNotebook.vala:836
+#: lib/Widgets/DynamicNotebook.vala:845
 msgid "Closed Tabs"
 msgstr "Zawarte karty"
 
@@ -304,36 +304,50 @@ msgstr "Lewy Alt"
 msgid "Right Alt"
 msgstr "Prawy knefel Alt"
 
+#. /TRANSLATORS: The Ctrl key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:139
+#, fuzzy
+#| msgid "Right Alt"
+msgid "Right Ctrl"
+msgstr "Prawy knefel Alt"
+
+#. /TRANSLATORS: The Ctrl key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:143
+#, fuzzy
+#| msgid "Left Alt"
+msgid "Left Ctrl"
+msgstr "Lewy Alt"
+
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:148
 msgid "Minus"
 msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:153
 msgid "Plus"
 msgstr "Plus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:158
 msgid "Equals"
 msgstr "Rōwne je"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:161
 msgid "Enter"
 msgstr "Ynter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
 msgstr "Lewy Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
 msgstr "Prawy Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:204
+#: lib/Widgets/Utils.vala:215
 msgid ", "
 msgstr ", "

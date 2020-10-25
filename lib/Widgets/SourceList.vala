@@ -1542,19 +1542,6 @@ public class SourceList : Gtk.ScrolledWindow {
         ) {
             // Nothing to do. This renderer only adds space.
         }
-
-        [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
-        public override void get_size (
-            Gtk.Widget widget,
-            Gdk.Rectangle?
-            cell_area,
-            out int x_offset,
-            out int y_offset,
-            out int width,
-            out int height
-        ) {
-            assert_not_reached ();
-        }
     }
 
 
@@ -1603,7 +1590,7 @@ public class SourceList : Gtk.ScrolledWindow {
         private bool unselectable_item_clicked = false;
 
         private const string DEFAULT_STYLESHEET = """
-            .source-list.badge {
+            .sidebar.badge {
                 border-radius: 10px;
                 border-width: 0;
                 padding: 1px 2px 1px 2px;
@@ -1652,12 +1639,17 @@ public class SourceList : Gtk.ScrolledWindow {
         }
 
         construct {
-            Utils.set_theming (
-                this,
-                DEFAULT_STYLESHEET,
-                StyleClass.SOURCE_LIST,
-                Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK
-            );
+            unowned Gtk.StyleContext style_context = get_style_context ();
+            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            style_context.add_class (Granite.STYLE_CLASS_SOURCE_LIST);
+
+            var css_provider = new Gtk.CssProvider ();
+            try {
+                css_provider.load_from_data (DEFAULT_STYLESHEET, -1);
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
+            } catch (Error e) {
+                warning ("Could not create CSS Provider: %s\nStylesheet:\n%s", e.message, DEFAULT_STYLESHEET);
+            }
 
             set_model (data_model);
 

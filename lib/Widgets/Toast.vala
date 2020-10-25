@@ -78,10 +78,7 @@ namespace Granite.Widgets {
             default_action_button.no_show_all = true;
             default_action_button.clicked.connect (() => {
                 reveal_child = false;
-                if (timeout_id != 0) {
-                    Source.remove (timeout_id);
-                    timeout_id = 0;
-                }
+                stop_timeout ();
                 default_action ();
             });
 
@@ -89,10 +86,7 @@ namespace Granite.Widgets {
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
                 reveal_child = false;
-                if (timeout_id != 0) {
-                    Source.remove (timeout_id);
-                    timeout_id = 0;
-                }
+                stop_timeout ();
                 closed ();
             });
 
@@ -104,11 +98,47 @@ namespace Granite.Widgets {
             notification_box.add (notification_label);
             notification_box.add (default_action_button);
 
+            var event_box = new Gtk.EventBox ();
+            event_box.events |= Gdk.EventMask.ENTER_NOTIFY_MASK;
+            event_box.events |= Gdk.EventMask.LEAVE_NOTIFY_MASK;
+            event_box.add (notification_box);
+
+            event_box.enter_notify_event.connect (() => {
+                stop_timeout ();
+            });
+
+            event_box.leave_notify_event.connect (() => {
+                start_timeout ();
+            });
+
             var notification_frame = new Gtk.Frame (null);
             notification_frame.get_style_context ().add_class ("app-notification");
-            notification_frame.add (notification_box);
+            notification_frame.add (event_box);
 
             add (notification_frame);
+        }
+
+        private void start_timeout () {
+            uint duration;
+
+            if (default_action_button.visible) {
+                duration = 3500;
+            } else {
+                duration = 2000;
+            }
+
+            timeout_id = GLib.Timeout.add (duration, () => {
+                reveal_child = false;
+                timeout_id = 0;
+                return GLib.Source.REMOVE;
+            });
+        }
+
+        private void stop_timeout () {
+            if (timeout_id != 0) {
+                Source.remove (timeout_id);
+                timeout_id = 0;
+            }
         }
 
         /**
@@ -132,21 +162,12 @@ namespace Granite.Widgets {
         public void send_notification () {
             if (!child_revealed) {
                 reveal_child = true;
-
-                uint duration;
-
-                if (default_action_button.visible) {
-                    duration = 3500;
-                } else {
-                    duration = 2000;
-                }
-
-                timeout_id = GLib.Timeout.add (duration, () => {
-                    reveal_child = false;
-                    timeout_id = 0;
-                    return false;
-                });
             }
+
+            // Remove any old timeout, including one started by
+            // leave_notify_event for the previous notification
+            stop_timeout ();
+            start_timeout ();
         }
     }
 }
