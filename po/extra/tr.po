@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-12 14:37+0000\n"
-"PO-Revision-Date: 2020-10-08 14:14+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"PO-Revision-Date: 2020-10-29 12:15+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,7 +44,7 @@ msgstr "Kullanımdan Kaldırılanlar:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr ""
+msgstr "Granite.Widgets.Avatar yerine Hdy.Avatar kullan"
 
 #: data/granite.appdata.xml.in:19
 msgid "New Constants:"
@@ -69,7 +69,7 @@ msgstr "Diğer Değişiklikler:"
 #: data/granite.appdata.xml.in:26
 msgid "Toasts now reset their timeout when sending a new notification"
 msgstr ""
-"Toastlar artık yeni bir bildirim gönderirken zaman aşımlarını sıfırlıyor"
+"Bildirimler artık yeni bir bildirim gönderirken zaman aşımlarını sıfırlıyor"
 
 #: data/granite.appdata.xml.in:27
 msgid "Make tab tooltips of DynamicNotebook settable"
