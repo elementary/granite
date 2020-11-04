@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-11-04 19:54+0000\n"
 "PO-Revision-Date: 2020-10-11 18:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite/"
@@ -181,48 +181,48 @@ msgstr "सूची"
 msgid "About"
 msgstr "आमची माहिती"
 
-#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "टॅब बंद करा"
 
-#: lib/Widgets/DynamicNotebook.vala:294
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
 msgstr "नवीन विंडोमध्ये उघडा"
 
-#: lib/Widgets/DynamicNotebook.vala:295
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
 msgstr "प्रतिकृती(डुप्लीकेट)"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
 msgstr "दुसरी टॅब बंद करा"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
 msgstr "इतर टॅब बंद करा"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
 msgstr "उजवीकडील टॅब्स बंद करा"
 
-#: lib/Widgets/DynamicNotebook.vala:342
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
 msgstr "उजवीकडील टॅब्स बंद करा"
 
-#: lib/Widgets/DynamicNotebook.vala:526
+#: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
 msgstr "सर्व बंद करा"
 
-#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
+#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
 msgid "New Tab"
 msgstr "नवी टॅब"
 
-#: lib/Widgets/DynamicNotebook.vala:805
+#: lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
 msgstr "बंद टॅब पूर्ववत करा"
 
-#: lib/Widgets/DynamicNotebook.vala:845
+#: lib/Widgets/DynamicNotebook.vala:821
 msgid "Closed Tabs"
 msgstr "बंद केलेल्या टॅब"
 
@@ -234,7 +234,7 @@ msgstr "_Close"
 msgid "_Cancel"
 msgstr "_Cancel"
 
-#: lib/Widgets/MessageDialog.vala:348
+#: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
 msgstr "तपशील"
 
