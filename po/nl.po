@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-16 15:07+0000\n"
-"PO-Revision-Date: 2019-12-27 15:07+0000\n"
+"PO-Revision-Date: 2020-11-02 16:43+0000\n"
 "Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/granite/nl/"
 ">\n"
@@ -308,17 +308,13 @@ msgstr "Rechter Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
-#, fuzzy
-#| msgid "Right Alt"
 msgid "Right Ctrl"
-msgstr "Rechter Alt"
+msgstr "Rechter Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
-#, fuzzy
-#| msgid "Left Alt"
 msgid "Left Ctrl"
-msgstr "Linker Alt"
+msgstr "Linker Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
