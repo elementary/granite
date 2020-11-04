@@ -75,6 +75,15 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * The (plain) text that will be shown in a tooltip when the tab is hovered.
+         **/
+        public string tooltip {
+            set {
+                _label.set_tooltip_text (value);
+            }
+        }
+
         private bool _pinned = false;
         public bool pinned {
             get { return _pinned; }
@@ -175,18 +184,6 @@ namespace Granite.Widgets {
         public Pango.EllipsizeMode ellipsize_mode {
             get { return _label.ellipsize; }
             set { _label.ellipsize = value; }
-        }
-
-        bool _fixed;
-        [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
-        public bool fixed {
-            get { return _fixed; }
-            set {
-                if (value != _fixed) {
-                    _fixed = value;
-                    _label.visible = value;
-                }
-            }
         }
 
         public Gtk.Menu menu { get; set; }
@@ -556,18 +553,6 @@ namespace Granite.Widgets {
         public bool show_tabs {
             get { return notebook.show_tabs; }
             set { notebook.show_tabs = value; }
-        }
-
-        /**
-         * Toggle icon display
-         */
-        bool _show_icons;
-        [Version (deprecated = true, deprecated_since = "0.3.1", replacement = "")]
-        public bool show_icons {
-            get { return _show_icons; }
-            set {
-                _show_icons = value;
-            }
         }
 
         /**
