@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-04 19:54+0000\n"
-"PO-Revision-Date: 2020-10-16 21:14+0000\n"
+"PO-Revision-Date: 2020-11-06 11:15+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fr/>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,10 +56,8 @@ msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr "STYLE_CLASS_WARMTH et STYLE_CLASS_TEMPERATURE pour les échelles"
 
 #: data/granite.appdata.xml.in:22
-#, fuzzy
-#| msgid "STYLE_CLASS_WARMTH for scales"
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
-msgstr "STYLE_CLASS_WARMTH pour les échelles"
+msgstr "STYLE_CLASS_DEFAULT_DECORATION pour les petites barres de titre"
 
 #: data/granite.appdata.xml.in:23
 msgid ""
