@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-11-04 19:54+0000\n"
 "PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
@@ -176,48 +176,48 @@ msgstr "メニュー"
 msgid "About"
 msgstr "このアプリケーションについて"
 
-#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:294
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
 msgstr "新しいウィンドウで開く"
 
-#: lib/Widgets/DynamicNotebook.vala:295
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
 msgstr "タブを複製"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
 msgstr "ほかのタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
 msgstr "ほかのタブを閉じる"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
 msgstr "右側のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:342
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
 msgstr "右側のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:526
+#: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
 msgstr "すべて消去"
 
-#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
+#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: lib/Widgets/DynamicNotebook.vala:805
+#: lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
 msgstr "閉じたタブを復元"
 
-#: lib/Widgets/DynamicNotebook.vala:845
+#: lib/Widgets/DynamicNotebook.vala:821
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
@@ -229,7 +229,7 @@ msgstr "閉じる(_C)"
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: lib/Widgets/MessageDialog.vala:348
+#: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
 msgstr "詳細"
 

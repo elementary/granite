@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-11-04 19:54+0000\n"
 "PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite/"
@@ -180,48 +180,48 @@ msgstr "Menú"
 msgid "About"
 msgstr "Quant a"
 
-#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Tanca la pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:294
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
 msgstr "Obre en una finestra nova"
 
-#: lib/Widgets/DynamicNotebook.vala:295
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
 msgstr "Duplica"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
 msgstr "Tanca l'altra pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
 msgstr "Tanca les altres pestanyes"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
 msgstr "Tanca la pestanya a la dreta"
 
-#: lib/Widgets/DynamicNotebook.vala:342
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
 msgstr "Tanca les pestanyes a la dreta"
 
-#: lib/Widgets/DynamicNotebook.vala:526
+#: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
 msgstr "Neteja-ho tot"
 
-#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
+#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
 msgid "New Tab"
 msgstr "Pestanya nova"
 
-#: lib/Widgets/DynamicNotebook.vala:805
+#: lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
 msgstr "Desfés el tancament de la pestanya"
 
-#: lib/Widgets/DynamicNotebook.vala:845
+#: lib/Widgets/DynamicNotebook.vala:821
 msgid "Closed Tabs"
 msgstr "Pestanyes tancades"
 
@@ -233,7 +233,7 @@ msgstr "Tan_ca"
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
-#: lib/Widgets/MessageDialog.vala:348
+#: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
 msgstr "Detalls"
 

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
-"PO-Revision-Date: 2020-08-09 05:13+0000\n"
-"Last-Translator: imgradeone Yan <imgradeone@outlook.com>\n"
+"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"PO-Revision-Date: 2020-10-29 12:15+0000\n"
+"Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -174,48 +174,48 @@ msgstr "菜单"
 msgid "About"
 msgstr "关于"
 
-#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:294
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
 msgstr "在新窗口中打开"
 
-#: lib/Widgets/DynamicNotebook.vala:295
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
 msgstr "复制"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
 msgstr "关闭其他标签"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
 msgstr "关闭其他标签"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:342
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:526
+#: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
 msgstr "全部清除"
 
-#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
+#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
 msgid "New Tab"
-msgstr "新标签"
+msgstr "新建标签"
 
-#: lib/Widgets/DynamicNotebook.vala:805
+#: lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
 msgstr "撤消关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:845
+#: lib/Widgets/DynamicNotebook.vala:821
 msgid "Closed Tabs"
 msgstr "已关闭的标签"
 
@@ -227,7 +227,7 @@ msgstr "关闭"
 msgid "_Cancel"
 msgstr "取消"
 
-#: lib/Widgets/MessageDialog.vala:348
+#: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
 msgstr "详情"
 
@@ -302,36 +302,32 @@ msgstr "右 Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
-#, fuzzy
-#| msgid "Right Alt"
 msgid "Right Ctrl"
-msgstr "右 Alt"
+msgstr "右 Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
-#, fuzzy
-#| msgid "Left Alt"
 msgid "Left Ctrl"
-msgstr "左 Alt"
+msgstr "左 Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr "减"
+msgstr "-"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr "加"
+msgstr "+"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr "等于"
+msgstr "="
 
 #: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr "回车"
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:165

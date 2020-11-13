@@ -57,6 +57,8 @@ namespace Granite {
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
     public const string STYLE_CLASS_ACCENT = "accent";
+
+    [Version (deprecated = true, deprecated_since = "6.0.0", replacement = "")]
     public const string STYLE_CLASS_AVATAR = "avatar";
     /**
      * Style class for shaping a {@link Gtk.Button}
@@ -81,6 +83,10 @@ namespace Granite {
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
      */
     public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
+    /**
+     * Style class for slim headerbars, like in Terminal
+     */
+    public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
@@ -121,6 +127,10 @@ namespace Granite {
      * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
+    /**
+     * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+     */
+    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
     /**
      * Style class for a {@link Granite.Widgets.SourceList}
      */
