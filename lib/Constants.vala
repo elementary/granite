@@ -128,6 +128,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
     /**
+     * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+     */
+    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
+    /**
      * Style class for a {@link Granite.Widgets.SourceList}
      */
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
