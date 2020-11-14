@@ -26,6 +26,9 @@
  * ''Example''<<BR>>
  * {{{
  *   var validated_entry = new Granite.ValidatedEntry ();
+ *   username_entry.changed.connect (() => {
+ *       username_entry.is_valid = username_entry.text == "valid input";
+ *   });
  * }}}
  *
  */
