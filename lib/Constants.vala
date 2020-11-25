@@ -84,6 +84,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
     /**
+     * Style class for slim headerbars, like in Terminal
+     */
+    public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "h1";
@@ -123,6 +127,10 @@ namespace Granite {
      * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
+    /**
+     * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+     */
+    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
     /**
      * Style class for a {@link Granite.Widgets.SourceList}
      */

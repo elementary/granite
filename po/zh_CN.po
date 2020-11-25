@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-16 15:07+0000\n"
+"POT-Creation-Date: 2020-11-04 19:54+0000\n"
 "PO-Revision-Date: 2020-10-29 12:15+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -174,48 +174,48 @@ msgstr "菜单"
 msgid "About"
 msgstr "关于"
 
-#: lib/Widgets/DynamicNotebook.vala:266 lib/Widgets/DynamicNotebook.vala:290
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:294
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
 msgstr "在新窗口中打开"
 
-#: lib/Widgets/DynamicNotebook.vala:295
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
 msgstr "复制"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
 msgstr "关闭其他标签"
 
-#: lib/Widgets/DynamicNotebook.vala:337
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
 msgstr "关闭其他标签"
 
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:342
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:526
+#: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
 msgstr "全部清除"
 
-#: lib/Widgets/DynamicNotebook.vala:804 lib/Widgets/DynamicNotebook.vala:835
+#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
 msgid "New Tab"
 msgstr "新建标签"
 
-#: lib/Widgets/DynamicNotebook.vala:805
+#: lib/Widgets/DynamicNotebook.vala:781
 msgid "Undo Close Tab"
 msgstr "撤消关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:845
+#: lib/Widgets/DynamicNotebook.vala:821
 msgid "Closed Tabs"
 msgstr "已关闭的标签"
 
@@ -227,7 +227,7 @@ msgstr "关闭"
 msgid "_Cancel"
 msgstr "取消"
 
-#: lib/Widgets/MessageDialog.vala:348
+#: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
 msgstr "详情"
 
