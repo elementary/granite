@@ -37,21 +37,17 @@ public class Granite.ValidatedEntry : Gtk.Entry {
      * Whether or not text is considered valid input
      */
     public bool is_valid { get; set; default = false; }
-    public Regex? regex { get; set construct;}
 
-    public ValidatedEntry (Regex? regex = null) {
-        Object (regex: regex);
+    public ValidatedEntry.from_regex (Regex regex) {
+        changed.connect (() => {
+            is_valid = regex.match (text);
+        });
     }
 
     construct {
         activates_default = true;
 
         unowned Gtk.StyleContext style_context = get_style_context ();
-        if (regex != null) {
-            changed.connect (() => {
-                is_valid = regex.match (text);
-            });
-        }
 
         changed.connect_after (() => {
             if (text == "") {

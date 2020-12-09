@@ -28,7 +28,7 @@ public class FormView : Gtk.Grid {
 
         var username_label = new Granite.HeaderLabel ("Username");
 
-        var username_entry = new Granite.ValidatedEntry (username_regex);
+        var username_entry = new Granite.ValidatedEntry.from_regex (username_regex);
 
         var button = new Gtk.Button.with_label ("Submit");
 
@@ -41,10 +41,6 @@ public class FormView : Gtk.Grid {
         add (username_label);
         add (username_entry);
         show_all ();
-
-//~         username_entry.changed.connect (() => {
-//~             username_entry.is_valid = username_regex.match (username_entry.text);
-//~         });
 
         username_entry.bind_property ("is-valid", button, "sensitive");
     }
