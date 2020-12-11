@@ -224,27 +224,27 @@ public static string markup_accel_tooltip (string[]? accels, string? description
 }
 
 /**
- * Takes a description and Subdescription
+ * Takes a context string and description and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}.
  *
  * Example:
  *
  * Description
- * Sub-Description
+ * Context
  *
- * @param subdescription a standart tooltip text string
+ * @param context a standard tooltip text string
  *
  * @param description a standard tooltip text string
  *
- * @return markup with the description label on one line and a the subdescription on a new line
+ * @return markup with the description label on one line and a the context on a new line
  */
- public static string markup_tooltip_with_string (string? subdescription, string? description = null) {
+ public static string markup_contextual_tooltip (string? context, string? description = null) {
     string[] parts = {};
     if (description != null && description != "") {
         parts += description;
     }
 
-    if (subdescription != null && subdescription != "") {
-        var secondary = "<small>%s</small>".printf (subdescription);
+    if (context != null && context != "") {
+        var secondary = "<small>%s</small>".printf (context);
         parts += secondary;
     }
 
