@@ -223,6 +223,34 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     return string.joinv ("\n", parts);
 }
 
+/**
+ * Takes a description and Subdescription
+ *
+ * Example:
+ *
+ * Description
+ * Sub-Description
+ *
+ * @param subdescription a standart tooltip text string
+ *
+ * @param description a standard tooltip text string
+ *
+ * @return markup with the description label on one line and a the subdescription on a new line
+ */
+ public static string markup_tooltip_with_string (string? subdescription, string? description = null) {
+    string[] parts = {};
+    if (description != null && description != "") {
+        parts += description;
+    }
+
+    if (subdescription != null && subdescription != "") {
+        var secondary  = "<small>%s</small>".printf (subdescription);
+        parts += secondary;
+    }
+
+    return string.joinv ("\n", parts);
+}
+
 private static double contrast_ratio (Gdk.RGBA bg_color, Gdk.RGBA fg_color) {
     // From WCAG 2.0 https://www.w3.org/TR/WCAG20/#contrast-ratiodef
     var bg_luminance = get_luminance (bg_color);
