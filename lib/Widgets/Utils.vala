@@ -244,7 +244,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
     }
 
     if (subdescription != null && subdescription != "") {
-        var secondary  = "<small>%s</small>".printf (subdescription);
+        var secondary = "<small>%s</small>".printf (subdescription);
         parts += secondary;
     }
 
