@@ -318,7 +318,7 @@ namespace Granite.Widgets.Utils {
         assert (window != null);
 
         string hex = color.to_string ();
-        return set_theming_for_screen (window.get_screen (), @"@define-color colorPrimary $hex;", priority);
+        return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
     }
 
     /**
