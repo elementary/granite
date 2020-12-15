@@ -177,6 +177,11 @@ public static string accel_to_string (string? accel) {
 }
 
 /**
+ * Pango markup to use for secondary text in a {@link Gtk.Tooltip}, such as for accelerators, extended descriptions, etc.
+ */
+public const string TOOLTIP_SECONDARY_TEXT_MARKUP = """<span weight="600" size="smaller" alpha="75%">%s</span>""";
+
+/**
  * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}. This method uses {@link Granite.accel_to_string}.
  *
  * Example:
@@ -214,7 +219,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
             ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
             var accel_label = string.joinv (_(", "), unique_accels);
 
-            var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+            var accel_markup = TOOLTIP_SECONDARY_TEXT_MARKUP.printf (accel_label);
 
             parts += accel_markup;
         }
