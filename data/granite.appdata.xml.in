@@ -14,7 +14,7 @@
       <description>
         <p>Removals:</p>
         <ul>
-          <li>Granite.Widgets.AboutDialog and related Granite.Application strings. Provide AppStream metadata instead.</li>
+          <li>Granite.Widgets.AboutDialog. Provide AppStream metadata instead.</li>
           <li>Granite.Widgets.AppMenu. Use Gtk.MenuButton instead.</li>
         </ul>
         <p>Deprecations:</p>
