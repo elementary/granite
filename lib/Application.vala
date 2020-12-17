@@ -46,15 +46,6 @@ namespace Granite {
         public string exec_name;
 
         /**
-         * The launcher to be associated with this application.
-         *
-         * This should be the name of a file in /usr/share/applications/.
-         * See [[http://standards.freedesktop.org/desktop-entry-spec/latest/]]
-         * for more information.
-         */
-        public string app_launcher;
-
-        /**
          * This creates a new Application class
          */
         protected Application () {
