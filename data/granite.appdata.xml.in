@@ -12,6 +12,11 @@
   <releases>
     <release version="6.0.0" date="2020-08-25" urgency="medium">
       <description>
+        <p>Removals:</p>
+        <ul>
+          <li>Granite.Widgets.AboutDialog and related Granite.Application strings</li>
+          <li>Granite.Widgets.AppMenu</li>
+        </ul>
         <p>Deprecations:</p>
         <ul>
           <li>Granite.Widgets.Avatar. Use Hdy.Avatar instead</li>
