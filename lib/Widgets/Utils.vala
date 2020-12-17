@@ -17,55 +17,6 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-[Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-public enum Granite.TextStyle {
-    /**
-     * Highest level header
-     */
-    TITLE,
-
-    /**
-     * Second highest header
-     */
-    H1,
-
-    /**
-     * Third highest header
-     */
-    H2,
-
-    /**
-     * Fourth Highest Header
-     */
-    H3;
-
-    /**
-     * Converts this to a CSS style string that could be used with e.g: {@link Granite.Widgets.Utils.set_theming}.
-     *
-     * @param style_class the style class used for this
-     *
-     * @return CSS of text style
-     */
-    public string get_stylesheet (out string style_class = null) {
-        switch (this) {
-            case TITLE:
-                style_class = StyleClass.TITLE_TEXT;
-                return @".$style_class { font: raleway 36; }";
-            case H1:
-                style_class = StyleClass.H1_TEXT;
-                return @".$style_class { font: open sans bold 24; }";
-            case H2:
-                style_class = StyleClass.H2_TEXT;
-                return @".$style_class { font: open sans light 18; }";
-            case H3:
-                style_class = StyleClass.H3_TEXT;
-                return @".$style_class { font: open sans bold 12; }";
-            default:
-                assert_not_reached ();
-        }
-    }
-}
-
 /**
  * An enum used to derermine where the window manager currently displays its close button on windows.
  * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
@@ -391,31 +342,6 @@ namespace Granite.Widgets.Utils {
         }
 
         return provider;
-    }
-
-    /**
-     * This method applies given text style to given label
-     *
-     * @param text_style text style to apply
-     * @param label label to apply style to
-     */
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {
-        var style_provider = new Gtk.CssProvider ();
-        var style_context = label.get_style_context ();
-
-        string style_class, stylesheet;
-        stylesheet = text_style.get_stylesheet (out style_class);
-        style_context.add_class (style_class);
-
-        try {
-            style_provider.load_from_data (stylesheet, -1);
-        } catch (Error err) {
-            warning ("Couldn't apply style to label: %s", err.message);
-            return;
-        }
-
-        style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     const string WM_SETTINGS_PATH = "org.gnome.desktop.wm.preferences";
