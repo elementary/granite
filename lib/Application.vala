@@ -46,69 +46,6 @@ namespace Granite {
         public string exec_name;
 
         /**
-         * Years that the copyright extends to. Usually from the start
-         * of the project to the most recent modification to it.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string app_copyright;
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string app_years;
-
-        /**
-         * Icon to be associated with the application.
-         *
-         * This is either the name of an icon shipped by the icon theme,
-         * or the name of an icon shipped with the app (for custom icons).
-         * The name should not include the full path or file extension.
-         * WRONG: /usr/share/icons/myicon.png RIGHT: myicon
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string app_icon;
-
-        /**
-         * The launcher to be associated with this application.
-         *
-         * This should be the name of a file in /usr/share/applications/.
-         * See [[http://standards.freedesktop.org/desktop-entry-spec/latest/]]
-         * for more information.
-         */
-        public string app_launcher;
-
-        /**
-         * Main website or homepage for the application.
-         *
-         * If the application has no homepage, one should be created on
-         * launchpad.net.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string main_url;
-
-        /**
-         * A link to the software's public bug tracker.
-         *
-         * If the application does not have a bug tracker, one should be
-         * created on launchpad.net.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string bug_url;
-
-        /**
-         * Link to question and answer site or support forum for the app.
-         *
-         * Launchpad offers a QA service if one is needed.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string help_url;
-
-        /**
-         * Link to where users can translate the application.
-         *
-         * Launchad offers a translation service if one is necessary.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public string translate_url;
-
-        /**
          * This creates a new Application class
          */
         protected Application () {
