@@ -7,8 +7,6 @@ libgranite_sources = files(
     'Drawing/Color.vala',
     'Drawing/Utilities.vala',
 
-    'GtkPatch/AboutDialog.vala',
-
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
@@ -19,12 +17,10 @@ libgranite_sources = files(
     'Services/SimpleCommand.vala',
     'Services/System.vala',
 
-    'Widgets/AboutDialog.vala',
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
     'Widgets/AlertView.vala',
-    'Widgets/AppMenu.vala',
     'Widgets/AsyncImage.vala',
     'Widgets/Avatar.vala',
     'Widgets/CellRendererBadge.vala',
@@ -49,8 +45,6 @@ libgranite_sources = files(
     'Widgets/Utils.vala',
     'Widgets/WelcomeButton.vala',
     'Widgets/Welcome.vala',
-
-    'Widgets/widgets-utils.c',
 )
 
 # define all the names and versions
@@ -91,11 +85,6 @@ libgranite = library(
 install_data(
     'granite.deps',
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
-)
-
-install_data(
-    'Widgets/widgets-utils.h',
-    install_dir: include_dir
 )
 
 if get_option('introspection')
