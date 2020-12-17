@@ -109,6 +109,40 @@ namespace Granite {
         public string translate_url;
 
         /**
+         * Full names of the application authors for the about dialog.
+         */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string[] about_authors = {};
+
+        /**
+         * Full names of documenters of the app for the about dialog.
+         */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string[] about_documenters = {};
+
+        /**
+         * Names of the designers of the application's user interface.
+         */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string[] about_artists = {};
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string about_comments;
+
+        /**
+         * Names of the translators of the application.
+         */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string about_translators;
+
+        /**
+         * The copyright license that the work is distributed under.
+         */
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public string about_license;
+        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
+        public Gtk.License about_license_type;
+
+        /**
          * This creates a new Application class
          */
         protected Application () {
