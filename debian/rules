@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@ --parallel --with gir
+	dh $@ --with gir
 
 override_dh_makeshlibs:
 	dh_makeshlibs -- -c1
