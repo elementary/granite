@@ -14,7 +14,7 @@ Vcs-Git: https://github.com/elementary/granite.git
 Vcs-Browser: https://github.com/elementary/granite
 Homepage: https://github.com/elementary/granite
 
-Package: libgranite5
+Package: libgranite6
 Architecture: any
 Multi-Arch: same
 Depends: libgranite-common (>= ${source:Version}),
@@ -34,7 +34,7 @@ Architecture: any
 Depends: gir1.2-granite-1.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
-         libgranite5 (= ${binary:Version}),
+         libgranite6 (= ${binary:Version}),
          libgtk-3-dev (>= 3.3.14),
          ${misc:Depends}
 Description: extension of GTK+ libraries (development files)
@@ -74,7 +74,7 @@ Description: extension of GTK+ libraries (common files)
 Package: granite-demo
 Section: misc
 Architecture: any
-Depends: libgranite5 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite6 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps

@@ -1,4 +1,4 @@
-libgranite.so.5 libgranite5 #MINVER#
+libgranite.so.6 libgranite6 #MINVER#
  GRANITE_APPLICATION_options@Base 0.2.0
  granite_accel_label_construct@Base 5.5.0
  granite_accel_label_construct_from_action_name@Base 5.5.0
@@ -14,11 +14,9 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_accel_to_string@Base 5.2.3
  granite_application_DEBUG@Base 0.2.0
  granite_application_construct@Base 0.2.0
- granite_application_create_appmenu@Base 0.2.0
  granite_application_get_type@Base 0.2.0
  granite_application_run@Base 0.2.0
  granite_application_set_options@Base 0.2.0
- granite_application_show_about@Base 0.2.0
  granite_async_image_construct@Base 0.5
  granite_async_image_construct_from_gicon_async@Base 0.5
  granite_async_image_construct_from_icon_name_async@Base 0.5
@@ -97,37 +95,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_drawing_utilities_construct@Base 0.2.0
  granite_drawing_utilities_get_type@Base 0.2.0
  granite_drawing_utilities_new@Base 0.2.0
- granite_gtk_patch_about_dialog_construct@Base 0.2.0
- granite_gtk_patch_about_dialog_get_artists@Base 0.2.0
- granite_gtk_patch_about_dialog_get_authors@Base 0.2.0
- granite_gtk_patch_about_dialog_get_comments@Base 0.2.0
- granite_gtk_patch_about_dialog_get_copyright@Base 0.2.0
- granite_gtk_patch_about_dialog_get_documenters@Base 0.2.0
- granite_gtk_patch_about_dialog_get_license@Base 0.2.0
- granite_gtk_patch_about_dialog_get_license_type@Base 0.2.0
- granite_gtk_patch_about_dialog_get_logo@Base 0.2.0
- granite_gtk_patch_about_dialog_get_logo_icon_name@Base 0.2.0
- granite_gtk_patch_about_dialog_get_program_name@Base 0.2.0
- granite_gtk_patch_about_dialog_get_translator_credits@Base 0.2.0
- granite_gtk_patch_about_dialog_get_type@Base 0.2.0
- granite_gtk_patch_about_dialog_get_version@Base 0.2.0
- granite_gtk_patch_about_dialog_get_website@Base 0.2.0
- granite_gtk_patch_about_dialog_get_website_label@Base 0.2.0
- granite_gtk_patch_about_dialog_new@Base 0.2.0
- granite_gtk_patch_about_dialog_set_artists@Base 0.2.0
- granite_gtk_patch_about_dialog_set_authors@Base 0.2.0
- granite_gtk_patch_about_dialog_set_comments@Base 0.2.0
- granite_gtk_patch_about_dialog_set_copyright@Base 0.2.0
- granite_gtk_patch_about_dialog_set_documenters@Base 0.2.0
- granite_gtk_patch_about_dialog_set_license@Base 0.2.0
- granite_gtk_patch_about_dialog_set_license_type@Base 0.2.0
- granite_gtk_patch_about_dialog_set_logo@Base 0.2.0
- granite_gtk_patch_about_dialog_set_logo_icon_name@Base 0.2.0
- granite_gtk_patch_about_dialog_set_program_name@Base 0.2.0
- granite_gtk_patch_about_dialog_set_translator_credits@Base 0.2.0
- granite_gtk_patch_about_dialog_set_version@Base 0.2.0
- granite_gtk_patch_about_dialog_set_website@Base 0.2.0
- granite_gtk_patch_about_dialog_set_website_label@Base 0.2.0
  granite_header_label_construct@Base 0.5
  granite_header_label_get_type@Base 0.5
  granite_header_label_new@Base 0.5
@@ -304,15 +271,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_simple_settings_page_set_title@Base 0.5
  granite_text_style_get_stylesheet@Base 0.2.0
  granite_text_style_get_type@Base 0.2.0
- granite_widgets_about_dialog_construct@Base 0.2.0
- granite_widgets_about_dialog_get_bug@Base 0.2.0
- granite_widgets_about_dialog_get_help@Base 0.2.0
- granite_widgets_about_dialog_get_translate@Base 0.2.0
- granite_widgets_about_dialog_get_type@Base 0.2.0
- granite_widgets_about_dialog_new@Base 0.2.0
- granite_widgets_about_dialog_set_bug@Base 0.2.0
- granite_widgets_about_dialog_set_help@Base 0.2.0
- granite_widgets_about_dialog_set_translate@Base 0.2.0
  granite_widgets_alert_view_construct@Base 0.3.1
  granite_widgets_alert_view_get_description@Base 0.3.1
  granite_widgets_alert_view_get_icon_name@Base 0.3.1
@@ -324,12 +282,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_alert_view_set_icon_name@Base 0.3.1
  granite_widgets_alert_view_set_title@Base 0.3.1
  granite_widgets_alert_view_show_action@Base 0.3.1
- granite_widgets_app_menu_add_items@Base 0.2.0
- granite_widgets_app_menu_construct@Base 0.2.0
- granite_widgets_app_menu_construct_with_app@Base 0.2.0
- granite_widgets_app_menu_get_type@Base 0.2.0
- granite_widgets_app_menu_new@Base 0.2.0
- granite_widgets_app_menu_new_with_app@Base 0.2.0
  granite_widgets_avatar_construct@Base 0.4.0
  granite_widgets_avatar_construct_from_file@Base 0.4.0
  granite_widgets_avatar_construct_from_pixbuf@Base 0.4.0
@@ -439,7 +391,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_overlay_bar_set_active@Base 0.4.1
  granite_widgets_overlay_bar_set_label@Base 0.4.1
  granite_widgets_overlay_bar_set_status@Base 0.2.3
- granite_widgets_show_about_dialog@Base 0.2.0
  granite_widgets_source_list_construct@Base 0.2.0
  granite_widgets_source_list_disable_drag_dest@Base 0.3.0+
  granite_widgets_source_list_disable_drag_source@Base 0.3.0+
