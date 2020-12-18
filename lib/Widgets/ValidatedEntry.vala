@@ -31,12 +31,38 @@
  *   });
  * }}}
  *
+ * If the ValidatedEntry.from_regex () constructor is used then the entry automatically
+ * sets its validity status. A valid regex must be passed to this constructor.
+ *
+ * ''Example''<<BR>>
+ * {{{
+ *   Regex? regex = null;
+ *   ValidatedEntry only_lower_case_letters_entry;
+ *   try {
+ *       regex = new Regex ("^[a-z]*$");
+ *       only_lower_case_letters_entry = new ValidatedEntry.from_regex (regex);
+ *   } catch (Error e) {
+ *       critical (e.message);
+ *       // Provide a fallback entry
+ *   }
+ * }}}
+
  */
 public class Granite.ValidatedEntry : Gtk.Entry {
     /**
      * Whether or not text is considered valid input
      */
     public bool is_valid { get; set; default = false; }
+
+    public ValidatedEntry.from_regex (Regex regex) {
+        if (regex == null) {
+            critical ("Null regex passed to ValidatedEntry.from_regex.  All input will be considered invalid.");
+        } else {
+            changed.connect (() => {
+                is_valid = regex.match (text);
+            });
+        }
+    }
 
     construct {
         activates_default = true;
