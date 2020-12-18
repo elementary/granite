@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Näytä Granite-valinnat"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%sn kehittäjät"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Verkkosivusto"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -134,52 +125,6 @@ msgstr "%a, %e. %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Suunnitellut:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Toteuttanut:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Dokumentoinut:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Käännöksen toteutti %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Sulje"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Tämä ohjelma on julkaistu lisenssin %s ehtojen alaisena, eikä SISÄLLÄ "
-"MINKÄÄNLAISTA TAKUUTA; lisätietoja osoitteessa %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Ehdota käännöksiä"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Ilmoita ongelmasta"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Valikko"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Tietoja"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Sulje välilehti"
@@ -270,17 +215,17 @@ msgid "%s free out of %s"
 msgstr "Vapaana %s/%s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -346,9 +291,49 @@ msgid "Right Shift"
 msgstr "Oikea Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "%sn kehittäjät"
+
+#~ msgid "Website"
+#~ msgstr "Verkkosivusto"
+
+#~ msgid "Designed by:"
+#~ msgstr "Suunnitellut:"
+
+#~ msgid "Written by:"
+#~ msgstr "Toteuttanut:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Dokumentoinut:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Käännöksen toteutti %s"
+
+#~ msgid "Close"
+#~ msgstr "Sulje"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Tämä ohjelma on julkaistu lisenssin %s ehtojen alaisena, eikä SISÄLLÄ "
+#~ "MINKÄÄNLAISTA TAKUUTA; lisätietoja osoitteessa %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Ehdota käännöksiä"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Ilmoita ongelmasta"
+
+#~ msgid "Menu"
+#~ msgstr "Valikko"
+
+#~ msgid "About"
+#~ msgstr "Tietoja"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

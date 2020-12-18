@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2016-10-08 17:19+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -21,15 +21,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s's Dwumadiyɛfoɔ"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Wɛbsaet"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -136,52 +127,6 @@ msgstr "%a %b %e"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Wɔn a wɔnwenee ne:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Wɔn a woyɛe ne:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Wɔn a wɔkyerɛwee senea wɔde di dwuma ne:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Wɔn a wɔ kyerɛase ne %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Yi fi hɔ"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, fuzzy, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Mmra a ɛda dwumadi yi ho  ne % license, ƐHO SOBOƆ BIARA NNA YƐN SO; sɛ wopɛ "
-"ɛho nkyerɛkyerɛmu a, kɔ %"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Fa Wo Nkyerease To Dwa"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Fa nsɛnenen bi a woahyia to dwa"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menu"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Ɛho Nsɛm"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Yi Tab no fi hɔ"
@@ -274,17 +219,17 @@ msgid "%s free out of %s"
 msgstr "%s na aka wɔ %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -350,9 +295,50 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s's Dwumadiyɛfoɔ"
+
+#~ msgid "Website"
+#~ msgstr "Wɛbsaet"
+
+#~ msgid "Designed by:"
+#~ msgstr "Wɔn a wɔnwenee ne:"
+
+#~ msgid "Written by:"
+#~ msgstr "Wɔn a woyɛe ne:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Wɔn a wɔkyerɛwee senea wɔde di dwuma ne:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Wɔn a wɔ kyerɛase ne %s"
+
+#~ msgid "Close"
+#~ msgstr "Yi fi hɔ"
+
+#, fuzzy
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Mmra a ɛda dwumadi yi ho  ne % license, ƐHO SOBOƆ BIARA NNA YƐN SO; sɛ "
+#~ "wopɛ ɛho nkyerɛkyerɛmu a, kɔ %"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Fa Wo Nkyerease To Dwa"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Fa nsɛnenen bi a woahyia to dwa"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "About"
+#~ msgstr "Ɛho Nsɛm"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

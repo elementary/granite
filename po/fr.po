@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/granite/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Afficher les options de Granite"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "Développeurs de %s"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Site web"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -134,52 +125,6 @@ msgstr "%a %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Conçu par :"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Développé par :"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Documenté par :"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Traduit par %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Fermer"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Ce programme est publié sous les termes de la licence %s, il est distribué "
-"avec AUCUNE GARANTIE ; pour plus de détails, veuillez visiter %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Proposer des traductions"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Signaler un problème"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menu"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "À propos"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Fermer l’onglet"
@@ -270,17 +215,17 @@ msgid "%s free out of %s"
 msgstr "%s libres sur %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -346,9 +291,49 @@ msgid "Right Shift"
 msgstr "Majuscule droit"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "Développeurs de %s"
+
+#~ msgid "Website"
+#~ msgstr "Site web"
+
+#~ msgid "Designed by:"
+#~ msgstr "Conçu par :"
+
+#~ msgid "Written by:"
+#~ msgstr "Développé par :"
+
+#~ msgid "Documented by:"
+#~ msgstr "Documenté par :"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Traduit par %s"
+
+#~ msgid "Close"
+#~ msgstr "Fermer"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Ce programme est publié sous les termes de la licence %s, il est "
+#~ "distribué avec AUCUNE GARANTIE ; pour plus de détails, veuillez visiter %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Proposer des traductions"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Signaler un problème"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "About"
+#~ msgstr "À propos"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

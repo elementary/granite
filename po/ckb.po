@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2015-12-04 01:36+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Kurdish (Sorani) <ckb@li.org>\n"
@@ -21,15 +21,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr ""
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "ماڵپه‌ڕ"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -134,50 +125,6 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "دیزاینکەر :"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "نووسەر :"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "وەرگێڕ ان لە لایەن  %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "داخستن"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "پێسنیار بۆ وەرگێڕان"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "ڕاپۆڕتێك له‌سه‌ر ئه‌م كێشه‌یه‌ بنووسه‌"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "لیسته‌"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "درباره"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "داخستنی سەرخشت"
@@ -269,17 +216,17 @@ msgid "%s free out of %s"
 msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "دوانيوه‌ڕۆ"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -345,9 +292,36 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "Website"
+#~ msgstr "ماڵپه‌ڕ"
+
+#~ msgid "Designed by:"
+#~ msgstr "دیزاینکەر :"
+
+#~ msgid "Written by:"
+#~ msgstr "نووسەر :"
+
+#~ msgid "Translated by %s"
+#~ msgstr "وەرگێڕ ان لە لایەن  %s"
+
+#~ msgid "Close"
+#~ msgstr "داخستن"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "پێسنیار بۆ وەرگێڕان"
+
+#~ msgid "Report a Problem"
+#~ msgstr "ڕاپۆڕتێك له‌سه‌ر ئه‌م كێشه‌یه‌ بنووسه‌"
+
+#~ msgid "Menu"
+#~ msgstr "لیسته‌"
+
+#~ msgid "About"
+#~ msgstr "درباره"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2017-01-08 09:21+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
@@ -21,15 +21,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "Програмери „%s“"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Веб сајт"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -136,52 +127,6 @@ msgstr "%A, %e. %B"
 msgid "%b"
 msgstr "%B"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Осмислио:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Написао:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Документовао:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Превео %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Затвори"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Овај програм је објављен под условима „%s“ дозволе, долази БЕЗ ИКАКВЕ "
-"ГАРАНЦИЈЕ; за појединости, посетите „%s“"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Предложи преводе"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Пријави проблем"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Изборник"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Опис"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Затвори језичак"
@@ -274,17 +219,17 @@ msgid "%s free out of %s"
 msgstr "„%s“ је ослобођен „%s“"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "ПрП"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "ПоП"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -350,9 +295,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "Програмери „%s“"
+
+#~ msgid "Website"
+#~ msgstr "Веб сајт"
+
+#~ msgid "Designed by:"
+#~ msgstr "Осмислио:"
+
+#~ msgid "Written by:"
+#~ msgstr "Написао:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Документовао:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Превео %s"
+
+#~ msgid "Close"
+#~ msgstr "Затвори"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Овај програм је објављен под условима „%s“ дозволе, долази БЕЗ ИКАКВЕ "
+#~ "ГАРАНЦИЈЕ; за појединости, посетите „%s“"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Предложи преводе"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Пријави проблем"
+
+#~ msgid "Menu"
+#~ msgstr "Изборник"
+
+#~ msgid "About"
+#~ msgstr "Опис"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

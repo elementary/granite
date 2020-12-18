@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2017-05-28 09:20+0000\n"
 "Last-Translator: Plugaru Tudor <plugaru.tudor@gmail.com>\n"
 "Language-Team: Romanian <https://l10n.elementary.io/projects/desktop/granite/"
@@ -24,15 +24,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s Dezvoltatori"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Website"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -143,52 +134,6 @@ msgstr "%a %b %e"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Proiectat de:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Scris de:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Documentat de:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Tradus de %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Închide"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Acest program este publicat sub termenii licenţei %s, vine FĂRĂ NICI O "
-"GARANŢIE; pentru detalii vizitează %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Sugerează traduceri"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Raportează o Problemă"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Meniu"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Despre"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Închide fila"
@@ -281,17 +226,17 @@ msgid "%s free out of %s"
 msgstr "%s liber din %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "a.m."
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "p.m."
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -357,9 +302,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s Dezvoltatori"
+
+#~ msgid "Website"
+#~ msgstr "Website"
+
+#~ msgid "Designed by:"
+#~ msgstr "Proiectat de:"
+
+#~ msgid "Written by:"
+#~ msgstr "Scris de:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Documentat de:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Tradus de %s"
+
+#~ msgid "Close"
+#~ msgstr "Închide"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Acest program este publicat sub termenii licenţei %s, vine FĂRĂ NICI O "
+#~ "GARANŢIE; pentru detalii vizitează %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Sugerează traduceri"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Raportează o Problemă"
+
+#~ msgid "Menu"
+#~ msgstr "Meniu"
+
+#~ msgid "About"
+#~ msgstr "Despre"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

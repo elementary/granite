@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2018-11-03 00:07+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: Estonian <https://weblate.elementary.io/projects/desktop/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s's arendajad"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Veebileht"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -138,52 +129,6 @@ msgstr "%A, %e. %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Disainerid:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Programmeerijad:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Dokumenteerijad:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Tõlkijad: %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Sulge"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"See rakendus on väljaantud %s litsentsi all, sellega ei kaasne mitte ühtegi "
-"garantiid; täpsema teave jaoks külasta %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Aita tõlkida"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Teata probleemist"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menüü"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Rakendusest..."
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Sulge kaart"
@@ -276,17 +221,17 @@ msgid "%s free out of %s"
 msgstr "%s vaba %s-st"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -352,9 +297,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s's arendajad"
+
+#~ msgid "Website"
+#~ msgstr "Veebileht"
+
+#~ msgid "Designed by:"
+#~ msgstr "Disainerid:"
+
+#~ msgid "Written by:"
+#~ msgstr "Programmeerijad:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Dokumenteerijad:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Tõlkijad: %s"
+
+#~ msgid "Close"
+#~ msgstr "Sulge"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "See rakendus on väljaantud %s litsentsi all, sellega ei kaasne mitte "
+#~ "ühtegi garantiid; täpsema teave jaoks külasta %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Aita tõlkida"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Teata probleemist"
+
+#~ msgid "Menu"
+#~ msgstr "Menüü"
+
+#~ msgid "About"
+#~ msgstr "Rakendusest..."
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2018-06-15 00:10+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/desktop/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s fejlesztői"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Weblap"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -138,52 +129,6 @@ msgstr "%b. %e. %a"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Tervezte:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Írta:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Dokumentálta:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Fordította: %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Bezárás"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Ez a program a(z) %s licenccel került kiadásra, SEMMILYEN GARANCIÁVAL NEM "
-"JÁR; részletekért látogasson el ide: %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Fordítások javaslása"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Hibajelentés"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menü"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Névjegy"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Lap bezárása"
@@ -276,17 +221,17 @@ msgid "%s free out of %s"
 msgstr "%s szabad ennyiből: %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "de."
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "du."
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -352,9 +297,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s fejlesztői"
+
+#~ msgid "Website"
+#~ msgstr "Weblap"
+
+#~ msgid "Designed by:"
+#~ msgstr "Tervezte:"
+
+#~ msgid "Written by:"
+#~ msgstr "Írta:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Dokumentálta:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Fordította: %s"
+
+#~ msgid "Close"
+#~ msgstr "Bezárás"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Ez a program a(z) %s licenccel került kiadásra, SEMMILYEN GARANCIÁVAL NEM "
+#~ "JÁR; részletekért látogasson el ide: %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Fordítások javaslása"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Hibajelentés"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "About"
+#~ msgstr "Névjegy"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"
