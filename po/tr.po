@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2020-09-13 20:14+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Granite Ayarlarını Göster"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s Geliştiricileri"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Web sitesi"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -134,52 +125,6 @@ msgstr "%e %B %A"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Tasarlayan:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Yazan:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Belgeleyen:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Çeviren: %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Kapat"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Bu program %s lisans şartları altında yayınlanmakta olup, KESİNLİKLE HİÇBİR "
-"GARANTİ vermemektedir. Ayrıntılar için, %s adresini ziyaret edin"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Çeviri Öner"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Sorun Bildir"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menü"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Hakkında"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Sekmeyi Kapat"
@@ -270,17 +215,17 @@ msgid "%s free out of %s"
 msgstr "%2$s alanın %1$s bölümü boş"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "ÖÖ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "ÖS"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -346,9 +291,49 @@ msgid "Right Shift"
 msgstr "Sağ Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s Geliştiricileri"
+
+#~ msgid "Website"
+#~ msgstr "Web sitesi"
+
+#~ msgid "Designed by:"
+#~ msgstr "Tasarlayan:"
+
+#~ msgid "Written by:"
+#~ msgstr "Yazan:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Belgeleyen:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Çeviren: %s"
+
+#~ msgid "Close"
+#~ msgstr "Kapat"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Bu program %s lisans şartları altında yayınlanmakta olup, KESİNLİKLE "
+#~ "HİÇBİR GARANTİ vermemektedir. Ayrıntılar için, %s adresini ziyaret edin"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Çeviri Öner"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Sorun Bildir"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+#~ msgid "About"
+#~ msgstr "Hakkında"
 
 #~ msgid "This program is published under the terms of the "
 #~ msgstr "Bu program lisans koşulları altında yayınlanmaktadır "
