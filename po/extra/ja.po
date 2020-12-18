@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-11-06 11:15+0000\n"
+"PO-Revision-Date: 2020-12-19 10:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,28 +37,24 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Removals:"
-msgstr ""
+msgstr "削除された機能:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
-msgstr "Granite.Widgets.Avatar。今後は、Hdy.Avatar を使用してください"
+msgstr "Granite.Widgets.AboutDialog。今後は AppStream メタデータを使用してください。"
 
 #: data/granite.appdata.xml.in:18
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr "Granite.Widgets.Avatar。今後は、Hdy.Avatar を使用してください"
+msgstr "Granite.Widgets.AppMenu。今後は Gtk.MenuButton を使用してください。"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:45
 #: data/granite.appdata.xml.in:66
 msgid "Deprecations:"
-msgstr "非推奨:"
+msgstr "非推奨の機能:"
 
 #: data/granite.appdata.xml.in:22
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr "Granite.Widgets.Avatar。今後は、Hdy.Avatar を使用してください"
+msgstr "Granite.Widgets.Avatar。今後は Hdy.Avatar を使用してください"
 
 #: data/granite.appdata.xml.in:24
 msgid "New Constants:"
@@ -168,8 +164,7 @@ msgstr ""
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
-msgstr ""
-"Granite.Services.Settings の代替として GLib.Settings の使用を推奨します"
+msgstr "Granite.Services.Settings の代替として GLib.Settings を推奨します"
 
 #: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:89
 msgid "Improvements:"
