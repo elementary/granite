@@ -553,7 +553,6 @@ libgranite.so.5 libgranite5 #MINVER#
  granite_widgets_tab_set_pinnable@Base 0.2.3
  granite_widgets_tab_set_pinned@Base 0.2.3
  granite_widgets_tab_set_restore_data@Base 0.2.3
- granite_widgets_tab_set_tooltip@Base 5.5.0
  granite_widgets_tab_set_working@Base 0.2.0
  granite_widgets_time_picker_construct@Base 0.2.0
  granite_widgets_time_picker_construct_with_format@Base 0.2.0
