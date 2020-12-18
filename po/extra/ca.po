@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-11-07 15:15+0000\n"
+"PO-Revision-Date: 2020-12-19 10:16+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,19 +38,16 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Removals:"
-msgstr ""
+msgstr "Supressions:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
-msgstr "Granite.Widgets.Avatar. Usa Hdy.Avatar"
+msgstr ""
+"Granite.Ginys.DiàlegQuant a. Proporciona, en canvi, medatades d'AppStream."
 
 #: data/granite.appdata.xml.in:18
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr "Granite.Widgets.Avatar. Usa Hdy.Avatar"
+msgstr "Granite.Ginys.Menú d'aplicacions. Usa, en canvi, Gtk.MenuButton."
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:45
 #: data/granite.appdata.xml.in:66
