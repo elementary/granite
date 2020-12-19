@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-11-06 11:15+0000\n"
+"PO-Revision-Date: 2020-12-19 10:16+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -39,19 +39,16 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Removals:"
-msgstr ""
+msgstr "Remoções:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
-msgstr "Granite.Widgets.Avatar. Use Hdy.Avatar em vez disso"
+msgstr ""
+"Granite.Widgets.AboutDialog. Fornece meta-dados AppStream em alternativa."
 
 #: data/granite.appdata.xml.in:18
-#, fuzzy
-#| msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr "Granite.Widgets.Avatar. Use Hdy.Avatar em vez disso"
+msgstr "Granite.Widgets.AppMenu. Usa Gtk.MenuButton em alternativa."
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:45
 #: data/granite.appdata.xml.in:66
