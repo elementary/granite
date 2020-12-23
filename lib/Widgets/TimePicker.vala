@@ -271,6 +271,8 @@ namespace Granite.Widgets {
 
         [Version (deprecated = true, deprecated_since = "5.2.0")]
         protected virtual void position_dropdown (out int x, out int y) {
+            x = -1;
+            y = -1;
         }
 
         private void is_unfocused () {

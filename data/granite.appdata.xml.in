@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019 elementary, Inc. <contact@elementary.io> -->
+<!-- Copyright 2019–2020 elementary, Inc. <contact@elementary.io> -->
 <component>
   <id>io.elementary.granite</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -12,6 +12,11 @@
   <releases>
     <release version="6.0.0" date="2020-08-25" urgency="medium">
       <description>
+        <p>Removals:</p>
+        <ul>
+          <li>Granite.Widgets.AboutDialog. Provide AppStream metadata instead.</li>
+          <li>Granite.Widgets.AppMenu. Use Gtk.MenuButton instead.</li>
+        </ul>
         <p>Deprecations:</p>
         <ul>
           <li>Granite.Widgets.Avatar. Use Hdy.Avatar instead</li>

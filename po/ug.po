@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2016-12-15 17:51+0000\n"
 "Last-Translator: ablimet <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
@@ -21,15 +21,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s ئەپ ئاچقۇچى"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "توربىكەت"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -136,52 +127,6 @@ msgstr "%b-ئاينىڭ %e-كۈنى ھەپتىنىڭ %aسى"
 msgid "%b"
 msgstr "%b-ئاي"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "لايىھىلىگۈچى:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "يازغۇچى:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "پۈتۈكچى:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "تەرجىمان %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "تاقاش"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"بۇ ئەپنىڭ ئىلان قىلىنىشى %s ئىجازەتنامىسىگە رىئايە قىلىدۇ، ھىچقانداق كاپالەت "
-"بەرمەيدۇ؛ تەپسىلاتى ئۈچۈن %sنى زىيارەت قىلىڭ"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "تەۋسىيە قىلىنغان تەرجىمىلەر"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "مەسىلە مەلۇم قىلىش"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "تىزىملىك"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "ھەققىدە"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "بەتكۈچنى تاقاش"
@@ -274,17 +219,17 @@ msgid "%s free out of %s"
 msgstr "%sنى ئىشلەتكىلى بولىدۇ، جەمئىي %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "چۈشتىن بۇرۇن"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "چۈشتىن كىيىن"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -350,9 +295,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s ئەپ ئاچقۇچى"
+
+#~ msgid "Website"
+#~ msgstr "توربىكەت"
+
+#~ msgid "Designed by:"
+#~ msgstr "لايىھىلىگۈچى:"
+
+#~ msgid "Written by:"
+#~ msgstr "يازغۇچى:"
+
+#~ msgid "Documented by:"
+#~ msgstr "پۈتۈكچى:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "تەرجىمان %s"
+
+#~ msgid "Close"
+#~ msgstr "تاقاش"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "بۇ ئەپنىڭ ئىلان قىلىنىشى %s ئىجازەتنامىسىگە رىئايە قىلىدۇ، ھىچقانداق "
+#~ "كاپالەت بەرمەيدۇ؛ تەپسىلاتى ئۈچۈن %sنى زىيارەت قىلىڭ"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "تەۋسىيە قىلىنغان تەرجىمىلەر"
+
+#~ msgid "Report a Problem"
+#~ msgstr "مەسىلە مەلۇم قىلىش"
+
+#~ msgid "Menu"
+#~ msgstr "تىزىملىك"
+
+#~ msgid "About"
+#~ msgstr "ھەققىدە"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

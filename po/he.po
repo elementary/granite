@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2020-10-04 13:14+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite/"
@@ -24,15 +24,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "הצגת האפשרויות של גרניט"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "מפתחי %s"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "אתר אינטרנט"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -143,52 +134,6 @@ msgstr "%a, ‏%e ב%b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "עוצב על ידי:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "נכתב על ידי:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "תועד על ידי:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "תורגם על ידי  %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "סגירה"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"תכנית זו זמינה תחת תנאי הרישיון %s, התכנית מופצת ללא שום אחריות; לפרטים, יש "
-"לבקר בכתובת %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "הצעת תרגום"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "דיווח על בעיה"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "תפריט"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "על אודות"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "סגירת לשונית"
@@ -279,17 +224,17 @@ msgid "%s free out of %s"
 msgstr "%s פנויים מתוך %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "לפנה״צ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "אחה״צ"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -355,9 +300,49 @@ msgid "Right Shift"
 msgstr "Shift ימני"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "מפתחי %s"
+
+#~ msgid "Website"
+#~ msgstr "אתר אינטרנט"
+
+#~ msgid "Designed by:"
+#~ msgstr "עוצב על ידי:"
+
+#~ msgid "Written by:"
+#~ msgstr "נכתב על ידי:"
+
+#~ msgid "Documented by:"
+#~ msgstr "תועד על ידי:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "תורגם על ידי  %s"
+
+#~ msgid "Close"
+#~ msgstr "סגירה"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "תכנית זו זמינה תחת תנאי הרישיון %s, התכנית מופצת ללא שום אחריות; לפרטים, "
+#~ "יש לבקר בכתובת %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "הצעת תרגום"
+
+#~ msgid "Report a Problem"
+#~ msgstr "דיווח על בעיה"
+
+#~ msgid "Menu"
+#~ msgstr "תפריט"
+
+#~ msgid "About"
+#~ msgstr "על אודות"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

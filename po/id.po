@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2018-10-21 12:06+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/desktop/"
@@ -22,15 +22,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "Tampilkan Pilihan Granite"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "Pengembang %s"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Situs Web"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -131,52 +122,6 @@ msgstr "%a, %b %e"
 msgid "%b"
 msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Dirancang oleh:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Ditulis oleh:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Didokumentasikan oleh:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Diterjemahkan oleh %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Tutup"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-"Program ini diterbitkan di bawah persyaratan lisensi %s, program ini BENAR-"
-"BENAR TIDAK ADA JAMINAN; Untuk rinciannya, kunjungi %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "Sarankan Terjemahan"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Laporkan Masalah"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menu"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Tentang"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Tutup Tab"
@@ -267,17 +212,17 @@ msgid "%s free out of %s"
 msgstr "%s bebas dari %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -343,9 +288,49 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "%s's Developers"
+#~ msgstr "Pengembang %s"
+
+#~ msgid "Website"
+#~ msgstr "Situs Web"
+
+#~ msgid "Designed by:"
+#~ msgstr "Dirancang oleh:"
+
+#~ msgid "Written by:"
+#~ msgstr "Ditulis oleh:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Didokumentasikan oleh:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Diterjemahkan oleh %s"
+
+#~ msgid "Close"
+#~ msgstr "Tutup"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Program ini diterbitkan di bawah persyaratan lisensi %s, program ini "
+#~ "BENAR-BENAR TIDAK ADA JAMINAN; Untuk rinciannya, kunjungi %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Sarankan Terjemahan"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Laporkan Masalah"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "About"
+#~ msgstr "Tentang"
 
 #~ msgid "© %s"
 #~ msgstr "© %s"

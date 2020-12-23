@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2020-10-29 12:15+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr "显示 Granite 选项"
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr "%s 开发人员"
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "网站"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -130,50 +121,6 @@ msgstr "%m月%d日 星期%a"
 msgid "%b"
 msgstr "%m月"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "设计师："
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "开发者："
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "文档："
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "翻译者：%s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "关闭"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr "此应用程序的发布遵循 %s 许可，不做任何担保；详细信息， 请访问 %s"
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr "助力翻译"
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "报告问题"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "菜单"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "关于"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "关闭标签"
@@ -264,17 +211,17 @@ msgid "%s free out of %s"
 msgstr "%s 可用 共 %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr "上午"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr "下午"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ":"
 
@@ -340,9 +287,47 @@ msgid "Right Shift"
 msgstr "右 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "%s 开发人员"
+
+#~ msgid "Website"
+#~ msgstr "网站"
+
+#~ msgid "Designed by:"
+#~ msgstr "设计师："
+
+#~ msgid "Written by:"
+#~ msgstr "开发者："
+
+#~ msgid "Documented by:"
+#~ msgstr "文档："
+
+#~ msgid "Translated by %s"
+#~ msgstr "翻译者：%s"
+
+#~ msgid "Close"
+#~ msgstr "关闭"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr "此应用程序的发布遵循 %s 许可，不做任何担保；详细信息， 请访问 %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "助力翻译"
+
+#~ msgid "Report a Problem"
+#~ msgstr "报告问题"
+
+#~ msgid "Menu"
+#~ msgstr "菜单"
+
+#~ msgid "About"
+#~ msgstr "关于"
 
 #~ msgid "%a %b %e %Y"
 #~ msgstr "%Y年%m月%d日 星期%a"

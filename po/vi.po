@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/desktop/"
@@ -23,15 +23,6 @@ msgstr ""
 #: lib/Application.vala:183
 msgid "Show Granite Options"
 msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr ""
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr "Trang web"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
@@ -132,50 +123,6 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr "Thiết kế bởi:"
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr "Được viết bởi:"
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr "Viết tài liệu bởi:"
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr "Được dịch bởi: %s"
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr "Đóng"
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr ""
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr "Thông báo lỗi"
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr "Menu"
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr "Giới thiệu"
-
 #: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
 msgstr "Đóng tab"
@@ -268,17 +215,17 @@ msgid "%s free out of %s"
 msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
+#: lib/Widgets/TimePicker.vala:108
 msgid "AM"
 msgstr ""
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:108
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
 msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
 msgstr ""
 
@@ -344,9 +291,36 @@ msgid "Right Shift"
 msgstr ""
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:215
+#: lib/Widgets/Utils.vala:220
 msgid ", "
 msgstr ""
+
+#~ msgid "Website"
+#~ msgstr "Trang web"
+
+#~ msgid "Designed by:"
+#~ msgstr "Thiết kế bởi:"
+
+#~ msgid "Written by:"
+#~ msgstr "Được viết bởi:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Viết tài liệu bởi:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Được dịch bởi: %s"
+
+#~ msgid "Close"
+#~ msgstr "Đóng"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Thông báo lỗi"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "About"
+#~ msgstr "Giới thiệu"
 
 #~ msgid "This program is published under the terms of the "
 #~ msgstr "Chương trình này được phát hành theo các điều khoản của giấy phép "

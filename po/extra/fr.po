@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-04 19:54+0000\n"
-"PO-Revision-Date: 2020-11-06 11:15+0000\n"
+"POT-Creation-Date: 2020-12-18 00:04+0000\n"
+"PO-Revision-Date: 2020-12-19 10:16+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
@@ -38,28 +38,42 @@ msgstr ""
 "et des méthodes pratiques conçu pour être utilisé dans les applications "
 "fabriquées pour elementary OS."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:40
-#: data/granite.appdata.xml.in:61
+#: data/granite.appdata.xml.in:15
+msgid "Removals:"
+msgstr "Suppressions :"
+
+#: data/granite.appdata.xml.in:17
+msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
+msgstr ""
+"Granite.Widgets.AboutDialog. Ajoutez des métadonnées à l'application à la "
+"place."
+
+#: data/granite.appdata.xml.in:18
+msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
+msgstr "Granite.Widgets.AppMenu. Utilisez Gtk.MenuButton à la place."
+
+#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:45
+#: data/granite.appdata.xml.in:66
 msgid "Deprecations:"
 msgstr "Dépréciations :"
 
-#: data/granite.appdata.xml.in:17
+#: data/granite.appdata.xml.in:22
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgstr "Utilisez Hdy.Avatar plutôt que Granite.Widgets.Avatar"
 
-#: data/granite.appdata.xml.in:19
+#: data/granite.appdata.xml.in:24
 msgid "New Constants:"
 msgstr "Nouvelles constantes :"
 
-#: data/granite.appdata.xml.in:21
+#: data/granite.appdata.xml.in:26
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr "STYLE_CLASS_WARMTH et STYLE_CLASS_TEMPERATURE pour les échelles"
 
-#: data/granite.appdata.xml.in:22
+#: data/granite.appdata.xml.in:27
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
 msgstr "STYLE_CLASS_DEFAULT_DECORATION pour les petites barres de titre"
 
-#: data/granite.appdata.xml.in:23
+#: data/granite.appdata.xml.in:28
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
@@ -67,46 +81,46 @@ msgstr ""
 "TRANSITION_DURATION_OPEN et TRANSITION_DURATION_CLOSE pour des animations "
 "fiables"
 
-#: data/granite.appdata.xml.in:25 data/granite.appdata.xml.in:47
+#: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:52
 msgid "Other Changes:"
 msgstr "Autres modifications :"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:32
 msgid "Toasts now reset their timeout when sending a new notification"
 msgstr ""
 "Les notifications Toast réinitialisent désormais leur temps d'attente lors "
 "de l'envoi d'une nouvelle notification"
 
-#: data/granite.appdata.xml.in:28
+#: data/granite.appdata.xml.in:33
 msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr ""
 "Nous avons rendu les infobulles d'onglet de DynamicNotebook définissables"
 
-#: data/granite.appdata.xml.in:29 data/granite.appdata.xml.in:50
-#: data/granite.appdata.xml.in:73 data/granite.appdata.xml.in:87
+#: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:55
+#: data/granite.appdata.xml.in:78 data/granite.appdata.xml.in:92
 msgid "Updated translations"
 msgstr "Mise à jour des traductions"
 
-#: data/granite.appdata.xml.in:35
+#: data/granite.appdata.xml.in:40
 msgid "New Style Constants:"
 msgstr "Nouvelles constantes de style :"
 
-#: data/granite.appdata.xml.in:37
+#: data/granite.appdata.xml.in:42
 msgid "STYLE_CLASS_COLOR_BUTTON"
 msgstr "STYLE_CLASS_COLOR_BUTTON"
 
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:43
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
-#: data/granite.appdata.xml.in:42
+#: data/granite.appdata.xml.in:47
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
 "Divers outil pour les thèmes. Utilisez plutôt Gtk.CssProvider et Gtk."
 "StyleContext"
 
-#: data/granite.appdata.xml.in:43
+#: data/granite.appdata.xml.in:48
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
@@ -114,7 +128,7 @@ msgstr ""
 "Granite.Services.SimpleCommand. Utilisez plutôt GLib.AppInfo."
 "create_from_commandline"
 
-#: data/granite.appdata.xml.in:44
+#: data/granite.appdata.xml.in:49
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
@@ -122,27 +136,27 @@ msgstr ""
 "Anciens outils non utilisés tels que get_button_layout_schema, "
 "get_default_close_button_position, et Granite.Services.Paths"
 
-#: data/granite.appdata.xml.in:45
+#: data/granite.appdata.xml.in:50
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr ""
 "Anciens widgets inutilisés tels que CollapsiblePaned et CompositedWindow"
 
-#: data/granite.appdata.xml.in:49
+#: data/granite.appdata.xml.in:54
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr ""
 "Granite.SourceList récupère désormais Gtk.STYLE_CLASS_SIDEBAR par défaut"
 
-#: data/granite.appdata.xml.in:56
+#: data/granite.appdata.xml.in:61
 msgid "New features:"
 msgstr "Nouvelles fonctionnalités :"
 
-#: data/granite.appdata.xml.in:58
+#: data/granite.appdata.xml.in:63
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Nouvelle classe de paramètres pour partager les paramètres de bureau de "
 "Pantheon avec les applications"
 
-#: data/granite.appdata.xml.in:59
+#: data/granite.appdata.xml.in:64
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -150,7 +164,7 @@ msgstr ""
 "Introduction de Settings.prefers_color_scheme pour récupérer la préférence "
 "de couleur de l'utilisateur, par ex. pour le thème sombre"
 
-#: data/granite.appdata.xml.in:63
+#: data/granite.appdata.xml.in:68
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
@@ -158,36 +172,36 @@ msgstr ""
 "Il est désormais recommandé d'utiliser GLib.Settings au lieu de Granite."
 "Service.Settings"
 
-#: data/granite.appdata.xml.in:69 data/granite.appdata.xml.in:84
+#: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:89
 msgid "Improvements:"
 msgstr "Améliorations :"
 
-#: data/granite.appdata.xml.in:71
+#: data/granite.appdata.xml.in:76
 msgid "Better align labels in settings sidebars"
 msgstr ""
 "Meilleur alignement des étiquettes dans les barres latérales de paramètres"
 
-#: data/granite.appdata.xml.in:72
+#: data/granite.appdata.xml.in:77
 msgid "Make AccelLabel.label settable"
 msgstr "AccelLabel.label peut désormais être défini"
 
-#: data/granite.appdata.xml.in:79
+#: data/granite.appdata.xml.in:84
 msgid "New features"
 msgstr "Nouvelles fonctionnalités"
 
-#: data/granite.appdata.xml.in:81
+#: data/granite.appdata.xml.in:86
 msgid "Add tooltips to source list items and their actions"
 msgstr "Ajout d'infobulles aux éléments des listes et leurs actions"
 
-#: data/granite.appdata.xml.in:82
+#: data/granite.appdata.xml.in:87
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 "Nouveau widget AccelLabel pour l'utilisation dans les menus et fenêtres popup"
 
-#: data/granite.appdata.xml.in:86
+#: data/granite.appdata.xml.in:91
 msgid "Delay tab resizing when closing tabs"
 msgstr "Retardement du redimensionnement des onglets lors de leur fermeture"
 
-#: data/granite.appdata.xml.in:93
+#: data/granite.appdata.xml.in:98
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
