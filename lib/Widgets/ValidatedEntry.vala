@@ -55,21 +55,17 @@ public class Granite.ValidatedEntry : Gtk.Entry {
     public bool is_valid { get; set; default = false; }
 
     public ValidatedEntry.from_regex (Regex regex) {
-        if (regex == null) {
-            critical ("Null regex passed to ValidatedEntry.from_regex.  All input will be considered invalid.");
-        } else {
-            changed.connect (() => {
-                is_valid = regex.match (text);
-            });
-        }
+        changed.connect (() => {
+            is_valid = regex.match (text);
+        });
     }
 
     construct {
         activates_default = true;
 
-        unowned Gtk.StyleContext style_context = get_style_context ();
-
         changed.connect_after (() => {
+            unowned Gtk.StyleContext style_context = get_style_context ();
+
             if (text == "") {
                 secondary_icon_name = null;
                 style_context.remove_class (Gtk.STYLE_CLASS_ERROR);
