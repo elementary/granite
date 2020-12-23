@@ -40,6 +40,7 @@ public class FormView : Gtk.Grid {
         vexpand = true;
         add (username_label);
         add (username_entry);
+        add (button);
         show_all ();
 
         username_entry.bind_property ("is-valid", button, "sensitive");
