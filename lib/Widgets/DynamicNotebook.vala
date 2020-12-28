@@ -809,6 +809,7 @@ namespace Granite.Widgets {
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.tooltip_text = _("New Tab");
+            add_button.border_width = ADD_BUTTON_PADDING;
 
             // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
             var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
