@@ -755,7 +755,7 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
+        private const int ADD_BUTTON_PADDING = 6; // Padding around the new tab button
 
         /**
          * Create a new dynamic notebook
