@@ -47,10 +47,23 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     private void show_dialog () {
+        var header = new Granite.HeaderLabel ("Header");
+        var entry = new Gtk.Entry ();
+        var gtk_switch = new Gtk.Switch () {
+            halign = Gtk.Align.START
+        };
+
+        var layout = new Gtk.Grid () {
+            row_spacing = 12
+        };
+        layout.attach (header, 0, 1);
+        layout.attach (entry, 0, 2);
+        layout.attach (gtk_switch, 0, 3);
+
         var dialog = new Granite.Dialog () {
             transient_for = window
         };
-
+        dialog.content_area.add (layout);
         dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);

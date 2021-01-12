@@ -17,7 +17,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-public class Granite.Dialog : Hdy.Window {
+public class Granite.Dialog : Gtk.Window {
     public signal void response (int response_id);
 
     public Gtk.Box content_area { get; private set; }
@@ -25,7 +25,6 @@ public class Granite.Dialog : Hdy.Window {
     private Gtk.ButtonBox action_area;
 
     class construct {
-        Hdy.init ();
         set_css_name ("dialog");
     }
 
@@ -47,12 +46,23 @@ public class Granite.Dialog : Hdy.Window {
         layout.attach (content_area, 0, 0);
         layout.attach (action_area, 0, 1);
 
-        var window_handle = new Hdy.WindowHandle ();
-        window_handle.add (layout);
-
+        deletable = false;
         type_hint = Gdk.WindowTypeHint.DIALOG;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        add (window_handle);
+
+        var event_box = new Gtk.EventBox ();
+        event_box.add (layout);
+
+        add (event_box);
+
+        event_box.button_press_event.connect ((event) => {
+        if (event.button == Gdk.BUTTON_PRIMARY) {
+            begin_move_drag ((int) event.button, (int) event.x_root, (int) event.y_root, event.time);
+                return Gdk.EVENT_STOP;
+            }
+
+            return Gdk.EVENT_PROPAGATE;
+        });
     }
 
     /**
