@@ -24,6 +24,8 @@ public class Granite.Dialog : Gtk.Window {
 
     private Gtk.ButtonBox action_area;
 
+    private List<Gtk.Widget> action_widgets;
+
     class construct {
         set_css_name ("dialog");
     }
@@ -38,6 +40,10 @@ public class Granite.Dialog : Gtk.Window {
             spacing = 6
         };
         action_area.get_style_context ().add_class ("dialog-action-box");
+
+        foreach (unowned Gtk.Widget widget in action_widgets) {
+            action_area.add (widget);
+        }
 
         var layout = new Gtk.Grid () {
             margin = 12,
@@ -65,18 +71,24 @@ public class Granite.Dialog : Gtk.Window {
         });
     }
 
+    public override bool key_press_event (Gdk.EventKey event) {
+        if (event.keyval == Gdk.Key.Escape) {
+            response (Gtk.ResponseType.CLOSE);
+            destroy ();
+        }
+
+        return base.key_press_event (event);
+    }
+
     /**
     * Adds a button with the given text and sets things up so that clicking the button will emit the response signal with the given response_id.
     */
     public Gtk.Widget add_button (string button_text, int response_id) {
-        var button = new Gtk.Button.with_label (button_text);
-        button.clicked.connect (() => {
-            response (response_id);
-        });
+        var button = new Gtk.Button.with_label (button_text) {
+            use_underline = true
+        };
 
-        action_area.add (button);
-
-        return button;
+        return add_action_widget (button, response_id);
     }
 
     /**
@@ -89,7 +101,16 @@ public class Granite.Dialog : Gtk.Window {
             return Gdk.EVENT_STOP;
         });
 
-        action_area.add (widget);
+        // It's possible that this is called before action_area is constructed such as in Granite.MessageDialog
+        if (action_area == null) {
+            if (action_widgets == null) {
+                action_widgets = new List<Gtk.Widget> ();
+            }
+
+            action_widgets.append (widget);
+        } else {
+            action_area.add (widget);
+        }
 
         return widget;
     }

@@ -103,6 +103,6 @@ public class MessageDialogView : Gtk.Grid {
             toast.send_notification ();
         }
 
-        message_dialog.destroy ();
+        // message_dialog.destroy ();
     }
 }
