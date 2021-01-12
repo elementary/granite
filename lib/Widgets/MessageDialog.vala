@@ -45,7 +45,7 @@
  *
  * {{../doc/images/MessageDialog.png}}
  */
-public class Granite.MessageDialog : Gtk.Dialog {
+public class Granite.MessageDialog : Granite.Dialog {
     /**
      * The primary text, title of the dialog.
      */
@@ -311,7 +311,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
         message_grid.attach (custom_bin, 1, 3, 1, 1);
         message_grid.show_all ();
 
-        get_content_area ().add (message_grid);
+        content_area.add (message_grid);
     }
 
     /**

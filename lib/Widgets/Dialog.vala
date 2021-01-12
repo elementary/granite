@@ -20,7 +20,7 @@
 public class Granite.Dialog : Hdy.Window {
     public signal void response (int response_id);
 
-    public Gtk.Grid content_area { get; private set; }
+    public Gtk.Box content_area { get; private set; }
 
     private Gtk.ButtonBox action_area;
 
@@ -30,12 +30,13 @@ public class Granite.Dialog : Hdy.Window {
     }
 
     construct {
-        content_area = new Gtk.Grid () {
+        content_area = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             expand = true
         };
 
         action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
-            layout_style = Gtk.ButtonBoxStyle.END
+            layout_style = Gtk.ButtonBoxStyle.END,
+            spacing = 6
         };
         action_area.get_style_context ().add_class ("dialog-action-box");
 
@@ -54,6 +55,9 @@ public class Granite.Dialog : Hdy.Window {
         add (window_handle);
     }
 
+    /**
+    * Adds a button with the given text and sets things up so that clicking the button will emit the response signal with the given response_id.
+    */
     public Gtk.Widget add_button (string button_text, int response_id) {
         var button = new Gtk.Button.with_label (button_text);
         button.clicked.connect (() => {
@@ -63,5 +67,30 @@ public class Granite.Dialog : Hdy.Window {
         action_area.add (button);
 
         return button;
+    }
+
+    /**
+    * Adds an activatable widget to the action area of a Granite.Dialog, connecting a signal handler that will emit the response signal on the dialog when the widget is activated.
+    */
+    public Gtk.Widget add_action_widget (Gtk.Widget widget, int response_id) {
+        widget.button_release_event.connect (() => {
+            response (response_id);
+
+            return Gdk.EVENT_STOP;
+        });
+
+        action_area.add (widget);
+
+        return widget;
+    }
+
+    public int run () {
+        modal = true;
+        show_all ();
+
+        return 0;
+        // response.connect ((response_id) => {
+        //     return response_id;
+        // });
     }
 }

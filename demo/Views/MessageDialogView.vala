@@ -28,49 +28,68 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     construct {
-        var button = new Gtk.Button.with_label ("Show MessageDialog");
-        button.halign = Gtk.Align.CENTER;
-        button.valign = Gtk.Align.CENTER;
-        button.expand = true;
+        var dialog_button = new Gtk.Button.with_label ("Show Dialog") {
+            halign = Gtk.Align.CENTER
+        };
 
-        button.clicked.connect (show_message_dialog);
+        var message_button = new Gtk.Button.with_label ("Show MessageDialog") {
+            halign = Gtk.Align.CENTER
+        };
 
         toast = new Granite.Widgets.Toast ("Did something");
 
         attach (toast, 0, 0, 1, 1);
-        attach (button, 0, 1, 1, 1);
+        attach (dialog_button, 0, 1);
+        attach (message_button, 0, 2);
+
+        dialog_button.clicked.connect (show_dialog);
+        message_button.clicked.connect (show_message_dialog);
     }
 
-    private void show_message_dialog () {
+    private void show_dialog () {
         var dialog = new Granite.Dialog () {
             transient_for = window
         };
 
-        // var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
-        //     "Basic information and a suggestion",
-        //     "Further details, including information that explains any unobvious consequences of actions.",
-        //     "phone",
-        //     Gtk.ButtonsType.CANCEL
-        // );
-        // message_dialog.badge_icon = new ThemedIcon ("dialog-information");
-        // message_dialog.transient_for = window;
+        dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-        // message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
+
+        dialog.show_all ();
+
+        dialog.response.connect ((response) => {
+            if (response == Gtk.ResponseType.ACCEPT) {
+                toast.send_notification ();
+            }
+
+            dialog.destroy ();
+        });
+    }
+
+    private void show_message_dialog () {
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+            "Basic information and a suggestion",
+            "Further details, including information that explains any unobvious consequences of actions.",
+            "phone",
+            Gtk.ButtonsType.CANCEL
+        );
+        message_dialog.badge_icon = new ThemedIcon ("dialog-information");
+        message_dialog.transient_for = window;
+
+        var suggested_button = new Gtk.Button.with_label ("Suggested Action");
+        suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");
 
-        dialog.content_area.add (custom_widget);
-        dialog.show_all ();
+        message_dialog.show_error_details ("The details of a possible error.");
+        message_dialog.custom_bin.add (custom_widget);
+        message_dialog.show_all ();
+        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
+            toast.send_notification ();
+        }
 
-        // message_dialog.show_error_details ("The details of a possible error.");
-        // message_dialog.custom_bin.add (custom_widget);
-        // message_dialog.show_all ();
-        // if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
-        //     toast.send_notification ();
-        // }
-
-        // message_dialog.destroy ();
+        message_dialog.destroy ();
     }
 }
