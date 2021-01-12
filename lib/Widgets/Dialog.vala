@@ -46,12 +46,12 @@ public class Granite.Dialog : Gtk.Window {
         layout.attach (content_area, 0, 0);
         layout.attach (action_area, 0, 1);
 
+        var event_box = new Gtk.EventBox ();
+        event_box.add (layout);
+
         deletable = false;
         type_hint = Gdk.WindowTypeHint.DIALOG;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-
-        var event_box = new Gtk.EventBox ();
-        event_box.add (layout);
 
         add (event_box);
 
