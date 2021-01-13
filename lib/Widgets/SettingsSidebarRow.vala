@@ -52,7 +52,6 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
             if (display_widget is Gtk.Image) {
                 ((Gtk.Image) display_widget).icon_name = value;
                 ((Gtk.Image) display_widget).pixel_size = 32;
-                ((Gtk.Image) display_widget).get_style_context ().add_class ("icon-dropshadow");
             }
         }
     }
@@ -97,7 +96,6 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         status_icon = new Gtk.Image ();
         status_icon.halign = Gtk.Align.END;
         status_icon.valign = Gtk.Align.END;
-        status_icon.get_style_context ().add_class ("icon-dropshadow");
 
         status_label = new Gtk.Label (null);
         status_label.no_show_all = true;
