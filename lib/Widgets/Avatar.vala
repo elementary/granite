@@ -108,6 +108,7 @@ public class Granite.Widgets.Avatar : Gtk.EventBox {
         visible_window = false;
         var style_context = get_style_context ();
         style_context.add_class (Granite.STYLE_CLASS_AVATAR);
+        style_context.add_class ("icon-dropshadow");
 
         notify["pixbuf"].connect (refresh_size_request);
         Gdk.Screen.get_default ().monitors_changed.connect (dpi_change);
