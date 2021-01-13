@@ -108,7 +108,6 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         header_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DND);
         header_icon.pixel_size = 64;
         header_icon.valign = Gtk.Align.START;
-        header_icon.get_style_context ().add_class ("icon-dropshadow");
 
         title_label = new Gtk.Label (title);
         title_label.ellipsize = Pango.EllipsizeMode.END;
