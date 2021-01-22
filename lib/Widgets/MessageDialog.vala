@@ -256,8 +256,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
     }
 
     class construct {
-        // We don't use Gtk.STYLE_CLASS_MESSAGE_DIALOG here because it incorrectly contains a `-`
-        set_css_name ("messagedialog");
+        set_css_name (Gtk.STYLE_CLASS_MESSAGE_DIALOG);
     }
 
     construct {
