@@ -119,9 +119,31 @@ public class Granite.Dialog : Gtk.Window {
         modal = true;
         show_all ();
 
-        return 0;
-        // response.connect ((response_id) => {
-        //     return response_id;
-        // });
+        int return_response = Gtk.ResponseType.DELETE_EVENT;
+        var loop = new MainLoop ();
+
+        response.connect ((response_id) => {
+            return_response = response_id;
+            loop.quit ();
+        });
+
+        unmap.connect (() => {
+            loop.quit ();
+        });
+
+        delete_event.connect (() => {
+            loop.quit ();
+            return true;
+        });
+
+        destroy.connect (() => {
+            loop.quit ();
+        });
+
+        loop.run ();
+
+        destroy ();
+
+        return return_response;
     }
 }
