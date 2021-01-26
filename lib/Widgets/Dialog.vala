@@ -17,14 +17,63 @@
 * Boston, MA 02110-1301 USA
 */
 
+/**
+* Granite.Dialog is a styled {@link Gtk.Window} that uses an empty title area,
+* action widgets in the bottom/end position, and can be dragged from anywhere.
+* Its API is heavily based on {@link Gtk.Dialog}.
+*
+* ''Example''<<BR>>
+* {{{
+*   var header = new Granite.HeaderLabel ("Header");
+*   var entry = new Gtk.Entry ();
+*   var gtk_switch = new Gtk.Switch () {
+*       halign = Gtk.Align.START
+*   };
+*
+*   var layout = new Gtk.Grid () {
+*       row_spacing = 12
+*   };
+*   layout.attach (header, 0, 1);
+*   layout.attach (entry, 0, 2);
+*   layout.attach (gtk_switch, 0, 3);
+*
+*   var dialog = new Granite.Dialog () {
+*       transient_for = window
+*   };
+*   dialog.content_area.add (layout);
+*   dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
+*
+*   var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
+*   suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+*
+*   dialog.show_all ();
+*   if (dialog.run () == Gtk.ResponseType.ACCEPT) {
+*       // Do Something
+*   }
+*
+*   dialog.destroy ();
+* }}}
+*/
 public class Granite.Dialog : Gtk.Window {
+    /**
+    * Emitted when an action widget is clicked, the dialog receives a delete event, or the application programmer calls response
+    */
     public signal void response (int response_id);
 
+    /**
+    * The content area {@link Gtk.Box}
+    */
     public Gtk.Box content_area { get; private set; }
 
     private Gtk.ButtonBox action_area;
-
     private List<Gtk.Widget> action_widgets;
+
+    /**
+     * Constructs a new {@link Granite.Dialog}.
+     */
+    public Dialog () {
+
+    }
 
     class construct {
         set_css_name ("dialog");
@@ -92,7 +141,7 @@ public class Granite.Dialog : Gtk.Window {
     }
 
     /**
-    * Adds an activatable widget to the action area of a Granite.Dialog, connecting a signal handler that will emit the response signal on the dialog when the widget is activated.
+    * Adds an activatable widget to the action area of {@link Granite.Dialog}, connecting a signal handler that will emit the {@link Granite.Dialog.response} signal on the dialog when the widget is activated.
     */
     public Gtk.Widget add_action_widget (Gtk.Widget widget, int response_id) {
         widget.button_release_event.connect (() => {
@@ -115,11 +164,17 @@ public class Granite.Dialog : Gtk.Window {
         return widget;
     }
 
+    /**
+    * Blocks in a recursive main loop until {@link Granite.Dialog} either emits the {@link Granite.Dialog.response} signal, or is destroyed.
+    * If the dialog is destroyed during the call to run, run returns {@link Gtk.ResponseType.NONE}. Otherwise, it returns the response ID from the {@link Granite.Dialog.response} signal emission.
+    * Before entering the recursive main loop, run calls {@link Gtk.Widget.show_all} on the dialog for you.
+    * After run returns, you are responsible for hiding or destroying the dialog if you wish to do so.
+    */
     public int run () {
         modal = true;
         show_all ();
 
-        int return_response = Gtk.ResponseType.DELETE_EVENT;
+        int return_response = Gtk.ResponseType.NONE;
         var loop = new MainLoop ();
 
         response.connect ((response_id) => {
@@ -141,8 +196,6 @@ public class Granite.Dialog : Gtk.Window {
         });
 
         loop.run ();
-
-        destroy ();
 
         return return_response;
     }

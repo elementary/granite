@@ -18,12 +18,12 @@
  * Boston, MA 02110-1301 USA.
  */
 
-public class MessageDialogView : Gtk.Overlay {
+public class DialogsView : Gtk.Overlay {
     public Gtk.Window window { get; construct; }
 
     private Granite.Widgets.Toast toast;
 
-    public MessageDialogView (Gtk.Window window) {
+    public DialogsView (Gtk.Window window) {
         Object (window: window);
     }
 
@@ -72,7 +72,6 @@ public class MessageDialogView : Gtk.Overlay {
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        dialog.show_all ();
         if (dialog.run () == Gtk.ResponseType.ACCEPT) {
             toast.send_notification ();
         }
@@ -98,7 +97,6 @@ public class MessageDialogView : Gtk.Overlay {
 
         message_dialog.show_error_details ("The details of a possible error.");
         message_dialog.custom_bin.add (custom_widget);
-        message_dialog.show_all ();
         if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
             toast.send_notification ();
         }
