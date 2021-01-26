@@ -18,7 +18,7 @@
  * Boston, MA 02110-1301 USA.
  */
 
-public class MessageDialogView : Gtk.Grid {
+public class MessageDialogView : Gtk.Overlay {
     public Gtk.Window window { get; construct; }
 
     private Granite.Widgets.Toast toast;
@@ -28,19 +28,22 @@ public class MessageDialogView : Gtk.Grid {
     }
 
     construct {
-        var dialog_button = new Gtk.Button.with_label ("Show Dialog") {
-            halign = Gtk.Align.CENTER
-        };
+        var dialog_button = new Gtk.Button.with_label ("Show Dialog");
 
-        var message_button = new Gtk.Button.with_label ("Show MessageDialog") {
-            halign = Gtk.Align.CENTER
-        };
+        var message_button = new Gtk.Button.with_label ("Show MessageDialog");
 
         toast = new Granite.Widgets.Toast ("Did something");
 
-        attach (toast, 0, 0, 1, 1);
-        attach (dialog_button, 0, 1);
-        attach (message_button, 0, 2);
+        var grid = new Gtk.Grid () {
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER,
+            row_spacing = 12
+        };
+        grid.attach (dialog_button, 0, 1);
+        grid.attach (message_button, 0, 2);
+
+        add (grid);
+        add_overlay (toast);
 
         dialog_button.clicked.connect (show_dialog);
         message_button.clicked.connect (show_message_dialog);
@@ -70,14 +73,11 @@ public class MessageDialogView : Gtk.Grid {
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         dialog.show_all ();
+        if (dialog.run () == Gtk.ResponseType.ACCEPT) {
+            toast.send_notification ();
+        }
 
-        dialog.response.connect ((response) => {
-            if (response == Gtk.ResponseType.ACCEPT) {
-                toast.send_notification ();
-            }
-
-            dialog.destroy ();
-        });
+        dialog.destroy ();
     }
 
     private void show_message_dialog () {
@@ -103,6 +103,6 @@ public class MessageDialogView : Gtk.Grid {
             toast.send_notification ();
         }
 
-        // message_dialog.destroy ();
+        message_dialog.destroy ();
     }
 }
