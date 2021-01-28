@@ -72,11 +72,14 @@ public class DialogsView : Gtk.Overlay {
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-        if (dialog.run () == Gtk.ResponseType.ACCEPT) {
-            toast.send_notification ();
-        }
+        dialog.show_all ();
+        dialog.response.connect ((response_id) => {
+           if (response_id == Gtk.ResponseType.ACCEPT) {
+               toast.send_notification ();
+           }
 
-        dialog.destroy ();
+           dialog.destroy ();
+        });
     }
 
     private void show_message_dialog () {
@@ -97,10 +100,14 @@ public class DialogsView : Gtk.Overlay {
 
         message_dialog.show_error_details ("The details of a possible error.");
         message_dialog.custom_bin.add (custom_widget);
-        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
-            toast.send_notification ();
-        }
 
-        message_dialog.destroy ();
+        message_dialog.show_all ();
+        message_dialog.response.connect ((response_id) => {
+           if (response_id == Gtk.ResponseType.ACCEPT) {
+               toast.send_notification ();
+           }
+
+           message_dialog.destroy ();
+        });
     }
 }

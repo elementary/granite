@@ -47,11 +47,13 @@
 *   suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 *
 *   dialog.show_all ();
-*   if (dialog.run () == Gtk.ResponseType.ACCEPT) {
-*       // Do Something
-*   }
+*   dialog.response.connect ((response_id) => {
+*       if (response_id == Gtk.ResponseType.ACCEPT) {
+*           // Do Something
+*       }
 *
-*   dialog.destroy ();
+*       dialog.destroy ();
+*   });
 * }}}
 */
 public class Granite.Dialog : Gtk.Window {
@@ -146,12 +148,16 @@ public class Granite.Dialog : Gtk.Window {
     * @param button_text text of a button
     * @param response_id response ID for the button
     */
-    public Gtk.Widget add_button (string button_text, int response_id) {
+    public unowned Gtk.Widget add_button (string button_text, int response_id) {
         var button = new Gtk.Button.with_label (button_text) {
             use_underline = true
         };
 
-        return add_action_widget (button, response_id);
+        add_action_widget (button, response_id);
+
+        unowned var button_ref = button;
+
+        return button_ref;
     }
 
     /**
@@ -199,6 +205,7 @@ public class Granite.Dialog : Gtk.Window {
     * Before entering the recursive main loop, run calls {@link Gtk.Widget.show_all} on the dialog for you.
     * After run returns, you are responsible for hiding or destroying the dialog if you wish to do so.
     */
+    [Version (deprecated = true, deprecated_since = "6.0.0", replacement = "Granite.Dialog.show_all ()")]
     public int run () {
         modal = true;
         show_all ();
