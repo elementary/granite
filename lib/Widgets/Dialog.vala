@@ -59,6 +59,7 @@ public class Granite.Dialog : Gtk.Window {
     * Emitted when an action widget is clicked, the dialog receives a delete event, or the application programmer calls response
     */
     public signal void response (int response_id);
+    public new signal void close ();
 
     /**
     * The content area {@link Gtk.Box}
@@ -120,10 +121,18 @@ public class Granite.Dialog : Gtk.Window {
         });
     }
 
+    public override bool delete_event (Gdk.EventAny event) {
+        response (Gtk.ResponseType.DELETE_EVENT);
+
+        // Allow delete handler to run as normal
+        return false;
+    }
+
     public override bool key_press_event (Gdk.EventKey event) {
         if (event.keyval == Gdk.Key.Escape) {
-            response (Gtk.ResponseType.CLOSE);
-            destroy ();
+            close ();
+
+            ((Gtk.Window)this).close ();
         }
 
         return base.key_press_event (event);
@@ -188,6 +197,8 @@ public class Granite.Dialog : Gtk.Window {
 
         delete_event.connect (() => {
             loop.quit ();
+
+            // Prevent dialog being deleted, so user can handle it
             return true;
         });
 
