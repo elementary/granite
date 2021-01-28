@@ -67,7 +67,7 @@ public class Granite.Dialog : Gtk.Window {
     public Gtk.Box content_area { get; private set; }
 
     private Gtk.ButtonBox action_area;
-    private List<Gtk.Widget> action_widgets;
+    private HashTable<int, Gtk.Widget> action_widgets;
 
     /**
      * Constructs a new {@link Granite.Dialog}.
@@ -91,8 +91,10 @@ public class Granite.Dialog : Gtk.Window {
         };
         action_area.get_style_context ().add_class ("dialog-action-box");
 
-        foreach (unowned Gtk.Widget widget in action_widgets) {
-            action_area.add (widget);
+        if (action_widgets != null) {
+            foreach (unowned Gtk.Widget widget in action_widgets.get_values ()) {
+                action_area.add (widget);
+            }
         }
 
         var layout = new Gtk.Grid () {
@@ -140,6 +142,9 @@ public class Granite.Dialog : Gtk.Window {
 
     /**
     * Adds a button with the given text and sets things up so that clicking the button will emit the response signal with the given response_id.
+    *
+    * @param button_text text of a button
+    * @param response_id response ID for the button
     */
     public Gtk.Widget add_button (string button_text, int response_id) {
         var button = new Gtk.Button.with_label (button_text) {
@@ -151,6 +156,9 @@ public class Granite.Dialog : Gtk.Window {
 
     /**
     * Adds an activatable widget to the action area of {@link Granite.Dialog}, connecting a signal handler that will emit the {@link Granite.Dialog.response} signal on the dialog when the widget is activated.
+    *
+    * @param widget an activatable widget
+    * @param response_id response ID for the widget
     */
     public Gtk.Widget add_action_widget (Gtk.Widget widget, int response_id) {
         widget.button_release_event.connect (() => {
@@ -159,18 +167,30 @@ public class Granite.Dialog : Gtk.Window {
             return Gdk.EVENT_STOP;
         });
 
-        // It's possible that this is called before action_area is constructed such as in Granite.MessageDialog
-        if (action_area == null) {
-            if (action_widgets == null) {
-                action_widgets = new List<Gtk.Widget> ();
-            }
+        if (action_widgets == null) {
+            action_widgets = new HashTable<int, Gtk.Widget> (null, null);
+        }
+        action_widgets[response_id] = widget;
 
-            action_widgets.append (widget);
-        } else {
+        // It's possible that this is called before action_area is constructed such as in Granite.MessageDialog
+        if (action_area != null) {
             action_area.add (widget);
         }
 
         return widget;
+    }
+
+    /**
+    * Gets the widget button that uses the given response ID in the action area of a dialog.
+    *
+    * @param response_id the response ID used by the widget
+    */
+    public unowned Gtk.Widget? get_widget_for_response (int response_id) {
+        if (action_widgets != null) {
+            return action_widgets[response_id];
+        }
+
+        return null;
     }
 
     /**
