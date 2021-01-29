@@ -66,7 +66,7 @@ public class DialogsView : Gtk.Overlay {
         var dialog = new Granite.Dialog () {
             transient_for = window
         };
-        dialog.content_area.add (layout);
+        dialog.get_content_area ().add (layout);
         dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);

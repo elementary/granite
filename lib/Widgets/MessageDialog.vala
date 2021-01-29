@@ -315,7 +315,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         message_grid.attach (custom_bin, 1, 3, 1, 1);
         message_grid.show_all ();
 
-        content_area.add (message_grid);
+        get_content_area ().add (message_grid);
     }
 
     /**
