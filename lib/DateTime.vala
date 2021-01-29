@@ -197,4 +197,34 @@ namespace Granite.DateTime {
             return ("%02d:%02d".printf (sign * min, sec));
         }
     }
+
+    /**
+     * Converts seconds into a pretty formatted string.
+     *
+     * @param seconds the number of seconds to convert into ISO 8601
+     *
+     * @return returns a pretty formatted string
+     */
+    public static string? seconds_to_string (int seconds) {
+        int minutes, hours;
+
+        if (seconds == 0) {
+            return null;
+        }
+
+        if (seconds >= 60) {
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            if (minutes >= 60) {
+                hours = minutes / 60;
+                minutes = minutes % 60;
+                return _("%d hr, %d min, %d sec").printf (hours, minutes, seconds);
+            }
+
+            return _("%d min, %d sec").printf (minutes, seconds);
+        }
+
+        return _("%d sec").printf (seconds);
+    }
 }
