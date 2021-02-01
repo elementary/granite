@@ -56,8 +56,6 @@
 * }}}
 */
 public class Granite.Dialog : Gtk.Dialog {
-    private Gtk.HeaderBar headerbar;
-
     /**
      * Constructs a new {@link Granite.Dialog}.
      */
@@ -93,7 +91,7 @@ public class Granite.Dialog : Gtk.Dialog {
 
         get_style_context ().add_class ("csd");
 
-        headerbar = new Gtk.HeaderBar () {
+        var headerbar = new Gtk.HeaderBar () {
             has_subtitle = false
         };
         headerbar.get_style_context ().add_class ("default-decoration");
