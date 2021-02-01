@@ -57,6 +57,8 @@ public class DialogsView : Gtk.Overlay {
         };
 
         var layout = new Gtk.Grid () {
+            margin_end = 12,
+            margin_start = 12,
             row_spacing = 12
         };
         layout.attach (header, 0, 1);

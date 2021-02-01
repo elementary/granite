@@ -57,7 +57,6 @@
 * }}}
 */
 public class Granite.Dialog : Gtk.Dialog {
-
     private Gtk.HeaderBar headerbar;
 
     /**
@@ -72,19 +71,22 @@ public class Granite.Dialog : Gtk.Dialog {
         Gtk.Box content_area = get_content_area ();
 
         action_area.get_parent ().remove (action_area);
+
         var content_area_parent = content_area.get_parent ();
         content_area_parent.remove (content_area);
-
-        var grid = new Gtk.Grid ();
-        grid.orientation = Gtk.Orientation.VERTICAL;
 
         deletable = false;
         type_hint = Gdk.WindowTypeHint.DIALOG;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         use_header_bar = (int) false;
 
+        var grid = new Gtk.Grid () {
+           orientation = Gtk.Orientation.VERTICAL
+        };
         grid.add (content_area);
         grid.add (action_area);
+        grid.show_all ();
+
         content_area_parent.add (grid);
     }
 
@@ -92,10 +94,13 @@ public class Granite.Dialog : Gtk.Dialog {
         base.constructed ();
 
         get_style_context ().add_class ("csd");
+
         headerbar = new Gtk.HeaderBar () {
             has_subtitle = false
         };
         headerbar.get_style_context ().add_class ("default-decoration");
+        headerbar.show ();
+
         set_titlebar (headerbar);
     }
 }
