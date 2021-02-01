@@ -18,9 +18,8 @@
 */
 
 /**
-* Granite.Dialog is a styled {@link Gtk.Window} that uses an empty title area,
-* action widgets in the bottom/end position, and can be dragged from anywhere.
-* Its API is heavily based on {@link Gtk.Dialog}.
+* Granite.Dialog is a styled {@link Gtk.Window} that uses an empty title area and
+* action widgets in the bottom/end position. Its API is heavily based on {@link Gtk.Dialog}.
 *
 * ''Example''<<BR>>
 * {{{
