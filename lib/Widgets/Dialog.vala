@@ -76,7 +76,6 @@ public class Granite.Dialog : Gtk.Dialog {
         content_area_parent.remove (content_area);
 
         deletable = false;
-        type_hint = Gdk.WindowTypeHint.DIALOG;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         use_header_bar = (int) false;
 
