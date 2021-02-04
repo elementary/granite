@@ -28,6 +28,7 @@ libgranite_sources = files(
     'Widgets/CollapsiblePaned.vala',
     'Widgets/CompositedWindow.vala',
     'Widgets/DatePicker.vala',
+    'Widgets/Dialog.vala',
     'Widgets/DynamicNotebook.vala',
     'Widgets/HeaderLabel.vala',
     'Widgets/MessageDialog.vala',

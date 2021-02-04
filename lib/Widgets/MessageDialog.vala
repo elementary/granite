@@ -45,7 +45,7 @@
  *
  * {{../doc/images/MessageDialog.png}}
  */
-public class Granite.MessageDialog : Gtk.Dialog {
+public class Granite.MessageDialog : Granite.Dialog {
     /**
      * The primary text, title of the dialog.
      */
@@ -203,7 +203,7 @@ public class Granite.MessageDialog : Gtk.Dialog {
 
     /**
      * Constructs a new {@link Granite.MessageDialog}.
-     * See {@link Gtk.Dialog} for more details.
+     * See {@link Granite.Dialog} for more details.
      *
      * @param primary_text the title of the dialog
      * @param secondary_text the body of the dialog
@@ -253,6 +253,10 @@ public class Granite.MessageDialog : Gtk.Dialog {
             image_icon: new ThemedIcon (image_icon_name),
             buttons: buttons
         );
+    }
+
+    class construct {
+        set_css_name (Gtk.STYLE_CLASS_MESSAGE_DIALOG);
     }
 
     construct {
