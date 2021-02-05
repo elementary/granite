@@ -1,5 +1,5 @@
 # Granite
-Granite is a companion library for GTK+ and GLib. Among other things, it
+Granite is a companion library for GTK and GLib. Among other things, it
 provides complex widgets and convenience functions designed for use in apps
 built for elementary OS.
 

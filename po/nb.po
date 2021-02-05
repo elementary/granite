@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2019-05-05 00:32+0000\n"
+"PO-Revision-Date: 2021-01-20 22:37+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite/nb/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:38+0000\n"
 
 #: lib/Application.vala:183
@@ -152,11 +152,11 @@ msgstr "Lukk andre faner"
 #. / TRANSLATORS: This will close tabs to the left in right-to-left environments
 #: lib/Widgets/DynamicNotebook.vala:329
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Lukk fanen til høyre"
 
 #: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "Lukk faner til høyre"
 
 #: lib/Widgets/DynamicNotebook.vala:514
 msgid "Clear All"
@@ -281,8 +281,9 @@ msgstr "Pluss"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
+#, fuzzy
 msgid "Equals"
-msgstr ""
+msgstr "Er lik"
 
 #: lib/Widgets/Utils.vala:161
 #, fuzzy
