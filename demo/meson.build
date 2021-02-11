@@ -11,6 +11,7 @@ executable(
     'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
     'Views/DynamicNotebookView.vala',
+    'Views/FormView.vala',
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
     'Views/SeekBarView.vala',
