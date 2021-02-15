@@ -28,6 +28,7 @@ libgranite_sources = files(
     'Widgets/CollapsiblePaned.vala',
     'Widgets/CompositedWindow.vala',
     'Widgets/DatePicker.vala',
+    'Widgets/Dialog.vala',
     'Widgets/DynamicNotebook.vala',
     'Widgets/HeaderLabel.vala',
     'Widgets/MessageDialog.vala',
@@ -43,6 +44,7 @@ libgranite_sources = files(
     'Widgets/TimePicker.vala',
     'Widgets/Toast.vala',
     'Widgets/Utils.vala',
+    'Widgets/ValidatedEntry.vala',
     'Widgets/WelcomeButton.vala',
     'Widgets/Welcome.vala',
 )
