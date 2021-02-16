@@ -85,6 +85,12 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         bind_property ("description", description_label, "label");
         bind_property ("active", button_switch, "active");
 
+        // Binding active doesn't trigger the switch animation; we must listen and manually activate
+        button_release_event.connect (() => {
+            button_switch.activate ();
+            return Gdk.EVENT_STOP;
+        });
+
         notify["description"].connect (() => {
             if (description == null || description == "") {
                 grid.remove (description_revealer);
