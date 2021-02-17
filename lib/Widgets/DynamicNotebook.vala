@@ -755,8 +755,6 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
-
         /**
          * Create a new dynamic notebook
          */
@@ -808,6 +806,8 @@ namespace Granite.Widgets {
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
             add_button.relief = Gtk.ReliefStyle.NONE;
+            add_button.margin_top = 6;
+            add_button.margin_bottom = 6;
             add_button.tooltip_text = _("New Tab");
 
             // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
