@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-02-11 00:46+0000\n"
+"PO-Revision-Date: 2021-02-25 19:53+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/desktop/granite/"
 "de/>\n"
@@ -135,7 +135,7 @@ msgstr "In neuem Fenster öffnen"
 
 #: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
-msgstr "Verdoppeln"
+msgstr "Duplizieren"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
@@ -217,12 +217,12 @@ msgstr "%s frei von %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "AM"
-msgstr "Vormittags"
+msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:110
 msgid "PM"
-msgstr "Nachmittags"
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:156
