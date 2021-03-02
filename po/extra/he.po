@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-03-02 08:38+0000\n"
+"PO-Revision-Date: 2021-03-02 13:03+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/he/>\n"
@@ -93,7 +93,7 @@ msgstr "תרגומים עודכנו"
 
 #: data/granite.appdata.xml.in:40
 msgid "New Style Constants:"
-msgstr "קבועי סגנון חדש:"
+msgstr "קבועי סגנון חדשים:"
 
 #: data/granite.appdata.xml.in:42
 msgid "STYLE_CLASS_COLOR_BUTTON"
