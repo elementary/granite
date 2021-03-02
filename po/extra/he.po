@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-03-02 08:33+0000\n"
+"PO-Revision-Date: 2021-03-02 08:37+0000\n"
 "Last-Translator: liorlobel <lior@llobel.online>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/he/>\n"
@@ -101,7 +101,7 @@ msgstr "סגנון_מחלקה_צבע_כפתור"
 
 #: data/granite.appdata.xml.in:43
 msgid "STYLE_CLASS_ROUNDED"
-msgstr "STYLE_CLASS_ROUNDED"
+msgstr "סגנון_מחלקה_מעוגל"
 
 #: data/granite.appdata.xml.in:47
 msgid ""
