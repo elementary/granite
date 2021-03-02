@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-12-29 08:16+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"PO-Revision-Date: 2021-03-02 08:33+0000\n"
+"Last-Translator: liorlobel <lior@llobel.online>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/he/>\n"
 "Language: he\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -97,7 +97,7 @@ msgstr "קבועי סגנון חדשים:"
 
 #: data/granite.appdata.xml.in:42
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr "STYLE_CLASS_COLOR_BUTTON"
+msgstr "סגנון_מחלקה_צבע_כפתור"
 
 #: data/granite.appdata.xml.in:43
 msgid "STYLE_CLASS_ROUNDED"
