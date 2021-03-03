@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-03-02 21:50+0000\n"
+"PO-Revision-Date: 2021-03-03 14:19+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -165,7 +165,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:86
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Добавлено подсказки к элементам списка источники и их действий"
 
 #: data/granite.appdata.xml.in:87
 msgid "New AccelLabel widget for use in menus and popovers"
