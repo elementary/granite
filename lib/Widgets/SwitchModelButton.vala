@@ -83,7 +83,7 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
 
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
-        bind_property ("active", button_switch, "active");
+        bind_property ("active", button_switch, "active", GLib.BindingFlags.BIDIRECTIONAL);
 
         // Binding active doesn't trigger the switch animation; we must listen and manually activate
         button_release_event.connect (() => {
