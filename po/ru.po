@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2021-03-07 15:14+0000\n"
-"Last-Translator: Ilya Maximov <overlisted@protonmail.ch>\n"
+"Last-Translator: Camellan <camellan@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
 "ru/>\n"
 "Language: ru\n"
@@ -55,17 +55,17 @@ msgstr "Сейчас"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dм назад"
+msgstr[1] "%dм назад"
+msgstr[2] "%dм назад"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dч назад"
+msgstr[1] "%dч назад"
+msgstr[2] "%dч назад"
 
 #: lib/DateTime.vala:85
 #, c-format
