@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-03-07 15:16+0000\n"
+"PO-Revision-Date: 2021-03-07 16:42+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
 "ru/>\n"
@@ -177,24 +177,24 @@ msgstr "Закрытые вкладки"
 
 #: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
-msgstr "Закрыть"
+msgstr "_Закрыть"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr "Отмена"
+msgstr "_Отменить"
 
 #: lib/Widgets/MessageDialog.vala:344
 msgid "Details"
-msgstr ""
+msgstr "Подробнее"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr "Аудиозаписи"
+msgstr "Аудио"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr "Видеозаписи"
+msgstr "Видео"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
@@ -236,25 +236,25 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:102
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:110
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Левый Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Правый Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
@@ -269,26 +269,26 @@ msgstr ""
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr ""
+msgstr "Минус"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr ""
+msgstr "Плюс"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr ""
+msgstr "Равно"
 
 #: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
-msgstr ""
+msgstr "Левый Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
@@ -298,7 +298,7 @@ msgstr ""
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:220
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "%s's Developers"
 #~ msgstr "Разработчики приложения «%s»"
