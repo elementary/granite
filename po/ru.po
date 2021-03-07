@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-18 00:04+0000\n"
 "PO-Revision-Date: 2021-03-07 16:42+0000\n"
-"Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
+"Last-Translator: Camellan <camellan@yandex.ru>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
 "ru/>\n"
 "Language: ru\n"
@@ -293,7 +293,7 @@ msgstr "Левый Shift"
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
-msgstr ""
+msgstr "Правый Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:220
