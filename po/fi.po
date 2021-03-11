@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
+"POT-Creation-Date: 2021-03-11 17:36+0000\n"
 "PO-Revision-Date: 2020-09-03 18:13+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -145,28 +145,35 @@ msgstr "Sulje toinen välilehti"
 msgid "Close Other Tabs"
 msgstr "Sulje muut välilehdet"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
 msgstr "Sulje välilehti oikealta"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
 msgstr "Sulje välilehdet oikealta"
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "Tyhjennä kaikki"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "Uusi välilehti"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "Kumoa sulje välilehti"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "Suljetut välilehdet"
 
@@ -178,7 +185,7 @@ msgstr "_Sulje"
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr "Yksityiskohdat"
 

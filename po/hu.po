@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
+"POT-Creation-Date: 2021-03-11 17:36+0000\n"
 "PO-Revision-Date: 2018-06-15 00:10+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian <https://weblate.elementary.io/projects/desktop/"
@@ -150,28 +150,35 @@ msgstr "Másik lap bezárása"
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "Az összes törlése"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "Új lap"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "Lap bezárásának visszavonása"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
@@ -184,7 +191,7 @@ msgstr "Bezárás"
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr ""
 

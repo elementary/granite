@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
+"POT-Creation-Date: 2021-03-11 17:36+0000\n"
 "PO-Revision-Date: 2016-09-21 19:41+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
@@ -148,28 +148,35 @@ msgstr "باقی ایک ٹیب بند کر دیں"
 msgid "Close Other Tabs"
 msgstr "باقی ٹیب بند کر دیں"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "تمام کو صاف کریں"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "نیا ٹیب"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "ٹیب بند کرنا کالعدم کریں"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "بند کی گئی ٹیب"
 
@@ -182,7 +189,7 @@ msgstr "بند کریں"
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr ""
 
