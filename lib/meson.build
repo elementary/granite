@@ -64,11 +64,20 @@ include_dir = join_paths(
     'granite'
 )
 
+config_data = configuration_data()
+config_data.set('GETTEXT_PACKAGE', meson.project_name())
+config_vala = configure_file(
+    input: 'Config.vala.in',
+    output: '@BASENAME@',
+    configuration: config_data
+)
+
 # compile shared library, generate GIR, header, and vapi file
 libgranite = library(
     'granite',
 
     libgranite_sources,
+    config_vala,
 
     dependencies: [
         libgranite_deps,

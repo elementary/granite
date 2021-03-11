@@ -322,19 +322,20 @@ namespace Granite.Widgets {
                     menu.popup_at_pointer (e);
                     uint num_tabs = dynamic_notebook.n_tabs;
                     uint tab_position = dynamic_notebook.get_tab_position (this);
-                    close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
+                    close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
                     /// TRANSLATORS: This will close tabs to the left in right-to-left environments
-                    close_other_right_m.label = ngettext (
+                    close_other_right_m.label = dngettext (
+                        GETTEXT_PACKAGE,
                         _("Close Tab to the Right"),
                         _("Close Tabs to the Right"),
                         num_tabs - 1 - tab_position
                     );
                     close_other_right_m.sensitive = (tab_position < num_tabs - 1);
                     new_window_m.sensitive = (num_tabs != 1);
-                    pin_m.label = "Pin";
+                    pin_m.label = _("Pin");
                     if (this.pinned) {
-                        pin_m.label = "Unpin";
+                        pin_m.label = _("Unpin");
                     }
                 } else {
                     return false;
