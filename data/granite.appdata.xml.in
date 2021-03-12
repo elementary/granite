@@ -12,7 +12,7 @@
   <releases>
     <release version="6.0.0" date="2021-03-12" urgency="medium">
       <description>
-        <p>Additions:<p>
+        <p>Additions:</p>
         <ul>
           <li>Granite.Dialog replaces Gtk.Dialog for consistent styling</li>
           <li>Granite.SwitchModelButton for use in Gtk.Popover menus</li>
