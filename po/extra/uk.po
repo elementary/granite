@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-01-18 16:52+0000\n"
+"PO-Revision-Date: 2021-03-12 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -40,19 +40,19 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Additions:"
-msgstr ""
+msgstr "Додатково:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
-msgstr ""
+msgstr "Granite.Dialog замінює Gtk.Dialog для послідовності стилізації"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Granite.SwitchModelButton застосовується для меню Gtk.Popover"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Granite.ValidatedEntry для перевірки форм на стороні клієнта"
 
 #: data/granite.appdata.xml.in:21
 msgid "New Constants:"
@@ -62,10 +62,11 @@ msgstr "Нові константи:"
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP для меншого тексту другого рядка в Gtk.Tooltips"
 
 #: data/granite.appdata.xml.in:24
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "SMALL_LABEL для менших Gtk.Labels без Pango"
 
 #: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
@@ -108,18 +109,18 @@ msgid "Other Changes:"
 msgstr "Інші зміни:"
 
 #: data/granite.appdata.xml.in:40
-#, fuzzy
-#| msgid "Toasts now reset their timeout when sending a new notification"
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
-"Тости тепер скидають час очікування під час надсилання нового сповіщення"
+"Toast тепер скидають час очікування під час надсилання нового повідомлення і "
+"час очікування зупиняється під час наведення"
 
 #: data/granite.appdata.xml.in:41
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"Backlash, правий Control та лівий Control тепер обробляються accel_to_string"
 
 #: data/granite.appdata.xml.in:42
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -129,18 +130,20 @@ msgstr "Підказки вкладки DynamicNotebook тепер налашт�
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Timepicker правильно запускає time_changed, коли вибрано кнопки ДП та ПП"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog використовує назву messagedialog CSS"
 
 #: data/granite.appdata.xml.in:45
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Видиму дочірню назву тепер правильно синхронізовано в Granite.SettingsSidebar"
 
 #: data/granite.appdata.xml.in:46
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Стан можна встановити в Granite.AbstractSettingsPage на construct"
 
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:68
 #: data/granite.appdata.xml.in:91 data/granite.appdata.xml.in:105
