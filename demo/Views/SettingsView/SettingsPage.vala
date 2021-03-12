@@ -19,15 +19,16 @@
 
 public class SettingsPage : Granite.SettingsPage {
     public SettingsPage () {
-        var user_name = Environment.get_user_name ();
+        var display_widget = new Gtk.Spinner () {
+            height_request = 32
+        };
+        display_widget.start ();
+
         Object (
-            display_widget: new Granite.Widgets.Avatar.from_file (
-                "/var/lib/AccountsService/icons/%s".printf (user_name),
-                32
-            ),
+            display_widget: display_widget,
+            status: "Spinning",
             header: "Manual Pages",
-            status: user_name,
-            title: "Avatar Test Page"
+            title: "Custom Display Widget Page"
         );
     }
 
