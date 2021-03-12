@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-02-14 23:29+0000\n"
+"PO-Revision-Date: 2021-03-12 23:55+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/en_GB/>\n"
@@ -37,19 +37,19 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Additions:"
-msgstr ""
+msgstr "Additions:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
-msgstr ""
+msgstr "Granite.Dialog replaces Gtk.Dialog for consistent styling"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Granite.SwitchModelButton for use in Gtk.Popover menus"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Granite.ValidatedEntry for client-side verification in forms"
 
 #: data/granite.appdata.xml.in:21
 msgid "New Constants:"
@@ -59,10 +59,11 @@ msgstr "New Constants:"
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 
 #: data/granite.appdata.xml.in:24
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "SMALL_LABEL for smaller Gtk.Labels without Pango"
 
 #: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
@@ -106,17 +107,18 @@ msgid "Other Changes:"
 msgstr "Other Changes:"
 
 #: data/granite.appdata.xml.in:40
-#, fuzzy
-#| msgid "Toasts now reset their timeout when sending a new notification"
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
-msgstr "Toasts now reset their timeout when sending a new notification"
+msgstr ""
+"Toasts now reset their timeout when sending a new notification and the "
+"timeout is stopped while hovering"
 
 #: data/granite.appdata.xml.in:41
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"Backlash, Right Control, and Left Control are now handled by accel_to_string"
 
 #: data/granite.appdata.xml.in:42
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -126,18 +128,19 @@ msgstr "Make tab tooltips of DynamicNotebook settable"
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog now uses the messagedialog CSS name"
 
 #: data/granite.appdata.xml.in:45
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
-msgstr ""
+msgstr "Visible child name is now properly synced in Granite.SettingsSidebar"
 
 #: data/granite.appdata.xml.in:46
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Status can be set in Granite.AbstractSettingsPage on construct"
 
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:68
 #: data/granite.appdata.xml.in:91 data/granite.appdata.xml.in:105
