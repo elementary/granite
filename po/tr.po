@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2020-09-13 20:14+0000\n"
+"PO-Revision-Date: 2021-03-12 23:54+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -155,11 +155,11 @@ msgstr "Sağ Taraftaki Sekmeleri Kapat"
 
 #: lib/Widgets/DynamicNotebook.vala:336
 msgid "Pin"
-msgstr ""
+msgstr "Sabitle"
 
 #: lib/Widgets/DynamicNotebook.vala:338
 msgid "Unpin"
-msgstr ""
+msgstr "Kaldır"
 
 #: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
