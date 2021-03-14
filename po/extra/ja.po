@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-14 00:44+0000\n"
+"PO-Revision-Date: 2021-03-14 01:19+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -45,11 +45,11 @@ msgstr "Gtk.Dialog を置き換え、一貫性のあるスタイルを実現す�
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Gtk.Popover を使用したメニューでの利用を想定した Granite.SwitchModelButton"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "入力フォームでクライアントサイドの認証に利用できる Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:21
 msgid "New Constants:"
@@ -58,11 +58,11 @@ msgstr "新しい定数:"
 #: data/granite.appdata.xml.in:23
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
-msgstr ""
+msgstr "Gtk.Tooltips 内で説明用のテキスト表示に利用可能な TOOLTIP_SECONDARY_TEXT_MARKUP"
 
 #: data/granite.appdata.xml.in:24
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "Pango を使用せずに文字サイズが小さい Gtk.Label を作成できる SMALL_LABEL"
 
 #: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
@@ -108,14 +108,10 @@ msgid "Other Changes:"
 msgstr "そのほかの変更点:"
 
 #: data/granite.appdata.xml.in:40
-#, fuzzy
-#| msgid "Toasts now reset their timeout when sending a new notification"
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
-msgstr ""
-"新しい通知があった場合に、トーストの表示時間のタイムアウトがリセットされるよ"
-"うに変更"
+msgstr "通知トーストが消えるまでの時間を、新しい通知があった場合にリセットし、マウスホバーで停止するように変更"
 
 #: data/granite.appdata.xml.in:41
 msgid ""
@@ -131,19 +127,19 @@ msgstr ""
 #: data/granite.appdata.xml.in:43
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
-msgstr ""
+msgstr "午前／午後ボタンが選択された場合にも、time_changed シグナルが発生するように修正"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog の CSS 名を messagedialog に変更"
 
 #: data/granite.appdata.xml.in:45
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
-msgstr ""
+msgstr "Granite.SettingsSidebar で表示中の子ウィジェットが適切に同期されるように修正"
 
 #: data/granite.appdata.xml.in:46
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Granite.AbstractSettingsPage クラスの生成時に status プロパティを設定できるように修正"
 
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:68
 #: data/granite.appdata.xml.in:91 data/granite.appdata.xml.in:105
