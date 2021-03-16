@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2020-12-19 10:16+0000\n"
+"PO-Revision-Date: 2021-03-13 20:07+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -39,19 +39,19 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Additions:"
-msgstr ""
+msgstr "Adições:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
-msgstr ""
+msgstr "Granite.Dialog substitui Gtk.Dialog para um estilo consistente"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Granite.SwitchModelButton para utilização nos menus Gtk.Popover"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Granite.ValidatedEntry para verificação do lado-cliente em formulários"
 
 #: data/granite.appdata.xml.in:21
 msgid "New Constants:"
@@ -61,10 +61,12 @@ msgstr "Novas constantes:"
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP para texto de segunda linha mais pequeno em Gtk"
+".Tooltips"
 
 #: data/granite.appdata.xml.in:24
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "SMALL_LABEL para Gtk.Labels mais pequenos sem Pango"
 
 #: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
@@ -109,19 +111,19 @@ msgid "Other Changes:"
 msgstr "Outras alterações:"
 
 #: data/granite.appdata.xml.in:40
-#, fuzzy
-#| msgid "Toasts now reset their timeout when sending a new notification"
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
 "Agora as notificações Toast repõem o seu tempo limite ao enviar uma nova "
-"notificação"
+"notificação e o tempo limite é interrompido durante a pausa"
 
 #: data/granite.appdata.xml.in:41
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"A Barra invertida , o Ctrl Direito e o Ctrl Esquerdo são agora geridos pelo "
+"accel_to_string"
 
 #: data/granite.appdata.xml.in:42
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -132,18 +134,22 @@ msgstr ""
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"O Timepicker dispara corretamente o tempo_alterado quando os botões AM e PM "
+"são selecionados"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog utiliza agora o nome CSS do CSS do messagedialog"
 
 #: data/granite.appdata.xml.in:45
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"O nome visível do sub-processo está agora devidamente sincronizado em Granite"
+".SettingsSidebar"
 
 #: data/granite.appdata.xml.in:46
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "O estado pode ser definido em Granite.AbstractSettingsPage no construct"
 
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:68
 #: data/granite.appdata.xml.in:91 data/granite.appdata.xml.in:105
