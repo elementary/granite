@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-07 16:42+0000\n"
-"Last-Translator: Ilya Maximov <overlisted@protonmail.ch>\n"
+"PO-Revision-Date: 2021-03-16 20:49+0000\n"
+"Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
 "ru/>\n"
 "Language: ru\n"
@@ -160,11 +160,11 @@ msgstr "Закрыть вкладки справа"
 
 #: lib/Widgets/DynamicNotebook.vala:336
 msgid "Pin"
-msgstr ""
+msgstr "Прикрепить"
 
 #: lib/Widgets/DynamicNotebook.vala:338
 msgid "Unpin"
-msgstr ""
+msgstr "Открепить"
 
 #: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
