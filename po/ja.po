@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-12 05:03+0000\n"
+"PO-Revision-Date: 2021-03-16 07:33+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -52,25 +52,25 @@ msgstr "たった今"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%d 分前"
+msgstr[0] "%d分前"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%d 時間前"
+msgstr[0] "%d時間前"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "%d 分以内"
+msgstr[0] "%d分以内"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "%d 時間以内"
+msgstr[0] "%d時間以内"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
