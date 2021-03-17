@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-14 23:20+0000\n"
+"PO-Revision-Date: 2021-03-17 12:58+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -26,17 +26,20 @@ msgstr "Granite"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Создавайте согласованные и удобные приложения быстрее и проще"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Сопутствующая библиотека для GTK и GLib, предоставляющая сложные виджеты и "
+"удобные методы, предназначенные для использования в приложениях, созданных "
+"для elementary OS."
 
 #: data/granite.appdata.xml.in:15
 msgid "Additions:"
-msgstr ""
+msgstr "Дополнительно:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
