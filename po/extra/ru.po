@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-17 12:58+0000\n"
+"PO-Revision-Date: 2021-03-17 15:12+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -26,7 +26,7 @@ msgstr "Granite"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr "Создавайте согласованные и удобные приложения быстрее и проще"
+msgstr "Создавайте последовательные и удобные приложения быстрее и проще"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
@@ -43,63 +43,67 @@ msgstr "Дополнительно:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
-msgstr ""
+msgstr "Granite.Dialog заменяет Gtk.Dialog для последовательной стилизации"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Granite.SwitchModelButton применяется для меню Gtk.Popover"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Granite.ValidatedEntry для проверки форм на стороне клиента"
 
 #: data/granite.appdata.xml.in:21
 msgid "New Constants:"
-msgstr ""
+msgstr "Новые константы:"
 
 #: data/granite.appdata.xml.in:23
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP для меньшего текста второй строки в Gtk."
+"Tooltips"
 
 #: data/granite.appdata.xml.in:24
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "SMALL_LABEL для меньших Gtk.Labels без Pango"
 
 #: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
-msgstr ""
+msgstr "STYLE_CLASS_WARMTH и STYLE_CLASS_TEMPERATURE для масштабирования"
 
 #: data/granite.appdata.xml.in:26
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
-msgstr ""
+msgstr "STYLE_CLASS_DEFAULT_DECORATION для тонких панелей заголовков"
 
 #: data/granite.appdata.xml.in:27
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
 msgstr ""
+"TRANSITION_DURATION_OPEN и TRANSITION_DURATION_CLOSE для последовательных "
+"анимаций"
 
 #: data/granite.appdata.xml.in:29
 msgid "Removals:"
-msgstr ""
+msgstr "Удаление:"
 
 #: data/granite.appdata.xml.in:31
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
-msgstr ""
+msgstr "Вместо Granite.Widgets.AboutDialog. предоставляет метаданные AppStream."
 
 #: data/granite.appdata.xml.in:32
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr ""
+msgstr "Вместо Granite.Widgets.AppMenu. применяется Gtk.MenuButton."
 
 #: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:58
 #: data/granite.appdata.xml.in:79
 msgid "Deprecations:"
-msgstr ""
+msgstr "Устаревшее:"
 
 #: data/granite.appdata.xml.in:36
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr ""
+msgstr "Вместо Granite.Widgets.Avatar. применяется Hdy.Avatar"
 
 #: data/granite.appdata.xml.in:38 data/granite.appdata.xml.in:65
 msgid "Other Changes:"
@@ -148,11 +152,11 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:55
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:56
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:60
 msgid ""
