@@ -90,11 +90,18 @@ namespace Granite.Widgets {
                 closed ();
             });
 
-            notification_label = new Gtk.Label (title);
+            var close_revealer = new Gtk.Revealer ();
+            close_revealer.valign = Gtk.Align.START;
+            close_revealer.halign = Gtk.Align.START;
+            close_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+            close_revealer.add (close_button);
+
+            notification_label = new Gtk.Label (title) {
+                margin_start = 3
+            };
 
             var notification_box = new Gtk.Grid ();
             notification_box.column_spacing = 12;
-            notification_box.add (close_button);
             notification_box.add (notification_label);
             notification_box.add (default_action_button);
 
@@ -111,11 +118,36 @@ namespace Granite.Widgets {
                 start_timeout ();
             });
 
-            var notification_frame = new Gtk.Frame (null);
+            var notification_frame = new Gtk.Frame (null) {
+                margin = 6
+            };
             notification_frame.get_style_context ().add_class ("app-notification");
             notification_frame.add (event_box);
 
-            add (notification_frame);
+            var notification_overlay = new Gtk.Overlay ();
+            notification_overlay.add_overlay (close_revealer);
+            notification_overlay.add (notification_frame);
+
+            var notification_eventbox = new Gtk.EventBox ();
+            notification_eventbox.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+            notification_eventbox.above_child = false;
+            notification_eventbox.add (notification_overlay);
+
+            notification_eventbox.enter_notify_event.connect ((event) => {
+                close_revealer.reveal_child = true;
+                return true;
+            });
+    
+            notification_eventbox.leave_notify_event.connect ((event) => {
+                if (event.detail == Gdk.NotifyType.INFERIOR) {
+                    return false;
+                }
+    
+                close_revealer.reveal_child = false;
+                return true;
+            });
+
+            add (notification_eventbox);
         }
 
         private void start_timeout () {
