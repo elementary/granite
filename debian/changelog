@@ -1,3 +1,49 @@
+granite (6.0.0) bionic; urgency=medium
+
+  * Release 6.0.0 (#481)
+  * Demo: Replace Granite.Avatar with Gtk.Spinner (#479)
+  * Update translation files
+  * Update translation template
+  * Appdata: fix typo
+  * Use dngettext instead of ngettext (#477)
+  * Bind active property bidirectionally (#474)
+  * DynamicNotebook: Add margin to "New Tab" button (#466)
+  * AbstractSettingsPage: Fix 'status' is set-only (#468)
+  * SettingsSidebar: Sync visible_child_name with
+    stack.visible_child_name (#467)
+  * Add SwitchModelButton (#459)
+  * Widgets: add validated entry (#441)
+  * Add Granite.Dialog (#460)
+  * MessageDialog: use messagedialog css name (#462)
+  * LINGUAS: Sort and remove en
+  * README: GTK+ to GTK
+  * Timepicker: resolve warning about unassigned values (#451)
+  * Granite.Drawing.Utilities: minor codestyle cleanup (#452)
+  * Remove deprecated About dialogs (#450)
+  * Bump version to 6 (#448)
+  * Change to new stylesheet color variables (#396)
+  * Utils: make tooltip secondary text markup public (#447)
+  * TimePicker: fire time_changed when AM/PM button selected (#440)
+  * Constants: Add SMALL_LABEL (#439)
+  * meson: add introspection option (#410)
+  * Add `default-decoration` style class constant (#434)
+  * Add StartupWMClass (#435)
+  * Padding/Margin with CSS (#374)
+  * Remove deprecations since 0.3 (#428)
+  * Deprecate Granite.Widgets.Avatar (#431)
+  * Constants: Add transition durations (#430)
+  * DynamicNotebook: Expose tab label tooltip (#388)
+  * Utils: accel_to_string add Ctrl_L and Ctrl_R (#425)
+  * Stop the timeout when hovering the toast (#422)
+  * Reset toast visibility timeout on Toast.send_notification () (#421)
+  * accel_to_string: explicitly set backslash string (#420)
+  * CSSView: Codestyle and alignment (#419)
+  * Add "temperature" style const and demo (#418)
+  * Add "warmth" style const with demo (#417)
+  * Null check color scheme (#414)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 22 Mar 2021 23:23:47 +0000
+
 granite (5.5.0) bionic; urgency=medium
 
   * Release 5.5.0 (#412)
