@@ -186,6 +186,18 @@ namespace Granite.Widgets {
             set { _label.ellipsize = value; }
         }
 
+        bool _fixed;
+        [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
+        public bool fixed {
+            get { return _fixed; }
+            set {
+                if (value != _fixed) {
+                    _fixed = value;
+                    _label.visible = value;
+                }
+            }
+        }
+
         public Gtk.Menu menu { get; set; }
 
         private bool _closable = true;
@@ -554,6 +566,18 @@ namespace Granite.Widgets {
         public bool show_tabs {
             get { return notebook.show_tabs; }
             set { notebook.show_tabs = value; }
+        }
+
+        /**
+         * Toggle icon display
+         */
+        bool _show_icons;
+        [Version (deprecated = true, deprecated_since = "0.3.1", replacement = "")]
+        public bool show_icons {
+            get { return _show_icons; }
+            set {
+                _show_icons = value;
+            }
         }
 
         /**

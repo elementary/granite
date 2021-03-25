@@ -1542,6 +1542,19 @@ public class SourceList : Gtk.ScrolledWindow {
         ) {
             // Nothing to do. This renderer only adds space.
         }
+
+        [Version (deprecated = true, deprecated_since = "", replacement = "Gtk.CellRenderer.get_preferred_size")]
+        public override void get_size (
+            Gtk.Widget widget,
+            Gdk.Rectangle?
+            cell_area,
+            out int x_offset,
+            out int y_offset,
+            out int width,
+            out int height
+        ) {
+            assert_not_reached ();
+        }
     }
 
 
