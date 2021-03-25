@@ -1,0 +1,310 @@
+granite (6.0.0) bionic; urgency=medium
+
+  * Release 6.0.0 (#481)
+  * Demo: Replace Granite.Avatar with Gtk.Spinner (#479)
+  * Update translation files
+  * Update translation template
+  * Appdata: fix typo
+  * Use dngettext instead of ngettext (#477)
+  * Bind active property bidirectionally (#474)
+  * DynamicNotebook: Add margin to "New Tab" button (#466)
+  * AbstractSettingsPage: Fix 'status' is set-only (#468)
+  * SettingsSidebar: Sync visible_child_name with
+    stack.visible_child_name (#467)
+  * Add SwitchModelButton (#459)
+  * Widgets: add validated entry (#441)
+  * Add Granite.Dialog (#460)
+  * MessageDialog: use messagedialog css name (#462)
+  * LINGUAS: Sort and remove en
+  * README: GTK+ to GTK
+  * Timepicker: resolve warning about unassigned values (#451)
+  * Granite.Drawing.Utilities: minor codestyle cleanup (#452)
+  * Remove deprecated About dialogs (#450)
+  * Bump version to 6 (#448)
+  * Change to new stylesheet color variables (#396)
+  * Utils: make tooltip secondary text markup public (#447)
+  * TimePicker: fire time_changed when AM/PM button selected (#440)
+  * Constants: Add SMALL_LABEL (#439)
+  * meson: add introspection option (#410)
+  * Add `default-decoration` style class constant (#434)
+  * Add StartupWMClass (#435)
+  * Padding/Margin with CSS (#374)
+  * Remove deprecations since 0.3 (#428)
+  * Deprecate Granite.Widgets.Avatar (#431)
+  * Constants: Add transition durations (#430)
+  * DynamicNotebook: Expose tab label tooltip (#388)
+  * Utils: accel_to_string add Ctrl_L and Ctrl_R (#425)
+  * Stop the timeout when hovering the toast (#422)
+  * Reset toast visibility timeout on Toast.send_notification () (#421)
+  * accel_to_string: explicitly set backslash string (#420)
+  * CSSView: Codestyle and alignment (#419)
+  * Add "temperature" style const and demo (#418)
+  * Add "warmth" style const with demo (#417)
+  * Null check color scheme (#414)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 22 Mar 2021 23:23:47 +0000
+
+granite (5.5.0) bionic; urgency=medium
+
+  * Release 5.5.0 (#412)
+  * Update translation template
+  * Update granite.appdata.xml.in
+  * SourceList: Rewrite default style (#411)
+  * Deprecate get_button_layout_schema (#403)
+  * Deprecate Utils.set_theming (#404)
+  * Deprecate CollapsiblePaned (#402)
+  * Deprecate get_default_close_button_position (#407)
+  * Deprecate set_theming_for_screen (#408)
+  * SourceList: move only usage of is_left_to_right (#406)
+  * Deprecate get_css_provider (#405)
+  * Deprecate Granite.Services.Paths (#401)
+  * Deprecate Composited Window (#400)
+  * SimpleCommand: Mark as deprecated (#397)
+  * Update translation files
+  * Update translation template
+  * StyleClass: Add color-button (#393)
+  * Update translation files
+  * Update translation files
+  * Update translation template
+  * StyleClass: Add .rounded style constant (#392)
+  * DynamicNotebook: Get rid of the big spinner (#391)
+  * Update translation files
+  * Update translation template
+
+ -- Cody Garver <cody@elementary.io>  Wed, 01 Jul 2020 16:28:33 +0000
+
+granite (5.4.0) bionic; urgency=medium
+
+  * Release 5.4.0 (#387)
+  * 5.4.0 version bump (#383)
+  * Update translation files
+  * Update translation template
+  * Get prefers color scheme from accountsservice (#319)
+  * Settings: Deprecate and suggest GLib.Settings (#376)
+
+ -- Cody Garver <cody@elementary.io>  Wed, 29 Apr 2020 22:17:58 +0000
+
+granite (5.3.1) bionic; urgency=medium
+
+  * Release 5.3.1 (#379)
+  * Update translation files
+  * Update translation template
+  * AccelLabel: make label settable (#373)
+  * Update translation files
+  * Update translation template
+  * SettingsSidebarRow: center align with no subtitle (#372)
+
+ -- Cody Garver <cody@elementary.io>  Thu, 02 Apr 2020 00:22:50 +0000
+
+granite (5.3.0) bionic; urgency=medium
+
+  * Release 5.3.0 (#365)
+  * Add Release to Actions
+  * Delete AUTHORS
+  * Update translation template
+  * Add Appdata and Translations (#363)
+  * AccelLabel and Utils: Add null checks (#362)
+  * Add tooltip support for SourceList (#187)
+  * Add Lint to CI (#325)
+  * DynamicNotebook: Lint (#334)
+  * Application: Lint (#341)
+  * BufferSurface: Lint (#343)
+  * AboutDialog: Lint (#352)
+  * Drawing Utilities: Lint (#353)
+  * Drawing Color: Lint (#354)
+  * IconFactory: Lint (#355)
+  * Logger: Lint (#356)
+  * AppMenu: Lint (#357)
+  * Abstract Settings Pages: Lint (#358)
+  * AsyncImage: Lint (#351)
+  * MessageDialog: Lint (#350)
+  * CellRenderers: Lint (#349)
+  * SimpleCommand: Lint (#348)
+  * CompositedWindow: Lint (#347)
+  * SettingsSidebarRow: Lint (#346)
+  * Settings: Lint (#345)
+  * Paths: Lint (#344)
+  * SourceList: Lint (#342)
+  * DatePicker: Lint (#340)
+  * ModeButton: Lint (#339)
+  * Welcome: Lint (#336)
+  * TimePicker: Lint (#338)
+  * Utils: Lint (#337)
+  * Demo Views: Lint (#335)
+  * Use async mutex for badge synchronisation (#333)
+  * Add Gettext Updates to Actions
+  * Delay tab resizing when closing tabs and larger min/max tab width
+    (#311)
+  * Add AccelLabel (#300)
+  * MessageDialogView: Sentence-case primary label (#329)
+  * run installation in CI (#327)
+  * Use GitHub CI (#324)
+  * Delete FUNDING.yml
+  * Delete CODE_OF_CONDUCT.md
+  * Use window-close-symbolic in toasts (#323)
+
+ -- Cody Garver <cody@elementary.io>  Fri, 13 Dec 2019 19:43:38 +0000
+
+granite (5.2.5) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <codygarver@gmail.com>  Thu, 05 Sep 2019 18:49:52 -0500
+
+granite (5.2.4) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <codygarver@gmail.com>  Sat, 06 Jul 2019 14:40:55 -0500
+
+granite (5.2.3) bionic; urgency=medium
+
+  * Pre-release version bump.
+  * New upstream release.
+
+ -- Cody Garver <codygarver@gmail.com>  Thu, 14 Feb 2019 15:36:29 -0600
+
+granite (5.2.2) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Mon, 17 Dec 2018 07:02:11 -0600
+
+granite (5.2.1) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Wed, 07 Nov 2018 13:20:44 -0600
+
+granite (5.2.0) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Thu, 01 Nov 2018 15:50:16 -0500
+
+granite (5.1.0) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Thu, 23 Aug 2018 18:55:51 -0500
+
+granite (5.0) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Tue, 05 Jun 2018 03:00:33 -0500
+
+granite (0.5) xenial; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Wed, 01 Nov 2017 22:12:25 -0500
+
+granite (0.4.1) xenial; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Sat, 06 May 2017 21:46:30 -0500
+
+granite (0.4.0.1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Sat, 06 Aug 2016 18:42:20 -0500
+
+granite (0.4-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Sun, 12 Jun 2016 16:18:29 -0500
+
+granite (0.3.1-1) trusty; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Thu, 20 Aug 2015 02:23:34 -0500
+
+granite (0.3.0-2~experimental1) experimental; urgency=low
+
+  * Fix build on valac 0.25.2 and later by cherrypicking an upstream patch.
+  * debian/control:
+    - Update Standards Version to 3.9.6, no changes needed.
+    - Do not pre-depend on multiarch-support directly.
+    - Provide Vcs-Bzr and Vcs-Browser fields.
+  * debian/copyright:
+    - Fix short names for BSD licenses.
+    - Supply the correct path to granite-demo .vala file.
+    - Drop copyright info for nonexistent lib/GtkPatch/gtkpatch-utils.c
+
+  [ Iain Lane ]
+  * Install typelib files into MA libdir and build-depend on the version of
+    gobject-introspection which started supporting this (Closes: #767090).
+
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Wed, 29 Oct 2014 23:47:21 +0300
+
+granite (0.3.0-1~experimental1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/control: update GTK+ dependency, 3.12+ is now required.
+  * debian/watch: replace it with a better watch file written by Bart Martens.
+  * debian/copyright: update copyright information for debian/watch.
+
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Mon, 26 May 2014 01:35:04 +0400
+
+granite (0.3.0~bzr734-1) experimental; urgency=low
+
+  * New upstream bzr snapshot (Closes: #722522).
+  * New maintainer (Closes: #748123).
+  * debian/control:
+    - Update package versions in Build-Depends.
+    - Update package descriptions.
+    - Drop gir1.2-glib-2.0, libgee-dev, dh-exec from Build-Depends.
+    - Update Standards Version to 3.9.5:
+      + Drop obsolete DM-Upload-Allowed flag.
+    - Set myself as maintainer.
+    - Rename libgranite0 to libgranite2.
+    - Rename libgranite0-dbg to libgranite2-dbg.
+    - Rename gir1.2-granite-0.1 to gir1.2-granite-1.0.
+    - Add libgranite-common binary package.
+    - Remove Multi-Arch field for libgranite-dev.
+    - Update Depends and Recommends for libgranite2.
+    - Update Depends for libgranite-dev.
+  * debian/copyright:
+    - Update licensing information.
+    - Update copyright years.
+    - Add new copyright holders.
+  * Update symbols files.
+  * Update debian/*.install files.
+  * Drop debian/README.source.
+  * Fix debian/watch.
+  * debian/rules:
+    - Build package with --parallel.
+    - Use xz for compression.
+    - Add --fail-missing to dh_install.
+    - Set check level for dpkg-gensymbols to 1.
+    - Set dbg-package for dh_strip to libgranite2-dbg.
+
+ -- Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>  Thu, 22 May 2014 20:22:06 +0400
+
+granite (0.1.0+dfsg-2) experimental; urgency=low
+
+  * debian/control: set Multi-Arch field to foreign in gir1.2-granite-0.1
+    package section.
+  * debian/rules: use gobject-introspection debhelper sequence.
+  * debian/control: set gobject-introspection minimum version to 1.31.0-2
+    in Build-Depends field.
+  * debian/control: add gir1.2-granite-0.1 (= ${binary:Version}) to
+    libgranite-dev Depends field.
+  * debian/copyright: update Format field.
+  * Bump Standards-Version to 3.9.3.1.
+
+  [ Luca Falavigna ]
+  * debian/control: add DM-Upload-Allowed field.
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sun, 02 Sep 2012 17:42:48 +0200
+
+granite (0.1.0+dfsg-1) experimental; urgency=low
+
+  * Initial release (Closes: #659539).
+
+ -- Devid Antonio Filoni <d.filoni@ubuntu.com>  Sat, 09 Jun 2012 14:21:24 +0200

@@ -1,0 +1,217 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: granite
+Source: https://github.com/elementary/granite
+
+
+Files: *
+Copyright: 2011 ammonkey <am.monkeyd@gmail.com>
+           2011 Adrien Plazas <kekun.plazas@laposte.net>
+           2011 Allen Lowe <lallenlowe@gmail.com>
+           2011 Avi Romanoff <avi@elementaryos.org>
+           2011 Giulio Collura <giulio.collura@gmail.com>
+           2011 Mathijs Henquet <mathijs.henquet@gmail.com>
+           2011 Maxwell Barvian <maxwell@elementaryos.org>
+           2011 Robert Dyer <psybers@gmail.com>
+           2011-2012 Fabian Thoma <fabian@elementaryos.org>
+           2011-2012 Jaap Broekhuizen <jaapz.b@gmail.com>
+           2011-2012 Lucas Baudin <xapantu@gmail.com>
+           2011-2012 Mario Guerriero <mario@elementaryos.org>
+           2011-2014 Rico Tzschichholz <ricotz@ubuntu.com>
+           2012-2013 Adam Davies <adam.davies@outlook.com>
+           2012-2013 Akshay Shekher <akshay@elementaryos.org>
+           2012-2013 Andrea Basso <andrea@elementaryos.org>
+           2012-2013 Tom Beckmann <tom@elementaryos.org>
+           2012-2014 Victor Martinez <victor@elementaryos.org>
+           2013 Julián Unrrein <junrrein@gmail.com>
+           2013 Julien Spautz <spautz.julien@gmail.com>
+           2013 Pedro Paredes <gangsterveggies@gmail.com>
+           2013-2014 Niclas Lockner <niclaslockner@gmail.com>
+           2013-2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
+License: LGPL-3.0+
+
+
+Files: lib/Widgets/ToolButtonWithMenu.vala
+Copyright: 2012 Adam Davies <adam.davies@outlook.com>
+           2013 Cody Garver <cody@elementaryos.org>
+           2013 David Gomes <david@elementaryos.org>
+           2012 Erasmo Marín <erasmo.marin@gmail.com>
+           2011 Maxwell Barvian <maxwell@elementaryos.org>
+           2012 Rico Tzschichholz <ricotz@ubuntu.com>
+           2012 Victor Martinez <victor@elementaryos.org>
+           2011 ammonkey <am.monkeyd@gmail.com>
+           2011 Adrien Plazas <kekun.plazas@laposte.net>
+           2011 Lucas Baudin <xapantu@gmail.com>
+           2011 Mathijs Henquet <mathijs.henquet@gmail.com>
+License: LGPL-3.0+
+
+
+Files: lib/Widgets/ModeButton.vala
+Copyright: 2008 Christian Hergert <chris@dronelabs.com>
+           2011 Giulio Collura <giulio.collura@gmail.com>
+           2011 Maxwell Barvian <maxwell@elementaryos.org>
+           2011 Adrien Plazas <kekun.plazas@laposte.net>
+           2011-2012 Lucas Baudin <xapantu@gmail.com>
+           2012 Adam Davies <adam.davies@outlook.com>
+           2012 Victor Martinez <victor@elementaryos.org>
+License: LGPL-3.0+
+
+
+Files: demo/GraniteDemo.vala
+Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
+           2011-2012 Jaap Broekhuizen <jaapz.b@gmail.com>
+           2012 Victor Martinez <victor@elementaryos.org>
+           2012 Tom Beckmann <tom@elementaryos.org>
+           2013 Julien Spautz <spautz.julien@gmail.com>
+           2014 Niclas Lockner <niclaslockner@gmail.com>
+License: LGPL-3.0+
+
+
+Files: lib/Widgets/ContractorView.vala
+Copyright: 2012 Tom Beckmann <tom@elementaryos.org>
+License: LGPL-3.0+
+
+
+Files: lib/Services/ContractorProxy.vala
+Copyright: 2011 Lucas Baudin <xapantu@gmail.com>
+           2012 Victor Martinez <victor@elementaryos.org>
+           2012-2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
+License: LGPL-3.0+
+
+
+Files: lib/Widgets/Welcome.vala
+Copyright: 2011 Maxwell Barvian <maxwell@elementaryos.org>
+           2012 Victor Martinez <victor@elementaryos.org>
+           2011-2012 Lucas Baudin <xapantu@gmail.com>
+License: LGPL-3.0+
+
+
+Files: lib/Widgets/widgets-utils.c
+Copyright: 2001 CodeFactory AB
+           2001-2002 Anders Carlsson
+           2003-2004 Matthias Clasen <mclasen@redhat.com>
+License: LGPL-2.0+
+
+
+Files: cmake/FindGObjectIntrospection.cmake
+Copyright: 2010, Pino Toscano, <pino@kde.org>
+License: BSD-3-clause
+
+
+Files: cmake/ParseArguments.cmake
+Copyright: 2000-2009 Kitware, Inc., Insight Software Consortium
+License: BSD-2-clause
+
+
+Files: cmake/FindVala.cmake
+       cmake/ValaPrecompile.cmake
+       cmake/ValaVersion.cmake
+       cmake/README.Vala.rst
+Copyright: 2009-2010 Jakob Westhoff
+License: BSD-2-clause
+
+
+Files: debian/*
+Copyright: 2011-2014 Rico Tzschichholz <ricotz@ubuntu.com>
+           2011-2012 Lucas Baudin <xapantu@gmail.com>
+           2012 Devid Antonio Filoni <d.filoni@ubuntu.com>
+           2012-2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
+           2014 Corentin Noël <corentin@elementaryos.org>
+           2015-2018 Cody Garver <cody@elementary.io>
+License: GPL-3.0+
+
+
+License: GPL-3.0+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+
+License: LGPL-2.0+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; version 2
+ of the License, or (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+
+License: LGPL-3.0+
+ This package is free software: you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation, either version 3 of the License, or (at your option)
+ any later version.
+ .
+ lazr.restfulclient is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+ for more details.
+ .
+ On Debian systems the complete text of the LGPL, version 3, can be found at
+ /usr/share/common-licenses/LGPL-3.
+
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

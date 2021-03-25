@@ -1,0 +1,5 @@
+usr/include/granite/*
+usr/lib/*/libgranite.so
+usr/lib/*/pkgconfig/*
+usr/share/gir-1.0/*
+usr/share/vala/vapi/*
