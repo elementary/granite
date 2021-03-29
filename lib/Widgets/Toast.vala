@@ -137,7 +137,7 @@ namespace Granite.Widgets {
                 close_revealer.reveal_child = true;
                 return true;
             });
- 
+
             notification_eventbox.leave_notify_event.connect ((event) => {
                 if (event.detail == Gdk.NotifyType.INFERIOR) {
                     return false;
