@@ -90,10 +90,11 @@ namespace Granite.Widgets {
                 closed ();
             });
 
-            var close_revealer = new Gtk.Revealer ();
-            close_revealer.valign = Gtk.Align.START;
-            close_revealer.halign = Gtk.Align.START;
-            close_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+            var close_revealer = new Gtk.Revealer () {
+                valign = Gtk.Align.START,
+                halign = Gtk.Align.START,
+                transition_type = Gtk.RevealerTransitionType.CROSSFADE
+            };
             close_revealer.add (close_button);
 
             notification_label = new Gtk.Label (title) {
