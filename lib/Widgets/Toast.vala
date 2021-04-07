@@ -129,9 +129,10 @@ namespace Granite.Widgets {
             notification_overlay.add_overlay (close_revealer);
             notification_overlay.add (notification_frame);
 
-            var notification_eventbox = new Gtk.EventBox ();
+            var notification_eventbox = new Gtk.EventBox () {
+                above_child = false
+            };
             notification_eventbox.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            notification_eventbox.above_child = false;
             notification_eventbox.add (notification_overlay);
 
             notification_eventbox.enter_notify_event.connect ((event) => {
