@@ -54,7 +54,7 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
     /**
      * A status string to be displayed underneath the title in a Granite.SettingsSidebar
      */
-    public string status { get; set; }
+    public string status { get; set construct; }
 
     /**
      * An icon name to be displayed in a Granite.SettingsSidebar

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-09-03 18:13+0000\n"
+"POT-Creation-Date: 2021-03-12 21:28+0000\n"
+"PO-Revision-Date: 2021-03-23 08:30+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -52,25 +52,25 @@ msgstr "たった今"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%d 分前"
+msgstr[0] "%d分前"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%d 時間前"
+msgstr[0] "%d時間前"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "%d 分以内"
+msgstr[0] "%d分後"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "%d 時間以内"
+msgstr[0] "%d時間後"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
@@ -141,28 +141,35 @@ msgstr "ほかのタブを閉じる"
 msgid "Close Other Tabs"
 msgstr "ほかのタブを閉じる"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
 msgstr "右側のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
 msgstr "右側のタブを閉じる"
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
+msgstr "ピン留め"
+
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr "ピン留めを解除"
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "すべて消去"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "新しいタブ"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "閉じたタブを復元"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "閉じたタブ"
 
@@ -174,7 +181,7 @@ msgstr "閉じる(_C)"
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr "詳細"
 

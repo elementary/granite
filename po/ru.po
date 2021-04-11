@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2018-09-20 00:04+0000\n"
-"Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
-"Language-Team: Russian <https://weblate.elementary.io/projects/desktop/"
-"granite/ru/>\n"
+"POT-Creation-Date: 2021-03-12 21:28+0000\n"
+"PO-Revision-Date: 2021-03-16 20:49+0000\n"
+"Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
+"ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:183
@@ -27,15 +27,13 @@ msgstr "Показать параметры Granite"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
@@ -55,33 +53,33 @@ msgstr "Сейчас"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dм назад"
+msgstr[1] "%dм назад"
+msgstr[2] "%dм назад"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dч назад"
+msgstr[1] "%dч назад"
+msgstr[2] "%dч назад"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "через %dм"
+msgstr[1] "через %dм"
+msgstr[2] "через %dм"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "через %dч"
+msgstr[1] "через %dч"
+msgstr[2] "через %dч"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
@@ -152,51 +150,58 @@ msgstr "Закрыть другую вкладку"
 msgid "Close Other Tabs"
 msgstr "Закрыть другие вкладки"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
-msgid "Close Tab to the Right"
-msgstr ""
-
 #: lib/Widgets/DynamicNotebook.vala:330
-msgid "Close Tabs to the Right"
-msgstr ""
+msgid "Close Tab to the Right"
+msgstr "Закрыть вкладку справа"
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:331
+msgid "Close Tabs to the Right"
+msgstr "Закрыть вкладки справа"
+
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
+msgstr "Прикрепить"
+
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr "Открепить"
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "Очистить всё"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "Новая вкладка"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "Восстановить закрытую вкладку"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "Закрытые вкладки"
 
 #: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
-msgstr "Закрыть"
+msgstr "_Закрыть"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr "Отмена"
+msgstr "_Отменить"
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Подробнее"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr "Аудиозаписи"
+msgstr "Аудио"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr "Видеозаписи"
+msgstr "Видео"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
@@ -238,69 +243,69 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:102
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:110
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Левый Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Правый Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
 msgid "Right Ctrl"
-msgstr ""
+msgstr "Правый Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
 msgid "Left Ctrl"
-msgstr ""
+msgstr "Левый Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr ""
+msgstr "Минус"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr ""
+msgstr "Плюс"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr ""
+msgstr "Равно"
 
 #: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
-msgstr ""
+msgstr "Левый Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
-msgstr ""
+msgstr "Правый Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:220
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "%s's Developers"
 #~ msgstr "Разработчики приложения «%s»"

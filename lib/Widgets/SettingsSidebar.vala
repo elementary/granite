@@ -42,12 +42,12 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
             if (selected_row == null) {
                 return null;
             } else {
-                return ((SettingsSidebarRow) selected_row).name;
+                return ((SettingsSidebarRow) selected_row).page.title;
             }
         }
         set {
             foreach (unowned Gtk.Widget listbox_child in listbox.get_children ()) {
-                if (((SettingsSidebarRow) listbox_child).name == value) {
+                if (((SettingsSidebarRow) listbox_child).page.title == value) {
                     listbox.select_row ((Gtk.ListBoxRow) listbox_child);
                 }
             }
@@ -85,6 +85,10 @@ public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
             if (header != null) {
                 row.set_header (new HeaderLabel (header));
             }
+        });
+
+        stack.notify["visible-child-name"].connect (() => {
+            visible_child_name = stack.visible_child_name;
         });
     }
 

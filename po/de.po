@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2021-02-11 00:46+0000\n"
+"POT-Creation-Date: 2021-03-12 21:28+0000\n"
+"PO-Revision-Date: 2021-03-12 05:03+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/desktop/granite/"
 "de/>\n"
@@ -135,7 +135,7 @@ msgstr "In neuem Fenster öffnen"
 
 #: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
-msgstr "Verdoppeln"
+msgstr "Duplizieren"
 
 #: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
@@ -145,28 +145,37 @@ msgstr "Anderen Tab schließen"
 msgid "Close Other Tabs"
 msgstr "Andere Tabs schließen"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:329
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
 msgstr "Tab rechts von diesem schließen"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
 msgstr "Tabs rechts von diesem schließen"
 
-#: lib/Widgets/DynamicNotebook.vala:514
+#: lib/Widgets/DynamicNotebook.vala:336
+#, fuzzy
+msgid "Pin"
+msgstr "Anheften"
+
+#: lib/Widgets/DynamicNotebook.vala:338
+#, fuzzy
+msgid "Unpin"
+msgstr "Lösen"
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
 msgstr "Alle löschen"
 
-#: lib/Widgets/DynamicNotebook.vala:780 lib/Widgets/DynamicNotebook.vala:811
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
 msgstr "Neuer Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:781
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
 msgstr "Geschlossenen Tab wieder öffnen"
 
-#: lib/Widgets/DynamicNotebook.vala:821
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
 msgstr "Geschlossene Tabs"
 
@@ -178,7 +187,7 @@ msgstr "_Schließen"
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: lib/Widgets/MessageDialog.vala:344
+#: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
 msgstr "Details"
 
@@ -217,12 +226,12 @@ msgstr "%s frei von %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
 msgid "AM"
-msgstr "Vormittags"
+msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:110
 msgid "PM"
-msgstr "Nachmittags"
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:156

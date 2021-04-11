@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-18 00:04+0000\n"
-"PO-Revision-Date: 2020-12-19 10:16+0000\n"
+"POT-Creation-Date: 2021-03-12 21:28+0000\n"
+"PO-Revision-Date: 2021-03-15 13:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -36,40 +36,44 @@ msgstr ""
 "便利なメソッドを提供する、GTK と GLib の共有ライブラリです。"
 
 #: data/granite.appdata.xml.in:15
-msgid "Removals:"
-msgstr "削除された機能:"
+msgid "Additions:"
+msgstr "追加された機能:"
 
 #: data/granite.appdata.xml.in:17
-msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
-msgstr "Granite.Widgets.AboutDialog。今後は AppStream メタデータを使用してください。"
+msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
+msgstr "Gtk.Dialog を置き換え、一貫性のあるスタイルを実現する Granite.Dialog"
 
 #: data/granite.appdata.xml.in:18
-msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr "Granite.Widgets.AppMenu。今後は Gtk.MenuButton を使用してください。"
+msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
+msgstr "Gtk.Popover を使用したメニューでの利用を想定した Granite.SwitchModelButton"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:45
-#: data/granite.appdata.xml.in:66
-msgid "Deprecations:"
-msgstr "非推奨の機能:"
+#: data/granite.appdata.xml.in:19
+msgid "Granite.ValidatedEntry for client-side verification in forms"
+msgstr "入力フォームでクライアントサイドの認証に利用できる Granite.ValidatedEntry"
 
-#: data/granite.appdata.xml.in:22
-msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr "Granite.Widgets.Avatar。今後は Hdy.Avatar を使用してください"
-
-#: data/granite.appdata.xml.in:24
+#: data/granite.appdata.xml.in:21
 msgid "New Constants:"
 msgstr "新しい定数:"
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:23
+msgid ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
+msgstr "Gtk.Tooltips 内で説明用のテキスト表示に利用可能な TOOLTIP_SECONDARY_TEXT_MARKUP"
+
+#: data/granite.appdata.xml.in:24
+msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
+msgstr "Pango を使用せずに文字サイズが小さい Gtk.Label を作成できる SMALL_LABEL"
+
+#: data/granite.appdata.xml.in:25
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr ""
 "スケールでの使用を想定した STYLE_CLASS_WARMTH と STYLE_CLASS_TEMPERATURE"
 
-#: data/granite.appdata.xml.in:27
+#: data/granite.appdata.xml.in:26
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
 msgstr "細めのヘッダーバーでの使用を想定した STYLE_CLASS_DEFAULT_DECORATION"
 
-#: data/granite.appdata.xml.in:28
+#: data/granite.appdata.xml.in:27
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
@@ -77,47 +81,91 @@ msgstr ""
 "一貫性のあるアニメーションを実現するための TRANSITION_DURATION_OPEN と "
 "TRANSITION_DURATION_CLOSE"
 
-#: data/granite.appdata.xml.in:30 data/granite.appdata.xml.in:52
+#: data/granite.appdata.xml.in:29
+msgid "Removals:"
+msgstr "削除された機能:"
+
+#: data/granite.appdata.xml.in:31
+msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
+msgstr ""
+"Granite.Widgets.AboutDialog。今後は AppStream メタデータを使用してください。"
+
+#: data/granite.appdata.xml.in:32
+msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
+msgstr "Granite.Widgets.AppMenu。今後は Gtk.MenuButton を使用してください。"
+
+#: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:58
+#: data/granite.appdata.xml.in:79
+msgid "Deprecations:"
+msgstr "非推奨の機能:"
+
+#: data/granite.appdata.xml.in:36
+msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
+msgstr "Granite.Widgets.Avatar。今後は Hdy.Avatar を使用してください"
+
+#: data/granite.appdata.xml.in:38 data/granite.appdata.xml.in:65
 msgid "Other Changes:"
 msgstr "そのほかの変更点:"
 
-#: data/granite.appdata.xml.in:32
-msgid "Toasts now reset their timeout when sending a new notification"
-msgstr ""
-"新しい通知があった場合に、トーストの表示時間のタイムアウトがリセットされるよ"
-"うに変更"
+#: data/granite.appdata.xml.in:40
+msgid ""
+"Toasts now reset their timeout when sending a new notification and the "
+"timeout is stopped while hovering"
+msgstr "通知トーストが消えるまでの時間を、新しい通知があった場合にリセットし、マウスホバーで停止するように変更"
 
-#: data/granite.appdata.xml.in:33
+#: data/granite.appdata.xml.in:41
+msgid ""
+"Backlash, Right Control, and Left Control are now handled by accel_to_string"
+msgstr "accel_to_string メソッドがバックスラッシュ、右コントロール、左コントロールキーを適切に処理するように修正"
+
+#: data/granite.appdata.xml.in:42
 msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr ""
 "DynamicNotebook のタブに表示されるツールチップのテキストを設定できるように変"
 "更"
 
-#: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:55
-#: data/granite.appdata.xml.in:78 data/granite.appdata.xml.in:92
+#: data/granite.appdata.xml.in:43
+msgid ""
+"Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
+msgstr "午前／午後ボタンが選択された場合にも、time_changed シグナルが発生するように修正"
+
+#: data/granite.appdata.xml.in:44
+msgid "Granite.MessageDialog now uses the messagedialog CSS name"
+msgstr "Granite.MessageDialog の CSS 名を messagedialog に変更"
+
+#: data/granite.appdata.xml.in:45
+msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
+msgstr "Granite.SettingsSidebar で表示中の子ウィジェットが適切に同期されるように修正"
+
+#: data/granite.appdata.xml.in:46
+msgid "Status can be set in Granite.AbstractSettingsPage on construct"
+msgstr "Granite.AbstractSettingsPage クラスの生成時に status プロパティを設定できるように修正"
+
+#: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:68
+#: data/granite.appdata.xml.in:91 data/granite.appdata.xml.in:105
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/granite.appdata.xml.in:40
+#: data/granite.appdata.xml.in:53
 msgid "New Style Constants:"
 msgstr "スタイル用の新しい定数:"
 
-#: data/granite.appdata.xml.in:42
+#: data/granite.appdata.xml.in:55
 msgid "STYLE_CLASS_COLOR_BUTTON"
 msgstr "STYLE_CLASS_COLOR_BUTTON"
 
-#: data/granite.appdata.xml.in:43
+#: data/granite.appdata.xml.in:56
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
-#: data/granite.appdata.xml.in:47
+#: data/granite.appdata.xml.in:60
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
 "テーマ設定に関する複数のユーティリティー。今後は、Gtk.CssProvider と Gtk."
 "StyleContext を使用してください"
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:61
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
@@ -125,7 +173,7 @@ msgstr ""
 "Granite.Services.SimpleCommand。今後は、GLib.AppInfo.create_from_commandline "
 "を使用してください"
 
-#: data/granite.appdata.xml.in:49
+#: data/granite.appdata.xml.in:62
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
@@ -133,26 +181,26 @@ msgstr ""
 "get_button_layout_schema、get_default_close_button_position、Granite."
 "Services.Paths などの、不使用のユーティリティー"
 
-#: data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:63
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr "CollapsiblePaned、CompositedWindow などの、不使用のウィジェット"
 
-#: data/granite.appdata.xml.in:54
+#: data/granite.appdata.xml.in:67
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr ""
 "Granite.SourceList にデフォルトで Gtk.STYLE_CLASS_SIDEBAR を適用されるように"
 "変更"
 
-#: data/granite.appdata.xml.in:61
+#: data/granite.appdata.xml.in:74
 msgid "New features:"
 msgstr "新機能:"
 
-#: data/granite.appdata.xml.in:63
+#: data/granite.appdata.xml.in:76
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Pantheon デスクトップの設定をアプリと共有できる、新しい Settings クラスを追加"
 
-#: data/granite.appdata.xml.in:64
+#: data/granite.appdata.xml.in:77
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -160,40 +208,40 @@ msgstr ""
 "ダークスタイルなどの用途を想定した、ユーザーの配色設定を取得できる Settings."
 "prefers_color_scheme を導入"
 
-#: data/granite.appdata.xml.in:68
+#: data/granite.appdata.xml.in:81
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr "Granite.Services.Settings の代替として GLib.Settings を推奨します"
 
-#: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:89
+#: data/granite.appdata.xml.in:87 data/granite.appdata.xml.in:102
 msgid "Improvements:"
 msgstr "改善点:"
 
-#: data/granite.appdata.xml.in:76
+#: data/granite.appdata.xml.in:89
 msgid "Better align labels in settings sidebars"
 msgstr "設定サイドバーに表示されるラベルの配置を改善"
 
-#: data/granite.appdata.xml.in:77
+#: data/granite.appdata.xml.in:90
 msgid "Make AccelLabel.label settable"
 msgstr "AccelLabel.label を書き込み可能に変更"
 
-#: data/granite.appdata.xml.in:84
+#: data/granite.appdata.xml.in:97
 msgid "New features"
 msgstr "新機能"
 
-#: data/granite.appdata.xml.in:86
+#: data/granite.appdata.xml.in:99
 msgid "Add tooltips to source list items and their actions"
 msgstr "ソースリストの項目とアクションにツールチップを追加"
 
-#: data/granite.appdata.xml.in:87
+#: data/granite.appdata.xml.in:100
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "メニューとポップオーバーで利用できる AccelLabel ウィジェットを追加"
 
-#: data/granite.appdata.xml.in:91
+#: data/granite.appdata.xml.in:104
 msgid "Delay tab resizing when closing tabs"
 msgstr "タブを閉じる際に、タブサイズの復元を遅延させるように修正"
 
-#: data/granite.appdata.xml.in:98
+#: data/granite.appdata.xml.in:111
 msgid "elementary, Inc."
 msgstr "elementary, Inc."

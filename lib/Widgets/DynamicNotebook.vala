@@ -322,19 +322,20 @@ namespace Granite.Widgets {
                     menu.popup_at_pointer (e);
                     uint num_tabs = dynamic_notebook.n_tabs;
                     uint tab_position = dynamic_notebook.get_tab_position (this);
-                    close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
+                    close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
                     /// TRANSLATORS: This will close tabs to the left in right-to-left environments
-                    close_other_right_m.label = ngettext (
+                    close_other_right_m.label = dngettext (
+                        GETTEXT_PACKAGE,
                         _("Close Tab to the Right"),
                         _("Close Tabs to the Right"),
                         num_tabs - 1 - tab_position
                     );
                     close_other_right_m.sensitive = (tab_position < num_tabs - 1);
                     new_window_m.sensitive = (num_tabs != 1);
-                    pin_m.label = "Pin";
+                    pin_m.label = _("Pin");
                     if (this.pinned) {
-                        pin_m.label = "Unpin";
+                        pin_m.label = _("Unpin");
                     }
                 } else {
                     return false;
@@ -755,8 +756,6 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
-
         /**
          * Create a new dynamic notebook
          */
@@ -808,6 +807,8 @@ namespace Granite.Widgets {
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
             add_button.relief = Gtk.ReliefStyle.NONE;
+            add_button.margin_top = 6;
+            add_button.margin_bottom = 6;
             add_button.tooltip_text = _("New Tab");
 
             // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
