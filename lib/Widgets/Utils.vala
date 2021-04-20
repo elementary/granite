@@ -296,7 +296,7 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
 public void force_elementary_style () {
     const string STYLESHEET_PREFIX = "io.elementary.stylesheet";
 
-    var gtk_settings = Gtk.Settings.get_default ();
+    unowned var gtk_settings = Gtk.Settings.get_default ();
     var current_stylesheet = gtk_settings.gtk_theme_name;
 
     gtk_settings.gtk_cursor_theme_name = "elementary";
