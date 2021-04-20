@@ -291,19 +291,22 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
 }
 
 /**
- * Sets the app's icon theme and stylesheet to elementary defaults.
+ * Sets the app's icon theme and stylesheet to elementary defaults. Optionally takes a specific stylesheet accent variant as a string.
+ *
+ * @param accent optional stylesheet accent variant to use, e.g. "blueberry"
  */
-public void force_elementary_style () {
+public void force_elementary_style (string accent = "blueberry") {
     const string STYLESHEET_PREFIX = "io.elementary.stylesheet";
-    const string DEFAULT_ACCENT = "blueberry";
-
     var gtk_settings = Gtk.Settings.get_default ();
     var current_stylesheet = gtk_settings.gtk_theme_name;
 
     gtk_settings.gtk_icon_theme_name = "elementary";
 
-    if (!current_stylesheet.has_prefix (STYLESHEET_PREFIX)) {
-        gtk_settings.gtk_theme_name = string.join (".", STYLESHEET_PREFIX, DEFAULT_ACCENT);
+    if (
+        !current_stylesheet.has_prefix (STYLESHEET_PREFIX) ||
+        current_stylesheet.replace (STYLESHEET_PREFIX, "") != accent
+    ) {
+        gtk_settings.gtk_theme_name = string.join (".", STYLESHEET_PREFIX, accent);
     }
 }
 
