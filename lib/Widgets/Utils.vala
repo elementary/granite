@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012–2019 elementary, Inc.
+ *  Copyright (C) 2012–2021 elementary, Inc.
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -291,7 +291,7 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
 }
 
 /**
- * Sets the app's icon theme and stylesheet to elementary defaults.
+ * Sets the app's icons, cursors, and stylesheet to elementary defaults.
  */
 public void force_elementary_style () {
     const string STYLESHEET_PREFIX = "io.elementary.stylesheet";

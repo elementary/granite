@@ -10,6 +10,19 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
+    <release version="6.1.0" date="2021-04-19" urgency="medium">
+      <description>
+        <p>Additions:</p>
+        <ul>
+          <li>Settings.prefers_accent_color to get a user's accent color preference</li>
+          <li>force_elementary_style to set the app's icons, cursors, and stylesheet to elementary defaults</li>
+        </ul>
+        <p>Other Changes:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.0.0" date="2021-03-22" urgency="medium">
       <description>
         <p>Additions:</p>
