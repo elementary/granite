@@ -295,7 +295,7 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
  *
  * @param accent optional stylesheet accent variant to use, e.g. "blueberry"
  */
-public void force_elementary_style (string? accent = "blueberry") {
+public void force_elementary_style (string accent = "blueberry") {
     const string STYLESHEET_PREFIX = "io.elementary.stylesheet.";
     var gtk_settings = Gtk.Settings.get_default ();
     var current_stylesheet = gtk_settings.gtk_theme_name;
