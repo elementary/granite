@@ -299,6 +299,7 @@ public void force_elementary_style () {
     var gtk_settings = Gtk.Settings.get_default ();
     var current_stylesheet = gtk_settings.gtk_theme_name;
 
+    gtk_settings.gtk_cursor_theme_name = "elementary";
     gtk_settings.gtk_icon_theme_name = "elementary";
 
     if (!current_stylesheet.has_prefix (STYLESHEET_PREFIX)) {
