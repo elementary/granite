@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-12 23:55+0000\n"
+"PO-Revision-Date: 2021-04-21 01:45+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -43,20 +43,18 @@ msgid "Additions:"
 msgstr "Додатково:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
 msgid "Settings.prefers_accent_color to get a user's accent color preference"
 msgstr ""
-"Введено Settings.prefers_color_scheme, щоб отримати параметри колірної схеми "
-"користувача, тобто для темного стилю"
+"Settings.prefers_accent_color для отримання параметрів користувацької "
+"колірної схеми"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "force_elementary_style to set the app's icons, cursors, and stylesheet to "
 "elementary defaults"
 msgstr ""
+"force_elementary_style для встановлення піктограм, курсорів та таблиць "
+"стилів застосунку до типових значень elementary"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
