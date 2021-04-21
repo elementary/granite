@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-12 23:55+0000\n"
+"PO-Revision-Date: 2021-04-21 08:36+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,20 +40,16 @@ msgid "Additions:"
 msgstr "תוספות:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
 msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"הוצג Settings.prefers_color_scheme כדי לקבל את העדפות הצבע של המשתמש, למשל: "
-"סגנון חשוך"
+msgstr "Settings.prefers_accent_color כדי לקבל את בחירת הגוון הצבע של המשתמש"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "force_elementary_style to set the app's icons, cursors, and stylesheet to "
 "elementary defaults"
 msgstr ""
+"force_elementary_style כדי להגדיר את הסמלים, הסמנים וגיליונות הסגנון של "
+"היישום לבררות המחדל של elementary"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
