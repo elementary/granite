@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-14 17:42+0000\n"
+"PO-Revision-Date: 2021-04-22 08:37+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fr/>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,20 +43,18 @@ msgid "Additions:"
 msgstr "Ajouts :"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
 msgid "Settings.prefers_accent_color to get a user's accent color preference"
 msgstr ""
-"Introduction de Settings.prefers_color_scheme pour récupérer la préférence "
-"de couleur de l'utilisateur, par ex. pour le thème sombre"
+"Settings.prefers_accent_color pour obtenir la préférence de couleur "
+"d'accentuation de l'utilisateur"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "force_elementary_style to set the app's icons, cursors, and stylesheet to "
 "elementary defaults"
 msgstr ""
+"force_elementary_style pour définir les icônes de l'application, les "
+"curseurs et les feuilles de style au style par défaut d'elementary"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
