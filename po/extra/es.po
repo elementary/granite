@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-04-22 10:31+0000\n"
+"PO-Revision-Date: 2021-04-29 01:19+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/es/>\n"
@@ -145,6 +145,8 @@ msgstr ""
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"El retroceso, el control derecho y el control izquierdo ahora son manejados "
+"por accel_to_string"
 
 #: data/granite.appdata.xml.in:55
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -164,12 +166,17 @@ msgid "Granite.MessageDialog now uses the messagedialog CSS name"
 msgstr "Granite.MessageDialog ahora utiliza el nombre en CSS messagedialog"
 
 #: data/granite.appdata.xml.in:58
+#, fuzzy
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"El nombre visible ahora está sincronizado correctamente en Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:59
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
 msgstr ""
+"El estado se puede establecer en Granite.AbstractSettingsPage mientas está "
+"en construcción"
 
 #: data/granite.appdata.xml.in:66
 msgid "New Style Constants:"
