@@ -73,19 +73,19 @@ namespace Granite.DateTime {
                     return _("Now");
                 } else if (diff < TimeSpan.HOUR) {
                     var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
+                    return dngettext (GETTEXT_PACKAGE, "%dm ago", "%dm ago", (ulong) (minutes)).printf ((int) (minutes));
                 } else if (diff < 12 * TimeSpan.HOUR) {
                     int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
+                    return dngettext (GETTEXT_PACKAGE, "%dh ago", "%dh ago", (ulong) rounded).printf (rounded);
                 }
             } else {
                 diff = -1 * diff;
                 if (diff < TimeSpan.HOUR) {
                     var minutes = diff / TimeSpan.MINUTE;
-                    return ngettext ("in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
+                    return dngettext (GETTEXT_PACKAGE, "in %dm", "in %dm", (ulong) (minutes)).printf ((int) (minutes));
                 } else if (diff < 12 * TimeSpan.HOUR) {
                     int rounded = (int) Math.round ((double) diff / TimeSpan.HOUR);
-                    return ngettext ("in %dh", "in %dh", (ulong) rounded).printf (rounded);
+                    return dngettext (GETTEXT_PACKAGE, "in %dh", "in %dh", (ulong) rounded).printf (rounded);
                 }
             }
 
@@ -110,7 +110,7 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        var h24_settings = new Settings ("org.gnome.desktop.interface");
+        var h24_settings = new GLib.Settings ("org.gnome.desktop.interface");
         var format = h24_settings.get_string ("clock-format");
         return (format.contains ("12h"));
     }

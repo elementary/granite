@@ -21,6 +21,7 @@
 /**
  * This class is a wrapper to run an async command. It provides useful signals.
  */
+[Version (deprecated = true, deprecated_since = "5.5.0", replacement = "GLib.AppInfo.create_from_commandline")]
 public class Granite.Services.SimpleCommand : GLib.Object {
     /**
      * Emitted when the command is finished.

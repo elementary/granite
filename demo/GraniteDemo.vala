@@ -35,10 +35,10 @@ public class Granite.Demo : Gtk.Application {
 
         var accel_label_view = new AccelLabelView ();
         var alert_view = new AlertViewView ();
-        var avatar_view = new AvatarView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
+        var form_view = new FormView ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
         var seekbar_view = new SeekBarView ();
@@ -48,7 +48,7 @@ public class Granite.Demo : Gtk.Application {
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
         var welcome = new WelcomeView ();
-        var message_dialog_view = new MessageDialogView (window);
+        var dialogs_view = new DialogsView (window);
         var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
@@ -56,10 +56,10 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (welcome, "welcome", "Welcome");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (alert_view, "alert", "AlertView");
-        main_stack.add_titled (avatar_view, "avatar", "Avatar");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
+        main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (mode_button_view, "selection_controls", "Selection Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
@@ -68,7 +68,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
-        main_stack.add_titled (message_dialog_view, "message", "MessageDialog");
+        main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
         main_stack.add_titled (application_view, "application", "Application");
 
@@ -88,7 +88,10 @@ public class Granite.Demo : Gtk.Application {
         mode_switch.primary_icon_tooltip_text = ("Light background");
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
-        mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme", GLib.BindingFlags.BIDIRECTIONAL);
+
+        var granite_settings = Granite.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
@@ -103,6 +106,10 @@ public class Granite.Demo : Gtk.Application {
         window.show_all ();
 
         add_window (window);
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
+        });
     }
 
     public static int main (string[] args) {

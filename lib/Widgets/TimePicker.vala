@@ -99,9 +99,11 @@ namespace Granite.Widgets {
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("appointment-symbolic");
             icon_release.connect (on_icon_press);
 
-            am_pm_modebutton = new ModeButton ();
-            am_pm_modebutton.orientation = Gtk.Orientation.VERTICAL;
-            am_pm_modebutton.no_show_all = true;
+            am_pm_modebutton = new ModeButton () {
+                hexpand = true,
+                orientation = Gtk.Orientation.VERTICAL,
+                no_show_all = true
+            };
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             am_pm_modebutton.append_text (_("AM"));
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
@@ -113,15 +115,16 @@ namespace Granite.Widgets {
 
                 if (am_pm_modebutton.selected == 0) {
                     time = _time.add_hours (-12);
+                    time_changed ();
                 } else if (am_pm_modebutton.selected == 1) {
                     time = _time.add_hours (12);
+                    time_changed ();
                 } else {
                     assert_not_reached ();
                 }
 
                 update_text (true);
             });
-            am_pm_modebutton.hexpand = true;
 
             if (Granite.DateTime.is_clock_format_12h ()) {
                 hours_spinbutton = new Gtk.SpinButton.with_range (1, 12, 1);
@@ -268,6 +271,8 @@ namespace Granite.Widgets {
 
         [Version (deprecated = true, deprecated_since = "5.2.0")]
         protected virtual void position_dropdown (out int x, out int y) {
+            x = -1;
+            y = -1;
         }
 
         private void is_unfocused () {

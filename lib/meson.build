@@ -1,13 +1,11 @@
 libgranite_sources = files(
     'Application.vala',
     'DateTime.vala',
-    'StyleClass.vala',
+    'Constants.vala',
 
     'Drawing/BufferSurface.vala',
     'Drawing/Color.vala',
     'Drawing/Utilities.vala',
-
-    'GtkPatch/AboutDialog.vala',
 
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
@@ -19,12 +17,10 @@ libgranite_sources = files(
     'Services/SimpleCommand.vala',
     'Services/System.vala',
 
-    'Widgets/AboutDialog.vala',
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
     'Widgets/AlertView.vala',
-    'Widgets/AppMenu.vala',
     'Widgets/AsyncImage.vala',
     'Widgets/Avatar.vala',
     'Widgets/CellRendererBadge.vala',
@@ -32,6 +28,7 @@ libgranite_sources = files(
     'Widgets/CollapsiblePaned.vala',
     'Widgets/CompositedWindow.vala',
     'Widgets/DatePicker.vala',
+    'Widgets/Dialog.vala',
     'Widgets/DynamicNotebook.vala',
     'Widgets/HeaderLabel.vala',
     'Widgets/MessageDialog.vala',
@@ -41,15 +38,16 @@ libgranite_sources = files(
     'Widgets/SeekBar.vala',
     'Widgets/SettingsSidebarRow.vala',
     'Widgets/SettingsSidebar.vala',
+    'Widgets/Settings.vala',
     'Widgets/SourceList.vala',
     'Widgets/StorageBar.vala',
+    'Widgets/SwitchModelButton.vala',
     'Widgets/TimePicker.vala',
     'Widgets/Toast.vala',
     'Widgets/Utils.vala',
+    'Widgets/ValidatedEntry.vala',
     'Widgets/WelcomeButton.vala',
     'Widgets/Welcome.vala',
-
-    'Widgets/widgets-utils.c',
 )
 
 # define all the names and versions
@@ -66,11 +64,20 @@ include_dir = join_paths(
     'granite'
 )
 
+config_data = configuration_data()
+config_data.set('GETTEXT_PACKAGE', meson.project_name())
+config_vala = configure_file(
+    input: 'Config.vala.in',
+    output: '@BASENAME@',
+    configuration: config_data
+)
+
 # compile shared library, generate GIR, header, and vapi file
 libgranite = library(
     'granite',
 
     libgranite_sources,
+    config_vala,
 
     dependencies: [
         libgranite_deps,
@@ -92,29 +99,26 @@ install_data(
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
 )
 
-install_data(
-    'Widgets/widgets-utils.h',
-    install_dir: include_dir
-)
-
-# typelib generation isn't automated yet
-g_ir_compiler = find_program('g-ir-compiler')
-custom_target(
-    granite_typelib,
-    command: [
-        g_ir_compiler,
-        '--shared-library',
-        '@PLAINNAME@',
-        '--output',
-        '@OUTPUT@',
-        join_paths(meson.current_build_dir(), granite_gir),
-    ],
-    input: libgranite,
-    output: granite_typelib,
-    depends: libgranite,
-    install: true,
-    install_dir: join_paths(get_option('libdir'), 'girepository-1.0'),
-)
+if get_option('introspection')
+    # typelib generation isn't automated yet
+    g_ir_compiler = find_program('g-ir-compiler')
+    custom_target(
+        granite_typelib,
+        command: [
+            g_ir_compiler,
+            '--shared-library',
+            '@PLAINNAME@',
+            '--output',
+            '@OUTPUT@',
+            join_paths(meson.current_build_dir(), granite_gir),
+        ],
+        input: libgranite,
+        output: granite_typelib,
+        depends: libgranite,
+        install: true,
+        install_dir: join_paths(get_option('libdir'), 'girepository-1.0'),
+    )
+endif
 
 libgranite_dep = declare_dependency(
     link_with: libgranite,

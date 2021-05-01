@@ -1,335 +1,345 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-10 22:08+0000\n"
-"PO-Revision-Date: 2019-06-26 18:53+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"PO-Revision-Date: 2020-02-25 22:09+0000\n"
+"Last-Translator: gkkulik <g.kulik@o2.pl>\n"
+"Language-Team: Silesian <https://l10n.elementary.io/projects/desktop/granite/"
+"szl/>\n"
 "Language: szl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: lib/Application.vala:183
 msgid "Show Granite Options"
-msgstr ""
-
-#: lib/Application.vala:237
-#, c-format
-msgid "%s's Developers"
-msgstr ""
-
-#: lib/Application.vala:255
-msgid "Website"
-msgstr ""
+msgstr "Pokoż ôpcyje Granite"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
 msgid "%-l:%M:%S %p"
-msgstr ""
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
 msgid "%-l:%M %p"
-msgstr ""
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H∶%M∶%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr ""
+msgstr "%H∶%M"
 
 #: lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Teroz"
 
 #: lib/DateTime.vala:76
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dm tymu"
+msgstr[1] "%dm tymu"
+msgstr[2] "%dm tymu"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%dh tymu"
+msgstr[1] "%dh tymu"
+msgstr[2] "%dh tymu"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "za %dm"
+msgstr[1] "za %dm"
+msgstr[2] "za %dm"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "za %dh"
+msgstr[1] "za %dh"
+msgstr[2] "za %dh"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Wczorej"
 
 #: lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Jutro"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
 msgid "%a, %b %e, %Y"
-msgstr ""
+msgstr "%a, %e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:151
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:154
 msgid "%Y"
-msgstr ""
+msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:157
 msgid "%b %e"
-msgstr ""
+msgstr "%-d %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:160
 msgid "%a %Y"
-msgstr ""
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:163
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a,"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
 msgid "%a, %b %e"
-msgstr ""
+msgstr "%a, %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:169
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
-#: lib/GtkPatch/AboutDialog.vala:36
-msgid "Designed by:"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:60
-msgid "Written by:"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:137
-msgid "Documented by:"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:202
-#, c-format
-msgid "Translated by %s"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:333
-msgid "Close"
-msgstr ""
-
-#: lib/GtkPatch/AboutDialog.vala:446
-#, c-format
-msgid ""
-"This program is published under the terms of the %s license, it comes with "
-"ABSOLUTELY NO WARRANTY; for details, visit %s"
-msgstr ""
-
-#: lib/Widgets/AboutDialog.vala:80
-msgid "Suggest Translations"
-msgstr ""
-
-#: lib/Widgets/AboutDialog.vala:82
-msgid "Report a Problem"
-msgstr ""
-
-#: lib/Widgets/AppMenu.vala:66
-msgid "Menu"
-msgstr ""
-
-#: lib/Widgets/AppMenu.vala:76
-msgid "About"
-msgstr ""
-
-#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
 msgid "Close Tab"
-msgstr ""
+msgstr "Zawarcie karty"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:282
 msgid "Open in a New Window"
-msgstr ""
+msgstr "Ôtwōrz we nowym ôknie"
 
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:283
 msgid "Duplicate"
-msgstr ""
+msgstr "Tupluj"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tab"
-msgstr ""
+msgstr "Zawrzij inkszo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:325
 msgid "Close Other Tabs"
-msgstr ""
+msgstr "Zawrzij inksze karty"
 
-#. / TRANSLATORS: This will close tabs to the left in right-to-left environments
-#: lib/Widgets/DynamicNotebook.vala:332
+#: lib/Widgets/DynamicNotebook.vala:330
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "Zawrzij karta z prawyj"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:331
 msgid "Close Tabs to the Right"
+msgstr "Zawrzij karty z prawyj"
+
+#: lib/Widgets/DynamicNotebook.vala:336
+msgid "Pin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:517
+#: lib/Widgets/DynamicNotebook.vala:338
+msgid "Unpin"
+msgstr ""
+
+#: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"
-msgstr ""
+msgstr "Wysnoż wszyjsko"
 
-#: lib/Widgets/DynamicNotebook.vala:800 lib/Widgets/DynamicNotebook.vala:831
+#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
 msgid "New Tab"
-msgstr ""
+msgstr "Nowo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:801
+#: lib/Widgets/DynamicNotebook.vala:780
 msgid "Undo Close Tab"
-msgstr ""
+msgstr "Prziwrōć zawarto karta"
 
-#: lib/Widgets/DynamicNotebook.vala:841
+#: lib/Widgets/DynamicNotebook.vala:822
 msgid "Closed Tabs"
-msgstr ""
+msgstr "Zawarte karty"
 
 #: lib/Widgets/MessageDialog.vala:139
 msgid "_Close"
-msgstr ""
+msgstr "Za_wrzij"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr ""
+msgstr "_Pociep"
 
 #: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Informacyje"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
-msgstr ""
+msgstr "Źwiynk"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr ""
+msgstr "Filmy"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr ""
+msgstr "Fotografije"
 
 #: lib/Widgets/StorageBar.vala:90
 msgid "Apps"
-msgstr ""
+msgstr "Programy"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: lib/Widgets/StorageBar.vala:93
 msgid "Files"
-msgstr ""
+msgstr "Zbiory"
 
 #: lib/Widgets/StorageBar.vala:95
 msgid "Other"
-msgstr ""
+msgstr "Inksze"
 
 #: lib/Widgets/StorageBar.vala:267
 #, c-format
 msgid "%s free out of %s"
-msgstr ""
-
-#. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:106
-msgid "AM"
-msgstr ""
+msgstr "%s wolnych ze %s"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:108
+msgid "AM"
+msgstr "Rano"
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: lib/Widgets/TimePicker.vala:110
 msgid "PM"
-msgstr ""
+msgstr "Po połedniu"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:153
+#: lib/Widgets/TimePicker.vala:156
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: lib/Widgets/Utils.vala:102
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:110
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Lewy Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Prawy knefel Alt"
+
+#. /TRANSLATORS: The Ctrl key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:139
+#, fuzzy
+#| msgid "Right Alt"
+msgid "Right Ctrl"
+msgstr "Prawy knefel Alt"
+
+#. /TRANSLATORS: The Ctrl key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:143
+#, fuzzy
+#| msgid "Left Alt"
+msgid "Left Ctrl"
+msgstr "Lewy Alt"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr ""
+msgstr "Minus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr ""
+msgstr "Plus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr ""
+msgstr "Rōwne je"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr ""
+msgstr "Ynter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
-msgstr ""
+msgstr "Lewy Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
-msgstr ""
+msgstr "Prawy Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:204
+#: lib/Widgets/Utils.vala:220
 msgid ", "
-msgstr ""
+msgstr ", "
+
+#~ msgid "%s's Developers"
+#~ msgstr "Programisty %s"
+
+#~ msgid "Website"
+#~ msgstr "Strōna internetowo"
+
+#~ msgid "Designed by:"
+#~ msgstr "Zaprojektowany ôd:"
+
+#~ msgid "Written by:"
+#~ msgstr "Napisany ôd:"
+
+#~ msgid "Documented by:"
+#~ msgstr "Udokumyntowany ôd:"
+
+#~ msgid "Translated by %s"
+#~ msgstr "Przełożōny ôd %s"
+
+#~ msgid "Close"
+#~ msgstr "Zawrzij"
+
+#~ msgid ""
+#~ "This program is published under the terms of the %s license, it comes "
+#~ "with ABSOLUTELY NO WARRANTY; for details, visit %s"
+#~ msgstr ""
+#~ "Tyn program je publikowany podle warōnkōw licyncyje %s, to je ABSOLUTNIE "
+#~ "BEZ ŻODNYJ GWARANCYJE. Po dalsze informacyje wejzdrzij na %s"
+
+#~ msgid "Suggest Translations"
+#~ msgstr "Zapropōnuj przekłod"
+
+#~ msgid "Report a Problem"
+#~ msgstr "Zgłoś problym"
+
+#~ msgid "Menu"
+#~ msgstr "Myni"
+
+#~ msgid "About"
+#~ msgstr "Informacyje"

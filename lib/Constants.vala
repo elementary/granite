@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012-2017 elementary LLC. (https://elementary.io)
+ *  Copyright 2012-2020 elementary, Inc. (https://elementary.io)
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -57,6 +57,8 @@ namespace Granite {
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
     public const string STYLE_CLASS_ACCENT = "accent";
+
+    [Version (deprecated = true, deprecated_since = "6.0.0", replacement = "")]
     public const string STYLE_CLASS_AVATAR = "avatar";
     /**
      * Style class for shaping a {@link Gtk.Button}
@@ -77,6 +79,14 @@ namespace Granite {
      * Style class for checkered backgrounds to represent transparency in images
      */
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
+    /**
+     * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
+     */
+    public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
+    /**
+     * Style class for slim headerbars, like in Terminal
+     */
+    public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
@@ -110,9 +120,17 @@ namespace Granite {
      */
     public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     /**
+     * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
+     */
+    public const string STYLE_CLASS_ROUNDED = "rounded";
+    /**
      * Style class for a {@link Granite.SeekBar}
      */
     public const string STYLE_CLASS_SEEKBAR = "seek-bar";
+    /**
+     * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+     */
+    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
     /**
      * Style class for a {@link Granite.Widgets.SourceList}
      */
@@ -133,4 +151,22 @@ namespace Granite {
      * Style class for a {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_WELCOME = "welcome";
+    /**
+     * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
+     */
+    public const string STYLE_CLASS_WARMTH = "warmth";
+    /**
+     * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
+     */
+    public const string STYLE_CLASS_TEMPERATURE = "temperature";
+
+    /**
+     * Transition duration when a widget closes, hides a portion of its content, or exits the screen
+     */
+    public const int TRANSITION_DURATION_CLOSE = 200;
+
+    /**
+     * Transition duration when a widget opens, reveals more content, or enters the screen
+     */
+    public const int TRANSITION_DURATION_OPEN = 250;
 }

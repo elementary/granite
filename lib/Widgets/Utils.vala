@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012–2019 elementary, Inc.
+ *  Copyright (C) 2012–2021 elementary, Inc.
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -131,6 +131,17 @@ public static string accel_to_string (string? accel) {
             ///TRANSLATORS: The Alt key on the right side of the keyboard
             arr += _("Right Alt");
             break;
+        case Gdk.Key.backslash:
+            arr += "\\";
+            break;
+        case Gdk.Key.Control_R:
+            ///TRANSLATORS: The Ctrl key on the right side of the keyboard
+            arr += _("Right Ctrl");
+            break;
+        case Gdk.Key.Control_L:
+            ///TRANSLATORS: The Ctrl key on the left side of the keyboard
+            arr += _("Left Ctrl");
+            break;
         case Gdk.Key.minus:
         case Gdk.Key.KP_Subtract:
             ///TRANSLATORS: This is a non-symbol representation of the "-" key
@@ -164,6 +175,11 @@ public static string accel_to_string (string? accel) {
 
     return string.joinv (" + ", arr);
 }
+
+/**
+ * Pango markup to use for secondary text in a {@link Gtk.Tooltip}, such as for accelerators, extended descriptions, etc.
+ */
+public const string TOOLTIP_SECONDARY_TEXT_MARKUP = """<span weight="600" size="smaller" alpha="75%">%s</span>""";
 
 /**
  * Takes a description and an array of accels and returns {@link Pango} markup for use in a {@link Gtk.Tooltip}. This method uses {@link Granite.accel_to_string}.
@@ -203,7 +219,7 @@ public static string markup_accel_tooltip (string[]? accels, string? description
             ///TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
             var accel_label = string.joinv (_(", "), unique_accels);
 
-            var accel_markup = """<span weight="600" size="smaller" alpha="75%">%s</span>""".printf (accel_label);
+            var accel_markup = TOOLTIP_SECONDARY_TEXT_MARKUP.printf (accel_label);
 
             parts += accel_markup;
         }
@@ -274,6 +290,21 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
     return fg_color;
 }
 
+/**
+ * Sets the app's icons, cursors, and stylesheet to elementary defaults.
+ */
+public void force_elementary_style () {
+    const string STYLESHEET_PREFIX = "io.elementary.stylesheet";
+    unowned var gtk_settings = Gtk.Settings.get_default ();
+
+    gtk_settings.gtk_cursor_theme_name = "elementary";
+    gtk_settings.gtk_icon_theme_name = "elementary";
+
+    if (!gtk_settings.gtk_theme_name.has_prefix (STYLESHEET_PREFIX)) {
+        gtk_settings.gtk_theme_name = string.join (".", STYLESHEET_PREFIX, "blueberry");
+    }
+}
+
 }
 
 /**
@@ -302,7 +333,7 @@ namespace Granite.Widgets.Utils {
         assert (window != null);
 
         string hex = color.to_string ();
-        return set_theming_for_screen (window.get_screen (), @"@define-color colorPrimary $hex;", priority);
+        return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
     }
 
     /**
@@ -315,6 +346,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //widget//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
                               string? class_name, int priority) {
         var css_provider = get_css_provider (stylesheet);
@@ -340,6 +372,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.StyleContext.add_provider_for_screen")]
     public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
         var css_provider = get_css_provider (stylesheet);
 
@@ -359,6 +392,7 @@ namespace Granite.Widgets.Utils {
      * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
      *         //stylesheet// failed.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.CssProvider.load_from_data")]
     public Gtk.CssProvider? get_css_provider (string stylesheet) {
         Gtk.CssProvider provider = new Gtk.CssProvider ();
 
@@ -372,18 +406,6 @@ namespace Granite.Widgets.Utils {
         }
 
         return provider;
-    }
-
-    /**
-     * Determines if the widget should be drawn from left to right or otherwise.
-     *
-     * @return true if the widget should be drawn from left to right, false otherwise.
-     */
-    internal bool is_left_to_right (Gtk.Widget widget) {
-        var dir = widget.get_direction ();
-        if (dir == Gtk.TextDirection.NONE)
-            dir = Gtk.Widget.get_default_direction ();
-        return dir == Gtk.TextDirection.LTR;
     }
 
     /**
@@ -425,6 +447,7 @@ namespace Granite.Widgets.Utils {
      *         or there was no close value in the button-layout string, false will be returned. The position
      *         will be LEFT in that case.
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public bool get_default_close_button_position (out CloseButtonPosition position) {
         // default value
         position = CloseButtonPosition.LEFT;
@@ -434,7 +457,7 @@ namespace Granite.Widgets.Utils {
             return false;
         }
 
-        var layout = new Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
+        var layout = new GLib.Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
         var parts = layout.split (":");
 
         if (parts.length < 2) {
@@ -460,6 +483,7 @@ namespace Granite.Widgets.Utils {
      *
      * @return the schema name. If the layout could not be determined, a warning will be thrown and null will be returned
      */
+    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
     public string? get_button_layout_schema () {
         var sss = SettingsSchemaSource.get_default ();
 

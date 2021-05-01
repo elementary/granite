@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *  Copyright (C) 2019–2020 elementary, Inc. (https://elementary.io)
  *                2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -154,8 +154,10 @@ namespace Granite {
             Granite.Services.Logger.initialize (program_name);
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
+#if !WINDOWS
             var un = Posix.utsname ();
             message ("Kernel version: %s", (string) un.release);
+#endif
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");
@@ -205,66 +207,6 @@ namespace Granite {
             if (DEBUG) {
                 Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
             }
-        }
-
-        /**
-         * This methods creates a new App Menu
-         *
-         * @param menu the menu to create the App Menu for
-         *
-         * @return app_menu
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.MenuButton")]
-        public Granite.Widgets.AppMenu create_appmenu (Gtk.Menu menu) {
-
-            var app_menu = new Granite.Widgets.AppMenu.with_app (this, menu);
-            app_menu.show_about.connect (show_about);
-
-            return app_menu;
-        }
-
-        protected Granite.Widgets.AboutDialog about_dlg;
-
-        /**
-         * This method shows the about dialog of this app.
-         *
-         * @param parent This widget is the window that is calling the about page being created.
-         */
-        [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-        public virtual void show_about (Gtk.Widget parent) {
-            assert (parent is Gtk.Window);
-
-            var developers_string = _("%s's Developers").printf (program_name);
-
-            string copyright_string;
-            if (Gtk.StateFlags.DIR_RTL in parent.get_style_context ().get_state ()) {
-                copyright_string = "%s %s".printf (developers_string, app_years);
-            } else {
-                copyright_string = "%s %s".printf (app_years, developers_string);
-            }
-
-            Granite.Widgets.show_about_dialog (
-                (Gtk.Window) parent,
-                "program_name", program_name,
-                "version", build_version,
-                "logo_icon_name", app_icon,
-
-                "comments", about_comments,
-                "copyright", copyright_string,
-                "website", main_url,
-                "website_label", _("Website"),
-
-                "authors", about_authors,
-                "documenters", about_documenters,
-                "artists", about_artists,
-                "translator_credits", about_translators,
-                "license", about_license,
-                "license_type", about_license_type,
-
-                "help", help_url,
-                "translate", translate_url,
-                "bug", bug_url
-            );
         }
     }
 }

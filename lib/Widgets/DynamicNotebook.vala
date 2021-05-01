@@ -75,6 +75,15 @@ namespace Granite.Widgets {
             }
         }
 
+        /**
+         * The (plain) text that will be shown in a tooltip when the tab is hovered.
+         **/
+        public string tooltip {
+            set {
+                _label.set_tooltip_text (value);
+            }
+        }
+
         private bool _pinned = false;
         public bool pinned {
             get { return _pinned; }
@@ -175,18 +184,6 @@ namespace Granite.Widgets {
         public Pango.EllipsizeMode ellipsize_mode {
             get { return _label.ellipsize; }
             set { _label.ellipsize = value; }
-        }
-
-        bool _fixed;
-        [Version (deprecated = true, deprecated_since = "0.3", replacement = "")]
-        public bool fixed {
-            get { return _fixed; }
-            set {
-                if (value != _fixed) {
-                    _fixed = value;
-                    _label.visible = value;
-                }
-            }
         }
 
         public Gtk.Menu menu { get; set; }
@@ -344,19 +341,20 @@ namespace Granite.Widgets {
                     menu.popup_at_pointer (e);
                     uint num_tabs = dynamic_notebook.n_tabs;
                     uint tab_position = dynamic_notebook.get_tab_position (this);
-                    close_other_m.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
+                    close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
                     close_other_m.sensitive = (num_tabs != 1);
                     /// TRANSLATORS: This will close tabs to the left in right-to-left environments
-                    close_other_right_m.label = ngettext (
+                    close_other_right_m.label = dngettext (
+                        GETTEXT_PACKAGE,
                         _("Close Tab to the Right"),
                         _("Close Tabs to the Right"),
                         num_tabs - 1 - tab_position
                     );
                     close_other_right_m.sensitive = (tab_position < num_tabs - 1);
                     new_window_m.sensitive = (num_tabs != 1);
-                    pin_m.label = "Pin";
+                    pin_m.label = _("Pin");
                     if (this.pinned) {
-                        pin_m.label = "Unpin";
+                        pin_m.label = _("Unpin");
                     }
                 } else {
                     return false;
@@ -578,18 +576,6 @@ namespace Granite.Widgets {
         }
 
         /**
-         * Toggle icon display
-         */
-        bool _show_icons;
-        [Version (deprecated = true, deprecated_since = "0.3.1", replacement = "")]
-        public bool show_icons {
-            get { return _show_icons; }
-            set {
-                _show_icons = value;
-            }
-        }
-
-        /**
          * Hide the close buttons and disable closing of tabs
          */
         bool _tabs_closable = true;
@@ -720,6 +706,7 @@ namespace Granite.Widgets {
         }
 
         private void update_add_button_tooltip () {
+            debug("update_add_button_tooltip %s", _add_button_tooltip_accels[0]);
             add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _("New Tab"));
         }
 
@@ -814,8 +801,6 @@ namespace Granite.Widgets {
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
-        private const int ADD_BUTTON_PADDING = 5; // Padding around the new tab button
-
         /**
          * Create a new dynamic notebook
          */
@@ -832,11 +817,6 @@ namespace Granite.Widgets {
             notebook.scrollable = true;
             notebook.show_border = false;
             _tab_bar_behavior = TabBarBehavior.ALWAYS;
-
-            draw.connect ( (ctx) => {
-                get_style_context ().render_activity (ctx, 0, 0, get_allocated_width (), 27);
-                return false;
-            });
 
             add (notebook);
 
@@ -872,6 +852,8 @@ namespace Granite.Widgets {
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
             add_button.relief = Gtk.ReliefStyle.NONE;
+            add_button.margin_top = 6;
+            add_button.margin_bottom = 6;
             update_add_button_tooltip ();
 
             // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
