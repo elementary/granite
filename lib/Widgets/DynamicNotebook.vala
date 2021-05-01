@@ -692,6 +692,20 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
+
+        /**
+        * The text shown in the add button tooltip
+        */
+        public string add_button_tooltip {
+            get { return _add_button_tooltip_text; }
+            set {
+                _add_button_tooltip_text = value;
+                update_add_button_tooltip ();
+            }
+        }
+        // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
+        string _add_button_tooltip_text = _("New Tab");
+
         private string[] _add_button_tooltip_accels = {"<Ctrl>T"};
 
         /**
@@ -706,8 +720,7 @@ namespace Granite.Widgets {
         }
 
         private void update_add_button_tooltip () {
-            debug("update_add_button_tooltip %s", _add_button_tooltip_accels[0]);
-            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _("New Tab"));
+            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _add_button_tooltip_text);
         }
 
         private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
