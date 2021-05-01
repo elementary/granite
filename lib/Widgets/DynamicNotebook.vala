@@ -692,7 +692,6 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
-
         /**
         * The text shown in the add button tooltip
         */
