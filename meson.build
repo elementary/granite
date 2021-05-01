@@ -5,8 +5,8 @@ project(
     version: '6.1.0'
 )
 
-if meson.get_compiler('vala').version().version_compare('<0.40.0')
-    error('vala compiler version 0.40.0 or newer is required.')
+if meson.get_compiler('vala').version().version_compare('<0.48.0')
+    error('vala compiler version 0.48.0 or newer is required.')
 endif
 
 add_project_arguments(
