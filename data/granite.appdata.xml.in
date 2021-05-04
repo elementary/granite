@@ -14,7 +14,6 @@
       <description>
         <p>Additions:</p>
         <ul>
-          <li>Settings.prefers_accent_color to get a user's accent color preference</li>
           <li>force_elementary_style to set the app's icons, cursors, and stylesheet to elementary defaults</li>
         </ul>
         <p>Other Changes:</p>
