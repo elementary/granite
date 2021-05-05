@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-04 17:29+0000\n"
-"PO-Revision-Date: 2021-01-20 22:37+0000\n"
+"PO-Revision-Date: 2021-05-06 01:07+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nb/>\n"
@@ -46,7 +46,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:77
 msgid "Other Changes:"
-msgstr ""
+msgstr "Andre endringer:"
 
 #: data/granite.appdata.xml.in:21 data/granite.appdata.xml.in:59
 #: data/granite.appdata.xml.in:80 data/granite.appdata.xml.in:103
