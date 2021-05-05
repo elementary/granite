@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-04 17:29+0000\n"
-"PO-Revision-Date: 2020-10-31 11:15+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
+"PO-Revision-Date: 2021-05-05 10:46+0000\n"
+"Last-Translator: Harrison Xu <xuhaifeng1998@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -46,7 +46,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:77
 msgid "Other Changes:"
-msgstr ""
+msgstr "其他更改："
 
 #: data/granite.appdata.xml.in:21 data/granite.appdata.xml.in:59
 #: data/granite.appdata.xml.in:80 data/granite.appdata.xml.in:103
@@ -95,7 +95,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:41
 msgid "Removals:"
-msgstr ""
+msgstr "移除："
 
 #: data/granite.appdata.xml.in:43
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
