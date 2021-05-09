@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"POT-Creation-Date: 2021-05-04 17:29+0000\n"
 "PO-Revision-Date: 2021-04-06 22:15+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite/"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "ग्रेनाइट पर्याय दर्शवा"
 

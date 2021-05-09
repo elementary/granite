@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2020-10-29 12:15+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
+"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"PO-Revision-Date: 2021-05-05 10:46+0000\n"
+"Last-Translator: Harrison Xu <xuhaifeng1998@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "显示 Granite 选项"
 
@@ -151,7 +151,7 @@ msgstr "关闭右侧的标签"
 
 #: lib/Widgets/DynamicNotebook.vala:336
 msgid "Pin"
-msgstr ""
+msgstr "置顶"
 
 #: lib/Widgets/DynamicNotebook.vala:338
 msgid "Unpin"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2020-09-03 18:13+0000\n"
+"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"PO-Revision-Date: 2021-05-04 13:48+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
 "fi/>\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "Näytä Granite-valinnat"
 
@@ -155,11 +155,11 @@ msgstr "Sulje välilehdet oikealta"
 
 #: lib/Widgets/DynamicNotebook.vala:336
 msgid "Pin"
-msgstr ""
+msgstr "Kiinnitä"
 
 #: lib/Widgets/DynamicNotebook.vala:338
 msgid "Unpin"
-msgstr ""
+msgstr "Poista kiinnitys"
 
 #: lib/Widgets/DynamicNotebook.vala:515
 msgid "Clear All"

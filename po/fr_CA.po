@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"POT-Creation-Date: 2021-05-04 17:29+0000\n"
 "PO-Revision-Date: 2018-11-03 00:07+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French (Canada) <https://weblate.elementary.io/projects/"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr ""
 

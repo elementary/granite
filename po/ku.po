@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"POT-Creation-Date: 2021-05-04 17:29+0000\n"
 "PO-Revision-Date: 2017-02-10 20:34+0000\n"
 "Last-Translator: Rokar ✌ <Unknown>\n"
 "Language-Team: Kurdish <ku@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 "X-Generator: Launchpad (build 18330)\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr ""
 
