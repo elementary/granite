@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-04 17:29+0000\n"
-"PO-Revision-Date: 2021-04-21 08:36+0000\n"
-"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"PO-Revision-Date: 2021-05-10 18:40+0000\n"
+"Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,10 +63,11 @@ msgstr "Çeviriler güncellendi"
 #: data/granite.appdata.xml.in:29
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
 msgstr ""
+"Gtk.Dialog daha istikrarlı stillleme için Granite.Dialog ile değiştirildi"
 
 #: data/granite.appdata.xml.in:30
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Gtk.Popover menülerinde kullanmak için Granite.SwitchModelButton"
 
 #: data/granite.appdata.xml.in:31
 msgid "Granite.ValidatedEntry for client-side verification in forms"
