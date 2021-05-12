@@ -15,6 +15,7 @@
         <p>Additions:</p>
         <ul>
           <li>force_elementary_style to set the app's icons, cursors, and stylesheet to elementary defaults</li>
+          <li>TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations</li>
         </ul>
         <p>Other Changes:</p>
         <ul>
