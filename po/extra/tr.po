@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-12 17:19+0000\n"
-"PO-Revision-Date: 2021-05-10 18:40+0000\n"
+"PO-Revision-Date: 2021-05-13 15:39+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,15 +50,9 @@ msgstr ""
 "varsayılanlarına ayarlamak için force_elementary_style değeri eklendi"
 
 #: data/granite.appdata.xml.in:18
-#, fuzzy
-#| msgid ""
-#| "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
-#| "animations"
 msgid ""
 "TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
-msgstr ""
-"Tutarlı animasyonlar için TRANSITION_DURATION_OPEN ve "
-"TRANSITION_DURATION_CLOSE"
+msgstr "Tutarlı pencere öğesi dönüşümleri için TRANSITION_DURATION_IN_PLACE"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
