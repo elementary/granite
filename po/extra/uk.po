@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-14 22:49+0000\n"
-"PO-Revision-Date: 2021-05-13 00:55+0000\n"
-"Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
+"PO-Revision-Date: 2021-05-17 19:10+0000\n"
+"Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
 "Language: uk\n"
@@ -45,7 +45,8 @@ msgstr "Додатково:"
 #: data/granite.appdata.xml.in:17
 msgid ""
 "TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
-msgstr "TRANSITION_DURATION_IN_PLACE для узгоджених перетворень віджетів"
+msgstr ""
+"TRANSITION_DURATION_OPEN і TRANSITION_DURATION_CLOSE для послідовної анімації"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:77
