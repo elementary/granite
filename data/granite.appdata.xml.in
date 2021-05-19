@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019–2020 elementary, Inc. <contact@elementary.io> -->
+<!-- Copyright 2019–2021 elementary, Inc. <contact@elementary.io> -->
 <component>
   <id>io.elementary.granite</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -14,7 +14,7 @@
       <description>
         <p>Additions:</p>
         <ul>
-          <li>force_elementary_style to set the app's icons, cursors, and stylesheet to elementary defaults</li>
+          <li>TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations</li>
         </ul>
         <p>Other Changes:</p>
         <ul>

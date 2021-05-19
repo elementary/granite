@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
 "PO-Revision-Date: 2020-07-15 23:12+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite-"
@@ -42,8 +42,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:17
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
 "PO-Revision-Date: 2020-02-25 22:09+0000\n"
 "Last-Translator: gkkulik <g.kulik@o2.pl>\n"
 "Language-Team: Silesian <https://l10n.elementary.io/projects/desktop/granite/"
@@ -123,55 +123,55 @@ msgstr "%a, %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:281
 msgid "Close Tab"
 msgstr "Zawarcie karty"
 
-#: lib/Widgets/DynamicNotebook.vala:282
+#: lib/Widgets/DynamicNotebook.vala:285
 msgid "Open in a New Window"
 msgstr "Ôtwōrz we nowym ôknie"
 
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
 msgstr "Tupluj"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
 msgstr "Zawrzij inkszo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
 msgstr "Zawrzij inksze karty"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tab to the Right"
 msgstr "Zawrzij karta z prawyj"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:334
 msgid "Close Tabs to the Right"
 msgstr "Zawrzij karty z prawyj"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:339
 msgid "Pin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Unpin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:518
 msgid "Clear All"
 msgstr "Wysnoż wszyjsko"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:782 lib/Widgets/DynamicNotebook.vala:815
 msgid "New Tab"
 msgstr "Nowo karta"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:783
 msgid "Undo Close Tab"
 msgstr "Prziwrōć zawarto karta"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:825
 msgid "Closed Tabs"
 msgstr "Zawarte karty"
 

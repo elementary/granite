@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
 "PO-Revision-Date: 2021-03-12 09:34+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/granite/"
@@ -125,55 +125,55 @@ msgstr "%a %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:281
 msgid "Close Tab"
 msgstr "Fermer l’onglet"
 
-#: lib/Widgets/DynamicNotebook.vala:282
+#: lib/Widgets/DynamicNotebook.vala:285
 msgid "Open in a New Window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
 
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
 msgstr "Dupliquer"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
 msgstr "Fermer l'autre onglet"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
 msgstr "Fermer les autres onglets"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tab to the Right"
 msgstr "Fermer l'onglet à droite"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:334
 msgid "Close Tabs to the Right"
 msgstr "Fermer les onglets à droite"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:339
 msgid "Pin"
 msgstr "Épingler"
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Unpin"
 msgstr "Désépingler"
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:518
 msgid "Clear All"
 msgstr "Tout effacer"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:782 lib/Widgets/DynamicNotebook.vala:815
 msgid "New Tab"
 msgstr "Nouvel onglet"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:783
 msgid "Undo Close Tab"
 msgstr "Rouvrir l'onglet fermé"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:825
 msgid "Closed Tabs"
 msgstr "Onglets fermés"
 

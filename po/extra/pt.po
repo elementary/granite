@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
-"PO-Revision-Date: 2021-04-21 01:45+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
+"PO-Revision-Date: 2021-05-13 00:55+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -43,11 +43,10 @@ msgstr "Adições:"
 
 #: data/granite.appdata.xml.in:17
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
-"force_elementary_style para definir os ícones da aplicação, cursores e folha "
-"de estilo para os padrões do elementary"
+"TRANSITION_DURATION_IN_PLACE para transformações consistentes e prontas de "
+"widget"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:77
@@ -271,6 +270,13 @@ msgstr "Atraso no redimensionamento do separador ao fechar os separadores"
 #: data/granite.appdata.xml.in:123
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style para definir os ícones da aplicação, cursores e "
+#~ "folha de estilo para os padrões do elementary"
 
 #~ msgid ""
 #~ "Settings.prefers_accent_color to get a user's accent color preference"

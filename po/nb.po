@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
 "PO-Revision-Date: 2021-03-19 04:05+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
@@ -129,55 +129,55 @@ msgstr "%a %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:281
 msgid "Close Tab"
 msgstr "Lukk fane"
 
-#: lib/Widgets/DynamicNotebook.vala:282
+#: lib/Widgets/DynamicNotebook.vala:285
 msgid "Open in a New Window"
 msgstr "Åpne i nytt vindu"
 
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
 msgstr "Lag kopi"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tab"
 msgstr "Lukk annen fane"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:328
 msgid "Close Other Tabs"
 msgstr "Lukk andre faner"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:333
 msgid "Close Tab to the Right"
 msgstr "Lukk fanen til høyre"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:334
 msgid "Close Tabs to the Right"
 msgstr "Lukk faner til høyre"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:339
 msgid "Pin"
 msgstr "Fest"
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:341
 msgid "Unpin"
 msgstr "Løsne"
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:518
 msgid "Clear All"
 msgstr "Fjern alt"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:782 lib/Widgets/DynamicNotebook.vala:815
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:783
 msgid "Undo Close Tab"
 msgstr "Angre lukking av fane"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:825
 msgid "Closed Tabs"
 msgstr "Lukkede faner"
 

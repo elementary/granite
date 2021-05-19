@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 17:29+0000\n"
-"PO-Revision-Date: 2021-04-23 14:59+0000\n"
+"POT-Creation-Date: 2021-05-14 22:49+0000\n"
+"PO-Revision-Date: 2021-05-14 22:49+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/en_GB/>\n"
@@ -41,11 +41,9 @@ msgstr "Additions:"
 
 #: data/granite.appdata.xml.in:17
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:77
@@ -254,6 +252,13 @@ msgstr "Delay tab resizing when closing tabs"
 #: data/granite.appdata.xml.in:123
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
 
 #~ msgid ""
 #~ "Settings.prefers_accent_color to get a user's accent color preference"

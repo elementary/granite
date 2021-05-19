@@ -274,8 +274,11 @@ namespace Granite.Widgets {
             close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
 
-            close_button_revealer = new Gtk.Revealer ();
-            close_button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+            close_button_revealer = new Gtk.Revealer () {
+                transition_duration = TRANSITION_DURATION_IN_PLACE,
+                transition_type = Gtk.RevealerTransitionType.CROSSFADE
+            };
+
             close_button_revealer.add (close_button);
 
             var tab_layout = new Gtk.Grid ();
