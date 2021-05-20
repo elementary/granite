@@ -146,7 +146,7 @@ namespace Granite.Widgets {
          * Accelerator label of the "Duplicate Tab" menu item in the tab context menu.
          */
         public AccelLabel duplicate_tab_label { get; construct; }
-        
+
         /**
          * Accelerator label of "Open tab in New Window" menu item in the tab context menu.
          */
@@ -244,8 +244,8 @@ namespace Granite.Widgets {
          * create a tab without a icon.
          **/
         public Tab (
-            string? label = null, 
-            GLib.Icon? icon = null, 
+            string? label = null,
+            GLib.Icon? icon = null,
             Gtk.Widget? page = null,
             AccelLabel close_tab_label = new AccelLabel (_("Close Tab")),
             AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate")),
@@ -254,7 +254,7 @@ namespace Granite.Widgets {
             Object (
                 label: label,
                 icon: icon,
-                close_tab_label: close_tab_label, 
+                close_tab_label: close_tab_label,
                 duplicate_tab_label: duplicate_tab_label,
                 new_window_label: new_window_label
             );
