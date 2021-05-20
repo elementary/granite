@@ -138,14 +138,19 @@ namespace Granite.Widgets {
         public WidgetsDroppedDelegate dropped_callback = null;
 
         /**
-         * Accelerator label of the close tab action in the tab context menu.
+         * Accelerator label of the "Close Tab" menu item in the tab context menu.
          */
         public AccelLabel close_tab_label { get; construct; }
 
         /**
-         * Accelerator label of the duplicate tab action in the tab context menu.
+         * Accelerator label of the "Duplicate Tab" menu item in the tab context menu.
          */
         public AccelLabel duplicate_tab_label { get; construct; }
+        
+        /**
+         * Accelerator label of "Open tab in New Window" menu item in the tab context menu.
+         */
+        public AccelLabel new_window_label { get; construct; }
 
         internal TabPageContainer page_container;
         public Gtk.Widget page {
@@ -243,13 +248,15 @@ namespace Granite.Widgets {
             GLib.Icon? icon = null, 
             Gtk.Widget? page = null,
             AccelLabel close_tab_label = new AccelLabel (_("Close Tab")),
-            AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate"))
+            AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate")),
+            AccelLabel new_window_label = new AccelLabel (_("Open in a New Window"))
         ) {
             Object (
                 label: label,
                 icon: icon,
                 close_tab_label: close_tab_label, 
-                duplicate_tab_label: duplicate_tab_label
+                duplicate_tab_label: duplicate_tab_label,
+                new_window_label: new_window_label
             );
             if (page != null) {
                 this.page = page;
@@ -303,7 +310,7 @@ namespace Granite.Widgets {
             var close_other_menuitem = new Gtk.MenuItem.with_label ("");
             var close_other_right_menuitem = new Gtk.MenuItem.with_label ("");
             pin_menuitem = new Gtk.MenuItem.with_label ("");
-            new_window_menuitem = new Gtk.MenuItem.with_label (_("Open in a New Window"));
+            new_window_menuitem = new Gtk.MenuItem () { child = new_window_label };
             duplicate_menuitem = new Gtk.MenuItem () { child = duplicate_tab_label };
             menu.append (close_other_menuitem);
             menu.append (close_other_right_menuitem);
@@ -707,12 +714,12 @@ namespace Granite.Widgets {
         string _add_button_tooltip;
 
         /**
-         * Accelerator label of the new tab action in the tab context menu.
+         * Accelerator label of the "New Tab" menu item in the tab context menu.
          */
         public AccelLabel new_tab_label { get; construct; }
 
         /**
-         * Accelerator label of the restore tab action in the tab context menu.
+         * Accelerator label of the "Restore Tab" menu item in the tab context menu.
          */
         public AccelLabel restore_tab_label { get; construct; }
 
