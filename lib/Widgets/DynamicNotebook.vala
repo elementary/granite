@@ -137,6 +137,16 @@ namespace Granite.Widgets {
          */
         public WidgetsDroppedDelegate dropped_callback = null;
 
+        /**
+         * Accelerator label of the close tab action in the tab context menu.
+         */
+        public AccelLabel close_tab_label { get; construct; }
+
+        /**
+         * Accelerator label of the duplicate tab action in the tab context menu.
+         */
+        public AccelLabel duplicate_tab_label { get; construct; }
+
         internal TabPageContainer page_container;
         public Gtk.Widget page {
             get {
@@ -200,9 +210,9 @@ namespace Granite.Widgets {
         }
 
         //We need to be able to toggle these from the notebook.
-        internal Gtk.MenuItem new_window_m;
-        internal Gtk.MenuItem duplicate_m;
-        internal Gtk.MenuItem pin_m;
+        internal Gtk.MenuItem new_window_menuitem;
+        internal Gtk.MenuItem duplicate_menuitem;
+        internal Gtk.MenuItem pin_menuitem;
 
         private bool _is_current_tab = false;
         internal bool is_current_tab {
@@ -228,8 +238,19 @@ namespace Granite.Widgets {
          * A Tab can have a icon on the right side. You can pass null on the constructor to
          * create a tab without a icon.
          **/
-        public Tab (string? label = null, GLib.Icon? icon = null, Gtk.Widget? page = null) {
-            Object (label: label, icon: icon);
+        public Tab (
+            string? label = null, 
+            GLib.Icon? icon = null, 
+            Gtk.Widget? page = null,
+            AccelLabel close_tab_label = new AccelLabel (_("Close Tab")),
+            AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate"))
+        ) {
+            Object (
+                label: label,
+                icon: icon,
+                close_tab_label: close_tab_label, 
+                duplicate_tab_label: duplicate_tab_label
+            );
             if (page != null) {
                 this.page = page;
             }
@@ -278,26 +299,26 @@ namespace Granite.Widgets {
             page_container = new TabPageContainer (this);
 
             menu = new Gtk.Menu ();
-            var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
-            var close_other_m = new Gtk.MenuItem.with_label ("");
-            var close_other_right_m = new Gtk.MenuItem.with_label ("");
-            pin_m = new Gtk.MenuItem.with_label ("");
-            new_window_m = new Gtk.MenuItem.with_label (_("Open in a New Window"));
-            duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
-            menu.append (close_other_m);
-            menu.append (close_other_right_m);
-            menu.append (close_m);
-            menu.append (new_window_m);
-            menu.append (duplicate_m);
-            menu.append (pin_m);
+            var close_menuitem = new Gtk.MenuItem () { child = close_tab_label };
+            var close_other_menuitem = new Gtk.MenuItem.with_label ("");
+            var close_other_right_menuitem = new Gtk.MenuItem.with_label ("");
+            pin_menuitem = new Gtk.MenuItem.with_label ("");
+            new_window_menuitem = new Gtk.MenuItem.with_label (_("Open in a New Window"));
+            duplicate_menuitem = new Gtk.MenuItem () { child = duplicate_tab_label };
+            menu.append (close_other_menuitem);
+            menu.append (close_other_right_menuitem);
+            menu.append (close_menuitem);
+            menu.append (new_window_menuitem);
+            menu.append (duplicate_menuitem);
+            menu.append (pin_menuitem);
             menu.show_all ();
 
-            close_m.activate.connect (() => closed () );
-            close_other_m.activate.connect (() => close_others () );
-            close_other_right_m.activate.connect (() => close_others_right () );
-            new_window_m.activate.connect (() => new_window () );
-            duplicate_m.activate.connect (() => duplicate () );
-            pin_m.activate.connect (() => pinned = !pinned);
+            close_menuitem.activate.connect (() => closed () );
+            close_other_menuitem.activate.connect (() => close_others () );
+            close_other_right_menuitem.activate.connect (() => close_others_right () );
+            new_window_menuitem.activate.connect (() => new_window () );
+            duplicate_menuitem.activate.connect (() => duplicate () );
+            pin_menuitem.activate.connect (() => pinned = !pinned);
 
             add_events (Gdk.EventMask.SCROLL_MASK);
             this.scroll_event.connect ((e) => {
@@ -317,7 +338,7 @@ namespace Granite.Widgets {
             });
 
             this.button_press_event.connect ((e) => {
-                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
+                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_menuitem.visible) {
                     this.duplicate ();
                 } else if (e.button == 2) {
                     return true; // consume middle-click, prevent event propagation to DynamicNotebook
@@ -325,20 +346,19 @@ namespace Granite.Widgets {
                     menu.popup_at_pointer (e);
                     uint num_tabs = dynamic_notebook.n_tabs;
                     uint tab_position = dynamic_notebook.get_tab_position (this);
-                    close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
-                    close_other_m.sensitive = (num_tabs != 1);
+                    close_other_menuitem.label = ngettext (_("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
+                    close_other_menuitem.sensitive = (num_tabs != 1);
                     /// TRANSLATORS: This will close tabs to the left in right-to-left environments
-                    close_other_right_m.label = dngettext (
-                        GETTEXT_PACKAGE,
+                    close_other_right_menuitem.label = ngettext (
                         _("Close Tab to the Right"),
                         _("Close Tabs to the Right"),
                         num_tabs - 1 - tab_position
                     );
-                    close_other_right_m.sensitive = (tab_position < num_tabs - 1);
-                    new_window_m.sensitive = (num_tabs != 1);
-                    pin_m.label = _("Pin");
+                    close_other_right_menuitem.sensitive = (tab_position < num_tabs - 1);
+                    new_window_menuitem.sensitive = (num_tabs != 1);
+                    pin_menuitem.label = "Pin";
                     if (this.pinned) {
-                        pin_m.label = _("Unpin");
+                        pin_menuitem.label = "Unpin";
                     }
                 } else {
                     return false;
@@ -612,7 +632,7 @@ namespace Granite.Widgets {
                 _allow_duplication = value;
 
                 foreach (var tab in tabs) {
-                    tab.duplicate_m.visible = value;
+                    tab.duplicate_menuitem.visible = value;
                 }
             }
         }
@@ -625,7 +645,7 @@ namespace Granite.Widgets {
             get { return _allow_restoring; }
             set {
                 _allow_restoring = value;
-                restore_tab_m.visible = value;
+                restore_tab_menuitem.visible = value;
                 restore_button.visible = value;
             }
         }
@@ -685,6 +705,16 @@ namespace Granite.Widgets {
         }
         // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
         string _add_button_tooltip;
+
+        /**
+         * Accelerator label of the new tab action in the tab context menu.
+         */
+        public AccelLabel new_tab_label { get; construct; }
+
+        /**
+         * Accelerator label of the restore tab action in the tab context menu.
+         */
+        public AccelLabel restore_tab_label { get; construct; }
 
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
@@ -753,8 +783,8 @@ namespace Granite.Widgets {
         public signal void new_tab_requested ();
         public signal bool close_tab_requested (Tab tab);
 
-        private Gtk.MenuItem new_tab_m;
-        private Gtk.MenuItem restore_tab_m;
+        private Gtk.MenuItem new_tab_menuitem;
+        private Gtk.MenuItem restore_tab_menuitem;
 
         private Gtk.Button add_button;
         private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
@@ -762,8 +792,14 @@ namespace Granite.Widgets {
         /**
          * Create a new dynamic notebook
          */
-        public DynamicNotebook () {
-
+        public DynamicNotebook (
+            AccelLabel new_tab_label = new AccelLabel (_("New Tab")),
+            AccelLabel restore_tab_label = new AccelLabel (_("Undo Close Tab"))
+        ) {
+            Object (
+                new_tab_label: new_tab_label,
+                restore_tab_label: restore_tab_label
+            );
         }
 
         construct {
@@ -779,18 +815,20 @@ namespace Granite.Widgets {
             add (notebook);
 
             menu = new Gtk.Menu ();
-            new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
-            restore_tab_m = new Gtk.MenuItem.with_label (_("Undo Close Tab"));
-            restore_tab_m.sensitive = false;
-            menu.append (new_tab_m);
-            menu.append (restore_tab_m);
+            new_tab_menuitem = new Gtk.MenuItem () { child = new_tab_label };
+            restore_tab_menuitem = new Gtk.MenuItem () {
+                child = restore_tab_label,
+                sensitive = false
+            };
+            menu.append (new_tab_menuitem);
+            menu.append (restore_tab_menuitem);
             menu.show_all ();
 
-            new_tab_m.activate.connect (() => {
+            new_tab_menuitem.activate.connect (() => {
                 new_tab_requested ();
             });
 
-            restore_tab_m.activate.connect (() => {
+            restore_tab_menuitem.activate.connect (() => {
                 restore_last_tab ();
             });
 
@@ -799,13 +837,13 @@ namespace Granite.Widgets {
                 if (!allow_restoring)
                     return;
                 restore_button.sensitive = !closed_tabs.empty;
-                restore_tab_m.sensitive = !closed_tabs.empty;
+                restore_tab_menuitem.sensitive = !closed_tabs.empty;
                 tab_restored (label, restore_data, icon);
             });
 
             closed_tabs.cleared.connect (() => {
                 restore_button.sensitive = false;
-                restore_tab_m.sensitive = false;
+                restore_tab_menuitem.sensitive = false;
             });
 
             add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
@@ -851,7 +889,7 @@ namespace Granite.Widgets {
                 menu.popup_at_widget (restore_button, Gdk.Gravity.SOUTH_EAST, Gdk.Gravity.NORTH_EAST, null);
             });
 
-            restore_tab_m.visible = allow_restoring;
+            restore_tab_menuitem.visible = allow_restoring;
             restore_button.visible = allow_restoring;
 
             size_allocate.connect (() => {
@@ -1073,7 +1111,7 @@ namespace Granite.Widgets {
 
             var restored = closed_tabs.pop ();
             restore_button.sensitive = !closed_tabs.empty;
-            restore_tab_m.sensitive = !closed_tabs.empty;
+            restore_tab_menuitem.sensitive = !closed_tabs.empty;
             this.tab_restored (restored.label, restored.restore_data, restored.icon);
         }
 
@@ -1151,9 +1189,9 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable (tab.page_container, this.allow_new_window);
 
-            tab.duplicate_m.visible = allow_duplication;
-            tab.new_window_m.visible = allow_new_window;
-            tab.pin_m.visible = allow_pinning;
+            tab.duplicate_menuitem.visible = allow_duplication;
+            tab.new_window_menuitem.visible = allow_new_window;
+            tab.pin_menuitem.visible = allow_pinning;
             tab.pinnable = allow_pinning;
             tab.pinned = false;
 
@@ -1223,7 +1261,7 @@ namespace Granite.Widgets {
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
-                restore_tab_m.sensitive = !closed_tabs.empty;
+                restore_tab_menuitem.sensitive = !closed_tabs.empty;
             }
         }
 
