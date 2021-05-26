@@ -243,7 +243,23 @@ namespace Granite.Widgets {
          * A Tab can have a icon on the right side. You can pass null on the constructor to
          * create a tab without a icon.
          **/
-        public Tab (
+        public Tab (string? label = null, GLib.Icon? icon = null, Gtk.Widget? page = null) {
+            Object (
+                label: label,
+                icon: icon,
+                close_tab_label: new AccelLabel (_("Close Tab")),
+                duplicate_tab_label: new AccelLabel (_("Duplicate")),
+                new_window_label: new AccelLabel (_("Open in a New Window"))
+            );
+            if (page != null) {
+                this.page = page;
+            }
+        }
+
+        /**
+         * Create a tab with accellabels.
+         */
+        public Tab.with_accellabels (
             string? label = null,
             GLib.Icon? icon = null,
             Gtk.Widget? page = null,
@@ -805,7 +821,17 @@ namespace Granite.Widgets {
         /**
          * Create a new dynamic notebook
          */
-        public DynamicNotebook (
+        public DynamicNotebook () {
+            Object (
+                new_tab_label: new AccelLabel (_("New Tab")),
+                restore_tab_label: new AccelLabel (_("Undo Close Tab"))
+            );
+        }
+
+        /**
+         * Create a new dynamic notebook with accellabels
+         */
+        public DynamicNotebook.with_accellabels (
             AccelLabel new_tab_label = new AccelLabel (_("New Tab")),
             AccelLabel restore_tab_label = new AccelLabel (_("Undo Close Tab"))
         ) {
