@@ -25,10 +25,7 @@
 
 public class DynamicNotebookView : Gtk.Grid {
     construct {
-        var notebook = new Granite.Widgets.DynamicNotebook (
-            new Granite.AccelLabel (_("New Tab"), "<Ctrl>t"),
-            new Granite.AccelLabel (_("Undo Close Tab"), "<Shift><Ctrl>t")
-        );
+        var notebook = new Granite.Widgets.DynamicNotebook ();
         notebook.expand = true;
         notebook.allow_restoring = true;
 
@@ -39,8 +36,7 @@ public class DynamicNotebookView : Gtk.Grid {
             var tab = new Granite.Widgets.Tab (
                 "Tab %d".printf (i),
                 new ThemedIcon ("mail-mark-important-symbolic"),
-                page,
-                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+                page
             );
             tab.tooltip = "Customizable tooltip %d".printf (i);
             notebook.insert_tab (tab, i - 1);
@@ -49,10 +45,7 @@ public class DynamicNotebookView : Gtk.Grid {
         notebook.new_tab_requested.connect (() => {
             var page = new Gtk.Label ("Page %d".printf (i));
             var tab = new Granite.Widgets.Tab (
-                "Tab %d".printf (i),
-                new ThemedIcon ("mail-mark-important-symbolic"),
-                page,
-                new Granite.AccelLabel (_("Close Tab"), "<Ctrl>w")
+                "Tab %d".printf (i), new ThemedIcon ("mail-mark-important-symbolic"), page
             );
             tab.tooltip = "Customizable tooltip %d".printf (i);
             notebook.insert_tab (tab, i - 1);
