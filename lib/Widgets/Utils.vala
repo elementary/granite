@@ -173,7 +173,11 @@ public static string accel_to_string (string? accel) {
             break;
     }
 
-    return string.joinv (" + ", arr);
+    if (accel_key != 0 && accel_mods != 0) {
+        return string.joinv (" + ", arr);
+    }
+
+    return arr[0];
 }
 
 /**
