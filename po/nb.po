@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 22:49+0000\n"
-"PO-Revision-Date: 2021-03-19 04:05+0000\n"
+"POT-Creation-Date: 2021-06-04 00:28+0000\n"
+"PO-Revision-Date: 2021-06-03 15:18+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite/nb/>\n"
@@ -301,13 +301,11 @@ msgstr "Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Høyre Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
-#, fuzzy
+#: lib/Widgets/Utils.vala:224
 msgid ", "
 msgstr ", "
 
