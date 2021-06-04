@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 22:49+0000\n"
+"POT-Creation-Date: 2021-06-04 00:28+0000\n"
 "PO-Revision-Date: 2021-03-12 21:28+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
@@ -298,7 +298,7 @@ msgid "Right Shift"
 msgstr "Right Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
+#: lib/Widgets/Utils.vala:224
 msgid ", "
 msgstr ", "
 
