@@ -34,11 +34,11 @@ public class UtilsView : Gtk.Grid {
         tooltip_markup_label.halign = Gtk.Align.END;
 
         var tooltip_button_one = new Gtk.Button.from_icon_name ("mail-reply-all", Gtk.IconSize.LARGE_TOOLBAR);
-        tooltip_button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R"}, "Reply All");
+        tooltip_button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R", "R"}, "Reply All");
 
         var tooltip_button_two = new Gtk.Button.with_label ("Label Buttons");
         tooltip_button_two.tooltip_markup = Granite.markup_accel_tooltip (
-            {"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return"}
+            {"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return", "<Super>"}
         );
 
         var contrasting_foreground_color_label = new Gtk.Label ("Contrasting Foreground Color:");

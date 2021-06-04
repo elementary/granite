@@ -18,6 +18,7 @@
         </ul>
         <p>Other Changes:</p>
         <ul>
+          <li>accel_to_string handles accel markup without modifiers or that are only modifiers</li>
           <li>Updated translations</li>
         </ul>
       </description>
