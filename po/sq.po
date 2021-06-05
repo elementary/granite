@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-04 00:28+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2016-08-30 09:45+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -127,56 +127,56 @@ msgstr "%a %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:289
 msgid "Close Tab"
 msgstr "Mbyll skedën"
 
-#: lib/Widgets/DynamicNotebook.vala:285
+#: lib/Widgets/DynamicNotebook.vala:258
+msgid "Duplicate"
+msgstr "Dyfisho"
+
+#: lib/Widgets/DynamicNotebook.vala:259
 #, fuzzy
 msgid "Open in a New Window"
 msgstr "Hape në një dritare të re"
 
-#: lib/Widgets/DynamicNotebook.vala:286
-msgid "Duplicate"
-msgstr "Dyfisho"
-
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tab"
 msgstr "Mbyll skedën tjetër"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tabs"
 msgstr "Mbylli skedat e tjera"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:334
+#: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:339
+#: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:518
+#: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
 msgstr "Pastro Gjithçka"
 
-#: lib/Widgets/DynamicNotebook.vala:782 lib/Widgets/DynamicNotebook.vala:815
+#: lib/Widgets/DynamicNotebook.vala:818 lib/Widgets/DynamicNotebook.vala:875
 msgid "New Tab"
 msgstr "Skedë e re"
 
-#: lib/Widgets/DynamicNotebook.vala:783
+#: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
 msgstr "Rikthe skedën e mbyllur"
 
-#: lib/Widgets/DynamicNotebook.vala:825
+#: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
 msgstr "Skedat e mbyllura"
 
