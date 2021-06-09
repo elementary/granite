@@ -34,7 +34,6 @@ namespace Granite.Widgets {
             public int index { get; construct; }
             public Item (int index) {
                 Object (index: index);
-                can_focus = false;
                 add_events (Gdk.EventMask.SCROLL_MASK);
             }
         }
@@ -71,7 +70,6 @@ namespace Granite.Widgets {
         construct {
             homogeneous = true;
             spacing = 0;
-            can_focus = false;
 
             item_map = new Gee.HashMap<int, Item> ();
 
