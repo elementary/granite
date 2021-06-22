@@ -154,8 +154,10 @@ namespace Granite {
             Granite.Services.Logger.initialize (program_name);
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
             message ("%s version: %s", program_name, build_version);
+#if !WINDOWS
             var un = Posix.utsname ();
             message ("Kernel version: %s", (string) un.release);
+#endif
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.WARN;
 
             Intl.bindtextdomain (exec_name, build_data_dir + "/locale");

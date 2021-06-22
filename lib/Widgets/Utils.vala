@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012–2019 elementary, Inc.
+ *  Copyright (C) 2012–2021 elementary, Inc.
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -173,7 +173,11 @@ public static string accel_to_string (string? accel) {
             break;
     }
 
-    return string.joinv (" + ", arr);
+    if (accel_key != 0 && accel_mods != 0) {
+        return string.joinv (" + ", arr);
+    }
+
+    return arr[0];
 }
 
 /**

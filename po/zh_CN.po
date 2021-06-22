@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2020-10-29 12:15+0000\n"
-"Last-Translator: colindemian <colindemian@outlook.com>\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-05-28 08:51+0000\n"
+"Last-Translator: Harrison Xu <xuhaifeng1998@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "显示 Granite 选项"
 
@@ -121,55 +121,55 @@ msgstr "%m月%d日 星期%a"
 msgid "%b"
 msgstr "%m月"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:289
 msgid "Close Tab"
 msgstr "关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:282
-msgid "Open in a New Window"
-msgstr "在新窗口中打开"
-
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:258
 msgid "Duplicate"
 msgstr "复制"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:259
+msgid "Open in a New Window"
+msgstr "在新窗口中打开"
+
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tab"
 msgstr "关闭其他标签"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tabs"
 msgstr "关闭其他标签"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
 msgstr "关闭右侧的标签"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
-msgstr ""
+msgstr "置顶"
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
-msgstr ""
+msgstr "取消固定"
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
 msgstr "全部清除"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:818 lib/Widgets/DynamicNotebook.vala:875
 msgid "New Tab"
 msgstr "新建标签"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
 msgstr "撤消关闭标签"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
 msgstr "已关闭的标签"
 
@@ -230,7 +230,7 @@ msgstr "下午"
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:156
 msgid ":"
-msgstr ":"
+msgstr "："
 
 #: lib/Widgets/Utils.vala:102
 msgid "Shift"
@@ -267,17 +267,17 @@ msgstr "左 Ctrl"
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr "-"
+msgstr "减号"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr "+"
+msgstr "加号"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr "="
+msgstr "等号"
 
 #: lib/Widgets/Utils.vala:161
 msgid "Enter"
@@ -294,9 +294,9 @@ msgid "Right Shift"
 msgstr "右 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
+#: lib/Widgets/Utils.vala:224
 msgid ", "
-msgstr ", "
+msgstr "、 "
 
 #~ msgid "%s's Developers"
 #~ msgstr "%s 开发人员"

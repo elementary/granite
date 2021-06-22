@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 21:28+0000\n"
-"PO-Revision-Date: 2021-03-19 04:05+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-06-03 15:18+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite/nb/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-04-05 06:38+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "Vis valg i Granite"
 
@@ -129,55 +129,55 @@ msgstr "%a %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:289
 msgid "Close Tab"
 msgstr "Lukk fane"
 
-#: lib/Widgets/DynamicNotebook.vala:282
-msgid "Open in a New Window"
-msgstr "Åpne i nytt vindu"
-
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:258
 msgid "Duplicate"
 msgstr "Lag kopi"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:259
+msgid "Open in a New Window"
+msgstr "Åpne i nytt vindu"
+
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tab"
 msgstr "Lukk annen fane"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tabs"
 msgstr "Lukk andre faner"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
 msgstr "Lukk fanen til høyre"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
 msgstr "Lukk faner til høyre"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
 msgstr "Fest"
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
 msgstr "Løsne"
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
 msgstr "Fjern alt"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:818 lib/Widgets/DynamicNotebook.vala:875
 msgid "New Tab"
 msgstr "Ny fane"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
 msgstr "Angre lukking av fane"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
 msgstr "Lukkede faner"
 
@@ -301,13 +301,11 @@ msgstr "Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
-#, fuzzy
 msgid "Right Shift"
-msgstr "Shift"
+msgstr "Høyre Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
-#, fuzzy
+#: lib/Widgets/Utils.vala:224
 msgid ", "
 msgstr ", "
 

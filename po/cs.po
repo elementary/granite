@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 21:28+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2020-06-07 12:11+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite/cs/"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 3.9.1\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
-#: lib/Application.vala:183
+#: lib/Application.vala:185
 msgid "Show Granite Options"
 msgstr "Zobrazit volby pro Granite"
 
@@ -129,55 +129,55 @@ msgstr "%a, %b %e"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:278
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:289
 msgid "Close Tab"
 msgstr "Zavřít kartu"
 
-#: lib/Widgets/DynamicNotebook.vala:282
-msgid "Open in a New Window"
-msgstr "Otevřít v novém okně"
-
-#: lib/Widgets/DynamicNotebook.vala:283
+#: lib/Widgets/DynamicNotebook.vala:258
 msgid "Duplicate"
 msgstr "Duplikovat"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:259
+msgid "Open in a New Window"
+msgstr "Otevřít v novém okně"
+
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tab"
 msgstr "Zavřít druhou kartu"
 
-#: lib/Widgets/DynamicNotebook.vala:325
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tabs"
 msgstr "Zavřít ostatní karty"
 
-#: lib/Widgets/DynamicNotebook.vala:330
+#: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
 msgstr "Zavřít kartu napravo"
 
-#: lib/Widgets/DynamicNotebook.vala:331
+#: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
 msgstr "Zavřít karty napravo"
 
-#: lib/Widgets/DynamicNotebook.vala:336
+#: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:338
+#: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
 msgstr ""
 
-#: lib/Widgets/DynamicNotebook.vala:515
+#: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
 msgstr "Vyčistit vše"
 
-#: lib/Widgets/DynamicNotebook.vala:779 lib/Widgets/DynamicNotebook.vala:812
+#: lib/Widgets/DynamicNotebook.vala:818 lib/Widgets/DynamicNotebook.vala:875
 msgid "New Tab"
 msgstr "Nová karta"
 
-#: lib/Widgets/DynamicNotebook.vala:780
+#: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
 msgstr "Vrátit zavřenou kartu"
 
-#: lib/Widgets/DynamicNotebook.vala:822
+#: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
 msgstr "Zavřené karty"
 
@@ -306,7 +306,7 @@ msgid "Right Shift"
 msgstr "Pravý Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
+#: lib/Widgets/Utils.vala:224
 msgid ", "
 msgstr ", "
 
