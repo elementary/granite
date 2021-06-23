@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-14 22:49+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2021-03-12 21:28+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
@@ -125,55 +125,55 @@ msgstr "%a, %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:254 lib/Widgets/DynamicNotebook.vala:281
+#: lib/Widgets/DynamicNotebook.vala:257 lib/Widgets/DynamicNotebook.vala:289
 msgid "Close Tab"
 msgstr "Close Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:285
-msgid "Open in a New Window"
-msgstr "Open in a New Window"
-
-#: lib/Widgets/DynamicNotebook.vala:286
+#: lib/Widgets/DynamicNotebook.vala:258
 msgid "Duplicate"
 msgstr "Duplicate"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:259
+msgid "Open in a New Window"
+msgstr "Open in a New Window"
+
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tab"
 msgstr "Close Other Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:328
+#: lib/Widgets/DynamicNotebook.vala:363
 msgid "Close Other Tabs"
 msgstr "Close Other Tabs"
 
-#: lib/Widgets/DynamicNotebook.vala:333
+#: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
 msgstr "Close Tab to the Right"
 
-#: lib/Widgets/DynamicNotebook.vala:334
+#: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
 msgstr "Close Tabs to the Right"
 
-#: lib/Widgets/DynamicNotebook.vala:339
+#: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
 msgstr "Pin"
 
-#: lib/Widgets/DynamicNotebook.vala:341
+#: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
 msgstr "Unpin"
 
-#: lib/Widgets/DynamicNotebook.vala:518
+#: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
 msgstr "Clear All"
 
-#: lib/Widgets/DynamicNotebook.vala:782 lib/Widgets/DynamicNotebook.vala:815
+#: lib/Widgets/DynamicNotebook.vala:818 lib/Widgets/DynamicNotebook.vala:875
 msgid "New Tab"
 msgstr "New Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:783
+#: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
 msgstr "Undo Close Tab"
 
-#: lib/Widgets/DynamicNotebook.vala:825
+#: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
 msgstr "Closed Tabs"
 
@@ -298,7 +298,7 @@ msgid "Right Shift"
 msgstr "Right Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:220
+#: lib/Widgets/Utils.vala:224
 msgid ", "
 msgstr ", "
 
