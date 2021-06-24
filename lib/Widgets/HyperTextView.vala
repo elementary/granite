@@ -34,7 +34,7 @@
             } catch (GLib.RegexError e) {
                 critical ("RegexError while constructing URI regex: %s", e.message);
             }
-            
+
             buffer.changed.connect (on_buffer_changed);
             button_press_event.connect_after (on_after_button_press_event);
             motion_notify_event.connect (on_motion_notify_event);
