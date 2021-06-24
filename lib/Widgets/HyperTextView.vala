@@ -78,7 +78,7 @@
         private bool on_after_button_press_event () {
             Gtk.TextIter text_iter;
             buffer.get_iter_at_mark (out text_iter, buffer.get_insert ());
-            
+
             var tags = text_iter.get_tags ();
             foreach (var tag in tags) {
                 if (tag.get_data<string?> ("uri") != null) {
@@ -111,7 +111,7 @@
 
             if (window != null) {
                 bool is_hovering = false;
-            
+
                 int x, y;
                 window_to_buffer_coords (Gtk.TextWindowType.WIDGET, (int) event.x, (int) event.y, out x, out y);
 
