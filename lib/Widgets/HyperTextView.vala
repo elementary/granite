@@ -46,34 +46,34 @@
             });
             uri_text_tags = new GLib.SList<Gtk.TextTag> ();
 
-            GLib.MatchInfo matchInfo;
+            GLib.MatchInfo match_info;
 
-			var buffer_text = buffer.text;
-			uri_regex.match (buffer_text, 0, out matchInfo);
+            var buffer_text = buffer.text;
+            uri_regex.match (buffer_text, 0, out match_info);
 
-			while (matchInfo.matches ()) {
-				Gtk.TextIter start, end;
-				int start_pos, end_pos;
-				string text = matchInfo.fetch(0);
-				matchInfo.fetch_pos (0, out start_pos, out end_pos);
-				buffer.get_iter_at_offset(out start, start_pos);
-				buffer.get_iter_at_offset(out end, end_pos);
+            while (match_info.matches ()) {
+                Gtk.TextIter start, end;
+                int start_pos, end_pos;
+                string text = match_info.fetch (0);
+                match_info.fetch_pos (0, out start_pos, out end_pos);
+                buffer.get_iter_at_offset (out start, start_pos);
+                buffer.get_iter_at_offset (out end, end_pos);
 
-				var tag = buffer.create_tag("%i-%i".printf (start_pos, end_pos), "underline", Pango.Underline.SINGLE);
+                var tag = buffer.create_tag ("%i-%i".printf (start_pos, end_pos), "underline", Pango.Underline.SINGLE);
                 if (!text.contains ("://")) {
                     text = "http://" + text;
                 }
-				tag.set_data("uri", text);
-				buffer.apply_tag(tag, start, end);
+                tag.set_data ("uri", text);
+                buffer.apply_tag (tag, start, end);
                 uri_text_tags.append (tag);
 
-				try {
-                    matchInfo.next();
+                try {
+                    match_info.next ();
                 } catch (GLib.RegexError e) {
                     warning ("RegexError while scanning for the next URI match: %s", e.message);
                 }
-			}
-		}
+            }
+        }
 
         private bool on_after_button_press_event () {
             Gtk.TextIter text_iter;
