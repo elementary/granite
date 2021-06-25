@@ -60,7 +60,7 @@
                 buffer.get_iter_at_offset (out end, end_pos);
 
                 var tag = buffer.create_tag ("%i-%i".printf (start_pos, end_pos), "underline", Pango.Underline.SINGLE);
-                if (!text.contains ("://")) {
+                if (!text.contains ("://") && !text.has_prefix ("mailto:")) {
                     if (text[0] == '~') {
                         text = Environment.get_home_dir () + text.substring (1);
                     }
