@@ -30,7 +30,7 @@
         construct {
             uri_text_tags = new GLib.SList<Gtk.TextTag> ();
             try {
-                uri_regex = new Regex ("([^\\s]+:\\/\\/)?[^\\s]{2,}\\.[^\\s]{2,}");
+                uri_regex = new Regex ("([^\\s\\.\"'`]+:\\/\\/)?[^\\s\"'`]{2,}\\.[^\\s\"'`]{2,}");
             } catch (GLib.RegexError e) {
                 critical ("RegexError while constructing URI regex: %s", e.message);
             }
@@ -61,7 +61,15 @@
 
                 var tag = buffer.create_tag ("%i-%i".printf (start_pos, end_pos), "underline", Pango.Underline.SINGLE);
                 if (!text.contains ("://")) {
-                    text = "http://" + text;
+                    if (text[0] == '~') {
+                        text = Environment.get_home_dir () + text.substring (1);
+                    }
+
+                    if (text[0] == '/') {
+                        text = "file://" + text;
+                    } else {
+                        text = "http://" + text;
+                    }
                 }
                 tag.set_data ("uri", text);
                 buffer.apply_tag (tag, start, end);
