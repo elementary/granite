@@ -30,7 +30,7 @@
         construct {
             uri_text_tags = new GLib.SList<Gtk.TextTag> ();
             try {
-                uri_regex = new Regex ("([^\\s\\.\"'`]+:\\/\\/)?[^\\s\"'`]{2,}\\.[^\\s\"'`]{2,}");
+                uri_regex = new Regex ("([^\\s\\.\"'`<>]+:\\/\\/)?[^\\s\"'`<>]{2,}\\.[^\\s\"'`<>]{2,}");
             } catch (GLib.RegexError e) {
                 critical ("RegexError while constructing URI regex: %s", e.message);
             }
