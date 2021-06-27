@@ -23,6 +23,12 @@ public class HyperTextView : Gtk.Grid {
         var hypertext_textview = new Granite.Widgets.HyperTextView ();
         hypertext_textview.buffer.text = "elementary OS - https://elementary.io/\nThe fast, open and privacy-respecting replacement for Windows and macOS.";
 
+        var hypertext_scrolled_window = new Gtk.ScrolledWindow (null, null) {
+            height_request = 300,
+            width_request = 600
+        };
+        hypertext_scrolled_window.add (hypertext_textview);
+
         margin = 12;
         orientation = Gtk.Orientation.VERTICAL;
         row_spacing = 3;
@@ -30,7 +36,7 @@ public class HyperTextView : Gtk.Grid {
         valign = Gtk.Align.CENTER;
         vexpand = true;
         add (hypertext_label);
-        add (hypertext_textview);
+        add (hypertext_scrolled_window);
         show_all ();
     }
 }
