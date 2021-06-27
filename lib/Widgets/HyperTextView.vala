@@ -102,8 +102,9 @@
                     tag_key.scanf ("[%i,%i]", out tag_start_offset, out tag_end_offset);
 
                     if (
-                        tag_start_offset > buffer_start_offset && tag_start_offset < buffer_end_offset ||
-                        tag_end_offset  > buffer_start_offset && tag_end_offset < buffer_end_offset
+                        tag_start_offset > buffer_start_offset && tag_start_offset < buffer_end_offset
+                        ||
+                        tag_end_offset > buffer_start_offset && tag_end_offset < buffer_end_offset
                     ) {
                         buffer.tag_table.remove (uri_text_tags.take (tag_key));
                     }
