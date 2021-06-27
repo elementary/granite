@@ -24,56 +24,134 @@
      */
     public class HyperTextView : Gtk.TextView {
 
-        private GLib.SList<Gtk.TextTag> uri_text_tags;
+        private uint buffer_changed_debounce_timeout_id = 0;
+        private int buffer_cursor_position_when_change_started = 0;
+
+        private GLib.HashTable<string, Gtk.TextTag> uri_text_tags;
         private Regex uri_regex;
 
         construct {
-            uri_text_tags = new GLib.SList<Gtk.TextTag> ();
+            uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
             try {
                 uri_regex = new Regex ("([^\\(\\[\\s\\.\"'`<>]+:\\/\\/)?[^\\(\\[\\s\"'`<>]{2,}\\.[^\\)\\]\\s\"'`<>]{2,}");
             } catch (GLib.RegexError e) {
                 critical ("RegexError while constructing URI regex: %s", e.message);
             }
 
-            buffer.changed.connect (on_buffer_changed);
+            buffer.notify["cursor-position"].connect (on_buffer_cursor_position_changed);
+            buffer.paste_done.connect (on_paste_done);
+            buffer.changed.connect_after (on_after_buffer_changed);
+
             button_press_event.connect_after (on_after_button_press_event);
             motion_notify_event.connect (on_motion_notify_event);
         }
 
-        private void on_buffer_changed () {
-            uri_text_tags.foreach ((tag) => {
-                buffer.tag_table.remove (tag);
+        private void on_buffer_cursor_position_changed () {
+            if (buffer_cursor_position_when_change_started == 0) {
+                buffer_cursor_position_when_change_started = buffer.cursor_position;
+            }
+        }
+
+        private void on_paste_done (Gtk.Clipboard clipboard) {
+            // force rescan of whole buffer:
+            buffer_cursor_position_when_change_started = -1;
+        }
+
+        private void on_after_buffer_changed () {
+            if (buffer_changed_debounce_timeout_id != 0) {
+                Source.remove (buffer_changed_debounce_timeout_id);
+                buffer_changed_debounce_timeout_id = 0;
+            }
+
+            buffer_changed_debounce_timeout_id = GLib.Timeout.add (300, () => {
+                buffer_changed_debounce_timeout_id = 0;
+
+                var change_start_offset = buffer_cursor_position_when_change_started;
+                var change_end_offset = buffer.cursor_position;
+
+                buffer_cursor_position_when_change_started = 0;
+
+                if (change_start_offset < 0) {
+                    change_start_offset = 0;
+                    change_end_offset = buffer.text.length;
+                }
+
+                update_tags_in_buffer_for_range.begin (
+                    int.min (change_start_offset, change_end_offset),
+                    int.max (change_start_offset, change_end_offset)
+                );
+
+                return GLib.Source.REMOVE;
             });
-            uri_text_tags = new GLib.SList<Gtk.TextTag> ();
+        }
 
-            GLib.MatchInfo match_info;
+        private async void update_tags_in_buffer_for_range (int buffer_start_offset, int buffer_end_offset) {
+            Gtk.TextIter buffer_start_iter, buffer_end_iter;
+            buffer.get_iter_at_offset (out buffer_start_iter, buffer_start_offset);
+            buffer_start_iter.backward_line ();
+            buffer_start_offset = buffer_start_iter.get_offset ();
 
-            var buffer_text = buffer.text;
-            uri_regex.match (buffer_text, 0, out match_info);
+            buffer.get_iter_at_offset (out buffer_end_iter, buffer_end_offset);
+            buffer_end_iter.forward_line ();
+            buffer_end_offset = buffer_end_iter.get_offset ();
 
-            while (match_info.matches ()) {
-                Gtk.TextIter start, end;
-                int start_pos, end_pos;
-                string text = match_info.fetch (0);
-                match_info.fetch_pos (0, out start_pos, out end_pos);
-                buffer.get_iter_at_offset (out start, start_pos);
-                buffer.get_iter_at_offset (out end, end_pos);
+            // Delete all tags in buffer for range [start_iter.offset,end_iter.offset]
+            lock (uri_text_tags) {
+                foreach (var tag_key in uri_text_tags.get_keys ()) {
+                    int tag_start_offset, tag_end_offset;
+                    tag_key.scanf ("[%i,%i]", out tag_start_offset, out tag_end_offset);
 
-                var tag = buffer.create_tag ("%i-%i".printf (start_pos, end_pos), "underline", Pango.Underline.SINGLE);
-                if (!text.contains ("://") && !text.has_prefix ("mailto:")) {
-                    if (text[0] == '~') {
-                        text = Environment.get_home_dir () + text.substring (1);
-                    }
-
-                    if (text[0] == '/') {
-                        text = "file://" + text;
-                    } else {
-                        text = "http://" + text;
+                    if (
+                        tag_start_offset > buffer_start_offset && tag_start_offset < buffer_end_offset
+                        ||
+                        tag_end_offset  > buffer_start_offset && tag_end_offset < buffer_end_offset
+                    ) {
+                        buffer.tag_table.remove (uri_text_tags.take (tag_key));
                     }
                 }
-                tag.set_data ("uri", text);
-                buffer.apply_tag (tag, start, end);
-                uri_text_tags.append (tag);
+            }
+
+            var buffer_substring = buffer.text.substring (buffer_start_offset, buffer_end_offset - buffer_start_offset);
+            if (buffer_substring.strip () == "") {
+                // if the substring is empty, we do not have anything to do...
+                return;
+            }
+
+            // Add new tags in buffer for range [start_iter.offset,end_iter.offset]
+            GLib.MatchInfo match_info;
+            uri_regex.match (buffer_substring, 0, out match_info);
+
+            while (match_info.matches ()) {
+                string match_text = match_info.fetch (0);
+
+                int match_start_offset, match_end_offset;
+                match_info.fetch_pos (0, out match_start_offset, out match_end_offset);
+
+                var buffer_match_start_offset = buffer_start_offset + match_start_offset;
+                var buffer_match_end_offset = buffer_start_offset + match_end_offset;
+
+                Gtk.TextIter buffer_match_start_iter, buffer_match_end_iter;
+                buffer.get_iter_at_offset (out buffer_match_start_iter, buffer_match_start_offset);
+                buffer.get_iter_at_offset (out buffer_match_end_iter, buffer_match_end_offset);
+
+                var tag = buffer.create_tag (null, "underline", Pango.Underline.SINGLE);
+                if (!match_text.contains ("://") && !match_text.has_prefix ("mailto:")) {
+                    if (match_text[0] == '~') {
+                        match_text = Environment.get_home_dir () + match_text.substring (1);
+                    }
+
+                    if (match_text[0] == '/') {
+                        match_text = "file://" + match_text;
+                    } else {
+                        match_text = "http://" + match_text;
+                    }
+                }
+                tag.set_data ("uri", match_text);
+                buffer.apply_tag (tag, buffer_match_start_iter, buffer_match_end_iter);
+
+                lock (uri_text_tags) {
+                    uri_text_tags.set ("[%i,%i]".printf (buffer_match_start_offset, buffer_match_end_offset), tag);
+                }
 
                 try {
                     match_info.next ();
