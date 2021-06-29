@@ -132,7 +132,7 @@
 
             while (match_info.matches ()) {
                 string match_text = match_info.fetch (0);
-                
+
                 /**
                  * Character counts are usually referred to as offsets, while byte counts are called indexes.
                  * If you confuse these two, things will work fine with ASCII, but as soon as your
@@ -141,7 +141,7 @@
                  */
                 int match_start_index, match_end_index;
                 match_info.fetch_pos (0, out match_start_index, out match_end_index);
-                
+
                 int match_start_offset, match_end_offset;
                 match_start_offset = buffer_substring.substring (0, match_start_index).char_count (match_start_index + 1);
                 match_end_offset = buffer_substring.substring (0, match_end_index).char_count (match_end_index + 1);
