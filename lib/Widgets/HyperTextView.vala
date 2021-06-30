@@ -30,6 +30,8 @@
         private GLib.HashTable<string, Gtk.TextTag> uri_text_tags;
         private Regex uri_regex;
 
+        private bool is_control_key_pressed = false;
+
         construct {
             uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
             try {
@@ -42,8 +44,11 @@
             buffer.paste_done.connect (on_paste_done);
             buffer.changed.connect_after (on_after_buffer_changed);
 
-            button_press_event.connect_after (on_after_button_press_event);
+            key_press_event.connect (on_key_press_event);
+            key_release_event.connect (on_key_release_event);
+            button_release_event.connect (on_button_release_event);
             motion_notify_event.connect (on_motion_notify_event);
+            focus_out_event.connect (on_focus_out_event);
         }
 
         private void on_buffer_cursor_position_changed () {
@@ -182,7 +187,38 @@
             }
         }
 
-        private bool on_after_button_press_event () {
+        private bool on_key_press_event (Gdk.EventKey event) {
+            if (event.keyval == Gdk.Key.Control_L || event.keyval == Gdk.Key.Control_R) {
+                var window = get_window (Gtk.TextWindowType.TEXT);
+                if (window != null) {
+                    int pointer_x, pointer_y;
+                    window.get_pointer (out pointer_x, out pointer_y, null);
+
+                    var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
+                    if (uri_hovering_over != null) {
+                        window.cursor = new Gdk.Cursor.from_name (get_display (), "pointer");
+                    }
+                }
+                is_control_key_pressed = true;
+            }
+            return Gdk.EVENT_PROPAGATE;
+        }
+
+        private bool on_key_release_event (Gdk.EventKey event) {
+            if (event.keyval == Gdk.Key.Control_L || event.keyval == Gdk.Key.Control_R) {
+                var window = get_window (Gtk.TextWindowType.TEXT);
+                if (is_control_key_pressed && window != null) {
+                    window.cursor = new Gdk.Cursor.from_name (get_display (), "text");
+                }
+                is_control_key_pressed = false;
+            }
+            return Gdk.EVENT_PROPAGATE;
+        }
+
+        private bool on_button_release_event () {
+            if (!is_control_key_pressed) {
+                return Gdk.EVENT_PROPAGATE;
+            }
             Gtk.TextIter text_iter;
             buffer.get_iter_at_mark (out text_iter, buffer.get_insert ());
 
@@ -211,16 +247,30 @@
             return Gdk.EVENT_PROPAGATE;
         }
 
-        private bool was_hovering = false;
-
         private bool on_motion_notify_event (Gtk.Widget widget, Gdk.EventMotion event) {
+            var uri_hovering_over = get_uri_at_location ((int) event.x, (int) event.y);
+
+            if (uri_hovering_over != null && !has_tooltip) {
+                has_tooltip = true;
+                tooltip_markup = string.joinv ("\n", {
+                    _("Follow Link"),
+                    TOOLTIP_SECONDARY_TEXT_MARKUP.printf (_("Control + Click"))
+                });
+
+            } else if (uri_hovering_over == null && has_tooltip) {
+                has_tooltip = false;
+            }
+
+            return Gdk.EVENT_PROPAGATE;
+        }
+
+        private string? get_uri_at_location (int location_x, int location_y) {
+            string? uri = null;
             var window = get_window (Gtk.TextWindowType.TEXT);
 
             if (window != null) {
-                bool is_hovering = false;
-
                 int x, y;
-                window_to_buffer_coords (Gtk.TextWindowType.WIDGET, (int) event.x, (int) event.y, out x, out y);
+                window_to_buffer_coords (Gtk.TextWindowType.WIDGET, location_x, location_y, out x, out y);
 
                 Gtk.TextIter text_iter;
                 if (get_iter_at_location (out text_iter, x, y)) {
@@ -228,21 +278,17 @@
 
                     foreach (var tag in tags) {
                         if (tag.get_data<string?> ("uri") != null) {
-                            is_hovering = true;
+                            uri = tag.get_data<string> ("uri");
                             break;
                         }
                     }
                 }
-
-                if (is_hovering && !was_hovering) {
-                    window.cursor = new Gdk.Cursor.from_name (get_display (), "pointer");
-                    was_hovering = is_hovering;
-
-                } else if (!is_hovering && was_hovering) {
-                    window.cursor = new Gdk.Cursor.from_name (get_display (), "text");
-                    was_hovering = is_hovering;
-                }
             }
+            return uri;
+        }
+
+        private bool on_focus_out_event (Gdk.EventFocus event) {
+            is_control_key_pressed = false;
             return Gdk.EVENT_PROPAGATE;
         }
     }
