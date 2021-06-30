@@ -161,6 +161,8 @@
 
                     if (match_text[0] == '/') {
                         match_text = "file://" + match_text;
+                    } else if (!match_text.contains (":") && match_text.contains ("@")) {
+                        match_text = "mailto:" + match_text;
                     } else {
                         match_text = "http://" + match_text;
                     }
