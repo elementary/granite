@@ -31,7 +31,6 @@
         private Regex uri_regex;
 
         private bool is_control_key_pressed = false;
-        private Gtk.Window? toplevel_window = null;
 
         construct {
             uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
@@ -54,7 +53,8 @@
              * if possible enables us to detect when the Control key
              * is pressed even when HyperTextView is not focused.
              */
-
+            
+            Gtk.Window? toplevel_window = null;
             foreach (unowned var window in Gtk.Window.list_toplevels ()) {
                 if (window.get_parent_window () == null) {
                     toplevel_window = window;
