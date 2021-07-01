@@ -191,12 +191,15 @@
             if (event.keyval == Gdk.Key.Control_L || event.keyval == Gdk.Key.Control_R) {
                 var window = get_window (Gtk.TextWindowType.TEXT);
                 if (window != null) {
-                    int pointer_x, pointer_y;
-                    window.get_pointer (out pointer_x, out pointer_y, null);
+                    var pointer_device = window.get_display ().get_default_seat ().get_pointer ();
+                    if (pointer_device != null) {
+                        int pointer_x, pointer_y;
+                        window.get_device_position (pointer_device, out pointer_x, out pointer_y, null);
 
-                    var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
-                    if (uri_hovering_over != null) {
-                        window.cursor = new Gdk.Cursor.from_name (get_display (), "pointer");
+                        var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
+                        if (uri_hovering_over != null) {
+                            window.cursor = new Gdk.Cursor.from_name (get_display (), "pointer");
+                        }
                     }
                 }
                 is_control_key_pressed = true;
