@@ -31,6 +31,7 @@
         private Regex uri_regex;
 
         private bool is_control_key_pressed = false;
+        private Gtk.Window? toplevel_window = null;
 
         construct {
             uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
@@ -50,25 +51,30 @@
 
             /**
              * Binding key_press/key_release signals to toplevel window
-             * enables us to detect when the Control key is pressed
-             * even when HyperTextView is not focused.
+             * if possible enables us to detect when the Control key
+             * is pressed even when HyperTextView is not focused.
              */
 
-            foreach (unowned var toplevel_window in Gtk.Window.list_toplevels ()) {
-                if (toplevel_window.get_parent_window () == null) {
-                    toplevel_window.key_press_event.connect (on_key_press_event);
-                    toplevel_window.key_release_event.connect (on_key_release_event);
+            foreach (unowned var window in Gtk.Window.list_toplevels ()) {
+                if (window.get_parent_window () == null) {
+                    toplevel_window = window;
                     break;
                 }
             }
 
+            if (toplevel_window != null) {
+                toplevel_window.key_press_event.connect (on_key_press_event);
+                toplevel_window.key_release_event.connect (on_key_release_event);
+            } else {
+                // bind to this as a fallback
+                key_press_event.connect (on_key_press_event);
+                key_release_event.connect (on_key_release_event);
+            }
+
             destroy.connect (() => {
-                foreach (unowned var toplevel_window in Gtk.Window.list_toplevels ()) {
-                    if (toplevel_window.get_parent_window () == null) {
-                        toplevel_window.key_press_event.disconnect (on_key_press_event);
-                        toplevel_window.key_release_event.disconnect (on_key_release_event);
-                        break;
-                    }
+                if (toplevel_window != null) {
+                    toplevel_window.key_press_event.disconnect (on_key_press_event);
+                    toplevel_window.key_release_event.disconnect (on_key_release_event);
                 }
             });
         }
