@@ -70,13 +70,6 @@
                 key_press_event.connect (on_key_press_event);
                 key_release_event.connect (on_key_release_event);
             }
-
-            destroy.connect (() => {
-                if (toplevel_window != null) {
-                    toplevel_window.key_press_event.disconnect (on_key_press_event);
-                    toplevel_window.key_release_event.disconnect (on_key_release_event);
-                }
-            });
         }
 
         private void on_buffer_cursor_position_changed () {
