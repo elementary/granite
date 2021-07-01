@@ -66,6 +66,7 @@
                 toplevel_window.key_press_event.connect (on_key_press_event);
                 toplevel_window.key_release_event.connect (on_key_release_event);
             } else {
+                warning ("Unable to bind key press events to toplevel window, Control + Click may not behave correct under all circumstances.");
                 // bind to this as a fallback
                 key_press_event.connect (on_key_press_event);
                 key_release_event.connect (on_key_release_event);
