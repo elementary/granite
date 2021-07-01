@@ -48,6 +48,12 @@
             motion_notify_event.connect (on_motion_notify_event);
             focus_out_event.connect (on_focus_out_event);
 
+            /**
+             * Binding key_press/key_release signals to toplevel window
+             * enables us to detect when the Control key is pressed
+             * even when HyperTextView is not focused.
+             */
+
             foreach (unowned var toplevel_window in Gtk.Window.list_toplevels ()) {
                 if (toplevel_window.get_parent_window () == null) {
                     toplevel_window.key_press_event.connect (on_key_press_event);
