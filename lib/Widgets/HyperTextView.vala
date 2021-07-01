@@ -71,8 +71,6 @@
                 key_press_event.connect (on_key_press_event);
                 key_release_event.connect (on_key_release_event);
             }
-
-            
         }
 
         private void on_buffer_cursor_position_changed () {
