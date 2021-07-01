@@ -53,7 +53,7 @@
              * if possible enables us to detect when the Control key
              * is pressed even when HyperTextView is not focused.
              */
-            
+
             Gtk.Window? toplevel_window = null;
             foreach (unowned var window in Gtk.Window.list_toplevels ()) {
                 if (window.get_parent_window () == null) {
@@ -71,6 +71,8 @@
                 key_press_event.connect (on_key_press_event);
                 key_release_event.connect (on_key_release_event);
             }
+
+            
         }
 
         private void on_buffer_cursor_position_changed () {
