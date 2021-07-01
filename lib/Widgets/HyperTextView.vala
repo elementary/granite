@@ -44,11 +44,27 @@
             buffer.paste_done.connect (on_paste_done);
             buffer.changed.connect_after (on_after_buffer_changed);
 
-            key_press_event.connect (on_key_press_event);
-            key_release_event.connect (on_key_release_event);
             button_release_event.connect (on_button_release_event);
             motion_notify_event.connect (on_motion_notify_event);
             focus_out_event.connect (on_focus_out_event);
+
+            foreach (unowned var toplevel_window in Gtk.Window.list_toplevels ()) {
+                if (toplevel_window.get_parent_window () == null) {
+                    toplevel_window.key_press_event.connect (on_key_press_event);
+                    toplevel_window.key_release_event.connect (on_key_release_event);
+                    break;
+                }
+            }
+
+            destroy.connect (() => {
+                foreach (unowned var toplevel_window in Gtk.Window.list_toplevels ()) {
+                    if (toplevel_window.get_parent_window () == null) {
+                        toplevel_window.key_press_event.disconnect (on_key_press_event);
+                        toplevel_window.key_release_event.disconnect (on_key_release_event);
+                        break;
+                    }
+                }
+            });
         }
 
         private void on_buffer_cursor_position_changed () {
