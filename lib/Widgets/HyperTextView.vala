@@ -33,7 +33,7 @@
         private bool is_control_key_pressed = false;
 
         construct {
-            var http_charset = "[a-zA-Z0-9_\\/\\-\\.:@\\?&%=]";
+            var http_charset = "[a-zA-Z0-9_\\/\\-\\+\\.:@\\?&%=#]";
             var email_charset = "[a-zA-Z0-9_\\-\\.]";
             var email_tld_charset = "[a-zA-Z0-9_\\-]";
 
