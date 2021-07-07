@@ -45,7 +45,7 @@
                 ")|(" +
                     email_match_str +
                 "))";
-            
+
             uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
             try {
                 uri_regex = new Regex (uri_regex_str);
