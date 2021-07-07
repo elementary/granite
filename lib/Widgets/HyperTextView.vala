@@ -33,9 +33,22 @@
         private bool is_control_key_pressed = false;
 
         construct {
+            var http_charset = "[a-zA-Z0-9_\\/\\-\\.:@]";
+            var email_charset = "[a-zA-Z0-9_\\-\\.]";
+            var email_tld_charset = "[a-zA-Z0-9_\\-]";
+
+            var http_match_str = "https?:\\/\\/" + http_charset + "{1,}";
+            var email_match_str = "(mailto:)?" + email_charset + "{1,}@" + email_charset + "{1,}\\." + email_tld_charset + "{1,}";
+
+            var uri_regex_str = "(?:(" +
+                    http_match_str +
+                ")|(" +
+                    email_match_str +
+                "))";
+            
             uri_text_tags = new GLib.HashTable<string, Gtk.TextTag> (str_hash, direct_equal);
             try {
-                uri_regex = new Regex ("([^\\(\\[\\s\\.\"'`<>]+:\\/\\/)?[^\\(\\[\\s\"'`<>]{2,}\\.[^\\)\\]\\s\"'`<>]{2,}");
+                uri_regex = new Regex (uri_regex_str);
             } catch (GLib.RegexError e) {
                 critical ("RegexError while constructing URI regex: %s", e.message);
             }
@@ -175,18 +188,8 @@
                 buffer.get_iter_at_offset (out buffer_match_end_iter, buffer_match_end_offset);
 
                 var tag = buffer.create_tag (null, "underline", Pango.Underline.SINGLE);
-                if (!match_text.contains ("://") && !match_text.has_prefix ("mailto:")) {
-                    if (match_text[0] == '~') {
-                        match_text = Environment.get_home_dir () + match_text.substring (1);
-                    }
-
-                    if (match_text[0] == '/') {
-                        match_text = "file://" + match_text;
-                    } else if (!match_text.contains (":") && match_text.contains ("@")) {
-                        match_text = "mailto:" + match_text;
-                    } else {
-                        match_text = "http://" + match_text;
-                    }
+                if (!match_text.contains ("://") && match_text.contains ("@") && !match_text.has_prefix ("mailto:")) {
+                    match_text = "mailto:" + match_text;
                 }
                 tag.set_data ("uri", match_text);
                 buffer.apply_tag (tag, buffer_match_start_iter, buffer_match_end_iter);
