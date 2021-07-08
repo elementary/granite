@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-06-04 07:19+0000\n"
+"PO-Revision-Date: 2021-07-03 20:17+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -215,15 +215,15 @@ msgstr "Нові функції:"
 #: data/granite.appdata.xml.in:89
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
-"Новий клас Settings для спільного використання параметрів стільниці Pantheon "
-"із застосунками"
+"Новий клас Settings для спільного використання налаштувань стільниці "
+"Pantheon із застосунками"
 
 #: data/granite.appdata.xml.in:90
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
-"Введено Settings.prefers_color_scheme, щоб отримати параметри колірної схеми "
+"Введено Settings.prefers_color_scheme, щоб отримати вподобані колірні схеми "
 "користувача, тобто для темного стилю"
 
 #: data/granite.appdata.xml.in:94
@@ -240,7 +240,7 @@ msgstr "Вдосконалення:"
 
 #: data/granite.appdata.xml.in:102
 msgid "Better align labels in settings sidebars"
-msgstr "Краще вирівнювання міток в бічних панелях параметрів"
+msgstr "Краще вирівнювання міток в бічних панелях налаштувань"
 
 #: data/granite.appdata.xml.in:103
 msgid "Make AccelLabel.label settable"
