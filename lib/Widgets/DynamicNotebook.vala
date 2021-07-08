@@ -219,16 +219,35 @@ namespace Granite.Widgets {
         internal Gtk.MenuItem duplicate_m;
         internal Gtk.MenuItem pin_m;
 
+        private string[] _current_close_button_tooltip_accels;
+        internal string[] current_close_button_tooltip_accels {
+            set {
+                _current_close_button_tooltip_accels = value;
+                update_close_button_tooltip ();
+            }
+        }
+
+        private void update_close_button_tooltip () {
+            string[] accels = {};
+            if (_is_current_tab) {
+                accels = _current_close_button_tooltip_accels;
+            }
+
+            close_button.tooltip_markup = markup_accel_tooltip (accels, _("Close Tab"));
+        }
+
         private bool _is_current_tab = false;
         internal bool is_current_tab {
             set {
                 _is_current_tab = value;
+                update_close_button_tooltip ();
                 update_close_button_visibility ();
             }
         }
 
         private bool cursor_over_tab = false;
         private bool cursor_over_close_button = false;
+        private Gtk.Button close_button;
         private Gtk.Revealer close_button_revealer;
 
         internal signal void closed ();
@@ -285,8 +304,8 @@ namespace Granite.Widgets {
             _working.set_size_request (16, 16);
             _working.start ();
 
-            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
-            close_button.tooltip_text = _("Close Tab");
+            close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+            update_close_button_tooltip ();
             close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
 
@@ -711,15 +730,53 @@ namespace Granite.Widgets {
             set { _force_left = value; }
         }
 
-       /**
+        /**
         * The text shown in the add button tooltip
         */
         public string add_button_tooltip {
-            get { _add_button_tooltip = add_button.tooltip_text; return _add_button_tooltip; }
-            set { add_button.tooltip_text = value; }
+            get { return _add_button_tooltip_text; }
+            set {
+                _add_button_tooltip_text = value;
+                update_add_button_tooltip ();
+            }
         }
         // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
-        string _add_button_tooltip;
+        string _add_button_tooltip_text = _("New Tab");
+
+        private string[] _add_button_tooltip_accels = {"<Ctrl>T"};
+
+        /**
+        * The accels shown in the add button tooltip
+        */
+        public string[] add_button_tooltip_accels {
+            get { return _add_button_tooltip_accels; }
+            set {
+                _add_button_tooltip_accels = value;
+                update_add_button_tooltip ();
+            }
+        }
+
+        private void update_add_button_tooltip () {
+            add_button.tooltip_markup = markup_accel_tooltip (_add_button_tooltip_accels, _add_button_tooltip_text);
+        }
+
+        private string[] _current_close_button_tooltip_accels = {"<Ctrl>W"};
+
+        /**
+        * The accels shown in the current close button tooltip
+        */
+        public string[] current_close_button_tooltip_accels {
+            get { return _current_close_button_tooltip_accels; }
+            set {
+                if (value != _current_close_button_tooltip_accels) {
+                    tabs.foreach ((t) => {
+                        t.current_close_button_tooltip_accels = value;
+                    });
+                }
+
+                _current_close_button_tooltip_accels = value;
+            }
+        }
 
         /**
          * Accelerator label of the "New Tab" menu item in the tab context menu.
@@ -872,7 +929,7 @@ namespace Granite.Widgets {
             add_button.relief = Gtk.ReliefStyle.NONE;
             add_button.margin_top = 6;
             add_button.margin_bottom = 6;
-            add_button.tooltip_text = _("New Tab");
+            update_add_button_tooltip ();
 
             // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
             var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
@@ -1216,6 +1273,7 @@ namespace Granite.Widgets {
             tab.pin_m.visible = allow_pinning;
             tab.pinnable = allow_pinning;
             tab.pinned = false;
+            tab.current_close_button_tooltip_accels = _current_close_button_tooltip_accels;
 
             tab.width_request = tab_width;
             this.recalc_size ();
