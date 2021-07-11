@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2019-09-01 01:22+0000\n"
-"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"PO-Revision-Date: 2021-07-11 21:09+0000\n"
+"Last-Translator: lucaspifonseca <lucaspifonseca@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #: lib/Application.vala:185
@@ -155,11 +155,11 @@ msgstr "Fechar abas à direita"
 
 #: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
-msgstr ""
+msgstr "Fixar"
 
 #: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
-msgstr ""
+msgstr "Desfixar"
 
 #: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
@@ -260,17 +260,13 @@ msgstr "Alt Direito"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
-#, fuzzy
-#| msgid "Right Alt"
 msgid "Right Ctrl"
-msgstr "Alt Direito"
+msgstr "Ctrl Direito"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
-#, fuzzy
-#| msgid "Left Alt"
 msgid "Left Ctrl"
-msgstr "Alt Esquerdo"
+msgstr "Ctrl Esquerdo"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
