@@ -1,3 +1,25 @@
+granite (6.1.0) bionic; urgency=medium
+
+  * Release 6.1.0 (#487)
+  * ModeButton: allow keyboard focus (#505)
+  * Update translation files
+  * Update translation template
+  * Add API for custom AccelLabels in the tab context menu (#502)
+  * Fix accel_to_string to not automatically add a '+' character unless
+    needed (#503)
+  * Revert adding force_elementary_style (#501)
+  * DynamicNotebook: Use TRANSITION_DURATION_IN_PLACE for close button
+    (#500)
+  * Add TRANSITION_DURATION_IN_PLACE (#498)
+  * Revert "Get prefers accent color from AccountsService" (#496)
+  * Increased required vala compiler version (#493)
+  * Build on windows (#490)
+  * Docs: fix build (#488)
+  * Utils: add force_elementary_style () (#486)
+  * Add prefers_accent_color (#483)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 13 Jul 2021 22:04:10 +0000
+
 granite (6.0.0) bionic; urgency=medium
 
   * Release 6.0.0 (#481)
