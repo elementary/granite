@@ -137,6 +137,21 @@ namespace Granite.Widgets {
          */
         public WidgetsDroppedDelegate dropped_callback = null;
 
+        /**
+         * Accelerator label of the "Close Tab" menu item in the tab context menu.
+         */
+        public AccelLabel close_tab_label { get; construct; }
+
+        /**
+         * Accelerator label of the "Duplicate Tab" menu item in the tab context menu.
+         */
+        public AccelLabel duplicate_tab_label { get; construct; }
+
+        /**
+         * Accelerator label of "Open tab in New Window" menu item in the tab context menu.
+         */
+        public AccelLabel new_window_label { get; construct; }
+
         internal TabPageContainer page_container;
         public Gtk.Widget page {
             get {
@@ -229,7 +244,27 @@ namespace Granite.Widgets {
          * create a tab without a icon.
          **/
         public Tab (string? label = null, GLib.Icon? icon = null, Gtk.Widget? page = null) {
-            Object (label: label, icon: icon);
+            this.with_accellabels (label, icon, page);
+        }
+
+        /**
+         * Create a tab with accellabels.
+         */
+        public Tab.with_accellabels (
+            string? label = null,
+            GLib.Icon? icon = null,
+            Gtk.Widget? page = null,
+            AccelLabel close_tab_label = new AccelLabel (_("Close Tab")),
+            AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate")),
+            AccelLabel new_window_label = new AccelLabel (_("Open in a New Window"))
+        ) {
+            Object (
+                label: label,
+                icon: icon,
+                close_tab_label: close_tab_label,
+                duplicate_tab_label: duplicate_tab_label,
+                new_window_label: new_window_label
+            );
             if (page != null) {
                 this.page = page;
             }
@@ -255,8 +290,11 @@ namespace Granite.Widgets {
             close_button.valign = Gtk.Align.CENTER;
             close_button.relief = Gtk.ReliefStyle.NONE;
 
-            close_button_revealer = new Gtk.Revealer ();
-            close_button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+            close_button_revealer = new Gtk.Revealer () {
+                transition_duration = TRANSITION_DURATION_IN_PLACE,
+                transition_type = Gtk.RevealerTransitionType.CROSSFADE
+            };
+
             close_button_revealer.add (close_button);
 
             var tab_layout = new Gtk.Grid ();
@@ -275,12 +313,12 @@ namespace Granite.Widgets {
             page_container = new TabPageContainer (this);
 
             menu = new Gtk.Menu ();
-            var close_m = new Gtk.MenuItem.with_label (_("Close Tab"));
+            var close_m = new Gtk.MenuItem () { child = close_tab_label };
             var close_other_m = new Gtk.MenuItem.with_label ("");
             var close_other_right_m = new Gtk.MenuItem.with_label ("");
             pin_m = new Gtk.MenuItem.with_label ("");
-            new_window_m = new Gtk.MenuItem.with_label (_("Open in a New Window"));
-            duplicate_m = new Gtk.MenuItem.with_label (_("Duplicate"));
+            new_window_m = new Gtk.MenuItem () { child = new_window_label };
+            duplicate_m = new Gtk.MenuItem () { child = duplicate_tab_label };
             menu.append (close_other_m);
             menu.append (close_other_right_m);
             menu.append (close_m);
@@ -683,6 +721,16 @@ namespace Granite.Widgets {
         // Use temporary field to avoid breaking API this can be dropped while preparing for 0.4
         string _add_button_tooltip;
 
+        /**
+         * Accelerator label of the "New Tab" menu item in the tab context menu.
+         */
+        public AccelLabel new_tab_label { get; construct; }
+
+        /**
+         * Accelerator label of the "Restore Tab" menu item in the tab context menu.
+         */
+        public AccelLabel restore_tab_label { get; construct; }
+
         public Tab current {
             get { return tabs.nth_data (notebook.get_current_page ()); }
             set { notebook.set_current_page (tabs.index (value)); }
@@ -760,7 +808,20 @@ namespace Granite.Widgets {
          * Create a new dynamic notebook
          */
         public DynamicNotebook () {
+            this.with_accellabels ();
+        }
 
+        /**
+         * Create a new dynamic notebook with accellabels
+         */
+        public DynamicNotebook.with_accellabels (
+            AccelLabel new_tab_label = new AccelLabel (_("New Tab")),
+            AccelLabel restore_tab_label = new AccelLabel (_("Undo Close Tab"))
+        ) {
+            Object (
+                new_tab_label: new_tab_label,
+                restore_tab_label: restore_tab_label
+            );
         }
 
         construct {
@@ -776,9 +837,11 @@ namespace Granite.Widgets {
             add (notebook);
 
             menu = new Gtk.Menu ();
-            new_tab_m = new Gtk.MenuItem.with_label (_("New Tab"));
-            restore_tab_m = new Gtk.MenuItem.with_label (_("Undo Close Tab"));
-            restore_tab_m.sensitive = false;
+            new_tab_m = new Gtk.MenuItem () { child = new_tab_label };
+            restore_tab_m = new Gtk.MenuItem () {
+                child = restore_tab_label,
+                sensitive = false
+            };
             menu.append (new_tab_m);
             menu.append (restore_tab_m);
             menu.show_all ();

@@ -173,7 +173,11 @@ public static string accel_to_string (string? accel) {
             break;
     }
 
-    return string.joinv (" + ", arr);
+    if (accel_key != 0 && accel_mods != 0) {
+        return string.joinv (" + ", arr);
+    }
+
+    return arr[0];
 }
 
 /**
@@ -288,21 +292,6 @@ public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
     }
 
     return fg_color;
-}
-
-/**
- * Sets the app's icons, cursors, and stylesheet to elementary defaults.
- */
-public void force_elementary_style () {
-    const string STYLESHEET_PREFIX = "io.elementary.stylesheet";
-    unowned var gtk_settings = Gtk.Settings.get_default ();
-
-    gtk_settings.gtk_cursor_theme_name = "elementary";
-    gtk_settings.gtk_icon_theme_name = "elementary";
-
-    if (!gtk_settings.gtk_theme_name.has_prefix (STYLESHEET_PREFIX)) {
-        gtk_settings.gtk_theme_name = string.join (".", STYLESHEET_PREFIX, "blueberry");
-    }
 }
 
 }

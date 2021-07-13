@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-04-21 01:45+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-06-05 17:59+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -42,23 +42,24 @@ msgid "Additions:"
 msgstr "Adições:"
 
 #: data/granite.appdata.xml.in:17
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Settings.prefers_accent_color para obter a preferência de cor de destaque do "
-"utilizador"
-
-#: data/granite.appdata.xml.in:18
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
-"force_elementary_style para definir os ícones da aplicação, cursores e folha "
-"de estilo para os padrões do elementary"
+"TRANSITION_DURATION_IN_PLACE para transformações consistentes e prontas de "
+"widget"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Outras alterações:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
+"accel_to_string lida com a marcação de aceleração sem modificadores ou que "
+"são apenas modificadores"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -277,3 +278,16 @@ msgstr "Atraso no redimensionamento do separador ao fechar os separadores"
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style para definir os ícones da aplicação, cursores e "
+#~ "folha de estilo para os padrões do elementary"
+
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Settings.prefers_accent_color para obter a preferência de cor de destaque "
+#~ "do utilizador"

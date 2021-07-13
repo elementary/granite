@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2021-02-15 19:46+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/desktop/granite-"
@@ -43,23 +43,24 @@ msgstr ""
 #: data/granite.appdata.xml.in:17
 #, fuzzy
 #| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Уведена је „Settings.prefers_color_scheme“ за добављање корисничких поставки "
-"шеме боје, тј. за тамни стил"
-
-#: data/granite.appdata.xml.in:18
+#| "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
+#| "animations"
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"„TRANSITION_DURATION_OPEN“ и „TRANSITION_DURATION_CLOSE“ за доследне "
+"анимације"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Остале измене:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -264,3 +265,13 @@ msgstr "Закасни са променом величине језичка п�
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#, fuzzy
+#~| msgid ""
+#~| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
+#~| "preference, i.e. for a dark style"
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Уведена је „Settings.prefers_color_scheme“ за добављање корисничких "
+#~ "поставки шеме боје, тј. за тамни стил"

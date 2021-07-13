@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2020-10-23 17:15+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/desktop/granite-"
@@ -44,23 +44,24 @@ msgstr ""
 #: data/granite.appdata.xml.in:17
 #, fuzzy
 #| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Introdotto Settings.prefers_color_scheme per ottenere la combinazione di "
-"colori dell'utente come  ad esempio il tema scuro"
-
-#: data/granite.appdata.xml.in:18
+#| "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
+#| "animations"
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"TRANSITION_DURATION_OPEN e TRANSITION_DURATION_CLOSE per animazioni "
+"consistenti"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Altre modifiche:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -278,3 +279,13 @@ msgstr "Ritarda il ridimensionamento delle schede in fase di chiusura"
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#, fuzzy
+#~| msgid ""
+#~| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
+#~| "preference, i.e. for a dark style"
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Introdotto Settings.prefers_color_scheme per ottenere la combinazione di "
+#~ "colori dell'utente come  ad esempio il tema scuro"

@@ -144,9 +144,12 @@ namespace Granite.Services {
                 return;
 
             AppInfo info;
+
+#if !WINDOWS
             if (app != null)
                 info = new DesktopAppInfo.from_filename (app.get_path ());
             else
+#endif
                 try {
                     info = files.first ().data.query_default_handler ();
                 } catch {

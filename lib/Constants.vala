@@ -1,5 +1,5 @@
 /*
- *  Copyright 2012-2020 elementary, Inc. (https://elementary.io)
+ *  Copyright 2012-2021 elementary, Inc. (https://elementary.io)
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -164,6 +164,11 @@ namespace Granite {
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
      */
     public const int TRANSITION_DURATION_CLOSE = 200;
+
+    /**
+     * Transition duration when a widget transforms in-place, like when filtering content with a view switcher
+     */
+    public const int TRANSITION_DURATION_IN_PLACE = 100;
 
     /**
      * Transition duration when a widget opens, reveals more content, or enters the screen

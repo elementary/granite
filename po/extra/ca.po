@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-16 20:49+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-06-04 13:59+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
 "extra/ca/>\n"
@@ -41,25 +41,24 @@ msgid "Additions:"
 msgstr "Adendes:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Introducció de Settings.prefers_color_scheme per obtenir la preferència de "
-"l'esquema de colors de l'usuari, és a dir, per a un estil fosc"
-
-#: data/granite.appdata.xml.in:18
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"TRANSITION_DURATION_IN_PLACE per obtenir transformacions de ginys in situ "
+"consistents"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Altres canvis:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
+"accel_to_string gestiona el marcatge d'accel sense modificadors o que només "
+"són modificadors"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -271,3 +270,16 @@ msgstr "Retard del canvi de mida de la pestanya quan es tanquen les pestanyes"
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style per establir les icones d'aplicacions, cursors i "
+#~ "estil als valors per defecte de l'elementary"
+
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Settings.prefers_color_scheme per obtenir la preferència de colors de "
+#~ "l'usuari"

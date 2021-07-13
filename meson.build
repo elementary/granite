@@ -5,8 +5,8 @@ project(
     version: '6.1.0'
 )
 
-if meson.get_compiler('vala').version().version_compare('<0.40.0')
-    error('vala compiler version 0.40.0 or newer is required.')
+if meson.get_compiler('vala').version().version_compare('<0.48.0')
+    error('vala compiler version 0.48.0 or newer is required.')
 endif
 
 add_project_arguments(
@@ -22,11 +22,18 @@ elif build_machine.system() == 'freebsd'
     vala_os_arg = ['--define=FREE_BSD']
 elif build_machine.system() == 'netbsd'
     vala_os_arg = ['--define=NET_BSD']
+elif build_machine.system() == 'windows'
+    vala_os_arg = ['--define=WINDOWS']
 else
     vala_os_arg = []
 endif
 
 glib_min_version = '2.50'
+if build_machine.system() == 'windows'
+    gio_os_dep = dependency('gio-windows-2.0', version: '>=' + glib_min_version)
+else
+    gio_os_dep = dependency('gio-unix-2.0', version: '>=' + glib_min_version)
+endif
 
 add_project_arguments(
     vala_os_arg,
@@ -39,7 +46,7 @@ add_project_arguments(
 libgranite_deps = [
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),
-    dependency('gio-unix-2.0', version: '>=' + glib_min_version),
+    gio_os_dep,
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
     dependency('gtk+-3.0', version: '>=3.22'),

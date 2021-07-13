@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-12 23:55+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-07-05 11:21+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/en_GB/>\n"
@@ -40,25 +40,23 @@ msgid "Additions:"
 msgstr "Additions:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Introduced Settings.prefers_color_scheme to get a user's color scheme "
-"preference, i.e. for a dark style"
-
-#: data/granite.appdata.xml.in:18
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Other Changes:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -262,6 +260,18 @@ msgstr "Delay tab resizing when closing tabs"
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Settings.prefers_accent_color to get a user's accent colour preference"
 
 #~ msgid "Fix issues with launcher badges not showing"
 #~ msgstr "Fix issues with launcher badges not showing"

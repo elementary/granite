@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-03-16 12:58+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-06-15 18:31+0000\n"
 "Last-Translator: Alvaro <alvaroaraoz_92@hotmail.com>\n"
-"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/es/>\n"
+"Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,25 +41,23 @@ msgid "Additions:"
 msgstr "Adiciones:"
 
 #: data/granite.appdata.xml.in:17
-#, fuzzy
-#| msgid ""
-#| "Introduced Settings.prefers_color_scheme to get a user's color scheme "
-#| "preference, i.e. for a dark style"
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-"Se añadió Settings.prefers_color_scheme para obtener la preferencia de "
-"combinación de colores (tema claro/oscuro) del usuario"
-
-#: data/granite.appdata.xml.in:18
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"TRANSITION_DURATION_IN_PLACE para transformaciones coherentes de los widgets"
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
 msgstr "Otros cambios:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
+msgstr ""
+"accel_to_string maneja el marcado de aceleración sin modificadores o que son "
+"solo modificadores"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -147,6 +145,8 @@ msgstr ""
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"El retroceso, el control derecho y el control izquierdo ahora son manejados "
+"por accel_to_string"
 
 #: data/granite.appdata.xml.in:55
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -168,10 +168,14 @@ msgstr "Granite.MessageDialog ahora utiliza el nombre en CSS messagedialog"
 #: data/granite.appdata.xml.in:58
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"El nombre visible ahora está sincronizado correctamente en Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:59
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
 msgstr ""
+"El estado se puede establecer en Granite.AbstractSettingsPage mientas está "
+"en construcción"
 
 #: data/granite.appdata.xml.in:66
 msgid "New Style Constants:"
@@ -281,3 +285,16 @@ msgstr "Demora en el cambio de tamaño de la pestaña al cerrar las pestañas"
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
+
+#~ msgid ""
+#~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
+#~ "elementary defaults"
+#~ msgstr ""
+#~ "force_elementary_style para configurar los iconos, cursores y hoja de "
+#~ "estilo de la aplicación con los valores predeterminados de elementary"
+
+#~ msgid ""
+#~ "Settings.prefers_accent_color to get a user's accent color preference"
+#~ msgstr ""
+#~ "Settings.prefers_accent_color para obtener la preferencia de color de "
+#~ "acento de un usuario"

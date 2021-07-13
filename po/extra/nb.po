@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-20 21:51+0000\n"
-"PO-Revision-Date: 2021-01-20 22:37+0000\n"
+"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"PO-Revision-Date: 2021-07-03 09:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nb/>\n"
@@ -20,12 +20,13 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
+#, fuzzy
 msgid "Granite"
-msgstr ""
+msgstr "Granitt"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Bygg konsistente og nyttige programmer raskt og enkelt"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
@@ -35,21 +36,22 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
 msgid "Additions:"
-msgstr ""
+msgstr "Tillegg:"
 
 #: data/granite.appdata.xml.in:17
-msgid "Settings.prefers_accent_color to get a user's accent color preference"
-msgstr ""
-
-#: data/granite.appdata.xml.in:18
 msgid ""
-"force_elementary_style to set the app's icons, cursors, and stylesheet to "
-"elementary defaults"
+"TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
 
-#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
+msgstr "Andre endringer:"
+
+#: data/granite.appdata.xml.in:21
+msgid ""
+"accel_to_string handles accel markup without modifiers or that are only "
+"modifiers"
 msgstr ""
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
@@ -98,8 +100,9 @@ msgid ""
 msgstr ""
 
 #: data/granite.appdata.xml.in:42
+#, fuzzy
 msgid "Removals:"
-msgstr ""
+msgstr "Fjerninger:"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
