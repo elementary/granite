@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2021-07-17 07:24+0000\n"
-"Last-Translator: nenufa <jean.a.r22@hotmail.com>\n"
+"Last-Translator: Jean-Charbel Vannier <Jean-Charbel.VANNIER@supinfo.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -223,7 +223,7 @@ msgstr "Melhorias:"
 
 #: data/granite.appdata.xml.in:102
 msgid "Better align labels in settings sidebars"
-msgstr "Melhor alinhamento das etiquetas nas configurações das barras laterais"
+msgstr "Melhorar o alinhamento das etiquetas nas barras laterais dos parâmetros"
 
 #: data/granite.appdata.xml.in:103
 msgid "Make AccelLabel.label settable"
