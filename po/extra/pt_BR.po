@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-07-16 23:11+0000\n"
+"PO-Revision-Date: 2021-07-17 07:24+0000\n"
 "Last-Translator: lucaspifonseca <lucaspifonseca@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/pt_BR/>\n"
@@ -32,7 +32,7 @@ msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
-"Uma biblioteca tudo-em-um para GTK e GLib  que oferece widgets complexos e "
+"Uma biblioteca tudo-em-um para GTK e GLib que oferece widgets complexos e "
 "métodos convenientes projetados para uso em apps feitos para o Elementary OS."
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
@@ -117,7 +117,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:71
 #: data/granite.appdata.xml.in:92
 msgid "Deprecations:"
-msgstr "Depreciações:"
+msgstr "Deprecações:"
 
 #: data/granite.appdata.xml.in:49
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
@@ -215,7 +215,7 @@ msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
-"Agora é recomendado usar GLib.Settings em vez de Granite.Services.Settings"
+"Agora é recomendado que use GLib.Settings em vez de Granite.Services.Settings"
 
 #: data/granite.appdata.xml.in:100 data/granite.appdata.xml.in:115
 msgid "Improvements:"
@@ -244,7 +244,7 @@ msgstr "Novo widget AccelLabel para uso em menus e popovers"
 
 #: data/granite.appdata.xml.in:117
 msgid "Delay tab resizing when closing tabs"
-msgstr "Atraso no redimensionamento de abas ao fechar as abas"
+msgstr "Atraso no redimensionamento de abas ao fechá-las"
 
 #: data/granite.appdata.xml.in:124
 msgid "elementary, Inc."
