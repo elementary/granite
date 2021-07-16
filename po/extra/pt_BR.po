@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
 "PO-Revision-Date: 2021-07-17 07:24+0000\n"
-"Last-Translator: Wallace Silva <aliga12@yahoo.com.br>\n"
+"Last-Translator: Mário Victor Ribeiro Silva <mariovictorrs@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -37,7 +37,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
 msgid "Additions:"
-msgstr ""
+msgstr "Adições:"
 
 #: data/granite.appdata.xml.in:17
 msgid ""
@@ -47,7 +47,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:51
 #: data/granite.appdata.xml.in:78
 msgid "Other Changes:"
-msgstr ""
+msgstr "Outras Mudanças:"
 
 #: data/granite.appdata.xml.in:21
 msgid ""
