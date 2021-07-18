@@ -170,7 +170,7 @@ public static string accel_to_string (string? accel) {
             break;
         default:
             // If a specified accelarator contains only modifiers e.g. "<Control><Shift>",
-            // we get anything from accelerator_get_label method, so skip that case
+            // we don't get anything from accelerator_get_label method, so skip that case
             string accel_label = Gtk.accelerator_get_label (accel_key, 0);
             if (accel_label != "") {
                 arr += accel_label;
