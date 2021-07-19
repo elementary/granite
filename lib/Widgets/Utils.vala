@@ -169,11 +169,16 @@ public static string accel_to_string (string? accel) {
             arr += _("Right Shift");
             break;
         default:
-            arr += Gtk.accelerator_get_label (accel_key, 0);
+            // If a specified accelarator contains only modifiers e.g. "<Control><Shift>",
+            // we don't get anything from accelerator_get_label method, so skip that case
+            string accel_label = Gtk.accelerator_get_label (accel_key, 0);
+            if (accel_label != "") {
+                arr += accel_label;
+            }
             break;
     }
 
-    if (accel_key != 0 && accel_mods != 0) {
+    if (accel_mods != 0) {
         return string.joinv (" + ", arr);
     }
 
