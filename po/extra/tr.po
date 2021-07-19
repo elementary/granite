@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-05-13 15:39+0000\n"
+"PO-Revision-Date: 2021-07-19 22:30+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,6 +56,8 @@ msgid ""
 "accel_to_string handles accel markup without modifiers or that are only "
 "modifiers"
 msgstr ""
+"accel_to_string, değiştiriciler olmadan veya yalnızca değiştiriciler olan "
+"hızlandırma işaretlemesini işler"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
@@ -74,7 +76,7 @@ msgstr "Gtk.Popover menülerinde kullanmak için Granite.SwitchModelButton"
 
 #: data/granite.appdata.xml.in:32
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Formlarda istemci tarafı doğrulama için Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:34
 msgid "New Constants:"
@@ -84,10 +86,12 @@ msgstr "Yeni Sabitler:"
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"Gtk.Tooltips'de daha küçük ikinci satır metni için "
+"TOOLTIP_SECONDARY_TEXT_MARKUP"
 
 #: data/granite.appdata.xml.in:37
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "Pango içermeyen daha küçük Gtk.Labels için SMALL_LABEL"
 
 #: data/granite.appdata.xml.in:38
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
@@ -139,6 +143,8 @@ msgstr ""
 msgid ""
 "Backlash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"Ters Eğik Çizgi, Sağ Control ve Sol Control artık accel_to_string tarafından "
+"işleniyor"
 
 #: data/granite.appdata.xml.in:55
 msgid "Make tab tooltips of DynamicNotebook settable"
@@ -148,18 +154,22 @@ msgstr "DynamicNotebook'un sekme araç ipuçlarını ayarlanabilir yapın"
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Zaman seçici, AM ve PM düğmeleri seçildiğinde time_changed'i doğru şekilde "
+"tetikler"
 
 #: data/granite.appdata.xml.in:57
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog artık messagedialog CSS adını kullanıyor"
 
 #: data/granite.appdata.xml.in:58
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Görünür alt ad artık Granite.SettingsSidebar'da düzgün bir şekilde "
+"senkronize edildi"
 
 #: data/granite.appdata.xml.in:59
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Durum, yapı üzerinde Granite.AbstractSettingsPage'de ayarlanabilir"
 
 #: data/granite.appdata.xml.in:66
 msgid "New Style Constants:"
