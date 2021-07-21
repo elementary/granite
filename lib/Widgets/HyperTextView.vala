@@ -24,6 +24,8 @@
      */
     public class HyperTextView : Gtk.TextView {
 
+        private const int FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET = -1;
+
         private uint buffer_changed_debounce_timeout_id = 0;
         private int buffer_cursor_position_when_change_started = 0;
 
@@ -94,7 +96,7 @@
 
         private void on_paste_done (Gtk.Clipboard clipboard) {
             // force rescan of whole buffer:
-            buffer_cursor_position_when_change_started = -1;
+            buffer_cursor_position_when_change_started = FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET;
         }
 
         private void on_after_buffer_changed () {
@@ -111,7 +113,7 @@
 
                 buffer_cursor_position_when_change_started = 0;
 
-                if (change_start_offset < 0) {
+                if (change_start_offset == FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET) {
                     change_start_offset = 0;
                     change_end_offset = buffer.text.length;
                 }
