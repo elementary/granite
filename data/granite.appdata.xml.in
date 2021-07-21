@@ -51,7 +51,7 @@
         <p>Other Changes:</p>
         <ul>
           <li>Toasts now reset their timeout when sending a new notification and the timeout is stopped while hovering</li>
-          <li>Backlash, Right Control, and Left Control are now handled by accel_to_string</li>
+          <li>Backslash, Right Control, and Left Control are now handled by accel_to_string</li>
           <li>Make tab tooltips of DynamicNotebook settable</li>
           <li>Timepicker corrrectly fires time_changed when AM and PM buttons are selected</li>
           <li>Granite.MessageDialog now uses the messagedialog CSS name</li>
