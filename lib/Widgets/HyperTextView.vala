@@ -79,7 +79,7 @@
                 toplevel_window.key_press_event.connect (on_key_press_event);
                 toplevel_window.key_release_event.connect (on_key_release_event);
             } else {
-                warning ("Unable to bind key press events to toplevel window, Control + Click may not behave correct under all circumstances.");
+                warning ("Could not bind key-press events to top-level window, Control + Click may not always behave correctly.");
                 // bind to this as a fallback
                 key_press_event.connect (on_key_press_event);
                 key_release_event.connect (on_key_release_event);
@@ -252,10 +252,10 @@
                     try {
                         GLib.AppInfo.launch_default_for_uri (uri, null);
                     } catch (GLib.Error e) {
-                        warning ("Unable to open URI '%s': %s", uri, e.message);
+                        warning ("Could not open URI '%s': %s", uri, e.message);
 
                         var error_dialog = new Granite.MessageDialog (
-                            _("Unable to open URI"),
+                            _("Could not open URI"),
                             e.message,
                             new ThemedIcon ("dialog-error"),
                             Gtk.ButtonsType.CLOSE
