@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-05-10 10:49+0000\n"
+"PO-Revision-Date: 2021-07-22 23:06+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fi/>\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +57,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:81 data/granite.appdata.xml.in:104
 #: data/granite.appdata.xml.in:118
 msgid "Updated translations"
-msgstr "Päivitetyt käännökset"
+msgstr "Päivitetyt kielikäännökset"
 
 #: data/granite.appdata.xml.in:30
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
