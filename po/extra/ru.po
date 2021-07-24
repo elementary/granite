@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-07-24 12:56+0000\n"
+"PO-Revision-Date: 2021-07-24 17:54+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:66
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Новые константы стиля:"
 
 #: data/granite.appdata.xml.in:68
 msgid "STYLE_CLASS_COLOR_BUTTON"
@@ -182,12 +182,16 @@ msgstr "STYLE_CLASS_ROUNDED"
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
+"Несколько утилит для создания тем. Вместо них используйте Gtk.CssProvider и "
+"Gtk.StyleContext"
 
 #: data/granite.appdata.xml.in:74
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granite.Services.SimpleCommand. Вместо этого используйте GLib.AppInfo."
+"create_from_commandline"
 
 #: data/granite.appdata.xml.in:75
 msgid ""
@@ -216,12 +220,16 @@ msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
+"Введена функция Settings.prefers_color_scheme для получения предпочтений "
+"пользователя по цветовой схеме, т.е. для темного стиля"
 
 #: data/granite.appdata.xml.in:94
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"Теперь рекомендуется использовать GLib.Settings вместо Granite.Services."
+"Settings"
 
 #: data/granite.appdata.xml.in:100 data/granite.appdata.xml.in:115
 msgid "Improvements:"
