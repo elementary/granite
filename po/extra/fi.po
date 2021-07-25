@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-07-22 23:06+0000\n"
+"PO-Revision-Date: 2021-07-25 16:31+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fi/>\n"
@@ -190,7 +190,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:87
 msgid "New features:"
-msgstr ""
+msgstr "Uudet ominaisuudet:"
 
 #: data/granite.appdata.xml.in:89
 msgid "New Settings class to share Pantheon desktop settings with apps"
@@ -222,7 +222,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:110
 msgid "New features"
-msgstr ""
+msgstr "Uudet ominaisuudet"
 
 #: data/granite.appdata.xml.in:112
 msgid "Add tooltips to source list items and their actions"
