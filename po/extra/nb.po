@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-05-06 01:07+0000\n"
+"PO-Revision-Date: 2021-07-22 02:17+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nb/>\n"
@@ -20,12 +20,13 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
+#, fuzzy
 msgid "Granite"
-msgstr ""
+msgstr "Granitt"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Bygg konsistente og nyttige programmer raskt og enkelt"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
@@ -35,7 +36,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:28
 msgid "Additions:"
-msgstr ""
+msgstr "Tillegg:"
 
 #: data/granite.appdata.xml.in:17
 msgid ""
@@ -99,8 +100,9 @@ msgid ""
 msgstr ""
 
 #: data/granite.appdata.xml.in:42
+#, fuzzy
 msgid "Removals:"
-msgstr ""
+msgstr "Fjerninger:"
 
 #: data/granite.appdata.xml.in:44
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
@@ -237,5 +239,6 @@ msgid "Delay tab resizing when closing tabs"
 msgstr ""
 
 #: data/granite.appdata.xml.in:124
+#, fuzzy
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
