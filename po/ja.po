@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-03-23 08:30+0000\n"
+"PO-Revision-Date: 2021-08-04 04:53+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
 "ja/>\n"
@@ -167,7 +167,7 @@ msgstr "新しいタブ"
 
 #: lib/Widgets/DynamicNotebook.vala:819
 msgid "Undo Close Tab"
-msgstr "閉じたタブを復元"
+msgstr "閉じたタブを再度開く"
 
 #: lib/Widgets/DynamicNotebook.vala:885
 msgid "Closed Tabs"
