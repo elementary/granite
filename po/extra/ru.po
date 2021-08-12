@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-07-24 17:54+0000\n"
+"PO-Revision-Date: 2021-08-10 13:49+0000\n"
 "Last-Translator: DartDeaDia <jorydit@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -156,11 +156,13 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:57
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog теперь использует CSS-имя messagedialog"
 
 #: data/granite.appdata.xml.in:58
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Видимое дочернее имя теперь правильно синхронизируется в Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:59
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
@@ -198,6 +200,8 @@ msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"Старые неиспользуемые утилиты, такие как get_button_layout_schema, "
+"get_default_close_button_position и Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:76
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
