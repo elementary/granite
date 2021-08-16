@@ -10,6 +10,16 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
+    <release version="6.1.1" date="2021-08-16" urgency="medium">
+      <description>
+        <p>Fixes:</p>
+        <ul>
+          <li>Ensure accel_to_string works with multiple modifiers</li>
+          <li>Correctly setup locales</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.1.0" date="2021-07-13" urgency="medium">
       <description>
         <p>Additions:</p>
