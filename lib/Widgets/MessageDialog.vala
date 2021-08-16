@@ -255,6 +255,10 @@ public class Granite.MessageDialog : Granite.Dialog {
         );
     }
 
+    static construct {
+        Granite.init ();
+    }
+
     class construct {
         set_css_name (Gtk.STYLE_CLASS_MESSAGE_DIALOG);
     }

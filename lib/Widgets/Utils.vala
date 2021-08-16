@@ -89,6 +89,9 @@ public static string accel_to_string (string? accel) {
         return "";
     }
 
+    // We need to make sure that the translation domain is correctly setup
+    Granite.init ();
+
     uint accel_key;
     Gdk.ModifierType accel_mods;
     Gtk.accelerator_parse (accel, out accel_key, out accel_mods);
@@ -212,6 +215,9 @@ public static string markup_accel_tooltip (string[]? accels, string? description
 
     if (accels != null && accels.length > 0) {
         string[] unique_accels = {};
+
+        // We need to make sure that the translation domain is correctly setup
+        Granite.init ();
 
         for (int i = 0; i < accels.length; i++) {
             if (accels[i] == "") {

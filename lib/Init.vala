@@ -18,6 +18,15 @@
  */
 
 namespace Granite {
-    private const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
-    private const string LOCALEDIR = "@LOCALEDIR@";
+    static bool initialized = false;
+
+    internal void init () {
+        if (initialized) {
+            return;
+        }
+
+        GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+        GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+        initialized = true;
+    }
 }
