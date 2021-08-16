@@ -270,6 +270,10 @@ namespace Granite.Widgets {
             }
         }
 
+        static construct {
+            Granite.init ();
+        }
+
         construct {
             _label = new Gtk.Label (null);
             _label.hexpand = true;
@@ -822,6 +826,10 @@ namespace Granite.Widgets {
                 new_tab_label: new_tab_label,
                 restore_tab_label: restore_tab_label
             );
+        }
+
+        static construct {
+            Granite.init ();
         }
 
         construct {

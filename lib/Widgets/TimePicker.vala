@@ -86,6 +86,10 @@ namespace Granite.Widgets {
             Object (format_12: format_12, format_24: format_24);
         }
 
+        static construct {
+            Granite.init ();
+        }
+
         construct {
             if (format_12 == null) {
                 format_12 = Granite.DateTime.get_default_time_format (true);
