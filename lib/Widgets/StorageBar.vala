@@ -159,6 +159,11 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
     }
 
     construct {
+        GLib.Intl.setlocale (LocaleCategory.ALL, "");
+        GLib.Intl.textdomain (Granite.GETTEXT_PACKAGE);
+        GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+        GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+
         orientation = Gtk.Orientation.VERTICAL;
         description_label = new Gtk.Label (null);
         description_label.hexpand = true;

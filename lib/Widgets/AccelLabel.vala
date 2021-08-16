@@ -76,6 +76,11 @@ public class Granite.AccelLabel : Gtk.Grid {
     }
 
     construct {
+        GLib.Intl.setlocale (LocaleCategory.ALL, "");
+        GLib.Intl.textdomain (Granite.GETTEXT_PACKAGE);
+        GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+        GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+
         var label = new Gtk.Label (label);
         label.hexpand = true;
         label.margin_end = 6;

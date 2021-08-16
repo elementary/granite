@@ -271,6 +271,11 @@ namespace Granite.Widgets {
         }
 
         construct {
+            GLib.Intl.setlocale (LocaleCategory.ALL, "");
+            GLib.Intl.textdomain (Granite.GETTEXT_PACKAGE);
+            GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+            GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+
             _label = new Gtk.Label (null);
             _label.hexpand = true;
             _label.tooltip_text = label;
@@ -825,6 +830,11 @@ namespace Granite.Widgets {
         }
 
         construct {
+            GLib.Intl.setlocale (LocaleCategory.ALL, "");
+            GLib.Intl.textdomain (Granite.GETTEXT_PACKAGE);
+            GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+            GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+
             notebook = new Gtk.Notebook ();
             notebook.can_focus = false;
             visible_window = true; // needed for leave_notify event

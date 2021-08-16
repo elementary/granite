@@ -87,6 +87,11 @@ namespace Granite.Widgets {
         }
 
         construct {
+            GLib.Intl.setlocale (LocaleCategory.ALL, "");
+            GLib.Intl.textdomain (Granite.GETTEXT_PACKAGE);
+            GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
+            GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
+
             if (format_12 == null) {
                 format_12 = Granite.DateTime.get_default_time_format (true);
             }
