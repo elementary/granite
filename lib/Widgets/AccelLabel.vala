@@ -75,6 +75,10 @@ public class Granite.AccelLabel : Gtk.Grid {
         );
     }
 
+    static construct {
+        Granite.init ();
+    }
+
     construct {
         var label = new Gtk.Label (label);
         label.hexpand = true;

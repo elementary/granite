@@ -158,6 +158,10 @@ public class Granite.Widgets.StorageBar : Gtk.Box {
         Object (storage: storage, total_usage: total_usage);
     }
 
+    static construct {
+        Granite.init ();
+    }
+
     construct {
         orientation = Gtk.Orientation.VERTICAL;
         description_label = new Gtk.Label (null);

@@ -2,6 +2,7 @@ libgranite_sources = files(
     'Application.vala',
     'DateTime.vala',
     'Constants.vala',
+    'Init.vala',
 
     'Drawing/BufferSurface.vala',
     'Drawing/Color.vala',
@@ -67,6 +68,7 @@ include_dir = join_paths(
 
 config_data = configuration_data()
 config_data.set('GETTEXT_PACKAGE', meson.project_name())
+config_data.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
 config_vala = configure_file(
     input: 'Config.vala.in',
     output: '@BASENAME@',
