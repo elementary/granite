@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-05 16:34+0000\n"
-"PO-Revision-Date: 2021-08-23 12:12+0000\n"
+"PO-Revision-Date: 2021-08-24 02:12+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite/hu/>\n"
@@ -22,73 +22,70 @@ msgstr ""
 
 #: lib/Application.vala:185
 msgid "Show Granite Options"
-msgstr ""
+msgstr "A Granite beállításainak megjelenítése"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:42
-#, fuzzy
 msgid "%-l:%M:%S %p"
 msgstr "%p %l:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:45
-#, fuzzy
 msgid "%-l:%M %p"
 msgstr "%p %l:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:50
 msgid "%H:%M:%S"
-msgstr "%H.%M.%S"
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:53
 msgid "%H:%M"
-msgstr "%H.%M"
+msgstr "%H:%M"
 
 #: lib/DateTime.vala:73
 msgid "Now"
-msgstr ""
+msgstr "Most"
 
 #: lib/DateTime.vala:76
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d perccel ezelőtt"
+msgstr[1] "%d perccel ezelőtt"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d órával ezelőtt"
+msgstr[1] "%d órával ezelőtt"
 
 #: lib/DateTime.vala:85
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d percen belül"
+msgstr[1] "%d percen belül"
 
 #: lib/DateTime.vala:88
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d órán belül"
+msgstr[1] "%d órán belül"
 
 #: lib/DateTime.vala:94
 msgid "Yesterday"
-msgstr ""
+msgstr "Tegnap"
 
 #: lib/DateTime.vala:96
 msgid "Tomorrow"
-msgstr ""
+msgstr "Holnap"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:148
-#, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%Y. %b. %e. %a"
 
@@ -120,7 +117,6 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:166
-#, fuzzy
 msgid "%a, %b %e"
 msgstr "%b. %e. %a"
 
@@ -138,7 +134,6 @@ msgid "Duplicate"
 msgstr "Duplikálás"
 
 #: lib/Widgets/DynamicNotebook.vala:259
-#, fuzzy
 msgid "Open in a New Window"
 msgstr "Megnyitás új ablakban"
 
@@ -152,19 +147,19 @@ msgstr "A többi lap bezárása"
 
 #: lib/Widgets/DynamicNotebook.vala:368
 msgid "Close Tab to the Right"
-msgstr ""
+msgstr "A jobbra lévő lap bezárása"
 
 #: lib/Widgets/DynamicNotebook.vala:369
 msgid "Close Tabs to the Right"
-msgstr ""
+msgstr "A jobbra lévő lapok bezárása"
 
 #: lib/Widgets/DynamicNotebook.vala:374
 msgid "Pin"
-msgstr ""
+msgstr "Kitűzés"
 
 #: lib/Widgets/DynamicNotebook.vala:376
 msgid "Unpin"
-msgstr ""
+msgstr "Feloldás"
 
 #: lib/Widgets/DynamicNotebook.vala:553
 msgid "Clear All"
@@ -188,11 +183,11 @@ msgstr "_Bezárás"
 
 #: lib/Widgets/MessageDialog.vala:142
 msgid "_Cancel"
-msgstr ""
+msgstr "_Mégse"
 
 #: lib/Widgets/MessageDialog.vala:348
 msgid "Details"
-msgstr ""
+msgstr "Részletek"
 
 #: lib/Widgets/StorageBar.vala:82
 msgid "Audio"
@@ -201,12 +196,12 @@ msgstr "Hang"
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:85
 msgid "Videos"
-msgstr "videók"
+msgstr "Videók"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:88
 msgid "Photos"
-msgstr "képek"
+msgstr "Képek"
 
 #: lib/Widgets/StorageBar.vala:90
 msgid "Apps"
@@ -243,69 +238,69 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:102
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:106
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:110
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:128
 msgid "Left Alt"
-msgstr ""
+msgstr "Bal Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:132
 msgid "Right Alt"
-msgstr ""
+msgstr "Jobb Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:139
 msgid "Right Ctrl"
-msgstr ""
+msgstr "Jobb Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:143
 msgid "Left Ctrl"
-msgstr ""
+msgstr "Bal Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:148
 msgid "Minus"
-msgstr ""
+msgstr "Mínusz"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:153
 msgid "Plus"
-msgstr ""
+msgstr "Plusz"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:158
 msgid "Equals"
-msgstr ""
+msgstr "Egyenlőség"
 
 #: lib/Widgets/Utils.vala:161
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:165
 msgid "Left Shift"
-msgstr ""
+msgstr "Bal Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:169
 msgid "Right Shift"
-msgstr ""
+msgstr "Jobb Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:224
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "%s's Developers"
 #~ msgstr "%s fejlesztői"
