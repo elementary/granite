@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"POT-Creation-Date: 2021-08-25 22:03+0000\n"
 "PO-Revision-Date: 2020-03-01 15:09+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -127,7 +127,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:54
 msgid ""
-"Backlash, Right Control, and Left Control are now handled by accel_to_string"
+"Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
 
 #: data/granite.appdata.xml.in:55
