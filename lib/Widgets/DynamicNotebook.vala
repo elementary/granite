@@ -140,17 +140,17 @@ namespace Granite.Widgets {
         /**
          * Accelerator label of the "Close Tab" menu item in the tab context menu.
          */
-        public AccelLabel close_tab_label { get; construct; }
+        public AccelLabel? close_tab_label { get; construct; }
 
         /**
          * Accelerator label of the "Duplicate Tab" menu item in the tab context menu.
          */
-        public AccelLabel duplicate_tab_label { get; construct; }
+        public AccelLabel? duplicate_tab_label { get; construct; }
 
         /**
          * Accelerator label of "Open tab in New Window" menu item in the tab context menu.
          */
-        public AccelLabel new_window_label { get; construct; }
+        public AccelLabel? new_window_label { get; construct; }
 
         internal TabPageContainer page_container;
         public Gtk.Widget page {
@@ -254,17 +254,18 @@ namespace Granite.Widgets {
             string? label = null,
             GLib.Icon? icon = null,
             Gtk.Widget? page = null,
-            AccelLabel close_tab_label = new AccelLabel (_("Close Tab")),
-            AccelLabel duplicate_tab_label = new AccelLabel (_("Duplicate")),
-            AccelLabel new_window_label = new AccelLabel (_("Open in a New Window"))
+            AccelLabel? _close_tab_label = null,
+            AccelLabel? _duplicate_tab_label = null,
+            AccelLabel? _new_window_label = null
         ) {
             Object (
                 label: label,
                 icon: icon,
-                close_tab_label: close_tab_label,
-                duplicate_tab_label: duplicate_tab_label,
-                new_window_label: new_window_label
+                close_tab_label: _close_tab_label,
+                duplicate_tab_label: _duplicate_tab_label,
+                new_window_label: _new_window_label
             );
+
             if (page != null) {
                 this.page = page;
             }
@@ -275,6 +276,16 @@ namespace Granite.Widgets {
         }
 
         construct {
+            if (close_tab_label == null) {
+                close_tab_label = new Granite.AccelLabel (_("Close Tab"));
+            }
+            if (new_window_label == null) {
+                new_window_label = new Granite.AccelLabel (_("Open in a New Window"));
+            }
+            if (duplicate_tab_label == null) {
+                duplicate_tab_label = new Granite.AccelLabel (_("Duplicate"));
+            }
+
             _label = new Gtk.Label (null);
             _label.hexpand = true;
             _label.tooltip_text = label;
