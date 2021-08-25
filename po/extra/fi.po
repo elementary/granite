@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"POT-Creation-Date: 2021-08-25 22:03+0000\n"
 "PO-Revision-Date: 2021-07-25 16:31+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/fi/>\n"
+"Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,7 +127,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:54
 msgid ""
-"Backlash, Right Control, and Left Control are now handled by accel_to_string"
+"Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
 
 #: data/granite.appdata.xml.in:55

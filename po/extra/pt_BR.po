@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-05 16:34+0000\n"
+"POT-Creation-Date: 2021-08-25 22:03+0000\n"
 "PO-Revision-Date: 2021-07-17 07:24+0000\n"
 "Last-Translator: Mário Victor Ribeiro Silva <mariovictorrs@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:54
 msgid ""
-"Backlash, Right Control, and Left Control are now handled by accel_to_string"
+"Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
 
 #: data/granite.appdata.xml.in:55
@@ -227,7 +227,8 @@ msgstr "Melhorias:"
 
 #: data/granite.appdata.xml.in:102
 msgid "Better align labels in settings sidebars"
-msgstr "Melhorar o alinhamento das etiquetas nas barras laterais dos parâmetros"
+msgstr ""
+"Melhorar o alinhamento das etiquetas nas barras laterais dos parâmetros"
 
 #: data/granite.appdata.xml.in:103
 msgid "Make AccelLabel.label settable"
