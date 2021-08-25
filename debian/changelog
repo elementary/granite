@@ -1,3 +1,17 @@
+granite (6.1.1) bionic; urgency=medium
+
+  * Release 6.1.1 (#520)
+  * Update translation files
+  * Update translation template
+  * Construct default accellabels in construct clause (#516)
+  * Switch to SPDX identifier. (#521)
+  * l10n: Correctly setup the locales (#519)
+  * Add instruction for accessing AccountsService from Flatpak (#513)
+  * appdata: Fix a typo (#511)
+  * Make sure to work accel_to_string with multiple modifiers (#510)
+
+ -- Cody Garver <cody@elementary.io>  Wed, 25 Aug 2021 22:07:50 +0000
+
 granite (6.1.0) bionic; urgency=medium
 
   * Release 6.1.0 (#487)
