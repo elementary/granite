@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-07-19 21:05+0000\n"
+"PO-Revision-Date: 2021-08-26 00:49+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -40,15 +40,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Fixes:"
-msgstr ""
+msgstr "Виправлення:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr ""
+msgstr "Виправлено роботу accel_to_string з кількома модифікаторами"
 
 #: data/granite.appdata.xml.in:18
 msgid "Fix locale issues in Flatpaks"
-msgstr ""
+msgstr "Виправлено проблему мов у Flatpak"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:70 data/granite.appdata.xml.in:91
@@ -149,10 +149,6 @@ msgstr ""
 "час очікування зупиняється під час наведення"
 
 #: data/granite.appdata.xml.in:64
-#, fuzzy
-#| msgid ""
-#| "Backlash, Right Control, and Left Control are now handled by "
-#| "accel_to_string"
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
