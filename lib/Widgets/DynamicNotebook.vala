@@ -271,6 +271,10 @@ namespace Granite.Widgets {
             }
         }
 
+        static construct {
+            Granite.init ();
+        }
+
         construct {
             if (close_tab_label == null) {
                 close_tab_label = new Granite.AccelLabel (_("Close Tab"));
@@ -833,6 +837,10 @@ namespace Granite.Widgets {
                 new_tab_label: new_tab_label,
                 restore_tab_label: restore_tab_label
             );
+        }
+
+        static construct {
+            Granite.init ();
         }
 
         construct {
