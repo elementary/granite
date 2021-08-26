@@ -280,7 +280,7 @@ public class Granite.HyperTextView : Gtk.TextView {
             has_tooltip = true;
             tooltip_markup = string.joinv ("\n", {
                 _("Follow Link"),
-                TOOLTIP_SECONDARY_TEXT_MARKUP.printf (_("Control + Click"))
+                Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (_("Control + Click"))
             });
 
         } else if (uri_hovering_over == null && has_tooltip) {
