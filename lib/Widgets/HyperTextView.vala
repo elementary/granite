@@ -53,37 +53,41 @@ public class Granite.HyperTextView : Gtk.TextView {
             critical ("RegexError while constructing URI regex: %s", e.message);
         }
 
-        buffer.notify["cursor-position"].connect (on_buffer_cursor_position_changed);
-        buffer.paste_done.connect (on_paste_done);
-        buffer.changed.connect_after (on_after_buffer_changed);
+        buffer_connect (buffer);
+        notify["buffer"].connect (() => {
+            buffer_connect (buffer);
+            buffer.changed ();
+        });
 
         button_release_event.connect (on_button_release_event);
         motion_notify_event.connect (on_motion_notify_event);
         focus_out_event.connect (on_focus_out_event);
 
         /**
-            * Binding key_press/key_release signals to toplevel window
-            * if possible enables us to detect when the Control key
-            * is pressed even when HyperTextView is not focused.
-            */
+        * Binding key_press/key_release signals to all toplevel
+        * windows possible enables us to detect when the Control
+        * key is pressed even when HyperTextView is not focused.
+        */
+        var toplevel_windows = Gtk.Window.list_toplevels ();
 
-        Gtk.Window? toplevel_window = null;
-        foreach (unowned var window in Gtk.Window.list_toplevels ()) {
-            if (window.get_parent_window () == null) {
-                toplevel_window = window;
-                break;
+        if (toplevel_windows.length () != 0) {
+            foreach (unowned var toplevel_window in toplevel_windows) {
+                toplevel_window.key_press_event.connect (on_key_press_event);
+                toplevel_window.key_release_event.connect (on_key_release_event);
             }
-        }
 
-        if (toplevel_window != null) {
-            toplevel_window.key_press_event.connect (on_key_press_event);
-            toplevel_window.key_release_event.connect (on_key_release_event);
         } else {
             warning ("Could not bind key-press events to top-level window, Control + Click may not always behave correctly.");
             // bind to this as a fallback
             key_press_event.connect (on_key_press_event);
             key_release_event.connect (on_key_release_event);
         }
+    }
+
+    private void buffer_connect (Gtk.TextBuffer buffer) {
+        buffer.notify["cursor-position"].connect (on_buffer_cursor_position_changed);
+        buffer.paste_done.connect (on_paste_done);
+        buffer.changed.connect_after (on_after_buffer_changed);
     }
 
     private void on_buffer_cursor_position_changed () {
