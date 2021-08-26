@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-06-04 13:59+0000\n"
+"PO-Revision-Date: 2021-08-26 16:03+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,15 +37,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Fixes:"
-msgstr ""
+msgstr "תיקונים:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr ""
+msgstr "אימות ש־accel_to_string עובד עם מגוון מחליפי מצב"
 
 #: data/granite.appdata.xml.in:18
 msgid "Fix locale issues in Flatpaks"
-msgstr ""
+msgstr "תיקון תקלות שפה בחבילות Flatpak"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:70 data/granite.appdata.xml.in:91
@@ -143,10 +143,6 @@ msgstr ""
 "להיעלמות נעצר בעת ריחוף מעליהם"
 
 #: data/granite.appdata.xml.in:64
-#, fuzzy
-#| msgid ""
-#| "Backlash, Right Control, and Left Control are now handled by "
-#| "accel_to_string"
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
@@ -216,7 +212,7 @@ msgstr "Granite.SourceList מקבל מעתה Gtk.STYLE_CLASS_SIDEBAR כבררת 
 
 #: data/granite.appdata.xml.in:97
 msgid "New features:"
-msgstr "תכונות חדשות:"
+msgstr "יכולות חדשות:"
 
 #: data/granite.appdata.xml.in:99
 msgid "New Settings class to share Pantheon desktop settings with apps"
