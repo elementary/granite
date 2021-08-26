@@ -20,7 +20,7 @@
 public class HyperTextView : Gtk.Grid {
     construct {
         var hypertext_label = new Granite.HeaderLabel ("Hold Ctrl and click to follow the link");
-        var hypertext_textview = new Granite.Widgets.HyperTextView ();
+        var hypertext_textview = new Granite.HyperTextView ();
         hypertext_textview.buffer.text = "elementary OS - https://elementary.io/\nThe fast, open and privacy-respecting replacement for Windows and macOS.";
 
         var hypertext_scrolled_window = new Gtk.ScrolledWindow (null, null) {
