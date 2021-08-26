@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-06-06 17:48+0000\n"
+"PO-Revision-Date: 2021-08-26 02:18+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,15 +37,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Fixes:"
-msgstr ""
+msgstr "修正点:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr ""
+msgstr "複数の修飾キーが使われている場合も accel_to_string が動作するように修正"
 
 #: data/granite.appdata.xml.in:18
 msgid "Fix locale issues in Flatpaks"
-msgstr ""
+msgstr "Flatpak アプリでの地域設定に関する不具合を修正"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:70 data/granite.appdata.xml.in:91
@@ -155,15 +155,9 @@ msgstr ""
 "ホバーで停止するように変更"
 
 #: data/granite.appdata.xml.in:64
-#, fuzzy
-#| msgid ""
-#| "Backlash, Right Control, and Left Control are now handled by "
-#| "accel_to_string"
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
-msgstr ""
-"accel_to_string メソッドがバックスラッシュ、右コントロール、左コントロール"
-"キーを適切に処理するように修正"
+msgstr "accel_to_string メソッドがバックスラッシュ、右コントロール、左コントロールキーを適切に処理するように修正"
 
 #: data/granite.appdata.xml.in:65
 msgid "Make tab tooltips of DynamicNotebook settable"
