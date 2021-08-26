@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-08-24 18:33+0000\n"
+"PO-Revision-Date: 2021-08-26 00:49+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
@@ -202,7 +202,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:97
 msgid "New features:"
-msgstr ""
+msgstr "Új funkciók:"
 
 #: data/granite.appdata.xml.in:99
 msgid "New Settings class to share Pantheon desktop settings with apps"
