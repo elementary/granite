@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-08-24 02:12+0000\n"
+"PO-Revision-Date: 2021-08-26 11:05+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite/hu/>\n"
@@ -27,12 +27,12 @@ msgstr "A Granite beállításainak megjelenítése"
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
 msgid "%-l:%M:%S %p"
-msgstr "%p %l:%M:%S"
+msgstr "%P %-l:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
 msgid "%-l:%M %p"
-msgstr "%p %l:%M"
+msgstr "%P %-l:%M"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
@@ -87,7 +87,7 @@ msgstr "Holnap"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:134
 msgid "%a, %b %e, %Y"
-msgstr "%Y. %b. %e. %a"
+msgstr "%Y. %b. %e., %a."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:137
@@ -107,23 +107,23 @@ msgstr "%b. %e."
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:146
 msgid "%a %Y"
-msgstr "%Y, %a"
+msgstr "%Y., %a."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:149
 #, c-format
 msgid "%a"
-msgstr "%a"
+msgstr "%a."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:152
 msgid "%a, %b %e"
-msgstr "%b. %e. %a"
+msgstr "%b. %e., %a."
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:155
 msgid "%b"
-msgstr "%b"
+msgstr "%b."
 
 #: lib/Widgets/DynamicNotebook.vala:280 lib/Widgets/DynamicNotebook.vala:304
 msgid "Close Tab"
