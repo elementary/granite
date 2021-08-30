@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-08-29 20:32+0000\n"
+"PO-Revision-Date: 2021-08-30 15:00+0000\n"
 "Last-Translator: Muhammad Al-Jayyousi <m7md.j99@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
 "ar/>\n"
@@ -104,7 +104,7 @@ msgstr "غداً"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:134
 msgid "%a, %b %e, %Y"
-msgstr "%a %e %b %Y"
+msgstr "%a، %e %b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:137
@@ -135,7 +135,7 @@ msgstr "%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:152
 msgid "%a, %b %e"
-msgstr "%a, %b %e"
+msgstr "%a، %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:155
@@ -144,7 +144,7 @@ msgstr "%b"
 
 #: lib/Widgets/DynamicNotebook.vala:280 lib/Widgets/DynamicNotebook.vala:304
 msgid "Close Tab"
-msgstr "إغلاق تبويب"
+msgstr "إغلاق التبويب"
 
 #: lib/Widgets/DynamicNotebook.vala:283
 msgid "Open in a New Window"
@@ -152,43 +152,43 @@ msgstr "افتح في نافذة جديدة"
 
 #: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
-msgstr "كرّر"
+msgstr "كرر"
 
 #: lib/Widgets/DynamicNotebook.vala:378
 msgid "Close Other Tab"
-msgstr "إغلاق علامة التبويب الأخرى"
+msgstr "أغلق التبويب الآخر"
 
 #: lib/Widgets/DynamicNotebook.vala:378
 msgid "Close Other Tabs"
-msgstr "إغلاق علامات التبويب الأخرى"
+msgstr "أغلق التبويبات الأخرى"
 
 #: lib/Widgets/DynamicNotebook.vala:383
 msgid "Close Tab to the Right"
-msgstr "إغلاق علامة التبويب في اليسار"
+msgstr "أغلق التبويب على اليمين"
 
 #: lib/Widgets/DynamicNotebook.vala:384
 msgid "Close Tabs to the Right"
-msgstr "إغلاق علامات التبويب في اليسار"
+msgstr "أغلق التبويبات على اليمين"
 
 #: lib/Widgets/DynamicNotebook.vala:389
 msgid "Pin"
-msgstr ""
+msgstr "ثبت"
 
 #: lib/Widgets/DynamicNotebook.vala:391
 msgid "Unpin"
-msgstr ""
+msgstr "أزل التثبيت"
 
 #: lib/Widgets/DynamicNotebook.vala:568
 msgid "Clear All"
-msgstr "مسح الكل"
+msgstr "امسح الكل"
 
 #: lib/Widgets/DynamicNotebook.vala:833 lib/Widgets/DynamicNotebook.vala:894
 msgid "New Tab"
-msgstr "علامة تبويب جديدة"
+msgstr "تبويب جديد"
 
 #: lib/Widgets/DynamicNotebook.vala:834
 msgid "Undo Close Tab"
-msgstr "التراجع عن إغلاق تبويب"
+msgstr "التراجع عن إغلاق التبويب"
 
 #: lib/Widgets/DynamicNotebook.vala:904
 msgid "Closed Tabs"
@@ -208,17 +208,17 @@ msgstr "التفاصيل"
 
 #: lib/Widgets/StorageBar.vala:66
 msgid "Audio"
-msgstr "الصوت"
+msgstr "أصوات"
 
 #. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
 #: lib/Widgets/StorageBar.vala:69
 msgid "Videos"
-msgstr "فيديو"
+msgstr "فيديوهات"
 
 #. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
 #: lib/Widgets/StorageBar.vala:72
 msgid "Photos"
-msgstr "الصور"
+msgstr "صور"
 
 #: lib/Widgets/StorageBar.vala:74
 msgid "Apps"
@@ -241,12 +241,12 @@ msgstr "%s حر من %s"
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:98
 msgid "AM"
-msgstr "صباحا"
+msgstr "صباحاً"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:100
 msgid "PM"
-msgstr "مساء"
+msgstr "مساءً"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:146
@@ -268,26 +268,22 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:117
 msgid "Left Alt"
-msgstr ""
+msgstr "Alt اليسرى"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:121
 msgid "Right Alt"
-msgstr ""
+msgstr "Alt اليمنى"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:128
-#, fuzzy
-#| msgid "Right Shift"
 msgid "Right Ctrl"
-msgstr "اليمين Shift"
+msgstr "Ctrl اليمنى"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:132
-#, fuzzy
-#| msgid "Left Shift"
 msgid "Left Ctrl"
-msgstr "اليسار Shift"
+msgstr "Ctrl اليسرى"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:137
@@ -306,17 +302,17 @@ msgstr "يساوي"
 
 #: lib/Widgets/Utils.vala:150
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:154
 msgid "Left Shift"
-msgstr "اليسار Shift"
+msgstr "Shift اليسرى"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:158
 msgid "Right Shift"
-msgstr "اليمين Shift"
+msgstr "Shift اليمنى"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:221
