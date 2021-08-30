@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-08-30 15:00+0000\n"
+"PO-Revision-Date: 2021-08-31 09:34+0000\n"
 "Last-Translator: Muhammad Al-Jayyousi <m7md.j99@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ar/>\n"
@@ -42,7 +42,7 @@ msgstr "الإصلاحات:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr "التأكد بأن accel_to_string يعمل مع مغيرات متعددة"
+msgstr "التأكد بأن accel_to_string يعمل مع مغيرات (Modifiers) متعددة"
 
 #: data/granite.appdata.xml.in:18
 msgid "Fix locale issues in Flatpaks"
@@ -61,7 +61,9 @@ msgstr "الإضافات:"
 #: data/granite.appdata.xml.in:27
 msgid ""
 "TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
-msgstr "TRANSITION_DURATION_IN_PLACE لتنقلات أدوات ثابتة أكثر تناسقاً"
+msgstr ""
+"TRANSITION_DURATION_IN_PLACE لتنقلات أدوات ثابتة (In-place widgets) أكثر "
+"تناسقاً"
 
 #: data/granite.appdata.xml.in:29 data/granite.appdata.xml.in:61
 #: data/granite.appdata.xml.in:88
@@ -72,7 +74,7 @@ msgstr "تغييرات أخرى:"
 msgid ""
 "accel_to_string handles accel markup without modifiers or that are only "
 "modifiers"
-msgstr "قيام accel_to_string بمعالجة ترميز accel دون المغيرات"
+msgstr "قيام accel_to_string بمعالجة ترميز accel دون المغيرات (Modifiers)"
 
 #: data/granite.appdata.xml.in:40
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
@@ -142,15 +144,19 @@ msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
+"الإشعارات الصغيرة (Toasts) أصبحت تقوم بإعادة ضبط المؤقت الخاص بها عندما يتم "
+"إرسال إشعار جديد والمؤقت قد توقف عند التمرير"
 
 #: data/granite.appdata.xml.in:64
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
+"المفاتيح Backslash، وControl اليمنى واليسرى أصبحت تتم معالجتها عن طريق "
+"accel_to_string"
 
 #: data/granite.appdata.xml.in:65
 msgid "Make tab tooltips of DynamicNotebook settable"
-msgstr ""
+msgstr "جعل تلميحات التبويبات الخاصة ب DynamicNotebook قابلة للضبط"
 
 #: data/granite.appdata.xml.in:66
 msgid ""
