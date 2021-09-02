@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
 "PO-Revision-Date: 2021-09-02 21:43+0000\n"
-"Last-Translator: mateszabo2001 <mateszabo2001@gmail.com>\n"
+"Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
 "Language: hu\n"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:76
 msgid "New Style Constants:"
-msgstr "Új Stílus Állandók:"
+msgstr "Új stílusállandók:"
 
 #: data/granite.appdata.xml.in:78
 msgid "STYLE_CLASS_COLOR_BUTTON"
