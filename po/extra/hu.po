@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-08-26 00:49+0000\n"
+"PO-Revision-Date: 2021-09-02 21:46+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
@@ -21,17 +21,21 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
-msgstr ""
+msgstr "Granite"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
 msgstr ""
+"Építsen egységes és használható alkalmazásokat még gyorsabban és könnyebben"
 
 #: data/granite.appdata.xml.in:10
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Egy társkönyvtár a GTK és a GLib számára, amely összetett widgeteket és "
+"kényelmes metódusokat tartalmaz az elementary OS-hez készült alkalmazásokban "
+"történő felhasználásra."
 
 #: data/granite.appdata.xml.in:15
 msgid "Fixes:"
@@ -63,7 +67,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:29 data/granite.appdata.xml.in:61
 #: data/granite.appdata.xml.in:88
 msgid "Other Changes:"
-msgstr ""
+msgstr "Egyéb változások:"
 
 #: data/granite.appdata.xml.in:31
 msgid ""
@@ -165,7 +169,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:76
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Új stílusállandók:"
 
 #: data/granite.appdata.xml.in:78
 msgid "STYLE_CLASS_COLOR_BUTTON"
