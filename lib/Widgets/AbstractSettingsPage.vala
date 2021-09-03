@@ -65,4 +65,8 @@ public abstract class Granite.SettingsPage : Gtk.ScrolledWindow {
             _title = value;
         }
     }
+
+    construct {
+        hscrollbar_policy = Gtk.PolicyType.NEVER;
+    }
 }
