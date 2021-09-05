@@ -82,6 +82,7 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
         button_description = new Gtk.Label (null);
         button_description.halign = Gtk.Align.START;
         button_description.valign = Gtk.Align.START;
+        button_description.xalign = 0;
         button_description.set_line_wrap (true);
         button_description.set_line_wrap_mode (Pango.WrapMode.WORD);
         button_description.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
