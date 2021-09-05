@@ -1,3 +1,7 @@
+/*-
+ * Copyright 2021 elementary, Inc. (https://elementary.io)
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ */
 
 namespace Granite {
     [DBus (name = "io.elementary.pantheon.AccountsService")]
@@ -36,6 +40,9 @@ namespace Granite {
 
         /**
          * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
+         *
+         * To access this from a Flatpak application, add an entry with the value `'--system-talk-name=org.freedesktop.Accounts'`
+         * in the `finish-args` array of your Flatpak manifest.
          */
         public ColorScheme prefers_color_scheme {
             get {
