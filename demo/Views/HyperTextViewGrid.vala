@@ -17,7 +17,7 @@
 * Boston, MA 02110-1301 USA.
 */
 
-public class HyperTextView : Gtk.Grid {
+public class HyperTextViewGrid : Gtk.Grid {
     construct {
         var hypertext_label = new Granite.HeaderLabel ("Hold Ctrl and click to follow the link");
         var hypertext_textview = new Granite.HyperTextView ();
