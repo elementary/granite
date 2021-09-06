@@ -115,7 +115,7 @@ public class Granite.HyperTextView : Gtk.TextView {
 
             buffer_cursor_position_when_change_started = 0;
 
-            if (change_start_offset == FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET) {
+            if (change_start_offset == FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET || change_start_offset == change_end_offset) {
                 change_start_offset = 0;
                 change_end_offset = buffer.text.length;
             }
@@ -130,6 +130,10 @@ public class Granite.HyperTextView : Gtk.TextView {
     }
 
     private async void update_tags_in_buffer_for_range (int buffer_start_offset, int buffer_end_offset) {
+        if (buffer_start_offset == buffer_end_offset) {
+            return;
+        }
+
         Gtk.TextIter buffer_start_iter, buffer_end_iter;
         buffer.get_iter_at_offset (out buffer_start_iter, buffer_start_offset);
         buffer_start_iter.backward_line ();
