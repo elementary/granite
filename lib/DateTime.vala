@@ -14,13 +14,13 @@ namespace Granite.DateTime {
      * The function constructs a new string interpreting the //is_12h// and //with_second// parameters
      * so that it can be used with formatting functions like {@link GLib.DateTime.format}.
      *
-     * The returned string is formatted and translated. This function is mostly used to display
+     * The returned format string is formatted and translated. This function is mostly used to display
      * the time in various user interfaces like the time displayed in the top panel.
      *
      * @param is_12h if the returned string should be formatted in 12h format
      * @param with_second if the returned string should include seconds
      *
-     * @return the formatted and located time string.
+     * @return the formatted and located time format string.
      */
     public static string get_default_time_format (bool is_12h = false, bool with_second = false) {
         if (is_12h == true) {
@@ -40,6 +40,22 @@ namespace Granite.DateTime {
                 return _("%H:%M");
             }
         }
+    }
+    
+    /**
+     * Formats a {@link GLib.DateTime} using defaults from desktop settings
+     *
+     * The returned string is formatted and translated. This function is mostly used to display
+     * the time in various user interfaces like the time displayed in the top panel.
+     *
+     * @param date_time a {@link GLib.DateTime} to format using the desktop settings
+     * @param with_second if the returned string should include seconds
+     * @return the formatted and located time string.
+     */
+    public static string format_time (GLib.DateTime date_time, bool with_second = false) {
+        var is_12h = is_clock_format_12h ();
+        var time_format = get_default_time_format (is_12h, with_second);
+        return date_time.format (time_format);
     }
 
     /**
