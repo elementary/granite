@@ -41,7 +41,7 @@ namespace Granite.DateTime {
             }
         }
     }
-    
+
     /**
      * Formats a {@link GLib.DateTime} using defaults from desktop settings
      *

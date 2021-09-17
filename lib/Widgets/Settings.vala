@@ -13,7 +13,7 @@ namespace Granite {
     interface FDO.Accounts : Object {
         public abstract string find_user_by_name (string username) throws GLib.Error;
     }
-    
+
     [DBus (name = "org.freedesktop.portal.Settings")]
     private interface FDO.Portal.Settings : Object {
         public abstract Variant read (string @namespace, string key);
@@ -24,10 +24,10 @@ namespace Granite {
      * Granite.Settings provides a way to share Pantheon desktop settings with applications.
      */
     public class Settings : Object {
-    
+
         private const string GNOME_DESKTOP_INTERFACE = "org.gnome.desktop.interface";
         private const string CLOCK_FORMAT_KEY = "clock-format";
-        
+
         /**
          * Possible color scheme preferences expressed by the user
          */
@@ -78,7 +78,7 @@ namespace Granite {
                 _user_path = value;
             }
         }
-        
+
         /**
          * Possible clock format preferences expressed by the user
          */
@@ -90,9 +90,9 @@ namespace Granite {
             /**
              * The user prefers a 24 hour clock
              */
-            24H            
+            24H
         }
-        
+
         private ClockFormat? _clock_format = null;
         /**
          * Whether the user would prefer a 12 hour or 24 hour clock
@@ -157,7 +157,7 @@ namespace Granite {
                 critical (e.message);
             }
         }
-        
+
         private void setup_clock_format () {
             try {
                 settings_service = GLib.Bus.get_proxy_sync (
@@ -165,12 +165,12 @@ namespace Granite {
                    "org.freedesktop.portal.Desktop",
                    "/org/freedesktop/portal/desktop"
                 );
-                
+
                 var clock_format_variant = settings_service.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
                 var format = clock_format_variant.get_string ();
-                
+
                 set_clock_format_from_nick (format);
-                
+
                 settings_service.setting_changed.connect((@namespace,key,@value) => {
                     if(@namespace == GNOME_DESKTOP_INTERFACE && key == CLOCK_FORMAT_KEY) {
                         var updated_format = @value.get_string ();
@@ -181,11 +181,11 @@ namespace Granite {
                 critical (e.message);
             }
         }
-        
+
         private void set_clock_format_from_nick(string format) {
             EnumClass clock_format_enum_class = (EnumClass) typeof (ClockFormat).class_ref ();
             unowned EnumValue? eval = clock_format_enum_class.get_value_by_nick (format);
-            
+
             if(eval == null) {
                 _clock_format = null;
             } else {

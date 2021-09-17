@@ -35,12 +35,12 @@ public class DateTimePickerView : Gtk.Grid {
         var settings = Granite.Settings.get_default ();
         var time_format = Granite.DateTime.get_default_time_format (settings.clock_format == Granite.Settings.ClockFormat.12H, false);
 
-        var current_time = new Gtk.Label (Granite.DateTime.format_time(now, false));
+        var current_time = new Gtk.Label (Granite.DateTime.format_time (now, false));
         current_time.tooltip_text = time_format;
         current_time.xalign = 0;
 
-        settings.notify["clock-format"].connect(() => {
-           current_time.label = Granite.DateTime.format_time(now, false);
+        settings.notify["clock-format"].connect (() => {
+           current_time.label = Granite.DateTime.format_time (now, false);
         });
 
         var current_date_label = new Gtk.Label ("Localized date:");
