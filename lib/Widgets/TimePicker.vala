@@ -185,9 +185,9 @@ namespace Granite.Widgets {
             activate.connect (is_unfocused);
 
             update_text ();
-            
+
             var granite_settings = Granite.Settings.get_default ();
-            
+
             granite_settings.notify["clock-format"].connect (() => {
                 update_text ();
                 set_popover_clock_format ();
@@ -235,7 +235,7 @@ namespace Granite.Widgets {
             popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
             popover.show_all ();
         }
-        
+
         private void set_popover_clock_format () {
             changing_time = true;
 
@@ -260,9 +260,9 @@ namespace Granite.Widgets {
                 // Make sure that bounds are set correctly
                 hours_spinbutton.set_range (1, 12);
             } else {
-            
+
                 hours_spinbutton.set_range (0, 23);
-            
+
                 am_pm_modebutton.no_show_all = true;
                 am_pm_modebutton.hide ();
                 hours_spinbutton.set_value (time.get_hour ());

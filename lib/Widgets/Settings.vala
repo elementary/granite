@@ -171,8 +171,8 @@ namespace Granite {
 
                 set_clock_format_from_nick (format);
 
-                settings_service.setting_changed.connect((@namespace,key,@value) => {
-                    if(@namespace == GNOME_DESKTOP_INTERFACE && key == CLOCK_FORMAT_KEY) {
+                settings_service.setting_changed.connect ((@namespace, key, @value) => {
+                    if (@namespace == GNOME_DESKTOP_INTERFACE && key == CLOCK_FORMAT_KEY) {
                         var updated_format = @value.get_string ();
                         set_clock_format_from_nick (updated_format);
                     }
@@ -182,11 +182,11 @@ namespace Granite {
             }
         }
 
-        private void set_clock_format_from_nick(string format) {
+        private void set_clock_format_from_nick (string format) {
             EnumClass clock_format_enum_class = (EnumClass) typeof (ClockFormat).class_ref ();
             unowned EnumValue? eval = clock_format_enum_class.get_value_by_nick (format);
 
-            if(eval == null) {
+            if (eval == null) {
                 _clock_format = null;
             } else {
                 clock_format = (ClockFormat) eval.value;
