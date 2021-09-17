@@ -157,7 +157,7 @@ namespace Granite {
                 critical (e.message);
             }
         }
-        
+
         private void setup_settings_service () throws Error {
             if (settings_service == null) {
                 settings_service = GLib.Bus.get_proxy_sync (
@@ -170,7 +170,7 @@ namespace Granite {
 
         private void setup_clock_format () {
             try {
-                
+
                 setup_settings_service ();
 
                 var clock_format_variant = settings_service.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
@@ -186,16 +186,16 @@ namespace Granite {
                 });
             } catch (Error e) {
                 debug ("Unable to connect to desktop portal (%s), using GSettings", e.message);
-                
+
                 var interface_settings = new GLib.Settings (GNOME_DESKTOP_INTERFACE);
                 var format = interface_settings.get_string (CLOCK_FORMAT_KEY);
                 set_clock_format_from_nick (format);
-                
-                interface_settings.changed.connect((key) => {
+
+                interface_settings.changed.connect ((key) => {
                    if (key == CLOCK_FORMAT_KEY) {
                        var updated_format = interface_settings.get_string (CLOCK_FORMAT_KEY);
                        set_clock_format_from_nick (updated_format);
-                   } 
+                   }
                 });
             }
         }
