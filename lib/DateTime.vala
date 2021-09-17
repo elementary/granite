@@ -102,14 +102,21 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        FDO.Portal.Settings settings_bus = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SESSION,
-                   "org.freedesktop.portal.Desktop",
-                   "/org/freedesktop/portal/desktop"
-                );
-        
-        var clock_format_variant = settings_bus.read ("org.gnome.desktop.interface", "clock-format").get_variant ();
-        var format = clock_format_variant.get_string ();
+        string format;
+        try {
+            var settings_bus = GLib.Bus.get_proxy_sync<FDO.Portal.Settings> (
+                        GLib.BusType.SESSION,
+                       "org.freedesktop.portal.Desktop",
+                       "/org/freedesktop/portal/desktop"
+                    );
+
+            var clock_format_variant = settings_bus.read ("org.gnome.desktop.interface", "clock-format").get_variant ();
+            format = clock_format_variant.get_string ();
+        } catch (GLib.Error e) {
+            debug ("Unable to connect to desktop portal (%s), using GSettings", e.message);
+            var h24_settings = new GLib.Settings ("org.gnome.desktop.interface");
+            format = h24_settings.get_string ("clock-format");
+        }
 
         
         return (format.contains ("12h"));
