@@ -9,11 +9,6 @@
  */
 namespace Granite.DateTime {
 
-    [DBus (name = "org.freedesktop.portal.Settings")]
-    private interface FDO.Portal.Settings : Object {
-        public abstract Variant read (string @namespace, string key);
-    }
-
     /**
      * Gets a default translated time format.
      * The function constructs a new string interpreting the //is_12h// and //with_second// parameters
@@ -102,17 +97,8 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        FDO.Portal.Settings settings_bus = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SESSION,
-                   "org.freedesktop.portal.Desktop",
-                   "/org/freedesktop/portal/desktop"
-                );
-        
-        var clock_format_variant = settings_bus.read ("org.gnome.desktop.interface", "clock-format").get_variant ();
-        var format = clock_format_variant.get_string ();
-
-        
-        return (format.contains ("12h"));
+        var settings = Granite.Settings.get_default ();
+        return settings.clock_format == Granite.Settings.ClockFormat.12H;
     }
 
     /**
