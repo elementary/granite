@@ -92,7 +92,7 @@ namespace Granite.DateTime {
                 }
             }
 
-            return date_time.format (get_default_time_format (is_clock_format_12h (), false));
+            return format_time (date_time, false);
         } else if (is_same_day (date_time.add_days (1), now)) {
             return _("Yesterday");
         } else if (is_same_day (date_time.add_days (-1), now)) {

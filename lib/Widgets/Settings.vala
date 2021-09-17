@@ -16,7 +16,7 @@ namespace Granite {
 
     [DBus (name = "org.freedesktop.portal.Settings")]
     private interface FDO.Portal.Settings : Object {
-        public abstract Variant read (string @namespace, string key);
+        public abstract Variant read (string @namespace, string key) throws GLib.Error;
         public abstract signal void setting_changed (string @namespace, string key, Variant @value);
     }
 
@@ -157,14 +157,21 @@ namespace Granite {
                 critical (e.message);
             }
         }
+        
+        private void setup_settings_service () throws Error {
+            if (settings_service == null) {
+                settings_service = GLib.Bus.get_proxy_sync (
+                    GLib.BusType.SESSION,
+                    "org.freedesktop.portal.Desktop",
+                    "/org/freedesktop/portal/desktop"
+                );
+            }
+        }
 
         private void setup_clock_format () {
             try {
-                settings_service = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SESSION,
-                   "org.freedesktop.portal.Desktop",
-                   "/org/freedesktop/portal/desktop"
-                );
+                
+                setup_settings_service ();
 
                 var clock_format_variant = settings_service.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
                 var format = clock_format_variant.get_string ();
@@ -178,7 +185,18 @@ namespace Granite {
                     }
                 });
             } catch (Error e) {
-                critical (e.message);
+                debug ("Unable to connect to desktop portal (%s), using GSettings", e.message);
+                
+                var interface_settings = new GLib.Settings (GNOME_DESKTOP_INTERFACE);
+                var format = interface_settings.get_string (CLOCK_FORMAT_KEY);
+                set_clock_format_from_nick (format);
+                
+                interface_settings.changed.connect((key) => {
+                   if (key == CLOCK_FORMAT_KEY) {
+                       var updated_format = interface_settings.get_string (CLOCK_FORMAT_KEY);
+                       set_clock_format_from_nick (updated_format);
+                   } 
+                });
             }
         }
 
