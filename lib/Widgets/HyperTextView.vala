@@ -296,11 +296,11 @@ public class Granite.HyperTextView : Gtk.TextView {
 
     private string? get_uri_at_location (int location_x, int location_y) {
         string? uri = null;
-        var window = get_window (Gtk.TextWindowType.TEXT);
+        var window = get_window (Gtk.TextWindowType.WIDGET);
 
         if (window != null) {
             int x, y;
-            window_to_buffer_coords (Gtk.TextWindowType.WIDGET, location_x, location_y, out x, out y);
+            window_to_buffer_coords (Gtk.TextWindowType.TEXT, location_x, location_y, out x, out y);
 
             Gtk.TextIter text_iter;
             if (get_iter_at_location (out text_iter, x, y)) {
