@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-07-05 11:21+0000\n"
+"PO-Revision-Date: 2021-09-22 22:27+0000\n"
 "Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/en_GB/>\n"
@@ -37,15 +37,15 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:15
 msgid "Fixes:"
-msgstr ""
+msgstr "Fixes:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr ""
+msgstr "Ensure accel_to_string works with multiple modifiers"
 
 #: data/granite.appdata.xml.in:18
 msgid "Fix locale issues in Flatpaks"
-msgstr ""
+msgstr "Fix locale issues in Flatpaks"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:70 data/granite.appdata.xml.in:91
@@ -148,14 +148,10 @@ msgstr ""
 "timeout is stopped while hovering"
 
 #: data/granite.appdata.xml.in:64
-#, fuzzy
-#| msgid ""
-#| "Backlash, Right Control, and Left Control are now handled by "
-#| "accel_to_string"
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
-"Backlash, Right Control, and Left Control are now handled by accel_to_string"
+"Backslash, Right Control, and Left Control are now handled by accel_to_string"
 
 #: data/granite.appdata.xml.in:65
 msgid "Make tab tooltips of DynamicNotebook settable"
