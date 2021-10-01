@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-25 22:08+0000\n"
-"PO-Revision-Date: 2021-10-01 05:46+0000\n"
+"PO-Revision-Date: 2021-10-01 10:11+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pl/>\n"
@@ -161,61 +161,74 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:65
 msgid "Make tab tooltips of DynamicNotebook settable"
-msgstr ""
+msgstr "Tooltipy kart w DynamicNotebook można teraz ustawiać"
 
 #: data/granite.appdata.xml.in:66
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Komponent wybierania czasu poprawnie uruchamia teraz time_changed gdy "
+"przyciski AM i PM są wybrane"
 
 #: data/granite.appdata.xml.in:67
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog teraz używa messagedialog w CSS"
 
 #: data/granite.appdata.xml.in:68
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Widoczna nazwa dziecka jest teraz poprawnie zsynchronizowana w Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:69
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
 msgstr ""
+"Status może być teraz ustawiony w Granite.AbstractSettingsPage podczas "
+"tworzenia"
 
 #: data/granite.appdata.xml.in:76
 msgid "New Style Constants:"
-msgstr ""
+msgstr "Nowe stałe stylu:"
 
 #: data/granite.appdata.xml.in:78
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:79
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:83
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
+"Kilka narzędzi stylowania. Użyj Gtk.CssProvider oraz Gtk.StyleContext "
+"zamiast nich"
 
 #: data/granite.appdata.xml.in:84
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
 msgstr ""
+"Granite.Services.SimpleCommand. Zamiast tego użyj GLib.AppInfo."
+"create_from_commandline"
 
 #: data/granite.appdata.xml.in:85
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
 msgstr ""
+"Stare nieużywane narzędzia takie jak get_button_layout_schema, "
+"get_default_close_button_position oraz Granite.Services.Paths"
 
 #: data/granite.appdata.xml.in:86
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr ""
+"Stare nieużywane widgety takie jak CollapsiblePaned oraz CompositedWindow"
 
 #: data/granite.appdata.xml.in:90
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
-msgstr ""
+msgstr "Granite.SourceList teraz otrzymuje Gtk.STYLE_CLASS_SIDEBAR domyślnie"
 
 #: data/granite.appdata.xml.in:97
 msgid "New features:"
@@ -224,18 +237,23 @@ msgstr "Nowe funkcje:"
 #: data/granite.appdata.xml.in:99
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
+"Nowa klasa ustawień by udostępnić ustawienia pulpitu Pantheon z aplikacjami"
 
 #: data/granite.appdata.xml.in:100
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
 msgstr ""
+"Wprowadzono Settings.prefers_color_scheme by uzyskać preferencję motywu "
+"użytkownika, tj. dla motywu ciemnego"
 
 #: data/granite.appdata.xml.in:104
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
 msgstr ""
+"Rekomendowane jest teraz korzystanie z GLib.Settings zamiast z Granite."
+"Services.Settings"
 
 #: data/granite.appdata.xml.in:110 data/granite.appdata.xml.in:125
 msgid "Improvements:"
@@ -243,27 +261,27 @@ msgstr "Ulepszenia:"
 
 #: data/granite.appdata.xml.in:112
 msgid "Better align labels in settings sidebars"
-msgstr ""
+msgstr "Poprawiono ustawienie etykiet w panelach bocznych ustawień"
 
 #: data/granite.appdata.xml.in:113
 msgid "Make AccelLabel.label settable"
-msgstr ""
+msgstr "AccelLabel.label można teraz ustawiać"
 
 #: data/granite.appdata.xml.in:120
 msgid "New features"
-msgstr ""
+msgstr "Nowe funkcje"
 
 #: data/granite.appdata.xml.in:122
 msgid "Add tooltips to source list items and their actions"
-msgstr ""
+msgstr "Dodano tooltipy do listy elementów źródła i ich akcji"
 
 #: data/granite.appdata.xml.in:123
 msgid "New AccelLabel widget for use in menus and popovers"
-msgstr ""
+msgstr "Nowy widget AccelLabel do użycia w menu i wyskakujących oknach"
 
 #: data/granite.appdata.xml.in:127
 msgid "Delay tab resizing when closing tabs"
-msgstr ""
+msgstr "Opóźniono zmianę rozmiaru karty podczas zamykania kart"
 
 #: data/granite.appdata.xml.in:134
 msgid "elementary, Inc."
