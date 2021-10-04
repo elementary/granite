@@ -19,7 +19,8 @@
 
 /**
 * This class enables navigatable URLs in Gtk.TextView
-*/
+ * @since 6.1.2
+ */
 public class Granite.HyperTextView : Gtk.TextView {
 
     private const int FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET = -1;
