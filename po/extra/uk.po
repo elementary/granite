@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-06 22:41+0000\n"
-"PO-Revision-Date: 2021-09-22 22:27+0000\n"
+"PO-Revision-Date: 2021-10-07 00:22+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -44,11 +44,11 @@ msgstr "Виправлення:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Use values from the Settings Portal when possible"
-msgstr ""
+msgstr "За змоги використовується значення з Порталу налаштувань"
 
 #: data/granite.appdata.xml.in:18
 msgid "Disable horizontal scrolling by default in SettingsPage"
-msgstr ""
+msgstr "Типово вимкнено горизонтальне прокручування SettingsPage"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:29
 #: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:80
