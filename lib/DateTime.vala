@@ -96,8 +96,20 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        var h24_settings = new GLib.Settings ("org.gnome.desktop.interface");
-        var format = h24_settings.get_string ("clock-format");
+        string format = null;
+        try {
+            var portal = Portal.Settings.get ();
+            var variant = portal.read ("org.gnome.desktop.interface", "clock-format").get_variant ();
+            format = variant.get_string ();
+        } catch (Error e) {
+            debug ("cannot use portal, using GSettings: %s", e.message);
+        }
+
+        if (format == null) {
+            var h24_settings = new GLib.Settings ("org.gnome.desktop.interface");
+            format = h24_settings.get_string ("clock-format");
+        }
+
         return (format.contains ("12h"));
     }
 
