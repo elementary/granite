@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-06 22:41+0000\n"
-"PO-Revision-Date: 2021-08-26 16:03+0000\n"
+"PO-Revision-Date: 2021-10-07 17:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,11 +41,11 @@ msgstr "תיקונים:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Use values from the Settings Portal when possible"
-msgstr ""
+msgstr "ייעשה שימוש בערכים משער ההגדרות כשאפשר"
 
 #: data/granite.appdata.xml.in:18
 msgid "Disable horizontal scrolling by default in SettingsPage"
-msgstr ""
+msgstr "הושבתה גלילה אופקית כבררת מחדל בדף ההגדרות"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:29
 #: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:80
