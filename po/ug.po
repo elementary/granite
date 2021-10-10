@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-25 22:08+0000\n"
+"POT-Creation-Date: 2021-10-06 22:41+0000\n"
 "PO-Revision-Date: 2016-12-15 17:51+0000\n"
 "Last-Translator: ablimet <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
@@ -85,45 +85,45 @@ msgid "Tomorrow"
 msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: lib/DateTime.vala:134
+#: lib/DateTime.vala:146
 #, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%Y-يىلى %b-ئاينىڭ %e-كۈنى ھەپتىنىڭ %aسى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: lib/DateTime.vala:137
+#: lib/DateTime.vala:149
 msgid "%b %e %Y"
 msgstr "%Y-يىلى %b-ئاينىڭ %e-كۈنى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: lib/DateTime.vala:140
+#: lib/DateTime.vala:152
 msgid "%Y"
 msgstr "%Y-يىلى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: lib/DateTime.vala:143
+#: lib/DateTime.vala:155
 msgid "%b %e"
 msgstr "%b-ئاينىڭ %e-كۈنى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: lib/DateTime.vala:146
+#: lib/DateTime.vala:158
 msgid "%a %Y"
 msgstr "%Y-يىلى ھەپتىنىڭ %aسى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: lib/DateTime.vala:149
+#: lib/DateTime.vala:161
 #, c-format
 msgid "%a"
 msgstr "ھەپتىنىڭ %aسى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: lib/DateTime.vala:152
+#: lib/DateTime.vala:164
 #, fuzzy
 msgid "%a, %b %e"
 msgstr "%b-ئاينىڭ %e-كۈنى ھەپتىنىڭ %aسى"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: lib/DateTime.vala:155
+#: lib/DateTime.vala:167
 msgid "%b"
 msgstr "%b-ئاي"
 
