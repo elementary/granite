@@ -15,6 +15,8 @@ public class FormView : Gtk.Grid {
         var username_label = new Granite.HeaderLabel ("Username");
 
         var username_entry = new Granite.ValidatedEntry.from_regex (username_regex);
+        var testMinimum_entry = new Granite.ValidatedEntry.min_Count(5);
+        var usernameMinimum_entry = new Granite.ValidatedEntry.from_regex_with_min_count(username_regex, 5);
 
         var button = new Gtk.Button.with_label ("Submit");
 
@@ -26,6 +28,8 @@ public class FormView : Gtk.Grid {
         vexpand = true;
         add (username_label);
         add (username_entry);
+        add (usernameMinimum_entry);
+        add (testMinimum_entry);
         add (button);
         show_all ();
 

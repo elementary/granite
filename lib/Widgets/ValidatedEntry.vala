@@ -39,10 +39,35 @@ public class Granite.ValidatedEntry : Gtk.Entry {
      * Whether or not text is considered valid input
      */
     public bool is_valid { get; set; default = false; }
+    
+    public int minCount {get; set; default = 1; }
 
     public ValidatedEntry.from_regex (Regex regex) {
         changed.connect (() => {
             is_valid = regex.match (text);
+        });
+    }
+    
+    public ValidatedEntry.min_Count (int minChars) {
+        changed.connect (() => {
+            if (get_text_length() >= minChars) {
+                is_valid = true;
+            }
+            else {
+                is_valid = false;
+            }
+        });
+    }
+    
+    public ValidatedEntry.from_regex_with_min_count (Regex regex, int minChars) {
+        changed.connect (() => {
+            is_valid = regex.match (text);
+            
+            if (is_valid) {
+                if (get_text_length() < minChars) {
+                    is_valid = false;
+                }
+            }
         });
     }
 
