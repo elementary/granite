@@ -39,8 +39,6 @@ public class Granite.ValidatedEntry : Gtk.Entry {
      * Whether or not text is considered valid input
      */
     public bool is_valid { get; set; default = false; }
-    
-    public int minCount {get; set; default = 1; }
 
     public ValidatedEntry.from_regex (Regex regex) {
         changed.connect (() => {
