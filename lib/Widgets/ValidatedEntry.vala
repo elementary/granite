@@ -40,40 +40,26 @@ public class Granite.ValidatedEntry : Gtk.Entry {
      */
     public bool is_valid { get; set; default = false; }
     public int min_length { get; set; default = 0; }
-    public Regex regex { get; set; default = null; }
-
-    public ValidatedEntry () {
-        changed.connect (() => {
-            check_validity ();
-        });
-    }
+    public Regex regex { get; construct set; default = null; }
 
     public ValidatedEntry.from_regex (Regex regex_arg) {
-        regex = regex_arg;
-        
-        changed.connect (() => {
-            check_validity ();
-        });
+        Object (regex: regex_arg);
     }
-    
+
     private void check_validity () {
-        is_valid = check_length ();
-        
+        is_valid = get_text_length () >= min_length;
+
         if (is_valid && regex != null) {
             is_valid = regex.match (text);
-        }
-    }
-    
-    private bool check_length () {
-        if (get_text_length () >= min_length) {
-            return true;
-        } else {
-            return false;
         }
     }
 
     construct {
         activates_default = true;
+
+        changed.connect (() => {
+            check_validity ();
+        });
 
         changed.connect_after (() => {
             unowned Gtk.StyleContext style_context = get_style_context ();
