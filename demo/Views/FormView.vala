@@ -13,7 +13,7 @@ public class FormView : Gtk.Grid {
         }
 
         var username_label = new Granite.HeaderLabel ("Username");
-        
+
         var username_entry = new Granite.ValidatedEntry () {
             min_length = 8,
             regex = username_regex
