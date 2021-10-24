@@ -14,12 +14,6 @@ namespace Granite {
         public abstract string find_user_by_name (string username) throws GLib.Error;
     }
 
-    [DBus (name = "org.freedesktop.portal.Settings")]
-    private interface FDO.Portal.Settings : Object {
-        public abstract Variant read (string @namespace, string key) throws GLib.Error;
-        public abstract signal void setting_changed (string @namespace, string key, Variant @value);
-    }
-
     /**
      * Granite.Settings provides a way to share Pantheon desktop settings with applications.
      */
@@ -176,27 +170,16 @@ namespace Granite {
             }
         }
 
-        private void setup_settings_service () throws Error {
-            if (settings_service == null) {
-                settings_service = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SESSION,
-                    "org.freedesktop.portal.Desktop",
-                    "/org/freedesktop/portal/desktop"
-                );
-            }
-        }
-
         private void setup_clock_format () {
             try {
+                portal = Portal.Settings.get ();
 
-                setup_settings_service ();
-
-                var clock_format_variant = settings_service.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
+                var clock_format_variant = portal.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
                 var format = clock_format_variant.get_string ();
 
                 set_clock_format_from_nick (format);
 
-                settings_service.setting_changed.connect ((@namespace, key, @value) => {
+                portal.setting_changed.connect ((@namespace, key, @value) => {
                     if (@namespace == GNOME_DESKTOP_INTERFACE && key == CLOCK_FORMAT_KEY) {
                         var updated_format = @value.get_string ();
                         set_clock_format_from_nick (updated_format);
