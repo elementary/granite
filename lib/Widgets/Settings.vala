@@ -130,9 +130,15 @@ namespace Granite {
             }
         }
 
+        private void setup_portal () {
+            if (portal == null) {
+                portal = Portal.Settings.get ();
+            }
+        }
+
         private void setup_prefers_color_scheme () {
             try {
-                portal = Portal.Settings.get ();
+                setup_portal ();
 
                 prefers_color_scheme = (ColorScheme) portal.read (
                     "org.freedesktop.appearance",
@@ -172,7 +178,7 @@ namespace Granite {
 
         private void setup_clock_format () {
             try {
-                portal = Portal.Settings.get ();
+                setup_portal ();
 
                 var clock_format_variant = portal.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
                 var format = clock_format_variant.get_string ();
