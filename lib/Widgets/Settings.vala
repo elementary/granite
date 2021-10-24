@@ -118,7 +118,7 @@ namespace Granite {
 
         private FDO.Accounts? accounts_service = null;
         private Pantheon.AccountsService? pantheon_act = null;
-        private FDO.Portal.Settings? settings_service = null;
+        private Portal.Settings? portal = null;
 
         private Settings () {}
 
@@ -137,6 +137,24 @@ namespace Granite {
         }
 
         private void setup_prefers_color_scheme () {
+            try {
+                portal = Portal.Settings.get ();
+
+                prefers_color_scheme = (ColorScheme) portal.read (
+                    "org.freedesktop.appearance",
+                    "color-scheme"
+                ).get_variant ().get_uint32 ();
+
+                portal.setting_changed.connect ((scheme, key, value) => {
+                    if (scheme == "org.freedesktop.appearance" && key == "color-scheme") {
+                        prefers_color_scheme = (ColorScheme) value.get_uint32 ();
+                    }
+                });
+                return;
+            } catch (Error e) {
+                debug ("cannot use the portal, using the AccountsService: %s", e.message);
+            }
+
             try {
                 pantheon_act = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
