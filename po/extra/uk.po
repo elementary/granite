@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-25 19:14+0000\n"
-"PO-Revision-Date: 2021-10-07 00:22+0000\n"
+"PO-Revision-Date: 2021-10-25 22:41+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -39,14 +39,12 @@ msgstr ""
 "elementary OS."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Нові функції:"
 
 #: data/granite.appdata.xml.in:17
 msgid "min_length property for Granite.ValidatedEntry"
-msgstr ""
+msgstr "Властивість min_length для Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:132
 #: data/granite.appdata.xml.in:147
