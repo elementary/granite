@@ -10,6 +10,18 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
+    <release version="6.2.0" date="2021-11-01" urgency="medium">
+      <description>
+        <p>New Features:</p>
+        <ul>
+          <li>min_length property for Granite.ValidatedEntry</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.1.2" date="2021-10-25" urgency="medium">
       <description>
         <p>Fixes:</p>
