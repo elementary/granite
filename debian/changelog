@@ -1,3 +1,13 @@
+granite (6.1.2) bionic; urgency=medium
+
+  * Release 6.1.2 (#532)
+  * Update translation files
+  * Update translation template
+  * support org.freedesktop.portal.Settings when query settings (#529)
+  * Disable SettingsPage horizontal scrolling (#524)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 25 Oct 2021 18:47:28 +0000
+
 granite (6.1.1) bionic; urgency=medium
 
   * Release 6.1.1 (#520)
