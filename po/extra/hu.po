@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-25 19:14+0000\n"
-"PO-Revision-Date: 2021-09-02 21:46+0000\n"
+"PO-Revision-Date: 2021-10-28 00:57+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
@@ -38,8 +38,6 @@ msgstr ""
 "történő felhasználásra."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Új funkciók:"
 
