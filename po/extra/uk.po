@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-28 21:20+0000\n"
-"PO-Revision-Date: 2021-10-25 22:41+0000\n"
+"PO-Revision-Date: 2021-10-29 00:37+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -65,7 +65,7 @@ msgstr "Виправлення:"
 
 #: data/granite.appdata.xml.in:25
 msgid "Prevent crashing on environments without dark style preference support"
-msgstr ""
+msgstr "Виправлено збої середовищ без підтримки темного стилю"
 
 #: data/granite.appdata.xml.in:33
 msgid "Use values from the Settings Portal when possible"
