@@ -132,11 +132,10 @@ namespace Granite {
                         return;
                     }
                 });
-                
             } catch (Error e) {
                 critical (e.message);
             }
-            
+
             // Set a default in case we can't get from system
             prefers_color_scheme = ColorScheme.NO_PREFERENCE;
         }
