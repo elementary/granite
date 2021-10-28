@@ -129,10 +129,10 @@ namespace Granite {
                     var color_scheme = changed.lookup_value ("PrefersColorScheme", new VariantType ("i"));
                     if (color_scheme != null) {
                         prefers_color_scheme = (ColorScheme) color_scheme.get_int32 ();
+                        return;
                     }
                 });
                 
-                return;
             } catch (Error e) {
                 critical (e.message);
             }
