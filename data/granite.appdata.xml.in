@@ -20,6 +20,10 @@
         <ul>
           <li>Updated translations</li>
         </ul>
+        <p>Fixes:</p>
+        <ul>
+          <li>Prevent crashing on environments without dark style preference support</li>
+        </ul>
       </description>
     </release>
     <release version="6.1.2" date="2021-10-25" urgency="medium">
