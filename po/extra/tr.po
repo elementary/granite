@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-25 19:14+0000\n"
-"PO-Revision-Date: 2021-10-18 20:42+0000\n"
+"PO-Revision-Date: 2021-10-28 11:01+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,14 +38,12 @@ msgstr ""
 "GLib kitaplığı."
 
 #: data/granite.appdata.xml.in:15
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
-msgstr "Yeni özellikler:"
+msgstr "Yeni Özellikler:"
 
 #: data/granite.appdata.xml.in:17
 msgid "min_length property for Granite.ValidatedEntry"
-msgstr ""
+msgstr " "
 
 #: data/granite.appdata.xml.in:19 data/granite.appdata.xml.in:132
 #: data/granite.appdata.xml.in:147
@@ -61,7 +59,7 @@ msgstr "Çeviriler güncellendi"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:37
 msgid "Fixes:"
-msgstr " "
+msgstr "Düzeltmeler:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Use values from the Settings Portal when possible"
