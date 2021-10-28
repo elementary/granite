@@ -96,7 +96,7 @@ namespace Granite {
             }
         }
 
-        private void setup_prefers_color_scheme () {    
+        private void setup_prefers_color_scheme () {
             try {
                 portal = Portal.Settings.get ();
 
