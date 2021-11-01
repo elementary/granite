@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-10-28 21:20+0000\n"
-"PO-Revision-Date: 2021-11-01 00:34+0000\n"
+"PO-Revision-Date: 2021-11-01 07:03+0000\n"
 "Last-Translator: Yuchen Deng <loaden@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/zh_Hans/>\n"
@@ -58,7 +58,7 @@ msgstr "翻译更新"
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:31
 #: data/granite.appdata.xml.in:41
 msgid "Fixes:"
-msgstr "修复:"
+msgstr "修复："
 
 #: data/granite.appdata.xml.in:25
 msgid "Prevent crashing on environments without dark style preference support"
