@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-25 19:14+0000\n"
-"PO-Revision-Date: 2021-05-28 08:51+0000\n"
-"Last-Translator: Harrison Xu <xuhaifeng1998@gmail.com>\n"
+"POT-Creation-Date: 2021-10-28 21:20+0000\n"
+"PO-Revision-Date: 2021-11-01 02:19+0000\n"
+"Last-Translator: Yuchen Deng <loaden@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -179,7 +179,7 @@ msgstr "关闭"
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr "取消"
+msgstr "_取消"
 
 #: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
@@ -210,7 +210,7 @@ msgstr "文件"
 
 #: lib/Widgets/StorageBar.vala:79
 msgid "Other"
-msgstr "其他"
+msgstr "其它"
 
 #: lib/Widgets/StorageBar.vala:255
 #, c-format
