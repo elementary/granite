@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-10-29 00:37+0000\n"
+"PO-Revision-Date: 2021-11-04 23:20+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -48,7 +48,7 @@ msgstr "Властивість min_length для Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.HyperTextView for navigatable URLs in text views"
-msgstr ""
+msgstr "Granite.HyperTextView для навігаційних URL-адрес у перегляді тексту"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:137
 #: data/granite.appdata.xml.in:152
