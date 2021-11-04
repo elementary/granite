@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2012–2021 elementary, Inc.
+ *  Copyright 2021 elementary, Inc.
  *
  *  This program or library is free software; you can redistribute it
  *  and/or modify it under the terms of the GNU Lesser General Public
@@ -19,7 +19,7 @@
 
 /**
 * This class enables navigatable URLs in Gtk.TextView
- * @since 6.1.2
+ * @since 6.1.3
  */
 public class Granite.HyperTextView : Gtk.TextView {
 
