@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-10-30 16:23+0000\n"
+"PO-Revision-Date: 2021-11-05 14:16+0000\n"
 "Last-Translator: DartDeaDia <dartdeadia@protonmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ru/>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +47,7 @@ msgstr "min_length property для Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.HyperTextView for navigatable URLs in text views"
-msgstr ""
+msgstr "Granite.HyperTextView для навигационных URL-адресов в просмотре текста"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:137
 #: data/granite.appdata.xml.in:152
