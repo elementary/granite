@@ -2,8 +2,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
+"PO-Revision-Date: 2021-11-08 19:43+0000\n"
+"Last-Translator: Kiran Chauhan <kiranchauhan68@gmail.com>\n"
+"Language-Team: Gujarati <https://l10n.elementary.io/projects/desktop/granite/"
+"gu/>\n"
+"Language: gu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: lib/Application.vala:171
 msgid "Show Granite Options"
@@ -168,7 +176,7 @@ msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "માંડી વાળો(C)"
 
 #: lib/Widgets/MessageDialog.vala:338
 msgid "Details"
