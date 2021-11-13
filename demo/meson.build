@@ -12,6 +12,7 @@ executable(
     'Views/DialogsView.vala',
     'Views/DynamicNotebookView.vala',
     'Views/FormView.vala',
+    'Views/HyperTextViewGrid.vala',
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
     'Views/SeekBarView.vala',

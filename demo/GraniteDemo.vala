@@ -18,6 +18,7 @@ public class Granite.Demo : Gtk.Application {
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
         var form_view = new FormView ();
+        var hypertext_view = new HyperTextViewGrid ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
         var seekbar_view = new SeekBarView ();
@@ -39,6 +40,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");
         main_stack.add_titled (form_view, "formview", "Forms");
+        main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (mode_button_view, "selection_controls", "Selection Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");

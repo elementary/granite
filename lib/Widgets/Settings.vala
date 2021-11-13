@@ -171,9 +171,13 @@ namespace Granite {
                         prefers_color_scheme = (ColorScheme) color_scheme.get_int32 ();
                     }
                 });
+                return;
             } catch (Error e) {
                 critical (e.message);
             }
+
+            // Set a default in case we can't get from system
+            prefers_color_scheme = ColorScheme.NO_PREFERENCE;
         }
 
         private void setup_clock_format () {
