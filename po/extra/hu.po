@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-10-28 00:57+0000\n"
+"PO-Revision-Date: 2021-11-20 02:41+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
@@ -64,7 +64,7 @@ msgstr "Frissített fordítások"
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:42
 msgid "Fixes:"
-msgstr ""
+msgstr "Javítások:"
 
 #: data/granite.appdata.xml.in:26
 msgid "Prevent crashing on environments without dark style preference support"
