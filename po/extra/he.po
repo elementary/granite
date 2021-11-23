@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-11-06 23:25+0000\n"
+"PO-Revision-Date: 2021-11-23 17:47+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/he/>\n"
@@ -289,7 +289,7 @@ msgstr "השהיית שינוי גודל לשוניות בעת סגירת לשו
 
 #: data/granite.appdata.xml.in:161
 msgid "elementary, Inc."
-msgstr "elementary בע״מ"
+msgstr "elementary בע״מ."
 
 #~ msgid ""
 #~ "force_elementary_style to set the app's icons, cursors, and stylesheet to "
