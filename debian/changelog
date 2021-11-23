@@ -1,3 +1,15 @@
+granite (6.2.0) bionic; urgency=medium
+
+  * Release 6.2.0 (#540)
+  * Update translation files
+  * Update translation template
+  * HyperTextView (#507)
+  * Set a default color scheme if both portal and accounts service fail
+    (#535)
+  * 489: Add minimum character count check to ValidatedEntry (#531)
+
+ -- Cody Garver <cody@elementary.io>  Tue, 23 Nov 2021 21:37:50 +0000
+
 granite (6.1.2) bionic; urgency=medium
 
   * Release 6.1.2 (#532)
