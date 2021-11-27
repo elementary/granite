@@ -1,5 +1,5 @@
 /*
- * Copyright 2018–2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2018–2021 elementary, Inc. (https://elementary.io)
  * Copyright 2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  * Copyright 2011–2013 Corentin Noël <tintou@noel.tf>
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -92,7 +92,6 @@ namespace Granite.Widgets {
             am_pm_modebutton = new ModeButton () {
                 hexpand = true,
                 orientation = Gtk.Orientation.VERTICAL,
-                no_show_all = true
             };
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             am_pm_modebutton.append_text (_("AM"));
@@ -145,39 +144,39 @@ namespace Granite.Widgets {
             /// TRANSLATORS: separates hours from minutes.
             var separation_label = new Gtk.Label (_(":"));
 
-            var pop_grid = new Gtk.Grid ();
-            pop_grid.column_spacing = 6;
-            pop_grid.row_spacing = 6;
-            pop_grid.attach (hours_spinbutton, 0, 0, 1, 1);
-            pop_grid.attach (separation_label, 1, 0, 1, 1);
-            pop_grid.attach (minutes_spinbutton, 2, 0, 1, 1);
-            pop_grid.attach (am_pm_modebutton, 3, 0, 1, 1);
-            pop_grid.margin = 6;
+            var pop_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+            pop_grid.append (hours_spinbutton);
+            pop_grid.append (separation_label);
+            pop_grid.append (minutes_spinbutton);
+            pop_grid.append (am_pm_modebutton);
 
-            popover = new Gtk.Popover (this);
-            popover.position = Gtk.PositionType.BOTTOM;
-            popover.add (pop_grid);
+            popover = new Gtk.Popover () {
+                position = Gtk.PositionType.BOTTOM,
+                child = pop_grid
+            };
 
             // Connecting to events allowing manual changes
-            add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.SCROLL_MASK);
-            focus_out_event.connect (() => {
+            var focus_controller = new Gtk.EventControllerFocus ();
+            var scroll_controller = new Gtk.EventControllerScroll (
+                Gtk.EventControllerScrollFlags.BOTH_AXES |
+                Gtk.EventControllerScrollFlags.DISCRETE
+            );
+
+            add_controller (focus_controller);
+            add_controller (scroll_controller);
+
+            focus_controller.leave.connect (() => {
                 is_unfocused ();
-                return false;
             });
 
-            scroll_event.connect ((event) => {
-                switch (event.direction) {
-                    case Gdk.ScrollDirection.UP:
-                    case Gdk.ScrollDirection.RIGHT:
-                        _time = _time.add_minutes (1);
-                        break;
-                    case Gdk.ScrollDirection.DOWN:
-                    case Gdk.ScrollDirection.LEFT:
-                        _time = _time.add_minutes (-1);
-                        break;
-                    default:
-                        break;
+            scroll_controller.scroll.connect ((dx, dy) => {
+                double largest = dx.abs () > dy.abs () ? dx : dy;
+                if (largest < 0) {
+                    _time = _time.add_minutes (1);
+                } else {
+                    _time = _time.add_minutes (-1);
                 }
+
                 update_text ();
                 return false;
             });
@@ -219,7 +218,7 @@ namespace Granite.Widgets {
             update_text ();
         }
 
-        private void on_icon_press (Gtk.EntryIconPosition position, Gdk.Event event) {
+        private void on_icon_press (Gtk.EntryIconPosition position) {
             // If the mode is changed from 12h to 24h or visa versa, the entry updates on icon press
             update_text ();
             changing_time = true;
@@ -231,8 +230,7 @@ namespace Granite.Widgets {
             }
 
             if (Granite.DateTime.is_clock_format_12h ()) {
-                am_pm_modebutton.no_show_all = false;
-                am_pm_modebutton.show_all ();
+                am_pm_modebutton.show ();
 
                 if (time.get_hour () > 12) {
                     hours_spinbutton.set_value (time.get_hour () - 12);
@@ -245,7 +243,6 @@ namespace Granite.Widgets {
                 // Make sure that bounds are set correctly
                 hours_spinbutton.set_range (1, 12);
             } else {
-                am_pm_modebutton.no_show_all = true;
                 am_pm_modebutton.hide ();
                 hours_spinbutton.set_value (time.get_hour ());
 
@@ -256,7 +253,6 @@ namespace Granite.Widgets {
             changing_time = false;
 
             popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
-            popover.show_all ();
         }
 
         [Version (deprecated = true, deprecated_since = "5.2.0")]
