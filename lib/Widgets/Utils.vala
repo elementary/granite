@@ -95,7 +95,7 @@ public static string accel_to_string (string? accel) {
         arr += _("Ctrl");
     }
 
-    if (Gdk.ModifierType.MOD1_MASK in accel_mods) {
+    if (Gdk.ModifierType.ALT_MASK in accel_mods) {
         arr += _("Alt");
     }
 
@@ -267,8 +267,8 @@ private static double sanitize_color (double color) {
  * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 1.0}).
  */
 public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
-    Gdk.RGBA gdk_white = { 1.0, 1.0, 1.0, 1.0 };
-    Gdk.RGBA gdk_black = { 0.0, 0.0, 0.0, 1.0 };
+    Gdk.RGBA gdk_white = { 1.0f, 1.0f, 1.0f, 1.0f };
+    Gdk.RGBA gdk_black = { 0.0f, 0.0f, 0.0f, 1.0f };
 
     var contrast_with_white = contrast_ratio (
         bg_color,
@@ -319,6 +319,8 @@ namespace Granite.Widgets.Utils {
         assert (window != null);
 
         string hex = color.to_string ();
-        return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
+        // TODO: Fix this
+        return null;
+        //return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
     }
 }

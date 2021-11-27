@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2019-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -19,7 +19,7 @@
  * }}}
  *
  */
-public class Granite.AccelLabel : Gtk.Grid {
+public class Granite.AccelLabel : Gtk.Box {
     /**
      * The name of the {@link GLib.Action} used to retrieve action accelerators
      */
@@ -34,6 +34,8 @@ public class Granite.AccelLabel : Gtk.Grid {
      * The user-facing menu item label
      */
     public string label { get; construct set; }
+
+    private Gtk.Label label_widget;
 
     /**
      * Creates a new AccelLabel from a label and an accelerator string
@@ -66,26 +68,29 @@ public class Granite.AccelLabel : Gtk.Grid {
     }
 
     construct {
-        var label = new Gtk.Label (label);
-        label.hexpand = true;
-        label.margin_end = 6;
-        label.xalign = 0;
+        label_widget = new Gtk.Label (label) {
+            hexpand = true,
+            margin_end = 6,
+            xalign = 0
+        };
 
-        column_spacing = 3;
-        add (label);
+        spacing = 3;
+        append (label_widget);
 
         update_accels ();
 
         notify["accel-string"].connect (update_accels);
         notify["action-name"].connect (update_accels);
 
-        bind_property ("label", label, "label");
+        bind_property ("label", label_widget, "label");
     }
 
     private void update_accels () {
-        GLib.List<unowned Gtk.Widget> list = get_children ();
-        for (int i = 0; i < list.length () - 1; i++) {
-            list.nth_data (i).destroy ();
+        weak Gtk.Widget child = label_widget.get_next_sibling ();
+        while (child != null) {
+            weak Gtk.Widget next_child = child.get_next_sibling ();
+            remove (child);
+            child = next_child;
         }
 
         string[] accels = {""};
@@ -105,9 +110,8 @@ public class Granite.AccelLabel : Gtk.Grid {
                 var accel_label_context = accel_label.get_style_context ();
                 accel_label_context.add_class (Granite.STYLE_CLASS_KEYCAP);
 
-                add (accel_label);
+                append (accel_label);
             }
         }
-        show_all ();
     }
 }
