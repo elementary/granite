@@ -1,5 +1,5 @@
 /*
- * Copyright 2017–2020 elementary, Inc. (https://elementary.io)
+ * Copyright 2017–2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
@@ -9,7 +9,10 @@ public class CSSView : Gtk.Grid {
     public CSSView (Gtk.Window window) {
         Object (
             halign: Gtk.Align.CENTER,
-            margin: 24,
+            margin_top: 24,
+            margin_bottom: 24,
+            margin_start: 24,
+            margin_end: 24,
             valign: Gtk.Align.CENTER,
             window: window
         );
@@ -38,38 +41,38 @@ public class CSSView : Gtk.Grid {
             halign = Gtk.Align.END
         };
 
-        var card = new Gtk.Grid () {
-            orientation = Gtk.Orientation.VERTICAL
-        };
+        var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
 
         unowned Gtk.StyleContext card_context = card.get_style_context ();
         card_context.add_class (Granite.STYLE_CLASS_CARD);
         card_context.add_class (Granite.STYLE_CLASS_ROUNDED);
 
-        card.add (header1);
-        card.add (header2);
-        card.add (header3);
-        card.add (header4);
+        card.append (header1);
+        card.append (header2);
+        card.append (header3);
+        card.append (header4);
 
         var checker_label = new Gtk.Label ("\"checkerboard\" style class:") {
             halign = Gtk.Align.END
         };
 
-        var checker_image = new Gtk.Image.from_icon_name ("dialog-information", Gtk.IconSize.DND) {
+        var checker_image = new Gtk.Image.from_icon_name ("dialog-information") {
             hexpand = true,
-            margin = 6
+            margin_start = 6,
+            margin_end = 6,
+            margin_top = 6,
+            margin_bottom = 6
         };
 
-        var checker_grid = new Gtk.Grid ();
-        checker_grid.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
-        checker_grid.add (checker_image);
+        var checker_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        checker_box.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        checker_box.append (checker_image);
 
         var terminal_label = new Gtk.Label ("\"terminal\" style class:") {
             halign = Gtk.Align.END
         };
 
         var terminal = new Gtk.TextView () {
-            border_width = 12,
             pixels_below_lines = 3
         };
         terminal.buffer.text = "[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo";
@@ -119,17 +122,15 @@ public class CSSView : Gtk.Grid {
             halign = Gtk.Align.END
         };
 
-        var accent_color_icon = new Gtk.Image.from_icon_name ("emoji-body-symbolic", Gtk.IconSize.MENU);
+        var accent_color_icon = new Gtk.Image.from_icon_name ("emoji-body-symbolic");
         accent_color_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 
         var accent_color_string = new Gtk.Label ("Lorem ipsum dolor sit amet");
         accent_color_string.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
 
-        var accent_color_grid = new Gtk.Grid () {
-            column_spacing = 6
-        };
-        accent_color_grid.add (accent_color_icon);
-        accent_color_grid.add (accent_color_string);
+        var accent_color_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        accent_color_grid.append (accent_color_icon);
+        accent_color_grid.append (accent_color_string);
 
         column_spacing = 12;
         row_spacing = 24;
@@ -137,7 +138,7 @@ public class CSSView : Gtk.Grid {
         attach (card_label, 0, 0);
         attach (card, 1, 0, 2);
         attach (checker_label, 0, 1);
-        attach (checker_grid, 1, 1, 2);
+        attach (checker_box, 1, 1, 2);
         attach (terminal_label, 0, 2);
         attach (terminal, 1, 2, 2);
         attach (back_button_label, 0, 3);
