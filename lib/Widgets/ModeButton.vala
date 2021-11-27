@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2019-2021 elementary, Inc. (https://elementary.io)
  * Copyright 2008–2013 Christian Hergert <chris@dronelabs.com>,
  * Copyright 2008–2013 Giulio Collura <random.cpp@gmail.com>,
  * Copyright 2008–2013 Victor Eduardo <victoreduardm@gmail.com>,
@@ -20,7 +20,6 @@ namespace Granite.Widgets {
             public int index { get; construct; }
             public Item (int index) {
                 Object (index: index);
-                add_events (Gdk.EventMask.SCROLL_MASK);
             }
         }
 
@@ -60,7 +59,7 @@ namespace Granite.Widgets {
             item_map = new Gee.HashMap<int, Item> ();
 
             var style = get_style_context ();
-            style.add_class (Gtk.STYLE_CLASS_LINKED);
+            style.add_class (Granite.STYLE_CLASS_LINKED);
             style.add_class ("raised"); // needed for toolbars
         }
 
@@ -87,11 +86,10 @@ namespace Granite.Widgets {
          * Appends icon to ModeButton
          *
          * @param icon_name name of icon to append
-         * @param size desired size of icon
          * @return index of appended item
          */
-        public int append_icon (string icon_name, Gtk.IconSize size) {
-            return append (new Gtk.Image.from_icon_name (icon_name, size));
+        public int append_icon (string icon_name) {
+            return append (new Gtk.Image.from_icon_name (icon_name));
         }
 
         /**
@@ -100,14 +98,20 @@ namespace Granite.Widgets {
          * @param w widget to add to ModeButton
          * @return index of new item
          */
-        public int append (Gtk.Widget w) {
+        public new int append (Gtk.Widget w) {
             int index;
             for (index = item_map.size; item_map.has_key (index); index++);
             assert (item_map[index] == null);
 
             var item = new Item (index);
-            item.scroll_event.connect (on_scroll_event);
-            item.add (w);
+            var scroll_controller = new Gtk.EventControllerScroll (
+                Gtk.EventControllerScrollFlags.VERTICAL |
+                Gtk.EventControllerScrollFlags.DISCRETE
+            );
+
+            scroll_controller.scroll.connect (on_scroll_event);
+            item.add_controller (scroll_controller);
+            item.child = w;
 
             item.toggled.connect (() => {
                 if (item.active) {
@@ -122,8 +126,7 @@ namespace Granite.Widgets {
 
             item_map[index] = item;
 
-            add (item);
-            item.show_all ();
+            base.append (item);
 
             mode_added (index, w);
 
@@ -196,7 +199,6 @@ namespace Granite.Widgets {
 
             if (item != null) {
                 assert (item.index == index);
-                item.no_show_all = !val;
                 item.visible = val;
             }
         }
@@ -222,11 +224,16 @@ namespace Granite.Widgets {
          * Clears all children
          */
         public void clear_children () {
-            foreach (weak Gtk.Widget button in get_children ()) {
+            weak Gtk.Widget button = get_first_child ();
+            while (button != null) {
+                weak Gtk.Widget next_button = button.get_next_sibling ();
+
                 button.hide ();
                 if (button.get_parent () != null) {
                     base.remove (button);
                 }
+
+                button = next_button;
             }
 
             item_map.clear ();
@@ -234,47 +241,41 @@ namespace Granite.Widgets {
             _selected = -1;
         }
 
-        private bool on_scroll_event (Gtk.Widget widget, Gdk.EventScroll ev) {
+        private bool on_scroll_event (double dx, double dy) {
             int offset;
 
-            switch (ev.direction) {
-                case Gdk.ScrollDirection.DOWN:
-                case Gdk.ScrollDirection.RIGHT:
-                    offset = 1;
-                    break;
-                case Gdk.ScrollDirection.UP:
-                case Gdk.ScrollDirection.LEFT:
-                    offset = -1;
-                    break;
-                default:
-                    return false;
+            if (dy > 0) {
+                offset = 1;
+            } else {
+                offset = -1;
             }
-
-            // Try to find a valid item, since there could be invisible items in
-            // the middle and those shouldn't be selected. We use the children list
-            // instead of item_map because order matters here.
-            var children = get_children ();
-            uint n_children = children.length ();
 
             var selected_item = item_map[selected];
             if (selected_item == null) {
                 return false;
             }
 
-            int new_item = children.index (selected_item);
-            if (new_item < 0) {
+            if (get_first_child () == null) {
                 return false;
             }
 
-            do {
-                new_item += offset;
-                var item = children.nth_data (new_item) as Item;
+            // Try to find a valid item, since there could be invisible items in
+            // the middle and those shouldn't be selected. We use the children list
+            // instead of item_map because order matters here.
+            weak Gtk.Widget child = selected_item;
+            while (child != null) {
+                if (offset > 0) {
+                    child = child.get_next_sibling ();
+                } else {
+                    child = child.get_prev_sibling ();
+                }
 
+                var item = child as Item;
                 if (item != null && item.visible && item.sensitive) {
                     selected = item.index;
-                    break;
+                    return true;
                 }
-            } while (new_item >= 0 && new_item < n_children);
+            }
 
             return false;
         }

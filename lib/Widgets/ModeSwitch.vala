@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 elementary, Inc. (https://elementary.io)
+ * Copyright 2018-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -16,7 +16,7 @@
  *   mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
  * }}}
  */
-public class Granite.ModeSwitch : Gtk.Grid {
+public class Granite.ModeSwitch : Gtk.Box {
     /**
      * Whether the {@link Gtk.Switch} widget is pointing to the secondary icon or not.
      */
@@ -81,32 +81,28 @@ public class Granite.ModeSwitch : Gtk.Grid {
     }
 
     construct {
-        var primary_image = new Gtk.Image ();
-        primary_image.pixel_size = 16;
-
-        var primary_icon_box = new Gtk.EventBox ();
-        primary_icon_box.add_events (Gdk.EventMask.BUTTON_RELEASE_MASK);
-        primary_icon_box.add (primary_image);
+        var primary_click_controller = new Gtk.GestureClick ();
+        var primary_icon = new Gtk.Image ();
+        primary_icon.add_controller (primary_click_controller);
+        primary_icon.pixel_size = 16;
 
         var mode_switch = new Gtk.Switch ();
         mode_switch.valign = Gtk.Align.CENTER;
         mode_switch.get_style_context ().add_class (Granite.STYLE_CLASS_MODE_SWITCH);
 
+        var secondary_click_controller = new Gtk.GestureClick ();
         var secondary_icon = new Gtk.Image ();
+        secondary_icon.add_controller (secondary_click_controller);
         secondary_icon.pixel_size = 16;
 
-        var secondary_icon_box = new Gtk.EventBox ();
-        secondary_icon_box.add_events (Gdk.EventMask.BUTTON_RELEASE_MASK);
-        secondary_icon_box.add (secondary_icon);
+        spacing = 6;
+        append (primary_icon);
+        append (mode_switch);
+        append (secondary_icon);
 
-        column_spacing = 6;
-        add (primary_icon_box);
-        add (mode_switch);
-        add (secondary_icon_box);
-
-        bind_property ("primary-icon-gicon", primary_image, "gicon", GLib.BindingFlags.SYNC_CREATE);
-        bind_property ("primary-icon-name", primary_image, "icon-name", GLib.BindingFlags.SYNC_CREATE);
-        bind_property ("primary-icon-tooltip-text", primary_image, "tooltip-text");
+        bind_property ("primary-icon-gicon", primary_icon, "gicon", GLib.BindingFlags.SYNC_CREATE);
+        bind_property ("primary-icon-name", primary_icon, "icon-name", GLib.BindingFlags.SYNC_CREATE);
+        bind_property ("primary-icon-tooltip-text", primary_icon, "tooltip-text");
         bind_property ("secondary-icon-gicon", secondary_icon, "gicon", GLib.BindingFlags.SYNC_CREATE);
         bind_property ("secondary-icon-name", secondary_icon, "icon_name", GLib.BindingFlags.SYNC_CREATE);
         bind_property ("secondary-icon-tooltip-text", secondary_icon, "tooltip-text");
@@ -127,14 +123,12 @@ public class Granite.ModeSwitch : Gtk.Grid {
             }
         });
 
-        primary_icon_box.button_release_event.connect (() => {
+        primary_click_controller.released.connect (() => {
             active = false;
-            return Gdk.EVENT_STOP;
         });
 
-        secondary_icon_box.button_release_event.connect (() => {
+        secondary_click_controller.released.connect (() => {
             active = true;
-            return Gdk.EVENT_STOP;
         });
     }
 }
