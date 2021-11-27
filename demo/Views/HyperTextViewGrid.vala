@@ -17,26 +17,30 @@
 * Boston, MA 02110-1301 USA.
 */
 
-public class HyperTextViewGrid : Gtk.Grid {
+public class HyperTextViewGrid : Gtk.Box {
     construct {
-        var hypertext_label = new Granite.HeaderLabel ("Hold Ctrl and click to follow the link");
+        var hypertext_label = new Gtk.Label ("Hold Ctrl and click to follow the link") {
+            halign = Gtk.Align.START,
+            xalign = 0
+        };
+        hypertext_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+
         var hypertext_textview = new Granite.HyperTextView ();
         hypertext_textview.buffer.text = "elementary OS - https://elementary.io/\nThe fast, open and privacy-respecting replacement for Windows and macOS.";
 
-        var hypertext_scrolled_window = new Gtk.ScrolledWindow (null, null) {
+        var hypertext_scrolled_window = new Gtk.ScrolledWindow () {
             height_request = 300,
-            width_request = 600
+            width_request = 600,
+            child = hypertext_textview
         };
-        hypertext_scrolled_window.add (hypertext_textview);
 
-        margin = 12;
+        margin_start = margin_end = margin_top = margin_bottom = 12;
         orientation = Gtk.Orientation.VERTICAL;
-        row_spacing = 3;
+        spacing = 3;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
         vexpand = true;
-        add (hypertext_label);
-        add (hypertext_scrolled_window);
-        show_all ();
+        append (hypertext_label);
+        append (hypertext_scrolled_window);
     }
 }
