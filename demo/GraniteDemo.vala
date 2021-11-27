@@ -56,9 +56,10 @@ public class Granite.Demo : Gtk.Application {
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
 
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.add1 (stack_sidebar);
-        paned.add2 (main_stack);
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            start_child = stack_sidebar,
+            end_child = main_stack
+        };
 
         var gtk_settings = Gtk.Settings.get_default ();
 
@@ -76,17 +77,17 @@ public class Granite.Demo : Gtk.Application {
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
-        headerbar.show_close_button = true;
+        headerbar.show_title_buttons = true;
         headerbar.pack_end (mode_switch);
 
-        window.add (paned);
+        window.child = paned;
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
         window.set_titlebar (headerbar);
         window.title = "Granite Demo";
-        window.show_all ();
 
         add_window (window);
+        window.show ();
 
         granite_settings.notify["prefers-color-scheme"].connect (() => {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
