@@ -31,10 +31,6 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         Object (text: text);
     }
 
-    class construct {
-        set_css_name (Gtk.STYLE_CLASS_MENUITEM);
-    }
-
     construct {
         var label = new Gtk.Label (text) {
             halign = Gtk.Align.START,
@@ -50,10 +46,11 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
 
         unowned var description_style_context = description_label.get_style_context ();
         description_style_context.add_class (Granite.STYLE_CLASS_SMALL_LABEL);
-        description_style_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        description_style_context.add_class (Granite.STYLE_CLASS_DIM_LABEL);
 
-        var description_revealer = new Gtk.Revealer ();
-        description_revealer.add (description_label);
+        var description_revealer = new Gtk.Revealer () {
+            child = description_label
+        };
 
         var button_switch = new Gtk.Switch () {
             valign = Gtk.Align.START
@@ -65,16 +62,18 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         grid.attach (label, 0, 0);
         grid.attach (button_switch, 1, 0, 1, 2);
 
-        add (grid);
+        child = grid;
 
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
         bind_property ("active", button_switch, "active", GLib.BindingFlags.BIDIRECTIONAL);
 
+        var controller = new Gtk.GestureClick ();
+        add_controller (controller);
+
         // Binding active doesn't trigger the switch animation; we must listen and manually activate
-        button_release_event.connect (() => {
+        controller.released.connect (() => {
             button_switch.activate ();
-            return Gdk.EVENT_STOP;
         });
 
         notify["description"].connect (() => {
