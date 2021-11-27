@@ -153,6 +153,10 @@ namespace Granite {
      * Style class for dimmed labels.
      */
     public const string STYLE_CLASS_DIM_LABEL = "dim-label";
+    /**
+     * Style class for widgets in error state.
+     */
+    public const string STYLE_CLASS_ERROR = "error";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
