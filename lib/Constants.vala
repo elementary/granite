@@ -145,6 +145,14 @@ namespace Granite {
      * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
      */
     public const string STYLE_CLASS_TEMPERATURE = "temperature";
+    /**
+     * Style class for linked widgets, such as a box containing buttons belonging to the same control.
+     */
+    public const string STYLE_CLASS_LINKED = "linked";
+    /**
+     * Style class for dimmed labels.
+     */
+    public const string STYLE_CLASS_DIM_LABEL = "dim-label";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
