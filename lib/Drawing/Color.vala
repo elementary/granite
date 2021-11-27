@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2019-2021 elementary, Inc. (https://elementary.io)
  * Copyright 2011–2013 Robert Dyer
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
