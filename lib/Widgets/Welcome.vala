@@ -1,5 +1,5 @@
 /*
- * Copyright 2018–2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2018–2021 elementary, Inc. (https://elementary.io)
  * Copyright 2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  * Copyright 2011–2013 Victor Eduardo <victoreduardm@gmal.com>
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -49,7 +49,7 @@
  * }}}
  *
  */
-public class Granite.Widgets.Welcome : Gtk.EventBox {
+public class Granite.Widgets.Welcome : Gtk.Box {
 
     public signal void activated (int index);
 
@@ -61,7 +61,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     /**
      * Grid for action items
      */
-    protected Gtk.Grid options;
+    protected Gtk.Box options;
 
     /**
      * This is the title of the welcome widget. It should use Title Case.
@@ -101,7 +101,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
     }
 
     construct {
-        get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
         get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
 
         title_label = new Gtk.Label (null);
@@ -116,25 +115,28 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         subtitle_label.wrap_mode = Pango.WrapMode.WORD;
 
         var subtitle_label_context = subtitle_label.get_style_context ();
-        subtitle_label_context.add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+        subtitle_label_context.add_class (Granite.STYLE_CLASS_DIM_LABEL);
         subtitle_label_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        options = new Gtk.Grid ();
-        options.orientation = Gtk.Orientation.VERTICAL;
-        options.row_spacing = 12;
+        options = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
         options.halign = Gtk.Align.CENTER;
         options.margin_top = 24;
 
-        var content = new Gtk.Grid ();
-        content.expand = true;
-        content.margin = 12;
-        content.orientation = Gtk.Orientation.VERTICAL;
-        content.valign = Gtk.Align.CENTER;
-        content.add (title_label);
-        content.add (subtitle_label);
-        content.add (options);
+        var content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
+            hexpand = true,
+            vexpand = true,
+            margin_start = 12,
+            margin_end = 12,
+            margin_top = 12,
+            margin_bottom = 12,
+            valign = Gtk.Align.CENTER
+        };
 
-        add (content);
+        content.append (title_label);
+        content.append (subtitle_label);
+        content.append (options);
+
+        base.append (content);
     }
 
      /**
@@ -145,7 +147,6 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       */
     public void set_item_visible (uint index, bool val) {
         if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
-            children.nth_data (index).set_no_show_all (!val);
             children.nth_data (index).set_visible (val);
         }
     }
@@ -182,8 +183,8 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
       * @param description_text text to be set as description for action item. It should use sentence case.
       * @return index of new item
       */
-    public int append (string icon_name, string option_text, string description_text) {
-        var image = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+    public new int append (string icon_name, string option_text, string description_text) {
+        var image = new Gtk.Image.from_icon_name (icon_name);
         image.use_fallback = true;
         return append_with_image (image, option_text, description_text);
     }
@@ -213,7 +214,7 @@ public class Granite.Widgets.Welcome : Gtk.EventBox {
         // Option label
         var button = new WelcomeButton (image, option_text, description_text);
         children.append (button);
-        options.add (button);
+        options.append (button);
 
         button.clicked.connect (() => {
             int index = this.children.index (button);

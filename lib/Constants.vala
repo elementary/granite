@@ -157,6 +157,10 @@ namespace Granite {
      * Style class for widgets in error state.
      */
     public const string STYLE_CLASS_ERROR = "error";
+    /**
+     * Style class for flattened widgets, such as buttons,
+     */
+    public const string STYLE_CLASS_FLAT = "flat";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
