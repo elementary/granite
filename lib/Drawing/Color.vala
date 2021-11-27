@@ -89,18 +89,6 @@ namespace Granite.Drawing {
         }
 
         /**
-         * Constructs a new {@link Granite.Drawing.Color} from a {@link Gdk.Color}.
-         *
-         * @param color the {@link Gdk.Color}
-         */
-        public Color.from_gdk (Gdk.Color color) {
-            R = color.red / (double) uint16.MAX;
-            G = color.green / (double) uint16.MAX;
-            B = color.blue / (double) uint16.MAX;
-            A = 1.0;
-        }
-
-        /**
          * Constructs a new {@link Granite.Drawing.Color} from a {@link Gdk.RGBA}.
          *
          * @param color the {@link Gdk.RGBA}
