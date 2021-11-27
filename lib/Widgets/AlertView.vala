@@ -13,7 +13,7 @@
  *
  * ''Example''<<BR>>
  * {{{
- * public class AlertViewView : Gtk.Grid {
+ * public class AlertViewView : Gtk.Box {
  *     construct {
  *         var alert = new Granite.Widgets.AlertView ("Nothing here", "Maybe you can enable <b>something</b> to hide it but <i>otherwise</i> it will stay here", "dialog-warning");
  *         alert.show_action ("Hide this button");
@@ -22,12 +22,12 @@
  *             alert.hide_action ();
  *         });
  *
- *         add (alert);
+ *         append (alert);
  *     }
  * }
  * }}}
  */
-public class Granite.Widgets.AlertView : Gtk.Grid {
+public class Granite.Widgets.AlertView : Gtk.Box {
     public signal void action_activated ();
 
     /**
@@ -64,11 +64,9 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         }
         set {
             if (value != null && value != "") {
-                image.set_from_icon_name (value, Gtk.IconSize.DIALOG);
-                image.no_show_all = false;
+                image.set_from_icon_name (value);
                 image.show ();
             } else {
-                image.no_show_all = true;
                 image.hide ();
             }
         }
@@ -92,8 +90,6 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
     }
 
     construct {
-        get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
-
         title_label = new Gtk.Label (null);
         title_label.hexpand = true;
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -113,10 +109,11 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         action_button = new Gtk.Button ();
         action_button.margin_top = 24;
 
-        action_revealer = new Gtk.Revealer ();
-        action_revealer.add (action_button);
-        action_revealer.halign = Gtk.Align.END;
-        action_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_UP;
+        action_revealer = new Gtk.Revealer () {
+            child = action_button,
+            halign = Gtk.Align.END,
+            transition_type = Gtk.RevealerTransitionType.SLIDE_UP
+        };
 
         image = new Gtk.Image ();
         image.margin_top = 6;
@@ -128,14 +125,14 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
         layout.halign = Gtk.Align.CENTER;
         layout.valign = Gtk.Align.CENTER;
         layout.vexpand = true;
-        layout.margin = 24;
+        layout.margin_top = layout.margin_bottom = layout.margin_start = layout.margin_end = 24;
 
         layout.attach (image, 1, 1, 1, 2);
         layout.attach (title_label, 2, 1, 1, 1);
         layout.attach (description_label, 2, 2, 1, 1);
         layout.attach (action_revealer, 2, 3, 1, 1);
 
-        add (layout);
+        append (layout);
 
         action_button.clicked.connect (() => {action_activated ();});
     }
@@ -153,7 +150,6 @@ public class Granite.Widgets.AlertView : Gtk.Grid {
             return;
 
         action_revealer.set_reveal_child (true);
-        action_revealer.show_all ();
     }
 
     /**

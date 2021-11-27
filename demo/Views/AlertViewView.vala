@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class AlertViewView : Gtk.Grid {
+public class AlertViewView : Gtk.Box {
     construct {
         var alert = new Granite.Widgets.AlertView (
             "Nothing here",
@@ -16,6 +16,6 @@ public class AlertViewView : Gtk.Grid {
             alert.hide_action ();
         });
 
-        add (alert);
+        append (alert);
     }
 }
