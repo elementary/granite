@@ -25,7 +25,6 @@ libgranite_sources = files(
     # 'Widgets/AsyncImage.vala',
     # 'Widgets/CellRendererBadge.vala',
     # 'Widgets/CellRendererExpander.vala',
-    # 'Widgets/CompositedWindow.vala',
     'Widgets/DatePicker.vala',
     # 'Widgets/Dialog.vala',
     # 'Widgets/DynamicNotebook.vala',
