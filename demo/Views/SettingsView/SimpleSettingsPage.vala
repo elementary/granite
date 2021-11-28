@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 elementary, Inc. (https://elementary.io)
+ * Copyright 2017-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
@@ -62,7 +62,7 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
             title = title_entry.text;
         });
 
-        action_area.add (button);
+        action_area.append (button);
     }
 
     private void update_status () {

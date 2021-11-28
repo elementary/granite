@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 elementary, Inc. (https://elementary.io)
+ * Copyright 2017-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
@@ -19,21 +19,27 @@ public class SettingsPage : Granite.SettingsPage {
     }
 
     construct {
-        var title_label = new Gtk.Label ("Title:");
-        title_label.xalign = 1;
+        var title_label = new Gtk.Label ("Title:") {
+            xalign = 1
+        };
 
-        var title_entry = new Gtk.Entry ();
-        title_entry.hexpand = true;
-        title_entry.placeholder_text = "This page's title";
+        var title_entry = new Gtk.Entry () {
+            hexpand = true,
+            placeholder_text = "This page's title"
+        };
 
-        var content_area = new Gtk.Grid ();
-        content_area.column_spacing = 12;
-        content_area.row_spacing = 12;
-        content_area.margin = 12;
-        content_area.attach (title_label, 0, 1, 1, 1);
-        content_area.attach (title_entry, 1, 1, 1, 1);
+        var content_area = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12) {
+            margin_start = 12,
+            margin_end = 12,
+            margin_top = 12,
+            margin_bottom = 12,
+            valign = Gtk.Align.START
+        };
 
-        add (content_area);
+        content_area.append (title_label);
+        content_area.append (title_entry);
+
+        child = content_area;
 
         title_entry.changed.connect (() => {
             title = title_entry.text;

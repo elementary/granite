@@ -1,5 +1,5 @@
 /*
- * Copyright 2017–2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2017–2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
@@ -45,7 +45,6 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     public string status {
         set {
             status_label.label = "<span font_size='small'>%s</span>".printf (value);
-            status_label.no_show_all = false;
             status_label.show ();
         }
     }
@@ -84,7 +83,6 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         status_icon.valign = Gtk.Align.END;
 
         status_label = new Gtk.Label (null);
-        status_label.no_show_all = true;
         status_label.use_markup = true;
         status_label.ellipsize = Pango.EllipsizeMode.END;
         status_label.vexpand = true;
@@ -99,17 +97,22 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
         var overlay = new Gtk.Overlay ();
         overlay.width_request = 38;
-        overlay.add (display_widget);
+        overlay.set_child (display_widget);
         overlay.add_overlay (status_icon);
 
-        var grid = new Gtk.Grid ();
-        grid.margin = 6;
+        var grid = new Gtk.Grid () {
+            margin_start = 6,
+            margin_end = 6,
+            margin_top = 6,
+            margin_bottom = 6
+        };
+
         grid.column_spacing = 6;
         grid.attach (overlay, 0, 0, 1, 2);
         grid.attach (title_label, 1, 0, 1, 1);
         grid.attach (status_label, 1, 1, 1, 1);
 
-        add (grid);
+        child = grid;
 
         header = page.header;
         page.bind_property ("icon-name", this, "icon-name", BindingFlags.DEFAULT);

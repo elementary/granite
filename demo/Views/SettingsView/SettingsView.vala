@@ -1,10 +1,12 @@
 /*
- * Copyright 2017 elementary, Inc. (https://elementary.io)
+ * Copyright 2017-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class SettingsView : Gtk.Paned {
+public class SettingsView : Gtk.Box {
     construct {
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+
         var settings_page = new SimpleSettingsPage ();
 
         var settings_page_two = new SettingsPage ();
@@ -15,7 +17,9 @@ public class SettingsView : Gtk.Paned {
 
         var settings_sidebar = new Granite.SettingsSidebar (stack);
 
-        add (settings_sidebar);
-        add (stack);
+        paned.start_child = settings_sidebar;
+        paned.end_child = stack;
+
+        append (paned);
     }
 }
