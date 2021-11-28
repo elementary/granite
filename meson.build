@@ -62,10 +62,9 @@ icons_dir = join_paths(
 pkgconfig = import('pkgconfig')
 i18n = import('i18n')
 
-#subdir('lib')
+subdir('lib')
 subdir('data')
-#subdir('demo')
-subdir('porting')
+subdir('demo')
 subdir('icons')
 subdir('po')
 

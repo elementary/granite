@@ -508,7 +508,7 @@ namespace Granite.Drawing {
          * @return the text string
          */
         public string to_string () {
-            Gdk.RGBA rgba = {R, G, B, A};
+            Gdk.RGBA rgba = {(float)R, (float)G, (float)B, (float)A};
             return rgba.to_string ();
         }
 
