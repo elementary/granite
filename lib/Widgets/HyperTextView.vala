@@ -256,16 +256,16 @@ public class Granite.HyperTextView : Gtk.TextView {
         } catch (GLib.Error e) {
             warning ("Could not open URI '%s': %s", uri, e.message);
 
-            // TODO: Re-enable this once MessageDialog is ported
+            var error_dialog = new Granite.MessageDialog (
+                _("Could not open URI"),
+                e.message,
+                new ThemedIcon ("dialog-error"),
+                Gtk.ButtonsType.CLOSE
+            );
 
-            // var error_dialog = new Granite.MessageDialog (
-            //     _("Could not open URI"),
-            //     e.message,
-            //     new ThemedIcon ("dialog-error"),
-            //     Gtk.ButtonsType.CLOSE
-            // );
-            // error_dialog.run ();
-            // error_dialog.destroy ();
+            error_dialog.response.connect (() => {
+                error_dialog.destroy ();
+            });
         }
     }
 
