@@ -161,6 +161,14 @@ namespace Granite {
      * Style class for flattened widgets, such as buttons,
      */
     public const string STYLE_CLASS_FLAT = "flat";
+    /**
+     * Style class for applied to message dialogs.
+     */
+    public const string STYLE_CLASS_MESSAGE_DIALOG = "message-dialog";
+    /**
+     * Style class for when an action (usually a button) is the primary suggested action in a specific context.
+     */
+    public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen

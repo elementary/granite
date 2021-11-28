@@ -28,7 +28,7 @@ public class Granite.Demo : Gtk.Application {
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
         var welcome = new WelcomeView ();
-        // var dialogs_view = new DialogsView (window);
+        var dialogs_view = new DialogsView (window);
         // var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
@@ -49,7 +49,7 @@ public class Granite.Demo : Gtk.Application {
         // main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
-        // main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
+        main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         // main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
         main_stack.add_titled (application_view, "application", "Application");
 

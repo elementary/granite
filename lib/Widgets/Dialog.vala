@@ -64,39 +64,19 @@ public class Granite.Dialog : Gtk.Dialog {
     }
 
     construct {
-        Gtk.Box action_area = get_action_area ();
-        Gtk.Box content_area = get_content_area ();
-
-        action_area.get_parent ().remove (action_area);
-
-        var content_area_parent = content_area.get_parent ();
-        content_area_parent.remove (content_area);
-
         deletable = false;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         use_header_bar = (int) false;
-
-        var grid = new Gtk.Grid () {
-           orientation = Gtk.Orientation.VERTICAL
-        };
-        grid.add (content_area);
-        grid.add (action_area);
-        grid.show_all ();
-
-        content_area_parent.add (grid);
     }
 
     public override void constructed () {
         base.constructed ();
-
-        get_style_context ().add_class ("csd");
-
-        var headerbar = new Gtk.HeaderBar () {
-            has_subtitle = false
+        var titlebar = new Gtk.HeaderBar () {
+            title_widget = new Gtk.Label (null),
+            show_title_buttons = false
         };
-        headerbar.get_style_context ().add_class ("default-decoration");
-        headerbar.show ();
 
-        set_titlebar (headerbar);
+        titlebar.get_style_context ().add_class ("default-decoration");
+        titlebar.get_style_context ().add_class ("flat");
+        set_titlebar (titlebar);
     }
 }
