@@ -10,7 +10,7 @@ executable(
     'Views/CSSView.vala',
     'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
-    # 'Views/DynamicNotebookView.vala',
+    'Views/DynamicNotebookView.vala',
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',
     'Views/ModeButtonView.vala',
