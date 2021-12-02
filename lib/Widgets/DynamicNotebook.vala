@@ -994,7 +994,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.@9:
-                        if ((state & Gdk.ModifierType.ALT_MASK) == Gdk.ModifierType.ALT_MASK    ) {
+                        if ((state & Gdk.ModifierType.ALT_MASK) == Gdk.ModifierType.ALT_MASK) {
                             notebook.page = notebook.get_n_pages () - 1;
                             return true;
                         }
