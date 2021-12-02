@@ -19,31 +19,29 @@
  * public class WelcomeView : Gtk.Grid {
  *     construct {
  *         var welcome = new Granite.Widgets.Welcome ("Granite Demo", "This is a demo of the Granite library.");
- *         welcome.append ("text-x-vala", "Visit Valadoc", "The canonical source for Vala API references.");
- *         welcome.append ("text-x-source", "Get Granite Source", "Granite's source code is hosted on GitHub.");
+ *         var valadoc_button = welcome.add_button ("text-x-vala", "Visit Valadoc",
+ *              "The canonical source for Vala API references.");
+ *         var github_button =welcome.add_button ("text-x-source", "Get Granite Source",
+ *              "Granite's source code is hosted on GitHub.");
  *
- *         add (welcome);
+ *         set_child (welcome);
  *
- *         welcome.activated.connect ((index) => {
- *             switch (index) {
- *                 case 0:
- *                     try {
- *                         AppInfo.launch_default_for_uri ("https://valadoc.org/granite/Granite.html", null);
- *                     } catch (Error e) {
- *                         warning (e.message);
- *                     }
- *
- *                     break;
- *                 case 1:
- *                     try {
- *                         AppInfo.launch_default_for_uri ("https://github.com/elementary/granite", null);
- *                     } catch (Error e) {
- *                         warning (e.message);
- *                     }
- *
- *                     break;
+ *         valadoc_button.activate.connect (() => {
+ *             try {
+ *                  AppInfo.launch_default_for_uri ("https://valadoc.org/granite/Granite.html", null);
+ *             } catch (Error e) {
+ *                  warning (e.message);
  *             }
  *         });
+ *
+ *         github_button.activate.connect (() => {
+ *             try {
+ *                  AppInfo.launch_default_for_uri ("https://github.com/elementary/granite", null);
+ *             } catch (Error e) {
+ *                  warning (e.message);
+ *             }
+ *         });
+ *
  *     }
  * }
  * }}}
@@ -51,16 +49,7 @@
  */
 public class Granite.Widgets.Welcome : Gtk.Box {
 
-    public signal void activated (int index);
-
-    /**
-     * List of buttons for action items
-     */
-    protected new GLib.List<Gtk.Button> children = new GLib.List<Gtk.Button> ();
-
-    /**
-     * Grid for action items
-     */
+    public signal void activated (); // removed the index
     protected Gtk.Box options;
 
     /**
@@ -97,30 +86,33 @@ public class Granite.Widgets.Welcome : Gtk.Box {
      * @param subtitle_text subtitle text for new Welcome Page
      */
     public Welcome (string title_text, string subtitle_text) {
-        Object (title: title_text, subtitle: subtitle_text);
+        Object (
+            title: title_text,
+            subtitle: subtitle_text
+        );
     }
 
     construct {
-        get_style_context ().add_class (Granite.STYLE_CLASS_WELCOME);
+        css_classes = { "welcome" };
 
-        title_label = new Gtk.Label (null);
-        title_label.justify = Gtk.Justification.CENTER;
-        title_label.hexpand = true;
-        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+        title_label = new Gtk.Label (null) {
+            justify = Gtk.Justification.CENTER,
+            hexpand = true,
+            css_classes = { "h1" }
+        };
 
-        subtitle_label = new Gtk.Label (null);
-        subtitle_label.justify = Gtk.Justification.CENTER;
-        subtitle_label.hexpand = true;
-        subtitle_label.wrap = true;
-        subtitle_label.wrap_mode = Pango.WrapMode.WORD;
+        subtitle_label = new Gtk.Label (null) {
+            justify = Gtk.Justification.CENTER,
+            hexpand = true,
+            wrap = true,
+            wrap_mode = Pango.WrapMode.WORD,
+            css_classes = { "h2" }
+        };
 
-        var subtitle_label_context = subtitle_label.get_style_context ();
-        subtitle_label_context.add_class (Granite.STYLE_CLASS_DIM_LABEL);
-        subtitle_label_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-
-        options = new Gtk.Box (Gtk.Orientation.VERTICAL, 12);
-        options.halign = Gtk.Align.CENTER;
-        options.margin_top = 24;
+        options = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
+            halign = Gtk.Align.CENTER,
+            margin_top = 24
+        };
 
         var content = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             hexpand = true,
@@ -136,105 +128,84 @@ public class Granite.Widgets.Welcome : Gtk.Box {
         content.append (subtitle_label);
         content.append (options);
 
-        base.append (content);
+        append (content);
     }
 
      /**
-      * Sets action item of given index's visiblity
+      * Sets button visiblity
       *
-      * @param index index of action item to be changed
-      * @param val value deteriming whether the action item is visible
+      * @param WelcomeButton to be changed
+      * @param val value deteriming whether the button is visible
       */
-    public void set_item_visible (uint index, bool val) {
-        if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
-            children.nth_data (index).set_visible (val);
-        }
+    public void set_button_visible (Granite.Widgets.WelcomeButton button, bool val) {
+        button.set_visible (val);
     }
 
      /**
-      * Removes action item of given index
+      * Removes a WelcomeButton
       *
-      * @param index index of action item to remove
+      * @param WelcomeButton to remove
       */
-    public void remove_item (uint index) {
-        if (index < children.length () && children.nth_data (index) is Gtk.Widget) {
-            var item = children.nth_data (index);
-            item.destroy ();
-            children.remove (item);
-        }
+    public void remove_button (Granite.Widgets.WelcomeButton button) {
+            button.destroy ();
     }
 
      /**
-      * Sets action item of given index sensitivity
+      * Sets WelcomeButton's sensitivity
       *
-      * @param index index of action item to be changed
-      * @param val value deteriming whether the action item is senstitive
+      * @param WelcomeButton to be changed
+      * @param val value deteriming whether the WelcomeButton is senstitive
       */
-    public void set_item_sensitivity (uint index, bool val) {
-        if (index < children.length () && children.nth_data (index) is Gtk.Widget)
-            children.nth_data (index).set_sensitive (val);
+    public void set_button_sensitivity (Granite.Widgets.WelcomeButton button, bool val) {
+        button.set_sensitive (val);
     }
 
      /**
-      * Appends new action item to welcome page with a {@link Gtk.Image.from_icon_name}
+      * Appends new WelcomeButton to welcome page with a {@link Gtk.Image.from_icon_name}
       *
-      * @param icon_name named icon to be set as icon for action item
-      * @param option_text text to be set as the title for action item. It should use Title Case.
-      * @param description_text text to be set as description for action item. It should use sentence case.
-      * @return index of new item
+      * @param icon_name named icon to be set as icon for WelcomeButton
+      * @param option_text text to be set as the title for WelcomeButton. It should use Title Case.
+      * @param description_text text to be set as description for WelcomeButton. It should use sentence case.
+      * @return WelcomeButton
       */
-    public new int append (string icon_name, string option_text, string description_text) {
+    public new Granite.Widgets.WelcomeButton add_button (string icon_name, string option_text, string description_text) {
         var image = new Gtk.Image.from_icon_name (icon_name);
         image.use_fallback = true;
-        return append_with_image (image, option_text, description_text);
+        return add_button_from_image (image, option_text, description_text);
     }
 
      /**
-      * Appends new action item to welcome page with a {link Gdk.Pixbuf} icon
+      * Appends new WelcomeButton to welcome page with a {link Gdk.Pixbuf} icon
       *
-      * @param pixbuf pixbuf to be set as icon for action item
-      * @param option_text text to be set as the header for action item
-      * @param description_text text to be set as description for action item
-      * @return index of new item
+      * @param pixbuf pixbuf to be set as icon for WelcomeButton
+      * @param option_text text to be set as the header for WelcomeButton
+      * @param description_text text to be set as description for WelcomeButton
+      * @return WelcomeButton
       */
-    public int append_with_pixbuf (Gdk.Pixbuf? pixbuf, string option_text, string description_text) {
+    public Granite.Widgets.WelcomeButton add_button_with_pixbuf (Gdk.Pixbuf? pixbuf,
+        string option_text, string description_text) {
         var image = new Gtk.Image.from_pixbuf (pixbuf);
-        return append_with_image (image, option_text, description_text);
+        return add_button_from_image (image, option_text, description_text);
     }
 
      /**
-      * Appends new action item to welcome page with a {@link Gtk.Image} icon
+      * Appends new WelcomeButton to welcome page with a {@link Gtk.Image} icon
       *
-      * @param image image to be set as icon for action item
-      * @param option_text text to be set as the header for action item
-      * @param description_text text to be set as description for action item
-      * @return index of new item
+      * @param image to be set as icon for WelcomeButton
+      * @param option_text text to be set as the header for WelcomeButton
+      * @param description_text text to be set as description for WelcomeButton
+      * @return WelcomeButton
       */
-    public int append_with_image (Gtk.Image? image, string option_text, string description_text) {
+    public Granite.Widgets.WelcomeButton add_button_from_image (Gtk.Image? image,
+        string option_text, string description_text) {
         // Option label
         var button = new WelcomeButton (image, option_text, description_text);
-        children.append (button);
         options.append (button);
 
         button.clicked.connect (() => {
-            int index = this.children.index (button);
-            activated (index); // send signal
+            activated (); // send signal
         });
 
-        return this.children.index (button);
-    }
-
-    /**
-     * Returns a welcome button by index
-     *
-     * @param index index of action item to be returned
-     * @return welcome button at //index//, or //null// if //index// is invalid.
-     * @since 0.3
-     */
-    public Granite.Widgets.WelcomeButton? get_button_from_index (int index) {
-        if (index >= 0 && index < children.length ())
-            return children.nth_data (index) as WelcomeButton;
-
-        return null;
+        return button;
     }
 }

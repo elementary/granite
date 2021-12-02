@@ -9,6 +9,7 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
     Gtk.Label button_description;
     Gtk.Image? _icon;
     Gtk.Grid button_grid;
+    public signal void activated (); // maybe overengineering?
 
     /**
      * Title property of the Welcome Button
@@ -57,27 +58,34 @@ public class Granite.Widgets.WelcomeButton : Gtk.Button {
 
     construct {
         // Title label
-        button_title = new Gtk.Label (null);
-        button_title.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
-        button_title.halign = Gtk.Align.START;
-        button_title.valign = Gtk.Align.END;
+        button_title = new Gtk.Label (null) {
+            halign = Gtk.Align.START,
+            valign = Gtk.Align.END,
+            css_classes = { "h3" }
+        };
 
         // Description label
-        button_description = new Gtk.Label (null);
-        button_description.halign = Gtk.Align.START;
-        button_description.valign = Gtk.Align.START;
-        button_description.set_wrap (true);
-        button_description.set_wrap_mode (Pango.WrapMode.WORD);
-        button_description.get_style_context ().add_class (Granite.STYLE_CLASS_DIM_LABEL);
+        button_description = new Gtk.Label (null) {
+            halign = Gtk.Align.START,
+            valign = Gtk.Align.START,
+            wrap = true,
+            wrap_mode = Pango.WrapMode.WORD,
+        };
 
-        get_style_context ().add_class (Granite.STYLE_CLASS_FLAT);
+        css_classes = { "flat" };
 
         // Button contents wrapper
-        button_grid = new Gtk.Grid ();
-        button_grid.column_spacing = 12;
+        button_grid = new Gtk.Grid () {
+            column_spacing = 12
+        };
 
         button_grid.attach (button_title, 1, 0, 1, 1);
         button_grid.attach (button_description, 1, 1, 1, 1);
         child = button_grid;
     }
+
+    public override void clicked () {
+        activated (); // maybe this is overengineering?
+    }
+
 }
