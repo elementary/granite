@@ -10,7 +10,7 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="6.2.0" date="2021-11-01" urgency="medium">
+    <release version="6.2.0" date="2021-11-23" urgency="medium">
       <description>
         <p>New Features:</p>
         <ul>
