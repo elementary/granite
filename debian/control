@@ -15,7 +15,7 @@ Vcs-Browser: https://github.com/elementary/granite
 Homepage: https://github.com/elementary/granite
 
 Package: libgranite6
-Architecture: amd64
+Architecture: amd64 arm64
 Multi-Arch: same
 Depends: libgranite-common (>= ${source:Version}),
          ${misc:Depends},
@@ -30,7 +30,7 @@ Description: extension of GTK+ libraries
 
 Package: libgranite-dev
 Section: libdevel
-Architecture: amd64
+Architecture: amd64 arm64
 Depends: gir1.2-granite-1.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
@@ -46,7 +46,7 @@ Description: extension of GTK+ libraries (development files)
 
 Package: gir1.2-granite-1.0
 Section: introspection
-Architecture: amd64
+Architecture: amd64 arm64
 Multi-Arch: foreign
 Depends: ${gir:Depends}, ${misc:Depends}
 Description: extension of GTK+ libraries (introspection files)
@@ -73,7 +73,7 @@ Description: extension of GTK+ libraries (common files)
 
 Package: granite-demo
 Section: misc
-Architecture: amd64
+Architecture: amd64 arm64
 Depends: libgranite6 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
