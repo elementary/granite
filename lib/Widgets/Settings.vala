@@ -78,13 +78,13 @@ namespace Granite {
          */
         public enum ClockFormat {
             /**
-             * The user prefers a 12 hour clock
-             */
-            12H,
-            /**
              * The user prefers a 24 hour clock
              */
-            24H
+            24H,
+            /**
+             * The user prefers a 12 hour clock
+             */
+            12H
         }
 
         private ClockFormat? _clock_format = null;
