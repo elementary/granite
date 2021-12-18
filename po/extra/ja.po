@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-11-23 10:43+0000\n"
+"PO-Revision-Date: 2021-12-14 07:41+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:45
 msgid "Fix locale issues in Flatpaks"
-msgstr "Flatpak アプリでの地域設定に関する不具合を修正"
+msgstr "Flatpak アプリでのロケールに関する不具合を修正"
 
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:65
 msgid "Additions:"
@@ -202,9 +202,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:93
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
-msgstr ""
-"午前／午後ボタンが選択された場合にも、time_changed シグナルが発生するように修"
-"正"
+msgstr "タイムピッカー: 午前／午後ボタンが選択された場合にも、time_changed シグナルが発生するように修正"
 
 #: data/granite.appdata.xml.in:94
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"

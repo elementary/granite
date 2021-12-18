@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2021-11-17 14:30+0000\n"
+"PO-Revision-Date: 2021-12-14 21:27+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/tr/>\n"
@@ -43,11 +43,11 @@ msgstr "Yeni Özellikler:"
 
 #: data/granite.appdata.xml.in:17
 msgid "min_length property for Granite.ValidatedEntry"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.HyperTextView for navigatable URLs in text views"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:137
 #: data/granite.appdata.xml.in:152
@@ -64,27 +64,27 @@ msgstr "Çeviriler güncellendi"
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:42
 msgid "Fixes:"
-msgstr " "
+msgstr "Düzeltmeler:"
 
 #: data/granite.appdata.xml.in:26
 msgid "Prevent crashing on environments without dark style preference support"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:34
 msgid "Use values from the Settings Portal when possible"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:35
 msgid "Disable horizontal scrolling by default in SettingsPage"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:44
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:45
 msgid "Fix locale issues in Flatpaks"
-msgstr " "
+msgstr ""
 
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:65
 msgid "Additions:"
