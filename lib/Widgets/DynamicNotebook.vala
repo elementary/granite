@@ -328,12 +328,15 @@ namespace Granite.Widgets {
             page_container = new TabPageContainer (this);
 
             menu = new Gtk.Menu ();
-            var close_m = new Gtk.MenuItem () { child = close_tab_label };
+            var close_m = new Gtk.MenuItem ();
+            close_m.add (close_tab_label);
             var close_other_m = new Gtk.MenuItem.with_label ("");
             var close_other_right_m = new Gtk.MenuItem.with_label ("");
             pin_m = new Gtk.MenuItem.with_label ("");
-            new_window_m = new Gtk.MenuItem () { child = new_window_label };
-            duplicate_m = new Gtk.MenuItem () { child = duplicate_tab_label };
+            new_window_m = new Gtk.MenuItem ();
+            new_window_m.add (new_window_label);
+            duplicate_m = new Gtk.MenuItem ();
+            duplicate_m.add (duplicate_tab_label);
             menu.append (close_other_m);
             menu.append (close_other_right_m);
             menu.append (close_m);
@@ -856,11 +859,14 @@ namespace Granite.Widgets {
             add (notebook);
 
             menu = new Gtk.Menu ();
-            new_tab_m = new Gtk.MenuItem () { child = new_tab_label };
+            new_tab_m = new Gtk.MenuItem ();
+            new_tab_m.add (new_tab_label);
+
             restore_tab_m = new Gtk.MenuItem () {
-                child = restore_tab_label,
                 sensitive = false
             };
+            restore_tab_m.add (restore_tab_label);
+
             menu.append (new_tab_m);
             menu.append (restore_tab_m);
             menu.show_all ();
