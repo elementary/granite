@@ -74,6 +74,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
     /**
+     * Style class for the content area in dialogs.
+     */
+    public const string STYLE_CLASS_DIALOG_CONTENT_AREA = "dialog-content-area";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "h1";
@@ -101,10 +105,6 @@ namespace Granite {
      * Style class for a {@link Granite.Widgets.OverlayBar}
      */
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
-    /**
-     * Style class for primary label text in a {@link Granite.MessageDialog}
-     */
-    public const string STYLE_CLASS_PRIMARY_LABEL = "primary";
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
@@ -134,6 +134,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_TERMINAL = "terminal";
     /**
+     * Style class for title label text in a {@link Granite.MessageDialog}
+     */
+    public const string STYLE_CLASS_TITLE_LABEL = "title";
+    /**
      * Style class for a {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_WELCOME = "welcome";
@@ -162,9 +166,9 @@ namespace Granite {
      */
     public const string STYLE_CLASS_FLAT = "flat";
     /**
-     * Style class for applied to message dialogs.
+     * Style class for message dialogs.
      */
-    public const string STYLE_CLASS_MESSAGE_DIALOG = "message-dialog";
+    public const string STYLE_CLASS_MESSAGE_DIALOG = "message";
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
