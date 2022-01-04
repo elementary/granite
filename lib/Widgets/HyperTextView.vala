@@ -33,6 +33,9 @@ public class Granite.HyperTextView : Gtk.TextView {
 
     private bool is_control_key_pressed = false;
 
+    private int pointer_x;
+    private int pointer_y;
+
     construct {
         var http_charset = "[\\w\\/\\-\\+\\.:@\\?&%=#]";
         var email_charset = "[\\w\\-\\.]";
@@ -60,29 +63,30 @@ public class Granite.HyperTextView : Gtk.TextView {
             buffer.changed ();
         });
 
-        button_release_event.connect (on_button_release_event);
-        motion_notify_event.connect (on_motion_notify_event);
-        focus_out_event.connect (on_focus_out_event);
+        var motion_controller = new Gtk.EventControllerMotion ();
+        motion_controller.motion.connect (on_motion_notify_event);
+        add_controller (motion_controller);
 
-        /**
-        * Binding key_press/key_release signals to all toplevel
-        * windows possible enables us to detect when the Control
-        * key is pressed even when HyperTextView is not focused.
-        */
-        var toplevel_windows = Gtk.Window.list_toplevels ();
+        var keypress_controller = new Gtk.EventControllerKey ();
+        keypress_controller.key_pressed.connect (on_key_press_event);
+        keypress_controller.key_released.connect (on_key_release_event);
 
-        if (toplevel_windows.length () != 0) {
-            foreach (unowned var toplevel_window in toplevel_windows) {
-                toplevel_window.key_press_event.connect (on_key_press_event);
-                toplevel_window.key_release_event.connect (on_key_release_event);
-            }
+        var click_controller = new Gtk.GestureClick ();
+        click_controller.pressed.connect (on_click_event);
+        add_controller (click_controller);
 
-        } else {
-            warning ("Could not bind key-press events to top-level window, Control + Click may not always behave correctly.");
-            // bind to this as a fallback
-            key_press_event.connect (on_key_press_event);
-            key_release_event.connect (on_key_release_event);
-        }
+        var focus_controller = new Gtk.EventControllerFocus ();
+        focus_controller.leave.connect (() => {
+            set_cursor (new Gdk.Cursor.from_name ("text", null));
+            is_control_key_pressed = false;
+        });
+        add_controller (focus_controller);
+
+        realize.connect (() => {
+            // Attach the keypress controller to the root so we can see Ctrl key presses
+            // even when the widget isn't focused
+            get_root ().add_controller (keypress_controller);
+        });
     }
 
     private void buffer_connect (Gtk.TextBuffer buffer) {
@@ -97,7 +101,7 @@ public class Granite.HyperTextView : Gtk.TextView {
         }
     }
 
-    private void on_paste_done (Gtk.Clipboard clipboard) {
+    private void on_paste_done (Gdk.Clipboard clipboard) {
         // force rescan of whole buffer:
         buffer_cursor_position_when_change_started = FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET;
     }
@@ -215,71 +219,61 @@ public class Granite.HyperTextView : Gtk.TextView {
         }
     }
 
-    private bool on_key_press_event (Gdk.EventKey event) {
-        if (event.keyval == Gdk.Key.Control_L || event.keyval == Gdk.Key.Control_R) {
-            var window = get_window (Gtk.TextWindowType.TEXT);
-            if (window != null) {
-                var pointer_device = window.get_display ().get_default_seat ().get_pointer ();
-                if (pointer_device != null) {
-                    int pointer_x, pointer_y;
-                    window.get_device_position (pointer_device, out pointer_x, out pointer_y, null);
-
-                    var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
-                    if (uri_hovering_over != null) {
-                        window.cursor = new Gdk.Cursor.from_name (get_display (), "pointer");
-                    }
-                }
+    private bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+        if (keyval == Gdk.Key.Control_L || keyval == Gdk.Key.Control_R) {
+            var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
+            if (uri_hovering_over != null) {
+                set_cursor (new Gdk.Cursor.from_name ("pointer", null));
             }
+
             is_control_key_pressed = true;
         }
+
         return Gdk.EVENT_PROPAGATE;
     }
 
-    private bool on_key_release_event (Gdk.EventKey event) {
-        if (event.keyval == Gdk.Key.Control_L || event.keyval == Gdk.Key.Control_R) {
-            var window = get_window (Gtk.TextWindowType.TEXT);
-            if (is_control_key_pressed && window != null) {
-                window.cursor = new Gdk.Cursor.from_name (get_display (), "text");
-            }
+    private void on_key_release_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+        if (keyval == Gdk.Key.Control_L || keyval == Gdk.Key.Control_R) {
+            set_cursor (new Gdk.Cursor.from_name ("text", null));
             is_control_key_pressed = false;
         }
-        return Gdk.EVENT_PROPAGATE;
     }
 
-    private bool on_button_release_event () {
+    private void on_click_event (int n_press, double x, double y) {
         if (!is_control_key_pressed) {
-            return Gdk.EVENT_PROPAGATE;
+            return;
         }
-        Gtk.TextIter text_iter;
-        buffer.get_iter_at_mark (out text_iter, buffer.get_insert ());
 
-        var tags = text_iter.get_tags ();
-        foreach (var tag in tags) {
-            if (tag.get_data<string?> ("uri") != null) {
-                var uri = tag.get_data<string> ("uri");
-
-                try {
-                    GLib.AppInfo.launch_default_for_uri (uri, null);
-                } catch (GLib.Error e) {
-                    warning ("Could not open URI '%s': %s", uri, e.message);
-
-                    var error_dialog = new Granite.MessageDialog (
-                        _("Could not open URI"),
-                        e.message,
-                        new ThemedIcon ("dialog-error"),
-                        Gtk.ButtonsType.CLOSE
-                    );
-                    error_dialog.run ();
-                    error_dialog.destroy ();
-                }
-                break;
-            }
+        var uri = get_uri_at_location ((int)x, (int)y);
+        if (uri == null) {
+            return;
         }
-        return Gdk.EVENT_PROPAGATE;
+
+        try {
+            GLib.AppInfo.launch_default_for_uri (uri, null);
+            set_cursor (new Gdk.Cursor.from_name ("text", null));
+            is_control_key_pressed = false;
+        } catch (GLib.Error e) {
+            warning ("Could not open URI '%s': %s", uri, e.message);
+
+            var error_dialog = new Granite.MessageDialog (
+                _("Could not open URI"),
+                e.message,
+                new ThemedIcon ("dialog-error"),
+                Gtk.ButtonsType.CLOSE
+            );
+
+            error_dialog.response.connect (() => {
+                error_dialog.destroy ();
+            });
+        }
     }
 
-    private bool on_motion_notify_event (Gtk.Widget widget, Gdk.EventMotion event) {
-        var uri_hovering_over = get_uri_at_location ((int) event.x, (int) event.y);
+    private void on_motion_notify_event (double x, double y) {
+        pointer_x = (int)x;
+        pointer_y = (int)y;
+
+        var uri_hovering_over = get_uri_at_location (pointer_x, pointer_y);
 
         if (uri_hovering_over != null && !has_tooltip) {
             has_tooltip = true;
@@ -291,35 +285,26 @@ public class Granite.HyperTextView : Gtk.TextView {
         } else if (uri_hovering_over == null && has_tooltip) {
             has_tooltip = false;
         }
-
-        return Gdk.EVENT_PROPAGATE;
     }
 
     private string? get_uri_at_location (int location_x, int location_y) {
         string? uri = null;
-        var window = get_window (Gtk.TextWindowType.WIDGET);
 
-        if (window != null) {
-            int x, y;
-            window_to_buffer_coords (Gtk.TextWindowType.TEXT, location_x, location_y, out x, out y);
+        int x, y;
+        window_to_buffer_coords (Gtk.TextWindowType.TEXT, location_x, location_y, out x, out y);
 
-            Gtk.TextIter text_iter;
-            if (get_iter_at_location (out text_iter, x, y)) {
-                var tags = text_iter.get_tags ();
+        Gtk.TextIter text_iter;
+        if (get_iter_at_location (out text_iter, x, y)) {
+            var tags = text_iter.get_tags ();
 
-                foreach (var tag in tags) {
-                    if (tag.get_data<string?> ("uri") != null) {
-                        uri = tag.get_data<string> ("uri");
-                        break;
-                    }
+            foreach (var tag in tags) {
+                if (tag.get_data<string?> ("uri") != null) {
+                    uri = tag.get_data<string> ("uri");
+                    break;
                 }
             }
         }
-        return uri;
-    }
 
-    private bool on_focus_out_event (Gdk.EventFocus event) {
-        is_control_key_pressed = false;
-        return Gdk.EVENT_PROPAGATE;
+        return uri;
     }
 }

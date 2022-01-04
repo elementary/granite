@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2019-2021 elementary, Inc. (https://elementary.io)
  * Copyright 2011–2013 Robert Dyer
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
@@ -86,18 +86,6 @@ namespace Granite.Drawing {
             this.G = G;
             this.B = B;
             this.A = A;
-        }
-
-        /**
-         * Constructs a new {@link Granite.Drawing.Color} from a {@link Gdk.Color}.
-         *
-         * @param color the {@link Gdk.Color}
-         */
-        public Color.from_gdk (Gdk.Color color) {
-            R = color.red / (double) uint16.MAX;
-            G = color.green / (double) uint16.MAX;
-            B = color.blue / (double) uint16.MAX;
-            A = 1.0;
         }
 
         /**
@@ -520,7 +508,7 @@ namespace Granite.Drawing {
          * @return the text string
          */
         public string to_string () {
-            Gdk.RGBA rgba = {R, G, B, A};
+            Gdk.RGBA rgba = {(float)R, (float)G, (float)B, (float)A};
             return rgba.to_string ();
         }
 

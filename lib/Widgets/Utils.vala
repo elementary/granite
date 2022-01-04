@@ -95,7 +95,7 @@ public static string accel_to_string (string? accel) {
         arr += _("Ctrl");
     }
 
-    if (Gdk.ModifierType.MOD1_MASK in accel_mods) {
+    if (Gdk.ModifierType.ALT_MASK in accel_mods) {
         arr += _("Alt");
     }
 
@@ -267,8 +267,8 @@ private static double sanitize_color (double color) {
  * @return a contrasting {@link Gdk.RGBA} foreground color, i.e. white ({ 1.0, 1.0, 1.0, 1.0}) or black ({ 0.0, 0.0, 0.0, 1.0}).
  */
 public static Gdk.RGBA contrasting_foreground_color (Gdk.RGBA bg_color) {
-    Gdk.RGBA gdk_white = { 1.0, 1.0, 1.0, 1.0 };
-    Gdk.RGBA gdk_black = { 0.0, 0.0, 0.0, 1.0 };
+    Gdk.RGBA gdk_white = { 1.0f, 1.0f, 1.0f, 1.0f };
+    Gdk.RGBA gdk_black = { 0.0f, 0.0f, 0.0f, 1.0f };
 
     var contrast_with_white = contrast_ratio (
         bg_color,
@@ -319,169 +319,8 @@ namespace Granite.Widgets.Utils {
         assert (window != null);
 
         string hex = color.to_string ();
-        return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
-    }
-
-    /**
-     * Applies the //stylesheet// to the widget.
-     *
-     * @param widget widget to apply style to
-     * @param stylesheet CSS style to apply to the widget
-     * @param class_name class name to add style to, pass null if no class should be applied to the //widget//
-     * @param priority priorty of change, for most cases this will be {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
-     *
-     * @return the {@link Gtk.CssProvider} that was applied to the //widget//.
-     */
-    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
-    public Gtk.CssProvider? set_theming (Gtk.Widget widget, string stylesheet,
-                              string? class_name, int priority) {
-        var css_provider = get_css_provider (stylesheet);
-
-        var context = widget.get_style_context ();
-
-        if (css_provider != null)
-            context.add_provider (css_provider, priority);
-
-        if (class_name != null && class_name.strip () != "")
-            context.add_class (class_name);
-
-        return css_provider;
-    }
-
-    /**
-     * Applies a stylesheet to the given //screen//. This will affect all the
-     * widgets which are part of that screen.
-     *
-     * @param screen screen to apply style to, use {@link Gtk.Widget.get_screen} in order to get the screen that the widget is on
-     * @param stylesheet CSS style to apply to screen
-     * @param priority priorty of change, for most cases this will be {@link Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION}
-     *
-     * @return the {@link Gtk.CssProvider} that was applied to the //screen//.
-     */
-    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.StyleContext.add_provider_for_screen")]
-    public Gtk.CssProvider? set_theming_for_screen (Gdk.Screen screen, string stylesheet, int priority) {
-        var css_provider = get_css_provider (stylesheet);
-
-        if (css_provider != null)
-            Gtk.StyleContext.add_provider_for_screen (screen, css_provider, priority);
-
-        return css_provider;
-    }
-
-    /**
-     * Constructs a new {@link Gtk.CssProvider} that will store the //stylesheet// data.
-     * This function uses {@link Gtk.CssProvider.load_from_data} internally so if this method fails
-     * then a warning will be thrown and null returned as a result.
-     *
-     * @param stylesheet CSS style to apply to the returned provider
-     *
-     * @return a new {@link Gtk.CssProvider}, or null in case the parsing of
-     *         //stylesheet// failed.
-     */
-    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "Gtk.CssProvider.load_from_data")]
-    public Gtk.CssProvider? get_css_provider (string stylesheet) {
-        Gtk.CssProvider provider = new Gtk.CssProvider ();
-
-        try {
-            provider.load_from_data (stylesheet, -1);
-        }
-        catch (Error e) {
-            warning ("Could not create CSS Provider: %s\nStylesheet:\n%s",
-                     e.message, stylesheet);
-            return null;
-        }
-
-        return provider;
-    }
-
-    /**
-     * This method applies given text style to given label
-     *
-     * @param text_style text style to apply
-     * @param label label to apply style to
-     */
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public void apply_text_style_to_label (TextStyle text_style, Gtk.Label label) {
-        var style_provider = new Gtk.CssProvider ();
-        var style_context = label.get_style_context ();
-
-        string style_class, stylesheet;
-        stylesheet = text_style.get_stylesheet (out style_class);
-        style_context.add_class (style_class);
-
-        try {
-            style_provider.load_from_data (stylesheet, -1);
-        } catch (Error err) {
-            warning ("Couldn't apply style to label: %s", err.message);
-            return;
-        }
-
-        style_context.add_provider (style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-    }
-
-    const string WM_SETTINGS_PATH = "org.gnome.desktop.wm.preferences";
-    const string PANTHEON_SETTINGS_PATH = "org.pantheon.desktop.gala.appearance";
-    const string WM_BUTTON_LAYOUT_KEY = "button-layout";
-
-    /**
-     * This method detects the close button position as configured for the window manager. If you
-     * need to know when this key changed, it's best to listen on the schema returned by
-     * {@link Granite.Widgets.Utils.get_button_layout_schema} for changes and then call this method again.
-     *
-     * @param position a {@link Granite.CloseButtonPosition} indicating where to best put the close button
-     * @return if no schema was detected by {@link Granite.Widgets.Utils.get_button_layout_schema}
-     *         or there was no close value in the button-layout string, false will be returned. The position
-     *         will be LEFT in that case.
-     */
-    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
-    public bool get_default_close_button_position (out CloseButtonPosition position) {
-        // default value
-        position = CloseButtonPosition.LEFT;
-
-        var schema = get_button_layout_schema ();
-        if (schema == null) {
-            return false;
-        }
-
-        var layout = new GLib.Settings (schema).get_string (WM_BUTTON_LAYOUT_KEY);
-        var parts = layout.split (":");
-
-        if (parts.length < 2) {
-            return false;
-        }
-
-        if ("close" in parts[0]) {
-            position = CloseButtonPosition.LEFT;
-            return true;
-        } else if ("close" in parts[1]) {
-            position = CloseButtonPosition.RIGHT;
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * This methods returns the schema used by {@link Granite.Widgets.Utils.get_default_close_button_position}
-     * to determine the close button placement. It will first check for the pantheon/gala schema and then fallback
-     * to the default gnome one. If neither is available, null is returned. Make sure to check for this case,
-     * as otherwise your program may crash on startup.
-     *
-     * @return the schema name. If the layout could not be determined, a warning will be thrown and null will be returned
-     */
-    [Version (deprecated = true, deprecated_since = "5.5.0", replacement = "")]
-    public string? get_button_layout_schema () {
-        var sss = SettingsSchemaSource.get_default ();
-
-        if (sss != null) {
-            if (sss.lookup (PANTHEON_SETTINGS_PATH, true) != null) {
-                return PANTHEON_SETTINGS_PATH;
-            } else if (sss.lookup (WM_SETTINGS_PATH, true) != null) {
-                return WM_SETTINGS_PATH;
-            }
-        }
-
-        warning ("No schema indicating the button-layout is installed.");
+        // TODO: Fix this
         return null;
+        //return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
     }
 }

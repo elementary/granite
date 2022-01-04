@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2018 elementary, Inc. (https://elementary.io)
+ * Copyright 2011-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
@@ -21,15 +21,15 @@ public class Granite.Demo : Gtk.Application {
         var hypertext_view = new HyperTextViewGrid ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
-        var seekbar_view = new SeekBarView ();
+        // var seekbar_view = new SeekBarView ();
         var settings_view = new SettingsView ();
-        var source_list_view = new SourceListView ();
-        var storage_view = new StorageView ();
+        // var source_list_view = new SourceListView ();
+        // var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
         var welcome = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
-        var async_image_view = new AsyncImageView ();
+        // var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
         var main_stack = new Gtk.Stack ();
@@ -43,22 +43,23 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (mode_button_view, "selection_controls", "Selection Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
-        main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
+        // main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
         main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
-        main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
-        main_stack.add_titled (storage_view, "storage", "StorageBar");
+        // main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
+        // main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
-        main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
+        // main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
         main_stack.add_titled (application_view, "application", "Application");
 
         var stack_sidebar = new Gtk.StackSidebar ();
         stack_sidebar.stack = main_stack;
 
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-        paned.add1 (stack_sidebar);
-        paned.add2 (main_stack);
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            start_child = stack_sidebar,
+            end_child = main_stack
+        };
 
         var gtk_settings = Gtk.Settings.get_default ();
 
@@ -76,17 +77,17 @@ public class Granite.Demo : Gtk.Application {
 
         var headerbar = new Gtk.HeaderBar ();
         headerbar.get_style_context ().add_class ("default-decoration");
-        headerbar.show_close_button = true;
+        headerbar.show_title_buttons = true;
         headerbar.pack_end (mode_switch);
 
-        window.add (paned);
+        window.child = paned;
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
         window.set_titlebar (headerbar);
         window.title = "Granite Demo";
-        window.show_all ();
 
         add_window (window);
+        window.show ();
 
         granite_settings.notify["prefers-color-scheme"].connect (() => {
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;

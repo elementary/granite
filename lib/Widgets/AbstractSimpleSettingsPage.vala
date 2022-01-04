@@ -1,5 +1,5 @@
 /*
- * Copyright 2017–2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2017–2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -15,9 +15,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     private string _description;
 
     /**
-     * A {@link Gtk.ButtonbBox} used as the action area for #this
+     * A {@link Gtk.Box} used as the action area for #this
      */
-    public Gtk.ButtonBox action_area { get; construct; }
+    public Gtk.Box action_area { get; construct; }
 
     /**
      * A {@link Gtk.Grid} used as the content area for #this
@@ -90,7 +90,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     }
 
     construct {
-        header_icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG);
+        header_icon = new Gtk.Image.from_icon_name (icon_name);
         header_icon.pixel_size = 48;
         header_icon.valign = Gtk.Align.START;
 
@@ -131,24 +131,20 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         content_area.row_spacing = 12;
         content_area.vexpand = true;
 
-        action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        action_area.set_layout (Gtk.ButtonBoxStyle.END);
-        action_area.spacing = 6;
+        action_area = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
 
-        var grid = new Gtk.Grid ();
-        grid.margin = 12;
-        grid.orientation = Gtk.Orientation.VERTICAL;
-        grid.row_spacing = 24;
-        grid.add (header_area);
-        grid.add (content_area);
-        grid.add (action_area);
+        var grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 24) {
+            margin_start = 12,
+            margin_end = 12,
+            margin_top = 12,
+            margin_bottom = 12
+        };
 
-        add (grid);
+        grid.append (header_area);
+        grid.append (content_area);
+        grid.append (action_area);
 
-        set_action_area_visibility ();
-
-        action_area.add.connect (set_action_area_visibility);
-        action_area.remove.connect (set_action_area_visibility);
+        child = grid;
 
         notify["icon-name"].connect (() => {
             if (header_icon != null) {
@@ -161,15 +157,5 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
                 title_label.label = title;
             }
         });
-    }
-
-    private void set_action_area_visibility () {
-        if (action_area.get_children () != null) {
-            action_area.no_show_all = false;
-            action_area.show ();
-        } else {
-            action_area.no_show_all = true;
-            action_area.hide ();
-        }
     }
 }

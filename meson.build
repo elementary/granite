@@ -1,8 +1,8 @@
 project(
-    'granite',
+    'granite-7',
     'vala', 'c',
     meson_version: '>= 0.48.2',
-    version: '6.2.0'
+    version: '7.0.0'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.48.0')
@@ -49,7 +49,7 @@ libgranite_deps = [
     gio_os_dep,
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
-    dependency('gtk+-3.0', version: '>=3.22'),
+    dependency('gtk4', version: '>=4.4'),
 ]
 
 icons_dir = join_paths(

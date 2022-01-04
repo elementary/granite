@@ -1,5 +1,5 @@
 /*-
- * Copyright 2016-2017 elementary, Inc. (https://elementary.io)
+ * Copyright 2016-2021 elementary, Inc. (https://elementary.io)
  * Copyright 2016-2017 Artem Anufrij <artem.anufrij@live.de>
  * Copyright 2016-2017 Daniel Foré <daniel@elementary.io>
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -15,7 +15,7 @@ namespace Granite.Widgets {
      *
      * {{../doc/images/Toast.png}}
      */
-    public class Toast : Gtk.Revealer {
+    public class Toast : Gtk.Box {
 
         /**
          * Emitted when the Toast is closed by activating the close button
@@ -27,6 +27,7 @@ namespace Granite.Widgets {
          */
         public signal void default_action ();
 
+        private Gtk.Revealer revealer;
         private Gtk.Label notification_label;
         private Gtk.Button default_action_button;
         private string _title;
@@ -55,53 +56,53 @@ namespace Granite.Widgets {
         }
 
         construct {
-            margin = 3;
+            revealer = new Gtk.Revealer ();
+
+            margin_start = margin_end = margin_top = margin_bottom = 3;
             halign = Gtk.Align.CENTER;
             valign = Gtk.Align.START;
 
             default_action_button = new Gtk.Button ();
             default_action_button.visible = false;
-            default_action_button.no_show_all = true;
             default_action_button.clicked.connect (() => {
-                reveal_child = false;
+                revealer.reveal_child = false;
                 stop_timeout ();
                 default_action ();
             });
 
-            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic");
             close_button.get_style_context ().add_class ("close-button");
             close_button.clicked.connect (() => {
-                reveal_child = false;
+                revealer.reveal_child = false;
                 stop_timeout ();
                 closed ();
             });
 
             notification_label = new Gtk.Label (title);
 
-            var notification_box = new Gtk.Grid ();
-            notification_box.column_spacing = 12;
-            notification_box.add (close_button);
-            notification_box.add (notification_label);
-            notification_box.add (default_action_button);
+            var notification_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
+            notification_box.append (close_button);
+            notification_box.append (notification_label);
+            notification_box.append (default_action_button);
 
-            var event_box = new Gtk.EventBox ();
-            event_box.events |= Gdk.EventMask.ENTER_NOTIFY_MASK;
-            event_box.events |= Gdk.EventMask.LEAVE_NOTIFY_MASK;
-            event_box.add (notification_box);
-
-            event_box.enter_notify_event.connect (() => {
+            var motion_controller = new Gtk.EventControllerMotion ();
+            motion_controller.enter.connect (() => {
                 stop_timeout ();
             });
 
-            event_box.leave_notify_event.connect (() => {
+            motion_controller.leave.connect (() => {
                 start_timeout ();
             });
 
+            add_controller (motion_controller);
+
             var notification_frame = new Gtk.Frame (null);
             notification_frame.get_style_context ().add_class ("app-notification");
-            notification_frame.add (event_box);
+            notification_frame.child = notification_box;
 
-            add (notification_frame);
+            revealer.child = notification_frame;
+
+            append (revealer);
         }
 
         private void start_timeout () {
@@ -114,7 +115,7 @@ namespace Granite.Widgets {
             }
 
             timeout_id = GLib.Timeout.add (duration, () => {
-                reveal_child = false;
+                revealer.reveal_child = false;
                 timeout_id = 0;
                 return GLib.Source.REMOVE;
             });
@@ -133,10 +134,8 @@ namespace Granite.Widgets {
          */
         public void set_default_action (string? label) {
             if (label == "" || label == null) {
-                default_action_button.no_show_all = true;
                 default_action_button.visible = false;
             } else {
-                default_action_button.no_show_all = false;
                 default_action_button.visible = true;
             }
             default_action_button.label = label;
@@ -146,8 +145,8 @@ namespace Granite.Widgets {
          * Sends the Toast on behalf of #this
          */
         public void send_notification () {
-            if (!child_revealed) {
-                reveal_child = true;
+            if (!revealer.child_revealed) {
+                revealer.reveal_child = true;
             }
 
             // Remove any old timeout, including one started by

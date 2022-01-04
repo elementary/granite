@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2019 elementary, Inc. (https://elementary.io)
+ *  Copyright (C) 2019-2021 elementary, Inc. (https://elementary.io)
  *                2011-2013 Tom Beckmann <tom@elementaryos.org>
  *
  *  This program or library is free software; you can redistribute it
@@ -30,10 +30,10 @@ namespace Granite.Widgets {
         Gdk.ModifierType.SHIFT_MASK |
         Gdk.ModifierType.SUPER_MASK |
         Gdk.ModifierType.CONTROL_MASK |
-        Gdk.ModifierType.MOD1_MASK
+        Gdk.ModifierType.ALT_MASK
     );
 
-    private class TabPageContainer : Gtk.EventBox {
+    private class TabPageContainer : Gtk.Box {
         private unowned Tab _tab = null;
 
         public unowned Tab tab {
@@ -42,7 +42,7 @@ namespace Granite.Widgets {
         }
 
         DynamicNotebook dynamic_notebook {
-            get { return (get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
+            get { return (get_parent ().get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
         }
 
         public TabPageContainer (Tab tab) {
@@ -50,21 +50,23 @@ namespace Granite.Widgets {
         }
 
         construct {
-            add (new Gtk.Grid ());
+            append (new Gtk.Grid ());
 
             // delay tabs resizing until cursor leaves tab-bar
             // tab_bar-area = DynamicNotebook-area - TabPageContainer-area - add_button
-            this.enter_notify_event.connect ((e) => {
+            var motion_controller = new Gtk.EventControllerMotion ();
+            motion_controller.enter.connect (() => {
                 dynamic_notebook.check_to_recalc_size ();
-                return false;
             });
+
+            add_controller (motion_controller);
         }
     }
 
     /**
      * This is a standard tab which can be used in a notebook to form a tabbed UI.
      */
-    public class Tab : Gtk.EventBox {
+    public class Tab : Gtk.Box {
         Gtk.Label _label;
         public string label {
             get { return _label.label; }
@@ -155,28 +157,26 @@ namespace Granite.Widgets {
         internal TabPageContainer page_container;
         public Gtk.Widget page {
             get {
-                return page_container.get_child ();
+                return page_container.get_first_child ();
             }
             set {
-                weak Gtk.Widget container_child = page_container.get_child ();
+                weak Gtk.Widget container_child = page_container.get_first_child ();
                 if (container_child != null) {
                     page_container.remove (container_child);
                 }
 
-                weak Gtk.Container? value_parent = value.get_parent ();
+                weak Gtk.Box? value_parent = value.get_parent () as Gtk.Box;
                 if (value_parent != null) {
                     value_parent.remove (value);
-                    page_container.add (value);
+                    page_container.append (value);
                 } else {
-                    page_container.add (value);
+                    page_container.append (value);
                 }
-
-                page_container.show_all ();
             }
         }
 
         DynamicNotebook dynamic_notebook {
-            get { return (get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
+            get { return (get_parent ().get_parent ().get_parent ().get_parent () as Gtk.Notebook).get_parent () as DynamicNotebook; }
         }
 
         internal Gtk.Image _icon;
@@ -201,7 +201,7 @@ namespace Granite.Widgets {
             set { _label.ellipsize = value; }
         }
 
-        public Gtk.Menu menu { get; set; }
+        public Gtk.PopoverMenu menu { get; set; }
 
         private bool _closable = true;
         internal bool closable {
@@ -215,9 +215,9 @@ namespace Granite.Widgets {
         }
 
         //We need to be able to toggle these from the notebook.
-        internal Gtk.MenuItem new_window_m;
-        internal Gtk.MenuItem duplicate_m;
-        internal Gtk.MenuItem pin_m;
+        // internal Gtk.MenuItem new_window_m;
+        // internal Gtk.MenuItem duplicate_m;
+        // internal Gtk.MenuItem pin_m;
 
         private bool _is_current_tab = false;
         internal bool is_current_tab {
@@ -292,7 +292,6 @@ namespace Granite.Widgets {
             _label.ellipsize = Pango.EllipsizeMode.END;
 
             _icon = new Gtk.Image ();
-            _icon.icon_size = Gtk.IconSize.MENU;
             _icon.visible = true;
             _icon.set_size_request (16, 16);
 
@@ -300,161 +299,154 @@ namespace Granite.Widgets {
             _working.set_size_request (16, 16);
             _working.start ();
 
-            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
+            var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic");
             close_button.tooltip_text = _("Close Tab");
             close_button.valign = Gtk.Align.CENTER;
-            close_button.relief = Gtk.ReliefStyle.NONE;
 
             close_button_revealer = new Gtk.Revealer () {
                 transition_duration = TRANSITION_DURATION_IN_PLACE,
                 transition_type = Gtk.RevealerTransitionType.CROSSFADE
             };
 
-            close_button_revealer.add (close_button);
+            close_button_revealer.set_child (close_button);
 
-            var tab_layout = new Gtk.Grid ();
+            var tab_layout = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             tab_layout.hexpand = false;
-            tab_layout.orientation = Gtk.Orientation.HORIZONTAL;
-            tab_layout.add (close_button_revealer);
-            tab_layout.add (_label);
-            tab_layout.add (_icon);
-            tab_layout.add (_working);
+            tab_layout.append (close_button_revealer);
+            tab_layout.append (_label);
+            tab_layout.append (_icon);
+            tab_layout.append (_working);
 
-            visible_window = true;
-
-            add (tab_layout);
-            show_all ();
+            append (tab_layout);
 
             page_container = new TabPageContainer (this);
 
-            menu = new Gtk.Menu ();
-            var close_m = new Gtk.MenuItem ();
-            close_m.add (close_tab_label);
-            var close_other_m = new Gtk.MenuItem.with_label ("");
-            var close_other_right_m = new Gtk.MenuItem.with_label ("");
-            pin_m = new Gtk.MenuItem.with_label ("");
-            new_window_m = new Gtk.MenuItem ();
-            new_window_m.add (new_window_label);
-            duplicate_m = new Gtk.MenuItem ();
-            duplicate_m.add (duplicate_tab_label);
-            menu.append (close_other_m);
-            menu.append (close_other_right_m);
-            menu.append (close_m);
-            menu.append (new_window_m);
-            menu.append (duplicate_m);
-            menu.append (pin_m);
-            menu.show_all ();
+            menu = new Gtk.PopoverMenu.from_model (null);
+            // var close_m = new Gtk.MenuItem ();
+            // close_m.add (close_tab_label);
+            // var close_other_m = new Gtk.MenuItem.with_label ("");
+            // var close_other_right_m = new Gtk.MenuItem.with_label ("");
+            // pin_m = new Gtk.MenuItem.with_label ("");
+            // new_window_m = new Gtk.MenuItem ();
+            // new_window_m.add (new_window_label);
+            // duplicate_m = new Gtk.MenuItem ();
+            // duplicate_m.add (duplicate_tab_label);
+            // menu.append (close_other_m);
+            // menu.append (close_other_right_m);
+            // menu.append (close_m);
+            // menu.append (new_window_m);
+            // menu.append (duplicate_m);
+            // menu.append (pin_m);
 
-            close_m.activate.connect (() => closed () );
-            close_other_m.activate.connect (() => close_others () );
-            close_other_right_m.activate.connect (() => close_others_right () );
-            new_window_m.activate.connect (() => new_window () );
-            duplicate_m.activate.connect (() => duplicate () );
-            pin_m.activate.connect (() => pinned = !pinned);
+            // close_m.activate.connect (() => closed () );
+            // close_other_m.activate.connect (() => close_others () );
+            // close_other_right_m.activate.connect (() => close_others_right () );
+            // new_window_m.activate.connect (() => new_window () );
+            // duplicate_m.activate.connect (() => duplicate () );
+            // pin_m.activate.connect (() => pinned = !pinned);
 
-            add_events (Gdk.EventMask.SCROLL_MASK);
-            this.scroll_event.connect ((e) => {
-                switch (e.direction) {
-                    case Gdk.ScrollDirection.UP:
-                    case Gdk.ScrollDirection.LEFT:
-                        dynamic_notebook.previous_page ();
-                        return true;
+            var scroll_controller = new Gtk.EventControllerScroll (
+                Gtk.EventControllerScrollFlags.BOTH_AXES |
+                Gtk.EventControllerScrollFlags.DISCRETE
+            );
 
-                    case Gdk.ScrollDirection.DOWN:
-                    case Gdk.ScrollDirection.RIGHT:
-                        dynamic_notebook.next_page ();
-                        return true;
-                }
-
-                return false;
-            });
-
-            this.button_press_event.connect ((e) => {
-                if (e.button == 1 && e.type == Gdk.EventType.2BUTTON_PRESS && duplicate_m.visible) {
-                    this.duplicate ();
-                } else if (e.button == 2) {
-                    return true; // consume middle-click, prevent event propagation to DynamicNotebook
-                } else if (e.button == 3) {
-                    menu.popup_at_pointer (e);
-                    uint num_tabs = dynamic_notebook.n_tabs;
-                    uint tab_position = dynamic_notebook.get_tab_position (this);
-                    close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
-                    close_other_m.sensitive = (num_tabs != 1);
-                    /// TRANSLATORS: This will close tabs to the left in right-to-left environments
-                    close_other_right_m.label = dngettext (
-                        GETTEXT_PACKAGE,
-                        _("Close Tab to the Right"),
-                        _("Close Tabs to the Right"),
-                        num_tabs - 1 - tab_position
-                    );
-                    close_other_right_m.sensitive = (tab_position < num_tabs - 1);
-                    new_window_m.sensitive = (num_tabs != 1);
-                    pin_m.label = _("Pin");
-                    if (this.pinned) {
-                        pin_m.label = _("Unpin");
-                    }
+            scroll_controller.scroll.connect ((dx, dy) => {
+                double largest = dx.abs () > dy.abs () ? dx : dy;
+                if (largest < 0) {
+                    dynamic_notebook.next_page ();
                 } else {
-                    return false;
+                    dynamic_notebook.previous_page ();
                 }
-
-                return true;
             });
 
-            this.button_release_event.connect ((e) => {
-                if (e.button == 2 && cursor_over_tab) {
-                    e.state &= MODIFIER_MASK;
-                    if (e.state == 0) {
+            add_controller (scroll_controller);
+
+            var click_handler = new Gtk.GestureClick () {
+                button = 0 // listen for any button
+            };
+
+            add_controller (click_handler);
+
+            click_handler.pressed.connect ((n_press, x, y) => {
+                if (click_handler.get_current_button () == Gdk.BUTTON_PRIMARY && n_press == 2 /* && duplicate_m.visible*/) {
+                    this.duplicate ();
+                } else if (click_handler.get_current_button () == Gdk.BUTTON_SECONDARY) {
+                    menu.pointing_to = { (int)x, (int)y, 1, 1};
+                    menu.popup ();
+
+                    // uint num_tabs = dynamic_notebook.n_tabs;
+                    // uint tab_position = dynamic_notebook.get_tab_position (this);
+                    // close_other_m.label = dngettext (GETTEXT_PACKAGE, _("Close Other Tab"), _("Close Other Tabs"), num_tabs - 1);
+                    // close_other_m.sensitive = (num_tabs != 1);
+                    // /// TRANSLATORS: This will close tabs to the left in right-to-left environments
+                    // close_other_right_m.label = dngettext (
+                    //     GETTEXT_PACKAGE,
+                    //     _("Close Tab to the Right"),
+                    //     _("Close Tabs to the Right"),
+                    //     num_tabs - 1 - tab_position
+                    // );
+                    // close_other_right_m.sensitive = (tab_position < num_tabs - 1);
+                    // new_window_m.sensitive = (num_tabs != 1);
+                    // pin_m.label = _("Pin");
+                    // if (this.pinned) {
+                    //     pin_m.label = _("Unpin");
+                    // }
+                }
+            });
+
+            click_handler.released.connect ((n_press, x, y) => {
+                if (click_handler.get_current_button () == Gdk.BUTTON_MIDDLE && cursor_over_tab) {
+                    var state = click_handler.get_current_event ().get_modifier_state () & MODIFIER_MASK;
+                    if (state == 0) {
                         dynamic_notebook.close_tab_and_keep_width (this);
-                    } else if (e.state == Gdk.ModifierType.SHIFT_MASK) {
+                    } else if (state == Gdk.ModifierType.SHIFT_MASK) {
                         this.close_others ();
                     }
-
-                    return true;
                 }
-
-                return false;
             });
 
-            this.enter_notify_event.connect ((e) => {
+            var tab_motion_controller = new Gtk.EventControllerMotion ();
+            tab_motion_controller.enter.connect (() => {
                 cursor_over_tab = true;
                 update_close_button_visibility ();
-                return false;
             });
 
-            this.leave_notify_event.connect ((e) => {
+            tab_motion_controller.leave.connect (() => {
                 // We don't want to handle leave_notify events without a prior enter_notify
                 // for event parity reasons.
                 if (!cursor_over_tab)
-                    return false;
+                    return;
 
                 cursor_over_tab = false;
                 update_close_button_visibility ();
-                return false;
             });
+
+            add_controller (tab_motion_controller);
+
+            var button_motion_controller = new Gtk.EventControllerMotion ();
 
             // Hovering the close button area causes a leave_notify_event on the tab EventBox.
             // Because of that we need to watch the events from those widgets independently
             // to avoid misbehavior. While setting "above_child" to "true" on the tab might
             // appear to be a more proper solution, that wouldn't let us capture any event
             // (e.g. button_press) on the button.
-            close_button.enter_notify_event.connect ((e) => {
+            button_motion_controller.enter.connect (() => {
                 cursor_over_close_button = true;
                 update_close_button_visibility ();
-                return false;
             });
 
-            close_button.leave_notify_event.connect ((e) => {
+            button_motion_controller.leave.connect (() => {
                 // We don't want to handle leave_notify events without a prior enter_notify
                 // for event parity reasons.
                 if (!cursor_over_close_button)
-                    return false;
+                    return;
 
                 cursor_over_close_button = false;
                 update_close_button_visibility ();
-                return false;
             });
 
-            page_container.button_press_event.connect (() => { return true; }); //dont let clicks pass through
+            close_button.add_controller (button_motion_controller);
+
             close_button.clicked.connect (() => { dynamic_notebook.close_tab_and_keep_width (this); });
             working = false;
 
@@ -468,7 +460,6 @@ namespace Granite.Widgets {
         private void update_close_button_visibility () {
             // If the tab is pinned, we don't want the revealer to keep
             // the size allocation of the close button.
-            close_button_revealer.no_show_all = _pinned;
             close_button_revealer.visible = !_pinned;
 
             close_button_revealer.reveal_child = _closable && !_pinned
@@ -552,37 +543,37 @@ namespace Granite.Widgets {
             return picked;
         }
 
-        public Gtk.Menu menu {
+        public Gtk.PopoverMenu menu {
             owned get {
-                var _menu = new Gtk.Menu ();
+                var _menu = new Gtk.PopoverMenu.from_model (null);
 
                 foreach (var entry in closed_tabs) {
-                    var item = new Gtk.MenuItem.with_label (entry.label);
-                    _menu.prepend (item);
+                    // var item = new Gtk.MenuItem.with_label (entry.label);
+                    // _menu.prepend (item);
 
-                    item.activate.connect (() => {
-                        var e = pick (entry.restore_data);
-                        this.restored (e.label, e.restore_data, e.icon);
-                    });
+                    // item.activate.connect (() => {
+                    //     var e = pick (entry.restore_data);
+                    //     this.restored (e.label, e.restore_data, e.icon);
+                    // });
                 }
 
                 if (!empty) {
-                    var separator = new Gtk.SeparatorMenuItem ();
-                    var item = new Gtk.MenuItem.with_label (_("Clear All"));
+                    // var separator = new Gtk.SeparatorMenuItem ();
+                    // var item = new Gtk.MenuItem.with_label (_("Clear All"));
 
-                    _menu.append (separator);
-                    _menu.append (item);
+                    // _menu.append (separator);
+                    // _menu.append (item);
 
-                    item.activate.connect (() => {
-                        foreach (var entry in closed_tabs) {
-                            if (entry.dropped_callback != null) {
-                                entry.dropped_callback ();
-                            }
-                        }
+                    // item.activate.connect (() => {
+                    //     foreach (var entry in closed_tabs) {
+                    //         if (entry.dropped_callback != null) {
+                    //             entry.dropped_callback ();
+                    //         }
+                    //     }
 
-                        closed_tabs.clear ();
-                        cleared ();
-                    });
+                    //     closed_tabs.clear ();
+                    //     cleared ();
+                    // });
                 }
 
                 return _menu;
@@ -596,7 +587,7 @@ namespace Granite.Widgets {
     *
     * {{../doc/images/DynamicNotebook.png}}
     */
-    public class DynamicNotebook : Gtk.EventBox {
+    public class DynamicNotebook : Gtk.Box {
         /**
          * number of pages
          */
@@ -665,7 +656,7 @@ namespace Granite.Widgets {
                 _allow_duplication = value;
 
                 foreach (var tab in tabs) {
-                    tab.duplicate_m.visible = value;
+                    //tab.duplicate_m.visible = value;
                 }
             }
         }
@@ -678,7 +669,7 @@ namespace Granite.Widgets {
             get { return _allow_restoring; }
             set {
                 _allow_restoring = value;
-                restore_tab_m.visible = value;
+                // restore_tab_m.visible = value;
                 restore_button.visible = value;
             }
         }
@@ -700,11 +691,7 @@ namespace Granite.Widgets {
             get { return _add_button_visible; }
             set {
                 if (value != _add_button_visible) {
-                    if (_add_button_visible) {
-                        notebook.remove (add_button);
-                    } else {
-                        notebook.set_action_widget (add_button, Gtk.PackType.START);
-                    }
+                    add_button.visible = value;
 
                     _add_button_visible = value;
                 }
@@ -793,7 +780,7 @@ namespace Granite.Widgets {
         /**
          * The menu appearing when the notebook is clicked on a blank space
          */
-        public Gtk.Menu menu { get; private set; }
+        public Gtk.PopoverMenu menu { get; private set; }
 
         private ClosedTabs closed_tabs;
 
@@ -816,11 +803,11 @@ namespace Granite.Widgets {
         public signal void new_tab_requested ();
         public signal bool close_tab_requested (Tab tab);
 
-        private Gtk.MenuItem new_tab_m;
-        private Gtk.MenuItem restore_tab_m;
+        // private Gtk.MenuItem new_tab_m;
+        // private Gtk.MenuItem restore_tab_m;
 
         private Gtk.Button add_button;
-        private Gtk.Button restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
+        private Gtk.MenuButton restore_button; // should be a Gtk.MenuButton when we have Gtk+ 3.6
 
         /**
          * Create a new dynamic notebook
@@ -847,124 +834,113 @@ namespace Granite.Widgets {
         }
 
         construct {
-            notebook = new Gtk.Notebook ();
-            notebook.can_focus = false;
-            visible_window = true; // needed for leave_notify event
-            get_style_context ().add_class ("dynamic-notebook");
+            notebook = new Gtk.Notebook () {
+                can_focus = false,
+                hexpand = true,
+                vexpand = true,
+                scrollable = true,
+                show_border = false
+            };
 
-            notebook.scrollable = true;
-            notebook.show_border = false;
+            get_style_context ().add_class ("dynamic-notebook");
             _tab_bar_behavior = TabBarBehavior.ALWAYS;
 
-            add (notebook);
+            append (notebook);
 
-            menu = new Gtk.Menu ();
-            new_tab_m = new Gtk.MenuItem ();
-            new_tab_m.add (new_tab_label);
+            // menu = new Gtk.Menu ();
+            // new_tab_m = new Gtk.MenuItem ();
+            // new_tab_m.add (new_tab_label);
 
-            restore_tab_m = new Gtk.MenuItem () {
-                sensitive = false
-            };
-            restore_tab_m.add (restore_tab_label);
+            // restore_tab_m = new Gtk.MenuItem () {
+            //     sensitive = false
+            // };
+            // restore_tab_m.add (restore_tab_label);
 
-            menu.append (new_tab_m);
-            menu.append (restore_tab_m);
-            menu.show_all ();
+            // menu.append (new_tab_m);
+            // menu.append (restore_tab_m);
 
-            new_tab_m.activate.connect (() => {
-                new_tab_requested ();
-            });
+            // new_tab_m.activate.connect (() => {
+            //     new_tab_requested ();
+            // });
 
-            restore_tab_m.activate.connect (() => {
-                restore_last_tab ();
-            });
+            // restore_tab_m.activate.connect (() => {
+            //     restore_last_tab ();
+            // });
 
             closed_tabs = new ClosedTabs ();
             closed_tabs.restored.connect ((label, restore_data, icon) => {
                 if (!allow_restoring)
                     return;
                 restore_button.sensitive = !closed_tabs.empty;
-                restore_tab_m.sensitive = !closed_tabs.empty;
+                // restore_tab_m.sensitive = !closed_tabs.empty;
                 tab_restored (label, restore_data, icon);
             });
 
             closed_tabs.cleared.connect (() => {
                 restore_button.sensitive = false;
-                restore_tab_m.sensitive = false;
+                // restore_tab_m.sensitive = false;
             });
 
-            add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
-            add_button.relief = Gtk.ReliefStyle.NONE;
+            add_button = new Gtk.Button.from_icon_name ("list-add-symbolic");
             add_button.margin_top = 6;
             add_button.margin_bottom = 6;
             add_button.tooltip_text = _("New Tab");
 
-            // FIXME: Used to prevent an issue with widget overlap in Gtk+ < 3.20
-            var add_button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            add_button_box.add (add_button);
-            add_button_box.show_all ();
+            restore_button = new Gtk.MenuButton () {
+                icon_name = "document-open-recent-symbolic",
+                margin_end = 3,
+                tooltip_text = _("Closed Tabs"),
+                sensitive = false,
+                popover = closed_tabs.menu
+            };
 
-            restore_button = new Gtk.Button.from_icon_name ("document-open-recent-symbolic", Gtk.IconSize.MENU);
-            restore_button.margin_end = 3;
-            restore_button.relief = Gtk.ReliefStyle.NONE;
-            restore_button.tooltip_text = _("Closed Tabs");
-            restore_button.sensitive = false;
-            restore_button.show ();
-
-            notebook.set_action_widget (add_button_box, Gtk.PackType.START);
+            notebook.set_action_widget (add_button, Gtk.PackType.START);
             notebook.set_action_widget (restore_button, Gtk.PackType.END);
 
             //  delay tabs resizing until cursor leaves tab-bar
             //  tab_bar-area = DynamicNotebook-area - TabPageContainer-area - add_button
-            leave_notify_event.connect ((e) => { check_to_recalc_size (); return false; });
-            add_button.enter_notify_event.connect (() => { check_to_recalc_size (); return false; });
+            var motion_controller = new Gtk.EventControllerMotion ();
+            motion_controller.leave.connect (() => check_to_recalc_size ());
+            add_controller (motion_controller);
 
+            var add_motion_controller = new Gtk.EventControllerMotion ();
+            add_motion_controller.enter.connect (() => check_to_recalc_size ());
+            add_button.add_controller (add_motion_controller);
 
             add_button.clicked.connect (() => {
                 new_tab_requested ();
             });
 
-            add_button.button_press_event.connect ((e) => {
-                // Consume double-clicks
-                return e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1;
-            });
-
-            restore_button.clicked.connect (() => {
-                var menu = closed_tabs.menu;
-                menu.attach_widget = restore_button;
-                menu.show_all ();
-                menu.popup_at_widget (restore_button, Gdk.Gravity.SOUTH_EAST, Gdk.Gravity.NORTH_EAST, null);
-            });
-
-            restore_tab_m.visible = allow_restoring;
+            // restore_tab_m.visible = allow_restoring;
             restore_button.visible = allow_restoring;
 
-            size_allocate.connect (() => {
-                if (!wait_to_recalc_size) {
-                    recalc_size ();
-                }
-            });
+            var click_handler = new Gtk.GestureClick () {
+                button = 0 // listen for any button
+            };
 
-            button_press_event.connect ((e) => {
-                if (e.type == Gdk.EventType.2BUTTON_PRESS && e.button == 1) {
+            add_controller (click_handler);
+
+            click_handler.pressed.connect ((n_press, x, y) => {
+                if (click_handler.get_current_button () == Gdk.BUTTON_PRIMARY && n_press == 2) {
                     new_tab_requested ();
-                } else if (e.button == 2 && allow_restoring) {
+                } else if (click_handler.get_current_button () == Gdk.BUTTON_MIDDLE && allow_restoring) {
                     restore_last_tab ();
-                    return true;
-                } else if (e.button == 3) {
-                    menu.popup_at_pointer (e);
+                } else if (click_handler.get_current_button () == Gdk.BUTTON_SECONDARY) {
+                    menu.pointing_to = { (int)x, (int)y, 1, 1};
+                    menu.popup ();
                 }
-
-                return false;
             });
 
-            key_press_event.connect ((e) => {
-                e.state &= MODIFIER_MASK;
+            var key_controller = new Gtk.EventControllerKey ();
+            add_controller (key_controller);
 
-                switch (e.keyval) {
+            key_controller.key_pressed.connect ((keyval, keycode, state) => {
+                state &= MODIFIER_MASK;
+
+                switch (keyval) {
                     case Gdk.Key.@w:
                     case Gdk.Key.@W:
-                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
+                        if (state == Gdk.ModifierType.CONTROL_MASK) {
                             if (!tabs_closable) {
                                 break;
                             }
@@ -977,11 +953,11 @@ namespace Granite.Widgets {
 
                     case Gdk.Key.@t:
                     case Gdk.Key.@T:
-                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
+                        if (state == Gdk.ModifierType.CONTROL_MASK) {
                             new_tab_requested ();
                             return true;
                         } else if (
-                            e.state == (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
+                            state == (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) &&
                             allow_restoring
                         ) {
                             restore_last_tab ();
@@ -991,7 +967,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.Page_Up:
-                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
+                        if (state == Gdk.ModifierType.CONTROL_MASK) {
                             next_page ();
                             return true;
                         }
@@ -999,7 +975,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.Page_Down:
-                        if (e.state == Gdk.ModifierType.CONTROL_MASK) {
+                        if (state == Gdk.ModifierType.CONTROL_MASK) {
                             previous_page ();
                             return true;
                         }
@@ -1014,8 +990,8 @@ namespace Granite.Widgets {
                     case Gdk.Key.@6:
                     case Gdk.Key.@7:
                     case Gdk.Key.@8:
-                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) {
-                            var i = e.keyval - 49;
+                        if ((state & Gdk.ModifierType.ALT_MASK) == Gdk.ModifierType.ALT_MASK) {
+                            var i = keyval - 49;
                             var n_pages = notebook.get_n_pages ();
                             notebook.page = (int) ((i >= n_pages) ? n_pages - 1 : i);
                             return true;
@@ -1024,7 +1000,7 @@ namespace Granite.Widgets {
                         break;
 
                     case Gdk.Key.@9:
-                        if ((e.state & Gdk.ModifierType.MOD1_MASK) == Gdk.ModifierType.MOD1_MASK) {
+                        if ((state & Gdk.ModifierType.ALT_MASK) == Gdk.ModifierType.ALT_MASK) {
                             notebook.page = notebook.get_n_pages () - 1;
                             return true;
                         }
@@ -1048,6 +1024,14 @@ namespace Granite.Widgets {
             notebook.page_removed.connect (on_page_removed);
             notebook.page_reordered.connect (on_page_reordered);
             notebook.create_window.connect (on_create_window);
+        }
+
+        public override void size_allocate (int width, int height, int baseline) {
+            base.size_allocate (width, height, baseline);
+
+            if (!wait_to_recalc_size) {
+                recalc_size ();
+            }
         }
 
         void on_switch_page (Gtk.Widget page, uint pagenum) {
@@ -1086,9 +1070,9 @@ namespace Granite.Widgets {
             recalc_order ();
         }
 
-        unowned Gtk.Notebook on_create_window (Gtk.Widget page, int x, int y) {
+        unowned Gtk.Notebook on_create_window (Gtk.Widget page) {
             var tab = notebook.get_tab_label (page) as Tab;
-            tab_moved (tab, x, y);
+            tab_moved (tab, 0, 0);
             recalc_order ();
             return (Gtk.Notebook) null;
         }
@@ -1147,8 +1131,6 @@ namespace Granite.Widgets {
             foreach (var tab in tabs.copy ()) {
                 tab.width_request = tab.pinned ? TAB_WIDTH_PINNED : tab_width;
             }
-
-            this.notebook.resize_children ();
         }
 
         private void restore_last_tab () {
@@ -1158,7 +1140,7 @@ namespace Granite.Widgets {
 
             var restored = closed_tabs.pop ();
             restore_button.sensitive = !closed_tabs.empty;
-            restore_tab_m.sensitive = !closed_tabs.empty;
+            //restore_tab_m.sensitive = !closed_tabs.empty;
             this.tab_restored (restored.label, restored.restore_data, restored.icon);
         }
 
@@ -1199,8 +1181,8 @@ namespace Granite.Widgets {
         public new List<Gtk.Widget> get_children () {
             var list = new List<Gtk.Widget> ();
 
-            foreach (var child in notebook.get_children ()) {
-                list.append ((child as Gtk.Container).get_children ().nth_data (0));
+            for (int i = 0; i < notebook.get_n_pages (); i++) {
+                list.append (notebook.get_nth_page (i));
             }
 
             return list;
@@ -1236,9 +1218,9 @@ namespace Granite.Widgets {
             this.notebook.set_tab_reorderable (tab.page_container, this.allow_drag);
             this.notebook.set_tab_detachable (tab.page_container, this.allow_new_window);
 
-            tab.duplicate_m.visible = allow_duplication;
-            tab.new_window_m.visible = allow_new_window;
-            tab.pin_m.visible = allow_pinning;
+            // tab.duplicate_m.visible = allow_duplication;
+            // tab.new_window_m.visible = allow_new_window;
+            // tab.pin_m.visible = allow_pinning;
             tab.pinnable = allow_pinning;
             tab.pinned = false;
 
@@ -1308,7 +1290,7 @@ namespace Granite.Widgets {
             if (tab.label != "" && tab.restore_data != "") {
                 closed_tabs.push (tab);
                 restore_button.sensitive = !closed_tabs.empty;
-                restore_tab_m.sensitive = !closed_tabs.empty;
+                //restore_tab_m.sensitive = !closed_tabs.empty;
             }
         }
 
@@ -1334,7 +1316,7 @@ namespace Granite.Widgets {
         }
 
         private void on_new_window (Tab tab) {
-            notebook.create_window (tab.page_container, 0, 0);
+            notebook.create_window (tab.page_container);
         }
 
         private void on_duplicate (Tab tab) {

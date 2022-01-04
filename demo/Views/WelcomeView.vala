@@ -1,15 +1,15 @@
 /*
- * Copyright 2017 elementary, Inc. (https://elementary.io)
+ * Copyright 2017-2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class WelcomeView : Gtk.Grid {
+public class WelcomeView : Gtk.Box {
     construct {
         var welcome = new Granite.Widgets.Welcome ("Granite Demo", "This is a demo of the Granite library.");
         welcome.append ("text-x-vala", "Visit Valadoc", "The canonical source for Vala API references.");
         welcome.append ("text-x-source", "Get Granite Source", "Granite's source code is hosted on GitHub.");
 
-        add (welcome);
+        append (welcome);
 
         welcome.activated.connect ((index) => {
             switch (index) {

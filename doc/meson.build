@@ -1,7 +1,7 @@
 valadoc = find_program('valadoc')
 gd_scan = find_program('gtkdoc-scan')
 
-valadoc_vala_dir = 'granite-vala'
+valadoc_vala_dir = 'granite-7-vala'
 valadoc_target = custom_target(
     'valadoc',
     command: [
@@ -11,7 +11,7 @@ valadoc_target = custom_target(
         '--pkg=gio-2.0',
         '--pkg=gio-unix-2.0',
         '--pkg=gobject-2.0',
-        '--pkg=gtk+-3.0',
+        '--pkg=gtk4',
         '--pkg=posix',
         libgranite_sources,
         config_vala,
@@ -29,7 +29,7 @@ valadoc_target = custom_target(
     depends: libgranite,
 )
 
-valadoc_c_dir = 'granite'
+valadoc_c_dir = 'granite-7'
 cdoc_target = custom_target(
     'cdocs',
     command: [
@@ -39,7 +39,7 @@ cdoc_target = custom_target(
         '--pkg=gio-2.0',
         '--pkg=gio-unix-2.0',
         '--pkg=gobject-2.0',
-        '--pkg=gtk+-3.0',
+        '--pkg=gtk4',
         '--pkg=posix',
         libgranite_sources,
         config_vala,
@@ -50,7 +50,7 @@ cdoc_target = custom_target(
         '--force',
         '--use-svg-images',
         '-o', join_paths(meson.current_build_dir(), valadoc_c_dir),
-        '--doclet-arg=' + 'lib/granite.h',
+        '--doclet-arg=' + 'lib/granite-7.h',
         '--doclet=gtkdoc'
     ],
 

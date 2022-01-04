@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2019-2021 elementary, Inc. (https://elementary.io)
  * Copyright 2011–2013 Maxwell Barvian <maxwell@elementaryos.org>
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
@@ -25,10 +25,6 @@ namespace Granite.Widgets {
         public string format { get; construct; }
 
         /**
-         * Dropdown of DatePicker
-         */
-        protected Gtk.EventBox dropdown;
-        /**
          * The Calendar to create the DatePicker
          */
         protected Gtk.Calendar calendar;
@@ -48,9 +44,7 @@ namespace Granite.Widgets {
                 _date = value;
                 text = _date.format (format);
                 proc_next_day_selected = false;
-                calendar.select_month (value.get_month () - 1, value.get_year ());
-                proc_next_day_selected = false;
-                calendar.select_day (value.get_day_of_month ());
+                calendar.select_day (value);
                 date_changed ();
             }
         }
@@ -62,20 +56,16 @@ namespace Granite.Widgets {
             if (format == null)
                 format = Granite.DateTime.get_default_date_format (false, true, true);
 
-            dropdown = new Gtk.EventBox ();
-            dropdown.margin = MARGIN;
-            popover = new Gtk.Popover (this);
-            popover.add (dropdown);
             calendar = new Gtk.Calendar ();
+            popover = new Gtk.Popover () {
+                child = calendar
+            };
             date = new GLib.DateTime.now_local ();
 
             // Entry properties
             can_focus = false;
             editable = false; // user can't edit the entry directly
             secondary_icon_gicon = new ThemedIcon.with_default_fallbacks ("office-calendar-symbolic");
-
-            dropdown.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK);
-            dropdown.add (calendar);
 
             // Signals and callbacks
             icon_release.connect (on_icon_press);
@@ -119,7 +109,6 @@ namespace Granite.Widgets {
             position_dropdown (out rect);
             popover.pointing_to = rect;
             popover.position = Gtk.PositionType.BOTTOM;
-            popover.show_all ();
             calendar.grab_focus ();
         }
 

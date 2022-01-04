@@ -145,6 +145,30 @@ namespace Granite {
      * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
      */
     public const string STYLE_CLASS_TEMPERATURE = "temperature";
+    /**
+     * Style class for linked widgets, such as a box containing buttons belonging to the same control.
+     */
+    public const string STYLE_CLASS_LINKED = "linked";
+    /**
+     * Style class for dimmed labels.
+     */
+    public const string STYLE_CLASS_DIM_LABEL = "dim-label";
+    /**
+     * Style class for widgets in error state.
+     */
+    public const string STYLE_CLASS_ERROR = "error";
+    /**
+     * Style class for flattened widgets, such as buttons,
+     */
+    public const string STYLE_CLASS_FLAT = "flat";
+    /**
+     * Style class for applied to message dialogs.
+     */
+    public const string STYLE_CLASS_MESSAGE_DIALOG = "message-dialog";
+    /**
+     * Style class for when an action (usually a button) is the primary suggested action in a specific context.
+     */
+    public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen

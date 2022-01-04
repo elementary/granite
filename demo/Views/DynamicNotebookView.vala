@@ -3,11 +3,13 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DynamicNotebookView : Gtk.Grid {
+public class DynamicNotebookView : Gtk.Box {
     construct {
-        var notebook = new Granite.Widgets.DynamicNotebook ();
-        notebook.expand = true;
-        notebook.allow_restoring = true;
+        var notebook = new Granite.Widgets.DynamicNotebook () {
+            hexpand = true,
+            vexpand = true,
+            allow_restoring = true
+        };
 
         int i;
 
@@ -43,6 +45,6 @@ public class DynamicNotebookView : Gtk.Grid {
             notebook.insert_tab (tab, i - 1);
         });
 
-        add (notebook);
+        append (notebook);
     }
 }

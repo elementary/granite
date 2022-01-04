@@ -19,7 +19,7 @@ public class UtilsView : Gtk.Grid {
         var tooltip_markup_label = new Gtk.Label ("Markup Accel Tooltips:");
         tooltip_markup_label.halign = Gtk.Align.END;
 
-        var tooltip_button_one = new Gtk.Button.from_icon_name ("mail-reply-all", Gtk.IconSize.LARGE_TOOLBAR);
+        var tooltip_button_one = new Gtk.Button.from_icon_name ("mail-reply-all");
         tooltip_button_one.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl><Shift>R", "R"}, "Reply All");
 
         var tooltip_button_two = new Gtk.Button.with_label ("Label Buttons");
@@ -35,7 +35,6 @@ public class UtilsView : Gtk.Grid {
 
         demo_label_style_context = contrast_demo_button.get_style_context ();
         demo_label_style_context.add_class ("contrast-demo");
-        demo_label_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
 
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;
@@ -53,39 +52,31 @@ public class UtilsView : Gtk.Grid {
         style_contrast_demo (gdk_demo_bg);
 
         contrast_demo_button.clicked.connect (() => {
-            var dialog = new Gtk.ColorSelectionDialog ("");
+            var dialog = new Gtk.ColorChooserDialog ("", null);
             dialog.deletable = false;
-            dialog.transient_for = (Gtk.Window) get_toplevel ();
+            dialog.set_rgba (gdk_demo_bg);
 
-            unowned Gtk.ColorSelection widget = dialog.get_color_selection ();
-            widget.current_rgba = gdk_demo_bg;
-
-            widget.color_changed.connect (() => {
-                style_contrast_demo (widget.current_rgba);
-                gdk_demo_bg = widget.current_rgba;
+            dialog.response.connect (() => {
+                gdk_demo_bg = dialog.rgba;
+                style_contrast_demo (gdk_demo_bg);
+                dialog.destroy ();
             });
 
-            dialog.run ();
-            dialog.destroy ();
+            dialog.show ();
         });
     }
 
     private void style_contrast_demo (Gdk.RGBA bg_color) {
         var provider = new Gtk.CssProvider ();
-        try {
-            var css = CSS.printf (
-                bg_color.to_string (),
-                Granite.contrasting_foreground_color (bg_color).to_string ()
-            );
+        var css = CSS.printf (
+            bg_color.to_string (),
+            Granite.contrasting_foreground_color (bg_color).to_string ()
+        );
 
-            provider.load_from_data (css, css.length);
-            demo_label_style_context.add_provider (
-                provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-        } catch (GLib.Error e) {
-            critical (e.message);
-            return;
-        }
+        provider.load_from_data ((uint8[])css);
+        demo_label_style_context.add_provider (
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
     }
 }

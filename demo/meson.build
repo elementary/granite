@@ -1,12 +1,12 @@
 executable(
-    'granite-demo',
+    'granite-7-demo',
 
     'GraniteDemo.vala',
 
     'Views/AccelLabelView.vala',
     'Views/AlertViewView.vala',
     'Views/ApplicationView.vala',
-    'Views/AsyncImageView.vala',
+    # 'Views/AsyncImageView.vala',
     'Views/CSSView.vala',
     'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
@@ -15,12 +15,12 @@ executable(
     'Views/HyperTextViewGrid.vala',
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
-    'Views/SeekBarView.vala',
+    # 'Views/SeekBarView.vala',
     'Views/SettingsView/SettingsPage.vala',
     'Views/SettingsView/SettingsView.vala',
     'Views/SettingsView/SimpleSettingsPage.vala',
-    'Views/SourceListView.vala',
-    'Views/StorageView.vala',
+    # 'Views/SourceListView.vala',
+    # 'Views/StorageView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',
@@ -37,7 +37,7 @@ applications_dir = join_paths(
 )
 
 install_data(
-    'io.elementary.granite.demo.desktop',
+    'io.elementary.granite-7.demo.desktop',
     install_dir: applications_dir
 )
 

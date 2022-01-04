@@ -66,13 +66,13 @@ public class Granite.ValidatedEntry : Gtk.Entry {
 
             if (text == "") {
                 secondary_icon_name = null;
-                style_context.remove_class (Gtk.STYLE_CLASS_ERROR);
+                style_context.remove_class (Granite.STYLE_CLASS_ERROR);
             } else if (is_valid) {
                 secondary_icon_name = "process-completed-symbolic";
-                style_context.remove_class (Gtk.STYLE_CLASS_ERROR);
+                style_context.remove_class (Granite.STYLE_CLASS_ERROR);
             } else {
                 secondary_icon_name = "process-error-symbolic";
-                style_context.add_class (Gtk.STYLE_CLASS_ERROR);
+                style_context.add_class (Granite.STYLE_CLASS_ERROR);
             }
         });
     }

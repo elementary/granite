@@ -1,5 +1,5 @@
 /*
- * Copyright 2017–2019 elementary, Inc. (https://elementary.io)
+ * Copyright 2017–2021 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -68,7 +68,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         }
 
         set {
-            image.set_from_gicon (value, Gtk.IconSize.DIALOG);
+            image.set_from_gicon (value);
         }
     }
 
@@ -82,7 +82,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         }
 
         set {
-            badge.set_from_gicon (value, Gtk.IconSize.LARGE_TOOLBAR);
+            badge.set_from_gicon (value);
         }
     }
 
@@ -143,9 +143,6 @@ public class Granite.MessageDialog : Granite.Dialog {
      * The custom area to add custom widgets.
      *
      * This bin can be used to add any custom widget to the message area such as a {@link Gtk.ComboBox} or {@link Gtk.CheckButton}.
-     * Note that after adding such widget you will need to call {@link Gtk.Widget.show} or {@link Gtk.Widget.show_all} on the widget itself for it to appear in the dialog.
-     *
-     * If you want to add multiple widgets to this area, create a new container such as {@link Gtk.Grid} or {@link Gtk.Box} and then add it to the custom bin.
      *
      * When adding a custom widget to the custom bin, the {@link Granite.MessageDialog.secondary_label}'s bottom margin will be expanded automatically
      * to compensate for the additional widget in the dialog.
@@ -154,7 +151,7 @@ public class Granite.MessageDialog : Granite.Dialog {
      * If you don't want to have any margin between your custom widget and the {@link Granite.MessageDialog.secondary_label}, simply add your custom widget
      * and then set the {@link Gtk.Label.margin_bottom} of {@link Granite.MessageDialog.secondary_label} to 0.
      */
-    public Gtk.Bin custom_bin { get; construct; }
+    public Gtk.Box custom_bin { get; construct; }
 
     /**
      * The image that's displayed in the dialog.
@@ -185,7 +182,7 @@ public class Granite.MessageDialog : Granite.Dialog {
      * SingleWidgetBin is only used within this class for creating a Bin that
      * holds only one widget.
      */
-    private class SingleWidgetBin : Gtk.Bin {}
+    private class SingleWidgetBin : Gtk.Box {}
 
     /**
      * Constructs a new {@link Granite.MessageDialog}.
@@ -246,13 +243,12 @@ public class Granite.MessageDialog : Granite.Dialog {
     }
 
     class construct {
-        set_css_name (Gtk.STYLE_CLASS_MESSAGE_DIALOG);
+        set_css_name (Granite.STYLE_CLASS_MESSAGE_DIALOG);
     }
 
     construct {
         resizable = false;
         deletable = false;
-        skip_taskbar_hint = true;
 
         image = new Gtk.Image ();
 
@@ -262,7 +258,7 @@ public class Granite.MessageDialog : Granite.Dialog {
 
         var overlay = new Gtk.Overlay ();
         overlay.valign = Gtk.Align.START;
-        overlay.add (image);
+        overlay.set_child (image);
         overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
@@ -280,20 +276,20 @@ public class Granite.MessageDialog : Granite.Dialog {
         secondary_label.xalign = 0;
 
         custom_bin = new SingleWidgetBin ();
-        custom_bin.add.connect (() => {
-            secondary_label.margin_bottom = 18;
-            if (expander != null) {
-                custom_bin.margin_top = 6;
-            }
-        });
+        // custom_bin.add.connect (() => {
+        //     secondary_label.margin_bottom = 18;
+        //     if (expander != null) {
+        //         custom_bin.margin_top = 6;
+        //     }
+        // });
 
-        custom_bin.remove.connect (() => {
-            secondary_label.margin_bottom = 0;
+        // custom_bin.remove.connect (() => {
+        //     secondary_label.margin_bottom = 0;
 
-            if (expander != null) {
-                custom_bin.margin_top = 0;
-            }
-        });
+        //     if (expander != null) {
+        //         custom_bin.margin_top = 0;
+        //     }
+        // });
 
         message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
@@ -303,9 +299,8 @@ public class Granite.MessageDialog : Granite.Dialog {
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
         message_grid.attach (custom_bin, 1, 3, 1, 1);
-        message_grid.show_all ();
 
-        get_content_area ().add (message_grid);
+        get_content_area ().append (message_grid);
     }
 
     /**
@@ -324,24 +319,24 @@ public class Granite.MessageDialog : Granite.Dialog {
             secondary_label.margin_bottom = 18;
 
             details_view = new Gtk.TextView ();
-            details_view.border_width = 6;
             details_view.editable = false;
             details_view.pixels_below_lines = 3;
             details_view.wrap_mode = Gtk.WrapMode.WORD;
             details_view.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
 
-            var scroll_box = new Gtk.ScrolledWindow (null, null);
-            scroll_box.margin_top = 12;
-            scroll_box.min_content_height = 70;
-            scroll_box.add (details_view);
+            var scroll_box = new Gtk.ScrolledWindow () {
+                margin_top = 12,
+                min_content_height = 70,
+                child = details_view
+            };
 
-            expander = new Gtk.Expander (_("Details"));
-            expander.add (scroll_box);
+            expander = new Gtk.Expander (_("Details")) {
+                child = scroll_box
+            };
 
             message_grid.attach (expander, 1, 2, 1, 1);
-            message_grid.show_all ();
 
-            if (custom_bin.get_child () != null) {
+            if (custom_bin.get_first_child () != null) {
                 custom_bin.margin_top = 12;
             }
         }
