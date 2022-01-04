@@ -1,5 +1,5 @@
 executable(
-    'granite-demo',
+    'granite-7-demo',
 
     'GraniteDemo.vala',
 
@@ -37,7 +37,7 @@ applications_dir = join_paths(
 )
 
 install_data(
-    'io.elementary.granite.demo.desktop',
+    'io.elementary.granite-7.demo.desktop',
     install_dir: applications_dir
 )
 

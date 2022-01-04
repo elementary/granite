@@ -1,5 +1,5 @@
 project(
-    'granite',
+    'granite-7',
     'vala', 'c',
     meson_version: '>= 0.48.2',
     version: '7.0.0'

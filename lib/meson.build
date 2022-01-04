@@ -50,7 +50,7 @@ libgranite_sources = files(
 
 # define all the names and versions
 granite_gi_name = 'Granite'
-granite_gi_version = '1.0'
+granite_gi_version = '7.0'
 
 granite_gi = granite_gi_name + '-' + granite_gi_version
 granite_gir = granite_gi + '.gir'
@@ -59,7 +59,7 @@ granite_typelib = granite_gi + '.typelib'
 include_dir = join_paths(
     get_option('prefix'),
     get_option('includedir'),
-    'granite'
+    meson.project_name()
 )
 
 config_data = configuration_data()
@@ -73,7 +73,7 @@ config_vala = configure_file(
 
 # compile shared library, generate GIR, header, and vapi file
 libgranite = library(
-    'granite',
+    meson.project_name(),
 
     libgranite_sources,
     config_vala,
@@ -84,8 +84,8 @@ libgranite = library(
         meson.get_compiler('vala').find_library('posix')
     ],
 
-    vala_header: 'granite.h',
-    vala_vapi: 'granite.vapi',
+    vala_header: 'granite-7.h',
+    vala_vapi: 'granite-7.vapi',
     vala_gir: granite_gir,
 
     version: meson.project_version(),
@@ -94,7 +94,7 @@ libgranite = library(
 )
 
 install_data(
-    'granite.deps',
+    'granite-7.deps',
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
 )
 
@@ -128,9 +128,9 @@ libgranite_dep = declare_dependency(
 # generate pkgconfig file
 granite_pc = pkgconfig.generate(
     libgranite,
-    name: 'granite',
+    name: meson.project_name(),
     requires: libgranite_deps,
-    subdirs: ['granite'],
+    subdirs: ['granite-7'],
     description: 'elementary\'s Application Framework',
     version: meson.project_version(),
     url: 'https://github.com/elementary/granite',
