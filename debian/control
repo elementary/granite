@@ -1,4 +1,4 @@
-Source: granite
+Source: granite7
 Section: libs
 Priority: optional
 Maintainer: Cody Garver <cody@elementary.io>
@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 10.5.1),
                gobject-introspection (>= 1.41.4-1~),
                libgee-0.8-dev,
                libgirepository1.0-dev,
-               libgtk-3-dev (>= 3.22),
+               libgtk-4-dev (>= 4.4.1),
                meson,
                valac (>= 0.40)
 Standards-Version: 4.1.1
@@ -14,10 +14,10 @@ Vcs-Git: https://github.com/elementary/granite.git
 Vcs-Browser: https://github.com/elementary/granite
 Homepage: https://github.com/elementary/granite
 
-Package: libgranite6
+Package: libgranite7
 Architecture: any
 Multi-Arch: same
-Depends: libgranite-common (>= ${source:Version}),
+Depends: libgranite-7-common (>= ${source:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: contractor
@@ -28,14 +28,14 @@ Description: extension of GTK+ libraries
  .
  This package contains the shared library.
 
-Package: libgranite-dev
+Package: libgranite-7-dev
 Section: libdevel
 Architecture: any
-Depends: gir1.2-granite-1.0 (= ${binary:Version}),
+Depends: gir1.2-granite-7.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
-         libgranite6 (= ${binary:Version}),
-         libgtk-3-dev (>= 3.3.14),
+         libgranite7 (= ${binary:Version}),
+         libgtk-4-dev (>= 4.4.1),
          ${misc:Depends}
 Description: extension of GTK+ libraries (development files)
  Granite is an extension of GTK+. Among other things, it provides
@@ -44,7 +44,7 @@ Description: extension of GTK+ libraries (development files)
  .
  This package contains the static library and header files.
 
-Package: gir1.2-granite-1.0
+Package: gir1.2-granite-7.0
 Section: introspection
 Architecture: any
 Multi-Arch: foreign
@@ -57,7 +57,7 @@ Description: extension of GTK+ libraries (introspection files)
  This package can be used by other packages using the GIRepository format to
  generate dynamic bindings.
 
-Package: libgranite-common
+Package: libgranite-7-common
 Section: misc
 Architecture: all
 Multi-Arch: foreign
@@ -71,10 +71,10 @@ Description: extension of GTK+ libraries (common files)
  .
  This package contains common files needed by library.
 
-Package: granite-demo
+Package: granite-7-demo
 Section: misc
 Architecture: any
-Depends: libgranite6 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite7 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
