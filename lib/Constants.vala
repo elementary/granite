@@ -74,6 +74,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
     /**
+     * Style class for {@link Gtk.Button} with a destructive action
+     */
+    public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "h1";
