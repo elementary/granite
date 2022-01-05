@@ -1,5 +1,4 @@
 libgranite_sources = files(
-    'Application.vala',
     'DateTime.vala',
     'Constants.vala',
     'Init.vala',
@@ -12,10 +11,8 @@ libgranite_sources = files(
     'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
     'Services/Logger.vala',
-    'Services/Paths.vala',
     'Services/Portal.vala',
     'Services/Settings.vala',
-    'Services/SimpleCommand.vala',
     'Services/System.vala',
 
     'Widgets/AbstractSettingsPage.vala',
