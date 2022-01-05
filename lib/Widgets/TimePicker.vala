@@ -255,12 +255,6 @@ namespace Granite.Widgets {
             popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
         }
 
-        [Version (deprecated = true, deprecated_since = "5.2.0")]
-        protected virtual void position_dropdown (out int x, out int y) {
-            x = -1;
-            y = -1;
-        }
-
         private void is_unfocused () {
             if (!popover.visible && old_string.collate (text) != 0) {
                 old_string = text;
