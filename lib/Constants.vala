@@ -136,6 +136,14 @@ namespace Granite {
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
+    /**
+     * Style class for widgets which should use base color as their background
+     */
+    public const string STYLE_CLASS_VIEW = "view";
+    /**
+     * Style class for widgets in warning state.
+     */
+    public const string STYLE_CLASS_WARNING = "warning";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
