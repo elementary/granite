@@ -115,7 +115,9 @@ public class Granite.Widgets.AlertView : Gtk.Box {
             transition_type = Gtk.RevealerTransitionType.SLIDE_UP
         };
 
-        image = new Gtk.Image ();
+        image = new Gtk.Image () {
+            pixel_size = 48
+        };
         image.margin_top = 6;
         image.valign = Gtk.Align.START;
 
