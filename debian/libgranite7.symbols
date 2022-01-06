@@ -1,5 +1,4 @@
 libgranite-7.so.7 libgranite7 #MINVER#
- GRANITE_APPLICATION_options@Base 6.2.0
  granite_accel_label_construct@Base 6.2.0
  granite_accel_label_construct_from_action_name@Base 6.2.0
  granite_accel_label_get_accel_string@Base 6.2.0
@@ -12,11 +11,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_accel_label_set_action_name@Base 6.2.0
  granite_accel_label_set_label@Base 6.2.0
  granite_accel_to_string@Base 6.2.0
- granite_application_DEBUG@Base 6.2.0
- granite_application_construct@Base 6.2.0
- granite_application_get_type@Base 6.2.0
- granite_application_run@Base 6.2.0
- granite_application_set_options@Base 6.2.0
  granite_close_button_position_get_type@Base 6.2.0
  granite_contrasting_foreground_color@Base 6.2.0
  granite_date_time_get_default_date_format@Base 6.2.0
@@ -155,53 +149,13 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_services_logger_new@Base 6.2.0
  granite_services_logger_notification@Base 6.2.0
  granite_services_logger_set_DisplayLevel@Base 6.2.0
- granite_services_paths_construct@Base 6.2.0
- granite_services_paths_ensure_directory_exists@Base 6.2.0
- granite_services_paths_get_data_folder@Base 6.2.0
- granite_services_paths_get_home_folder@Base 6.2.0
- granite_services_paths_get_type@Base 6.2.0
- granite_services_paths_get_user_cache_folder@Base 6.2.0
- granite_services_paths_get_user_config_folder@Base 6.2.0
- granite_services_paths_get_user_data_folder@Base 6.2.0
- granite_services_paths_get_xdg_cache_home_folder@Base 6.2.0
- granite_services_paths_get_xdg_config_home_folder@Base 6.2.0
- granite_services_paths_get_xdg_data_dir_folders@Base 6.2.0
- granite_services_paths_get_xdg_data_home_folder@Base 6.2.0
- granite_services_paths_initialize@Base 6.2.0
- granite_services_paths_new@Base 6.2.0
- granite_services_paths_set_data_folder@Base 6.2.0
- granite_services_paths_set_home_folder@Base 6.2.0
- granite_services_paths_set_user_cache_folder@Base 6.2.0
- granite_services_paths_set_user_config_folder@Base 6.2.0
- granite_services_paths_set_user_data_folder@Base 6.2.0
- granite_services_paths_set_xdg_cache_home_folder@Base 6.2.0
- granite_services_paths_set_xdg_config_home_folder@Base 6.2.0
- granite_services_paths_set_xdg_data_dir_folders@Base 6.2.0
- granite_services_paths_set_xdg_data_home_folder@Base 6.2.0
- granite_services_settings_construct@Base 6.2.0
- granite_services_settings_construct_with_backend@Base 6.2.0
- granite_services_settings_construct_with_backend_and_path@Base 6.2.0
- granite_services_settings_construct_with_path@Base 6.2.0
- granite_services_settings_get_schema@Base 6.2.0
- granite_services_settings_get_type@Base 6.2.0
  granite_services_settings_serializable_get_type@Base 6.2.0
  granite_services_settings_serializable_settings_deserialize@Base 6.2.0
  granite_services_settings_serializable_settings_serialize@Base 6.2.0
- granite_services_settings_verify@Base 6.2.0
- granite_services_simple_command_construct@Base 6.2.0
- granite_services_simple_command_get_type@Base 6.2.0
- granite_services_simple_command_new@Base 6.2.0
- granite_services_simple_command_run@Base 6.2.0
  granite_services_system_construct@Base 6.2.0
- granite_services_system_execute_command@Base 6.2.0
  granite_services_system_get_type@Base 6.2.0
  granite_services_system_history_is_enabled@Base 6.2.0
- granite_services_system_launch@Base 6.2.0
- granite_services_system_launch_with_files@Base 6.2.0
  granite_services_system_new@Base 6.2.0
- granite_services_system_open@Base 6.2.0
- granite_services_system_open_files@Base 6.2.0
- granite_services_system_open_uri@Base 6.2.0
  granite_settings_color_scheme_get_type@Base 6.2.0
  granite_settings_get_default@Base 6.2.0
  granite_settings_get_prefers_color_scheme@Base 6.2.0
@@ -232,13 +186,9 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_simple_settings_page_get_activatable@Base 6.2.0
  granite_simple_settings_page_get_content_area@Base 6.2.0
  granite_simple_settings_page_get_description@Base 6.2.0
- granite_simple_settings_page_get_icon_name@Base 6.2.0
  granite_simple_settings_page_get_status_switch@Base 6.2.0
- granite_simple_settings_page_get_title@Base 6.2.0
  granite_simple_settings_page_get_type@Base 6.2.0
  granite_simple_settings_page_set_description@Base 6.2.0
- granite_simple_settings_page_set_icon_name@Base 6.2.0
- granite_simple_settings_page_set_title@Base 6.2.0
  granite_switch_model_button_construct@Base 6.2.0
  granite_switch_model_button_get_description@Base 6.2.0
  granite_switch_model_button_get_text@Base 6.2.0
@@ -246,8 +196,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_switch_model_button_new@Base 6.2.0
  granite_switch_model_button_set_description@Base 6.2.0
  granite_switch_model_button_set_text@Base 6.2.0
- granite_text_style_get_stylesheet@Base 6.2.0
- granite_text_style_get_type@Base 6.2.0
  granite_validated_entry_construct@Base 6.2.0
  granite_validated_entry_construct_from_regex@Base 6.2.0
  granite_validated_entry_get_is_valid@Base 6.2.0
@@ -346,12 +294,10 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_widgets_overlay_bar_get_active@Base 6.2.0
  granite_widgets_overlay_bar_get_label@Base 6.2.0
  granite_widgets_overlay_bar_get_overlay@Base 6.2.0
- granite_widgets_overlay_bar_get_status@Base 6.2.0
  granite_widgets_overlay_bar_get_type@Base 6.2.0
  granite_widgets_overlay_bar_new@Base 6.2.0
  granite_widgets_overlay_bar_set_active@Base 6.2.0
  granite_widgets_overlay_bar_set_label@Base 6.2.0
- granite_widgets_overlay_bar_set_status@Base 6.2.0
  granite_widgets_tab_close@Base 6.2.0
  granite_widgets_tab_construct@Base 6.2.0
  granite_widgets_tab_construct_with_accellabels@Base 6.2.0
@@ -388,7 +334,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_widgets_time_picker_get_type@Base 6.2.0
  granite_widgets_time_picker_new@Base 6.2.0
  granite_widgets_time_picker_new_with_format@Base 6.2.0
- granite_widgets_time_picker_position_dropdown@Base 6.2.0
  granite_widgets_time_picker_set_time@Base 6.2.0
  granite_widgets_toast_construct@Base 6.2.0
  granite_widgets_toast_get_title@Base 6.2.0
