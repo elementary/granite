@@ -67,8 +67,22 @@ public class Granite.Placeholder : Gtk.Box {
 
         bind_property ("title", title_label, "label");
         bind_property ("description", description_label, "label");
-        bind_property ("icon", image, "gicon");
+        bind_property (
+            "description", description_label, "visible", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT,
+            (binding, srcval, ref targetval) => {
+                var label = (string) srcval;
+                if (label != null) {
+                    targetval.set_boolean (true);
+                } else {
+                    targetval.set_boolean (false);
+                }
 
+                return true;
+            },
+            null
+        );
+
+        bind_property ("icon", image, "gicon");
         bind_property (
             "icon", image, "visible", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT,
             (binding, srcval, ref targetval) => {
