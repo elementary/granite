@@ -43,19 +43,19 @@ namespace Granite {
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H1_LABEL = "h1";
+    public const string STYLE_CLASS_H1_LABEL = "title-1";
     /**
      * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H2_LABEL = "h2";
+    public const string STYLE_CLASS_H2_LABEL = "title-2";
     /**
      * Style class for small primary text
      */
-    public const string STYLE_CLASS_H3_LABEL = "h3";
+    public const string STYLE_CLASS_H3_LABEL = "title-3";
     /**
      * Style class for a {@link Granite.HeaderLabel}
      */
-    public const string STYLE_CLASS_H4_LABEL = "h4";
+    public const string STYLE_CLASS_H4_LABEL = "title-4";
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
      */
