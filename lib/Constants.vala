@@ -41,10 +41,6 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
     /**
-     * Style class for primary label text in a {@link Gtk.Dialog}
-     */
-    public const string STYLE_CLASS_TITLE_LABEL = "title";
-    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "title-1";
