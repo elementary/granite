@@ -18,7 +18,6 @@ libgranite_sources = files(
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
-    'Widgets/AlertView.vala',
     # 'Widgets/AsyncImage.vala',
     # 'Widgets/CellRendererBadge.vala',
     # 'Widgets/CellRendererExpander.vala',
@@ -41,9 +40,7 @@ libgranite_sources = files(
     'Widgets/TimePicker.vala',
     'Widgets/Toast.vala',
     'Widgets/Utils.vala',
-    'Widgets/ValidatedEntry.vala',
-    'Widgets/WelcomeButton.vala',
-    'Widgets/Welcome.vala',
+    'Widgets/ValidatedEntry.vala'
 )
 
 # define all the names and versions

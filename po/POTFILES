@@ -15,7 +15,6 @@ lib/Services/System.vala
 
 lib/Widgets/AbstractSettingsPage.vala
 lib/Widgets/AbstractSimpleSettingsPage.vala
-lib/Widgets/AlertView.vala
 lib/Widgets/AsyncImage.vala
 lib/Widgets/Avatar.vala
 lib/Widgets/CellRendererBadge.vala
@@ -37,5 +36,3 @@ lib/Widgets/StorageBar.vala
 lib/Widgets/TimePicker.vala
 lib/Widgets/Toast.vala
 lib/Widgets/Utils.vala
-lib/Widgets/WelcomeButton.vala
-lib/Widgets/Welcome.vala

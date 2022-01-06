@@ -21,6 +21,20 @@ public class Granite.Placeholder : Gtk.Box {
 
     private Gtk.Box buttonbox;
 
+    /**
+     * Makes new Welcome Page
+     *
+     * @param title_text main title for new Welcome Page
+     * @param subtitle_text subtitle text for new Welcome Page
+     */
+
+    /**
+     * Makes new AlertView
+     *
+     * @param title the first line of text
+     * @param description the second line of text
+     * @param icon_name the icon to be shown
+     */
     public Placeholder (string title) {
         Object (title: title);
     }
@@ -99,6 +113,14 @@ public class Granite.Placeholder : Gtk.Box {
         );
     }
 
+     /**
+      * Appends new action item to welcome page with a {@link Gtk.Image.from_icon_name}
+      *
+      * @param icon_name named icon to be set as icon for action item
+      * @param option_text text to be set as the title for action item. It should use Title Case.
+      * @param description_text text to be set as description for action item. It should use sentence case.
+      * @return index of new item
+      */
     public Gtk.Button append_button (Icon icon, string label, string description) {
         var image = new Gtk.Image.from_gicon (icon) {
             icon_size = Gtk.IconSize.LARGE
