@@ -262,7 +262,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
-        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
+        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_TITLE_LABEL);
         primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
