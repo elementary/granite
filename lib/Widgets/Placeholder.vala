@@ -93,13 +93,7 @@ public class Granite.Placeholder : Gtk.Widget {
         bind_property (
             "description", description_label, "visible", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT,
             (binding, srcval, ref targetval) => {
-                var label = (string) srcval;
-                if (label != null) {
-                    targetval.set_boolean (true);
-                } else {
-                    targetval.set_boolean (false);
-                }
-
+                targetval.set_boolean ((string) srcval != null && (string) srcval != "");
                 return true;
             },
             null
@@ -109,13 +103,7 @@ public class Granite.Placeholder : Gtk.Widget {
         bind_property (
             "icon", image, "visible", BindingFlags.SYNC_CREATE | BindingFlags.DEFAULT,
             (binding, srcval, ref targetval) => {
-                var gicon = (Icon) srcval;
-                if (gicon != null) {
-                    targetval.set_boolean (true);
-                } else {
-                    targetval.set_boolean (false);
-                }
-
+                targetval.set_boolean ((Icon) srcval != null);
                 return true;
             },
             null
