@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class Granite.Placeholder : Gtk.Box {
+public class Granite.Placeholder : Gtk.Widget {
     /**
      * The primary text for the placeholder
      */
@@ -41,6 +41,7 @@ public class Granite.Placeholder : Gtk.Box {
 
     class construct {
         set_css_name ("placeholder");
+        set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
     construct {
@@ -73,11 +74,11 @@ public class Granite.Placeholder : Gtk.Box {
         grid.attach (title_label, 1, 0);
         grid.attach (description_label, 1, 1);
         grid.attach (buttonbox, 1, 2);
+        grid.set_parent (this);
 
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
         hexpand = true;
-        append (grid);
 
         bind_property ("title", title_label, "label");
         bind_property ("description", description_label, "label");
@@ -111,6 +112,10 @@ public class Granite.Placeholder : Gtk.Box {
             },
             null
         );
+    }
+
+    ~Placeholder () {
+        get_first_child ().unparent ();
     }
 
      /**
