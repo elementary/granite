@@ -26,13 +26,13 @@ public class Granite.Demo : Gtk.Application {
         // var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
-        var welcome = new WelcomeView ();
+        var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
         // var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
         var main_stack = new Gtk.Stack ();
-        main_stack.add_titled (welcome, "welcome", "Welcome");
+        main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
