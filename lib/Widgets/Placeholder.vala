@@ -3,37 +3,45 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
+/**
+ * Placeholder is used to provide further information in an empty view such as a {@link Gtk.ListBox} or when onboarding.
+ *
+ * ''Example''<<BR>>
+ * {{{
+ *   var alert = new Granite.Placeholder ("Panic! At the Button") {
+ *       description = "Maybe you can <b>do something</b> to hide it but <i>otherwise</i> it will stay here",
+ *       icon = new ThemedIcon ("dialog-warning")
+ *   };
+ *
+ *   var alert_action = alert.append_button (
+ *       new ThemedIcon ("edit-delete"),
+ *       "Hide This Button",
+ *       "Click here to hide this"
+ *   );
+ * }}}
+ */
 public class Granite.Placeholder : Gtk.Widget {
     /**
-     * The primary text for the placeholder
+     * The {@link string} to use for the primary text
      */
     public string title { get; construct set; }
 
     /**
-     * The description text for the placeholder
+     * The {@link string} to use for description text
      */
     public string description { get; set; }
 
     /**
-     * The icon for the placeholder
+     * The {@link GLib.Icon} to use as the primary icon
      */
     public Icon icon { get; set; }
 
     private Gtk.Box buttonbox;
 
     /**
-     * Makes new Welcome Page
+     * Constructs a new {@link Granite.Placeholder} with title text only.
      *
-     * @param title_text main title for new Welcome Page
-     * @param subtitle_text subtitle text for new Welcome Page
-     */
-
-    /**
-     * Makes new AlertView
-     *
-     * @param title the first line of text
-     * @param description the second line of text
-     * @param icon_name the icon to be shown
+     * @param title The {@link string} to use for the primary text
      */
     public Placeholder (string title) {
         Object (title: title);
@@ -118,14 +126,14 @@ public class Granite.Placeholder : Gtk.Widget {
         get_first_child ().unparent ();
     }
 
-     /**
-      * Appends new action item to welcome page with a {@link Gtk.Image.from_icon_name}
-      *
-      * @param icon_name named icon to be set as icon for action item
-      * @param option_text text to be set as the title for action item. It should use Title Case.
-      * @param description_text text to be set as description for action item. It should use sentence case.
-      * @return index of new item
-      */
+    /**
+     * Appends new {@link Gtk.Button} to the placeholder's action area
+     *
+     * @param icon the {@link GLib.Icon} that describes this action
+     * @param label a {@link string} to use as the title for this action. It should use Title Case.
+     * @param description a {@link string} to use as a description for this action. It should use sentence case.
+     * @return a {@link Gtk.Button} representing this action
+     */
     public Gtk.Button append_button (Icon icon, string label, string description) {
         var image = new Gtk.Image.from_gicon (icon) {
             icon_size = Gtk.IconSize.LARGE
