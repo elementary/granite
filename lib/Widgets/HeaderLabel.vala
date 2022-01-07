@@ -7,7 +7,7 @@
 /**
  * HeaderLabel is a start-aligned {@link Gtk.Label} with the Granite H4 style class
  */
-public class Granite.HeaderLabel : Gtk.Box {
+public class Granite.HeaderLabel : Gtk.Widget {
     public string label { get; construct set; }
 
     /**
@@ -17,15 +17,23 @@ public class Granite.HeaderLabel : Gtk.Box {
         Object (label: label);
     }
 
+    static construct {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
+    }
+
     construct {
         var label_widget = new Gtk.Label (label) {
             xalign = 0
         };
         label_widget.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        label_widget.set_parent (this);
 
-        append (label_widget);
         halign = Gtk.Align.START;
 
         bind_property ("label", label_widget, "label");
+    }
+
+    ~HeaderLabel () {
+        get_first_child ().unparent ();
     }
 }
