@@ -269,9 +269,13 @@ namespace Granite.Widgets.Utils {
     ) {
         assert (window != null);
 
-        string hex = color.to_string ();
-        // TODO: Fix this
-        return null;
-        //return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
+        var css = "@define-color color_primary %s;".printf (color.to_string ());
+
+        var css_provider = new Gtk.CssProvider ();
+        css_provider.load_from_data (css.data);
+
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, priority);
+
+        return css_provider;
     }
 }
