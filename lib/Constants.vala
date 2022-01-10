@@ -47,19 +47,19 @@ namespace Granite {
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H1_LABEL = "h1";
+    public const string STYLE_CLASS_H1_LABEL = "title-1";
     /**
      * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H2_LABEL = "h2";
+    public const string STYLE_CLASS_H2_LABEL = "title-2";
     /**
      * Style class for small primary text
      */
-    public const string STYLE_CLASS_H3_LABEL = "h3";
+    public const string STYLE_CLASS_H3_LABEL = "title-3";
     /**
      * Style class for a {@link Granite.HeaderLabel}
      */
-    public const string STYLE_CLASS_H4_LABEL = "h4";
+    public const string STYLE_CLASS_H4_LABEL = "title-4";
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
      */
@@ -140,6 +140,14 @@ namespace Granite {
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
+    /**
+     * Style class for widgets which should use base color as their background
+     */
+    public const string STYLE_CLASS_VIEW = "view";
+    /**
+     * Style class for widgets in warning state.
+     */
+    public const string STYLE_CLASS_WARNING = "warning";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
