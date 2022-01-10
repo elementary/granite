@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2022-01-10 18:13+0000\n"
+"PO-Revision-Date: 2022-01-10 21:14+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/cs/>\n"
@@ -167,39 +167,44 @@ msgstr "Opuštěno:"
 
 #: data/granite.appdata.xml.in:86
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr ""
+msgstr "Granite.Widgets.Avatar. Namísto toho použito Hdy.Avatar"
 
 #: data/granite.appdata.xml.in:90
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
+"Toasty nyní resetují své časové limity když posílají nové upozornění a "
+"časový limit je zastaven při najetím ukazatelem"
 
 #: data/granite.appdata.xml.in:91
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
-msgstr ""
+msgstr "Zpětné lomítko, pravý a levý Ctrl jsou nyní obsluhovány accel_to_string"
 
 #: data/granite.appdata.xml.in:92
 msgid "Make tab tooltips of DynamicNotebook settable"
-msgstr ""
+msgstr "Bublinové nápovědy panelů DynamicNotebook nastavitelné"
 
 #: data/granite.appdata.xml.in:93
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Volba času správně spustí time_changed když jsou vybrána tlačítka DOP a ODPO"
 
 #: data/granite.appdata.xml.in:94
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog nyní používá messagedialog CSS název"
 
 #: data/granite.appdata.xml.in:95
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Viditelný název potomka je nyní správně synchronizován v Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:96
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Při vytváření je možné stav nastavit v Granite.AbstractSettingsPage"
 
 #: data/granite.appdata.xml.in:103
 msgid "New Style Constants:"
