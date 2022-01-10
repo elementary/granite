@@ -320,7 +320,15 @@ public class Granite.MessageDialog : Granite.Dialog {
         if (details_view == null) {
             secondary_label.margin_bottom = 18;
 
-            details_view = new Gtk.TextView ();
+            details_view = new Gtk.TextView () {
+                editable = false,
+                top_margin = 12,
+                right_margin = 12,
+                left_margin = 12,
+                bottom_margin = 12,
+                pixels_below_lines = 3,
+                wrap_mode = Gtk.WrapMode.WORD
+            };
             details_view.editable = false;
             details_view.pixels_below_lines = 3;
             details_view.wrap_mode = Gtk.WrapMode.WORD;
