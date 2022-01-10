@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2022-01-10 18:13+0000\n"
+"PO-Revision-Date: 2022-01-11 03:35+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite/cs/"
 ">\n"
@@ -159,11 +159,11 @@ msgstr "Zavřít karty napravo"
 
 #: lib/Widgets/DynamicNotebook.vala:389
 msgid "Pin"
-msgstr ""
+msgstr "Připnout"
 
 #: lib/Widgets/DynamicNotebook.vala:391
 msgid "Unpin"
-msgstr ""
+msgstr "Zrušit připnutí"
 
 #: lib/Widgets/DynamicNotebook.vala:568
 msgid "Clear All"
