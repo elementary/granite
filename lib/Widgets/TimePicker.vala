@@ -96,7 +96,7 @@ namespace Granite.Widgets {
 
             /// TRANSLATORS: this will only show up when 12-hours clock is in use
             pm_togglebutton = new Gtk.ToggleButton.with_label (_("PM")) {
-                group = pm_togglebutton
+                group = am_togglebutton
             };
 
             am_pm_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
