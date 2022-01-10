@@ -27,7 +27,6 @@ libgranite_sources = files(
     'Widgets/DynamicNotebook.vala',
     'Widgets/HyperTextView.vala',
     'Widgets/MessageDialog.vala',
-    'Widgets/ModeButton.vala',
     'Widgets/ModeSwitch.vala',
     'Widgets/OverlayBar.vala',
     # 'Widgets/SeekBar.vala',
