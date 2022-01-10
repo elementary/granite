@@ -262,7 +262,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
-        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_TITLE_LABEL);
+        primary_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
         primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
@@ -329,10 +329,7 @@ public class Granite.MessageDialog : Granite.Dialog {
                 pixels_below_lines = 3,
                 wrap_mode = Gtk.WrapMode.WORD
             };
-            details_view.editable = false;
-            details_view.pixels_below_lines = 3;
-            details_view.wrap_mode = Gtk.WrapMode.WORD;
-            details_view.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
+            details_view.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
             var scroll_box = new Gtk.ScrolledWindow () {
                 margin_top = 12,
