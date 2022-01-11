@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 elementary, Inc. (https://elementary.io)
+ * Copyright 2021-2022 elementary, Inc. (https://elementary.io)
  * Copyright 2012 ammonkey <am.monkeyd@gmail.com>
  * Copyright 2013 Julián Unrrein <junrrein@gmail.com>
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -31,15 +31,17 @@
  *     construct {
  *         var button = new Gtk.ToggleButton.with_label ("Show Spinner");
  *
- *         var grid = new Gtk.Grid ();
- *         grid.halign = Gtk.Align.CENTER;
- *         grid.valign = Gtk.Align.CENTER;
- *         grid.add (button);
+ *         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6) {
+ *             halign = Gtk.Align.CENTER,
+ *             valign = Gtk.Align.CENTER
+ *         };
+ *         grid.append (button);
  *
- *         var overlaybar = new Granite.Widgets.OverlayBar (this);
- *         overlaybar.label = "Hover the OverlayBar to change its position";
+ *         var overlaybar = new Granite.OverlayBar (this) {
+ *             label = "Hover the OverlayBar to change its position"
+ *         };
  *
- *         add (grid);
+ *         child = box;
  *
  *         button.toggled.connect (() => {
  *             overlaybar.active = button.active;
