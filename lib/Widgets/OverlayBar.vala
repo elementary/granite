@@ -51,28 +51,8 @@
  * @see Gtk.Overlay
  *
  */
- // TODO: Check events, used to be EventBox
-public class Granite.Widgets.OverlayBar : Gtk.Box {
 
-    private const string FALLBACK_THEME = """
-        .overlay-bar {
-            background-color: alpha(#333, 0.8);
-            border-radius: 3px;
-            border-width: 0;
-            box-shadow:
-                0 1px 3px alpha(#000, 0.12),
-                0 1px 2px alpha(#000, 0.24);
-            color: #fff;
-            padding: 3px 6px;
-            margin: 6px;
-            text-shadow: 0 1px 2px alpha(#000, 0.6);
-        }
-    """;
-
-    private Gtk.Label status_label;
-    private Gtk.Revealer revealer;
-    private Gtk.Spinner spinner;
-
+public class Granite.OverlayBar : Gtk.Box {
     /**
      * {@link Gtk.Overlay} to add #this to
      */
@@ -81,27 +61,13 @@ public class Granite.Widgets.OverlayBar : Gtk.Box {
     /**
      * Text displayed inside the Overlay Bar.
      */
-    public string label {
-        get {
-            return status_label.label;
-        }
-        set {
-           status_label.label = value;
-        }
-    }
+    public string label { get; set; }
 
     /**
      * Whether to display a {@link Gtk.Spinner} inside the Overlay Bar.
      */
-    public bool active {
-        get {
-            return spinner.spinning;
-        }
-        set {
-            spinner.spinning = value;
-            revealer.reveal_child = value;
-        }
-    }
+    public bool active { get; set; }
+
     /**
      * Create a new Overlay Bar, and add it to the {@link Gtk.Overlay}.
      */
@@ -111,14 +77,22 @@ public class Granite.Widgets.OverlayBar : Gtk.Box {
         }
     }
 
+    class construct {
+        set_css_name ("overlaybar");
+    }
+
     construct {
         overlay = null;
-        status_label = new Gtk.Label ("");
-        status_label.set_ellipsize (Pango.EllipsizeMode.END);
 
-        spinner = new Gtk.Spinner ();
+        var status_label = new Gtk.Label ("") {
+            ellipsize = Pango.EllipsizeMode.END
+        };
 
-        revealer = new Gtk.Revealer () {
+        var spinner = new Gtk.Spinner () {
+            spinning = true
+        };
+
+        var revealer = new Gtk.Revealer () {
             transition_type = Gtk.RevealerTransitionType.SLIDE_LEFT,
             child = spinner
         };
@@ -132,38 +106,20 @@ public class Granite.Widgets.OverlayBar : Gtk.Box {
         set_halign (Gtk.Align.END);
         set_valign (Gtk.Align.END);
 
-        var provider = new Gtk.CssProvider ();
-        provider.load_from_data ((uint8[])FALLBACK_THEME);
-
-        int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
-        var ctx = box.get_style_context ();
-        ctx.add_class (STYLE_CLASS_OVERLAY_BAR);
-        ctx.add_provider (provider, priority);
-
-        var padding = ctx.get_padding ();
-        status_label.margin_top = padding.top;
-        status_label.margin_bottom = padding.bottom;
-        status_label.margin_start = padding.left;
-        status_label.margin_end = padding.right;
-        spinner.margin_end = padding.right;
-
-        var margin = ctx.get_margin ();
-        box.margin_top = margin.top;
-        box.margin_bottom = margin.bottom;
-        box.margin_start = margin.left;
-        box.margin_end = margin.right;
-
         var focus_controller = new Gtk.EventControllerMotion ();
         focus_controller.enter.connect (enter_notify_callback);
         add_controller (focus_controller);
+
+        bind_property ("active", revealer, "reveal-child");
+        bind_property ("label", status_label, "label");
     }
 
     private void enter_notify_callback () {
-        if (get_halign () == Gtk.Align.START)
-            set_halign (Gtk.Align.END);
-        else
-            set_halign (Gtk.Align.START);
-
+        if (halign == Gtk.Align.START) {
+            halign = Gtk.Align.END;
+        } else {
+            halign = Gtk.Align.START;
+        }
         queue_resize ();
     }
 }
