@@ -54,7 +54,7 @@
  *
  */
 
-public class Granite.OverlayBar : Gtk.Box {
+public class Granite.OverlayBar : Gtk.Widget {
     /**
      * {@link Gtk.Overlay} to add #this to
      */
@@ -77,6 +77,10 @@ public class Granite.OverlayBar : Gtk.Box {
         if (overlay != null) {
             overlay.add_overlay (this);
         }
+    }
+
+    static construct {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
     class construct {
@@ -102,8 +106,7 @@ public class Granite.OverlayBar : Gtk.Box {
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         box.append (status_label);
         box.append (revealer);
-
-        append (box);
+        box.set_parent (this);
 
         set_halign (Gtk.Align.END);
         set_valign (Gtk.Align.END);
@@ -114,6 +117,10 @@ public class Granite.OverlayBar : Gtk.Box {
 
         bind_property ("active", revealer, "reveal-child");
         bind_property ("label", status_label, "label");
+    }
+
+    ~OverlayBar () {
+        get_first_child ().unparent ();
     }
 
     private void enter_notify_callback () {
