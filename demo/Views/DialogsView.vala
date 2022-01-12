@@ -39,11 +39,7 @@ public class DialogsView : Gtk.Box {
     }
 
     private void show_dialog () {
-        var header = new Gtk.Label ("Header") {
-            xalign = 0,
-            halign = Gtk.Align.START
-        };
-        header.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        var header = new Granite.HeaderLabel ("Header");
 
         var entry = new Gtk.Entry ();
         var gtk_switch = new Gtk.Switch () {
