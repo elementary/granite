@@ -276,20 +276,6 @@ public class Granite.MessageDialog : Granite.Dialog {
         secondary_label.xalign = 0;
 
         custom_bin = new SingleWidgetBin ();
-        // custom_bin.add.connect (() => {
-        //     secondary_label.margin_bottom = 18;
-        //     if (expander != null) {
-        //         custom_bin.margin_top = 6;
-        //     }
-        // });
-
-        // custom_bin.remove.connect (() => {
-        //     secondary_label.margin_bottom = 0;
-
-        //     if (expander != null) {
-        //         custom_bin.margin_top = 0;
-        //     }
-        // });
 
         message_grid = new Gtk.Grid ();
         message_grid.column_spacing = 12;
