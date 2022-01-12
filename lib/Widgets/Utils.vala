@@ -3,55 +3,6 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-[Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-public enum Granite.TextStyle {
-    /**
-     * Highest level header
-     */
-    TITLE,
-
-    /**
-     * Second highest header
-     */
-    H1,
-
-    /**
-     * Third highest header
-     */
-    H2,
-
-    /**
-     * Fourth Highest Header
-     */
-    H3;
-
-    /**
-     * Converts this to a CSS style string that could be used with e.g: {@link Granite.Widgets.Utils.set_theming}.
-     *
-     * @param style_class the style class used for this
-     *
-     * @return CSS of text style
-     */
-    public string get_stylesheet (out string style_class = null) {
-        switch (this) {
-            case TITLE:
-                style_class = StyleClass.TITLE_TEXT;
-                return @".$style_class { font: raleway 36; }";
-            case H1:
-                style_class = StyleClass.H1_TEXT;
-                return @".$style_class { font: open sans bold 24; }";
-            case H2:
-                style_class = StyleClass.H2_TEXT;
-                return @".$style_class { font: open sans light 18; }";
-            case H3:
-                style_class = StyleClass.H3_TEXT;
-                return @".$style_class { font: open sans bold 12; }";
-            default:
-                assert_not_reached ();
-        }
-    }
-}
-
 /**
  * An enum used to derermine where the window manager currently displays its close button on windows.
  * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
@@ -318,9 +269,13 @@ namespace Granite.Widgets.Utils {
     ) {
         assert (window != null);
 
-        string hex = color.to_string ();
-        // TODO: Fix this
-        return null;
-        //return set_theming_for_screen (window.get_screen (), @"@define-color color_primary $hex;@define-color colorPrimary $hex;", priority);
+        var css = "@define-color color_primary %s;".printf (color.to_string ());
+
+        var css_provider = new Gtk.CssProvider ();
+        css_provider.load_from_data (css.data);
+
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, priority);
+
+        return css_provider;
     }
 }

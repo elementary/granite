@@ -50,38 +50,6 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     }
 
     /**
-     * An icon name associated with #this
-     * Deprecated: Use #SettingsPage.icon_name instead.
-     */
-    public new string icon_name {
-        get {
-            return _icon_name;
-        }
-        construct set {
-            if (header_icon != null) {
-                header_icon.icon_name = value;
-            }
-            _icon_name = value;
-        }
-    }
-
-    /**
-     * A title associated with #this
-     * Deprecated: Use #SettingsPage.title instead.
-     */
-    public new string title {
-        get {
-            return _title;
-        }
-        construct set {
-            if (title_label != null) {
-                title_label.label = value;
-            }
-            _title = value;
-        }
-    }
-
-    /**
      * Creates a new SimpleSettingsPage
      * Deprecated: Subclass this instead.
      */

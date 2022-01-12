@@ -74,24 +74,9 @@ public class Granite.Widgets.OverlayBar : Gtk.Box {
     private Gtk.Spinner spinner;
 
     /**
-     * overlay: Deprecated property, always returns null.
+     * {@link Gtk.Overlay} to add #this to
      */
-    [Version (deprecated = true, deprecated_since = "0.5.1", replacement = "")]
     public Gtk.Overlay? overlay { get; construct; }
-
-    /**
-     * Status text displayed inside the Overlay Bar.
-     */
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "OverlayBar.label")]
-    public string status {
-        set {
-           status_label.label = value;
-        }
-
-        get {
-            return status_label.label;
-        }
-    }
 
     /**
      * Text displayed inside the Overlay Bar.
@@ -152,7 +137,7 @@ public class Granite.Widgets.OverlayBar : Gtk.Box {
 
         int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
         var ctx = box.get_style_context ();
-        ctx.add_class (StyleClass.OVERLAY_BAR);
+        ctx.add_class (STYLE_CLASS_OVERLAY_BAR);
         ctx.add_provider (provider, priority);
 
         var padding = ctx.get_padding ();

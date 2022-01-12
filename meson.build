@@ -65,7 +65,6 @@ i18n = import('i18n')
 subdir('lib')
 subdir('data')
 subdir('demo')
-subdir('icons')
 subdir('po')
 
 if get_option('documentation')

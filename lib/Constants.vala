@@ -3,49 +3,12 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-namespace Granite.StyleClass {
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_BADGE")]
-    public const string BADGE = "badge";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_CATEGORY_EXPANDER")]
-    public const string CATEGORY_EXPANDER = "category-expander";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string CONTENT_VIEW = "content-view";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string CONTENT_VIEW_WINDOW = "content-view-window";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string COMPOSITED = "composited";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string DECORATED_WINDOW = "decorated-window";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_H1_LABEL")]
-    public const string H1_TEXT = "h1";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_H2_LABEL")]
-    public const string H2_TEXT = "h2";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_H3_LABEL")]
-    public const string H3_TEXT = "h3";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string HELP_BUTTON = "help_button";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_OVERLAY_BAR")]
-    public const string OVERLAY_BAR = "overlay-bar";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.STYLE_CLASS_POPOVER")]
-    public const string POPOVER = "popover";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string POPOVER_BG = "popover_bg";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Granite.STYLE_CLASS_SOURCE_LIST")]
-    public const string SOURCE_LIST = "source-list";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "")]
-    public const string THIN_PANE_SEPARATOR = "sidebar-pane-separator";
-    [Version (deprecated = true, deprecated_since = "0.4.2", replacement = "Gtk.STYLE_CLASS_TITLE")]
-    public const string TITLE_TEXT = "title";
-}
-
 namespace Granite {
     /**
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
     public const string STYLE_CLASS_ACCENT = "accent";
 
-    [Version (deprecated = true, deprecated_since = "6.0.0", replacement = "")]
-    public const string STYLE_CLASS_AVATAR = "avatar";
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
@@ -74,21 +37,25 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DEFAULT_DECORATION = "default-decoration";
     /**
+     * Style class for {@link Gtk.Button} with a destructive action
+     */
+    public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H1_LABEL = "h1";
+    public const string STYLE_CLASS_H1_LABEL = "title-1";
     /**
      * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
      */
-    public const string STYLE_CLASS_H2_LABEL = "h2";
+    public const string STYLE_CLASS_H2_LABEL = "title-2";
     /**
      * Style class for small primary text
      */
-    public const string STYLE_CLASS_H3_LABEL = "h3";
+    public const string STYLE_CLASS_H3_LABEL = "title-3";
     /**
      * Style class for a {@link Granite.HeaderLabel}
      */
-    public const string STYLE_CLASS_H4_LABEL = "h4";
+    public const string STYLE_CLASS_H4_LABEL = "title-4";
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
      */
@@ -177,6 +144,14 @@ namespace Granite {
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
+    /**
+     * Style class for widgets which should use base color as their background
+     */
+    public const string STYLE_CLASS_VIEW = "view";
+    /**
+     * Style class for widgets in warning state.
+     */
+    public const string STYLE_CLASS_WARNING = "warning";
 
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
