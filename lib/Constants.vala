@@ -101,6 +101,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_TERMINAL = "terminal";
     /**
+      * Style class for title label text in a {@link Granite.MessageDialog}
+      */
+    public const string STYLE_CLASS_TITLE_LABEL = "title";
+    /**
      * Style class for a {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_WELCOME = "welcome";
