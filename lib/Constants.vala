@@ -23,7 +23,6 @@ namespace Granite {
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
     public const string STYLE_CLASS_CARD = "card";
-    public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
     /**
      * Style class for checkered backgrounds to represent transparency in images
      */
