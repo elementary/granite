@@ -101,10 +101,6 @@ namespace Granite {
      */
     public const string STYLE_CLASS_TERMINAL = "terminal";
     /**
-     * Style class for a {@link Granite.Widgets.Welcome}
-     */
-    public const string STYLE_CLASS_WELCOME = "welcome";
-    /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
     public const string STYLE_CLASS_WARMTH = "warmth";
