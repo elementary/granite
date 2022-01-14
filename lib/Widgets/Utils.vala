@@ -3,15 +3,6 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-/**
- * An enum used to derermine where the window manager currently displays its close button on windows.
- * Used with {@link Granite.Widgets.Utils.get_default_close_button_position}.
- */
-public enum Granite.CloseButtonPosition {
-    LEFT,
-    RIGHT
-}
-
 namespace Granite {
 
 /**
