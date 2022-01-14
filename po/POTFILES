@@ -26,14 +26,12 @@ lib/Widgets/DatePicker.vala
 lib/Widgets/DynamicNotebook.vala
 lib/Widgets/HeaderLabel.vala
 lib/Widgets/MessageDialog.vala
-lib/Widgets/ModeButton.vala
 lib/Widgets/ModeSwitch.vala
 lib/Widgets/OverlayBar.vala
 lib/Widgets/SeekBar.vala
 lib/Widgets/SettingsSidebarRow.vala
 lib/Widgets/SettingsSidebar.vala
 lib/Widgets/SourceList.vala
-lib/Widgets/StorageBar.vala
 lib/Widgets/TimePicker.vala
 lib/Widgets/Toast.vala
 lib/Widgets/Utils.vala

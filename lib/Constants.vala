@@ -88,10 +88,6 @@ namespace Granite {
      */
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     /**
-     * Style class for a {@link Granite.Widgets.Granite.Widgets.StorageBar}
-     */
-    public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
-    /**
      * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
      * text color, background color, selection highlighting, and selecting the system monospace font.
      *
