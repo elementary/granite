@@ -5,21 +5,6 @@
 
 public class ModeButtonView : Gtk.Box {
     construct {
-        var mode_button_label = new Gtk.Label ("ModeButton");
-        mode_button_label.halign = Gtk.Align.START;
-        mode_button_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-
-        var icon_mode = new Granite.Widgets.ModeButton ();
-        icon_mode.append_icon ("view-grid-symbolic");
-        icon_mode.append_icon ("view-list-symbolic");
-        icon_mode.append_icon ("view-column-symbolic");
-
-        var text_mode = new Granite.Widgets.ModeButton ();
-        text_mode.append_text ("Foo");
-        text_mode.append_text ("Bar");
-
-        var clear_button = new Gtk.Button.with_label ("Clear Selected");
-
         var mode_switch_label = new Gtk.Label ("ModeSwitch");
         mode_switch_label.halign = Gtk.Align.START;
         mode_switch_label.margin_top = 12;
@@ -71,18 +56,9 @@ public class ModeButtonView : Gtk.Box {
         orientation = Gtk.Orientation.VERTICAL;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
-        append (mode_button_label);
-        append (icon_mode);
-        append (text_mode);
-        append (clear_button);
         append (mode_switch_label);
         append (mode_switch);
         append (switchbutton_header);
         append (popover_button);
-
-        clear_button.clicked.connect (() => {
-            icon_mode.selected = -1;
-            text_mode.selected = -1;
-        });
     }
 }
