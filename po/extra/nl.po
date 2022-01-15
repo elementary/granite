@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2020-07-05 16:12+0000\n"
-"Last-Translator: Jaimie85 <alsemgeest@gmail.com>\n"
-"Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/nl/>\n"
+"PO-Revision-Date: 2022-01-15 13:42+0000\n"
+"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite"
@@ -64,7 +64,7 @@ msgstr "Bijgewerkte vertalingen"
 #: data/granite.appdata.xml.in:24 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:42
 msgid "Fixes:"
-msgstr ""
+msgstr "Fixes:"
 
 #: data/granite.appdata.xml.in:26
 msgid "Prevent crashing on environments without dark style preference support"
@@ -245,7 +245,7 @@ msgstr "Granite.SourceList krijgt nu standaard Gtk.STYLE_CLASS_SIDEBAR"
 
 #: data/granite.appdata.xml.in:124
 msgid "New features:"
-msgstr "Nieuwe functies:"
+msgstr "Nieuwe functionaliteit:"
 
 #: data/granite.appdata.xml.in:126
 msgid "New Settings class to share Pantheon desktop settings with apps"
