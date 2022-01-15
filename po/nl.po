@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-04 20:12+0000\n"
-"PO-Revision-Date: 2022-01-12 10:28+0000\n"
+"PO-Revision-Date: 2022-01-15 21:12+0000\n"
 "Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/granite/nl/"
 ">\n"
@@ -60,7 +60,7 @@ msgstr[1] "%d minuten geleden"
 msgid "%dh ago"
 msgid_plural "%dh ago"
 msgstr[0] "%d uur geleden"
-msgstr[1] "%d uur geleden"
+msgstr[1] "%d uren geleden"
 
 #: lib/DateTime.vala:71
 #, c-format
@@ -135,7 +135,7 @@ msgstr "Open in een nieuw venster"
 
 #: lib/Widgets/DynamicNotebook.vala:286
 msgid "Duplicate"
-msgstr "Kopiëren"
+msgstr "Dupliceren"
 
 #: lib/Widgets/DynamicNotebook.vala:378
 msgid "Close Other Tab"
@@ -155,15 +155,15 @@ msgstr "Sluit de tabbladen aan de rechterkant"
 
 #: lib/Widgets/DynamicNotebook.vala:389
 msgid "Pin"
-msgstr ""
+msgstr "Vast zetten"
 
 #: lib/Widgets/DynamicNotebook.vala:391
 msgid "Unpin"
-msgstr ""
+msgstr "Los maken"
 
 #: lib/Widgets/DynamicNotebook.vala:568
 msgid "Clear All"
-msgstr "Wis allen"
+msgstr "Wis alles"
 
 #: lib/Widgets/DynamicNotebook.vala:833 lib/Widgets/DynamicNotebook.vala:894
 msgid "New Tab"
@@ -179,7 +179,7 @@ msgstr "Gesloten tabs"
 
 #: lib/Widgets/MessageDialog.vala:125
 msgid "_Close"
-msgstr "_Sluiten"
+msgstr "Sl_uiten"
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
@@ -205,7 +205,7 @@ msgstr "Afbeeldingen"
 
 #: lib/Widgets/StorageBar.vala:74
 msgid "Apps"
-msgstr "Toepassingen"
+msgstr "Apps"
 
 #. / TRANSLATORS: Refers to files the mime type. Not Files the app.
 #: lib/Widgets/StorageBar.vala:77
@@ -281,7 +281,7 @@ msgstr "Plus-toets"
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:147
 msgid "Equals"
-msgstr "=-toets"
+msgstr "Gelijk aan-toets"
 
 #: lib/Widgets/Utils.vala:150
 msgid "Enter"
