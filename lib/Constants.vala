@@ -112,6 +112,14 @@ namespace Granite {
      */
     public const string STYLE_CLASS_LINKED = "linked";
     /**
+     * Style class for {@link Gtk.Popover} which is used as a menu.
+     */
+    public const string STYLE_CLASS_MENU = "menu";
+    /**
+     * Style class for {@link Gtk.Popover} children which are used as menu items.
+     */
+    public const string STYLE_CLASS_MENUITEM = "menuitem";
+    /**
      * Style class for dimmed labels.
      */
     public const string STYLE_CLASS_DIM_LABEL = "dim-label";

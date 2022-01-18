@@ -15,9 +15,11 @@ public class AccelLabelView : Gtk.Grid {
 
         var lock_button = new Gtk.Button ();
         lock_button.child = new Granite.AccelLabel ("Lock", "<Super>L");
+        lock_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var logout_button = new Gtk.Button ();
         logout_button.child = new Granite.AccelLabel ("Log Out…", "<Ctrl><Alt>Delete");
+        logout_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var popover_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         popover_box.margin_top = popover_box.margin_bottom = 3;
@@ -27,6 +29,7 @@ public class AccelLabelView : Gtk.Grid {
         var popover = new Gtk.Popover () {
             child = popover_box
         };
+        popover.add_css_class (Granite.STYLE_CLASS_MENU);
 
         var popover_button = new Gtk.MenuButton ();
         popover_button.popover = popover;
