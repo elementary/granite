@@ -47,12 +47,8 @@ public class DialogsView : Gtk.Box {
         };
 
         var layout = new Gtk.Grid () {
-            margin_start = 12,
-            margin_end = 12,
-            margin_top = 12,
-            margin_bottom = 12,
-            margin_top = 0,
-            row_spacing = 12
+            row_spacing = 12,
+            vexpand = true
         };
         layout.attach (header, 0, 1);
         layout.attach (entry, 0, 2);

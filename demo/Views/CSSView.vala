@@ -72,11 +72,18 @@ public class CSSView : Gtk.Grid {
             halign = Gtk.Align.END
         };
 
-        var terminal = new Gtk.TextView () {
-            pixels_below_lines = 3
+        var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
+            selectable = true,
+            wrap = true,
+            xalign = 0,
+            yalign = 0
         };
-        terminal.buffer.text = "[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo";
-        terminal.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
+
+        var terminal_scroll = new Gtk.ScrolledWindow () {
+            min_content_height = 70,
+            child = terminal
+        };
+        terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
         var back_button_label = new Gtk.Label ("\"back-button\" style class:") {
             halign = Gtk.Align.END
@@ -140,7 +147,7 @@ public class CSSView : Gtk.Grid {
         attach (checker_label, 0, 1);
         attach (checker_box, 1, 1, 2);
         attach (terminal_label, 0, 2);
-        attach (terminal, 1, 2, 2);
+        attach (terminal_scroll, 1, 2, 2);
         attach (back_button_label, 0, 3);
         attach (back_button, 1, 3, 2);
         attach (warmth_label, 0, 4);
