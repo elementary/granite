@@ -23,7 +23,6 @@ namespace Granite {
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
     public const string STYLE_CLASS_CARD = "card";
-    public const string STYLE_CLASS_CATEGORY_EXPANDER = "category-expander";
     /**
      * Style class for checkered backgrounds to represent transparency in images
      */
@@ -89,10 +88,6 @@ namespace Granite {
      */
     public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     /**
-     * Style class for a {@link Granite.Widgets.Granite.Widgets.StorageBar}
-     */
-    public const string STYLE_CLASS_STORAGEBAR = "storage-bar";
-    /**
      * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
      * text color, background color, selection highlighting, and selecting the system monospace font.
      *
@@ -104,10 +99,6 @@ namespace Granite {
      * Style class for title label text in a {@link Granite.MessageDialog}
      */
     public const string STYLE_CLASS_TITLE_LABEL = "title";
-    /**
-     * Style class for a {@link Granite.Widgets.Welcome}
-     */
-    public const string STYLE_CLASS_WELCOME = "welcome";
     /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
