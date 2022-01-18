@@ -31,6 +31,10 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         Object (text: text);
     }
 
+    class construct {
+        set_css_name ("modelbutton");
+    }
+
     construct {
         var label = new Gtk.Label (text) {
             halign = Gtk.Align.START,

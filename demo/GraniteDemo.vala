@@ -13,7 +13,6 @@ public class Granite.Demo : Gtk.Application {
         var window = new Gtk.Window ();
 
         var accel_label_view = new AccelLabelView ();
-        var alert_view = new AlertViewView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var dynamic_notebook_view = new DynamicNotebookView ();
@@ -27,15 +26,14 @@ public class Granite.Demo : Gtk.Application {
         // var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
-        var welcome = new WelcomeView ();
+        var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
         // var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
         var main_stack = new Gtk.Stack ();
-        main_stack.add_titled (welcome, "welcome", "Welcome");
+        main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
-        main_stack.add_titled (alert_view, "alert", "AlertView");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (dynamic_notebook_view, "dynamictab", "DynamicNotebook");

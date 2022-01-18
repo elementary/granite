@@ -66,17 +66,21 @@ public class Granite.Dialog : Gtk.Dialog {
     construct {
         deletable = false;
         use_header_bar = (int) false;
+
+        var box = get_child ();
+        var window_handle = new Gtk.WindowHandle () ;
+        child = window_handle;
+        window_handle.child = box;
+
+        get_content_area ().add_css_class (Granite.STYLE_CLASS_DIALOG_CONTENT_AREA);
     }
 
     public override void constructed () {
         base.constructed ();
-        var titlebar = new Gtk.HeaderBar () {
-            title_widget = new Gtk.Label (null),
-            show_title_buttons = false
-        };
 
-        titlebar.get_style_context ().add_class ("default-decoration");
-        titlebar.get_style_context ().add_class ("flat");
+        var titlebar = new Gtk.Label ("") {
+            visible = false
+        };
         set_titlebar (titlebar);
     }
 }

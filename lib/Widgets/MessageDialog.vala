@@ -168,10 +168,7 @@ public class Granite.MessageDialog : Granite.Dialog {
      */
     private Gtk.Grid message_grid;
 
-    /**
-     * The {@link Gtk.TextView} used to display an additional error message.
-     */
-    private Gtk.TextView? details_view;
+    private Gtk.Label? details_view;
 
     /**
      * The {@link Gtk.Expander} used to hold the error details view.
@@ -242,19 +239,19 @@ public class Granite.MessageDialog : Granite.Dialog {
         Granite.init ();
     }
 
-    class construct {
-        set_css_name (Granite.STYLE_CLASS_MESSAGE_DIALOG);
-    }
-
     construct {
         resizable = false;
         deletable = false;
 
-        image = new Gtk.Image ();
+        image = new Gtk.Image () {
+            pixel_size = 48
+        };
 
-        badge = new Gtk.Image ();
-        badge.halign = badge.valign = Gtk.Align.END;
-        badge.pixel_size = 24;
+        badge = new Gtk.Image () {
+            pixel_size = 24,
+            halign = Gtk.Align.END,
+            valign = Gtk.Align.END
+        };
 
         var overlay = new Gtk.Overlay ();
         overlay.valign = Gtk.Align.START;
@@ -262,7 +259,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null);
-        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
+        primary_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
         primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
@@ -277,16 +274,18 @@ public class Granite.MessageDialog : Granite.Dialog {
 
         custom_bin = new SingleWidgetBin ();
 
-        message_grid = new Gtk.Grid ();
-        message_grid.column_spacing = 12;
-        message_grid.row_spacing = 6;
-        message_grid.margin_start = message_grid.margin_end = 12;
+        message_grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 6
+        };
         message_grid.attach (overlay, 0, 0, 1, 2);
         message_grid.attach (primary_label, 1, 0, 1, 1);
         message_grid.attach (secondary_label, 1, 1, 1, 1);
         message_grid.attach (custom_bin, 1, 3, 1, 1);
 
         get_content_area ().append (message_grid);
+
+        add_css_class (Granite.STYLE_CLASS_MESSAGE_DIALOG);
     }
 
     /**
@@ -304,17 +303,19 @@ public class Granite.MessageDialog : Granite.Dialog {
         if (details_view == null) {
             secondary_label.margin_bottom = 18;
 
-            details_view = new Gtk.TextView ();
-            details_view.editable = false;
-            details_view.pixels_below_lines = 3;
-            details_view.wrap_mode = Gtk.WrapMode.WORD;
-            details_view.get_style_context ().add_class (Granite.STYLE_CLASS_TERMINAL);
+            details_view = new Gtk.Label ("") {
+                selectable = true,
+                wrap = true,
+                xalign = 0,
+                yalign = 0
+            };
 
             var scroll_box = new Gtk.ScrolledWindow () {
                 margin_top = 12,
                 min_content_height = 70,
                 child = details_view
             };
+            scroll_box.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
             expander = new Gtk.Expander (_("Details")) {
                 child = scroll_box
@@ -327,6 +328,6 @@ public class Granite.MessageDialog : Granite.Dialog {
             }
         }
 
-        details_view.buffer.text = error_message;
+        details_view.label = error_message;
     }
 }
