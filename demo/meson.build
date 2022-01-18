@@ -4,7 +4,6 @@ executable(
     'GraniteDemo.vala',
 
     'Views/AccelLabelView.vala',
-    'Views/AlertViewView.vala',
     'Views/ApplicationView.vala',
     # 'Views/AsyncImageView.vala',
     'Views/CSSView.vala',
