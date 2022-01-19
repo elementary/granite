@@ -76,10 +76,6 @@ namespace Granite {
      */
     public const string STYLE_CLASS_ROUNDED = "rounded";
     /**
-     * Style class for a {@link Granite.SeekBar}
-     */
-    public const string STYLE_CLASS_SEEKBAR = "seek-bar";
-    /**
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */
     public const string STYLE_CLASS_SMALL_LABEL= "small-label";

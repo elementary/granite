@@ -27,7 +27,6 @@ lib/Widgets/HeaderLabel.vala
 lib/Widgets/MessageDialog.vala
 lib/Widgets/ModeSwitch.vala
 lib/Widgets/OverlayBar.vala
-lib/Widgets/SeekBar.vala
 lib/Widgets/SettingsSidebarRow.vala
 lib/Widgets/SettingsSidebar.vala
 lib/Widgets/SourceList.vala
