@@ -17,8 +17,6 @@ lib/Widgets/AbstractSettingsPage.vala
 lib/Widgets/AbstractSimpleSettingsPage.vala
 lib/Widgets/AsyncImage.vala
 lib/Widgets/Avatar.vala
-lib/Widgets/CellRendererBadge.vala
-lib/Widgets/CellRendererExpander.vala
 lib/Widgets/CollapsiblePaned.vala
 lib/Widgets/CompositedWindow.vala
 lib/Widgets/DatePicker.vala
@@ -30,7 +28,6 @@ lib/Widgets/OverlayBar.vala
 lib/Widgets/SeekBar.vala
 lib/Widgets/SettingsSidebarRow.vala
 lib/Widgets/SettingsSidebar.vala
-lib/Widgets/SourceList.vala
 lib/Widgets/TimePicker.vala
 lib/Widgets/Toast.vala
 lib/Widgets/Utils.vala
