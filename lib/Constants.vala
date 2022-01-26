@@ -14,7 +14,7 @@ namespace Granite {
      */
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
-     * Style class for numbered badges as in a {@link Granite.Widgets.SourceList}
+     * Style class for numbered badges
      */
     public const string STYLE_CLASS_BADGE = "badge";
     /**
@@ -79,10 +79,6 @@ namespace Granite {
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */
     public const string STYLE_CLASS_SMALL_LABEL= "small-label";
-    /**
-     * Style class for a {@link Granite.Widgets.SourceList}
-     */
-    public const string STYLE_CLASS_SOURCE_LIST = "source-list";
     /**
      * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
      * text color, background color, selection highlighting, and selecting the system monospace font.
