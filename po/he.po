@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-04 20:12+0000\n"
+"POT-Creation-Date: 2022-01-26 13:48-0800\n"
 "PO-Revision-Date: 2021-03-11 20:11+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite/"
@@ -20,10 +20,6 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-
-#: lib/Application.vala:171
-msgid "Show Granite Options"
-msgstr "הצגת האפשרויות של גרניט"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -134,58 +130,6 @@ msgstr "%a, ‏%e ב%b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:280 lib/Widgets/DynamicNotebook.vala:304
-msgid "Close Tab"
-msgstr "סגירת לשונית"
-
-#: lib/Widgets/DynamicNotebook.vala:283
-msgid "Open in a New Window"
-msgstr "פתיחה בחלון חדש"
-
-#: lib/Widgets/DynamicNotebook.vala:286
-msgid "Duplicate"
-msgstr "שכפול"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tab"
-msgstr "סגירת לשונית אחרת"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tabs"
-msgstr "סגירת לשוניות אחרות"
-
-#: lib/Widgets/DynamicNotebook.vala:383
-msgid "Close Tab to the Right"
-msgstr "סגירת הלשונית משמאל"
-
-#: lib/Widgets/DynamicNotebook.vala:384
-msgid "Close Tabs to the Right"
-msgstr "סגירת הלשונית משמאל"
-
-#: lib/Widgets/DynamicNotebook.vala:389
-msgid "Pin"
-msgstr "נעיצה"
-
-#: lib/Widgets/DynamicNotebook.vala:391
-msgid "Unpin"
-msgstr "שחרור נעיצה"
-
-#: lib/Widgets/DynamicNotebook.vala:568
-msgid "Clear All"
-msgstr "ניקוי הכול"
-
-#: lib/Widgets/DynamicNotebook.vala:833 lib/Widgets/DynamicNotebook.vala:894
-msgid "New Tab"
-msgstr "לשונית חדשה"
-
-#: lib/Widgets/DynamicNotebook.vala:834
-msgid "Undo Close Tab"
-msgstr "ביטול סגירת לשונית"
-
-#: lib/Widgets/DynamicNotebook.vala:904
-msgid "Closed Tabs"
-msgstr "לשוניות שנסגרו"
-
 #: lib/Widgets/MessageDialog.vala:125
 msgid "_Close"
 msgstr "_סגירה"
@@ -194,122 +138,154 @@ msgstr "_סגירה"
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: lib/Widgets/MessageDialog.vala:338
+#: lib/Widgets/MessageDialog.vala:320
 msgid "Details"
 msgstr "פרטים"
 
-#: lib/Widgets/StorageBar.vala:66
-msgid "Audio"
-msgstr "שמע"
-
-#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
-#: lib/Widgets/StorageBar.vala:69
-msgid "Videos"
-msgstr "סרטונים"
-
-#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
-#: lib/Widgets/StorageBar.vala:72
-msgid "Photos"
-msgstr "תמונות"
-
-#: lib/Widgets/StorageBar.vala:74
-msgid "Apps"
-msgstr "יישומים"
-
-#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
-#: lib/Widgets/StorageBar.vala:77
-msgid "Files"
-msgstr "קבצים"
-
-#: lib/Widgets/StorageBar.vala:79
-msgid "Other"
-msgstr "אחר"
-
-#: lib/Widgets/StorageBar.vala:255
-#, c-format
-msgid "%s free out of %s"
-msgstr "%s פנויים מתוך %s"
-
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:98
+#: lib/Widgets/TimePicker.vala:94
 msgid "AM"
 msgstr "לפנה״צ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:100
+#: lib/Widgets/TimePicker.vala:99
 msgid "PM"
 msgstr "אחה״צ"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:146
+#: lib/Widgets/TimePicker.vala:136
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:91
+#: lib/Widgets/Utils.vala:33
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:95
+#: lib/Widgets/Utils.vala:37
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:99
+#: lib/Widgets/Utils.vala:41
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:117
+#: lib/Widgets/Utils.vala:59
 msgid "Left Alt"
 msgstr "Alt שמאלי"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:121
+#: lib/Widgets/Utils.vala:63
 msgid "Right Alt"
 msgstr "Alt ימני"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:128
+#: lib/Widgets/Utils.vala:70
 msgid "Right Ctrl"
 msgstr "Ctrl ימני"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:132
+#: lib/Widgets/Utils.vala:74
 msgid "Left Ctrl"
 msgstr "Ctrl שמאלי"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:79
 msgid "Minus"
 msgstr "מינוס"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:84
 msgid "Plus"
 msgstr "פלוס"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:89
 msgid "Equals"
 msgstr "שווה"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:92
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:96
 msgid "Left Shift"
 msgstr "Shift שמאלי"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:100
 msgid "Right Shift"
 msgstr "Shift ימני"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:221
+#: lib/Widgets/Utils.vala:163
 msgid ", "
 msgstr ", "
+
+#~ msgid "Show Granite Options"
+#~ msgstr "הצגת האפשרויות של גרניט"
+
+#~ msgid "Close Tab"
+#~ msgstr "סגירת לשונית"
+
+#~ msgid "Open in a New Window"
+#~ msgstr "פתיחה בחלון חדש"
+
+#~ msgid "Duplicate"
+#~ msgstr "שכפול"
+
+#~ msgid "Close Other Tab"
+#~ msgstr "סגירת לשונית אחרת"
+
+#~ msgid "Close Other Tabs"
+#~ msgstr "סגירת לשוניות אחרות"
+
+#~ msgid "Close Tab to the Right"
+#~ msgstr "סגירת הלשונית משמאל"
+
+#~ msgid "Close Tabs to the Right"
+#~ msgstr "סגירת הלשונית משמאל"
+
+#~ msgid "Pin"
+#~ msgstr "נעיצה"
+
+#~ msgid "Unpin"
+#~ msgstr "שחרור נעיצה"
+
+#~ msgid "Clear All"
+#~ msgstr "ניקוי הכול"
+
+#~ msgid "New Tab"
+#~ msgstr "לשונית חדשה"
+
+#~ msgid "Undo Close Tab"
+#~ msgstr "ביטול סגירת לשונית"
+
+#~ msgid "Closed Tabs"
+#~ msgstr "לשוניות שנסגרו"
+
+#~ msgid "Audio"
+#~ msgstr "שמע"
+
+#~ msgid "Videos"
+#~ msgstr "סרטונים"
+
+#~ msgid "Photos"
+#~ msgstr "תמונות"
+
+#~ msgid "Apps"
+#~ msgstr "יישומים"
+
+#~ msgid "Files"
+#~ msgstr "קבצים"
+
+#~ msgid "Other"
+#~ msgstr "אחר"
+
+#, c-format
+#~ msgid "%s free out of %s"
+#~ msgstr "%s פנויים מתוך %s"
 
 #~ msgid "%s's Developers"
 #~ msgstr "מפתחי %s"
