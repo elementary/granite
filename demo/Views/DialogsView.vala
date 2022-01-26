@@ -6,7 +6,7 @@
 public class DialogsView : Gtk.Box {
     public Gtk.Window window { get; construct; }
 
-    private Granite.Widgets.Toast toast;
+    private Granite.Toast toast;
 
     public DialogsView (Gtk.Window window) {
         Object (window: window);
@@ -20,7 +20,7 @@ public class DialogsView : Gtk.Box {
 
         var message_button = new Gtk.Button.with_label ("Show MessageDialog");
 
-        toast = new Granite.Widgets.Toast ("Did something");
+        toast = new Granite.Toast ("Did something");
 
         var grid = new Gtk.Grid () {
             hexpand = true,
