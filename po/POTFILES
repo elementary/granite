@@ -7,7 +7,6 @@ lib/Drawing/Utilities.vala
 
 lib/Services/ContractorProxy.vala
 lib/Services/IconFactory.vala
-lib/Services/Logger.vala
 lib/Services/Paths.vala
 lib/Services/Settings.vala
 lib/Services/SimpleCommand.vala
