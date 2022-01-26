@@ -22,7 +22,6 @@ lib/Widgets/CellRendererExpander.vala
 lib/Widgets/CollapsiblePaned.vala
 lib/Widgets/CompositedWindow.vala
 lib/Widgets/DatePicker.vala
-lib/Widgets/DynamicNotebook.vala
 lib/Widgets/HeaderLabel.vala
 lib/Widgets/MessageDialog.vala
 lib/Widgets/ModeSwitch.vala
