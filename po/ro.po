@@ -270,7 +270,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Altele"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s liber din %s"
 

@@ -270,7 +270,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Ostalo"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s slobodno od %s"
 

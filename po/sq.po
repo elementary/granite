@@ -263,7 +263,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Tjetër"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s e lirë ndër %s"
 

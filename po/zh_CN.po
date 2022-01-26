@@ -270,7 +270,6 @@ msgstr "、 "
 #~ msgid "Other"
 #~ msgstr "其它"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s 可用 共 %s"
 

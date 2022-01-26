@@ -263,7 +263,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "باشقا"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%sنى ئىشلەتكىلى بولىدۇ، جەمئىي %s"
 

@@ -273,7 +273,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Друго"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "„%s“ је ослобођен „%s“"
 

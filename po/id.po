@@ -259,7 +259,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Lainnya"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s bebas dari %s"
 

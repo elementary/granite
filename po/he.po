@@ -283,7 +283,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "אחר"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s פנויים מתוך %s"
 

@@ -266,7 +266,6 @@ msgstr "、 "
 #~ msgid "Other"
 #~ msgstr "其他"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s 可用，共 %s"
 

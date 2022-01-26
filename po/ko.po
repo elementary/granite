@@ -266,7 +266,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "기타"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s 사용 가능, 전체 용량 %s"
 
