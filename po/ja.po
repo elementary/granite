@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-04 20:12+0000\n"
+"POT-Creation-Date: 2022-01-26 13:48-0800\n"
 "PO-Revision-Date: 2021-08-04 04:53+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
@@ -19,10 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-
-#: lib/Application.vala:171
-msgid "Show Granite Options"
-msgstr "Granite のオプションを表示します"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -121,58 +117,6 @@ msgstr "%b%e日 (%a)"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:280 lib/Widgets/DynamicNotebook.vala:304
-msgid "Close Tab"
-msgstr "タブを閉じる"
-
-#: lib/Widgets/DynamicNotebook.vala:283
-msgid "Open in a New Window"
-msgstr "新しいウィンドウで開く"
-
-#: lib/Widgets/DynamicNotebook.vala:286
-msgid "Duplicate"
-msgstr "タブを複製"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tab"
-msgstr "ほかのタブを閉じる"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tabs"
-msgstr "ほかのタブを閉じる"
-
-#: lib/Widgets/DynamicNotebook.vala:383
-msgid "Close Tab to the Right"
-msgstr "右側のタブを閉じる"
-
-#: lib/Widgets/DynamicNotebook.vala:384
-msgid "Close Tabs to the Right"
-msgstr "右側のタブを閉じる"
-
-#: lib/Widgets/DynamicNotebook.vala:389
-msgid "Pin"
-msgstr "ピン留め"
-
-#: lib/Widgets/DynamicNotebook.vala:391
-msgid "Unpin"
-msgstr "ピン留めを解除"
-
-#: lib/Widgets/DynamicNotebook.vala:568
-msgid "Clear All"
-msgstr "すべて消去"
-
-#: lib/Widgets/DynamicNotebook.vala:833 lib/Widgets/DynamicNotebook.vala:894
-msgid "New Tab"
-msgstr "新しいタブ"
-
-#: lib/Widgets/DynamicNotebook.vala:834
-msgid "Undo Close Tab"
-msgstr "閉じたタブを再度開く"
-
-#: lib/Widgets/DynamicNotebook.vala:904
-msgid "Closed Tabs"
-msgstr "閉じたタブ"
-
 #: lib/Widgets/MessageDialog.vala:125
 msgid "_Close"
 msgstr "閉じる(_C)"
@@ -181,122 +125,154 @@ msgstr "閉じる(_C)"
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: lib/Widgets/MessageDialog.vala:338
+#: lib/Widgets/MessageDialog.vala:320
 msgid "Details"
 msgstr "詳細"
 
-#: lib/Widgets/StorageBar.vala:66
-msgid "Audio"
-msgstr "オーディオ"
-
-#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
-#: lib/Widgets/StorageBar.vala:69
-msgid "Videos"
-msgstr "動画"
-
-#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
-#: lib/Widgets/StorageBar.vala:72
-msgid "Photos"
-msgstr "写真"
-
-#: lib/Widgets/StorageBar.vala:74
-msgid "Apps"
-msgstr "アプリ"
-
-#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
-#: lib/Widgets/StorageBar.vala:77
-msgid "Files"
-msgstr "ファイル"
-
-#: lib/Widgets/StorageBar.vala:79
-msgid "Other"
-msgstr "そのほか"
-
-#: lib/Widgets/StorageBar.vala:255
-#, c-format
-msgid "%s free out of %s"
-msgstr "%s 空き / %s"
-
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:98
+#: lib/Widgets/TimePicker.vala:94
 msgid "AM"
 msgstr "午前"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:100
+#: lib/Widgets/TimePicker.vala:99
 msgid "PM"
 msgstr "午後"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:146
+#: lib/Widgets/TimePicker.vala:136
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:91
+#: lib/Widgets/Utils.vala:33
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:95
+#: lib/Widgets/Utils.vala:37
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:99
+#: lib/Widgets/Utils.vala:41
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:117
+#: lib/Widgets/Utils.vala:59
 msgid "Left Alt"
 msgstr "左 Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:121
+#: lib/Widgets/Utils.vala:63
 msgid "Right Alt"
 msgstr "右 Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:128
+#: lib/Widgets/Utils.vala:70
 msgid "Right Ctrl"
 msgstr "右 Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:132
+#: lib/Widgets/Utils.vala:74
 msgid "Left Ctrl"
 msgstr "左 Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:79
 msgid "Minus"
 msgstr "マイナス"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:84
 msgid "Plus"
 msgstr "プラス"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:89
 msgid "Equals"
 msgstr "イコール"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:92
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:96
 msgid "Left Shift"
 msgstr "左 Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:100
 msgid "Right Shift"
 msgstr "右 Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:221
+#: lib/Widgets/Utils.vala:163
 msgid ", "
 msgstr "、 "
+
+#~ msgid "Show Granite Options"
+#~ msgstr "Granite のオプションを表示します"
+
+#~ msgid "Close Tab"
+#~ msgstr "タブを閉じる"
+
+#~ msgid "Open in a New Window"
+#~ msgstr "新しいウィンドウで開く"
+
+#~ msgid "Duplicate"
+#~ msgstr "タブを複製"
+
+#~ msgid "Close Other Tab"
+#~ msgstr "ほかのタブを閉じる"
+
+#~ msgid "Close Other Tabs"
+#~ msgstr "ほかのタブを閉じる"
+
+#~ msgid "Close Tab to the Right"
+#~ msgstr "右側のタブを閉じる"
+
+#~ msgid "Close Tabs to the Right"
+#~ msgstr "右側のタブを閉じる"
+
+#~ msgid "Pin"
+#~ msgstr "ピン留め"
+
+#~ msgid "Unpin"
+#~ msgstr "ピン留めを解除"
+
+#~ msgid "Clear All"
+#~ msgstr "すべて消去"
+
+#~ msgid "New Tab"
+#~ msgstr "新しいタブ"
+
+#~ msgid "Undo Close Tab"
+#~ msgstr "閉じたタブを再度開く"
+
+#~ msgid "Closed Tabs"
+#~ msgstr "閉じたタブ"
+
+#~ msgid "Audio"
+#~ msgstr "オーディオ"
+
+#~ msgid "Videos"
+#~ msgstr "動画"
+
+#~ msgid "Photos"
+#~ msgstr "写真"
+
+#~ msgid "Apps"
+#~ msgstr "アプリ"
+
+#~ msgid "Files"
+#~ msgstr "ファイル"
+
+#~ msgid "Other"
+#~ msgstr "そのほか"
+
+#, c-format
+#~ msgid "%s free out of %s"
+#~ msgstr "%s 空き / %s"
 
 #~ msgid "%s's Developers"
 #~ msgstr "%s の開発者"
