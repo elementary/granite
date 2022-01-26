@@ -21,6 +21,7 @@
         <ul>
           <li>Application: use Gtk.Application instead</li>
           <li>DynamicNotebook: use Adw.TabBar instead</li>
+          <li>Logger: use GLib.log instead</li>
           <li>ModeButton: Use Gtk.ToggleButton with the "group" property and "linked" style class instead</li>
           <li>Paths: use GLib.Environment instead</li>
           <li>Seekbar</li>
