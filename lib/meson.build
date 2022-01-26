@@ -23,7 +23,6 @@ libgranite_sources = files(
     # 'Widgets/CellRendererExpander.vala',
     'Widgets/DatePicker.vala',
     'Widgets/Dialog.vala',
-    'Widgets/DynamicNotebook.vala',
     'Widgets/HeaderLabel.vala',
     'Widgets/HyperTextView.vala',
     'Widgets/MessageDialog.vala',
