@@ -1,4 +1,3 @@
-lib/Application.vala
 lib/DateTime.vala
 
 lib/Drawing/BufferSurface.vala
@@ -6,25 +5,18 @@ lib/Drawing/Color.vala
 lib/Drawing/Utilities.vala
 
 lib/Services/ContractorProxy.vala
-lib/Services/IconFactory.vala
 lib/Services/Logger.vala
-lib/Services/Paths.vala
 lib/Services/Settings.vala
-lib/Services/SimpleCommand.vala
 lib/Services/System.vala
 
 lib/Widgets/AbstractSettingsPage.vala
 lib/Widgets/AbstractSimpleSettingsPage.vala
 lib/Widgets/AsyncImage.vala
-lib/Widgets/Avatar.vala
-lib/Widgets/CollapsiblePaned.vala
-lib/Widgets/CompositedWindow.vala
 lib/Widgets/DatePicker.vala
 lib/Widgets/HeaderLabel.vala
 lib/Widgets/MessageDialog.vala
 lib/Widgets/ModeSwitch.vala
 lib/Widgets/OverlayBar.vala
-lib/Widgets/SeekBar.vala
 lib/Widgets/SettingsSidebarRow.vala
 lib/Widgets/SettingsSidebar.vala
 lib/Widgets/TimePicker.vala
