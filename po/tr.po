@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-04 20:12+0000\n"
+"POT-Creation-Date: 2022-01-26 13:48-0800\n"
 "PO-Revision-Date: 2021-08-13 19:00+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -19,10 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-
-#: lib/Application.vala:171
-msgid "Show Granite Options"
-msgstr "Granite Ayarlarını Göster"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -125,58 +121,6 @@ msgstr "%e %B %A"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/DynamicNotebook.vala:280 lib/Widgets/DynamicNotebook.vala:304
-msgid "Close Tab"
-msgstr "Sekmeyi Kapat"
-
-#: lib/Widgets/DynamicNotebook.vala:283
-msgid "Open in a New Window"
-msgstr "Yeni Pencerede Aç"
-
-#: lib/Widgets/DynamicNotebook.vala:286
-msgid "Duplicate"
-msgstr "Çoğalt"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tab"
-msgstr "Diğer Sekmeyi Kapat"
-
-#: lib/Widgets/DynamicNotebook.vala:378
-msgid "Close Other Tabs"
-msgstr "Diğer Sekmeleri Kapat"
-
-#: lib/Widgets/DynamicNotebook.vala:383
-msgid "Close Tab to the Right"
-msgstr "Sağ Taraftaki Sekmeyi Kapat"
-
-#: lib/Widgets/DynamicNotebook.vala:384
-msgid "Close Tabs to the Right"
-msgstr "Sağ Taraftaki Sekmeleri Kapat"
-
-#: lib/Widgets/DynamicNotebook.vala:389
-msgid "Pin"
-msgstr "Sabitle"
-
-#: lib/Widgets/DynamicNotebook.vala:391
-msgid "Unpin"
-msgstr "Ayır"
-
-#: lib/Widgets/DynamicNotebook.vala:568
-msgid "Clear All"
-msgstr "Tümünü Temizle"
-
-#: lib/Widgets/DynamicNotebook.vala:833 lib/Widgets/DynamicNotebook.vala:894
-msgid "New Tab"
-msgstr "Yeni Sekme"
-
-#: lib/Widgets/DynamicNotebook.vala:834
-msgid "Undo Close Tab"
-msgstr "Kapanan Sekmeyi Geri Al"
-
-#: lib/Widgets/DynamicNotebook.vala:904
-msgid "Closed Tabs"
-msgstr "Kapatılan Sekmeler"
-
 #: lib/Widgets/MessageDialog.vala:125
 msgid "_Close"
 msgstr "_Kapat"
@@ -185,122 +129,154 @@ msgstr "_Kapat"
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: lib/Widgets/MessageDialog.vala:338
+#: lib/Widgets/MessageDialog.vala:320
 msgid "Details"
 msgstr "Ayrıntılar"
 
-#: lib/Widgets/StorageBar.vala:66
-msgid "Audio"
-msgstr "Ses"
-
-#. / TRANSLATORS: Refers to videos the mime type. Not Videos the app.
-#: lib/Widgets/StorageBar.vala:69
-msgid "Videos"
-msgstr "Videolar"
-
-#. / TRANSLATORS: Refers to photos the mime type. Not Photos the app.
-#: lib/Widgets/StorageBar.vala:72
-msgid "Photos"
-msgstr "Fotoğraflar"
-
-#: lib/Widgets/StorageBar.vala:74
-msgid "Apps"
-msgstr "Uygulamalar"
-
-#. / TRANSLATORS: Refers to files the mime type. Not Files the app.
-#: lib/Widgets/StorageBar.vala:77
-msgid "Files"
-msgstr "Dosyalar"
-
-#: lib/Widgets/StorageBar.vala:79
-msgid "Other"
-msgstr "Diğer"
-
-#: lib/Widgets/StorageBar.vala:255
-#, c-format
-msgid "%s free out of %s"
-msgstr "%2$s alanın %1$s bölümü boş"
-
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:98
+#: lib/Widgets/TimePicker.vala:94
 msgid "AM"
 msgstr "ÖÖ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
-#: lib/Widgets/TimePicker.vala:100
+#: lib/Widgets/TimePicker.vala:99
 msgid "PM"
 msgstr "ÖS"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:146
+#: lib/Widgets/TimePicker.vala:136
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:91
+#: lib/Widgets/Utils.vala:33
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:95
+#: lib/Widgets/Utils.vala:37
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:99
+#: lib/Widgets/Utils.vala:41
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:117
+#: lib/Widgets/Utils.vala:59
 msgid "Left Alt"
 msgstr "Sol Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:121
+#: lib/Widgets/Utils.vala:63
 msgid "Right Alt"
 msgstr "Sağ Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:128
+#: lib/Widgets/Utils.vala:70
 msgid "Right Ctrl"
 msgstr "Sağ Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:132
+#: lib/Widgets/Utils.vala:74
 msgid "Left Ctrl"
 msgstr "Sol Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:137
+#: lib/Widgets/Utils.vala:79
 msgid "Minus"
 msgstr "Eksi"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:142
+#: lib/Widgets/Utils.vala:84
 msgid "Plus"
 msgstr "Artı"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:147
+#: lib/Widgets/Utils.vala:89
 msgid "Equals"
 msgstr "Eşittir"
 
-#: lib/Widgets/Utils.vala:150
+#: lib/Widgets/Utils.vala:92
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:154
+#: lib/Widgets/Utils.vala:96
 msgid "Left Shift"
 msgstr "Sol Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:158
+#: lib/Widgets/Utils.vala:100
 msgid "Right Shift"
 msgstr "Sağ Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:221
+#: lib/Widgets/Utils.vala:163
 msgid ", "
 msgstr ", "
+
+#~ msgid "Show Granite Options"
+#~ msgstr "Granite Ayarlarını Göster"
+
+#~ msgid "Close Tab"
+#~ msgstr "Sekmeyi Kapat"
+
+#~ msgid "Open in a New Window"
+#~ msgstr "Yeni Pencerede Aç"
+
+#~ msgid "Duplicate"
+#~ msgstr "Çoğalt"
+
+#~ msgid "Close Other Tab"
+#~ msgstr "Diğer Sekmeyi Kapat"
+
+#~ msgid "Close Other Tabs"
+#~ msgstr "Diğer Sekmeleri Kapat"
+
+#~ msgid "Close Tab to the Right"
+#~ msgstr "Sağ Taraftaki Sekmeyi Kapat"
+
+#~ msgid "Close Tabs to the Right"
+#~ msgstr "Sağ Taraftaki Sekmeleri Kapat"
+
+#~ msgid "Pin"
+#~ msgstr "Sabitle"
+
+#~ msgid "Unpin"
+#~ msgstr "Ayır"
+
+#~ msgid "Clear All"
+#~ msgstr "Tümünü Temizle"
+
+#~ msgid "New Tab"
+#~ msgstr "Yeni Sekme"
+
+#~ msgid "Undo Close Tab"
+#~ msgstr "Kapanan Sekmeyi Geri Al"
+
+#~ msgid "Closed Tabs"
+#~ msgstr "Kapatılan Sekmeler"
+
+#~ msgid "Audio"
+#~ msgstr "Ses"
+
+#~ msgid "Videos"
+#~ msgstr "Videolar"
+
+#~ msgid "Photos"
+#~ msgstr "Fotoğraflar"
+
+#~ msgid "Apps"
+#~ msgstr "Uygulamalar"
+
+#~ msgid "Files"
+#~ msgstr "Dosyalar"
+
+#~ msgid "Other"
+#~ msgstr "Diğer"
+
+#, c-format
+#~ msgid "%s free out of %s"
+#~ msgstr "%2$s alanın %1$s bölümü boş"
 
 #~ msgid "%s's Developers"
 #~ msgstr "%s Geliştiricileri"
