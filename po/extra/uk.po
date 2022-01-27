@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2021-11-04 23:20+0000\n"
+"PO-Revision-Date: 2022-01-27 01:22+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -21,10 +21,8 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
-#, fuzzy
-#| msgid "Granite"
 msgid "Granite 7"
-msgstr "Granite"
+msgstr "Granite 7"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
@@ -46,11 +44,11 @@ msgstr "Нові функції:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Ported to GTK4! 🎉️"
-msgstr ""
+msgstr "Портовано до GTK4! 🎉️"
 
 #: data/granite.appdata.xml.in:18
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
-msgstr ""
+msgstr "Granite.Placeholder: замінює AlertView і Welcome"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:107
 msgid "Removals:"
@@ -58,55 +56,54 @@ msgstr "Вилучення:"
 
 #: data/granite.appdata.xml.in:22
 msgid "Application: use Gtk.Application instead"
-msgstr ""
+msgstr "Application: натомість використовується Gtk.Application"
 
 #: data/granite.appdata.xml.in:23
 msgid "DynamicNotebook: use Adw.TabBar instead"
-msgstr ""
+msgstr "DynamicNotebook: натомість використовується Adw.TabBar"
 
 #: data/granite.appdata.xml.in:24
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
+"ModeButton: натомість використовується Gtk.ToggleButton із властивістю "
+"\"group\" і класом стилю \"linked\""
 
 #: data/granite.appdata.xml.in:25
 msgid "Paths: use GLib.Environment instead"
-msgstr ""
+msgstr "Paths: натомість використовується GLib.Environment"
 
 #: data/granite.appdata.xml.in:26
 msgid "Seekbar"
-msgstr ""
+msgstr "Seekbar"
 
 #: data/granite.appdata.xml.in:27
 msgid "Settings: use GLib.Settings instead"
-msgstr ""
+msgstr "Settings: натомість використовується GLib.Settings"
 
 #: data/granite.appdata.xml.in:28
-#, fuzzy
-#| msgid ""
-#| "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
-#| "instead"
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
-"Granite.Services.SimpleCommand. Користуйтеся GLib.AppInfo."
-"create_from_commandline натомість"
+"SimpleCommand: натомість використовується GLib.AppInfo."
+"create_from_commandline"
 
 #: data/granite.appdata.xml.in:29
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
+"SourceList: натомість використовується Gtk.ListBox зі стилем \"sidebar\""
 
 #: data/granite.appdata.xml.in:30
 msgid "StorageBar"
-msgstr ""
+msgstr "StorageBar"
 
 #: data/granite.appdata.xml.in:31
 msgid "TextStyle: use style class constants instead"
-msgstr ""
+msgstr "TextStyle: натомість використовуються константи класів стилю"
 
 #: data/granite.appdata.xml.in:32
 msgid "Several functions in System were replaced by GLib.AppInfo"
-msgstr ""
+msgstr "Кілька функцій у System були замінені на Glib.Appinfo"
 
 #: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:48
 #: data/granite.appdata.xml.in:165 data/granite.appdata.xml.in:180
