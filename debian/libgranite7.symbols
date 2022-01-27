@@ -141,14 +141,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_services_contractor_proxy_get_contracts_for_files@Base 6.2.0
  granite_services_contractor_proxy_get_instance@Base 6.2.0
  granite_services_contractor_proxy_get_type@Base 6.2.0
- granite_services_log_level_get_type@Base 6.2.0
- granite_services_logger_construct@Base 6.2.0
- granite_services_logger_get_DisplayLevel@Base 6.2.0
- granite_services_logger_get_type@Base 6.2.0
- granite_services_logger_initialize@Base 6.2.0
- granite_services_logger_new@Base 6.2.0
- granite_services_logger_notification@Base 6.2.0
- granite_services_logger_set_DisplayLevel@Base 6.2.0
  granite_services_settings_serializable_get_type@Base 6.2.0
  granite_services_settings_serializable_settings_deserialize@Base 6.2.0
  granite_services_settings_serializable_settings_serialize@Base 6.2.0
@@ -207,89 +199,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_validated_entry_set_is_valid@Base 6.2.0
  granite_validated_entry_set_min_length@Base 6.2.0
  granite_validated_entry_set_regex@Base 6.2.0
- granite_widgets_alert_view_construct@Base 6.2.0
- granite_widgets_alert_view_get_description@Base 6.2.0
- granite_widgets_alert_view_get_icon_name@Base 6.2.0
- granite_widgets_alert_view_get_title@Base 6.2.0
- granite_widgets_alert_view_get_type@Base 6.2.0
- granite_widgets_alert_view_hide_action@Base 6.2.0
- granite_widgets_alert_view_new@Base 6.2.0
- granite_widgets_alert_view_set_description@Base 6.2.0
- granite_widgets_alert_view_set_icon_name@Base 6.2.0
- granite_widgets_alert_view_set_title@Base 6.2.0
- granite_widgets_alert_view_show_action@Base 6.2.0
- granite_widgets_date_picker_construct@Base 6.2.0
- granite_widgets_date_picker_construct_with_format@Base 6.2.0
- granite_widgets_date_picker_get_date@Base 6.2.0
- granite_widgets_date_picker_get_format@Base 6.2.0
- granite_widgets_date_picker_get_type@Base 6.2.0
- granite_widgets_date_picker_new@Base 6.2.0
- granite_widgets_date_picker_new_with_format@Base 6.2.0
- granite_widgets_date_picker_position_dropdown@Base 6.2.0
- granite_widgets_date_picker_set_date@Base 6.2.0
- granite_widgets_dynamic_notebook_construct@Base 6.2.0
- granite_widgets_dynamic_notebook_construct_with_accellabels@Base 6.2.0
- granite_widgets_dynamic_notebook_get_add_button_tooltip@Base 6.2.0
- granite_widgets_dynamic_notebook_get_add_button_visible@Base 6.2.0
- granite_widgets_dynamic_notebook_get_allow_drag@Base 6.2.0
- granite_widgets_dynamic_notebook_get_allow_duplication@Base 6.2.0
- granite_widgets_dynamic_notebook_get_allow_new_window@Base 6.2.0
- granite_widgets_dynamic_notebook_get_allow_pinning@Base 6.2.0
- granite_widgets_dynamic_notebook_get_allow_restoring@Base 6.2.0
- granite_widgets_dynamic_notebook_get_children@Base 6.2.0
- granite_widgets_dynamic_notebook_get_current@Base 6.2.0
- granite_widgets_dynamic_notebook_get_force_left@Base 6.2.0
- granite_widgets_dynamic_notebook_get_group_name@Base 6.2.0
- granite_widgets_dynamic_notebook_get_max_restorable_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_get_menu@Base 6.2.0
- granite_widgets_dynamic_notebook_get_n_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_get_new_tab_label@Base 6.2.0
- granite_widgets_dynamic_notebook_get_nth_page@Base 6.2.0
- granite_widgets_dynamic_notebook_get_restore_tab_label@Base 6.2.0
- granite_widgets_dynamic_notebook_get_show_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tab_bar_behavior@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tab_by_index@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tab_by_widget@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tab_position@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_get_tabs_closable@Base 6.2.0
- granite_widgets_dynamic_notebook_get_type@Base 6.2.0
- granite_widgets_dynamic_notebook_insert_tab@Base 6.2.0
- granite_widgets_dynamic_notebook_new@Base 6.2.0
- granite_widgets_dynamic_notebook_new_with_accellabels@Base 6.2.0
- granite_widgets_dynamic_notebook_next_page@Base 6.2.0
- granite_widgets_dynamic_notebook_previous_page@Base 6.2.0
- granite_widgets_dynamic_notebook_remove_tab@Base 6.2.0
- granite_widgets_dynamic_notebook_set_add_button_tooltip@Base 6.2.0
- granite_widgets_dynamic_notebook_set_add_button_visible@Base 6.2.0
- granite_widgets_dynamic_notebook_set_allow_drag@Base 6.2.0
- granite_widgets_dynamic_notebook_set_allow_duplication@Base 6.2.0
- granite_widgets_dynamic_notebook_set_allow_new_window@Base 6.2.0
- granite_widgets_dynamic_notebook_set_allow_pinning@Base 6.2.0
- granite_widgets_dynamic_notebook_set_allow_restoring@Base 6.2.0
- granite_widgets_dynamic_notebook_set_current@Base 6.2.0
- granite_widgets_dynamic_notebook_set_force_left@Base 6.2.0
- granite_widgets_dynamic_notebook_set_group_name@Base 6.2.0
- granite_widgets_dynamic_notebook_set_max_restorable_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_set_show_tabs@Base 6.2.0
- granite_widgets_dynamic_notebook_set_tab_bar_behavior@Base 6.2.0
- granite_widgets_dynamic_notebook_set_tab_position@Base 6.2.0
- granite_widgets_dynamic_notebook_set_tabs_closable@Base 6.2.0
- granite_widgets_dynamic_notebook_tab_bar_behavior_get_type@Base 6.2.0
- granite_widgets_mode_button_append@Base 6.2.0
- granite_widgets_mode_button_append_icon@Base 6.2.0
- granite_widgets_mode_button_append_pixbuf@Base 6.2.0
- granite_widgets_mode_button_append_text@Base 6.2.0
- granite_widgets_mode_button_clear_children@Base 6.2.0
- granite_widgets_mode_button_construct@Base 6.2.0
- granite_widgets_mode_button_get_n_items@Base 6.2.0
- granite_widgets_mode_button_get_selected@Base 6.2.0
- granite_widgets_mode_button_get_type@Base 6.2.0
- granite_widgets_mode_button_new@Base 6.2.0
- granite_widgets_mode_button_remove@Base 6.2.0
- granite_widgets_mode_button_set_active@Base 6.2.0
- granite_widgets_mode_button_set_item_visible@Base 6.2.0
- granite_widgets_mode_button_set_selected@Base 6.2.0
  granite_widgets_overlay_bar_construct@Base 6.2.0
  granite_widgets_overlay_bar_get_active@Base 6.2.0
  granite_widgets_overlay_bar_get_label@Base 6.2.0
@@ -298,43 +207,6 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_widgets_overlay_bar_new@Base 6.2.0
  granite_widgets_overlay_bar_set_active@Base 6.2.0
  granite_widgets_overlay_bar_set_label@Base 6.2.0
- granite_widgets_tab_close@Base 6.2.0
- granite_widgets_tab_construct@Base 6.2.0
- granite_widgets_tab_construct_with_accellabels@Base 6.2.0
- granite_widgets_tab_get_close_tab_label@Base 6.2.0
- granite_widgets_tab_get_duplicate_tab_label@Base 6.2.0
- granite_widgets_tab_get_ellipsize_mode@Base 6.2.0
- granite_widgets_tab_get_icon@Base 6.2.0
- granite_widgets_tab_get_label@Base 6.2.0
- granite_widgets_tab_get_menu@Base 6.2.0
- granite_widgets_tab_get_new_window_label@Base 6.2.0
- granite_widgets_tab_get_page@Base 6.2.0
- granite_widgets_tab_get_pinnable@Base 6.2.0
- granite_widgets_tab_get_pinned@Base 6.2.0
- granite_widgets_tab_get_restore_data@Base 6.2.0
- granite_widgets_tab_get_type@Base 6.2.0
- granite_widgets_tab_get_working@Base 6.2.0
- granite_widgets_tab_new@Base 6.2.0
- granite_widgets_tab_new_with_accellabels@Base 6.2.0
- granite_widgets_tab_set_ellipsize_mode@Base 6.2.0
- granite_widgets_tab_set_icon@Base 6.2.0
- granite_widgets_tab_set_label@Base 6.2.0
- granite_widgets_tab_set_menu@Base 6.2.0
- granite_widgets_tab_set_page@Base 6.2.0
- granite_widgets_tab_set_pinnable@Base 6.2.0
- granite_widgets_tab_set_pinned@Base 6.2.0
- granite_widgets_tab_set_restore_data@Base 6.2.0
- granite_widgets_tab_set_tooltip@Base 6.2.0
- granite_widgets_tab_set_working@Base 6.2.0
- granite_widgets_time_picker_construct@Base 6.2.0
- granite_widgets_time_picker_construct_with_format@Base 6.2.0
- granite_widgets_time_picker_get_format_12@Base 6.2.0
- granite_widgets_time_picker_get_format_24@Base 6.2.0
- granite_widgets_time_picker_get_time@Base 6.2.0
- granite_widgets_time_picker_get_type@Base 6.2.0
- granite_widgets_time_picker_new@Base 6.2.0
- granite_widgets_time_picker_new_with_format@Base 6.2.0
- granite_widgets_time_picker_set_time@Base 6.2.0
  granite_widgets_toast_construct@Base 6.2.0
  granite_widgets_toast_get_title@Base 6.2.0
  granite_widgets_toast_get_type@Base 6.2.0
@@ -343,26 +215,3 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_widgets_toast_set_default_action@Base 6.2.0
  granite_widgets_toast_set_title@Base 6.2.0
  granite_widgets_utils_set_color_primary@Base 6.2.0
- granite_widgets_welcome_append@Base 6.2.0
- granite_widgets_welcome_append_with_image@Base 6.2.0
- granite_widgets_welcome_append_with_pixbuf@Base 6.2.0
- granite_widgets_welcome_button_construct@Base 6.2.0
- granite_widgets_welcome_button_get_description@Base 6.2.0
- granite_widgets_welcome_button_get_icon@Base 6.2.0
- granite_widgets_welcome_button_get_title@Base 6.2.0
- granite_widgets_welcome_button_get_type@Base 6.2.0
- granite_widgets_welcome_button_new@Base 6.2.0
- granite_widgets_welcome_button_set_description@Base 6.2.0
- granite_widgets_welcome_button_set_icon@Base 6.2.0
- granite_widgets_welcome_button_set_title@Base 6.2.0
- granite_widgets_welcome_construct@Base 6.2.0
- granite_widgets_welcome_get_button_from_index@Base 6.2.0
- granite_widgets_welcome_get_subtitle@Base 6.2.0
- granite_widgets_welcome_get_title@Base 6.2.0
- granite_widgets_welcome_get_type@Base 6.2.0
- granite_widgets_welcome_new@Base 6.2.0
- granite_widgets_welcome_remove_item@Base 6.2.0
- granite_widgets_welcome_set_item_sensitivity@Base 6.2.0
- granite_widgets_welcome_set_item_visible@Base 6.2.0
- granite_widgets_welcome_set_subtitle@Base 6.2.0
- granite_widgets_welcome_set_title@Base 6.2.0
