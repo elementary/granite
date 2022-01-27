@@ -11,8 +11,15 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_accel_label_set_action_name@Base 6.2.0
  granite_accel_label_set_label@Base 6.2.0
  granite_accel_to_string@Base 6.2.0
- granite_close_button_position_get_type@Base 6.2.0
  granite_contrasting_foreground_color@Base 6.2.0
+ granite_date_picker_construct@Base 6.2.0
+ granite_date_picker_construct_with_format@Base 6.2.0
+ granite_date_picker_get_date@Base 6.2.0
+ granite_date_picker_get_format@Base 6.2.0
+ granite_date_picker_get_type@Base 6.2.0
+ granite_date_picker_new@Base 6.2.0
+ granite_date_picker_new_with_format@Base 6.2.0
+ granite_date_picker_set_date@Base 6.2.0
  granite_date_time_get_default_date_format@Base 6.2.0
  granite_date_time_get_default_time_format@Base 6.2.0
  granite_date_time_get_relative_datetime@Base 6.2.0
@@ -75,6 +82,11 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_drawing_utilities_get_type@Base 6.2.0
  granite_drawing_utilities_new@Base 6.2.0
  granite_fdo_accounts_proxy_get_type@Base 6.2.0
+ granite_header_label_construct@Base 6.2.0
+ granite_header_label_get_label@Base 6.2.0
+ granite_header_label_get_type@Base 6.2.0
+ granite_header_label_new@Base 6.2.0
+ granite_header_label_set_label@Base 6.2.0
  granite_hyper_text_view_construct@Base 6.2.0
  granite_hyper_text_view_get_type@Base 6.2.0
  granite_hyper_text_view_new@Base 6.2.0
@@ -117,6 +129,16 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_mode_switch_set_secondary_icon_name@Base 6.2.0
  granite_mode_switch_set_secondary_icon_tooltip_text@Base 6.2.0
  granite_pantheon_accounts_service_proxy_get_type@Base 6.2.0
+ granite_placeholder_append_button@Base 6.2.0
+ granite_placeholder_construct@Base 6.2.0
+ granite_placeholder_get_description@Base 6.2.0
+ granite_placeholder_get_icon@Base 6.2.0
+ granite_placeholder_get_title@Base 6.2.0
+ granite_placeholder_get_type@Base 6.2.0
+ granite_placeholder_new@Base 6.2.0
+ granite_placeholder_set_description@Base 6.2.0
+ granite_placeholder_set_icon@Base 6.2.0
+ granite_placeholder_set_title@Base 6.2.0
  granite_portal_settings_proxy_get_type@Base 6.2.0
  granite_services_application_set_badge@Base 6.2.0
  granite_services_application_set_badge_finish@Base 6.2.0
@@ -188,6 +210,15 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_switch_model_button_new@Base 6.2.0
  granite_switch_model_button_set_description@Base 6.2.0
  granite_switch_model_button_set_text@Base 6.2.0
+ granite_time_picker_construct@Base 6.2.0
+ granite_time_picker_construct_with_format@Base 6.2.0
+ granite_time_picker_get_format_12@Base 6.2.0
+ granite_time_picker_get_format_24@Base 6.2.0
+ granite_time_picker_get_time@Base 6.2.0
+ granite_time_picker_get_type@Base 6.2.0
+ granite_time_picker_new@Base 6.2.0
+ granite_time_picker_new_with_format@Base 6.2.0
+ granite_time_picker_set_time@Base 6.2.0
  granite_validated_entry_construct@Base 6.2.0
  granite_validated_entry_construct_from_regex@Base 6.2.0
  granite_validated_entry_get_is_valid@Base 6.2.0
