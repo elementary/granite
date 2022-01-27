@@ -281,7 +281,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Annet"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s ledig av %s"
 

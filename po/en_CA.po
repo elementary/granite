@@ -265,7 +265,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Other"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s free out of %s"
 

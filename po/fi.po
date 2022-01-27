@@ -274,7 +274,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Muu"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "Vapaana %s/%s"
 

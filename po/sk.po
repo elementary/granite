@@ -264,7 +264,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Ostatné"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s zadarmo s %s"
 

@@ -268,7 +268,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Andere"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s vrij van de %s"
 
