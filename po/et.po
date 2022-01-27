@@ -265,7 +265,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Muu"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s vaba %s-st"
 

@@ -274,7 +274,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Diğer"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%2$s alanın %1$s bölümü boş"
 

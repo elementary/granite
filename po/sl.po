@@ -280,7 +280,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "Drugo"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s prostega od %s"
 

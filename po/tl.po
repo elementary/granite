@@ -258,7 +258,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Iba Pa"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s ang natitira sa %s"
 
