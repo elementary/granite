@@ -275,7 +275,6 @@ msgstr ", "
 #~ msgid "Other"
 #~ msgstr "इतर"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s पैकी %s रिकामे"
 

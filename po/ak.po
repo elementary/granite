@@ -263,7 +263,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Foforɔ"
 
-#, c-format
 #~ msgid "%s free out of %s"
 #~ msgstr "%s na aka wɔ %s"
 
