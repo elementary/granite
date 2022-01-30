@@ -25,7 +25,7 @@
           <li>ModeButton: Use Gtk.ToggleButton with the "group" property and "linked" style class instead</li>
           <li>Paths: use GLib.Environment instead</li>
           <li>Seekbar</li>
-          <li>Settings: use GLib.Settings instead</li>
+          <li>Services.Settings: use GLib.Settings instead</li>
           <li>SimpleCommand: use GLib.AppInfo.create_from_commandline instead</li>
           <li>SourceList: use Gtk.ListBox with the "sidebar" style class instead</li>
           <li>StorageBar</li>
