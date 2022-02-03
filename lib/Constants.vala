@@ -72,6 +72,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
+     * Style class for "on-screen display" widgets such as {@link Granite.Toast}
+     */
+    public const string STYLE_CLASS_OSD = "osd";
+    /**
      * Style class for a {@link Granite.Widgets.OverlayBar}
      */
     public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";

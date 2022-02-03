@@ -77,7 +77,7 @@ public class Granite.Toast : Gtk.Widget {
         notification_label = new Gtk.Label (title);
 
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        box.add_css_class ("osd"); // Improve compat with GTK default
+        box.add_css_class (Granite.STYLE_CLASS_OSD);
         box.append (close_button);
         box.append (notification_label);
         box.append (default_action_button);
