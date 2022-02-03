@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:48-0800\n"
-"PO-Revision-Date: 2020-06-07 12:11+0000\n"
+"PO-Revision-Date: 2022-02-02 18:36+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite/cs/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -131,7 +131,7 @@ msgstr "_Zavřít"
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr "_Storno"
+msgstr "_Zrušit"
 
 #: lib/Widgets/MessageDialog.vala:320
 msgid "Details"
@@ -176,15 +176,13 @@ msgstr "Pravý Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:70
-#, fuzzy
 msgid "Right Ctrl"
-msgstr "Pravý Alt"
+msgstr "Pravý Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:74
-#, fuzzy
 msgid "Left Ctrl"
-msgstr "Levý Alt"
+msgstr "Levý Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:79
