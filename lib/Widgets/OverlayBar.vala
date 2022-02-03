@@ -104,6 +104,7 @@ public class Granite.OverlayBar : Gtk.Widget {
         };
 
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        box.add_css_class (Granite.STYLE_CLASS_OSD);
         box.append (status_label);
         box.append (revealer);
         box.set_parent (this);

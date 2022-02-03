@@ -68,9 +68,9 @@ namespace Granite {
      */
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
-     * Style class for a {@link Granite.Widgets.OverlayBar}
+     * Style class for "on-screen display" widgets such as {@link Granite.OverlayBar}
      */
-    public const string STYLE_CLASS_OVERLAY_BAR = "overlay-bar";
+    public const string STYLE_CLASS_OSD = "osd";
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
