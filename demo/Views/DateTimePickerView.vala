@@ -32,12 +32,16 @@ public class DateTimePickerView : Gtk.Grid {
         current_time_label.halign = Gtk.Align.END;
 
         var now = new DateTime.now_local ();
-        var settings = new Settings ("org.gnome.desktop.interface");
-        var time_format = Granite.DateTime.get_default_time_format (settings.get_enum ("clock-format") == 1, false);
+        var settings = Granite.Settings.get_default ();
+        var time_format = Granite.DateTime.get_default_time_format (settings.clock_format == Granite.Settings.ClockFormat.12H, false);
 
-        var current_time = new Gtk.Label (now.format (time_format));
+        var current_time = new Gtk.Label (Granite.DateTime.format_time (now, false));
         current_time.tooltip_text = time_format;
         current_time.xalign = 0;
+
+        settings.notify["clock-format"].connect (() => {
+           current_time.label = Granite.DateTime.format_time (now, false);
+        });
 
         var current_date_label = new Gtk.Label ("Localized date:");
         current_date_label.halign = Gtk.Align.END;
