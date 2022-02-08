@@ -12,5 +12,5 @@ icons_dir = args["iconsdir"]
 
 if not os.environ.get('DESTDIR'):
     print('Compiling icon cache ...')
-    subprocess.run(['gtk-update-icon-cache', icons_dir])
+    subprocess.run(['gtk4-update-icon-cache', icons_dir])
 
