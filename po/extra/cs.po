@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-02-02 18:36+0000\n"
+"PO-Revision-Date: 2022-03-02 14:13+0000\n"
 "Last-Translator: p-bo <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/cs/>\n"
@@ -32,7 +32,7 @@ msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
-"Doprovodná knihovna pro GTK  a GLib, která poskytuje komplexní metody pro "
+"Doprovodná knihovna pro GTK a GLib, která poskytuje komplexní metody pro "
 "ovládací prvky a pohodlí, navržené pro použití v aplikacích, vytvořených pro "
 "elementary OS."
 
@@ -54,11 +54,11 @@ msgstr "Odebrání:"
 
 #: data/granite.appdata.xml.in:22
 msgid "Application: use Gtk.Application instead"
-msgstr ""
+msgstr "Aplikace: použito namísto toho Gtk.Application"
 
 #: data/granite.appdata.xml.in:23
 msgid "DynamicNotebook: use Adw.TabBar instead"
-msgstr ""
+msgstr "DynamicNotebook: namísto toho použito Adw.TabBar"
 
 #: data/granite.appdata.xml.in:24
 msgid ""
@@ -119,11 +119,11 @@ msgstr "Aktualizovány překlady"
 
 #: data/granite.appdata.xml.in:45
 msgid "min_length property for Granite.ValidatedEntry"
-msgstr ""
+msgstr "vlastnost min_length pro Granite.ValidatedEntry"
 
 #: data/granite.appdata.xml.in:46
 msgid "Granite.HyperTextView for navigatable URLs in text views"
-msgstr ""
+msgstr "Granite.HyperTextView pro procházení URL adres v textových pohledech"
 
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:70
@@ -132,32 +132,33 @@ msgstr "Opravy:"
 
 #: data/granite.appdata.xml.in:54
 msgid "Prevent crashing on environments without dark style preference support"
-msgstr ""
+msgstr "Zabráněno pádu v prostředích s podporou upřednostňování tmavého vzhledu"
 
 #: data/granite.appdata.xml.in:62
 msgid "Use values from the Settings Portal when possible"
-msgstr ""
+msgstr "Pokud je to možné, jsou používány hodnoty z portálu Nastavení"
 
 #: data/granite.appdata.xml.in:63
 msgid "Disable horizontal scrolling by default in SettingsPage"
-msgstr ""
+msgstr "Na stránce nastavení ve výchozím stavu vypnuto vodorovné posouvání"
 
 #: data/granite.appdata.xml.in:72
 msgid "Ensure accel_to_string works with multiple modifiers"
-msgstr ""
+msgstr "Zajištěno, že accel_to_string funguje v případě vícero modifikátorů"
 
 #: data/granite.appdata.xml.in:73
 msgid "Fix locale issues in Flatpaks"
-msgstr ""
+msgstr "Opraveny problémy s lokalizací ve Flatpak balíčcích"
 
 #: data/granite.appdata.xml.in:80 data/granite.appdata.xml.in:93
 msgid "Additions:"
-msgstr ""
+msgstr "Přidáno:"
 
 #: data/granite.appdata.xml.in:82
 msgid ""
 "TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations"
 msgstr ""
+"TRANSITION_DURATION_IN_PLACE pro konzistentní transformace widgetu v místě"
 
 #: data/granite.appdata.xml.in:84 data/granite.appdata.xml.in:116
 #: data/granite.appdata.xml.in:143
@@ -169,55 +170,58 @@ msgid ""
 "accel_to_string handles accel markup without modifiers or that are only "
 "modifiers"
 msgstr ""
+"accel_to_string obsluhuje značkování akcelerátorů bez modifikátorů nebo to "
+"jsou pouze modifikátory"
 
 #: data/granite.appdata.xml.in:95
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
-msgstr ""
+msgstr "Granite.Dialog nahrazuje Gtk.Dialog pro jednotnější styl"
 
 #: data/granite.appdata.xml.in:96
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
-msgstr ""
+msgstr "Granite.SwitchModelButton pro použití v nabídkách Gtk.Popover"
 
 #: data/granite.appdata.xml.in:97
 msgid "Granite.ValidatedEntry for client-side verification in forms"
-msgstr ""
+msgstr "Granite.ValidatedEntry pro client-side verification ve formulářích"
 
 #: data/granite.appdata.xml.in:99
-#, fuzzy
-#| msgid "New Style Constants:"
 msgid "New Constants:"
-msgstr "Nové konstanty stylu:"
+msgstr "Nové konstanty:"
 
 #: data/granite.appdata.xml.in:101
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
+"TOOLTIP_SECONDARY_TEXT_MARKUP pro menší text druhého řádku v Gtk.Tooltips"
 
 #: data/granite.appdata.xml.in:102
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
-msgstr ""
+msgstr "SMALL_LABEL pro menší Gtk.Labels bez Pango"
 
 #: data/granite.appdata.xml.in:103
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
-msgstr ""
+msgstr "STYLE_CLASS_WARMTH a STYLE_CLASS_TEMPERATURE pro měřítka"
 
 #: data/granite.appdata.xml.in:104
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
-msgstr ""
+msgstr "STYLE_CLASS_DEFAULT_DECORATION pro tenké lišty záhlaví"
 
 #: data/granite.appdata.xml.in:105
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
 msgstr ""
+"TRANSITION_DURATION_OPEN a TRANSITION_DURATION_CLOSE pro konzistenční animace"
 
 #: data/granite.appdata.xml.in:109
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
 msgstr ""
+"Granite.Widgets.AboutDialog. Poskytována namísto toho metadata z AppStream."
 
 #: data/granite.appdata.xml.in:110
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
-msgstr ""
+msgstr "Granite.Widgets.AppMenu. Použito namísto toho Gtk.MenuButton."
 
 #: data/granite.appdata.xml.in:112 data/granite.appdata.xml.in:136
 #: data/granite.appdata.xml.in:157
@@ -226,39 +230,44 @@ msgstr "Opuštěno:"
 
 #: data/granite.appdata.xml.in:114
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
-msgstr ""
+msgstr "Granite.Widgets.Avatar. Namísto toho použito Hdy.Avatar"
 
 #: data/granite.appdata.xml.in:118
 msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
+"Toasty nyní resetují své časové limity když posílají nové upozornění a "
+"časový limit je zastaven při najetím ukazatelem"
 
 #: data/granite.appdata.xml.in:119
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
-msgstr ""
+msgstr "Zpětné lomítko, pravý a levý Ctrl jsou nyní obsluhovány accel_to_string"
 
 #: data/granite.appdata.xml.in:120
 msgid "Make tab tooltips of DynamicNotebook settable"
-msgstr ""
+msgstr "Bublinové nápovědy panelů DynamicNotebook nastavitelné"
 
 #: data/granite.appdata.xml.in:121
 msgid ""
 "Timepicker corrrectly fires time_changed when AM and PM buttons are selected"
 msgstr ""
+"Volba času správně spustí time_changed když jsou vybrána tlačítka DOP a ODPO"
 
 #: data/granite.appdata.xml.in:122
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
-msgstr ""
+msgstr "Granite.MessageDialog nyní používá messagedialog CSS název"
 
 #: data/granite.appdata.xml.in:123
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
+"Viditelný název potomka je nyní správně synchronizován v Granite."
+"SettingsSidebar"
 
 #: data/granite.appdata.xml.in:124
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
-msgstr ""
+msgstr "Při vytváření je možné stav nastavit v Granite.AbstractSettingsPage"
 
 #: data/granite.appdata.xml.in:131
 msgid "New Style Constants:"
@@ -349,7 +358,7 @@ msgstr "Přidány nástrojové tipy pro položky zdrojového seznamu a jejich ak
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr ""
 "Nový ovládací prvek AccelLabel widget pro použití v nabídkách a dialozích "
-"vyskakujících po najetí  ukazatelem myši"
+"vyskakujících po najetí ukazatelem myši"
 
 #: data/granite.appdata.xml.in:182
 msgid "Delay tab resizing when closing tabs"
