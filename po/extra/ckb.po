@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-04-04 21:19+0000\n"
+"PO-Revision-Date: 2022-04-06 20:24+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/ckb/>\n"
@@ -119,7 +119,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:70
 msgid "Fixes:"
-msgstr ""
+msgstr "چاککردنەکان:"
 
 #: data/granite.appdata.xml.in:54
 msgid "Prevent crashing on environments without dark style preference support"
@@ -288,7 +288,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:152
 msgid "New features:"
-msgstr ""
+msgstr "نەو تایبەتمەندییەکان:"
 
 #: data/granite.appdata.xml.in:154
 msgid "New Settings class to share Pantheon desktop settings with apps"
