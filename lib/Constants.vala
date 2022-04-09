@@ -28,6 +28,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
     /**
+     * Style class for a circular {@link Gtk.Button}
+     */
+    public const string STYLE_CLASS_CIRCULAR = "circular";
+    /**
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
      */
     public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
@@ -68,7 +72,7 @@ namespace Granite {
      */
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
-     * Style class for "on-screen display" widgets such as {@link Granite.OverlayBar}
+     * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
      */
     public const string STYLE_CLASS_OSD = "osd";
     /**

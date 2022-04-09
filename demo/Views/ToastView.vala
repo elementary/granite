@@ -9,7 +9,7 @@ public class ToastView : Gtk.Box {
 
         var overlay = new Gtk.Overlay ();
 
-        var toast = new Granite.Widgets.Toast (_("Button was pressed!"));
+        var toast = new Granite.Toast (_("Button was pressed!"));
         toast.set_default_action (_("Do Things"));
 
         var button = new Gtk.Button.with_label (_("Press Me"));
