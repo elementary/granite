@@ -9,57 +9,6 @@ namespace Granite.Services {
      * applications, or executing terminal commands.
      */
     public class System : GLib.Object {
-        static bool path_is_mounted (string path) {
-            foreach (var m in VolumeMonitor.get ().get_mounts ())
-                if (m.get_root () != null && m.get_root ().get_path () != null && path.contains (m.get_root ().get_path ()))
-                    return true;
-
-            return false;
-        }
-
-        static void internal_launch (File? app, GLib.List<File> files) {
-            if (app == null && files.length () == 0)
-                return;
-
-            AppInfo info;
-
-#if !WINDOWS
-            if (app != null)
-                info = new DesktopAppInfo.from_filename (app.get_path ());
-            else
-#endif
-                try {
-                    info = files.first ().data.query_default_handler ();
-                } catch {
-                    return;
-                }
-
-            try {
-                if (files.length () == 0) {
-                    info.launch (null, null);
-                    return;
-                }
-
-                if (info.supports_files ()) {
-                    info.launch (files, null);
-                    return;
-                }
-
-                if (info.supports_uris ()) {
-                    var uris = new GLib.List<string> ();
-                    foreach (var f in files)
-                        uris.append (f.get_uri ());
-                    info.launch_uris (uris, new AppLaunchContext ());
-                    return;
-                }
-
-                error ("Error opening files. The application doesn't support files/URIs or wasn't found.");
-            } catch (Error e) {
-                debug ("Error: " + e.domain.to_string ());
-                error (e.message);
-            }
-        }
-
         private static GLib.SettingsSchema? privacy_settings_schema = null;
         private static GLib.Settings? privacy_settings = null;
         private static Portal.Settings? portal = null;
