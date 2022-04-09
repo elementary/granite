@@ -20,8 +20,9 @@ public class OverlayBarView : Gtk.Box {
             hexpand = true
         };
 
-        var overlaybar = new Granite.Widgets.OverlayBar (overlay);
-        overlaybar.label = "Hover the OverlayBar to change its position";
+        var overlaybar = new Granite.OverlayBar (overlay) {
+            label = "Hover the OverlayBar to change its position"
+        };
 
         append (overlay);
 
