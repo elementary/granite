@@ -1,5 +1,5 @@
 /*
- * Copyright 2017–2021 elementary, Inc. (https://elementary.io)
+ * Copyright 2017–2022 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -9,9 +9,7 @@
  */
 
 public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
-    private Gtk.Image header_icon;
     private Gtk.Label description_label;
-    private Gtk.Label title_label;
     private string _description;
 
     /**
@@ -57,28 +55,33 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
 
     }
 
-    construct {
-        header_icon = new Gtk.Image.from_icon_name (icon_name);
-        header_icon.pixel_size = 48;
-        header_icon.valign = Gtk.Align.START;
+    class construct {
+        set_css_name ("simplesettingspage");
+    }
 
-        title_label = new Gtk.Label (title);
-        title_label.ellipsize = Pango.EllipsizeMode.END;
-        title_label.selectable = true;
-        title_label.xalign = 0;
-        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+    construct {
+        var header_icon = new Gtk.Image.from_icon_name (icon_name) {
+            icon_size = Gtk.IconSize.LARGE,
+            valign = Gtk.Align.START
+        };
+
+        var title_label = new Gtk.Label (title) {
+            ellipsize = Pango.EllipsizeMode.END,
+            selectable = true,
+            xalign = 0
+        };
+        title_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var header_area = new Gtk.Grid ();
-        header_area.column_spacing = 12;
-        header_area.row_spacing = 3;
-
+        header_area.add_css_class ("header-area");
         header_area.attach (title_label, 1, 0);
 
         if (description != null) {
-            description_label = new Gtk.Label (description);
-            description_label.selectable = true;
-            description_label.xalign = 0;
-            description_label.wrap = true;
+            description_label = new Gtk.Label (description) {
+                selectable = true,
+                wrap = true,
+                xalign = 0
+            };
 
             header_area.attach (header_icon, 0, 0, 1, 2);
             header_area.attach (description_label, 1, 1);
@@ -87,27 +90,27 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         }
 
         if (activatable) {
-            status_switch = new Gtk.Switch ();
-            status_switch.hexpand = true;
-            status_switch.halign = Gtk.Align.END;
-            status_switch.valign = Gtk.Align.CENTER;
+            status_switch = new Gtk.Switch () {
+                hexpand = true,
+                halign = Gtk.Align.END,
+                valign = Gtk.Align.CENTER
+            };
             header_area.attach (status_switch, 2, 0);
         }
 
-        content_area = new Gtk.Grid ();
-        content_area.column_spacing = 12;
-        content_area.row_spacing = 12;
-        content_area.vexpand = true;
-
-        action_area = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-
-        var grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 24) {
-            margin_start = 12,
-            margin_end = 12,
-            margin_top = 12,
-            margin_bottom = 12
+        content_area = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 12,
+            vexpand = true
         };
+        content_area.add_css_class ("content-area");
 
+        action_area = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+            halign = Gtk.Align.END
+        };
+        action_area.add_css_class ("buttonbox");
+
+        var grid = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         grid.append (header_area);
         grid.append (content_area);
         grid.append (action_area);
