@@ -5,8 +5,6 @@
 
 public class SettingsView : Gtk.Box {
     construct {
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-
         var settings_page = new SimpleSettingsPage ();
 
         var settings_page_two = new SettingsPage ();
@@ -17,8 +15,13 @@ public class SettingsView : Gtk.Box {
 
         var settings_sidebar = new Granite.SettingsSidebar (stack);
 
-        paned.start_child = settings_sidebar;
-        paned.end_child = stack;
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            start_child = settings_sidebar,
+            end_child = stack,
+            resize_start_child = false,
+            shrink_end_child = false,
+            shrink_start_child = false
+        };
 
         append (paned);
     }
