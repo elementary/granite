@@ -44,6 +44,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
 
     public string status {
         set {
+            status_label.label = value;
             status_label.show ();
         }
     }
