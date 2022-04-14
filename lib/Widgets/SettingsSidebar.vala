@@ -60,6 +60,10 @@ public class Granite.SettingsSidebar : Gtk.Widget {
         set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
+    class construct {
+        set_css_name ("settingssidebar");
+    }
+
     construct {
         listbox = new Gtk.ListBox () {
             hexpand = true,
