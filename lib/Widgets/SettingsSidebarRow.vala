@@ -19,6 +19,9 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
                 case SettingsPage.StatusType.WARNING:
                     status_icon.icon_name = "emblem-warning";
                     break;
+                case SettingsPage.StatusType.NONE:
+                    status_icon.clear ();
+                    break;
             }
         }
     }
