@@ -249,24 +249,9 @@ public class Granite.HyperTextView : Gtk.TextView {
             return;
         }
 
-        try {
-            GLib.AppInfo.launch_default_for_uri (uri, null);
-            set_cursor (new Gdk.Cursor.from_name ("text", null));
-            is_control_key_pressed = false;
-        } catch (GLib.Error e) {
-            warning ("Could not open URI '%s': %s", uri, e.message);
-
-            var error_dialog = new Granite.MessageDialog (
-                _("Could not open URI"),
-                e.message,
-                new ThemedIcon ("dialog-error"),
-                Gtk.ButtonsType.CLOSE
-            );
-
-            error_dialog.response.connect (() => {
-                error_dialog.destroy ();
-            });
-        }
+        Gtk.show_uri (null, uri, Gdk.CURRENT_TIME);
+        set_cursor (new Gdk.Cursor.from_name ("text", null));
+        is_control_key_pressed = false;
     }
 
     private void on_motion_notify_event (double x, double y) {

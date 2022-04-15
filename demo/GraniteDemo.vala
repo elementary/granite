@@ -54,7 +54,10 @@ public class Granite.Demo : Gtk.Application {
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             start_child = stack_sidebar,
-            end_child = main_stack
+            end_child = main_stack,
+            resize_start_child = false,
+            shrink_end_child = false,
+            shrink_start_child = false
         };
 
         var gtk_settings = Gtk.Settings.get_default ();
