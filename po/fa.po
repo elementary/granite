@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:48-0800\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: Persian <fa@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-04-14 22:02+0000\n"
+"Last-Translator: Pikhosh <pikhosh@gmail.com>\n"
+"Language-Team: Persian <https://l10n.elementary.io/projects/desktop/granite/"
+"fa/>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -40,7 +42,7 @@ msgstr ""
 
 #: lib/DateTime.vala:59
 msgid "Now"
-msgstr ""
+msgstr "الان"
 
 #: lib/DateTime.vala:62
 #, c-format
@@ -72,11 +74,11 @@ msgstr[1] ""
 
 #: lib/DateTime.vala:80
 msgid "Yesterday"
-msgstr ""
+msgstr "دیروز"
 
 #: lib/DateTime.vala:82
 msgid "Tomorrow"
-msgstr ""
+msgstr "فردا"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:146
@@ -120,27 +122,26 @@ msgid "%b"
 msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:125
-#, fuzzy
 msgid "_Close"
-msgstr "بستن برگه"
+msgstr "_بستن"
 
 #: lib/Widgets/MessageDialog.vala:128
 msgid "_Cancel"
-msgstr ""
+msgstr "_لغو"
 
 #: lib/Widgets/MessageDialog.vala:320
 msgid "Details"
-msgstr ""
+msgstr "جزئیات"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:94
 msgid "AM"
-msgstr ""
+msgstr "ق.ظ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:99
 msgid "PM"
-msgstr ""
+msgstr "ب.ظ"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:136

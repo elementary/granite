@@ -8,16 +8,19 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         set {
             switch (value) {
                 case SettingsPage.StatusType.ERROR:
-                    status_icon.icon_name = "user-busy";
+                    status_icon.icon_name = "emblem-error";
                     break;
                 case SettingsPage.StatusType.OFFLINE:
-                    status_icon.icon_name = "user-offline";
+                    status_icon.icon_name = "emblem-disabled";
                     break;
                 case SettingsPage.StatusType.SUCCESS:
-                    status_icon.icon_name = "user-available";
+                    status_icon.icon_name = "emblem-enabled";
                     break;
                 case SettingsPage.StatusType.WARNING:
-                    status_icon.icon_name = "user-away";
+                    status_icon.icon_name = "emblem-warning";
+                    break;
+                case SettingsPage.StatusType.NONE:
+                    status_icon.clear ();
                     break;
             }
         }
