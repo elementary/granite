@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2021 elementary, Inc. (https://elementary.io)
+ * Copyright 2017-2022 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
@@ -10,7 +10,7 @@
  * All the content for the rows comes from the child properties of a Granite.SettingsPage
  * inside of the Gtk.Stack
  */
-public class Granite.SettingsSidebar : Gtk.Box {
+public class Granite.SettingsSidebar : Gtk.Widget {
     private Gtk.ListBox listbox;
 
     /**
@@ -53,14 +53,18 @@ public class Granite.SettingsSidebar : Gtk.Box {
      * Create a new SettingsSidebar
      */
     public SettingsSidebar (Gtk.Stack stack) {
-        Object (
-            stack: stack
-        );
+        Object (stack: stack);
+    }
+
+    static construct {
+        set_layout_manager_type (typeof (Gtk.BinLayout));
+    }
+
+    class construct {
+        set_css_name ("settingssidebar");
     }
 
     construct {
-        width_request = 200;
-
         listbox = new Gtk.ListBox () {
             hexpand = true,
             activate_on_single_click = true,
@@ -71,8 +75,7 @@ public class Granite.SettingsSidebar : Gtk.Box {
             hscrollbar_policy = Gtk.PolicyType.NEVER,
             child = listbox
         };
-
-        append (scrolled);
+        scrolled.set_parent (this);
 
         on_sidebar_changed ();
         stack.pages.items_changed.connect (on_sidebar_changed);
@@ -97,6 +100,10 @@ public class Granite.SettingsSidebar : Gtk.Box {
         stack.notify["visible-child-name"].connect (() => {
             visible_child_name = stack.visible_child_name;
         });
+    }
+
+    ~SettingsSidebar () {
+        get_first_child ().unparent ();
     }
 
     private void on_sidebar_changed () {
