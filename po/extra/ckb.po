@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-04-06 20:24+0000\n"
+"PO-Revision-Date: 2022-04-15 20:31+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/ckb/>\n"
@@ -21,17 +21,20 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
-msgstr ""
+msgstr "گرانتی ٧"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "خێراتر و ئاسانتر ئەپی بەسوود و جێگیر دروست بکە"
 
 #: data/granite.appdata.xml.in:10
+#, fuzzy
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:43
 msgid "New Features:"
