@@ -40,14 +40,14 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
             _icon_name = value;
             if (display_widget is Gtk.Image) {
                 ((Gtk.Image) display_widget).icon_name = value;
-                ((Gtk.Image) display_widget).pixel_size = 32;
+                ((Gtk.Image) display_widget).icon_size = Gtk.IconSize.LARGE;
             }
         }
     }
 
     public string status {
         set {
-            status_label.label = "<span font_size='small'>%s</span>".printf (value);
+            status_label.label = value;
             status_label.show ();
         }
     }
@@ -75,21 +75,25 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     }
 
     construct {
-        title_label = new Gtk.Label (page.title);
-        title_label.ellipsize = Pango.EllipsizeMode.END;
-        title_label.vexpand = true;
-        title_label.xalign = 0;
+        title_label = new Gtk.Label (page.title) {
+            ellipsize = Pango.EllipsizeMode.END,
+            vexpand = true,
+            xalign = 0
+        };
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
 
-        status_icon = new Gtk.Image ();
-        status_icon.halign = Gtk.Align.END;
-        status_icon.valign = Gtk.Align.END;
+        status_icon = new Gtk.Image () {
+            halign = Gtk.Align.END,
+            valign = Gtk.Align.END
+        };
 
-        status_label = new Gtk.Label (null);
-        status_label.use_markup = true;
-        status_label.ellipsize = Pango.EllipsizeMode.END;
-        status_label.vexpand = true;
-        status_label.xalign = 0;
+        status_label = new Gtk.Label (null) {
+            use_markup = true,
+            ellipsize = Pango.EllipsizeMode.END,
+            vexpand = true,
+            xalign = 0
+        };
+        status_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
 
         if (page.icon_name != null) {
             display_widget = new Gtk.Image ();
@@ -99,21 +103,13 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
         }
 
         var overlay = new Gtk.Overlay ();
-        overlay.width_request = 38;
         overlay.set_child (display_widget);
         overlay.add_overlay (status_icon);
 
-        var grid = new Gtk.Grid () {
-            margin_start = 6,
-            margin_end = 6,
-            margin_top = 6,
-            margin_bottom = 6
-        };
-
-        grid.column_spacing = 6;
+        var grid = new Gtk.Grid ();
         grid.attach (overlay, 0, 0, 1, 2);
-        grid.attach (title_label, 1, 0, 1, 1);
-        grid.attach (status_label, 1, 1, 1, 1);
+        grid.attach (title_label, 1, 0);
+        grid.attach (status_label, 1, 1);
 
         child = grid;
 
