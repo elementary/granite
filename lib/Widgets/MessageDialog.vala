@@ -42,6 +42,7 @@ public class Granite.MessageDialog : Granite.Dialog {
 
         set {
             primary_label.label = value;
+            title = value;
         }
     }
 
