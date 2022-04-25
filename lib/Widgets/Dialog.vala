@@ -72,7 +72,9 @@ public class Granite.Dialog : Gtk.Dialog {
         child = window_handle;
         window_handle.child = box;
 
-        get_content_area ().add_css_class (Granite.STYLE_CLASS_DIALOG_CONTENT_AREA);
+        var content_area = get_content_area ();
+        content_area.vexpand = true;
+        content_area.add_css_class (Granite.STYLE_CLASS_DIALOG_CONTENT_AREA);
     }
 
     public override void constructed () {
