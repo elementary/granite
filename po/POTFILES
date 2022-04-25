@@ -1,8 +1,5 @@
 lib/DateTime.vala
 
-lib/Drawing/Color.vala
-lib/Drawing/Utilities.vala
-
 lib/Services/ContractorProxy.vala
 lib/Services/Settings.vala
 lib/Services/System.vala
