@@ -1,7 +1,6 @@
 lib/DateTime.vala
 
 lib/Drawing/BufferSurface.vala
-lib/Drawing/Color.vala
 lib/Drawing/Utilities.vala
 
 lib/Services/ContractorProxy.vala
