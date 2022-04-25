@@ -3,7 +3,6 @@ libgranite_sources = files(
     'Constants.vala',
     'Init.vala',
 
-    'Drawing/BufferSurface.vala',
     'Drawing/Color.vala',
     'Drawing/Utilities.vala',
 
