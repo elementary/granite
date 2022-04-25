@@ -3,8 +3,6 @@ libgranite_sources = files(
     'Constants.vala',
     'Init.vala',
 
-    'Drawing/BufferSurface.vala',
-
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
