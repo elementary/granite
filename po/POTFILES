@@ -6,7 +6,6 @@ lib/Services/System.vala
 
 lib/Widgets/AbstractSettingsPage.vala
 lib/Widgets/AbstractSimpleSettingsPage.vala
-lib/Widgets/AsyncImage.vala
 lib/Widgets/DatePicker.vala
 lib/Widgets/HeaderLabel.vala
 lib/Widgets/MessageDialog.vala
