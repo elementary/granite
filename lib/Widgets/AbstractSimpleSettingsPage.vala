@@ -79,6 +79,7 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         if (description != null) {
             description_label = new Gtk.Label (description) {
                 selectable = true,
+                use_markup = true,
                 wrap = true,
                 xalign = 0
             };

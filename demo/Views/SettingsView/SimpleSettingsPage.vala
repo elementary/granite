@@ -7,7 +7,7 @@ public class SimpleSettingsPage : Granite.SimpleSettingsPage {
     public SimpleSettingsPage () {
         Object (
             activatable: true,
-            description: "This is a demo of Granite's SimpleSettingsPage",
+            description: "This is a <b>demo</b> of Granite's <i>SimpleSettingsPage</i>",
             header: "Simple Pages",
             icon_name: "preferences-system",
             title: "First Test Page"
