@@ -3,10 +3,6 @@ libgranite_sources = files(
     'Constants.vala',
     'Init.vala',
 
-    'Drawing/BufferSurface.vala',
-    'Drawing/Color.vala',
-    'Drawing/Utilities.vala',
-
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
     'Services/ContractorProxy.vala',
@@ -17,7 +13,6 @@ libgranite_sources = files(
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
-    # 'Widgets/AsyncImage.vala',
     'Widgets/DatePicker.vala',
     'Widgets/Dialog.vala',
     'Widgets/HeaderLabel.vala',

@@ -19,15 +19,11 @@ public class Granite.Demo : Gtk.Application {
         var hypertext_view = new HyperTextViewGrid ();
         var mode_button_view = new ModeButtonView ();
         var overlaybar_view = new OverlayBarView ();
-        // var seekbar_view = new SeekBarView ();
         var settings_view = new SettingsView ();
-        // var source_list_view = new SourceListView ();
-        // var storage_view = new StorageView ();
         var toast_view = new ToastView ();
         var utils_view = new UtilsView ();
         var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
-        // var async_image_view = new AsyncImageView ();
         var application_view = new ApplicationView ();
 
         var main_stack = new Gtk.Stack ();
@@ -39,14 +35,10 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (mode_button_view, "selection_controls", "Selection Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
-        // main_stack.add_titled (seekbar_view, "seekbar", "SeekBar");
         main_stack.add_titled (settings_view, "settings", "SettingsSidebar");
-        // main_stack.add_titled (source_list_view, "sourcelist", "SourceList");
-        // main_stack.add_titled (storage_view, "storage", "StorageBar");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
-        // main_stack.add_titled (async_image_view, "asyncimage", "AsyncImage");
         main_stack.add_titled (application_view, "application", "Application");
 
         var stack_sidebar = new Gtk.StackSidebar ();
