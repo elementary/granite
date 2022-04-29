@@ -10,16 +10,18 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="7.0.0" date="2022-04-26" urgency="medium">
+    <release version="7.0.0" date="2022-04-29" urgency="medium">
       <description>
         <p>New Features:</p>
         <ul>
           <li>Ported to GTK4! 🎉️</li>
           <li>Granite.Placeholder: replaces AlertView and Welcome</li>
+          <li>SimpleSettingsPage: Allow markup in description</li>
         </ul>
         <p>Removals:</p>
         <ul>
           <li>Application: use Gtk.Application instead</li>
+          <li>Drawing: Use Gtk.CSS</li>
           <li>DynamicNotebook: use Adw.TabBar instead</li>
           <li>Logger: use GLib.log instead</li>
           <li>ModeButton: Use Gtk.ToggleButton with the "group" property and "linked" style class instead</li>
