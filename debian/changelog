@@ -1,3 +1,61 @@
+granite (7.0.0) bionic; urgency=medium
+
+  * Release 7.0.0 (#599)
+  * MessageDialog: set window title to primary text
+  * Dialog: set content area to vexpand
+  * Remove Drawing (#603)
+  * Demo: Remove unused demos
+  * Remove AsyncImage (#600)
+  * SimpleSettingsPage: Allow markup in description
+  * AbstractSimpleSettingsPage: remove hardcoded styles (#596)
+  * SettingsSidebarRow: remove hardcoded styles (#595)
+  * GraniteDemo: fix pane resizing
+  * SettingsSidebar: subclass Gtk.Widget (#593)
+  * SwitchModelButton: ellipsize label at 25ch
+  * Handle StatusType.NONE
+  * SettingsSidebarRow: Use semantic icon names
+  * HyperTextView: Use Gtk.show_uri (#591)
+  * Toast: subclass Widget, redo styles (#580)
+  * OverlayBar: remove styles and cleanup (#560)
+  * System: remove unused functions (#581)
+  * AppData: Explicit namespace of the removed Settings (#583)
+  * Update post_install.py (#586)
+  * appdata: Fix a typo for "correctly" (#582)
+  * DatePicker: clean up unused signal and simplify change handling
+    (#571)
+  * Update translation files
+  * Remove Granite.Services.Logger (#579)
+  * Update Po
+  * Update Pot
+  * Update AppData
+  * Remove SeekBar (#575)
+  * Update POTFILES
+  * Remove SourceList (#573)
+  * Remove DynamicNotebook (#578)
+  * merge main (#559)
+  * AccelLabelView: fix menu styles (#547)
+  * Dialogs: Update for GTK4 styles (#546)
+  * Create Granite.Placeholder (#555)
+  * GTK4/Constants: remove category-expander
+  * Remove StorageBar (#569)
+  * Remove ModeButton (#558)
+  * Utils: Remove Granite.CloseButtonPosition (#568)
+  * Constants: add "title" (#562)
+  * Fix CI (#561)
+  * Create HeaderLabel (#553)
+  * Remove custom bin margin magic
+  * Utils: fix set_color_primary (#557)
+  * Constants: use header class names from Adw (#554)
+  * Constants: add view and warning classes (#552)
+  * Remove old icons (#548)
+  * Remove deprecations (#549)
+  * AlertView: fix icon size (#550)
+  * Constants: Add destructive-action (#551)
+  * Port to GTK4 (#542)
+  * DynamicNotebook: Do not use deprecated child property (#545)
+
+ -- Cody Garver <cody@elementary.io>  Sat, 30 Apr 2022 18:15:23 +0000
+
 granite (6.2.0) bionic; urgency=medium
 
   * Release 6.2.0 (#540)
