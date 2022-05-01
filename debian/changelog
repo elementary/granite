@@ -1,4 +1,4 @@
-granite (7.0.0) bionic; urgency=medium
+granite7 (7.0.0) bionic; urgency=medium
 
   * Release 7.0.0 (#599)
   * MessageDialog: set window title to primary text
