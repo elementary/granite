@@ -75,6 +75,14 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_mode_switch_set_secondary_icon_gicon@Base 7.0.0
  granite_mode_switch_set_secondary_icon_name@Base 7.0.0
  granite_mode_switch_set_secondary_icon_tooltip_text@Base 7.0.0
+ granite_overlay_bar_construct@Base 7.0.0
+ granite_overlay_bar_get_active@Base 7.0.0
+ granite_overlay_bar_get_label@Base 7.0.0
+ granite_overlay_bar_get_overlay@Base 7.0.0
+ granite_overlay_bar_get_type@Base 7.0.0
+ granite_overlay_bar_new@Base 7.0.0
+ granite_overlay_bar_set_active@Base 7.0.0
+ granite_overlay_bar_set_label@Base 7.0.0
  granite_pantheon_accounts_service_proxy_get_type@Base 7.0.0
  granite_placeholder_append_button@Base 7.0.0
  granite_placeholder_construct@Base 7.0.0
@@ -102,6 +110,7 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_services_contract_get_icon@Base 7.0.0
  granite_services_contract_get_type@Base 7.0.0
  granite_services_contractor_dbus_api_proxy_get_type@Base 7.0.0
+ granite_services_contractor_error_get_type@Base 7.0.0
  granite_services_contractor_error_quark@Base 7.0.0
  granite_services_contractor_proxy_get_all_contracts@Base 7.0.0
  granite_services_contractor_proxy_get_contracts_by_mime@Base 7.0.0
@@ -166,6 +175,13 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_time_picker_new@Base 7.0.0
  granite_time_picker_new_with_format@Base 7.0.0
  granite_time_picker_set_time@Base 7.0.0
+ granite_toast_construct@Base 7.0.0
+ granite_toast_get_title@Base 7.0.0
+ granite_toast_get_type@Base 7.0.0
+ granite_toast_new@Base 7.0.0
+ granite_toast_send_notification@Base 7.0.0
+ granite_toast_set_default_action@Base 7.0.0
+ granite_toast_set_title@Base 7.0.0
  granite_validated_entry_construct@Base 7.0.0
  granite_validated_entry_construct_from_regex@Base 7.0.0
  granite_validated_entry_get_is_valid@Base 7.0.0
