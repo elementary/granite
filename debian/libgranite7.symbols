@@ -193,19 +193,4 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_validated_entry_set_is_valid@Base 7.0.0
  granite_validated_entry_set_min_length@Base 7.0.0
  granite_validated_entry_set_regex@Base 7.0.0
- granite_widgets_overlay_bar_construct@Base 7.0.0
- granite_widgets_overlay_bar_get_active@Base 7.0.0
- granite_widgets_overlay_bar_get_label@Base 7.0.0
- granite_widgets_overlay_bar_get_overlay@Base 7.0.0
- granite_widgets_overlay_bar_get_type@Base 7.0.0
- granite_widgets_overlay_bar_new@Base 7.0.0
- granite_widgets_overlay_bar_set_active@Base 7.0.0
- granite_widgets_overlay_bar_set_label@Base 7.0.0
- granite_widgets_toast_construct@Base 7.0.0
- granite_widgets_toast_get_title@Base 7.0.0
- granite_widgets_toast_get_type@Base 7.0.0
- granite_widgets_toast_new@Base 7.0.0
- granite_widgets_toast_send_notification@Base 7.0.0
- granite_widgets_toast_set_default_action@Base 7.0.0
- granite_widgets_toast_set_title@Base 7.0.0
  granite_widgets_utils_set_color_primary@Base 7.0.0
