@@ -14,7 +14,7 @@ You'll need the following dependencies:
 * gobject-introspection
 * libgee-0.8-dev
 * libgirepository1.0-dev
-* libgtk-3-dev
+* libgtk-4-dev >= 4.4.0
 * valac
 
 Run `meson build` to configure the build environment:
