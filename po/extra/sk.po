@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2019-12-10 12:56-0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-07 01:27+0000\n"
+"Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
+"Language-Team: Slovak <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.4.2\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
@@ -104,7 +106,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:146 data/granite.appdata.xml.in:169
 #: data/granite.appdata.xml.in:183
 msgid "Updated translations"
-msgstr ""
+msgstr "Aktualizácia prekladov"
 
 #: data/granite.appdata.xml.in:45
 msgid "min_length property for Granite.ValidatedEntry"
@@ -330,4 +332,4 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:189
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
