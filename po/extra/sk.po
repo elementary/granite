@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-05-07 15:04+0000\n"
+"PO-Revision-Date: 2022-05-07 16:29+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/sk/>\n"
@@ -119,7 +119,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:70
 msgid "Fixes:"
-msgstr ""
+msgstr "Opravy:"
 
 #: data/granite.appdata.xml.in:54
 msgid "Prevent crashing on environments without dark style preference support"
