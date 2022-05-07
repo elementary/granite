@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-05-07 01:27+0000\n"
+"PO-Revision-Date: 2022-05-07 15:04+0000\n"
 "Last-Translator: JohnDumpling <john_dumpling@protonmail.com>\n"
 "Language-Team: Slovak <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/sk/>\n"
@@ -98,7 +98,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:48
 #: data/granite.appdata.xml.in:165 data/granite.appdata.xml.in:180
 msgid "Improvements:"
-msgstr ""
+msgstr "Vylepšenia:"
 
 #: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:64 data/granite.appdata.xml.in:74
@@ -106,7 +106,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:146 data/granite.appdata.xml.in:169
 #: data/granite.appdata.xml.in:183
 msgid "Updated translations"
-msgstr "Aktualizácia prekladov"
+msgstr "Aktualizované preklady"
 
 #: data/granite.appdata.xml.in:45
 msgid "min_length property for Granite.ValidatedEntry"
