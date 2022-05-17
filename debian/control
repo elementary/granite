@@ -20,7 +20,7 @@ Multi-Arch: same
 Depends: libgranite-7-common (>= ${source:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: contractor
+Recommends: contractor, io.elementary.settings-daemon
 Description: extension of GTK+ libraries
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
