@@ -74,7 +74,10 @@ public class Granite.Toast : Gtk.Widget {
         var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic");
         close_button.add_css_class (Granite.STYLE_CLASS_CIRCULAR);
 
-        notification_label = new Gtk.Label (title);
+        notification_label = new Gtk.Label (title) {
+            wrap = true,
+            wrap_mode = Pango.WrapMode.WORD
+        };
 
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
         box.add_css_class (Granite.STYLE_CLASS_OSD);
