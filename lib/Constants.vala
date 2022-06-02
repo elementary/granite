@@ -48,6 +48,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DIALOG_CONTENT_AREA = "dialog-content-area";
     /**
+     * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
+     */
+    public const string STYLE_CLASS_FRAME = "frame";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "title-1";
