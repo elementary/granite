@@ -132,6 +132,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_MESSAGE_DIALOG = "message";
     /**
+     * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
+     */
+    public const string STYLE_CLASS_RICH_LIST = "rich-list";
+    /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
