@@ -3,19 +3,11 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class CSSView : Gtk.Grid {
+public class CSSView : Gtk.Box {
     public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
-        Object (
-            halign: Gtk.Align.CENTER,
-            margin_top: 24,
-            margin_bottom: 24,
-            margin_start: 24,
-            margin_end: 24,
-            valign: Gtk.Align.CENTER,
-            window: window
-        );
+        Object (window: window);
     }
 
     construct {
@@ -37,36 +29,31 @@ public class CSSView : Gtk.Grid {
         };
         header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var card_label = new Gtk.Label ("\"card\" with \"rounded\" style class:") {
+        var card_label = new Gtk.Label ("\"card\" with \"rounded\" and \"checkerboard\" style classes:") {
             halign = Gtk.Align.END
         };
 
         var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-        unowned Gtk.StyleContext card_context = card.get_style_context ();
-        card_context.add_class (Granite.STYLE_CLASS_CARD);
-        card_context.add_class (Granite.STYLE_CLASS_ROUNDED);
-
+        card.add_css_class (Granite.STYLE_CLASS_CARD);
+        card.add_css_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        card.add_css_class (Granite.STYLE_CLASS_ROUNDED);
         card.append (header1);
         card.append (header2);
         card.append (header3);
         card.append (header4);
 
-        var checker_label = new Gtk.Label ("\"checkerboard\" style class:") {
+        var richlist_label = new Gtk.Label ("\"rich-list\" and \"frame\" style class:") {
             halign = Gtk.Align.END
         };
 
-        var checker_image = new Gtk.Image.from_icon_name ("dialog-information") {
-            hexpand = true,
-            margin_start = 6,
-            margin_end = 6,
-            margin_top = 6,
-            margin_bottom = 6
+        var rich_listbox = new Gtk.ListBox () {
+            show_separators = true
         };
-
-        var checker_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        checker_box.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
-        checker_box.append (checker_image);
+        rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
+        rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
+        rich_listbox.append (new Gtk.Label ("Row 1"));
+        rich_listbox.append (new Gtk.Label ("Row 2"));
+        rich_listbox.append (new Gtk.Label ("Row 3"));
 
         var terminal_label = new Gtk.Label ("\"terminal\" style class:") {
             halign = Gtk.Align.END
@@ -139,25 +126,38 @@ public class CSSView : Gtk.Grid {
         accent_color_grid.append (accent_color_icon);
         accent_color_grid.append (accent_color_string);
 
-        column_spacing = 12;
-        row_spacing = 24;
+        var grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 24,
+            halign = Gtk.Align.CENTER,
+            valign = Gtk.Align.CENTER,
+            margin_top = 24,
+            margin_bottom = 24,
+            margin_start = 24,
+            margin_end = 24,
+        };
+        grid.attach (card_label, 0, 0);
+        grid.attach (card, 1, 0, 2);
+        grid.attach (richlist_label, 0, 1);
+        grid.attach (rich_listbox, 1, 1, 2);
+        grid.attach (terminal_label, 0, 2);
+        grid.attach (terminal_scroll, 1, 2, 2);
+        grid.attach (back_button_label, 0, 3);
+        grid.attach (back_button, 1, 3, 2);
+        grid.attach (warmth_label, 0, 4);
+        grid.attach (warmth_scale, 1, 4);
+        grid.attach (temperature_label, 0, 5);
+        grid.attach (temperature_scale, 1, 5);
+        grid.attach (primary_color_label, 0, 6);
+        grid.attach (primary_color_button, 1, 6, 2);
+        grid.attach (accent_color_label, 0, 7);
+        grid.attach (accent_color_grid, 1, 7);
 
-        attach (card_label, 0, 0);
-        attach (card, 1, 0, 2);
-        attach (checker_label, 0, 1);
-        attach (checker_box, 1, 1, 2);
-        attach (terminal_label, 0, 2);
-        attach (terminal_scroll, 1, 2, 2);
-        attach (back_button_label, 0, 3);
-        attach (back_button, 1, 3, 2);
-        attach (warmth_label, 0, 4);
-        attach (warmth_scale, 1, 4);
-        attach (temperature_label, 0, 5);
-        attach (temperature_scale, 1, 5);
-        attach (primary_color_label, 0, 6);
-        attach (primary_color_button, 1, 6, 2);
-        attach (accent_color_label, 0, 7);
-        attach (accent_color_grid, 1, 7);
+        var scrolled = new Gtk.ScrolledWindow () {
+            child = grid
+        };
+
+        append (scrolled);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);

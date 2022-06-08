@@ -48,6 +48,10 @@ namespace Granite {
      */
     public const string STYLE_CLASS_DIALOG_CONTENT_AREA = "dialog-content-area";
     /**
+     * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
+     */
+    public const string STYLE_CLASS_FRAME = "frame";
+    /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
     public const string STYLE_CLASS_H1_LABEL = "title-1";
@@ -131,6 +135,10 @@ namespace Granite {
      * Style class for message dialogs.
      */
     public const string STYLE_CLASS_MESSAGE_DIALOG = "message";
+    /**
+     * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
+     */
+    public const string STYLE_CLASS_RICH_LIST = "rich-list";
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
