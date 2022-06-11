@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-03-30 23:58+0000\n"
+"PO-Revision-Date: 2022-06-11 23:34+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/pt/>\n"
@@ -38,8 +38,6 @@ msgstr ""
 "OS."
 
 #: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:43
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Novas funcionalidades:"
 
