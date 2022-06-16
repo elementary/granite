@@ -254,24 +254,27 @@ public class Granite.MessageDialog : Granite.Dialog {
             valign = Gtk.Align.END
         };
 
-        var overlay = new Gtk.Overlay ();
-        overlay.valign = Gtk.Align.START;
-        overlay.set_child (image);
+        var overlay = new Gtk.Overlay () {
+            child = image,
+            valign = Gtk.Align.START
+        };
         overlay.add_overlay (badge);
 
-        primary_label = new Gtk.Label (null);
+        primary_label = new Gtk.Label (null) {
+            selectable = true,
+            wrap = true,
+            xalign = 0
+        };
         primary_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
-        primary_label.selectable = true;
-        primary_label.max_width_chars = 50;
-        primary_label.wrap = true;
-        primary_label.xalign = 0;
 
-        secondary_label = new Gtk.Label (null);
-        secondary_label.use_markup = true;
-        secondary_label.selectable = true;
-        secondary_label.max_width_chars = 50;
-        secondary_label.wrap = true;
-        secondary_label.xalign = 0;
+        secondary_label = new Gtk.Label (null) {
+            max_width_chars = 50,
+            width_chars = 50,
+            selectable = true,
+            use_markup = true,
+            wrap = true,
+            xalign = 0
+        };
 
         custom_bin = new SingleWidgetBin ();
 
@@ -280,9 +283,9 @@ public class Granite.MessageDialog : Granite.Dialog {
             row_spacing = 6
         };
         message_grid.attach (overlay, 0, 0, 1, 2);
-        message_grid.attach (primary_label, 1, 0, 1, 1);
-        message_grid.attach (secondary_label, 1, 1, 1, 1);
-        message_grid.attach (custom_bin, 1, 3, 1, 1);
+        message_grid.attach (primary_label, 1, 0);
+        message_grid.attach (secondary_label, 1, 1);
+        message_grid.attach (custom_bin, 1, 3);
 
         get_content_area ().append (message_grid);
 
