@@ -261,6 +261,7 @@ public class Granite.MessageDialog : Granite.Dialog {
         overlay.add_overlay (badge);
 
         primary_label = new Gtk.Label (null) {
+            max_width_chars = 0, // Wrap, but secondary label sets the width
             selectable = true,
             wrap = true,
             xalign = 0
@@ -269,7 +270,7 @@ public class Granite.MessageDialog : Granite.Dialog {
 
         secondary_label = new Gtk.Label (null) {
             max_width_chars = 50,
-            width_chars = 50,
+            width_chars = 50, // Prevents a bug where extra height is preserved
             selectable = true,
             use_markup = true,
             wrap = true,
