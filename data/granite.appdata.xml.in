@@ -19,7 +19,7 @@
         </ul>
         <p>Improvements:</p>
         <ul>
-          <li></li>
+          <li>MessageDialog: fix a bug that caused large heights to be preserved</li>
           <li>Updated translations</li>
         </ul>
       </description>
