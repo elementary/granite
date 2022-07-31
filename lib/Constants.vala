@@ -8,11 +8,14 @@ namespace Granite {
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
     public const string STYLE_CLASS_ACCENT = "accent";
-
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
+    /**
+     * Style class to match the window background
+     */
+    public const string STYLE_CLASS_BACKGROUND = "background";
     /**
      * Style class for numbered badges
      */
@@ -83,6 +86,10 @@ namespace Granite {
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
     public const string STYLE_CLASS_ROUNDED = "rounded";
+    /**
+     * Style class defining a sidebar, such as the left side in a file chooser
+     */
+    public const string STYLE_CLASS_SIDEBAR = "sidebar";
     /**
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */

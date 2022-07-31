@@ -19,7 +19,8 @@
         </ul>
         <p>Improvements:</p>
         <ul>
-          <li></li>
+          <li>MessageDialog: fix a bug that caused large heights to be preserved</li>
+          <li>Constants: Added STYLE_CLASS_SIDEBAR and STYLE_CLASS_BACKGROUND constants</li>
           <li>Updated translations</li>
         </ul>
       </description>

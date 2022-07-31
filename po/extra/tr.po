@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-02-10 15:32+0000\n"
+"PO-Revision-Date: 2022-06-27 08:37+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/tr/>\n"
@@ -80,14 +80,9 @@ msgid "Settings: use GLib.Settings instead"
 msgstr ""
 
 #: data/granite.appdata.xml.in:28
-#, fuzzy
-#| msgid ""
-#| "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
-#| "instead"
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
-"Granite.Services.SimpleCommand. Bunun yerine GLib.AppInfo."
-"create_from_commandline kullanın"
+"SimpleCommand: Bunun yerine GLib.AppInfo.create_from_commandline kullanın"
 
 #: data/granite.appdata.xml.in:29
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
