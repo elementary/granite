@@ -26,6 +26,7 @@ public class ToastView : Gtk.Box {
 
         overlay.add_overlay (box);
         overlay.add_overlay (toast);
+        overlay.set_measure_overlay (toast, true);
 
         button.clicked.connect (() => {
             toast.send_notification ();
