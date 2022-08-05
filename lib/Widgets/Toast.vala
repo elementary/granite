@@ -78,7 +78,8 @@ public class Granite.Toast : Gtk.Widget {
 
         notification_label = new Gtk.Label (title) {
             wrap = true,
-            wrap_mode = Pango.WrapMode.WORD
+            wrap_mode = Pango.WrapMode.WORD,
+            natural_wrap_mode = Gtk.NaturalWrapMode.NONE
         };
 
         var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
