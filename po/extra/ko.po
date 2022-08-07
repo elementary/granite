@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2021-08-31 16:45+0000\n"
+"PO-Revision-Date: 2022-08-07 23:06+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
-"Language-Team: Korean <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ko/>\n"
+"Language-Team: Korean <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -98,7 +98,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:34 data/granite.appdata.xml.in:48
 #: data/granite.appdata.xml.in:165 data/granite.appdata.xml.in:180
 msgid "Improvements:"
-msgstr ""
+msgstr "개선:"
 
 #: data/granite.appdata.xml.in:37 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:64 data/granite.appdata.xml.in:74
@@ -119,7 +119,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:52 data/granite.appdata.xml.in:60
 #: data/granite.appdata.xml.in:70
 msgid "Fixes:"
-msgstr ""
+msgstr "수정:"
 
 #: data/granite.appdata.xml.in:54
 msgid "Prevent crashing on environments without dark style preference support"
