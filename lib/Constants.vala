@@ -75,7 +75,8 @@ namespace Granite {
      */
     public const string STYLE_CLASS_KEYCAP = "keycap";
     /**
-     * Style class for a {@link Gtk.Image} used to set a context-aware large icon size
+     * Style class for a {@link Gtk.Image} used to set a context-aware large icon size. By default this is 32px,
+     * but in certain contexts it could be larger or smaller depending on the default assumed icon size.
      */
     public const string STYLE_CLASS_LARGE_ICONS = "large-icons";
     /**
