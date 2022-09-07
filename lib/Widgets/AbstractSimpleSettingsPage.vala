@@ -66,8 +66,9 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
         };
 
         var title_label = new Gtk.Label (title) {
-            ellipsize = Pango.EllipsizeMode.END,
+            hexpand = true,
             selectable = true,
+            wrap = true,
             xalign = 0
         };
         title_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
@@ -85,16 +86,14 @@ public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
             };
 
             header_area.attach (header_icon, 0, 0, 1, 2);
-            header_area.attach (description_label, 1, 1);
+            header_area.attach (description_label, 1, 1, 2);
         } else {
             header_area.attach (header_icon, 0, 0);
         }
 
         if (activatable) {
             status_switch = new Gtk.Switch () {
-                hexpand = true,
-                halign = Gtk.Align.END,
-                valign = Gtk.Align.CENTER
+                valign = Gtk.Align.START
             };
             header_area.attach (status_switch, 2, 0);
         }
