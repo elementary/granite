@@ -42,7 +42,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
         var label_widget = new Gtk.Label (label) {
             xalign = 0
         };
-        label_widget.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        label_widget.add_css_class ("heading");
         label_widget.set_parent (this);
 
         var secondary_label = new Gtk.Label (secondary_text) {
