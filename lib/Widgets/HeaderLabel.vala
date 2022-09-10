@@ -57,7 +57,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
         bind_property ("label", label_widget, "label");
 
-        notify["secondary_text"].connect (() => {
+        notify["secondary-text"].connect (() => {
             secondary_label.label = secondary_text;
 
             if (secondary_text == null || secondary_text == "") {
