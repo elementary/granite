@@ -10,20 +10,25 @@
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
   <releases>
-    <release version="7.1.0" date="2022-06-02" urgency="medium">
+    <release version="7.1.0" date="2022-09-27" urgency="medium">
       <description>
         <p>New Features:</p>
         <ul>
           <li>Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding</li>
           <li>Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, and others</li>
+          <li>Granite.STYLE_CLASS_SIDEBAR for styling application sidebars</li>
+          <li>Granite.STYLE_CLASS_BACKROUND to use the default background color for a widget</li>
         </ul>
         <p>Improvements:</p>
         <ul>
-          <li>MessageDialog: fix a bug that caused large heights to be preserved</li>
-          <li>Constants: Added STYLE_CLASS_SIDEBAR and STYLE_CLASS_BACKGROUND constants</li>
+          <li>Allow text in Granite.Toast to wrap</li>
+          <li>SimpleSettingsPage: Wrap titles and allow description text to go under switches</li>
           <li>Updated translations</li>
         </ul>
       </description>
+      <issues>
+        <issue url="https://github.com/elementary/granite/pull/616">MessageDialog: fix a bug that caused large heights to be preserved</issue>
+      </issues>
     </release>
     <release version="7.0.0" date="2022-04-29" urgency="medium">
       <description>
