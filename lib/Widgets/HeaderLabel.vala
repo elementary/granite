@@ -17,7 +17,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
      * Optional secondary label string displayed below the header
      */
     public string? secondary_text {
-        get; construct set; default = null; 
+        get; construct set; default = null;
     }
 
     /**
