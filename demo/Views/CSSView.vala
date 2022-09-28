@@ -29,10 +29,9 @@ public class CSSView : Gtk.Box {
         };
         header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var card_header = new Granite.HeaderLabel (
-            "Cards and Headers",
-            "\"card\" with \"rounded\" and \"checkerboard\" style classes"
-        );
+        var card_header = new Granite.HeaderLabel ("Cards and Headers") {
+            secondary_text = "\"card\" with \"rounded\" and \"checkerboard\" style classes"
+        };
 
         var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         card.add_css_class (Granite.STYLE_CLASS_CARD);
@@ -43,10 +42,9 @@ public class CSSView : Gtk.Box {
         card.append (header3);
         card.append (header4);
 
-        var richlist_label = new Granite.HeaderLabel (
-            "Lists",
-            "\"rich-list\" and \"frame\" style classes"
-        );
+        var richlist_label = new Granite.HeaderLabel ("Lists") {
+            secondary_text = "\"rich-list\" and \"frame\" style classes"
+        };
 
         var rich_listbox = new Gtk.ListBox () {
             show_separators = true
@@ -79,10 +77,9 @@ public class CSSView : Gtk.Box {
         };
         back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
-        var scales_header = new Granite.HeaderLabel (
-            "Scales",
-            "\"warmth\" and \"temperature\" style classes"
-        );
+        var scales_header = new Granite.HeaderLabel ("Scales") {
+            secondary_text = "\"warmth\" and \"temperature\" style classes"
+        };
 
         var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
             draw_value = false,

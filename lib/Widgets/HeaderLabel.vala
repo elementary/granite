@@ -13,21 +13,42 @@ public class Granite.HeaderLabel : Gtk.Widget {
      */
     public string label { get; construct set; }
 
+    private Gtk.Label secondary_label;
+    private string _secondary_text;
     /**
      * Optional secondary label string displayed below the header
      */
     public string? secondary_text {
-        get; construct set; default = null;
+        get {
+            return _secondary_text;
+        }
+        set {
+            if (secondary_label != null) {
+                if (value == null || value == "") {
+                    secondary_label.unparent ();
+                    secondary_label = null;
+                } else {
+                    secondary_label.label = value;
+                }
+            } else if (value != null) {
+                _secondary_text = value;
+                secondary_label = new Gtk.Label (value) {
+                    wrap = true,
+                    xalign = 0
+                };
+                secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+                secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+
+                secondary_label.set_parent (this);
+            }
+        }
     }
 
     /**
      * Create a new HeaderLabel
      */
-    public HeaderLabel (string label, string? secondary_text = null) {
-        Object (
-            secondary_text: secondary_text,
-            label: label
-        );
+    public HeaderLabel (string label) {
+        Object (label: label);
     }
 
     class construct {
@@ -45,27 +66,10 @@ public class Granite.HeaderLabel : Gtk.Widget {
         label_widget.add_css_class ("heading");
         label_widget.set_parent (this);
 
-        var secondary_label = new Gtk.Label (secondary_text) {
-            wrap = true,
-            xalign = 0
-        };
-        secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
-        secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
-
         halign = Gtk.Align.START;
         ((Gtk.BoxLayout) get_layout_manager ()).orientation = Gtk.Orientation.VERTICAL;
 
         bind_property ("label", label_widget, "label");
-
-        notify["secondary-text"].connect (() => {
-            secondary_label.label = secondary_text;
-
-            if (secondary_text == null || secondary_text == "") {
-                secondary_label.unparent ();
-            } else if (secondary_label.parent == null) {
-                secondary_label.set_parent (this);
-            }
-        });
     }
 
     ~HeaderLabel () {
