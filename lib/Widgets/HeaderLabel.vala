@@ -13,7 +13,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
      */
     public string label { get; construct set; }
 
-    private Gtk.Label secondary_label;
+    private Gtk.Label? secondary_label = null;
     private string _secondary_text;
     /**
      * Optional secondary label string displayed below the header
