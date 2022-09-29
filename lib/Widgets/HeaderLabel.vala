@@ -20,7 +20,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
      */
     public string? secondary_text {
         get {
-            return _secondary_text;
+            return secondary_label != null ? secondary_label.label : null;
         }
         set {
             if (secondary_label != null) {
