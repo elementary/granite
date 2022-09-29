@@ -14,7 +14,6 @@ public class Granite.HeaderLabel : Gtk.Widget {
     public string label { get; construct set; }
 
     private Gtk.Label? secondary_label = null;
-    private string _secondary_text;
     /**
      * Optional secondary label string displayed below the header
      */
@@ -31,7 +30,6 @@ public class Granite.HeaderLabel : Gtk.Widget {
                     secondary_label.label = value;
                 }
             } else if (value != null) {
-                _secondary_text = value;
                 secondary_label = new Gtk.Label (value) {
                     wrap = true,
                     xalign = 0
