@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-26 13:43-0800\n"
-"PO-Revision-Date: 2022-09-30 10:47+0000\n"
+"PO-Revision-Date: 2022-09-30 14:55+0000\n"
 "Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -129,7 +129,7 @@ msgstr "Исправления:"
 
 #: data/granite.appdata.xml.in:54
 msgid "Prevent crashing on environments without dark style preference support"
-msgstr "Предотвращены сбои в средах без поддержки темного стиля"
+msgstr "Предотвращены сбои в средах без поддержки тёмного стиля"
 
 #: data/granite.appdata.xml.in:62
 msgid "Use values from the Settings Portal when possible"
@@ -236,7 +236,7 @@ msgid ""
 "Toasts now reset their timeout when sending a new notification and the "
 "timeout is stopped while hovering"
 msgstr ""
-"Toasts теперь сбрасывают свое время ожидания при отправке нового "
+"Toasts теперь сбрасывают своё время ожидания при отправке нового "
 "уведомления, а при наведении время ожидания останавливается"
 
 #: data/granite.appdata.xml.in:119
@@ -329,7 +329,7 @@ msgid ""
 "preference, i.e. for a dark style"
 msgstr ""
 "Введена функция Settings.prefers_color_scheme для получения предпочтений "
-"пользователя по цветовой схеме, т.е. для темного стиля"
+"пользователя по цветовой схеме, т.е. для тёмного стиля"
 
 #: data/granite.appdata.xml.in:159
 msgid ""
