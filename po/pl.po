@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:48-0800\n"
+"POT-Creation-Date: 2022-09-30 13:07-0700\n"
 "PO-Revision-Date: 2021-09-30 11:23+0000\n"
 "Last-Translator: DarkKnightComes <darkknightcomes@gmail.com>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite/"
@@ -126,15 +126,15 @@ msgstr "%a, %e %b"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: lib/Widgets/MessageDialog.vala:320
+#: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
 msgstr "Szczegóły"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:48-0800\n"
+"POT-Creation-Date: 2022-09-30 13:07-0700\n"
 "PO-Revision-Date: 2017-06-17 08:24+0000\n"
 "Last-Translator: Rajeev Kumar <irajeevankumar@gmail.com>\n"
 "Language-Team: Tamil <https://l10n.elementary.io/projects/desktop/granite/ta/"
@@ -125,16 +125,16 @@ msgstr "%a %b %e"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:126
 #, fuzzy
 msgid "_Close"
 msgstr "மூடு"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:320
+#: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
 msgstr ""
 

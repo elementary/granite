@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:48-0800\n"
+"POT-Creation-Date: 2022-09-30 13:07-0700\n"
 "PO-Revision-Date: 2021-08-04 04:53+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite/"
@@ -117,15 +117,15 @@ msgstr "%b%e日 (%a)"
 msgid "%b"
 msgstr "%b"
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: lib/Widgets/MessageDialog.vala:320
+#: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
 msgstr "詳細"
 
