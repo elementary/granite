@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-30 13:07-0700\n"
-"PO-Revision-Date: 2022-01-27 01:22+0000\n"
+"PO-Revision-Date: 2022-09-30 23:18+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -46,26 +46,30 @@ msgstr "Нові функції:"
 #: data/granite.appdata.xml.in:17
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
+"Granite.STYLE_CLASS_RICH_LIST для стандартного відступу рядків Gtk.ListBox"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
+"Granite.STYLE_CLASS_FRAME для додавання рамки до Gtk.LisBox, Gtk.InfoBar та "
+"інших"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_SIDEBAR для стилізації бічних панелей застосунків"
 
 #: data/granite.appdata.xml.in:20
 msgid ""
 "Granite.STYLE_CLASS_BACKROUND to use the default background color for a "
 "widget"
 msgstr ""
+"Granite.STYLE_CLASS_BACKROUND використовувати типовий колір тла для віджета"
 
 #: data/granite.appdata.xml.in:21
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "Доданий необов'язковий додатковий текст до Granite.HeaderLabel"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:58
 #: data/granite.appdata.xml.in:72 data/granite.appdata.xml.in:189
@@ -75,13 +79,15 @@ msgstr "Удосконалення:"
 
 #: data/granite.appdata.xml.in:25
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "Дозволено обгортання тексту в Granite.Toast"
 
 #: data/granite.appdata.xml.in:26
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage: Обгортати заголовки та дозволяти текст опису під "
+"перемикачами"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:61
 #: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:88
@@ -101,7 +107,7 @@ msgstr "Granite.Placeholder: замінює AlertView і Welcome"
 
 #: data/granite.appdata.xml.in:40
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage: Дозволено розмітку в описі"
 
 #: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:131
 msgid "Removals:"
@@ -113,17 +119,15 @@ msgstr "Application: натомість використовується Gtk.App
 
 #: data/granite.appdata.xml.in:45
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Оформлення: Використовується Gtk.CSS"
 
 #: data/granite.appdata.xml.in:46
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: натомість використовується Adw.TabBar"
 
 #: data/granite.appdata.xml.in:47
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Logger: use GLib.log instead"
-msgstr "Settings: натомість використовується GLib.Settings"
+msgstr "Журналювання: натомість використовується GLib.log"
 
 #: data/granite.appdata.xml.in:48
 msgid ""
@@ -142,10 +146,8 @@ msgid "Seekbar"
 msgstr "Seekbar"
 
 #: data/granite.appdata.xml.in:51
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr "Settings: натомість використовується GLib.Settings"
+msgstr "Services.Settings: натомість використовується GLib.Settings"
 
 #: data/granite.appdata.xml.in:52
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
@@ -302,10 +304,6 @@ msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr "Підказки вкладки DynamicNotebook тепер налаштовувані"
 
 #: data/granite.appdata.xml.in:145
-#, fuzzy
-#| msgid ""
-#| "Timepicker corrrectly fires time_changed when AM and PM buttons are "
-#| "selected"
 msgid ""
 "Timepicker correctly fires time_changed when AM and PM buttons are selected"
 msgstr ""
