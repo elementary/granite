@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-30 13:07-0700\n"
-"PO-Revision-Date: 2022-04-08 16:06+0000\n"
+"PO-Revision-Date: 2022-10-02 00:29+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
-"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/pl/>\n"
+"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,26 +45,33 @@ msgstr "Nowe funkcje:"
 #: data/granite.appdata.xml.in:17
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
+"Dodano Granite.STYLE_CLASS_RICH_LIST dla standardowego paddingu wierszy Gtk."
+"ListBox"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
+"Dodano Granite.STYLE_CLASS_FRAME dla dodawania obramowania do Gtk.LisBox, "
+"Gtk.InfoBar i innych"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
+"Dodano Granite.STYLE_CLASS_SIDEBAR dla stylowania panelów bocznych aplikacji"
 
 #: data/granite.appdata.xml.in:20
 msgid ""
 "Granite.STYLE_CLASS_BACKROUND to use the default background color for a "
 "widget"
 msgstr ""
+"Dodano Granite.STYLE_CLASS_BACKROUND do użycia domyślnego koloru tła w "
+"widżecie"
 
 #: data/granite.appdata.xml.in:21
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "Dodano opcjonalny tekst podrzędny do Granite.HeaderLabel"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:58
 #: data/granite.appdata.xml.in:72 data/granite.appdata.xml.in:189
@@ -74,13 +81,15 @@ msgstr "Ulepszenia:"
 
 #: data/granite.appdata.xml.in:25
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "Umożliwiono łamanie wierszy w tekstach wewnątrz Granite.Toast"
 
 #: data/granite.appdata.xml.in:26
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage: Łamanie wierszy tytułu oraz umożliwienie opisowi do "
+"rozwinięcia się poniżej przycisków"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:61
 #: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:88
@@ -100,7 +109,7 @@ msgstr "Granite.Placeholder: zastępuje AlertView i Welcome"
 
 #: data/granite.appdata.xml.in:40
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage: Umożliwiono wykorzystywanie znaczników w opisie"
 
 #: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:131
 msgid "Removals:"
@@ -112,17 +121,15 @@ msgstr "Application: użytwa teraz Gtk.Application"
 
 #: data/granite.appdata.xml.in:45
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Drawing: Używanie Gtk.CSS"
 
 #: data/granite.appdata.xml.in:46
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: używa teraz Adw.TabBar"
 
 #: data/granite.appdata.xml.in:47
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Logger: use GLib.log instead"
-msgstr "Settings: używa teraz GLib.Settings"
+msgstr "Logger: używa teraz GLib.log"
 
 #: data/granite.appdata.xml.in:48
 msgid ""
@@ -141,10 +148,8 @@ msgid "Seekbar"
 msgstr "Pasek wyszukiwania"
 
 #: data/granite.appdata.xml.in:51
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr "Settings: używa teraz GLib.Settings"
+msgstr "Services.Settings: używa teraz GLib.Settings"
 
 #: data/granite.appdata.xml.in:52
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
@@ -305,10 +310,6 @@ msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr "Tooltipy kart w DynamicNotebook można teraz ustawiać"
 
 #: data/granite.appdata.xml.in:145
-#, fuzzy
-#| msgid ""
-#| "Timepicker corrrectly fires time_changed when AM and PM buttons are "
-#| "selected"
 msgid ""
 "Timepicker correctly fires time_changed when AM and PM buttons are selected"
 msgstr ""
