@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 09:29-0700\n"
-"PO-Revision-Date: 2022-09-30 23:18+0000\n"
+"PO-Revision-Date: 2022-10-05 09:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -61,15 +61,11 @@ msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr "Granite.STYLE_CLASS_SIDEBAR для стилізації бічних панелей застосунків"
 
 #: data/granite.appdata.xml.in:20
-#, fuzzy
-#| msgid ""
-#| "Granite.STYLE_CLASS_BACKROUND to use the default background color for a "
-#| "widget"
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
-"Granite.STYLE_CLASS_BACKROUND використовувати типовий колір тла для віджета"
+"Granite.STYLE_CLASS_BACKGROUND використовує типовий колір тла для віджета"
 
 #: data/granite.appdata.xml.in:21
 msgid "Add optional secondary text to Granite.HeaderLabel"
