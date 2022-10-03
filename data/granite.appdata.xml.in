@@ -17,7 +17,7 @@
           <li>Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding</li>
           <li>Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, and others</li>
           <li>Granite.STYLE_CLASS_SIDEBAR for styling application sidebars</li>
-          <li>Granite.STYLE_CLASS_BACKROUND to use the default background color for a widget</li>
+          <li>Granite.STYLE_CLASS_BACKGROUND to use the default background color for a widget</li>
           <li>Add optional secondary text to Granite.HeaderLabel</li>
         </ul>
         <p>Improvements:</p>
