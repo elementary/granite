@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-30 13:07-0700\n"
-"PO-Revision-Date: 2022-04-07 22:05+0000\n"
+"PO-Revision-Date: 2022-10-03 13:31+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,27 +42,27 @@ msgstr "יכולות חדשות:"
 
 #: data/granite.appdata.xml.in:17
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_RICH_LIST לריווח שורות תקני ב־Gtk.ListBox"
 
 #: data/granite.appdata.xml.in:18
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_FRAME להוספת גבולות ל־Gtk.LisBox,‏ Gtk.InfoBar ועוד"
 
 #: data/granite.appdata.xml.in:19
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_SIDEBAR לעיצוב סרגלי צד של יישומים"
 
 #: data/granite.appdata.xml.in:20
 msgid ""
 "Granite.STYLE_CLASS_BACKROUND to use the default background color for a "
 "widget"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_BACKROUND כדי להשתמש ברקע ברירת המחדל לווידג׳ט"
 
 #: data/granite.appdata.xml.in:21
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "הוספת טקסט משני כרשות ל־Granite.HeaderLabel"
 
 #: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:58
 #: data/granite.appdata.xml.in:72 data/granite.appdata.xml.in:189
@@ -72,13 +72,14 @@ msgstr "שיפורים:"
 
 #: data/granite.appdata.xml.in:25
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "לאפשר לטקסט ב־Granite.Toast לרדת שורה"
 
 #: data/granite.appdata.xml.in:26
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage: לאפשר לכותרות לרדת שורה ולטקסט התיאור לרדת מתחת למתגים"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:61
 #: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:88
@@ -98,7 +99,7 @@ msgstr "Granite.Placeholder: מחליף את AlertView ואת Welcome"
 
 #: data/granite.appdata.xml.in:40
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage: לאפשר כתיבה מסוגננת בתיאור"
 
 #: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:131
 msgid "Removals:"
@@ -110,17 +111,15 @@ msgstr "Application: יש להשתמש ב־Gtk.Application במקום"
 
 #: data/granite.appdata.xml.in:45
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Drawing: שימוש ב־Gtk.CSS"
 
 #: data/granite.appdata.xml.in:46
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: יש להשתמש ב־Adw.TabBar במקום"
 
 #: data/granite.appdata.xml.in:47
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Logger: use GLib.log instead"
-msgstr "Settings: יש להשתמש ב־GLib.Settings במקום"
+msgstr "Logger: יש להשתמש ב־GLib.log במקום"
 
 #: data/granite.appdata.xml.in:48
 msgid ""
@@ -139,10 +138,8 @@ msgid "Seekbar"
 msgstr "פס איתור"
 
 #: data/granite.appdata.xml.in:51
-#, fuzzy
-#| msgid "Settings: use GLib.Settings instead"
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr "Settings: יש להשתמש ב־GLib.Settings במקום"
+msgstr "Services.Settings: יש להשתמש ב־GLib.Settings במקום"
 
 #: data/granite.appdata.xml.in:52
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
@@ -294,10 +291,6 @@ msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr "חלוניות העצה של הלשוניות של DynamicNotebook הפכו לניתנות להגדרה"
 
 #: data/granite.appdata.xml.in:145
-#, fuzzy
-#| msgid ""
-#| "Timepicker corrrectly fires time_changed when AM and PM buttons are "
-#| "selected"
 msgid ""
 "Timepicker correctly fires time_changed when AM and PM buttons are selected"
 msgstr "בוחר הזמן משגר כראוי את time_changed כאשר בוחרים בכפתורים AM ו־PM"
