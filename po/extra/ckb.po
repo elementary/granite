@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-30 13:07-0700\n"
+"POT-Creation-Date: 2022-10-03 09:29-0700\n"
 "PO-Revision-Date: 2022-04-15 20:31+0000\n"
 "Last-Translator: Aga Ismael <agaesmaeel@gmail.com>\n"
 "Language-Team: Kurdish (Central) <https://l10n.elementary.io/projects/"
@@ -57,7 +57,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:20
 msgid ""
-"Granite.STYLE_CLASS_BACKROUND to use the default background color for a "
+"Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
 
