@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:48-0800\n"
+"POT-Creation-Date: 2022-10-03 09:29-0700\n"
 "PO-Revision-Date: 2015-12-04 01:36+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Southern Sami <sma@li.org>\n"
@@ -121,16 +121,16 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:126
 #, fuzzy
 msgid "_Close"
 msgstr "Dahpedh"
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:320
+#: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
 msgstr ""
 

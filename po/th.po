@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-26 13:48-0800\n"
+"POT-Creation-Date: 2022-10-03 09:29-0700\n"
 "PO-Revision-Date: 2019-10-01 23:23+0000\n"
 "Last-Translator: Daniel Foré <daniel@elementary.io>\n"
 "Language-Team: Thai <https://l10n.elementary.io/projects/desktop/granite/th/"
@@ -114,15 +114,15 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:125
+#: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:128
+#: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
 msgstr ""
 
-#: lib/Widgets/MessageDialog.vala:320
+#: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
 msgstr ""
 

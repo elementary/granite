@@ -48,7 +48,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
     public string status {
         set {
             status_label.label = value;
-            status_label.show ();
+            status_label.visible = true;
         }
     }
 
@@ -91,7 +91,8 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
             use_markup = true,
             ellipsize = Pango.EllipsizeMode.END,
             vexpand = true,
-            xalign = 0
+            xalign = 0,
+            visible = false
         };
         status_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
 
