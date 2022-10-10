@@ -29,6 +29,7 @@
       </description>
       <issues>
         <issue url="https://github.com/elementary/granite/pull/616">MessageDialog: fix a bug that caused large heights to be preserved</issue>
+        <issue url="https://github.com/elementary/granite/pull/628">SettingsSidebarRow: prevent empty status label from preserving space</issue>
       </issues>
     </release>
     <release version="7.0.0" date="2022-04-29" urgency="medium">
