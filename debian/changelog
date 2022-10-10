@@ -1,3 +1,24 @@
+granite7 (7.1.0) bionic; urgency=medium
+
+  * Release 7.1.0 (#626)
+  * SettingsSidebarRow.vala - Fix status label showing but empty (#628)
+  * Update translation files
+  * Update translation template
+  * AppData: fix typo
+  * Re-enable gettext action
+  * Update pot files
+  * Appdata: mention headerlabel secondary_text
+  * HeaderLabel: add optional body text (#624)
+  * Constants: add large-icons (#621)
+  * SimpleSettingsPage: layout text smarter at small widths (#622)
+  * Make Toast Wrap (#613)
+  * Added missing style constants (sidebar + background) (#618)
+  * MessageDialog: Fix large height bug (#616)
+  * Constants: Add STYLE_CLASS_RICH_LIST (#614)
+  * README: Update required GTK version (#612)
+
+ -- Cody Garver <cody@elementary.io>  Mon, 10 Oct 2022 23:51:55 +0000
+
 granite7 (7.0.0) bionic; urgency=medium
 
   * Release 7.0.0 (#599)
