@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 09:29-0700\n"
-"PO-Revision-Date: 2022-10-05 09:55+0000\n"
+"PO-Revision-Date: 2022-10-27 18:57+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:149 data/granite.appdata.xml.in:170
 #: data/granite.appdata.xml.in:193 data/granite.appdata.xml.in:207
 msgid "Updated translations"
-msgstr "Оновлено переклади"
+msgstr "Оновлені переклади"
 
 #: data/granite.appdata.xml.in:38
 msgid "Ported to GTK4! 🎉️"
