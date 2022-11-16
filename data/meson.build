@@ -3,7 +3,7 @@ icon_sizes = ['48']
 foreach i : icon_sizes
     install_data(
         'icons' / i + '.svg',
-        install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i, 'apps',
+        install_dir: get_option('datadir') / 'icons' / 'hicolor' / i + 'x' + i / 'apps',
         rename: 'io.elementary.' + meson.project_name() + '.svg'
     )
     install_data(
