@@ -2,7 +2,7 @@
 Name=Granite 7 Demo
 Comment=A demo of the Granite toolkit
 Exec=granite-demo
-Icon=applications-interfacedesign
+Icon=io.elementary.granite-7
 Type=Application
 NoDisplay=true
 StartupWMClass=granite-demo

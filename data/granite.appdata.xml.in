@@ -6,6 +6,7 @@
   <project_license>LGPL-3.0</project_license>
   <name>Granite 7</name>
   <summary>Build consistent and usable apps more quickly and easily</summary>
+  <icon type="stock">io.elementary.granite-7</icon>
   <description>
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
