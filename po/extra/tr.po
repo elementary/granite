@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 09:29-0700\n"
-"PO-Revision-Date: 2022-06-27 08:37+0000\n"
+"PO-Revision-Date: 2022-10-11 18:50+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
-"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/tr/>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
-msgstr ""
+msgstr "Granite 7"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
@@ -298,10 +298,6 @@ msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr "DynamicNotebook'un sekme araç ipuçlarını ayarlanabilir yapın"
 
 #: data/granite.appdata.xml.in:145
-#, fuzzy
-#| msgid ""
-#| "Timepicker corrrectly fires time_changed when AM and PM buttons are "
-#| "selected"
 msgid ""
 "Timepicker correctly fires time_changed when AM and PM buttons are selected"
 msgstr ""

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-03 09:29-0700\n"
-"PO-Revision-Date: 2022-10-05 09:55+0000\n"
+"PO-Revision-Date: 2022-10-26 16:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/he/>\n"
@@ -87,7 +87,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:149 data/granite.appdata.xml.in:170
 #: data/granite.appdata.xml.in:193 data/granite.appdata.xml.in:207
 msgid "Updated translations"
-msgstr "תרגומים עדכניים"
+msgstr "התרגומים עודכנו"
 
 #: data/granite.appdata.xml.in:38
 msgid "Ported to GTK4! 🎉️"
