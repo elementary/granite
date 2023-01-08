@@ -6,9 +6,9 @@ jobs:
   gettext_template:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v1
-    - uses: elementary/actions/gettext-template@next
-      env:
-        GIT_USER_TOKEN: "${{ secrets.GIT_USER_TOKEN }}"
-        GIT_USER_NAME: "elementaryBot"
-        GIT_USER_EMAIL: "builds@elementary.io"
+      - uses: actions/checkout@v3
+      - uses: elementary/actions/gettext-template@next
+        env:
+          GIT_USER_TOKEN: "${{ secrets.GIT_USER_TOKEN }}"
+          GIT_USER_NAME: "elementaryBot"
+          GIT_USER_EMAIL: "builds@elementary.io"
