@@ -61,6 +61,7 @@ icons_dir = join_paths(
 
 pkgconfig = import('pkgconfig')
 i18n = import('i18n')
+gnome = import('gnome')
 
 subdir('lib')
 subdir('data')

@@ -5,9 +5,7 @@
 
 namespace Granite {
     private static bool initialized = false;
-
-    private Gtk.StyleProvider base_style_provider;
-    private Gtk.StyleProvider dark_style_provider;
+    private Gtk.CssProvider dark_css_provider;
 
     /*
     * Initializes Granite.
@@ -19,7 +17,12 @@ namespace Granite {
             return;
         }
 
-        // init style providers
+        var base_css_provider = new Gtk.CssProvider ();
+        base_css_provider.load_from_resource ("/io/elementary/granite/Base.css");
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), base_css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        dark_css_provider = new Gtk.CssProvider ();
+        dark_css_provider.load_from_resource ("/io/elementary/granite/Dark.css");
 
         var granite_settings = Granite.Settings.get_default ();
         load_styles_for_color_scheme (granite_settings.prefers_color_scheme);
@@ -34,9 +37,9 @@ namespace Granite {
 
     private void load_styles_for_color_scheme (Settings.ColorScheme color_scheme) {
         if (color_scheme == Settings.ColorScheme.DARK) {
-            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), dark_style_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), dark_css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         } else {
-            Gtk.StyleContext.remove_provider_for_display (Gdk.Display.get_default (), dark_style_provider);
+            Gtk.StyleContext.remove_provider_for_display (Gdk.Display.get_default (), dark_css_provider);
         }
     }
 }

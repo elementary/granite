@@ -1,0 +1,32 @@
+placeholder {
+  margin: 1rem; }
+  placeholder > grid > .large-icons {
+    -gtk-icon-size: 48px; }
+    placeholder > grid > .large-icons:dir(ltr) {
+      margin-right: 0.25rem; }
+    placeholder > grid > .large-icons:dir(rtl) {
+      margin-left: 0.25rem; }
+  placeholder .title-1:dir(ltr),
+  placeholder .title-2:dir(ltr) {
+    margin-left: 0.751rem; }
+  placeholder .title-1:dir(rtl),
+  placeholder .title-2:dir(rtl) {
+    margin-right: 0.75rem; }
+  placeholder .title-1 + .title-2 {
+    margin-top: 0.25rem; }
+  placeholder .title-2 {
+    color: white;
+    font-size: 12pt;
+    font-weight: initial; }
+  placeholder box {
+    margin-top: 1rem; }
+    placeholder box button .large-icons {
+      -gtk-icon-size: 32px; }
+      placeholder box button .large-icons:dir(ltr) {
+        margin-right: 0.5rem; }
+      placeholder box button .large-icons:dir(rtl) {
+        margin-left: 0.5rem; }
+    placeholder box button label.title-3 {
+      font-weight: initial; }
+    placeholder box button + button {
+      margin-top: 1rem; }
