@@ -4,12 +4,19 @@
  */
 
 namespace Granite {
-    static bool initialized = false;
+    private static bool initialized = false;
 
-    internal void init () {
+    /*
+     * Initializes Granite.
+     * If Granite has already been initialized, the function will return.
+     * Makes sure translations and types for Granite are set up properly.
+     */
+    public void init () {
         if (initialized) {
             return;
         }
+
+        typeof (Granite.Settings).ensure ();
 
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
         GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
