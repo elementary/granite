@@ -9,6 +9,11 @@ namespace Granite {
     private Gtk.StyleProvider base_style_provider;
     private Gtk.StyleProvider dark_style_provider;
 
+    /*
+    * Initializes Granite.
+    * If Granite has already been initialized, the function will return.
+    * Makes sure translations and stylesheets for Granite are set up properly.
+    */
     public void init () {
         if (initialized) {
             return;
