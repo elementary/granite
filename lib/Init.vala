@@ -10,6 +10,7 @@ namespace Granite {
      * Initializes Granite.
      * If Granite has already been initialized, the function will return.
      * Makes sure translations and types for Granite are set up properly.
+     * @since 7.2.0
      */
     public void init () {
         if (initialized) {
