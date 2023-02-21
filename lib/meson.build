@@ -31,6 +31,12 @@ libgranite_sources = files(
     'Widgets/ValidatedEntry.vala'
 )
 
+gresource = gnome.compile_resources(
+    'granite-resources',
+    meson.source_root() /'data' / 'granite.gresource.xml',
+    source_dir: meson.source_root() /'data'
+)
+
 # define all the names and versions
 granite_gi_name = 'Granite'
 granite_gi_version = '7.0'
@@ -59,6 +65,7 @@ libgranite = library(
     meson.project_name(),
 
     libgranite_sources,
+    gresource,
     config_vala,
 
     dependencies: [

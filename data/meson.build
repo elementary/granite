@@ -21,9 +21,3 @@ i18n.merge_file(
     install: true,
     install_dir: join_paths(get_option('datadir'), 'metainfo'),
 )
-
-gresource = gnome.compile_resources(
-    'granite-resources',
-    'granite.gresource.xml',
-    source_dir: join_paths(meson.source_root(), 'data')
-)

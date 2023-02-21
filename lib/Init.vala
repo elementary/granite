@@ -24,10 +24,10 @@ namespace Granite {
         dark_css_provider = new Gtk.CssProvider ();
         dark_css_provider.load_from_resource ("/io/elementary/granite/Dark.css");
 
-        var granite_settings = Granite.Settings.get_default ();
-        load_styles_for_color_scheme (granite_settings.prefers_color_scheme);
-        granite_settings.notify["prefers-color-scheme"].connect (() => {
-            load_styles_for_color_scheme (granite_settings.prefers_color_scheme);
+        var gtk_settings = Gtk.Settings.get_default ();
+        load_styles_for_color_scheme (gtk_settings.gtk_application_prefer_dark_theme);
+        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
+            load_styles_for_color_scheme (gtk_settings.gtk_application_prefer_dark_theme);
         });
 
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
@@ -35,8 +35,8 @@ namespace Granite {
         initialized = true;
     }
 
-    private void load_styles_for_color_scheme (Settings.ColorScheme color_scheme) {
-        if (color_scheme == Settings.ColorScheme.DARK) {
+    private void load_styles_for_color_scheme (bool prefer_dark) {
+        if (prefer_dark) {
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), dark_css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         } else {
             Gtk.StyleContext.remove_provider_for_display (Gdk.Display.get_default (), dark_css_provider);
