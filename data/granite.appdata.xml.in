@@ -10,7 +10,18 @@
   <description>
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
+
   <releases>
+    <release version="7.2.0" date="2023-02-22" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Make "Granite.init ()" publicly available</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="7.1.0" date="2022-10-10" urgency="medium">
       <description>
         <p>New Features:</p>
@@ -33,6 +44,7 @@
         <issue url="https://github.com/elementary/granite/pull/628">SettingsSidebarRow: prevent empty status label from preserving space</issue>
       </issues>
     </release>
+
     <release version="7.0.0" date="2022-04-29" urgency="medium">
       <description>
         <p>New Features:</p>
