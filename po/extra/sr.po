@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-03 09:29-0700\n"
+"POT-Creation-Date: 2023-02-22 18:13+0000\n"
 "PO-Revision-Date: 2021-02-15 19:46+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/desktop/granite-"
@@ -30,7 +30,7 @@ msgstr "Гранит"
 msgid "Build consistent and usable apps more quickly and easily"
 msgstr "Изградите доследне и употребљиве програме брже и лакше"
 
-#: data/granite.appdata.xml.in:10
+#: data/granite.appdata.xml.in:11
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
@@ -38,112 +38,117 @@ msgstr ""
 "Пратећа библиотека за Гтк и Гбибл која пружа сложене елементе и методе "
 "погодности осмишљене за употребу у програмима изграђеним за елементари ОС."
 
-#: data/granite.appdata.xml.in:15 data/granite.appdata.xml.in:36
-#: data/granite.appdata.xml.in:67
+#: data/granite.appdata.xml.in:17 data/granite.appdata.xml.in:35
+#: data/granite.appdata.xml.in:72 data/granite.appdata.xml.in:86
+#: data/granite.appdata.xml.in:203 data/granite.appdata.xml.in:218
+msgid "Improvements:"
+msgstr "Побољшања:"
+
+#: data/granite.appdata.xml.in:19
+msgid "Make \"Granite.init ()\" publicly available"
+msgstr ""
+
+#: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:75 data/granite.appdata.xml.in:88
+#: data/granite.appdata.xml.in:102 data/granite.appdata.xml.in:112
+#: data/granite.appdata.xml.in:125 data/granite.appdata.xml.in:163
+#: data/granite.appdata.xml.in:184 data/granite.appdata.xml.in:207
+#: data/granite.appdata.xml.in:221
+msgid "Updated translations"
+msgstr "Освежени преводи"
+
+#: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:81
 #, fuzzy
 #| msgid "New features:"
 msgid "New Features:"
 msgstr "Нове функције:"
 
-#: data/granite.appdata.xml.in:17
+#: data/granite.appdata.xml.in:29
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
 
-#: data/granite.appdata.xml.in:18
+#: data/granite.appdata.xml.in:30
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
 
-#: data/granite.appdata.xml.in:19
+#: data/granite.appdata.xml.in:31
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
 
-#: data/granite.appdata.xml.in:20
+#: data/granite.appdata.xml.in:32
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
 
-#: data/granite.appdata.xml.in:21
+#: data/granite.appdata.xml.in:33
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr ""
 
-#: data/granite.appdata.xml.in:23 data/granite.appdata.xml.in:58
-#: data/granite.appdata.xml.in:72 data/granite.appdata.xml.in:189
-#: data/granite.appdata.xml.in:204
-msgid "Improvements:"
-msgstr "Побољшања:"
-
-#: data/granite.appdata.xml.in:25
+#: data/granite.appdata.xml.in:37
 msgid "Allow text in Granite.Toast to wrap"
 msgstr ""
 
-#: data/granite.appdata.xml.in:26
+#: data/granite.appdata.xml.in:38
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
 
-#: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:61
-#: data/granite.appdata.xml.in:74 data/granite.appdata.xml.in:88
-#: data/granite.appdata.xml.in:98 data/granite.appdata.xml.in:111
-#: data/granite.appdata.xml.in:149 data/granite.appdata.xml.in:170
-#: data/granite.appdata.xml.in:193 data/granite.appdata.xml.in:207
-msgid "Updated translations"
-msgstr "Освежени преводи"
-
-#: data/granite.appdata.xml.in:38
+#: data/granite.appdata.xml.in:52
 msgid "Ported to GTK4! 🎉️"
 msgstr ""
 
-#: data/granite.appdata.xml.in:39
+#: data/granite.appdata.xml.in:53
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr ""
 
-#: data/granite.appdata.xml.in:40
+#: data/granite.appdata.xml.in:54
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr ""
 
-#: data/granite.appdata.xml.in:42 data/granite.appdata.xml.in:131
+#: data/granite.appdata.xml.in:56 data/granite.appdata.xml.in:145
 msgid "Removals:"
 msgstr "Уклањања:"
 
-#: data/granite.appdata.xml.in:44
+#: data/granite.appdata.xml.in:58
 msgid "Application: use Gtk.Application instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:45
+#: data/granite.appdata.xml.in:59
 msgid "Drawing: Use Gtk.CSS"
 msgstr ""
 
-#: data/granite.appdata.xml.in:46
+#: data/granite.appdata.xml.in:60
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:47
+#: data/granite.appdata.xml.in:61
 msgid "Logger: use GLib.log instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:48
+#: data/granite.appdata.xml.in:62
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:49
+#: data/granite.appdata.xml.in:63
 msgid "Paths: use GLib.Environment instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:50
+#: data/granite.appdata.xml.in:64
 msgid "Seekbar"
 msgstr ""
 
-#: data/granite.appdata.xml.in:51
+#: data/granite.appdata.xml.in:65
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:52
+#: data/granite.appdata.xml.in:66
 #, fuzzy
 #| msgid ""
 #| "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
@@ -153,60 +158,60 @@ msgstr ""
 "„Granite.Services.SimpleCommand“. Користите уместо тога „GLib.AppInfo."
 "create_from_commandline“"
 
-#: data/granite.appdata.xml.in:53
+#: data/granite.appdata.xml.in:67
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:54
+#: data/granite.appdata.xml.in:68
 msgid "StorageBar"
 msgstr ""
 
-#: data/granite.appdata.xml.in:55
+#: data/granite.appdata.xml.in:69
 msgid "TextStyle: use style class constants instead"
 msgstr ""
 
-#: data/granite.appdata.xml.in:56
+#: data/granite.appdata.xml.in:70
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
 
-#: data/granite.appdata.xml.in:69
+#: data/granite.appdata.xml.in:83
 msgid "min_length property for Granite.ValidatedEntry"
 msgstr ""
 
-#: data/granite.appdata.xml.in:70
+#: data/granite.appdata.xml.in:84
 msgid "Granite.HyperTextView for navigatable URLs in text views"
 msgstr ""
 
-#: data/granite.appdata.xml.in:76 data/granite.appdata.xml.in:84
-#: data/granite.appdata.xml.in:94
+#: data/granite.appdata.xml.in:90 data/granite.appdata.xml.in:98
+#: data/granite.appdata.xml.in:108
 msgid "Fixes:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:78
+#: data/granite.appdata.xml.in:92
 msgid "Prevent crashing on environments without dark style preference support"
 msgstr ""
 
-#: data/granite.appdata.xml.in:86
+#: data/granite.appdata.xml.in:100
 msgid "Use values from the Settings Portal when possible"
 msgstr ""
 
-#: data/granite.appdata.xml.in:87
+#: data/granite.appdata.xml.in:101
 msgid "Disable horizontal scrolling by default in SettingsPage"
 msgstr ""
 
-#: data/granite.appdata.xml.in:96
+#: data/granite.appdata.xml.in:110
 msgid "Ensure accel_to_string works with multiple modifiers"
 msgstr ""
 
-#: data/granite.appdata.xml.in:97
+#: data/granite.appdata.xml.in:111
 msgid "Fix locale issues in Flatpaks"
 msgstr ""
 
-#: data/granite.appdata.xml.in:104 data/granite.appdata.xml.in:117
+#: data/granite.appdata.xml.in:118 data/granite.appdata.xml.in:131
 msgid "Additions:"
 msgstr ""
 
-#: data/granite.appdata.xml.in:106
+#: data/granite.appdata.xml.in:120
 #, fuzzy
 #| msgid ""
 #| "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
@@ -217,51 +222,51 @@ msgstr ""
 "„TRANSITION_DURATION_OPEN“ и „TRANSITION_DURATION_CLOSE“ за доследне "
 "анимације"
 
-#: data/granite.appdata.xml.in:108 data/granite.appdata.xml.in:140
-#: data/granite.appdata.xml.in:167
+#: data/granite.appdata.xml.in:122 data/granite.appdata.xml.in:154
+#: data/granite.appdata.xml.in:181
 msgid "Other Changes:"
 msgstr "Остале измене:"
 
-#: data/granite.appdata.xml.in:110
+#: data/granite.appdata.xml.in:124
 msgid ""
 "accel_to_string handles accel markup without modifiers or that are only "
 "modifiers"
 msgstr ""
 
-#: data/granite.appdata.xml.in:119
+#: data/granite.appdata.xml.in:133
 msgid "Granite.Dialog replaces Gtk.Dialog for consistent styling"
 msgstr ""
 
-#: data/granite.appdata.xml.in:120
+#: data/granite.appdata.xml.in:134
 msgid "Granite.SwitchModelButton for use in Gtk.Popover menus"
 msgstr ""
 
-#: data/granite.appdata.xml.in:121
+#: data/granite.appdata.xml.in:135
 msgid "Granite.ValidatedEntry for client-side verification in forms"
 msgstr ""
 
-#: data/granite.appdata.xml.in:123
+#: data/granite.appdata.xml.in:137
 msgid "New Constants:"
 msgstr "Нове константе:"
 
-#: data/granite.appdata.xml.in:125
+#: data/granite.appdata.xml.in:139
 msgid ""
 "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
 msgstr ""
 
-#: data/granite.appdata.xml.in:126
+#: data/granite.appdata.xml.in:140
 msgid "SMALL_LABEL for smaller Gtk.Labels without Pango"
 msgstr ""
 
-#: data/granite.appdata.xml.in:127
+#: data/granite.appdata.xml.in:141
 msgid "STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales"
 msgstr "„STYLE_CLASS_WARMTH“ и „STYLE_CLASS_TEMPERATURE“ за сразмере"
 
-#: data/granite.appdata.xml.in:128
+#: data/granite.appdata.xml.in:142
 msgid "STYLE_CLASS_DEFAULT_DECORATION for slim headerbars"
 msgstr "„STYLE_CLASS_DEFAULT_DECORATION“ за танке траке заглавља"
 
-#: data/granite.appdata.xml.in:129
+#: data/granite.appdata.xml.in:143
 msgid ""
 "TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent "
 "animations"
@@ -269,25 +274,25 @@ msgstr ""
 "„TRANSITION_DURATION_OPEN“ и „TRANSITION_DURATION_CLOSE“ за доследне "
 "анимације"
 
-#: data/granite.appdata.xml.in:133
+#: data/granite.appdata.xml.in:147
 msgid "Granite.Widgets.AboutDialog. Provide AppStream metadata instead."
 msgstr ""
 "„Granite.Widgets.AboutDialog“. Доставите „AppStream“ метаподатке уместо тога."
 
-#: data/granite.appdata.xml.in:134
+#: data/granite.appdata.xml.in:148
 msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
 msgstr "„Granite.Widgets.AppMenu“. Користите „Gtk.MenuButton“ уместо тога."
 
-#: data/granite.appdata.xml.in:136 data/granite.appdata.xml.in:160
-#: data/granite.appdata.xml.in:181
+#: data/granite.appdata.xml.in:150 data/granite.appdata.xml.in:174
+#: data/granite.appdata.xml.in:195
 msgid "Deprecations:"
 msgstr "Застарелости:"
 
-#: data/granite.appdata.xml.in:138
+#: data/granite.appdata.xml.in:152
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 msgstr "„Granite.Widgets.Avatar“. Користите „Hdy.Avatar“ уместо тога"
 
-#: data/granite.appdata.xml.in:142
+#: data/granite.appdata.xml.in:156
 #, fuzzy
 #| msgid "Toasts now reset their timeout when sending a new notification"
 msgid ""
@@ -296,52 +301,52 @@ msgid ""
 msgstr ""
 "Здравице сада враћају њихово време чекања приликом слања новог обавештења"
 
-#: data/granite.appdata.xml.in:143
+#: data/granite.appdata.xml.in:157
 msgid ""
 "Backslash, Right Control, and Left Control are now handled by accel_to_string"
 msgstr ""
 
-#: data/granite.appdata.xml.in:144
+#: data/granite.appdata.xml.in:158
 msgid "Make tab tooltips of DynamicNotebook settable"
 msgstr "Чини облачиће језичка „DynamicNotebook“-а подесивим"
 
-#: data/granite.appdata.xml.in:145
+#: data/granite.appdata.xml.in:159
 msgid ""
 "Timepicker correctly fires time_changed when AM and PM buttons are selected"
 msgstr ""
 
-#: data/granite.appdata.xml.in:146
+#: data/granite.appdata.xml.in:160
 msgid "Granite.MessageDialog now uses the messagedialog CSS name"
 msgstr ""
 
-#: data/granite.appdata.xml.in:147
+#: data/granite.appdata.xml.in:161
 msgid "Visible child name is now properly synced in Granite.SettingsSidebar"
 msgstr ""
 
-#: data/granite.appdata.xml.in:148
+#: data/granite.appdata.xml.in:162
 msgid "Status can be set in Granite.AbstractSettingsPage on construct"
 msgstr ""
 
-#: data/granite.appdata.xml.in:155
+#: data/granite.appdata.xml.in:169
 msgid "New Style Constants:"
 msgstr "Нове константе стила:"
 
-#: data/granite.appdata.xml.in:157
+#: data/granite.appdata.xml.in:171
 msgid "STYLE_CLASS_COLOR_BUTTON"
 msgstr "STYLE_CLASS_COLOR_BUTTON"
 
-#: data/granite.appdata.xml.in:158
+#: data/granite.appdata.xml.in:172
 msgid "STYLE_CLASS_ROUNDED"
 msgstr "STYLE_CLASS_ROUNDED"
 
-#: data/granite.appdata.xml.in:162
+#: data/granite.appdata.xml.in:176
 msgid ""
 "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead"
 msgstr ""
 "Неколико помагала за теме. Користите „Gtk.CssProvider“ и „Gtk.StyleContext“ "
 "уместо тога"
 
-#: data/granite.appdata.xml.in:163
+#: data/granite.appdata.xml.in:177
 msgid ""
 "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 "instead"
@@ -349,7 +354,7 @@ msgstr ""
 "„Granite.Services.SimpleCommand“. Користите уместо тога „GLib.AppInfo."
 "create_from_commandline“"
 
-#: data/granite.appdata.xml.in:164
+#: data/granite.appdata.xml.in:178
 msgid ""
 "Old unused utilities like get_button_layout_schema, "
 "get_default_close_button_position, and Granite.Services.Paths"
@@ -357,24 +362,24 @@ msgstr ""
 "Стара некоришћена помагала као „get_button_layout_schema“, "
 "„get_default_close_button_position“, и „Granite.Services.Paths“"
 
-#: data/granite.appdata.xml.in:165
+#: data/granite.appdata.xml.in:179
 msgid "Old unused widgets like CollapsiblePaned and CompositedWindow"
 msgstr "Стари некоришћени елементи као „CollapsiblePaned“ и „CompositedWindow“"
 
-#: data/granite.appdata.xml.in:169
+#: data/granite.appdata.xml.in:183
 msgid "Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default"
 msgstr "„Granite.SourceList“ сада добавља „Gtk.STYLE_CLASS_SIDEBAR“ по основи"
 
-#: data/granite.appdata.xml.in:176
+#: data/granite.appdata.xml.in:190
 msgid "New features:"
 msgstr "Нове функције:"
 
-#: data/granite.appdata.xml.in:178
+#: data/granite.appdata.xml.in:192
 msgid "New Settings class to share Pantheon desktop settings with apps"
 msgstr ""
 "Нова класа подешавања за дељење подешавања Пантеон радне површи са програмима"
 
-#: data/granite.appdata.xml.in:179
+#: data/granite.appdata.xml.in:193
 msgid ""
 "Introduced Settings.prefers_color_scheme to get a user's color scheme "
 "preference, i.e. for a dark style"
@@ -382,7 +387,7 @@ msgstr ""
 "Уведена је „Settings.prefers_color_scheme“ за добављање корисничких поставки "
 "шеме боје, тј. за тамни стил"
 
-#: data/granite.appdata.xml.in:183
+#: data/granite.appdata.xml.in:197
 msgid ""
 "It is now recommended to use GLib.Settings instead of Granite.Services."
 "Settings"
@@ -390,31 +395,31 @@ msgstr ""
 "Сада се препоручује коришћење „GLib.Settings“ уместо „Granite.Services."
 "Settings“"
 
-#: data/granite.appdata.xml.in:191
+#: data/granite.appdata.xml.in:205
 msgid "Better align labels in settings sidebars"
 msgstr "Боље поравнање натписа у бочној површи подешавања"
 
-#: data/granite.appdata.xml.in:192
+#: data/granite.appdata.xml.in:206
 msgid "Make AccelLabel.label settable"
 msgstr "Чини „AccelLabel.label“ подесивим"
 
-#: data/granite.appdata.xml.in:199
+#: data/granite.appdata.xml.in:213
 msgid "New features"
 msgstr "Нове функције"
 
-#: data/granite.appdata.xml.in:201
+#: data/granite.appdata.xml.in:215
 msgid "Add tooltips to source list items and their actions"
 msgstr "Додаје облачиће ставкама списка извора и њиховим радњама"
 
-#: data/granite.appdata.xml.in:202
+#: data/granite.appdata.xml.in:216
 msgid "New AccelLabel widget for use in menus and popovers"
 msgstr "Нова „AccelLabel“ справица за коришћење у изборницима и облачићима"
 
-#: data/granite.appdata.xml.in:206
+#: data/granite.appdata.xml.in:220
 msgid "Delay tab resizing when closing tabs"
 msgstr "Закасни са променом величине језичка при затварању језичака"
 
-#: data/granite.appdata.xml.in:213
+#: data/granite.appdata.xml.in:227
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
