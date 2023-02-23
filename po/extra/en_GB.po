@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-02-18 10:25+0000\n"
+"PO-Revision-Date: 2023-02-24 07:45+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (United Kingdom) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/en_GB/>\n"
@@ -43,7 +43,7 @@ msgstr "Improvements:"
 
 #: data/granite.appdata.xml.in:19
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr ""
+msgstr "Make \"Granite.init ()\" publicly available"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:39
 #: data/granite.appdata.xml.in:75 data/granite.appdata.xml.in:88
