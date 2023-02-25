@@ -17,7 +17,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
     /**
      * Optional secondary label string displayed below the header
      */
-    [Version(since = "7.1.0")]
+    [Version (since = "7.1.0")]
     public string? secondary_text {
         get {
             return secondary_label != null ? secondary_label.label : null;
