@@ -15,6 +15,7 @@ namespace Granite {
     /**
      * Style class to match the window background
      */
+    [Version(since = "7.1.0")]
     public const string STYLE_CLASS_BACKGROUND = "background";
     /**
      * Style class for numbered badges
@@ -53,6 +54,7 @@ namespace Granite {
     /**
      * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
      */
+    [Version(since = "7.1.0")]
     public const string STYLE_CLASS_FRAME = "frame";
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
@@ -94,6 +96,7 @@ namespace Granite {
     /**
      * Style class defining a sidebar, such as the left side in a file chooser
      */
+    [Version(since = "7.1.0")]
     public const string STYLE_CLASS_SIDEBAR = "sidebar";
     /**
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
@@ -150,6 +153,7 @@ namespace Granite {
     /**
      * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
      */
+    [Version(since = "7.1.0")]
     public const string STYLE_CLASS_RICH_LIST = "rich-list";
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
