@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-02-27 03:51+0000\n"
-"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
+"PO-Revision-Date: 2023-02-27 03:52+0000\n"
+"Last-Translator: Thierry Flament <thierry.flament@outlook.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nl/>\n"
 "Language: nl\n"
@@ -76,30 +76,35 @@ msgstr ""
 #: data/granite.appdata.xml.in:31
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
+"Granite.STYLE_CLASS_SIDEBAR voor het opmaken van zijbalken van toepassingen"
 
 #: data/granite.appdata.xml.in:32
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
+"Granite.STYLE_CLASS_BACKGROUND om de standaard achtergrondkleur voor een "
+"widget te gebruiken"
 
 #: data/granite.appdata.xml.in:33
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "Optionele secundaire tekst toevoegen aan Granite.HeaderLabel"
 
 #: data/granite.appdata.xml.in:37
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "Laat tekst in Granite.Toast wikkelen"
 
 #: data/granite.appdata.xml.in:38
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage: Wrap titels en laat beschrijving tekst gaan onder "
+"schakelaars"
 
 #: data/granite.appdata.xml.in:52
 msgid "Ported to GTK4! 🎉️"
-msgstr ""
+msgstr "Geporteerd naar GTK4! 🎉️"
 
 #: data/granite.appdata.xml.in:53
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
