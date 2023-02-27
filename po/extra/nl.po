@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
 "PO-Revision-Date: 2023-02-28 04:25+0000\n"
-"Last-Translator: Thierry Flament <thierry.flament@outlook.com>\n"
+"Last-Translator: Niels Van Laerhoven <niels1995@gmail.com>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nl/>\n"
 "Language: nl\n"
@@ -116,7 +116,7 @@ msgstr "SimpleSettingsPage: Opmaak in beschrijving toestaan"
 
 #: data/granite.appdata.xml.in:56 data/granite.appdata.xml.in:145
 msgid "Removals:"
-msgstr ""
+msgstr "Verwijderingen:"
 
 #: data/granite.appdata.xml.in:58
 msgid "Application: use Gtk.Application instead"
