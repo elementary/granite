@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-03-12 21:30+0000\n"
+"PO-Revision-Date: 2023-03-12 22:25+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/desktop/granite/"
 "ka/>\n"
@@ -22,15 +22,13 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
@@ -44,49 +42,48 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:59
 msgid "Now"
-msgstr ""
+msgstr "ახლა"
 
 #: lib/DateTime.vala:62
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d წთ-ის წინ"
+msgstr[1] "%d წთ-ის წინ"
 
 #: lib/DateTime.vala:65
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d სთ-ის წინ"
+msgstr[1] "%d სთ-ის წინ"
 
 #: lib/DateTime.vala:71
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d წუთში"
+msgstr[1] "%d წუთში"
 
 #: lib/DateTime.vala:74
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d საათში"
+msgstr[1] "%d საათში"
 
 #: lib/DateTime.vala:80
 msgid "Yesterday"
-msgstr ""
+msgstr "გუშინ"
 
 #: lib/DateTime.vala:82
 msgid "Tomorrow"
-msgstr ""
+msgstr "ხვალ"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:146
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %b %e, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:149
@@ -116,9 +113,8 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:164
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:167
@@ -131,16 +127,16 @@ msgstr "_დახურვა"
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
-msgstr "გაუქმება"
+msgstr "_გაუქმება"
 
 #: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
-msgstr ""
+msgstr "დეტალები"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:94
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:99
@@ -154,69 +150,69 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:33
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:37
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:41
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:59
 msgid "Left Alt"
-msgstr ""
+msgstr "მარცხენა Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:63
 msgid "Right Alt"
-msgstr ""
+msgstr "მარჯვენა Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:70
 msgid "Right Ctrl"
-msgstr ""
+msgstr "მარჯვენა Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:74
 msgid "Left Ctrl"
-msgstr ""
+msgstr "მარცხენა Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:79
 msgid "Minus"
-msgstr ""
+msgstr "მინუსი"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:84
 msgid "Plus"
-msgstr ""
+msgstr "პლუსი"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:89
 msgid "Equals"
-msgstr ""
+msgstr "უდრის"
 
 #: lib/Widgets/Utils.vala:92
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:96
 msgid "Left Shift"
-msgstr ""
+msgstr "მარცხენა Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:100
 msgid "Right Shift"
-msgstr ""
+msgstr "მარჯვენა Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:163
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "Close Tab"
 #~ msgstr "ჩანართის დახურვა"
