@@ -1,0 +1,26 @@
+window.csd.dialog {
+    border-radius: rem(6px);
+
+    .dialog-content-area {
+        margin: rem(12px);
+        margin-top: rem(18px);
+    }
+
+    .dialog-action-area {
+        margin: rem(12px);
+        // Double space between content and actions
+        margin-top: rem(16px);
+
+        button.text-button {
+            min-width: rem(60px);
+        }
+
+        button:dir(ltr) + button {
+            margin-left: rem(6px);
+        }
+
+        button:dir(rtl) + button {
+            margin-right: rem(6px);
+        }
+    }
+}

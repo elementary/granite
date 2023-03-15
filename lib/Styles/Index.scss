@@ -16,8 +16,10 @@
     }
 }
 
+@import 'Dialog.scss';
 @import 'Header.scss';
 @import 'OverlayBar.scss';
+@import 'MessageDialog.scss';
 @import 'Placeholder.scss';
 @import 'Toast.scss';
 @import '_typography.scss'

@@ -1,0 +1,10 @@
+window.csd.dialog.message {
+    .dialog-vbox .title {
+        font-weight: 500;
+        font-size: 1.22em
+    }
+
+    .dialog-content-area box + expander-widget {
+        margin-bottom: rem(6px);
+    }
+}
