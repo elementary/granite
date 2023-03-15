@@ -1,0 +1,43 @@
+Button {
+    // Stopgap since we can't do angled buttons in GtkCSS, and generating all
+    // the necessary SVGs for light/dark and accent color combinations is
+    // untenable. Ideally we'd deprecate this in favor of something like a
+    // Granite.BackButton with custom drawing; until then, stick an icon in it.
+    &.back-button {
+        background-repeat: no-repeat no-repeat;
+        background-size: 16px, cover;
+
+        &:dir(ltr) {
+            background-image:
+                -gtk-icontheme('go-previous-symbolic'),
+                linear-gradient(
+                    to bottom,
+                    #{'alpha(@highlight_color, 0.2)'},
+                    rgba(white, 0)
+                );
+            padding-left: calc(#{rem(9px)} + 16px);
+            background-position:
+                #{rem(6px)} 50%,
+                center, center;
+        }
+
+        &:dir(rtl) {
+            background-image:
+                -gtk-icontheme('go-next-symbolic'),
+                linear-gradient(
+                    to bottom,
+                    #{'alpha(@highlight_color, 0.2)'},
+                    rgba(white, 0)
+                );
+            padding-right: calc(#{rem(9px)} + 16px);
+            background-position:
+                calc(100% - #{rem(6px)}) 50%,
+                center, center;
+        }
+    }
+
+    .circular {
+        // Not 50% because that creates a squished ellipse for non-squares widgets
+        border-radius: 9999px;
+    }
+}
