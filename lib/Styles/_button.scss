@@ -1,4 +1,4 @@
-Button {
+button {
     // Stopgap since we can't do angled buttons in GtkCSS, and generating all
     // the necessary SVGs for light/dark and accent color combinations is
     // untenable. Ideally we'd deprecate this in favor of something like a
