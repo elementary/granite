@@ -36,7 +36,7 @@ button {
         }
     }
 
-    .circular {
+    &.circular {
         // Not 50% because that creates a squished ellipse for non-squares widgets
         border-radius: 9999px;
     }
