@@ -20,6 +20,10 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
+        var css_provider = new Gtk.CssProvider ();
+        css_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
         GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
         initialized = true;

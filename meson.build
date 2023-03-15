@@ -1,7 +1,7 @@
 project(
     'granite-7',
     'vala', 'c',
-    meson_version: '>= 0.48.2',
+    meson_version: '>= 0.49.0',
     version: '7.2.0'
 )
 
@@ -60,6 +60,7 @@ icons_dir = join_paths(
 )
 
 pkgconfig = import('pkgconfig')
+gnome = import('gnome')
 i18n = import('i18n')
 
 subdir('lib')
