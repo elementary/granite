@@ -28,10 +28,11 @@ placeholder {
     }
 
     .title-2 {
+        @extend .dim-label;
+
         color: #{'@theme_fg_color'};
         font-size: 12pt;
         font-weight: initial;
-        opacity: 0.75;
     }
 
     box {
@@ -57,7 +58,7 @@ placeholder {
                 }
 
                 &:not(.title-3) {
-                    opacity: 0.75;
+                    @extend .dim-label;
                 }
             }
 

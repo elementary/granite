@@ -1,0 +1,31 @@
+.title-1 {
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.title-2 {
+    font-weight: 300;
+    font-size: 18pt;
+    letter-spacing: -0.05em;
+}
+
+.title-3 {
+    font-size: 11pt;
+}
+
+.title-4 {
+    font-weight: 700;
+    opacity: 0.8;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+.dim-label {
+    opacity: 0.75;
+}
+
+// Intended to match the Pango size of `<small>` and `size='smaller'`
+.small-label {
+    font-size: 0.85em;
+}
