@@ -1,0 +1,17 @@
+header {
+    &:not(:first-child) {
+        margin-top: 1em;
+    }
+
+    .heading {
+        font-weight: 700;
+        opacity: 0.9;
+        padding: 0;
+    }
+
+    .dim-label {
+        font-size: 0.9em;
+        margin-top: 0.1em;
+        opacity: 0.8;
+    }
+}

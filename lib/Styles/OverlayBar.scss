@@ -1,0 +1,17 @@
+overlaybar .osd {
+    border-radius: rem(3px);
+    padding: rem(6px) rem(12px);
+
+    spinner {
+        text-shadow: 0 rem(1px) rem(2px) rgba(black, 0.6);
+        -gtk-icon-shadow: 0 rem(1px) rem(2px) rgba(black, 0.6);
+    }
+
+    revealer:dir(ltr) > spinner {
+        margin-left: rem(6px);
+    }
+
+    revealer:dir(rtl) > spinner {
+        margin-right: rem(6px);
+    }
+}
