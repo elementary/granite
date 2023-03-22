@@ -5,6 +5,7 @@
 
 namespace Granite {
     private static bool initialized = false;
+    private static Gtk.CssProvider css_provider = null;
 
     /*
      * Initializes Granite.
@@ -20,12 +21,25 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
-        var css_provider = new Gtk.CssProvider ();
-        css_provider.load_from_resource ("/io/elementary/granite/Granite.css");
-        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        var display_manager = Gdk.DisplayManager.@get ();
+        display_manager.display_opened.connect (register_display);
+
+        var displays = display_manager.list_displays ();
+        foreach (unowned var display in displays) {
+            register_display (display);
+        }
 
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
         GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");
         initialized = true;
+    }
+
+    private static void register_display (Gdk.Display display) {
+        if (css_provider == null) {
+            css_provider = new Gtk.CssProvider ();
+            css_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+        }
+
+        Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
     }
 }
