@@ -6,7 +6,7 @@
 namespace Granite {
     [DBus (name = "io.elementary.pantheon.AccountsService")]
     private interface Pantheon.AccountsService : Object {
-        public abstract int prefers_color_scheme { owned get; set; }
+        public abstract int prefers_color_scheme { get; set; }
     }
 
     [DBus (name = "org.freedesktop.Accounts")]
