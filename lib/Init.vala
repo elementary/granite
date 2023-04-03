@@ -21,11 +21,10 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
-        var display_manager = Gdk.DisplayManager.@get ();
+        unowned var display_manager = Gdk.DisplayManager.@get ();
         display_manager.display_opened.connect (register_display);
 
-        var displays = display_manager.list_displays ();
-        foreach (unowned var display in displays) {
+        foreach (unowned var display in display_manager.list_displays ()) {
             register_display (display);
         }
 
