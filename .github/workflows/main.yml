@@ -23,7 +23,7 @@ jobs:
       - name: Install Dependencies
         run: |
           apt update
-          apt install -y meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-4-dev valac
+          apt install -y meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-4-dev sassc valac
       - name: Build
         env:
           DESTDIR: out

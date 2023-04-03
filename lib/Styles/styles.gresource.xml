@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/elementary/granite">
+    <file compressed="true">Granite.css</file>
+  </gresource>
+</gresources>

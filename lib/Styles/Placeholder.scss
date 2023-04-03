@@ -1,0 +1,70 @@
+placeholder {
+    margin: rem(12px);
+
+    > grid > .large-icons {
+        -gtk-icon-size: 48px;
+
+        &:dir(ltr) {
+            margin-right: rem(3px);
+        }
+
+        &:dir(rtl) {
+            margin-left: rem(3px);
+        }
+    }
+
+    .title-1:dir(ltr),
+    .title-2:dir(ltr) {
+        margin-left: rem(9px);
+    }
+
+    .title-1:dir(rtl),
+    .title-2:dir(rtl) {
+        margin-right: rem(9px);
+    }
+
+    .title-1 + .title-2 {
+        margin-top: rem(3px);
+    }
+
+    .title-2 {
+        @extend .dim-label;
+
+        color: #{'@theme_fg_color'};
+        font-size: 12pt;
+        font-weight: initial;
+    }
+
+    box {
+        margin-top: rem(12px);
+
+        button {
+            .large-icons {
+                -gtk-icon-size: 32px;
+
+                &:dir(ltr) {
+                    margin-right: rem(6px);
+                }
+
+                &:dir(rtl) {
+                    margin-left: rem(6px);
+                }
+            }
+
+
+            label {
+                &.title-3 {
+                    font-weight: initial;
+                }
+
+                &:not(.title-3) {
+                    @extend .dim-label;
+                }
+            }
+
+            + button {
+                margin-top: rem(12px);
+            }
+        }
+    }
+}

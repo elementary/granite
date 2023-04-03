@@ -1,3 +1,5 @@
+subdir('Styles')
+
 libgranite_sources = files(
     'DateTime.vala',
     'Constants.vala',
@@ -59,6 +61,7 @@ libgranite = library(
     meson.project_name(),
 
     libgranite_sources,
+    stylesheet_resource,
     config_vala,
 
     dependencies: [
@@ -118,4 +121,3 @@ granite_pc = pkgconfig.generate(
     version: meson.project_version(),
     url: 'https://github.com/elementary/granite',
 )
-

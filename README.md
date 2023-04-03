@@ -10,11 +10,12 @@ built for elementary OS.
 ## Building, Testing, and Installation
 
 You'll need the following dependencies:
-* meson >= 0.48.2
+* meson >= 0.49.0
 * gobject-introspection
 * libgee-0.8-dev
 * libgirepository1.0-dev
 * libgtk-4-dev >= 4.4.0
+* sassc
 * valac
 
 Run `meson build` to configure the build environment:
