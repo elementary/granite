@@ -8,6 +8,7 @@ Build-Depends: debhelper (>= 10.5.1),
                libgirepository1.0-dev,
                libgtk-4-dev (>= 4.4.1),
                meson,
+               sassc,
                valac (>= 0.40)
 Standards-Version: 4.1.1
 Vcs-Git: https://github.com/elementary/granite.git
