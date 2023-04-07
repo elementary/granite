@@ -37,8 +37,22 @@ namespace Granite {
         if (css_provider == null) {
             css_provider = new Gtk.CssProvider ();
             css_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+
+            var base_path = Application.get_default ().resource_base_path;
+            if (base_path != null) {
+                var base_uri = "resource://" + base_path;
+                var base_file = File.new_for_uri (base_uri);
+
+                init_provider_from_file (css_provider, base_file.get_child ("style.css"));
+            }
         }
 
         Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+    }
+
+    private static void init_provider_from_file (Gtk.CssProvider provider, File file) {
+        if (file.query_exists ()) {
+            provider.load_from_file (file);
+        }
     }
 }
