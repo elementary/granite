@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
 "PO-Revision-Date: 2023-04-15 09:59+0000\n"
-"Last-Translator: Thierry Flament <thierry.flament@outlook.com>\n"
+"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nl/>\n"
 "Language: nl\n"
@@ -56,8 +56,6 @@ msgstr "Bijgewerkte vertalingen"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:81
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Nieuwe functies:"
 
