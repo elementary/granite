@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-03-12 22:25+0000\n"
+"PO-Revision-Date: 2023-04-15 09:59+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ka/>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16.4\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
-msgstr ""
+msgstr "Granite 7"
 
 #: data/granite.appdata.xml.in:8
 msgid "Build consistent and usable apps more quickly and easily"
@@ -55,7 +55,7 @@ msgstr "განახლებული თარგმანები"
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:81
 msgid "New Features:"
-msgstr ""
+msgstr "ახალი ფუნქციები:"
 
 #: data/granite.appdata.xml.in:29
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:56 data/granite.appdata.xml.in:145
 msgid "Removals:"
-msgstr ""
+msgstr "წაიშლება:"
 
 #: data/granite.appdata.xml.in:58
 msgid "Application: use Gtk.Application instead"
@@ -135,7 +135,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:64
 msgid "Seekbar"
-msgstr ""
+msgstr "ძებნის პანელი"
 
 #: data/granite.appdata.xml.in:65
 msgid "Services.Settings: use GLib.Settings instead"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:68
 msgid "StorageBar"
-msgstr ""
+msgstr "საცავის პანელი"
 
 #: data/granite.appdata.xml.in:69
 msgid "TextStyle: use style class constants instead"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:118 data/granite.appdata.xml.in:131
 msgid "Additions:"
-msgstr ""
+msgstr "დამატებები:"
 
 #: data/granite.appdata.xml.in:120
 msgid ""
@@ -206,7 +206,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:122 data/granite.appdata.xml.in:154
 #: data/granite.appdata.xml.in:181
 msgid "Other Changes:"
-msgstr ""
+msgstr "სხვა ცვლილებები:"
 
 #: data/granite.appdata.xml.in:124
 msgid ""
@@ -228,7 +228,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:137
 msgid "New Constants:"
-msgstr ""
+msgstr "ახალი კონსტანტები:"
 
 #: data/granite.appdata.xml.in:139
 msgid ""
@@ -264,7 +264,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:150 data/granite.appdata.xml.in:174
 #: data/granite.appdata.xml.in:195
 msgid "Deprecations:"
-msgstr ""
+msgstr "მოძველებები:"
 
 #: data/granite.appdata.xml.in:152
 msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
@@ -308,11 +308,11 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:171
 msgid "STYLE_CLASS_COLOR_BUTTON"
-msgstr ""
+msgstr "STYLE_CLASS_COLOR_BUTTON"
 
 #: data/granite.appdata.xml.in:172
 msgid "STYLE_CLASS_ROUNDED"
-msgstr ""
+msgstr "STYLE_CLASS_ROUNDED"
 
 #: data/granite.appdata.xml.in:176
 msgid ""
@@ -341,7 +341,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:190
 msgid "New features:"
-msgstr ""
+msgstr "ახალი ფუნქციები:"
 
 #: data/granite.appdata.xml.in:192
 msgid "New Settings class to share Pantheon desktop settings with apps"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: data/granite.appdata.xml.in:213
 msgid "New features"
-msgstr ""
+msgstr "ახალი ფუნქციები"
 
 #: data/granite.appdata.xml.in:215
 msgid "Add tooltips to source list items and their actions"
