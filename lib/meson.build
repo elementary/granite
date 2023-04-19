@@ -86,7 +86,9 @@ install_data(
 
 if get_option('introspection')
     # typelib generation isn't automated yet
-    g_ir_compiler = find_program('g-ir-compiler')
+    gi_dep = dependency('gobject-introspection-1.0')
+    g_ir_compiler_path = gi_dep.get_variable('g_ir_compiler', default_value: 'g-ir-compiler')
+    g_ir_compiler = find_program(g_ir_compiler_path)
     custom_target(
         granite_typelib,
         command: [
