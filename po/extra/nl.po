@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-02-28 04:25+0000\n"
-"Last-Translator: Dennis ten Hoove <dennistenhoove@protonmail.com>\n"
+"PO-Revision-Date: 2023-04-15 09:59+0000\n"
+"Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.16.4\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
@@ -56,8 +56,6 @@ msgstr "Bijgewerkte vertalingen"
 
 #: data/granite.appdata.xml.in:27 data/granite.appdata.xml.in:50
 #: data/granite.appdata.xml.in:81
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Nieuwe functies:"
 
@@ -124,15 +122,15 @@ msgstr "Toepassing: gebruik in plaats daarvan Gtk.Application"
 
 #: data/granite.appdata.xml.in:59
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Tekenen: Gebruik Gtk.CSS"
 
 #: data/granite.appdata.xml.in:60
 msgid "DynamicNotebook: use Adw.TabBar instead"
-msgstr ""
+msgstr "DynamicNotebook: gebruik in plaats daarvan Adw.TabBar"
 
 #: data/granite.appdata.xml.in:61
 msgid "Logger: use GLib.log instead"
-msgstr ""
+msgstr "Logger: gebruik GLib.log in plaats daarvan"
 
 #: data/granite.appdata.xml.in:62
 msgid ""
