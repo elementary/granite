@@ -9,6 +9,11 @@ public class Granite.Demo : Gtk.Application {
         flags = ApplicationFlags.FLAGS_NONE;
     }
 
+    public override void startup () {
+        Granite.init ();
+        base.startup ();
+    }
+
     public override void activate () {
         var window = new Gtk.Window ();
 

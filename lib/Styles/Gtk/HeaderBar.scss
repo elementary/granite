@@ -1,0 +1,36 @@
+headerbar {
+    border-radius: rem(6px) rem(6px) 0 0;
+
+    .title {
+        // Cannot be a number or fonts break in Flatpak
+        font-weight: bold;
+    }
+
+    .subtitle {
+        opacity: 0.75;
+        font-size: 80%;
+    }
+
+    box.start,
+    box.end {
+        border-spacing: rem(6px);
+    }
+
+    box.start:dir(ltr),
+    box.end:dir(rtl) {
+        margin-right: rem(12px);
+    }
+
+    box.end:dir(ltr),
+    box.start:dir(rtl) {
+        margin-left: rem(12px);
+    }
+
+    .large-icons {
+        -gtk-icon-size: 24px;
+    }
+
+    .csd & {
+        padding: rem(6px);
+    }
+}

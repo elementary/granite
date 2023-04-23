@@ -1,29 +1,18 @@
-@function rem($pixels, $text-size: 9pt) {
-    @if (unitless($pixels)) {
-        $pixels: $pixels * 1px;
-    }
-
-    @if (unitless($text-size)) {
-        $text-size: $text-size * 1px;
-    }
-
-    @if ($pixels > 0) {
-        // Workaround GTK clamping instead of rounding up
-        @return ($pixels / $text-size * 1rem) + 0.000000001rem;
-    } @else {
-        // Workaround GTK clamping instead of rounding up
-        @return ($pixels / $text-size * 1rem) - 0.000000001rem;
-    }
-}
-
 // Class constants and common styles
-@import '_button.scss';
+@import '_palette.scss';
+@import '_common.scss';
 @import '_label.scss';
+@import '_osd.scss';
+
+// Gtk Widgets
+@import 'Gtk/Button.scss';
+@import 'Gtk/HeaderBar.scss';
+@import 'Gtk/Window.scss';
 
 // Granite widgets
-@import 'Dialog.scss';
-@import 'Header.scss';
-@import 'MessageDialog.scss';
-@import 'OverlayBar.scss';
-@import 'Placeholder.scss';
-@import 'Toast.scss';
+@import 'Granite/Dialog.scss';
+@import 'Granite/Header.scss';
+@import 'Granite/MessageDialog.scss';
+@import 'Granite/OverlayBar.scss';
+@import 'Granite/Placeholder.scss';
+@import 'Granite/Toast.scss';

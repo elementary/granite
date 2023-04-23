@@ -1,0 +1,58 @@
+window {
+    background-color: bg_color(2);
+    color: $fg-color;
+
+    &.csd {
+        border-radius: rem($window_radius);
+        box-shadow:
+            0 0 0 1px $toplevel-border-color,
+            shadow(4);
+
+        &:backdrop {
+            box-shadow:
+                0 0 0 1px $toplevel-border-color,
+                shadow(2);
+        }
+
+        // black behind corners
+        &.maximized {
+            box-shadow: 0 0 0 rem($window_radius / 2) black;
+        }
+
+        &.tiled-right:not(.maximized),
+        &.tiled-left:not(.maximized) {
+            box-shadow:
+                0 0 0 1px $toplevel-border-color,
+                shadow(2);
+        }
+
+        &.tiled-right:not(.maximized) {
+            &.tiled-top {
+                border-top-left-radius: 0;
+            }
+
+            &.tiled-bottom {
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        &.tiled-left:not(.maximized) {
+            &.tiled-top {
+                border-top-right-radius: 0;
+            }
+
+            &.tiled-bottom {
+                border-bottom-right-radius: 0;
+            }
+        }
+
+        &.fullscreen {
+            border-radius: 0;
+        }
+    }
+
+    &.ssd {
+        border-radius: $window_radius $window_radius 0 0;
+        box-shadow: 0 0 0 1px $toplevel-border-color;
+    }
+}
