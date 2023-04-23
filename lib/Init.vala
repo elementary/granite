@@ -46,7 +46,7 @@ namespace Granite {
                 var base_uri = "resource://" + base_path;
                 var base_file = File.new_for_uri (base_uri);
 
-                app_provider = init_provider_from_file (base_file.get_child ("style.css"));
+                app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
             }
         }
 
