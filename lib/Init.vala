@@ -5,7 +5,8 @@
 
 namespace Granite {
     private static bool initialized = false;
-    private static Gtk.CssProvider css_provider = null;
+    private static Gtk.CssProvider? base_provider = null;
+    private static Gtk.CssProvider? app_provider = null;
 
     /*
      * Initializes Granite.
@@ -34,11 +35,36 @@ namespace Granite {
     }
 
     private static void register_display (Gdk.Display display) {
-        if (css_provider == null) {
-            css_provider = new Gtk.CssProvider ();
-            css_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+        if (base_provider == null) {
+            base_provider = new Gtk.CssProvider ();
+            base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
         }
 
-        Gtk.StyleContext.add_provider_for_display (display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        if (app_provider == null) {
+            var base_path = Application.get_default ().resource_base_path;
+            if (base_path != null) {
+                var base_uri = "resource://" + base_path;
+                var base_file = File.new_for_uri (base_uri);
+
+                app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
+            }
+        }
+
+        Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+
+        if (app_provider != null) {
+            Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
+    }
+
+    private static Gtk.CssProvider? init_provider_from_file (File file) {
+        if (file.query_exists ()) {
+            var provider = new Gtk.CssProvider ();
+            provider.load_from_file (file);
+
+            return provider;
+        }
+
+        return null;
     }
 }
