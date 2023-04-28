@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Granite 7 Demo
 Comment=A demo of the Granite toolkit
-Exec=granite-demo
+Exec=granite-7-demo
 Icon=io.elementary.granite-7
 Type=Application
 NoDisplay=true
