@@ -5,4 +5,4 @@ Exec=granite-7-demo
 Icon=io.elementary.granite-7
 Type=Application
 NoDisplay=true
-StartupWMClass=granite-demo
+StartupWMClass=granite-7-demo
