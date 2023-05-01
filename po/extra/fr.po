@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-02-24 07:45+0000\n"
-"Last-Translator: Corentin Noël <tintou@noel.tf>\n"
+"PO-Revision-Date: 2023-05-01 21:09+0000\n"
+"Last-Translator: Benjamin <morantbenjamin@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
@@ -46,7 +46,7 @@ msgstr "Améliorations :"
 
 #: data/granite.appdata.xml.in:19
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr ""
+msgstr "Rendre \"Granite.init ()\" accessible publiquement"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:39
 #: data/granite.appdata.xml.in:75 data/granite.appdata.xml.in:88
