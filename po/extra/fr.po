@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-22 18:13+0000\n"
-"PO-Revision-Date: 2023-05-01 21:09+0000\n"
-"Last-Translator: Benjamin <morantbenjamin@gmail.com>\n"
+"PO-Revision-Date: 2023-05-02 22:06+0000\n"
+"Last-Translator: Corentin Noël <tintou@noel.tf>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
 "Language: fr\n"
@@ -46,7 +46,7 @@ msgstr "Améliorations :"
 
 #: data/granite.appdata.xml.in:19
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr "Rendre \"Granite.init ()\" accessible publiquement"
+msgstr "\"Granite.init ()\" est rendu publiquement accessible"
 
 #: data/granite.appdata.xml.in:20 data/granite.appdata.xml.in:39
 #: data/granite.appdata.xml.in:75 data/granite.appdata.xml.in:88
@@ -89,6 +89,8 @@ msgstr ""
 #: data/granite.appdata.xml.in:37
 msgid "Allow text in Granite.Toast to wrap"
 msgstr ""
+"Le texte dans Granite.Toast peut maintenant revenir à la ligne "
+"automatiquement"
 
 #: data/granite.appdata.xml.in:38
 msgid ""
