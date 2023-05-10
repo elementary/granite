@@ -182,4 +182,80 @@ namespace Granite {
      * Transition duration when a widget opens, reveals more content, or enters the screen
      */
     public const int TRANSITION_DURATION_OPEN = 250;
+
+    /**
+    * Link to open Applications → Defaults settings page
+    */
+    public const string LINK_SETTINGS_APPLICATIONS_DEFAULTS = "settings://applications/defaults";
+
+    /**
+    * Link to open Applications → Startup settings page
+    */
+    public const string LINK_SETTINGS_APPLICATIONS_STARTUP = "settings://applications/startup";
+
+    /**
+    * Link to open Applications → Permissions settings page
+    */
+    public const string LINK_SETTINGS_APPLICATIONS_PERMISSIONS = "settings://applications/permissions";
+
+    /**
+    * Link to open Desktop → Wallpaper settings page
+    */
+    public const string LINK_SETTINGS_DESKTOP_APPEARANCE_WALLPAPER = "settings://desktop/appearance/wallpaper";
+
+    /**
+    * Link to open Desktop → Appearance settings page
+    */
+    public const string LINK_SETTINGS_DESKTOP_APPEARANCE = "settings://desktop/appearance";
+
+    /**
+    * Link to open Desktop → Dock & Panel settings page
+    */
+    public const string LINK_SETTINGS_DESKTOP_DOCK = "settings://desktop/dock";
+
+    /**
+    * Link to open Desktop → Multitasking settings page
+    */
+    public const string LINK_SETTINGS_DESKTOP_MULTITASKING = "settings://desktop/multitasking";
+
+    /**
+    * Link to open Desktop → Text settings page
+    */
+    public const string LINK_SETTINGS_DESKTOP_TEXT = "settings://desktop/text";
+
+    /**
+    * Link to open Language & Region settings page
+    */
+    public const string LINK_SETTINGS_LANGUAGE = "settings://language";
+
+    /**
+    * Link to open Notifications settings page
+    */
+    public const string LINK_SETTINGS_NOTIFICATIONS = "settings://notifications";
+
+    /**
+    * Link to open Security & Privacy → History settings page
+    */
+    public const string LINK_SETTINGS_PRIVACY = "settings://privacy";
+
+    /**
+    * Link to open Security & Privacy → Location Services settings page
+    */
+    public const string LINK_SETTINGS_PRIVACY_LOCATION = "settings://privacy/location";
+
+    /**
+    * Link to open Security & Privacy → Housekeeping settings page
+    */
+    public const string LINK_SETTINGS_PRIVACY_TRASH = "settings://privacy/trash";
+
+    /**
+    * Link to open Security & Privacy → Firewall settings page
+    */
+    public const string LINK_SETTINGS_SECURITY_FIREWALL = "settings://security/firewall";
+
+    /**
+    * Link to open Security & Privacy → Locking settings page
+    */
+    public const string LINK_SETTINGS_SECURITY_LOCKING = "settings://security/locking";
+
 }
