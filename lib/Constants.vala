@@ -184,78 +184,44 @@ namespace Granite {
     public const int TRANSITION_DURATION_OPEN = 250;
 
     /**
-    * Link to open Applications → Defaults settings page
+    * Deep links to specific Settings pages.
     */
-    public const string LINK_SETTINGS_APPLICATIONS_DEFAULTS = "settings://applications/defaults";
+    namespace SettingsUri {
 
-    /**
-    * Link to open Applications → Startup settings page
-    */
-    public const string LINK_SETTINGS_APPLICATIONS_STARTUP = "settings://applications/startup";
+         /**
+         * Link to open Security & Privacy → Location Services settings page
+         */
+         public const string LOCATION = "settings://privacy/location";
 
-    /**
-    * Link to open Applications → Permissions settings page
-    */
-    public const string LINK_SETTINGS_APPLICATIONS_PERMISSIONS = "settings://applications/permissions";
+         /**
+         * Link to open Online Accounts settings page
+         */
+         public const string ONLINE_ACCOUNTS = "settings://accounts/online";
 
-    /**
-    * Link to open Desktop → Wallpaper settings page
-    */
-    public const string LINK_SETTINGS_DESKTOP_APPEARANCE_WALLPAPER = "settings://desktop/appearance/wallpaper";
+         /**
+         * Link to Network settings page
+         */
+         public const string NETWORK = "settings://network";
 
-    /**
-    * Link to open Desktop → Appearance settings page
-    */
-    public const string LINK_SETTINGS_DESKTOP_APPEARANCE = "settings://desktop/appearance";
+         /**
+         * Link to open Applications → Permissions settings page
+         */
+         public const string PERMISSIONS = "settings://applications/permissions";
 
-    /**
-    * Link to open Desktop → Dock & Panel settings page
-    */
-    public const string LINK_SETTINGS_DESKTOP_DOCK = "settings://desktop/dock";
+         /**
+         * Link to open Notifications settings page
+         */
+         public const string NOTIFICATIONS = "settings://notifications";
 
-    /**
-    * Link to open Desktop → Multitasking settings page
-    */
-    public const string LINK_SETTINGS_DESKTOP_MULTITASKING = "settings://desktop/multitasking";
+        /**
+        * Link to open Sound → Input settings page
+        */
+        public const string SOUND_INPUT = "settings://sound/input";
 
-    /**
-    * Link to open Desktop → Text settings page
-    */
-    public const string LINK_SETTINGS_DESKTOP_TEXT = "settings://desktop/text";
+        /**
+        * Link to open Keyboard → Shortcuts → Custom settings page
+        */
+        public const string SHORTCUTS = "settings://input/keyboard/shortcuts/custom";
 
-    /**
-    * Link to open Language & Region settings page
-    */
-    public const string LINK_SETTINGS_LANGUAGE = "settings://language";
-
-    /**
-    * Link to open Notifications settings page
-    */
-    public const string LINK_SETTINGS_NOTIFICATIONS = "settings://notifications";
-
-    /**
-    * Link to open Security & Privacy → History settings page
-    */
-    public const string LINK_SETTINGS_PRIVACY = "settings://privacy";
-
-    /**
-    * Link to open Security & Privacy → Location Services settings page
-    */
-    public const string LINK_SETTINGS_PRIVACY_LOCATION = "settings://privacy/location";
-
-    /**
-    * Link to open Security & Privacy → Housekeeping settings page
-    */
-    public const string LINK_SETTINGS_PRIVACY_TRASH = "settings://privacy/trash";
-
-    /**
-    * Link to open Security & Privacy → Firewall settings page
-    */
-    public const string LINK_SETTINGS_SECURITY_FIREWALL = "settings://security/firewall";
-
-    /**
-    * Link to open Security & Privacy → Locking settings page
-    */
-    public const string LINK_SETTINGS_SECURITY_LOCKING = "settings://security/locking";
-
+    }
 }

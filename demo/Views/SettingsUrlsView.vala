@@ -7,95 +7,50 @@ public class SettingsUrlsView : Gtk.Box {
     construct {
         halign = Gtk.Align.CENTER;
 
-        var flow = new Gtk.FlowBox () {
+        var column = new Gtk.Box (Gtk.Orientation.VERTICAL, 16) {
             margin_start = 24,
             margin_end = 24,
             margin_top = 24,
             margin_bottom = 24,
             halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER,
-            selection_mode = Gtk.SelectionMode.NONE,
-            homogeneous = true,
-            min_children_per_line = 3,
-            column_spacing = 8,
-            row_spacing = 16
+            valign = Gtk.Align.CENTER
         };
 
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_APPLICATIONS_DEFAULTS,
-            _("Applications → Defaults")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_APPLICATIONS_STARTUP,
-            _("Applications → Startup")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_APPLICATIONS_PERMISSIONS,
-            _("Applications → Permissions")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_DESKTOP_APPEARANCE_WALLPAPER,
-            _("Desktop → Wallpaper")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_DESKTOP_APPEARANCE,
-            _("Desktop → Appearance")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_DESKTOP_TEXT,
-            _("Desktop → Text")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_DESKTOP_DOCK,
-            _("Desktop → Dock & Panel")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_DESKTOP_MULTITASKING,
-            _("Desktop → Multitasking")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_LANGUAGE,
-            _("Language & Region")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_NOTIFICATIONS,
-            _("Notifications")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_PRIVACY,
-            _("Security & Privacy → History")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_SECURITY_LOCKING,
-            _("Security & Privacy → Locking")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_SECURITY_FIREWALL,
-            _("Security & Privacy → Firewall")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_PRIVACY_TRASH,
-            _("Security & Privacy → Housekeeping")
-        ));
-
-        flow.append (new Gtk.LinkButton.with_label (
-            Granite.LINK_SETTINGS_PRIVACY_LOCATION,
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.LOCATION,
             _("Security & Privacy → Location Services")
         ));
 
-        append (flow);
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.ONLINE_ACCOUNTS,
+            _("Online Accounts")
+        ));
+
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.NETWORK,
+            _("Network")
+        ));
+
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.PERMISSIONS,
+            _("Applications → Permissions")
+        ));
+
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.NOTIFICATIONS,
+            _("Notifications")
+        ));
+
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.SOUND_INPUT,
+            _("Sound → Input")
+        ));
+
+        column.append (new Gtk.LinkButton.with_label (
+            Granite.SettingsUri.SHORTCUTS,
+            _("Keyboard → Shortcuts → Custom")
+        ));
+
+        append (column);
     }
 }
