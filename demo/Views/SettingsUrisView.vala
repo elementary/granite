@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class SettingsUrlsView : Gtk.Box {
+public class SettingsUrisView : Gtk.Box {
     construct {
         halign = Gtk.Align.CENTER;
 
