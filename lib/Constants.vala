@@ -182,4 +182,46 @@ namespace Granite {
      * Transition duration when a widget opens, reveals more content, or enters the screen
      */
     public const int TRANSITION_DURATION_OPEN = 250;
+
+    /**
+    * Deep links to specific Settings pages.
+    */
+    namespace SettingsUri {
+
+         /**
+         * Link to open Security & Privacy → Location Services settings page
+         */
+         public const string LOCATION = "settings://privacy/location";
+
+         /**
+         * Link to open Online Accounts settings page
+         */
+         public const string ONLINE_ACCOUNTS = "settings://accounts/online";
+
+         /**
+         * Link to Network settings page
+         */
+         public const string NETWORK = "settings://network";
+
+         /**
+         * Link to open Applications → Permissions settings page
+         */
+         public const string PERMISSIONS = "settings://applications/permissions";
+
+         /**
+         * Link to open Notifications settings page
+         */
+         public const string NOTIFICATIONS = "settings://notifications";
+
+        /**
+        * Link to open Sound → Input settings page
+        */
+        public const string SOUND_INPUT = "settings://sound/input";
+
+        /**
+        * Link to open Keyboard → Shortcuts → Custom settings page
+        */
+        public const string SHORTCUTS = "settings://input/keyboard/shortcuts/custom";
+
+    }
 }

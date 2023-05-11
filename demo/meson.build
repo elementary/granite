@@ -12,6 +12,7 @@ executable(
     'Views/HyperTextViewGrid.vala',
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
+    'Views/SettingsUrisView.vala',
     'Views/SettingsView/SettingsPage.vala',
     'Views/SettingsView/SettingsView.vala',
     'Views/SettingsView/SimpleSettingsPage.vala',
