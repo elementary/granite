@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019–2022 elementary, Inc. <contact@elementary.io> -->
+<!-- Copyright 2019–2023 elementary, Inc. <contact@elementary.io> -->
 <component>
   <id>io.elementary.granite-7</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -12,6 +12,18 @@
   </description>
 
   <releases>
+    <release version="7.3.0" date="2023-05-11" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Don't depend on the elementary stylesheet for fallback styles</li>
+          <li>Automatically load gresourced stylesheets named "Application.css" on "Granite.init ()"</li>
+          <li>Add SettingsUri constants for launching System Settings</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="7.2.0" date="2023-02-23" urgency="medium">
       <description>
         <p>Improvements:</p>
@@ -76,6 +88,7 @@
         </ul>
       </description>
     </release>
+
     <release version="6.2.0" date="2021-11-23" urgency="medium">
       <description>
         <p>New Features:</p>
@@ -93,135 +106,15 @@
         </ul>
       </description>
     </release>
-    <release version="6.1.2" date="2021-10-25" urgency="medium">
-      <description>
-        <p>Fixes:</p>
-        <ul>
-          <li>Use values from the Settings Portal when possible</li>
-          <li>Disable horizontal scrolling by default in SettingsPage</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="6.1.1" date="2021-08-25" urgency="medium">
-      <description>
-        <p>Fixes:</p>
-        <ul>
-          <li>Ensure accel_to_string works with multiple modifiers</li>
-          <li>Fix locale issues in Flatpaks</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="6.1.0" date="2021-07-13" urgency="medium">
-      <description>
-        <p>Additions:</p>
-        <ul>
-          <li>TRANSITION_DURATION_IN_PLACE for consistent in-place widget transformations</li>
-        </ul>
-        <p>Other Changes:</p>
-        <ul>
-          <li>accel_to_string handles accel markup without modifiers or that are only modifiers</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="6.0.0" date="2021-03-22" urgency="medium">
-      <description>
-        <p>Additions:</p>
-        <ul>
-          <li>Granite.Dialog replaces Gtk.Dialog for consistent styling</li>
-          <li>Granite.SwitchModelButton for use in Gtk.Popover menus</li>
-          <li>Granite.ValidatedEntry for client-side verification in forms</li>
-        </ul>
-        <p>New Constants:</p>
-        <ul>
-          <li>TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips</li>
-          <li>SMALL_LABEL for smaller Gtk.Labels without Pango</li>
-          <li>STYLE_CLASS_WARMTH and STYLE_CLASS_TEMPERATURE for scales</li>
-          <li>STYLE_CLASS_DEFAULT_DECORATION for slim headerbars</li>
-          <li>TRANSITION_DURATION_OPEN and TRANSITION_DURATION_CLOSE for consistent animations</li>
-        </ul>
-        <p>Removals:</p>
-        <ul>
-          <li>Granite.Widgets.AboutDialog. Provide AppStream metadata instead.</li>
-          <li>Granite.Widgets.AppMenu. Use Gtk.MenuButton instead.</li>
-        </ul>
-        <p>Deprecations:</p>
-        <ul>
-          <li>Granite.Widgets.Avatar. Use Hdy.Avatar instead</li>
-        </ul>
-        <p>Other Changes:</p>
-        <ul>
-          <li>Toasts now reset their timeout when sending a new notification and the timeout is stopped while hovering</li>
-          <li>Backslash, Right Control, and Left Control are now handled by accel_to_string</li>
-          <li>Make tab tooltips of DynamicNotebook settable</li>
-          <li>Timepicker correctly fires time_changed when AM and PM buttons are selected</li>
-          <li>Granite.MessageDialog now uses the messagedialog CSS name</li>
-          <li>Visible child name is now properly synced in Granite.SettingsSidebar</li>
-          <li>Status can be set in Granite.AbstractSettingsPage on construct</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="5.5.0" date="2020-06-30" urgency="medium">
-      <description>
-        <p>New Style Constants:</p>
-        <ul>
-          <li>STYLE_CLASS_COLOR_BUTTON</li>
-          <li>STYLE_CLASS_ROUNDED</li>
-        </ul>
-        <p>Deprecations:</p>
-        <ul>
-          <li>Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext instead</li>
-          <li>Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline instead</li>
-          <li>Old unused utilities like get_button_layout_schema, get_default_close_button_position, and Granite.Services.Paths</li>
-          <li>Old unused widgets like CollapsiblePaned and CompositedWindow</li>
-        </ul>
-        <p>Other Changes:</p>
-        <ul>
-          <li>Granite.SourceList now gets Gtk.STYLE_CLASS_SIDEBAR by default</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="5.4.0" date="2020-04-29" urgency="medium">
-      <description>
-        <p>New features:</p>
-        <ul>
-          <li>New Settings class to share Pantheon desktop settings with apps</li>
-          <li>Introduced Settings.prefers_color_scheme to get a user's color scheme preference, i.e. for a dark style</li>
-        </ul>
-        <p>Deprecations:</p>
-        <ul>
-          <li>It is now recommended to use GLib.Settings instead of Granite.Services.Settings</li>
-        </ul>
-      </description>
-    </release>
-    <release version="5.3.1" date="2020-04-01" urgency="medium">
-      <description>
-        <p>Improvements:</p>
-        <ul>
-          <li>Better align labels in settings sidebars</li>
-          <li>Make AccelLabel.label settable</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
-    <release version="5.3.0" date="2019-12-12" urgency="medium">
-      <description>
-        <p>New features</p>
-        <ul>
-          <li>Add tooltips to source list items and their actions</li>
-          <li>New AccelLabel widget for use in menus and popovers</li>
-        </ul>
-        <p>Improvements:</p>
-        <ul>
-          <li>Delay tab resizing when closing tabs</li>
-          <li>Updated translations</li>
-        </ul>
-      </description>
-    </release>
+
+    <release version="6.1.2" date="2021-10-25" urgency="medium" />
+    <release version="6.1.1" date="2021-08-25" urgency="medium" />
+    <release version="6.1.0" date="2021-07-13" urgency="medium" />
+    <release version="6.0.0" date="2021-03-22" urgency="medium" />
+    <release version="5.5.0" date="2020-06-30" urgency="medium" />
+    <release version="5.4.0" date="2020-04-29" urgency="medium" />
+    <release version="5.3.1" date="2020-04-01" urgency="medium" />
+    <release version="5.3.0" date="2019-12-12" urgency="medium" />
   </releases>
   <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
   <developer_name>elementary, Inc.</developer_name>
