@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 21:27+0000\n"
-"PO-Revision-Date: 2023-02-24 07:45+0000\n"
+"PO-Revision-Date: 2023-05-15 19:06+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
@@ -43,7 +43,7 @@ msgstr "שיפורים:"
 
 #: data/granite.appdata.xml.in:19
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr ""
+msgstr "לא להסתמך על גיליון הסגנון של elementary לסגנונות גיבוי"
 
 #: data/granite.appdata.xml.in:20
 msgid ""
