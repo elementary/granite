@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 21:27+0000\n"
-"PO-Revision-Date: 2023-02-24 07:45+0000\n"
+"PO-Revision-Date: 2023-05-15 19:06+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #: data/granite.appdata.xml.in:7
 msgid "Granite 7"
@@ -44,17 +44,21 @@ msgstr "Millores:"
 
 #: data/granite.appdata.xml.in:19
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr ""
+msgstr "No depèn del full d'estil d'elementary per als estils alternatius."
 
 #: data/granite.appdata.xml.in:20
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
+"Es carreguen automàticament el fulls d'estil gresourced anomenats "
+"\"Application.css\" a \"Granite.init ()\""
 
 #: data/granite.appdata.xml.in:21
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr ""
+"Addició de constants de Configuració Uri per iniciar la configuració del "
+"sistema"
 
 #: data/granite.appdata.xml.in:22 data/granite.appdata.xml.in:32
 #: data/granite.appdata.xml.in:51 data/granite.appdata.xml.in:87
