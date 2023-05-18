@@ -27,6 +27,7 @@ jobs:
       - name: Build
         env:
           DESTDIR: out
+          PKG_CONFIG_PATH: ${{ github.workspace }}/build/meson-uninstalled
         run: |
           meson build
           ninja -C build
