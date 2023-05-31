@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 21:27+0000\n"
-"PO-Revision-Date: 2023-05-20 17:06+0000\n"
+"PO-Revision-Date: 2023-06-01 14:07+0000\n"
 "Last-Translator: Faisal Rachmadin <frachmadin@users.noreply.l10n.elementary."
 "io>\n"
 "Language-Team: Indonesian <https://l10n.elementary.io/projects/desktop/"
@@ -67,7 +67,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:39 data/granite.appdata.xml.in:62
 #: data/granite.appdata.xml.in:94
 msgid "New Features:"
-msgstr ""
+msgstr "Fitur Baru:"
 
 #: data/granite.appdata.xml.in:41
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
