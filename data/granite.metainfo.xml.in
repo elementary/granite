@@ -2,14 +2,27 @@
 <!-- Copyright 2019–2023 elementary, Inc. <contact@elementary.io> -->
 <component>
   <id>io.elementary.granite-7</id>
+  <translation type="gettext">granite-7</translation>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LGPL-3.0</project_license>
+  <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
+
+  <icon type="stock">io.elementary.granite-7</icon>
   <name>Granite 7</name>
   <summary>Build consistent and usable apps more quickly and easily</summary>
-  <icon type="stock">io.elementary.granite-7</icon>
   <description>
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
   </description>
+
+  <url type="bugtracker">https://github.com/elementary/granite/issues</url>
+  <url type="donation">https://elementary.io/get-involved#funding</url>
+  <url type="help">https://github.com/elementary/granite/discussions</url>
+  <url type="homepage">https://elementary.io</url>
+  <url type="translate">https://l10n.elementary.io/projects/desktop</url>
+
+  <developer_name>elementary, Inc.</developer_name>
+  <project_group>elementary</project_group>
+  <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
     <release version="7.3.0" date="2023-05-11" urgency="medium">
@@ -116,8 +129,4 @@
     <release version="5.3.1" date="2020-04-01" urgency="medium" />
     <release version="5.3.0" date="2019-12-12" urgency="medium" />
   </releases>
-  <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
-  <developer_name>elementary, Inc.</developer_name>
-  <url type="homepage">https://elementary.io</url>
-  <url type="bugtracker">https://github.com/elementary/granite/issues</url>
 </component>
