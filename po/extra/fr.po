@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-11 21:27+0000\n"
-"PO-Revision-Date: 2023-05-23 09:06+0000\n"
+"PO-Revision-Date: 2023-06-12 11:25+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/fr/>\n"
@@ -42,7 +42,7 @@ msgstr ""
 #: data/granite.appdata.xml.in:47 data/granite.appdata.xml.in:84
 #: data/granite.appdata.xml.in:99
 msgid "Improvements:"
-msgstr "Améliorations :"
+msgstr "Améliorations :"
 
 #: data/granite.appdata.xml.in:19
 msgid "Don't depend on the elementary stylesheet for fallback styles"
