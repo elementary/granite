@@ -41,7 +41,7 @@ To see a demo app of Granite's widgets, run `granite-demo` after installing it:
 ## Documentation
 
 Documentation for all of the classes and functions in Granite is available
-[on Valadoc](https://valadoc.org/granite/Granite.html)
+[on Valadoc](https://valadoc.org/granite-7/Granite.html)
 
 The additional requirements for building the documentation are:
 
