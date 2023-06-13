@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-12 11:25+0000\n"
-"PO-Revision-Date: 2022-01-27 22:43+0000\n"
+"PO-Revision-Date: 2023-06-15 00:07+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -45,7 +45,7 @@ msgstr "elementary, Inc."
 #: data/granite.metainfo.xml.in:60 data/granite.metainfo.xml.in:97
 #: data/granite.metainfo.xml.in:112
 msgid "Improvements:"
-msgstr "Újdonságok:"
+msgstr "Fejlesztések:"
 
 #: data/granite.metainfo.xml.in:32
 msgid "Don't depend on the elementary stylesheet for fallback styles"
