@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-12 11:25+0000\n"
-"PO-Revision-Date: 2023-06-12 11:25+0000\n"
+"PO-Revision-Date: 2023-07-21 09:07+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fr/>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -213,7 +213,7 @@ msgstr "Granite.HyperTextView pour des URL cliquables dans les zones de texte"
 
 #: data/granite.metainfo.xml.in:116
 msgid "Fixes:"
-msgstr "Corrections :"
+msgstr "Corrections :"
 
 #: data/granite.metainfo.xml.in:118
 msgid "Prevent crashing on environments without dark style preference support"
