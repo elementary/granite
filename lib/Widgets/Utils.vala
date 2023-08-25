@@ -263,8 +263,8 @@ namespace Granite.Widgets.Utils {
         var css = "@define-color color_primary %s;".printf (color.to_string ());
 
         var css_provider = new Gtk.CssProvider ();
-#if VALA_0_58
-        css_provider.load_from_data (css);
+#if HAS_VALA_0_56_11
+        css_provider.load_from_data (css, -1);
 #else
         css_provider.load_from_data (css.data);
 #endif

@@ -28,6 +28,10 @@ else
     vala_os_arg = []
 endif
 
+if meson.get_compiler('vala').version().version_compare('>=0.56.11')
+    vala_os_arg += ['--define=HAS_VALA_0_56_11']
+endif
+
 glib_min_version = '2.50'
 if build_machine.system() == 'windows'
     gio_os_dep = dependency('gio-windows-2.0', version: '>=' + glib_min_version)
