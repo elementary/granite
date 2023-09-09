@@ -73,11 +73,7 @@ public class UtilsView : Gtk.Grid {
             Granite.contrasting_foreground_color (bg_color).to_string ()
         );
 
-#if VALA_0_58
-        provider.load_from_data (css);
-#else
         provider.load_from_data ((uint8[])css);
-#endif
         demo_label_style_context.add_provider (
             provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
