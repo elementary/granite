@@ -17,7 +17,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
      * The widget to be activated when the labels mnemonic key is pressed. Also sets #this as screenreader label.
      */
     [Version (since = "7.4.0")]
-    public Gtk.Widget mnemonic_widget { get; set; }
+    public Gtk.Widget? mnemonic_widget { get; set; }
 
     private Gtk.Label? secondary_label = null;
     /**
