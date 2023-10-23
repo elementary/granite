@@ -44,6 +44,8 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
                 secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
 
+                bind_property ("mnemonic-widget", secondary_label, "mnemonic-widget");
+
                 secondary_label.set_parent (this);
             }
         }
@@ -76,7 +78,6 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
-        bind_property ("mnemonic-widget", secondary_label, "mnemonic-widget");
     }
 
     ~HeaderLabel () {
