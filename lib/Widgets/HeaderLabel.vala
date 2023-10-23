@@ -76,6 +76,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
+        bind_property ("mnemonic-widget", secondary_label, "mnemonic-widget");
     }
 
     ~HeaderLabel () {
