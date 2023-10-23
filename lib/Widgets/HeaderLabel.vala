@@ -13,6 +13,12 @@ public class Granite.HeaderLabel : Gtk.Widget {
      */
     public string label { get; construct set; }
 
+    /**
+     * The widget to be activated when the labels mnemonic key is pressed. Also sets #this as screenreader label.
+     */
+    [Version (since = "7.4.0")]
+    public Gtk.Widget? mnemonic_widget { get; set; }
+
     private Gtk.Label? secondary_label = null;
     /**
      * Optional secondary label string displayed below the header
@@ -37,6 +43,8 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 };
                 secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
                 secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+
+                bind_property ("mnemonic-widget", secondary_label, "mnemonic-widget", SYNC_CREATE);
 
                 secondary_label.set_parent (this);
             }
@@ -69,6 +77,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
         ((Gtk.BoxLayout) get_layout_manager ()).orientation = Gtk.Orientation.VERTICAL;
 
         bind_property ("label", label_widget, "label");
+        bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
     }
 
     ~HeaderLabel () {
