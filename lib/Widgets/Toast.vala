@@ -177,7 +177,7 @@ public class Granite.Toast : Gtk.Widget {
      * @since 7.4.0
      */
     [Version (since = "7.4.0")]
-    public void withdraw_notification () {
+    public void withdraw () {
         stop_timeout ();
         revealer.reveal_child = false;
     }
