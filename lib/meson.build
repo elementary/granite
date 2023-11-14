@@ -1,3 +1,4 @@
+subdir('Icons')
 subdir('Styles')
 
 libgranite_sources = files(
@@ -61,6 +62,7 @@ libgranite = library(
     meson.project_name(),
 
     libgranite_sources,
+    icons_resource,
     stylesheet_resource,
     config_vala,
 
