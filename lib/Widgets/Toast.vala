@@ -171,4 +171,14 @@ public class Granite.Toast : Gtk.Widget {
         stop_timeout ();
         start_timeout ();
     }
+
+    /**
+     * Withdraws the currently displayed Toast
+     * @since 7.4.0
+     */
+    [Version (since = "7.4.0")]
+    public void withdraw () {
+        stop_timeout ();
+        revealer.reveal_child = false;
+    }
 }
