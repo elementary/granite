@@ -55,6 +55,9 @@ namespace Granite {
         if (app_provider != null) {
             Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         }
+
+        var icon_theme = Gtk.IconTheme.get_for_display (display);
+        icon_theme.add_resource_path ("/io/elementary/granite");
     }
 
     private static Gtk.CssProvider? init_provider_from_file (File file) {

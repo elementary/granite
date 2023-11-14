@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/elementary/granite">
+    <file alias="scalable/actions/adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
+    <file alias="scalable/actions/adw-external-link-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic.svg</file>
+    <file alias="scalable/actions/adw-tab-unpin-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-unpin-symbolic.svg</file>
+
+    <file alias="scalable/actions/pan-down-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-down-symbolic.svg</file>
+    <file alias="scalable/actions/pan-end-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
+    <file alias="scalable/actions/pan-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
+    <file alias="scalable/actions/pan-start-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
+    <file alias="scalable/actions/pan-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
+    <file alias="scalable/actions/pan-up-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
+
+    <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
+    <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
+
+    <file alias="scalable/status/adw-tab-counter-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-counter-symbolic.svg</file>
+    <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
+    <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>
+
+    <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
+    <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-mixed-symbolic.svg</file>
+
+    <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
+
+    <file alias="scalable/status/process-completed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-completed-symbolic.svg</file>
+    <file alias="scalable/status/process-error-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-error-symbolic.svg</file>
+
+    <file alias="16x16/status/emblem-disabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
+    <file alias="16x16/status/emblem-enabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
+    <file alias="16x16/status/emblem-error.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
+    <file alias="16x16/status/emblem-mixed.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
+    <file alias="16x16/status/emblem-warning.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+
+    <file alias="16x16@2/status/emblem-disabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
+    <file alias="16x16@2/status/emblem-enabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
+    <file alias="16x16@2/status/emblem-error.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
+    <file alias="16x16@2/status/emblem-mixed.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
+    <file alias="16x16@2/status/emblem-warning.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+  </gresource>
+</gresources>
