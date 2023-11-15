@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 11:25+0000\n"
+"POT-Creation-Date: 2023-11-15 17:03+0000\n"
 "PO-Revision-Date: 2020-03-02 23:09+0000\n"
 "Last-Translator: Marko <marko.dolar@gmail.com>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
@@ -42,161 +42,148 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/granite.metainfo.xml.in:30 data/granite.metainfo.xml.in:42
-#: data/granite.metainfo.xml.in:60 data/granite.metainfo.xml.in:97
-#: data/granite.metainfo.xml.in:112
+#: data/granite.metainfo.xml.in:30 data/granite.metainfo.xml.in:44
+#: data/granite.metainfo.xml.in:56 data/granite.metainfo.xml.in:74
+#: data/granite.metainfo.xml.in:111
 msgid "Improvements:"
 msgstr "Izboljšave:"
 
 #: data/granite.metainfo.xml.in:32
+msgid "Add a withdraw method for Granite.Toast"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:33 data/granite.metainfo.xml.in:49
+#: data/granite.metainfo.xml.in:59 data/granite.metainfo.xml.in:78
+#: data/granite.metainfo.xml.in:114
+msgid "Updated translations"
+msgstr "Posodobljeni prevodi"
+
+#: data/granite.metainfo.xml.in:46
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:33
+#: data/granite.metainfo.xml.in:47
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
 
-#: data/granite.metainfo.xml.in:34
+#: data/granite.metainfo.xml.in:48
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:45
-#: data/granite.metainfo.xml.in:64 data/granite.metainfo.xml.in:100
-#: data/granite.metainfo.xml.in:114
-msgid "Updated translations"
-msgstr "Posodobljeni prevodi"
-
-#: data/granite.metainfo.xml.in:44
+#: data/granite.metainfo.xml.in:58
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:52 data/granite.metainfo.xml.in:75
-#: data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:89
 #, fuzzy
 #| msgid "New features"
 msgid "New Features:"
 msgstr "Nove zmožnosti"
 
-#: data/granite.metainfo.xml.in:54
+#: data/granite.metainfo.xml.in:68
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:55
+#: data/granite.metainfo.xml.in:69
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:56
+#: data/granite.metainfo.xml.in:70
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:57
+#: data/granite.metainfo.xml.in:71
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:58
+#: data/granite.metainfo.xml.in:72
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:62
+#: data/granite.metainfo.xml.in:76
 msgid "Allow text in Granite.Toast to wrap"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:63
+#: data/granite.metainfo.xml.in:77
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:77
+#: data/granite.metainfo.xml.in:91
 msgid "Ported to GTK4! 🎉️"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:78
+#: data/granite.metainfo.xml.in:92
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:79
+#: data/granite.metainfo.xml.in:93
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:81
+#: data/granite.metainfo.xml.in:95
 msgid "Removals:"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:83
+#: data/granite.metainfo.xml.in:97
 msgid "Application: use Gtk.Application instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:84
+#: data/granite.metainfo.xml.in:98
 msgid "Drawing: Use Gtk.CSS"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:85
+#: data/granite.metainfo.xml.in:99
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:86
+#: data/granite.metainfo.xml.in:100
 msgid "Logger: use GLib.log instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:87
+#: data/granite.metainfo.xml.in:101
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:88
+#: data/granite.metainfo.xml.in:102
 msgid "Paths: use GLib.Environment instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:89
+#: data/granite.metainfo.xml.in:103
 msgid "Seekbar"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:90
+#: data/granite.metainfo.xml.in:104
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:91
+#: data/granite.metainfo.xml.in:105
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:92
+#: data/granite.metainfo.xml.in:106
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:93
+#: data/granite.metainfo.xml.in:107
 msgid "StorageBar"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:94
+#: data/granite.metainfo.xml.in:108
 msgid "TextStyle: use style class constants instead"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:95
-msgid "Several functions in System were replaced by GLib.AppInfo"
-msgstr ""
-
 #: data/granite.metainfo.xml.in:109
-msgid "min_length property for Granite.ValidatedEntry"
-msgstr ""
-
-#: data/granite.metainfo.xml.in:110
-msgid "Granite.HyperTextView for navigatable URLs in text views"
-msgstr ""
-
-#: data/granite.metainfo.xml.in:116
-msgid "Fixes:"
-msgstr ""
-
-#: data/granite.metainfo.xml.in:118
-msgid "Prevent crashing on environments without dark style preference support"
+msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
 
 #, fuzzy
