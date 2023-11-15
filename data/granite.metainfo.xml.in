@@ -116,24 +116,7 @@
       </description>
     </release>
 
-    <release version="6.2.0" date="2021-11-23" urgency="medium">
-      <description>
-        <p>New Features:</p>
-        <ul>
-          <li>min_length property for Granite.ValidatedEntry</li>
-          <li>Granite.HyperTextView for navigatable URLs in text views</li>
-        </ul>
-        <p>Improvements:</p>
-        <ul>
-          <li>Updated translations</li>
-        </ul>
-        <p>Fixes:</p>
-        <ul>
-          <li>Prevent crashing on environments without dark style preference support</li>
-        </ul>
-      </description>
-    </release>
-
+    <release version="6.2.0" date="2021-11-23" urgency="medium" />
     <release version="6.1.2" date="2021-10-25" urgency="medium" />
     <release version="6.1.1" date="2021-08-25" urgency="medium" />
     <release version="6.1.0" date="2021-07-13" urgency="medium" />
