@@ -5,12 +5,16 @@
     <file alias="scalable/actions/adw-external-link-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic.svg</file>
     <file alias="scalable/actions/adw-tab-unpin-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-unpin-symbolic.svg</file>
 
+    <file alias="scalable/actions/list-drag-handle-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/list-drag-handle-symbolic.svg</file>
+
     <file alias="scalable/actions/pan-down-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-down-symbolic.svg</file>
     <file alias="scalable/actions/pan-end-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
     <file alias="scalable/actions/pan-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
     <file alias="scalable/actions/pan-start-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
     <file alias="scalable/actions/pan-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
     <file alias="scalable/actions/pan-up-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
+
+    <file alias="scalable/actions/selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/selection-mode-symbolic.svg</file>
 
     <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
     <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
