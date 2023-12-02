@@ -33,9 +33,9 @@ To install, use `ninja install`
 
     ninja install
 
-To see a demo app of Granite's widgets, run `granite-demo` after installing it:
+To see a demo app of Granite's widgets, run `granite-7-demo` after installing it:
 
-    granite-demo
+    granite-7-demo
 
 
 ## Documentation
