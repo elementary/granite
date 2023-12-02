@@ -61,7 +61,7 @@ public class DialogsView : Gtk.Box {
         dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
-        suggested_button.get_style_context ().add_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+        suggested_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
 
         dialog.response.connect ((response_id) => {
            if (response_id == Gtk.ResponseType.ACCEPT) {
@@ -85,7 +85,7 @@ public class DialogsView : Gtk.Box {
         message_dialog.transient_for = window;
 
         var suggested_button = new Gtk.Button.with_label ("Suggested Action");
-        suggested_button.get_style_context ().add_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+        suggested_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
         message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");

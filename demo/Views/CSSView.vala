@@ -16,18 +16,18 @@ public class CSSView : Gtk.Box {
             margin_start = 24,
             margin_top = 12
         };
-        header1.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
+        header1.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
 
         var header2 = new Gtk.Label ("\"h2\" Style Class");
-        header2.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        header2.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var header3 = new Gtk.Label ("\"h3\" Style Class");
-        header3.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+        header3.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
 
         var header4 = new Gtk.Label ("\"h4\" Style Class") {
             margin_bottom = 12
         };
-        header4.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"card\" with \"rounded\" and \"checkerboard\" style classes"
@@ -75,7 +75,7 @@ public class CSSView : Gtk.Box {
         var back_button = new Gtk.Button.with_label ("Back Button") {
             halign = Gtk.Align.START
         };
-        back_button.get_style_context ().add_class (Granite.STYLE_CLASS_BACK_BUTTON);
+        back_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
         var scales_header = new Granite.HeaderLabel ("Scales") {
             secondary_text = "\"warmth\" and \"temperature\" style classes"
@@ -88,7 +88,7 @@ public class CSSView : Gtk.Box {
             inverted = true
         };
         warmth_scale.set_value (6000);
-        warmth_scale.get_style_context ().add_class (Granite.STYLE_CLASS_WARMTH);
+        warmth_scale.add_css_class (Granite.STYLE_CLASS_WARMTH);
 
         var temperature_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, -16.0f, 16.0f, 1.0) {
             draw_value = false,
@@ -96,7 +96,7 @@ public class CSSView : Gtk.Box {
             hexpand = true
         };
         temperature_scale.set_value (0);
-        temperature_scale.get_style_context ().add_class (Granite.STYLE_CLASS_TEMPERATURE);
+        temperature_scale.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
         var primary_color_label = new Granite.HeaderLabel ("Set HeaderBar color");
 
@@ -105,10 +105,10 @@ public class CSSView : Gtk.Box {
         var accent_color_label = new Granite.HeaderLabel ("Accent colored labels and icons");
 
         var accent_color_icon = new Gtk.Image.from_icon_name ("emoji-body-symbolic");
-        accent_color_icon.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+        accent_color_icon.add_css_class (Granite.STYLE_CLASS_ACCENT);
 
         var accent_color_string = new Gtk.Label ("Lorem ipsum dolor sit amet");
-        accent_color_string.get_style_context ().add_class (Granite.STYLE_CLASS_ACCENT);
+        accent_color_string.add_css_class (Granite.STYLE_CLASS_ACCENT);
 
         var accent_color_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         accent_color_grid.append (accent_color_icon);

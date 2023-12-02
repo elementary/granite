@@ -11,7 +11,7 @@ public class DateTimePickerView : Gtk.Grid {
     construct {
         var pickers_label = new Gtk.Label ("Picker Widgets");
         pickers_label.xalign = 0;
-        pickers_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        pickers_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var date_label = new Gtk.Label ("DatePicker:");
         date_label.halign = Gtk.Align.END;
@@ -26,7 +26,7 @@ public class DateTimePickerView : Gtk.Grid {
         var formatting_label = new Gtk.Label ("String Formatting");
         formatting_label.margin_top = 6;
         formatting_label.xalign = 0;
-        formatting_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        formatting_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var current_time_label = new Gtk.Label ("Localized time:");
         current_time_label.halign = Gtk.Align.END;

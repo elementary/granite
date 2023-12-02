@@ -92,7 +92,7 @@ public class Granite.SettingsSidebar : Gtk.Widget {
                     xalign = 0
                 };
 
-                label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+                label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
                 row.set_header (label);
             }
         });

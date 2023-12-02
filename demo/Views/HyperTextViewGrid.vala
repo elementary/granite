@@ -23,7 +23,7 @@ public class HyperTextViewGrid : Gtk.Box {
             halign = Gtk.Align.START,
             xalign = 0
         };
-        hypertext_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        hypertext_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var hypertext_textview = new Granite.HyperTextView ();
         hypertext_textview.buffer.text = "elementary OS - https://elementary.io/\nThe fast, open and privacy-respecting replacement for Windows and macOS.";
