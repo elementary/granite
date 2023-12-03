@@ -16,7 +16,7 @@ public class FormView : Gtk.Box {
             halign = Gtk.Align.START,
             xalign = 0
         };
-        username_label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        username_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var username_entry = new Granite.ValidatedEntry () {
             min_length = 8,

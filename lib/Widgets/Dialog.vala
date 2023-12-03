@@ -43,7 +43,7 @@
 *   dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 *
 *   var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
-*   suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+*   suggested_button.add_css_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 *
 *   dialog.show_all ();
 *   dialog.response.connect ((response_id) => {

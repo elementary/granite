@@ -62,17 +62,15 @@ public class Granite.ValidatedEntry : Gtk.Entry {
         });
 
         changed.connect_after (() => {
-            unowned Gtk.StyleContext style_context = get_style_context ();
-
             if (text == "") {
                 secondary_icon_name = null;
-                style_context.remove_class (Granite.STYLE_CLASS_ERROR);
+                remove_css_class (Granite.STYLE_CLASS_ERROR);
             } else if (is_valid) {
                 secondary_icon_name = "process-completed-symbolic";
-                style_context.remove_class (Granite.STYLE_CLASS_ERROR);
+                remove_css_class (Granite.STYLE_CLASS_ERROR);
             } else {
                 secondary_icon_name = "process-error-symbolic";
-                style_context.add_class (Granite.STYLE_CLASS_ERROR);
+                add_css_class (Granite.STYLE_CLASS_ERROR);
             }
         });
     }

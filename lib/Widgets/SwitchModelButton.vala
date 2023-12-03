@@ -49,10 +49,8 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
             wrap = true,
             xalign = 0
         };
-
-        unowned var description_style_context = description_label.get_style_context ();
-        description_style_context.add_class (Granite.STYLE_CLASS_SMALL_LABEL);
-        description_style_context.add_class (Granite.STYLE_CLASS_DIM_LABEL);
+        description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+        description_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
         var description_revealer = new Gtk.Revealer () {
             child = description_label

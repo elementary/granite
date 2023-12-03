@@ -80,7 +80,7 @@ private class Granite.SettingsSidebarRow : Gtk.ListBoxRow {
             vexpand = true,
             xalign = 0
         };
-        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+        title_label.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
 
         status_icon = new Gtk.Image () {
             halign = Gtk.Align.END,

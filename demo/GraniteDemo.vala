@@ -74,7 +74,7 @@ public class Granite.Demo : Gtk.Application {
         gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
 
         var headerbar = new Gtk.HeaderBar ();
-        headerbar.get_style_context ().add_class ("default-decoration");
+        headerbar.add_css_class ("default-decoration");
         headerbar.show_title_buttons = true;
         headerbar.pack_end (mode_switch);
 
