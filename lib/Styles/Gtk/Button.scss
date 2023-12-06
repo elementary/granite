@@ -42,7 +42,7 @@ button {
 
         &:hover {
             // FIXME: might be a GTK bug to need `double` for underline to show
-            text-decoration: underline double;
+            text-decoration: underline;
         }
 
         &:dir(ltr) {
