@@ -11,20 +11,20 @@ public class CSSView : Gtk.Box {
     }
 
     construct {
-        var header1 = new Gtk.Label ("\"h1\" Style Class") {
+        var header1 = new Gtk.Label ("\"title-1\" Style Class") {
             margin_end = 24,
             margin_start = 24,
             margin_top = 12
         };
         header1.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
 
-        var header2 = new Gtk.Label ("\"h2\" Style Class");
+        var header2 = new Gtk.Label ("\"title-2\" Style Class");
         header2.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var header3 = new Gtk.Label ("\"h3\" Style Class");
+        var header3 = new Gtk.Label ("\"title-3\" Style Class");
         header3.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
 
-        var header4 = new Gtk.Label ("\"h4\" Style Class") {
+        var header4 = new Gtk.Label ("\"title-4\" Style Class") {
             margin_bottom = 12
         };
         header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
