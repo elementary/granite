@@ -65,11 +65,14 @@ i18n = import('i18n')
 
 subdir('lib')
 subdir('data')
-subdir('demo')
 subdir('po')
 
 if get_option('documentation')
     subdir('doc')
+endif
+
+if get_option('demo')
+    subdir('demo')
 endif
 
 # set up post-install script to refresh the GTK icon cache
