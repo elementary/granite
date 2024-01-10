@@ -38,12 +38,53 @@ public class WelcomeView : Gtk.Box {
             icon = new ThemedIcon ("edit-find-symbolic")
         };
 
+        var listbox = new Gtk.ListBox () {
+            margin_top = 12,
+            margin_end = 12,
+            margin_bottom = 12,
+            margin_start = 12
+        };
+        listbox.set_placeholder (search_placeholder);
+        listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
+
+        var search_entry = new Gtk.SearchEntry () {
+            margin_top = 12,
+            margin_bottom = 9,
+            margin_start = 12,
+            margin_end = 12
+        };
+
+        var popover_placeholder = new Granite.Placeholder ("No mailboxes found") {
+            description = "Try changing search terms",
+            icon = new ThemedIcon ("edit-find-symbolic")
+        };
+
+        var popover_list = new Gtk.ListBox ();
+        popover_list.set_placeholder (popover_placeholder);
+
+        var box = new Gtk.Box (VERTICAL, 0);
+        box.append (search_entry);
+        box.append (popover_list);
+
+        var popover = new Gtk.Popover () {
+            autohide = true,
+            child = box
+        };
+
+        var menubutton = new Gtk.MenuButton () {
+            halign = CENTER,
+            valign = CENTER,
+            label = "Listbox in a Popover",
+            popover = popover
+        };
+
         var stack = new Gtk.Stack () {
             vexpand = true
         };
         stack.add_titled (welcome, "Welcome", "Welcome");
         stack.add_titled (alert, "Alert", "Alert");
-        stack.add_titled (search_placeholder, "Search", "Search");
+        stack.add_titled (listbox, "ListBox", "ListBox");
+        stack.add_titled (menubutton, "Popover", "Popover");
 
         var stack_switcher = new Gtk.StackSwitcher () {
             margin_top = 24,
