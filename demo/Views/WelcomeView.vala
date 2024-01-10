@@ -56,6 +56,7 @@ public class WelcomeView : Gtk.Box {
 
         var popover_placeholder = new Granite.Placeholder ("No mailboxes found") {
             description = "Try changing search terms",
+            halign = FILL,
             icon = new ThemedIcon ("edit-find-symbolic")
         };
 
