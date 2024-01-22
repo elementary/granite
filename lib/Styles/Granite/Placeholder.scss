@@ -30,8 +30,8 @@ placeholder {
     .title-2 {
         @extend .dim-label;
 
-        color: #{'@theme_fg_color'};
-        font-size: 12pt;
+        color: $fg-color;
+        font-size: 1.3em;
         font-weight: initial;
     }
 
@@ -66,5 +66,37 @@ placeholder {
                 margin-top: rem(12px);
             }
         }
+    }
+}
+
+list placeholder {
+    .title-1 {
+        font-size: 2em;
+    }
+    .title-2 {
+        font-size: 1em;
+    }
+}
+
+popover placeholder {
+    > grid > .large-icons {
+        -gtk-icon-size: 32px;
+
+        &:dir(ltr) {
+            margin-right: 0;
+        }
+
+        &:dir(rtl) {
+            margin-left: 0;
+        }
+    }
+
+    .title-1 {
+        font-size: 1em;
+        font-weight: initial;
+    }
+
+    .title-2 {
+        font-size: 0.85em;
     }
 }
