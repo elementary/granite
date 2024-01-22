@@ -38,6 +38,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 }
             } else if (value != null) {
                 secondary_label = new Gtk.Label (value) {
+                    use_markup = true,
                     wrap = true,
                     xalign = 0
                 };
