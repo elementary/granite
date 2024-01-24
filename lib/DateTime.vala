@@ -50,6 +50,10 @@ namespace Granite.DateTime {
      * @return a localized, relative date and time string
      */
     public static string get_relative_datetime (GLib.DateTime date_time) {
+        if (date_time.to_unix () == 0) {
+            return _("Never");
+        }
+
         var now = new GLib.DateTime.now_local ();
         var diff = now.difference (date_time);
 
