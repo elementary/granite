@@ -7,6 +7,7 @@
  * AbstractSettingsPage is a {@link Gtk.ScrolledWindow} subclass with properties used
  * by other Granite settings widgets.
  */
+[Version (deprecated = true, deprecated_since = "7.5.0", replacement = "Switchboard.SettingsPage")]
 public abstract class Granite.SettingsPage : Gtk.Box {
     protected string _icon_name;
     protected string _title;
