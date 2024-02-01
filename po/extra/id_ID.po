@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 08:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/granite.metainfo.xml.in:11
+msgid "Granite 7"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:12
+msgid "Build consistent and usable apps more quickly and easily"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:14
+msgid ""
+"A companion library for GTK and GLib that provides complex widgets and "
+"convenience methods designed for use in apps built for elementary OS."
+msgstr ""
+
+#: data/granite.metainfo.xml.in:23
+msgid "elementary, Inc."
+msgstr ""
+
+#: data/granite.metainfo.xml.in:30 data/granite.metainfo.xml.in:44
+#: data/granite.metainfo.xml.in:56 data/granite.metainfo.xml.in:74
+#: data/granite.metainfo.xml.in:111
+msgid "Improvements:"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:32
+msgid "Add a withdraw method for Granite.Toast"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:33 data/granite.metainfo.xml.in:49
+#: data/granite.metainfo.xml.in:59 data/granite.metainfo.xml.in:78
+#: data/granite.metainfo.xml.in:114
+msgid "Updated translations"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:46
+msgid "Don't depend on the elementary stylesheet for fallback styles"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:47
+msgid ""
+"Automatically load gresourced stylesheets named \"Application.css\" on "
+"\"Granite.init ()\""
+msgstr ""
+
+#: data/granite.metainfo.xml.in:48
+msgid "Add SettingsUri constants for launching System Settings"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:58
+msgid "Make \"Granite.init ()\" publicly available"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:89
+msgid "New Features:"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:68
+msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:69
+msgid ""
+"Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
+"and others"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:70
+msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:71
+msgid ""
+"Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
+"widget"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:72
+msgid "Add optional secondary text to Granite.HeaderLabel"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:76
+msgid "Allow text in Granite.Toast to wrap"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:77
+msgid ""
+"SimpleSettingsPage: Wrap titles and allow description text to go under "
+"switches"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:91
+msgid "Ported to GTK4! 🎉️"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:92
+msgid "Granite.Placeholder: replaces AlertView and Welcome"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:93
+msgid "SimpleSettingsPage: Allow markup in description"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:95
+msgid "Removals:"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:97
+msgid "Application: use Gtk.Application instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:98
+msgid "Drawing: Use Gtk.CSS"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:99
+msgid "DynamicNotebook: use Adw.TabBar instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:100
+msgid "Logger: use GLib.log instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:101
+msgid ""
+"ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
+"style class instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:102
+msgid "Paths: use GLib.Environment instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:103
+msgid "Seekbar"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:104
+msgid "Services.Settings: use GLib.Settings instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:105
+msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:106
+msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:107
+msgid "StorageBar"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:108
+msgid "TextStyle: use style class constants instead"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:109
+msgid "Several functions in System were replaced by GLib.AppInfo"
+msgstr ""
