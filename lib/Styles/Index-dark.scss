@@ -1,14 +1,14 @@
-$color-scheme: "light";
+$color-scheme: "dark";
 
 // Constants and functions
 @import '_palette.scss';
 @import '_common.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
-$toplevel-border-color: rgba(black, 0.2);
+$toplevel-border-color: rgba(black, 0.75);
 
 // Text, images, and other foreground elements
-$fg-color: $BLACK_500;
+$fg-color: white;
 
 // Common styles
 @import '_label.scss';

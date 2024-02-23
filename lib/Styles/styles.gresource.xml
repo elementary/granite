@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/io/elementary/granite">
     <file compressed="true">Granite.css</file>
+    <file compressed="true">Granite-dark.css</file>
   </gresource>
 </gresources>
