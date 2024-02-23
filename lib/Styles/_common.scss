@@ -16,39 +16,6 @@
     }
 }
 
-@function bg-color($level) {
-    @if $color-scheme == "light" {
-        // Inputs
-        @if $level == 0 {
-            @return $SILVER_100;
-        // Views
-        } @else if $level == 1 {
-            @return white;
-        // Background
-        } @else if $level == 2 {
-            @return $SILVER_100;
-        // Sidebars and inline toolbars
-        } @else if $level == 3 {
-            @return mix($SILVER_100, $SILVER_300, $weight: 75%);
-        // Titlebars and toolbars
-        } @else if $level == 4 {
-            @return $titlebar-color;
-        }
-    } @else if $color-scheme == "dark" {
-        @if $level == 0 {
-            @return mix($BLACK_300, $BLACK_500, $weight: 50%);
-        } @else if $level == 1 {
-            @return mix($BLACK_300, $BLACK_500, $weight: 25%);
-        } @else if $level == 2 {
-            @return $BLACK_500;
-        } @else if $level == 3 {
-            @return mix($BLACK_500, $BLACK_700, $weight: 90%);
-        } @else if $level == 4 {
-            @return mix($BLACK_500, $BLACK_700, $weight: 45%);
-        }
-    }
-}
-
 @function shadow($level) {
     @if $color-scheme == "light" {
         @if $level == 1 {

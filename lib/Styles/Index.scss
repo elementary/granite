@@ -7,6 +7,25 @@ $color-scheme: "light";
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
 $toplevel-border-color: rgba(black, 0.2);
 
+@function bg-color($level) {
+    // Inputs
+    @if $level == 0 {
+        @return $SILVER_100;
+    // Views
+    } @else if $level == 1 {
+        @return white;
+    // Background
+    } @else if $level == 2 {
+        @return $SILVER_100;
+    // Sidebars and inline toolbars
+    } @else if $level == 3 {
+        @return mix($SILVER_100, $SILVER_300, $weight: 75%);
+    // Titlebars and toolbars
+    } @else if $level == 4 {
+        @return mix($SILVER_100, $SILVER_300, $weight: 30%);
+    }
+}
+
 // Text, images, and other foreground elements
 $fg-color: $BLACK_500;
 
