@@ -5,13 +5,15 @@ sassc_opts = [ '-a', '-M', '-t', 'compact' ]
 stylesheet_deps = custom_target(
     'Granite.scss',
     input: 'Index.scss',
-    output: 'Granite.css',
+    output: 'gtk.css',
     command: [
         sassc,
         sassc_opts,
         '@INPUT@',
         '@OUTPUT@',
-    ]
+    ],
+    install: true,
+    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
 )
 
 stylesheet_resource = gnome.compile_resources(
