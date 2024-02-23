@@ -1,0 +1,32 @@
+windowcontrols {
+    &.end:dir(ltr),
+    &.start:dir(rtl) {
+        margin-left: rem(12px);
+    }
+
+    &.start:dir(ltr),
+    &.end:dir(rtl) {
+        margin-right: rem(12px);
+    }
+
+    button {
+        padding: rem(4px);
+
+        transition: background duration("in-place") $easing;
+        border-radius: rem($window_radius / 2);
+
+        image {
+            transition: -gtk-icon-transform duration("expand") $easing;
+        }
+
+        &:active {
+            transition: background duration("expand") $easing;
+            background: rgba($fg-color, 0.15);
+
+            image {
+                transition: -gtk-icon-transform duration("collapse") $easing;
+                -gtk-icon-transform: scale(0.8);
+            }
+        }
+    }
+}

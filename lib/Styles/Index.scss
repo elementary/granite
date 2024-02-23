@@ -1,5 +1,6 @@
 // Class constants and common styles
 @import '_palette.scss';
+@import '_animate.scss';
 @import '_common.scss';
 @import '_label.scss';
 @import '_osd.scss';
@@ -8,6 +9,7 @@
 @import 'Gtk/Button.scss';
 @import 'Gtk/HeaderBar.scss';
 @import 'Gtk/Window.scss';
+@import 'Gtk/WindowControls.scss';
 
 // Granite widgets
 @import 'Granite/Dialog.scss';
