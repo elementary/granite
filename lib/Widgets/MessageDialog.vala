@@ -291,6 +291,12 @@ public class Granite.MessageDialog : Granite.Dialog {
         get_content_area ().append (message_grid);
 
         add_css_class (Granite.STYLE_CLASS_MESSAGE_DIALOG);
+
+        map.connect (() => {
+            //Meh...
+            var last_button = get_content_area ().get_next_sibling ().get_last_child ().get_last_child ();
+            focus_widget = last_button;
+        });
     }
 
     /**
