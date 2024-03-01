@@ -8,12 +8,29 @@
  * {@link Adw.NavigationView}s. It will automatically detect when under a
  * {@link Adw.NavigationView} and label itself with the title of the preceding page.
  */
- public class Granite.BackButton : Gtk.Button {
+[Version (since = "7.5.0")]
+public class Granite.BackButton : Gtk.Button {
+
+    /**
+     * A manually set label when used outside of {@link Adw.NavigationView}
+     */
+    public new string label { get; set; }
+
     construct {
-        add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
+        var image = new Gtk.Image.from_icon_name ("go-previous-symbolic");
+
+        var label_widget = new Gtk.Label ("");
+
+        var box = new Gtk.Box (HORIZONTAL, 0);
+        box.append (image);
+        box.append (label_widget);
+
+        child = box;
 
         map.connect (on_map);
         clicked.connect (on_click);
+
+        bind_property ("label", label_widget, "label");
     }
 
     private void on_map () {
