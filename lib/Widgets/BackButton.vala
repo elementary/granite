@@ -4,7 +4,7 @@
  */
 
 /**
- * BackButton is meant to be used in hearders to navigate in
+ * BackButton is meant to be used in headers to navigate in
  * {@link Adw.NavigationView}s. It will automatically detect when under a
  * {@link Adw.NavigationView} and label itself with the title of the preceding page.
  */
@@ -34,7 +34,10 @@
         var previous_page = navigation_view.get_previous_page (navigation_page);
 
         if (previous_page != null) {
+            visible = true;
             label = previous_page.title;
+        } else {
+            visible = false;
         }
     }
 
