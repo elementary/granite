@@ -10,7 +10,6 @@
  */
 [Version (since = "7.5.0")]
 public class Granite.BackButton : Gtk.Button {
-
     /**
      * A manually set label when used outside of {@link Adw.NavigationView}
      */
