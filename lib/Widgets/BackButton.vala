@@ -48,10 +48,7 @@ public class Granite.BackButton : Gtk.Button {
         var previous_page = navigation_view.get_previous_page (navigation_page);
 
         if (previous_page != null) {
-            visible = true;
             label = previous_page.title;
-        } else {
-            visible = false;
         }
     }
 
