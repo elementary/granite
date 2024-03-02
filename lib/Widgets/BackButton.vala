@@ -54,7 +54,7 @@ public class Granite.BackButton : Gtk.Button {
         var previous_page = navigation_view.get_previous_page (navigation_page);
 
         if (previous_page != null) {
-            title_binding = bind_property (previous_page, "title", this, "label", SYNC_CREATE);
+            title_binding = previous_page.bind_property ("title", this, "label", SYNC_CREATE);
         }
     }
 
