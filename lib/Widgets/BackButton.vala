@@ -36,14 +36,12 @@ public class Granite.BackButton : Gtk.Button {
         var navigation_view = (Adw.NavigationView) get_ancestor (typeof (Adw.NavigationView));
 
         if (navigation_view == null) {
-            warning ("Granite.BackButton used outside of Adw.NavigationView");
             return;
         }
 
         var navigation_page = (Adw.NavigationPage) get_ancestor (typeof (Adw.NavigationPage));
 
         if (navigation_view == null) {
-            warning ("Granite.BackButton used outside of Adw.NavigationPage");
             return;
         }
 
