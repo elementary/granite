@@ -15,6 +15,8 @@ public class Granite.BackButton : Gtk.Button {
      */
     public new string label { get; set; }
 
+    private Binding? title_binding = null;
+
     construct {
         var image = new Gtk.Image.from_icon_name ("go-previous-symbolic");
 
@@ -33,6 +35,10 @@ public class Granite.BackButton : Gtk.Button {
     }
 
     private void on_map () {
+        if (title_binding != null) {
+            title_binding.unbind ();
+        }
+
         var navigation_view = (Adw.NavigationView) get_ancestor (typeof (Adw.NavigationView));
 
         if (navigation_view == null) {
@@ -48,7 +54,7 @@ public class Granite.BackButton : Gtk.Button {
         var previous_page = navigation_view.get_previous_page (navigation_page);
 
         if (previous_page != null) {
-            label = previous_page.title;
+            title_binding = bind_property (previous_page, "title", this, "label", SYNC_CREATE);
         }
     }
 
