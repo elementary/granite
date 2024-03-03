@@ -1,8 +1,8 @@
 .osd {
-    background-color: rgba($fg-color, 0.95);
+    background-color: #{'alpha(@fg_color, 0.95)'};
     border-radius: rem($window_radius / 2);
     box-shadow: shadow(1);
-    color: bg-color(1);
+    color: #{'@bg_color_1'};
     margin: rem(6px);
     padding: rem(6px);
 }

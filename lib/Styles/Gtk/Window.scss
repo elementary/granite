@@ -1,16 +1,16 @@
 window {
-    background-color: bg_color(2);
-    color: $fg-color;
+    background-color: #{'@bg_color_2'};
+    color: #{'@fg_color'};
 
     &.csd {
         border-radius: rem($window_radius);
         box-shadow:
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px #{'@toplevel_border_color'},
             shadow(4);
 
         &:backdrop {
             box-shadow:
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px #{'@toplevel_border_color'},
                 shadow(2);
         }
 
@@ -22,7 +22,7 @@ window {
         &.tiled-right:not(.maximized),
         &.tiled-left:not(.maximized) {
             box-shadow:
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px #{'@toplevel_border_color'},
                 shadow(2);
         }
 
@@ -53,6 +53,6 @@ window {
 
     &.ssd {
         border-radius: $window_radius $window_radius 0 0;
-        box-shadow: 0 0 0 1px $toplevel-border-color;
+        box-shadow: 0 0 0 1px #{'@toplevel_border_color'};
     }
 }

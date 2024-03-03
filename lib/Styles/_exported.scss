@@ -1,0 +1,9 @@
+@define-color bg_color_0 #{$bg-color-0};
+@define-color bg_color_1 #{$bg-color-1};
+@define-color bg_color_2 #{$bg-color-2};
+@define-color bg_color_3 #{$bg-color-3};
+
+@define-color fg_color #{$fg-color};
+
+// Outset box shadow or border color on toplevel elements like windows, menus, popovers
+@define-color toplevel_border_color #{$toplevel-border-color};
