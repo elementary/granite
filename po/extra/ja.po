@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-15 17:03+0000\n"
-"PO-Revision-Date: 2023-11-17 08:43+0000\n"
+"POT-Creation-Date: 2024-01-24 08:04+0000\n"
+"PO-Revision-Date: 2024-02-12 09:11+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:91
 msgid "Ported to GTK4! 🎉️"
-msgstr "GTK4 に移行しました！🎉️"
+msgstr "GTK4 に移行しました! 🎉️"
 
 #: data/granite.metainfo.xml.in:92
 msgid "Granite.Placeholder: replaces AlertView and Welcome"

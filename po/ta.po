@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-15 17:03+0000\n"
+"POT-Creation-Date: 2024-01-24 08:04+0000\n"
 "PO-Revision-Date: 2017-06-17 08:24+0000\n"
 "Last-Translator: Rajeev Kumar <irajeevankumar@gmail.com>\n"
 "Language-Team: Tamil <https://l10n.elementary.io/projects/desktop/granite/ta/"
@@ -42,86 +42,90 @@ msgstr "%H:%M:%S"
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: lib/DateTime.vala:59
+#: lib/DateTime.vala:54
+msgid "Never"
+msgstr ""
+
+#: lib/DateTime.vala:63
 msgid "Now"
 msgstr ""
 
-#: lib/DateTime.vala:62
+#: lib/DateTime.vala:66
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/DateTime.vala:65
+#: lib/DateTime.vala:69
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/DateTime.vala:71
+#: lib/DateTime.vala:75
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/DateTime.vala:74
+#: lib/DateTime.vala:78
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/DateTime.vala:80
+#: lib/DateTime.vala:84
 msgid "Yesterday"
 msgstr ""
 
-#: lib/DateTime.vala:82
+#: lib/DateTime.vala:86
 msgid "Tomorrow"
 msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: lib/DateTime.vala:146
+#: lib/DateTime.vala:150
 #, fuzzy
 msgid "%a, %b %e, %Y"
 msgstr "%a %b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: lib/DateTime.vala:149
+#: lib/DateTime.vala:153
 msgid "%b %e %Y"
 msgstr "%b %e %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: lib/DateTime.vala:152
+#: lib/DateTime.vala:156
 msgid "%Y"
 msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: lib/DateTime.vala:155
+#: lib/DateTime.vala:159
 msgid "%b %e"
 msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: lib/DateTime.vala:158
+#: lib/DateTime.vala:162
 msgid "%a %Y"
 msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: lib/DateTime.vala:161
+#: lib/DateTime.vala:165
 #, c-format
 msgid "%a"
 msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: lib/DateTime.vala:164
+#: lib/DateTime.vala:168
 #, fuzzy
 msgid "%a, %b %e"
 msgstr "%a %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: lib/DateTime.vala:167
+#: lib/DateTime.vala:171
 msgid "%b"
 msgstr "%b"
 

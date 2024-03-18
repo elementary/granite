@@ -1,44 +1,41 @@
-# Belarusian translation for granite
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the granite package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the granite-7 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: granite\n"
+"Project-Id-Version: granite-7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-24 08:04+0000\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: Belarusian <be@li.org>\n"
-"Language: be\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
 msgid "%H:%M:%S"
-msgstr "%H:%M:%S"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:39
 msgid "%H:%M"
-msgstr "%H:%M"
+msgstr ""
 
 #: lib/DateTime.vala:54
 msgid "Never"
@@ -86,51 +83,48 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:150
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%A, %e %b %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:153
 msgid "%b %e %Y"
-msgstr "%e %b %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:156
 msgid "%Y"
-msgstr "%Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:159
 msgid "%b %e"
-msgstr "%b %e"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:162
 msgid "%a %Y"
-msgstr "%a %Y"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:165
 #, c-format
 msgid "%a"
-msgstr "%a"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:168
-#, fuzzy
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:171
 msgid "%b"
-msgstr "%b"
+msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:126
-#, fuzzy
 msgid "_Close"
-msgstr "Зачыніць"
+msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
@@ -148,12 +142,12 @@ msgstr ""
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:99
 msgid "PM"
-msgstr "PM"
+msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:136
 msgid ":"
-msgstr ":"
+msgstr ""
 
 #: lib/Widgets/Utils.vala:33
 msgid "Shift"
@@ -220,97 +214,3 @@ msgstr ""
 #: lib/Widgets/Utils.vala:163
 msgid ", "
 msgstr ""
-
-#~ msgid "Close Tab"
-#~ msgstr "Закрыць укладку"
-
-#, fuzzy
-#~ msgid "Open in a New Window"
-#~ msgstr "Адкрыць у новым акне"
-
-#~ msgid "Duplicate"
-#~ msgstr "Дубляваць"
-
-#~ msgid "Close Other Tab"
-#~ msgstr "Зачыніце іншую ўкладку"
-
-#~ msgid "Close Other Tabs"
-#~ msgstr "Зачыніце іншыя ўкладкі"
-
-#~ msgid "Clear All"
-#~ msgstr "Ачысціць усё"
-
-#~ msgid "New Tab"
-#~ msgstr "Новая ўкладка"
-
-#~ msgid "Undo Close Tab"
-#~ msgstr "Адмяніць іншыя ўкладкі"
-
-#~ msgid "Closed Tabs"
-#~ msgstr "Зачыненыя ўкладкі"
-
-#~ msgid "Website"
-#~ msgstr "Сайт"
-
-#~ msgid "Designed by:"
-#~ msgstr "Распрацаваны:"
-
-#~ msgid "Written by:"
-#~ msgstr "Напісаны:"
-
-#~ msgid "Documented by:"
-#~ msgstr "Зарэгістраваны:"
-
-#~ msgid "Translated by %s"
-#~ msgstr "Перакладзены %s"
-
-#~ msgid "Close"
-#~ msgstr "Зачыніць"
-
-#~ msgid "Suggest Translations"
-#~ msgstr "Прапануеце пераклады"
-
-#~ msgid "Report a Problem"
-#~ msgstr "Паведаміць аб праблеме"
-
-#~ msgid "Menu"
-#~ msgstr "Меню"
-
-#~ msgid "About"
-#~ msgstr "Аб"
-
-#~ msgid "© %s"
-#~ msgstr "© %s"
-
-#~ msgid "This program is published under the terms of the "
-#~ msgstr "Гэтая праграма  апублікавана  ў адпаведнасці з умовамі "
-
-#~ msgid " license, it comes with ABSOLUTELY NO WARRANTY; for details, visit "
-#~ msgstr ""
-#~ " ліцэнзія, яна пастаўляецца без ўсякіх ГАРАНТЫЙ; для падрабязнай "
-#~ "інфармацыі наведайце "
-
-#~ msgid "Developers"
-#~ msgstr "Распрацоўшчыкі"
-
-#~ msgid "Open in a new Window"
-#~ msgstr "Адкрыць у новым акне"
-
-#~ msgid "Could not contact Contractor. You may need to install it"
-#~ msgstr ""
-#~ "Не ўдаецца звязацца з Contractor. Магчыма, вам неабходна ўсталяваць яго"
-
-#~ msgid "No action found for this file"
-#~ msgstr "Ніякае дзеянне не знойдзена для гэтага файла"
-
-#~ msgid "%a %b %e %Y"
-#~ msgstr "%A, %e %b %Y"
-
-#~ msgid "%a %b %e"
-#~ msgstr "%a %b %e"
-
-#~ msgid "translator-credits"
-#~ msgstr ""
-#~ "Launchpad Contributions:\n"
-#~ "  Nick https://launchpad.net/~nick-pridoroshko\n"
-#~ "  Viktuk https://launchpad.net/~register885"
