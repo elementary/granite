@@ -60,4 +60,24 @@
     }
 }
 
+@function highlight($sides: "full") {
+    $highlight:
+        inset 1px 0 0 0 scale-color($highlight_color, $alpha: -93%),
+        inset -1px 0 0 0 scale-color($highlight_color, $alpha: -93%);
+
+    @if $sides == "top" or $sides == "full" {
+        $highlight:
+            inset 0 1px 0 0 scale-color($highlight_color, $alpha: -70%),
+            $highlight;
+    }
+
+    @if $sides == "bottom" or $sides == "full" {
+        $highlight:
+            inset 0 -1px 0 0 scale-color($highlight_color, $alpha: -80%),
+            $highlight;
+    }
+
+    @return $highlight;
+}
+
 $window_radius: 9px;
