@@ -1,14 +1,14 @@
 spinner {
-    opacity: 0;
     -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+    opacity: 0;
     transform: scale(0.8);
     transition:
         opacity duration("collapse") easing(),
         transform duration("collapse") easing();
 
     &:checked {
-        opacity: 1;
         animation: spin 600ms steps(12) infinite;
+        opacity: 1;
         transform: scale(1);
         transition:
             opacity duration("expand") easing(),
