@@ -27,8 +27,13 @@ $toplevel-border-color: rgba(black, 0.75);
     }
 }
 
+// Outset box shadow or border color on inputs like buttons, entries, checkboxes
+$border-color: rgba(black, 0.1);
+
 // Text, images, and other foreground elements
 $fg-color: white;
+
+$highlight_color: rgba(white, 0.2);
 
 // Common styles
 @import '_label.scss';
