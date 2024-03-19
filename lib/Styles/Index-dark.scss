@@ -35,15 +35,7 @@ $fg-color: white;
 @import '_osd.scss';
 
 // Gtk Widgets
-@import 'Gtk/Button.scss';
-@import 'Gtk/HeaderBar.scss';
-@import 'Gtk/Window.scss';
-@import 'Gtk/WindowControls.scss';
+@import 'Gtk/Index.scss';
 
 // Granite widgets
-@import 'Granite/Dialog.scss';
-@import 'Granite/Header.scss';
-@import 'Granite/MessageDialog.scss';
-@import 'Granite/OverlayBar.scss';
-@import 'Granite/Placeholder.scss';
-@import 'Granite/Toast.scss';
+@import 'Granite/Index.scss';
