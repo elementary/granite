@@ -1,0 +1,25 @@
+spinner {
+    opacity: 0;
+    -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+    transform: scale(0.8);
+    transition:
+        opacity duration("collapse") easing(),
+        transform duration("collapse") easing();
+
+    &:checked {
+        opacity: 1;
+        animation: spin 600ms steps(12) infinite;
+        transform: scale(1);
+        transition:
+            opacity duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:backdrop {
+            opacity: 0.8;
+        }
+
+        &:disabled {
+            opacity: 0.4;
+        }
+    }
+}
