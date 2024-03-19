@@ -1,33 +1,33 @@
-$color-scheme: "light";
+$color-scheme: "dark";
 
 // Constants and functions
 @import '_palette.scss';
 @import '_common.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
-$toplevel-border-color: rgba(black, 0.2);
+$toplevel-border-color: rgba(black, 0.75);
 
 @function bg-color($level) {
     // Inputs
     @if $level == 0 {
-        @return $SILVER_100;
+        @return mix($BLACK_300, $BLACK_500, $weight: 50%);
     // Views
     } @else if $level == 1 {
-        @return white;
+        @return mix($BLACK_300, $BLACK_500, $weight: 25%);
     // Background
     } @else if $level == 2 {
-        @return $SILVER_100;
+        @return $BLACK_500;
     // Sidebars and inline toolbars
     } @else if $level == 3 {
-        @return mix($SILVER_100, $SILVER_300, $weight: 75%);
+        @return mix($BLACK_500, $BLACK_700, $weight: 90%);
     // Titlebars and toolbars
     } @else if $level == 4 {
-        @return mix($SILVER_100, $SILVER_300, $weight: 30%);
+        @return mix($BLACK_500, $BLACK_700, $weight: 45%);
     }
 }
 
 // Text, images, and other foreground elements
-$fg-color: $BLACK_500;
+$fg-color: white;
 
 // Common styles
 @import '_label.scss';

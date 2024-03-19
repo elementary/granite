@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/elementary/granite">
+    <file alias="Granite-dark.css" compressed="true">gtk-dark.css</file>
     <file alias="Granite.css" compressed="true">gtk.css</file>
   </gresource>
 </gresources>
