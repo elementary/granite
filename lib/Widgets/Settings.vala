@@ -122,14 +122,11 @@ namespace Granite {
                     "accent-color"
                 ).get_variant ();
 
-                // When reading the variant it is itself packed into a variant
-                GLib.Variant color;
-                variant.get ("v", out color);
-                update_color (color);
+                update_color (variant);
 
-                portal.setting_changed.connect ((scheme, key, val) => {
+                portal.setting_changed.connect ((scheme, key, value) => {
                     if (scheme == "org.freedesktop.appearance" && key == "accent-color") {
-                        update_color (val);
+                        update_color (value);
                     }
                 });
 
@@ -143,9 +140,10 @@ namespace Granite {
         }
 
         private void update_color (GLib.Variant color) {
-            Gdk.RGBA rgba = {0, 0, 0, 1};
-            color.get ("(ddd)", out rgba.red, out rgba.green, out rgba.blue);
+            double red, green, blue;
+            color.get ("(ddd)", out red, out green, out blue);
 
+            Gdk.RGBA rgba = {(float) red, (float) green, (float) blue, 1};
             accent_color = rgba.to_string ();
         }
 
