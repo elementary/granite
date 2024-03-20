@@ -37,6 +37,7 @@ $fg-color: $BLACK_500;
 $highlight_color: white;
 
 // Common styles
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 

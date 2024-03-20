@@ -1,3 +1,11 @@
+.accent {
+    color: #{'mix(@accent_color, @fg_color, 0.27)'};
+
+    &:backdrop {
+        color: inherit;
+    }
+}
+
 .title-1 {
     font-size: 24pt;
     font-weight: 700;

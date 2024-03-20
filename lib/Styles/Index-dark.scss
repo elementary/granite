@@ -37,6 +37,7 @@ $fg-color: white;
 $highlight_color: rgba(white, 0.2);
 
 // Common styles
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 
