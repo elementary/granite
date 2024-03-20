@@ -142,12 +142,12 @@ namespace Granite {
             accent_color = "#3689e6";
         }
 
-    private void update_color (GLib.Variant color) {
-        Gdk.RGBA rgba = {0, 0, 0, 1};
-        color.get ("(ddd)", out rgba.red, out rgba.green, out rgba.blue);
+        private void update_color (GLib.Variant color) {
+            Gdk.RGBA rgba = {0, 0, 0, 1};
+            color.get ("(ddd)", out rgba.red, out rgba.green, out rgba.blue);
 
-        accent_color = rgba.to_string ();
-    }
+            accent_color = rgba.to_string ();
+        }
 
         private void setup_prefers_color_scheme () {
             try {
