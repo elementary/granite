@@ -40,7 +40,9 @@ namespace Granite {
 
         /**
          * The theme accent color chosen by the user
+         * @since 7.5.0
          */
+        [Version (since = "7.5.0")]
         public string accent_color {
             get {
                 if (_accent_color == null) {
