@@ -1,4 +1,16 @@
 window.csd.dialog {
+    box-shadow:
+        highlight(),
+        0 0 0 1px $toplevel-border-color,
+        shadow(3);
+
+    &:backdrop {
+        box-shadow:
+            highlight(),
+            0 0 0 1px $toplevel-border-color,
+            shadow(2);
+    }
+
     .dialog-content-area {
         margin: rem(12px);
         margin-top: rem(18px);
