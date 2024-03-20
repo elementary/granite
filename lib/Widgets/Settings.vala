@@ -135,11 +135,11 @@ namespace Granite {
 
                 return;
             } catch (Error e) {
-                critical (e.message);
+                debug (e.message);
             }
 
             // Set a default in case we can't get from system
-            accent_color = "#f37329";
+            accent_color = "#3689e6";
         }
 
     private void update_color (GLib.Variant color) {
