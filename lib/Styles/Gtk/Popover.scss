@@ -25,15 +25,20 @@ popover {
     }
 }
 
-.menuitem,
-modelbutton {
+.model {
     border-radius: rem($window_radius / 2);
-    border-spacing: rem(6px);
-    min-width: rem(150px);
+    padding: rem(6px);
     transition:
         background duration("expand") easing(),
         transform duration("expand") easing("ease-out-back");
-    padding: rem(6px);
+
+    &.image-button {
+        background: rgba($fg_color, 0.05);
+    }
+
+    &.circular {
+        padding: rem(9px);
+    }
 
     &:hover {
         background: rgba($fg_color, 0.1);
@@ -41,11 +46,43 @@ modelbutton {
 
     &:active {
         background: rgba($fg-color, 0.15);
-        // There's an optical illusion because items are wider than
-        // they are tall, so compensate by scaling y a little extra
-        transform: scale(0.98, 0.96);
+        transform: scale(0.95);
         transition:
             background duration("collapse") easing(),
             transform duration("collapse") easing();
+    }
+}
+
+.menuitem,
+modelbutton {
+    @extend .model;
+
+    border-spacing: rem(6px);
+    min-width: rem(150px);
+
+    &:active {
+        // There's an optical illusion because items are wider than
+        // they are tall, so compensate by scaling y a little extra
+        transform: scale(0.98, 0.96);
+    }
+}
+
+.menu {
+    .circular-buttons,
+    .inline-buttons {
+        border-spacing: rem(6px);
+        padding: rem(6px);
+
+        > box {
+            border-spacing: rem(6px);
+        }
+    }
+
+    .title {
+        @extend .title-4;
+
+        &.separator {
+            padding: rem(6px);
+        }
     }
 }
