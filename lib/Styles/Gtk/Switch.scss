@@ -1,0 +1,58 @@
+switch {
+    background-color: scale-color($toplevel-border-color, $alpha: -50%); // FIXME: abstract as trough color?
+    border-radius: 99px;
+
+    &:checked:not(.mode-switch):not(:backdrop) {
+        background: $BLUEBERRY_500; // FIXME: accent color
+    }
+
+    &:disabled {
+        background-color: scale-color($toplevel-border-color, $alpha: -60%); // FIXME: abstract as trough color?
+    }
+
+    image {
+        color: transparent;
+    }
+
+    slider {
+        border-radius: 99px;
+        background-color: bg-color(0);
+        background-image:
+            linear-gradient(
+                to bottom,
+                scale-color($highlight_color, $alpha: -80%),
+                rgba(white, 0)
+            );
+        box-shadow:
+            highlight(),
+            0 0 0 1px $border-color,
+            shadow(2);
+
+        &:backdrop {
+            background-image: none;
+            box-shadow:
+                highlight(),
+                0 0 0 1px $border-color,
+                shadow(1);
+        }
+
+        &:disabled {
+            background-color: bg-color(3);
+            background-image: none;
+            box-shadow:
+                0 0 0 1px $border-color,
+                shadow(1);
+        }
+
+        :focus & {
+            box-shadow:
+                highlight(),
+                0 0 0 1px $BLUEBERRY_500, // FIXME: accent color
+                shadow(2);
+            outline-color: rgba($BLUEBERRY_500, 0.3); // FIXME: accent color
+            // Off-by-one to account for padding-box clip
+            outline-width: rem(3px);
+            outline-style: solid;
+        }
+    }
+}
