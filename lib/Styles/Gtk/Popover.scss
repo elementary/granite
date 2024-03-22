@@ -10,6 +10,7 @@ popover {
 
     > contents {
         box-shadow:
+            // No highlight because of the arrow
             0 0 0 1px $toplevel-border-color,
             shadow(2);
         border-radius: rem($window_radius);
