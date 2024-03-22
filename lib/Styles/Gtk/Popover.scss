@@ -1,0 +1,49 @@
+popover {
+    > arrow,
+    > contents {
+        background-color: bg_color(1);
+    }
+
+    > arrow {
+        border: 1px solid $toplevel-border-color;
+    }
+
+    > contents {
+        box-shadow:
+            0 0 0 1px $toplevel-border-color,
+            shadow(2);
+        border-radius: rem($window_radius);
+    }
+
+    &.menu > contents {
+        box-shadow:
+            highlight(),
+            0 0 0 1px $toplevel-border-color,
+            shadow(2);
+        padding: rem(6px);
+    }
+}
+
+.menuitem,
+modelbutton {
+    border-radius: rem($window_radius / 2);
+    min-width: rem(150px);
+    transition:
+        background duration("expand") easing(),
+        transform duration("expand") easing("ease-out-back");
+    padding: rem(6px);
+
+    &:hover {
+        background: rgba($fg_color, 0.1);
+    }
+
+    &:active {
+        background: rgba($fg-color, 0.15);
+        // There's an optical illusion because items are wider than
+        // they are tall, so compensate by scaling y a little extra
+        transform: scale(0.98, 0.96);
+        transition:
+            background duration("collapse") easing(),
+            transform duration("collapse") easing();
+    }
+}
