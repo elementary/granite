@@ -25,6 +25,16 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.5.0" date="2024-01-09" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Add close reasons for Granite.Toast</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="7.4.0" date="2023-11-16" urgency="medium">
       <description>
         <p>Improvements:</p>
