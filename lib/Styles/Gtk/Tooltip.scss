@@ -1,0 +1,6 @@
+tooltip {
+    @extend .osd;
+
+    margin: rem(3px);
+    text-shadow: 0 rem(1px) rem(2px) rgba($fg_color, 0.6);
+}
