@@ -36,6 +36,12 @@ $fg-color: white;
 // Inset box shadows
 $highlight_color: rgba(white, 0.2);
 
+// Semantic colors
+$error-color: $STRAWBERRY_300;
+$success-color: $LIME_300;
+$warning-color: $BANANA_100;
+$warning-icon-color: $BANANA_500;
+
 // Common styles
 @import '_label.scss';
 @import '_osd.scss';
