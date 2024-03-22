@@ -28,6 +28,7 @@ popover {
 .menuitem,
 modelbutton {
     border-radius: rem($window_radius / 2);
+    border-spacing: rem(6px);
     min-width: rem(150px);
     transition:
         background duration("expand") easing(),
