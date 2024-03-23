@@ -21,13 +21,13 @@ popover {
             highlight(),
             0 0 0 1px $toplevel-border-color,
             shadow(2);
-        padding: rem(6px);
+        padding: rem(6px); // FIXME: abstract button spacing?
     }
 }
 
 .model {
     border-radius: rem($window_radius / 2);
-    padding: rem(6px);
+    padding: rem(6px); // FIXME: abstract button spacing?
     transition:
         background duration("expand") easing(),
         transform duration("expand") easing("ease-out-back");
@@ -59,7 +59,7 @@ popover {
 modelbutton {
     @extend .model;
 
-    border-spacing: rem(6px);
+    border-spacing: rem(6px); // FIXME: abstract button spacing?
     min-width: rem(150px);
 
     &:active {
@@ -72,11 +72,11 @@ modelbutton {
 .menu {
     .circular-buttons,
     .inline-buttons {
-        border-spacing: rem(6px);
+        border-spacing: rem(6px); // FIXME: abstract button spacing?
         padding: rem(6px);
 
         > box {
-            border-spacing: rem(6px);
+            border-spacing: rem(6px); // FIXME: abstract button spacing?
         }
     }
 
@@ -84,7 +84,7 @@ modelbutton {
         @extend .title-4;
 
         &.separator {
-            padding: rem(6px);
+            padding: rem(6px); // FIXME: abstract button spacing?
         }
     }
 }
