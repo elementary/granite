@@ -22,12 +22,12 @@ public class AccelLabelView : Gtk.Grid {
         logout_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
 
         var popover_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        popover_box.margin_top = popover_box.margin_bottom = 3;
         popover_box.append (lock_button);
         popover_box.append (logout_button);
 
         var popover = new Gtk.Popover () {
-            child = popover_box
+            child = popover_box,
+            has_arrow = false
         };
         popover.add_css_class (Granite.STYLE_CLASS_MENU);
 
