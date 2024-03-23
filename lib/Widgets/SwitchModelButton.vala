@@ -56,17 +56,16 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
             child = description_label
         };
 
+        layout_manager = new Gtk.BoxLayout (HORIZONTAL);
+
+        var box = new Gtk.Box (VERTICAL, 0);
+        box.append (label);
+        box.set_parent (this);
+
         var button_switch = new Gtk.Switch () {
             valign = Gtk.Align.START
         };
-
-        var grid = new Gtk.Grid () {
-            column_spacing = 12
-        };
-        grid.attach (label, 0, 0);
-        grid.attach (button_switch, 1, 0, 1, 2);
-
-        child = grid;
+        button_switch.set_parent (this);
 
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
@@ -82,11 +81,17 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
 
         notify["description"].connect (() => {
             if (description == null || description == "") {
-                grid.remove (description_revealer);
+                box.remove (description_revealer);
             } else {
-                grid.attach (description_revealer, 0, 1);
+                box.append (description_revealer);
                 button_switch.bind_property ("active", description_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
             }
         });
+    }
+
+    ~SwitchModelButton () {
+        while (get_first_child () != null) {
+            get_first_child ().unparent ();
+        }
     }
 }
