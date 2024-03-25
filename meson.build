@@ -50,6 +50,7 @@ libgranite_deps = [
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
     dependency('gtk4', version: '>=4.4'),
+    dependency('libadwaita-1', version: '>=1.4'),
 ]
 
 icons_dir = join_paths(
