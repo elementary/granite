@@ -43,7 +43,7 @@ public class CSSView : Gtk.Box {
         card.append (header4);
 
         var richlist_label = new Granite.HeaderLabel ("Lists") {
-            secondary_text = "\"rich-list\" and \"boxed-list\" style classes"
+            secondary_text = "\"rich-list\" and \"card\" style classes"
         };
 
         var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
@@ -53,7 +53,7 @@ public class CSSView : Gtk.Box {
 
         var rich_listbox = new Gtk.ListBox ();
         rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_BOXED_LIST);
+        rich_listbox.add_css_class (Granite.STYLE_CLASS_CARD);
         rich_listbox.append (new Gtk.Label ("Row 1"));
         rich_listbox.append (new Gtk.Label ("Row 2"));
         rich_listbox.append (separators_modelbutton);

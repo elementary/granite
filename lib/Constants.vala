@@ -23,17 +23,9 @@ namespace Granite {
     public const string STYLE_CLASS_BADGE = "badge";
 
     /**
-     * Style class for syling a {@link Gtk.ListBox} with a frame and rounded corners
-     */
-    [Version (since = "7.5.0")]
-    public const string STYLE_CLASS_BOXED_LIST = "boxed-list";
-
-    /**
      * Style class for adding a small shadow to a container such as for image thumbnails
      *
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
-     *
-     * Use STYLE_CLASS_BOXED_LIST with {@link Gtk.ListBox} instead
      */
     public const string STYLE_CLASS_CARD = "card";
     /**

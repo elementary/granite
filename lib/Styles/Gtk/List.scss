@@ -14,8 +14,9 @@ list {
         }
     }
 
+    &.card,
     &.boxed-list {
-        @extend .card, .rounded;
+        @extend .rounded;
 
         > row {
             // Rounded top
