@@ -63,6 +63,7 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         box.set_parent (this);
 
         var button_switch = new Gtk.Switch () {
+            focusable = false,
             valign = Gtk.Align.START
         };
         button_switch.set_parent (this);
