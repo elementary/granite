@@ -1,5 +1,5 @@
 overlaybar .osd {
-    padding: rem(6px) rem(12px);
+    padding: $button-spacing rem(12px);
     text-shadow: 0 rem(1px) rem(2px) rgba($fg_color, 0.6);
 
     spinner {

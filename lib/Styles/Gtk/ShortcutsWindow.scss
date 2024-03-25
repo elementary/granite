@@ -11,7 +11,7 @@ accelerator,
     color: rgba($fg_color, 0.9);
     font-size: 85%;
     min-width: rem(12px);
-    padding: rem(3px) rem(6px);
+    padding: rem(3px) $button-spacing;
 }
 
 // Characters between keys in Gtk.ShortcutLabel, like + or /
