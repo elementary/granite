@@ -1,0 +1,55 @@
+list {
+    background-color: bg-color(1);
+
+    &.rich-list > row {
+        padding: rem(6px);
+        min-height: rem(32px); //Try to force homogeneous row height
+
+        // more row-height magic
+        > box {
+            button.toggle,
+            > fontbutton,
+            > entry,
+            > spinbutton {
+                margin: rem(3px) 0;
+            }
+        }
+    }
+
+    &.boxed-list {
+        @extend .card, .rounded;
+
+        > row {
+            // Rounded top
+            &:first-child {
+                &, &.expander row.header {
+                    border-top-left-radius: rem($window_radius / 2);
+                    border-top-right-radius: rem($window_radius / 2);
+                }
+            }
+
+            // Rounded bottom
+            &:last-child {
+                &,
+                &.expander:not(:checked),
+                &.expander:not(:checked) row.header,
+                &.expander:checked list.nested,
+                &.expander:checked list.nested > row:last-child {
+                    border-bottom-left-radius: rem($window_radius / 2);
+                    border-bottom-right-radius: rem($window_radius / 2);
+                    border-bottom-width: 0;
+                }
+            }
+        }
+    }
+
+    &.horizontal row.separator,
+    &.separators.horizontal > row:not(.separator) + row:not(.separator) {
+        border-right: 1px solid $border-color;
+    }
+
+    &:not(.horizontal) row.separator,
+    &.separators:not(.horizontal) > row:not(.separator) + row:not(.separator) {
+        border-top: 1px solid $border-color;
+    }
+}
