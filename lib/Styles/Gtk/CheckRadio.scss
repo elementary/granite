@@ -1,0 +1,40 @@
+check,
+radio {
+    background-color: scale-color($toplevel-border-color, $alpha: -50%); // FIXME: abstract as trough color?
+    -gtk-icon-size: 1em;
+    min-height: 1em;
+    min-width: 1em;
+    padding: 1px;
+
+    &:checked {
+        background-color: $BLUEBERRY_500; // FIXME: use accent color
+        color: white;
+        -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
+    }
+
+    &:indeterminate {
+        color: rgba($fg-color, 0.5);
+        -gtk-icon-source: -gtk-icontheme("check-indeterminate-symbolic");
+    }
+}
+
+check {
+    border-radius: rem($window_radius / 3);
+
+    &:checked {
+        -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
+    }
+}
+
+radio {
+    border-radius: 50%;
+
+    &:checked {
+        -gtk-icon-source: -gtk-icontheme("pager-checked-symbolic");
+    }
+}
+
+radiobutton,
+checkbutton {
+    border-spacing: 0.5em; // FIXME: abstract button spacing?
+}
