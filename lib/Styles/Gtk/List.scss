@@ -43,13 +43,10 @@ list {
         }
     }
 
-    &.horizontal row.separator,
-    &.separators.horizontal > row:not(.separator) + row:not(.separator) {
-        border-right: 1px solid $border-color;
-    }
 
-    &:not(.horizontal) row.separator,
-    &.separators:not(.horizontal) > row:not(.separator) + row:not(.separator) {
+    & row.separator,
+    &.separators > row:not(.separator) + row:not(.separator) {
         border-top: 1px solid $border-color;
+        box-shadow: inset 0 1px 0 0 scale-color($highlight_color, $alpha: -93%);
     }
 }
