@@ -2,16 +2,6 @@ list {
     &.rich-list > row {
         padding: rem(6px);
         min-height: rem(32px); //Try to force homogeneous row height
-
-        // more row-height magic
-        > box {
-            button.toggle,
-            > fontbutton,
-            > entry,
-            > spinbutton {
-                margin: rem(3px) 0;
-            }
-        }
     }
 
     &.card,
