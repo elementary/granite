@@ -43,8 +43,7 @@ list {
     }
 
 
-    & row.separator,
-    &.separators > row:not(.separator) + row:not(.separator) {
+    &.separators > row + row {
         border-top: 1px solid $border-color;
         box-shadow: inset 0 1px 0 0 scale-color($highlight_color, $alpha: -93%);
     }
