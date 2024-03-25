@@ -59,37 +59,58 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
-        var stack_sidebar = new Gtk.StackSidebar ();
-        stack_sidebar.stack = main_stack;
-
-        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
-            start_child = stack_sidebar,
-            end_child = main_stack,
-            resize_start_child = false,
-            shrink_end_child = false,
-            shrink_start_child = false
-        };
-
         var gtk_settings = Gtk.Settings.get_default ();
 
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
             "weather-clear-night-symbolic"
-        );
-        mode_switch.primary_icon_tooltip_text = ("Light background");
-        mode_switch.secondary_icon_tooltip_text = ("Dark background");
-        mode_switch.valign = Gtk.Align.CENTER;
-        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme", GLib.BindingFlags.BIDIRECTIONAL);
+        ) {
+            primary_icon_tooltip_text = ("Light background"),
+            secondary_icon_tooltip_text = ("Dark background"),
+            valign = CENTER
+        };
+        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme", BIDIRECTIONAL);
 
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.add_css_class ("default-decoration");
-        headerbar.show_title_buttons = true;
-        headerbar.pack_end (mode_switch);
+        var end_header = new Gtk.HeaderBar () {
+            show_title_buttons = false
+        };
+        end_header.add_css_class (Granite.STYLE_CLASS_FLAT);
+        end_header.pack_end (new Gtk.WindowControls (END));
+        end_header.pack_end (mode_switch);
+
+        var end_box = new Gtk.Box (VERTICAL, 0);
+        end_box.append (end_header);
+        end_box.append (main_stack);
+
+        var start_header = new Gtk.HeaderBar () {
+            show_title_buttons = false,
+            title_widget = new Gtk.Label ("")
+        };
+        start_header.add_css_class (Granite.STYLE_CLASS_FLAT);
+        start_header.pack_start (new Gtk.WindowControls (START));
+
+        var stack_sidebar = new Gtk.StackSidebar () {
+            stack = main_stack,
+            vexpand = true
+        };
+
+        var start_box = new Gtk.Box (VERTICAL, 0);
+        start_box.append (start_header);
+        start_box.append (stack_sidebar);
+        start_box.add_css_class (Granite.STYLE_CLASS_SIDEBAR);
+
+        var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            start_child = start_box,
+            end_child = end_box,
+            resize_start_child = false,
+            shrink_end_child = false,
+            shrink_start_child = false
+        };
 
         window.child = paned;
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
-        window.set_titlebar (headerbar);
+        window.titlebar = new Gtk.Grid () { visible = false };
         window.title = "Granite Demo";
 
         add_window (window);
