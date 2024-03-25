@@ -1,0 +1,11 @@
+entry {
+    background-color: bg-color(1);
+    border: 1px solid $border-color;
+    border-radius: rem($window_radius / 3);
+    padding: 6px;
+
+    placeholder {
+        color: mix($fg-color, bg-color(1), $weight: 75%);
+        margin: 0;
+    }
+}
