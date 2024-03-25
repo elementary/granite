@@ -21,6 +21,7 @@ namespace Granite {
      * Style class for numbered badges
      */
     public const string STYLE_CLASS_BADGE = "badge";
+
     /**
      * Style class for adding a small shadow to a container such as for image thumbnails
      *
