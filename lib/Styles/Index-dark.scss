@@ -20,7 +20,7 @@ $toplevel-border-color: rgba(black, 0.75);
         @return $BLACK_500;
     // Sidebars and inline toolbars
     } @else if $level == 3 {
-        @return mix($BLACK_500, $BLACK_700, $weight: 90%);
+        @return mix($BLACK_500, $BLACK_700, $weight: 80%);
     // Titlebars and toolbars
     } @else if $level == 4 {
         @return mix($BLACK_500, $BLACK_700, $weight: 45%);

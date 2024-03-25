@@ -1,0 +1,12 @@
+.sidebar {
+    background-color: bg_color(3);
+    box-shadow: highlight();
+    min-width: rem(200px);
+
+    // Clear nested sidebar
+    .sidebar {
+        background: transparent;
+        box-shadow: none;
+        min-width: 0;
+    }
+}

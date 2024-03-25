@@ -10,8 +10,19 @@ public class Granite.Demo : Gtk.Application {
     }
 
     public override void startup () {
-        Granite.init ();
         base.startup ();
+
+        Granite.init ();
+
+        var gtk_settings = Gtk.Settings.get_default ();
+        gtk_settings.gtk_theme_name = "Granite";
+
+        var granite_settings = Granite.Settings.get_default ();
+        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
+
+        granite_settings.notify["prefers-color-scheme"].connect (() => {
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
+        });
     }
 
     public override void activate () {
@@ -96,9 +107,6 @@ public class Granite.Demo : Gtk.Application {
             shrink_start_child = false
         };
 
-        var granite_settings = Granite.Settings.get_default ();
-        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-
         window.child = paned;
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
@@ -107,10 +115,6 @@ public class Granite.Demo : Gtk.Application {
 
         add_window (window);
         window.show ();
-
-        granite_settings.notify["prefers-color-scheme"].connect (() => {
-            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-        });
     }
 
     public static int main (string[] args) {
