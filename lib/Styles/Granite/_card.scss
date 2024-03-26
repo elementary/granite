@@ -4,7 +4,7 @@ paper,
     box-shadow:
         highlight(),
         // Intentionally not in ems since it's used as a stroke
-        0 0 0 1px $border-color,
+        0 0 0 1px scale-color($border-color, $alpha: -50%),
         shadow(1);
 
     &.rounded {
