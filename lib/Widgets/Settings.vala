@@ -36,6 +36,25 @@ namespace Granite {
             LIGHT
         }
 
+        private string? _accent_color = null;
+
+        /**
+         * The theme accent color chosen by the user
+         * @since 7.5.0
+         */
+        [Version (since = "7.5.0")]
+        public string accent_color {
+            get {
+                if (_accent_color == null) {
+                    setup_accent_color ();
+                }
+                return (_accent_color);
+            }
+            private set {
+                _accent_color = value;
+            }
+        }
+
         private ColorScheme? _prefers_color_scheme = null;
 
         /**
@@ -94,6 +113,40 @@ namespace Granite {
             } catch (Error e) {
                 critical (e.message);
             }
+        }
+
+        private void setup_accent_color () {
+            try {
+                portal = Portal.Settings.get ();
+
+                var variant = portal.read (
+                    "org.freedesktop.appearance",
+                    "accent-color"
+                ).get_variant ();
+
+                update_color (variant);
+
+                portal.setting_changed.connect ((scheme, key, value) => {
+                    if (scheme == "org.freedesktop.appearance" && key == "accent-color") {
+                        update_color (value);
+                    }
+                });
+
+                return;
+            } catch (Error e) {
+                debug (e.message);
+            }
+
+            // Set a default in case we can't get from system
+            accent_color = "#3689e6";
+        }
+
+        private void update_color (GLib.Variant color) {
+            double red, green, blue;
+            color.get ("(ddd)", out red, out green, out blue);
+
+            Gdk.RGBA rgba = {(float) red, (float) green, (float) blue, 1};
+            accent_color = rgba.to_string ();
         }
 
         private void setup_prefers_color_scheme () {
