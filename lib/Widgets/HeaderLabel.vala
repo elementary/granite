@@ -69,12 +69,12 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
     construct {
         var label_widget = new Gtk.Label (label) {
+            wrap = true,
             xalign = 0
         };
         label_widget.add_css_class ("heading");
         label_widget.set_parent (this);
 
-        halign = Gtk.Align.START;
         ((Gtk.BoxLayout) get_layout_manager ()).orientation = Gtk.Orientation.VERTICAL;
 
         bind_property ("label", label_widget, "label");
