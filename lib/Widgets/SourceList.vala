@@ -11,7 +11,7 @@ namespace Granite.Widgets {
  *
  * @since 0.3
  */
-[Version (deprecated = true, deprecated_since = "6.2.1"]
+[Version (deprecated = true, deprecated_since = "6.2.1")]
 public interface SourceListSortable : SourceList.ExpandableItem {
     /**
      * Emitted after a user has re-ordered an item via DnD.
