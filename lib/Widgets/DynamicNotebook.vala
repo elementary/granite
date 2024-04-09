@@ -596,6 +596,7 @@ namespace Granite.Widgets {
     *
     * {{../doc/images/DynamicNotebook.png}}
     */
+    [Version (deprecated = true, deprecated_since = "6.2.1", replacement = "Hdy.Tabbar")]
     public class DynamicNotebook : Gtk.EventBox {
         /**
          * number of pages
