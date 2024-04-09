@@ -8,6 +8,7 @@
  * a content area, and an action area.
  */
 
+[Version (deprecated = true, deprecated_since = "6.2.1", replacement = "Switchboard.SettingsPage")]
 public abstract class Granite.SimpleSettingsPage : Granite.SettingsPage {
     private Gtk.Image header_icon;
     private Gtk.Label description_label;

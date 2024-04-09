@@ -10,6 +10,7 @@
  * All the content for the rows comes from the child properties of a Granite.SettingsPage
  * inside of the Gtk.Stack
  */
+[Version (deprecated = true, deprecated_since = "6.2.1", replacement = "Switchboard.SettingsSidebar")]
 public class Granite.SettingsSidebar : Gtk.ScrolledWindow {
     private Gtk.ListBox listbox;
 

@@ -34,6 +34,7 @@
  * }
  * }}}
  */
+[Version (deprecated = true, deprecated_since = "6.2.1"]
 public class Granite.Widgets.StorageBar : Gtk.Box {
     public enum ItemDescription {
         OTHER,
