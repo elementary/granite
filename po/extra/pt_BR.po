@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-24 08:04+0000\n"
-"PO-Revision-Date: 2021-07-17 07:24+0000\n"
-"Last-Translator: Mário Victor Ribeiro Silva <mariovictorrs@gmail.com>\n"
+"PO-Revision-Date: 2024-04-24 12:13+0000\n"
+"Last-Translator: Matheus Torres Carvalho <matheustcarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: data/granite.metainfo.xml.in:11
 #, fuzzy
@@ -76,8 +76,6 @@ msgid "Make \"Granite.init ()\" publicly available"
 msgstr ""
 
 #: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:89
-#, fuzzy
-#| msgid "New features:"
 msgid "New Features:"
 msgstr "Novas funcionalidades:"
 
