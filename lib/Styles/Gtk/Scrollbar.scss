@@ -1,0 +1,89 @@
+scrollbar {
+    // Can't be taller than menuitem or popover is too big
+    $slider-length: rem(20px);
+    $slider-width: rem(3px);
+    $slider-width-full: rem($window_radius);
+
+    slider {
+        background-color: rgba($fg-color, 0.7);
+        box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
+        border-radius: 99px;
+        transition:
+            background duration("collapse") easing(),
+            min-width duration("collapse") easing();
+    }
+
+    trough {
+        background-color: rgba($fg-color, 0.2);
+        border-radius: 99px;
+        margin: rem(3px);
+    }
+
+    &:hover,
+    &.hovering {
+        slider {
+            background-color: rgba($fg-color, 0.7);
+            transition:
+                background duration("expand") easing(),
+                min-width duration("expand") easing();
+        }
+    }
+
+    &:active {
+        slider {
+            background-color: $fg-color;
+            transition: background duration("expand") easing();
+        }
+    }
+
+    &.horizontal {
+        slider {
+            min-width: $slider-length;
+            min-height: $slider-width-full;
+        }
+    }
+
+    &.vertical {
+        slider {
+            min-height: $slider-length;
+            min-width: $slider-width-full;
+        }
+    }
+
+    &.overlay-indicator {
+        trough {
+            background-color: transparent;
+            transition:
+                background duration("expand") easing();
+        }
+
+        &:hover trough,
+        &.hovering trough {
+            background-color: rgba($fg-color, 0.2);
+            transition:
+                background duration("expand") easing();
+        }
+
+        &.horizontal {
+            slider {
+                min-height: $slider-width;
+            }
+
+            &:hover slider,
+            &.hovering slider {
+                min-height: $slider-width-full;
+            }
+        }
+
+        &.vertical {
+            slider {
+                min-width: $slider-width;
+            }
+
+            &:hover slider,
+            &.hovering slider {
+                min-width: $slider-width-full;
+            }
+        }
+    }
+}
