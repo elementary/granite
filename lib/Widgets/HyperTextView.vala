@@ -18,7 +18,7 @@
  */
 
 /**
-* This class enables navigatable URLs in Gtk.TextView
+ * This class enables navigatable URLs in Gtk.TextView
  * @since 6.1.3
  */
 public class Granite.HyperTextView : Gtk.TextView {

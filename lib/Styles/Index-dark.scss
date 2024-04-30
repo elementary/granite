@@ -1,4 +1,4 @@
-$color-scheme: "light";
+$color-scheme: "dark";
 
 // Constants and functions
 @import '_palette.scss';
@@ -6,41 +6,41 @@ $color-scheme: "light";
 @import '_common.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
-$toplevel-border-color: rgba(black, 0.2);
+$toplevel-border-color: rgba(black, 0.75);
 
 @function bg-color($level) {
     // Inputs
     @if $level == 0 {
-        @return $SILVER_100;
+        @return mix($BLACK_300, $BLACK_500, $weight: 50%);
     // Views
     } @else if $level == 1 {
-        @return white;
+        @return mix($BLACK_300, $BLACK_500, $weight: 25%);
     // Background
     } @else if $level == 2 {
-        @return $SILVER_100;
+        @return $BLACK_500;
     // Sidebars and inline toolbars
     } @else if $level == 3 {
-        @return mix($SILVER_100, $SILVER_300, $weight: 75%);
+        @return mix($BLACK_500, $BLACK_700, $weight: 90%);
     // Titlebars and toolbars
     } @else if $level == 4 {
-        @return mix($SILVER_100, $SILVER_300, $weight: 30%);
+        @return mix($BLACK_500, $BLACK_700, $weight: 45%);
     }
 }
 
 // Outset box shadow or border color on inputs like buttons, entries, checkboxes
-$border-color: rgba(black, 0.05);
+$border-color: rgba(black, 0.1);
 
 // Text, images, and other foreground elements
-$fg-color: $BLACK_500;
+$fg-color: white;
 
 // Inset box shadows
-$highlight_color: white;
+$highlight_color: rgba(white, 0.2);
 
 // Semantic colors
-$error_color: $STRAWBERRY_500;
-$success_color: $LIME_700;
-$warning_color: $BANANA_900;
-$warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
+$error-color: $STRAWBERRY_300;
+$success-color: $LIME_300;
+$warning-color: $BANANA_100;
+$warning-icon-color: $BANANA_500;
 
 // Common styles
 @import '_label.scss';

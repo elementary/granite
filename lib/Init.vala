@@ -6,9 +6,10 @@
 namespace Granite {
     private static bool initialized = false;
     private static Gtk.CssProvider? base_provider = null;
+    private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
 
-    /*
+    /**
      * Initializes Granite.
      * If Granite has already been initialized, the function will return.
      * Makes sure translations and types for Granite are set up properly.
@@ -35,11 +36,18 @@ namespace Granite {
     }
 
     private static void register_display (Gdk.Display display) {
-        if (base_provider == null) {
-            base_provider = new Gtk.CssProvider ();
-            base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
-        }
+        var gtk_settings = Gtk.Settings.get_for_display (display);
+        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
+            set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
+        });
 
+        set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
+
+        var icon_theme = Gtk.IconTheme.get_for_display (display);
+        icon_theme.add_resource_path ("/io/elementary/granite");
+    }
+
+    private static void set_provider_for_display (Gdk.Display display, bool prefer_dark_style) {
         if (app_provider == null) {
             var base_path = Application.get_default ().resource_base_path;
             if (base_path != null) {
@@ -48,16 +56,35 @@ namespace Granite {
 
                 app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
             }
+
+            if (app_provider != null) {
+                Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
         }
 
-        Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        if (prefer_dark_style) {
+            if (base_provider != null) {
+                Gtk.StyleContext.remove_provider_for_display (display, base_provider);
+            }
 
-        if (app_provider != null) {
-            Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            if (dark_provider == null) {
+                dark_provider = new Gtk.CssProvider ();
+                dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
+            }
+
+            Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        } else {
+            if (dark_provider != null) {
+                Gtk.StyleContext.remove_provider_for_display (display, dark_provider);
+            }
+
+            if (base_provider == null) {
+                base_provider = new Gtk.CssProvider ();
+                base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+            }
+
+            Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         }
-
-        var icon_theme = Gtk.IconTheme.get_for_display (display);
-        icon_theme.add_resource_path ("/io/elementary/granite");
     }
 
     private static Gtk.CssProvider? init_provider_from_file (File file) {
