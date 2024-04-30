@@ -17,20 +17,26 @@
  */
 public class Granite.Toast : Gtk.Widget {
     /**
-     * Reason why a Toast was closed
+     * Reason why a Toast was dismissed
      * @since 7.5.0
      */
     [Version (since = "7.5.0")]
-    public enum CloseReason {
+    public enum DismissReason {
         EXPIRED = 1,
-        DISMISSED = 2,
+        CLOSED = 2,
         WITHDRAWN = 3
     }
 
     /**
-     * Emitted when the Toast is closed
+     * Emitted when the Toast is closed by activating the close button
      */
-    public signal void closed (int reason_id);
+    [Version (deprecated = true, deprecated_since = "7.5.0", replacement = "dismissed")]
+    public signal void closed ();
+
+    /**
+     * Emitted when the Toast has been dismissed
+     */
+    public signal void dismissed (DismissReason reason);
 
     /**
      * Emitted when the default action button is activated
@@ -110,7 +116,8 @@ public class Granite.Toast : Gtk.Widget {
         close_button.clicked.connect (() => {
             revealer.reveal_child = false;
             stop_timeout ();
-            closed (CloseReason.DISMISSED);
+            closed ();
+            dismissed (DismissReason.CLOSED);
         });
 
         default_action_button.clicked.connect (() => {
@@ -143,7 +150,7 @@ public class Granite.Toast : Gtk.Widget {
 
         timeout_id = GLib.Timeout.add (duration, () => {
             revealer.reveal_child = false;
-            closed (CloseReason.EXPIRED);
+            dismissed (DismissReason.EXPIRED);
             timeout_id = 0;
             return GLib.Source.REMOVE;
         });
@@ -191,6 +198,6 @@ public class Granite.Toast : Gtk.Widget {
     public void withdraw () {
         stop_timeout ();
         revealer.reveal_child = false;
-        closed (CloseReason.WITHDRAWN);
+        dismissed (DismissReason.WITHDRAWN);
     }
 }
