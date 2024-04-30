@@ -103,6 +103,13 @@ namespace Granite {
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */
     public const string STYLE_CLASS_SMALL_LABEL= "small-label";
+
+    /**
+     * Style class for widgets in success state.
+     */
+    [Version (since = "7.5.0")]
+    public const string STYLE_CLASS_SUCCESS = "success";
+
     /**
      * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
      * text color, background color, selection highlighting, and selecting the system monospace font.

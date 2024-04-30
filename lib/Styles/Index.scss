@@ -1,18 +1,53 @@
-// Class constants and common styles
+$color-scheme: "light";
+
+// Constants and functions
 @import '_palette.scss';
+@import '_animate.scss';
 @import '_common.scss';
+
+// Outset box shadow or border color on toplevel elements like windows, menus, popovers
+$toplevel-border-color: rgba(black, 0.2);
+
+@function bg-color($level) {
+    // Inputs
+    @if $level == 0 {
+        @return $SILVER_100;
+    // Views
+    } @else if $level == 1 {
+        @return white;
+    // Background
+    } @else if $level == 2 {
+        @return $SILVER_100;
+    // Sidebars and inline toolbars
+    } @else if $level == 3 {
+        @return mix($SILVER_100, $SILVER_300, $weight: 75%);
+    // Titlebars and toolbars
+    } @else if $level == 4 {
+        @return mix($SILVER_100, $SILVER_300, $weight: 30%);
+    }
+}
+
+// Outset box shadow or border color on inputs like buttons, entries, checkboxes
+$border-color: rgba(black, 0.05);
+
+// Text, images, and other foreground elements
+$fg-color: $BLACK_500;
+
+// Inset box shadows
+$highlight_color: white;
+
+// Semantic colors
+$error_color: $STRAWBERRY_500;
+$success_color: $LIME_700;
+$warning_color: $BANANA_900;
+$warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
+
+// Common styles
 @import '_label.scss';
 @import '_osd.scss';
 
 // Gtk Widgets
-@import 'Gtk/Button.scss';
-@import 'Gtk/HeaderBar.scss';
-@import 'Gtk/Window.scss';
+// @import 'Gtk/Index.scss';
 
 // Granite widgets
-@import 'Granite/Dialog.scss';
-@import 'Granite/Header.scss';
-@import 'Granite/MessageDialog.scss';
-@import 'Granite/OverlayBar.scss';
-@import 'Granite/Placeholder.scss';
-@import 'Granite/Toast.scss';
+@import 'Granite/Index.scss';

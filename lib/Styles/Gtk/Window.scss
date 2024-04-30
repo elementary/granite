@@ -5,11 +5,13 @@ window {
     &.csd {
         border-radius: rem($window_radius);
         box-shadow:
+            highlight(),
             0 0 0 1px $toplevel-border-color,
             shadow(4);
 
         &:backdrop {
             box-shadow:
+                highlight(),
                 0 0 0 1px $toplevel-border-color,
                 shadow(2);
         }

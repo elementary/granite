@@ -102,17 +102,31 @@ public class CSSView : Gtk.Box {
 
         var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
 
-        var accent_color_label = new Granite.HeaderLabel ("Accent colored labels and icons");
+        var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
-        var accent_color_icon = new Gtk.Image.from_icon_name ("emoji-body-symbolic");
-        accent_color_icon.add_css_class (Granite.STYLE_CLASS_ACCENT);
+        var accent_color_box = new Gtk.Box (HORIZONTAL, 6);
+        accent_color_box.append (new Gtk.Image.from_icon_name ("emoji-body-symbolic"));
+        accent_color_box.append (new Gtk.Image.from_icon_name ("face-tired-symbolic"));
+        accent_color_box.append (new Gtk.Label (".accent"));
+        accent_color_box.add_css_class (Granite.STYLE_CLASS_ACCENT);
 
-        var accent_color_string = new Gtk.Label ("Lorem ipsum dolor sit amet");
-        accent_color_string.add_css_class (Granite.STYLE_CLASS_ACCENT);
+        var success_color_box = new Gtk.Box (HORIZONTAL, 6);
+        success_color_box.append (new Gtk.Image.from_icon_name ("process-completed-symbolic"));
+        success_color_box.append (new Gtk.Image.from_icon_name ("face-sick-symbolic"));
+        success_color_box.append (new Gtk.Label (".success"));
+        success_color_box.add_css_class (Granite.STYLE_CLASS_SUCCESS);
 
-        var accent_color_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        accent_color_grid.append (accent_color_icon);
-        accent_color_grid.append (accent_color_string);
+        var warning_color_box = new Gtk.Box (HORIZONTAL, 6);
+        warning_color_box.append (new Gtk.Image.from_icon_name ("dialog-warning-symbolic"));
+        warning_color_box.append (new Gtk.Image.from_icon_name ("face-laugh-symbolic"));
+        warning_color_box.append (new Gtk.Label (".warning"));
+        warning_color_box.add_css_class (Granite.STYLE_CLASS_WARNING);
+
+        var error_color_box = new Gtk.Box (HORIZONTAL, 6);
+        error_color_box.append (new Gtk.Image.from_icon_name ("dialog-error-symbolic"));
+        error_color_box.append (new Gtk.Image.from_icon_name ("face-angry-symbolic"));
+        error_color_box.append (new Gtk.Label (".error"));
+        error_color_box.add_css_class (Granite.STYLE_CLASS_ERROR);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
             halign = Gtk.Align.CENTER,
@@ -136,7 +150,10 @@ public class CSSView : Gtk.Box {
         box.append (primary_color_label);
         box.append (primary_color_button);
         box.append (accent_color_label);
-        box.append (accent_color_grid);
+        box.append (accent_color_box);
+        box.append (success_color_box);
+        box.append (warning_color_box);
+        box.append (error_color_box);
 
         var scrolled = new Gtk.ScrolledWindow () {
             child = box
