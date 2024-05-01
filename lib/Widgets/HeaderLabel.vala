@@ -5,7 +5,8 @@
 
 
 /**
- * HeaderLabel is a start-aligned {@link Gtk.Label} with the Granite H4 style class
+ * HeaderLabel contains a start-aligned {@link Gtk.Label} with the "heading" style class.
+ * Optionally it can contain a secondary {@link Gtk.Label} to provide additional context
  */
 public class Granite.HeaderLabel : Gtk.Widget {
     /**
