@@ -27,6 +27,10 @@
   <releases>
     <release version="7.5.0" date="2023-04-29" urgency="medium">
       <description>
+        <p>New Features:</p>
+        <ul>
+          <li>Toast: add a new dismissed signal that includes the reason for dismissal</li>
+        </ul>
         <p>Improvements:</p>
         <ul>
           <li>Make building Demo optional</li>
