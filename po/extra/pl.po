@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-01 01:38+0000\n"
-"PO-Revision-Date: 2023-11-18 06:25+0000\n"
+"PO-Revision-Date: 2024-05-01 15:30+0000\n"
 "Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
-"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/pl/>\n"
+"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -50,6 +50,7 @@ msgstr "Nowe funkcje:"
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr ""
+"Powiadomienia: dodano nowy sygnał odwołania, który zawiera powód odwołania"
 
 #: data/granite.metainfo.xml.in:34 data/granite.metainfo.xml.in:58
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:84
@@ -59,37 +60,35 @@ msgstr "Ulepszenia:"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Make building Demo optional"
-msgstr ""
+msgstr "Budowanie Demo jest teraz opcjonalne"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Demo now uses a modern split-pane design"
-msgstr ""
+msgstr "Demo korzysta teraz z nowoczesnego projektu podzielonej powierzchni"
 
 #: data/granite.metainfo.xml.in:38
 msgid "DateTime: handle relative datetime when epoch"
-msgstr ""
+msgstr "DateTime: obsługa względnych czasów z epoką"
 
 #: data/granite.metainfo.xml.in:39
 msgid "HeaderLabel: allow secondary text to use markup"
-msgstr ""
+msgstr "HeaderLabel: tekst drugorzędny może teraz używać znaczniki"
 
 #: data/granite.metainfo.xml.in:40
 msgid "MessageDialog: Set last button as focus widget"
-msgstr ""
+msgstr "MessageDialog: Ostatni przycisk jest teraz fokusowany"
 
 #: data/granite.metainfo.xml.in:41
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr ""
+msgstr "SwitchModelButton: Usunięto zbędny przełącznik fokusu klawiatury"
 
 #: data/granite.metainfo.xml.in:42
-#, fuzzy
-#| msgid "STYLE_CLASS_ROUNDED"
 msgid "Add STYLE_CLASS_SUCCESS"
-msgstr "STYLE_CLASS_ROUNDED"
+msgstr "Dodano STYLE_CLASS_SUCCESS"
 
 #: data/granite.metainfo.xml.in:43
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr ""
+msgstr "Ładowanie zapasowych stylów dla widżetów przy użyciu Granite.init"
 
 #: data/granite.metainfo.xml.in:44 data/granite.metainfo.xml.in:61
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:87
@@ -105,6 +104,8 @@ msgstr "Przestarzałe:"
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr ""
+"SettingsPage oraz SettingsSidebar: te widżety zostały przeniesione do "
+"LibSwitchboard"
 
 #: data/granite.metainfo.xml.in:60
 msgid "Add a withdraw method for Granite.Toast"
