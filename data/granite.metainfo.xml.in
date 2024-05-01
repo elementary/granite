@@ -20,7 +20,9 @@
   <url type="homepage">https://elementary.io</url>
   <url type="translate">https://l10n.elementary.io/projects/desktop</url>
 
-  <developer_name>elementary, Inc.</developer_name>
+  <developer id="org.elementaryos">
+    <name>elementary, Inc.</name>
+  </developer>
   <project_group>elementary</project_group>
   <update_contact>contact_at_elementary.io</update_contact>
 
