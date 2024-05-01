@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-01 01:38+0000\n"
-"PO-Revision-Date: 2024-05-01 01:38+0000\n"
+"PO-Revision-Date: 2024-05-01 15:30+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +47,7 @@ msgstr "新機能:"
 #: data/granite.metainfo.xml.in:32
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
-msgstr ""
+msgstr "Toast: 非表示になった理由を情報として持つ、dismissed シグナルを追加"
 
 #: data/granite.metainfo.xml.in:34 data/granite.metainfo.xml.in:58
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:84
@@ -65,29 +65,29 @@ msgstr "デモをモダンな画面分割デザインに変更"
 
 #: data/granite.metainfo.xml.in:38
 msgid "DateTime: handle relative datetime when epoch"
-msgstr ""
+msgstr "DateTime: エポック秒が0の場合の相対時刻表示を修正"
 
 #: data/granite.metainfo.xml.in:39
 msgid "HeaderLabel: allow secondary text to use markup"
-msgstr ""
+msgstr "HeaderLabel: セカンダリーテキストにマークアップを使用できるように修正"
 
 #: data/granite.metainfo.xml.in:40
 msgid "MessageDialog: Set last button as focus widget"
-msgstr ""
+msgstr "MessageDialog: "
+"最後に追加したボタンをフォーカスウィジェットに設定するように修正"
 
 #: data/granite.metainfo.xml.in:41
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr ""
+msgstr "SwitchModelButton: スイッチ本体へのキーボードフォーカスは余計なため削除"
 
 #: data/granite.metainfo.xml.in:42
-#, fuzzy
-#| msgid "STYLE_CLASS_ROUNDED"
 msgid "Add STYLE_CLASS_SUCCESS"
-msgstr "STYLE_CLASS_ROUNDED"
+msgstr "STYLE_CLASS_SUCCESS を追加"
 
 #: data/granite.metainfo.xml.in:43
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr ""
+msgstr "Granite.init "
+"使用時、ウィジェット用のフォールバックスタイルを読み込むように修正"
 
 #: data/granite.metainfo.xml.in:44 data/granite.metainfo.xml.in:61
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:87
@@ -102,7 +102,7 @@ msgstr "非推奨の機能:"
 #: data/granite.metainfo.xml.in:48
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
-msgstr ""
+msgstr "SettingsPage と SettingsSidebar: LibSwitchboard にウィジェットを移動"
 
 #: data/granite.metainfo.xml.in:60
 msgid "Add a withdraw method for Granite.Toast"
