@@ -25,6 +25,34 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.5.0" date="2023-04-29" urgency="medium">
+      <description>
+        <p>New Features:</p>
+        <ul>
+          <li>Toast: add a new dismissed signal that includes the reason for dismissal</li>
+        </ul>
+        <p>Improvements:</p>
+        <ul>
+          <li>Make building Demo optional</li>
+          <li>Demo now uses a modern split-pane design</li>
+          <li>DateTime: handle relative datetime when epoch</li>
+          <li>HeaderLabel: allow secondary text to use markup</li>
+          <li>MessageDialog: Set last button as focus widget</li>
+          <li>SwitchModelButton: Remove redundant switch keyboard focusing</li>
+          <li>Add STYLE_CLASS_SUCCESS</li>
+          <li>Load fallback styles for widgets when using Granite.init</li>
+          <li>Updated translations</li>
+        </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/granite/issues/664">Responsive placeholders</issue>
+      </issues>
+    </release>
+
     <release version="7.4.0" date="2023-11-16" urgency="medium">
       <description>
         <p>Improvements:</p>
@@ -34,8 +62,8 @@
         </ul>
       </description>
       <issues>
-          <issue url="https://github.com/elementary/granite/issues/662">HeaderLabel missing mnemonic_widget property</issue>
-          <issue url="https://github.com/elementary/granite/issues/666">gresource icons the stylesheet depends on</issue>
+        <issue url="https://github.com/elementary/granite/issues/662">HeaderLabel missing mnemonic_widget property</issue>
+        <issue url="https://github.com/elementary/granite/issues/666">gresource icons the stylesheet depends on</issue>
       </issues>
     </release>
 

@@ -55,6 +55,7 @@ public class DialogsView : Gtk.Box {
         layout.attach (gtk_switch, 0, 3);
 
         var dialog = new Granite.Dialog () {
+            modal = true,
             transient_for = window
         };
         dialog.get_content_area ().append (layout);
@@ -75,14 +76,16 @@ public class DialogsView : Gtk.Box {
     }
 
     private void show_message_dialog () {
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (
+        var message_dialog = new Granite.MessageDialog (
             "Basic information and a suggestion",
             "Further details, including information that explains any unobvious consequences of actions.",
-            "phone",
+            new ThemedIcon ("phone"),
             Gtk.ButtonsType.CANCEL
-        );
-        message_dialog.badge_icon = new ThemedIcon ("dialog-information");
-        message_dialog.transient_for = window;
+        ) {
+            badge_icon = new ThemedIcon ("dialog-information"),
+            modal = true,
+            transient_for = window
+        };
 
         var suggested_button = new Gtk.Button.with_label ("Suggested Action");
         suggested_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
