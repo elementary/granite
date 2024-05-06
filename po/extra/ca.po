@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-01 15:30+0000\n"
+"POT-Creation-Date: 2024-05-06 18:11+0000\n"
 "PO-Revision-Date: 2024-05-04 07:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,43 +48,44 @@ msgstr ""
 "Brindis: afegiu un nou senyal d'acomiadament que inclogui el motiu de "
 "l'acomiadament"
 
-#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:60
+#: data/granite.metainfo.xml.in:35
+msgid "Add STYLE_CLASS_SUCCESS"
+msgstr "Afegeix STYLE_CLASS_SUCCESS"
+
+#: data/granite.metainfo.xml.in:36
+msgid "HeaderLabel: allow secondary text to use markup"
+msgstr "HeaderLabel: permet que el text secundari usi l'etiquetatge"
+
+#: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:60
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:86
 #: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:141
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/granite.metainfo.xml.in:38
+#: data/granite.metainfo.xml.in:40
 msgid "Make building Demo optional"
 msgstr "Fes que la demostració de construcció sigui opcional"
 
-#: data/granite.metainfo.xml.in:39
+#: data/granite.metainfo.xml.in:41
 msgid "Demo now uses a modern split-pane design"
 msgstr "La demostració ara usa un disseny modern de plafó dividit"
 
-#: data/granite.metainfo.xml.in:40
+#: data/granite.metainfo.xml.in:42
 msgid "DateTime: handle relative datetime when epoch"
 msgstr "DateTime: gestiona la data i l'hora relativa a l'època"
 
-#: data/granite.metainfo.xml.in:41
-msgid "HeaderLabel: allow secondary text to use markup"
-msgstr "HeaderLabel: permet que el text secundari usi l'etiquetatge"
-
-#: data/granite.metainfo.xml.in:42
+#: data/granite.metainfo.xml.in:43
 msgid "MessageDialog: Set last button as focus widget"
 msgstr "MessageDialog: estableix l'últim botó com a giny de focus"
 
-#: data/granite.metainfo.xml.in:43
+#: data/granite.metainfo.xml.in:44
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr "SwitchModelButton: suprimeix l'enfocament redundant del teclat"
 
-#: data/granite.metainfo.xml.in:44
-msgid "Add STYLE_CLASS_SUCCESS"
-msgstr "Afegeix STYLE_CLASS_SUCCESS"
-
 #: data/granite.metainfo.xml.in:45
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr "Carregueu estils alternatius per als ginys quan feu servir Granite.init"
+msgstr ""
+"Carregueu estils alternatius per als ginys quan feu servir Granite.init"
 
 #: data/granite.metainfo.xml.in:46 data/granite.metainfo.xml.in:63
 #: data/granite.metainfo.xml.in:79 data/granite.metainfo.xml.in:89
