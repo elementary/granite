@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-01 15:30+0000\n"
+"POT-Creation-Date: 2024-05-06 18:11+0000\n"
 "PO-Revision-Date: 2020-01-17 22:39+0000\n"
 "Last-Translator: Daniel Foré <daniel@elementary.io>\n"
 "Language-Team: Greek <https://l10n.elementary.io/projects/desktop/granite-"
@@ -43,38 +43,38 @@ msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:60
+#: data/granite.metainfo.xml.in:35
+msgid "Add STYLE_CLASS_SUCCESS"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:36
+msgid "HeaderLabel: allow secondary text to use markup"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:60
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:86
 #: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:141
 msgid "Improvements:"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:38
+#: data/granite.metainfo.xml.in:40
 msgid "Make building Demo optional"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:39
+#: data/granite.metainfo.xml.in:41
 msgid "Demo now uses a modern split-pane design"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:40
+#: data/granite.metainfo.xml.in:42
 msgid "DateTime: handle relative datetime when epoch"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:41
-msgid "HeaderLabel: allow secondary text to use markup"
-msgstr ""
-
-#: data/granite.metainfo.xml.in:42
+#: data/granite.metainfo.xml.in:43
 msgid "MessageDialog: Set last button as focus widget"
 msgstr ""
 
-#: data/granite.metainfo.xml.in:43
-msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr ""
-
 #: data/granite.metainfo.xml.in:44
-msgid "Add STYLE_CLASS_SUCCESS"
+msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr ""
 
 #: data/granite.metainfo.xml.in:45
