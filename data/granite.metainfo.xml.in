@@ -20,13 +20,19 @@
   <url type="homepage">https://elementary.io</url>
   <url type="translate">https://l10n.elementary.io/projects/desktop</url>
 
-  <developer_name>elementary, Inc.</developer_name>
+  <developer id="org.elementaryos">
+    <name>elementary, Inc.</name>
+  </developer>
   <project_group>elementary</project_group>
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
     <release version="7.5.0" date="2023-05-06" urgency="medium">
       <description>
+        <p>New Features:</p>
+        <ul>
+          <li>Toast: add a new dismissed signal that includes the reason for dismissal</li>
+        </ul>
         <p>Improvements:</p>
         <ul>
           <li>Make building Demo optional</li>
