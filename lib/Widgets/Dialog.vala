@@ -90,6 +90,7 @@ public class Granite.Dialog : Gtk.Dialog {
      * Behaves as described in {@link Gtk.Dialog.add_button}. The last button to be added
      * will have keyboard focus by default.
      */
+    [Version (since = "7.5.0")]
     public new unowned Gtk.Widget add_button (string button_text, int response_id) {
         unowned var button = base.add_button (button_text, response_id);
         button.grab_focus ();
