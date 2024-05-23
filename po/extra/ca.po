@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 08:04+0000\n"
-"PO-Revision-Date: 2023-11-17 08:43+0000\n"
+"POT-Creation-Date: 2024-05-06 18:11+0000\n"
+"PO-Revision-Date: 2024-05-04 07:13+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
 "extra/ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -36,31 +36,82 @@ msgstr ""
 "mètodes de conveniència dissenyats per usar-los en aplicacions creades per a "
 "l'elementary OS."
 
-#: data/granite.metainfo.xml.in:23
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
+#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:96
+#: data/granite.metainfo.xml.in:119
+msgid "New Features:"
+msgstr "Característiques noves:"
 
-#: data/granite.metainfo.xml.in:30 data/granite.metainfo.xml.in:44
-#: data/granite.metainfo.xml.in:56 data/granite.metainfo.xml.in:74
-#: data/granite.metainfo.xml.in:111
+#: data/granite.metainfo.xml.in:34
+msgid ""
+"Toast: add a new dismissed signal that includes the reason for dismissal"
+msgstr ""
+"Brindis: afegiu un nou senyal d'acomiadament que inclogui el motiu de "
+"l'acomiadament"
+
+#: data/granite.metainfo.xml.in:35
+msgid "Add STYLE_CLASS_SUCCESS"
+msgstr "Afegeix STYLE_CLASS_SUCCESS"
+
+#: data/granite.metainfo.xml.in:36
+msgid "HeaderLabel: allow secondary text to use markup"
+msgstr "HeaderLabel: permet que el text secundari usi l'etiquetatge"
+
+#: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:60
+#: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:86
+#: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:141
 msgid "Improvements:"
 msgstr "Millores:"
 
-#: data/granite.metainfo.xml.in:32
-msgid "Add a withdraw method for Granite.Toast"
-msgstr "Addició d'un mètode de retirada per a Granite.Toast"
+#: data/granite.metainfo.xml.in:40
+msgid "Make building Demo optional"
+msgstr "Fes que la demostració de construcció sigui opcional"
 
-#: data/granite.metainfo.xml.in:33 data/granite.metainfo.xml.in:49
-#: data/granite.metainfo.xml.in:59 data/granite.metainfo.xml.in:78
-#: data/granite.metainfo.xml.in:114
+#: data/granite.metainfo.xml.in:41
+msgid "Demo now uses a modern split-pane design"
+msgstr "La demostració ara usa un disseny modern de plafó dividit"
+
+#: data/granite.metainfo.xml.in:42
+msgid "DateTime: handle relative datetime when epoch"
+msgstr "DateTime: gestiona la data i l'hora relativa a l'època"
+
+#: data/granite.metainfo.xml.in:43
+msgid "MessageDialog: Set last button as focus widget"
+msgstr "MessageDialog: estableix l'últim botó com a giny de focus"
+
+#: data/granite.metainfo.xml.in:44
+msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
+msgstr "SwitchModelButton: suprimeix l'enfocament redundant del teclat"
+
+#: data/granite.metainfo.xml.in:45
+msgid "Load fallback styles for widgets when using Granite.init"
+msgstr ""
+"Carregueu estils alternatius per als ginys quan feu servir Granite.init"
+
+#: data/granite.metainfo.xml.in:46 data/granite.metainfo.xml.in:63
+#: data/granite.metainfo.xml.in:79 data/granite.metainfo.xml.in:89
+#: data/granite.metainfo.xml.in:108 data/granite.metainfo.xml.in:144
 msgid "Updated translations"
 msgstr "Traduccions actualitzades"
 
-#: data/granite.metainfo.xml.in:46
+#: data/granite.metainfo.xml.in:48
+msgid "Deprecations:"
+msgstr "Obsolescències:"
+
+#: data/granite.metainfo.xml.in:50
+msgid ""
+"SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
+msgstr ""
+"SettingsPage i SettingsSidebar: aquests ginys s'han mogut a LibSwitchboard"
+
+#: data/granite.metainfo.xml.in:62
+msgid "Add a withdraw method for Granite.Toast"
+msgstr "Addició d'un mètode de retirada per a Granite.Toast"
+
+#: data/granite.metainfo.xml.in:76
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr "No depèn del full d'estil d'elementary per als estils alternatius."
 
-#: data/granite.metainfo.xml.in:47
+#: data/granite.metainfo.xml.in:77
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
@@ -68,26 +119,22 @@ msgstr ""
 "Es carreguen automàticament el fulls d'estil gresourced anomenats "
 "\"Application.css\" a \"Granite.init ()\""
 
-#: data/granite.metainfo.xml.in:48
+#: data/granite.metainfo.xml.in:78
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr ""
 "Addició de constants de Configuració Uri per iniciar la configuració del "
 "sistema"
 
-#: data/granite.metainfo.xml.in:58
+#: data/granite.metainfo.xml.in:88
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr "Fa que \"Granite.init ()\" estigui disponible públicament."
 
-#: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:89
-msgid "New Features:"
-msgstr "Característiques noves:"
-
-#: data/granite.metainfo.xml.in:68
+#: data/granite.metainfo.xml.in:98
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
 "Granite.STYLE_CLASS_RICH_LIST per al farciment estàndard de fila Gtk.ListBox"
 
-#: data/granite.metainfo.xml.in:69
+#: data/granite.metainfo.xml.in:99
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
@@ -95,13 +142,13 @@ msgstr ""
 "Granite.STYLE_CLASS_FRAME per afegir una vora a Gtk.LisBox, Gtk.InfoBar i "
 "altres"
 
-#: data/granite.metainfo.xml.in:70
+#: data/granite.metainfo.xml.in:100
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
 "Granite.STYLE_CLASS_SIDEBAR per dissenyar les barres laterals de les "
 "aplicacions"
 
-#: data/granite.metainfo.xml.in:71
+#: data/granite.metainfo.xml.in:101
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
@@ -109,15 +156,15 @@ msgstr ""
 "Granite.STYLE_CLASS_BACKGROUND per usar el color de fons predeterminat per a "
 "un giny"
 
-#: data/granite.metainfo.xml.in:72
+#: data/granite.metainfo.xml.in:102
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr "Afegiu text secundari opcional a Granite.HeaderLabel"
 
-#: data/granite.metainfo.xml.in:76
+#: data/granite.metainfo.xml.in:106
 msgid "Allow text in Granite.Toast to wrap"
 msgstr "Permet que el text a Granite.Toast s'ajusti"
 
-#: data/granite.metainfo.xml.in:77
+#: data/granite.metainfo.xml.in:107
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
@@ -125,39 +172,39 @@ msgstr ""
 "SimpleSettingsPage: embolcalla els títols i permet que el text de descripció "
 "vagi sota els interruptors"
 
-#: data/granite.metainfo.xml.in:91
+#: data/granite.metainfo.xml.in:121
 msgid "Ported to GTK4! 🎉️"
 msgstr "Portat a GTK4! 🎉️"
 
-#: data/granite.metainfo.xml.in:92
+#: data/granite.metainfo.xml.in:122
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr "Granit.Placeholder: substitueix AlertView i Welcome"
 
-#: data/granite.metainfo.xml.in:93
+#: data/granite.metainfo.xml.in:123
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr "SimpleSettingsPage: permet l'etiquetatge a la descripció"
 
-#: data/granite.metainfo.xml.in:95
+#: data/granite.metainfo.xml.in:125
 msgid "Removals:"
 msgstr "Supressions:"
 
-#: data/granite.metainfo.xml.in:97
+#: data/granite.metainfo.xml.in:127
 msgid "Application: use Gtk.Application instead"
 msgstr "Aplicació: usa Gtk.Application"
 
-#: data/granite.metainfo.xml.in:98
+#: data/granite.metainfo.xml.in:128
 msgid "Drawing: Use Gtk.CSS"
 msgstr "Dibuix: utilitza Gtk.CSS"
 
-#: data/granite.metainfo.xml.in:99
+#: data/granite.metainfo.xml.in:129
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: usa Adw.TabBar"
 
-#: data/granite.metainfo.xml.in:100
+#: data/granite.metainfo.xml.in:130
 msgid "Logger: use GLib.log instead"
 msgstr "Registrador: utilitza GLib.log"
 
-#: data/granite.metainfo.xml.in:101
+#: data/granite.metainfo.xml.in:131
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
@@ -165,37 +212,40 @@ msgstr ""
 "ModeButton: usa Gtk.ToggleButton amb la propietat \"grup\" i la classe "
 "d'estil \"enllaçada\""
 
-#: data/granite.metainfo.xml.in:102
+#: data/granite.metainfo.xml.in:132
 msgid "Paths: use GLib.Environment instead"
 msgstr "Camins: usa GLib.Environment"
 
-#: data/granite.metainfo.xml.in:103
+#: data/granite.metainfo.xml.in:133
 msgid "Seekbar"
 msgstr "Barra de cerca"
 
-#: data/granite.metainfo.xml.in:104
+#: data/granite.metainfo.xml.in:134
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr "Serveis.Configuració: utilitza GLib.Settings"
 
-#: data/granite.metainfo.xml.in:105
+#: data/granite.metainfo.xml.in:135
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr "SimpleCommand: usa GLib.AppInfo.create_from_commandline"
 
-#: data/granite.metainfo.xml.in:106
+#: data/granite.metainfo.xml.in:136
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr "SourceList: usa Gtk.ListBox amb la classe d'estil de barra lateral"
 
-#: data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:137
 msgid "StorageBar"
 msgstr "Barra d'emmagatzematge"
 
-#: data/granite.metainfo.xml.in:108
+#: data/granite.metainfo.xml.in:138
 msgid "TextStyle: use style class constants instead"
 msgstr "TextStyle: usa constants de classe d'estil"
 
-#: data/granite.metainfo.xml.in:109
+#: data/granite.metainfo.xml.in:139
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "Diverses funcions del sistema s'han substituït per GLib.AppInfo"
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Inc."
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "Propietat min_length per a Granite.ValidatedEntry"
@@ -287,9 +337,6 @@ msgstr "Diverses funcions del sistema s'han substituït per GLib.AppInfo"
 #~ msgid "Granite.Widgets.AppMenu. Use Gtk.MenuButton instead."
 #~ msgstr "Granite.Ginys.Menú d'aplicacions. Usa, en canvi, Gtk.MenuButton."
 
-#~ msgid "Deprecations:"
-#~ msgstr "Obsolescències:"
-
 #~ msgid "Granite.Widgets.Avatar. Use Hdy.Avatar instead"
 #~ msgstr "Granite.Widgets.Avatar. Usa Hdy.Avatar"
 
@@ -335,9 +382,6 @@ msgstr "Diverses funcions del sistema s'han substituït per GLib.AppInfo"
 
 #~ msgid "STYLE_CLASS_COLOR_BUTTON"
 #~ msgstr "STYLE_CLASS_COLOR_BUTTON"
-
-#~ msgid "STYLE_CLASS_ROUNDED"
-#~ msgstr "STYLE_CLASS_ROUNDED"
 
 #~ msgid ""
 #~ "Several theming utilities. Use Gtk.CssProvider and Gtk.StyleContext "

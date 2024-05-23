@@ -10,7 +10,7 @@ namespace Granite {
     private static Gtk.CssProvider? accent_provider = null;
     private static Gtk.CssProvider? app_provider = null;
 
-    /*
+    /**
      * Initializes Granite.
      * If Granite has already been initialized, the function will return.
      * Makes sure translations and types for Granite are set up properly.

@@ -37,3 +37,22 @@
 .small-label {
     font-size: 0.85em;
 }
+
+.error {
+    color: $error_color;
+}
+
+.success {
+    color: $success_color;
+}
+
+.warning {
+    color: $warning_color;
+}
+
+.accent:backdrop,
+.error:backdrop,
+.success:backdrop,
+.warning:backdrop {
+    color: inherit;
+}
