@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-05-06 18:11+0000\n"
-"PO-Revision-Date: 2024-01-27 13:11+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2024-06-14 19:41+0000\n"
+"Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite/"
 "ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -53,33 +53,33 @@ msgstr "Сейчас"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%dм назад"
-msgstr[1] "%dм назад"
-msgstr[2] "%dм назад"
+msgstr[0] "%d м назад"
+msgstr[1] "%d м назад"
+msgstr[2] "%d м назад"
 
 #: lib/DateTime.vala:69
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "%dч назад"
-msgstr[1] "%dч назад"
-msgstr[2] "%dч назад"
+msgstr[0] "%d ч назад"
+msgstr[1] "%d ч назад"
+msgstr[2] "%d ч назад"
 
 #: lib/DateTime.vala:75
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] "через %dм"
-msgstr[1] "через %dм"
-msgstr[2] "через %dм"
+msgstr[0] "через %d м"
+msgstr[1] "через %d м"
+msgstr[2] "через %d м"
 
 #: lib/DateTime.vala:78
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] "через %dч"
-msgstr[1] "через %dч"
-msgstr[2] "через %dч"
+msgstr[0] "через %d ч"
+msgstr[1] "через %d ч"
+msgstr[2] "через %d ч"
 
 #: lib/DateTime.vala:84
 msgid "Yesterday"
