@@ -124,29 +124,27 @@ namespace Granite {
                     "accent-color"
                 ).get_variant ();
 
-                update_color (variant);
+                accent_color = parse_color (variant);
 
                 portal.setting_changed.connect ((scheme, key, value) => {
                     if (scheme == "org.freedesktop.appearance" && key == "accent-color") {
-                        update_color (value);
+                        accent_color = parse_color (value);
                     }
                 });
-
-                return;
             } catch (Error e) {
-                debug (e.message);
-            }
+                warning (e.message);
 
-            // Set a default in case we can't get from system
-            accent_color = "#3689e6";
+                // Set a default in case we can't get from system
+                accent_color = "#3689e6";
+            }
         }
 
-        private void update_color (GLib.Variant color) {
+        private string parse_color (GLib.Variant color) {
             double red, green, blue;
             color.get ("(ddd)", out red, out green, out blue);
 
             Gdk.RGBA rgba = {(float) red, (float) green, (float) blue, 1};
-            accent_color = rgba.to_string ();
+            return rgba.to_string ();
         }
 
         private void setup_prefers_color_scheme () {
