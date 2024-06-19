@@ -12,15 +12,14 @@ public class FormView : Gtk.Box {
             critical (e.message);
         }
 
-        var username_label = new Gtk.Label ("Username") {
-            halign = Gtk.Align.START,
-            xalign = 0
-        };
-        username_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
-
         var username_entry = new Granite.ValidatedEntry () {
             min_length = 8,
             regex = username_regex
+        };
+
+        var username_label = new Granite.HeaderLabel ("Username") {
+            mnemonic_widget = username_entry,
+            secondary_text = "Must be at least 8 characters long"
         };
 
         var button = new Gtk.Button.with_label ("Submit");
