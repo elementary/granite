@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-19 05:40+0000\n"
-"PO-Revision-Date: 2024-05-01 15:30+0000\n"
+"PO-Revision-Date: 2024-06-19 13:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -44,7 +44,7 @@ msgstr "改善点:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "Improve screen reader support for SwitchModelButton"
-msgstr ""
+msgstr "SwitchModelButton: スクリーンリーダーへの対応を改善"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:56
 #: data/granite.metainfo.xml.in:73 data/granite.metainfo.xml.in:89
@@ -214,9 +214,8 @@ msgstr "Logger: 今後は GLib.log を使用してください"
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
-msgstr ""
-"ModeButton: 今後は “group” と “linked” スタイルクラスを設定した Gtk."
-"ToggleButton を使用してください"
+msgstr "ModeButton: 今後は“group”と“linked”スタイルクラスを設定した Gtk.ToggleButton "
+"を使用してください"
 
 #: data/granite.metainfo.xml.in:142
 msgid "Paths: use GLib.Environment instead"
@@ -237,9 +236,8 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:146
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
-msgstr ""
-"SourceList: 今後は “sidebar” スタイルクラスを設定した Gtk.ListBox を使用して"
-"ください"
+msgstr "SourceList: 今後は“sidebar”スタイルクラスを設定した Gtk.ListBox "
+"を使用してください"
 
 #: data/granite.metainfo.xml.in:147
 msgid "StorageBar"
