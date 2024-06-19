@@ -42,6 +42,7 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
             hexpand = true,
             vexpand = true,
             max_width_chars = 25,
+            mnemonic_widget = this
         };
 
         var description_label = new Gtk.Label (null) {
@@ -68,9 +69,11 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         };
         button_switch.set_parent (this);
 
+        accessible_role = SWITCH;
+
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
-        bind_property ("active", button_switch, "active", GLib.BindingFlags.BIDIRECTIONAL);
+        bind_property ("active", button_switch, "active", BIDIRECTIONAL | SYNC_CREATE);
 
         var controller = new Gtk.GestureClick ();
         add_controller (controller);
@@ -80,7 +83,13 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
             button_switch.activate ();
         });
 
+        notify["active"].connect (() => {
+            update_state (Gtk.AccessibleState.CHECKED, active, -1);
+        });
+
         notify["description"].connect (() => {
+            update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
+
             if (description == null || description == "") {
                 box.remove (description_revealer);
             } else {
