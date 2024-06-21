@@ -61,7 +61,7 @@ namespace Granite {
 
         Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
         accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
-        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION - 1);
     }
 
     private static void set_provider_for_display (Gdk.Display display, bool prefer_dark_style) {
