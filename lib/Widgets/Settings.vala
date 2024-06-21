@@ -36,14 +36,14 @@ namespace Granite {
             LIGHT
         }
 
-        private string? _accent_color = null;
+        private Gdk.RGBA? _accent_color = null;
 
         /**
          * The theme accent color chosen by the user
-         * @since 7.5.0
+         * @since 7.6.0
          */
-        [Version (since = "7.5.0")]
-        public string accent_color {
+        [Version (since = "7.6.0")]
+        public Gdk.RGBA accent_color {
             get {
                 if (_accent_color == null) {
                     setup_accent_color ();
@@ -135,16 +135,17 @@ namespace Granite {
                 warning (e.message);
 
                 // Set a default in case we can't get from system
-                accent_color = "#3689e6";
+                accent_color.parse ("#3689e6");
             }
         }
 
-        private string parse_color (GLib.Variant color) {
+        private Gdk.RGBA parse_color (GLib.Variant color) {
             double red, green, blue;
             color.get ("(ddd)", out red, out green, out blue);
 
             Gdk.RGBA rgba = {(float) red, (float) green, (float) blue, 1};
-            return rgba.to_string ();
+
+            return rgba;
         }
 
         private void setup_prefers_color_scheme () {

@@ -44,11 +44,11 @@ namespace Granite {
 
         var granite_settings = Granite.Settings.get_default ();
         granite_settings.notify["accent-color"].connect (() => {
-            set_accent_for_display (display, granite_settings.accent_color);
+            set_accent_for_display (display, granite_settings.accent_color.to_string ());
         });
 
         set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
-        set_accent_for_display (display, granite_settings.accent_color);
+        set_accent_for_display (display, granite_settings.accent_color.to_string ());
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
         icon_theme.add_resource_path ("/io/elementary/granite");
@@ -61,7 +61,7 @@ namespace Granite {
 
         Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
         accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
-        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     private static void set_provider_for_display (Gdk.Display display, bool prefer_dark_style) {
