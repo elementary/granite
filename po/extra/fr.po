@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-19 05:40+0000\n"
-"PO-Revision-Date: 2024-05-15 14:13+0000\n"
+"POT-Creation-Date: 2024-06-22 02:26+0000\n"
+"PO-Revision-Date: 2024-06-19 20:12+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
 "extra/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -38,93 +38,99 @@ msgstr ""
 "et des méthodes pratiques conçu pour être utilisé dans les applications "
 "fabriquées pour elementary OS."
 
-#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:48
-#: data/granite.metainfo.xml.in:70 data/granite.metainfo.xml.in:84
-#: data/granite.metainfo.xml.in:96 data/granite.metainfo.xml.in:114
-#: data/granite.metainfo.xml.in:151
+#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:49
+#: data/granite.metainfo.xml.in:71 data/granite.metainfo.xml.in:85
+#: data/granite.metainfo.xml.in:97 data/granite.metainfo.xml.in:115
+#: data/granite.metainfo.xml.in:152
 msgid "Improvements:"
 msgstr "Améliorations :"
 
 #: data/granite.metainfo.xml.in:34
 msgid "Improve screen reader support for SwitchModelButton"
 msgstr ""
+"Amélioration de la prise en charge des lecteurs d'écran pour "
+"SwitchModelButton"
 
-#: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:56
-#: data/granite.metainfo.xml.in:73 data/granite.metainfo.xml.in:89
-#: data/granite.metainfo.xml.in:99 data/granite.metainfo.xml.in:118
-#: data/granite.metainfo.xml.in:154
+#: data/granite.metainfo.xml.in:35
+msgid "ValidatedEntry: set AccessibleState for validity"
+msgstr ""
+
+#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:57
+#: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:90
+#: data/granite.metainfo.xml.in:100 data/granite.metainfo.xml.in:119
+#: data/granite.metainfo.xml.in:155
 msgid "Updated translations"
 msgstr "Mise à jour des traductions"
 
-#: data/granite.metainfo.xml.in:42 data/granite.metainfo.xml.in:106
-#: data/granite.metainfo.xml.in:129
+#: data/granite.metainfo.xml.in:43 data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:130
 msgid "New Features:"
 msgstr "Nouvelles fonctionnalités :"
 
-#: data/granite.metainfo.xml.in:44
+#: data/granite.metainfo.xml.in:45
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr ""
 "Toast : Ajout d'un nouveau signal de fermeture comportant le motif de "
 "fermeture"
 
-#: data/granite.metainfo.xml.in:45
+#: data/granite.metainfo.xml.in:46
 msgid "Add STYLE_CLASS_SUCCESS"
 msgstr "Ajout de STYLE_CLASS_SUCCESS"
 
-#: data/granite.metainfo.xml.in:46
+#: data/granite.metainfo.xml.in:47
 msgid "HeaderLabel: allow secondary text to use markup"
 msgstr "HeaderLabel : Le texte secondaire peut désormais inclure des balises"
 
-#: data/granite.metainfo.xml.in:50
+#: data/granite.metainfo.xml.in:51
 msgid "Make building Demo optional"
 msgstr "La compilation de la démo est désormais optionnelle"
 
-#: data/granite.metainfo.xml.in:51
+#: data/granite.metainfo.xml.in:52
 msgid "Demo now uses a modern split-pane design"
 msgstr "La démo utilise désormais un design moderne à volets séparés"
 
-#: data/granite.metainfo.xml.in:52
+#: data/granite.metainfo.xml.in:53
 msgid "DateTime: handle relative datetime when epoch"
 msgstr "DateTime : Gestion d'une date relative lorsque l'époque a été définie"
 
-#: data/granite.metainfo.xml.in:53
+#: data/granite.metainfo.xml.in:54
 msgid "MessageDialog: Set last button as focus widget"
 msgstr ""
 "MessageDialog : Définition du dernier bouton comme sélectionné par défaut"
 
-#: data/granite.metainfo.xml.in:54
+#: data/granite.metainfo.xml.in:55
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr "SwitchModelButton : Suppression de la sélection redondante au clavier"
 
-#: data/granite.metainfo.xml.in:55
+#: data/granite.metainfo.xml.in:56
 msgid "Load fallback styles for widgets when using Granite.init"
 msgstr ""
 "Chargement des styles de remplacement pour les widgets lors de l'utilisation "
 "de Granite.init"
 
-#: data/granite.metainfo.xml.in:58
+#: data/granite.metainfo.xml.in:59
 msgid "Deprecations:"
 msgstr "Dépréciations :"
 
-#: data/granite.metainfo.xml.in:60
+#: data/granite.metainfo.xml.in:61
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr ""
 "SettingsPage et SettingsSidebar : Ces widgets ont été déplacés vers "
 "LibSwitchboard"
 
-#: data/granite.metainfo.xml.in:72
+#: data/granite.metainfo.xml.in:73
 msgid "Add a withdraw method for Granite.Toast"
 msgstr "Ajout d'une méthode de retrait pour Granite.Toast"
 
-#: data/granite.metainfo.xml.in:86
+#: data/granite.metainfo.xml.in:87
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr ""
 "Les styles de substitution ne dépendent désormais plus de la feuille de "
 "style d'elementary"
 
-#: data/granite.metainfo.xml.in:87
+#: data/granite.metainfo.xml.in:88
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
@@ -132,22 +138,22 @@ msgstr ""
 "Chargement automatique de la feuille de style nommée « Application.css » "
 "lors de l'exécution de « Granite.init () »"
 
-#: data/granite.metainfo.xml.in:88
+#: data/granite.metainfo.xml.in:89
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr ""
 "Ajout de constantes SettingsUri pour le lancement des paramètres du système"
 
-#: data/granite.metainfo.xml.in:98
+#: data/granite.metainfo.xml.in:99
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr "\"Granite.init ()\" est rendu publiquement accessible"
 
-#: data/granite.metainfo.xml.in:108
+#: data/granite.metainfo.xml.in:109
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
 "Granite.STYLE_CLASS_RICH_LIST pour le remplissage standard des rangées de "
 "Gtk.ListBox"
 
-#: data/granite.metainfo.xml.in:109
+#: data/granite.metainfo.xml.in:110
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
@@ -155,13 +161,13 @@ msgstr ""
 "Granite.STYLE_CLASS_FRAME pour ajouter une bordure à Gtk.LisBox, Gtk."
 "InfoBar, et autres"
 
-#: data/granite.metainfo.xml.in:110
+#: data/granite.metainfo.xml.in:111
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
 "Granite.STYLE_CLASS_SIDEBAR pour styliser les barres latérales des "
 "applications"
 
-#: data/granite.metainfo.xml.in:111
+#: data/granite.metainfo.xml.in:112
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
@@ -169,17 +175,17 @@ msgstr ""
 "Granite.STYLE_CLASS_BACKGROUND pour utiliser la couleur d'arrière-plan par "
 "défaut d'un widget"
 
-#: data/granite.metainfo.xml.in:112
+#: data/granite.metainfo.xml.in:113
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr "Ajout d'un texte secondaire facultatif à Granite.HeaderLabel"
 
-#: data/granite.metainfo.xml.in:116
+#: data/granite.metainfo.xml.in:117
 msgid "Allow text in Granite.Toast to wrap"
 msgstr ""
 "Le texte dans Granite.Toast peut maintenant revenir à la ligne "
 "automatiquement"
 
-#: data/granite.metainfo.xml.in:117
+#: data/granite.metainfo.xml.in:118
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
@@ -187,39 +193,39 @@ msgstr ""
 "SimpleSettingsPage : Les titres peuvent revenir à la ligne et le texte de la "
 "description peut désormais passer sous les boutons"
 
-#: data/granite.metainfo.xml.in:131
+#: data/granite.metainfo.xml.in:132
 msgid "Ported to GTK4! 🎉️"
 msgstr "Portage vers GTK4 ! 🎉️"
 
-#: data/granite.metainfo.xml.in:132
+#: data/granite.metainfo.xml.in:133
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr "Granite.Placeholder : Remplace AlertView et Welcome"
 
-#: data/granite.metainfo.xml.in:133
+#: data/granite.metainfo.xml.in:134
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr "SimpleSettingsPage : Autorisation des balises dans la description"
 
-#: data/granite.metainfo.xml.in:135
+#: data/granite.metainfo.xml.in:136
 msgid "Removals:"
 msgstr "Suppressions :"
 
-#: data/granite.metainfo.xml.in:137
+#: data/granite.metainfo.xml.in:138
 msgid "Application: use Gtk.Application instead"
 msgstr "Application : Utilisez Gtk.Application à la place"
 
-#: data/granite.metainfo.xml.in:138
+#: data/granite.metainfo.xml.in:139
 msgid "Drawing: Use Gtk.CSS"
 msgstr "Dessin : Utilisation de Gtk.CSS"
 
-#: data/granite.metainfo.xml.in:139
+#: data/granite.metainfo.xml.in:140
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook : Utilisez Adw.TabBar à la place"
 
-#: data/granite.metainfo.xml.in:140
+#: data/granite.metainfo.xml.in:141
 msgid "Logger: use GLib.log instead"
 msgstr "Logger : Remplacé par GLib.log"
 
-#: data/granite.metainfo.xml.in:141
+#: data/granite.metainfo.xml.in:142
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
@@ -227,38 +233,38 @@ msgstr ""
 "ModeButton : Utilisez Gtk.ToggleButton avec la propriété « group » et la "
 "classe de style « linked » à la place"
 
-#: data/granite.metainfo.xml.in:142
+#: data/granite.metainfo.xml.in:143
 msgid "Paths: use GLib.Environment instead"
 msgstr "Paths : Utilisez GLib.Environment à la place"
 
-#: data/granite.metainfo.xml.in:143
+#: data/granite.metainfo.xml.in:144
 msgid "Seekbar"
 msgstr "Seekbar"
 
-#: data/granite.metainfo.xml.in:144
+#: data/granite.metainfo.xml.in:145
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr "Services.Settings : Remplacé par GLib.Settings"
 
-#: data/granite.metainfo.xml.in:145
+#: data/granite.metainfo.xml.in:146
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
 "SimpleCommand : Utilisez GLib.AppInfo.create_from_commandline à la place"
 
-#: data/granite.metainfo.xml.in:146
+#: data/granite.metainfo.xml.in:147
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
 "SourceList : Utilisez Gtk.ListBox avec la classe de style « sidebar » à la "
 "place"
 
-#: data/granite.metainfo.xml.in:147
+#: data/granite.metainfo.xml.in:148
 msgid "StorageBar"
 msgstr "StorageBar"
 
-#: data/granite.metainfo.xml.in:148
+#: data/granite.metainfo.xml.in:149
 msgid "TextStyle: use style class constants instead"
 msgstr "TextStyle : Utilisez les constantes de classe de style à la place"
 
-#: data/granite.metainfo.xml.in:149
+#: data/granite.metainfo.xml.in:150
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "Plusieurs fonctions dans System ont été remplacées par GLib.AppInfo"
 
