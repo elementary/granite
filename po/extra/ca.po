@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-22 02:26+0000\n"
-"PO-Revision-Date: 2024-06-19 13:09+0000\n"
+"PO-Revision-Date: 2024-06-24 12:25+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgstr "Millora del suport del lector de pantalla per a SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:35
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry: establiu AccessibleState per a la validesa"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:57
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:90

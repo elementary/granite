@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-22 02:26+0000\n"
-"PO-Revision-Date: 2024-06-21 15:16+0000\n"
+"PO-Revision-Date: 2024-06-24 12:25+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/he/>\n"
+"Language-Team: Hebrew <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,7 @@ msgstr "שופרה התמיכה במקריא מסך ל־SwitchModelButton (כפ�
 
 #: data/granite.metainfo.xml.in:35
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry: הגדרת AccessibleState לתוקף"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:57
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:90
