@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-22 02:26+0000\n"
-"PO-Revision-Date: 2024-06-19 13:09+0000\n"
+"PO-Revision-Date: 2024-06-24 00:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +48,8 @@ msgstr "SwitchModelButton: スクリーンリーダーへの対応を改善"
 
 #: data/granite.metainfo.xml.in:35
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry: バリデーション結果に応じて AccessibleState "
+"を設定するように修正"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:57
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:90
