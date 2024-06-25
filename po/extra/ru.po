@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-22 02:26+0000\n"
-"PO-Revision-Date: 2024-06-19 20:12+0000\n"
+"PO-Revision-Date: 2024-06-26 10:16+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
-"Language-Team: Russian <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/ru/>\n"
+"Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +50,7 @@ msgstr "Улучшена поддержка экранного диктора д
 
 #: data/granite.metainfo.xml.in:35
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry: установка AccessibleState для валидации"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:57
 #: data/granite.metainfo.xml.in:74 data/granite.metainfo.xml.in:90
