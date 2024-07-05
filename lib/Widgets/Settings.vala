@@ -18,6 +18,10 @@ namespace Granite {
      * Granite.Settings provides a way to share Pantheon desktop settings with applications.
      */
     public class Settings : Object {
+
+        private const string GNOME_DESKTOP_INTERFACE = "org.gnome.desktop.interface";
+        private const string CLOCK_FORMAT_KEY = "clock-format";
+
         /**
          * Possible color scheme preferences expressed by the user
          */
@@ -69,6 +73,36 @@ namespace Granite {
             }
         }
 
+        /**
+         * Possible clock format preferences expressed by the user
+         */
+        public enum ClockFormat {
+            /**
+             * The user prefers a 24 hour clock
+             */
+            24H,
+            /**
+             * The user prefers a 12 hour clock
+             */
+            12H
+        }
+
+        private ClockFormat? _clock_format = null;
+        /**
+         * Whether the user would prefer a 12 hour or 24 hour clock
+         */
+        public ClockFormat clock_format {
+            get {
+                if (_clock_format == null) {
+                    setup_clock_format ();
+                }
+                return _clock_format;
+            }
+            private set {
+                _clock_format = value;
+            }
+        }
+
         private static GLib.Once<Granite.Settings> instance;
         public static unowned Granite.Settings get_default () {
             return instance.once (() => {
@@ -96,9 +130,15 @@ namespace Granite {
             }
         }
 
+        private void setup_portal () {
+            if (portal == null) {
+                portal = Portal.Settings.get ();
+            }
+        }
+
         private void setup_prefers_color_scheme () {
             try {
-                portal = Portal.Settings.get ();
+                setup_portal ();
 
                 prefers_color_scheme = (ColorScheme) portal.read (
                     "org.freedesktop.appearance",
@@ -138,6 +178,48 @@ namespace Granite {
 
             // Set a default in case we can't get from system
             prefers_color_scheme = ColorScheme.NO_PREFERENCE;
+        }
+
+        private void setup_clock_format () {
+            try {
+                setup_portal ();
+
+                var clock_format_variant = portal.read (GNOME_DESKTOP_INTERFACE, CLOCK_FORMAT_KEY).get_variant ();
+                var format = clock_format_variant.get_string ();
+
+                set_clock_format_from_nick (format);
+
+                portal.setting_changed.connect ((@namespace, key, @value) => {
+                    if (@namespace == GNOME_DESKTOP_INTERFACE && key == CLOCK_FORMAT_KEY) {
+                        var updated_format = @value.get_string ();
+                        set_clock_format_from_nick (updated_format);
+                    }
+                });
+            } catch (Error e) {
+                debug ("Unable to connect to desktop portal (%s), using GSettings", e.message);
+
+                var interface_settings = new GLib.Settings (GNOME_DESKTOP_INTERFACE);
+                var format = interface_settings.get_string (CLOCK_FORMAT_KEY);
+                set_clock_format_from_nick (format);
+
+                interface_settings.changed.connect ((key) => {
+                   if (key == CLOCK_FORMAT_KEY) {
+                       var updated_format = interface_settings.get_string (CLOCK_FORMAT_KEY);
+                       set_clock_format_from_nick (updated_format);
+                   }
+                });
+            }
+        }
+
+        private void set_clock_format_from_nick (string format) {
+            EnumClass clock_format_enum_class = (EnumClass) typeof (ClockFormat).class_ref ();
+            unowned EnumValue? eval = clock_format_enum_class.get_value_by_nick (format);
+
+            if (eval == null) {
+                _clock_format = null;
+            } else {
+                clock_format = (ClockFormat) eval.value;
+            }
         }
     }
 }

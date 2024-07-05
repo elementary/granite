@@ -8,18 +8,19 @@
  * getting the default translated format for either date and time.
  */
 namespace Granite.DateTime {
+
     /**
      * Gets a default translated time format.
      * The function constructs a new string interpreting the //is_12h// and //with_second// parameters
      * so that it can be used with formatting functions like {@link GLib.DateTime.format}.
      *
-     * The returned string is formatted and translated. This function is mostly used to display
+     * The returned format string is formatted and translated. This function is mostly used to display
      * the time in various user interfaces like the time displayed in the top panel.
      *
      * @param is_12h if the returned string should be formatted in 12h format
      * @param with_second if the returned string should include seconds
      *
-     * @return the formatted and located time string.
+     * @return the formatted and located time format string.
      */
     public static string get_default_time_format (bool is_12h = false, bool with_second = false) {
         if (is_12h == true) {
@@ -39,6 +40,22 @@ namespace Granite.DateTime {
                 return _("%H:%M");
             }
         }
+    }
+
+    /**
+     * Formats a {@link GLib.DateTime} using defaults from desktop settings
+     *
+     * The returned string is formatted and translated. This function is mostly used to display
+     * the time in various user interfaces like the time displayed in the top panel.
+     *
+     * @param date_time a {@link GLib.DateTime} to format using the desktop settings
+     * @param with_second if the returned string should include seconds
+     * @return the formatted and located time string.
+     */
+    public static string format_time (GLib.DateTime date_time, bool with_second = false) {
+        var is_12h = is_clock_format_12h ();
+        var time_format = get_default_time_format (is_12h, with_second);
+        return date_time.format (time_format);
     }
 
     /**
@@ -75,7 +92,7 @@ namespace Granite.DateTime {
                 }
             }
 
-            return date_time.format (get_default_time_format (is_clock_format_12h (), false));
+            return format_time (date_time, false);
         } else if (is_same_day (date_time.add_days (1), now)) {
             return _("Yesterday");
         } else if (is_same_day (date_time.add_days (-1), now)) {
@@ -96,21 +113,8 @@ namespace Granite.DateTime {
      * @return true if the clock format is 12h based, false otherwise.
      */
     private static bool is_clock_format_12h () {
-        string format = null;
-        try {
-            var portal = Portal.Settings.get ();
-            var variant = portal.read ("org.gnome.desktop.interface", "clock-format").get_variant ();
-            format = variant.get_string ();
-        } catch (Error e) {
-            debug ("cannot use portal, using GSettings: %s", e.message);
-        }
-
-        if (format == null) {
-            var h24_settings = new GLib.Settings ("org.gnome.desktop.interface");
-            format = h24_settings.get_string ("clock-format");
-        }
-
-        return (format.contains ("12h"));
+        var settings = Granite.Settings.get_default ();
+        return settings.clock_format == Granite.Settings.ClockFormat.12H;
     }
 
     /**
