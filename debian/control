@@ -1,13 +1,13 @@
 Source: granite7
 Section: libs
 Priority: optional
-Maintainer: Cody Garver <cody@elementary.io>
+Maintainer: elementary, Inc. <builds@elementary.io>
 Build-Depends: debhelper (>= 10.5.1),
                gobject-introspection (>= 1.41.4-1~),
                libgee-0.8-dev,
                libgirepository1.0-dev,
                libgtk-4-dev (>= 4.4.1),
-               meson,
+               meson (>= 0.57.0),
                sassc,
                valac (>= 0.40)
 Standards-Version: 4.1.1
