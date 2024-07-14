@@ -3,6 +3,6 @@
     border-radius: rem($window_radius / 2);
     box-shadow: shadow(1);
     color: bg-color(1);
-    margin: rem(6px);
-    padding: rem(6px);
+    margin: $button-spacing;
+    padding: $button-spacing;
 }
