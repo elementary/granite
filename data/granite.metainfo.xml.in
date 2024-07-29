@@ -32,6 +32,7 @@
         <p>Improvements:</p>
         <ul>
           <li>Improve screen reader support for SwitchModelButton</li>
+          <li>Wrap long labels for SwitchModelButton</li>
           <li>ValidatedEntry: set AccessibleState for validity</li>
           <li>Updated translations</li>
         </ul>
