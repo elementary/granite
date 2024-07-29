@@ -37,11 +37,12 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
 
     construct {
         var label = new Gtk.Label (text) {
-            ellipsize = Pango.EllipsizeMode.MIDDLE,
-            halign = Gtk.Align.START,
+            halign = START,
             hexpand = true,
-            vexpand = true,
             max_width_chars = 25,
+            vexpand = true,
+            wrap = true,
+            xalign = 0,
             mnemonic_widget = this
         };
 

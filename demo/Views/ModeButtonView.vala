@@ -30,7 +30,7 @@ public class ModeButtonView : Gtk.Box {
 
         var switchmodelbutton = new Granite.SwitchModelButton ("Default");
 
-        var description_switchmodelbutton = new Granite.SwitchModelButton ("With Description") {
+        var description_switchmodelbutton = new Granite.SwitchModelButton ("A SwitchModelButton With A Description") {
             active = true,
             description = "A description of additional affects related to the activation state of this switch"
         };
