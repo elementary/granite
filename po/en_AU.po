@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2017-08-23 15:34+0000\n"
-"Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
-"Language-Team: English (Australia) <https://weblate.elementary.io/projects/"
+"PO-Revision-Date: 2024-08-07 18:17+0000\n"
+"Last-Translator: anonymous <noreply@weblate.org>\n"
+"Language-Team: English (Australia) <https://l10n.elementary.io/projects/"
 "desktop/granite/en_AU/>\n"
 "Language: en_AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -140,7 +140,7 @@ msgstr ""
 
 #: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:94
