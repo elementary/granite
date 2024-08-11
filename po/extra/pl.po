@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2024-07-04 07:16+0000\n"
-"Last-Translator: Marcin Serwin <marcin.serwin0@protonmail.com>\n"
-"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/pl/>\n"
+"PO-Revision-Date: 2024-08-12 08:16+0000\n"
+"Last-Translator: Marcin Serwin <marcin@serwin.dev>\n"
+"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,10 +49,8 @@ msgid "Improve screen reader support for SwitchModelButton"
 msgstr "Poprawiono wsparcie czytnika ekranu dla SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:35
-#, fuzzy
-#| msgid "Improve screen reader support for SwitchModelButton"
 msgid "Wrap long labels for SwitchModelButton"
-msgstr "Poprawiono wsparcie czytnika ekranu dla SwitchModelButton"
+msgstr "Łamanie długich etykiet wewnątrz SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:36
 msgid "ValidatedEntry: set AccessibleState for validity"
