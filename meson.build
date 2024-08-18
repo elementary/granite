@@ -1,7 +1,7 @@
 project(
     'granite-7',
     'vala', 'c',
-    meson_version: '>= 0.56.0',
+    meson_version: '>= 0.57.0',
     version: '7.5.0'
 )
 
@@ -52,13 +52,6 @@ libgranite_deps = [
     dependency('gtk4', version: '>=4.12'),
 ]
 
-icons_dir = join_paths(
-    get_option('prefix'),
-    get_option('datadir'),
-    'icons',
-    'hicolor'
-)
-
 pkgconfig = import('pkgconfig')
 gnome = import('gnome')
 i18n = import('i18n')
@@ -75,8 +68,6 @@ if get_option('demo')
     subdir('demo')
 endif
 
-# set up post-install script to refresh the GTK icon cache
-meson.add_install_script(
-    join_paths(meson.current_source_dir(), 'meson', 'post_install.py'),
-    '--iconsdir', icons_dir,
+gnome.post_install(
+    gtk_update_icon_cache: true
 )

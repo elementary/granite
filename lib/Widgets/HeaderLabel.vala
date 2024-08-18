@@ -46,10 +46,10 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
                 secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
 
-                bind_property ("mnemonic-widget", secondary_label, "mnemonic-widget", SYNC_CREATE);
-
                 secondary_label.set_parent (this);
             }
+
+            update_accessible_description (value);
         }
     }
 
@@ -80,6 +80,16 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
+
+        notify["mnemonic-widget"].connect (() => {
+            update_accessible_description (secondary_text);
+        });
+    }
+
+    private void update_accessible_description (string? description) {
+        if (mnemonic_widget != null) {
+            mnemonic_widget.update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
+        }
     }
 
     ~HeaderLabel () {

@@ -10,7 +10,7 @@ built for elementary OS.
 ## Building, Testing, and Installation
 
 You'll need the following dependencies:
-* meson >= 0.49.0
+* meson >= 0.57.0
 * gobject-introspection
 * libgee-0.8-dev
 * libgirepository1.0-dev
