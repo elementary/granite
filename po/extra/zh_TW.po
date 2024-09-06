@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2024-09-05 21:13+0000\n"
+"PO-Revision-Date: 2024-09-06 10:13+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/zh_Hant/>\n"
@@ -64,7 +64,7 @@ msgstr "更新翻譯"
 #: data/granite.metainfo.xml.in:44 data/granite.metainfo.xml.in:108
 #: data/granite.metainfo.xml.in:131
 msgid "New Features:"
-msgstr ""
+msgstr "新功能："
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
