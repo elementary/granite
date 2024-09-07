@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2024-09-06 10:13+0000\n"
+"PO-Revision-Date: 2024-09-07 17:04+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hant/>\n"
@@ -74,16 +74,16 @@ msgstr[0] "%d 小時後"
 
 #: lib/DateTime.vala:84
 msgid "Yesterday"
-msgstr "昨日"
+msgstr "昨天"
 
 #: lib/DateTime.vala:86
 msgid "Tomorrow"
-msgstr "明日"
+msgstr "明天"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:150
 msgid "%a, %b %e, %Y"
-msgstr "%Y年%m月%d日（%a）"
+msgstr "%Y年%m月%d日（%A）"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:153
@@ -98,12 +98,12 @@ msgstr "%Y年"
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:159
 msgid "%b %e"
-msgstr "%b%e日"
+msgstr "%-m月%-d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:162
 msgid "%a %Y"
-msgstr "%Y年，%A"
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:165
@@ -114,7 +114,7 @@ msgstr "%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:168
 msgid "%a, %b %e"
-msgstr "%b%e日（%a）"
+msgstr "%-m 月 %-d 日（%A）"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:171
