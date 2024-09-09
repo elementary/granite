@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2024-09-07 17:04+0000\n"
+"PO-Revision-Date: 2024-09-09 12:16+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/zh_Hant/>\n"
@@ -211,7 +211,7 @@ msgstr "Paths：請改用 GLib.Environment"
 
 #: data/granite.metainfo.xml.in:145
 msgid "Seekbar"
-msgstr ""
+msgstr "Seekbar（跳轉列）"
 
 #: data/granite.metainfo.xml.in:146
 msgid "Services.Settings: use GLib.Settings instead"
