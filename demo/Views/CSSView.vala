@@ -70,12 +70,12 @@ public class CSSView : Gtk.Box {
         };
         terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
-        var back_button_label = new Granite.HeaderLabel ("\"back-button\" style class") ;
+        var back_button_label = new Granite.HeaderLabel ("BackButton") ;
 
-        var back_button = new Gtk.Button.with_label ("Back Button") {
-            halign = Gtk.Align.START
+        var back_button = new Granite.BackButton () {
+            halign = START,
+            label = "Back"
         };
-        back_button.add_css_class (Granite.STYLE_CLASS_BACK_BUTTON);
 
         var scales_header = new Granite.HeaderLabel ("Scales") {
             secondary_text = "\"warmth\" and \"temperature\" style classes"
