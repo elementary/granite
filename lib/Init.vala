@@ -5,9 +5,6 @@
 
 namespace Granite {
     private static bool initialized = false;
-    private static Gtk.CssProvider? base_provider = null;
-    private static Gtk.CssProvider? dark_provider = null;
-    private static Gtk.CssProvider? app_provider = null;
 
     /**
      * Initializes Granite.

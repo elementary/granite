@@ -8,6 +8,10 @@
  * based on system preference or application preferene (see {@link color_scheme_override}), etc.
  */
 public class Granite.StyleManager : Object {
+    private static Gtk.CssProvider? base_provider = null;
+    private static Gtk.CssProvider? dark_provider = null;
+    private static Gtk.CssProvider? app_provider = null;
+
     private static GLib.Once<Granite.StyleManager> instance;
     public static unowned Granite.StyleManager get_instance () {
         return instance.once (() => {
