@@ -5,7 +5,7 @@
 
 /**
  * A class for managing the style of the application. This handles switching light and dark mode based
- * based on system preference or application preferene (see {@link color_scheme_override}), etc.
+ * based on system preference or application preference (see {@link color_scheme_override}), etc.
  */
 public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? base_provider = null;
