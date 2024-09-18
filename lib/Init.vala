@@ -20,7 +20,7 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
-        Granite.StyleManager.get_instance (); // Make sure everything is being set up there
+        Granite.StyleManager.get_default (); // Make sure everything is being set up there
 
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
         GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");

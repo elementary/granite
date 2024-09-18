@@ -28,7 +28,7 @@ public class StyleManagerView : Gtk.Box {
         append (force_light);
         append (force_dark);
 
-        var style_manager = Granite.StyleManager.get_instance ();
+        var style_manager = Granite.StyleManager.get_default ();
 
         dont_button.toggled.connect (() => {
             if (dont_button.active) {

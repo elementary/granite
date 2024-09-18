@@ -13,7 +13,7 @@ public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? app_provider = null;
 
     private static GLib.Once<Granite.StyleManager> instance;
-    public static unowned Granite.StyleManager get_instance () {
+    public static unowned Granite.StyleManager get_default () {
         return instance.once (() => {
             return new Granite.StyleManager ();
         });
