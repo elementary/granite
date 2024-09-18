@@ -22,8 +22,9 @@ public class Granite.StyleManager : Object {
     /**
      * If this is set to NO_PREFERENCE the systems preferred color scheme will be used.
      * Otherwise the color scheme set here will be used.
+     * Default is LIGHT.
      */
-    public Settings.ColorScheme color_scheme_override { get; set; default = NO_PREFERENCE; }
+    public Settings.ColorScheme color_scheme_override { get; set; default = LIGHT; }
 
     private StyleManager () { }
 
