@@ -12,7 +12,7 @@ public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
 
-    private static HashTable<Gdk.Display, StyleManager> style_managers_by_displays = new HashTable<Gdk.Display, StyleManager> (null, null);
+    private static HashTable<Gdk.Display, StyleManager>? style_managers_by_displays;
 
     public static unowned StyleManager get_default () {
         return style_managers_by_displays[Gdk.Display.get_default ()];
@@ -23,6 +23,10 @@ public class Granite.StyleManager : Object {
     }
 
     internal static void init_for_display (Gdk.Display display) {
+        if (style_managers_by_displays == null) {
+            style_managers_by_displays = new HashTable<Gdk.Display, StyleManager> (null, null);
+        }
+
         style_managers_by_displays[display] = new StyleManager (display);
     }
 
