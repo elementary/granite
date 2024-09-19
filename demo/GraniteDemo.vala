@@ -48,24 +48,11 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
-        var gtk_settings = Gtk.Settings.get_default ();
-
-        var mode_switch = new Granite.ModeSwitch.from_icon_name (
-            "display-brightness-symbolic",
-            "weather-clear-night-symbolic"
-        ) {
-            primary_icon_tooltip_text = ("Light background"),
-            secondary_icon_tooltip_text = ("Dark background"),
-            valign = CENTER
-        };
-        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme", BIDIRECTIONAL);
-
         var end_header = new Gtk.HeaderBar () {
             show_title_buttons = false
         };
         end_header.add_css_class (Granite.STYLE_CLASS_FLAT);
         end_header.pack_end (new Gtk.WindowControls (END));
-        end_header.pack_end (mode_switch);
 
         var end_box = new Gtk.Box (VERTICAL, 0);
         end_box.append (end_header);
