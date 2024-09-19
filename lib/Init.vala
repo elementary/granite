@@ -20,7 +20,12 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
-        Granite.StyleManager.get_default (); // Make sure everything is being set up there
+        unowned var display_manager = Gdk.DisplayManager.@get ();
+        display_manager.display_opened.connect (StyleManager.init_for_display);
+
+        foreach (unowned var display in display_manager.list_displays ()) {
+            StyleManager.init_for_display (display);
+        }
 
         GLib.Intl.bindtextdomain (Granite.GETTEXT_PACKAGE, Granite.LOCALEDIR);
         GLib.Intl.bind_textdomain_codeset (Granite.GETTEXT_PACKAGE, "UTF-8");

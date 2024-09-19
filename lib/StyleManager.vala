@@ -12,11 +12,18 @@ public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
 
-    private static GLib.Once<Granite.StyleManager> instance;
-    public static unowned Granite.StyleManager get_default () {
-        return instance.once (() => {
-            return new Granite.StyleManager ();
-        });
+    private static HashTable<Gdk.Display, StyleManager> style_managers_by_displays = new HashTable<Gdk.Display, StyleManager> (null, null);
+
+    public static unowned StyleManager get_default () {
+        return style_managers_by_displays[Gdk.Display.get_default ()];
+    }
+
+    public static unowned StyleManager get_for_display (Gdk.Display display) {
+        return style_managers_by_displays[display];
+    }
+
+    internal static void init_for_display (Gdk.Display display) {
+        style_managers_by_displays[display] = new StyleManager (display);
     }
 
     /**
@@ -26,36 +33,30 @@ public class Granite.StyleManager : Object {
      */
     public Settings.ColorScheme color_scheme_override { get; set; default = LIGHT; }
 
-    private StyleManager () { }
+    /**
+     * The Gdk.Display this StyleManager handles.
+     */
+    public Gdk.Display display { get; construct; }
 
-    construct {
-        unowned var display_manager = Gdk.DisplayManager.@get ();
-        display_manager.display_opened.connect (register_display);
-
-        foreach (unowned var display in display_manager.list_displays ()) {
-            register_display (display);
-        }
-
-        Granite.Settings.get_default ().notify["prefers-color-scheme"].connect (update_color_scheme);
-        update_color_scheme ();
-
-        notify["color-scheme-override"].connect (update_color_scheme);
+    private StyleManager (Gdk.Display display) {
+        Object (display: display);
     }
 
-    private void register_display (Gdk.Display display) {
+    construct {
         var gtk_settings = Gtk.Settings.get_for_display (display);
-        gtk_settings.gtk_application_prefer_dark_theme = prefers_dark ();
-        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
-            set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
-        });
+        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (set_provider_for_display);
+        set_provider_for_display ();
 
-        set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
+        var granite_settings = Granite.Settings.get_default ();
+        granite_settings.notify["prefers-color-scheme"].connect (update_color_scheme);
+        notify["color-scheme-override"].connect (update_color_scheme);
+        update_color_scheme ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
         icon_theme.add_resource_path ("/io/elementary/granite");
     }
 
-    private void set_provider_for_display (Gdk.Display display, bool prefer_dark_style) {
+    private void set_provider_for_display () {
         if (app_provider == null) {
             var base_path = Application.get_default ().resource_base_path;
             if (base_path != null) {
@@ -70,7 +71,7 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (prefer_dark_style) {
+        if (Gtk.Settings.get_for_display (display).gtk_application_prefer_dark_theme) {
             if (base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
@@ -107,12 +108,8 @@ public class Granite.StyleManager : Object {
     }
 
     private void update_color_scheme () {
-        var dark = prefers_dark ();
-
-        foreach (var display in Gdk.DisplayManager.@get ().list_displays ()) {
-            var gtk_settings = Gtk.Settings.get_for_display (display);
-            gtk_settings.gtk_application_prefer_dark_theme = dark;
-        }
+        var gtk_settings = Gtk.Settings.get_for_display (display);
+        gtk_settings.gtk_application_prefer_dark_theme = prefers_dark ();
     }
 
     private bool prefers_dark () {
