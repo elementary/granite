@@ -109,15 +109,11 @@ public class Granite.StyleManager : Object {
 
     private void update_color_scheme () {
         var gtk_settings = Gtk.Settings.get_for_display (display);
-        gtk_settings.gtk_application_prefer_dark_theme = prefers_dark ();
-    }
-
-    private bool prefers_dark () {
         if (color_scheme_override == NO_PREFERENCE) {
             var granite_settings = Granite.Settings.get_default ();
-            return granite_settings.prefers_color_scheme == DARK;
+            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
         } else {
-            return color_scheme_override == DARK;
+            gtk_settings.gtk_application_prefer_dark_theme = color_scheme_override == DARK;
         }
     }
 }
