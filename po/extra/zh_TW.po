@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2024-09-09 12:16+0000\n"
+"PO-Revision-Date: 2024-09-20 09:43+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "desktop/granite-extra/zh_Hant/>\n"
@@ -88,19 +88,19 @@ msgstr "範例改為使用現代化的分割面板設計"
 
 #: data/granite.metainfo.xml.in:54
 msgid "DateTime: handle relative datetime when epoch"
-msgstr ""
+msgstr "DateTime：有 epoch 的時候處理相對日期時間"
 
 #: data/granite.metainfo.xml.in:55
 msgid "MessageDialog: Set last button as focus widget"
-msgstr ""
+msgstr "MessageDialog：將最後一個按鈕設為聚焦元件"
 
 #: data/granite.metainfo.xml.in:56
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr ""
+msgstr "SwitchModelButton：移除開關上重複的鍵盤聚焦"
 
 #: data/granite.metainfo.xml.in:57
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr ""
+msgstr "使用 Granite.init 時為元件載入備用樣式"
 
 #: data/granite.metainfo.xml.in:60
 msgid "Deprecations:"
@@ -113,59 +113,60 @@ msgstr "SettingsPage 和 SettingsSidebar：這些元件已移至 LibSwitchboard"
 
 #: data/granite.metainfo.xml.in:74
 msgid "Add a withdraw method for Granite.Toast"
-msgstr ""
+msgstr "為 Granite.Toast 加入 withdraw 方法"
 
 #: data/granite.metainfo.xml.in:88
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr ""
+msgstr "讓備用樣式表不要依賴主要的 elementary 樣式表"
 
 #: data/granite.metainfo.xml.in:89
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
-msgstr ""
+msgstr "以 \"Granite.init ()\" 初始化時自動載入名為 \"Application.css\" 的 "
+"gresourced 樣式表"
 
 #: data/granite.metainfo.xml.in:90
 msgid "Add SettingsUri constants for launching System Settings"
-msgstr ""
+msgstr "新增用來啟動《系統設定值》的 SettingsUri 常數"
 
 #: data/granite.metainfo.xml.in:100
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr ""
+msgstr "將 \"Granite.init ()\" 設為 public"
 
 #: data/granite.metainfo.xml.in:110
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
-msgstr ""
+msgstr "用 Granite.STYLE_CLASS_RICH_LIST 來取得標準的 Gtk.ListBox 列間間隔"
 
 #: data/granite.metainfo.xml.in:111
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
-msgstr ""
+msgstr "用 Granite.STYLE_CLASS_FRAME 來為 Gtk.LisBox、Gtk.InfoBar 等等加上邊框"
 
 #: data/granite.metainfo.xml.in:112
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr ""
+msgstr "用 Granite.STYLE_CLASS_SIDEBAR 來為應用程式側邊欄套用樣式"
 
 #: data/granite.metainfo.xml.in:113
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
-msgstr ""
+msgstr "用 Granite.STYLE_CLASS_BACKGROUND 來使用元件的預設背景色"
 
 #: data/granite.metainfo.xml.in:114
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "為 Granite.HeaderLabel 加入非必要的次要文字"
 
 #: data/granite.metainfo.xml.in:118
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "允許 Granite.Toast 的文字自動換行"
 
 #: data/granite.metainfo.xml.in:119
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
-msgstr ""
+msgstr "SimpleSettingsPage：讓標題自動換行，並允許描述文字顯示在開關下方"
 
 #: data/granite.metainfo.xml.in:133
 msgid "Ported to GTK4! 🎉️"
@@ -173,11 +174,11 @@ msgstr "移植到 GTK4 了！🎉️"
 
 #: data/granite.metainfo.xml.in:134
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
-msgstr ""
+msgstr "Granite.Placeholder：取代 AlertView 和 Welcome"
 
 #: data/granite.metainfo.xml.in:135
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage：允許在描述中使用格式"
 
 #: data/granite.metainfo.xml.in:137
 msgid "Removals:"
@@ -185,11 +186,11 @@ msgstr "移除項目："
 
 #: data/granite.metainfo.xml.in:139
 msgid "Application: use Gtk.Application instead"
-msgstr ""
+msgstr "Granite.Application：請改用 Gtk.Application"
 
 #: data/granite.metainfo.xml.in:140
 msgid "Drawing: Use Gtk.CSS"
-msgstr "Drawing：使用 Gtk.CSS"
+msgstr "Drawing：請改用 Gtk.CSS"
 
 #: data/granite.metainfo.xml.in:141
 msgid "DynamicNotebook: use Adw.TabBar instead"
@@ -203,7 +204,8 @@ msgstr "Logger：請改用 GLib.log"
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
-msgstr ""
+msgstr "ModeButton：請改用 Gtk.ToggleButton 並設定 \"group\" 屬性與 \"linked\" 樣式 "
+"class"
 
 #: data/granite.metainfo.xml.in:144
 msgid "Paths: use GLib.Environment instead"
@@ -215,27 +217,27 @@ msgstr "Seekbar（跳轉列）"
 
 #: data/granite.metainfo.xml.in:146
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr ""
+msgstr "Services.Settings：請改用 GLib.Settings"
 
 #: data/granite.metainfo.xml.in:147
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
-msgstr ""
+msgstr "SimpleCommand：請改用 GLib.AppInfo.create_from_commandline"
 
 #: data/granite.metainfo.xml.in:148
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
-msgstr ""
+msgstr "SourceList：請改用 Gtk.ListBox 並利用 \"sidebar\" 樣式 class"
 
 #: data/granite.metainfo.xml.in:149
 msgid "StorageBar"
-msgstr ""
+msgstr "StorageBar"
 
 #: data/granite.metainfo.xml.in:150
 msgid "TextStyle: use style class constants instead"
-msgstr ""
+msgstr "TextStyle：請改用樣式常數"
 
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
-msgstr ""
+msgstr "用 GLib.AppInfo 來取代 System 中的一些函數"
 
 #~ msgid "elementary, Inc."
 #~ msgstr "elementary, Inc."
