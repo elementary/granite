@@ -32,19 +32,19 @@ public class StyleManagerView : Gtk.Box {
 
         dont_button.toggled.connect (() => {
             if (dont_button.active) {
-                style_manager.color_scheme_override = NO_PREFERENCE;
+                style_manager.color_scheme = NO_PREFERENCE;
             }
         });
 
         force_light.toggled.connect (() => {
             if (force_light.active) {
-                style_manager.color_scheme_override = LIGHT;
+                style_manager.color_scheme = LIGHT;
             }
         });
 
         force_dark.toggled.connect (() => {
             if (force_dark.active) {
-                style_manager.color_scheme_override = DARK;
+                style_manager.color_scheme = DARK;
             }
         });
     }

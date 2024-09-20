@@ -5,7 +5,7 @@
 
 /**
  * A class for managing the style of the application. This handles switching light and dark mode based
- * based on system preference or application preference (see {@link color_scheme_override}), etc.
+ * based on system preference or application preference (see {@link color_scheme}), etc.
  */
 public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? base_provider = null;
@@ -14,10 +14,17 @@ public class Granite.StyleManager : Object {
 
     private static HashTable<Gdk.Display, StyleManager>? style_managers_by_displays;
 
+    /**
+     * Returns the {@link Granite.StyleManager} that handles the default display
+     * as gotten by {@link Gdk.Display.get_default ()}.
+     */
     public static unowned StyleManager get_default () {
         return style_managers_by_displays[Gdk.Display.get_default ()];
     }
 
+    /**
+     * Returns the {@link Granite.StyleManager} that handles the given {@link Gdk.Display}.
+     */
     public static unowned StyleManager get_for_display (Gdk.Display display) {
         return style_managers_by_displays[display];
     }
@@ -35,7 +42,7 @@ public class Granite.StyleManager : Object {
      * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE }.
      * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE }
      */
-    public Settings.ColorScheme color_scheme_override { get; set; default = NO_PREFERENCE; }
+    public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
 
     /**
      * The {@link Gdk.Display} handled by #this.
@@ -53,7 +60,7 @@ public class Granite.StyleManager : Object {
 
         var granite_settings = Granite.Settings.get_default ();
         granite_settings.notify["prefers-color-scheme"].connect (update_color_scheme);
-        notify["color-scheme-override"].connect (update_color_scheme);
+        notify["color-scheme"].connect (update_color_scheme);
         update_color_scheme ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
@@ -113,11 +120,11 @@ public class Granite.StyleManager : Object {
 
     private void update_color_scheme () {
         var gtk_settings = Gtk.Settings.get_for_display (display);
-        if (color_scheme_override == NO_PREFERENCE) {
+        if (color_scheme == NO_PREFERENCE) {
             var granite_settings = Granite.Settings.get_default ();
             gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
         } else {
-            gtk_settings.gtk_application_prefer_dark_theme = color_scheme_override == DARK;
+            gtk_settings.gtk_application_prefer_dark_theme = color_scheme == DARK;
         }
     }
 }
