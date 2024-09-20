@@ -5,17 +5,17 @@
 
 public class StyleManagerView : Gtk.Box {
     construct {
-        var label = new Gtk.Label (_("Override the application theme:"));
+        var label = new Granite.HeaderLabel ("Visual Style");
 
-        var dont_button = new Gtk.CheckButton.with_label (_("Use system theme")) {
+        var dont_button = new Gtk.CheckButton.with_label ("Follow system setting") {
             active = true
         };
 
-        var force_light = new Gtk.CheckButton.with_label (_("Force light theme")) {
+        var force_light = new Gtk.CheckButton.with_label ("Light") {
             group = dont_button
         };
 
-        var force_dark = new Gtk.CheckButton.with_label (_("Force dark theme")) {
+        var force_dark = new Gtk.CheckButton.with_label ("Dark") {
             group = force_light
         };
 

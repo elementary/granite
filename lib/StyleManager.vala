@@ -31,14 +31,14 @@ public class Granite.StyleManager : Object {
     }
 
     /**
-     * If this is set to NO_PREFERENCE the systems preferred color scheme will be used.
-     * Otherwise the color scheme set here will be used.
-     * Default is NO_PREFERENCE.
+     * The {@link Granite.Settings.ColorScheme} requested by the application
+     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE }.
+     * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE }
      */
     public Settings.ColorScheme color_scheme_override { get; set; default = NO_PREFERENCE; }
 
     /**
-     * The Gdk.Display this StyleManager handles.
+     * The {@link Gdk.Display} handled by #this.
      */
     public Gdk.Display display { get; construct; }
 
