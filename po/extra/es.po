@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 14:21+0000\n"
+"POT-Creation-Date: 2024-10-14 14:25+0000\n"
 "PO-Revision-Date: 2024-08-01 18:16+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <edwood.grant@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/desktop/granite-"
@@ -37,10 +37,6 @@ msgstr ""
 "Una biblioteca complementaria para GTK y GLib que proporciona widgets "
 "complejos y métodos de conveniencia diseñados para su uso en aplicaciones "
 "para elementary OS."
-
-#: data/granite.metainfo.xml.in:24
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -297,6 +293,9 @@ msgstr "Estilo de texto (TextStyle): utilice constantes de estilos en su lugar"
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
 "Varias funciones en sistema (System) fueron reemplazadas por GLib.AppInfo"
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Inc."
 
 #~ msgid "Fixes:"
 #~ msgstr "Correcciones:"

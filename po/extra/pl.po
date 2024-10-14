@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 14:21+0000\n"
+"POT-Creation-Date: 2024-10-14 14:25+0000\n"
 "PO-Revision-Date: 2024-08-12 08:16+0000\n"
 "Last-Translator: Marcin Serwin <marcin@serwin.dev>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite-"
@@ -36,10 +36,6 @@ msgstr ""
 "Biblioteka towarzysząca dla GTK oraz GLib dostarczająca złożone widgety oraz "
 "wygodne metody zaprojektowane do użytku dla aplikacji zbudowanych dla "
 "elementary OS."
-
-#: data/granite.metainfo.xml.in:24
-msgid "elementary, Inc."
-msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -259,6 +255,9 @@ msgstr "TextStyle: używa teraz stałych klas stylu"
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "Wiele funkcji w systemie zostało zastąpionych przez GLib.AppInfo"
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Inc."
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "własność min_length dla Granite.ValidatedEntry"

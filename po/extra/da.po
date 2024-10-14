@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-14 14:21+0000\n"
+"POT-Creation-Date: 2024-10-14 14:25+0000\n"
 "PO-Revision-Date: 2020-05-29 13:11+0000\n"
 "Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/desktop/granite-"
@@ -36,10 +36,6 @@ msgid ""
 msgstr ""
 "Et ledsagerbibliotek til GTK og GLib, der leverer komplekse widgets og "
 "bekvemmelighedsmetoder designet til brug i apps bygget til elementary OS."
-
-#: data/granite.metainfo.xml.in:24
-msgid "elementary, Inc."
-msgstr "elementary, Incorporated."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -247,6 +243,9 @@ msgstr ""
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
+
+#~ msgid "elementary, Inc."
+#~ msgstr "elementary, Incorporated."
 
 #, fuzzy
 #~| msgid "New Style Constants:"
