@@ -9,8 +9,8 @@
  * The class itself is similar to it's Gtk equivalent {@link Gtk.MessageDialog}
  * but follows elementary OS design conventions.
  *
- * See [[https://docs.elementary.io/hig/widgets/providing-feedback#message-dialogs|The Human Interface Guidelines for dialogs]]
- * for more detailed disscussion on the dialog wording and design.
+ * See the [[https://docs.elementary.io/hig/widgets/providing-feedback#message-dialogs|Human Interface Guidelines for message dialogs]]
+ * for a more detailed discussion of the dialog wording and design.
  *
  * ''Example''<<BR>>
  * {{{
