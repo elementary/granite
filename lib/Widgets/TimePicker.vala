@@ -185,6 +185,13 @@ namespace Granite.Widgets {
             activate.connect (is_unfocused);
 
             update_text ();
+
+            var granite_settings = Granite.Settings.get_default ();
+
+            granite_settings.notify["clock-format"].connect (() => {
+                update_text ();
+                set_popover_clock_format ();
+            });
         }
 
         private void update_time (bool is_hour) {
@@ -222,6 +229,14 @@ namespace Granite.Widgets {
         private void on_icon_press (Gtk.EntryIconPosition position, Gdk.Event event) {
             // If the mode is changed from 12h to 24h or visa versa, the entry updates on icon press
             update_text ();
+
+            set_popover_clock_format ();
+
+            popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
+            popover.show_all ();
+        }
+
+        private void set_popover_clock_format () {
             changing_time = true;
 
             if (Granite.DateTime.is_clock_format_12h () && time.get_hour () > 12) {
@@ -245,18 +260,16 @@ namespace Granite.Widgets {
                 // Make sure that bounds are set correctly
                 hours_spinbutton.set_range (1, 12);
             } else {
+
+                hours_spinbutton.set_range (0, 23);
+
                 am_pm_modebutton.no_show_all = true;
                 am_pm_modebutton.hide ();
                 hours_spinbutton.set_value (time.get_hour ());
-
-                hours_spinbutton.set_range (0, 23);
             }
 
             minutes_spinbutton.set_value (time.get_minute ());
             changing_time = false;
-
-            popover.pointing_to = get_icon_area (Gtk.EntryIconPosition.SECONDARY);
-            popover.show_all ();
         }
 
         [Version (deprecated = true, deprecated_since = "5.2.0")]
