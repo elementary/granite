@@ -5,6 +5,7 @@ libgranite_sources = files(
     'DateTime.vala',
     'Constants.vala',
     'Init.vala',
+    'StyleManager.vala',
 
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
