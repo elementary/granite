@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:51+0000\n"
+"POT-Creation-Date: 2024-10-14 14:21+0000\n"
 "PO-Revision-Date: 2024-08-01 18:16+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/"
-"granite-extra/ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/desktop/granite-"
+"extra/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,10 @@ msgid ""
 msgstr ""
 "elementary OS 向けのアプリでの利用のためにデザインされた複雑なウィジェットや"
 "便利なメソッドを提供する、GTK と GLib の共有ライブラリです。"
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -262,9 +266,6 @@ msgstr "TextStyle: 今後はスタイルクラスの定数を使用してくだ�
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "System 名前空間にあった複数の関数が、GLib.AppInfo で置き換わりました"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "Granite.ValidatedEntry ウィジェットに min_length プロパティを追加"

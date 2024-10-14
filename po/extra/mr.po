@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:51+0000\n"
+"POT-Creation-Date: 2024-10-14 14:21+0000\n"
 "PO-Revision-Date: 2020-12-20 18:16+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite-"
@@ -36,6 +36,10 @@ msgid ""
 msgstr ""
 "GTK आणि GLib साठी एक सहयोगी लायब्ररी जी प्राथमिक ओएससाठी तयार केलेल्या अ‍ॅप्समध्ये "
 "वापरण्यासाठी डिझाइन केलेले जटिल विजेट आणि सोयीच्या पद्धती प्रदान करते."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "एलिमेंटरी,Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -249,9 +253,6 @@ msgstr ""
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
-
-#~ msgid "elementary, Inc."
-#~ msgstr "एलिमेंटरी,Inc."
 
 #, fuzzy
 #~| msgid ""

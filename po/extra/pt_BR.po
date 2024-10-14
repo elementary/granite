@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:51+0000\n"
+"POT-Creation-Date: 2024-10-14 14:21+0000\n"
 "PO-Revision-Date: 2024-08-16 15:16+0000\n"
 "Last-Translator: José Rafael <jrafaeldesantana@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
@@ -34,6 +34,10 @@ msgid ""
 msgstr ""
 "Uma biblioteca tudo-em-um para GTK e GLib que oferece widgets complexos e "
 "métodos convenientes projetados para uso em apps feitos para o Elementary OS."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -97,7 +101,8 @@ msgstr "MessageDialog: Definir o último botão como um widget com foco"
 
 #: data/granite.metainfo.xml.in:56
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr "SwitchModelButton: Remover foco redundante ao trocar através do teclado"
+msgstr ""
+"SwitchModelButton: Remover foco redundante ao trocar através do teclado"
 
 #: data/granite.metainfo.xml.in:57
 msgid "Load fallback styles for widgets when using Granite.init"
@@ -121,7 +126,8 @@ msgstr "Adicionado um método de withdraw para o Granite.Toast"
 
 #: data/granite.metainfo.xml.in:88
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr "Não depender da folha de estilo do elementary para estilos alternativos"
+msgstr ""
+"Não depender da folha de estilo do elementary para estilos alternativos"
 
 #: data/granite.metainfo.xml.in:89
 msgid ""
@@ -256,9 +262,6 @@ msgstr "TextStyle: agora utiliza constantes de estilo"
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "Algumas funções em Sistema foram substituídas pelo GLib.AppInfo"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "Additions:"
 #~ msgstr "Adições:"

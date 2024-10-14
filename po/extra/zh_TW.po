@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:51+0000\n"
+"POT-Creation-Date: 2024-10-14 14:21+0000\n"
 "PO-Revision-Date: 2024-09-20 09:43+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
@@ -31,8 +31,13 @@ msgstr "更快速簡單地創造有一致性且好用的應用程式"
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
-msgstr "用來與 GTK 與 GLib 一起使用的函式庫，提供設計給 elementary OS "
-"應用程式使用的複雜元件和方便的方法。"
+msgstr ""
+"用來與 GTK 與 GLib 一起使用的函式庫，提供設計給 elementary OS 應用程式使用的"
+"複雜元件和方便的方法。"
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:50
 #: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:86
@@ -123,7 +128,8 @@ msgstr "讓備用樣式表不要依賴主要的 elementary 樣式表"
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
-msgstr "以 \"Granite.init ()\" 初始化時自動載入名為 \"Application.css\" 的 "
+msgstr ""
+"以 \"Granite.init ()\" 初始化時自動載入名為 \"Application.css\" 的 "
 "gresourced 樣式表"
 
 #: data/granite.metainfo.xml.in:90
@@ -204,7 +210,8 @@ msgstr "Logger：請改用 GLib.log"
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
-msgstr "ModeButton：請改用 Gtk.ToggleButton 並設定 \"group\" 屬性與 \"linked\" 樣式 "
+msgstr ""
+"ModeButton：請改用 Gtk.ToggleButton 並設定 \"group\" 屬性與 \"linked\" 樣式 "
 "class"
 
 #: data/granite.metainfo.xml.in:144
@@ -238,6 +245,3 @@ msgstr "TextStyle：請改用樣式常數"
 #: data/granite.metainfo.xml.in:151
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "用 GLib.AppInfo 來取代 System 中的一些函數"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
