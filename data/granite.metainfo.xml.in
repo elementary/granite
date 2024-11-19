@@ -27,12 +27,17 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="7.5.1" date="2024-06-18" urgency="medium">
+    <release version="7.6.0" date="2024-11-18" urgency="medium">
       <description>
+        <p>New Features:</p>
+        <ul>
+          <li>Granite.Bin</li>
+        </ul>
         <p>Improvements:</p>
         <ul>
           <li>Improve screen reader support for SwitchModelButton</li>
           <li>Wrap long labels for SwitchModelButton</li>
+          <li>HeaderLabel: set accessible description</li>
           <li>ValidatedEntry: set AccessibleState for validity</li>
           <li>Updated translations</li>
         </ul>
