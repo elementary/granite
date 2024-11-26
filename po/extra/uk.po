@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-19 23:33+0000\n"
-"PO-Revision-Date: 2024-08-04 13:16+0000\n"
+"PO-Revision-Date: 2024-11-27 01:16+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -44,10 +44,8 @@ msgid "New Features:"
 msgstr "Нові функції:"
 
 #: data/granite.metainfo.xml.in:34
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite.Bin"
-msgstr "Granite 7"
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:55
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:91
@@ -66,7 +64,7 @@ msgstr "Загортання довгих підписів для SwitchModelBut
 
 #: data/granite.metainfo.xml.in:40
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel: встановлено доступний опис"
 
 #: data/granite.metainfo.xml.in:41
 msgid "ValidatedEntry: set AccessibleState for validity"
