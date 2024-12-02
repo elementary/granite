@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-19 23:33+0000\n"
-"PO-Revision-Date: 2024-08-12 08:16+0000\n"
+"PO-Revision-Date: 2024-12-03 18:16+0000\n"
 "Last-Translator: Marcin Serwin <marcin@serwin.dev>\n"
-"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/pl/>\n"
+"Language-Team: Polish <https://l10n.elementary.io/projects/desktop/"
+"granite-extra/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,10 +43,8 @@ msgid "New Features:"
 msgstr "Nowe funkcje:"
 
 #: data/granite.metainfo.xml.in:34
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite.Bin"
-msgstr "Granite 7"
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:55
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:91
@@ -65,7 +63,7 @@ msgstr "Łamanie długich etykiet wewnątrz SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:40
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel: ustawienie opisu dla dostępności"
 
 #: data/granite.metainfo.xml.in:41
 msgid "ValidatedEntry: set AccessibleState for validity"
