@@ -9,6 +9,7 @@
  *
  * @since 7.6.0
  */
+[Version (since = "7.6.0")]
 public class Granite.Bin : Gtk.Widget {
     class construct {
         set_layout_manager_type (typeof (Gtk.BinLayout));
