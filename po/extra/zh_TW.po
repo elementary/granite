@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-19 23:33+0000\n"
-"PO-Revision-Date: 2024-09-20 09:43+0000\n"
+"PO-Revision-Date: 2024-12-09 11:10+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
-"desktop/granite-extra/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional Han script) <https://l10n.elementary.io/"
+"projects/desktop/granite-extra/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.8.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -41,10 +41,8 @@ msgid "New Features:"
 msgstr "新功能："
 
 #: data/granite.metainfo.xml.in:34
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite.Bin"
-msgstr "Granite 7"
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:55
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:91
@@ -63,7 +61,7 @@ msgstr "讓 SwitchModelButton 將較長的文字標籤折行"
 
 #: data/granite.metainfo.xml.in:40
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel：設定輔助使用描述"
 
 #: data/granite.metainfo.xml.in:41
 msgid "ValidatedEntry: set AccessibleState for validity"
