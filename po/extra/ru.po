@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-19 23:33+0000\n"
-"PO-Revision-Date: 2024-11-21 05:16+0000\n"
+"PO-Revision-Date: 2024-11-25 10:16+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -62,7 +62,6 @@ msgid "Wrap long labels for SwitchModelButton"
 msgstr "Перенос длинных надписей для SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:40
-#, fuzzy
 msgid "HeaderLabel: set accessible description"
 msgstr "HeaderLabel: установка доступного описания"
 
