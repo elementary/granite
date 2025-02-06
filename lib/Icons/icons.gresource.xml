@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/elementary/granite">
+    <file alias="scalable/actions/adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
     <file alias="scalable/actions/adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
     <file alias="scalable/actions/adw-external-link-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic.svg</file>
     <file alias="scalable/actions/adw-external-link-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic-rtl.svg</file>
