@@ -25,7 +25,7 @@ public class Granite.NotifyToastOverlay : Gtk.Widget {
             _child = value;
 
             if (_child != null) {
-                _child.set_parent (overlay);
+                overlay.child = _child;
             }
         }
     }
@@ -136,7 +136,7 @@ public class Granite.NotifyToastOverlay : Gtk.Widget {
 
             Timeout.add (revealer.transition_duration, () => {
                 revealer.reveal_child = true;
-                start_timeout ();
+                //  start_timeout ();
                 return GLib.Source.REMOVE;
             });
         }
