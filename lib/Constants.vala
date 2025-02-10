@@ -191,6 +191,18 @@ namespace Granite {
     public const int TRANSITION_DURATION_OPEN = 250;
 
     /**
+     * CSS style classes to be used with {@link Gtk.Widget.add_css_class}
+     */
+    [Version (since = "7.7.0")]
+    namespace CssClass {
+
+        /**
+         * sets font features to use tabular numbers. Equivalent of Pango's tnum property
+         */
+        public const string NUMERIC = "numeric";
+    }
+
+    /**
      * Deep links to specific Settings pages.
      */
     namespace SettingsUri {
