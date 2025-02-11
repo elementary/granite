@@ -29,6 +29,11 @@ public class CSSView : Gtk.Box {
         };
         header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
+        var numeric = new Gtk.Label ("\"numeric\" Style Class 123.4") {
+            margin_bottom = 12
+        };
+        numeric.add_css_class (Granite.CssClass.NUMERIC);
+
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"card\" with \"rounded\" and \"checkerboard\" style classes"
         };
@@ -41,6 +46,7 @@ public class CSSView : Gtk.Box {
         card.append (header2);
         card.append (header3);
         card.append (header4);
+        card.append (numeric);
 
         var richlist_label = new Granite.HeaderLabel ("Lists") {
             secondary_text = "\"rich-list\" and \"frame\" style classes"

@@ -2,7 +2,7 @@ project(
     'granite-7',
     'vala', 'c',
     meson_version: '>= 0.57.0',
-    version: '7.6.0'
+    version: '7.7.0'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.48.0')
