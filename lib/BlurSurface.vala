@@ -4,13 +4,20 @@
  */
 
 /**
- * This interface is used for manually asking window manager to provide background blur for the surface.
+ * This interface is used for asking window manager to provide background blur for the surface.
  */
 public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
+    /**
+     * Returns whether application is running with Wayland backend
+     */
     public bool is_wayland () {
         return Gdk.Display.get_default () is Gdk.Wayland.Display;
     }
 
+    /**
+     * Initializes blur support. Uses default `blur_registry_handle_global` and `get_x11_blur_hints`.
+     * Use if you are not using other Wayland/X11 protocols.
+     */
     public void simple_blur_init () {
         if (is_wayland ()) {
             init_wayland (blur_registry_handle_global);
@@ -20,6 +27,12 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
     }
 
     private static Wl.RegistryListener registry_listener;
+
+    /**
+     * Initializes blur support on Wayland.
+     * Use this method only if you need to manually initialize support of multiple
+     * Wayland protocols. Otherwise use `simple_blur_init`.
+     */
     public void init_wayland (Wl.RegistryListenerGlobal registry_handle_global) requires (is_wayland ()) {
         registry_listener.global = registry_handle_global;
         unowned var display = (Gdk.Wayland.Display) Gdk.Display.get_default ();
@@ -35,6 +48,9 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
         }
     }
 
+    /**
+     * Registers the window as user of blur protocol. Use with `init_wayland` method.
+     */
     public void blur_registry_handle_global (Wl.Registry wl_registry, uint32 name, string @interface, uint32 version) {
         if (@interface == "io_elementary_pantheon_blur_manager_v1") {
             var blur_manager = wl_registry.bind<PantheonBlur.BlurManager> (name, ref PantheonBlur.BlurManager.iface, uint32.min (version, 1));
@@ -46,6 +62,10 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
         }
     }
 
+    /**
+     * Request background blur. Use if you use blur Wayland/X11 protocol only.
+     * Otherwise manually request blur using `request_blur_wayland` and `update_x11_hints` with `get_x11_blur_hints`.
+     */
     public void simple_request_blur (uint x, uint y, uint width, uint height, uint clip_radius) {
         if (is_wayland ()) {
             request_blur_wayland (x, y, width, height, clip_radius);
@@ -55,10 +75,11 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
     }
 
     /**
-     * Tells the window manager to add background blur behind this surface.
+     * Request background blur on wayland. 
+     * Use this method only if you use multiple Wayland protocols. Otherwise use `simple_request_blur`.
      */
     public void request_blur_wayland (uint x, uint y, uint width, uint height, uint clip_radius) {
-        if (!is_wayland()) {
+        if (!is_wayland ()) {
             warning ("BlurSurface.request_blur_wayland: Ignoring, not on Wayland");
         }
 
@@ -70,6 +91,10 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
         }
     }
 
+    /**
+     * Updates X11 hints that Gala (Pantheon window manager) uses for its protocols for X11 windows.
+     * Use only if you support multiple X11 Gala protocols.
+     */
     public void update_x11_hints (string value) requires (!is_wayland ()) {
         unowned var display = (Gdk.X11.Display) Gdk.Display.get_default ();
         unowned var xdisplay = display.get_xdisplay ();
@@ -78,6 +103,10 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
         xdisplay.change_property (xid, prop, X.XA_STRING, 8, 0, (uchar[]) value, value.length);
     }
 
+    /**
+     * Returns string that can be used in `update_x11_hints` to request blur.
+     * Use only if you support multiple X11 Gala protocols.
+     */
     public string get_x11_blur_hints (uint x, uint y, uint width, uint height, uint clip_radius) {
         return "blur=%u,%u,%u,%u,%u:".printf (x, y, width, height, clip_radius);
     }
