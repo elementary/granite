@@ -41,7 +41,7 @@ public interface Granite.BlurSurface : Gtk.Widget, Gtk.Native {
             unowned var surface = get_surface ();
             if (surface is Gdk.Wayland.Surface) {
                 unowned var wl_surface = ((Gdk.Wayland.Surface) surface).get_wl_surface ();
-                set_data ("-pantheon-wayland-blur", blur_manager.create (wl_surface));
+                set_data ("-pantheon-wayland-blur", blur_manager.get_blur (wl_surface));
             }
         }
     }

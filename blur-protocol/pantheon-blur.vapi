@@ -12,7 +12,7 @@ namespace PantheonBlur {
         public void* get_user_data ();
         public uint32 get_version ();
         public void destroy ();
-        public PantheonBlur.Blur create (Wl.Surface surface);
+        public PantheonBlur.Blur get_blur (Wl.Surface surface);
 
     }
 

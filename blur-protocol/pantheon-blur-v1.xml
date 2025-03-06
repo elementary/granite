@@ -7,13 +7,15 @@
   ]]></copyright>
 
   <interface name="io_elementary_pantheon_blur_manager_v1" version="1">
-    <description summary="request window manager background blur for surfaces">
-      This interface is used by the Pantheon applications to ask for background blur.
+    <description summary="blur object factory">
+      This protocol provides a way for Pantheon applications to ask for background blur.
     </description>
 
-    <request name="create">
-      <description summary="create a blur surface from a surface">
-        Create a blur surface from an existing surface.
+    <request name="get_blur">
+      <description summary="get blur object">
+        Get blur object for the given wl_surface to blur background behind it.
+        If the given wl_surface already has a io_elementary_pantheon_blur_v1 object associated,
+        an error will be raised.
       </description>
       <arg name="output" type="new_id" interface="io_elementary_pantheon_blur_v1"/>
       <arg name="surface" type="object" interface="wl_surface"/>
@@ -21,23 +23,24 @@
   </interface>
 
   <interface name="io_elementary_pantheon_blur_v1" version="1">
-    <request name="destroy" type="destructor"/>
-
-    <description summary="request window manager background blur for surfaces">
-      This interface is used by the Pantheon applications to ask for background blur.
+    <description summary="blur object for surface">
+      This interface provides a way for Pantheon applications to specify region of the window to be blurred.
+      By default the region to blur is considered to be null.
     </description>
+
+    <request name="destroy" type="destructor"/>
 
     <request name="set_region">
       <description summary="set blur region">
         Tell the window manager to crop blur to a given region.
-        The coordinates must be relative to the blur surface.
+        The coordinates must be relative to the associated surface.
       </description>
 
-      <arg name="x" type="uint" />
-      <arg name="y" type="uint" />
-      <arg name="width" type="uint" />
-      <arg name="height" type="uint" />
-      <arg name="clip_radius" type="uint" />
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="width" type="uint"/>
+      <arg name="height" type="uint"/>
+      <arg name="clip_radius" type="uint"/>
     </request>
   </interface>
 </protocol>
