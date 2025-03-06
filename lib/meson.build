@@ -2,8 +2,9 @@ subdir('Icons')
 subdir('Styles')
 
 libgranite_sources = files(
-    'DateTime.vala',
+    'BlurSurface.vala',
     'Constants.vala',
+    'DateTime.vala',
     'Init.vala',
 
     'Services/Application.vala',
@@ -70,7 +71,8 @@ libgranite = library(
     dependencies: [
         libgranite_deps,
         meson.get_compiler('c').find_library('m'),
-        meson.get_compiler('vala').find_library('posix')
+        meson.get_compiler('vala').find_library('posix'),
+        pantheon_blur_dep
     ],
 
     vala_header: 'granite-7.h',

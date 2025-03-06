@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="pantheon_blur_v1">
+  <copyright><![CDATA[
+    SPDX-FileCopyrightText: 2025 elementary <https://elementary.io>
+
+    SPDX-License-Identifier: LGPL-2.1-or-later
+  ]]></copyright>
+
+  <interface name="io_elementary_pantheon_blur_manager_v1" version="1">
+    <description summary="request window manager background blur for surfaces">
+      This interface is used by the Pantheon applications to ask for background blur.
+    </description>
+
+    <request name="create">
+      <description summary="create a blur surface from a surface">
+        Create a blur surface from an existing surface.
+      </description>
+      <arg name="output" type="new_id" interface="io_elementary_pantheon_blur_v1"/>
+      <arg name="surface" type="object" interface="wl_surface"/>
+    </request>
+  </interface>
+
+  <interface name="io_elementary_pantheon_blur_v1" version="1">
+    <request name="destroy" type="destructor"/>
+
+    <description summary="request window manager background blur for surfaces">
+      This interface is used by the Pantheon applications to ask for background blur.
+    </description>
+
+    <request name="set_region">
+      <description summary="set blur region">
+        Tell the window manager to crop blur to a given region.
+        The coordinates must be relative to the blur surface.
+      </description>
+
+      <arg name="x" type="uint" />
+      <arg name="y" type="uint" />
+      <arg name="width" type="uint" />
+      <arg name="height" type="uint" />
+      <arg name="clip_radius" type="uint" />
+    </request>
+  </interface>
+</protocol>

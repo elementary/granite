@@ -43,6 +43,8 @@ add_project_arguments(
     language: ['vala']
 )
 
+wayland_client_dep = dependency('wayland-client')
+
 libgranite_deps = [
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),
@@ -50,12 +52,16 @@ libgranite_deps = [
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
     dependency('gtk4', version: '>=4.4'),
+    dependency('gtk4-wayland', version: '>=4.4'),
+    dependency('gtk4-x11', version: '>=4.4'),
+    wayland_client_dep
 ]
 
 pkgconfig = import('pkgconfig')
 gnome = import('gnome')
 i18n = import('i18n')
 
+subdir('blur-protocol')
 subdir('lib')
 subdir('data')
 subdir('po')
