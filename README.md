@@ -12,6 +12,7 @@ built for elementary OS.
 You'll need the following dependencies:
 * meson >= 0.57.0
 * gobject-introspection
+* gettext
 * libgee-0.8-dev
 * libgirepository1.0-dev
 * libgtk-4-dev >= 4.4.0
