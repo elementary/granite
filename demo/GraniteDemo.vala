@@ -11,6 +11,7 @@ public class Granite.Demo : Gtk.Application {
 
     public override void startup () {
         Granite.init ();
+
         base.startup ();
     }
 
@@ -95,6 +96,7 @@ public class Granite.Demo : Gtk.Application {
         };
 
         var granite_settings = Granite.Settings.get_default ();
+        gtk_settings.gtk_theme_name = "io.elementary.stylesheet.blueberry";
         gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
 
         window.child = paned;
