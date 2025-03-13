@@ -29,6 +29,9 @@
     <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
     <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-mixed-symbolic.svg</file>
 
+    <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
+    <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
+
     <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
 
     <file alias="scalable/status/process-completed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-completed-symbolic.svg</file>
