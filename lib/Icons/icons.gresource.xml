@@ -26,8 +26,8 @@
     <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>
 
-    <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
-    <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-mixed-symbolic.svg</file>
+    <file alias="scalable/status/check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
+    <file alias="scalable/status/check-indeterminated-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
 
     <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
     <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
