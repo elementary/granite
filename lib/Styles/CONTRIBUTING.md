@@ -40,7 +40,7 @@ CSS style classes, such as `Granite.CssClass.CARD`, should be placed in a
 `_classes.scss` file under the relevant library directory (e.g. Granite, Gtk,
 Adw).
 
-## Testing Changesprimary 
+## Testing Changes
 
 Apps may need to be restarted or the system stylesheet may need to be changed before installed changes take effect.
 
