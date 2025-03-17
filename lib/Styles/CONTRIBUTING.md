@@ -47,12 +47,11 @@ Apps may need to be restarted or the system stylesheet may need to be changed be
 You can also test changes live with Gtk Inspector. Make sure you have Gtk development libraries installed, then enable the inspector shortcut:
 
 ```bash
-    apt install libgtk-3-dev libgtk-4-dev
-    gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true
+    apt install libgtk-4-dev
     gsettings set org.gtk.gtk4.Settings.Debug enable-inspector-keybinding true
 ```
 
-Open an app you wish to test your changes on. Open Gtk Inspector with the keyboard shortcut Shift + Ctrl + D, then navigate to the tab "Custom CSS" in Gtk3 or "CSS in Gtk4. Your changes here will take immediate effect on the focused app. In Gtk4 you may have to toggle the "pause" button in the top left before changes take effect.
+Open an app you wish to test your changes on. Open Gtk Inspector with the keyboard shortcut Shift + Ctrl + D, then navigate to the tab "CSS" in Gtk4. Your changes here will take immediate effect on the focused app. You may have to toggle the "pause" button in the top left before changes take effect.
 
 ## Proposing Changes
 
