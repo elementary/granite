@@ -25,7 +25,7 @@ public class WelcomeView : Gtk.Box {
             description = "Maybe you can <b>do something</b> to hide it but <i>otherwise</i> it will stay here",
             icon = new ThemedIcon ("dialog-warning")
         };
-        alert.add_css_class (Granite.STYLE_CLASS_WARNING);
+        alert.add_css_class (Granite.CssClass.WARNING);
 
         var alert_action = alert.append_button (
             new ThemedIcon ("edit-delete"),
