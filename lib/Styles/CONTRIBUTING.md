@@ -4,7 +4,7 @@
 
 The base grid unit should be 3px. Sometimes widgets with borders will be "off by one" to align visually.
 
-Border radii should increase as they nest where reasonable. For example button radii is 3px to nest neatly into 6px radii windows, popovers, and OSDs.
+Border radii should increase as they nest where reasonable. The largest border radii is 9px, used by windows. Popovers and On Screen Displays use a border radius half that.
 
 ## Levels and Dark Style Theory
 
