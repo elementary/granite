@@ -113,26 +113,32 @@ public class CSSView : Gtk.Box {
         var accent_color_box = new Gtk.Box (HORIZONTAL, 6);
         accent_color_box.append (new Gtk.Image.from_icon_name ("emoji-body-symbolic"));
         accent_color_box.append (new Gtk.Image.from_icon_name ("face-tired-symbolic"));
-        accent_color_box.append (new Gtk.Label (".accent"));
-        accent_color_box.add_css_class (Granite.STYLE_CLASS_ACCENT);
+        accent_color_box.append (new Gtk.Label ("Granite.CssClass.ACCENT"));
+        accent_color_box.add_css_class (Granite.CssClass.ACCENT);
 
         var success_color_box = new Gtk.Box (HORIZONTAL, 6);
         success_color_box.append (new Gtk.Image.from_icon_name ("process-completed-symbolic"));
         success_color_box.append (new Gtk.Image.from_icon_name ("face-sick-symbolic"));
-        success_color_box.append (new Gtk.Label (".success"));
-        success_color_box.add_css_class (Granite.STYLE_CLASS_SUCCESS);
+        success_color_box.append (new Gtk.Label ("Granite.CssClass.SUCCESS"));
+        success_color_box.add_css_class (Granite.CssClass.SUCCESS);
 
         var warning_color_box = new Gtk.Box (HORIZONTAL, 6);
         warning_color_box.append (new Gtk.Image.from_icon_name ("dialog-warning-symbolic"));
         warning_color_box.append (new Gtk.Image.from_icon_name ("face-laugh-symbolic"));
-        warning_color_box.append (new Gtk.Label (".warning"));
-        warning_color_box.add_css_class (Granite.STYLE_CLASS_WARNING);
+        warning_color_box.append (new Gtk.Label ("Granite.CssClass.WARNING"));
+        warning_color_box.add_css_class (Granite.CssClass.WARNING);
 
         var error_color_box = new Gtk.Box (HORIZONTAL, 6);
         error_color_box.append (new Gtk.Image.from_icon_name ("dialog-error-symbolic"));
         error_color_box.append (new Gtk.Image.from_icon_name ("face-angry-symbolic"));
-        error_color_box.append (new Gtk.Label (".error"));
-        error_color_box.add_css_class (Granite.STYLE_CLASS_ERROR);
+        error_color_box.append (new Gtk.Label ("Granite.CssClass.ERROR"));
+        error_color_box.add_css_class (Granite.CssClass.ERROR);
+
+        var dimmed_box = new Gtk.Box (HORIZONTAL, 6);
+        dimmed_box.append (new Gtk.Image.from_icon_name ("adw-tab-icon-missing-symbolic"));
+        dimmed_box.append (new Gtk.Image.from_icon_name ("face-plain-symbolic"));
+        dimmed_box.append (new Gtk.Label ("Granite.CssClass.DIM"));
+        dimmed_box.add_css_class (Granite.CssClass.DIM);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
             halign = Gtk.Align.CENTER,
@@ -160,6 +166,7 @@ public class CSSView : Gtk.Box {
         box.append (success_color_box);
         box.append (warning_color_box);
         box.append (error_color_box);
+        box.append (dimmed_box);
 
         var scrolled = new Gtk.ScrolledWindow () {
             child = box

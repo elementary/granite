@@ -7,6 +7,7 @@ namespace Granite {
     /**
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ACCENT")]
     public const string STYLE_CLASS_ACCENT = "accent";
     /**
      * Style class for shaping a {@link Gtk.Button}
@@ -106,7 +107,7 @@ namespace Granite {
     /**
      * Style class for widgets in success state.
      */
-    [Version (since = "7.5.0")]
+    [Version (since = "7.5.0", deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUCCESS")]
     public const string STYLE_CLASS_SUCCESS = "success";
 
     /**
@@ -144,10 +145,12 @@ namespace Granite {
     /**
      * Style class for dimmed labels.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DIM")]
     public const string STYLE_CLASS_DIM_LABEL = "dim-label";
     /**
      * Style class for widgets in error state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ERROR")]
     public const string STYLE_CLASS_ERROR = "error";
     /**
      * Style class for flattened widgets, such as buttons,
@@ -173,6 +176,7 @@ namespace Granite {
     /**
      * Style class for widgets in warning state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.WARNING")]
     public const string STYLE_CLASS_WARNING = "warning";
 
     /**
@@ -195,11 +199,35 @@ namespace Granite {
      */
     [Version (since = "7.7.0")]
     namespace CssClass {
+        /**
+         * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
+         */
+        public const string ACCENT = "accent";
+
+        /**
+         * Style class for dimmed labels and icons
+         */
+        public const string DIM = "dim-label";
+
+        /**
+         * Style class for widgets in error state.
+         */
+        public const string ERROR = "error";
 
         /**
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
         public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for widgets in success state.
+         */
+        public const string SUCCESS = "success";
+
+        /**
+         * Style class for widgets in warning state.
+         */
+        public const string WARNING = "warning";
     }
 
     /**
