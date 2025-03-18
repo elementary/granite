@@ -35,17 +35,23 @@ $BLUEBERRY_500: #3689e6;
 $BLUEBERRY_700: #0d52bf;
 $BLUEBERRY_900: #002e99;
 
+$GRAPE_100: #e4c6fa;
+$GRAPE_300: #cd9ef7;
+$GRAPE_500: #a56de2;
+$GRAPE_700: #7239b3;
+$GRAPE_900: #452981;
+
 $BUBBLEGUM_100: #fe9ab8;
 $BUBBLEGUM_300: #f4679d;
 $BUBBLEGUM_500: #de3e80;
 $BUBBLEGUM_700: #bc245d;
 $BUBBLEGUM_900: #910e38;
 
-$GRAPE_100: #e4c6fa;
-$GRAPE_300: #cd9ef7;
-$GRAPE_500: #a56de2;
-$GRAPE_700: #7239b3;
-$GRAPE_900: #452981;
+$LATTE_100: #efdfc4;
+$LATTE_300: #e7c591;
+$LATTE_500: #cfa25e;
+$LATTE_700: #b6802e;
+$LATTE_900: #804b00;
 
 $COCOA_100: #a3907c;
 $COCOA_300: #8a715e;
@@ -72,74 +78,84 @@ $BLACK_700: #1a1a1a;
 $BLACK_900: #000;
 
 // Exported
-@define-color STRAWBERRY_100 #{$STRAWBERRY_100};
-@define-color STRAWBERRY_300 #{$STRAWBERRY_300};
-@define-color STRAWBERRY_500 #{$STRAWBERRY_500};
-@define-color STRAWBERRY_700 #{$STRAWBERRY_700};
-@define-color STRAWBERRY_900 #{$STRAWBERRY_900};
+:root {
+    --STRAWBERRY_100: #{$STRAWBERRY_100}; 
+    --STRAWBERRY_300: #{$STRAWBERRY_300};
+    --STRAWBERRY_500: #{$STRAWBERRY_500};
+    --STRAWBERRY_700: #{$STRAWBERRY_700};
+    --STRAWBERRY_900: #{$STRAWBERRY_900};
 
-@define-color ORANGE_100 #{$ORANGE_100};
-@define-color ORANGE_300 #{$ORANGE_300};
-@define-color ORANGE_500 #{$ORANGE_500};
-@define-color ORANGE_700 #{$ORANGE_700};
-@define-color ORANGE_900 #{$ORANGE_900};
+    --ORANGE_100: #{$ORANGE_100};
+    --ORANGE_300: #{$ORANGE_300};
+    --ORANGE_500: #{$ORANGE_500};
+    --ORANGE_700: #{$ORANGE_700};
+    --ORANGE_900: #{$ORANGE_900};
+    
+    --BANANA_100: #{$BANANA_100};
+    --BANANA_300: #{$BANANA_300};
+    --BANANA_500: #{$BANANA_500};
+    --BANANA_700: #{$BANANA_700};
+    --BANANA_900: #{$BANANA_900};
+    
+    --LIME_100: #{$LIME_100};
+    --LIME_300: #{$LIME_300};
+    --LIME_500: #{$LIME_500};
+    --LIME_700: #{$LIME_700};
+    --LIME_900: #{$LIME_900};
+    
+    --MINT_100: #{$MINT_100};
+    --MINT_300: #{$MINT_300};
+    --MINT_500: #{$MINT_500};
+    --MINT_700: #{$MINT_700};
+    --MINT_900: #{$MINT_900};
+    
+    --BLUEBERRY_100: #{$BLUEBERRY_100};
+    --BLUEBERRY_300: #{$BLUEBERRY_300};
+    --BLUEBERRY_500: #{$BLUEBERRY_500};
+    --BLUEBERRY_700: #{$BLUEBERRY_700};
+    --BLUEBERRY_900: #{$BLUEBERRY_900};
 
-@define-color BANANA_100 #{$BANANA_100};
-@define-color BANANA_300 #{$BANANA_300};
-@define-color BANANA_500 #{$BANANA_500};
-@define-color BANANA_700 #{$BANANA_700};
-@define-color BANANA_900 #{$BANANA_900};
+    --GRAPE_100: #{$GRAPE_100};
+    --GRAPE_300: #{$GRAPE_300};
+    --GRAPE_500: #{$GRAPE_500};
+    --GRAPE_700: #{$GRAPE_700};
+    --GRAPE_900: #{$GRAPE_900};
+ 
+    --BUBBLEGUM_100: #{$BUBBLEGUM_100};
+    --BUBBLEGUM_300: #{$BUBBLEGUM_300};
+    --BUBBLEGUM_500: #{$BUBBLEGUM_500};
+    --BUBBLEGUM_700: #{$BUBBLEGUM_700};
+    --BUBBLEGUM_900: #{$BUBBLEGUM_900};
+       
+    --LATTE_100: #{$LATTE_100};
+    --LATTE_300: #{$LATTE_300};
+    --LATTE_500: #{$LATTE_500};
+    --LATTE_700: #{$LATTE_700};
+    --LATTE_900: #{$LATTE_900};
 
-@define-color LIME_100 #{$LIME_100};
-@define-color LIME_300 #{$LIME_300};
-@define-color LIME_500 #{$LIME_500};
-@define-color LIME_700 #{$LIME_700};
-@define-color LIME_900 #{$LIME_900};
+    --COCOA_100: #{$COCOA_100};
+    --COCOA_300: #{$COCOA_300};
+    --COCOA_500: #{$COCOA_500};
+    --COCOA_700: #{$COCOA_700};
+    --COCOA_900: #{$COCOA_900};
+    
+    --SILVER_100: #{$SILVER_100};
+    --SILVER_300: #{$SILVER_300};
+    --SILVER_500: #{$SILVER_500};
+    --SILVER_700: #{$SILVER_700};
+    --SILVER_900: #{$SILVER_900};
+    
+    --SLATE_100: #{$SLATE_100};
+    --SLATE_300: #{$SLATE_300};
+    --SLATE_500: #{$SLATE_500};
+    --SLATE_700: #{$SLATE_700};
+    --SLATE_900: #{$SLATE_900};
+    
+    --BLACK_100: #{$BLACK_100};
+    --BLACK_300: #{$BLACK_300};
+    --BLACK_500: #{$BLACK_500};
+    --BLACK_700: #{$BLACK_700};
+    --BLACK_900: #{"" + $BLACK_900};
+}
 
-@define-color MINT_100 #{$MINT_100};
-@define-color MINT_300 #{$MINT_300};
-@define-color MINT_500 #{$MINT_500};
-@define-color MINT_700 #{$MINT_700};
-@define-color MINT_900 #{$MINT_900};
 
-@define-color BLUEBERRY_100 #{$BLUEBERRY_100};
-@define-color BLUEBERRY_300 #{$BLUEBERRY_300};
-@define-color BLUEBERRY_500 #{$BLUEBERRY_500};
-@define-color BLUEBERRY_700 #{$BLUEBERRY_700};
-@define-color BLUEBERRY_900 #{$BLUEBERRY_900};
-
-@define-color BUBBLEGUM_100 #{$BUBBLEGUM_100};
-@define-color BUBBLEGUM_300 #{$BUBBLEGUM_300};
-@define-color BUBBLEGUM_500 #{$BUBBLEGUM_500};
-@define-color BUBBLEGUM_700 #{$BUBBLEGUM_700};
-@define-color BUBBLEGUM_900 #{$BUBBLEGUM_900};
-
-@define-color GRAPE_100 #{$GRAPE_100};
-@define-color GRAPE_300 #{$GRAPE_300};
-@define-color GRAPE_500 #{$GRAPE_500};
-@define-color GRAPE_700 #{$GRAPE_700};
-@define-color GRAPE_900 #{$GRAPE_900};
-
-@define-color COCOA_100 #{$COCOA_100};
-@define-color COCOA_300 #{$COCOA_300};
-@define-color COCOA_500 #{$COCOA_500};
-@define-color COCOA_700 #{$COCOA_700};
-@define-color COCOA_900 #{$COCOA_900};
-
-@define-color SILVER_100 #{$SILVER_100};
-@define-color SILVER_300 #{$SILVER_300};
-@define-color SILVER_500 #{$SILVER_500};
-@define-color SILVER_700 #{$SILVER_700};
-@define-color SILVER_900 #{$SILVER_900};
-
-@define-color SLATE_100 #{$SLATE_100};
-@define-color SLATE_300 #{$SLATE_300};
-@define-color SLATE_500 #{$SLATE_500};
-@define-color SLATE_700 #{$SLATE_700};
-@define-color SLATE_900 #{$SLATE_900};
-
-@define-color BLACK_100 #{$BLACK_100};
-@define-color BLACK_300 #{$BLACK_300};
-@define-color BLACK_500 #{$BLACK_500};
-@define-color BLACK_700 #{$BLACK_700};
-@define-color BLACK_900 #{"" + $BLACK_900};
