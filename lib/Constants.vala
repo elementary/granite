@@ -12,6 +12,7 @@ namespace Granite {
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.BACK")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
@@ -47,6 +48,7 @@ namespace Granite {
     /**
      * Style class for {@link Gtk.Button} with a destructive action
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DESTRUCTIVE")]
     public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
     /**
      * Style class for the content area in dialogs.
@@ -168,6 +170,7 @@ namespace Granite {
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUGGESTED")]
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
     /**
      * Style class for widgets which should use base color as their background
@@ -205,6 +208,16 @@ namespace Granite {
         public const string ACCENT = "accent";
 
         /**
+         * Style class for a {@link Gtk.Button} which is used to navigate backwards
+         */
+        public const string BACK = "back-button";
+
+        /**
+         * Style class for {@link Gtk.Button} with a destructive action
+         */
+        public const string DESTRUCTIVE = "destructive";
+
+        /**
          * Style class for dimmed labels and icons
          */
         public const string DIM = "dim-label";
@@ -218,6 +231,11 @@ namespace Granite {
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
         public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
+         */
+        public const string SUGGESTED = "suggested";
 
         /**
          * Style class for widgets in success state.
