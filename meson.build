@@ -43,6 +43,14 @@ add_project_arguments(
     language: ['vala']
 )
 
+if get_option('gtk')
+    add_project_arguments(
+        '-D',
+        'INCLUDE_GTK',
+        language: ['vala']
+    )
+endif
+
 libgranite_deps = [
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),

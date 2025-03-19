@@ -70,6 +70,9 @@ namespace Granite {
             if (dark_provider == null) {
                 dark_provider = new Gtk.CssProvider ();
                 dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
+                #if INCLUDE_GTK
+                    dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
+                #endif
             }
 
             Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
@@ -81,6 +84,9 @@ namespace Granite {
             if (base_provider == null) {
                 base_provider = new Gtk.CssProvider ();
                 base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
+                #if INCLUDE_GTK
+                    base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
+                #endif
             }
 
             Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
