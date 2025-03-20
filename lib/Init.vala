@@ -41,6 +41,7 @@ namespace Granite {
 
     private static void register_display (Gdk.Display display) {
         var gtk_settings = Gtk.Settings.get_for_display (display);
+        gtk_settings.gtk_theme_name = "Granite";
         gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (() => {
             set_provider_for_display (display, gtk_settings.gtk_application_prefer_dark_theme);
         });
