@@ -40,7 +40,7 @@ public class CSSView : Gtk.Box {
 
         var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         card.add_css_class (Granite.STYLE_CLASS_CARD);
-        card.add_css_class (Granite.STYLE_CLASS_CHECKERBOARD);
+        card.add_css_class (Granite.CssClass.CHECKERBOARD);
         card.add_css_class (Granite.STYLE_CLASS_ROUNDED);
         card.append (header1);
         card.append (header2);
