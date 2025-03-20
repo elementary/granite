@@ -5,8 +5,12 @@
 
 namespace Granite {
     private static bool initialized = false;
-    private static Gtk.CssProvider? base_provider = null;
-    private static Gtk.CssProvider? dark_provider = null;
+    private static Gtk.CssProvider? granite_base_provider = null;
+    private static Gtk.CssProvider? granite_dark_provider = null;
+#if INCLUDE_GTK_STYLESHEETS
+    private static Gtk.CssProvider? gtk_base_provider = null;
+    private static Gtk.CssProvider? gtk_dark_provider = null;
+#endif
     private static Gtk.CssProvider? app_provider = null;
 
     /**
@@ -63,33 +67,59 @@ namespace Granite {
         }
 
         if (prefer_dark_style) {
-            if (base_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, base_provider);
+            if (granite_base_provider != null) {
+                Gtk.StyleContext.remove_provider_for_display (display, granite_base_provider);
             }
 
-            if (dark_provider == null) {
-                dark_provider = new Gtk.CssProvider ();
-                dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
-                #if INCLUDE_GTK
-                    dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
-                #endif
+#if INCLUDE_GTK_STYLESHEETS
+            if (gtk_base_provider != null) {
+                Gtk.StyleContext.remove_provider_for_display (display, gtk_base_provider);
+            }
+#endif
+
+            if (granite_dark_provider == null) {
+                granite_dark_provider = new Gtk.CssProvider ();
+                granite_dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#if INCLUDE_GTK_STYLESHEETS
+            if (gtk_dark_provider == null) {
+                gtk_dark_provider = new Gtk.CssProvider ();
+                gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
+            }
+#endif
+
+            Gtk.StyleContext.add_provider_for_display (display, granite_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#if INCLUDE_GTK_STYLESHEETS
+            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#endif
         } else {
-            if (dark_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, dark_provider);
+            if (granite_dark_provider != null) {
+                Gtk.StyleContext.remove_provider_for_display (display, granite_dark_provider);
             }
 
-            if (base_provider == null) {
-                base_provider = new Gtk.CssProvider ();
-                base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
-                #if INCLUDE_GTK
-                    base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
-                #endif
+#if INCLUDE_GTK_STYLESHEETS
+            if (gtk_dark_provider != null) { 
+                Gtk.StyleContext.remove_provider_for_display (display, gtk_dark_provider);
+            }
+#endif
+
+            if (granite_base_provider == null) {
+                granite_base_provider = new Gtk.CssProvider ();
+                granite_base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#if INCLUDE_GTK_STYLESHEETS
+            if (gtk_base_provider == null) {
+                gtk_base_provider = new Gtk.CssProvider ();
+                gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
+            }
+#endif
+
+            Gtk.StyleContext.add_provider_for_display (display, granite_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#if INCLUDE_GTK_STYLESHEETS
+            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+#endif
         }
     }
 

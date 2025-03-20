@@ -43,10 +43,10 @@ add_project_arguments(
     language: ['vala']
 )
 
-if get_option('gtk')
+if get_option('gtk-stylesheets')
     add_project_arguments(
         '-D',
-        'INCLUDE_GTK',
+        'INCLUDE_GTK_STYLESHEETS',
         language: ['vala']
     )
 endif
