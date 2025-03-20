@@ -32,6 +32,7 @@ namespace Granite {
     /**
      * Style class for checkered backgrounds to represent transparency in images
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CHECKERBOARD")]
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
     /**
      * Style class for a circular {@link Gtk.Button}
@@ -211,6 +212,11 @@ namespace Granite {
          * Style class for a {@link Gtk.Button} which is used to navigate backwards
          */
         public const string BACK = "back-button";
+
+        /**
+         * Style class for checkered backgrounds to represent transparency in images
+         */
+        public const string CHECKERBOARD = "checkerboard";
 
         /**
          * Style class for {@link Gtk.Button} with a destructive action
