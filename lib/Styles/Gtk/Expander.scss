@@ -1,0 +1,18 @@
+expander {
+    min-height: 16px;
+    min-width: 16px;
+    transition: all duration("in-place") easing();
+    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+
+    &:dir(rtl) {
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+    }
+
+    &:checked {
+        -gtk-icon-transform: rotate(90deg);
+
+        &:dir(rtl) {
+            -gtk-icon-transform: rotate(-90deg);
+        }
+    }
+}
