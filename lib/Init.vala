@@ -99,7 +99,7 @@ namespace Granite {
             }
 
 #if INCLUDE_GTK_STYLESHEETS
-            if (gtk_dark_provider != null) { 
+            if (gtk_dark_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, gtk_dark_provider);
             }
 #endif
