@@ -99,11 +99,13 @@ public class WelcomeView : Gtk.Box {
         append (stack);
 
         vala_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://valadoc.org/granite/Granite.html", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         source_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://github.com/elementary/granite", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://github.com/elementary/granite");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         alert_action.clicked.connect (() => {
