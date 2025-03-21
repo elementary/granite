@@ -43,6 +43,7 @@ $warning-color: $BANANA_100;
 $warning-icon-color: $BANANA_500;
 
 // Common styles
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 
