@@ -5,10 +5,8 @@
 
 public class ModeButtonView : Gtk.Box {
     construct {
-        var mode_switch_label = new Gtk.Label ("ModeSwitch");
-        mode_switch_label.halign = Gtk.Align.START;
+        var mode_switch_label = new Granite.HeaderLabel ("ModeSwitch");
         mode_switch_label.margin_top = 12;
-        mode_switch_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
@@ -18,15 +16,12 @@ public class ModeButtonView : Gtk.Box {
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
 
-        var switchbutton_header = new Gtk.Label ("SwitchModelButton") {
-            margin_top = 12,
-            halign = Gtk.Align.START,
-            xalign = 0,
+        var switchbutton_header = new Granite.HeaderLabel ("SwitchModelButton") {
+            margin_top = 12
         };
-        switchbutton_header.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var header_switchmodelbutton = new Granite.SwitchModelButton ("Header");
-        header_switchmodelbutton.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        header_switchmodelbutton.add_css_class (Granite.HeaderLabel.Size.H4.to_string ());
 
         var switchmodelbutton = new Granite.SwitchModelButton ("Default");
 
