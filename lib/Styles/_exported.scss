@@ -1,0 +1,5 @@
+// These are defined as GtkCSS variables, so are accessible and overridable
+// inside of apps. While internal sass variables are considered private API,
+// these exported GtkCSS variables should be considered public API.
+
+@define-color fg_color #{"" + $fg-color};
