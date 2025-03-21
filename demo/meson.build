@@ -5,6 +5,7 @@ executable(
 
     'Views/AccelLabelView.vala',
     'Views/ApplicationView.vala',
+    'Views/BoxView.vala',
     'Views/CSSView.vala',
     'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
