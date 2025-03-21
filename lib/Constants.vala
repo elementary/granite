@@ -7,10 +7,12 @@ namespace Granite {
     /**
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ACCENT")]
     public const string STYLE_CLASS_ACCENT = "accent";
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.BACK")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
@@ -26,10 +28,12 @@ namespace Granite {
      *
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_CARD = "card";
     /**
      * Style class for checkered backgrounds to represent transparency in images
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CHECKERBOARD")]
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
     /**
      * Style class for a circular {@link Gtk.Button}
@@ -46,6 +50,7 @@ namespace Granite {
     /**
      * Style class for {@link Gtk.Button} with a destructive action
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DESTRUCTIVE")]
     public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
     /**
      * Style class for the content area in dialogs.
@@ -92,6 +97,7 @@ namespace Granite {
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_ROUNDED = "rounded";
     /**
      * Style class defining a sidebar, such as the left side in a file chooser
@@ -106,7 +112,7 @@ namespace Granite {
     /**
      * Style class for widgets in success state.
      */
-    [Version (since = "7.5.0")]
+    [Version (since = "7.5.0", deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUCCESS")]
     public const string STYLE_CLASS_SUCCESS = "success";
 
     /**
@@ -144,10 +150,12 @@ namespace Granite {
     /**
      * Style class for dimmed labels.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DIM")]
     public const string STYLE_CLASS_DIM_LABEL = "dim-label";
     /**
      * Style class for widgets in error state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ERROR")]
     public const string STYLE_CLASS_ERROR = "error";
     /**
      * Style class for flattened widgets, such as buttons,
@@ -165,6 +173,7 @@ namespace Granite {
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUGGESTED")]
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
     /**
      * Style class for widgets which should use base color as their background
@@ -173,6 +182,7 @@ namespace Granite {
     /**
      * Style class for widgets in warning state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.WARNING")]
     public const string STYLE_CLASS_WARNING = "warning";
 
     /**
@@ -189,6 +199,67 @@ namespace Granite {
      * Transition duration when a widget opens, reveals more content, or enters the screen
      */
     public const int TRANSITION_DURATION_OPEN = 250;
+
+    /**
+     * CSS style classes to be used with {@link Gtk.Widget.add_css_class}
+     */
+    [Version (since = "7.7.0")]
+    namespace CssClass {
+        /**
+         * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
+         */
+        public const string ACCENT = "accent";
+
+        /**
+         * Style class for a {@link Gtk.Button} which is used to navigate backwards
+         */
+        public const string BACK = "back-button";
+
+        /**
+         * Style class for adding a small shadow to a container such as for image thumbnails
+         */
+        public const string CARD = "card";
+
+        /**
+         * Style class for checkered backgrounds to represent transparency in images
+         */
+        public const string CHECKERBOARD = "checkerboard";
+
+        /**
+         * Style class for {@link Gtk.Button} with a destructive action
+         */
+        public const string DESTRUCTIVE = "destructive";
+
+        /**
+         * Style class for dimmed labels and icons
+         */
+        public const string DIM = "dim-label";
+
+        /**
+         * Style class for widgets in error state.
+         */
+        public const string ERROR = "error";
+
+        /**
+         * sets font features to use tabular numbers. Equivalent of Pango's tnum property
+         */
+        public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
+         */
+        public const string SUGGESTED = "suggested";
+
+        /**
+         * Style class for widgets in success state.
+         */
+        public const string SUCCESS = "success";
+
+        /**
+         * Style class for widgets in warning state.
+         */
+        public const string WARNING = "warning";
+    }
 
     /**
      * Deep links to specific Settings pages.

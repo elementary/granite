@@ -5,6 +5,7 @@ libgranite_sources = files(
     'DateTime.vala',
     'Constants.vala',
     'Init.vala',
+    'StyleManager.vala',
 
     'Services/Application.vala',
     'Services/AsyncMutex.vala',
@@ -16,6 +17,7 @@ libgranite_sources = files(
     'Widgets/AbstractSettingsPage.vala',
     'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
+    'Widgets/Bin.vala',
     'Widgets/DatePicker.vala',
     'Widgets/Dialog.vala',
     'Widgets/HeaderLabel.vala',

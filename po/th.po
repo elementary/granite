@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 17:51+0000\n"
-"PO-Revision-Date: 2019-10-01 23:23+0000\n"
-"Last-Translator: Daniel Foré <daniel@elementary.io>\n"
+"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"PO-Revision-Date: 2024-09-02 20:05+0000\n"
+"Last-Translator: Aefgh Threenine <aefgh39622@gmail.com>\n"
 "Language-Team: Thai <https://l10n.elementary.io/projects/desktop/granite/th/"
 ">\n"
 "Language: th\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -26,12 +26,12 @@ msgstr ""
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
 msgid "%H:%M:%S"
-msgstr ""
+msgstr "%H:%M:%S"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
 #: lib/DateTime.vala:39
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: lib/DateTime.vala:63
 msgid "Now"
-msgstr ""
+msgstr "ตอนนี้"
 
 #: lib/DateTime.vala:66
 #, c-format
@@ -71,60 +71,60 @@ msgstr[1] ""
 
 #: lib/DateTime.vala:84
 msgid "Yesterday"
-msgstr ""
+msgstr "เมื่อวานนี้"
 
 #: lib/DateTime.vala:86
 msgid "Tomorrow"
-msgstr ""
+msgstr "พรุ่งนี้"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:150
 msgid "%a, %b %e, %Y"
-msgstr ""
+msgstr "วัน%aที่ %e %b %EY"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:153
 msgid "%b %e %Y"
-msgstr ""
+msgstr "%e %b %EY"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
 #: lib/DateTime.vala:156
 msgid "%Y"
-msgstr ""
+msgstr "%EY"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:159
 msgid "%b %e"
-msgstr ""
+msgstr "%e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:162
 msgid "%a %Y"
-msgstr ""
+msgstr "วัน%a ปี %EY"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:165
 #, c-format
 msgid "%a"
-msgstr ""
+msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:168
 msgid "%a, %b %e"
-msgstr ""
+msgstr "วัน%aที่ %e %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:171
 msgid "%b"
-msgstr ""
+msgstr "%b"
 
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
-msgstr ""
+msgstr "_ปิด"
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
-msgstr ""
+msgstr "_ยกเลิก"
 
 #: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
@@ -133,17 +133,17 @@ msgstr ""
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:94
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:99
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:136
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: lib/Widgets/Utils.vala:33
 msgid "Shift"
