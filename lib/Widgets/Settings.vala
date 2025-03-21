@@ -117,7 +117,9 @@ namespace Granite {
 
         private void setup_accent_color () {
             try {
-                portal = Portal.Settings.get ();
+                if (portal == null) {
+                    portal = Portal.Settings.get ();
+                }
 
                 var variant = portal.read (
                     "org.freedesktop.appearance",
@@ -150,7 +152,9 @@ namespace Granite {
 
         private void setup_prefers_color_scheme () {
             try {
-                portal = Portal.Settings.get ();
+                if (portal == null) {
+                    portal = Portal.Settings.get ();
+                }
 
                 prefers_color_scheme = (ColorScheme) portal.read (
                     "org.freedesktop.appearance",
