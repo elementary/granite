@@ -13,8 +13,6 @@ public class UtilsView : Gtk.Grid {
     """;
     private const string DARK_BG = "#273445";
 
-    private Gtk.StyleContext demo_label_style_context;
-
     construct {
         var tooltip_markup_label = new Gtk.Label ("Markup Accel Tooltips:");
         tooltip_markup_label.halign = Gtk.Align.END;
@@ -27,14 +25,12 @@ public class UtilsView : Gtk.Grid {
             {"<Super>R", "<Ctrl><Shift>Up", "<Ctrl>Return", "<Super>"}
         );
 
-        var contrasting_foreground_color_label = new Gtk.Label ("Contrasting Foreground Color:");
-        contrasting_foreground_color_label.halign = Gtk.Align.END;
+        var contrasting_foreground_color_label = new Gtk.Label ("Contrasting Foreground Color:") {
+            halign = END
+        };
 
-        var contrast_demo_button = new Gtk.Button ();
-        contrast_demo_button.label = "Contrast Demo";
-
-        demo_label_style_context = contrast_demo_button.get_style_context ();
-        demo_label_style_context.add_class ("contrast-demo");
+        var contrast_demo_button = new Gtk.Button.with_label ("Contrast Demo");
+        contrast_demo_button.add_css_class ("contrast-demo");
 
         halign = valign = Gtk.Align.CENTER;
         column_spacing = 12;
@@ -52,17 +48,15 @@ public class UtilsView : Gtk.Grid {
         style_contrast_demo (gdk_demo_bg);
 
         contrast_demo_button.clicked.connect (() => {
-            var dialog = new Gtk.ColorChooserDialog ("", null);
-            dialog.deletable = false;
-            dialog.set_rgba (gdk_demo_bg);
-
-            dialog.response.connect (() => {
-                gdk_demo_bg = dialog.rgba;
-                style_contrast_demo (gdk_demo_bg);
-                dialog.destroy ();
+            var dialog = new Gtk.ColorDialog ();
+            dialog.choose_rgba.begin ((Gtk.Window) get_root (), gdk_demo_bg, null, (obj, res) => {
+                try {
+                    gdk_demo_bg = dialog.choose_rgba.end (res);
+                    style_contrast_demo (gdk_demo_bg);
+                } catch (Error e) {
+                    debug (e.message);
+                }
             });
-
-            dialog.show ();
         });
     }
 
@@ -73,8 +67,9 @@ public class UtilsView : Gtk.Grid {
             Granite.contrasting_foreground_color (bg_color).to_string ()
         );
 
-        provider.load_from_data ((uint8[])css);
-        demo_label_style_context.add_provider (
+        provider.load_from_string (css);
+        Gtk.StyleContext.add_provider_for_display (
+            Gdk.Display.get_default (),
             provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         );
