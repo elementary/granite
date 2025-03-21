@@ -1,17 +1,63 @@
 header {
     &:not(:first-child) {
-        margin-top: 1em;
+        margin-top: 1rem;
     }
 
     .heading {
-        font-weight: 700;
         opacity: 0.9;
         padding: 0;
     }
 
-    .dim-label {
+    .subtitle {
         font-size: 0.9em;
-        margin-top: 0.1em;
+        font-weight: 300;
         opacity: 0.8;
+    }
+
+    &.title-1 {
+        .heading {
+            font-size: 24pt;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .subtitle {
+            margin-top: -0.25em;
+        }
+    }
+
+    &.title-2 {
+        .heading {
+            font-weight: 300;
+            font-size: 18pt;
+            letter-spacing: -0.05em;
+        }
+        .subtitle {
+            margin-top: -0.1em;
+        }
+    }
+
+    &.title-3 {
+        .heading {
+            font-size: 11pt;
+        }
+
+        .subtitle {
+            font-weight: 400;
+            margin-top: 0.1em;
+        }
+    }
+
+    &.title-4 {
+        opacity: 1;
+
+        .heading {
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-weight: 400;
+            margin-top: 0.1em;
+        }
     }
 }

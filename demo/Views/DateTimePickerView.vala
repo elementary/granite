@@ -9,9 +9,7 @@ public class DateTimePickerView : Gtk.Grid {
     private Granite.TimePicker timepicker;
 
     construct {
-        var pickers_label = new Gtk.Label ("Picker Widgets");
-        pickers_label.xalign = 0;
-        pickers_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        var pickers_label = new Granite.HeaderLabel ("Picker Widgets");
 
         var date_label = new Gtk.Label ("DatePicker:");
         date_label.halign = Gtk.Align.END;
@@ -23,10 +21,8 @@ public class DateTimePickerView : Gtk.Grid {
 
         timepicker = new Granite.TimePicker ();
 
-        var formatting_label = new Gtk.Label ("String Formatting");
+        var formatting_label = new Granite.HeaderLabel ("String Formatting");
         formatting_label.margin_top = 6;
-        formatting_label.xalign = 0;
-        formatting_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var current_time_label = new Gtk.Label ("Localized time:");
         current_time_label.halign = Gtk.Align.END;
