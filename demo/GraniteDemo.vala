@@ -11,7 +11,6 @@ public class Granite.Demo : Gtk.Application {
 
     public override void startup () {
         Granite.init ();
-
         base.startup ();
     }
 
