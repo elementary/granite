@@ -40,9 +40,9 @@ namespace Granite {
 
         /**
          * The theme accent color chosen by the user
-         * @since 7.6.0
+         * @since 7.7.0
          */
-        [Version (since = "7.6.0")]
+        [Version (since = "7.7.0")]
         public Gdk.RGBA accent_color {
             get {
                 if (_accent_color == null) {
