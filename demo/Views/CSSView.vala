@@ -45,18 +45,32 @@ public class CSSView : Gtk.Box {
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
-            secondary_text = "\"card\" with \"rounded\" and \"checkerboard\" style classes"
+            secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
 
-        var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        card.add_css_class (Granite.STYLE_CLASS_CARD);
-        card.add_css_class (Granite.CssClass.CHECKERBOARD);
-        card.add_css_class (Granite.STYLE_CLASS_ROUNDED);
+        var card = new Gtk.Box (VERTICAL, 0) {
+            hexpand = true
+        };
+        card.add_css_class (Granite.CssClass.CARD);
         card.append (header1);
         card.append (header2);
         card.append (header3);
         card.append (header4);
         card.append (numeric);
+
+        var card_checkered = new Granite.Bin () {
+            child = new Gtk.Image.from_icon_name ("battery-low") {
+                halign = CENTER,
+                icon_size = LARGE
+            },
+            hexpand = true
+        };
+        card_checkered.add_css_class (Granite.CssClass.CARD);
+        card_checkered.add_css_class (Granite.CssClass.CHECKERBOARD);
+
+        var card_box = new Gtk.Box (HORIZONTAL, 24);
+        card_box.append (card);
+        card_box.append (card_checkered);
 
         var richlist_label = new Granite.HeaderLabel ("Lists") {
             secondary_text = "\"rich-list\" and \"frame\" style classes"
@@ -161,15 +175,13 @@ public class CSSView : Gtk.Box {
         dimmed_box.add_css_class (Granite.CssClass.DIM);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
-            halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER,
             margin_top = 24,
             margin_bottom = 24,
             margin_start = 24,
             margin_end = 24,
         };
         box.append (card_header);
-        box.append (card);
+        box.append (card_box);
         box.append (richlist_label);
         box.append (rich_listbox);
         box.append (terminal_label);

@@ -9,7 +9,6 @@ header {
     }
 
     .subtitle {
-        font-size: 0.9em;
         font-weight: 300;
         opacity: 0.8;
     }
@@ -50,6 +49,7 @@ header {
         }
 
         .subtitle {
+            font-size: initial;
             font-weight: 400;
             margin-top: 0.1em;
         }
@@ -63,6 +63,7 @@ header {
         }
 
         .subtitle {
+            font-size: 0.9em;
             font-weight: 400;
             margin-top: 0.1em;
         }
