@@ -28,6 +28,7 @@ namespace Granite {
      *
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_CARD = "card";
     /**
      * Style class for checkered backgrounds to represent transparency in images
@@ -96,6 +97,7 @@ namespace Granite {
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_ROUNDED = "rounded";
     /**
      * Style class defining a sidebar, such as the left side in a file chooser
@@ -212,6 +214,11 @@ namespace Granite {
          * Style class for a {@link Gtk.Button} which is used to navigate backwards
          */
         public const string BACK = "back-button";
+
+        /**
+         * Style class for adding a small shadow to a container such as for image thumbnails
+         */
+        public const string CARD = "card";
 
         /**
          * Style class for checkered backgrounds to represent transparency in images

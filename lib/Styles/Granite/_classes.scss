@@ -1,15 +1,17 @@
-paper,
 .card {
     background-color: bg-color(1);
+    border-radius: rem($window_radius / 2);
     box-shadow:
         highlight(),
         // Intentionally not in ems since it's used as a stroke
         0 0 0 1px $border-color,
         shadow(1);
+}
 
-    &.rounded {
-        border-radius: rem($window_radius / 2);
-    }
+// Used on Page Setup of gtk print portal
+paper {
+    @extend .card;
+    border-radius: 0;
 }
 
 .checkerboard {
