@@ -175,6 +175,6 @@ public class Granite.StyleManager : Object {
 
         Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
         accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
-        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION - 1);
+        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
     }
 }
