@@ -1,3 +1,5 @@
+adw_dep = dependency('libadwaita-1')
+
 executable(
     'granite-7-demo',
 
@@ -17,7 +19,10 @@ executable(
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',
 
-    dependencies: [libgranite_dep],
+    dependencies: [
+        adw_dep,
+        libgranite_dep
+    ],
 
     install: true,
 )
