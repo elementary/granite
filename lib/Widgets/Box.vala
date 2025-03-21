@@ -37,8 +37,6 @@ public class Granite.Box : Gtk.Box {
 
     /**
      * Constructs a new {@link Granite.Box}
-     *
-     *
      */
     public Box (Gtk.Orientation orientation, ChildSpacing child_spacing = NONE) {
         Object (
