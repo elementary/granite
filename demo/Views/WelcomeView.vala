@@ -25,7 +25,7 @@ public class WelcomeView : Gtk.Box {
             description = "Maybe you can <b>do something</b> to hide it but <i>otherwise</i> it will stay here",
             icon = new ThemedIcon ("dialog-warning")
         };
-        alert.add_css_class (Granite.STYLE_CLASS_WARNING);
+        alert.add_css_class (Granite.CssClass.WARNING);
 
         var alert_action = alert.append_button (
             new ThemedIcon ("edit-delete"),
@@ -99,11 +99,13 @@ public class WelcomeView : Gtk.Box {
         append (stack);
 
         vala_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://valadoc.org/granite/Granite.html", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         source_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://github.com/elementary/granite", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://github.com/elementary/granite");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         alert_action.clicked.connect (() => {

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-19 23:33+0000\n"
-"PO-Revision-Date: 2021-05-04 13:48+0000\n"
+"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"PO-Revision-Date: 2024-12-01 13:02+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
 "fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -42,7 +42,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "Ei koskaan"
 
 #: lib/DateTime.vala:63
 msgid "Now"

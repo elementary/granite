@@ -25,6 +25,10 @@
     opacity: 0.75;
 }
 
+.numeric {
+    font-feature-settings: "tnum";
+}
+
 // Intended to match the Pango size of `<small>` and `size='smaller'`
 .small-label {
     font-size: 0.85em;
