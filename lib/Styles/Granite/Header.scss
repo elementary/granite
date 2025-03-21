@@ -15,24 +15,31 @@ header {
     }
 
     &.title-1 {
+        letter-spacing: -0.04rem;
+
         .heading {
             font-size: 24pt;
             font-weight: 700;
-            letter-spacing: -0.04em;
         }
 
         .subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
             margin-top: -0.25em;
         }
     }
 
     &.title-2 {
+        letter-spacing: -0.05rem;
+
         .heading {
             font-weight: 300;
             font-size: 18pt;
-            letter-spacing: -0.05em;
         }
+
         .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
             margin-top: -0.1em;
         }
     }
