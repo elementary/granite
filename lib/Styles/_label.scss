@@ -1,4 +1,5 @@
 .accent {
+    // FIXME: use oklch colorspace once we're Gtk 4.16
     color: #{'mix(@accent_color, @fg_color, 0.27)'};
 
     &:backdrop {
