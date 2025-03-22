@@ -12,11 +12,11 @@ public class BoxView : Granite.Bin {
             secondary_text = "child_spacing = SINGLE"
         };
 
-        var single_box = new Granite.Box (HORIZONTAL, SINGLE);
+        var single_box = new Granite.Box (HORIZONTAL);
         single_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
         single_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
 
-        var single_container = new Granite.Box (VERTICAL, SINGLE);
+        var single_container = new Granite.Box (VERTICAL);
         single_container.append (single_header);
         single_container.append (single_box);
 
@@ -28,7 +28,7 @@ public class BoxView : Granite.Bin {
         double_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
         double_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
 
-        var double_container = new Granite.Box (VERTICAL, SINGLE);
+        var double_container = new Granite.Box (VERTICAL);
         double_container.append (double_header);
         double_container.append (double_box);
 
@@ -47,7 +47,7 @@ public class BoxView : Granite.Bin {
         linked_text_buttons.append (new Gtk.Button.with_label ("Button") { hexpand = true });
         linked_text_buttons.append (new Gtk.Button.with_label ("Button") { hexpand = true });
 
-        var linked_buttons_box = new Granite.Box (HORIZONTAL, SINGLE);
+        var linked_buttons_box = new Granite.Box (HORIZONTAL);
         linked_buttons_box.append (linked_image_buttons);
         linked_buttons_box.append (linked_text_buttons);
 
@@ -59,7 +59,7 @@ public class BoxView : Granite.Bin {
         linked_entry_imagebutton_box.append (new Gtk.Entry () { hexpand = true, placeholder_text = "Entry"});
         linked_entry_imagebutton_box.append (new Gtk.ToggleButton () { icon_name = "view-more-symbolic" });
 
-        var linked_vbox = new Granite.Box (VERTICAL, SINGLE);
+        var linked_vbox = new Granite.Box (VERTICAL);
         linked_vbox.append (linked_buttons_box);
         linked_vbox.append (linked_entries_box);
         linked_vbox.append (linked_entry_imagebutton_box);
@@ -70,11 +70,11 @@ public class BoxView : Granite.Bin {
         vertical_imagebuttons.append (new Gtk.Button () { icon_name = "edit-paste" });
         vertical_imagebuttons.append (new Gtk.Button () { icon_name = "edit-delete" });
 
-        var linked_hbox = new Granite.Box (HORIZONTAL, SINGLE);
+        var linked_hbox = new Granite.Box (HORIZONTAL);
         linked_hbox.append (linked_vbox);
         linked_hbox.append (vertical_imagebuttons);
 
-        var linked_box = new Granite.Box (VERTICAL, SINGLE);
+        var linked_box = new Granite.Box (VERTICAL);
         linked_box.append (linked_header);
         linked_box.append (linked_hbox);
 
