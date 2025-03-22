@@ -14,6 +14,7 @@ executable(
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
+    'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',

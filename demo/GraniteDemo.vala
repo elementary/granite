@@ -27,6 +27,7 @@ public class Granite.Demo : Gtk.Application {
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
+        var style_manager_view = new StyleManagerView ();
         var utils_view = new UtilsView ();
         var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
@@ -35,6 +36,7 @@ public class Granite.Demo : Gtk.Application {
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
+        main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
@@ -48,24 +50,11 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
-        var gtk_settings = Gtk.Settings.get_default ();
-
-        var mode_switch = new Granite.ModeSwitch.from_icon_name (
-            "display-brightness-symbolic",
-            "weather-clear-night-symbolic"
-        ) {
-            primary_icon_tooltip_text = ("Light background"),
-            secondary_icon_tooltip_text = ("Dark background"),
-            valign = CENTER
-        };
-        mode_switch.bind_property ("active", gtk_settings, "gtk-application-prefer-dark-theme", BIDIRECTIONAL);
-
         var end_header = new Gtk.HeaderBar () {
             show_title_buttons = false
         };
         end_header.add_css_class (Granite.STYLE_CLASS_FLAT);
         end_header.pack_end (new Gtk.WindowControls (END));
-        end_header.pack_end (mode_switch);
 
         var end_box = new Gtk.Box (VERTICAL, 0);
         end_box.append (end_header);
@@ -96,9 +85,6 @@ public class Granite.Demo : Gtk.Application {
             shrink_start_child = false
         };
 
-        var granite_settings = Granite.Settings.get_default ();
-        gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-
         window.child = paned;
         window.set_default_size (900, 600);
         window.set_size_request (750, 500);
@@ -107,10 +93,6 @@ public class Granite.Demo : Gtk.Application {
 
         add_window (window);
         window.show ();
-
-        granite_settings.notify["prefers-color-scheme"].connect (() => {
-            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == Granite.Settings.ColorScheme.DARK;
-        });
     }
 
     public static int main (string[] args) {
