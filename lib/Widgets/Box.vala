@@ -10,7 +10,7 @@
  */
 [Version (since = "7.7.0")]
 public class Granite.Box : Gtk.Box {
-    public enum ChildSpacing {
+    public enum Spacing {
         NONE,
         SINGLE,
         DOUBLE,
@@ -33,12 +33,12 @@ public class Granite.Box : Gtk.Box {
     /**
      * How far apart to space children of #this
      */
-    public ChildSpacing child_spacing { get; construct set; }
+    public Spacing child_spacing { get; construct set; }
 
     /**
      * Constructs a new {@link Granite.Box}
      */
-    public Box (Gtk.Orientation orientation, ChildSpacing child_spacing = SINGLE) {
+    public Box (Gtk.Orientation orientation, Spacing child_spacing = SINGLE) {
         Object (
             orientation: orientation,
             child_spacing: child_spacing
@@ -51,14 +51,10 @@ public class Granite.Box : Gtk.Box {
     }
 
     private void update_child_spacing () {
-        string[] css_classes = {
-            ChildSpacing.SINGLE.to_string (),
-            ChildSpacing.DOUBLE.to_string (),
-            ChildSpacing.LINKED.to_string (),
-        };
-
-        foreach (unowned var css_class in css_classes) {
-            if (has_css_class (css_class)) {
+        unowned var enum_class = (EnumClass) typeof (Spacing).class_peek ();
+        foreach (unowned var val in enum_class.values) {
+            var css_class = ((Spacing) val.value).to_string ();
+            if (css_class != "" && has_css_class (css_class)) {
                 remove_css_class (css_class);
             }
         }
