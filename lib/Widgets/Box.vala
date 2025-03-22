@@ -24,9 +24,9 @@ public class Granite.Box : Gtk.Box {
                     return "border-spacing-double";
                 case LINKED:
                     return "linked";
+                default:
+                    return "";
             }
-
-            return "";
         }
     }
 
