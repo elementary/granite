@@ -17,6 +17,7 @@ public class Granite.Demo : Gtk.Application {
     public override void activate () {
         var window = new Gtk.Window ();
 
+        var box_view = new BoxView ();
         var accel_label_view = new AccelLabelView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
@@ -34,6 +35,7 @@ public class Granite.Demo : Gtk.Application {
 
         var main_stack = new Gtk.Stack ();
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
+        main_stack.add_titled (box_view, "box", "Box");
         main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");

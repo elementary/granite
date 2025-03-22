@@ -1,0 +1,90 @@
+.border-spacing-single {
+    border-spacing: 1rem;
+}
+
+.border-spacing-double {
+    border-spacing: 2rem;
+}
+
+%linked_not_left {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+}
+
+%linked_not_right {
+    border-right-style: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 0;
+}
+
+%linked_not_top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+%linked_not_bottom {
+    border-bottom-style: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+viewswitcher > box > button.horizontal.radio,
+.linked:not(.vertical) > button,
+.linked:not(.vertical) > button.image-button,
+.linked:not(.vertical) > entry,
+.linked:not(.vertical) > spinbutton {
+    &:dir(ltr):not(:first-child),
+    &:dir(rtl):not(:last-child) {
+        @extend %linked_not_left;
+    }
+
+    &:dir(ltr):not(:last-child),
+    &:dir(rtl):not(:first-child) {
+        @extend %linked_not_right;
+    }
+}
+
+.linked.vertical > button,
+.linked.vertical > button.image-button,
+.linked.vertical > entry,
+.linked.vertical > spinbutton {
+    &:dir(ltr):not(:first-child),
+    &:dir(rtl):not(:last-child) {
+        @extend %linked_not_top;
+    }
+
+    &:dir(ltr):not(:last-child),
+    &:dir(rtl):not(:first-child) {
+        @extend %linked_not_bottom;
+    }
+}
+
+combobox.linked button:nth-child(2) {
+    @extend %linked_not_left;
+}
+
+.linked:not(.vertical) > combobox {
+    &:dir(ltr):not(:first-child) > box > button.combo,
+    &:dir(rtl):not(:last-child) > box > button.combo {
+        @extend %linked_not_left;
+    }
+
+    &:dir(ltr):not(:last-child) > box > button.combo,
+    &:dir(rtl):not(:first-child) > box > button.combo {
+        @extend %linked_not_right;
+    }
+}
+
+.linked.vertical > combobox {
+    &:dir(ltr):not(:first-child) > box > button.combo,
+    &:dir(rtl):not(:last-child) > box > button.combo {
+        @extend %linked_not_top;
+    }
+
+    &:dir(ltr):not(:last-child) > box > button.combo,
+    &:dir(rtl):not(:first-child) > box > button.combo {
+        @extend %linked_not_bottom;
+    }
+}
