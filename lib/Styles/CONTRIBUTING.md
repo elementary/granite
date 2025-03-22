@@ -41,7 +41,7 @@ CSS style classes, such as `Granite.CssClass.CARD`, should be placed in a
 Adw).
 
 Mixins should be grouped into relevant categories, and placed into a file with
-said category name (e.g. Palette, Typography, Animation)
+said category name (e.g. Palette, Typography, Animation).
 
 ## Repository Structure
 
