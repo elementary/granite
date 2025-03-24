@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
 "PO-Revision-Date: 2022-10-11 18:50+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/desktop/granite-"
@@ -36,6 +36,10 @@ msgstr ""
 "elementary OS sistemi için tasarlanan uygulamalarda kullanılmak üzere "
 "tasarlanmış, karmaşık widget'lar için kolaylık sağlayan yardımcı bir GTK ve "
 "GLib kitaplığı."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -257,9 +261,6 @@ msgstr ""
 #: data/granite.metainfo.xml.in:169
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "Fixes:"
 #~ msgstr "Düzeltmeler:"
