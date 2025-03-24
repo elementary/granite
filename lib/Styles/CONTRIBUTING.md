@@ -59,9 +59,9 @@ Adw/
 ├─ Index.scss
 ├─ _classes.scss
 ├─ <1 file per CSS node>
-Mixins/
+Common/
 ├─ Index.scss
-├─ <1 file per Mixin category>
+├─ <1 file per Mixin & Variable category>
 ├─ <e.g. Typography, Animation, Shadows, Borders, Palette, etc.>
 Index.scss
 Index-dark.scss
