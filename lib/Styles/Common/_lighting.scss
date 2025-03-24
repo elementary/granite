@@ -1,21 +1,3 @@
-@function rem($pixels, $text-size: 9pt) {
-    @if (unitless($pixels)) {
-        $pixels: $pixels * 1px;
-    }
-
-    @if (unitless($text-size)) {
-        $text-size: $text-size * 1px;
-    }
-
-    @if ($pixels > 0) {
-        // Workaround GTK clamping instead of rounding up
-        @return ($pixels / $text-size * 1rem) + 0.000000001rem;
-    } @else {
-        // Workaround GTK clamping instead of rounding up
-        @return ($pixels / $text-size * 1rem) - 0.000000001rem;
-    }
-}
-
 @function shadow($level) {
     @if $color-scheme == "light" {
         @if $level == 1 {
@@ -79,6 +61,3 @@
 
     @return $highlight;
 }
-
-$disabled-opacity: 0.5;
-$window_radius: 9px;
