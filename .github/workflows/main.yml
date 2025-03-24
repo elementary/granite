@@ -32,3 +32,10 @@ jobs:
           meson build
           ninja -C build
           ninja -C build install
+
+      - name: Build and Test (Gtk Stylesheets)
+        env:
+          DESTDIR: out
+        run: |
+          meson configure -Dgtk-stylesheets=true build
+          ninja -C build install
