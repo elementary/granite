@@ -1,0 +1,21 @@
+arrow {
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    min-height: rem(16px);
+    min-width: rem(16px);
+
+    &.down {
+        -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+    }
+
+    &.left {
+        -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+    }
+
+    &.right {
+        -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+    }
+
+    &.up {
+        -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+    }
+}
