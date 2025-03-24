@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
 "PO-Revision-Date: 2023-08-30 11:08+0000\n"
 "Last-Translator: Jakub Kyzr <jakubkyzr@gmail.com>\n"
 "Language-Team: Czech <https://l10n.elementary.io/projects/desktop/granite-"
@@ -35,6 +35,10 @@ msgstr ""
 "Doprovodná knihovna pro GTK a GLib, která poskytuje komplexní metody pro "
 "ovládací prvky a pohodlí, navržené pro použití v aplikacích, vytvořených pro "
 "elementary OS."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -261,9 +265,6 @@ msgstr ""
 #: data/granite.metainfo.xml.in:169
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr ""
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "vlastnost min_length pro Granite.ValidatedEntry"
