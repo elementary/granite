@@ -119,10 +119,13 @@ public class Granite.HeaderLabel : Gtk.Widget {
     }
 
     private void update_size () {
-        remove_css_class ("title-1");
-        remove_css_class ("title-2");
-        remove_css_class ("title-3");
-        remove_css_class ("title-4");
+        unowned var enum_class = (EnumClass) typeof (Size).class_peek ();
+        foreach (unowned var val in enum_class.values) {
+            var css_class = ((Size) val.value).to_string ();
+            if (css_class != "" && has_css_class (css_class)) {
+                remove_css_class (css_class);
+            }
+        }
 
         add_css_class (size.to_string ());
     }
