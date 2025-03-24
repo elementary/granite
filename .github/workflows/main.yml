@@ -36,6 +36,7 @@ jobs:
       - name: Build and Test (Gtk Stylesheets)
         env:
           DESTDIR: out
+          PKG_CONFIG_PATH: ${{ github.workspace }}/build/meson-uninstalled
         run: |
           meson configure -Dgtk-stylesheets=true build
           ninja -C build install
