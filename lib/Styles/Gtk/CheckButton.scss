@@ -3,7 +3,7 @@ checkbutton {
 
     check,
     radio {
-        background-color: scale-color($toplevel-border-color, $alpha: -50%); // FIXME: abstract base interactive control styles
+        @include control-enabled
         -gtk-icon-size: rem(16px);
         min-height: 1rem;
         min-width: 1rem;
