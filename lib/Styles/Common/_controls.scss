@@ -1,0 +1,11 @@
+@mixin control-enabled {
+    background-color: bg-color(0);
+    background-clip: border-box;
+    border-style: solid;
+    border-color: $border-color;
+    border-width: 1px;
+}
+
+@mixin control-disabled {
+
+}
