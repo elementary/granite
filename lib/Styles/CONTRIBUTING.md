@@ -40,6 +40,37 @@ CSS style classes, such as `Granite.CssClass.CARD`, should be placed in a
 `_classes.scss` file under the relevant library directory (e.g. Granite, Gtk,
 Adw).
 
+Mixins &amp; Variables should be grouped into relevant categories, and placed into a file with
+said category name (e.g. Palette, Typography, Animation).
+
+## Repository Structure
+
+```
+./
+Gtk/
+├─ Index.scss
+├─ _classes.scss
+├─ <1 file per CSS node>
+Granite/
+├─ Index.scss
+├─ _classes.scss
+├─ <1 file per CSS node>
+Adw/
+├─ Index.scss
+├─ _classes.scss
+├─ <1 file per CSS node>
+Common/
+├─ Index.scss
+├─ <1 file per Mixin &amp; Variable category>
+├─ <e.g. Typography, Animation, Shadows, Borders, Palette, etc.>
+Index.scss
+Index-dark.scss
+Gtk.scss
+Gtk-dark.scss
+Granite.scss
+Granite-dark.scss
+```
+
 ## Testing Changes
 
 Apps may need to be restarted or the system stylesheet may need to be changed before installed changes take effect.

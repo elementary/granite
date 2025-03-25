@@ -11,23 +11,35 @@ public class CSSView : Gtk.Box {
     }
 
     construct {
-        var header1 = new Gtk.Label ("\"title-1\" Style Class") {
+        var header1 = new Granite.HeaderLabel ("H1 HeaderLabel") {
             margin_end = 12,
             margin_start = 12,
-            margin_top = 12
+            margin_top = 12,
+            size = H1,
+            secondary_text = "secondary text"
         };
-        header1.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
 
-        var header2 = new Gtk.Label ("\"title-2\" Style Class");
-        header2.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+        var header2 = new Granite.HeaderLabel ("H2 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H2,
+            secondary_text = "secondary text"
+        };
 
-        var header3 = new Gtk.Label ("\"title-3\" Style Class");
-        header3.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        var header3 = new Granite.HeaderLabel ("H3 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H3,
+            secondary_text = "secondary text"
+        };
 
-        var header4 = new Gtk.Label ("\"title-4\" Style Class");
-        header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        var header4 = new Granite.HeaderLabel ("H4 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            secondary_text = "secondary text"
+        };
 
-        var numeric = new Gtk.Label ("\"numeric\" Style Class 123.4") {
+        var numeric = new Gtk.Label ("\"Granite.CssClass.NUMERIC\" 123.4") {
             margin_bottom = 12
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);

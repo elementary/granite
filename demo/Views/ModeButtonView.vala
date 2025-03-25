@@ -5,10 +5,43 @@
 
 public class ModeButtonView : Gtk.Box {
     construct {
-        var mode_switch_label = new Gtk.Label ("ModeSwitch");
-        mode_switch_label.halign = Gtk.Align.START;
+        var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
+
+        var checked_checkbutton = new Gtk.CheckButton.with_label ("active") {
+            active = true
+        };
+        var checkbutton = new Gtk.CheckButton.with_label ("inactive");
+        var inconsistent_checkbutton = new Gtk.CheckButton.with_label ("inconsistent") {
+            inconsistent = true
+        };
+
+        var checkbutton_box = new Gtk.Box (VERTICAL, 6);
+        checkbutton_box.append (checked_checkbutton);
+        checkbutton_box.append (checkbutton);
+        checkbutton_box.append (inconsistent_checkbutton);
+
+        var checked_radiobutton = new Gtk.CheckButton.with_label ("active") {
+            active = true
+        };
+        var radiobutton = new Gtk.CheckButton.with_label ("inactive") {
+            group = checked_radiobutton
+        };
+        var inconsistent_radiobutton = new Gtk.CheckButton.with_label ("inconsistent") {
+            group = checked_radiobutton,
+            inconsistent = true
+        };
+
+        var radiobutton_box = new Gtk.Box (VERTICAL, 6);
+        radiobutton_box.append (checked_radiobutton);
+        radiobutton_box.append (radiobutton);
+        radiobutton_box.append (inconsistent_radiobutton);
+
+        var checkradio_box = new Gtk.Box (HORIZONTAL, 12);
+        checkradio_box.append (checkbutton_box);
+        checkradio_box.append (radiobutton_box);
+
+        var mode_switch_label = new Granite.HeaderLabel ("ModeSwitch");
         mode_switch_label.margin_top = 12;
-        mode_switch_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var mode_switch = new Granite.ModeSwitch.from_icon_name (
             "display-brightness-symbolic",
@@ -18,15 +51,12 @@ public class ModeButtonView : Gtk.Box {
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
 
-        var switchbutton_header = new Gtk.Label ("SwitchModelButton") {
-            margin_top = 12,
-            halign = Gtk.Align.START,
-            xalign = 0,
+        var switchbutton_header = new Granite.HeaderLabel ("SwitchModelButton") {
+            margin_top = 12
         };
-        switchbutton_header.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
         var header_switchmodelbutton = new Granite.SwitchModelButton ("Header");
-        header_switchmodelbutton.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        header_switchmodelbutton.add_css_class (Granite.HeaderLabel.Size.H4.to_string ());
 
         var switchmodelbutton = new Granite.SwitchModelButton ("Default");
 
@@ -55,6 +85,8 @@ public class ModeButtonView : Gtk.Box {
         orientation = Gtk.Orientation.VERTICAL;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
+        append (checkradio_header);
+        append (checkradio_box);
         append (mode_switch_label);
         append (mode_switch);
         append (switchbutton_header);

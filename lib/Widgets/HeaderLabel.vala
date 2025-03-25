@@ -9,6 +9,29 @@
  * Optionally it can contain a secondary {@link Gtk.Label} to provide additional context
  */
 public class Granite.HeaderLabel : Gtk.Widget {
+    [Version (since = "7.7.0")]
+    public enum Size {
+        H1,
+        H2,
+        H3,
+        H4;
+
+        public string to_string () {
+            switch (this) {
+                case H1:
+                    return "title-1";
+                case H2:
+                    return "title-2";
+                case H3:
+                    return "title-3";
+                case H4:
+                    return "title-4";
+            }
+
+            return "";
+        }
+    }
+
     /**
      * The primary header label string
      */
@@ -19,6 +42,13 @@ public class Granite.HeaderLabel : Gtk.Widget {
      */
     [Version (since = "7.4.0")]
     public Gtk.Widget? mnemonic_widget { get; set; }
+
+    /**
+     * The size of #this
+     * Only use one {@link Size.H1} per page. It represents the main heading/subject for the whole page
+     */
+    [Version (since = "7.7.0")]
+    public Size size { get; set; default = H4; }
 
     private Gtk.Label? secondary_label = null;
     /**
@@ -43,8 +73,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
                     wrap = true,
                     xalign = 0
                 };
-                secondary_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
-                secondary_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+                secondary_label.add_css_class ("subtitle");
 
                 secondary_label.set_parent (this);
             }
@@ -84,6 +113,21 @@ public class Granite.HeaderLabel : Gtk.Widget {
         notify["mnemonic-widget"].connect (() => {
             update_accessible_description (secondary_text);
         });
+
+        update_size ();
+        notify["size"].connect (update_size);
+    }
+
+    private void update_size () {
+        unowned var enum_class = (EnumClass) typeof (Size).class_peek ();
+        foreach (unowned var val in enum_class.values) {
+            var css_class = ((Size) val.value).to_string ();
+            if (css_class != "" && has_css_class (css_class)) {
+                remove_css_class (css_class);
+            }
+        }
+
+        add_css_class (size.to_string ());
     }
 
     private void update_accessible_description (string? description) {
