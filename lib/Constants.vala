@@ -142,6 +142,7 @@ namespace Granite {
     /**
      * Style class for linked widgets, such as a box containing buttons belonging to the same control.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.Box.child_spacing")]
     public const string STYLE_CLASS_LINKED = "linked";
     /**
      * Style class for {@link Gtk.Popover} which is used as a menu.
