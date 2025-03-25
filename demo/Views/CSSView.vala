@@ -78,7 +78,7 @@ public class CSSView : Gtk.Box {
 
         var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
             active = true,
-            description = "SwitchModelButton works great in lists too!"
+            description = "\"show-separators = true\""
         };
 
         var rich_listbox = new Gtk.ListBox () {
