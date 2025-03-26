@@ -3,6 +3,9 @@ button {
     // the necessary SVGs for light/dark and accent color combinations is
     // untenable. Ideally we'd deprecate this in favor of something like a
     // Granite.BackButton with custom drawing; until then, stick an icon in it.
+    @include control;
+    @include border-interactive-roundrect;
+
     &.back-button {
         background-repeat: no-repeat no-repeat;
         background-size: 16px, cover;

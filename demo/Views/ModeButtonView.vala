@@ -5,6 +5,10 @@
 
 public class ModeButtonView : Gtk.Box {
     construct {
+        var simplebutton_header = new Granite.HeaderLabel ("Text & Image Buttons");
+        var textbutton = new Gtk.Button.with_label ("Text");
+        var imagebutton = new Gtk.Button.from_icon_name ("folder-pictures-symbolic");
+    
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
         var checked_checkbutton = new Gtk.CheckButton.with_label ("active") {
@@ -30,6 +34,10 @@ public class ModeButtonView : Gtk.Box {
             group = checked_radiobutton,
             inconsistent = true
         };
+
+        var simplebutton_box = new Gtk.Box (VERTICAL, 6);
+        simplebutton_box.append (textbutton);
+        simplebutton_box.append (imagebutton);
 
         var radiobutton_box = new Gtk.Box (VERTICAL, 6);
         radiobutton_box.append (checked_radiobutton);
@@ -85,6 +93,8 @@ public class ModeButtonView : Gtk.Box {
         orientation = Gtk.Orientation.VERTICAL;
         halign = Gtk.Align.CENTER;
         valign = Gtk.Align.CENTER;
+        append (simplebutton_header);
+        append (simplebutton_box);
         append (checkradio_header);
         append (checkradio_box);
         append (mode_switch_label);

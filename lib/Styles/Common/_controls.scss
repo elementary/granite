@@ -1,20 +1,10 @@
-@mixin control-enabled {
+@mixin control {
     @extend %outset-background;
     background-color: bg-color(0);
     background-clip: border-box;
 
-    box-shadow:
-        outset-highlight("full"),
-        outset-shadow(1);
-
-    border-style: solid;
-    border-color: $border-color;
-    border-width: 1px;
+    @include border-interactive;
 
     transition: all duration("in-place") easing("default");
-}
-
-@mixin control-disabled {
-    
 }
 
