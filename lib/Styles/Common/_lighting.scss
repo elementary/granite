@@ -1,3 +1,6 @@
+// FIXME: Theres most likely an absolute ton in here that can be cleaned up and
+// simplified
+
 @function shadow($level) {
     @if $color-scheme == "light" {
         @if $level == 1 {
@@ -106,5 +109,24 @@
         @return
             0 1px 3px rgba(black, 0.12),
             0 1px 2px rgba(black, 0.24);
+    }
+}
+
+// Background for elements with outset style like headerbars, buttons, checkboxes, etc
+%outset {
+    background-image:
+        linear-gradient(
+            to bottom,
+            #{'alpha(@highlight_color, 0.2)'},
+            rgba(white, 0)
+        );
+
+    &:backdrop {
+        background-image:
+        linear-gradient(
+            to bottom,
+            #{'alpha(@highlight_color, 0.35)'},
+            #{'alpha(@highlight_color, 0.3)'}
+        );
     }
 }
