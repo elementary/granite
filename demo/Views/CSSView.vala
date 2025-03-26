@@ -76,6 +76,11 @@ public class CSSView : DemoPage {
             secondary_text = "\"rich-list\" and \"frame\" style classes"
         };
 
+        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
+            active = true,
+            description = "\"show-separators = true\""
+        };
+
         var rich_listbox = new Gtk.ListBox () {
             show_separators = true
         };
@@ -83,7 +88,9 @@ public class CSSView : DemoPage {
         rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
         rich_listbox.append (new Gtk.Label ("Row 1"));
         rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (new Gtk.Label ("Row 3"));
+        rich_listbox.append (separators_modelbutton);
+
+        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
 
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
