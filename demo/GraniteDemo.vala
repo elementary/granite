@@ -33,7 +33,9 @@ public class Granite.Demo : Gtk.Application {
         var dialogs_view = new DialogsView (window);
         var application_view = new ApplicationView ();
 
-        var main_stack = new Gtk.Stack ();
+        var main_stack = new Gtk.Stack () {
+            vhomogeneous = false
+        };
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
         main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
@@ -50,15 +52,19 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
+        var scrolled = new Gtk.ScrolledWindow () {
+            child = main_stack
+        };
+
         var end_header = new Gtk.HeaderBar () {
             show_title_buttons = false
         };
-        end_header.add_css_class (Granite.STYLE_CLASS_FLAT);
         end_header.pack_end (new Gtk.WindowControls (END));
 
-        var end_box = new Gtk.Box (VERTICAL, 0);
-        end_box.append (end_header);
-        end_box.append (main_stack);
+        var end_toolbarview = new Granite.ToolbarView () {
+            content = scrolled
+        };
+        end_toolbarview.add_top_bar (end_header);
 
         var start_header = new Gtk.HeaderBar () {
             show_title_buttons = false,
@@ -79,7 +85,7 @@ public class Granite.Demo : Gtk.Application {
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             start_child = start_box,
-            end_child = end_box,
+            end_child = end_toolbarview,
             resize_start_child = false,
             shrink_end_child = false,
             shrink_start_child = false

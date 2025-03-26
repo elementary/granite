@@ -1,0 +1,21 @@
+toolbarview {
+    // Has to be the direct child or we get unwanted undershoot on framed lists for example
+    > scrolledwindow {
+        undershoot.top {
+            background: undershoot-gradient(to bottom);
+        }
+
+        undershoot.bottom {
+            background: undershoot-gradient(to top);
+        }
+    }
+
+    .top headerbar,
+    .top headerbar:backdrop,
+    .bottom actionbar,
+    .bottom actionbar:backdrop {
+        background: inherit;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}

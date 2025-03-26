@@ -202,11 +202,7 @@ public class CSSView : Gtk.Box {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        var scrolled = new Gtk.ScrolledWindow () {
-            child = box
-        };
-
-        append (scrolled);
+        append (box);
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
