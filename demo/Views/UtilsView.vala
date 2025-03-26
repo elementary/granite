@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class UtilsView : Gtk.Grid {
+public class UtilsView : DemoPage {
     private const string CSS = """
         .contrast-demo {
             background: %s;
@@ -36,15 +36,18 @@ public class UtilsView : Gtk.Grid {
         demo_label_style_context = contrast_demo_button.get_style_context ();
         demo_label_style_context.add_class ("contrast-demo");
 
-        halign = valign = Gtk.Align.CENTER;
-        column_spacing = 12;
-        row_spacing = 12;
+        var grid = new Gtk.Grid () {
+            halign = valign = Gtk.Align.CENTER,
+            column_spacing = 12,
+            row_spacing = 12,
+        };
+        grid.attach (tooltip_markup_label, 0, 0);
+        grid.attach (tooltip_button_one, 1, 0);
+        grid.attach (tooltip_button_two, 2, 0);
+        grid.attach (contrasting_foreground_color_label, 0, 1);
+        grid.attach (contrast_demo_button, 1, 1, 2);
 
-        attach (tooltip_markup_label, 0, 0);
-        attach (tooltip_button_one, 1, 0);
-        attach (tooltip_button_two, 2, 0);
-        attach (contrasting_foreground_color_label, 0, 1);
-        attach (contrast_demo_button, 1, 1, 2);
+        content = grid;
 
         var gdk_demo_bg = Gdk.RGBA ();
         gdk_demo_bg.parse (DARK_BG);

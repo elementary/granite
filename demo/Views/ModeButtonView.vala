@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class ModeButtonView : Gtk.Box {
+public class ModeButtonView : DemoPage {
     construct {
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
@@ -81,15 +81,17 @@ public class ModeButtonView : Gtk.Box {
         };
         popover_button.popover = switchbutton_popover;
 
-        spacing = 6;
-        orientation = Gtk.Orientation.VERTICAL;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        append (checkradio_header);
-        append (checkradio_box);
-        append (mode_switch_label);
-        append (mode_switch);
-        append (switchbutton_header);
-        append (popover_button);
+        var box = new Granite.Box (VERTICAL, NONE) {
+            halign = CENTER,
+            valign = CENTER
+        };
+        box.append (checkradio_header);
+        box.append (checkradio_box);
+        box.append (mode_switch_label);
+        box.append (mode_switch);
+        box.append (switchbutton_header);
+        box.append (popover_button);
+
+        content = box;
     }
 }

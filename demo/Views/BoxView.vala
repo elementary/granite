@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class BoxView : Granite.Bin {
+public class BoxView : DemoPage {
     construct {
         var title_label = new Granite.HeaderLabel ("Granite.Box");
         title_label.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
@@ -78,16 +78,17 @@ public class BoxView : Granite.Bin {
         linked_box.append (linked_header);
         linked_box.append (linked_hbox);
 
-        var vbox = new Granite.Box (VERTICAL, DOUBLE);
+        var vbox = new Granite.Box (VERTICAL, DOUBLE) {
+            margin_top = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12
+        };
         vbox.append (title_label);
         vbox.append (single_container);
         vbox.append (double_container);
         vbox.append (linked_box);
 
-        child = vbox;
-        margin_top = 12;
-        margin_bottom = 12;
-        margin_start = 12;
-        margin_end = 12;
+        content = vbox;
     }
 }
