@@ -26,9 +26,9 @@ public class Granite.HeaderLabel : Gtk.Widget {
                     return "title-3";
                 case H4:
                     return "title-4";
+                default:
+                    return "";
             }
-
-            return "";
         }
     }
 

@@ -5,8 +5,9 @@
 
 public class BoxView : Granite.Bin {
     construct {
-        var title_label = new Granite.HeaderLabel ("Granite.Box");
-        title_label.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
+        var title_label = new Granite.HeaderLabel ("Granite.Box") {
+            size = H1
+        };
 
         var single_header = new Granite.HeaderLabel ("Single Spaced") {
             secondary_text = "child_spacing = SINGLE"
