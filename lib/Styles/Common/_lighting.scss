@@ -61,3 +61,50 @@
 
     @return $highlight;
 }
+
+@function inset-shadow($state: "") {
+    @if $state == "disabled" {
+        @return
+            0 1px 0 0 #{'alpha(@highlight_color, 0.3)'},
+            inset 0 1px 1px rgba(black, 0.05);
+    }
+
+    @return
+        0 1px 0 0 #{'alpha(@highlight_color, 0.3)'},
+        inset 0 1px 1px rgba(black, 0.05),
+        inset 0 0 1px 1px rgba(black, 0.05);
+}
+
+@function outset-highlight($sides: "full") {
+    $highlight:
+        inset 1px 0 0 0 #{'alpha(@highlight_color, 0.07)'},
+        inset -1px 0 0 0 #{'alpha(@highlight_color, 0.07)'};
+
+    @if $sides == "top" or $sides == "full" {
+        $highlight:
+            inset 0 1px 0 0 #{'alpha(@highlight_color, 0.3)'},
+            $highlight;
+    }
+
+    @if $sides == "bottom" or $sides == "full" {
+        $highlight:
+            inset 0 -1px 0 0 #{'alpha(@highlight_color, 0.2)'},
+            $highlight;
+    }
+
+    @return $highlight;
+}
+
+@function outset-shadow($level) {
+    @if $level == 1 {
+        @return 0 1px 1px rgba(black, 0.05);
+    } @else if $level == 2 {
+        @return
+            0 1px 1px rgba(black, 0.07),
+            0 1px 2px rgba(black, 0.08);
+    } @else if $level == 3 {
+        @return
+            0 1px 3px rgba(black, 0.12),
+            0 1px 2px rgba(black, 0.24);
+    }
+}
