@@ -2,11 +2,18 @@
     background-color: bg-color(0);
     background-clip: border-box;
 
+    box-shadow:
+        outset-highlight(),
+        outset-shadow(1);
+
     border-style: solid;
     border-color: $border-color;
     border-width: 1px;
+
+    transition: all duration("in-place") easing("default");
 }
 
 @mixin control-disabled {
 
 }
+
