@@ -8,7 +8,7 @@ public class ModeButtonView : Gtk.Box {
         var simplebutton_header = new Granite.HeaderLabel ("Text & Image Buttons");
         var textbutton = new Gtk.Button.with_label ("Text");
         var imagebutton = new Gtk.Button.from_icon_name ("folder-pictures-symbolic");
-    
+
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
         var checked_checkbutton = new Gtk.CheckButton.with_label ("active") {
