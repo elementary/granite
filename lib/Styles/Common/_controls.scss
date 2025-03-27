@@ -1,5 +1,4 @@
 @mixin control {
-    @extend %outset-background;
     background-color: bg-color(0);
     background-clip: border-box;
 
