@@ -43,3 +43,9 @@ $warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
 // Common styles
 @import '_label.scss';
 @import '_osd.scss';
+
+// Gtk Widgets
+// @import 'Gtk/Index.scss';
+
+// Granite widgets
+@import 'Granite/Index.scss';
