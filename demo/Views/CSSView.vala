@@ -72,9 +72,7 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var richlist_label = new Granite.HeaderLabel ("Lists") {
-            secondary_text = "\"rich-list\" and \"frame\" style classes"
-        };
+        var lists_label = new Granite.HeaderLabel ("Gtk.ListBox");
 
         var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
             active = true,
@@ -82,15 +80,43 @@ public class CSSView : DemoPage {
         };
 
         var rich_listbox = new Gtk.ListBox () {
+            hexpand = true,
             show_separators = true
         };
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
-        rich_listbox.append (new Gtk.Label ("Row 1"));
-        rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (separators_modelbutton);
+        rich_listbox.add_css_class (Granite.CssClass.RICH_LIST);
+        rich_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.RICH_LIST\"") {
+            secondary_text = "Rich lists have a standardized row height and padding"
+        });
+        rich_listbox.append (
+            new Gtk.Label ("ListBoxes in a ScrolledWindow with \"has-frame = true\" have a view level background color") {
+                halign = START,
+                wrap = true
+            }
+        );
+        rich_listbox.append (new Gtk.Label ("Row 3"));
+        rich_listbox.append (new Gtk.Label ("Row 4"));
 
-        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
+        var scrolled_window = new Gtk.ScrolledWindow () {
+            child = rich_listbox,
+            has_frame = true,
+            hscrollbar_policy = NEVER
+        };
+
+        var card_listbox = new Gtk.ListBox () {
+            hexpand = true,
+            show_separators = true
+        };
+        card_listbox.add_css_class (Granite.CssClass.CARD);
+        card_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.CARD\"") {
+            secondary_text = "Card listboxes are also always rich lists"
+        });
+        card_listbox.append (separators_modelbutton);
+
+        var lists_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        lists_box.append (scrolled_window);
+        lists_box.append (card_listbox);
+
+        separators_modelbutton.bind_property ("active", card_listbox, "show-separators", SYNC_CREATE | DEFAULT);
 
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
@@ -185,8 +211,8 @@ public class CSSView : DemoPage {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (richlist_label);
-        box.append (rich_listbox);
+        box.append (lists_label);
+        box.append (lists_box);
         box.append (terminal_label);
         box.append (terminal_scroll);
         box.append (buttons_label);
