@@ -60,7 +60,7 @@ public class Granite.StyleManager : Object {
     construct {
         var gtk_settings = Gtk.Settings.get_for_display (display);
 #if INCLUDE_GTK_STYLESHEETS
-        gtk_settings.gtk_theme_name = "Granite";
+        gtk_settings.gtk_theme_name = "Granite-empty";
 #endif
         gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (set_provider_for_display);
         set_provider_for_display ();
