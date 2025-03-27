@@ -11,7 +11,7 @@ headerbar {
 
     box.start,
     box.end {
-        border-spacing: rem(6px);
+        border-spacing: $button-spacing;
     }
 
     box.start:dir(ltr),

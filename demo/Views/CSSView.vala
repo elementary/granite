@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class CSSView : Gtk.Box {
+public class CSSView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
@@ -11,45 +11,74 @@ public class CSSView : Gtk.Box {
     }
 
     construct {
-        var header1 = new Gtk.Label ("\"title-1\" Style Class") {
-            margin_end = 24,
-            margin_start = 24,
-            margin_top = 12
+        var header1 = new Granite.HeaderLabel ("H1 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            margin_top = 12,
+            size = H1,
+            secondary_text = "secondary text"
         };
-        header1.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
 
-        var header2 = new Gtk.Label ("\"title-2\" Style Class");
-        header2.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
-
-        var header3 = new Gtk.Label ("\"title-3\" Style Class");
-        header3.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
-
-        var header4 = new Gtk.Label ("\"title-4\" Style Class") {
-            margin_bottom = 12
+        var header2 = new Granite.HeaderLabel ("H2 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H2,
+            secondary_text = "secondary text"
         };
-        header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
 
-        var numeric = new Gtk.Label ("\"numeric\" Style Class 123.4") {
+        var header3 = new Granite.HeaderLabel ("H3 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H3,
+            secondary_text = "secondary text"
+        };
+
+        var header4 = new Granite.HeaderLabel ("H4 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            secondary_text = "secondary text"
+        };
+
+        var numeric = new Gtk.Label ("\"Granite.CssClass.NUMERIC\" 123.4") {
             margin_bottom = 12
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
-            secondary_text = "\"card\" with \"rounded\" and \"checkerboard\" style classes"
+            secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
 
-        var card = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        card.add_css_class (Granite.STYLE_CLASS_CARD);
-        card.add_css_class (Granite.STYLE_CLASS_CHECKERBOARD);
-        card.add_css_class (Granite.STYLE_CLASS_ROUNDED);
+        var card = new Gtk.Box (VERTICAL, 0) {
+            hexpand = true
+        };
+        card.add_css_class (Granite.CssClass.CARD);
         card.append (header1);
         card.append (header2);
         card.append (header3);
         card.append (header4);
         card.append (numeric);
 
+        var card_checkered = new Granite.Bin () {
+            child = new Gtk.Image.from_icon_name ("battery-low") {
+                halign = CENTER,
+                icon_size = LARGE
+            },
+            hexpand = true
+        };
+        card_checkered.add_css_class (Granite.CssClass.CARD);
+        card_checkered.add_css_class (Granite.CssClass.CHECKERBOARD);
+
+        var card_box = new Gtk.Box (HORIZONTAL, 24);
+        card_box.append (card);
+        card_box.append (card_checkered);
+
         var richlist_label = new Granite.HeaderLabel ("Lists") {
             secondary_text = "\"rich-list\" and \"frame\" style classes"
+        };
+
+        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
+            active = true,
+            description = "\"show-separators = true\""
         };
 
         var rich_listbox = new Gtk.ListBox () {
@@ -59,7 +88,9 @@ public class CSSView : Gtk.Box {
         rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
         rich_listbox.append (new Gtk.Label ("Row 1"));
         rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (new Gtk.Label ("Row 3"));
+        rich_listbox.append (separators_modelbutton);
+
+        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
 
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
@@ -147,15 +178,13 @@ public class CSSView : Gtk.Box {
         dimmed_box.add_css_class (Granite.CssClass.DIM);
 
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
-            halign = Gtk.Align.CENTER,
-            valign = Gtk.Align.CENTER,
             margin_top = 24,
             margin_bottom = 24,
             margin_start = 24,
             margin_end = 24,
         };
         box.append (card_header);
-        box.append (card);
+        box.append (card_box);
         box.append (richlist_label);
         box.append (rich_listbox);
         box.append (terminal_label);
@@ -174,10 +203,6 @@ public class CSSView : Gtk.Box {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        var scrolled = new Gtk.ScrolledWindow () {
-            child = box
-        };
-
-        append (scrolled);
+        content = box;
     }
 }
