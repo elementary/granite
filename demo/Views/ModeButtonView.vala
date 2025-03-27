@@ -93,7 +93,7 @@ public class ModeButtonView : DemoPage {
             halign = CENTER,
             valign = CENTER
         };
-        
+
         box.append (simplebutton_header);
         box.append (simplebutton_box);
         box.append (checkradio_header);
