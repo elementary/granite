@@ -9,5 +9,5 @@
 }
 
 @mixin border-interactive-roundrect {
-    border-radius: 3px;
+    border-radius: rem($window_radius / 3);
 }
