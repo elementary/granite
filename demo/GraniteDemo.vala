@@ -50,16 +50,6 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
-        var end_header = new Gtk.HeaderBar () {
-            show_title_buttons = false
-        };
-        end_header.add_css_class (Granite.STYLE_CLASS_FLAT);
-        end_header.pack_end (new Gtk.WindowControls (END));
-
-        var end_box = new Gtk.Box (VERTICAL, 0);
-        end_box.append (end_header);
-        end_box.append (main_stack);
-
         var start_header = new Gtk.HeaderBar () {
             show_title_buttons = false,
             title_widget = new Gtk.Label ("")
@@ -79,7 +69,7 @@ public class Granite.Demo : Gtk.Application {
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             start_child = start_box,
-            end_child = end_box,
+            end_child = main_stack,
             resize_start_child = false,
             shrink_end_child = false,
             shrink_start_child = false

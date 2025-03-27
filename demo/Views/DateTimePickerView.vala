@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DateTimePickerView : Gtk.Grid {
+public class DateTimePickerView : DemoPage {
     private Gtk.Label relative_datetime;
     private Granite.DatePicker datepicker;
     private Granite.TimePicker timepicker;
@@ -54,22 +54,26 @@ public class DateTimePickerView : Gtk.Grid {
         datepicker.changed.connect (() => set_selected_datetime ());
         timepicker.changed.connect (() => set_selected_datetime ());
 
-        column_spacing = 12;
-        row_spacing = 6;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        attach (pickers_label, 0, 0, 1, 1);
-        attach (date_label, 0, 1, 1, 1);
-        attach (datepicker, 1, 1, 1, 1);
-        attach (time_label, 0, 2, 1, 1);
-        attach (timepicker, 1, 2, 1, 1);
-        attach (formatting_label, 0, 3, 1, 1);
-        attach (current_time_label, 0, 4, 1, 1);
-        attach (current_time, 1, 4, 1, 1);
-        attach (current_date_label, 0, 5, 1, 1);
-        attach (current_date, 1, 5, 1, 1);
-        attach (relative_datetime_label, 0, 6, 1, 1);
-        attach (relative_datetime, 1, 6, 1, 1);
+        var grid = new Gtk.Grid () {
+            halign = CENTER,
+            valign = CENTER,
+            column_spacing = 12,
+            row_spacing = 6
+        };
+        grid.attach (pickers_label, 0, 0);
+        grid.attach (date_label, 0, 1);
+        grid.attach (datepicker, 1, 1);
+        grid.attach (time_label, 0, 2);
+        grid.attach (timepicker, 1, 2);
+        grid.attach (formatting_label, 0, 3);
+        grid.attach (current_time_label, 0, 4);
+        grid.attach (current_time, 1, 4);
+        grid.attach (current_date_label, 0, 5);
+        grid.attach (current_date, 1, 5);
+        grid.attach (relative_datetime_label, 0, 6);
+        grid.attach (relative_datetime, 1, 6);
+
+        content = grid;
     }
 
     private void set_selected_datetime () {

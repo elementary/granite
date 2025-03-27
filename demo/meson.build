@@ -2,6 +2,7 @@ executable(
     'granite-7-demo',
 
     'GraniteDemo.vala',
+    'DemoPage.vala',
 
     'Views/AccelLabelView.vala',
     'Views/ApplicationView.vala',
