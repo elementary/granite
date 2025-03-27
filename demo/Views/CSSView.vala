@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class CSSView : Gtk.Box {
+public class CSSView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
@@ -145,10 +145,6 @@ public class CSSView : Gtk.Box {
         temperature_scale.set_value (0);
         temperature_scale.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
-        var primary_color_label = new Granite.HeaderLabel ("Set HeaderBar color");
-
-        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
-
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
         var accent_color_box = new Gtk.Box (HORIZONTAL, 6);
@@ -200,8 +196,6 @@ public class CSSView : Gtk.Box {
         box.append (scales_header);
         box.append (warmth_scale);
         box.append (temperature_scale);
-        box.append (primary_color_label);
-        box.append (primary_color_button);
         box.append (accent_color_label);
         box.append (accent_color_box);
         box.append (success_color_box);
@@ -209,14 +203,6 @@ public class CSSView : Gtk.Box {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        var scrolled = new Gtk.ScrolledWindow () {
-            child = box
-        };
-
-        append (scrolled);
-
-        primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
-        });
+        content = box;
     }
 }

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class StyleManagerView : Gtk.Box {
+public class StyleManagerView : DemoPage {
     construct {
         var label = new Granite.HeaderLabel ("Visual Style");
 
@@ -19,14 +19,16 @@ public class StyleManagerView : Gtk.Box {
             group = force_light
         };
 
-        halign = CENTER;
-        valign = CENTER;
-        orientation = VERTICAL;
-        spacing = 6;
-        append (label);
-        append (dont_button);
-        append (force_light);
-        append (force_dark);
+        var box = new Gtk.Box (VERTICAL, 6) {
+            halign = CENTER,
+            valign = CENTER
+        };
+        box.append (label);
+        box.append (dont_button);
+        box.append (force_light);
+        box.append (force_dark);
+
+        content = box;
 
         var style_manager = Granite.StyleManager.get_default ();
 

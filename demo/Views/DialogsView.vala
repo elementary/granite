@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DialogsView : Gtk.Box {
+public class DialogsView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     private Granite.Toast toast;
@@ -13,9 +13,6 @@ public class DialogsView : Gtk.Box {
     }
 
     construct {
-        var overlay = new Gtk.Overlay ();
-        append (overlay);
-
         var dialog_button = new Gtk.Button.with_label ("Show Dialog");
 
         var message_button = new Gtk.Button.with_label ("Show MessageDialog");
@@ -31,8 +28,12 @@ public class DialogsView : Gtk.Box {
         grid.attach (dialog_button, 0, 1);
         grid.attach (message_button, 0, 2);
 
-        overlay.set_child (grid);
+        var overlay = new Gtk.Overlay () {
+            child = grid
+        };
         overlay.add_overlay (toast);
+
+        content = overlay;
 
         dialog_button.clicked.connect (show_dialog);
         message_button.clicked.connect (show_message_dialog);

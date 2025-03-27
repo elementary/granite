@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class FormView : Gtk.Box {
+public class FormView : DemoPage {
     construct {
         Regex? username_regex = null;
         try {
@@ -24,16 +24,17 @@ public class FormView : Gtk.Box {
 
         var button = new Gtk.Button.with_label ("Submit");
 
-        margin_start = margin_end = margin_top = margin_bottom = 12;
-        orientation = Gtk.Orientation.VERTICAL;
-        spacing = 3;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        vexpand = true;
-        append (username_label);
-        append (username_entry);
-        append (button);
+        var box = new Granite.Box (VERTICAL) {
+            halign = CENTER,
+            valign = CENTER,
+            margin_start = margin_end = margin_top = margin_bottom = 12
+        };
+        box.append (username_label);
+        box.append (username_entry);
+        box.append (button);
 
-        username_entry.bind_property ("is-valid", button, "sensitive");
+        content = box;
+
+        username_entry.bind_property ("is-valid", button, "sensitive", SYNC_CREATE);
     }
 }
