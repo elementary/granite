@@ -59,6 +59,10 @@ public class Granite.Box : Gtk.Box {
             }
         }
 
+        if (child_spacing.to_string () == "") {
+            return;
+        }
+
         add_css_class (child_spacing.to_string ());
     }
 }
