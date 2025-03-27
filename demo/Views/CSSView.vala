@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class CSSView : Gtk.Box {
+public class CSSView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
@@ -11,23 +11,35 @@ public class CSSView : Gtk.Box {
     }
 
     construct {
-        var header1 = new Gtk.Label ("\"title-1\" Style Class") {
+        var header1 = new Granite.HeaderLabel ("H1 HeaderLabel") {
             margin_end = 12,
             margin_start = 12,
-            margin_top = 12
+            margin_top = 12,
+            size = H1,
+            secondary_text = "secondary text"
         };
-        header1.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
 
-        var header2 = new Gtk.Label ("\"title-2\" Style Class");
-        header2.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+        var header2 = new Granite.HeaderLabel ("H2 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H2,
+            secondary_text = "secondary text"
+        };
 
-        var header3 = new Gtk.Label ("\"title-3\" Style Class");
-        header3.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        var header3 = new Granite.HeaderLabel ("H3 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            size = H3,
+            secondary_text = "secondary text"
+        };
 
-        var header4 = new Gtk.Label ("\"title-4\" Style Class");
-        header4.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
+        var header4 = new Granite.HeaderLabel ("H4 HeaderLabel") {
+            margin_end = 12,
+            margin_start = 12,
+            secondary_text = "secondary text"
+        };
 
-        var numeric = new Gtk.Label ("\"numeric\" Style Class 123.4") {
+        var numeric = new Gtk.Label ("\"Granite.CssClass.NUMERIC\" 123.4") {
             margin_bottom = 12
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
@@ -64,6 +76,11 @@ public class CSSView : Gtk.Box {
             secondary_text = "\"rich-list\" and \"frame\" style classes"
         };
 
+        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
+            active = true,
+            description = "\"show-separators = true\""
+        };
+
         var rich_listbox = new Gtk.ListBox () {
             show_separators = true
         };
@@ -71,7 +88,9 @@ public class CSSView : Gtk.Box {
         rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
         rich_listbox.append (new Gtk.Label ("Row 1"));
         rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (new Gtk.Label ("Row 3"));
+        rich_listbox.append (separators_modelbutton);
+
+        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
 
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
@@ -190,11 +209,7 @@ public class CSSView : Gtk.Box {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        var scrolled = new Gtk.ScrolledWindow () {
-            child = box
-        };
-
-        append (scrolled);
+        content = box;
 
         primary_color_button.color_set.connect (() => {
             Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class AccelLabelView : Gtk.Grid {
+public class AccelLabelView : DemoPage {
     construct {
         var accellabel_label = new Gtk.Label ("AccelLabel:");
         accellabel_label.halign = Gtk.Align.END;
@@ -34,13 +34,17 @@ public class AccelLabelView : Gtk.Grid {
         var popover_button = new Gtk.MenuButton ();
         popover_button.popover = popover;
 
-        column_spacing = 12;
-        row_spacing = 12;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        attach (accellabel_label, 0, 0);
-        attach (copy_label, 1, 0);
-        attach (popover_label, 0, 1);
-        attach (popover_button, 1, 1);
+        var grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 12,
+            halign = CENTER,
+            valign = CENTER
+        };
+        grid.attach (accellabel_label, 0, 0);
+        grid.attach (copy_label, 1, 0);
+        grid.attach (popover_label, 0, 1);
+        grid.attach (popover_button, 1, 1);
+
+        content = grid;
     }
 }

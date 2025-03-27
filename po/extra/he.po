@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
 "PO-Revision-Date: 2025-03-12 14:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
@@ -34,6 +34,10 @@ msgid ""
 msgstr ""
 "ספרייה מלווה ל־GTK ול־GLib שמספקת וידג׳טים מורכבים ושיטות נוחות שתוכננו "
 "לטובת שימוש ביישומים שנבנו עבור elementary OS."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary בע״מ."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -255,9 +259,6 @@ msgstr "TextStyle: יש להשתמש בקבועי מחלקת סגנון במקו
 #: data/granite.metainfo.xml.in:169
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "כמה פונקציות ב־System הוחלפו ב־GLib.AppInfo"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary בע״מ."
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "מאפיין min_length עבור Granite.ValidatedEntry"

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-08 01:51+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
 "PO-Revision-Date: 2025-03-17 11:10+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese (Traditional Han script) <https://"
-"l10n.elementaryos.org/projects/desktop/granite-extra/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional Han script) <https://l10n.elementaryos."
+"org/projects/desktop/granite-extra/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,6 +34,10 @@ msgid ""
 msgstr ""
 "用來與 GTK 與 GLib 一起使用的函式庫，提供設計給 elementary OS 應用程式使用的"
 "複雜元件和方便的方法。"
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -254,6 +258,3 @@ msgstr "TextStyle：請改用樣式常數"
 #: data/granite.metainfo.xml.in:169
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "用 GLib.AppInfo 來取代 System 中的一些函數"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."

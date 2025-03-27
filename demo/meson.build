@@ -2,9 +2,11 @@ executable(
     'granite-7-demo',
 
     'GraniteDemo.vala',
+    'DemoPage.vala',
 
     'Views/AccelLabelView.vala',
     'Views/ApplicationView.vala',
+    'Views/BoxView.vala',
     'Views/CSSView.vala',
     'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
@@ -13,6 +15,7 @@ executable(
     'Views/ModeButtonView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
+    'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',
