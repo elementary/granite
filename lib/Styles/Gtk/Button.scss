@@ -1,5 +1,5 @@
 button {
-    
+    .linked &,
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
