@@ -1,6 +1,6 @@
 @mixin border-interactive {
     box-shadow:
-        outset-highlight("full"),
+        highlight("full"),
         outset-shadow(1);
 
     border-style: solid;
