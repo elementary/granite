@@ -64,18 +64,22 @@ namespace Granite {
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H1")]
     public const string STYLE_CLASS_H1_LABEL = "title-1";
     /**
      * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H2")]
     public const string STYLE_CLASS_H2_LABEL = "title-2";
     /**
      * Style class for small primary text
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H3")]
     public const string STYLE_CLASS_H3_LABEL = "title-3";
     /**
      * Style class for a {@link Granite.HeaderLabel}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H4")]
     public const string STYLE_CLASS_H4_LABEL = "title-4";
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
@@ -138,6 +142,7 @@ namespace Granite {
     /**
      * Style class for linked widgets, such as a box containing buttons belonging to the same control.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.Box.child_spacing")]
     public const string STYLE_CLASS_LINKED = "linked";
     /**
      * Style class for {@link Gtk.Popover} which is used as a menu.

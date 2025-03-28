@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class WelcomeView : Gtk.Box {
+public class WelcomeView : DemoPage {
     construct {
         var welcome = new Granite.Placeholder ("Granite Demo") {
             description = "This is a demo of the Granite library."
@@ -88,15 +88,19 @@ public class WelcomeView : Gtk.Box {
         stack.add_titled (menubutton, "Popover", "Popover");
 
         var stack_switcher = new Gtk.StackSwitcher () {
-            margin_top = 24,
-            margin_end = 24,
-            margin_start = 24,
             stack = stack
         };
 
-        orientation = Gtk.Orientation.VERTICAL;
-        append (stack_switcher);
-        append (stack);
+        var main_box = new Granite.Box (VERTICAL, SINGLE) {
+            margin_top = 12,
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 12
+        };
+        main_box.append (stack_switcher);
+        main_box.append (stack);
+
+        content = main_box;
 
         vala_button.clicked.connect (() => {
             var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");

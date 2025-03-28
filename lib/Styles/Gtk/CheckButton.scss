@@ -1,0 +1,27 @@
+checkbutton {
+    border-spacing: $button-spacing;
+
+    check,
+    radio {
+        @include control;
+        -gtk-icon-size: rem(16px);
+        min-height: 1rem;
+        min-width: 1rem;
+
+        &:checked {
+            -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
+        }
+
+        &:indeterminate {
+            -gtk-icon-source: -gtk-icontheme("check-indeterminate-symbolic");
+        }
+    }
+
+    check {
+        border-radius: rem($window_radius / 3);
+    }
+
+    radio {
+        border-radius: 50%;
+    }
+}

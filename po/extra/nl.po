@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-08 01:51+0000\n"
-"PO-Revision-Date: 2025-03-10 09:09+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
+"PO-Revision-Date: 2025-03-26 21:11+0000\n"
 "Last-Translator: DutchVipperloid <svenroelof@e.email>\n"
 "Language-Team: Dutch <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -34,6 +34,10 @@ msgid ""
 msgstr ""
 "Een bibliotheek voor GTK en GLib, die complexe widgets en gemakkelijke "
 "methodes biedt, ontworpen voor gebruik in apps voor elementary OS."
+
+#: data/granite.metainfo.xml.in:24
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -73,7 +77,7 @@ msgstr "Wikkel lange labels voor SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:53
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel: stel toegankelijke omschrijving in"
 
 #: data/granite.metainfo.xml.in:54
 msgid "ValidatedEntry: set AccessibleState for validity"
@@ -268,9 +272,6 @@ msgstr "TextStyle: gebruik in plaats daarvan stijlklasseconstanten"
 #: data/granite.metainfo.xml.in:169
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "Verschillende functies in System werden vervangen door GLib.AppInfo"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "Fixes:"
 #~ msgstr "Fixes:"

@@ -1,8 +1,15 @@
 button {
+    .linked &,
+    &.text-button {
+        @include control;
+        @include border-interactive-roundrect;
+    }
+
     // Stopgap since we can't do angled buttons in GtkCSS, and generating all
     // the necessary SVGs for light/dark and accent color combinations is
     // untenable. Ideally we'd deprecate this in favor of something like a
     // Granite.BackButton with custom drawing; until then, stick an icon in it.
+
     &.back-button {
         background-repeat: no-repeat no-repeat;
         background-size: 16px, cover;
