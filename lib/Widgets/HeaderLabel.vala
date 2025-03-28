@@ -127,6 +127,10 @@ public class Granite.HeaderLabel : Gtk.Widget {
             }
         }
 
+        if (size.to_string () == "") {
+            return;
+        }
+
         add_css_class (size.to_string ());
     }
 
