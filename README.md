@@ -15,7 +15,7 @@ You'll need the following dependencies:
 * gettext
 * libgee-0.8-dev
 * libgirepository1.0-dev
-* libgtk-4-dev >= 4.4.0
+* libgtk-4-dev >= 4.12.0
 * sassc
 * valac
 
