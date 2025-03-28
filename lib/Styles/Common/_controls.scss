@@ -19,5 +19,29 @@
             scale-color($highlight_color, $alpha: -70%)
         );
     }
+
+    // FIXME: replace with accent color when we merge https://github.com/elementary/granite/pull/704
+    &:focus {
+        @if $color-scheme == "light" {
+            border-color: #{'@BLUEBERRY_500'};
+            outline-color: #{'alpha(@BLUEBERRY_500, 0.3)'};
+        } @else {
+            border-color: #{'@BLUEBERRY_900'};
+            outline-color: #{'alpha(@BLUEBERRY_300, 0.3)'};
+        }
+
+        outline-width: rem(2px);
+        outline-style: solid;
+
+        animation: unfocus 600ms easing() 1s 1;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes unfocus {
+        to {
+            border-color: $border-color;
+            outline-width: 0;
+        }
+    }
 }
 
