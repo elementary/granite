@@ -1,0 +1,9 @@
+@mixin control {
+    background-color: bg-color(0);
+    background-clip: border-box;
+
+    @include border-interactive;
+
+    transition: all duration("in-place") easing("default");
+}
+
