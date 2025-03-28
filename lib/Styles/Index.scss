@@ -42,6 +42,7 @@ $warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
 
 // Common styles
 @import 'Common/Mixins.scss';
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 
