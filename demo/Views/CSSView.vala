@@ -107,23 +107,6 @@ public class CSSView : DemoPage {
         };
         terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
 
-        var buttons_label = new Granite.HeaderLabel ("Buttons") ;
-
-        var back_button = new Gtk.Button.with_label ("Granite.CssClass.BACK") {
-            halign = START
-        };
-        back_button.add_css_class (Granite.CssClass.BACK);
-
-        var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE") {
-            halign = START
-        };
-        destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);
-
-        var suggested_button = new Gtk.Button.with_label ("Granite.CssClass.SUGGESTED") {
-            halign = START
-        };
-        suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
-
         var scales_header = new Granite.HeaderLabel ("Scales") {
             secondary_text = "\"warmth\" and \"temperature\" style classes"
         };
@@ -189,10 +172,6 @@ public class CSSView : DemoPage {
         box.append (rich_listbox);
         box.append (terminal_label);
         box.append (terminal_scroll);
-        box.append (buttons_label);
-        box.append (back_button);
-        box.append (destructive_button);
-        box.append (suggested_button);
         box.append (scales_header);
         box.append (warmth_scale);
         box.append (temperature_scale);
