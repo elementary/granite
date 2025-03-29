@@ -6,4 +6,11 @@
     <file alias="Gtk-dark.css" compressed="true">gtk-dark.css</file>
     <file alias="Gtk.css" compressed="true">gtk.css</file>
   </gresource>
+
+  <gresource prefix="/org/gtk/libgtk/theme/Granite-empty">
+    <file alias='gtk.css'>empty.css</file>
+    <file alias='gtk-dark.css'>empty.css</file>
+    <file alias='gtk-hc.css'>empty.css</file>
+    <file alias='gtk-hc-dark.css'>empty.css</file>
+  </gresource>
 </gresources>
