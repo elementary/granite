@@ -173,7 +173,7 @@ namespace Granite {
     /**
      * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
      */
-    [Version (since = "7.1.0")]
+    [Version (since = "7.1.0", deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.RICH_LIST")]
     public const string STYLE_CLASS_RICH_LIST = "rich-list";
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
@@ -249,6 +249,11 @@ namespace Granite {
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
         public const string NUMERIC = "numeric";
+
+        /**
+         * Sets standard row padding and row height in a {@link Gtk.ListBox}
+         */
+        public const string RICH_LIST = "rich-list";
 
         /**
          * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
