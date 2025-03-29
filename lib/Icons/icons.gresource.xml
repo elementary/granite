@@ -22,6 +22,17 @@
     <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
     <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
 
+    <file alias="scalable/categories/emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-activities.svg</file>
+    <file alias="scalable/categories/emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-body.svg</file>
+    <file alias="scalable/categories/emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-flag.svg</file>
+    <file alias="scalable/categories/emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-food.svg</file>
+    <file alias="scalable/categories/emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-nature.svg</file>
+    <file alias="scalable/categories/emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-objects.svg</file>
+    <file alias="scalable/categories/emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-people.svg</file>
+    <file alias="scalable/categories/emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-recent.svg</file>
+    <file alias="scalable/categories/emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-symbols.svg</file>
+    <file alias="scalable/categories/emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-travel.svg</file>
+
     <file alias="scalable/status/adw-tab-counter-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-counter-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>

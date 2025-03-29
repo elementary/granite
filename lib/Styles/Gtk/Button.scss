@@ -1,7 +1,6 @@
 button {
-    
+    .linked &,
     &.text-button {
-        @extend %outset-background;
         @include control;
         @include border-interactive-roundrect;
     }
