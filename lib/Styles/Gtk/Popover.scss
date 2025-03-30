@@ -21,19 +21,19 @@ popover {
             highlight(),
             0 0 0 1px $toplevel-border-color,
             shadow(2);
-        padding: rem(6px);
+        padding: $button-spacing;
     }
 
     &.emoji-picker {
         .emoji-searchbar {
-            margin: rem(6px);
+            margin: $button-spacing;
         }
 
         // Emoji are labels too, so we have to be specific
         scrolledwindow.view box.vertical > label {
             @extend .title-4;
 
-            margin: 0 rem(6px);
+            margin: 0 $button-spacing;
         }
 
         emoji {
@@ -43,7 +43,7 @@ popover {
         }
 
         .emoji-toolbar {
-            margin: rem(6px);
+            margin: $button-spacing;
 
             button.emoji-section.image-button {
                 min-height: rem(24px);
@@ -61,7 +61,7 @@ popover {
 // Gtk.PopoverMenu sometimes uses button.model for e.g. circular buttons
 .model {
     border-radius: rem($window_radius / 2);
-    padding: rem(6px);
+    padding: $button-spacing;
     transition:
         background duration("expand") easing(),
         transform duration("expand") easing("ease-out-back");
@@ -108,11 +108,11 @@ modelbutton {
 .menu {
     .circular-buttons,
     .inline-buttons {
-        border-spacing: rem(6px);
+        border-spacing: $button-spacing;
         padding: $button-spacing;
 
         > box {
-            border-spacing: rem(6px);
+            border-spacing: $button-spacing;
         }
     }
 
