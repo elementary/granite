@@ -14,6 +14,16 @@ popover {
             0 0 0 1px $toplevel-border-color,
             shadow(2);
         border-radius: rem($window_radius);
+
+        undershoot {
+            &.top {
+                background: undershoot-gradient(to bottom);
+            }
+
+            &.bottom {
+                background: undershoot-gradient(to top);
+            }
+        }
     }
 
     &.menu > contents {
