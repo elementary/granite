@@ -2,6 +2,8 @@ popover {
     > arrow,
     > contents {
         background-color: bg_color(1);
+        // Reset in case parent widgets modify text color
+        color: $fg-color;
     }
 
     > arrow {
