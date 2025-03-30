@@ -76,7 +76,7 @@ popover {
 
     // Focus and hover are synonymous in Popovers
     &:hover,
-    &:focus {
+    &:focus-visible {
         background: rgba($fg_color, 0.1);
     }
 
