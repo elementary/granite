@@ -33,6 +33,39 @@ popover {
             shadow(2);
         padding: rem(6px);
     }
+
+    &.emoji-picker {
+        .emoji-searchbar {
+            margin: rem(6px);
+        }
+
+        // Emoji are labels too, so we have to be specific
+        scrolledwindow.view box.vertical > label {
+            @extend .title-4;
+
+            margin: 0 rem(6px);
+        }
+
+        emoji {
+            min-height: rem(32px);
+            min-width: rem(32px);
+            font-size: rem(16px);
+        }
+
+        .emoji-toolbar {
+            margin: rem(6px);
+
+            button.emoji-section.image-button {
+                min-height: rem(24px);
+                min-width: rem(24px);
+                opacity: 0.6;
+
+                &:checked {
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
 
 .menuitem,
