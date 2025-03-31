@@ -2,6 +2,8 @@ popover {
     > arrow,
     > contents {
         background-color: bg_color(1);
+        // Reset in case parent widgets modify text color
+        color: $fg-color;
     }
 
     > arrow {
@@ -14,6 +16,16 @@ popover {
             0 0 0 1px $toplevel-border-color,
             shadow(2);
         border-radius: rem($window_radius);
+
+        undershoot {
+            &.top {
+                background: undershoot-gradient(to bottom);
+            }
+
+            &.bottom {
+                background: undershoot-gradient(to top);
+            }
+        }
     }
 
     &.menu > contents {
@@ -21,31 +33,103 @@ popover {
             highlight(),
             0 0 0 1px $toplevel-border-color,
             shadow(2);
-        padding: rem(6px);
+        padding: $button-spacing;
+    }
+
+    &.emoji-picker {
+        .emoji-searchbar {
+            margin: $button-spacing;
+        }
+
+        // Emoji are labels too, so we have to be specific
+        scrolledwindow.view box.vertical > label {
+            @extend .title-4;
+
+            margin: 0 $button-spacing;
+        }
+
+        emoji {
+            min-height: rem(32px);
+            min-width: rem(32px);
+            font-size: rem(16px);
+        }
+
+        .emoji-toolbar {
+            margin: $button-spacing;
+
+            button.emoji-section.image-button {
+                min-height: rem(24px);
+                min-width: rem(24px);
+                opacity: 0.6;
+
+                &:checked {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }
 
-.menuitem,
-modelbutton {
+// Gtk.PopoverMenu sometimes uses button.model for e.g. circular buttons
+.model {
     border-radius: rem($window_radius / 2);
-    border-spacing: $button-spacing;
-    min-width: rem(150px);
+    padding: $button-spacing;
     transition:
         background duration("expand") easing(),
         transform duration("expand") easing("ease-out-back");
-    padding: rem(6px);
 
-    &:hover {
+    &.circular {
+        background: rgba($fg_color, 0.05);
+        padding: rem(9px);
+    }
+
+    // Focus and hover are synonymous in Popovers
+    &:hover,
+    &:focus-visible {
         background: rgba($fg_color, 0.1);
     }
 
     &:active {
         background: rgba($fg-color, 0.15);
-        // There's an optical illusion because items are wider than
-        // they are tall, so compensate by scaling y a little extra
-        transform: scale(0.98, 0.96);
+        transform: scale(0.95);
         transition:
             background duration("collapse") easing(),
             transform duration("collapse") easing();
+    }
+}
+
+// Full-width menu items only
+.menuitem,
+modelbutton {
+    @extend .model;
+
+    border-spacing: $button-spacing;
+    min-width: rem(150px);
+
+    &:active {
+        // There's an optical illusion because items are wider than
+        // they are tall, so compensate by scaling y a little extra
+        transform: scale(0.98, 0.96);
+    }
+}
+
+// Gtk.PopoverMenu
+.menu {
+    .circular-buttons,
+    .inline-buttons {
+        border-spacing: $button-spacing;
+        padding: $button-spacing;
+
+        > box {
+            border-spacing: $button-spacing;
+        }
+    }
+
+    .title {
+        @extend .title-4;
+
+        &.separator {
+            padding: $button-spacing;
+        }
     }
 }

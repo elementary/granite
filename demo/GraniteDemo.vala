@@ -24,7 +24,7 @@ public class Granite.Demo : Gtk.Application {
         var date_time_picker_view = new DateTimePickerView ();
         var form_view = new FormView ();
         var hypertext_view = new HyperTextViewGrid ();
-        var selection_controls_view = new ModeButtonView ();
+        var controls_view = new ControlsView ();
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
@@ -44,7 +44,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
-        main_stack.add_titled (selection_controls_view, "selection_controls", "Selection Controls");
+        main_stack.add_titled (controls_view, "controls", "Controls");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");

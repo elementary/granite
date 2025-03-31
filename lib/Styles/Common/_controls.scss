@@ -1,0 +1,23 @@
+@mixin control {
+    @include border-interactive;
+
+    background-clip: border-box;
+    background-color: bg-color(0);
+    background-image:
+        linear-gradient(
+            to bottom,
+            scale-color($highlight_color, $alpha: -80%),
+            rgba(white, 0)
+        );
+    transition: all duration("in-place") easing("default");
+
+    &:backdrop {
+        background-image: none;
+    }
+
+    &:disabled {
+        background-color: bg-color(3);
+        background-image: none;
+    }
+}
+
