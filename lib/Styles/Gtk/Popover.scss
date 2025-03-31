@@ -68,11 +68,8 @@ popover {
         background duration("expand") easing(),
         transform duration("expand") easing("ease-out-back");
 
-    &.image-button {
-        background: rgba($fg_color, 0.05);
-    }
-
     &.circular {
+        background: rgba($fg_color, 0.05);
         padding: rem(9px);
     }
 
