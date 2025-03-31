@@ -16,7 +16,7 @@ public class Granite.ListItem : Granite.Bin {
     public string text { get; set; }
 
     /**
-     * Small, dim description text shown when active.
+     * Small, dim description text
      */
     public string? description { get; set; }
 
