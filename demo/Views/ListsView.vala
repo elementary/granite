@@ -9,44 +9,34 @@ public class ListsView : DemoPage {
             size = H1
         };
 
+        var scrolled_title = new Granite.HeaderLabel ("Scrolled List") {
+            secondary_text = "ScrolledWindow with \"has-frame = true\" has a view level background color"
+        };
+
         var rich_listbox = new Gtk.ListBox () {
-            hexpand = true,
             show_separators = true
         };
         rich_listbox.append (
             new Granite.ListItem () {
-                child = new Granite.HeaderLabel ("This is a \"Granite.ListItem\"") {
-                    secondary_text = "\"Granite.ListItem\" has a standardized row height and padding"
-                }
+                text = "This is a \"Granite.ListItem\"",
+                description = "\"Granite.ListItem\" has a standardized row height and padding"
             }
         );
         rich_listbox.append (
             new Granite.ListItem () {
-                child = new Gtk.Label ("ScrolledWindow with \"has-frame = true\" has a view level background color") {
-                    halign = START,
-                    wrap = true
-                }
+                text = "Row 3"
             }
 
         );
         rich_listbox.append (
             new Granite.ListItem () {
-                child = new Gtk.Label ("Row 3") {
-                    halign = START,
-                    wrap = true
-                }
+                text = "Row 4"
             }
-
         );
-        rich_listbox.append (
-            new Granite.ListItem () {
-                child = new Gtk.Label ("Row 4") {
-                    halign = START,
-                    wrap = true
-                }
-            }
 
-        );
+        var card_title = new Granite.HeaderLabel ("Gtk.ListBox") {
+            secondary_text = "This ListBox has \"Granite.CssClass.CARD\""
+        };
 
         var scrolled_window = new Gtk.ScrolledWindow () {
             child = rich_listbox,
@@ -61,23 +51,27 @@ public class ListsView : DemoPage {
         };
 
         var card_listbox = new Gtk.ListBox () {
-            hexpand = true,
             show_separators = true
         };
         card_listbox.add_css_class (Granite.CssClass.CARD);
         card_listbox.append (
-            new Granite.ListItem () { child = new Gtk.Label ("This ListBox has \"Granite.CssClass.CARD\"") }
+            new Granite.ListItem () {
+                text = "This is a \"Granite.ListItem\"",
+                description = "\"Granite.ListItem\" has a standardized row height and padding"
+            }
         );
         card_listbox.append (new Granite.ListItem () { child = separators_modelbutton });
 
-        var vbox = new Granite.Box (VERTICAL, DOUBLE) {
+        var vbox = new Granite.Box (VERTICAL, HALF) {
             margin_top = 12,
             margin_bottom = 12,
             margin_start = 12,
             margin_end = 12
         };
         vbox.append (title_label);
+        vbox.append (scrolled_title);
         vbox.append (scrolled_window);
+        vbox.append (card_title);
         vbox.append (card_listbox);
 
         content = vbox;
