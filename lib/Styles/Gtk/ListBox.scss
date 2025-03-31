@@ -1,14 +1,5 @@
-// Styles for Gtk.ListBox. Gtk.ListView uses the node `listview`
-
 list {
-    &.rich-list > row {
-        padding: rem(6px);
-        min-height: rem(32px); //Try to force homogeneous row height
-    }
-
     &.card {
-        @extend .rich-list;
-
         border-radius: rem($window_radius / 2);
 
         > row {
@@ -36,13 +27,19 @@ list {
         }
     }
 
+    &.separators > row + row {
+        border-top: 1px solid $border-color;
+        box-shadow: inset 0 1px 0 0 scale-color($highlight_color, $alpha: -93%);
+    }
+
     // For GTK Inpsector compatibility
     &.boxed-list {
         @extend .card;
     }
 
-    &.separators > row + row {
-        border-top: 1px solid $border-color;
-        box-shadow: inset 0 1px 0 0 scale-color($highlight_color, $alpha: -93%);
+    // For GTK Inpsector compatibility
+    &.rich-list > row {
+        padding: rem(6px);
+        min-height: rem(32px); //Try to force homogeneous row height
     }
 }

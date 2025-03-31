@@ -9,32 +9,55 @@ public class ListsView : DemoPage {
             size = H1
         };
 
-        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
-            active = true,
-            description = "\"show-separators = true\""
-        };
-
         var rich_listbox = new Gtk.ListBox () {
             hexpand = true,
             show_separators = true
         };
-        rich_listbox.add_css_class (Granite.CssClass.RICH_LIST);
-        rich_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.RICH_LIST\"") {
-            secondary_text = "Rich lists have a standardized row height and padding"
-        });
         rich_listbox.append (
-            new Gtk.Label ("ListBoxes in a ScrolledWindow with \"has-frame = true\" have a view level background color") {
-                halign = START,
-                wrap = true
+            new Granite.ListItem () {
+                child = new Granite.HeaderLabel ("This is a \"Granite.ListItem\"") {
+                    secondary_text = "\"Granite.ListItem\" has a standardized row height and padding"
+                }
             }
         );
-        rich_listbox.append (new Gtk.Label ("Row 3"));
-        rich_listbox.append (new Gtk.Label ("Row 4"));
+        rich_listbox.append (
+            new Granite.ListItem () {
+                child = new Gtk.Label ("ScrolledWindow with \"has-frame = true\" has a view level background color") {
+                    halign = START,
+                    wrap = true
+                }
+            }
+
+        );
+        rich_listbox.append (
+            new Granite.ListItem () {
+                child = new Gtk.Label ("Row 3") {
+                    halign = START,
+                    wrap = true
+                }
+            }
+
+        );
+        rich_listbox.append (
+            new Granite.ListItem () {
+                child = new Gtk.Label ("Row 4") {
+                    halign = START,
+                    wrap = true
+                }
+            }
+
+        );
 
         var scrolled_window = new Gtk.ScrolledWindow () {
             child = rich_listbox,
             has_frame = true,
-            hscrollbar_policy = NEVER
+            hscrollbar_policy = NEVER,
+            min_content_height = 128
+        };
+
+        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
+            active = true,
+            description = "\"show-separators = true\""
         };
 
         var card_listbox = new Gtk.ListBox () {
@@ -42,16 +65,10 @@ public class ListsView : DemoPage {
             show_separators = true
         };
         card_listbox.add_css_class (Granite.CssClass.CARD);
-        card_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.CARD\"") {
-            secondary_text = "Card listboxes are also always rich lists"
-        });
-        card_listbox.append (separators_modelbutton);
-
-        var lists_box = new Granite.Box (HORIZONTAL, DOUBLE);
-        lists_box.append (scrolled_window);
-        lists_box.append (card_listbox);
-
-        separators_modelbutton.bind_property ("active", card_listbox, "show-separators", SYNC_CREATE | DEFAULT);
+        card_listbox.append (
+            new Granite.ListItem () { child = new Gtk.Label ("This ListBox has \"Granite.CssClass.CARD\"") }
+        );
+        card_listbox.append (new Granite.ListItem () { child = separators_modelbutton });
 
         var vbox = new Granite.Box (VERTICAL, DOUBLE) {
             margin_top = 12,
@@ -60,8 +77,11 @@ public class ListsView : DemoPage {
             margin_end = 12
         };
         vbox.append (title_label);
-        vbox.append (lists_box);
+        vbox.append (scrolled_window);
+        vbox.append (card_listbox);
 
         content = vbox;
+
+        separators_modelbutton.bind_property ("active", card_listbox, "show-separators", SYNC_CREATE | DEFAULT);
     }
 }
