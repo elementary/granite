@@ -1,0 +1,12 @@
+entry {
+    @include border-interactive-roundrect;
+
+    background-color: bg-color(1);
+    border: 1px solid $border-color;
+    border-spacing: $button-spacing;
+    padding: $button-spacing;
+
+    placeholder {
+        @extend .dim-label;
+    }
+}
