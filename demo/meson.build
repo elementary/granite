@@ -17,6 +17,7 @@ executable(
     'Views/SettingsUrisView.vala',
     'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
+    'Views/ToastOverlayView.vala',
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',
 
