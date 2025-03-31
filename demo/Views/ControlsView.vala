@@ -29,7 +29,7 @@ public class ControlsView : DemoPage {
         var suggested_button = new Gtk.Button.with_label ("Granite.CssClass.SUGGESTED");
         suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
 
-        var button_box = new Gtk.Box (VERTICAL, 6);
+        var button_box = new Granite.Box (VERTICAL, HALF);
         button_box.append (textbutton);
         button_box.append (toggle_button);
         button_box.append (back_button);
@@ -48,7 +48,7 @@ public class ControlsView : DemoPage {
             inconsistent = true
         };
 
-        var checkbutton_box = new Gtk.Box (VERTICAL, 6);
+        var checkbutton_box = new Granite.Box (VERTICAL, HALF);
         checkbutton_box.append (checked_checkbutton);
         checkbutton_box.append (checkbutton);
         checkbutton_box.append (inconsistent_checkbutton);
@@ -64,12 +64,12 @@ public class ControlsView : DemoPage {
             inconsistent = true
         };
 
-        var radiobutton_box = new Gtk.Box (VERTICAL, 6);
+        var radiobutton_box = new Granite.Box (VERTICAL, HALF);
         radiobutton_box.append (checked_radiobutton);
         radiobutton_box.append (radiobutton);
         radiobutton_box.append (inconsistent_radiobutton);
 
-        var checkradio_box = new Gtk.Box (HORIZONTAL, 12);
+        var checkradio_box = new Granite.Box (HORIZONTAL);
         checkradio_box.append (checkbutton_box);
         checkradio_box.append (radiobutton_box);
 

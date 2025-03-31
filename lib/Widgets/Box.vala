@@ -12,12 +12,19 @@
 public class Granite.Box : Gtk.Box {
     public enum Spacing {
         NONE,
+        // Spacing between groups of related controls like {@link Gtk.CheckButton}
+        HALF,
+        // Default box spacing
         SINGLE,
+        // Spacing between sections, usually also separated by a {@link Granite.HeaderLabel}
         DOUBLE,
+        // Tightly groups related controls like {@link Gtk.ToggleButton}
         LINKED;
 
         public string to_string () {
             switch (this) {
+                case HALF:
+                    return "border-spacing-half";
                 case SINGLE:
                     return "border-spacing-single";
                 case DOUBLE:
