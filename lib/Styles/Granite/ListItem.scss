@@ -1,4 +1,8 @@
 granite-listitem {
     padding: $button-spacing;
     min-height: rem(32px); //Try to force homogeneous row height
+
+    .text-box {
+        padding: $button-spacing;
+    }
 }

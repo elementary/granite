@@ -42,6 +42,7 @@ public class Granite.ListItem : Granite.Bin {
 
         var text_box = new Granite.Box (VERTICAL, NONE);
         text_box.append (label);
+        text_box.add_css_class ("text-box");
 
         child = text_box;
 
