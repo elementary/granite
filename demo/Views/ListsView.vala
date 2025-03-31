@@ -65,7 +65,6 @@ public class ListsView : DemoPage {
 
             var granite_list_item = ((Granite.ListItem) list_item.child);
             granite_list_item.text = list_object.text;
-            granite_list_item.description = list_object.description;
         });
 
         var list_view = new Gtk.ListView (selection_model, factory) {
@@ -98,6 +97,5 @@ public class ListsView : DemoPage {
 
     private class ListObject : Object {
         public string text { get; set; }
-        public string description { get; set; }
     }
 }
