@@ -72,52 +72,6 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var lists_label = new Granite.HeaderLabel ("Gtk.ListBox");
-
-        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
-            active = true,
-            description = "\"show-separators = true\""
-        };
-
-        var rich_listbox = new Gtk.ListBox () {
-            hexpand = true,
-            show_separators = true
-        };
-        rich_listbox.add_css_class (Granite.CssClass.RICH_LIST);
-        rich_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.RICH_LIST\"") {
-            secondary_text = "Rich lists have a standardized row height and padding"
-        });
-        rich_listbox.append (
-            new Gtk.Label ("ListBoxes in a ScrolledWindow with \"has-frame = true\" have a view level background color") {
-                halign = START,
-                wrap = true
-            }
-        );
-        rich_listbox.append (new Gtk.Label ("Row 3"));
-        rich_listbox.append (new Gtk.Label ("Row 4"));
-
-        var scrolled_window = new Gtk.ScrolledWindow () {
-            child = rich_listbox,
-            has_frame = true,
-            hscrollbar_policy = NEVER
-        };
-
-        var card_listbox = new Gtk.ListBox () {
-            hexpand = true,
-            show_separators = true
-        };
-        card_listbox.add_css_class (Granite.CssClass.CARD);
-        card_listbox.append (new Granite.HeaderLabel ("This ListBox has \"Granite.CssClass.CARD\"") {
-            secondary_text = "Card listboxes are also always rich lists"
-        });
-        card_listbox.append (separators_modelbutton);
-
-        var lists_box = new Granite.Box (HORIZONTAL, DOUBLE);
-        lists_box.append (scrolled_window);
-        lists_box.append (card_listbox);
-
-        separators_modelbutton.bind_property ("active", card_listbox, "show-separators", SYNC_CREATE | DEFAULT);
-
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
         var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
@@ -211,8 +165,6 @@ public class CSSView : DemoPage {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (lists_label);
-        box.append (lists_box);
         box.append (terminal_label);
         box.append (terminal_scroll);
         box.append (buttons_label);
