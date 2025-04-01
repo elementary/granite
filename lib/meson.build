@@ -23,6 +23,7 @@ libgranite_sources = files(
     'Widgets/Dialog.vala',
     'Widgets/HeaderLabel.vala',
     'Widgets/HyperTextView.vala',
+    'Widgets/ListItem.vala',
     'Widgets/MessageDialog.vala',
     'Widgets/ModeSwitch.vala',
     'Widgets/OverlayBar.vala',
