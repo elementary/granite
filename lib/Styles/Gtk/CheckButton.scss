@@ -10,6 +10,10 @@ checkbutton {
 
         &:checked {
             -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
+            color: $SILVER_100;
+            // change to use accent color once #704 is merged
+            background-color: 
+                mix($BLUEBERRY_300, $BLUEBERRY_500, 30%);
         }
 
         &:indeterminate {
