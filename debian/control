@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 10.5.1),
                gobject-introspection (>= 1.41.4-1~),
                libgee-0.8-dev,
                libgirepository1.0-dev,
-               libgtk-4-dev (>= 4.4.1),
+               libgtk-4-dev (>= 4.12.0),
                meson (>= 0.57.0),
                sassc,
                valac (>= 0.40)
@@ -36,7 +36,7 @@ Depends: gir1.2-granite-7.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
          libgranite7 (= ${binary:Version}),
-         libgtk-4-dev (>= 4.4.1),
+         libgtk-4-dev (>= 4.12.0),
          ${misc:Depends}
 Description: extension of GTK+ libraries (development files)
  Granite is an extension of GTK+. Among other things, it provides
