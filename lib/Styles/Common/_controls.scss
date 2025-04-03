@@ -12,12 +12,12 @@
     transition: all duration("in-place") easing("default");
 
     &:backdrop {
-        background-image:
-        linear-gradient(
-            to bottom,
-            scale-color($highlight_color, $alpha: -65%),
-            scale-color($highlight_color, $alpha: -70%)
-        );
+        background-image: none;
+    }
+
+    &:disabled {
+        background-color: bg-color(3);
+        background-image: none;
     }
 }
 

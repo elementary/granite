@@ -3,11 +3,40 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class ModeButtonView : DemoPage {
+public class ControlsView : DemoPage {
     construct {
-        var simplebutton_header = new Granite.HeaderLabel ("Text & Image Buttons");
-        var textbutton = new Gtk.Button.with_label ("Text");
-        var imagebutton = new Gtk.Button.from_icon_name ("folder-pictures-symbolic");
+        var button_header = new Granite.HeaderLabel ("Buttons");
+
+        var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
+
+        var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()");
+
+        var imagebutton = new Gtk.Button.from_icon_name ("folder-pictures-symbolic") {
+            tooltip_text = "Gtk.Button.from_icon_name ()"
+        };
+
+        var toggle_imagebutton = new Gtk.ToggleButton () {
+            icon_name = "eye-open-negative-filled-symbolic",
+            tooltip_text = "Gtk.ToggleButton.icon_name"
+        };
+
+        var back_button = new Gtk.Button.with_label ("Granite.CssClass.BACK");
+        back_button.add_css_class (Granite.CssClass.BACK);
+
+        var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE");
+        destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);
+
+        var suggested_button = new Gtk.Button.with_label ("Granite.CssClass.SUGGESTED");
+        suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
+
+        var button_box = new Granite.Box (VERTICAL, HALF);
+        button_box.append (textbutton);
+        button_box.append (toggle_button);
+        button_box.append (back_button);
+        button_box.append (destructive_button);
+        button_box.append (suggested_button);
+        button_box.append (imagebutton);
+        button_box.append (toggle_imagebutton);
 
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
@@ -19,7 +48,7 @@ public class ModeButtonView : DemoPage {
             inconsistent = true
         };
 
-        var checkbutton_box = new Gtk.Box (VERTICAL, 6);
+        var checkbutton_box = new Granite.Box (VERTICAL, HALF);
         checkbutton_box.append (checked_checkbutton);
         checkbutton_box.append (checkbutton);
         checkbutton_box.append (inconsistent_checkbutton);
@@ -35,16 +64,12 @@ public class ModeButtonView : DemoPage {
             inconsistent = true
         };
 
-        var simplebutton_box = new Gtk.Box (VERTICAL, 6);
-        simplebutton_box.append (textbutton);
-        simplebutton_box.append (imagebutton);
-
-        var radiobutton_box = new Gtk.Box (VERTICAL, 6);
+        var radiobutton_box = new Granite.Box (VERTICAL, HALF);
         radiobutton_box.append (checked_radiobutton);
         radiobutton_box.append (radiobutton);
         radiobutton_box.append (inconsistent_radiobutton);
 
-        var checkradio_box = new Gtk.Box (HORIZONTAL, 12);
+        var checkradio_box = new Granite.Box (HORIZONTAL);
         checkradio_box.append (checkbutton_box);
         checkradio_box.append (radiobutton_box);
 
@@ -94,8 +119,8 @@ public class ModeButtonView : DemoPage {
             valign = CENTER
         };
 
-        box.append (simplebutton_header);
-        box.append (simplebutton_box);
+        box.append (button_header);
+        box.append (button_box);
         box.append (checkradio_header);
         box.append (checkradio_box);
         box.append (mode_switch_label);

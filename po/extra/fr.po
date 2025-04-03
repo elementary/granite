@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24 15:21+0000\n"
-"PO-Revision-Date: 2025-02-07 16:16+0000\n"
+"PO-Revision-Date: 2025-04-01 13:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/fr/>\n"
+"Language-Team: French <https://l10n.elementaryos.org/projects/desktop/"
+"granite-extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -50,7 +50,7 @@ msgstr "Nouvelles fonctionnalités :"
 
 #: data/granite.metainfo.xml.in:34
 msgid "Granite.CssClass.NUMERIC"
-msgstr ""
+msgstr "Granite.CssClass.NUMERIC"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:68 data/granite.metainfo.xml.in:90
