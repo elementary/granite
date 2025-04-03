@@ -19,6 +19,9 @@ You'll need the following dependencies:
 * sassc
 * valac
 
+To build the Demo you'll additionally need:
+* libshumate-dev
+
 Run `meson build` to configure the build environment:
 
     meson build --prefix=/usr

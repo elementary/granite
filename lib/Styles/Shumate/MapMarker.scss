@@ -1,0 +1,25 @@
+map-marker {
+    // This stacks with the other shadows,
+    // so reduce it's alpha by the sum of other shadows
+    $shadow-border-color: scale-color($border-color, $alpha: -50%);
+    @if $color-scheme == "dark" {
+        $shadow-border-color: transparent
+    }
+
+    background-color: bg-color(0);
+    border-radius: 50%;
+    box-shadow:
+        highlight(),
+        // Intentionally not in ems since it's used as a stroke
+        0 0 0 1px $shadow-border-color,
+        shadow(2);
+    padding: $button-spacing / 3;
+
+    image {
+        background: $BLUEBERRY_500;
+        color: white;
+        border-radius: 50%;
+        padding: $button-spacing / 2;
+        -gtk-icon-size: 1rem;
+    }
+}
