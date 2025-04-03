@@ -8,6 +8,10 @@ button {
             @include control-active-depressed;
         }
 
+        &:active {
+            filter: brightness(95%);
+        }
+
         &:disabled {
             @include control-disabled;
         }

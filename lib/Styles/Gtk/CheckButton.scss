@@ -10,6 +10,7 @@ checkbutton {
 
         &:active {
             @include control-active-depressed;
+            filter: brightness(95%);
         }
 
         &:checked {
