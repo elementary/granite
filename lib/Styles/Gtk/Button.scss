@@ -3,6 +3,14 @@ button {
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
+
+        &:checked, &:active {
+            @include control-active-depressed;
+        }
+
+        &:disabled {
+            @include control-disabled;
+        }
     }
 
     // Stopgap since we can't do angled buttons in GtkCSS, and generating all
