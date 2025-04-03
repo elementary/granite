@@ -75,7 +75,7 @@ Description: extension of GTK+ libraries (common files)
 Package: granite-7-demo
 Section: misc
 Architecture: any
-Depends: libgranite7 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite7 (= ${binary:Version}), libshumate-dev, ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps
