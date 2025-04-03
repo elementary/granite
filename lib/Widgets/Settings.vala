@@ -137,8 +137,8 @@ namespace Granite {
                 warning (e.message);
 
                 // Set a default in case we can't get from system
-                accent_color = Gdk.RGBA ();
-                accent_color.parse ("#3689e6");
+                _accent_color = Gdk.RGBA ();
+                _accent_color.parse ("#3689e6");
             }
         }
 
