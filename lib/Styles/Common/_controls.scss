@@ -26,6 +26,7 @@
     box-shadow:
         highlight("bottom"),
         inset-shadow("");
+        background-color: bg-color(3);
 
     &:disabled {
         box-shadow:
