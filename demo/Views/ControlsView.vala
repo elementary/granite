@@ -117,7 +117,8 @@ public class ControlsView : DemoPage {
         var scale_header = new Granite.HeaderLabel ("Scale");
 
         var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 100, 1) {
-            hexpand = true
+            hexpand = true,
+            draw_value = true
         };
         hscale.adjustment.value = 50;
 
