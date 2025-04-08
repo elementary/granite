@@ -55,6 +55,7 @@ namespace Granite {
     /**
      * Style class for the content area in dialogs.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.Dialog")]
     public const string STYLE_CLASS_DIALOG_CONTENT_AREA = "dialog-content-area";
     /**
      * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
@@ -130,6 +131,7 @@ namespace Granite {
     /**
      * Style class for title label text in a {@link Granite.MessageDialog}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.MessageDialog")]
     public const string STYLE_CLASS_TITLE_LABEL = "title";
     /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
@@ -169,6 +171,7 @@ namespace Granite {
     /**
      * Style class for message dialogs.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.MessageDialog")]
     public const string STYLE_CLASS_MESSAGE_DIALOG = "message";
     /**
      * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
