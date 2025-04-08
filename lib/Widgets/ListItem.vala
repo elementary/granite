@@ -20,6 +20,16 @@ public class Granite.ListItem : Granite.Bin {
      */
     public string? description { get; set; }
 
+    /**
+     * Context menu model
+     * When a menu is shown with secondary click or long press will be constructed from the provided menu model
+     */
+    public GLib.Menu? menu_model { get; set; }
+
+    private Gtk.GestureClick? secondary_click_controller;
+    private Gtk.GestureLongPress? long_press_controller;
+    private Gtk.PopoverMenu? context_menu;
+
     class construct {
         set_css_name ("granite-listitem");
     }
@@ -58,5 +68,58 @@ public class Granite.ListItem : Granite.Bin {
                 text_box.append (description_label);
             }
         });
+
+        notify["menu-model"].connect (construct_menu);
+    }
+
+    private void construct_menu () {
+        if (menu_model == null) {
+            remove_controller (secondary_click_controller);
+            remove_controller (long_press_controller);
+
+            secondary_click_controller = null;
+            long_press_controller = null;
+
+            context_menu.unparent ();
+            context_menu = null;
+
+            return;
+        }
+
+        if (context_menu != null) {
+            context_menu.menu_model = menu_model;
+            return;
+        }
+
+        context_menu = new Gtk.PopoverMenu.from_model (menu_model) {
+            halign = START,
+            has_arrow = false,
+            position = BOTTOM
+        };
+        context_menu.set_parent (this);
+
+        secondary_click_controller = new Gtk.GestureClick () {
+            button = Gdk.BUTTON_SECONDARY
+        };
+        secondary_click_controller.pressed.connect ((n_press, x, y) => {
+            menu_popup_at_pointer (context_menu, x, y);
+        });
+
+        long_press_controller = new Gtk.GestureLongPress ();
+        long_press_controller.pressed.connect ((x, y) => {
+            menu_popup_at_pointer (context_menu, x, y);
+        });
+
+        add_controller (secondary_click_controller);
+        add_controller (long_press_controller);
+    }
+
+    private void menu_popup_at_pointer (Gtk.PopoverMenu popover, double x, double y) {
+        var rect = Gdk.Rectangle () {
+            x = (int) x,
+            y = (int) y
+        };
+        popover.pointing_to = rect;
+        popover.popup ();
     }
 }
