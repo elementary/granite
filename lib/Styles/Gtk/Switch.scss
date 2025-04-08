@@ -4,6 +4,10 @@ switch {
     background-color: $trough-color;
     border-radius: 99px;
 
+    &:checked:not(:backdrop) {
+        background-color: #{'@accent_color'};
+    }
+
     &:disabled {
         background-color: scale-color($trough-color, $alpha: -10%);
     }
