@@ -1,0 +1,51 @@
+@mixin control {
+    @include border-interactive;
+
+    background-clip: border-box;
+    background-color: bg-color(0);
+    background-image:
+        linear-gradient(
+            to bottom,
+            scale-color($highlight_color, $alpha: -80%),
+            rgba(white, 0)
+        );
+    transition: all duration("in-place") easing("default");
+
+    &:backdrop {
+        background-image: none;
+    }
+
+    &:disabled {
+        background-color: bg-color(3);
+        background-image: none;
+    }
+}
+
+// used to show a button is being clicked or is in an "active" state
+@mixin control-active-depressed {
+    box-shadow:
+        highlight("bottom"),
+        inset-shadow("");
+        background-color: bg-color(3);
+
+    &:disabled {
+        box-shadow:
+            highlight("bottom"),
+            inset-shadow("disabled");
+    }
+}
+
+// used to show a check or radio button is "active"
+@mixin control-active-checked {
+    color: $SILVER_100;
+    // FIXME: use accent color after #704 is merged
+    background-color: $BLUEBERRY_400;
+
+    &:disabled {
+        filter: grayscale(100%);
+    }
+}
+
+@mixin control-disabled {
+    opacity: $disabled-opacity;
+}
