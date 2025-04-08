@@ -13,6 +13,7 @@ executable(
     'Views/DialogsView.vala',
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',
+    'Views/ListsView.vala',
     'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',

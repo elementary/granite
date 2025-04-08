@@ -72,26 +72,6 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var richlist_label = new Granite.HeaderLabel ("Lists") {
-            secondary_text = "\"rich-list\" and \"frame\" style classes"
-        };
-
-        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
-            active = true,
-            description = "\"show-separators = true\""
-        };
-
-        var rich_listbox = new Gtk.ListBox () {
-            show_separators = true
-        };
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
-        rich_listbox.append (new Gtk.Label ("Row 1"));
-        rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (separators_modelbutton);
-
-        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
-
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
         var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
@@ -168,8 +148,6 @@ public class CSSView : DemoPage {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (richlist_label);
-        box.append (rich_listbox);
         box.append (terminal_label);
         box.append (terminal_scroll);
         box.append (scales_header);
