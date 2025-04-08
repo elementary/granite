@@ -16,6 +16,10 @@ scale {
         // 16px - border
         min-height: calc(#{$slider-width} - 1px);
         min-width: calc(#{$slider-width} - 1px);
+
+        transition:
+            box-shadow duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
     }
 
     trough {
@@ -23,6 +27,19 @@ scale {
 
         min-height: $trough-width;
         min-width: $trough-width;
+    }
+
+    &.dragging {
+        slider {
+            transform: scale(1.15);
+            transition:
+                box-shadow duration("collapse") easing(),
+                transform duration("collapse") easing();
+            box-shadow:
+                highlight(),
+                0 0 0 1px $border-color,
+                shadow(3);
+        }
     }
 
     &.horizontal {
