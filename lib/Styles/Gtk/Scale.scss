@@ -1,0 +1,39 @@
+scale {
+    $slider-width: rem(16px);
+    $trough-width: 0.5rem;
+    $slider-margin: ($slider-width - $trough-width) / 2 * -1;
+
+    // `has_origin = true`
+    highlight {
+        background-color: #{'@accent_color'};
+
+        &:backdrop {
+            background-color: scale-color($fg-color, $alpha: -50%);
+        }
+    }
+
+    slider {
+        // 16px - border
+        min-height: calc(#{$slider-width} - 1px);
+        min-width: calc(#{$slider-width} - 1px);
+    }
+
+    trough {
+        @include trough;
+
+        min-height: $trough-width;
+        min-width: $trough-width;
+    }
+
+    &.horizontal {
+        slider {
+            margin: $slider-margin -1px;
+        }
+    }
+
+    &.vertical {
+        slider {
+            margin: -1px $slider-margin;
+        }
+    }
+}

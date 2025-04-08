@@ -1,39 +1,7 @@
 switch {
-    $trough-color: scale-color($toplevel-border-color, $alpha: -50%);
-
-    background-color: $trough-color;
-    border-radius: 99px;
+    @include trough;
 
     &:checked:not(:backdrop) {
         background-color: #{'@accent_color'};
-    }
-
-    &:disabled {
-        background-color: scale-color($trough-color, $alpha: -10%);
-    }
-
-    slider {
-        @include control;
-
-        border: none;
-
-        border-radius: 50%;
-        box-shadow:
-            highlight(),
-            0 0 0 1px $border-color,
-            shadow(2);
-
-        &:backdrop {
-            box-shadow:
-                highlight(),
-                0 0 0 1px $border-color,
-                shadow(1);
-        }
-
-        &:disabled {
-            box-shadow:
-                0 0 0 1px $border-color,
-                shadow(1);
-        }
     }
 }

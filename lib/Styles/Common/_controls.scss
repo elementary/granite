@@ -49,3 +49,14 @@
 @mixin control-disabled {
     opacity: $disabled-opacity;
 }
+
+@mixin trough {
+    $trough-color: scale-color($toplevel-border-color, $alpha: -50%);
+
+    background-color: $trough-color;
+    border-radius: 99px;
+
+    &:disabled {
+        background-color: scale-color($trough-color, $alpha: -10%);
+    }
+}

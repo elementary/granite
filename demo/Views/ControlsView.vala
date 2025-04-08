@@ -114,9 +114,27 @@ public class ControlsView : DemoPage {
         };
         popover_button.popover = switchbutton_popover;
 
+        var scale_header = new Granite.HeaderLabel ("Scale");
+
+        var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 100, 1) {
+            hexpand = true
+        };
+        hscale.adjustment.value = 50;
+
+        var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 100, 1) {
+            height_request = 128,
+            has_origin = false
+        };
+        vscale.adjustment.value = 50;
+
+        var scale_box = new Granite.Box (HORIZONTAL);
+        scale_box.append (hscale);
+        scale_box.append (vscale);
+
         var box = new Granite.Box (VERTICAL, NONE) {
             halign = CENTER,
-            valign = CENTER
+            valign = CENTER,
+            margin_bottom = 12
         };
 
         box.append (button_header);
@@ -127,6 +145,8 @@ public class ControlsView : DemoPage {
         box.append (mode_switch);
         box.append (switchbutton_header);
         box.append (popover_button);
+        box.append (scale_header);
+        box.append (scale_box);
 
         content = box;
     }
