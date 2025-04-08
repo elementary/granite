@@ -25,6 +25,7 @@ public class Granite.Demo : Gtk.Application {
         var form_view = new FormView ();
         var hypertext_view = new HyperTextViewGrid ();
         var controls_view = new ControlsView ();
+        var maps_view = new MapsView ();
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
@@ -45,6 +46,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (controls_view, "controls", "Controls");
+        main_stack.add_titled (maps_view, "maps", "Maps");
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");

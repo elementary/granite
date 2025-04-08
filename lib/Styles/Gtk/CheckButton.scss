@@ -8,12 +8,26 @@ checkbutton {
         min-height: 1rem;
         min-width: 1rem;
 
+        &:hover {
+            filter: brightness(105%);
+        }
+
+        &:active {
+            @include control-active-depressed;
+            filter: brightness(95%);
+        }
+
         &:checked {
             -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
+            @include control-active-checked;
         }
 
         &:indeterminate {
             -gtk-icon-source: -gtk-icontheme("check-indeterminate-symbolic");
+        }
+
+        &:disabled {
+            @include control-disabled;
         }
     }
 

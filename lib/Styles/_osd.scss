@@ -1,4 +1,4 @@
-.osd {
+:not(button).osd {
     background-color: rgba($fg-color, 0.95);
     border-radius: rem($window_radius / 2);
     box-shadow: shadow(1);

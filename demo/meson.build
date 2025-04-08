@@ -14,6 +14,7 @@ executable(
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',
     'Views/ListsView.vala',
+    'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
     'Views/StyleManagerView.vala',
@@ -21,7 +22,10 @@ executable(
     'Views/UtilsView.vala',
     'Views/WelcomeView.vala',
 
-    dependencies: [libgranite_dep],
+    dependencies: [
+        libgranite_dep,
+        dependency('shumate-1.0')
+    ],
 
     install: true,
 )
