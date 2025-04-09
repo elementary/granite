@@ -98,16 +98,26 @@ public class ControlsView : DemoPage {
             description = "A description of additional affects related to the activation state of this switch"
         };
 
-        var switchbutton_grid = new Gtk.Grid ();
-        switchbutton_grid.attach (header_switchmodelbutton, 0, 0);
-        switchbutton_grid.attach (switchmodelbutton, 0, 1);
-        switchbutton_grid.attach (description_switchmodelbutton, 0, 2);
+        var header_item = new GLib.MenuItem (null, null);
+        header_item.set_attribute_value ("custom", "header");
 
-        var switchbutton_popover = new Gtk.Popover () {
-            child = switchbutton_grid,
+        var switch_item = new GLib.MenuItem (null, null);
+        switch_item.set_attribute_value ("custom", "switch");
+
+        var description_switch_item = new GLib.MenuItem (null, null);
+        description_switch_item.set_attribute_value ("custom", "description-switch");
+
+        var menu_model = new GLib.Menu ();
+        menu_model.append_item (header_item);
+        menu_model.append_item (switch_item);
+        menu_model.append_item (description_switch_item);
+
+        var switchbutton_popover = new Gtk.PopoverMenu.from_model (menu_model) {
             has_arrow = false
         };
-        switchbutton_popover.add_css_class (Granite.STYLE_CLASS_MENU);
+        switchbutton_popover.add_child (header_switchmodelbutton, "header");
+        switchbutton_popover.add_child (switchmodelbutton, "switch");
+        switchbutton_popover.add_child (description_switchmodelbutton, "description-switch");
 
         var popover_button = new Gtk.MenuButton () {
             direction = Gtk.ArrowType.UP
