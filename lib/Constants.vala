@@ -7,10 +7,12 @@ namespace Granite {
     /**
      * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ACCENT")]
     public const string STYLE_CLASS_ACCENT = "accent";
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.BACK")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
@@ -26,14 +28,17 @@ namespace Granite {
      *
      * Can be combined with the style class ".collapsed" to further reduce the size of the shadow
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_CARD = "card";
     /**
      * Style class for checkered backgrounds to represent transparency in images
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CHECKERBOARD")]
     public const string STYLE_CLASS_CHECKERBOARD = "checkerboard";
     /**
      * Style class for a circular {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CIRCULAR")]
     public const string STYLE_CLASS_CIRCULAR = "circular";
     /**
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
@@ -46,10 +51,12 @@ namespace Granite {
     /**
      * Style class for {@link Gtk.Button} with a destructive action
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DESTRUCTIVE")]
     public const string STYLE_CLASS_DESTRUCTIVE_ACTION = "destructive-action";
     /**
      * Style class for the content area in dialogs.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.Dialog")]
     public const string STYLE_CLASS_DIALOG_CONTENT_AREA = "dialog-content-area";
     /**
      * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
@@ -59,18 +66,22 @@ namespace Granite {
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H1")]
     public const string STYLE_CLASS_H1_LABEL = "title-1";
     /**
      * Style class for large seondary text as seen in {@link Granite.Widgets.Welcome}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H2")]
     public const string STYLE_CLASS_H2_LABEL = "title-2";
     /**
      * Style class for small primary text
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H3")]
     public const string STYLE_CLASS_H3_LABEL = "title-3";
     /**
      * Style class for a {@link Granite.HeaderLabel}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.HeaderLabel.Size.H4")]
     public const string STYLE_CLASS_H4_LABEL = "title-4";
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
@@ -84,6 +95,7 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Switch} used to change between two modes rather than active and inactive states
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.ModeSwitch")]
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
      * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
@@ -92,6 +104,7 @@ namespace Granite {
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CARD")]
     public const string STYLE_CLASS_ROUNDED = "rounded";
     /**
      * Style class defining a sidebar, such as the left side in a file chooser
@@ -106,7 +119,7 @@ namespace Granite {
     /**
      * Style class for widgets in success state.
      */
-    [Version (since = "7.5.0")]
+    [Version (since = "7.5.0", deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUCCESS")]
     public const string STYLE_CLASS_SUCCESS = "success";
 
     /**
@@ -120,34 +133,42 @@ namespace Granite {
     /**
      * Style class for title label text in a {@link Granite.MessageDialog}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.MessageDialog")]
     public const string STYLE_CLASS_TITLE_LABEL = "title";
     /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_WARMTH = "warmth";
     /**
      * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_TEMPERATURE = "temperature";
     /**
      * Style class for linked widgets, such as a box containing buttons belonging to the same control.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.Box.child_spacing")]
     public const string STYLE_CLASS_LINKED = "linked";
     /**
      * Style class for {@link Gtk.Popover} which is used as a menu.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu")]
     public const string STYLE_CLASS_MENU = "menu";
     /**
      * Style class for {@link Gtk.Popover} children which are used as menu items.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu.add_child ()")]
     public const string STYLE_CLASS_MENUITEM = "menuitem";
     /**
      * Style class for dimmed labels.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.DIM")]
     public const string STYLE_CLASS_DIM_LABEL = "dim-label";
     /**
      * Style class for widgets in error state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.ERROR")]
     public const string STYLE_CLASS_ERROR = "error";
     /**
      * Style class for flattened widgets, such as buttons,
@@ -156,15 +177,17 @@ namespace Granite {
     /**
      * Style class for message dialogs.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.MessageDialog")]
     public const string STYLE_CLASS_MESSAGE_DIALOG = "message";
     /**
      * Style class for setting standard row padding and row height in a {@link Gtk.ListBox}
      */
-    [Version (since = "7.1.0")]
+    [Version (since = "7.1.0", deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.ListItem")]
     public const string STYLE_CLASS_RICH_LIST = "rich-list";
     /**
      * Style class for when an action (usually a button) is the primary suggested action in a specific context.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SUGGESTED")]
     public const string STYLE_CLASS_SUGGESTED_ACTION = "suggested-action";
     /**
      * Style class for widgets which should use base color as their background
@@ -173,6 +196,7 @@ namespace Granite {
     /**
      * Style class for widgets in warning state.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.WARNING")]
     public const string STYLE_CLASS_WARNING = "warning";
 
     /**
@@ -189,6 +213,72 @@ namespace Granite {
      * Transition duration when a widget opens, reveals more content, or enters the screen
      */
     public const int TRANSITION_DURATION_OPEN = 250;
+
+    /**
+     * CSS style classes to be used with {@link Gtk.Widget.add_css_class}
+     */
+    [Version (since = "7.7.0")]
+    namespace CssClass {
+        /**
+         * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
+         */
+        public const string ACCENT = "accent";
+
+        /**
+         * Style class for a {@link Gtk.Button} which is used to navigate backwards
+         */
+        public const string BACK = "back-button";
+
+        /**
+         * Style class for adding a small shadow to a container such as for image thumbnails
+         */
+        public const string CARD = "card";
+
+        /**
+         * Style class for checkered backgrounds to represent transparency in images
+         */
+        public const string CHECKERBOARD = "checkerboard";
+
+        /**
+         * Style class for a circular {@link Gtk.Button}
+         */
+        public const string CIRCULAR = "circular";
+
+        /**
+         * Style class for {@link Gtk.Button} with a destructive action
+         */
+        public const string DESTRUCTIVE = "destructive";
+
+        /**
+         * Style class for dimmed labels and icons
+         */
+        public const string DIM = "dim-label";
+
+        /**
+         * Style class for widgets in error state.
+         */
+        public const string ERROR = "error";
+
+        /**
+         * sets font features to use tabular numbers. Equivalent of Pango's tnum property
+         */
+        public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
+         */
+        public const string SUGGESTED = "suggested";
+
+        /**
+         * Style class for widgets in success state.
+         */
+        public const string SUCCESS = "success";
+
+        /**
+         * Style class for widgets in warning state.
+         */
+        public const string WARNING = "warning";
+    }
 
     /**
      * Deep links to specific Settings pages.

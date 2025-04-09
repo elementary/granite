@@ -2,7 +2,7 @@ project(
     'granite-7',
     'vala', 'c',
     meson_version: '>= 0.57.0',
-    version: '7.6.0'
+    version: '7.7.0'
 )
 
 if meson.get_compiler('vala').version().version_compare('<0.48.0')
@@ -43,13 +43,21 @@ add_project_arguments(
     language: ['vala']
 )
 
+if get_option('gtk-stylesheets')
+    add_project_arguments(
+        '-D',
+        'INCLUDE_GTK_STYLESHEETS',
+        language: ['vala']
+    )
+endif
+
 libgranite_deps = [
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),
     gio_os_dep,
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
-    dependency('gtk4', version: '>=4.4'),
+    dependency('gtk4', version: '>=4.12'),
 ]
 
 pkgconfig = import('pkgconfig')

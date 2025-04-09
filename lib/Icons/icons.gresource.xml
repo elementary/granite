@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/elementary/granite">
-    <file alias="scalable/actions/adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
+    <file alias="scalable/actions/adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
     <file alias="scalable/actions/adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
     <file alias="scalable/actions/adw-external-link-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic.svg</file>
     <file alias="scalable/actions/adw-external-link-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic-rtl.svg</file>
@@ -22,12 +22,28 @@
     <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
     <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
 
+    <file alias="scalable/categories/emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-activities.svg</file>
+    <file alias="scalable/categories/emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-body.svg</file>
+    <file alias="scalable/categories/emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-flag.svg</file>
+    <file alias="scalable/categories/emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-food.svg</file>
+    <file alias="scalable/categories/emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-nature.svg</file>
+    <file alias="scalable/categories/emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-objects.svg</file>
+    <file alias="scalable/categories/emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-people.svg</file>
+    <file alias="scalable/categories/emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-recent.svg</file>
+    <file alias="scalable/categories/emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-symbols.svg</file>
+    <file alias="scalable/categories/emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-travel.svg</file>
+
     <file alias="scalable/status/adw-tab-counter-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-counter-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>
 
-    <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-active-symbolic.svg</file>
-    <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-mixed-symbolic.svg</file>
+    <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
+    <file alias="scalable/status/check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
+    <file alias="scalable/status/check-indeterminate-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
+    <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
+
+    <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
+    <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
 
     <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
 

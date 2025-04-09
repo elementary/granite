@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class ApplicationView : Gtk.Grid {
+public class ApplicationView : DemoPage {
     construct {
         var progress_visible_label = new Gtk.Label ("Show Progress:");
 
@@ -19,17 +19,20 @@ public class ApplicationView : Gtk.Grid {
 
         var badge_spin = new Gtk.SpinButton.with_range (0, int64.MAX, 1);
 
-        column_spacing = 12;
-        row_spacing = 6;
-        orientation = Gtk.Orientation.VERTICAL;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        attach (progress_visible_label, 0, 0);
-        attach (progress_visible_switch, 1, 0);
-        attach (progress_scale, 2, 0);
-        attach (badge_visible_label, 0, 1);
-        attach (badge_visible_switch, 1, 1);
-        attach (badge_spin, 2, 1);
+        var grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 6,
+            halign = CENTER,
+            valign = CENTER
+        };
+        grid.attach (progress_visible_label, 0, 0);
+        grid.attach (progress_visible_switch, 1, 0);
+        grid.attach (progress_scale, 2, 0);
+        grid.attach (badge_visible_label, 0, 1);
+        grid.attach (badge_visible_switch, 1, 1);
+        grid.attach (badge_spin, 2, 1);
+
+        content = grid;
 
         progress_visible_switch.bind_property ("active", progress_scale, "sensitive", GLib.BindingFlags.SYNC_CREATE);
         badge_visible_switch.bind_property ("active", badge_spin, "sensitive", GLib.BindingFlags.SYNC_CREATE);

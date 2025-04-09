@@ -1,9 +1,7 @@
 $color-scheme: "light";
 
 // Constants and functions
-@import '_palette.scss';
-@import '_animate.scss';
-@import '_common.scss';
+@import 'Common/Variables.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
 $toplevel-border-color: rgba(black, 0.2);
@@ -28,7 +26,7 @@ $toplevel-border-color: rgba(black, 0.2);
 }
 
 // Outset box shadow or border color on inputs like buttons, entries, checkboxes
-$border-color: rgba(black, 0.05);
+$border-color: rgba(black, 0.2);
 
 // Text, images, and other foreground elements
 $fg-color: $BLACK_500;
@@ -43,6 +41,8 @@ $warning_color: $BANANA_900;
 $warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
 
 // Common styles
+@import 'Common/Mixins.scss';
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 
@@ -51,3 +51,6 @@ $warning-icon-color: mix($BANANA_500, $BANANA_700, $weight: 50%);
 
 // Granite widgets
 @import 'Granite/Index.scss';
+
+// Maps
+@import 'Shumate/Index.scss';

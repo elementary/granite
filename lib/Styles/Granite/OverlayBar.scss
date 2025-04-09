@@ -7,10 +7,10 @@ overlaybar .osd {
     }
 
     revealer:dir(ltr) > spinner {
-        margin-left: rem(6px);
+        margin-left: $button-spacing;
     }
 
     revealer:dir(rtl) > spinner {
-        margin-right: rem(6px);
+        margin-right: $button-spacing;
     }
 }

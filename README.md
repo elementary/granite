@@ -12,11 +12,15 @@ built for elementary OS.
 You'll need the following dependencies:
 * meson >= 0.57.0
 * gobject-introspection
+* gettext
 * libgee-0.8-dev
 * libgirepository1.0-dev
-* libgtk-4-dev >= 4.4.0
+* libgtk-4-dev >= 4.12.0
 * sassc
 * valac
+
+To build the Demo you'll additionally need:
+* libshumate-dev
 
 Run `meson build` to configure the build environment:
 

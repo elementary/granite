@@ -1,0 +1,40 @@
+.card {
+    background-color: bg-color(1);
+    border-radius: rem($window_radius / 2);
+    box-shadow:
+        highlight(),
+        // Intentionally not in ems since it's used as a stroke
+        // This stacks with the other shadows,
+        // so reduce it's alpha by the sum of other shadows
+        0 0 0 1px scale-color($border-color, $alpha: -36%),
+        shadow(1);
+}
+
+// Used on Page Setup of gtk print portal
+paper {
+    @extend .card;
+    border-radius: 0;
+}
+
+.checkerboard {
+    background-color: bg-color(3);
+    background-image:
+        linear-gradient(
+            45deg,
+            rgba(black, 0.05) rem(9px),
+            transparent rem(9px),
+            transparent rem(26px),
+            rgba(black, 0.05) rem(26px),
+            rgba(black, 0.05)
+        ),
+        linear-gradient(
+            45deg,
+            rgba(black, 0.05) rem(9px),
+            transparent rem(9px),
+            transparent rem(26px),
+            rgba(black, 0.05) rem(26px),
+            rgba(black, 0.05)
+        );
+    background-size: rem(24px) rem(24px);
+    background-position: 0 0, rem(12px) rem(12px);
+}
