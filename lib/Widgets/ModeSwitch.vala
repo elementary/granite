@@ -88,7 +88,7 @@ public class Granite.ModeSwitch : Gtk.Box {
 
         var mode_switch = new Gtk.Switch ();
         mode_switch.valign = Gtk.Align.CENTER;
-        mode_switch.add_css_class (Granite.STYLE_CLASS_MODE_SWITCH);
+        mode_switch.add_css_class ("mode-switch");
 
         var secondary_click_controller = new Gtk.GestureClick ();
         var secondary_icon = new Gtk.Image ();
