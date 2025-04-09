@@ -19,6 +19,20 @@
         background-color: bg-color(3);
         background-image: none;
     }
+
+    // FIXME: replace with accent color when we merge https://github.com/elementary/granite/pull/704
+    &:focus-visible {
+        outline-color: #{'alpha(@BLUEBERRY_500, 0.5)'};
+        outline-style: solid;
+
+        @if $color-scheme == "light" {
+            outline-offset: -1px;
+            outline-width: calc(#{rem(2px)} + 1px);
+        } @else {
+            outline-offset: 0;
+            outline-width: 2px;
+        }
+    }
 }
 
 // used to show a button is being clicked or is in an "active" state
