@@ -31,7 +31,7 @@ scale {
 
     &.dragging {
         slider {
-            transform: scale(1.15);
+            transform: scale(1.1);
             transition:
                 box-shadow duration("collapse") easing(),
                 transform duration("collapse") easing();
