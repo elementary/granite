@@ -149,10 +149,12 @@ namespace Granite {
     /**
      * Style class for {@link Gtk.Popover} which is used as a menu.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu")]
     public const string STYLE_CLASS_MENU = "menu";
     /**
      * Style class for {@link Gtk.Popover} children which are used as menu items.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu.add_child ()")]
     public const string STYLE_CLASS_MENUITEM = "menuitem";
     /**
      * Style class for dimmed labels.
