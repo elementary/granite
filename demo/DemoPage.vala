@@ -19,7 +19,8 @@ public class DemoPage : Gtk.Box {
             hexpand = true,
             size = H2,
             margin_top = 3,
-            margin_bottom = 3
+            margin_bottom = 3,
+            margin_start = 3
         };
 
         var header_box = new Granite.Box (HORIZONTAL) {
