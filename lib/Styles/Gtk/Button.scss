@@ -3,13 +3,19 @@ button {
     min-height: rem(16px);
     min-width: rem(16px);
 
+    &.text-button {
+        padding: rem(2px) rem(6px);
+    }
+
+    &.image-button {
+        padding: rem(4px);
+    }
+
     .linked &,
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
 
-        padding: $button_spacing;
-        border-spacing: $button-spacing;
 
         &:checked, &:active {
             @include control-active-depressed;
