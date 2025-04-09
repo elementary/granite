@@ -86,6 +86,7 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.AccelLabel")]
     public const string STYLE_CLASS_KEYCAP = "keycap";
     /**
      * Style class for a {@link Gtk.Image} used to set a context-aware large icon size. By default this is 32px,
