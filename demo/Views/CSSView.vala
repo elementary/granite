@@ -44,6 +44,11 @@ public class CSSView : DemoPage {
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
+        var small = new Gtk.Label ("\"Granite.CssClass.SMALL\"") {
+            margin_bottom = 12
+        };
+        small.add_css_class (Granite.CssClass.SMALL);
+
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
@@ -57,6 +62,7 @@ public class CSSView : DemoPage {
         card.append (header3);
         card.append (header4);
         card.append (numeric);
+        card.append (small);
 
         var card_checkered = new Granite.Bin () {
             child = new Gtk.Image.from_icon_name ("battery-low") {
