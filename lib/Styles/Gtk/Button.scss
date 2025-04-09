@@ -1,10 +1,7 @@
 button {
 
-    min-height: rem(16px);
-    min-width: rem(16px);
-
     &.text-button {
-        padding: rem(2px) rem(6px);
+        padding: rem(2px) rem(4px);
     }
 
     &.image-button {
