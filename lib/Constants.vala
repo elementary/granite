@@ -115,7 +115,8 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */
-    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SMALL")]
+    public const string STYLE_CLASS_SMALL_LABEL = "small-label";
 
     /**
      * Style class for widgets in success state.
@@ -264,6 +265,11 @@ namespace Granite {
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
         public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+         */
+        public const string SMALL = "small-label";
 
         /**
          * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
