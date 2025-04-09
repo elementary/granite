@@ -38,6 +38,7 @@ namespace Granite {
     /**
      * Style class for a circular {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CIRCULAR")]
     public const string STYLE_CLASS_CIRCULAR = "circular";
     /**
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
@@ -94,6 +95,7 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Switch} used to change between two modes rather than active and inactive states
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.ModeSwitch")]
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
      * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
@@ -236,6 +238,11 @@ namespace Granite {
          * Style class for checkered backgrounds to represent transparency in images
          */
         public const string CHECKERBOARD = "checkerboard";
+
+        /**
+         * Style class for a circular {@link Gtk.Button}
+         */
+        public const string CIRCULAR = "circular";
 
         /**
          * Style class for {@link Gtk.Button} with a destructive action
