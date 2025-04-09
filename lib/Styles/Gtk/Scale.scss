@@ -25,9 +25,40 @@ scale {
         min-width: $trough-width;
     }
 
+    value {
+        @extend .small-label;
+    }
+
     &.horizontal {
         slider {
             margin: $slider-margin -1px;
+        }
+
+        value {
+            @extend .osd;
+
+            // Padding + text height + margin
+            $value-osd-height: (rem(6px) * 2) + 0.85rem + rem(6px);
+
+            &.bottom,
+            &.top {
+                opacity: 0;
+                transition: all duration("in-place") easing();
+            }
+
+            &.bottom {
+                margin-bottom: $value-osd-height * -1;
+                margin-top: rem(3px);
+            }
+
+            &.top {
+                margin-bottom: rem(3px);
+                margin-top: $value-osd-height * -1;
+            }
+        }
+
+        &.dragging value {
+            opacity: 1;
         }
     }
 
