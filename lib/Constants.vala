@@ -138,10 +138,12 @@ namespace Granite {
     /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_WARMTH = "warmth";
     /**
      * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_TEMPERATURE = "temperature";
     /**
      * Style class for linked widgets, such as a box containing buttons belonging to the same control.
