@@ -15,7 +15,6 @@ button {
         @include control;
         @include border-interactive-roundrect;
 
-
         &:checked, &:active {
             @include control-active-depressed;
         }
