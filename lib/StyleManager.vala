@@ -114,7 +114,7 @@ public class Granite.StyleManager : Object {
                 gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
 #endif
             Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         } else {
@@ -139,7 +139,7 @@ public class Granite.StyleManager : Object {
                 gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
 #endif
             Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         }
@@ -175,6 +175,6 @@ public class Granite.StyleManager : Object {
 
         Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
         accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
-        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
+        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 2);
     }
 }
