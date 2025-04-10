@@ -1,4 +1,15 @@
 button {
+
+    &.text-button {
+        padding: rem(2px) rem(4px);
+    }
+
+    &.image-button {
+        padding: rem(4px);
+        min-height: rem(16px);
+        min-width: rem(16px);
+    }
+
     .linked &,
     &.text-button {
         @include control;
