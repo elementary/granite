@@ -4,6 +4,6 @@ selection {
 
     &:backdrop {
         background-color: scale-color($fg-color, $alpha: -90%);
-        color: $fg-color;
+        color: inherit;
     }
 }
