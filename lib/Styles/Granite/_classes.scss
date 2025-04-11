@@ -38,3 +38,8 @@ paper {
     background-size: rem(24px) rem(24px);
     background-position: 0 0, rem(12px) rem(12px);
 }
+
+.circular {
+    // Not 50% because that creates a squished ellipse for non-squares widgets
+    border-radius: 9999px;
+}

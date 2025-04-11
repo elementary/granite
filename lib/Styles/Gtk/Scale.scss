@@ -19,6 +19,7 @@ scale {
 
         transition:
             box-shadow duration("expand") easing(),
+            opacity duration("expand") easing(),
             transform duration("expand") easing("ease-out-back");
     }
 
@@ -43,6 +44,14 @@ scale {
     }
 
     &.horizontal {
+        fill.top {
+            border-radius: rem(12px) 0 0 rem(12px);
+        }
+
+        fill.bottom {
+            border-radius: 0 rem(12px) rem(12px) 0;
+        }
+
         slider {
             margin: $slider-margin -1px;
         }

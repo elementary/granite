@@ -20,6 +20,7 @@ executable(
     'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
+    'Views/VideoView.vala',
     'Views/WelcomeView.vala',
 
     dependencies: [
