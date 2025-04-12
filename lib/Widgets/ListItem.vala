@@ -167,7 +167,10 @@ public class Granite.ListItem : Granite.Bin {
 
     private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
         popover.halign = END;
-        popover.set_pointing_to (null);
+        popover.set_pointing_to (Gdk.Rectangle () {
+            x = (int) get_width (),
+            y = (int) get_height () / 2
+        });
         popover.popup ();
     }
 
