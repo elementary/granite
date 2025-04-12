@@ -1,9 +1,9 @@
 progressbar {
-    $trough-width: 0.5rem;
+    $trough-width: rem(9px);
 
     progress {
         background-color: #{'@accent_color'};
-        border-radius: $trough-width;
+        @include border-interactive-roundrect;
 
         &:backdrop {
             filter: grayscale(100%);
@@ -12,6 +12,7 @@ progressbar {
 
     trough {
         @include trough;
+        @include border-interactive-roundrect;
 
         min-height: $trough-width;
         min-width: $trough-width;
