@@ -5,9 +5,7 @@
 
 public class ListsView : DemoPage {
     construct {
-        var title_label = new Granite.HeaderLabel ("Lists") {
-            size = H1
-        };
+        title = "Lists";
 
         var card_title = new Granite.HeaderLabel ("Gtk.ListBox") {
             secondary_text = "This ListBox has \"Granite.CssClass.CARD\""
@@ -108,7 +106,6 @@ public class ListsView : DemoPage {
             margin_start = 12,
             margin_end = 12
         };
-        vbox.append (title_label);
         vbox.append (card_title);
         vbox.append (list_box);
         vbox.append (scrolled_title);

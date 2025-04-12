@@ -16,6 +16,11 @@ scale {
         // 16px - border
         min-height: calc(#{$slider-width} - 1px);
         min-width: calc(#{$slider-width} - 1px);
+
+        transition:
+            box-shadow duration("expand") easing(),
+            opacity duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
     }
 
     trough {
@@ -25,7 +30,28 @@ scale {
         min-width: $trough-width;
     }
 
+    &.dragging {
+        slider {
+            transform: scale(1.1);
+            transition:
+                box-shadow duration("collapse") easing(),
+                transform duration("collapse") easing();
+            box-shadow:
+                highlight(),
+                0 0 0 1px $border-color,
+                shadow(3);
+        }
+    }
+
     &.horizontal {
+        fill.top {
+            border-radius: rem(12px) 0 0 rem(12px);
+        }
+
+        fill.bottom {
+            border-radius: 0 rem(12px) rem(12px) 0;
+        }
+
         slider {
             margin: $slider-margin -1px;
         }

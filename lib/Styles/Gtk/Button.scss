@@ -1,4 +1,15 @@
 button {
+
+    &.text-button {
+        padding: rem(2px) rem(4px);
+    }
+
+    &.image-button {
+        padding: rem(4px);
+        min-height: rem(16px);
+        min-width: rem(16px);
+    }
+
     .linked &,
     &.text-button {
         @include control;
@@ -59,11 +70,6 @@ button {
         }
     }
 
-    &.circular {
-        // Not 50% because that creates a squished ellipse for non-squares widgets
-        border-radius: 9999px;
-    }
-
     &.osd {
         @include control;
         @include border-interactive-roundrect;
@@ -82,9 +88,37 @@ button {
             // Intentionally not in ems since it's used as a stroke
             0 0 0 1px $shadow-border-color,
             shadow(2);
+        color: $fg-color;
+        margin: 0;
         padding: $button-spacing;
 
-        .linked.vertical &:first-child {
+        transition:
+            background duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:active {
+            transform: scale(0.95);
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &:disabled {
+            @include control-disabled;
+
+            box-shadow:
+                highlight(),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px $shadow-border-color,
+                shadow(1);
+        }
+
+        .linked & {
+            transition: none;
+            transform: none;
+        }
+
+        .linked &.vertical &:first-child {
             box-shadow:
                 highlight("top"),
                 // Intentionally not in ems since it's used as a stroke

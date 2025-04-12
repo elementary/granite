@@ -1,7 +1,7 @@
 switch {
     @include trough;
 
-    &:checked:not(:backdrop) {
+    &:checked:not(:backdrop):not(.mode-switch) {
         background-color: #{'@accent_color'};
     }
 }

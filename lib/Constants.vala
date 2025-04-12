@@ -38,6 +38,7 @@ namespace Granite {
     /**
      * Style class for a circular {@link Gtk.Button}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.CIRCULAR")]
     public const string STYLE_CLASS_CIRCULAR = "circular";
     /**
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
@@ -85,6 +86,7 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Label} to be displayed as a keyboard key cap
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.AccelLabel")]
     public const string STYLE_CLASS_KEYCAP = "keycap";
     /**
      * Style class for a {@link Gtk.Image} used to set a context-aware large icon size. By default this is 32px,
@@ -94,6 +96,7 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Switch} used to change between two modes rather than active and inactive states
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.ModeSwitch")]
     public const string STYLE_CLASS_MODE_SWITCH = "mode-switch";
     /**
      * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
@@ -112,7 +115,8 @@ namespace Granite {
     /**
      * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
      */
-    public const string STYLE_CLASS_SMALL_LABEL= "small-label";
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.SMALL")]
+    public const string STYLE_CLASS_SMALL_LABEL = "small-label";
 
     /**
      * Style class for widgets in success state.
@@ -136,10 +140,12 @@ namespace Granite {
     /**
      * Style class for a warmth scale, a {@link Gtk.Scale} with a "less warm" to "more warm" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_WARMTH = "warmth";
     /**
      * Style class for a temperature scale, a {@link Gtk.Scale} with a "cold" to "hot" color gradient
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public const string STYLE_CLASS_TEMPERATURE = "temperature";
     /**
      * Style class for linked widgets, such as a box containing buttons belonging to the same control.
@@ -149,10 +155,12 @@ namespace Granite {
     /**
      * Style class for {@link Gtk.Popover} which is used as a menu.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu")]
     public const string STYLE_CLASS_MENU = "menu";
     /**
      * Style class for {@link Gtk.Popover} children which are used as menu items.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Gtk.PopoverMenu.add_child ()")]
     public const string STYLE_CLASS_MENUITEM = "menuitem";
     /**
      * Style class for dimmed labels.
@@ -234,6 +242,11 @@ namespace Granite {
         public const string CHECKERBOARD = "checkerboard";
 
         /**
+         * Style class for a circular {@link Gtk.Button}
+         */
+        public const string CIRCULAR = "circular";
+
+        /**
          * Style class for {@link Gtk.Button} with a destructive action
          */
         public const string DESTRUCTIVE = "destructive";
@@ -252,6 +265,11 @@ namespace Granite {
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
         public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
+         */
+        public const string SMALL = "small-label";
 
         /**
          * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
