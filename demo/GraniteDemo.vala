@@ -12,10 +12,17 @@ public class Granite.Demo : Gtk.Application {
     public override void startup () {
         Granite.init ();
         base.startup ();
+
+        var quit_action = new GLib.SimpleAction ("quit", null);
+        quit_action.activate.connect (quit);
+
+        add_action (quit_action);
+
+        set_accels_for_action ("app.quit", {"<Ctrl>Q"});
     }
 
     public override void activate () {
-        var window = new Gtk.Window ();
+        var window = new Gtk.ApplicationWindow (this);
 
         var box_view = new BoxView ();
         var lists_view = new ListsView ();
@@ -86,6 +93,8 @@ public class Granite.Demo : Gtk.Application {
         window.set_size_request (750, 500);
         window.titlebar = new Gtk.Grid () { visible = false };
         window.title = "Granite Demo";
+
+        new Granite.ActionSheet (window);
 
         add_window (window);
         window.show ();
