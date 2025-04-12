@@ -126,20 +126,37 @@ public class ControlsView : DemoPage {
 
         var scale_header = new Granite.HeaderLabel ("Scale");
 
-        var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 100, 1) {
+        var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 1, 0.01) {
             hexpand = true
         };
-        hscale.adjustment.value = 50;
+        hscale.adjustment.value = 0.5;
 
-        var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 100, 1) {
+        var hprogressbar = new Gtk.ProgressBar ();
+        hscale.adjustment.bind_property ("value", hprogressbar, "fraction", SYNC_CREATE);
+
+        var hcontrol_box = new Granite.Box (VERTICAL, DOUBLE);
+        hcontrol_box.append (hscale);
+        hcontrol_box.append (hprogressbar);
+
+        var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 1, 0.01) {
             height_request = 128,
             has_origin = false
         };
-        vscale.adjustment.value = 50;
+        vscale.adjustment.value = 0.5;
 
-        var scale_box = new Granite.Box (HORIZONTAL);
-        scale_box.append (hscale);
-        scale_box.append (vscale);
+        var vprogressbar = new Gtk.ProgressBar () {
+            inverted = true,
+            orientation = VERTICAL
+        };
+        vscale.adjustment.bind_property ("value", vprogressbar, "fraction", SYNC_CREATE);
+
+        var vcontrol_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        vcontrol_box.append (vscale);
+        vcontrol_box.append (vprogressbar);
+
+        var scale_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        scale_box.append (hcontrol_box);
+        scale_box.append (vcontrol_box);
 
         var box = new Granite.Box (VERTICAL, NONE) {
             halign = CENTER,

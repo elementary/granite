@@ -1,0 +1,63 @@
+progressbar {
+    $trough-width: 0.5rem;
+
+    progress {
+        background-color: #{'@accent_color'};
+        border-radius: $trough-width;
+
+        &:backdrop {
+            filter: grayscale(100%);
+        }
+    }
+
+    trough {
+        @include trough;
+
+        min-height: $trough-width;
+        min-width: $trough-width;
+    }
+
+    &.horizontal {
+        progress {
+            min-height: $trough-width;
+
+            &:not(.pulse) {
+                animation: progress 1.5s easing() infinite;
+                background-image:
+                    linear-gradient(
+                        to right,
+                        rgba(white, 0),
+                        rgba(white, 0.25) 60%,
+                        rgba(white, 0)
+                    );
+                background-repeat: no-repeat;
+                background-size: 48px 100%;
+
+                &.right {
+                    animation-direction: reverse;
+                }
+
+                &:backdrop {
+                    animation: none;
+                    background-image: none;
+                }
+            }
+        }
+    }
+
+    &.vertical {
+        progress {
+            min-width: $trough-width;
+        }
+    }
+
+    @keyframes progress {
+        from {
+            background-position: calc(0% - 48px), 0%;
+        }
+
+        to {
+            background-position: calc(100% + 48px), 0%;
+        }
+    }
+}
