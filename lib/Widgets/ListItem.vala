@@ -26,7 +26,7 @@ public class Granite.ListItem : Granite.Bin {
      */
     public GLib.Menu? menu_model { get; set; }
 
-    private Gtk.GestureClick? secondary_click_controller;
+    private Gtk.GestureClick? context_menu_controller;
     private Gtk.GestureLongPress? long_press_controller;
     private Gtk.PopoverMenu? context_menu;
 
@@ -74,10 +74,10 @@ public class Granite.ListItem : Granite.Bin {
 
     private void construct_menu () {
         if (menu_model == null) {
-            remove_controller (secondary_click_controller);
+            remove_controller (context_menu_controller);
             remove_controller (long_press_controller);
 
-            secondary_click_controller = null;
+            context_menu_controller = null;
             long_press_controller = null;
 
             context_menu.unparent ();
@@ -98,11 +98,20 @@ public class Granite.ListItem : Granite.Bin {
         };
         context_menu.set_parent (this);
 
-        secondary_click_controller = new Gtk.GestureClick () {
-            button = Gdk.BUTTON_SECONDARY
+        context_menu_controller = new Gtk.GestureClick () {
+            button = 0,
+            exclusive = true
         };
-        secondary_click_controller.pressed.connect ((n_press, x, y) => {
-            menu_popup_at_pointer (context_menu, x, y);
+        context_menu_controller.pressed.connect ((n_press, x, y) => {
+            var sequence = context_menu_controller.get_current_sequence ();
+            var event = context_menu_controller.get_last_event (sequence);
+
+            if (event.triggers_context_menu ()) {
+                menu_popup_at_pointer (context_menu, x, y);
+
+                context_menu_controller.set_state (CLAIMED);
+                context_menu_controller.reset ();
+            }
         });
 
         long_press_controller = new Gtk.GestureLongPress ();
@@ -110,7 +119,7 @@ public class Granite.ListItem : Granite.Bin {
             menu_popup_at_pointer (context_menu, x, y);
         });
 
-        add_controller (secondary_click_controller);
+        add_controller (context_menu_controller);
         add_controller (long_press_controller);
     }
 
