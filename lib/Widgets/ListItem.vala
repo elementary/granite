@@ -119,8 +119,13 @@ public class Granite.ListItem : Granite.Bin {
 
         long_press_controller = new Gtk.GestureLongPress ();
         long_press_controller.pressed.connect ((x, y) => {
-            // Don't want menu under your hand
-            context_menu.halign = END;
+            // Try to keep menu from under your hand
+            if (x > get_width () / 2) {
+                context_menu.halign = END;
+            } else {
+                context_menu.halign = START;
+            }
+
             menu_popup_at_pointer (context_menu, x, y);
         });
 
