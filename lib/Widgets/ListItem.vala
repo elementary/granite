@@ -10,6 +10,9 @@
  */
 [Version (since = "7.7.0")]
 public class Granite.ListItem : Granite.Bin {
+    // https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+    private const int TOUCH_TARGET_WIDTH = 44;
+
     /**
      * The main label for #this
      */
@@ -122,11 +125,13 @@ public class Granite.ListItem : Granite.Bin {
             // Try to keep menu from under your hand
             if (x > get_root ().get_width () / 2) {
                 context_menu.halign = END;
+                x -= TOUCH_TARGET_WIDTH;
             } else {
                 context_menu.halign = START;
+                x += TOUCH_TARGET_WIDTH;
             }
 
-            menu_popup_at_pointer (context_menu, x, y);
+            menu_popup_at_pointer (context_menu, x, y - (TOUCH_TARGET_WIDTH * 0.75));
         });
 
         menu_key_controller = new Gtk.EventControllerKey ();
