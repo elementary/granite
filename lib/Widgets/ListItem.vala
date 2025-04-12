@@ -28,6 +28,7 @@ public class Granite.ListItem : Granite.Bin {
 
     private Gtk.GestureClick? context_menu_controller;
     private Gtk.GestureLongPress? long_press_controller;
+    private Gtk.EventControllerKey menu_key_controller;
     private Gtk.PopoverMenu? context_menu;
 
     class construct {
@@ -76,9 +77,11 @@ public class Granite.ListItem : Granite.Bin {
         if (menu_model == null) {
             remove_controller (context_menu_controller);
             remove_controller (long_press_controller);
+            parent.remove_controller (menu_key_controller);
 
             context_menu_controller = null;
             long_press_controller = null;
+            menu_key_controller = null;
 
             context_menu.unparent ();
             context_menu = null;
@@ -92,7 +95,6 @@ public class Granite.ListItem : Granite.Bin {
         }
 
         context_menu = new Gtk.PopoverMenu.from_model (menu_model) {
-            halign = START,
             has_arrow = false,
             position = BOTTOM
         };
@@ -107,6 +109,7 @@ public class Granite.ListItem : Granite.Bin {
             var event = context_menu_controller.get_last_event (sequence);
 
             if (event.triggers_context_menu ()) {
+                context_menu.halign = START;
                 menu_popup_at_pointer (context_menu, x, y);
 
                 context_menu_controller.set_state (CLAIMED);
@@ -116,11 +119,46 @@ public class Granite.ListItem : Granite.Bin {
 
         long_press_controller = new Gtk.GestureLongPress ();
         long_press_controller.pressed.connect ((x, y) => {
+            // Don't want menu under your hand
+            context_menu.halign = END;
             menu_popup_at_pointer (context_menu, x, y);
+        });
+
+        menu_key_controller = new Gtk.EventControllerKey ();
+        menu_key_controller.key_released.connect ((keyval, keycode, state) => {
+            var mods = state & Gtk.accelerator_get_default_mod_mask ();
+            switch (keyval) {
+                case Gdk.Key.F10:
+                    if (mods == Gdk.ModifierType.SHIFT_MASK) {
+                        menu_popup_on_keypress (context_menu);
+                    }
+                    break;
+                case Gdk.Key.Menu:
+                case Gdk.Key.MenuKB:
+                    menu_popup_on_keypress (context_menu);
+                    break;
+                default:
+                    return;
+            }
         });
 
         add_controller (context_menu_controller);
         add_controller (long_press_controller);
+
+        // We don't get key events on the child list item widget
+        if (parent != null) {
+            parent.add_controller (menu_key_controller);
+        } else {
+            notify["parent"].connect (() => {
+                parent.add_controller (menu_key_controller);
+            });
+        }
+    }
+
+    private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
+        popover.halign = END;
+        popover.set_pointing_to (null);
+        popover.popup ();
     }
 
     private void menu_popup_at_pointer (Gtk.PopoverMenu popover, double x, double y) {
