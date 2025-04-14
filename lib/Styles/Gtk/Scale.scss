@@ -16,6 +16,11 @@ scale {
         // 16px - border
         min-height: calc(#{$slider-width} - 1px);
         min-width: calc(#{$slider-width} - 1px);
+
+        transition:
+            box-shadow duration("expand") easing(),
+            opacity duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
     }
 
     trough {
@@ -27,23 +32,48 @@ scale {
 
     value {
         @extend .small-label;
+        @extend .numeric;
+    }
+
+    &.dragging {
+        slider {
+            transform: scale(1.1);
+            transition:
+                box-shadow duration("collapse") easing(),
+                transform duration("collapse") easing();
+            box-shadow:
+                highlight(),
+                0 0 0 1px $border-color,
+                shadow(3);
+        }
     }
 
     &.horizontal {
+        fill.top {
+            border-radius: rem(12px) 0 0 rem(12px);
+        }
+
+        fill.bottom {
+            border-radius: 0 rem(12px) rem(12px) 0;
+        }
+
         slider {
             margin: $slider-margin -1px;
         }
 
         value {
-            @extend .osd;
-
             // Padding + text height + margin
             $value-osd-height: (rem(6px) * 2) + 0.85rem + rem(6px);
 
             &.bottom,
             &.top {
+                @extend .osd;
+
                 opacity: 0;
-                transition: all duration("in-place") easing();
+                transform: scale(0.9);
+                transition:
+                    opacity duration("in-place") easing(),
+                    transform duration("collapse") easing();
             }
 
             &.bottom {
@@ -58,7 +88,12 @@ scale {
         }
 
         &.dragging value {
-            opacity: 1;
+            &.bottom,
+            &.top {
+                opacity: 1;
+                transform: scale(1);
+                transition: transform duration("expand") easing("ease-out-back");
+            }
         }
     }
 

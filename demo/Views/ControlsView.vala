@@ -98,16 +98,26 @@ public class ControlsView : DemoPage {
             description = "A description of additional affects related to the activation state of this switch"
         };
 
-        var switchbutton_grid = new Gtk.Grid ();
-        switchbutton_grid.attach (header_switchmodelbutton, 0, 0);
-        switchbutton_grid.attach (switchmodelbutton, 0, 1);
-        switchbutton_grid.attach (description_switchmodelbutton, 0, 2);
+        var header_item = new GLib.MenuItem (null, null);
+        header_item.set_attribute_value ("custom", "header");
 
-        var switchbutton_popover = new Gtk.Popover () {
-            child = switchbutton_grid,
+        var switch_item = new GLib.MenuItem (null, null);
+        switch_item.set_attribute_value ("custom", "switch");
+
+        var description_switch_item = new GLib.MenuItem (null, null);
+        description_switch_item.set_attribute_value ("custom", "description-switch");
+
+        var menu_model = new GLib.Menu ();
+        menu_model.append_item (header_item);
+        menu_model.append_item (switch_item);
+        menu_model.append_item (description_switch_item);
+
+        var switchbutton_popover = new Gtk.PopoverMenu.from_model (menu_model) {
             has_arrow = false
         };
-        switchbutton_popover.add_css_class (Granite.STYLE_CLASS_MENU);
+        switchbutton_popover.add_child (header_switchmodelbutton, "header");
+        switchbutton_popover.add_child (switchmodelbutton, "switch");
+        switchbutton_popover.add_child (description_switchmodelbutton, "description-switch");
 
         var popover_button = new Gtk.MenuButton () {
             direction = Gtk.ArrowType.UP
@@ -116,21 +126,38 @@ public class ControlsView : DemoPage {
 
         var scale_header = new Granite.HeaderLabel ("Scale");
 
-        var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 100, 1) {
-            hexpand = true,
-            draw_value = true
+        var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 1, 0.01) {
+            draw_value = true,
+            hexpand = true
         };
-        hscale.adjustment.value = 50;
+        hscale.adjustment.value = 0.5;
 
-        var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 100, 1) {
+        var hprogressbar = new Gtk.ProgressBar ();
+        hscale.adjustment.bind_property ("value", hprogressbar, "fraction", SYNC_CREATE);
+
+        var hcontrol_box = new Granite.Box (VERTICAL, DOUBLE);
+        hcontrol_box.append (hscale);
+        hcontrol_box.append (hprogressbar);
+
+        var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 1, 0.01) {
             height_request = 128,
             has_origin = false
         };
-        vscale.adjustment.value = 50;
+        vscale.adjustment.value = 0.5;
 
-        var scale_box = new Granite.Box (HORIZONTAL);
-        scale_box.append (hscale);
-        scale_box.append (vscale);
+        var vprogressbar = new Gtk.ProgressBar () {
+            inverted = true,
+            orientation = VERTICAL
+        };
+        vscale.adjustment.bind_property ("value", vprogressbar, "fraction", SYNC_CREATE);
+
+        var vcontrol_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        vcontrol_box.append (vscale);
+        vcontrol_box.append (vprogressbar);
+
+        var scale_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        scale_box.append (hcontrol_box);
+        scale_box.append (vcontrol_box);
 
         var box = new Granite.Box (VERTICAL, NONE) {
             halign = CENTER,

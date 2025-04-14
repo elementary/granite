@@ -29,16 +29,16 @@ header {
     }
 
     &.title-2 {
-        letter-spacing: -0.05rem;
-
         .heading {
-            font-weight: 300;
+            font-weight: 600;
             font-size: 18pt;
+            letter-spacing: -0.05rem;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: initial;
             font-weight: 400;
+            letter-spacing: initial;
             margin-top: -0.1em;
         }
     }
@@ -49,7 +49,7 @@ header {
         }
 
         .subtitle {
-            font-size: initial;
+            font-size: 0.95rem;
             font-weight: 400;
             margin-top: 0.1em;
         }

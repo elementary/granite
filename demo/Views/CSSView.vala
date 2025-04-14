@@ -44,6 +44,11 @@ public class CSSView : DemoPage {
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
+        var small = new Gtk.Label ("\"Granite.CssClass.SMALL\"") {
+            margin_bottom = 12
+        };
+        small.add_css_class (Granite.CssClass.SMALL);
+
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
@@ -57,6 +62,7 @@ public class CSSView : DemoPage {
         card.append (header3);
         card.append (header4);
         card.append (numeric);
+        card.append (small);
 
         var card_checkered = new Granite.Bin () {
             child = new Gtk.Image.from_icon_name ("battery-low") {
@@ -86,27 +92,6 @@ public class CSSView : DemoPage {
             child = terminal
         };
         terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
-
-        var scales_header = new Granite.HeaderLabel ("Scales") {
-            secondary_text = "\"warmth\" and \"temperature\" style classes"
-        };
-
-        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true,
-            inverted = true
-        };
-        warmth_scale.set_value (6000);
-        warmth_scale.add_css_class (Granite.STYLE_CLASS_WARMTH);
-
-        var temperature_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, -16.0f, 16.0f, 1.0) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true
-        };
-        temperature_scale.set_value (0);
-        temperature_scale.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
@@ -150,9 +135,6 @@ public class CSSView : DemoPage {
         box.append (card_box);
         box.append (terminal_label);
         box.append (terminal_scroll);
-        box.append (scales_header);
-        box.append (warmth_scale);
-        box.append (temperature_scale);
         box.append (accent_color_label);
         box.append (accent_color_box);
         box.append (success_color_box);
