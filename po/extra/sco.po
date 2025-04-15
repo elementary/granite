@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24 15:21+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-04-16 16:55+0000\n"
+"Last-Translator: anonymous <noreply@weblate.org>\n"
+"Language-Team: Scots <https://l10n.elementaryos.org/projects/desktop/"
+"granite-extra/sco/>\n"
 "Language: sco\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -32,7 +35,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:24
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
@@ -49,14 +52,14 @@ msgstr ""
 #: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:116
 #: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:171
 msgid "Improvements:"
-msgstr ""
+msgstr "Imbetterments:"
 
 #: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:55
 #: data/granite.metainfo.xml.in:76 data/granite.metainfo.xml.in:93
 #: data/granite.metainfo.xml.in:109 data/granite.metainfo.xml.in:119
 #: data/granite.metainfo.xml.in:138 data/granite.metainfo.xml.in:174
 msgid "Updated translations"
-msgstr ""
+msgstr "Rewerkt translaitions"
 
 #: data/granite.metainfo.xml.in:47
 msgid "Granite.Bin"
