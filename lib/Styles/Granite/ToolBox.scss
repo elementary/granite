@@ -1,11 +1,11 @@
-toolbarview {
+toolbox {
     // Has to be the direct child or we get unwanted undershoot on framed lists for example
     > scrolledwindow {
-        undershoot.top {
+        > undershoot.top {
             background: undershoot-gradient(to bottom);
         }
 
-        undershoot.bottom {
+        > undershoot.bottom {
             background: undershoot-gradient(to top);
         }
     }
