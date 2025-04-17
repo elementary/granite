@@ -30,6 +30,11 @@ scale {
         min-width: $trough-width;
     }
 
+    value {
+        @extend .small-label;
+        @extend .numeric;
+    }
+
     &.dragging {
         slider {
             transform: scale(1.1);
@@ -54,6 +59,41 @@ scale {
 
         slider {
             margin: $slider-margin -1px;
+        }
+
+        value {
+            // Padding + text height + margin
+            $value-osd-height: (rem(6px) * 2) + 0.85rem + rem(6px);
+
+            &.bottom,
+            &.top {
+                @extend .osd;
+
+                opacity: 0;
+                transform: scale(0.9);
+                transition:
+                    opacity duration("in-place") easing(),
+                    transform duration("collapse") easing();
+            }
+
+            &.bottom {
+                margin-bottom: $value-osd-height * -1;
+                margin-top: rem(3px);
+            }
+
+            &.top {
+                margin-bottom: rem(3px);
+                margin-top: $value-osd-height * -1;
+            }
+        }
+
+        &.dragging value {
+            &.bottom,
+            &.top {
+                opacity: 1;
+                transform: scale(1);
+                transition: transform duration("expand") easing("ease-out-back");
+            }
         }
     }
 
