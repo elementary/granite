@@ -70,9 +70,10 @@ public class Granite.Demo : Gtk.Application {
             vexpand = true
         };
 
-        var start_box = new Gtk.Box (VERTICAL, 0);
-        start_box.append (start_header);
-        start_box.append (stack_sidebar);
+        var start_box = new Granite.ToolBox () {
+            content = stack_sidebar
+        };
+        start_box.add_top_bar (start_header);
         start_box.add_css_class (Granite.STYLE_CLASS_SIDEBAR);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
@@ -85,7 +86,7 @@ public class Granite.Demo : Gtk.Application {
 
         window.child = paned;
         window.set_default_size (900, 600);
-        window.set_size_request (750, 500);
+        window.set_size_request (300, 200);
         window.titlebar = new Gtk.Grid () { visible = false };
         window.title = "Granite Demo";
 

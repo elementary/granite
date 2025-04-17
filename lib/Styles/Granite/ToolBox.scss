@@ -1,6 +1,7 @@
 toolbox {
     // Has to be the direct child or we get unwanted undershoot on framed lists for example
-    > scrolledwindow {
+    > scrolledwindow,
+    > stacksidebar > scrolledwindow {
         > undershoot.top {
             background: undershoot-gradient(to bottom);
         }
