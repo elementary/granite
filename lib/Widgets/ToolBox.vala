@@ -21,7 +21,7 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
 
         set {
             return_if_fail (content == null);
-            return_if_fail (content.parent == null);
+            return_if_fail (value.parent == null);
 
             _content = value;
             _content.insert_after (this, top_handle);
