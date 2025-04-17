@@ -87,7 +87,7 @@ public class ListsView : DemoPage {
         vbox.append (scrolled_title);
         vbox.append (scrolled_window);
 
-        content = vbox;
+        child = vbox;
 
         separators_modelbutton.bind_property ("active", list_box, "show-separators", SYNC_CREATE | DEFAULT);
     }

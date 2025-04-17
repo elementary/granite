@@ -176,6 +176,6 @@ public class ControlsView : DemoPage {
         box.append (scale_header);
         box.append (scale_box);
 
-        content = box;
+        child = box;
     }
 }

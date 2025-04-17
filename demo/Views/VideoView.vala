@@ -18,6 +18,6 @@ public class VideoView : DemoPage {
         };
         video.add_css_class (Granite.CssClass.CARD);
 
-        content = video;
+        child = video;
     }
 }

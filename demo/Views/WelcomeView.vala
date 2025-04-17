@@ -100,7 +100,7 @@ public class WelcomeView : DemoPage {
         main_box.append (stack_switcher);
         main_box.append (stack);
 
-        content = main_box;
+        child = main_box;
 
         vala_button.clicked.connect (() => {
             var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");

@@ -6,13 +6,13 @@
 public class DemoPage : Granite.ToolBox {
     public string title { get; set; }
 
-    // public Gtk.Widget content {
-    //     set {
-    //         scrolled_window.child = value;
-    //     }
-    // }
+    public Gtk.Widget child {
+        set {
+            scrolled_window.child = value;
+        }
+    }
 
-    // private Gtk.ScrolledWindow scrolled_window;
+    private Gtk.ScrolledWindow scrolled_window;
 
     construct {
         var header_label = new Granite.HeaderLabel ("") {
@@ -34,11 +34,12 @@ public class DemoPage : Granite.ToolBox {
 
         add_top_bar (header_box);
 
-        // scrolled_window = new Gtk.ScrolledWindow () {
-        //     hscrollbar_policy = NEVER,
-        //     vexpand = true
-        // };
+        scrolled_window = new Gtk.ScrolledWindow () {
+            hscrollbar_policy = NEVER,
+            vexpand = true
+        };
 
+        content = scrolled_window;
 
         bind_property ("title", header_label, "label");
     }
