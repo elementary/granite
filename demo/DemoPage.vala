@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DemoPage : Granite.ToolbarView {
+public class DemoPage : Granite.ToolBox {
     public string title { get; set; }
 
     // public Gtk.Widget content {

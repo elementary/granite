@@ -9,7 +9,7 @@
  * @since 7.7.0
  */
 [Version (since = "7.7.0")]
-public class Granite.ToolbarView : Gtk.Widget, Gtk.Accessible {
+public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
     private Gtk.Widget _content;
     /**
      * The child widget for the content area
@@ -33,7 +33,7 @@ public class Granite.ToolbarView : Gtk.Widget, Gtk.Accessible {
     private Gtk.WindowHandle top_handle;
 
     class construct {
-        set_css_name ("toolbarview");
+        set_css_name ("toolbox");
         set_accessible_role (GROUP);
         set_layout_manager_type (typeof (Gtk.BoxLayout));
     }
@@ -60,7 +60,7 @@ public class Granite.ToolbarView : Gtk.Widget, Gtk.Accessible {
         bottom_handle.insert_after (this, top_handle);
     }
 
-    ~ToolbarView () {
+    ~ToolBox () {
         while (get_first_child () != null) {
             get_first_child ().unparent ();
         }
