@@ -87,6 +87,6 @@ public class BoxView : DemoPage {
         vbox.append (double_container);
         vbox.append (linked_box);
 
-        content = vbox;
+        child = vbox;
     }
 }

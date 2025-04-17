@@ -39,6 +39,6 @@ public class HyperTextViewGrid : DemoPage {
         box.append (hypertext_label);
         box.append (hypertext_scrolled_window);
 
-        content = box;
+        child = box;
     }
 }

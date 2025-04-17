@@ -24,7 +24,7 @@ public class OverlayBarView : DemoPage {
             label = "Hover the OverlayBar to change its position"
         };
 
-        content = overlay;
+        child = overlay;
 
         button.toggled.connect (() => {
             overlaybar.active = button.active;

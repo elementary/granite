@@ -142,6 +142,6 @@ public class CSSView : DemoPage {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        content = box;
+        child = box;
     }
 }

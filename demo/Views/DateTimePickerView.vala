@@ -73,7 +73,7 @@ public class DateTimePickerView : DemoPage {
         grid.attach (relative_datetime_label, 0, 6);
         grid.attach (relative_datetime, 1, 6);
 
-        content = grid;
+        child = grid;
     }
 
     private void set_selected_datetime () {

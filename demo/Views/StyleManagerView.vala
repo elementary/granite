@@ -28,7 +28,7 @@ public class StyleManagerView : DemoPage {
         box.append (force_light);
         box.append (force_dark);
 
-        content = box;
+        child = box;
 
         var style_manager = Granite.StyleManager.get_default ();
 

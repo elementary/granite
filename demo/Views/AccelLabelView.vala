@@ -53,6 +53,6 @@ public class AccelLabelView : DemoPage {
         grid.attach (popover_label, 0, 1);
         grid.attach (popover_button, 1, 1);
 
-        content = grid;
+        child = grid;
     }
 }

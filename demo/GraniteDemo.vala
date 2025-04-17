@@ -36,7 +36,9 @@ public class Granite.Demo : Gtk.Application {
         var dialogs_view = new DialogsView (window);
         var application_view = new ApplicationView ();
 
-        var main_stack = new Gtk.Stack ();
+        var main_stack = new Gtk.Stack () {
+            vhomogeneous = false
+        };
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
         main_stack.add_titled (lists_view, "lists", "Lists");
@@ -68,9 +70,10 @@ public class Granite.Demo : Gtk.Application {
             vexpand = true
         };
 
-        var start_box = new Gtk.Box (VERTICAL, 0);
-        start_box.append (start_header);
-        start_box.append (stack_sidebar);
+        var start_box = new Granite.ToolBox () {
+            content = stack_sidebar
+        };
+        start_box.add_top_bar (start_header);
         start_box.add_css_class (Granite.STYLE_CLASS_SIDEBAR);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
@@ -83,7 +86,7 @@ public class Granite.Demo : Gtk.Application {
 
         window.child = paned;
         window.set_default_size (900, 600);
-        window.set_size_request (750, 500);
+        window.set_size_request (300, 200);
         window.titlebar = new Gtk.Grid () { visible = false };
         window.title = "Granite Demo";
 

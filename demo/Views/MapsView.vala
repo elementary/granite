@@ -36,6 +36,6 @@ public class MapsView : DemoPage {
         map.add_layer (marker_layer);
         map.center_on (38.575764, -121.478851);
 
-        content = simple_map;
+        child = simple_map;
     }
 }
