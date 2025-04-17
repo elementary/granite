@@ -4,13 +4,14 @@
  */
 
 /**
- *
+ * A widget containing a page, as well as top and/or bottom bars
  *
  * @since 7.7.0
  */
 [Version (since = "7.7.0")]
 public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
     private Gtk.Widget _content;
+
     /**
      * The child widget for the content area
      */
@@ -66,18 +67,31 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
         }
     }
 
+    /**
+     * Adds a top bar to #this
+     *
+     * Top bars can be dragged to move the window, equivalent to putting them into a {@link Gtk.WindowHandle}
+     */
     public void add_top_bar (Gtk.Widget widget) {
         return_if_fail (widget.parent == null);
 
         top_box.append (widget);
     }
 
+    /**
+     * Adds a bottom bar to #this
+     *
+     * bottom bars can be dragged to move the window, equivalent to putting them into a {@link Gtk.WindowHandle}
+     */
     public void add_bottom_bar (Gtk.Widget widget) {
         return_if_fail (widget.parent == null);
 
         bottom_box.append (widget);
     }
 
+    /**
+     * Remove a previously added child from #this
+     */
     public void remove (Gtk.Widget widget) {
         var parent = widget.get_parent ();
         if (parent == top_box || parent == bottom_box) {
