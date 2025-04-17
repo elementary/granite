@@ -61,7 +61,7 @@ namespace Granite {
     /**
      * Style class for adding a border to {@link Gtk.ListBox}, {@link Gtk.InfoBar}, and others
      */
-    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "has_frame = true", since = "7.1.0")]
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "has_frame = true, Granite.CssClass.CARD, or Gtk.Frame", since = "7.1.0")]
     public const string STYLE_CLASS_FRAME = "frame";
     /**
      * Style class for large primary text as seen in {@link Granite.Widgets.Welcome}
@@ -175,7 +175,6 @@ namespace Granite {
     /**
      * Style class for flattened widgets, such as buttons,
      */
-    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "has_frame = false")]
     public const string STYLE_CLASS_FLAT = "flat";
     /**
      * Style class for message dialogs.
