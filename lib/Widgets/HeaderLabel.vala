@@ -26,9 +26,9 @@ public class Granite.HeaderLabel : Gtk.Widget {
                     return "title-3";
                 case H4:
                     return "title-4";
+                default:
+                    return "";
             }
-
-            return "";
         }
     }
 
@@ -125,6 +125,10 @@ public class Granite.HeaderLabel : Gtk.Widget {
             if (css_class != "" && has_css_class (css_class)) {
                 remove_css_class (css_class);
             }
+        }
+
+        if (size.to_string () == "") {
+            return;
         }
 
         add_css_class (size.to_string ());

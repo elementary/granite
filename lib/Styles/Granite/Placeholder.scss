@@ -1,5 +1,7 @@
 placeholder {
-    margin: rem(12px);
+    > grid {
+        margin: rem(12px);
+    }
 
     > grid > .large-icons {
         -gtk-icon-size: 48px;

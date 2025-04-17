@@ -18,17 +18,20 @@ public class Granite.Demo : Gtk.Application {
         var window = new Gtk.Window ();
 
         var box_view = new BoxView ();
+        var lists_view = new ListsView ();
         var accel_label_view = new AccelLabelView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var form_view = new FormView ();
         var hypertext_view = new HyperTextViewGrid ();
-        var selection_controls_view = new ModeButtonView ();
+        var controls_view = new ControlsView ();
+        var maps_view = new MapsView ();
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
         var style_manager_view = new StyleManagerView ();
         var utils_view = new UtilsView ();
+        var video_view = new VideoView ();
         var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
         var application_view = new ApplicationView ();
@@ -38,33 +41,22 @@ public class Granite.Demo : Gtk.Application {
         };
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
+        main_stack.add_titled (lists_view, "lists", "Lists");
         main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
-        main_stack.add_titled (selection_controls_view, "selection_controls", "Selection Controls");
+        main_stack.add_titled (controls_view, "controls", "Controls");
+        main_stack.add_titled (maps_view, "maps", "Maps");
+        main_stack.add_titled (video_view, "video", video_view.title);
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
-
-        var scrolled = new Gtk.ScrolledWindow () {
-            child = main_stack
-        };
-
-        var end_header = new Gtk.HeaderBar () {
-            show_title_buttons = false
-        };
-        end_header.pack_end (new Gtk.WindowControls (END));
-
-        var end_toolbarview = new Granite.ToolbarView () {
-            content = scrolled
-        };
-        end_toolbarview.add_top_bar (end_header);
 
         var start_header = new Gtk.HeaderBar () {
             show_title_buttons = false,
@@ -85,7 +77,7 @@ public class Granite.Demo : Gtk.Application {
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             start_child = start_box,
-            end_child = end_toolbarview,
+            end_child = main_stack,
             resize_start_child = false,
             shrink_end_child = false,
             shrink_start_child = false

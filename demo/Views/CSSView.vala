@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class CSSView : Gtk.Box {
+public class CSSView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     public CSSView (Gtk.Window window) {
@@ -44,6 +44,11 @@ public class CSSView : Gtk.Box {
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
+        var small = new Gtk.Label ("\"Granite.CssClass.SMALL\"") {
+            margin_bottom = 12
+        };
+        small.add_css_class (Granite.CssClass.SMALL);
+
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
@@ -57,6 +62,7 @@ public class CSSView : Gtk.Box {
         card.append (header3);
         card.append (header4);
         card.append (numeric);
+        card.append (small);
 
         var card_checkered = new Granite.Bin () {
             child = new Gtk.Image.from_icon_name ("battery-low") {
@@ -72,19 +78,6 @@ public class CSSView : Gtk.Box {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var richlist_label = new Granite.HeaderLabel ("Lists") {
-            secondary_text = "\"rich-list\" and \"frame\" style classes"
-        };
-
-        var rich_listbox = new Gtk.ListBox () {
-            show_separators = true
-        };
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
-        rich_listbox.append (new Gtk.Label ("Row 1"));
-        rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (new Gtk.Label ("Row 3"));
-
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
         var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
@@ -99,48 +92,6 @@ public class CSSView : Gtk.Box {
             child = terminal
         };
         terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
-
-        var buttons_label = new Granite.HeaderLabel ("Buttons") ;
-
-        var back_button = new Gtk.Button.with_label ("Granite.CssClass.BACK") {
-            halign = START
-        };
-        back_button.add_css_class (Granite.CssClass.BACK);
-
-        var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE") {
-            halign = START
-        };
-        destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);
-
-        var suggested_button = new Gtk.Button.with_label ("Granite.CssClass.SUGGESTED") {
-            halign = START
-        };
-        suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
-
-        var scales_header = new Granite.HeaderLabel ("Scales") {
-            secondary_text = "\"warmth\" and \"temperature\" style classes"
-        };
-
-        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true,
-            inverted = true
-        };
-        warmth_scale.set_value (6000);
-        warmth_scale.add_css_class (Granite.STYLE_CLASS_WARMTH);
-
-        var temperature_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, -16.0f, 16.0f, 1.0) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true
-        };
-        temperature_scale.set_value (0);
-        temperature_scale.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
-
-        var primary_color_label = new Granite.HeaderLabel ("Set HeaderBar color");
-
-        var primary_color_button = new Gtk.ColorButton.with_rgba ({ 222, 222, 222, 255 });
 
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
@@ -182,19 +133,8 @@ public class CSSView : Gtk.Box {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (richlist_label);
-        box.append (rich_listbox);
         box.append (terminal_label);
         box.append (terminal_scroll);
-        box.append (buttons_label);
-        box.append (back_button);
-        box.append (destructive_button);
-        box.append (suggested_button);
-        box.append (scales_header);
-        box.append (warmth_scale);
-        box.append (temperature_scale);
-        box.append (primary_color_label);
-        box.append (primary_color_button);
         box.append (accent_color_label);
         box.append (accent_color_box);
         box.append (success_color_box);
@@ -202,10 +142,6 @@ public class CSSView : Gtk.Box {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        append (box);
-
-        primary_color_button.color_set.connect (() => {
-            Granite.Widgets.Utils.set_color_primary (window, primary_color_button.rgba);
-        });
+        content = box;
     }
 }

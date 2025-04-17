@@ -9,6 +9,7 @@
  */
 [Version (since = "7.7.0")]
 public class Granite.StyleManager : Object {
+    private static Gtk.CssProvider? accent_provider = null;
     private static Gtk.CssProvider? base_provider = null;
     private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
@@ -60,15 +61,17 @@ public class Granite.StyleManager : Object {
     construct {
         var gtk_settings = Gtk.Settings.get_for_display (display);
 #if INCLUDE_GTK_STYLESHEETS
-        gtk_settings.gtk_theme_name = "Granite";
+        gtk_settings.gtk_theme_name = "Granite-empty";
 #endif
         gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (set_provider_for_display);
         set_provider_for_display ();
 
         var granite_settings = Granite.Settings.get_default ();
         granite_settings.notify["prefers-color-scheme"].connect (update_color_scheme);
+        granite_settings.notify["accent-color"].connect (update_accent_color);
         notify["color-scheme"].connect (update_color_scheme);
         update_color_scheme ();
+        update_accent_color ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
         icon_theme.add_resource_path ("/io/elementary/granite");
@@ -111,7 +114,7 @@ public class Granite.StyleManager : Object {
                 gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
 #endif
             Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         } else {
@@ -136,7 +139,7 @@ public class Granite.StyleManager : Object {
                 gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
             }
 
-            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
 #endif
             Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         }
@@ -161,5 +164,17 @@ public class Granite.StyleManager : Object {
         } else {
             gtk_settings.gtk_application_prefer_dark_theme = color_scheme == DARK;
         }
+    }
+
+    private void update_accent_color () {
+        if (accent_provider == null) {
+            accent_provider = new Gtk.CssProvider ();
+        }
+
+        var accent_color = Granite.Settings.get_default ().accent_color.to_string ();
+
+        Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
+        accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
+        Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 2);
     }
 }

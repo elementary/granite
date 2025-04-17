@@ -1,8 +1,0 @@
-@function undershoot-gradient ($direction) {
-    @return linear-gradient(
-        $direction,
-        $toplevel-border-color,
-        rgba(black, 0.05) 1px,
-        rgba(black, 0.0) rem(3px)
-    );
-}

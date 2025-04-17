@@ -1,8 +1,42 @@
 button {
+
+    &.text-button {
+        padding: rem(2px) rem(4px);
+    }
+
+    &.image-button {
+        padding: rem(4px);
+        min-height: rem(16px);
+        min-width: rem(16px);
+    }
+
+    .linked &,
+    &.text-button {
+        @include control;
+        @include border-interactive-roundrect;
+
+        &:checked, &:active {
+            @include control-active-depressed;
+        }
+
+        &:hover {
+            filter: brightness(105%);
+        }
+
+        &:active {
+            filter: brightness(95%);
+        }
+
+        &:disabled {
+            @include control-disabled;
+        }
+    }
+
     // Stopgap since we can't do angled buttons in GtkCSS, and generating all
     // the necessary SVGs for light/dark and accent color combinations is
     // untenable. Ideally we'd deprecate this in favor of something like a
     // Granite.BackButton with custom drawing; until then, stick an icon in it.
+
     &.back-button {
         background-repeat: no-repeat no-repeat;
         background-size: 16px, cover;
@@ -36,8 +70,60 @@ button {
         }
     }
 
-    &.circular {
-        // Not 50% because that creates a squished ellipse for non-squares widgets
-        border-radius: 9999px;
+    &.osd {
+        @include control;
+        @include border-interactive-roundrect;
+
+        // This stacks with the other shadows,
+        // so reduce it's alpha by the sum of other shadows
+        $shadow-border-color: scale-color($border-color, $alpha: -50%);
+        @if $color-scheme == "dark" {
+            $shadow-border-color: transparent
+        }
+
+        background-image: none;
+        border: none;
+        box-shadow:
+            highlight(),
+            // Intentionally not in ems since it's used as a stroke
+            0 0 0 1px $shadow-border-color,
+            shadow(2);
+        color: $fg-color;
+        margin: 0;
+        padding: $button-spacing;
+
+        transition:
+            background duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:active {
+            transform: scale(0.95);
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &:disabled {
+            @include control-disabled;
+
+            box-shadow:
+                highlight(),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px $shadow-border-color,
+                shadow(1);
+        }
+
+        .linked & {
+            transition: none;
+            transform: none;
+        }
+
+        .linked &.vertical &:first-child {
+            box-shadow:
+                highlight("top"),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px $shadow-border-color,
+                shadow(2);
+        }
     }
 }

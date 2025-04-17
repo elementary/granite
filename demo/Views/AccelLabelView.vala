@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class AccelLabelView : Gtk.Grid {
+public class AccelLabelView : DemoPage {
     construct {
         var accellabel_label = new Gtk.Label ("AccelLabel:");
         accellabel_label.halign = Gtk.Align.END;
@@ -13,34 +13,46 @@ public class AccelLabelView : Gtk.Grid {
         var popover_label = new Gtk.Label ("In a Popover:");
         popover_label.halign = Gtk.Align.END;
 
-        var lock_button = new Gtk.Button ();
-        lock_button.child = new Granite.AccelLabel ("Lock", "<Super>L");
-        lock_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
+        var lock_button = new Gtk.Button () {
+            child = new Granite.AccelLabel ("Lock", "<Super>L")
+        };
+        lock_button.add_css_class ("model");
 
-        var logout_button = new Gtk.Button ();
-        logout_button.child = new Granite.AccelLabel ("Log Out…", "<Ctrl><Alt>Delete");
-        logout_button.add_css_class (Granite.STYLE_CLASS_MENUITEM);
+        var logout_button = new Gtk.Button () {
+            child = new Granite.AccelLabel ("Log Out…", "<Ctrl><Alt>Delete")
+        };
+        logout_button.add_css_class ("model");
 
-        var popover_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        popover_box.append (lock_button);
-        popover_box.append (logout_button);
+        var lock_item = new GLib.MenuItem (null, null);
+        lock_item.set_attribute_value ("custom", "lock");
 
-        var popover = new Gtk.Popover () {
-            child = popover_box,
+        var logout_item = new GLib.MenuItem (null, null);
+        logout_item.set_attribute_value ("custom", "logout");
+
+        var menu_model = new GLib.Menu ();
+        menu_model.append_item (lock_item);
+        menu_model.append_item (logout_item);
+
+        var popover = new Gtk.PopoverMenu.from_model (menu_model) {
             has_arrow = false
         };
-        popover.add_css_class (Granite.STYLE_CLASS_MENU);
+        popover.add_child (lock_button, "lock");
+        popover.add_child (logout_button, "logout");
 
         var popover_button = new Gtk.MenuButton ();
         popover_button.popover = popover;
 
-        column_spacing = 12;
-        row_spacing = 12;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        attach (accellabel_label, 0, 0);
-        attach (copy_label, 1, 0);
-        attach (popover_label, 0, 1);
-        attach (popover_button, 1, 1);
+        var grid = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 12,
+            halign = CENTER,
+            valign = CENTER
+        };
+        grid.attach (accellabel_label, 0, 0);
+        grid.attach (copy_label, 1, 0);
+        grid.attach (popover_label, 0, 1);
+        grid.attach (popover_button, 1, 1);
+
+        content = grid;
     }
 }
