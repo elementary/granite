@@ -1,14 +1,8 @@
 @mixin control {
     @include border-interactive;
+    @include lighting-protrude;
 
-    background-clip: border-box;
     background-color: bg-color(0);
-    background-image:
-        linear-gradient(
-            to bottom,
-            scale-color($highlight_color, $alpha: -80%),
-            rgba(white, 0)
-        );
     transition: all duration("in-place") easing("default");
 
     &:backdrop {
@@ -48,6 +42,16 @@
 
 @mixin control-disabled {
     opacity: $disabled-opacity;
+}
+
+@mixin highlightbar {
+    @include border-interactive;
+    @include lighting-protrude;
+    background-color: #{'@accent_color'};
+
+    &:backdrop {
+        background-color: scale-color($fg-color, $alpha: -50%);
+    }
 }
 
 @mixin trough {

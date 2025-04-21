@@ -5,11 +5,7 @@ scale {
 
     // `has_origin = true`
     highlight {
-        background-color: #{'@accent_color'};
-
-        &:backdrop {
-            background-color: scale-color($fg-color, $alpha: -50%);
-        }
+        @include highlightbar;
     }
 
     slider {
