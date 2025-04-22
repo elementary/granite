@@ -2,8 +2,8 @@ progressbar {
     $trough-width: rem(9px);
 
     progress {
-        @include highlightbar;
         @include border-interactive-roundrect;
+        background-color: #{'@accent_color'};
 
         &:backdrop {
             filter: grayscale(100%);
@@ -20,7 +20,7 @@ progressbar {
 
     &.horizontal {
         progress {
-            min-height: $trough-width - rem(2px);
+            min-height: $trough-width;
 
             &:not(.pulse) {
                 animation: progress 1.5s easing() infinite;
@@ -32,10 +32,19 @@ progressbar {
                         rgba(white, 0)
                     );
                 background-repeat: no-repeat;
-                background-size: 100% 100%;
+                background-size: 48px 100%;
+
+                box-shadow: -1px 0px scale-color($highlight_color, $alpha: -93%) inset; 
+                border-right: solid 1px $border-color;
 
                 &.right {
                     animation-direction: reverse;
+
+                    border-right: none;
+                    border-left: solid 1px $border-color;
+
+                    box-shadow: none;
+                    box-shadow: 1px 0px scale-color($highlight_color, $alpha: -93%) inset; 
                 }
 
                 &:backdrop {
@@ -48,7 +57,9 @@ progressbar {
 
     &.vertical {
         progress {
-            min-width: $trough-width - rem(2px);
+            min-width: $trough-width;
+            border-top: $border-color 1px solid;
+            box-shadow: highlight("top");
         }
     }
 

@@ -92,13 +92,3 @@
         inset 0 0 1px 1px rgba(black, 0.05);
 }
 
-@mixin lighting-protrude {
-    background-clip: border-box;
-    background-image:
-        linear-gradient(
-            to bottom,
-            scale-color($highlight_color, $alpha: -80%),
-            rgba(white, 0)
-        );
-}
-
