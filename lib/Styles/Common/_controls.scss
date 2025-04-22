@@ -1,7 +1,8 @@
 @mixin control {
     @include border-interactive;
-    background-color: bg-color(0);
+
     background-clip: border-box;
+    background-color: bg-color(0);
     background-image:
         linear-gradient(
             to bottom,
