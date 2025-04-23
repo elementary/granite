@@ -55,8 +55,12 @@
 
     background-color: $trough-color;
     border-radius: 99px;
+    box-shadow: 
+        highlight("bottom"),   
+        inset-shadow();
 
     &:disabled {
         background-color: scale-color($trough-color, $alpha: -10%);
+        box-shadow: inset-shadow("disabled");
     }
 }
