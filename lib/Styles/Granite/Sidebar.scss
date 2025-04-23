@@ -10,6 +10,7 @@
         }
 
         &:selected {
+            // FIXME: replace with translucent/brighter accent color
             background-color: bg-color(4);
         }
     }
