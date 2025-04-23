@@ -9,6 +9,7 @@ scale {
 
         &:backdrop {
             background-color: scale-color($fg-color, $alpha: -50%);
+            opacity: $disabled-opacity;
         }
     }
 
