@@ -1,0 +1,16 @@
+.sidebar {
+    background-color: bg-color(3);
+
+    & row {
+        padding: rem(6px) rem(12px);
+        background-color: inherit;
+
+        &:hover {
+            background-color: $highlight_color;
+        }
+
+        &:selected {
+            background-color: bg-color(4);
+        }
+    }
+}
