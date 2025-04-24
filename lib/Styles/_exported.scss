@@ -6,3 +6,8 @@
 
 @define-color selected_bg_color #{'alpha(@accent_color, 0.25)'};
 @define-color selected_fg_color #{'shade(@accent_color, 0.5)'};
+
+@if $color-scheme == "dark" {
+    @define-color selected_bg_color #{'alpha(shade(@accent_color, 0.85), 0.5)'};
+    @define-color selected_fg_color #{'mix(shade(@accent_color, 1.1), white, 0.75)'};
+}
