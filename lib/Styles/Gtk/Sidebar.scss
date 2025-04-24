@@ -1,5 +1,11 @@
+stacksidebar.sidebar {
+    background: none;
+    box-shadow: none;
+}
+
 .sidebar {
     background-color: bg-color(3);
+    box-shadow: highlight();
 
     & row {
         padding: rem(6px) rem(12px);
