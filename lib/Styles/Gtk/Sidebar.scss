@@ -11,6 +11,8 @@ stacksidebar.sidebar {
         padding: rem(6px) rem(12px);
         background-color: inherit;
 
+        transition: all duration("in-place") easing();
+
         &:hover {
             background-color: $highlight_color;
         }
