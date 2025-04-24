@@ -19,7 +19,6 @@ stacksidebar.sidebar {
 
             &:selected {
                 @extend selection;
-                color: $fg-color;
             }
         }
     }
