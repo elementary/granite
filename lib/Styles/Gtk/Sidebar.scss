@@ -7,19 +7,20 @@ stacksidebar.sidebar {
     background-color: bg-color(3);
     box-shadow: highlight();
 
-    & row {
-        padding: rem(6px) rem(12px);
-        background-color: inherit;
+}
 
-        transition: all duration("in-place") easing();
+stacksidebar.sidebar row {
+    padding: rem(6px) rem(12px);
+    background-color: inherit;
 
-        &:hover {
-            background-color: $highlight_color;
-        }
+    transition: all duration("in-place") easing();
 
-        &:selected {
-            // FIXME: replace with translucent/brighter accent color
-            background-color: bg-color(4);
-        }
+    &:hover {
+        background-color: $highlight_color;
+    }
+
+    &:selected {
+        // FIXME: replace with translucent/brighter accent color
+        background-color: bg-color(4);
     }
 }
