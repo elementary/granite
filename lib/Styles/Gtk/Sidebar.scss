@@ -1,26 +1,26 @@
 stacksidebar.sidebar {
     background: none;
     box-shadow: none;
-}
 
-.sidebar {
-    background-color: bg-color(3);
-    box-shadow: highlight();
+    .navigation-sidebar {
+        margin: $button-spacing;
 
-}
+        row {
+            @extend .model;
 
-stacksidebar.sidebar row {
-    padding: rem(6px) rem(12px);
-    background-color: inherit;
+            border-spacing: $button-spacing;
+            min-width: rem(150px);
 
-    transition: all duration("in-place") easing();
+            &:active {
+                // There's an optical illusion because items are wider than
+                // they are tall, so compensate by scaling y a little extra
+                transform: scale(0.98, 0.96);
+            }
 
-    &:hover {
-        background-color: $highlight_color;
-    }
-
-    &:selected {
-        // FIXME: replace with translucent/brighter accent color
-        background-color: bg-color(4);
+            &:selected {
+                @extend selection;
+                color: $fg-color;
+            }
+        }
     }
 }
