@@ -19,6 +19,11 @@
 
     <file alias="scalable/actions/selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/selection-mode-symbolic.svg</file>
 
+    <file alias="scalable/actions/view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
+    <file alias="scalable/actions/view-sidebar-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
+    <file alias="scalable/actions/view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
+    <file alias="scalable/actions/view-sidebar-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
+
     <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
     <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
 
