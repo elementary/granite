@@ -5,12 +5,23 @@ button {
     }
 
     &.image-button {
+        @extend .circular;
+
         padding: rem(4px);
         min-height: rem(16px);
         min-width: rem(16px);
+
+        &.toggle {
+            @include border-interactive-roundrect;
+
+            &:checked {
+                @extend selection;
+            }
+        }
     }
 
     .linked &,
+    .linked &.image-button.toggle,
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
