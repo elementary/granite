@@ -26,12 +26,9 @@ button {
         @include control;
         @include border-interactive-roundrect;
 
-        &:checked, &:active {
-            @include control-active-depressed;
-        }
-
-        &:hover {
-            filter: brightness(105%);
+        &:active,
+        &:checked {
+            @include control-active;
         }
 
         &:active {
@@ -40,6 +37,10 @@ button {
 
         &:disabled {
             @include control-disabled;
+        }
+
+        &:hover {
+            filter: brightness(105%);
         }
     }
 
