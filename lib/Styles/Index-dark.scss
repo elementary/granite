@@ -9,19 +9,19 @@ $toplevel-border-color: rgba(black, 0.75);
 @function bg-color($level) {
     // Inputs
     @if $level == 0 {
-        @return mix($BLACK_300, $BLACK_500, $weight: 50%);
+        @return $BLACK_500;
     // Views
     } @else if $level == 1 {
-        @return mix($BLACK_300, $BLACK_500, $weight: 25%);
+        @return mix($BLACK_500, $BLACK_600, $weight: 50%);
     // Background
     } @else if $level == 2 {
-        @return $BLACK_500;
+        @return $BLACK_600;
     // Sidebars and inline toolbars
     } @else if $level == 3 {
-        @return mix($BLACK_500, $BLACK_700, $weight: 90%);
+        @return mix($BLACK_600, $BLACK_700, $weight: 50%);
     // Titlebars and toolbars
     } @else if $level == 4 {
-        @return mix($BLACK_500, $BLACK_700, $weight: 45%);
+        @return $BLACK_700;
     }
 }
 
