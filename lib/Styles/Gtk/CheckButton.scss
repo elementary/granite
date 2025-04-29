@@ -13,13 +13,13 @@ checkbutton {
         }
 
         &:active {
-            @include control-active-depressed;
+            @include control-active;
             filter: brightness(95%);
         }
 
         &:checked {
             -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
-            @include control-active-checked;
+            @include control-checked;
         }
 
         &:indeterminate {
