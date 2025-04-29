@@ -30,10 +30,6 @@ button {
             @include control-active-depressed;
         }
 
-        &:hover {
-            filter: brightness(105%);
-        }
-
         &:active {
             filter: brightness(95%);
         }
