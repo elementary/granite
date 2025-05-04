@@ -7,6 +7,7 @@ progressbar {
 
         &:backdrop {
             filter: grayscale(100%);
+            opacity: $disabled-opacity;
         }
     }
 
@@ -36,6 +37,7 @@ progressbar {
 
                 &.right {
                     animation-direction: reverse;
+
                 }
 
                 &:backdrop {
