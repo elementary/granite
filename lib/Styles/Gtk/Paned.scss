@@ -1,0 +1,15 @@
+$separator-highlight-color: rgba(white, 1);
+@if $color-scheme == "dark" {
+    $separator-highlight-color: rgba(white, 0.10);
+}
+
+
+paned.horizontal > separator {
+    border-right: solid 1px $separator-highlight-color;
+    margin-right: -1px;
+}
+
+paned.vertical > separator {
+    border-bottom: solid 1px $separator-highlight-color;
+    margin-bottom: -1px;
+}
