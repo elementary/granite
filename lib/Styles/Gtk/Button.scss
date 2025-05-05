@@ -5,22 +5,43 @@ button {
     }
 
     &.image-button {
+        @extend .circular;
+
         padding: rem(4px);
-        min-height: rem(16px);
-        min-width: rem(16px);
+        min-height: 16px;
+        min-width: 16px;
+        transition:
+            background duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:active {
+            background: rgba($fg-color, 0.15);
+            transform: scale(0.8);
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &.toggle {
+            @include border-interactive-roundrect;
+
+            &:checked {
+                @extend selection;
+            }
+        }
     }
 
     .linked &,
+    .linked &.image-button,
+    .linked &.image-button.toggle,
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
 
-        &:checked, &:active {
-            @include control-active-depressed;
-        }
-
-        &:hover {
-            filter: brightness(105%);
+        &:active,
+        &:checked {
+            @include control-active;
+            transform: none;
         }
 
         &:active {
@@ -29,6 +50,10 @@ button {
 
         &:disabled {
             @include control-disabled;
+        }
+
+        &:hover {
+            filter: brightness(105%);
         }
     }
 
@@ -97,7 +122,6 @@ button {
             transform duration("expand") easing("ease-out-back");
 
         &:active {
-            transform: scale(0.95);
             transition:
                 background duration("collapse") easing(),
                 transform duration("collapse") easing();

@@ -1,0 +1,30 @@
+.sidebar {
+    background-color: bg-color(3);
+    box-shadow: highlight();
+}
+
+stacksidebar.sidebar {
+    background: none;
+    box-shadow: none;
+
+    .navigation-sidebar {
+        margin: $button-spacing;
+
+        row {
+            @extend .model;
+
+            border-spacing: $button-spacing;
+            min-width: rem(150px);
+
+            &:active {
+                // There's an optical illusion because items are wider than
+                // they are tall, so compensate by scaling y a little extra
+                transform: scale(0.98, 0.96);
+            }
+
+            &:selected {
+                @extend selection;
+            }
+        }
+    }
+}

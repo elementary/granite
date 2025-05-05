@@ -9,13 +9,16 @@ public class ControlsView : DemoPage {
 
         var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
 
-        var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()");
+        var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()") {
+            active = true
+        };
 
         var imagebutton = new Gtk.Button.from_icon_name ("folder-pictures-symbolic") {
             tooltip_text = "Gtk.Button.from_icon_name ()"
         };
 
         var toggle_imagebutton = new Gtk.ToggleButton () {
+            active = true,
             icon_name = "eye-open-negative-filled-symbolic",
             tooltip_text = "Gtk.ToggleButton.icon_name"
         };
