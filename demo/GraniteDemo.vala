@@ -93,9 +93,10 @@ public class Granite.Demo : Gtk.Application {
 
         var style_box = new Granite.Box (HORIZONTAL, LINKED) {
             homogeneous = true,
-            margin_start = 12,
-            margin_bottom = 12,
-            margin_end = 12
+            margin_start = 6,
+            margin_bottom = 6,
+            margin_end = 6,
+            margin_top = 6
         };
         style_box.append (force_light);
         style_box.append (dont_button);
