@@ -32,7 +32,7 @@ public class ApplicationView : DemoPage {
         grid.attach (badge_visible_switch, 1, 1);
         grid.attach (badge_spin, 2, 1);
 
-        content = grid;
+        child = grid;
 
         progress_visible_switch.bind_property ("active", progress_scale, "sensitive", GLib.BindingFlags.SYNC_CREATE);
         badge_visible_switch.bind_property ("active", badge_spin, "sensitive", GLib.BindingFlags.SYNC_CREATE);

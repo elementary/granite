@@ -33,7 +33,7 @@ public class FormView : DemoPage {
         box.append (username_entry);
         box.append (button);
 
-        content = box;
+        child = box;
 
         username_entry.bind_property ("is-valid", button, "sensitive", SYNC_CREATE);
     }

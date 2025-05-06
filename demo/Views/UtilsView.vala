@@ -47,7 +47,7 @@ public class UtilsView : DemoPage {
         grid.attach (contrasting_foreground_color_label, 0, 1);
         grid.attach (contrast_demo_button, 1, 1, 2);
 
-        content = grid;
+        child = grid;
 
         var gdk_demo_bg = Gdk.RGBA ();
         gdk_demo_bg.parse (DARK_BG);
