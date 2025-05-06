@@ -29,7 +29,6 @@ public class Granite.Demo : Gtk.Application {
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
-        var style_manager_view = new StyleManagerView ();
         var utils_view = new UtilsView ();
         var video_view = new VideoView ();
         var placeholder = new WelcomeView ();
@@ -42,7 +41,6 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
         main_stack.add_titled (lists_view, "lists", "Lists");
-        main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
@@ -70,10 +68,51 @@ public class Granite.Demo : Gtk.Application {
             vexpand = true
         };
 
+        var dont_button = new Gtk.CheckButton.with_label ("Follow system setting") {
+            action_name = "app.color-scheme",
+            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.NO_PREFERENCE),
+            active = true
+        };
+
+        var force_light = new Gtk.CheckButton.with_label ("Light") {
+            action_name = "app.color-scheme",
+            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.LIGHT),
+            group = dont_button
+        };
+
+        var force_dark = new Gtk.CheckButton.with_label ("Dark") {
+            action_name = "app.color-scheme",
+            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.DARK),
+            group = force_light
+        };
+
+        var style_box = new Granite.Box (HORIZONTAL, LINKED) {
+            margin_start = 3,
+            margin_bottom = 3,
+            margin_end = 3
+        };
+        style_box.append (force_light);
+        style_box.append (dont_button);
+        style_box.append (force_dark);
+
+        var style_manager = Granite.StyleManager.get_default ();
+
+        var style_action = new SimpleAction.stateful ("color-scheme", VariantType.UINT32, new Variant.uint32 (style_manager.color_scheme));
+        style_action.activate.connect ((parameter) => {
+            style_manager.color_scheme = (Granite.Settings.ColorScheme) parameter.get_uint32 ();
+        });
+
+        style_manager.notify ["color-scheme"].connect (() => {
+            style_action.set_state (new Variant.uint32 (style_manager.color_scheme));
+        });
+
+        add_action (style_action);
+
         var start_box = new Granite.ToolBox () {
             content = stack_sidebar
         };
         start_box.add_top_bar (start_header);
+        start_box.add_bottom_bar (style_box);
         start_box.add_css_class (Granite.STYLE_CLASS_SIDEBAR);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
