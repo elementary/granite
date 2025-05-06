@@ -72,9 +72,7 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
      *
      * Top bars can be dragged to move the window, equivalent to putting them into a {@link Gtk.WindowHandle}
      */
-    public void add_top_bar (Gtk.Widget widget) {
-        return_if_fail (widget.parent == null);
-
+    public void add_top_bar (Gtk.Widget widget) requires (widget.parent == null) {
         top_box.append (widget);
     }
 
@@ -83,9 +81,7 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
      *
      * bottom bars can be dragged to move the window, equivalent to putting them into a {@link Gtk.WindowHandle}
      */
-    public void add_bottom_bar (Gtk.Widget widget) {
-        return_if_fail (widget.parent == null);
-
+    public void add_bottom_bar (Gtk.Widget widget) requires (widget.parent == null) {
         bottom_box.append (widget);
     }
 
