@@ -68,45 +68,38 @@ public class Granite.Demo : Gtk.Application {
             vexpand = true
         };
 
-        var dont_button = new Gtk.CheckButton.with_label ("Follow system setting") {
+        var dont_button = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
             action_target = new Variant.uint32 (Granite.Settings.ColorScheme.NO_PREFERENCE),
-            active = true
+            icon_name = "preferences-system-symbolic",
+            tooltip_text = "Follow system setting"
         };
 
-        var force_light = new Gtk.CheckButton.with_label ("Light") {
+        var force_light = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
             action_target = new Variant.uint32 (Granite.Settings.ColorScheme.LIGHT),
-            group = dont_button
+            group = dont_button,
+            icon_name = "display-brightness-symbolic",
+            tooltip_text = "Light"
         };
 
-        var force_dark = new Gtk.CheckButton.with_label ("Dark") {
+        var force_dark = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
             action_target = new Variant.uint32 (Granite.Settings.ColorScheme.DARK),
-            group = force_light
+            group = force_light,
+            icon_name = "weather-clear-night-symbolic",
+            tooltip_text = "Dark"
         };
 
         var style_box = new Granite.Box (HORIZONTAL, LINKED) {
-            margin_start = 3,
-            margin_bottom = 3,
-            margin_end = 3
+            homogeneous = true,
+            margin_start = 12,
+            margin_bottom = 12,
+            margin_end = 12
         };
         style_box.append (force_light);
         style_box.append (dont_button);
         style_box.append (force_dark);
-
-        var style_manager = Granite.StyleManager.get_default ();
-
-        var style_action = new SimpleAction.stateful ("color-scheme", VariantType.UINT32, new Variant.uint32 (style_manager.color_scheme));
-        style_action.activate.connect ((parameter) => {
-            style_manager.color_scheme = (Granite.Settings.ColorScheme) parameter.get_uint32 ();
-        });
-
-        style_manager.notify ["color-scheme"].connect (() => {
-            style_action.set_state (new Variant.uint32 (style_manager.color_scheme));
-        });
-
-        add_action (style_action);
 
         var start_box = new Granite.ToolBox () {
             content = stack_sidebar
@@ -131,6 +124,19 @@ public class Granite.Demo : Gtk.Application {
 
         add_window (window);
         window.show ();
+
+        var style_manager = Granite.StyleManager.get_default ();
+
+        var style_action = new SimpleAction.stateful ("color-scheme", VariantType.UINT32, new Variant.uint32 (style_manager.color_scheme));
+        style_action.activate.connect ((parameter) => {
+            style_manager.color_scheme = (Granite.Settings.ColorScheme) parameter.get_uint32 ();
+        });
+
+        style_manager.notify ["color-scheme"].connect (() => {
+            style_action.set_state (new Variant.uint32 (style_manager.color_scheme));
+        });
+
+        add_action (style_action);
     }
 
     public static int main (string[] args) {
