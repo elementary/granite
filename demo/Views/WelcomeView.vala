@@ -80,6 +80,10 @@ public class WelcomeView : DemoPage {
         };
 
         var stack = new Gtk.Stack () {
+            margin_top = 12,
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 12,
             vexpand = true
         };
         stack.add_titled (welcome, "Welcome", "Welcome");
@@ -88,19 +92,18 @@ public class WelcomeView : DemoPage {
         stack.add_titled (menubutton, "Popover", "Popover");
 
         var stack_switcher = new Gtk.StackSwitcher () {
-            stack = stack
-        };
-
-        var main_box = new Granite.Box (VERTICAL, SINGLE) {
+            halign = CENTER,
             margin_top = 12,
             margin_start = 12,
             margin_end = 12,
-            margin_bottom = 12
+            margin_bottom = 12,
+            stack = stack
         };
-        main_box.append (stack_switcher);
-        main_box.append (stack);
+        ((Gtk.BoxLayout) stack_switcher.layout_manager).homogeneous = true;
 
-        content = main_box;
+        child = stack;
+
+        add_bottom_bar (stack_switcher);
 
         vala_button.clicked.connect (() => {
             var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");

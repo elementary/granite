@@ -49,6 +49,6 @@ public class SettingsUrisView : DemoPage {
             _("Keyboard → Shortcuts → Custom")
         ));
 
-        content = column;
+        child = column;
     }
 }
