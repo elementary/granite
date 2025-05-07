@@ -285,6 +285,11 @@ namespace Granite {
          * Style class for widgets in warning state.
          */
         public const string WARNING = "warning";
+        
+        /**
+         * Style class for non-terminal text that uses a monospace font.
+         */
+        public const string MONOSPACE = "monospace";
     }
 
     /**
