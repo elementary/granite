@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DemoPage : Gtk.Box {
+public class DemoPage : Granite.ToolBox {
     public string title { get; set; }
 
-    public Gtk.Widget content {
+    public Gtk.Widget child {
         set {
             scrolled_window.child = value;
         }
@@ -32,18 +32,14 @@ public class DemoPage : Gtk.Box {
         header_box.append (header_label);
         header_box.append (new Gtk.WindowControls (END) { valign = START });
 
-        var window_handle = new Gtk.WindowHandle () {
-            child = header_box
-        };
+        add_top_bar (header_box);
 
         scrolled_window = new Gtk.ScrolledWindow () {
             hscrollbar_policy = NEVER,
             vexpand = true
         };
 
-        orientation = VERTICAL;
-        append (window_handle);
-        append (scrolled_window);
+        content = scrolled_window;
 
         bind_property ("title", header_label, "label");
     }

@@ -5,7 +5,7 @@
 
 public class ListsView : DemoPage {
     construct {
-        title = "Lists";
+        title = "Lists & Grids";
 
         var card_title = new Granite.HeaderLabel ("Gtk.ListBox") {
             secondary_text = "This ListBox has \"Granite.CssClass.CARD\""
@@ -28,7 +28,7 @@ public class ListsView : DemoPage {
         );
         list_box.append (new Granite.ListItem () { child = separators_modelbutton });
 
-        var scrolled_title = new Granite.HeaderLabel ("Gtk.ListView") {
+        var list_title = new Granite.HeaderLabel ("Gtk.ListView") {
             secondary_text = "ScrolledWindow with \"has-frame = true\" has a view level background color"
         };
 
@@ -54,34 +54,34 @@ public class ListsView : DemoPage {
         menu_model.append ("Move", null);
         menu_model.append ("Delete", null);
 
-        var liststore = new GLib.ListStore (typeof (ListObject));
-        liststore.append (new ListObject () {
+        var list_store = new GLib.ListStore (typeof (ListObject));
+        list_store.append (new ListObject () {
             text = "Row 1"
         });
-        liststore.append (new ListObject () {
+        list_store.append (new ListObject () {
             text = "Row 2"
         });
-        liststore.append (new ListObject () {
+        list_store.append (new ListObject () {
             text = "Row 3"
         });
-        liststore.append (new ListObject () {
+        list_store.append (new ListObject () {
             text = "Row 4"
         });
-        liststore.append (new ListObject () {
+        list_store.append (new ListObject () {
             text = "Row 5"
         });
 
-        var selection_model = new Gtk.SingleSelection (liststore);
+        var list_selection = new Gtk.SingleSelection (list_store);
 
-        var factory = new Gtk.SignalListItemFactory ();
-        factory.setup.connect ((obj) => {
+        var list_factory = new Gtk.SignalListItemFactory ();
+        list_factory.setup.connect ((obj) => {
             var list_item = (Gtk.ListItem) obj;
             list_item.child = new Granite.ListItem () {
                 menu_model = menu_model
             };
         });
 
-        factory.bind.connect ((obj) => {
+        list_factory.bind.connect ((obj) => {
             var list_item = (Gtk.ListItem) obj;
             var list_object = (ListObject) list_item.item;
 
@@ -89,15 +89,77 @@ public class ListsView : DemoPage {
             granite_list_item.text = list_object.text;
         });
 
-        var list_view = new Gtk.ListView (selection_model, factory) {
+        var list_view = new Gtk.ListView (list_selection, list_factory) {
             show_separators = true
         };
 
-        var scrolled_window = new Gtk.ScrolledWindow () {
+        var list_scrolled = new Gtk.ScrolledWindow () {
             child = list_view,
             has_frame = true,
             hscrollbar_policy = NEVER,
             min_content_height = 128
+        };
+
+        var grid_title = new Granite.HeaderLabel ("Gtk.GridView");
+
+        var grid_store = new GLib.ListStore (typeof (GridObject));
+        grid_store.append (new GridObject () {
+            icon_name = "folder-documents",
+            text = "Documents"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-download",
+            text = "Downloads"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-music",
+            text = "Music"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-pictures",
+            text = "Pictures"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-publicshare",
+            text = "Public"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-templates",
+            text = "Templates"
+        });
+        grid_store.append (new GridObject () {
+            icon_name = "folder-videos",
+            text = "Videos"
+        });
+
+        var grid_selection = new Gtk.MultiSelection (grid_store);
+
+        var grid_factory = new Gtk.SignalListItemFactory ();
+        grid_factory.setup.connect ((obj) => {
+            var list_item = (Gtk.ListItem) obj;
+            list_item.child = new GridItem ();
+        });
+
+        grid_factory.bind.connect ((obj) => {
+            var list_item = (Gtk.ListItem) obj;
+            var grid_object = (GridObject) list_item.item;
+
+            var grid_item = ((GridItem) list_item.child);
+            grid_item.text = grid_object.text;
+            grid_item.icon_name = grid_object.icon_name;
+        });
+
+        var grid_view = new Gtk.GridView (grid_selection, grid_factory) {
+            max_columns = 4,
+            enable_rubberband = true
+        };
+
+        var grid_scrolled = new Gtk.ScrolledWindow () {
+            child = grid_view,
+            has_frame = true,
+            hscrollbar_policy = NEVER,
+            min_content_height = 128,
+            propagate_natural_height = true
         };
 
         var vbox = new Granite.Box (VERTICAL, HALF) {
@@ -108,15 +170,48 @@ public class ListsView : DemoPage {
         };
         vbox.append (card_title);
         vbox.append (list_box);
-        vbox.append (scrolled_title);
-        vbox.append (scrolled_window);
+        vbox.append (list_title);
+        vbox.append (list_scrolled);
+        vbox.append (grid_title);
+        vbox.append (grid_scrolled);
 
-        content = vbox;
+        child = vbox;
 
         separators_modelbutton.bind_property ("active", list_box, "show-separators", SYNC_CREATE | DEFAULT);
     }
 
     private class ListObject : Object {
         public string text { get; set; }
+    }
+
+    private class GridObject : Object {
+        public string text { get; set; }
+        public string icon_name { get; set; }
+    }
+
+    private class GridItem : Granite.Box {
+        public string text { get; set; }
+        public string icon_name { get; set; }
+
+        public GridItem () {
+            Object (
+                orientation: Gtk.Orientation.VERTICAL
+            );
+        }
+
+        construct {
+            var image = new Gtk.Image.from_icon_name (icon_name) {
+                pixel_size = 64
+            };
+
+            var label = new Gtk.Label (text);
+
+            child_spacing = HALF;
+            append (image);
+            append (label);
+
+            bind_property ("text", label, "label");
+            bind_property ("icon-name", image, "icon-name");
+        }
     }
 }
