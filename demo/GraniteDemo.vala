@@ -41,7 +41,7 @@ public class Granite.Demo : Gtk.Application {
         };
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
-        main_stack.add_titled (lists_view, "lists", "Lists");
+        main_stack.add_titled (lists_view, "lists", "Lists & Grids");
         main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
