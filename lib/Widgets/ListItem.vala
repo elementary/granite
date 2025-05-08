@@ -74,6 +74,12 @@ public class Granite.ListItem : Granite.Bin {
         });
 
         notify["menu-model"].connect (construct_menu);
+
+        notify["parent"].connect (() => {
+            if (parent == null && menu_model != null) {
+                parent.remove_controller (menu_key_controller);
+            }
+        });
     }
 
     private void construct_menu () {
