@@ -4,35 +4,54 @@ scrollbar {
     $slider-width: rem(3px);
     $slider-width-full: rem($window_radius);
 
+    $trough_width: rem(5px); // slider + slider border
+
     slider {
-        background-color: rgba($fg-color, 0.7);
-        box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
-        border-radius: 99px;
+        @include control;
+        box-shadow:
+            highlight(),
+            0 0 0 1px $border-color,
+            shadow(2);
+
         transition:
-            background duration("collapse") easing(),
-            min-width duration("collapse") easing();
+            background duration("collapse") easing();
+
+        &:backdrop {
+            box-shadow:
+                highlight(),
+                0 0 0 1px $border-color,
+                shadow(1);
+        }
+
+        &:disabled {
+            box-shadow:
+                0 0 0 1px $border-color,
+                shadow(1);
+        }
+
     }
 
     trough {
-        background-color: rgba($fg-color, 0.2);
-        border-radius: 99px;
-        margin: rem(3px);
+        @include trough;
+
     }
 
     &:hover,
     &.hovering {
-        slider {
-            background-color: rgba($fg-color, 0.7);
-            transition:
-                background duration("expand") easing(),
-                min-width duration("expand") easing();
-        }
+        filter: brightness(105%);
+        transition:
+        background duration("expand") easing(),
+        min-width duration("expand") easing();
     }
 
     &:active {
         slider {
-            background-color: $fg-color;
+            transform: scale(1.1);
             transition: background duration("expand") easing();
+            box-shadow:
+            highlight(),
+            0 0 0 1px $border-color,
+            shadow(3);
         }
     }
 
@@ -54,14 +73,14 @@ scrollbar {
         trough {
             background-color: transparent;
             transition:
-                background duration("expand") easing();
+            background duration("expand") easing();
         }
 
         &:hover trough,
         &.hovering trough {
             background-color: rgba($fg-color, 0.2);
             transition:
-                background duration("expand") easing();
+            background duration("expand") easing();
         }
 
         &.horizontal {
