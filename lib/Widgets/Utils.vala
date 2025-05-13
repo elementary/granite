@@ -26,6 +26,7 @@ public static string accel_to_string (string? accel) {
 
     string[] arr = {};
     if (Gdk.ModifierType.SUPER_MASK in accel_mods) {
+        /// TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
         arr += _("Super");
     }
 
