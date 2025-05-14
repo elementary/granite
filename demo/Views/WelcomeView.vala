@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class WelcomeView : Gtk.Box {
+public class WelcomeView : DemoPage {
     construct {
         var welcome = new Granite.Placeholder ("Granite Demo") {
             description = "This is a demo of the Granite library."
@@ -25,7 +25,7 @@ public class WelcomeView : Gtk.Box {
             description = "Maybe you can <b>do something</b> to hide it but <i>otherwise</i> it will stay here",
             icon = new ThemedIcon ("dialog-warning")
         };
-        alert.add_css_class (Granite.STYLE_CLASS_WARNING);
+        alert.add_css_class (Granite.CssClass.WARNING);
 
         var alert_action = alert.append_button (
             new ThemedIcon ("edit-delete"),
@@ -80,6 +80,10 @@ public class WelcomeView : Gtk.Box {
         };
 
         var stack = new Gtk.Stack () {
+            margin_top = 12,
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 12,
             vexpand = true
         };
         stack.add_titled (welcome, "Welcome", "Welcome");
@@ -88,22 +92,27 @@ public class WelcomeView : Gtk.Box {
         stack.add_titled (menubutton, "Popover", "Popover");
 
         var stack_switcher = new Gtk.StackSwitcher () {
-            margin_top = 24,
-            margin_end = 24,
-            margin_start = 24,
+            halign = CENTER,
+            margin_top = 12,
+            margin_start = 12,
+            margin_end = 12,
+            margin_bottom = 12,
             stack = stack
         };
+        ((Gtk.BoxLayout) stack_switcher.layout_manager).homogeneous = true;
 
-        orientation = Gtk.Orientation.VERTICAL;
-        append (stack_switcher);
-        append (stack);
+        child = stack;
+
+        add_bottom_bar (stack_switcher);
 
         vala_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://valadoc.org/granite/Granite.html", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://valadoc.org/granite/Granite.html");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         source_button.clicked.connect (() => {
-            Gtk.show_uri (null, "https://github.com/elementary/granite", Gdk.CURRENT_TIME);
+            var uri_launcher = new Gtk.UriLauncher ("https://github.com/elementary/granite");
+            uri_launcher.launch.begin ((Gtk.Window) get_root (), null);
         });
 
         alert_action.clicked.connect (() => {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 elementary, Inc. (https://elementary.io)
+ * Copyright 2025 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
@@ -16,6 +16,9 @@ public class Granite.BackButton : Gtk.Button {
      */
     public new string label { get; set; }
 
+    public BackButton (string label) {
+        Object (label: label);
+    }
 
     construct {
         var image = new Gtk.Image.from_icon_name ("go-previous-symbolic");
@@ -29,5 +32,8 @@ public class Granite.BackButton : Gtk.Button {
         action_name = "navigation.pop";
         child = box;
         tooltip_markup = Granite.markup_accel_tooltip ({"<alt>Left"});
+
+        add_css_class ("text-button");
+        bind_property ("label", label_widget, "label");
     }
 }

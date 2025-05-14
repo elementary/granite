@@ -106,7 +106,7 @@ public class Granite.AccelLabel : Gtk.Box {
                     continue;
                 }
                 var accel_label = new Gtk.Label (accel);
-                accel_label.add_css_class (Granite.STYLE_CLASS_KEYCAP);
+                accel_label.add_css_class ("keycap");
 
                 append (accel_label);
             }

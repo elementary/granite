@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-30 20:48+0000\n"
-"PO-Revision-Date: 2020-03-01 15:09+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
+"PO-Revision-Date: 2024-09-07 17:04+0000\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
 "desktop/granite/zh_Hant/>\n"
 "Language: zh_TW\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 5.6.2\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -42,7 +42,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "永不"
 
 #: lib/DateTime.vala:63
 msgid "Now"
@@ -74,16 +74,16 @@ msgstr[0] "%d 小時後"
 
 #: lib/DateTime.vala:84
 msgid "Yesterday"
-msgstr "昨日"
+msgstr "昨天"
 
 #: lib/DateTime.vala:86
 msgid "Tomorrow"
-msgstr "明日"
+msgstr "明天"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:150
 msgid "%a, %b %e, %Y"
-msgstr "%Y年%m月%d日（%a）"
+msgstr "%Y年%m月%d日（%A）"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:153
@@ -98,12 +98,12 @@ msgstr "%Y年"
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:159
 msgid "%b %e"
-msgstr "%b%e日"
+msgstr "%-m月%-d日"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:162
 msgid "%a %Y"
-msgstr "%Y年，%A"
+msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
 #: lib/DateTime.vala:165
@@ -114,7 +114,7 @@ msgstr "%a"
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:168
 msgid "%a, %b %e"
-msgstr "%b%e日（%a）"
+msgstr "%-m 月 %-d 日（%A）"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:171
@@ -172,15 +172,13 @@ msgstr "右 Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:70
-#, fuzzy
 msgid "Right Ctrl"
-msgstr "右 Alt"
+msgstr "右 Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:74
-#, fuzzy
 msgid "Left Ctrl"
-msgstr "左 Alt"
+msgstr "左 Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:79

@@ -1,0 +1,26 @@
+@function rem($pixels, $text-size: 9pt) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($text-size)) {
+        $text-size: $text-size * 1px;
+    }
+
+    @if ($pixels > 0) {
+        // Workaround GTK clamping instead of rounding up
+        @return ($pixels / $text-size * 1rem) + 0.000000001rem;
+    } @else {
+        // Workaround GTK clamping instead of rounding up
+        @return ($pixels / $text-size * 1rem) - 0.000000001rem;
+    }
+}
+
+@function undershoot-gradient ($direction) {
+    @return linear-gradient(
+        $direction,
+        $border-color,
+        rgba(black, 0.05) 1px,
+        rgba(black, 0.0) rem(3px)
+    );
+}

@@ -1,3 +1,12 @@
+.accent {
+    // FIXME: use oklch colorspace once we're Gtk 4.16
+    color: #{'mix(@accent_color, @fg_color, 0.27)'};
+
+    &:backdrop {
+        color: inherit;
+    }
+}
+
 .title-1 {
     font-size: 24pt;
     font-weight: 700;
@@ -25,9 +34,13 @@
     opacity: 0.75;
 }
 
+.numeric {
+    font-feature-settings: "tnum";
+}
+
 // Intended to match the Pango size of `<small>` and `size='smaller'`
 .small-label {
-    font-size: 0.85em;
+    font-size: 0.85rem;
 }
 
 .error {

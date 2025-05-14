@@ -72,6 +72,8 @@ public class Granite.ValidatedEntry : Gtk.Entry {
                 secondary_icon_name = "process-error-symbolic";
                 add_css_class (Granite.STYLE_CLASS_ERROR);
             }
+
+            update_state (Gtk.AccessibleState.INVALID, !is_valid, -1);
         });
     }
 }

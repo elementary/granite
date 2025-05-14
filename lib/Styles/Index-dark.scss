@@ -1,9 +1,7 @@
 $color-scheme: "dark";
 
 // Constants and functions
-@import '_palette.scss';
-@import '_animate.scss';
-@import '_common.scss';
+@import 'Common/Variables.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
 $toplevel-border-color: rgba(black, 0.75);
@@ -11,24 +9,24 @@ $toplevel-border-color: rgba(black, 0.75);
 @function bg-color($level) {
     // Inputs
     @if $level == 0 {
-        @return mix($BLACK_300, $BLACK_500, $weight: 50%);
+        @return $BLACK_500;
     // Views
     } @else if $level == 1 {
-        @return mix($BLACK_300, $BLACK_500, $weight: 25%);
+        @return mix($BLACK_500, $BLACK_600, $weight: 50%);
     // Background
     } @else if $level == 2 {
-        @return $BLACK_500;
+        @return $BLACK_600;
     // Sidebars and inline toolbars
     } @else if $level == 3 {
-        @return mix($BLACK_500, $BLACK_700, $weight: 90%);
+        @return mix($BLACK_600, $BLACK_700, $weight: 50%);
     // Titlebars and toolbars
     } @else if $level == 4 {
-        @return mix($BLACK_500, $BLACK_700, $weight: 45%);
+        @return $BLACK_700;
     }
 }
 
 // Outset box shadow or border color on inputs like buttons, entries, checkboxes
-$border-color: rgba(black, 0.1);
+$border-color: rgba(black, 0.3);
 
 // Text, images, and other foreground elements
 $fg-color: white;
@@ -43,6 +41,8 @@ $warning-color: $BANANA_100;
 $warning-icon-color: $BANANA_500;
 
 // Common styles
+@import 'Common/Mixins.scss';
+@import '_exported.scss';
 @import '_label.scss';
 @import '_osd.scss';
 
@@ -51,3 +51,6 @@ $warning-icon-color: $BANANA_500;
 
 // Granite widgets
 @import 'Granite/Index.scss';
+
+// Maps
+@import 'Shumate/Index.scss';

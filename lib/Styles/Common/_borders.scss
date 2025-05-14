@@ -1,0 +1,13 @@
+@mixin border-interactive {
+    box-shadow:
+        highlight("full"),
+        outset-shadow(1);
+
+    border-style: solid;
+    border-color: $border-color;
+    border-width: 1px;
+}
+
+@mixin border-interactive-roundrect {
+    border-radius: rem($window_radius / 3);
+}

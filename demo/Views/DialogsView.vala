@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class DialogsView : Gtk.Box {
+public class DialogsView : DemoPage {
     public Gtk.Window window { get; construct; }
 
     private Granite.Toast toast;
@@ -13,9 +13,6 @@ public class DialogsView : Gtk.Box {
     }
 
     construct {
-        var overlay = new Gtk.Overlay ();
-        append (overlay);
-
         var dialog_button = new Gtk.Button.with_label ("Show Dialog");
 
         var message_button = new Gtk.Button.with_label ("Show MessageDialog");
@@ -31,8 +28,12 @@ public class DialogsView : Gtk.Box {
         grid.attach (dialog_button, 0, 1);
         grid.attach (message_button, 0, 2);
 
-        overlay.set_child (grid);
+        var overlay = new Gtk.Overlay () {
+            child = grid
+        };
         overlay.add_overlay (toast);
+
+        child = overlay;
 
         dialog_button.clicked.connect (show_dialog);
         message_button.clicked.connect (show_message_dialog);
@@ -62,7 +63,7 @@ public class DialogsView : Gtk.Box {
         dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 
         var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
-        suggested_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+        suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
 
         dialog.response.connect ((response_id) => {
            if (response_id == Gtk.ResponseType.ACCEPT) {
@@ -88,7 +89,7 @@ public class DialogsView : Gtk.Box {
         };
 
         var suggested_button = new Gtk.Button.with_label ("Suggested Action");
-        suggested_button.add_css_class (Granite.STYLE_CLASS_SUGGESTED_ACTION);
+        suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
         message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
         var custom_widget = new Gtk.CheckButton.with_label ("Custom widget");

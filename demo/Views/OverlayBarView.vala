@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class OverlayBarView : Gtk.Box {
+public class OverlayBarView : DemoPage {
     construct {
         var button = new Gtk.ToggleButton.with_label ("Show Spinner");
 
@@ -24,7 +24,7 @@ public class OverlayBarView : Gtk.Box {
             label = "Hover the OverlayBar to change its position"
         };
 
-        append (overlay);
+        child = overlay;
 
         button.toggled.connect (() => {
             overlaybar.active = button.active;

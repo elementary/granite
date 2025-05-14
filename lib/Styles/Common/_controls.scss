@@ -1,0 +1,62 @@
+@mixin control {
+    @include border-interactive;
+
+    background-clip: border-box;
+    background-color: bg-color(0);
+    background-image:
+        linear-gradient(
+            to bottom,
+            scale-color($highlight_color, $alpha: -80%),
+            rgba(white, 0)
+        );
+    transition: all duration("in-place") easing("default");
+
+    &:backdrop {
+        background-image: none;
+    }
+
+    &:disabled {
+        background-color: bg-color(3);
+        background-image: none;
+    }
+}
+
+// used to show a button is being clicked or is in an "active" state
+@mixin control-active {
+    background: bg-color(3);
+    box-shadow:
+        highlight("bottom"),
+        inset-shadow("");
+
+    &:disabled {
+        box-shadow:
+            highlight("bottom"),
+            inset-shadow("disabled");
+    }
+}
+
+// used to show a check or radio button is "active"
+@mixin control-checked {
+    color: $SILVER_100;
+    background-color: #{'@accent_color'};
+
+    &:backdrop,
+    &:disabled {
+        filter: grayscale(100%);
+    }
+}
+
+@mixin control-disabled {
+    opacity: $disabled-opacity;
+}
+
+@mixin trough {
+    $trough-color: scale-color($toplevel-border-color, $alpha: -50%);
+
+    background-color: $trough-color;
+    border-radius: 99px;
+
+    &:disabled {
+        background-color: scale-color($trough-color, $alpha: -10%);
+    }
+}

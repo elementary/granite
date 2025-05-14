@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class FormView : Gtk.Box {
+public class FormView : DemoPage {
     construct {
         Regex? username_regex = null;
         try {
@@ -12,29 +12,29 @@ public class FormView : Gtk.Box {
             critical (e.message);
         }
 
-        var username_label = new Gtk.Label ("Username") {
-            halign = Gtk.Align.START,
-            xalign = 0
-        };
-        username_label.add_css_class (Granite.STYLE_CLASS_H4_LABEL);
-
         var username_entry = new Granite.ValidatedEntry () {
             min_length = 8,
             regex = username_regex
         };
 
+        var username_label = new Granite.HeaderLabel ("Username") {
+            mnemonic_widget = username_entry,
+            secondary_text = "Must be at least 8 characters long"
+        };
+
         var button = new Gtk.Button.with_label ("Submit");
 
-        margin_start = margin_end = margin_top = margin_bottom = 12;
-        orientation = Gtk.Orientation.VERTICAL;
-        spacing = 3;
-        halign = Gtk.Align.CENTER;
-        valign = Gtk.Align.CENTER;
-        vexpand = true;
-        append (username_label);
-        append (username_entry);
-        append (button);
+        var box = new Granite.Box (VERTICAL) {
+            halign = CENTER,
+            valign = CENTER,
+            margin_start = margin_end = margin_top = margin_bottom = 12
+        };
+        box.append (username_label);
+        box.append (username_entry);
+        box.append (button);
 
-        username_entry.bind_property ("is-valid", button, "sensitive");
+        child = box;
+
+        username_entry.bind_property ("is-valid", button, "sensitive", SYNC_CREATE);
     }
 }

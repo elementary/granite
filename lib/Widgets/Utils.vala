@@ -26,7 +26,8 @@ public static string accel_to_string (string? accel) {
 
     string[] arr = {};
     if (Gdk.ModifierType.SUPER_MASK in accel_mods) {
-        arr += "⌘";
+        /// TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
+        arr += _("Super");
     }
 
     if (Gdk.ModifierType.SHIFT_MASK in accel_mods) {
@@ -253,6 +254,7 @@ namespace Granite.Widgets.Utils {
      * @return the added {@link Gtk.CssProvider}, or null in case the parsing of
      *         stylesheet failed.
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0")]
     public Gtk.CssProvider? set_color_primary (
         Gtk.Widget window,
         Gdk.RGBA color,

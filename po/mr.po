@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-30 20:48+0000\n"
-"PO-Revision-Date: 2021-04-06 22:15+0000\n"
+"POT-Creation-Date: 2025-03-24 15:21+0000\n"
+"PO-Revision-Date: 2025-01-18 16:16+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/desktop/granite/"
 "mr/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -35,7 +35,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "कधीही नाही"
 
 #: lib/DateTime.vala:63
 msgid "Now"
@@ -45,37 +45,29 @@ msgstr "या क्षणी"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
-"एक \n"
-"%dm पूर्वी"
-msgstr[1] ""
-"दुसरा\n"
-"%dm पूर्वी"
+msgstr[0] "%dm पूर्वी"
+msgstr[1] "%dm पूर्वी"
 
 #: lib/DateTime.vala:69
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-"एक\n"
-"%dh पूर्वी"
-msgstr[1] ""
-"दुसरा \n"
-"%dh पूर्वी"
+msgstr[0] "%dh पूर्वी"
+msgstr[1] "%dh पूर्वी"
 
 #: lib/DateTime.vala:75
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
 msgstr[0] "%dm मध्ये"
-msgstr[1] "%dm  मध्ये"
+msgstr[1] "%dm मध्ये"
 
 #: lib/DateTime.vala:78
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
 msgstr[0] "%dh मध्ये"
-msgstr[1] "%dh  मध्ये"
+msgstr[1] "%dh मध्ये"
 
 #: lib/DateTime.vala:84
 msgid "Yesterday"
@@ -128,11 +120,11 @@ msgstr "%b"
 
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
-msgstr "_Close"
+msgstr "बंद करा (_C)"
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
-msgstr "_Cancel"
+msgstr "रद्द करा (_C)"
 
 #: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
@@ -155,7 +147,7 @@ msgstr ":"
 
 #: lib/Widgets/Utils.vala:33
 msgid "Shift"
-msgstr "शिफ्ट"
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:37
 msgid "Ctrl"
@@ -198,21 +190,21 @@ msgstr "अधिक"
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:89
 msgid "Equals"
-msgstr "च्या बरोबर"
+msgstr "बरोबर"
 
 #: lib/Widgets/Utils.vala:92
 msgid "Enter"
-msgstr "एंटर"
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:96
 msgid "Left Shift"
-msgstr "डावे शिफ्ट"
+msgstr "डावे Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:100
 msgid "Right Shift"
-msgstr "उजवा शिफ्ट"
+msgstr "उजवा Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:163

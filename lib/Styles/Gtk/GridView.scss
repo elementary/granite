@@ -1,0 +1,21 @@
+gridview {
+    border-spacing: 1rem;
+    padding: 1rem;
+
+    &.view {
+        background-color: bg-color(1);
+    }
+
+    child.activatable {
+        @extend .model;
+
+        &:selected {
+            @extend selection;
+        }
+    }
+
+    rubberband {
+        @extend selection;
+        @include border-interactive-roundrect;
+    }
+}

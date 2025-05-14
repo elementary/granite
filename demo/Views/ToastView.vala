@@ -3,10 +3,8 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class ToastView : Gtk.Box {
+public class ToastView : DemoPage {
     construct {
-        halign = Gtk.Align.CENTER;
-
         var overlay = new Gtk.Overlay ();
 
         var toast = new Granite.Toast (_("Button was pressed!"));
@@ -39,6 +37,6 @@ public class ToastView : Gtk.Box {
             box.append (label);
         });
 
-        append (overlay);
+        child = overlay;
     }
 }

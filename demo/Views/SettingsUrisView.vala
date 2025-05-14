@@ -3,11 +3,9 @@
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
-public class SettingsUrisView : Gtk.Box {
+public class SettingsUrisView : DemoPage {
     construct {
-        halign = Gtk.Align.CENTER;
-
-        var column = new Gtk.Box (Gtk.Orientation.VERTICAL, 16) {
+        var column = new Granite.Box (VERTICAL) {
             margin_start = 24,
             margin_end = 24,
             margin_top = 24,
@@ -51,6 +49,6 @@ public class SettingsUrisView : Gtk.Box {
             _("Keyboard → Shortcuts → Custom")
         ));
 
-        append (column);
+        child = column;
     }
 }
