@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 15:21+0000\n"
+"POT-Creation-Date: 2025-05-14 16:40+0000\n"
 "PO-Revision-Date: 2024-01-28 21:11+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementary.io/projects/desktop/"
@@ -157,69 +157,74 @@ msgstr "ПП"
 msgid ":"
 msgstr ":"
 
-#: lib/Widgets/Utils.vala:33
+#. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
+#: lib/Widgets/Utils.vala:30
+msgid "Super"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:34
 msgid "Shift"
 msgstr "Shift"
 
-#: lib/Widgets/Utils.vala:37
+#: lib/Widgets/Utils.vala:38
 msgid "Ctrl"
 msgstr "Ctrl"
 
-#: lib/Widgets/Utils.vala:41
+#: lib/Widgets/Utils.vala:42
 msgid "Alt"
 msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:59
+#: lib/Widgets/Utils.vala:60
 msgid "Left Alt"
 msgstr "Лівий Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:63
+#: lib/Widgets/Utils.vala:64
 msgid "Right Alt"
 msgstr "Правий Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:70
+#: lib/Widgets/Utils.vala:71
 msgid "Right Ctrl"
 msgstr "Правий Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:74
+#: lib/Widgets/Utils.vala:75
 msgid "Left Ctrl"
 msgstr "Лівий Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
-#: lib/Widgets/Utils.vala:79
+#: lib/Widgets/Utils.vala:80
 msgid "Minus"
 msgstr "Мінус"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
-#: lib/Widgets/Utils.vala:84
+#: lib/Widgets/Utils.vala:85
 msgid "Plus"
 msgstr "Плюс"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
-#: lib/Widgets/Utils.vala:89
+#: lib/Widgets/Utils.vala:90
 msgid "Equals"
 msgstr "Дорівнює"
 
-#: lib/Widgets/Utils.vala:92
+#: lib/Widgets/Utils.vala:93
 msgid "Enter"
 msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
-#: lib/Widgets/Utils.vala:96
+#: lib/Widgets/Utils.vala:97
 msgid "Left Shift"
 msgstr "Лівий Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
-#: lib/Widgets/Utils.vala:100
+#: lib/Widgets/Utils.vala:101
 msgid "Right Shift"
 msgstr "Правий Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:163
+#: lib/Widgets/Utils.vala:164
 msgid ", "
 msgstr ", "
 
