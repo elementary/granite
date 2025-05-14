@@ -11,7 +11,7 @@ namespace Granite {
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
-    [Version (deprecated = true, deprecated_since = "7.5.0", replacement = "Granite.BackButton")]
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.BackButton")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
