@@ -88,7 +88,10 @@ public class CSSView : DemoPage {
         ("\"Granite.CssClass.TERMINAL\"");
 
         var terminal = new Granite.TerminalView ();
-        terminal.append_to_buffer ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo");
+        terminal.append_to_buffer ("[ 25%] Performing optimization passes\n");
+        terminal.append_to_buffer ("[ 65%] Inserting nonsense functions to pad binary size\n");
+        terminal.append_to_buffer ("[ 73%] Linking C executable granite-demo\n");
+        terminal.append_to_buffer ("[100%] Built target granite-demo\n");
 
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 

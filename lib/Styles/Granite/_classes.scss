@@ -54,7 +54,9 @@ paper {
     background-color: $SLATE_900;
     color: $SILVER_200;
 
-    padding: rem(12px) rem(18px);
+    padding: 0 rem(18px);
+    // this is roughly 4 lines
+    min-height: 12ex; 
 
     & selection {
         background-color: $SILVER_200;
