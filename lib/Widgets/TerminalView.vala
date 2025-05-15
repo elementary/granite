@@ -38,7 +38,7 @@ public class Granite.TerminalView : Granite.Bin {
 
         notify["autoscroll"].connect ((s, p) => {
             if (autoscroll) {
-                enable_autoscroll ();           
+                enable_autoscroll ();
             } else {
                 disable_autoscroll ();
             }

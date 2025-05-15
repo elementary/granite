@@ -325,7 +325,7 @@ public class Granite.MessageDialog : Granite.Dialog {
 */
             details_view = new Granite.TerminalView ();
             expander = new Gtk.Expander (_("Details")) {
-                child = details_view 
+                child = details_view
             };
 
             message_grid.attach (expander, 1, 2, 1, 1);
