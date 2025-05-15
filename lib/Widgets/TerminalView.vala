@@ -6,6 +6,8 @@
 [Version (since = "7.7.0")]
 public class Granite.TerminalView : Granite.Bin {
 
+    public bool autoscroll { get; construct set; default=false; }
+
     private Gtk.TextBuffer buffer;
     private double prev_upper_adj = 0;
     private Gtk.ScrolledWindow scrolled_window;
@@ -16,6 +18,10 @@ public class Granite.TerminalView : Granite.Bin {
             editable = false,
             monospace = true,
             pixels_below_lines = 3,
+            left_margin = 9,
+            right_margin = 9,
+            top_margin = 6,
+            bottom_margin = 6,
             wrap_mode = Gtk.WrapMode.WORD
         };
 
@@ -30,15 +36,30 @@ public class Granite.TerminalView : Granite.Bin {
 
         this.child = scrolled_window;
 
-        // FIXME: this disjoints the window closing and the execution finishing
+        notify["autoscroll"].connect ((s, p) => {
+            if (autoscroll) {
+                enable_autoscroll ();           
+            } else {
+                disable_autoscroll ();
+            }
+
+        });
+    }
+
+    construct {
+        this.add_css_class (Granite.CssClass.TERMINAL);
+    }
+
+    private void enable_autoscroll () {
+        // FIXME: this disjoints the window closing and the application finishing
         Idle.add (() => {
             attempt_scroll ();
             return GLib.Source.CONTINUE;
         });
     }
 
-    construct {
-        this.add_css_class (Granite.CssClass.TERMINAL);
+    private void disable_autoscroll () {
+        //TODO: implement
     }
 
     // TODO: does this need to exist?

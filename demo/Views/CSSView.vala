@@ -87,7 +87,7 @@ public class CSSView : DemoPage {
         var terminal_label = new Granite.HeaderLabel
         ("\"Granite.CssClass.TERMINAL\"");
 
-        var terminal = new Granite.TerminalView ();
+        var terminal = new Granite.TerminalView () { autoscroll = true };
         terminal.append_to_buffer ("[ 25%] Performing optimization passes\n");
         terminal.append_to_buffer ("[ 65%] Inserting nonsense functions to pad binary size\n");
         terminal.append_to_buffer ("[ 73%] Linking C executable granite-demo\n");
