@@ -12,7 +12,7 @@ namespace Granite {
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
-    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.BACK")]
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.BackButton")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
@@ -225,11 +225,6 @@ namespace Granite {
          * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
          */
         public const string ACCENT = "accent";
-
-        /**
-         * Style class for a {@link Gtk.Button} which is used to navigate backwards
-         */
-        public const string BACK = "back-button";
 
         /**
          * Style class for adding a small shadow to a container such as for image thumbnails
