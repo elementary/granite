@@ -51,14 +51,14 @@ paper {
 .terminal {
     font-family: monospace;
 
-    background-color: $fg-color;
-    color: bg-color(0);
+    background-color: $SLATE_900;
+    color: $SILVER_200;
 
     padding: rem(12px) rem(18px);
 
     & selection {
-        background-color: bg-color(0);
-        color: $fg-color;
+        background-color: $SILVER_200;
+        color: $SLATE_900;
 
         &:backdrop {
             // Cancelling values set in non-terminal selection
