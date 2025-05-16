@@ -6,7 +6,7 @@
 public class TerminalOutputView: DemoPage {
     construct {
         title = "Terminal Output";
-        var terminal = new Granite.TerminalView () { 
+        var terminal = new Granite.TerminalView () {
             autoscroll = true,
             vexpand = true,
             margin_top = 12,

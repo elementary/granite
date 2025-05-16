@@ -59,6 +59,11 @@ public class Granite.TerminalView : Granite.Bin {
         //TODO: implement
     }
 
+    /* This is useful for specific feedback such as in MessageDialogs
+     *
+     * Might also be useful to have a way of enabling direct input for stdout or
+     * stderr
+     */
     public void append_text (string text) {
         buffer.insert_at_cursor (text, -1);
     }
@@ -82,4 +87,3 @@ public class Granite.TerminalView : Granite.Bin {
         prev_upper_adj = adj.upper;
     }
 }
-
