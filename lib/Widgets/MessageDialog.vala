@@ -335,6 +335,6 @@ public class Granite.MessageDialog : Granite.Dialog {
             }
         }
 
-        details_view.append_to_buffer (error_message);
+        details_view.append_text (error_message);
     }
 }

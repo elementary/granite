@@ -35,6 +35,7 @@ public class Granite.TerminalView : Granite.Bin {
         };
 
         this.child = scrolled_window;
+        this.add_css_class (Granite.CssClass.TERMINAL);
 
         notify["autoscroll"].connect ((s, p) => {
             if (autoscroll) {
@@ -44,10 +45,6 @@ public class Granite.TerminalView : Granite.Bin {
             }
 
         });
-    }
-
-    construct {
-        this.add_css_class (Granite.CssClass.TERMINAL);
     }
 
     private void enable_autoscroll () {
@@ -62,9 +59,12 @@ public class Granite.TerminalView : Granite.Bin {
         //TODO: implement
     }
 
-    // TODO: does this need to exist?
-    public void append_to_buffer (string text) {
+    public void append_text (string text) {
         buffer.insert_at_cursor (text, -1);
+    }
+
+    public void replace_text (string text) {
+        buffer.set_text (text);
     }
 
     public void attempt_scroll () {
@@ -82,3 +82,4 @@ public class Granite.TerminalView : Granite.Bin {
         prev_upper_adj = adj.upper;
     }
 }
+

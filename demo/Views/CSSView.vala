@@ -84,15 +84,6 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var terminal_label = new Granite.HeaderLabel
-        ("\"Granite.CssClass.TERMINAL\"");
-
-        var terminal = new Granite.TerminalView () { autoscroll = true };
-        terminal.append_to_buffer ("[ 25%] Performing optimization passes\n");
-        terminal.append_to_buffer ("[ 65%] Inserting nonsense functions to pad binary size\n");
-        terminal.append_to_buffer ("[ 73%] Linking C executable granite-demo\n");
-        terminal.append_to_buffer ("[100%] Built target granite-demo\n");
-
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
         var accent_color_box = new Gtk.Box (HORIZONTAL, 6);
@@ -133,8 +124,6 @@ public class CSSView : DemoPage {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (terminal_label);
-        box.append (terminal);
         box.append (accent_color_label);
         box.append (accent_color_box);
         box.append (success_color_box);
