@@ -47,23 +47,3 @@ paper {
 .monospace {
     font-family: monospace;
 }
-
-.terminal {
-    font-family: monospace;
-
-    background-color: $SLATE_900;
-    color: $SILVER_200;
-
-    // this is roughly 3 lines
-    min-height: 9ex; 
-
-    & selection {
-        background-color: $SILVER_200;
-        color: $SLATE_900;
-
-        &:backdrop {
-            // Cancelling values set in non-terminal selection
-            background-color: inherit;
-        }
-    }
-}
