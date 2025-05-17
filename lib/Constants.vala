@@ -131,7 +131,7 @@ namespace Granite {
      * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
      * interal padding will need to be set with {@link Gtk.Container.border_width}
      */
-    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.TERMINAL")]
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.TerminalView")]
     public const string STYLE_CLASS_TERMINAL = "terminal";
     /**
      * Style class for title label text in a {@link Granite.MessageDialog}
@@ -294,7 +294,7 @@ namespace Granite {
          * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
          * interal padding will need to be set with {@link Gtk.Container.border_width}
          */
-        public const string TERMINAL = "terminal";
+        internal const string TERMINAL = "terminal";
     }
 
     /**
