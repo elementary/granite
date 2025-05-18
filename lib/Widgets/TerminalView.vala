@@ -38,38 +38,17 @@ public class Granite.TerminalView : Granite.Bin {
         this.add_css_class (Granite.CssClass.TERMINAL);
 
         notify["autoscroll"].connect ((s, p) => {
-            if (autoscroll) {
-                enable_autoscroll ();
-            } else {
-                disable_autoscroll ();
-            }
-
+            update_autoscroll ();
         });
     }
 
-    private void enable_autoscroll () {
+    private void update_autoscroll () {
         // FIXME: this disjoints the window closing and the application finishing
         Idle.add (() => {
             attempt_scroll ();
-            return GLib.Source.CONTINUE;
+            if (this.autoscroll) { return GLib.Source.CONTINUE; }
+            else {return GLib.Source.REMOVE; }
         });
-    }
-
-    private void disable_autoscroll () {
-        //TODO: implement
-    }
-
-    /* This is useful for specific feedback such as in MessageDialogs
-     *
-     * Might also be useful to have a way of enabling direct input for stdout or
-     * stderr
-     */
-    public void append_text (string text) {
-        buffer.insert_at_cursor (text, -1);
-    }
-
-    public void replace_text (string text) {
-        buffer.set_text (text);
     }
 
     public void attempt_scroll () {
@@ -85,5 +64,18 @@ public class Granite.TerminalView : Granite.Bin {
         }
 
         prev_upper_adj = adj.upper;
+    }
+
+    /* This is useful for specific feedback such as in MessageDialogs
+     *
+     * Might also be useful to have a way of enabling direct input for stdout or
+     * stderr
+     */
+    public void append_text (string text) {
+        buffer.insert_at_cursor (text, -1);
+    }
+
+    public void replace_text (string text) {
+        buffer.set_text (text);
     }
 }
