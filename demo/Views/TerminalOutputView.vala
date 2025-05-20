@@ -18,6 +18,12 @@ public class TerminalOutputView: DemoPage {
         terminal.append_text ("[ 65%] Inserting nonsense functions to pad binary size\n");
         terminal.append_text ("[ 73%] Linking C executable granite-demo\n");
         terminal.append_text ("[100%] Built target granite-demo\n");
+        terminal.append_text ("Counting to one hundred...\n");
+
+        for (int i = 0; i <= 100; i++) {
+            var itos = i.to_string ("%i\n");
+            terminal.append_text (itos);
+        }
 
         terminal.add_css_class (Granite.CssClass.CARD);
 
