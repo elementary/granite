@@ -48,7 +48,12 @@ paper {
     font-family: monospace;
 }
 
-.destructive {
-    background-color: $STRAWBERRY_300;
+button.text-button.destructive {
+    background-color: $error_color;
+    color: bg-color(0);
     text-shadow: none;
+
+    &:active {
+        background-color: mix($error_color, $BLACK_900, 90%);
+    }
 }
