@@ -6,14 +6,14 @@
 [Version (since = "7.7.0")]
 public class Granite.TerminalView : Granite.Bin {
 
-    public bool autoscroll { get; construct set; default=false; }
+    public bool autoscroll { get; set; default = false; }
 
     private Gtk.TextBuffer buffer;
     private double prev_upper_adj = 0;
     private Gtk.ScrolledWindow scrolled_window;
 
     public TerminalView () {
-        Gtk.TextView view = new Gtk.TextView () {
+        var view = new Gtk.TextView () {
             cursor_visible = false,
             editable = false,
             monospace = true,
@@ -34,8 +34,8 @@ public class Granite.TerminalView : Granite.Bin {
             hscrollbar_policy = NEVER,
         };
 
-        this.child = scrolled_window;
-        this.add_css_class (Granite.CssClass.TERMINAL);
+        child = scrolled_window;
+        add_css_class (Granite.CssClass.TERMINAL);
 
         notify["autoscroll"].connect ((s, p) => {
             update_autoscroll ();
@@ -46,8 +46,11 @@ public class Granite.TerminalView : Granite.Bin {
         // FIXME: this disjoints the window closing and the application finishing
         Idle.add (() => {
             attempt_scroll ();
-            if (this.autoscroll) { return GLib.Source.CONTINUE; }
-            else {return GLib.Source.REMOVE; }
+            if (autoscroll) {
+                return GLib.Source.CONTINUE;
+            } else {
+                return GLib.Source.REMOVE;
+            }
         });
     }
 
