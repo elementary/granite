@@ -1,9 +1,5 @@
 button {
 
-    &.text-button {
-        padding: rem(2px) rem(4px);
-    }
-
     &.image-button {
         @extend .circular;
 
@@ -35,6 +31,8 @@ button {
         @include control;
         @include border-interactive-roundrect;
 
+        padding: rem(2px) rem(4px);
+
         &:active,
         &:checked {
             @include control-active;
@@ -47,6 +45,10 @@ button {
 
         &:disabled {
             @include control-disabled;
+        }
+
+        &:hover {
+            filter: brightness(105%);
         }
     }
 

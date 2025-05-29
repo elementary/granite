@@ -2,25 +2,18 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @include control;
-        @include border-interactive-roundrect;
+        @extend .text-button; 
+
+        // Overwrite changes made further down the cascade due to the way
+        // @extend works
+        padding: 0;
 
         &:active,
         &:checked {
             @include control-active;
-            transform: none;
-        }
 
-        &:active {
+            color: $fg-color;
             filter: brightness(95%);
-        }
-
-        &:disabled {
-            @include control-disabled;
-        }
-
-        &:hover {
-            filter: brightness(105%);
         }
     }
 
