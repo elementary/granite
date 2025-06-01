@@ -18,6 +18,7 @@ public class Granite.Demo : Gtk.Application {
         var window = new Gtk.Window ();
 
         var box_view = new BoxView ();
+        var lists_view = new ListsView ();
         var accel_label_view = new AccelLabelView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
@@ -30,13 +31,17 @@ public class Granite.Demo : Gtk.Application {
         var settings_uris_view = new SettingsUrisView ();
         var style_manager_view = new StyleManagerView ();
         var utils_view = new UtilsView ();
+        var video_view = new VideoView ();
         var placeholder = new WelcomeView ();
         var dialogs_view = new DialogsView (window);
         var application_view = new ApplicationView ();
 
-        var main_stack = new Gtk.Stack ();
+        var main_stack = new Gtk.Stack () {
+            vhomogeneous = false
+        };
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
+        main_stack.add_titled (lists_view, "lists", "Lists & Grids");
         main_stack.add_titled (style_manager_view, "style_manager", "StyleManager");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
@@ -45,6 +50,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (controls_view, "controls", "Controls");
         main_stack.add_titled (maps_view, "maps", "Maps");
+        main_stack.add_titled (video_view, "video", video_view.title);
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");
@@ -64,9 +70,10 @@ public class Granite.Demo : Gtk.Application {
             vexpand = true
         };
 
-        var start_box = new Gtk.Box (VERTICAL, 0);
-        start_box.append (start_header);
-        start_box.append (stack_sidebar);
+        var start_box = new Granite.ToolBox () {
+            content = stack_sidebar
+        };
+        start_box.add_top_bar (start_header);
         start_box.add_css_class (Granite.STYLE_CLASS_SIDEBAR);
 
         var paned = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
@@ -79,7 +86,7 @@ public class Granite.Demo : Gtk.Application {
 
         window.child = paned;
         window.set_default_size (900, 600);
-        window.set_size_request (750, 500);
+        window.set_size_request (300, 200);
         window.titlebar = new Gtk.Grid () { visible = false };
         window.title = "Granite Demo";
 

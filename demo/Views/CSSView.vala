@@ -44,6 +44,16 @@ public class CSSView : DemoPage {
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
+        var small = new Gtk.Label ("\"Granite.CssClass.SMALL\"") {
+            margin_bottom = 12
+        };
+        small.add_css_class (Granite.CssClass.SMALL);
+
+        var mono = new Gtk.Label ("\"Granite.CssClass.MONOSPACE\"") {
+            margin_bottom = 12
+        };
+        mono.add_css_class (Granite.CssClass.MONOSPACE);
+
         var card_header = new Granite.HeaderLabel ("Cards and Headers") {
             secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
@@ -57,6 +67,8 @@ public class CSSView : DemoPage {
         card.append (header3);
         card.append (header4);
         card.append (numeric);
+        card.append (small);
+        card.append (mono);
 
         var card_checkered = new Granite.Bin () {
             child = new Gtk.Image.from_icon_name ("battery-low") {
@@ -72,26 +84,6 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var richlist_label = new Granite.HeaderLabel ("Lists") {
-            secondary_text = "\"rich-list\" and \"frame\" style classes"
-        };
-
-        var separators_modelbutton = new Granite.SwitchModelButton ("Show Separators") {
-            active = true,
-            description = "\"show-separators = true\""
-        };
-
-        var rich_listbox = new Gtk.ListBox () {
-            show_separators = true
-        };
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_RICH_LIST);
-        rich_listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
-        rich_listbox.append (new Gtk.Label ("Row 1"));
-        rich_listbox.append (new Gtk.Label ("Row 2"));
-        rich_listbox.append (separators_modelbutton);
-
-        separators_modelbutton.bind_property ("active", rich_listbox, "show-separators", SYNC_CREATE | DEFAULT);
-
         var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
 
         var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
@@ -106,27 +98,6 @@ public class CSSView : DemoPage {
             child = terminal
         };
         terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
-
-        var scales_header = new Granite.HeaderLabel ("Scales") {
-            secondary_text = "\"warmth\" and \"temperature\" style classes"
-        };
-
-        var warmth_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, 3500, 6000, 10) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true,
-            inverted = true
-        };
-        warmth_scale.set_value (6000);
-        warmth_scale.add_css_class (Granite.STYLE_CLASS_WARMTH);
-
-        var temperature_scale = new Gtk.Scale.with_range (Gtk.Orientation.HORIZONTAL, -16.0f, 16.0f, 1.0) {
-            draw_value = false,
-            has_origin = false,
-            hexpand = true
-        };
-        temperature_scale.set_value (0);
-        temperature_scale.add_css_class (Granite.STYLE_CLASS_TEMPERATURE);
 
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 
@@ -168,13 +139,8 @@ public class CSSView : DemoPage {
         };
         box.append (card_header);
         box.append (card_box);
-        box.append (richlist_label);
-        box.append (rich_listbox);
         box.append (terminal_label);
         box.append (terminal_scroll);
-        box.append (scales_header);
-        box.append (warmth_scale);
-        box.append (temperature_scale);
         box.append (accent_color_label);
         box.append (accent_color_box);
         box.append (success_color_box);
@@ -182,6 +148,6 @@ public class CSSView : DemoPage {
         box.append (error_color_box);
         box.append (dimmed_box);
 
-        content = box;
+        child = box;
     }
 }

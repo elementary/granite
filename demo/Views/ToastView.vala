@@ -37,6 +37,6 @@ public class ToastView : DemoPage {
             box.append (label);
         });
 
-        content = overlay;
+        child = overlay;
     }
 }

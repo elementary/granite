@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the granite-7 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: granite-7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 16:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sco\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
+#: lib/DateTime.vala:28
+msgid "%-l:%M:%S %p"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
+#: lib/DateTime.vala:31
+msgid "%-l:%M %p"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
+#: lib/DateTime.vala:36
+msgid "%H:%M:%S"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format)
+#: lib/DateTime.vala:39
+msgid "%H:%M"
+msgstr ""
+
+#: lib/DateTime.vala:54
+msgid "Never"
+msgstr ""
+
+#: lib/DateTime.vala:63
+msgid "Now"
+msgstr ""
+
+#: lib/DateTime.vala:66
+#, c-format
+msgid "%dm ago"
+msgid_plural "%dm ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/DateTime.vala:69
+#, c-format
+msgid "%dh ago"
+msgid_plural "%dh ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/DateTime.vala:75
+#, c-format
+msgid "in %dm"
+msgid_plural "in %dm"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/DateTime.vala:78
+#, c-format
+msgid "in %dh"
+msgid_plural "in %dh"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/DateTime.vala:84
+msgid "Yesterday"
+msgstr ""
+
+#: lib/DateTime.vala:86
+msgid "Tomorrow"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
+#: lib/DateTime.vala:150
+msgid "%a, %b %e, %Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the date and year
+#: lib/DateTime.vala:153
+msgid "%b %e %Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the year
+#: lib/DateTime.vala:156
+msgid "%Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the date
+#: lib/DateTime.vala:159
+msgid "%b %e"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
+#: lib/DateTime.vala:162
+msgid "%a %Y"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday
+#: lib/DateTime.vala:165
+#, c-format
+msgid "%a"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
+#: lib/DateTime.vala:168
+msgid "%a, %b %e"
+msgstr ""
+
+#. / TRANSLATORS: a GLib.DateTime format showing the month.
+#: lib/DateTime.vala:171
+msgid "%b"
+msgstr ""
+
+#: lib/Widgets/MessageDialog.vala:126
+msgid "_Close"
+msgstr ""
+
+#: lib/Widgets/MessageDialog.vala:129
+msgid "_Cancel"
+msgstr ""
+
+#: lib/Widgets/MessageDialog.vala:325
+msgid "Details"
+msgstr ""
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: lib/Widgets/TimePicker.vala:94
+msgid "AM"
+msgstr ""
+
+#. / TRANSLATORS: this will only show up when 12-hours clock is in use
+#: lib/Widgets/TimePicker.vala:99
+msgid "PM"
+msgstr ""
+
+#. / TRANSLATORS: separates hours from minutes.
+#: lib/Widgets/TimePicker.vala:136
+msgid ":"
+msgstr ""
+
+#. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
+#: lib/Widgets/Utils.vala:30
+msgid "Super"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:34
+msgid "Shift"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:38
+msgid "Ctrl"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:42
+msgid "Alt"
+msgstr ""
+
+#. /TRANSLATORS: The Alt key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:60
+msgid "Left Alt"
+msgstr ""
+
+#. /TRANSLATORS: The Alt key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:64
+msgid "Right Alt"
+msgstr ""
+
+#. /TRANSLATORS: The Ctrl key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:71
+msgid "Right Ctrl"
+msgstr ""
+
+#. /TRANSLATORS: The Ctrl key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:75
+msgid "Left Ctrl"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "-" key
+#: lib/Widgets/Utils.vala:80
+msgid "Minus"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "+" key
+#: lib/Widgets/Utils.vala:85
+msgid "Plus"
+msgstr ""
+
+#. /TRANSLATORS: This is a non-symbol representation of the "=" key
+#: lib/Widgets/Utils.vala:90
+msgid "Equals"
+msgstr ""
+
+#: lib/Widgets/Utils.vala:93
+msgid "Enter"
+msgstr ""
+
+#. /TRANSLATORS: The Shift key on the left side of the keyboard
+#: lib/Widgets/Utils.vala:97
+msgid "Left Shift"
+msgstr ""
+
+#. /TRANSLATORS: The Shift key on the right side of the keyboard
+#: lib/Widgets/Utils.vala:101
+msgid "Right Shift"
+msgstr ""
+
+#. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
+#: lib/Widgets/Utils.vala:164
+msgid ", "
+msgstr ""

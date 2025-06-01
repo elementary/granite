@@ -5,9 +5,7 @@
 
 public class BoxView : DemoPage {
     construct {
-        var title_label = new Granite.HeaderLabel ("Granite.Box") {
-            size = H1
-        };
+        title = "Granite.Box";
 
         var single_header = new Granite.HeaderLabel ("Single Spaced") {
             secondary_text = "child_spacing = SINGLE"
@@ -85,11 +83,10 @@ public class BoxView : DemoPage {
             margin_start = 12,
             margin_end = 12
         };
-        vbox.append (title_label);
         vbox.append (single_container);
         vbox.append (double_container);
         vbox.append (linked_box);
 
-        content = vbox;
+        child = vbox;
     }
 }

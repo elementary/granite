@@ -13,12 +13,14 @@ executable(
     'Views/DialogsView.vala',
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',
+    'Views/ListsView.vala',
     'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
     'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
+    'Views/VideoView.vala',
     'Views/WelcomeView.vala',
 
     dependencies: [

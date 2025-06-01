@@ -1,17 +1,49 @@
 button {
+
+    &.text-button {
+        padding: rem(2px) rem(4px);
+    }
+
+    &.image-button {
+        @extend .circular;
+
+        padding: rem(4px);
+        min-height: 16px;
+        min-width: 16px;
+        transition:
+            background duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:active {
+            background: rgba($fg-color, 0.15);
+            transform: scale(0.8);
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &.toggle {
+            @include border-interactive-roundrect;
+
+            &:checked {
+                @extend selection;
+            }
+        }
+    }
+
     .linked &,
+    .linked &.image-button,
+    .linked &.image-button.toggle,
     &.text-button {
         @include control;
         @include border-interactive-roundrect;
 
-        &:checked, &:active {
-            @include control-active-depressed;
+        &:active,
+        &:checked {
+            @include control-active;
+            transform: none;
         }
-        
-        &:hover {
-            filter: brightness(105%);
-        }
-        
+
         &:active {
             filter: brightness(95%);
         }
@@ -19,49 +51,10 @@ button {
         &:disabled {
             @include control-disabled;
         }
-    }
 
-    // Stopgap since we can't do angled buttons in GtkCSS, and generating all
-    // the necessary SVGs for light/dark and accent color combinations is
-    // untenable. Ideally we'd deprecate this in favor of something like a
-    // Granite.BackButton with custom drawing; until then, stick an icon in it.
-
-    &.back-button {
-        background-repeat: no-repeat no-repeat;
-        background-size: 16px, cover;
-
-        &:dir(ltr) {
-            background-image:
-                -gtk-icontheme('go-previous-symbolic'),
-                linear-gradient(
-                    to bottom,
-                    #{'alpha(@highlight_color, 0.2)'},
-                    rgba(white, 0)
-                );
-            padding-left: calc(#{rem(9px)} + 16px);
-            background-position:
-                #{rem(6px)} 50%,
-                center, center;
+        &:hover {
+            filter: brightness(105%);
         }
-
-        &:dir(rtl) {
-            background-image:
-                -gtk-icontheme('go-next-symbolic'),
-                linear-gradient(
-                    to bottom,
-                    #{'alpha(@highlight_color, 0.2)'},
-                    rgba(white, 0)
-                );
-            padding-right: calc(#{rem(9px)} + 16px);
-            background-position:
-                calc(100% - #{rem(6px)}) 50%,
-                center, center;
-        }
-    }
-
-    &.circular {
-        // Not 50% because that creates a squished ellipse for non-squares widgets
-        border-radius: 9999px;
     }
 
     &.osd {
@@ -82,14 +75,46 @@ button {
             // Intentionally not in ems since it's used as a stroke
             0 0 0 1px $shadow-border-color,
             shadow(2);
+        color: $fg-color;
+        margin: 0;
         padding: $button-spacing;
 
-        .linked.vertical &:first-child {
+        transition:
+            background duration("expand") easing(),
+            transform duration("expand") easing("ease-out-back");
+
+        &:active {
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &:disabled {
+            @include control-disabled;
+
+            box-shadow:
+                highlight(),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px $shadow-border-color,
+                shadow(1);
+        }
+
+        .linked & {
+            transition: none;
+            transform: none;
+        }
+
+        .linked &.vertical &:first-child {
             box-shadow:
                 highlight("top"),
                 // Intentionally not in ems since it's used as a stroke
                 0 0 0 1px $shadow-border-color,
                 shadow(2);
         }
+    }
+
+    // Almost certainly a button with text and image
+    > box.horizontal {
+        border-spacing: $button-spacing / 2;
     }
 }

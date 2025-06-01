@@ -5,16 +5,18 @@
 
 public class MapsView : DemoPage {
     construct {
-        var title_label = new Granite.HeaderLabel ("Shumate.SimpleMap") {
-            size = H1
-        };
+        title = "Shumate.SimpleMap";
 
         var registry = new Shumate.MapSourceRegistry.with_defaults ();
 
         var simple_map = new Shumate.SimpleMap () {
             map_source = registry.get_by_id (Shumate.MAP_SOURCE_OSM_MAPNIK),
             overflow = HIDDEN,
-            vexpand = true
+            vexpand = true,
+            margin_top = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12
         };
         simple_map.add_css_class (Granite.CssClass.CARD);
 
@@ -34,15 +36,6 @@ public class MapsView : DemoPage {
         map.add_layer (marker_layer);
         map.center_on (38.575764, -121.478851);
 
-        var vbox = new Granite.Box (VERTICAL, DOUBLE) {
-            margin_top = 12,
-            margin_bottom = 12,
-            margin_start = 12,
-            margin_end = 12
-        };
-        vbox.append (title_label);
-        vbox.append (simple_map);
-
-        content = vbox;
+        child = simple_map;
     }
 }

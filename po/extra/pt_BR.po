@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 15:21+0000\n"
-"PO-Revision-Date: 2024-11-30 15:16+0000\n"
-"Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
+"POT-Creation-Date: 2025-05-14 16:40+0000\n"
+"PO-Revision-Date: 2025-05-14 16:40+0000\n"
+"Last-Translator: Max2020 <alcizmaxpereira@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://l10n.elementaryos.org/projects/"
 "desktop/granite-extra/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -47,7 +47,7 @@ msgstr "Novos recursos:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "Granite.CssClass.NUMERIC"
-msgstr ""
+msgstr "Granite.CssClass.NUMERIC"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:68 data/granite.metainfo.xml.in:90

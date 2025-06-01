@@ -33,7 +33,7 @@ public class DialogsView : DemoPage {
         };
         overlay.add_overlay (toast);
 
-        content = overlay;
+        child = overlay;
 
         dialog_button.clicked.connect (show_dialog);
         message_button.clicked.connect (show_message_dialog);
