@@ -1,0 +1,116 @@
+{
+    "id" : "io.elementary.granite.demo",
+    "runtime" : "io.elementary.Platform",
+    "runtime-version" : "daily",
+    "sdk" : "io.elementary.Sdk",
+    "command" : "granite-7-demo",
+    "tags" : [
+        "devel"
+    ],
+    "desktop-file-name-suffix" : " (Development)",
+    "finish-args" : [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--share=network",
+        "--device=dri"
+    ],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/pkgconfig",
+        "/share/aclocal",
+        "/man",
+        "/share/man",
+        "/share/gtk-doc",
+        "/share/vala",
+        "*.la",
+        "*.a",
+        "*.pyc",
+        "*.pyo"
+    ],
+    "modules" : [
+        {
+          "name" : "libsass",
+          "buildsystem" : "meson",
+          "sources" : [
+            {
+              "type" : "git",
+              "url" : "https://github.com/lazka/libsass.git",
+              "branch" : "meson"
+            }
+          ]
+        },
+        {
+          "name" : "sassc",
+          "buildsystem" : "meson",
+          "sources" : [
+            {
+              "type" : "git",
+              "url" : "https://github.com/lazka/sassc.git",
+              "branch" : "meson"
+            }
+          ]
+        },
+        {
+            "name" : "protobuf",
+            "buildsystem" : "cmake-ninja",
+            "config-opts" : [
+                "-Dprotobuf_WITH_ZLIB_DEFAULT=Off",
+                "-Dprotobuf_BUILD_TESTS=Off",
+                "-Dprotobuf_LOCAL_DEPENDENCIES_ONLY=On",
+                "-Dprotobuf_BUILD_LIBUPB=Off"
+            ],
+            "cleanup" : [
+                "/bin/protoc*",
+                "/lib/libprotoc*",
+                "/lib/libprotobuf-lite*"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/protocolbuffers/protobuf/releases/download/v30.2/protobuf-30.2.tar.gz",
+                    "sha256" : "fb06709acc393cc36f87c251bb28a5500a2e12936d4346099f2c6240f6c7a941"
+                }
+            ]
+        },
+        {
+            "name" : "protobuf-c",
+            "buildsystem" : "autotools",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/protobuf-c/protobuf-c.git"
+                }
+            ]
+        },
+        {
+            "name" : "libshumate",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dgtk_doc=false"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libshumate.git",
+                    "branch" : "main"
+                }
+            ]
+        },
+        {
+            "name" : "demo",
+            "config-opts" : [
+                "--libdir=lib",
+                "-Dgtk-stylesheets=true"
+            ],
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "dir",
+                    "path" : ".."
+                }
+            ]
+        }
+    ]
+}
