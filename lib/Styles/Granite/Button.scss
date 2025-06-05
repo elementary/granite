@@ -1,19 +1,17 @@
 button {
+
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend .text-button; 
+        @extend %raised; 
 
-        // Overwrite changes made further down the cascade due to the way
-        // @extend works
-        padding: 0;
-
+        // I don't know why this needs to be reiterated, but it doesn't work
+        // properly without it
         &:active,
         &:checked {
             @include control-active;
-
             color: $fg-color;
-            filter: brightness(95%);
+            transform: none;
         }
     }
 

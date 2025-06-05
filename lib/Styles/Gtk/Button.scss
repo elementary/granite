@@ -28,28 +28,9 @@ button {
     }
 
     &.text-button {
-        @include control;
-        @include border-interactive-roundrect;
+        @extend %raised;
 
         padding: rem(2px) rem(4px);
-
-        &:active,
-        &:checked {
-            @include control-active;
-            transform: none;
-        }
-
-        &:active {
-            filter: brightness(95%);
-        }
-
-        &:disabled {
-            @include control-disabled;
-        }
-
-        &:hover {
-            filter: brightness(105%);
-        }
     }
 
 

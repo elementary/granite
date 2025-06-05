@@ -60,3 +60,20 @@
         background-color: scale-color($trough-color, $alpha: -10%);
     }
 }
+
+%raised {
+    @include control;
+    @include border-interactive-roundrect;
+
+    &:active,
+    &:checked {
+        @include control-active;
+        filter: brightness(95%);
+        transform: none;
+    }
+
+    &:disabled {
+        @include control-disabled;
+    }
+
+}
