@@ -7,12 +7,15 @@
 public class Granite.TerminalView : Granite.Bin {
 
     public bool autoscroll { get; set; default = false; }
+    // TODO: Choose one
+    public string text { get; set; }
+    public string label { get; set; }
 
     private Gtk.TextBuffer buffer;
     private double prev_upper_adj = 0;
     private Gtk.ScrolledWindow scrolled_window;
 
-    public TerminalView () {
+    construct {
         var view = new Gtk.TextView () {
             cursor_visible = false,
             editable = false,
@@ -37,6 +40,9 @@ public class Granite.TerminalView : Granite.Bin {
         child = scrolled_window;
         add_css_class (Granite.CssClass.TERMINAL);
 
+        bind_property ("text", buffer, "text", BIDIRECTIONAL | SYNC_CREATE);
+        bind_property ("label", buffer, "text", BIDIRECTIONAL | SYNC_CREATE);
+
         notify["autoscroll"].connect ((s, p) => {
             update_autoscroll ();
         });
@@ -54,7 +60,7 @@ public class Granite.TerminalView : Granite.Bin {
         });
     }
 
-    public void attempt_scroll () {
+    private void attempt_scroll () {
         var adj = scrolled_window.vadjustment;
         var units_from_end = prev_upper_adj - adj.page_size - adj.value;
 
@@ -67,18 +73,5 @@ public class Granite.TerminalView : Granite.Bin {
         }
 
         prev_upper_adj = adj.upper;
-    }
-
-    /* This is useful for specific feedback such as in MessageDialogs
-     *
-     * Might also be useful to have a way of enabling direct input for stdout or
-     * stderr
-     */
-    public void append_text (string text) {
-        buffer.insert_at_cursor (text, -1);
-    }
-
-    public void replace_text (string text) {
-        buffer.set_text (text);
     }
 }

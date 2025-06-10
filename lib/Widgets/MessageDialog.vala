@@ -169,7 +169,9 @@ public class Granite.MessageDialog : Granite.Dialog {
      */
     private Gtk.Grid message_grid;
 
-    //private Gtk.Label? details_view;
+    /**
+     * The {@link Granite.TerminalView} used to display error details 
+     */
     private Granite.TerminalView? details_view;
 
     /**
@@ -309,20 +311,6 @@ public class Granite.MessageDialog : Granite.Dialog {
         if (details_view == null) {
             secondary_label.margin_bottom = 18;
 
-/*            details_view = new Gtk.Label ("") {
-                selectable = true,
-                wrap = true,
-                xalign = 0,
-                yalign = 0
-            };
-
-            var scroll_box = new Gtk.ScrolledWindow () {
-                margin_top = 12,
-                min_content_height = 70,
-                child = details_view
-            };
-            scroll_box.add_css_class (Granite.STYLE_CLASS_TERMINAL);
-*/
             details_view = new Granite.TerminalView ();
             expander = new Gtk.Expander (_("Details")) {
                 child = details_view
@@ -335,6 +323,6 @@ public class Granite.MessageDialog : Granite.Dialog {
             }
         }
 
-        details_view.append_text (error_message);
+        details_view.label = error_message;
     }
 }

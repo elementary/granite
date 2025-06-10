@@ -288,11 +288,8 @@ namespace Granite {
         public const string MONOSPACE = "monospace";
 
         /**
-         * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
+         * Internal style class for {@link Granite.TerminalView} to emulate the appearance of Terminal. This includes
          * text color, background color, selection highlighting, and selecting the system monospace font.
-         *
-         * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
-         * interal padding will need to be set with {@link Gtk.Container.border_width}
          */
         internal const string TERMINAL = "terminal";
     }
