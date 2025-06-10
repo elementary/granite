@@ -323,6 +323,6 @@ public class Granite.MessageDialog : Granite.Dialog {
             }
         }
 
-        details_view.label = error_message;
+        details_view.text = error_message;
     }
 }

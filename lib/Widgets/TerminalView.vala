@@ -7,9 +7,7 @@
 public class Granite.TerminalView : Granite.Bin {
 
     public bool autoscroll { get; set; default = false; }
-    // TODO: Choose one
     public string text { get; set; }
-    public string label { get; set; }
 
     private Gtk.TextBuffer buffer;
     private double prev_upper_adj = 0;
@@ -41,7 +39,6 @@ public class Granite.TerminalView : Granite.Bin {
         add_css_class (Granite.CssClass.TERMINAL);
 
         bind_property ("text", buffer, "text", BIDIRECTIONAL | SYNC_CREATE);
-        bind_property ("label", buffer, "text", BIDIRECTIONAL | SYNC_CREATE);
 
         notify["autoscroll"].connect ((s, p) => {
             update_autoscroll ();

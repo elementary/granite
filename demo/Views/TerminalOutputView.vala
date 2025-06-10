@@ -14,15 +14,15 @@ public class TerminalOutputView: DemoPage {
             margin_start = 12,
             margin_end = 12
         };
-        terminal.append_text ("[ 25%] Performing optimization passes\n");
-        terminal.append_text ("[ 65%] Inserting nonsense functions to pad binary size\n");
-        terminal.append_text ("[ 73%] Linking C executable granite-demo\n");
-        terminal.append_text ("[100%] Built target granite-demo\n");
-        terminal.append_text ("Counting to one hundred…\n");
+        terminal.text = "[ 25%] Performing optimization passes\n";
+        terminal.text += "[ 65%] Inserting nonsense functions to pad binary size\n";
+        terminal.text += "[ 73%] Linking C executable granite-demo\n";
+        terminal.text += "[100%] Built target granite-demo\n";
+        terminal.text += "Counting to one hundred…\n";
 
         for (int i = 0; i <= 100; i++) {
             var itos = i.to_string ("%i\n");
-            terminal.append_text (itos);
+            terminal.text += itos;
         }
 
         terminal.add_css_class (Granite.CssClass.CARD);
