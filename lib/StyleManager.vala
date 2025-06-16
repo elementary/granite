@@ -79,12 +79,15 @@ public class Granite.StyleManager : Object {
 
     private void set_provider_for_display () {
         if (app_provider == null) {
-            var base_path = Application.get_default ().resource_base_path;
-            if (base_path != null) {
-                var base_uri = "resource://" + base_path;
-                var base_file = File.new_for_uri (base_uri);
+            unowned GLib.Application? app = Application.get_default ();
+            if (app != null) {
+                var base_path = app.resource_base_path;
+                if (base_path != null) {
+                    var base_uri = "resource://" + base_path;
+                    var base_file = File.new_for_uri (base_uri);
 
-                app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
+                    app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
+                }
             }
 
             if (app_provider != null) {
