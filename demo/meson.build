@@ -18,6 +18,7 @@ executable(
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
     'Views/StyleManagerView.vala',
+    'Views/TerminalOutputView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/VideoView.vala',

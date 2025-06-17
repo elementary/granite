@@ -1,0 +1,33 @@
+/*
+ * Copyright 20205 elementary, Inc. (https://elementary.io)
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ */
+
+public class TerminalOutputView: DemoPage {
+    construct {
+        title = "Terminal Output";
+        var terminal = new Granite.TerminalView () {
+            autoscroll = true,
+            vexpand = true,
+            margin_top = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12
+        };
+        terminal.text = "[ 25%] Performing optimization passes\n";
+        terminal.text += "[ 65%] Inserting nonsense functions to pad binary size\n";
+        terminal.text += "[ 73%] Linking C executable granite-demo\n";
+        terminal.text += "[100%] Built target granite-demo\n";
+        terminal.text += "Counting to one hundred…\n";
+
+        for (int i = 0; i <= 100; i++) {
+            var itos = i.to_string ("%i\n");
+            terminal.text += itos;
+        }
+
+        terminal.add_css_class (Granite.CssClass.CARD);
+
+        child = terminal;
+    }
+
+}
