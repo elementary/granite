@@ -58,6 +58,8 @@ public class Granite.ListItem : Granite.Bin {
         text_box.append (label);
         text_box.add_css_class ("text-box");
 
+        // So we can receive key events
+        focusable = true;
         child = text_box;
 
         bind_property ("text", label, "label");
@@ -76,15 +78,11 @@ public class Granite.ListItem : Granite.Bin {
         notify["menu-model"].connect (construct_menu);
     }
 
-    ~ListItem {
-        parent.remove_controller (menu_key_controller);
-    }
-
     private void construct_menu () {
         if (menu_model == null) {
             remove_controller (click_controller);
             remove_controller (long_press_controller);
-            parent.remove_controller (menu_key_controller);
+            remove_controller (menu_key_controller);
 
             click_controller = null;
             long_press_controller = null;
@@ -158,15 +156,7 @@ public class Granite.ListItem : Granite.Bin {
 
         add_controller (click_controller);
         add_controller (long_press_controller);
-
-        // We don't get key events on the child list item widget
-        if (parent != null) {
-            parent.add_controller (menu_key_controller);
-        } else {
-            notify["parent"].connect (() => {
-                parent.add_controller (menu_key_controller);
-            });
-        }
+        add_controller (menu_key_controller);
     }
 
     private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
