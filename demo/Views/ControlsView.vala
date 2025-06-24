@@ -23,8 +23,9 @@ public class ControlsView : DemoPage {
             tooltip_text = "Gtk.ToggleButton.icon_name"
         };
 
-        var back_button = new Gtk.Button.with_label ("Granite.CssClass.BACK");
-        back_button.add_css_class (Granite.CssClass.BACK);
+        var back_button = new Granite.BackButton ("Granite.BackButton") {
+            halign = START
+        };
 
         var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE");
         destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);

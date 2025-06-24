@@ -12,7 +12,7 @@ namespace Granite {
     /**
      * Style class for shaping a {@link Gtk.Button}
      */
-    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.BACK")]
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.BackButton")]
     public const string STYLE_CLASS_BACK_BUTTON = "back-button";
     /**
      * Style class to match the window background
@@ -227,11 +227,6 @@ namespace Granite {
         public const string ACCENT = "accent";
 
         /**
-         * Style class for a {@link Gtk.Button} which is used to navigate backwards
-         */
-        public const string BACK = "back-button";
-
-        /**
          * Style class for adding a small shadow to a container such as for image thumbnails
          */
         public const string CARD = "card";
@@ -285,6 +280,11 @@ namespace Granite {
          * Style class for widgets in warning state.
          */
         public const string WARNING = "warning";
+
+        /**
+         * Style class for non-terminal text that uses a monospace font.
+         */
+        public const string MONOSPACE = "monospace";
     }
 
     /**
