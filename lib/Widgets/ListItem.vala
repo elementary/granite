@@ -43,13 +43,14 @@ public class Granite.ListItem : Gtk.Widget {
 
             if (_child != null) {
                 _child.set_parent (this);
+                _child.hexpand = true;
             }
         }
     }
 
     class construct {
         set_css_name ("granite-listitem");
-        set_layout_manager_type (typeof (Gtk.BinLayout));
+        set_layout_manager_type (typeof (Gtk.BoxLayout));
     }
 
     construct {
@@ -91,6 +92,78 @@ public class Granite.ListItem : Gtk.Widget {
     ~ListItem () {
         if (child != null) {
             child.unparent ();
+        }
+    }
+
+    /**
+     * The following attributes are used when constructing menu items:
+     *
+     * - "label": a user-visible string to display
+     * - "action": the prefixed name of the action to trigger
+     * - "target": the parameter to use when activating the action
+     * - "icon" and "verb-icon": names of icons that may be displayed or a question mark by default
+     * - "css-class": a css style class for assigning a color or user accent colored by default
+     *
+     * The following style class values are supported:
+     *
+     * - "red" or "destructive"
+     * - "orange"
+     * - "yellow" or "banana"
+     * - "green" or "lime"
+     * - "blue" or "blueberry"
+     * - "teal" or "mint"
+     * - "purple" or "grape"
+     * - "pink" or "bubblegum"
+     */
+    public void prepend_swipe_action (GLib.MenuItem menu_item) {
+        new SwipeButton (menu_item).insert_before (this, child);
+    }
+
+    /**
+    * See prepend_swipe_action for menu item attribute details
+    */
+    public void append_swipe_action (GLib.MenuItem menu_item) {
+        new SwipeButton (menu_item).insert_after (this, child);
+    }
+
+    private class SwipeButton : Gtk.Button {
+        public SwipeButton (GLib.MenuItem menu_item) {
+            var icon_name = menu_item.get_attribute_value ("icon", VariantType.STRING).get_string ();
+            if (icon_name == "") {
+                icon_name = menu_item.get_attribute_value ("verb-icon", VariantType.STRING).get_string ();
+                if (icon_name == "") {
+                    icon_name = "dialog-question-symbolic";
+                }
+            }
+
+            var image = new Gtk.Image.from_icon_name (icon_name);
+
+            var label = new Gtk.Label (
+                menu_item.get_attribute_value ("label", VariantType.STRING).get_string ()
+            ) {
+                ellipsize = END,
+                justify = CENTER,
+                lines = 2,
+                max_width_chars = 10
+            };
+            label.add_css_class (Granite.CssClass.SMALL);
+
+            var box = new Gtk.Box (VERTICAL, 0) {
+                valign = CENTER
+            };
+            box.append (image);
+            box.append (label);
+
+            child = box;
+
+            var css_class = menu_item.get_attribute_value ("css-class", VariantType.STRING);
+            if (css_class != null) {
+                add_css_class (css_class.get_string ());
+            }
+        }
+
+        construct {
+            add_css_class ("swipe-button");
         }
     }
 }
