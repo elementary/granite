@@ -26,8 +26,7 @@ executable(
 
     dependencies: [
         libgranite_dep,
-        dependency('shumate-1.0'),
-        meson.get_compiler('c').find_library('m')
+        dependency('shumate-1.0')
     ],
 
     install: true,
