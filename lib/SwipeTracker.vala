@@ -8,7 +8,7 @@ public class Granite.SwipeTracker : Object {
     // private const int TOUCHPAD_BASE_DISTANCE_V = 300;
 
     // The widget that accepts the swipe event
-    public unowned Gtk.Widget widget { get; construct; }
+    public unowned Gtk.Widget swipeable { get; construct; }
 
     // How completed the swipe is
     public double progress { get; set; }
@@ -19,8 +19,8 @@ public class Granite.SwipeTracker : Object {
 
     public Gtk.GestureDrag drag_gesture;
 
-    public SwipeTracker (Gtk.Widget widget) {
-        Object (widget: widget);
+    public SwipeTracker (Gtk.Widget swipeable) {
+        Object (swipeable: swipeable);
     }
 
     construct {
@@ -29,11 +29,11 @@ public class Granite.SwipeTracker : Object {
         drag_gesture.drag_update.connect (on_drag_update);
         drag_gesture.drag_end.connect (on_drag_end);
 
-        widget.add_controller (drag_gesture);
+        swipeable.add_controller (drag_gesture);
     }
 
     ~SwipeTracker () {
-        widget.remove_controller (drag_gesture);
+        swipeable.remove_controller (drag_gesture);
     }
 
     private void on_drag_begin () {
