@@ -30,6 +30,7 @@ public class Granite.Demo : Gtk.Application {
         var toast_view = new ToastView ();
         var settings_uris_view = new SettingsUrisView ();
         var style_manager_view = new StyleManagerView ();
+        var multitouch_view = new SwipeView ();
         var utils_view = new UtilsView ();
         var video_view = new VideoView ();
         var placeholder = new WelcomeView ();
@@ -55,6 +56,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");
         main_stack.add_titled (utils_view, "utils", "Utils");
+        main_stack.add_titled (multitouch_view, "multitouch", multitouch_view.title);
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
 
