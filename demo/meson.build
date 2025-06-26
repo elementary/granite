@@ -18,6 +18,7 @@ executable(
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
     'Views/StyleManagerView.vala',
+    'Views/SwipeView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/VideoView.vala',
@@ -25,7 +26,8 @@ executable(
 
     dependencies: [
         libgranite_dep,
-        dependency('shumate-1.0')
+        dependency('shumate-1.0'),
+        meson.get_compiler('c').find_library('m')
     ],
 
     install: true,
