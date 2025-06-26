@@ -4,6 +4,15 @@
  */
 
 public class Granite.SwipeTracker : Object {
+    // This signal is emitted right before a swipe will be started
+    public signal void begin_swipe ();
+
+    // This signal is emitted every time the progress value changes.
+    public signal void update_swipe (double progress);
+
+    // This signal is emitted as soon as the gesture has stopped.
+    public signal void end_swipe ();
+
     private const int TOUCHPAD_BASE_DISTANCE_H = 400;
     // private const int TOUCHPAD_BASE_DISTANCE_V = 300;
 
@@ -11,11 +20,8 @@ public class Granite.SwipeTracker : Object {
     public unowned Gtk.Widget swipeable { get; construct; }
 
     // How completed the swipe is
-    public double progress { get; set; }
-
+    private double progress;
     private double prev_offset = 0;
-
-    private uint spring_timeout = -1;
 
     public Gtk.GestureDrag drag_gesture;
 
@@ -37,10 +43,9 @@ public class Granite.SwipeTracker : Object {
     }
 
     private void on_drag_begin () {
-        if (spring_timeout != -1) {
-            Source.remove (spring_timeout);
-            spring_timeout = -1;
-        }
+        prev_offset = 0;
+        progress = 0;
+        begin_swipe ();
     }
 
     private void on_drag_update (Gtk.Gesture gesture, double offset_x, double offset_y) {
@@ -52,22 +57,11 @@ public class Granite.SwipeTracker : Object {
 
         progress += delta / TOUCHPAD_BASE_DISTANCE_H;
         progress = progress.clamp (-1, 1);
+
+        update_swipe (progress);
     }
 
     private void on_drag_end () {
-        prev_offset = 0;
-
-        // 60 FPS → 16.67 ms per frame
-        spring_timeout = Timeout.add (16, () => {
-            if (progress < 0.01 && progress > -0.01) {
-                progress = 0;
-                spring_timeout = -1;
-                return Source.REMOVE;
-            }
-
-            progress *= 0.8;
-
-            return Source.CONTINUE;
-        });
+        end_swipe ();
     }
 }
