@@ -35,6 +35,8 @@ public class Granite.SwipeTracker : Object {
 
     private double prev_offset = 0;
 
+    private uint spring_timeout = -1;
+
     public Gtk.GestureDrag drag_gesture;
 
     public SwipeTracker (Gtk.Widget widget) {
@@ -43,7 +45,9 @@ public class Granite.SwipeTracker : Object {
 
     construct {
         drag_gesture = new Gtk.GestureDrag ();
+        drag_gesture.drag_begin.connect (on_drag_begin);
         drag_gesture.drag_update.connect (on_drag_update);
+        drag_gesture.drag_end.connect (on_drag_end);
 
         widget.add_controller (drag_gesture);
     }
@@ -52,7 +56,14 @@ public class Granite.SwipeTracker : Object {
         widget.remove_controller (drag_gesture);
     }
 
-    public void on_drag_update (Gtk.Gesture gesture, double offset_x, double offset_y) {
+    private void on_drag_begin () {
+        if (spring_timeout != -1) {
+            Source.remove (spring_timeout);
+            spring_timeout = -1;
+        }
+    }
+
+    private void on_drag_update (Gtk.Gesture gesture, double offset_x, double offset_y) {
         double delta, offset;
 
         offset = offset_x;
@@ -61,5 +72,21 @@ public class Granite.SwipeTracker : Object {
 
         progress += delta / 100;
         progress = progress.clamp (-1, 1);
+    }
+
+    private void on_drag_end () {
+        prev_offset = 0;
+
+        spring_timeout = Timeout.add (10, () => {
+            if (progress < 0.01 && progress > -0.01) {
+                progress = 0;
+                spring_timeout = -1;
+                return Source.REMOVE;
+            }
+
+            progress *= 0.8;
+
+            return Source.CONTINUE;
+        });
     }
 }
