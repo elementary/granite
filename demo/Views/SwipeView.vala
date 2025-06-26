@@ -77,7 +77,8 @@ public class Granite.SwipeTracker : Object {
     private void on_drag_end () {
         prev_offset = 0;
 
-        spring_timeout = Timeout.add (10, () => {
+        // 60 FPS → 16.67 ms per frame
+        spring_timeout = Timeout.add (16, () => {
             if (progress < 0.01 && progress > -0.01) {
                 progress = 0;
                 spring_timeout = -1;
