@@ -24,7 +24,7 @@ public class SwipeView : DemoPage {
 }
 
 public class Granite.SwipeTracker : Object {
-    // private const int TOUCHPAD_BASE_DISTANCE_H = 400;
+    private const int TOUCHPAD_BASE_DISTANCE_H = 400;
     // private const int TOUCHPAD_BASE_DISTANCE_V = 300;
 
     // The widget that accepts the swipe event
@@ -70,7 +70,7 @@ public class Granite.SwipeTracker : Object {
         delta = offset - prev_offset;
         prev_offset = offset;
 
-        progress += delta / 100;
+        progress += delta / TOUCHPAD_BASE_DISTANCE_H;
         progress = progress.clamp (-1, 1);
     }
 
