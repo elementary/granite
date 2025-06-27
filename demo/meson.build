@@ -22,6 +22,8 @@ executable(
     'Views/VideoView.vala',
     'Views/WelcomeView.vala',
 
+    join_paths(meson.project_build_root(), 'lib', 'granite-7.h'),
+
     dependencies: [
         libgranite_dep,
         dependency('shumate-1.0')
