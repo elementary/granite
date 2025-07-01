@@ -10,13 +10,13 @@ public class WelcomeView : DemoPage {
         };
 
         var vala_button = welcome.append_button (
-            new ThemedIcon ("text-x-vala"),
+            new ThemedIcon ("valadoc"),
             "Visit Valadoc",
             "The canonical source for Vala API references"
         );
 
         var source_button = welcome.append_button (
-            new ThemedIcon ("text-x-source"),
+            new ThemedIcon ("git"),
             "Get Granite Source",
             "Granite's source code is hosted on GitHub"
         );
