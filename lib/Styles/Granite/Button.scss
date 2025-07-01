@@ -2,7 +2,7 @@ button {
 
     &.text-button.destructive {
         background-color: $error_color;
-        color: bg-color(0);
+        color: white;
         text-shadow: none;
 
         &:active {
