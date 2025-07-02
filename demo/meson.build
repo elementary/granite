@@ -1,5 +1,9 @@
+subdir('data')
+
 executable(
     'granite-7-demo',
+
+    gresource,
 
     'GraniteDemo.vala',
     'DemoPage.vala',
