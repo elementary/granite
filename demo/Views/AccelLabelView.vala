@@ -13,15 +13,13 @@ public class AccelLabelView : DemoPage {
         var popover_label = new Gtk.Label ("In a Popover:");
         popover_label.halign = Gtk.Align.END;
 
-        var lock_button = new Gtk.Button () {
+        var lock_button = new PopoverMenuItem () {
             child = new Granite.AccelLabel ("Lock", "<Super>L")
         };
-        lock_button.add_css_class ("model");
 
-        var logout_button = new Gtk.Button () {
+        var logout_button = new PopoverMenuItem () {
             child = new Granite.AccelLabel ("Log Out…", "<Ctrl><Alt>Delete")
         };
-        logout_button.add_css_class ("model");
 
         var lock_item = new GLib.MenuItem (null, null);
         lock_item.set_attribute_value ("custom", "lock");
@@ -54,5 +52,11 @@ public class AccelLabelView : DemoPage {
         grid.attach (popover_button, 1, 1);
 
         child = grid;
+    }
+
+    private class PopoverMenuItem : Gtk.Button {
+        class construct {
+            set_css_name ("modelbutton");
+        }
     }
 }
