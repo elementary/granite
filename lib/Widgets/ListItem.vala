@@ -9,7 +9,7 @@
  * @since 7.7.0
  */
 [Version (since = "7.7.0")]
-public class Granite.ListItem : Granite.Bin {
+public class Granite.ListItem : Gtk.Widget {
     /**
      * The main label for #this
      */
@@ -20,8 +20,36 @@ public class Granite.ListItem : Granite.Bin {
      */
     public string? description { get; set; }
 
+    private Gtk.Widget? _child;
+    /**
+     * The child widget of #this
+     */
+    public Gtk.Widget? child {
+        get {
+            return _child;
+        }
+
+        set {
+            if (value != null && value.get_parent () != null) {
+                critical ("Tried to set a widget as child that already has a parent.");
+                return;
+            }
+
+            if (_child != null) {
+                _child.unparent ();
+            }
+
+            _child = value;
+
+            if (_child != null) {
+                _child.set_parent (this);
+            }
+        }
+    }
+
     class construct {
         set_css_name ("granite-listitem");
+        set_layout_manager_type (typeof (Gtk.BinLayout));
     }
 
     construct {
@@ -58,5 +86,11 @@ public class Granite.ListItem : Granite.Bin {
                 text_box.append (description_label);
             }
         });
+    }
+
+    ~ListItem () {
+        if (child != null) {
+            child.unparent ();
+        }
     }
 }
