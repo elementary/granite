@@ -29,15 +29,45 @@
   <releases>
     <release version="7.7.0" date="2025-02-10" urgency="medium">
       <description>
+        <p>New Icons:</p>
+        <ul>
+          <li>View icons for columns, grids, lists, and reader mode. Plus horizontal and vertical ellipsis icons</li>
+          <li>Start and End show/hide sidebar icons</li>
+          <li>Emoji category icons used by GTK's emoji picker</li>
+          <li>Eye icons required by Gtk.PasswordEntry</li>
+        </ul>
         <p>New Features:</p>
         <ul>
-          <li>Granite.CssClass.NUMERIC</li>
+          <li>Box is an orientable widget that includes standardized spacing and linked styles</li>
+          <li>ListItem is a standard list widget that includes styles and spacing</li>
+          <li>ToolBox is a vertical layout widget for top and bottom toolbars</li>
+          <li>new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE</li>
+          <li>StyleManager handles automatically setting dark and light modes as well as system accent colors using Portals</li>
+          <li>BackButton is a standardized navigation button that activates "navigation.pop" and includes a shortcut tooltip</li>
         </ul>
         <p>Improvements:</p>
         <ul>
+          <li>accel_to_string now uses the word "Super" instead of the "⌘" symbol</li>
+          <li>HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder</li>
+          <li>CssClass.CARD is now rounded by default</li>
           <li>Updated translations</li>
         </ul>
+        <p>Deprecations:</p>
+        <ul>
+          <li>Utils.set_color_primary. Modern apps have moved to more of a split paned design and this style is no longer very fashionable</li>
+          <li>Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of them have been replaced by `CssClass` constants, others by widgets.</li>
+        </ul>
+        <p>Demo Improvements:</p>
+        <ul>
+          <li>More demo pages with more widgets</li>
+          <li>Color scheme switcher in the sidebar</li>
+        </ul>
       </description>
+      <issues>
+        <issue url="https://github.com/elementary/granite/issues/742">adw-entry-apply-symbolic</issue>
+        <issue url="https://github.com/elementary/granite/issues/802">Provide native support for libshumate</issue>
+        <issue url="https://github.com/elementary/granite/issues/883">PopoverAccelLabel styles broken in Demo</issue>
+      </issues>
     </release>
 
     <release version="7.6.0" date="2024-11-21" urgency="medium">
