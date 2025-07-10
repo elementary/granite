@@ -20,6 +20,13 @@ namespace Granite {
 
         typeof (Granite.Settings).ensure ();
 
+        /*
+         * gdk_display_manager_get() requires gtk_init() is already called since
+         * Gtk 4.17, so initialize Gtk explicitly
+         * See also https://gitlab.gnome.org/GNOME/gnome-initial-setup/-/issues/223
+         */
+        Gtk.init ();
+
         unowned var display_manager = Gdk.DisplayManager.@get ();
         display_manager.display_opened.connect (StyleManager.init_for_display);
 
