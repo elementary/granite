@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-03-10 09:09+0000\n"
+"PO-Revision-Date: 2025-07-10 07:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -41,28 +41,28 @@ msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32
-#, fuzzy
-#| msgid "New Constants:"
 msgid "New Icons:"
-msgstr "Constants noves:"
+msgstr "Icones noves:"
 
 #: data/granite.metainfo.xml.in:34
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"Icones de visualització per a columnes, quadrícules, llistes i mode de "
+"lectura, a més d'icones d'el·lipsis horitzontals i verticals"
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "Inici i final: mostra / amaga les icones de la barra lateral"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "Icones de categoria d'emoticones usades pel selector d'emojis de GTK"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Icones d'ull requerides per Gtk.PasswordEntry"
 
 #: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
@@ -75,31 +75,41 @@ msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
+"Box és un giny orientable que inclou espaiat estandarditzat i estils "
+"enllaçats."
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem és un giny de llista estàndard que inclou estils i espaiat."
 
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"ToolBox és un giny de disseny vertical per a les barres d'eines superior i "
+"inferior."
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
+"constants noves de classe d'estil per a les etiquetes: CssClass.NUMERIC i "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:45
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"StyleManager gestiona la configuració automàtica dels modes fosc i clar, "
+"així com els colors d'accent del sistema mitjançant Portals."
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"El BackButton és un botó de navegació estandarditzat que activa "
+"navigation.pop i inclou una descripció emergent de drecera."
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -110,16 +120,18 @@ msgstr "Millores:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "L'accel_to_string ara usa la paraula Super en lloc del símbol ⌘."
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"HeaderLabel té una propietat nova per a les mides H1-H4 i els estils H2 ara "
+"són més negres."
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD ara s'arrodoneix per defecte."
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -137,26 +149,28 @@ msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary. Les aplicacions modernes han passat a un disseny "
+"més aviat de plafons dividits i aquest estil ja no està gaire de moda."
 
 #: data/granite.metainfo.xml.in:58
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"Gairebé totes les antigues constants STYLE_CLASS han quedat obsoletes. "
+"Algunes han estat substituïdes per constants CssClass, i altres per ginys."
 
 #: data/granite.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "Millores:"
+msgstr "Millores de demostració:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "Més pàgines de demostració amb més ginys"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "Selector d'esquema de colors a la barra lateral"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"

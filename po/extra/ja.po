@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-03-09 09:05+0000\n"
+"PO-Revision-Date: 2025-07-19 10:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -40,28 +40,27 @@ msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32
-#, fuzzy
-#| msgid "New Constants:"
 msgid "New Icons:"
-msgstr "新しい定数:"
+msgstr "新しいアイコン:"
 
 #: data/granite.metainfo.xml.in:34
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
-msgstr ""
+msgstr "カラム表示・グリッド表示・リスト表示・リーダーモードのアイコン。および、ミー"
+"トボールメニュー・ケバブメニューのアイコン"
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "左側/右側のサイドバーを表示/非表示にするボタンのアイコン"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "GTK の絵文字ピッカーで使われる、絵文字のカテゴリーのアイコン"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Gtk.PasswordEntry に必要な目のアイコン"
 
 #: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
@@ -73,32 +72,38 @@ msgstr "新機能:"
 msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
-msgstr ""
+msgstr "Box: HIG 準拠の余白・連結したスタイルに対応した、方向指定可能なウィジェット"
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem: HIG 準拠のスタイルと余白に対応したリスト要素のウィジェット"
 
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
-msgstr ""
+msgstr "ToolBox: 上部と下部にツールバーを配置可能な、垂直方向のレイアウトウィジェット"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
-msgstr ""
+msgstr "ラベル用の新しいスタイルクラスの定数: CssClass.NUMERIC および "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:45
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
-msgstr ""
+msgstr "StyleManager: "
+"ポータルを使って自動的にダークモードとライトモード、およびシステムのアクセン"
+"トカラーを適用する機能を追加"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"BackButton: 押下で \"navigation.pop\" "
+"アクションを発行し、ツールチップにショートカットも表示する、HIG "
+"準拠のナビゲーションボタン"
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -109,16 +114,16 @@ msgstr "改善点:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string: \"⌘\" 記号ではなく \"Super\" という単語を使うように修正"
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
-msgstr ""
+msgstr "HeaderLabel: H1〜H4 サイズ用の新しいプロパティを追加。H2 スタイルを太字に変更"
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD: デフォルトを角丸に変更"
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -136,26 +141,29 @@ msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary: "
+"最近のアプリは表示領域を分割するデザインに移行したため、本メソッドが提供する"
+"スタイルは古くなりました"
 
 #: data/granite.metainfo.xml.in:58
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"ほぼすべての古い `STYLE_CLASS` 定数が非推奨になりました。一部は `CssClass` "
+"定数で、それ以外はウィジェットで置き換わりました。"
 
 #: data/granite.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "改善点:"
+msgstr "デモアプリの改善点:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "確認可能なウィジェットを増やし、デモページを追加"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "カラースキームを変更するボタンをサイドバーに追加"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
