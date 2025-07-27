@@ -66,6 +66,7 @@
       <issues>
         <issue url="https://github.com/elementary/granite/issues/742">adw-entry-apply-symbolic</issue>
         <issue url="https://github.com/elementary/granite/issues/802">Provide native support for libshumate</issue>
+        <issue url="https://github.com/elementary/granite/issues/874">Default icon themes by non-Pantheon desktops may have missing icons or use incorrect icons</issue>
         <issue url="https://github.com/elementary/granite/issues/883">PopoverAccelLabel styles broken in Demo</issue>
       </issues>
     </release>
