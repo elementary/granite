@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-05-14 16:40+0000\n"
-"Last-Translator: Max2020 <alcizmaxpereira@gmail.com>\n"
+"PO-Revision-Date: 2025-07-29 15:55+0000\n"
+"Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementaryos.org/projects/"
 "desktop/granite-extra/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -40,28 +40,28 @@ msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32
-#, fuzzy
-#| msgid "New Style Constants:"
 msgid "New Icons:"
-msgstr "Novas constantes de estilo:"
+msgstr "Novos ícones:"
 
 #: data/granite.metainfo.xml.in:34
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"Visualize ícones para colunas, grades, listas e modo leitor. Além de ícones "
+"de reticências horizontais e verticais"
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "Iniciar e Fim mostra/oculta ícones da barra lateral"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "Ícones de categoria de emojis usados pelo seletor de emojis do GTK"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Ícones de olhos exigidos por Gtk.PasswordEntry"
 
 #: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
@@ -74,31 +74,41 @@ msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
+"Box é um widget orientável que inclui espaçamento padronizado e estilos "
+"vinculados"
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem é um widget de lista padrão que inclui estilos e espaçamento"
 
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"ToolBox é um widget de layout vertical para barras de ferramentas superior e "
+"inferior"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
+"novas constantes de classe de estilo para rótulos: CssClass.NUMERIC e "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:45
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"O StyleManager gerencia a configuração automática dos modos claro e escuro, "
+"bem como as cores de destaque do sistema usando Portais"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"BackButton é um botão de navegação padronizado que ativa \"navigation.pop\" "
+"e inclui uma dica de ferramenta de atalho"
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -109,16 +119,18 @@ msgstr "Melhorias:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string agora usa a palavra \"Super\" em vez do símbolo \"⌘\""
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"O HeaderLabel tem uma nova propriedade para os tamanhos H1-H4 e os estilos "
+"H2 agora estão mais em negrito"
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD agora é arredondado por padrão"
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -136,26 +148,28 @@ msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary. Os aplicativos modernos migraram para um design com "
+"painéis divididos e esse estilo não está mais na moda"
 
 #: data/granite.metainfo.xml.in:58
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"Quase todas as antigas constantes `STYLE_CLASS` foram descontinuadas. "
+"Algumas foram substituídas por constantes `CssClass`, outras por widgets."
 
 #: data/granite.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "Melhorias:"
+msgstr "Melhorias de Demonstração:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "Mais páginas de demonstração com mais widgets"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "Seletor de esquema de cores na barra lateral"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
