@@ -1,5 +1,9 @@
+subdir('data')
+
 executable(
     'granite-7-demo',
+
+    gresource,
 
     'GraniteDemo.vala',
     'DemoPage.vala',
@@ -17,7 +21,6 @@ executable(
     'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
-    'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/VideoView.vala',
