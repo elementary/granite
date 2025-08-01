@@ -10,8 +10,9 @@ public class Granite.Demo : Gtk.Application {
     }
 
     public override void startup () {
-        Granite.init ();
         base.startup ();
+        // Parent classes need to be initialized before the child.
+        Granite.init ();
     }
 
     public override void activate () {
