@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: elementary/actions/vala-lint@master
+      - uses: elementary/actions/vala-lint@main
