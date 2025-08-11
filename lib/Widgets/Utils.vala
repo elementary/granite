@@ -127,10 +127,10 @@ public const string TOOLTIP_SECONDARY_TEXT_MARKUP = """<span weight="600" size="
  *
  * Example:
  *
- * Description
+ * Description<<BR>>
  * Shortcut 1, Shortcut 2
  *
- * @param a string array of accelerator labels like {"<Control>a", "<Super>Right"}
+ * @param accels a string array of accelerator labels like {"<Control>a", "<Super>Right"}
  *
  * @param description a standard tooltip text string
  *
