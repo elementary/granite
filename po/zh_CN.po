@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-08-14 08:55+0000\n"
+"PO-Revision-Date: 2025-08-15 17:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
 "l10n.elementaryos.org/projects/desktop/granite/zh_Hans/>\n"
@@ -151,7 +151,7 @@ msgstr "："
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"
