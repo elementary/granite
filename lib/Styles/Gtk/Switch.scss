@@ -1,21 +1,5 @@
 switch {
-    $slider-width: rem(16px);
-    $trough-width: 0.5rem;
-    $slider-margin: ($slider-width - $trough-width) / 2 * -1;
-
     @include trough;
-
-    slider {
-        // 16px - border
-        min-height: calc(#{$slider-width} - 1px);
-        min-width: calc(#{$slider-width} - 1px);
-
-        transition:
-            box-shadow duration("expand") easing(),
-            opacity duration("expand") easing(),
-            transform duration("expand") easing("ease-out-back");
-
-    }
 
     &:checked:not(:backdrop):not(.mode-switch) {
         background-color: #{'@accent_color'};

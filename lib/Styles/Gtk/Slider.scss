@@ -9,6 +9,10 @@ slider {
         0 0 0 1px $border-color,
         shadow(2);
 
+    // 16px - border
+    min-height: calc(rem(16px) - 1px);
+    min-width: calc(rem(16px) - 1px);
+
     &:backdrop {
         box-shadow:
             highlight(),
