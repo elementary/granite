@@ -84,7 +84,8 @@ public class CSSView : DemoPage {
         card_box.append (card);
         card_box.append (card_checkered);
 
-        var terminal_label = new Granite.HeaderLabel ("\"terminal\" style class");
+        var terminal_label = new Granite.HeaderLabel
+        ("\"Granite.CssClass.TERMINAL\"");
 
         var terminal = new Gtk.Label ("[ 73%] Linking C executable granite-demo\n[100%] Built target granite-demo") {
             selectable = true,
@@ -97,7 +98,7 @@ public class CSSView : DemoPage {
             min_content_height = 70,
             child = terminal
         };
-        terminal_scroll.add_css_class (Granite.STYLE_CLASS_TERMINAL);
+        terminal_scroll.add_css_class (Granite.CssClass.TERMINAL);
 
         var accent_color_label = new Granite.HeaderLabel ("Colored labels and icons");
 

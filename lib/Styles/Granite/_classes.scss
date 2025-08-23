@@ -48,3 +48,21 @@ paper {
     font-family: monospace;
 }
 
+.terminal {
+    font-family: monospace;
+
+    background-color: $fg-color;
+    color: bg-color(0);
+
+    padding: rem(12px) rem(18px);
+
+    & selection {
+        background-color: bg-color(0);
+        color: $fg-color;
+
+        &:backdrop {
+            // Cancelling values set in non-terminal selection
+            background-color: inherit;
+        }
+    }
+}
