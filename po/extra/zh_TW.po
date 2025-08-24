@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-03-17 11:10+0000\n"
+"PO-Revision-Date: 2025-08-22 15:58+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/desktop/granite-extra/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -41,25 +41,25 @@ msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32
 msgid "New Icons:"
-msgstr ""
+msgstr "新圖示："
 
 #: data/granite.metainfo.xml.in:34
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
-msgstr ""
+msgstr "分欄檢視、格狀檢視、列表檢視與閱讀模式的圖示。還有水平與垂直刪節號的圖示"
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "左右側邊欄的顯示/隱藏圖示"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "表情符號分類圖示，GTK 的表情符號選取工具有使用"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Gtk.PasswordEntry 所需要的眼睛圖示"
 
 #: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
@@ -71,32 +71,33 @@ msgstr "新功能："
 msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
-msgstr ""
+msgstr "Box: 一個可指定方向的元件，包含標準留白與已連結樣式"
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem: 標準清單元件，包含樣式與留白"
 
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
-msgstr ""
+msgstr "ToolBox: 一個垂直配置元件，供頂部與底部工具列使用"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
-msgstr ""
+msgstr "文字標籤用的新的樣式類別定數：CssClass.NUMERIC 與 CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:45
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
-msgstr ""
+msgstr "StyleManager 利用桌面入口 (Portals) 管理自動設定深色與亮色模式與系統強調色"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
-msgstr ""
+msgstr "BackButton 是一個標準化的導覽按鈕，會觸發 \"navigation.pop\""
+"，並包含快捷鍵工具提示"
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -107,16 +108,16 @@ msgstr "改善項目："
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string 現在不再使用 \"⌘\" 符號，改用 \"Super\" 一詞"
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
-msgstr ""
+msgstr "HeaderLabel 現在有 H1-H4 大小的新屬性，且 H2 樣式現在更粗"
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD 現在預設改為圓角"
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -133,27 +134,27 @@ msgstr "棄用項目："
 msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
-msgstr ""
+msgstr "Utils.set_color_primary。現代應用程式已改用更多分割面板的設計，這個風格已退流"
+"行"
 
 #: data/granite.metainfo.xml.in:58
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
-msgstr ""
+msgstr "幾乎所有舊的 `STYLE_CLASS` 定數都已經被棄用。它們有一些被 `CssClass` "
+"定數取代，其他則是被元件取代。"
 
 #: data/granite.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "改善項目："
+msgstr "展示 demo 改善項目："
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "更多展示頁面，展示更多元件"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "在側邊欄裡包含切換配色方案的按鈕"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
