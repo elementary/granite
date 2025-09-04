@@ -1,7 +1,6 @@
 /*-
- * Copyright 2016-2022 elementary, Inc. (https://elementary.io)
+ * Copyright 2016-2025 elementary, Inc. (https://elementary.io)
  * Copyright 2016-2017 Artem Anufrij <artem.anufrij@live.de>
- * Copyright 2016-2017 Daniel Foré <daniel@elementary.io>
  * SPDX-License-Identifier: LGPL-3.0-or-later
  */
 
@@ -61,6 +60,7 @@ public class Granite.Toast : Gtk.Widget {
                 notification_label.label = value;
             }
             _title = value;
+            update_property (Gtk.AccessibleProperty.LABEL, value, -1);
         }
     }
 
@@ -76,6 +76,7 @@ public class Granite.Toast : Gtk.Widget {
     }
 
     class construct {
+        set_accessible_role (ALERT);
         set_css_name ("toast");
     }
 
@@ -91,6 +92,7 @@ public class Granite.Toast : Gtk.Widget {
             valign = Gtk.Align.CENTER
         };
         close_button.add_css_class (Granite.STYLE_CLASS_CIRCULAR);
+        close_button.update_property (Gtk.AccessibleProperty.LABEL, _("Close"), -1);
 
         notification_label = new Gtk.Label (title) {
             wrap = true,
@@ -183,6 +185,16 @@ public class Granite.Toast : Gtk.Widget {
         if (!revealer.child_revealed) {
             revealer.reveal_child = true;
         }
+
+        string announcement;
+        if (default_action_button.visible) {
+            announcement = _("A toast appeared: %s, has a button: %s").printf (title, default_action_button.label);
+        } else {
+            announcement = _("A toast appeared: %s").printf (title);
+        }
+
+        grab_focus ();
+        announce (announcement, MEDIUM);
 
         // Remove any old timeout, including one started by
         // leave_notify_event for the previous notification
