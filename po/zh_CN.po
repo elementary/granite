@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 16:40+0000\n"
-"PO-Revision-Date: 2021-11-01 02:19+0000\n"
-"Last-Translator: Yuchen Deng <loaden@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
-"desktop/granite/zh_Hans/>\n"
+"POT-Creation-Date: 2025-07-09 01:07+0000\n"
+"PO-Revision-Date: 2025-08-15 17:55+0000\n"
+"Last-Translator: JieXu <xujie0739@qq.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://"
+"l10n.elementaryos.org/projects/desktop/granite/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -42,7 +42,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "永不"
 
 #: lib/DateTime.vala:63
 msgid "Now"
@@ -151,7 +151,7 @@ msgstr "："
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"
