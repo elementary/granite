@@ -1,0 +1,100 @@
+avatar {
+    border-radius: 9999px;
+    box-shadow: 
+        highlight(),
+        shadow(1);
+
+    background-clip: border-box;
+    background-color: #{'@accent_color'};
+    border-color: color-mix(black, transparent, 25%) ;
+    color: color-mix(black, transparent, 50%) ;
+
+    &.color1 {
+        background-color: $BLUEBERRY_300;
+        border-color: rgba($BLUEBERRY_500, 0.5);
+        color: $BLUEBERRY_900;
+    }
+
+    &.color2 {
+        background-color: $BLUEBERRY_100;
+        border-color: rgba($BLUEBERRY_300, 0.5);
+        color: $BLUEBERRY_700;
+    }
+
+    &.color3 {
+        background-color: $MINT_300;
+        border-color: rgba($MINT_500, 0.5);
+        color: $MINT_900;
+    }
+
+    &.color4 {
+        background-color: $LIME_300;
+        border-color: rgba($LIME_500, 0.5);
+        color: $LIME_900;
+    }
+
+    &.color5 {
+        background-color: $BANANA_500;
+        border-color: rgba($BANANA_700, 0.5);
+        color: $BANANA_900;
+    }
+
+    &.color6 {
+        background-color: mix($BANANA_500, $ORANGE_300, $weight: 50%);
+        border-color: rgba(mix($BANANA_700, $ORANGE_500, $weight: 50%), 0.5);
+        color: mix($BANANA_900, $ORANGE_900, $weight: 50%);
+    }
+
+    &.color7 {
+        background-color: $ORANGE_300;
+        border-color: rgba($ORANGE_500, 0.5);
+        color: $ORANGE_900;
+    }
+
+    &.color8 {
+        background-color: $STRAWBERRY_300;
+        border-color: rgba($STRAWBERRY_500, 0.5);
+        color: $STRAWBERRY_900;
+    }
+
+    &.color9 {
+        background-color: $BUBBLEGUM_300;
+        border-color: rgba($BUBBLEGUM_500, 0.5);
+        color: $BUBBLEGUM_900;
+    }
+
+    &.color10 {
+        background-color: $GRAPE_300;
+        border-color: rgba($GRAPE_500, 0.5);
+        color: $GRAPE_900;
+    }
+
+    &.color11 {
+        background-color: mix($BLUEBERRY_700, $GRAPE_300, $weight: 50%);
+        border-color: rgba(mix($BLUEBERRY_700, $GRAPE_500, $weight: 50%), 0.5);
+        color: mix($BLUEBERRY_900, $GRAPE_900, $weight: 50%);
+    }
+
+    &.color12 {
+        background-color: mix($BANANA_100, $COCOA_100, $weight: 50%);
+        border-color: rgba(mix($BANANA_500, $COCOA_500, $weight: 50%), 0.5);
+        color: mix($BANANA_700, $COCOA_900, $weight: 50%);
+    }
+
+    &.color13 {
+        background-color: $COCOA_300;
+        border-color: rgba($COCOA_500, 0.5);
+        color: $COCOA_900;
+    }
+
+    &.color14 {
+        background-color: $SLATE_300;
+        border-color: rgba($SLATE_500, 0.5);
+        color: $SLATE_900;
+    }
+
+    &.image {
+        border-color: $border-color;
+        background: none;
+    }
+}
