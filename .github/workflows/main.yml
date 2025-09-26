@@ -23,13 +23,13 @@ jobs:
       - name: Install Dependencies
         run: |
           apt update
-          apt install -y meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-4-dev libshumate-dev sassc valac
+          apt install -y meson gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-4-dev libshumate-dev sassc valac valadoc gtk-doc-tools
       - name: Build
         env:
           DESTDIR: out
           PKG_CONFIG_PATH: ${{ github.workspace }}/build/meson-uninstalled
         run: |
-          meson setup build
+          meson setup build -Ddocumentation=true
           ninja -C build
           ninja -C build install
 
