@@ -1,3 +1,9 @@
+granite7 (7.7.0) jammy; urgency=medium
+
+  * Release 7.7.0 (#892)
+
+ -- elementary, Inc. <builds@elementary.io>  Tue, 30 Sep 2025 21:21:21 +0000
+
 granite7 (7.6.0) jammy; urgency=medium
 
   * Release 7.6.0 (#739)
