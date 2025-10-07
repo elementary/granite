@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-06 12:55+0000\n"
+"PO-Revision-Date: 2025-10-08 05:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/he/>\n"
@@ -73,7 +73,7 @@ msgstr "יכולות חדשות:"
 msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
-msgstr ""
+msgstr "התיבה - Box היא וידג׳ט שניתן ליישר שכולל סגנונות ריווח וקישור תקניים"
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
@@ -82,6 +82,7 @@ msgstr "ListItem הוא וידג׳ט רשימה רגיל שכולל סגנונו
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"סרגל הכלים - ToolBox הוא וידג׳ט בפריסה אנכית לסרגלי כלים עליונים או תחתונים"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
@@ -93,12 +94,16 @@ msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"מנהל הסגנונות - StyleManager מטפל בהגדרת המצבים כהה ובהיר אוטומטית לרבות "
+"גווני המערכת המשניים באמצעות שערים (Portals)"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"כפתור חזרה - BackButton הוא כפתור ניווט תקני שמפעיל „navigation.pop” וכולל "
+"חלונית עצה למקשי הקיצור שלו"
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -109,12 +114,13 @@ msgstr "שיפורים:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string משתמשת מעתה בביטוי „חלונות/סופר” במקום בסמל „⌘”"
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"ל־HeaderLabel יש מאפיין חדש לגדלים H1-‏H4 וסגנונות H2 מודגשים יותר מעכשיו"
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
