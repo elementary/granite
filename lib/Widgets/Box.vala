@@ -10,6 +10,7 @@
  */
 [Version (since = "7.7.0")]
 public class Granite.Box : Gtk.Box {
+    [Version (since = "7.7.0")]
     public enum Spacing {
         NONE,
         // Spacing between groups of related controls like {@link Gtk.CheckButton}
