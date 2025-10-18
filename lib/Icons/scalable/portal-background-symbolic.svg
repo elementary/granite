@@ -49,10 +49,6 @@
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
      id="defs12" /><path
-     style="opacity:0.3;fill:#555761;fill-opacity:1;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-     d="m 4,5 c 0,2.5 1.5,4 4,4 2.5,0 4,-1.5 4,-4 l 0.5,4 c 0,1 -3,4 -4.5,4 C 6.5,13 3.5,10 3.5,9 Z"
-     id="path36"
-     sodipodi:nodetypes="ccccccc" /><path
      id="rect30-0"
      style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;vector-effect:none;fill:#555761;stroke-linecap:round;stroke-linejoin:round;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
      d="M 6,4 C 5.454649,4 5,4.4546486 5,5 V 7 C 5,7.5453514 5.454649,8 6,8 6.545351,8 7,7.5453514 7,7 V 5 C 7,4.4546486 6.545351,4 6,4 Z m 4,0 C 9.454649,4 9,4.4546486 9,5 v 2 c 0,0.5453514 0.454649,1 1,1 0.545351,0 1,-0.4546486 1,-1 V 5 C 11,4.4546486 10.545351,4 10,4 Z" /><path
