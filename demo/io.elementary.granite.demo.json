@@ -1,0 +1,102 @@
+{
+    "id" : "io.elementary.granite.demo",
+    "runtime" : "io.elementary.Platform",
+    "runtime-version" : "daily",
+    "sdk" : "io.elementary.Sdk",
+    "command" : "granite-7-demo",
+    "tags" : [
+        "devel"
+    ],
+    "desktop-file-name-suffix" : " (Development)",
+    "finish-args" : [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--share=network",
+        "--device=dri"
+    ],
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/pkgconfig",
+        "/share/aclocal",
+        "/man",
+        "/share/man",
+        "/share/gtk-doc",
+        "/share/vala",
+        "*.la",
+        "*.a",
+        "*.pyc",
+        "*.pyo"
+    ],
+    "modules" : [
+        {
+            "name" : "libsass",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/lazka/libsass.git",
+                    "branch" : "meson",
+                    "commit" : "aac79dccd3c8f7e8f22125f87a119f3b1ee9d487"
+                }
+            ]
+        },
+        {
+            "name" : "sassc",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/lazka/sassc.git",
+                    "branch" : "meson",
+                    "commit" : "a1950c2d95ea4c051feb90bb1f43559fbb54bf36"
+                }
+            ]
+        },
+        {
+            "name" : "protobuf-c",
+            "buildsystem" : "autotools",
+            "config-opts" : [
+                "--disable-protoc"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/protobuf-c/protobuf-c.git",
+                    "tag" : "v1.5.2",
+                    "commit" : "4719fdd7760624388c2c5b9d6759eb6a47490626"
+                }
+            ]
+        },
+        {
+            "name" : "libshumate",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dgtk_doc=false"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libshumate.git",
+                    "tag" : "1.4.0",
+                    "commit" : "06021e35f0d479612fb1a3af91a73ba562175e03"
+                }
+            ]
+        },
+        {
+            "name" : "demo",
+            "config-opts" : [
+                "--libdir=lib",
+                "-Dgtk-stylesheets=true"
+            ],
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "dir",
+                    "path" : ".."
+                }
+            ]
+        }
+    ]
+}
