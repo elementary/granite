@@ -59,7 +59,7 @@
 
     <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
 
-    <file alias="scalable/status/program-background.svg" compressed="true" preprocess="xml-stripblanks">scalable/program-background.svg</file>
+    <file alias="scalable/status/program-background-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/program-background-symbolic.svg</file>
 
     <file alias="scalable/status/process-completed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-completed-symbolic.svg</file>
     <file alias="scalable/status/process-error-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-error-symbolic.svg</file>
