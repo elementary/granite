@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-03-12 14:55+0000\n"
+"PO-Revision-Date: 2025-10-08 05:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -40,16 +40,16 @@ msgid "elementary, Inc."
 msgstr "elementary בע״מ."
 
 #: data/granite.metainfo.xml.in:32
-#, fuzzy
-#| msgid "New Constants:"
 msgid "New Icons:"
-msgstr "קבועים חדשים:"
+msgstr "סמלים חדשים:"
 
 #: data/granite.metainfo.xml.in:34
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"הצגת סמלים לעמודות, רשתות, רשימות ומצב קריאה. לרבות סמלי השמטה אופקיים "
+"ואנכיים"
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
@@ -57,11 +57,11 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "סמלי קטגוריות אמוג׳י שבשימוש בורר האמוג׳י של GTK"
 
 #: data/granite.metainfo.xml.in:37
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "סמלי עיניים שנחוצים ל־Gtk.PasswordEntry"
 
 #: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
@@ -73,32 +73,37 @@ msgstr "יכולות חדשות:"
 msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
-msgstr ""
+msgstr "התיבה - Box היא וידג׳ט שניתן ליישר שכולל סגנונות ריווח וקישור תקניים"
 
 #: data/granite.metainfo.xml.in:42
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem הוא וידג׳ט רשימה רגיל שכולל סגנונות וריווח"
 
 #: data/granite.metainfo.xml.in:43
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"סרגל הכלים - ToolBox הוא וידג׳ט בפריסה אנכית לסרגלי כלים עליונים או תחתונים"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
-msgstr ""
+msgstr "קבועי מחלקות סגנון חדשים לתוויות: CssClass.NUMERIC ו־CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:45
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"מנהל הסגנונות - StyleManager מטפל בהגדרת המצבים כהה ובהיר אוטומטית לרבות "
+"גווני המערכת המשניים באמצעות שערים (Portals)"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"כפתור חזרה - BackButton הוא כפתור ניווט תקני שמפעיל „navigation.pop” וכולל "
+"חלונית עצה למקשי הקיצור שלו"
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
 #: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
@@ -109,16 +114,17 @@ msgstr "שיפורים:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string משתמשת מעתה בביטוי „חלונות/סופר” במקום בסמל „⌘”"
 
 #: data/granite.metainfo.xml.in:51
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"ל־HeaderLabel יש מאפיין חדש לגדלים H1-‏H4 וסגנונות H2 מודגשים יותר מעכשיו"
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD מעוגל מעתה כברירת מחדל"
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -144,10 +150,8 @@ msgid ""
 msgstr ""
 
 #: data/granite.metainfo.xml.in:60
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "שיפורים:"
+msgstr "שיפורים בהדגמה:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
@@ -155,7 +159,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "בורר ערכות צבע בסרגל הצד"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
