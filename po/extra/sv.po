@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2019-12-16 18:07+0000\n"
-"Last-Translator: Daniel Foré <daniel@elementary.io>\n"
-"Language-Team: Swedish <https://l10n.elementary.io/projects/desktop/granite-"
-"extra/sv/>\n"
+"PO-Revision-Date: 2025-10-21 18:12+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
+"granite-extra/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -63,7 +63,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
 #: data/granite.metainfo.xml.in:179
 msgid "New Features:"
-msgstr ""
+msgstr "Nya funktioner:"
 
 #: data/granite.metainfo.xml.in:41
 msgid ""
@@ -101,7 +101,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:146
 #: data/granite.metainfo.xml.in:164 data/granite.metainfo.xml.in:201
 msgid "Improvements:"
-msgstr ""
+msgstr "Förbättringar:"
 
 #: data/granite.metainfo.xml.in:50
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
@@ -121,7 +121,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:139 data/granite.metainfo.xml.in:149
 #: data/granite.metainfo.xml.in:168 data/granite.metainfo.xml.in:204
 msgid "Updated translations"
-msgstr ""
+msgstr "Uppdaterade översättningar"
 
 #: data/granite.metainfo.xml.in:55 data/granite.metainfo.xml.in:108
 msgid "Deprecations:"
