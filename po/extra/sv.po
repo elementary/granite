@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-22 09:58+0000\n"
+"PO-Revision-Date: 2025-10-23 13:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/sv/>\n"
@@ -33,8 +33,8 @@ msgid ""
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
 "Ett kompletterande bibliotek för GTK och GLib som tillhandahåller komplexa "
-"widgets och bekvämlighetsmetoder avsedda att användas i appar som byggts för "
-"elementära operativsystem."
+"widgetar och bekvämlighetsmetoder avsedda att användas i appar som byggts "
+"för elementary OS."
 
 #: data/granite.metainfo.xml.in:24
 msgid "elementary, Inc."
@@ -142,7 +142,7 @@ msgstr "Uppdaterade översättningar"
 
 #: data/granite.metainfo.xml.in:55 data/granite.metainfo.xml.in:108
 msgid "Deprecations:"
-msgstr "Avskaffande:"
+msgstr "Föråldrade funktioner:"
 
 #: data/granite.metainfo.xml.in:57
 msgid ""
@@ -244,7 +244,7 @@ msgstr "Lägg till en uttagsmetod för Granite.Toast"
 
 #: data/granite.metainfo.xml.in:136
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr "Beroende inte på den elementära stilmallen för fallback-stilar"
+msgstr "Var inte beroende av elementary-stilmallen för reservstilar"
 
 #: data/granite.metainfo.xml.in:137
 msgid ""
@@ -276,7 +276,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:160
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr "Granite.STYLE_CLASS_SIDEBAR för styling av sidofält i applikationer"
+msgstr "Granite.STYLE_CLASS_SIDEBAR för styling av sidofält i program"
 
 #: data/granite.metainfo.xml.in:161
 msgid ""
@@ -320,7 +320,7 @@ msgstr "Borttagningar:"
 
 #: data/granite.metainfo.xml.in:187
 msgid "Application: use Gtk.Application instead"
-msgstr "Applikation: använd Gtk.Application istället"
+msgstr "Program: använd Gtk.Application istället"
 
 #: data/granite.metainfo.xml.in:188
 msgid "Drawing: Use Gtk.CSS"
