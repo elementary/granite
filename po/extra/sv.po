@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-22 05:26+0000\n"
+"PO-Revision-Date: 2025-10-22 09:58+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/sv/>\n"
@@ -348,7 +348,7 @@ msgstr "Banor: använd GLib.Environment istället"
 
 #: data/granite.metainfo.xml.in:193
 msgid "Seekbar"
-msgstr "Seekbar"
+msgstr "Sökfält"
 
 #: data/granite.metainfo.xml.in:194
 msgid "Services.Settings: use GLib.Settings instead"
@@ -364,7 +364,7 @@ msgstr "SourceList: använd Gtk.ListBox med stilklassen \"sidebar\" istället"
 
 #: data/granite.metainfo.xml.in:197
 msgid "StorageBar"
-msgstr "StorageBar"
+msgstr "Lagringsfält"
 
 #: data/granite.metainfo.xml.in:198
 msgid "TextStyle: use style class constants instead"
