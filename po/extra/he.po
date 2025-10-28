@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 16:40+0000\n"
-"PO-Revision-Date: 2025-03-12 14:55+0000\n"
+"POT-Creation-Date: 2025-07-09 01:07+0000\n"
+"PO-Revision-Date: 2025-10-23 13:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 7"
@@ -39,187 +39,285 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary בע״מ."
 
-#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
-#: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
-#: data/granite.metainfo.xml.in:149
+#: data/granite.metainfo.xml.in:32
+msgid "New Icons:"
+msgstr "סמלים חדשים:"
+
+#: data/granite.metainfo.xml.in:34
+msgid ""
+"View icons for columns, grids, lists, and reader mode. Plus horizontal and "
+"vertical ellipsis icons"
+msgstr ""
+"הצגת סמלים לעמודות, רשתות, רשימות ומצב קריאה. לרבות סמלי השמטה אופקיים "
+"ואנכיים"
+
+#: data/granite.metainfo.xml.in:35
+msgid "Start and End show/hide sidebar icons"
+msgstr "הצגת/הסתרת סמלי התחלה וסיום בסרגל הצד"
+
+#: data/granite.metainfo.xml.in:36
+msgid "Emoji category icons used by GTK's emoji picker"
+msgstr "סמלי קטגוריות אמוג׳י שבשימוש בורר האמוג׳י של GTK"
+
+#: data/granite.metainfo.xml.in:37
+msgid "Eye icons required by Gtk.PasswordEntry"
+msgstr "סמלי עיניים שנחוצים ל־Gtk.PasswordEntry"
+
+#: data/granite.metainfo.xml.in:39 data/granite.metainfo.xml.in:75
+#: data/granite.metainfo.xml.in:92 data/granite.metainfo.xml.in:156
+#: data/granite.metainfo.xml.in:179
 msgid "New Features:"
 msgstr "יכולות חדשות:"
 
-#: data/granite.metainfo.xml.in:34
-msgid "Granite.CssClass.NUMERIC"
-msgstr "Granite.CssClass.NUMERIC"
+#: data/granite.metainfo.xml.in:41
+msgid ""
+"Box is an orientable widget that includes standardized spacing and linked "
+"styles"
+msgstr "התיבה - Box היא וידג׳ט שניתן ליישר שכולל סגנונות ריווח וקישור תקניים"
 
-#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:49
-#: data/granite.metainfo.xml.in:68 data/granite.metainfo.xml.in:90
-#: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:116
-#: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:171
+#: data/granite.metainfo.xml.in:42
+msgid "ListItem is a standard list widget that includes styles and spacing"
+msgstr "ListItem הוא וידג׳ט רשימה רגיל שכולל סגנונות וריווח"
+
+#: data/granite.metainfo.xml.in:43
+msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
+msgstr ""
+"סרגל הכלים - ToolBox הוא וידג׳ט בפריסה אנכית לסרגלי כלים עליונים או תחתונים"
+
+#: data/granite.metainfo.xml.in:44
+msgid ""
+"new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
+msgstr "קבועי מחלקות סגנון חדשים לתוויות: CssClass.NUMERIC ו־CssClass.MONOSPACE"
+
+#: data/granite.metainfo.xml.in:45
+msgid ""
+"StyleManager handles automatically setting dark and light modes as well as "
+"system accent colors using Portals"
+msgstr ""
+"מנהל הסגנונות - StyleManager מטפל בהגדרת המצבים כהה ובהיר אוטומטית לרבות "
+"גווני המערכת המשניים באמצעות שערים (Portals)"
+
+#: data/granite.metainfo.xml.in:46
+msgid ""
+"BackButton is a standardized navigation button that activates "
+"\"navigation.pop\" and includes a shortcut tooltip"
+msgstr ""
+"כפתור חזרה - BackButton הוא כפתור ניווט תקני שמפעיל „navigation.pop” וכולל "
+"חלונית עצה למקשי הקיצור שלו"
+
+#: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
+#: data/granite.metainfo.xml.in:98 data/granite.metainfo.xml.in:120
+#: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:146
+#: data/granite.metainfo.xml.in:164 data/granite.metainfo.xml.in:201
 msgid "Improvements:"
 msgstr "שיפורים:"
 
-#: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:55
-#: data/granite.metainfo.xml.in:76 data/granite.metainfo.xml.in:93
-#: data/granite.metainfo.xml.in:109 data/granite.metainfo.xml.in:119
-#: data/granite.metainfo.xml.in:138 data/granite.metainfo.xml.in:174
+#: data/granite.metainfo.xml.in:50
+msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
+msgstr "accel_to_string משתמשת מעתה בביטוי „חלונות/סופר” במקום בסמל „⌘”"
+
+#: data/granite.metainfo.xml.in:51
+msgid ""
+"HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
+msgstr ""
+"ל־HeaderLabel יש מאפיין חדש לגדלים H1-‏H4 וסגנונות H2 מודגשים יותר מעכשיו"
+
+#: data/granite.metainfo.xml.in:52
+msgid "CssClass.CARD is now rounded by default"
+msgstr "CssClass.CARD מעוגל מעתה כברירת מחדל"
+
+#: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
+#: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
+#: data/granite.metainfo.xml.in:139 data/granite.metainfo.xml.in:149
+#: data/granite.metainfo.xml.in:168 data/granite.metainfo.xml.in:204
 msgid "Updated translations"
 msgstr "התרגומים עודכנו"
 
-#: data/granite.metainfo.xml.in:47
+#: data/granite.metainfo.xml.in:55 data/granite.metainfo.xml.in:108
+msgid "Deprecations:"
+msgstr "נזנחו:"
+
+#: data/granite.metainfo.xml.in:57
+msgid ""
+"Utils.set_color_primary. Modern apps have moved to more of a split paned "
+"design and this style is no longer very fashionable"
+msgstr ""
+"Utils.set_color_primary. יישומים עדכניים עברו לעיצוב שהוא יותר בלוחות "
+"מפוצלים והסגנון הזה לא כל כך באופנה יותר"
+
+#: data/granite.metainfo.xml.in:58
+msgid ""
+"Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
+"them have been replaced by `CssClass` constants, others by widgets."
+msgstr ""
+"כמעט כל הקבועים הישנים מסוג `STYLE_CLASS` הוצאו מכלל שימוש. חלקם הוחלפו על "
+"ידי קבועי `CssClass`, אחרים הוחלפו בווידג׳טים."
+
+#: data/granite.metainfo.xml.in:60
+msgid "Demo Improvements:"
+msgstr "שיפורים בהדגמה:"
+
+#: data/granite.metainfo.xml.in:62
+msgid "More demo pages with more widgets"
+msgstr "עוד עמודי הדגמה עם עוד וידג׳טים"
+
+#: data/granite.metainfo.xml.in:63
+msgid "Color scheme switcher in the sidebar"
+msgstr "בורר ערכות צבע בסרגל הצד"
+
+#: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
 msgstr "Granite.Bin"
 
-#: data/granite.metainfo.xml.in:51
+#: data/granite.metainfo.xml.in:81
 msgid "Improve screen reader support for SwitchModelButton"
 msgstr "שופרה התמיכה במקריא מסך ל־SwitchModelButton (כפתור ברירת מצב)"
 
-#: data/granite.metainfo.xml.in:52
+#: data/granite.metainfo.xml.in:82
 msgid "Wrap long labels for SwitchModelButton"
 msgstr "גלישת תוויות ארוכות ב־SwitchModelButton (כפתור ברירת מצב)"
 
-#: data/granite.metainfo.xml.in:53
+#: data/granite.metainfo.xml.in:83
 msgid "HeaderLabel: set accessible description"
 msgstr "HeaderLabel: הגדרת תיאור נגיש"
 
-#: data/granite.metainfo.xml.in:54
+#: data/granite.metainfo.xml.in:84
 msgid "ValidatedEntry: set AccessibleState for validity"
 msgstr "ValidatedEntry: הגדרת AccessibleState לתוקף"
 
-#: data/granite.metainfo.xml.in:64
+#: data/granite.metainfo.xml.in:94
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr "Toast: נוסף אות התעלמות שכולל את סיבת ההתעלמות"
 
-#: data/granite.metainfo.xml.in:65
+#: data/granite.metainfo.xml.in:95
 msgid "Add STYLE_CLASS_SUCCESS"
 msgstr "נוסף STYLE_CLASS_SUCCESS"
 
-#: data/granite.metainfo.xml.in:66
+#: data/granite.metainfo.xml.in:96
 msgid "HeaderLabel: allow secondary text to use markup"
 msgstr "HeaderLabel: לאפשר לטקסט המשני להשתמש ב־Markup"
 
-#: data/granite.metainfo.xml.in:70
+#: data/granite.metainfo.xml.in:100
 msgid "Make building Demo optional"
 msgstr "הפיכת בניית ההדגמה לרשות"
 
-#: data/granite.metainfo.xml.in:71
+#: data/granite.metainfo.xml.in:101
 msgid "Demo now uses a modern split-pane design"
 msgstr "הדוגמה משתמשת מעתה בעיצוב לוחות מפוצלים מודרני"
 
-#: data/granite.metainfo.xml.in:72
+#: data/granite.metainfo.xml.in:102
 msgid "DateTime: handle relative datetime when epoch"
 msgstr "DateTime: לטפל בתאריך-שעה יחסיים עם epoch (שעון יוניקס)"
 
-#: data/granite.metainfo.xml.in:73
+#: data/granite.metainfo.xml.in:103
 msgid "MessageDialog: Set last button as focus widget"
 msgstr "MessageDialog: הגדרת הכפתור האחרון כווידג׳ט מיקוד"
 
-#: data/granite.metainfo.xml.in:74
+#: data/granite.metainfo.xml.in:104
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr "SwitchModelButton: הוסר מיקוד החלפת מקלדת מיותר"
 
-#: data/granite.metainfo.xml.in:75
+#: data/granite.metainfo.xml.in:105
 msgid "Load fallback styles for widgets when using Granite.init"
 msgstr "טעינת סגנונות משניים לווידג׳טים בעת שימוש ב־Granite.init"
 
-#: data/granite.metainfo.xml.in:78
-msgid "Deprecations:"
-msgstr "נזנחו:"
-
-#: data/granite.metainfo.xml.in:80
+#: data/granite.metainfo.xml.in:110
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr "SettingsPage ו־SettingsSidebar: הווידג׳טים האלה עבור ל־LibSwitchboard"
 
-#: data/granite.metainfo.xml.in:92
+#: data/granite.metainfo.xml.in:122
 msgid "Add a withdraw method for Granite.Toast"
 msgstr "נוספה מתודת נסיגה ל־Granite.Toast"
 
-#: data/granite.metainfo.xml.in:106
+#: data/granite.metainfo.xml.in:136
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr "לא להסתמך על גיליון הסגנון של elementary לסגנונות גיבוי"
 
-#: data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:137
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
 "לטעון גיליונות סגנון של gresourced בשם „Application.css” ב־„Granite.init ()‎”"
 
-#: data/granite.metainfo.xml.in:108
+#: data/granite.metainfo.xml.in:138
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr "הוספת קבועי SettingsUri לטעינת הגדרות מערכת"
 
-#: data/granite.metainfo.xml.in:118
+#: data/granite.metainfo.xml.in:148
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr "החצנת „Granite.init ()‎” לציבור הרחב"
 
-#: data/granite.metainfo.xml.in:128
+#: data/granite.metainfo.xml.in:158
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr "Granite.STYLE_CLASS_RICH_LIST לריווח שורות תקני ב־Gtk.ListBox"
 
-#: data/granite.metainfo.xml.in:129
+#: data/granite.metainfo.xml.in:159
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr "Granite.STYLE_CLASS_FRAME להוספת גבולות ל־Gtk.LisBox,‏ Gtk.InfoBar ועוד"
 
-#: data/granite.metainfo.xml.in:130
+#: data/granite.metainfo.xml.in:160
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr "Granite.STYLE_CLASS_SIDEBAR לעיצוב סרגלי צד של יישומים"
 
-#: data/granite.metainfo.xml.in:131
+#: data/granite.metainfo.xml.in:161
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr "Granite.STYLE_CLASS_BACKGROUND כדי להשתמש ברקע ברירת המחדל לווידג׳ט"
 
-#: data/granite.metainfo.xml.in:132
+#: data/granite.metainfo.xml.in:162
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr "הוספת טקסט משני כרשות ל־Granite.HeaderLabel"
 
-#: data/granite.metainfo.xml.in:136
+#: data/granite.metainfo.xml.in:166
 msgid "Allow text in Granite.Toast to wrap"
 msgstr "לאפשר לטקסט ב־Granite.Toast לרדת שורה"
 
-#: data/granite.metainfo.xml.in:137
+#: data/granite.metainfo.xml.in:167
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
 "SimpleSettingsPage: לאפשר לכותרות לרדת שורה ולטקסט התיאור לרדת מתחת למתגים"
 
-#: data/granite.metainfo.xml.in:151
+#: data/granite.metainfo.xml.in:181
 msgid "Ported to GTK4! 🎉️"
 msgstr "הוסב ל־GTK4! 🎉️"
 
-#: data/granite.metainfo.xml.in:152
+#: data/granite.metainfo.xml.in:182
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr "Granite.Placeholder: מחליף את AlertView ואת Welcome"
 
-#: data/granite.metainfo.xml.in:153
+#: data/granite.metainfo.xml.in:183
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr "SimpleSettingsPage: לאפשר כתיבה מסוגננת בתיאור"
 
-#: data/granite.metainfo.xml.in:155
+#: data/granite.metainfo.xml.in:185
 msgid "Removals:"
 msgstr "הסרות:"
 
-#: data/granite.metainfo.xml.in:157
+#: data/granite.metainfo.xml.in:187
 msgid "Application: use Gtk.Application instead"
 msgstr "Application: יש להשתמש ב־Gtk.Application במקום"
 
-#: data/granite.metainfo.xml.in:158
+#: data/granite.metainfo.xml.in:188
 msgid "Drawing: Use Gtk.CSS"
 msgstr "Drawing: שימוש ב־Gtk.CSS"
 
-#: data/granite.metainfo.xml.in:159
+#: data/granite.metainfo.xml.in:189
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: יש להשתמש ב־Adw.TabBar במקום"
 
-#: data/granite.metainfo.xml.in:160
+#: data/granite.metainfo.xml.in:190
 msgid "Logger: use GLib.log instead"
 msgstr "Logger: יש להשתמש ב־GLib.log במקום"
 
-#: data/granite.metainfo.xml.in:161
+#: data/granite.metainfo.xml.in:191
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
@@ -227,38 +325,41 @@ msgstr ""
 "ModeButton: יש להשתמש ב־Gtk.ToggleButton עם המאפיין „group” (קבוצה) ובמחלקת "
 "הסגנון „linked” (מקושר) במקום"
 
-#: data/granite.metainfo.xml.in:162
+#: data/granite.metainfo.xml.in:192
 msgid "Paths: use GLib.Environment instead"
 msgstr "Paths: יש להשתמש ב־GLib.Environment במקום"
 
-#: data/granite.metainfo.xml.in:163
+#: data/granite.metainfo.xml.in:193
 msgid "Seekbar"
 msgstr "פס איתור"
 
-#: data/granite.metainfo.xml.in:164
+#: data/granite.metainfo.xml.in:194
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr "Services.Settings: יש להשתמש ב־GLib.Settings במקום"
 
-#: data/granite.metainfo.xml.in:165
+#: data/granite.metainfo.xml.in:195
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr "SimpleCommand: יש להשתמש ב־GLib.AppInfo.create_from_commandline במקום"
 
-#: data/granite.metainfo.xml.in:166
+#: data/granite.metainfo.xml.in:196
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
 "SourceList: יש להשתמש ב־Gtk.ListBox עם מחלקת הסגנון „sidebar” (סרגל צד) במקום"
 
-#: data/granite.metainfo.xml.in:167
+#: data/granite.metainfo.xml.in:197
 msgid "StorageBar"
 msgstr "פס אחסון"
 
-#: data/granite.metainfo.xml.in:168
+#: data/granite.metainfo.xml.in:198
 msgid "TextStyle: use style class constants instead"
 msgstr "TextStyle: יש להשתמש בקבועי מחלקת סגנון במקום"
 
-#: data/granite.metainfo.xml.in:169
+#: data/granite.metainfo.xml.in:199
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "כמה פונקציות ב־System הוחלפו ב־GLib.AppInfo"
+
+#~ msgid "Granite.CssClass.NUMERIC"
+#~ msgstr "Granite.CssClass.NUMERIC"
 
 #~ msgid "min_length property for Granite.ValidatedEntry"
 #~ msgstr "מאפיין min_length עבור Granite.ValidatedEntry"
@@ -309,9 +410,6 @@ msgstr "כמה פונקציות ב־System הוחלפו ב־GLib.AppInfo"
 
 #~ msgid "Granite.ValidatedEntry for client-side verification in forms"
 #~ msgstr "Granite.ValidatedEntry לאימות מצד הלקוח בטפסים"
-
-#~ msgid "New Constants:"
-#~ msgstr "קבועים חדשים:"
 
 #~ msgid ""
 #~ "TOOLTIP_SECONDARY_TEXT_MARKUP for smaller second line text in Gtk.Tooltips"
@@ -388,8 +486,8 @@ msgstr "כמה פונקציות ב־System הוחלפו ב־GLib.AppInfo"
 #~ "Granite.Services.SimpleCommand. Use GLib.AppInfo.create_from_commandline "
 #~ "instead"
 #~ msgstr ""
-#~ "Granite.Services.SimpleCommand. יש להשתמש ב־GLib.AppInfo."
-#~ "create_from_commandline במקום"
+#~ "Granite.Services.SimpleCommand. יש להשתמש "
+#~ "ב־GLib.AppInfo.create_from_commandline במקום"
 
 #~ msgid ""
 #~ "Old unused utilities like get_button_layout_schema, "
@@ -420,8 +518,8 @@ msgstr "כמה פונקציות ב־System הוחלפו ב־GLib.AppInfo"
 #~ "למשל: סגנון חשוך"
 
 #~ msgid ""
-#~ "It is now recommended to use GLib.Settings instead of Granite.Services."
-#~ "Settings"
+#~ "It is now recommended to use GLib.Settings instead of "
+#~ "Granite.Services.Settings"
 #~ msgstr "מעתה מומלץ להשתמש ב־GLib.Settings במקום Granite.Services.Settings"
 
 #~ msgid "Better align labels in settings sidebars"

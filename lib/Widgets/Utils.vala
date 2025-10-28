@@ -127,10 +127,11 @@ public const string TOOLTIP_SECONDARY_TEXT_MARKUP = """<span weight="600" size="
  *
  * Example:
  *
- * Description
+ * Description<<BR>>
  * Shortcut 1, Shortcut 2
  *
- * @param a string array of accelerator labels like {"<Control>a", "<Super>Right"}
+ * @param accels a string array of accelerator labels like {"<Control>a", "<Super>Right"}<<BR>
+ * The array may be null-terminated.
  *
  * @param description a standard tooltip text string
  *
@@ -149,6 +150,10 @@ public static string markup_accel_tooltip (string[]? accels, string? description
         Granite.init ();
 
         for (int i = 0; i < accels.length; i++) {
+            if (accels[i] == null) {
+                break;
+            }
+
             if (accels[i] == "") {
                 continue;
             }
