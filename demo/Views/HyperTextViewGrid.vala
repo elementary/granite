@@ -27,9 +27,9 @@ public class HyperTextViewGrid : DemoPage {
         var hypertext_scrolled_window = new Gtk.ScrolledWindow () {
             height_request = 300,
             width_request = 600,
-            child = hypertext_textview
+            child = hypertext_textview,
+            has_frame = true
         };
-        hypertext_scrolled_window.add_css_class (Granite.STYLE_CLASS_FRAME);
 
         var box = new Granite.Box (VERTICAL, NONE) {
             halign = CENTER,
