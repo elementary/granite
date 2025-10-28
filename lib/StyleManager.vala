@@ -21,7 +21,7 @@ public class Granite.StyleManager : Object {
 
     /**
      * Returns the {@link Granite.StyleManager} that handles the default display
-     * as gotten by {@link Gdk.Display.get_default ()}.
+     * as gotten by {@link Gdk.Display.get_default}.
      */
     public static unowned StyleManager get_default () {
         return style_managers_by_displays[Gdk.Display.get_default ()];
@@ -44,8 +44,8 @@ public class Granite.StyleManager : Object {
 
     /**
      * The {@link Granite.Settings.ColorScheme} requested by the application
-     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE }.
-     * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE }
+     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
+     * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE}
      */
     public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
 

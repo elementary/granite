@@ -89,8 +89,8 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
-"BackButton is a standardized navigation button that activates "
-"\"navigation.pop\" and includes a shortcut tooltip"
+"BackButton is a standardized navigation button that activates \"navigation."
+"pop\" and includes a shortcut tooltip"
 msgstr ""
 
 #: data/granite.metainfo.xml.in:48 data/granite.metainfo.xml.in:79
