@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-23 13:55+0000\n"
+"PO-Revision-Date: 2025-10-30 17:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/sv/>\n"
@@ -101,7 +101,7 @@ msgid ""
 "system accent colors using Portals"
 msgstr ""
 "StyleManager hanterar automatisk inställning av mörka och ljusa lägen samt "
-"systemets accentfärger med hjälp av portaler"
+"systemets accentfärger med hjälp av Portaler"
 
 #: data/granite.metainfo.xml.in:46
 msgid ""
@@ -131,7 +131,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:52
 msgid "CssClass.CARD is now rounded by default"
-msgstr "CssClass.CARD är nu avrundad som standard"
+msgstr "CssClass.CARD är nu rundad som standard"
 
 #: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:85
 #: data/granite.metainfo.xml.in:106 data/granite.metainfo.xml.in:123
@@ -142,7 +142,7 @@ msgstr "Uppdaterade översättningar"
 
 #: data/granite.metainfo.xml.in:55 data/granite.metainfo.xml.in:108
 msgid "Deprecations:"
-msgstr "Föråldrade funktioner:"
+msgstr "Föråldrade:"
 
 #: data/granite.metainfo.xml.in:57
 msgid ""
@@ -158,11 +158,11 @@ msgid ""
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
 "Nästan alla de gamla `STYLE_CLASS`-konstanterna har blivit föråldrade. Några "
-"av dem har ersatts av `CssClass`-konstanter, andra av widgets."
+"av dem har ersatts av `CssClass`-konstanter, andra av widgetar."
 
 #: data/granite.metainfo.xml.in:60
 msgid "Demo Improvements:"
-msgstr "Demo Förbättringar:"
+msgstr "Demoförbättringar:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
@@ -174,7 +174,7 @@ msgstr "Färgschemaväxlare i sidofältet"
 
 #: data/granite.metainfo.xml.in:77
 msgid "Granite.Bin"
-msgstr "Granit.bin"
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:81
 msgid "Improve screen reader support for SwitchModelButton"
@@ -196,8 +196,8 @@ msgstr "ValidatedEntry: ange AccessibleState för giltighet"
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr ""
-"Toast: lägg till en ny uppsägningssignal som innehåller orsaken till "
-"uppsägningen"
+"Toast: lägg till en ny avfärdningssignal som innehåller orsaken till "
+"avfärdningen"
 
 #: data/granite.metainfo.xml.in:95
 msgid "Add STYLE_CLASS_SUCCESS"
@@ -209,11 +209,11 @@ msgstr "HeaderLabel: tillåt sekundär text att använda markup"
 
 #: data/granite.metainfo.xml.in:100
 msgid "Make building Demo optional"
-msgstr "Gör det frivilligt att bygga Demo"
+msgstr "Gör det valfritt att bygga Demo"
 
 #: data/granite.metainfo.xml.in:101
 msgid "Demo now uses a modern split-pane design"
-msgstr "Demo använder nu en modern design med delade rutor"
+msgstr "Demo använder nu en modern design med delade paneler"
 
 #: data/granite.metainfo.xml.in:102
 msgid "DateTime: handle relative datetime when epoch"
@@ -221,21 +221,21 @@ msgstr "DateTime: hantera relativ datatid när epoch"
 
 #: data/granite.metainfo.xml.in:103
 msgid "MessageDialog: Set last button as focus widget"
-msgstr "MeddelandeDialog: Ange den sista knappen som fokuswidget"
+msgstr "MessageDialog: Ange den sista knappen som fokuswidget"
 
 #: data/granite.metainfo.xml.in:104
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr "SwitchModelButton: Ta bort överflödig fokusering av switch-tangentbord"
+msgstr "SwitchModelButton: Ta bort överflödig växling av tangentbordsfokusering"
 
 #: data/granite.metainfo.xml.in:105
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr "Ladda reservstilar för widgetar när du använder Granite.init"
+msgstr "Läs in reservstilar för widgetar när du använder Granite.init"
 
 #: data/granite.metainfo.xml.in:110
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr ""
-"SettingsPage och SettingsSidebar: dessa widgets har flyttats till "
+"SettingsPage och SettingsSidebar: dessa widgetar har flyttats till "
 "LibSwitchboard"
 
 #: data/granite.metainfo.xml.in:122
@@ -251,8 +251,8 @@ msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
-"Ladda automatiskt gresourcade formatmallar med namnet \"Application.css\" på "
-"\"Granite.init ()\""
+"Läs automatiskt in gresourcade-formatmallar med namnet \"Application.css\" "
+"på \"Granite.init ()\""
 
 #: data/granite.metainfo.xml.in:138
 msgid "Add SettingsUri constants for launching System Settings"
@@ -271,7 +271,7 @@ msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
-"Granite.STYLE_CLASS_FRAME för att lägga till en kant till Gtk.LisBox, "
+"Granite.STYLE_CLASS_FRAME för att lägga till en ram till Gtk.LisBox, "
 "Gtk.InfoBar och andra"
 
 #: data/granite.metainfo.xml.in:160
@@ -292,14 +292,14 @@ msgstr "Lägg till valfri sekundär text till Granite.HeaderLabel"
 
 #: data/granite.metainfo.xml.in:166
 msgid "Allow text in Granite.Toast to wrap"
-msgstr "Låt texten i Granite.Toast vara omslutande"
+msgstr "Tillåt texten i Granite.Toast att radbrytas"
 
 #: data/granite.metainfo.xml.in:167
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
-"Enkel inställningssida: Slå in titlar och låt beskrivningstexten gå under "
+"SimpleSettingsPage: Radbryt titlar och tillåt beskrivningstexten gå under "
 "växlar"
 
 #: data/granite.metainfo.xml.in:181
@@ -312,7 +312,7 @@ msgstr "Granite.Placeholder: ersätter AlertView och Welcome"
 
 #: data/granite.metainfo.xml.in:183
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr "SimpleSettingsPage: Tillåt markering i beskrivning"
+msgstr "SimpleSettingsPage: Tillåt markup i beskrivning"
 
 #: data/granite.metainfo.xml.in:185
 msgid "Removals:"
@@ -339,12 +339,12 @@ msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
-"ModeKnapp: Använd Gtk.ToggleButton med egenskapen \"group\" och stilklassen "
+"ModeButton: Använd Gtk.ToggleButton med egenskapen \"group\" och stilklassen "
 "\"linked\" istället"
 
 #: data/granite.metainfo.xml.in:192
 msgid "Paths: use GLib.Environment instead"
-msgstr "Banor: använd GLib.Environment istället"
+msgstr "Sökvägar: använd GLib.Environment istället"
 
 #: data/granite.metainfo.xml.in:193
 msgid "Seekbar"
@@ -364,7 +364,7 @@ msgstr "SourceList: använd Gtk.ListBox med stilklassen \"sidebar\" istället"
 
 #: data/granite.metainfo.xml.in:197
 msgid "StorageBar"
-msgstr "Lagringsfält"
+msgstr "StorageBar"
 
 #: data/granite.metainfo.xml.in:198
 msgid "TextStyle: use style class constants instead"
