@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-22 09:58+0000\n"
+"PO-Revision-Date: 2025-10-30 17:55+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
 "granite/sv/>\n"
@@ -82,7 +82,7 @@ msgstr "Igår"
 
 #: lib/DateTime.vala:86
 msgid "Tomorrow"
-msgstr "Imorgon"
+msgstr "I morgon"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:150
@@ -150,7 +150,7 @@ msgstr "e.m."
 #. / TRANSLATORS: separates hours from minutes.
 #: lib/Widgets/TimePicker.vala:136
 msgid ":"
-msgstr ":"
+msgstr "."
 
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
@@ -211,12 +211,12 @@ msgstr "Enter"
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:97
 msgid "Left Shift"
-msgstr "Vänster skift"
+msgstr "Vänster Skift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:101
 msgid "Right Shift"
-msgstr "Höger skift"
+msgstr "Höger Skift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:164
