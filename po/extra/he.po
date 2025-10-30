@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-09 01:07+0000\n"
-"PO-Revision-Date: 2025-10-08 05:55+0000\n"
+"PO-Revision-Date: 2025-10-23 13:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/he/>\n"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:35
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "הצגת/הסתרת סמלי התחלה וסיום בסרגל הצד"
 
 #: data/granite.metainfo.xml.in:36
 msgid "Emoji category icons used by GTK's emoji picker"
@@ -142,12 +142,16 @@ msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary. יישומים עדכניים עברו לעיצוב שהוא יותר בלוחות "
+"מפוצלים והסגנון הזה לא כל כך באופנה יותר"
 
 #: data/granite.metainfo.xml.in:58
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"כמעט כל הקבועים הישנים מסוג `STYLE_CLASS` הוצאו מכלל שימוש. חלקם הוחלפו על "
+"ידי קבועי `CssClass`, אחרים הוחלפו בווידג׳טים."
 
 #: data/granite.metainfo.xml.in:60
 msgid "Demo Improvements:"
@@ -155,7 +159,7 @@ msgstr "שיפורים בהדגמה:"
 
 #: data/granite.metainfo.xml.in:62
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "עוד עמודי הדגמה עם עוד וידג׳טים"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Color scheme switcher in the sidebar"
