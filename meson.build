@@ -1,7 +1,7 @@
 project(
     'granite-7',
     'vala', 'c',
-    meson_version: '>= 0.57.0',
+    meson_version: '>= 1.9.0',
     version: '7.7.0'
 )
 
