@@ -101,6 +101,7 @@ namespace Granite {
     /**
      * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.OSD")]
     public const string STYLE_CLASS_OSD = "osd";
     /**
      * Style class for rounded corners, i.e. on a {@link Gtk.Window} or {@link Granite.STYLE_CLASS_CARD}
@@ -267,6 +268,11 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string NUMERIC = "numeric";
+
+        /**
+         * Style class for "on-screen display" widgets in a {@Gtk.Overlay} such as {@link Granite.Box} or {@link Gtk.Button}
+         */
+        public const string OSD = "osd";
 
         /**
          * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
