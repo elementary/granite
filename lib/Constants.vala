@@ -175,6 +175,7 @@ namespace Granite {
     /**
      * Style class for flattened widgets, such as buttons,
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "has_frame = false")]
     public const string STYLE_CLASS_FLAT = "flat";
     /**
      * Style class for message dialogs.
