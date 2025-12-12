@@ -2,6 +2,7 @@ project(
     'granite-7',
     'vala', 'c',
     meson_version: '>= 0.57.0',
+    # TODO Bump to 7.8.0
     version: '7.7.0'
 )
 
