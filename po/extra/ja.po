@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2025-07-19 10:55+0000\n"
+"PO-Revision-Date: 2025-12-14 03:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -49,7 +49,7 @@ msgstr "改善点:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "HeaderLabel now has ellipsize property"
-msgstr ""
+msgstr "HeaderLabel に ellipsize プロパティを追加"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:63
 #: data/granite.metainfo.xml.in:96 data/granite.metainfo.xml.in:117
