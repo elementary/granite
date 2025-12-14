@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2025-07-19 10:55+0000\n"
+"PO-Revision-Date: 2025-12-15 10:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ru/>\n"
@@ -51,7 +51,7 @@ msgstr "Улучшения:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "HeaderLabel now has ellipsize property"
-msgstr ""
+msgstr "HeaderLabel теперь имеет свойство ellipsize"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:63
 #: data/granite.metainfo.xml.in:96 data/granite.metainfo.xml.in:117
