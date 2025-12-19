@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2025-12-14 03:55+0000\n"
+"PO-Revision-Date: 2025-12-20 19:55+0000\n"
 "Last-Translator: Bas Ernst <bas@ernstgenova.it>\n"
 "Language-Team: Dutch <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/nl/>\n"
@@ -60,28 +60,28 @@ msgid "Updated translations"
 msgstr "Bijgewerkte vertalingen"
 
 #: data/granite.metainfo.xml.in:42
-#, fuzzy
-#| msgid "New Style Constants:"
 msgid "New Icons:"
-msgstr "Nieuwe Stijl instellingen:"
+msgstr "Nieuwe iconen:"
 
 #: data/granite.metainfo.xml.in:44
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"Zie iconen voor kolommen, rasters, lijsten en leesmodus. Plus horizontale en "
+"verticale beletseltekens"
 
 #: data/granite.metainfo.xml.in:45
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "Start en Einde toon/verberg zijbalkpictogrammen"
 
 #: data/granite.metainfo.xml.in:46
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "Emoji categoriepictogrammen gebruikt door GTK's emoji-kiezer"
 
 #: data/granite.metainfo.xml.in:47
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Oogpictogrammen vereist voor Gtk.PasswordEntry"
 
 #: data/granite.metainfo.xml.in:49 data/granite.metainfo.xml.in:86
 #: data/granite.metainfo.xml.in:103 data/granite.metainfo.xml.in:167
@@ -94,44 +94,57 @@ msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
+"Box is een oriënteerbare widget die gestandaardiseerde spatiëring en "
+"gekoppelde stijlen bevat"
 
 #: data/granite.metainfo.xml.in:52
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem is een standaard lijstwidget die stijlen en spatiëring bevat"
 
 #: data/granite.metainfo.xml.in:53
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"ToolBox is een verticale layoutwidget voor de bovenste en onderste werkbalken"
 
 #: data/granite.metainfo.xml.in:54
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
+"nieuwe stijlklasseconstanten voor labels: CssClass.NUMERIC en "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:55
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"StyleManager regelt automatisch de donkere en lichte modi en "
+"systeemaccentkleuren met behulp van Portals"
 
 #: data/granite.metainfo.xml.in:56
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"BackButton is een gestandaardiseerde navigatieknop die \"navigation.pop\" "
+"activeert en een sneltoets tooltip bevat"
 
 #: data/granite.metainfo.xml.in:60
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
 msgstr ""
+"accel_to_string now gebruikt het woord \"Super\" in plaats van het \"⌘\""
+"-symbool"
 
 #: data/granite.metainfo.xml.in:61
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"HeaderLabel heeft een nieuwe eigenschap voor H1-H4-formaten en H2-stijlen "
+"zijn nu vetter"
 
 #: data/granite.metainfo.xml.in:62
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD is nu standaard afgerond"
 
 #: data/granite.metainfo.xml.in:65 data/granite.metainfo.xml.in:119
 msgid "Deprecations:"
@@ -142,26 +155,28 @@ msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary. Moderne apps zijn overgegaan naar een ontwerp met "
+"meer gesplitste vensters en deze stijl is niet langer erg in de mode"
 
 #: data/granite.metainfo.xml.in:68
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"Bijna alle oude `STYLE_CLASS`-constanten zijn afgeschaft. Sommigen zijn "
+"vervangen door `CssClass`-constanten, anderen door widgets."
 
 #: data/granite.metainfo.xml.in:70
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "Verbeteringen:"
+msgstr "Demo verbeteringen:"
 
 #: data/granite.metainfo.xml.in:72
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "Meer demopagina's met meer widgets"
 
 #: data/granite.metainfo.xml.in:73
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "Kleurschemaschakelaar in de zijbalk"
 
 #: data/granite.metainfo.xml.in:88
 msgid "Granite.Bin"
