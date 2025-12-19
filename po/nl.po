@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2025-12-14 03:55+0000\n"
+"PO-Revision-Date: 2025-12-20 19:55+0000\n"
 "Last-Translator: Bas Ernst <bas@ernstgenova.it>\n"
 "Language-Team: Dutch <https://l10n.elementaryos.org/projects/desktop/granite/"
 "nl/>\n"
@@ -155,7 +155,7 @@ msgstr ":"
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"
