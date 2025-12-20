@@ -27,7 +27,7 @@ public class Granite.ListItem : Granite.Bin {
      * Context menu model
      * When a menu is shown with secondary click or long press will be constructed from the provided menu model
      */
-    public GLib.Menu? menu_model { get; set; }
+    public GLib.MenuModel? menu_model { get; set; }
 
     private Gtk.GestureClick? click_controller;
     private Gtk.GestureLongPress? long_press_controller;
