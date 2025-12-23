@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2025-07-20 16:55+0000\n"
+"PO-Revision-Date: 2025-12-24 00:55+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/es/>\n"
@@ -53,6 +53,9 @@ msgstr "Mejoras:"
 #: data/granite.metainfo.xml.in:34
 msgid "HeaderLabel now has ellipsize property"
 msgstr ""
+"La etiqueta de encabezado («HeaderLabel») ahora tiene una propiedad "
+"(«ellipsize») para permitir dibujar puntos suspensivos cuando un texto no "
+"cabe"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:63
 #: data/granite.metainfo.xml.in:96 data/granite.metainfo.xml.in:117
