@@ -219,71 +219,83 @@ namespace Granite {
     /**
      * CSS style classes to be used with {@link Gtk.Widget.add_css_class}
      */
-    [Version (since = "7.7.0")]
     namespace CssClass {
         /**
          * Style class to give accent color to a {@link Gtk.Label} or symbolic icon
          */
+        [Version (since = "7.7.0")]
         public const string ACCENT = "accent";
 
         /**
          * Style class for adding a small shadow to a container such as for image thumbnails
          */
+        [Version (since = "7.7.0")]
         public const string CARD = "card";
 
         /**
          * Style class for checkered backgrounds to represent transparency in images
          */
+        [Version (since = "7.7.0")]
         public const string CHECKERBOARD = "checkerboard";
 
         /**
          * Style class for a circular {@link Gtk.Button}
          */
+        [Version (since = "7.7.0")]
         public const string CIRCULAR = "circular";
 
         /**
          * Style class for {@link Gtk.Button} with a destructive action
          */
+        [Version (since = "7.7.0")]
         public const string DESTRUCTIVE = "destructive";
 
         /**
          * Style class for dimmed labels and icons
          */
+        [Version (since = "7.7.0")]
         public const string DIM = "dim-label";
 
         /**
          * Style class for widgets in error state.
          */
+        [Version (since = "7.7.0")]
         public const string ERROR = "error";
 
         /**
          * sets font features to use tabular numbers. Equivalent of Pango's tnum property
          */
+        [Version (since = "7.7.0")]
         public const string NUMERIC = "numeric";
 
         /**
          * Style class for a {@link Gtk.Label} to emulate Pango's "<small>" and "size='smaller'"
          */
+        [Version (since = "7.7.0")]
         public const string SMALL = "small-label";
 
         /**
          * Style class for when a {@link Gtk.Button} is the primary suggested action in a specific context.
          */
+        [Version (since = "7.7.0")]
         public const string SUGGESTED = "suggested";
 
         /**
          * Style class for widgets in success state.
          */
+        [Version (since = "7.7.0")]
         public const string SUCCESS = "success";
 
         /**
          * Style class for widgets in warning state.
          */
+        [Version (since = "7.7.0")]
         public const string WARNING = "warning";
 
         /**
          * Style class for non-terminal text that uses a monospace font.
          */
+        [Version (since = "7.7.0")]
         public const string MONOSPACE = "monospace";
     }
 

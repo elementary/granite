@@ -19,6 +19,13 @@
 
     <file alias="scalable/actions/selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/selection-mode-symbolic.svg</file>
 
+    <file alias="scalable/actions/view-column-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-column-symbolic.svg</file>
+    <file alias="scalable/actions/view-grid-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-grid-symbolic.svg</file>
+    <file alias="scalable/actions/view-list-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-list-symbolic.svg</file>
+    <file alias="scalable/actions/view-more-horizontal-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-more-horizontal-symbolic.svg</file>
+    <file alias="scalable/actions/view-more-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-more-symbolic.svg</file>
+    <file alias="scalable/actions/view-reader-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-reader-symbolic.svg</file>
+
     <file alias="scalable/actions/view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
     <file alias="scalable/actions/view-sidebar-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
     <file alias="scalable/actions/view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
