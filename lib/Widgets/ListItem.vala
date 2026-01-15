@@ -150,7 +150,9 @@ public class Granite.ListItem : Gtk.Widget {
             }
         });
 
-        long_press_controller = new Gtk.GestureLongPress ();
+        long_press_controller = new Gtk.GestureLongPress () {
+            touch_only = true
+        };
         long_press_controller.pressed.connect ((x, y) => {
             // Try to keep menu from under your hand
             if (x > get_root ().get_width () / 2) {
