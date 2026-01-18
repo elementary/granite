@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2020-03-02 23:09+0000\n"
-"Last-Translator: Marko <marko.dolar@gmail.com>\n"
-"Language-Team: Slovenian <https://l10n.elementary.io/projects/desktop/"
+"PO-Revision-Date: 2026-01-19 16:55+0000\n"
+"Last-Translator: Jernej Virag <jernej@virag.si>\n"
+"Language-Team: Slovenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -28,9 +28,8 @@ msgstr "%l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%k.%M"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
@@ -44,7 +43,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "Nikoli"
 
 #: lib/DateTime.vala:64
 msgid "Now"
@@ -165,7 +164,7 @@ msgstr ":"
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"
@@ -191,15 +190,13 @@ msgstr "Desni Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:71
-#, fuzzy
 msgid "Right Ctrl"
-msgstr "Desni Alt"
+msgstr "Desni Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:75
-#, fuzzy
 msgid "Left Ctrl"
-msgstr "Levi Alt"
+msgstr "Levi Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:80
