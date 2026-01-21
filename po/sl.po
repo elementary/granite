@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-12-12 21:54+0000\n"
-"PO-Revision-Date: 2026-01-19 16:55+0000\n"
+"PO-Revision-Date: 2026-01-22 22:55+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/sl/>\n"
@@ -53,19 +53,19 @@ msgstr "Zdaj"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "Pred %dm"
-msgstr[1] "Pred %dm"
-msgstr[2] "Pred %dm"
-msgstr[3] "Pred %dm"
+msgstr[0] "pred %dm"
+msgstr[1] "pred %dm"
+msgstr[2] "pred %dm"
+msgstr[3] "pred %dm"
 
 #: lib/DateTime.vala:70
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] "Pred %dh"
-msgstr[1] "Pred %dh"
-msgstr[2] "Pred %dh"
-msgstr[3] "Pred %dh"
+msgstr[0] "pred %dh"
+msgstr[1] "pred %dh"
+msgstr[2] "pred %dh"
+msgstr[3] "pred %dh"
 
 #: lib/DateTime.vala:76
 #, c-format
