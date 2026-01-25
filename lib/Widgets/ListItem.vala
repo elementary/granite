@@ -107,7 +107,7 @@ public class Granite.ListItem : Gtk.Widget {
     }
 
     private void construct_menu () {
-        if (menu_model == null) {
+        if (menu_model == null && context_menu != null) {
             remove_controller (click_controller);
             remove_controller (long_press_controller);
             remove_controller (menu_key_controller);
@@ -137,56 +137,62 @@ public class Granite.ListItem : Gtk.Widget {
             button = 0,
             exclusive = true
         };
-        click_controller.pressed.connect ((n_press, x, y) => {
-            var sequence = click_controller.get_current_sequence ();
-            var event = click_controller.get_last_event (sequence);
-
-            if (event.triggers_context_menu ()) {
-                context_menu.halign = START;
-                menu_popup_at_pointer (context_menu, x, y);
-
-                click_controller.set_state (CLAIMED);
-                click_controller.reset ();
-            }
-        });
+        click_controller.pressed.connect (on_click);
 
         long_press_controller = new Gtk.GestureLongPress () {
             touch_only = true
         };
-        long_press_controller.pressed.connect ((x, y) => {
-            // Try to keep menu from under your hand
-            if (x > get_root ().get_width () / 2) {
-                context_menu.halign = END;
-                x -= TOUCH_TARGET_WIDTH;
-            } else {
-                context_menu.halign = START;
-                x += TOUCH_TARGET_WIDTH;
-            }
-
-            menu_popup_at_pointer (context_menu, x, y - (TOUCH_TARGET_WIDTH * 0.75));
-        });
+        long_press_controller.pressed.connect (on_long_press);
 
         menu_key_controller = new Gtk.EventControllerKey ();
-        menu_key_controller.key_released.connect ((keyval, keycode, state) => {
-            var mods = state & Gtk.accelerator_get_default_mod_mask ();
-            switch (keyval) {
-                case Gdk.Key.F10:
-                    if (mods == Gdk.ModifierType.SHIFT_MASK) {
-                        menu_popup_on_keypress (context_menu);
-                    }
-                    break;
-                case Gdk.Key.Menu:
-                case Gdk.Key.MenuKB:
-                    menu_popup_on_keypress (context_menu);
-                    break;
-                default:
-                    return;
-            }
-        });
+        menu_key_controller.key_released.connect (on_key_released);
 
         add_controller (click_controller);
         add_controller (long_press_controller);
         add_controller (menu_key_controller);
+    }
+
+    private void on_click (Gtk.GestureClick gesture, int n_press, double x, double y) {
+        var sequence = gesture.get_current_sequence ();
+        var event = gesture.get_last_event (sequence);
+
+        if (event.triggers_context_menu ()) {
+            context_menu.halign = START;
+            menu_popup_at_pointer (context_menu, x, y);
+
+            gesture.set_state (CLAIMED);
+            gesture.reset ();
+        }
+    }
+
+    private void on_long_press (double x, double y) {
+        // Try to keep menu from under your hand
+        if (x > get_root ().get_width () / 2) {
+            context_menu.halign = END;
+            x -= TOUCH_TARGET_WIDTH;
+        } else {
+            context_menu.halign = START;
+            x += TOUCH_TARGET_WIDTH;
+        }
+
+        menu_popup_at_pointer (context_menu, x, y - (TOUCH_TARGET_WIDTH * 0.75));
+    }
+
+    private void on_key_released (uint keyval, uint keycode, Gdk.ModifierType state) {
+        var mods = state & Gtk.accelerator_get_default_mod_mask ();
+        switch (keyval) {
+            case Gdk.Key.F10:
+                if (mods == Gdk.ModifierType.SHIFT_MASK) {
+                    menu_popup_on_keypress (context_menu);
+                }
+                break;
+            case Gdk.Key.Menu:
+            case Gdk.Key.MenuKB:
+                menu_popup_on_keypress (context_menu);
+                break;
+            default:
+                return;
+        }
     }
 
     private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
