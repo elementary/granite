@@ -107,6 +107,7 @@ public class Granite.ListItem : Gtk.Widget {
     }
 
     private void construct_menu () {
+        // Menu model is being set null for the first time
         if (menu_model == null && context_menu != null) {
             remove_controller (click_controller);
             remove_controller (long_press_controller);
@@ -122,6 +123,12 @@ public class Granite.ListItem : Gtk.Widget {
             return;
         }
 
+        // Popover and controllers have already been cleaned up
+        if (menu_model == null) {
+            return;
+        }
+
+        // New menu model, recycling popover and controllers
         if (context_menu != null) {
             context_menu.menu_model = menu_model;
             return;
