@@ -107,24 +107,21 @@ public class Granite.ListItem : Gtk.Widget {
     }
 
     private void construct_menu () {
-        // Menu model is being set null for the first time
-        if (menu_model == null && context_menu != null) {
-            remove_controller (click_controller);
-            remove_controller (long_press_controller);
-            remove_controller (menu_key_controller);
-
-            click_controller = null;
-            long_press_controller = null;
-            menu_key_controller = null;
-
-            context_menu.unparent ();
-            context_menu = null;
-
-            return;
-        }
-
-        // Popover and controllers have already been cleaned up
         if (menu_model == null) {
+            // Menu model is being set null for the first time
+            if (context_menu != null) {
+                remove_controller (click_controller);
+                remove_controller (long_press_controller);
+                remove_controller (menu_key_controller);
+
+                click_controller = null;
+                long_press_controller = null;
+                menu_key_controller = null;
+
+                context_menu.unparent ();
+                context_menu = null;
+            }
+
             return;
         }
 
