@@ -28,6 +28,7 @@ public class Granite.Demo : Gtk.Application {
         var maps_view = new MapsView ();
         var overlaybar_view = new OverlayBarView ();
         var toast_view = new ToastView ();
+        var toast_overlay_view = new ToastOverlayView ();
         var settings_uris_view = new SettingsUrisView ();
         var utils_view = new UtilsView ();
         var video_view = new VideoView ();
@@ -52,6 +53,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
         main_stack.add_titled (settings_uris_view, "settings_uris", "Settings URIs");
         main_stack.add_titled (toast_view, "toasts", "Toast");
+        main_stack.add_titled (toast_overlay_view, "toast_overlay", "Toast Overlay");
         main_stack.add_titled (utils_view, "utils", "Utils");
         main_stack.add_titled (dialogs_view, "dialogs", "Dialogs");
         main_stack.add_titled (application_view, "application", "Application");
