@@ -19,6 +19,11 @@
 
     <file alias="scalable/actions/selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/selection-mode-symbolic.svg</file>
 
+    <file alias="scalable/actions/view-conceal-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-conceal-symbolic.svg</file>
+    <file alias="scalable/actions/view-reveal-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-reveal-symbolic.svg</file>
+    <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-conceal-symbolic.svg</file>
+    <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-reveal-symbolic.svg</file>
+
     <file alias="scalable/actions/view-column-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-column-symbolic.svg</file>
     <file alias="scalable/actions/view-grid-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-grid-symbolic.svg</file>
     <file alias="scalable/actions/view-list-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-list-symbolic.svg</file>
@@ -53,9 +58,6 @@
     <file alias="scalable/status/check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
     <file alias="scalable/status/check-indeterminate-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
     <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
-
-    <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
-    <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
 
     <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
 

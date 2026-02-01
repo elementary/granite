@@ -22,15 +22,27 @@ public class FormView : DemoPage {
             secondary_text = "Must be at least 8 characters long"
         };
 
-        var button = new Gtk.Button.with_label ("Submit");
+        var password_entry = new Gtk.PasswordEntry () {
+            show_peek_icon = true
+        };
 
-        var box = new Granite.Box (VERTICAL) {
+        var password_label = new Granite.HeaderLabel ("Password") {
+            mnemonic_widget = password_entry
+        };
+
+        var button = new Gtk.Button.with_label ("Submit") {
+            margin_top = 24
+        };
+
+        var box = new Granite.Box (VERTICAL, NONE) {
             halign = CENTER,
             valign = CENTER,
             margin_start = margin_end = margin_top = margin_bottom = 12
         };
         box.append (username_label);
         box.append (username_entry);
+        box.append (password_label);
+        box.append (password_entry);
         box.append (button);
 
         child = box;
