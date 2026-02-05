@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-05 16:55+0000\n"
-"PO-Revision-Date: 2025-12-14 03:55+0000\n"
+"PO-Revision-Date: 2026-02-06 22:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -53,7 +53,7 @@ msgstr "HeaderLabel に ellipsize プロパティを追加"
 
 #: data/granite.metainfo.xml.in:35
 msgid "ListItem now has a menu_model property"
-msgstr ""
+msgstr "ListItem に menu_model プロパティを追加"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:67
 #: data/granite.metainfo.xml.in:100 data/granite.metainfo.xml.in:121
@@ -354,8 +354,8 @@ msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
-"ModeButton: 今後は“group”と“linked”スタイルクラスを設定した Gtk.ToggleButton "
-"を使用してください"
+"ModeButton: 今後は“group”プロパティと“linked”スタイルクラスを設定した "
+"Gtk.ToggleButton を使用してください"
 
 #: data/granite.metainfo.xml.in:207
 msgid "Paths: use GLib.Environment instead"
