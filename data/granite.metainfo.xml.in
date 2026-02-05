@@ -32,6 +32,7 @@
         <p>Improvements:</p>
         <ul>
           <li>HeaderLabel now has ellipsize property</li>
+          <li>ListItem now has a menu_model property</li>
           <li>Updated translations</li>
         </ul>
       </description>
