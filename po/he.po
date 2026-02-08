@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-09 01:07+0000\n"
+"POT-Creation-Date: 2026-02-05 16:55+0000\n"
 "PO-Revision-Date: 2025-10-08 05:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/desktop/"
@@ -45,11 +45,11 @@ msgstr "%H∶%M"
 msgid "Never"
 msgstr "לעולם לא"
 
-#: lib/DateTime.vala:63
+#: lib/DateTime.vala:64
 msgid "Now"
 msgstr "עכשיו"
 
-#: lib/DateTime.vala:66
+#: lib/DateTime.vala:67
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
@@ -58,7 +58,7 @@ msgstr[1] "לפני 2 דקות"
 msgstr[2] "לפני %d דקות"
 msgstr[3] "לפני %d דקות"
 
-#: lib/DateTime.vala:69
+#: lib/DateTime.vala:70
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
@@ -67,7 +67,7 @@ msgstr[1] "לפני שעתיים"
 msgstr[2] "לפני %d שעות"
 msgstr[3] "לפני %d שעות"
 
-#: lib/DateTime.vala:75
+#: lib/DateTime.vala:76
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
@@ -76,7 +76,7 @@ msgstr[1] "בעוד 2 דקות"
 msgstr[2] "בעוד %d דקות"
 msgstr[3] "בעוד %d דקות"
 
-#: lib/DateTime.vala:78
+#: lib/DateTime.vala:79
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
@@ -85,52 +85,52 @@ msgstr[1] "בעוד שעתיים"
 msgstr[2] "בעוד %d שעות"
 msgstr[3] "בעוד %d שעות"
 
-#: lib/DateTime.vala:84
+#: lib/DateTime.vala:85
 msgid "Yesterday"
 msgstr "אתמול"
 
-#: lib/DateTime.vala:86
+#: lib/DateTime.vala:87
 msgid "Tomorrow"
 msgstr "מחר"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
-#: lib/DateTime.vala:150
+#: lib/DateTime.vala:151
 msgid "%a, %b %e, %Y"
 msgstr "%a, ‏%e ב%b‏ %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
-#: lib/DateTime.vala:153
+#: lib/DateTime.vala:154
 msgid "%b %e %Y"
 msgstr "ה־%e ב%b %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the year
-#: lib/DateTime.vala:156
+#: lib/DateTime.vala:157
 msgid "%Y"
 msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
-#: lib/DateTime.vala:159
+#: lib/DateTime.vala:160
 msgid "%b %e"
 msgstr "ה־%e ב%b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
-#: lib/DateTime.vala:162
+#: lib/DateTime.vala:163
 msgid "%a %Y"
 msgstr "%a %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday
-#: lib/DateTime.vala:165
+#: lib/DateTime.vala:166
 #, c-format
 msgid "%a"
 msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
-#: lib/DateTime.vala:168
+#: lib/DateTime.vala:169
 msgid "%a, %b %e"
 msgstr "%a, ‏%e ב%b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
-#: lib/DateTime.vala:171
+#: lib/DateTime.vala:172
 msgid "%b"
 msgstr "%b"
 
@@ -228,7 +228,7 @@ msgid "Right Shift"
 msgstr "Shift ימני"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
-#: lib/Widgets/Utils.vala:164
+#: lib/Widgets/Utils.vala:169
 msgid ", "
 msgstr ", "
 

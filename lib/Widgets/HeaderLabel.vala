@@ -50,6 +50,12 @@ public class Granite.HeaderLabel : Gtk.Widget {
     [Version (since = "7.7.0")]
     public Size size { get; set; default = H4; }
 
+    /**
+     * The preferred place to ellipsize the string, if the label does not have enough room to display the entire string.
+     */
+    [Version (since = "7.8.0")]
+    public Pango.EllipsizeMode ellipsize { get; set; default = NONE; }
+
     private Gtk.Label? secondary_label = null;
     /**
      * Optional secondary label string displayed below the header
@@ -74,6 +80,8 @@ public class Granite.HeaderLabel : Gtk.Widget {
                     xalign = 0
                 };
                 secondary_label.add_css_class ("subtitle");
+
+                bind_property ("ellipsize", secondary_label, "ellipsize", SYNC_CREATE);
 
                 secondary_label.set_parent (this);
             }
@@ -109,6 +117,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
 
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
+        bind_property ("ellipsize", label_widget, "ellipsize", SYNC_CREATE);
 
         notify["mnemonic-widget"].connect (() => {
             update_accessible_description (secondary_text);

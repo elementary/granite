@@ -27,6 +27,20 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.8.0" date="2025-12-13" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>HeaderLabel now has ellipsize property</li>
+          <li>ListItem now has a menu_model property</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/settings-system/issues/372">"Last checked Tomorrow" appears after running updates</issue>
+      </issues>
+    </release>
+
     <release version="7.7.0" date="2025-09-30" urgency="medium">
       <description>
         <p>New Icons:</p>
