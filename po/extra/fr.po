@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-05 16:55+0000\n"
-"PO-Revision-Date: 2025-12-15 10:55+0000\n"
+"PO-Revision-Date: 2026-02-09 22:56+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/fr/>\n"
@@ -56,7 +56,7 @@ msgstr "HeaderLabel a désormais une propriété ellipsize"
 
 #: data/granite.metainfo.xml.in:35
 msgid "ListItem now has a menu_model property"
-msgstr ""
+msgstr "ListItem possède désormais une propriété menu_model"
 
 #: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:67
 #: data/granite.metainfo.xml.in:100 data/granite.metainfo.xml.in:121
