@@ -85,8 +85,23 @@ public class ListsView : DemoPage {
             var list_item = (Gtk.ListItem) obj;
             var list_object = (ListObject) list_item.item;
 
+            var mark_menuitem = new GLib.MenuItem ("Star", null);
+            mark_menuitem.set_attribute_value ("icon", "non-starred-symbolic");
+            mark_menuitem.set_attribute_value ("css-class", "yellow");
+
+            var replyall_menuitem = new GLib.MenuItem ("Reply All", null);
+            replyall_menuitem.set_attribute_value ("icon", "mail-reply-all-symbolic");
+            replyall_menuitem.set_attribute_value ("css-class", "purple");
+
+            var trash_menuitem = new GLib.MenuItem ("Trash", null);
+            trash_menuitem.set_attribute_value ("icon", "edit-delete-symbolic");
+            trash_menuitem.set_attribute_value ("css-class", "destructive");
+
             var granite_list_item = ((Granite.ListItem) list_item.child);
             granite_list_item.text = list_object.text;
+            granite_list_item.prepend_swipe_action (replyall_menuitem);
+            granite_list_item.prepend_swipe_action (mark_menuitem);
+            granite_list_item.append_swipe_action (trash_menuitem);
         });
 
         var list_view = new Gtk.ListView (list_selection, list_factory) {
