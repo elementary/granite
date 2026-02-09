@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 21:54+0000\n"
+"POT-Creation-Date: 2026-02-05 16:55+0000\n"
 "PO-Revision-Date: 2024-02-22 04:12+0000\n"
 "Last-Translator: Shukrullo Turgunov <shookrullo@gmail.com>\n"
 "Language-Team: Uzbek <https://l10n.elementary.io/projects/desktop/granite/uz/"
