@@ -1,7 +1,7 @@
 subdir('data')
 
 executable(
-    'granite-7-demo',
+    meson.project_name() + '-demo',
 
     gresource,
 
@@ -41,7 +41,8 @@ applications_dir = join_paths(
 )
 
 install_data(
-    'io.elementary.granite-7.demo.desktop',
+    'demo.desktop',
+    rename: 'io.elementary.'+ meson.project_name() + '.demo.desktop',
     install_dir: applications_dir
 )
 

@@ -78,8 +78,8 @@ libgranite = library(
         meson.get_compiler('vala').find_library('posix')
     ],
 
-    vala_header: 'granite-7.h',
-    vala_vapi: 'granite-7.vapi',
+    vala_header: meson.project_name() + '.h',
+    vala_vapi: meson.project_name() + '.vapi',
     vala_gir: granite_gir,
 
     version: meson.project_version(),
@@ -88,7 +88,7 @@ libgranite = library(
 )
 
 install_data(
-    'granite-7.deps',
+    meson.project_name() + '.deps',
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
 )
 
@@ -124,7 +124,7 @@ granite_pc = pkgconfig.generate(
     libgranite,
     name: meson.project_name(),
     requires: libgranite_deps,
-    subdirs: ['granite-7'],
+    subdirs: [meson.project_name()],
     description: 'elementary\'s Application Framework',
     version: meson.project_version(),
     url: 'https://github.com/elementary/granite',

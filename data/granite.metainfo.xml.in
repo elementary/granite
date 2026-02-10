@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019–2023 elementary, Inc. <contact@elementary.io> -->
 <component>
-  <id>io.elementary.granite-7</id>
-  <translation type="gettext">granite-7</translation>
+  <id>io.elementary.granite-9</id>
+  <translation type="gettext">granite-9</translation>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LGPL-3.0</project_license>
   <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
 
-  <icon type="stock">io.elementary.granite-7</icon>
-  <name>Granite 7</name>
+  <icon type="stock">io.elementary.granite-9</icon>
+  <name>Granite 9</name>
   <summary>Build consistent and usable apps more quickly and easily</summary>
   <description>
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>

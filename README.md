@@ -37,15 +37,15 @@ To install, use `ninja install`
 
     ninja install
 
-To see a demo app of Granite's widgets, run `granite-7-demo` after installing it:
+To see a demo app of Granite's widgets, run `granite-9-demo` after installing it:
 
-    granite-7-demo
+    granite-9-demo
 
 
 ## Documentation
 
 Documentation for all of the classes and functions in Granite is available
-[on Valadoc](https://valadoc.org/granite-7/Granite.html)
+[on Valadoc](https://valadoc.org/granite-9/Granite.html)
 
 The additional requirements for building the documentation are:
 
