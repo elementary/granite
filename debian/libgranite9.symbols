@@ -1,4 +1,4 @@
-libgranite-9.so.7 libgranite9 #MINVER#
+libgranite-9.so.9 libgranite9 #MINVER#
  granite_accel_label_construct@Base 7.0.0
  granite_accel_label_construct_from_action_name@Base 7.0.0
  granite_accel_label_get_accel_string@Base 7.0.0
