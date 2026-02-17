@@ -42,7 +42,7 @@ applications_dir = join_paths(
 
 install_data(
     'demo.desktop',
-    rename: 'io.elementary.'+ meson.project_name() + '.demo.desktop',
+    rename: 'io.elementary.' + meson.project_name() + '.demo.desktop',
     install_dir: applications_dir
 )
 
