@@ -42,7 +42,7 @@ libgranite_sources = files(
 
 # define all the names and versions
 granite_gi_name = 'Granite'
-granite_gi_version = '7.0'
+granite_gi_version = '9.0'
 
 granite_gi = granite_gi_name + '-' + granite_gi_version
 granite_gir = granite_gi + '.gir'
