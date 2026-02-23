@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
+"POT-Creation-Date: 2026-02-22 21:19+0000\n"
 "PO-Revision-Date: 2020-08-29 20:13+0000\n"
 "Last-Translator: Mejans <farga@mejans.fr>\n"
 "Language-Team: Occitan <https://l10n.elementary.io/projects/desktop/granite/"
@@ -94,6 +94,7 @@ msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, c-format
 msgid "%b %e"
 msgstr "%b %e"
 
@@ -110,11 +111,13 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
+#, c-format
 msgid "%a, %b %e"
 msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, c-format
 msgid "%b"
 msgstr ""
 

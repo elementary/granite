@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
+"POT-Creation-Date: 2026-02-22 21:19+0000\n"
 "PO-Revision-Date: 2025-08-15 17:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
@@ -97,6 +97,8 @@ msgstr "%Y年"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, fuzzy, c-format
+#| msgid "%b %e"
 msgid "%b %e"
 msgstr "%m月%d日"
 
@@ -113,11 +115,15 @@ msgstr "星期%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
+#, fuzzy, c-format
+#| msgid "%a, %b %e"
 msgid "%a, %b %e"
 msgstr "%m月%d日 星期%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, fuzzy, c-format
+#| msgid "%b"
 msgid "%b"
 msgstr "%m月"
 

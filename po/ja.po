@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
+"POT-Creation-Date: 2026-02-22 21:19+0000\n"
 "PO-Revision-Date: 2025-05-18 02:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
@@ -97,6 +97,7 @@ msgstr "%Y年"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, c-format
 msgid "%b %e"
 msgstr "%b%e日"
 
@@ -113,11 +114,14 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
+#, fuzzy, c-format
+#| msgid "%a, %b %e"
 msgid "%a, %b %e"
 msgstr "%b%e日 (%a)"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, c-format
 msgid "%b"
 msgstr "%b"
 
