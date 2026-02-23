@@ -30,32 +30,6 @@ Copyright: 2011 ammonkey <am.monkeyd@gmail.com>
 License: LGPL-3.0+
 
 
-Files: lib/Widgets/ToolButtonWithMenu.vala
-Copyright: 2012 Adam Davies <adam.davies@outlook.com>
-           2013 Cody Garver <cody@elementaryos.org>
-           2013 David Gomes <david@elementaryos.org>
-           2012 Erasmo Marín <erasmo.marin@gmail.com>
-           2011 Maxwell Barvian <maxwell@elementaryos.org>
-           2012 Rico Tzschichholz <ricotz@ubuntu.com>
-           2012 Victor Martinez <victor@elementaryos.org>
-           2011 ammonkey <am.monkeyd@gmail.com>
-           2011 Adrien Plazas <kekun.plazas@laposte.net>
-           2011 Lucas Baudin <xapantu@gmail.com>
-           2011 Mathijs Henquet <mathijs.henquet@gmail.com>
-License: LGPL-3.0+
-
-
-Files: lib/Widgets/ModeButton.vala
-Copyright: 2008 Christian Hergert <chris@dronelabs.com>
-           2011 Giulio Collura <giulio.collura@gmail.com>
-           2011 Maxwell Barvian <maxwell@elementaryos.org>
-           2011 Adrien Plazas <kekun.plazas@laposte.net>
-           2011-2012 Lucas Baudin <xapantu@gmail.com>
-           2012 Adam Davies <adam.davies@outlook.com>
-           2012 Victor Martinez <victor@elementaryos.org>
-License: LGPL-3.0+
-
-
 Files: demo/GraniteDemo.vala
 Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
            2011-2012 Jaap Broekhuizen <jaapz.b@gmail.com>
@@ -66,48 +40,11 @@ Copyright: 2011-2012 Lucas Baudin <xapantu@gmail.com>
 License: LGPL-3.0+
 
 
-Files: lib/Widgets/ContractorView.vala
-Copyright: 2012 Tom Beckmann <tom@elementaryos.org>
-License: LGPL-3.0+
-
-
 Files: lib/Services/ContractorProxy.vala
 Copyright: 2011 Lucas Baudin <xapantu@gmail.com>
            2012 Victor Martinez <victor@elementaryos.org>
            2012-2014 Sergey "Shnatsel" Davidoff <sergey@elementaryos.org>
 License: LGPL-3.0+
-
-
-Files: lib/Widgets/Welcome.vala
-Copyright: 2011 Maxwell Barvian <maxwell@elementaryos.org>
-           2012 Victor Martinez <victor@elementaryos.org>
-           2011-2012 Lucas Baudin <xapantu@gmail.com>
-License: LGPL-3.0+
-
-
-Files: lib/Widgets/widgets-utils.c
-Copyright: 2001 CodeFactory AB
-           2001-2002 Anders Carlsson
-           2003-2004 Matthias Clasen <mclasen@redhat.com>
-License: LGPL-2.0+
-
-
-Files: cmake/FindGObjectIntrospection.cmake
-Copyright: 2010, Pino Toscano, <pino@kde.org>
-License: BSD-3-clause
-
-
-Files: cmake/ParseArguments.cmake
-Copyright: 2000-2009 Kitware, Inc., Insight Software Consortium
-License: BSD-2-clause
-
-
-Files: cmake/FindVala.cmake
-       cmake/ValaPrecompile.cmake
-       cmake/ValaVersion.cmake
-       cmake/README.Vala.rst
-Copyright: 2009-2010 Jakob Westhoff
-License: BSD-2-clause
 
 
 Files: debian/*
@@ -169,49 +106,3 @@ License: LGPL-3.0+
  .
  On Debian systems the complete text of the LGPL, version 3, can be found at
  /usr/share/common-licenses/LGPL-3.
-
-
-License: BSD-3-clause
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
- .
- 1. Redistributions of source code must retain the copyright
-    notice, this list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
- 3. The name of the author may not be used to endorse or promote products
-    derived from this software without specific prior written permission.
- .
- THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-License: BSD-2-clause
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
- .
- 1. Redistributions of source code must retain the above copyright notice, this
-    list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the above copyright notice,
-    this list of conditions and the following disclaimer in the documentation
-    and/or other materials provided with the distribution.
- .
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
- ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
