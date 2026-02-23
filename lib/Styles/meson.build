@@ -12,7 +12,7 @@ gtk_stylesheet_deps = custom_target(
         '@INPUT@',
         '@OUTPUT@',
     ],
-    install: true,
+    install: get_option('gtk-stylesheets'),
     install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
 )
 
@@ -26,7 +26,7 @@ gtk_stylesheet_dark_deps = custom_target(
         '@INPUT@',
         '@OUTPUT@',
     ],
-    install: true,
+    install: get_option('gtk-stylesheets'),
     install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
 )
 
