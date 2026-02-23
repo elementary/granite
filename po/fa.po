@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
+"POT-Creation-Date: 2026-02-22 21:19+0000\n"
 "PO-Revision-Date: 2022-04-14 22:02+0000\n"
 "Last-Translator: Pikhosh <pikhosh@gmail.com>\n"
 "Language-Team: Persian <https://l10n.elementary.io/projects/desktop/granite/"
@@ -101,6 +101,7 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, c-format
 msgid "%b %e"
 msgstr ""
 
@@ -117,11 +118,13 @@ msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
+#, c-format
 msgid "%a, %b %e"
 msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, c-format
 msgid "%b"
 msgstr ""
 

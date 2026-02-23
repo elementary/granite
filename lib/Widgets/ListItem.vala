@@ -123,6 +123,8 @@ public class Granite.ListItem : Gtk.Widget {
 
                 context_menu.unparent ();
                 context_menu = null;
+
+                set_cursor (null);
             }
 
             return;
@@ -139,6 +141,8 @@ public class Granite.ListItem : Gtk.Widget {
             position = BOTTOM
         };
         context_menu.set_parent (this);
+
+        set_cursor (new Gdk.Cursor.from_name ("context-menu", null));
 
         click_controller = new Gtk.GestureClick () {
             button = 0,

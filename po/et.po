@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
+"POT-Creation-Date: 2026-02-22 21:19+0000\n"
 "PO-Revision-Date: 2018-11-03 00:07+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: Estonian <https://weblate.elementary.io/projects/desktop/"
@@ -104,6 +104,8 @@ msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, fuzzy, c-format
+#| msgid "%b %e"
 msgid "%b %e"
 msgstr "%e. %b"
 
@@ -120,12 +122,13 @@ msgstr "%A"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
-#, fuzzy
+#, fuzzy, c-format
 msgid "%a, %b %e"
 msgstr "%A, %e. %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, c-format
 msgid "%b"
 msgstr "%b"
 
