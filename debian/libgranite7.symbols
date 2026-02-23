@@ -11,23 +11,23 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_accel_label_set_action_name@Base 7.0.0
  granite_accel_label_set_label@Base 7.0.0
  granite_accel_to_string@Base 7.0.0
- granite_back_button_construct@Base 7.8.0
- granite_back_button_get_label@Base 7.8.0
- granite_back_button_get_type@Base 7.8.0
- granite_back_button_new@Base 7.8.0
- granite_back_button_set_label@Base 7.8.0
- granite_bin_construct@Base 7.8.0
- granite_bin_get_child@Base 7.8.0
- granite_bin_get_type@Base 7.8.0
- granite_bin_new@Base 7.8.0
- granite_bin_set_child@Base 7.8.0
- granite_box_construct@Base 7.8.0
- granite_box_get_child_spacing@Base 7.8.0
- granite_box_get_type@Base 7.8.0
- granite_box_new@Base 7.8.0
- granite_box_set_child_spacing@Base 7.8.0
- granite_box_spacing_get_type@Base 7.8.0
- granite_box_spacing_to_string@Base 7.8.0
+ granite_back_button_construct@Base 7.7.0
+ granite_back_button_get_label@Base 7.7.0
+ granite_back_button_get_type@Base 7.7.0
+ granite_back_button_new@Base 7.7.0
+ granite_back_button_set_label@Base 7.7.0
+ granite_bin_construct@Base 7.6.0
+ granite_bin_get_child@Base 7.6.0
+ granite_bin_get_type@Base 7.6.0
+ granite_bin_new@Base 7.6.0
+ granite_bin_set_child@Base 7.6.0
+ granite_box_construct@Base 7.7.0
+ granite_box_get_child_spacing@Base 7.7.0
+ granite_box_get_type@Base 7.7.0
+ granite_box_new@Base 7.7.0
+ granite_box_set_child_spacing@Base 7.7.0
+ granite_box_spacing_get_type@Base 7.7.0
+ granite_box_spacing_to_string@Base 7.7.0
  granite_contrasting_foreground_color@Base 7.0.0
  granite_date_picker_construct@Base 7.0.0
  granite_date_picker_construct_with_format@Base 7.0.0
@@ -42,7 +42,7 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_date_time_get_relative_datetime@Base 7.0.0
  granite_date_time_is_same_day@Base 7.0.0
  granite_date_time_seconds_to_time@Base 7.0.0
- granite_dialog_add_button@Base 7.8.0
+ granite_dialog_add_button@Base 7.5.0
  granite_dialog_construct@Base 7.0.0
  granite_dialog_get_type@Base 7.0.0
  granite_dialog_new@Base 7.0.0
@@ -50,34 +50,34 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_header_label_construct@Base 7.0.0
  granite_header_label_get_ellipsize@Base 7.8.0
  granite_header_label_get_label@Base 7.0.0
- granite_header_label_get_mnemonic_widget@Base 7.8.0
- granite_header_label_get_secondary_text@Base 7.8.0
- granite_header_label_get_size@Base 7.8.0
+ granite_header_label_get_mnemonic_widget@Base 7.4.0
+ granite_header_label_get_secondary_text@Base 7.1.0
+ granite_header_label_get_size@Base 7.7.0
  granite_header_label_get_type@Base 7.0.0
  granite_header_label_new@Base 7.0.0
  granite_header_label_set_ellipsize@Base 7.8.0
  granite_header_label_set_label@Base 7.0.0
  granite_header_label_set_mnemonic_widget@Base 7.8.0
  granite_header_label_set_secondary_text@Base 7.8.0
- granite_header_label_set_size@Base 7.8.0
- granite_header_label_size_get_type@Base 7.8.0
- granite_header_label_size_to_string@Base 7.8.0
+ granite_header_label_set_size@Base 7.7.0
+ granite_header_label_size_get_type@Base 7.7.0
+ granite_header_label_size_to_string@Base 7.7.0
  granite_hyper_text_view_construct@Base 7.0.0
  granite_hyper_text_view_get_type@Base 7.0.0
  granite_hyper_text_view_new@Base 7.0.0
- granite_init@Base 7.8.0
+ granite_init@Base 7.2.0
  granite_initialized@Base 7.0.0
- granite_list_item_construct@Base 7.8.0
- granite_list_item_get_child@Base 7.8.0
- granite_list_item_get_description@Base 7.8.0
- granite_list_item_get_menu_model@Base 7.8.0
- granite_list_item_get_text@Base 7.8.0
- granite_list_item_get_type@Base 7.8.0
- granite_list_item_new@Base 7.8.0
- granite_list_item_set_child@Base 7.8.0
- granite_list_item_set_description@Base 7.8.0
- granite_list_item_set_menu_model@Base 7.8.0
- granite_list_item_set_text@Base 7.8.0
+ granite_list_item_construct@Base 7.7.0
+ granite_list_item_get_child@Base 7.7.0
+ granite_list_item_get_description@Base 7.7.0
+ granite_list_item_get_menu_model@Base 7.7.0
+ granite_list_item_get_text@Base 7.7.0
+ granite_list_item_get_type@Base 7.7.0
+ granite_list_item_new@Base 7.7.0
+ granite_list_item_set_child@Base 7.7.0
+ granite_list_item_set_description@Base 7.7.0
+ granite_list_item_set_menu_model@Base 7.7.0
+ granite_list_item_set_text@Base 7.7.0
  granite_markup_accel_tooltip@Base 7.0.0
  granite_message_dialog_construct@Base 7.0.0
  granite_message_dialog_construct_with_image_from_icon_name@Base 7.0.0
@@ -167,7 +167,7 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_services_system_history_is_enabled@Base 7.0.0
  granite_services_system_new@Base 7.0.0
  granite_settings_color_scheme_get_type@Base 7.0.0
- granite_settings_get_accent_color@Base 7.8.0
+ granite_settings_get_accent_color@Base 7.7.0
  granite_settings_get_default@Base 7.0.0
  granite_settings_get_prefers_color_scheme@Base 7.0.0
  granite_settings_get_type@Base 7.0.0
@@ -200,12 +200,12 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_simple_settings_page_get_status_switch@Base 7.0.0
  granite_simple_settings_page_get_type@Base 7.0.0
  granite_simple_settings_page_set_description@Base 7.0.0
- granite_style_manager_get_color_scheme@Base 7.8.0
- granite_style_manager_get_default@Base 7.8.0
- granite_style_manager_get_display@Base 7.8.0
- granite_style_manager_get_for_display@Base 7.8.0
- granite_style_manager_get_type@Base 7.8.0
- granite_style_manager_set_color_scheme@Base 7.8.0
+ granite_style_manager_get_color_scheme@Base 7.7.0
+ granite_style_manager_get_default@Base 7.7.0
+ granite_style_manager_get_display@Base 7.7.0
+ granite_style_manager_get_for_display@Base 7.7.0
+ granite_style_manager_get_type@Base 7.7.0
+ granite_style_manager_set_color_scheme@Base 7.7.0
  granite_switch_model_button_construct@Base 7.0.0
  granite_switch_model_button_get_description@Base 7.0.0
  granite_switch_model_button_get_text@Base 7.0.0
@@ -223,22 +223,22 @@ libgranite-7.so.7 libgranite7 #MINVER#
  granite_time_picker_new_with_format@Base 7.0.0
  granite_time_picker_set_time@Base 7.0.0
  granite_toast_construct@Base 7.0.0
- granite_toast_dismiss_reason_get_type@Base 7.8.0
+ granite_toast_dismiss_reason_get_type@Base 7.5.0
  granite_toast_get_title@Base 7.0.0
  granite_toast_get_type@Base 7.0.0
  granite_toast_new@Base 7.0.0
  granite_toast_send_notification@Base 7.0.0
  granite_toast_set_default_action@Base 7.0.0
  granite_toast_set_title@Base 7.0.0
- granite_toast_withdraw@Base 7.8.0
- granite_tool_box_add_bottom_bar@Base 7.8.0
- granite_tool_box_add_top_bar@Base 7.8.0
- granite_tool_box_construct@Base 7.8.0
- granite_tool_box_get_content@Base 7.8.0
- granite_tool_box_get_type@Base 7.8.0
- granite_tool_box_new@Base 7.8.0
- granite_tool_box_remove@Base 7.8.0
- granite_tool_box_set_content@Base 7.8.0
+ granite_toast_withdraw@Base 7.4.0
+ granite_tool_box_add_bottom_bar@Base 7.7.0
+ granite_tool_box_add_top_bar@Base 7.7.0
+ granite_tool_box_construct@Base 7.7.0
+ granite_tool_box_get_content@Base 7.7.0
+ granite_tool_box_get_type@Base 7.7.0
+ granite_tool_box_new@Base 7.7.0
+ granite_tool_box_remove@Base 7.7.0
+ granite_tool_box_set_content@Base 7.7.0
  granite_validated_entry_construct@Base 7.0.0
  granite_validated_entry_construct_from_regex@Base 7.0.0
  granite_validated_entry_get_is_valid@Base 7.0.0
