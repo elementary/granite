@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-25 18:45+0000\n"
-"PO-Revision-Date: 2026-02-06 22:55+0000\n"
+"PO-Revision-Date: 2026-02-25 22:27+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -50,6 +50,9 @@ msgstr "改善点:"
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
 msgstr ""
+"ListItem: menu_model が設定されている場合は、\"context-menu\" カーソル "
+"(コンテキストメニューが利用可能であることを示すカーソルアイコン) "
+"を使うように修正"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:46
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:110
