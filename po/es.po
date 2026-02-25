@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-22 21:19+0000\n"
-"PO-Revision-Date: 2025-05-18 02:55+0000\n"
+"PO-Revision-Date: 2026-02-25 18:45+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/desktop/"
 "granite/es/>\n"
@@ -101,8 +101,7 @@ msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
-#, fuzzy, c-format
-#| msgid "%b %e"
+#, c-format
 msgid "%b %e"
 msgstr "%e de %b"
 
@@ -119,8 +118,7 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
-#, fuzzy, c-format
-#| msgid "%a, %b %e"
+#, c-format
 msgid "%a, %b %e"
 msgstr "%a %e de %b"
 
