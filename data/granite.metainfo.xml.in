@@ -27,6 +27,16 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.8.1" date="2026-02-24" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>ListItem uses the context menu cursor when menu_model is set</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+
     <release version="7.8.0" date="2026-02-09" urgency="medium">
       <description>
         <p>Improvements:</p>
