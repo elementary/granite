@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-25 18:45+0000\n"
-"PO-Revision-Date: 2026-02-09 22:56+0000\n"
+"PO-Revision-Date: 2026-02-27 08:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/fr/>\n"
@@ -53,6 +53,7 @@ msgstr "Améliorations :"
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
 msgstr ""
+"ListItem utilise le curseur de menu contextuel lorsque menu_model est défini"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:46
 #: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:110
