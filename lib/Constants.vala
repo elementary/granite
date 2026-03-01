@@ -131,6 +131,7 @@ namespace Granite {
      * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
      * interal padding will need to be set with {@link Gtk.Container.border_width}
      */
+    [Version (deprecated = true, deprecated_since = "7.7.0", replacement = "Granite.CssClass.TERMINAL")]
     public const string STYLE_CLASS_TERMINAL = "terminal";
     /**
      * Style class for title label text in a {@link Granite.MessageDialog}
@@ -297,6 +298,15 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string MONOSPACE = "monospace";
+
+        /**
+         * Style class for {@link Gtk.Label} or {@link Gtk.TextView} to emulate the appearance of Terminal. This includes
+         * text color, background color, selection highlighting, and selecting the system monospace font.
+         *
+         * When used with {@link Gtk.Label} this style includes internal padding. When used with {@link Gtk.TextView}
+         * interal padding will need to be set with {@link Gtk.Container.border_width}
+         */
+        public const string TERMINAL = "terminal";
     }
 
     /**
