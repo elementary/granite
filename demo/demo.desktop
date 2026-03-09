@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Granite 9 Demo
+Comment=A demo of the Granite toolkit
+Exec=granite-9-demo
+Icon=io.elementary.granite-9
+Type=Application
+NoDisplay=true
+StartupWMClass=granite-9-demo
