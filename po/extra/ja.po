@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-22 21:19+0000\n"
-"PO-Revision-Date: 2026-02-06 22:55+0000\n"
+"POT-Creation-Date: 2026-02-25 18:45+0000\n"
+"PO-Revision-Date: 2026-02-25 22:27+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -39,35 +39,42 @@ msgstr ""
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:62
-#: data/granite.metainfo.xml.in:94 data/granite.metainfo.xml.in:113
-#: data/granite.metainfo.xml.in:135 data/granite.metainfo.xml.in:149
-#: data/granite.metainfo.xml.in:161 data/granite.metainfo.xml.in:179
-#: data/granite.metainfo.xml.in:216
+#: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:42
+#: data/granite.metainfo.xml.in:72 data/granite.metainfo.xml.in:104
+#: data/granite.metainfo.xml.in:123 data/granite.metainfo.xml.in:145
+#: data/granite.metainfo.xml.in:159 data/granite.metainfo.xml.in:171
+#: data/granite.metainfo.xml.in:189 data/granite.metainfo.xml.in:226
 msgid "Improvements:"
 msgstr "改善点:"
 
 #: data/granite.metainfo.xml.in:34
-msgid "HeaderLabel now has ellipsize property"
-msgstr "HeaderLabel に ellipsize プロパティを追加"
+msgid "ListItem uses the context menu cursor when menu_model is set"
+msgstr ""
+"ListItem: menu_model が設定されている場合は、\"context-menu\" カーソル "
+"(コンテキストメニューが利用可能であることを示すカーソルアイコン) "
+"を使うように修正"
 
-#: data/granite.metainfo.xml.in:35
-msgid "ListItem now has a menu_model property"
-msgstr "ListItem に menu_model プロパティを追加"
-
-#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:67
-#: data/granite.metainfo.xml.in:100 data/granite.metainfo.xml.in:121
-#: data/granite.metainfo.xml.in:138 data/granite.metainfo.xml.in:154
-#: data/granite.metainfo.xml.in:164 data/granite.metainfo.xml.in:183
-#: data/granite.metainfo.xml.in:219
+#: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:46
+#: data/granite.metainfo.xml.in:77 data/granite.metainfo.xml.in:110
+#: data/granite.metainfo.xml.in:131 data/granite.metainfo.xml.in:148
+#: data/granite.metainfo.xml.in:164 data/granite.metainfo.xml.in:174
+#: data/granite.metainfo.xml.in:193 data/granite.metainfo.xml.in:229
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/granite.metainfo.xml.in:46
+#: data/granite.metainfo.xml.in:44
+msgid "HeaderLabel now has ellipsize property"
+msgstr "HeaderLabel に ellipsize プロパティを追加"
+
+#: data/granite.metainfo.xml.in:45
+msgid "ListItem now has a menu_model property"
+msgstr "ListItem に menu_model プロパティを追加"
+
+#: data/granite.metainfo.xml.in:56
 msgid "New Icons:"
 msgstr "新しいアイコン:"
 
-#: data/granite.metainfo.xml.in:48
+#: data/granite.metainfo.xml.in:58
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
@@ -75,48 +82,48 @@ msgstr ""
 "カラム表示・グリッド表示・リスト表示・リーダーモードのアイコン。および、ミー"
 "トボールメニュー・ケバブメニューのアイコン"
 
-#: data/granite.metainfo.xml.in:49
+#: data/granite.metainfo.xml.in:59
 msgid "Start and End show/hide sidebar icons"
 msgstr "左側/右側のサイドバーを表示/非表示にするボタンのアイコン"
 
-#: data/granite.metainfo.xml.in:50
+#: data/granite.metainfo.xml.in:60
 msgid "Emoji category icons used by GTK's emoji picker"
 msgstr "GTK の絵文字ピッカーで使われる、絵文字のカテゴリーのアイコン"
 
-#: data/granite.metainfo.xml.in:51
+#: data/granite.metainfo.xml.in:61
 msgid "Eye icons required by Gtk.PasswordEntry"
 msgstr "Gtk.PasswordEntry に必要な目のアイコン"
 
-#: data/granite.metainfo.xml.in:53 data/granite.metainfo.xml.in:90
-#: data/granite.metainfo.xml.in:107 data/granite.metainfo.xml.in:171
-#: data/granite.metainfo.xml.in:194
+#: data/granite.metainfo.xml.in:63 data/granite.metainfo.xml.in:100
+#: data/granite.metainfo.xml.in:117 data/granite.metainfo.xml.in:181
+#: data/granite.metainfo.xml.in:204
 msgid "New Features:"
 msgstr "新機能:"
 
-#: data/granite.metainfo.xml.in:55
+#: data/granite.metainfo.xml.in:65
 msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
 "Box: HIG 準拠の余白・連結したスタイルに対応した、方向指定可能なウィジェット"
 
-#: data/granite.metainfo.xml.in:56
+#: data/granite.metainfo.xml.in:66
 msgid "ListItem is a standard list widget that includes styles and spacing"
 msgstr "ListItem: HIG 準拠のスタイルと余白に対応したリスト要素のウィジェット"
 
-#: data/granite.metainfo.xml.in:57
+#: data/granite.metainfo.xml.in:67
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
 "ToolBox: 上部と下部にツールバーを配置可能な、垂直方向のレイアウトウィジェット"
 
-#: data/granite.metainfo.xml.in:58
+#: data/granite.metainfo.xml.in:68
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
 "ラベル用の新しいスタイルクラスの定数: CssClass.NUMERIC および "
 "CssClass.MONOSPACE"
 
-#: data/granite.metainfo.xml.in:59
+#: data/granite.metainfo.xml.in:69
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
@@ -124,7 +131,7 @@ msgstr ""
 "StyleManager: ポータルを使って自動的にダークモードとライトモード、およびシス"
 "テムのアクセントカラーを適用する機能を追加"
 
-#: data/granite.metainfo.xml.in:60
+#: data/granite.metainfo.xml.in:70
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
@@ -132,26 +139,26 @@ msgstr ""
 "BackButton: 押下で \"navigation.pop\" アクションを発行し、ツールチップに"
 "ショートカットも表示する、HIG 準拠のナビゲーションボタン"
 
-#: data/granite.metainfo.xml.in:64
+#: data/granite.metainfo.xml.in:74
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
 msgstr ""
 "accel_to_string: \"⌘\" 記号ではなく \"Super\" という単語を使うように修正"
 
-#: data/granite.metainfo.xml.in:65
+#: data/granite.metainfo.xml.in:75
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
 "HeaderLabel: H1〜H4 サイズ用の新しいプロパティを追加。H2 スタイルを太字に変更"
 
-#: data/granite.metainfo.xml.in:66
+#: data/granite.metainfo.xml.in:76
 msgid "CssClass.CARD is now rounded by default"
 msgstr "CssClass.CARD: デフォルトを角丸に変更"
 
-#: data/granite.metainfo.xml.in:69 data/granite.metainfo.xml.in:123
+#: data/granite.metainfo.xml.in:79 data/granite.metainfo.xml.in:133
 msgid "Deprecations:"
 msgstr "非推奨の機能:"
 
-#: data/granite.metainfo.xml.in:71
+#: data/granite.metainfo.xml.in:81
 msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
@@ -159,7 +166,7 @@ msgstr ""
 "Utils.set_color_primary: 最近のアプリは表示領域を分割するデザインに移行したた"
 "め、本メソッドが提供するスタイルは古くなりました"
 
-#: data/granite.metainfo.xml.in:72
+#: data/granite.metainfo.xml.in:82
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
@@ -167,98 +174,98 @@ msgstr ""
 "ほぼすべての古い `STYLE_CLASS` 定数が非推奨になりました。一部は `CssClass` 定"
 "数で、それ以外はウィジェットで置き換わりました。"
 
-#: data/granite.metainfo.xml.in:74
+#: data/granite.metainfo.xml.in:84
 msgid "Demo Improvements:"
 msgstr "デモアプリの改善点:"
 
-#: data/granite.metainfo.xml.in:76
+#: data/granite.metainfo.xml.in:86
 msgid "More demo pages with more widgets"
 msgstr "確認可能なウィジェットを増やし、デモページを追加"
 
-#: data/granite.metainfo.xml.in:77
+#: data/granite.metainfo.xml.in:87
 msgid "Color scheme switcher in the sidebar"
 msgstr "カラースキームを変更するボタンをサイドバーに追加"
 
-#: data/granite.metainfo.xml.in:92
+#: data/granite.metainfo.xml.in:102
 msgid "Granite.Bin"
 msgstr "Granite.Bin"
 
-#: data/granite.metainfo.xml.in:96
+#: data/granite.metainfo.xml.in:106
 msgid "Improve screen reader support for SwitchModelButton"
 msgstr "SwitchModelButton: スクリーンリーダーへの対応を改善"
 
-#: data/granite.metainfo.xml.in:97
+#: data/granite.metainfo.xml.in:107
 msgid "Wrap long labels for SwitchModelButton"
 msgstr "SwitchModelButton: 長いラベルを折り返すように修正"
 
-#: data/granite.metainfo.xml.in:98
+#: data/granite.metainfo.xml.in:108
 msgid "HeaderLabel: set accessible description"
 msgstr "HeaderLabel: アクセシビリティの説明を設定するように修正"
 
-#: data/granite.metainfo.xml.in:99
+#: data/granite.metainfo.xml.in:109
 msgid "ValidatedEntry: set AccessibleState for validity"
 msgstr ""
 "ValidatedEntry: バリデーション結果に応じて AccessibleState を設定するように修"
 "正"
 
-#: data/granite.metainfo.xml.in:109
+#: data/granite.metainfo.xml.in:119
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr "Toast: 非表示になった理由を情報として持つ、dismissed シグナルを追加"
 
-#: data/granite.metainfo.xml.in:110
+#: data/granite.metainfo.xml.in:120
 msgid "Add STYLE_CLASS_SUCCESS"
 msgstr "STYLE_CLASS_SUCCESS を追加"
 
-#: data/granite.metainfo.xml.in:111
+#: data/granite.metainfo.xml.in:121
 msgid "HeaderLabel: allow secondary text to use markup"
 msgstr "HeaderLabel: セカンダリーテキストにマークアップを使用できるように修正"
 
-#: data/granite.metainfo.xml.in:115
+#: data/granite.metainfo.xml.in:125
 msgid "Make building Demo optional"
 msgstr "デモのビルドをオプションに変更"
 
-#: data/granite.metainfo.xml.in:116
+#: data/granite.metainfo.xml.in:126
 msgid "Demo now uses a modern split-pane design"
 msgstr "デモをモダンな画面分割デザインに変更"
 
-#: data/granite.metainfo.xml.in:117
+#: data/granite.metainfo.xml.in:127
 msgid "DateTime: handle relative datetime when epoch"
 msgstr "DateTime: エポック秒が0の場合の相対時刻表示を修正"
 
-#: data/granite.metainfo.xml.in:118
+#: data/granite.metainfo.xml.in:128
 msgid "MessageDialog: Set last button as focus widget"
 msgstr ""
 "MessageDialog: 最後に追加したボタンをフォーカスウィジェットに設定するように修"
 "正"
 
-#: data/granite.metainfo.xml.in:119
+#: data/granite.metainfo.xml.in:129
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr ""
 "SwitchModelButton: スイッチ本体へのキーボードフォーカスは余計なため削除"
 
-#: data/granite.metainfo.xml.in:120
+#: data/granite.metainfo.xml.in:130
 msgid "Load fallback styles for widgets when using Granite.init"
 msgstr ""
 "Granite.init 使用時、ウィジェット用のフォールバックスタイルを読み込むように修"
 "正"
 
-#: data/granite.metainfo.xml.in:125
+#: data/granite.metainfo.xml.in:135
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr "SettingsPage と SettingsSidebar: LibSwitchboard にウィジェットを移動"
 
-#: data/granite.metainfo.xml.in:137
+#: data/granite.metainfo.xml.in:147
 msgid "Add a withdraw method for Granite.Toast"
 msgstr "Granite.Toast に withdraw メソッドを追加"
 
-#: data/granite.metainfo.xml.in:151
+#: data/granite.metainfo.xml.in:161
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr ""
 "フォールバックのスタイルが適用される場合を考慮し、elementary スタイルシートに"
 "依存しないように修正"
 
-#: data/granite.metainfo.xml.in:152
+#: data/granite.metainfo.xml.in:162
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
@@ -266,21 +273,21 @@ msgstr ""
 "\"Granite.init ()\" の実行時に、GResource に含まれるスタイルシート "
 "\"Application.css\" を自動的に読み込むように修正"
 
-#: data/granite.metainfo.xml.in:153
+#: data/granite.metainfo.xml.in:163
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr "システム設定を起動するための SettingsUri 定数を追加"
 
-#: data/granite.metainfo.xml.in:163
+#: data/granite.metainfo.xml.in:173
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr "\"Granite.init ()\" を public に変更"
 
-#: data/granite.metainfo.xml.in:173
+#: data/granite.metainfo.xml.in:183
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
 "Granite.STYLE_CLASS_RICH_LIST: Gtk.ListBox に標準的な行パディングを追加できま"
 "す"
 
-#: data/granite.metainfo.xml.in:174
+#: data/granite.metainfo.xml.in:184
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
@@ -288,12 +295,12 @@ msgstr ""
 "Granite.STYLE_CLASS_FRAME: Gtk.LisBox や Gtk.InfoBar の周囲に境界線を追加でき"
 "ます"
 
-#: data/granite.metainfo.xml.in:175
+#: data/granite.metainfo.xml.in:185
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr ""
 "Granite.STYLE_CLASS_SIDEBAR: アプリケーションのサイドバーに使うスタイルです"
 
-#: data/granite.metainfo.xml.in:176
+#: data/granite.metainfo.xml.in:186
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
@@ -301,15 +308,15 @@ msgstr ""
 "Granite.STYLE_CLASS_BACKGROUND: ウィジェットのデフォルトの背景色に使うスタイ"
 "ルです"
 
-#: data/granite.metainfo.xml.in:177
+#: data/granite.metainfo.xml.in:187
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr "Granite.HeaderLabel: 必要であればサブタイトルを追加可能に"
 
-#: data/granite.metainfo.xml.in:181
+#: data/granite.metainfo.xml.in:191
 msgid "Allow text in Granite.Toast to wrap"
 msgstr "Granite.Toast のテキストが折り返し可能に"
 
-#: data/granite.metainfo.xml.in:182
+#: data/granite.metainfo.xml.in:192
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
@@ -317,39 +324,39 @@ msgstr ""
 "SimpleSettingsPage: タイトルを折り返し可能にし、説明用のテキストをスイッチの"
 "下まで表示できるように修正"
 
-#: data/granite.metainfo.xml.in:196
+#: data/granite.metainfo.xml.in:206
 msgid "Ported to GTK4! 🎉️"
 msgstr "GTK4 に移行しました! 🎉️"
 
-#: data/granite.metainfo.xml.in:197
+#: data/granite.metainfo.xml.in:207
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr "Granite.Placeholder: AlertView と Welcome を置き換え"
 
-#: data/granite.metainfo.xml.in:198
+#: data/granite.metainfo.xml.in:208
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr "SimpleSettingsPage: 説明用のテキストでマークアップを使用可能に"
 
-#: data/granite.metainfo.xml.in:200
+#: data/granite.metainfo.xml.in:210
 msgid "Removals:"
 msgstr "削除された項目:"
 
-#: data/granite.metainfo.xml.in:202
+#: data/granite.metainfo.xml.in:212
 msgid "Application: use Gtk.Application instead"
 msgstr "Granite.Application: 今後は Gtk.Application を使用してください"
 
-#: data/granite.metainfo.xml.in:203
+#: data/granite.metainfo.xml.in:213
 msgid "Drawing: Use Gtk.CSS"
 msgstr "Drawing: 今後は Gtk.CSS を使用してください"
 
-#: data/granite.metainfo.xml.in:204
+#: data/granite.metainfo.xml.in:214
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook: 今後は Adw.TabBar を使用してください"
 
-#: data/granite.metainfo.xml.in:205
+#: data/granite.metainfo.xml.in:215
 msgid "Logger: use GLib.log instead"
 msgstr "Logger: 今後は GLib.log を使用してください"
 
-#: data/granite.metainfo.xml.in:206
+#: data/granite.metainfo.xml.in:216
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
@@ -357,38 +364,38 @@ msgstr ""
 "ModeButton: 今後は“group”プロパティと“linked”スタイルクラスを設定した "
 "Gtk.ToggleButton を使用してください"
 
-#: data/granite.metainfo.xml.in:207
+#: data/granite.metainfo.xml.in:217
 msgid "Paths: use GLib.Environment instead"
 msgstr "Paths: 今後は GLib.Environment を使用してください"
 
-#: data/granite.metainfo.xml.in:208
+#: data/granite.metainfo.xml.in:218
 msgid "Seekbar"
 msgstr "Seekbar"
 
-#: data/granite.metainfo.xml.in:209
+#: data/granite.metainfo.xml.in:219
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr "Services.Settings: 今後は GLib.Settings を使用してください"
 
-#: data/granite.metainfo.xml.in:210
+#: data/granite.metainfo.xml.in:220
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
 "SimpleCommand: 今後は GLib.AppInfo.create_from_commandline を使用してください"
 
-#: data/granite.metainfo.xml.in:211
+#: data/granite.metainfo.xml.in:221
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
 "SourceList: 今後は“sidebar”スタイルクラスを設定した Gtk.ListBox を使用してく"
 "ださい"
 
-#: data/granite.metainfo.xml.in:212
+#: data/granite.metainfo.xml.in:222
 msgid "StorageBar"
 msgstr "StorageBar"
 
-#: data/granite.metainfo.xml.in:213
+#: data/granite.metainfo.xml.in:223
 msgid "TextStyle: use style class constants instead"
 msgstr "TextStyle: 今後はスタイルクラスの定数を使用してください"
 
-#: data/granite.metainfo.xml.in:214
+#: data/granite.metainfo.xml.in:224
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "System 名前空間にあった複数の関数が、GLib.AppInfo で置き換わりました"
 
