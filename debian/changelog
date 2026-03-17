@@ -4,6 +4,12 @@ granite9 (9.0.0) resolute; urgency=medium
 
  -- Ryo Nakano <ryonakaknock3@gmail.com>  Mon, 23 Feb 2026 18:18:00 +0900
 
+granite7 (7.8.1) jammy; urgency=medium
+
+  * Release 7.8.1 (#960)
+
+ -- elementary, Inc. <builds@elementary.io>  Tue, 17 Mar 2026 16:31:38 +0000
+
 granite7 (7.8.0) jammy; urgency=medium
 
   * Release 7.8.0 (#946)
