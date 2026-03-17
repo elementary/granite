@@ -31,20 +31,6 @@
     <file alias="scalable/actions/view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
     <file alias="scalable/actions/view-sidebar-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
 
-    <file alias="scalable/categories/appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
-    <file alias="scalable/categories/office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
-
-    <file alias="scalable/categories/emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-activities.svg</file>
-    <file alias="scalable/categories/emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-body.svg</file>
-    <file alias="scalable/categories/emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-flag.svg</file>
-    <file alias="scalable/categories/emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-food.svg</file>
-    <file alias="scalable/categories/emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-nature.svg</file>
-    <file alias="scalable/categories/emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-objects.svg</file>
-    <file alias="scalable/categories/emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-people.svg</file>
-    <file alias="scalable/categories/emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-recent.svg</file>
-    <file alias="scalable/categories/emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-symbols.svg</file>
-    <file alias="scalable/categories/emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-travel.svg</file>
-
     <file alias="scalable/status/adw-tab-counter-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-counter-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
     <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>
@@ -73,5 +59,34 @@
     <file alias="16x16@2/status/emblem-error.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
     <file alias="16x16@2/status/emblem-mixed.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
     <file alias="16x16@2/status/emblem-warning.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+  </gresource>
+
+  <gresource prefix="/io/elementary/granite/scalable/categories">
+    <file alias="appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
+    <file alias="office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
+
+    <file alias="emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-activities.svg</file>
+    <file alias="emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-body.svg</file>
+    <file alias="emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-flag.svg</file>
+    <file alias="emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-food.svg</file>
+    <file alias="emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-nature.svg</file>
+    <file alias="emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-objects.svg</file>
+    <file alias="emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-people.svg</file>
+    <file alias="emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-recent.svg</file>
+    <file alias="emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-symbols.svg</file>
+    <file alias="emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-travel.svg</file>
+
+    <file alias="poi-airport-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-airport.svg</file>
+    <file alias="poi-bar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-bar.svg</file>
+    <file alias="poi-building-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-building.svg</file>
+    <file alias="poi-bus-stop-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-bus.svg</file>
+    <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-street.svg</file>
+    <file alias="poi-light-rail-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-light-rail.svg</file>
+    <file alias="poi-marker-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-marker.svg</file>
+    <file alias="poi-place-of-worship-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-place-of-worship.svg</file>
+    <file alias="poi-railway-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-train.svg</file>
+    <file alias="poi-restaurant-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-restaurant.svg</file>
+    <file alias="poi-school-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-school.svg</file>
+    <file alias="poi-town-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-town.svg</file>
   </gresource>
 </gresources>
