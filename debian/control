@@ -1,4 +1,4 @@
-Source: granite7
+Source: granite9
 Section: libs
 Priority: optional
 Maintainer: elementary, Inc. <builds@elementary.io>
@@ -16,10 +16,10 @@ Vcs-Git: https://github.com/elementary/granite.git
 Vcs-Browser: https://github.com/elementary/granite
 Homepage: https://github.com/elementary/granite
 
-Package: libgranite7
+Package: libgranite9
 Architecture: any
 Multi-Arch: same
-Depends: libgranite-7-common (>= ${source:Version}),
+Depends: libgranite-9-common (>= ${source:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: contractor, io.elementary.settings-daemon
@@ -30,13 +30,13 @@ Description: extension of GTK+ libraries
  .
  This package contains the shared library.
 
-Package: libgranite-7-dev
+Package: libgranite-9-dev
 Section: libdevel
 Architecture: any
-Depends: gir1.2-granite-7.0 (= ${binary:Version}),
+Depends: gir1.2-granite-9.0 (= ${binary:Version}),
          libgee-0.8-dev,
          libglib2.0-dev,
-         libgranite7 (= ${binary:Version}),
+         libgranite9 (= ${binary:Version}),
          libgtk-4-dev (>= 4.12.0),
          ${misc:Depends}
 Description: extension of GTK+ libraries (development files)
@@ -46,7 +46,7 @@ Description: extension of GTK+ libraries (development files)
  .
  This package contains the static library and header files.
 
-Package: gir1.2-granite-7.0
+Package: gir1.2-granite-9.0
 Section: introspection
 Architecture: any
 Multi-Arch: foreign
@@ -59,7 +59,7 @@ Description: extension of GTK+ libraries (introspection files)
  This package can be used by other packages using the GIRepository format to
  generate dynamic bindings.
 
-Package: libgranite-7-common
+Package: libgranite-9-common
 Section: misc
 Architecture: all
 Multi-Arch: foreign
@@ -73,10 +73,10 @@ Description: extension of GTK+ libraries (common files)
  .
  This package contains common files needed by library.
 
-Package: granite-7-demo
+Package: granite-9-demo
 Section: misc
 Architecture: any
-Depends: libgranite7 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libgranite9 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: extension of GTK+ libraries (demo binary)
  Granite is an extension of GTK+. Among other things, it provides
  complex widgets and convenience functions designed for use in apps

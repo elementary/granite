@@ -1,5 +1,5 @@
-usr/include/granite-7/*
-usr/lib/*/libgranite-7.so
+usr/include/granite-9/*
+usr/lib/*/libgranite-9.so
 usr/lib/*/pkgconfig/*
 usr/share/gir-1.0/*
 usr/share/vala/vapi/*
