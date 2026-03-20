@@ -1,7 +1,7 @@
 Source: granite9
 Section: libs
 Priority: optional
-Maintainer: elementary, Inc. <builds@elementary.io>
+Maintainer: elementary <builds@elementary.io>
 Build-Depends: debhelper (>= 10.5.1),
                gobject-introspection (>= 1.41.4-1~),
                libgee-0.8-dev,
