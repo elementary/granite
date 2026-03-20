@@ -246,7 +246,7 @@ public class Granite.TimePicker : Gtk.Entry {
         }
 
         if (Granite.DateTime.is_clock_format_12h ()) {
-            am_pm_box.show ();
+            am_pm_box.visible = true;
 
             if (time.get_hour () > 12) {
                 hours_spinbutton.set_value (time.get_hour () - 12);
@@ -259,7 +259,7 @@ public class Granite.TimePicker : Gtk.Entry {
             // Make sure that bounds are set correctly
             hours_spinbutton.set_range (1, 12);
         } else {
-            am_pm_box.hide ();
+            am_pm_box.visible = false;
             hours_spinbutton.set_value (time.get_hour ());
 
             hours_spinbutton.set_range (0, 23);
