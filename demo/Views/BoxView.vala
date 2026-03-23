@@ -12,8 +12,8 @@ public class BoxView : DemoPage {
         };
 
         var single_box = new Granite.Box (HORIZONTAL);
-        single_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
-        single_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
+        single_box.append (new Gtk.Image.from_icon_name ("package-x-generic") { icon_size = LARGE });
+        single_box.append (new Gtk.Image.from_icon_name ("package-x-generic") { icon_size = LARGE });
 
         var single_container = new Granite.Box (VERTICAL);
         single_container.append (single_header);
@@ -24,8 +24,8 @@ public class BoxView : DemoPage {
         };
 
         var double_box = new Granite.Box (HORIZONTAL, DOUBLE);
-        double_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
-        double_box.append (new Gtk.Image.from_icon_name ("application-default-icon") { icon_size = LARGE });
+        double_box.append (new Gtk.Image.from_icon_name ("package-x-generic") { icon_size = LARGE });
+        double_box.append (new Gtk.Image.from_icon_name ("package-x-generic") { icon_size = LARGE });
 
         var double_container = new Granite.Box (VERTICAL);
         double_container.append (double_header);

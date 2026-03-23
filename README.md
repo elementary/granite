@@ -22,9 +22,9 @@ You'll need the following dependencies:
 To build the Demo you'll additionally need:
 * libshumate-dev
 
-Run `meson build` to configure the build environment:
+Run `meson setup` to configure the build environment:
 
-    meson build --prefix=/usr
+    meson setup build --prefix=/usr
 
 This command creates a `build` directory. For all following commands, change to
 the build directory before running them.
@@ -37,15 +37,15 @@ To install, use `ninja install`
 
     ninja install
 
-To see a demo app of Granite's widgets, run `granite-7-demo` after installing it:
+To see a demo app of Granite's widgets, run `granite-9-demo` after installing it:
 
-    granite-7-demo
+    granite-9-demo
 
 
 ## Documentation
 
 Documentation for all of the classes and functions in Granite is available
-[on Valadoc](https://valadoc.org/granite-7/Granite.html)
+[on Valadoc](https://valadoc.org/granite-9/Granite.html)
 
 The additional requirements for building the documentation are:
 

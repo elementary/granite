@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/elementary/granite/demo/icons">
+    <file alias="32x32/actions/git.svg" compressed="true" preprocess="xml-stripblanks">git.svg</file>
+    <file alias="32x32/actions/valadoc.svg" compressed="true" preprocess="xml-stripblanks">valadoc.svg</file>
+
+    <file alias="48x48/places/map-marker.svg" compressed="true" preprocess="xml-stripblanks">map-marker.svg</file>
+  </gresource>
+</gresources>

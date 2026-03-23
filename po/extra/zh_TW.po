@@ -7,20 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-24 15:21+0000\n"
-"PO-Revision-Date: 2025-03-17 11:10+0000\n"
+"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"PO-Revision-Date: 2026-03-02 01:51+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
-"Language-Team: Chinese (Traditional Han script) <https://l10n.elementaryos."
-"org/projects/desktop/granite-extra/zh_Hant/>\n"
+"Language-Team: Chinese (Traditional Han script) <https://"
+"l10n.elementaryos.org/projects/desktop/granite-extra/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.2\n"
+"X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
-msgid "Granite 7"
+#, fuzzy
+#| msgid "Granite 7"
+msgid "Granite 9"
 msgstr "Granite 7"
 
 #: data/granite.metainfo.xml.in:12
@@ -40,104 +42,212 @@ msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
-#: data/granite.metainfo.xml.in:62 data/granite.metainfo.xml.in:126
-#: data/granite.metainfo.xml.in:149
-msgid "New Features:"
-msgstr "新功能："
-
-#: data/granite.metainfo.xml.in:34
-msgid "Granite.CssClass.NUMERIC"
-msgstr "Granite.CssClass.NUMERIC"
-
-#: data/granite.metainfo.xml.in:36 data/granite.metainfo.xml.in:49
-#: data/granite.metainfo.xml.in:68 data/granite.metainfo.xml.in:90
-#: data/granite.metainfo.xml.in:104 data/granite.metainfo.xml.in:116
-#: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:171
+#: data/granite.metainfo.xml.in:75 data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:126 data/granite.metainfo.xml.in:148
+#: data/granite.metainfo.xml.in:162 data/granite.metainfo.xml.in:174
+#: data/granite.metainfo.xml.in:192 data/granite.metainfo.xml.in:229
 msgid "Improvements:"
 msgstr "改善項目："
 
-#: data/granite.metainfo.xml.in:38 data/granite.metainfo.xml.in:55
-#: data/granite.metainfo.xml.in:76 data/granite.metainfo.xml.in:93
-#: data/granite.metainfo.xml.in:109 data/granite.metainfo.xml.in:119
-#: data/granite.metainfo.xml.in:138 data/granite.metainfo.xml.in:174
+#: data/granite.metainfo.xml.in:34
+msgid "ListItem uses the context menu cursor when menu_model is set"
+msgstr "讓 ListItem 在已設定 menu_model 時使用內文選單游標"
+
+#: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:49
+#: data/granite.metainfo.xml.in:80 data/granite.metainfo.xml.in:113
+#: data/granite.metainfo.xml.in:134 data/granite.metainfo.xml.in:151
+#: data/granite.metainfo.xml.in:167 data/granite.metainfo.xml.in:177
+#: data/granite.metainfo.xml.in:196 data/granite.metainfo.xml.in:232
 msgid "Updated translations"
 msgstr "更新翻譯"
 
 #: data/granite.metainfo.xml.in:47
+msgid "HeaderLabel now has ellipsize property"
+msgstr "新增 ellipsize（加上刪節號）的屬性給 HeaderLabel"
+
+#: data/granite.metainfo.xml.in:48
+msgid "ListItem now has a menu_model property"
+msgstr "為 ListItem 新增 menu_model 屬性"
+
+#: data/granite.metainfo.xml.in:59
+msgid "New Icons:"
+msgstr "新圖示："
+
+#: data/granite.metainfo.xml.in:61
+msgid ""
+"View icons for columns, grids, lists, and reader mode. Plus horizontal and "
+"vertical ellipsis icons"
+msgstr ""
+"分欄檢視、格狀檢視、列表檢視與閱讀模式的圖示。還有水平與垂直刪節號的圖示"
+
+#: data/granite.metainfo.xml.in:62
+msgid "Start and End show/hide sidebar icons"
+msgstr "左右側邊欄的顯示/隱藏圖示"
+
+#: data/granite.metainfo.xml.in:63
+msgid "Emoji category icons used by GTK's emoji picker"
+msgstr "表情符號分類圖示，GTK 的表情符號選取工具有使用"
+
+#: data/granite.metainfo.xml.in:64
+msgid "Eye icons required by Gtk.PasswordEntry"
+msgstr "Gtk.PasswordEntry 所需要的眼睛圖示"
+
+#: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:103
+#: data/granite.metainfo.xml.in:120 data/granite.metainfo.xml.in:184
+#: data/granite.metainfo.xml.in:207
+msgid "New Features:"
+msgstr "新功能："
+
+#: data/granite.metainfo.xml.in:68
+msgid ""
+"Box is an orientable widget that includes standardized spacing and linked "
+"styles"
+msgstr "Box: 一個可指定方向的元件，包含標準留白與已連結樣式"
+
+#: data/granite.metainfo.xml.in:69
+msgid "ListItem is a standard list widget that includes styles and spacing"
+msgstr "ListItem: 標準清單元件，包含樣式與留白"
+
+#: data/granite.metainfo.xml.in:70
+msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
+msgstr "ToolBox: 一個垂直配置元件，供頂部與底部工具列使用"
+
+#: data/granite.metainfo.xml.in:71
+msgid ""
+"new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
+msgstr "文字標籤用的新的樣式類別定數：CssClass.NUMERIC 與 CssClass.MONOSPACE"
+
+#: data/granite.metainfo.xml.in:72
+msgid ""
+"StyleManager handles automatically setting dark and light modes as well as "
+"system accent colors using Portals"
+msgstr ""
+"StyleManager 利用桌面入口 (Portals) 管理自動設定深色與亮色模式與系統強調色"
+
+#: data/granite.metainfo.xml.in:73
+msgid ""
+"BackButton is a standardized navigation button that activates "
+"\"navigation.pop\" and includes a shortcut tooltip"
+msgstr ""
+"BackButton 是一個標準化的導覽按鈕，會觸發 \"navigation.pop\"，並包含快捷鍵工"
+"具提示"
+
+#: data/granite.metainfo.xml.in:77
+msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
+msgstr "accel_to_string 現在不再使用 \"⌘\" 符號，改用 \"Super\" 一詞"
+
+#: data/granite.metainfo.xml.in:78
+msgid ""
+"HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
+msgstr "HeaderLabel 現在有 H1-H4 大小的新屬性，且 H2 樣式現在更粗"
+
+#: data/granite.metainfo.xml.in:79
+msgid "CssClass.CARD is now rounded by default"
+msgstr "CssClass.CARD 現在預設改為圓角"
+
+#: data/granite.metainfo.xml.in:82 data/granite.metainfo.xml.in:136
+msgid "Deprecations:"
+msgstr "棄用項目："
+
+#: data/granite.metainfo.xml.in:84
+msgid ""
+"Utils.set_color_primary. Modern apps have moved to more of a split paned "
+"design and this style is no longer very fashionable"
+msgstr ""
+"Utils.set_color_primary。現代應用程式已改用更多分割面板的設計，這個風格已退流"
+"行"
+
+#: data/granite.metainfo.xml.in:85
+msgid ""
+"Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
+"them have been replaced by `CssClass` constants, others by widgets."
+msgstr ""
+"幾乎所有舊的 `STYLE_CLASS` 定數都已經被棄用。它們有一些被 `CssClass` 定數取"
+"代，其他則是被元件取代。"
+
+#: data/granite.metainfo.xml.in:87
+msgid "Demo Improvements:"
+msgstr "展示 demo 改善項目："
+
+#: data/granite.metainfo.xml.in:89
+msgid "More demo pages with more widgets"
+msgstr "更多展示頁面，展示更多元件"
+
+#: data/granite.metainfo.xml.in:90
+msgid "Color scheme switcher in the sidebar"
+msgstr "在側邊欄裡包含切換配色方案的按鈕"
+
+#: data/granite.metainfo.xml.in:105
 msgid "Granite.Bin"
 msgstr "Granite.Bin"
 
-#: data/granite.metainfo.xml.in:51
+#: data/granite.metainfo.xml.in:109
 msgid "Improve screen reader support for SwitchModelButton"
 msgstr "改善 SwitchModelButton 的螢幕閱讀器支援"
 
-#: data/granite.metainfo.xml.in:52
+#: data/granite.metainfo.xml.in:110
 msgid "Wrap long labels for SwitchModelButton"
 msgstr "讓 SwitchModelButton 將較長的文字標籤折行"
 
-#: data/granite.metainfo.xml.in:53
+#: data/granite.metainfo.xml.in:111
 msgid "HeaderLabel: set accessible description"
 msgstr "HeaderLabel：設定輔助使用描述"
 
-#: data/granite.metainfo.xml.in:54
+#: data/granite.metainfo.xml.in:112
 msgid "ValidatedEntry: set AccessibleState for validity"
 msgstr "ValidatedEntry：為驗證結果設定 AccessibleState"
 
-#: data/granite.metainfo.xml.in:64
+#: data/granite.metainfo.xml.in:122
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr "Toast：新增包含忽略原因的新的 dismissed 訊號"
 
-#: data/granite.metainfo.xml.in:65
+#: data/granite.metainfo.xml.in:123
 msgid "Add STYLE_CLASS_SUCCESS"
 msgstr "新增 STYLE_CLASS_SUCCESS"
 
-#: data/granite.metainfo.xml.in:66
+#: data/granite.metainfo.xml.in:124
 msgid "HeaderLabel: allow secondary text to use markup"
 msgstr "HeaderLabel：讓次要文字也能使用 markup"
 
-#: data/granite.metainfo.xml.in:70
+#: data/granite.metainfo.xml.in:128
 msgid "Make building Demo optional"
 msgstr "提供是否要編譯範例的選項"
 
-#: data/granite.metainfo.xml.in:71
+#: data/granite.metainfo.xml.in:129
 msgid "Demo now uses a modern split-pane design"
 msgstr "範例改為使用現代化的分割面板設計"
 
-#: data/granite.metainfo.xml.in:72
+#: data/granite.metainfo.xml.in:130
 msgid "DateTime: handle relative datetime when epoch"
 msgstr "DateTime：有 epoch 的時候處理相對日期時間"
 
-#: data/granite.metainfo.xml.in:73
+#: data/granite.metainfo.xml.in:131
 msgid "MessageDialog: Set last button as focus widget"
 msgstr "MessageDialog：將最後一個按鈕設為聚焦元件"
 
-#: data/granite.metainfo.xml.in:74
+#: data/granite.metainfo.xml.in:132
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr "SwitchModelButton：移除開關上重複的鍵盤聚焦"
 
-#: data/granite.metainfo.xml.in:75
+#: data/granite.metainfo.xml.in:133
 msgid "Load fallback styles for widgets when using Granite.init"
 msgstr "使用 Granite.init 時為元件載入備用樣式"
 
-#: data/granite.metainfo.xml.in:78
-msgid "Deprecations:"
-msgstr "棄用項目："
-
-#: data/granite.metainfo.xml.in:80
+#: data/granite.metainfo.xml.in:138
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr "SettingsPage 和 SettingsSidebar：這些元件已移至 LibSwitchboard"
 
-#: data/granite.metainfo.xml.in:92
+#: data/granite.metainfo.xml.in:150
 msgid "Add a withdraw method for Granite.Toast"
 msgstr "為 Granite.Toast 加入 withdraw 方法"
 
-#: data/granite.metainfo.xml.in:106
+#: data/granite.metainfo.xml.in:164
 msgid "Don't depend on the elementary stylesheet for fallback styles"
 msgstr "讓備用樣式表不要依賴主要的 elementary 樣式表"
 
-#: data/granite.metainfo.xml.in:107
+#: data/granite.metainfo.xml.in:165
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
@@ -145,81 +255,81 @@ msgstr ""
 "以 \"Granite.init ()\" 初始化時自動載入名為 \"Application.css\" 的 "
 "gresourced 樣式表"
 
-#: data/granite.metainfo.xml.in:108
+#: data/granite.metainfo.xml.in:166
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr "新增用來啟動《系統設定值》的 SettingsUri 常數"
 
-#: data/granite.metainfo.xml.in:118
+#: data/granite.metainfo.xml.in:176
 msgid "Make \"Granite.init ()\" publicly available"
 msgstr "將 \"Granite.init ()\" 設為 public"
 
-#: data/granite.metainfo.xml.in:128
+#: data/granite.metainfo.xml.in:186
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr "用 Granite.STYLE_CLASS_RICH_LIST 來取得標準的 Gtk.ListBox 列間間隔"
 
-#: data/granite.metainfo.xml.in:129
+#: data/granite.metainfo.xml.in:187
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr "用 Granite.STYLE_CLASS_FRAME 來為 Gtk.LisBox、Gtk.InfoBar 等等加上邊框"
 
-#: data/granite.metainfo.xml.in:130
+#: data/granite.metainfo.xml.in:188
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
 msgstr "用 Granite.STYLE_CLASS_SIDEBAR 來為應用程式側邊欄套用樣式"
 
-#: data/granite.metainfo.xml.in:131
+#: data/granite.metainfo.xml.in:189
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr "用 Granite.STYLE_CLASS_BACKGROUND 來使用元件的預設背景色"
 
-#: data/granite.metainfo.xml.in:132
+#: data/granite.metainfo.xml.in:190
 msgid "Add optional secondary text to Granite.HeaderLabel"
 msgstr "為 Granite.HeaderLabel 加入非必要的次要文字"
 
-#: data/granite.metainfo.xml.in:136
+#: data/granite.metainfo.xml.in:194
 msgid "Allow text in Granite.Toast to wrap"
 msgstr "允許 Granite.Toast 的文字自動換行"
 
-#: data/granite.metainfo.xml.in:137
+#: data/granite.metainfo.xml.in:195
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr "SimpleSettingsPage：讓標題自動換行，並允許描述文字顯示在開關下方"
 
-#: data/granite.metainfo.xml.in:151
+#: data/granite.metainfo.xml.in:209
 msgid "Ported to GTK4! 🎉️"
 msgstr "移植到 GTK4 了！🎉️"
 
-#: data/granite.metainfo.xml.in:152
+#: data/granite.metainfo.xml.in:210
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
 msgstr "Granite.Placeholder：取代 AlertView 和 Welcome"
 
-#: data/granite.metainfo.xml.in:153
+#: data/granite.metainfo.xml.in:211
 msgid "SimpleSettingsPage: Allow markup in description"
 msgstr "SimpleSettingsPage：允許在描述中使用格式"
 
-#: data/granite.metainfo.xml.in:155
+#: data/granite.metainfo.xml.in:213
 msgid "Removals:"
 msgstr "移除項目："
 
-#: data/granite.metainfo.xml.in:157
+#: data/granite.metainfo.xml.in:215
 msgid "Application: use Gtk.Application instead"
 msgstr "Granite.Application：請改用 Gtk.Application"
 
-#: data/granite.metainfo.xml.in:158
+#: data/granite.metainfo.xml.in:216
 msgid "Drawing: Use Gtk.CSS"
 msgstr "Drawing：請改用 Gtk.CSS"
 
-#: data/granite.metainfo.xml.in:159
+#: data/granite.metainfo.xml.in:217
 msgid "DynamicNotebook: use Adw.TabBar instead"
 msgstr "DynamicNotebook：請改用 Adw.TabBar"
 
-#: data/granite.metainfo.xml.in:160
+#: data/granite.metainfo.xml.in:218
 msgid "Logger: use GLib.log instead"
 msgstr "Logger：請改用 GLib.log"
 
-#: data/granite.metainfo.xml.in:161
+#: data/granite.metainfo.xml.in:219
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
@@ -227,34 +337,37 @@ msgstr ""
 "ModeButton：請改用 Gtk.ToggleButton 並設定 \"group\" 屬性與 \"linked\" 樣式 "
 "class"
 
-#: data/granite.metainfo.xml.in:162
+#: data/granite.metainfo.xml.in:220
 msgid "Paths: use GLib.Environment instead"
 msgstr "Paths：請改用 GLib.Environment"
 
-#: data/granite.metainfo.xml.in:163
+#: data/granite.metainfo.xml.in:221
 msgid "Seekbar"
 msgstr "Seekbar（跳轉列）"
 
-#: data/granite.metainfo.xml.in:164
+#: data/granite.metainfo.xml.in:222
 msgid "Services.Settings: use GLib.Settings instead"
 msgstr "Services.Settings：請改用 GLib.Settings"
 
-#: data/granite.metainfo.xml.in:165
+#: data/granite.metainfo.xml.in:223
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr "SimpleCommand：請改用 GLib.AppInfo.create_from_commandline"
 
-#: data/granite.metainfo.xml.in:166
+#: data/granite.metainfo.xml.in:224
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr "SourceList：請改用 Gtk.ListBox 並利用 \"sidebar\" 樣式 class"
 
-#: data/granite.metainfo.xml.in:167
+#: data/granite.metainfo.xml.in:225
 msgid "StorageBar"
 msgstr "StorageBar"
 
-#: data/granite.metainfo.xml.in:168
+#: data/granite.metainfo.xml.in:226
 msgid "TextStyle: use style class constants instead"
 msgstr "TextStyle：請改用樣式常數"
 
-#: data/granite.metainfo.xml.in:169
+#: data/granite.metainfo.xml.in:227
 msgid "Several functions in System were replaced by GLib.AppInfo"
 msgstr "用 GLib.AppInfo 來取代 System 中的一些函數"
+
+#~ msgid "Granite.CssClass.NUMERIC"
+#~ msgstr "Granite.CssClass.NUMERIC"

@@ -1,5 +1,9 @@
+subdir('data')
+
 executable(
-    'granite-7-demo',
+    meson.project_name() + '-demo',
+
+    gresource,
 
     'GraniteDemo.vala',
     'DemoPage.vala',
@@ -17,7 +21,6 @@ executable(
     'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
     'Views/SettingsUrisView.vala',
-    'Views/StyleManagerView.vala',
     'Views/ToastView.vala',
     'Views/UtilsView.vala',
     'Views/VideoView.vala',
@@ -38,7 +41,8 @@ applications_dir = join_paths(
 )
 
 install_data(
-    'io.elementary.granite-7.demo.desktop',
+    'demo.desktop',
+    rename: 'io.elementary.' + meson.project_name() + '.demo.desktop',
     install_dir: applications_dir
 )
 
