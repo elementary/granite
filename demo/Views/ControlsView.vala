@@ -30,17 +30,35 @@ public class ControlsView : DemoPage {
         var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE");
         destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);
 
+        var destructive_imagebutton = new Gtk.Button.from_icon_name ("call-stop-symbolic") {
+            tooltip_text = "Gtk.Button.from_icon_name () with Granite.CssClass.DESTRUCTIVE"
+        };
+        destructive_imagebutton.add_css_class (Granite.CssClass.DESTRUCTIVE);
+
         var suggested_button = new Gtk.Button.with_label ("Granite.CssClass.SUGGESTED");
         suggested_button.add_css_class (Granite.CssClass.SUGGESTED);
 
-        var button_box = new Granite.Box (VERTICAL, HALF);
-        button_box.append (textbutton);
-        button_box.append (toggle_button);
-        button_box.append (back_button);
-        button_box.append (destructive_button);
-        button_box.append (suggested_button);
-        button_box.append (imagebutton);
-        button_box.append (toggle_imagebutton);
+        var suggested_imagebutton = new Gtk.Button.from_icon_name ("call-start-symbolic") {
+            tooltip_text = "Gtk.Button.from_icon_name () with Granite.CssClass.SUGGESTED"
+        };
+        suggested_imagebutton.add_css_class (Granite.CssClass.SUGGESTED);
+
+        var text_button_box = new Granite.Box (VERTICAL, HALF);
+        text_button_box.append (textbutton);
+        text_button_box.append (toggle_button);
+        text_button_box.append (destructive_button);
+        text_button_box.append (suggested_button);
+        text_button_box.append (back_button);
+
+        var image_button_box = new Granite.Box (VERTICAL, HALF);
+        image_button_box.append (imagebutton);
+        image_button_box.append (toggle_imagebutton);
+        image_button_box.append (destructive_imagebutton);
+        image_button_box.append (suggested_imagebutton);
+
+        var button_box = new Granite.Box (HORIZONTAL, SINGLE);
+        button_box.append (text_button_box);
+        button_box.append (image_button_box);
 
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
