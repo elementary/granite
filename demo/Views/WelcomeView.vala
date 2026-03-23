@@ -45,7 +45,7 @@ public class WelcomeView : DemoPage {
             margin_start = 12
         };
         listbox.set_placeholder (search_placeholder);
-        listbox.add_css_class (Granite.STYLE_CLASS_FRAME);
+        listbox.add_css_class (Granite.CssClass.CARD);
 
         var search_entry = new Gtk.SearchEntry () {
             margin_top = 12,
@@ -116,7 +116,7 @@ public class WelcomeView : DemoPage {
         });
 
         alert_action.clicked.connect (() => {
-            alert_action.hide ();
+            alert_action.visible = false;
         });
     }
 }
