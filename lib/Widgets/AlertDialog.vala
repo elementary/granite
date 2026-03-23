@@ -54,6 +54,7 @@ public class Granite.AlertDialog : Gtk.Window {
     public Gtk.Widget content { get; set; }
 
     private Granite.Box button_box;
+    private SimpleActionGroup action_group;
 
     /**
      * Constructs a new {@link Granite.AlertDialog}.
@@ -126,13 +127,7 @@ public class Granite.AlertDialog : Gtk.Window {
         bind_property ("title", header_label, "label", SYNC_CREATE);
         bind_property ("secondary-text", header_label, "secondary-text", SYNC_CREATE);
 
-        var response_action = new SimpleAction ("response", VariantType.STRING);
-        response_action.activate.connect ((parameter) => {
-            response (parameter.get_string ());
-        });
-
-        var action_group = new SimpleActionGroup ();
-        action_group.add_action (response_action);
+        action_group = new SimpleActionGroup ();
 
         insert_action_group ("dialog", action_group);
 
@@ -140,9 +135,15 @@ public class Granite.AlertDialog : Gtk.Window {
     }
 
     public void add_button (string label, string response_id, ButtonStyle button_style = DEFAULT) {
+        var response_action = new SimpleAction (response_id, null);
+        response_action.activate.connect (() => {
+            response (response_id);
+        });
+
+        action_group.add_action (response_action);
+
         var button = new Gtk.Button.with_label (label) {
-            action_name = "dialog.response",
-            action_target = new Variant.string (response_id),
+            action_name = "dialog." + response_id,
             use_underline = true
         };
 
@@ -151,5 +152,15 @@ public class Granite.AlertDialog : Gtk.Window {
         }
 
         button_box.append (button);
+    }
+
+    /**
+     * Set whether a response is enabled. The corresponding button will have {@link Gtk.Widget.sensitive} set accordingly.
+     *
+     * Responses are enabled by default
+     */
+    public void set_response_enabled (string response_id, bool enabled) {
+        var action = (SimpleAction) action_group.lookup_action (response_id);
+        action.set_enabled (enabled);
     }
 }

@@ -115,6 +115,8 @@ public class DialogsView : DemoPage {
         dialog.add_button ("_Cancel", "cancel");
         dialog.add_button ("_Take Action", "accept", SUGGESTED);
 
+        dialog.set_response_enabled ("accept", false);
+
         dialog.response.connect ((response_id) => {
            if (response_id == "accept") {
                toast.send_notification ();
@@ -124,6 +126,10 @@ public class DialogsView : DemoPage {
         });
 
         dialog.present ();
+
+        Timeout.add_once (3000, () => {
+            dialog.set_response_enabled ("accept", true);
+        });
     }
 
     private void show_message_dialog () {
