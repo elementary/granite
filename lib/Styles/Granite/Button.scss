@@ -5,8 +5,10 @@ button {
         color: white;
         text-shadow: none;
 
+        @if $color-scheme == "dark" {background-clip: padding-box;}
+
         &:active {
-            background-color: mix($error_color, $BLACK_900, 90%);
+            background-color: mix($error_color, $STRAWBERRY_900, 90%);
         }
     }
 
