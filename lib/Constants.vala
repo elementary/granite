@@ -298,7 +298,6 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string MONOSPACE = "monospace";
-
     }
 
     /**
