@@ -1,4 +1,9 @@
 button {
+    &.flat {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 
     &.image-button {
         @extend .circular;
@@ -27,12 +32,19 @@ button {
         }
     }
 
+    &.link {
+        @extend .accent;
+
+        label {
+            text-decoration: underline;
+        }
+    }
+
     &.text-button {
         @extend %raised;
 
         padding: rem(2px) rem(4px);
     }
-
 
     // Almost certainly a button with text and image
     > box.horizontal {
