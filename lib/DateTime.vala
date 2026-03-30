@@ -54,10 +54,11 @@ namespace Granite.DateTime {
             return _("Never");
         }
 
+        var date_time_local = date_time.to_local ();
         var now = new GLib.DateTime.now_local ();
-        var diff = now.difference (date_time);
+        var diff = now.difference (date_time_local);
 
-        if (is_same_day (date_time, now)) {
+        if (is_same_day (date_time_local, now)) {
             if (diff > 0) {
                 if (diff < TimeSpan.MINUTE) {
                     return _("Now");
@@ -79,17 +80,17 @@ namespace Granite.DateTime {
                 }
             }
 
-            return date_time.format (get_default_time_format (is_clock_format_12h (), false));
-        } else if (is_same_day (date_time.add_days (1), now)) {
+            return date_time_local.format (get_default_time_format (is_clock_format_12h (), false));
+        } else if (is_same_day (date_time_local.add_days (1), now)) {
             return _("Yesterday");
-        } else if (is_same_day (date_time.add_days (-1), now)) {
+        } else if (is_same_day (date_time_local.add_days (-1), now)) {
             return _("Tomorrow");
         } else if (diff < 6 * TimeSpan.DAY && diff > -6 * TimeSpan.DAY) {
-            return date_time.format (get_default_date_format (true, false, false));
-        } else if (date_time.get_year () == now.get_year ()) {
-            return date_time.format (get_default_date_format (false, true, false));
+            return date_time_local.format (get_default_date_format (true, false, false));
+        } else if (date_time_local.get_year () == now.get_year ()) {
+            return date_time_local.format (get_default_date_format (false, true, false));
         } else {
-            return date_time.format ("%x");
+            return date_time_local.format ("%x");
         }
     }
 
@@ -125,7 +126,7 @@ namespace Granite.DateTime {
      *
      * @return true if day1 and day2 occur on the same day of the same year. False otherwise
      */
-    public static bool is_same_day (GLib.DateTime day1, GLib.DateTime day2) {
+    public static bool is_same_day (GLib.DateTime day1, GLib.DateTime day2) requires (day1.get_timezone () == day2.get_timezone ()) {
         return day1.get_day_of_year () == day2.get_day_of_year () && day1.get_year () == day2.get_year ();
     }
 
