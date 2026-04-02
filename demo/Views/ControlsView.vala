@@ -27,6 +27,11 @@ public class ControlsView : DemoPage {
             halign = START
         };
 
+        var link_button = new Gtk.LinkButton.with_label (
+            "https://valadoc.org/gtk4/Gtk.LinkButton.html",
+            "Gtk.LinkButton ()"
+        );
+
         var destructive_button = new Gtk.Button.with_label ("Granite.CssClass.DESTRUCTIVE");
         destructive_button.add_css_class (Granite.CssClass.DESTRUCTIVE);
 
@@ -49,6 +54,7 @@ public class ControlsView : DemoPage {
         text_button_box.append (destructive_button);
         text_button_box.append (suggested_button);
         text_button_box.append (back_button);
+        text_button_box.append (link_button);
 
         var image_button_box = new Granite.Box (VERTICAL, HALF);
         image_button_box.append (imagebutton);
