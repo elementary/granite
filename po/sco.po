@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite-7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-25 18:45+0000\n"
-"PO-Revision-Date: 2026-04-06 14:53+0000\n"
+"PO-Revision-Date: 2026-04-06 14:59+0000\n"
 "Last-Translator: Buni <ben.gordon@posteo.de>\n"
 "Language-Team: Scots <https://l10n.elementaryos.org/projects/desktop/granite/"
 "sco/>\n"
@@ -221,14 +221,14 @@ msgstr "Enter"
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:97
 msgid "Left Shift"
-msgstr ""
+msgstr "Car-Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:101
 msgid "Right Shift"
-msgstr ""
+msgstr "Richt-Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:169
 msgid ", "
-msgstr ""
+msgstr ", "
