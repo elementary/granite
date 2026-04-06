@@ -212,11 +212,11 @@ msgstr "Plus"
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:90
 msgid "Equals"
-msgstr ""
+msgstr "Aqual"
 
 #: lib/Widgets/Utils.vala:93
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:97
