@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite-7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-25 18:45+0000\n"
-"PO-Revision-Date: 2026-04-06 14:52+0000\n"
+"PO-Revision-Date: 2026-04-06 14:53+0000\n"
 "Last-Translator: Buni <ben.gordon@posteo.de>\n"
 "Language-Team: Scots <https://l10n.elementaryos.org/projects/desktop/granite/"
 "sco/>\n"
@@ -182,32 +182,32 @@ msgstr "Alt"
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:60
 msgid "Left Alt"
-msgstr ""
+msgstr "Car-Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:64
 msgid "Right Alt"
-msgstr ""
+msgstr "Richt-Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:71
 msgid "Right Ctrl"
-msgstr ""
+msgstr "Richt-Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:75
 msgid "Left Ctrl"
-msgstr ""
+msgstr "Car-Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:80
 msgid "Minus"
-msgstr ""
+msgstr "Meenus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:85
 msgid "Plus"
-msgstr ""
+msgstr "Plus"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:90
