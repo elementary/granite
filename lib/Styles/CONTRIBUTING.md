@@ -1,47 +1,8 @@
 # Contributing
 
-## Padding, Margins, and Border Radii
-
-The base grid unit should be 3px. Sometimes widgets with borders will be "off by one" to align visually.
-
-Border radii should increase as they nest where reasonable. The largest border radii is 9px, used by windows. Popovers and On Screen Displays use a border radius half that.
-
-## Levels and Dark Style Theory
-
-Widget backgrounds are styled according to "level" or "elevation". Elements gets darker the further away they are in interaction hierarchy. For example, buttons are lightest and containers like sidebars are darkest. Widgets in dark style should follow this same progression from lightest in front to darkest in back, and not simply be inverted.
-
-## A11y
-
-* Colors should pass WCAG AA contrast requirements
-* Where possible, use the `rem()` function so that padding, margins, etc scale when users' adjust text size in system settings
-
-## Focus, Hover, Backdrop, etc
-
-Accent should be used to indicate the current area of focus. When selected, but not focused, use nuetral highlights.
-
-Focused widgets should be highlighted with a ring where possible.
-
-Backdrop states should use nuetral color and reduced depth. Contrast can be reduced in some cases, but be mindful of WCAG requirements even for backdrop elements.
-
-## File Name Conventions
-
-A file should be named after the CSS node it addresses. For instance,
-the file addressing `GtkButton` and its descendants would use the file name
-`Button.scss`. As a `GtkCheckButton` has a different CSS node (`checkbutton`),
-it would be placed into it's own file, named `CheckButton.scss`. If you are
-unsure of what node something uses, it's node can be found under the "Name"
-column of the "CSS Nodes" tab of the "Objects" page in Gtk Inspector.
-
-For nodes that are rarely used outside of the context of a parent node (i.e.
-`check` is rarely used outside of the context of `checkbutton`), they can be
-placed in the parent node file.
-
-CSS style classes, such as `Granite.CssClass.CARD`, should be placed in a
-`_classes.scss` file under the relevant library directory (e.g. Granite, Gtk,
-Adw).
-
-Mixins &amp; Variables should be grouped into relevant categories, and placed into a file with
-said category name (e.g. Palette, Typography, Animation).
+These are intructions to make contributing to elementary OS simple, and to
+ensure all contributions follow consistent patterns to make review as smooth as
+possible.
 
 ## Repository Structure
 
@@ -52,10 +13,6 @@ Gtk/
 ├─ _classes.scss
 ├─ <1 file per CSS node>
 Granite/
-├─ Index.scss
-├─ _classes.scss
-├─ <1 file per CSS node>
-Adw/
 ├─ Index.scss
 ├─ _classes.scss
 ├─ <1 file per CSS node>
