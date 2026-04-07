@@ -24,9 +24,9 @@ Additionally, `backdrop` and `disabled` states should be considered "further awa
 Colors should all be derived from one of the colors in the Granite palette &mdash; an extended version of the [elementary brand palette](https://elementary.io/brand), pure white, or pure black.
 Any other necessary shades or highlights should be achieved using `color` functions, and overlaying translucent black or white elements.
 
-## (Proposal) Blur & Transparency
+## Blur & Transparency
 
-Blur and transparency should be used primarily to communicate that an element is "transient", or overlays another element. Good examples of elements that display these traits are system notifications, OSDs, and &mdash; under default settings &mdash; the system dock.
+Blur and transparency should be used primarily to communicate that an element is "transient", or overlays another element. Good examples of elements that display these traits are system notifications, OSDs, and the system dock.
 
 ## Padding, Margins, and Border Radii
 
@@ -41,7 +41,6 @@ To facilitate this, `$window_radius` has been defined as a variable, and all oth
 ### Active
 
 Interactive widgets must respond to activation.
-In many cases, this response will be through a skeuomorphic animation.
 For example:
 
 - Clicked widgets, like buttons and list items, should press in and spring back out along the Z-axis.
@@ -93,7 +92,7 @@ However, backdrop windows must still be legible: text contrast must still pass W
 - Interactive components should still be stateful, but translation should not occur between states. Buttons should press in, but they shouldn't bounce.
 - Widgets should still react to multitouch as normal since they behave more like drag handles, but don't animate when interacted in other ways like keyboard shortcuts
 
-### Texting Scaling
+### Text Scaling
 
 Define padding and margins in `rem()` pixels so that they scale with text size adjustments. Icons should also scale with text size.
 
