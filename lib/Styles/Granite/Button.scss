@@ -1,5 +1,17 @@
 button {
 
+    &.text-button.destructive {
+        background-color: $error_color;
+        color: white;
+        text-shadow: none;
+
+        @if $color-scheme == "dark" {background-clip: padding-box;}
+
+        &:active {
+            background-color: mix($error_color, $STRAWBERRY_900, 90%);
+        }
+    }
+
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
@@ -70,5 +82,4 @@ button {
             shadow(2);
         }
     }
-
 }
