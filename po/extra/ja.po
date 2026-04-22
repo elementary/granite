@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-02-25 22:27+0000\n"
+"PO-Revision-Date: 2026-04-11 01:20+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/ja/>\n"
@@ -20,10 +20,8 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite 9"
-msgstr "Granite 7"
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
