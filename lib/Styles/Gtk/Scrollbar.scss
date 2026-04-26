@@ -5,8 +5,10 @@ scrollbar {
     $slider-width-full: rem($window_radius);
 
     slider {
-        background-color: rgba($fg-color, 0.7);
+        background-color: bg-color(1);
         box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
+        box-shadow: highlight(), shadow(1);
+        border: 1px solid $border-color;
         border-radius: 99px;
         transition:
             background duration("collapse") easing(),
@@ -22,7 +24,6 @@ scrollbar {
     &:hover,
     &.hovering {
         slider {
-            background-color: rgba($fg-color, 0.7);
             transition:
                 background duration("expand") easing(),
                 min-width duration("expand") easing();
@@ -31,7 +32,6 @@ scrollbar {
 
     &:active {
         slider {
-            background-color: $fg-color;
             transition: background duration("expand") easing();
         }
     }
