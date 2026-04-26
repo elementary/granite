@@ -1,0 +1,15 @@
+banner revealer > widget {
+    background-color: #{'mix(@BLUEBERRY_300, white, 0.75)'};
+    color: #{'shade(@BLUEBERRY_300, 0.5)'};
+
+    border: 1px solid #{'mix(@BLUEBERRY_300, white, 0.4)'};
+    @if $color-scheme == "dark" {
+        border-color: $border-color;
+    }
+
+    box-shadow:
+        highlight(),
+        outset-shadow(2);
+
+    padding: rem(6px);
+}
