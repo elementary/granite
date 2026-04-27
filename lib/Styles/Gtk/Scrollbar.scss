@@ -48,7 +48,6 @@ scrollbar {
     &.overlay-indicator {
         slider {
             background-color: rgba($fg-color, 0.7);
-            box-shadow: none;
             box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
             border: none;
         }
