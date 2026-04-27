@@ -51,17 +51,34 @@ scrollbar {
     }
 
     &.overlay-indicator {
+        slider {
+            background-color: rgba($fg-color, 0.7);
+            box-shadow: none;
+            box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
+            border: none;
+        }
+
+        &:active slider {
+            background-color: $fg-color;
+        }
+
         trough {
             background-color: transparent;
             transition:
                 background duration("expand") easing();
         }
 
-        &:hover trough,
-        &.hovering trough {
-            background-color: rgba($fg-color, 0.2);
-            transition:
-                background duration("expand") easing();
+        &:hover,
+        &.hovering {
+            & slider {
+                background-color: rgba($fg-color, 0.7);
+            }
+
+            & trough {
+                background-color: rgba($fg-color, 0.2);
+                transition:
+                    background duration("expand") easing();
+            }
         }
 
         &.horizontal {
