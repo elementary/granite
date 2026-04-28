@@ -9,8 +9,8 @@ button {
         @extend .circular;
 
         padding: rem(4px);
-        min-height: 16px;
-        min-width: 16px;
+        min-height: 24px;
+        min-width: 24px;
         transition:
             background duration("expand") easing(),
             transform duration("expand") easing("ease-out-back");
@@ -43,7 +43,8 @@ button {
     &.text-button {
         @extend %raised;
 
-        padding: rem(2px) rem(4px);
+        min-height: 20px;
+        padding: rem(4px) rem(4px);
     }
 
     // Almost certainly a button with text and image
