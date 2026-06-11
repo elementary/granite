@@ -36,6 +36,8 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
     }
 
     construct {
+        focusable = false;
+
         var label = new Gtk.Label (text) {
             halign = START,
             hexpand = true,
@@ -65,7 +67,7 @@ public class Granite.SwitchModelButton : Gtk.ToggleButton {
         box.set_parent (this);
 
         var button_switch = new Gtk.Switch () {
-            focusable = false,
+            focusable = true,
             valign = Gtk.Align.START
         };
         button_switch.set_parent (this);
