@@ -7,8 +7,24 @@ button {
 
         @if $color-scheme == "dark" {background-clip: padding-box;}
 
+        &:backdrop {
+            background-color: inherit;
+            color: inherit;
+        }
+
         &:active {
             background-color: mix($error_color, $STRAWBERRY_900, 90%);
+        }
+    }
+
+    &.text-button.suggested {
+        background-color: #{'@selected_bg_color'};
+        color: #{'@selected_fg_color'};
+        text-shadow: none;
+
+        &:backdrop {
+            background-color: inherit;
+            color: inherit;
         }
     }
 
