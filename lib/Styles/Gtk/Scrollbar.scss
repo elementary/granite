@@ -5,9 +5,6 @@ scrollbar {
     $slider-width-full: rem($window_radius);
 
     slider {
-        background-color: rgba($fg-color, 0.7);
-        box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
-        border-radius: 99px;
         transition:
             background duration("collapse") easing(),
             min-width duration("collapse") easing();
@@ -22,7 +19,6 @@ scrollbar {
     &:hover,
     &.hovering {
         slider {
-            background-color: rgba($fg-color, 0.7);
             transition:
                 background duration("expand") easing(),
                 min-width duration("expand") easing();
@@ -31,7 +27,6 @@ scrollbar {
 
     &:active {
         slider {
-            background-color: $fg-color;
             transition: background duration("expand") easing();
         }
     }
@@ -51,17 +46,33 @@ scrollbar {
     }
 
     &.overlay-indicator {
+        slider {
+            background-color: rgba($fg-color, 0.7);
+            box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
+            border: none;
+        }
+
+        &:active slider {
+            background-color: $fg-color;
+        }
+
         trough {
             background-color: transparent;
             transition:
                 background duration("expand") easing();
         }
 
-        &:hover trough,
-        &.hovering trough {
-            background-color: rgba($fg-color, 0.2);
-            transition:
-                background duration("expand") easing();
+        &:hover,
+        &.hovering {
+            & slider {
+                background-color: rgba($fg-color, 0.7);
+            }
+
+            & trough {
+                background-color: rgba($fg-color, 0.2);
+                transition:
+                    background duration("expand") easing();
+            }
         }
 
         &.horizontal {

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-02-09 22:56+0000\n"
+"PO-Revision-Date: 2026-04-19 23:56+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/es/>\n"
@@ -20,10 +20,8 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 
 #: data/granite.metainfo.xml.in:11
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite 9"
-msgstr "Granite 7"
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
@@ -55,6 +53,8 @@ msgstr "Mejoras:"
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
 msgstr ""
+"«ListItem» ahora usa el cursor de menú contextual cuando se asigna "
+"«menu_model»"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:80 data/granite.metainfo.xml.in:113
