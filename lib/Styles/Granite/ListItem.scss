@@ -1,4 +1,5 @@
 granite-listitem {
+    border-spacing: $button-spacing;
     padding: $button-spacing;
     min-height: rem(32px); //Try to force homogeneous row height
 
@@ -9,5 +10,68 @@ granite-listitem {
 
     &:focus-visible .text-box {
         background: rgba($fg_color, 0.1);
+    }
+}
+
+button.swipe-button {
+    background-color: #{'@selected_bg_color'};
+    border-radius: $button-spacing;
+    border-spacing: 0.5rem;
+    color: #{'@selected_fg_color'};
+    font-weight: 600;
+    // https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+    min-width: 44px;
+    padding: 0.25rem;
+
+    &.red,
+    &.destructive {
+        background-color: #{'mix(@bg_color, @STRAWBERRY_500, 0.3)'};
+        color: #{'mix(@fg_color, @STRAWBERRY_500, 0.6)'};
+    }
+
+    &.orange {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &.banana,
+    &.yellow {
+        background-color: #{'mix(@bg_color, @BANANA_500, 0.3)'};
+        color: #{'mix(@fg_color, @BANANA_500, 0.4)'};
+    }
+
+    &.lime,
+    &.green {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &.blueberry,
+    &.blue {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &.teal,
+    &.mint {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &.grape,
+    &.purple {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &.bubblegum,
+    &.pink {
+        background-color: #{'mix(@bg_color, @GRAPE_500, 0.3)'};
+        color: #{'mix(@fg_color, @GRAPE_500, 0.6)'};
+    }
+
+    &:backdrop {
+        background-color: scale-color($fg-color, $alpha: -90%);
+        color: inherit;
     }
 }
