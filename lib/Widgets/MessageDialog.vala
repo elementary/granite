@@ -320,7 +320,9 @@ public class Granite.MessageDialog : Granite.Dialog {
                 min_content_height = 70,
                 child = details_view
             };
-            scroll_box.add_css_class (Granite.STYLE_CLASS_TERMINAL);
+            // This is an undocumented style in the Granite stylesheet, not
+            // intended to be used outside of a few system contexts 
+            scroll_box.add_css_class ("terminal");
 
             expander = new Gtk.Expander (_("Details")) {
                 child = scroll_box
