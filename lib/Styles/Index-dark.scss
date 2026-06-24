@@ -49,6 +49,9 @@ $warning-icon-color: $BANANA_500;
 // Gtk Widgets
 // @import 'Gtk/Index.scss';
 
+// Adwaita widgets
+@import 'Adw/Index.scss';
+
 // Granite widgets
 @import 'Granite/Index.scss';
 
