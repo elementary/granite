@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
 "PO-Revision-Date: 2026-06-29 13:56+0000\n"
-"Last-Translator: kalligator <kalligator+github@gmail.com>\n"
+"Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/desktop/granite-"
 "extra/el/>\n"
 "Language: el\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 9"
-msgstr ""
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
@@ -91,7 +91,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:120 data/granite.metainfo.xml.in:184
 #: data/granite.metainfo.xml.in:207
 msgid "New Features:"
-msgstr ""
+msgstr "Νέες λειτουργίες:"
 
 #: data/granite.metainfo.xml.in:68
 msgid ""
