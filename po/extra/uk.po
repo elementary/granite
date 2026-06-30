@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2025-12-18 23:55+0000\n"
+"PO-Revision-Date: 2026-06-30 22:56+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -18,13 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 
 #: data/granite.metainfo.xml.in:11
-#, fuzzy
-#| msgid "Granite 7"
 msgid "Granite 9"
-msgstr "Granite 7"
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
