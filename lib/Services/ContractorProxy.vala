@@ -68,7 +68,7 @@ namespace Granite.Services {
         string icon;
     }
 
-    [DBus (name = "org.elementary.Contractor")]
+    [DBus (name = "io.elementary.Contractor")]
     internal interface ContractorDBusAPI : Object {
         public signal void contracts_changed ();
 
@@ -168,8 +168,8 @@ namespace Granite.Services {
             if (contractor_dbus == null) {
                 try {
                     contractor_dbus = Bus.get_proxy_sync (BusType.SESSION,
-                                                          "org.elementary.Contractor",
-                                                          "/org/elementary/contractor");
+                                                          "io.elementary.Contractor",
+                                                          "/io/elementary/contractor");
                     contractor_dbus.contracts_changed.connect (on_contracts_changed);
                 } catch (IOError e) {
                     throw new ContractorError.SERVICE_NOT_AVAILABLE (e.message);
