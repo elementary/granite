@@ -4,7 +4,9 @@ entry {
     background-color: bg-color(1);
     border: 1px solid $border-color;
     border-spacing: $button-spacing;
-    padding: $button-spacing;
+    padding: calc(0.5rem - 2px);
+    min-height: 16px;
+    min-width: 16px;
 
     placeholder {
         @extend .dim-label;
