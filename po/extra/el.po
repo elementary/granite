@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-06-29 13:56+0000\n"
+"PO-Revision-Date: 2026-07-10 08:09+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/desktop/granite-"
 "extra/el/>\n"
@@ -67,7 +67,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:59
 msgid "New Icons:"
-msgstr ""
+msgstr "Νέα εικονίδια:"
 
 #: data/granite.metainfo.xml.in:61
 msgid ""
@@ -167,7 +167,7 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:105
 msgid "Granite.Bin"
-msgstr ""
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:109
 msgid "Improve screen reader support for SwitchModelButton"
