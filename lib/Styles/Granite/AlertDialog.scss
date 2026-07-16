@@ -1,0 +1,21 @@
+window.granite-alert.dialog {
+    toolbox box.top,
+    toolbox box.bottom {
+        padding: 1rem;
+    }
+
+    toolbox box.top {
+        overlay {
+            min-width: calc((48px * 2) - 1em);
+        }
+
+        .large-icons {
+            -gtk-icon-size: 48px;
+        }
+    }
+
+    toolbox box.bottom button {
+        min-width: 5em;
+    }
+}
+
