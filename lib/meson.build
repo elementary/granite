@@ -36,6 +36,8 @@ libgranite_sources = files(
     'Widgets/TimePicker.vala',
     'Widgets/ToolBox.vala',
     'Widgets/Toast.vala',
+    'Widgets/TreeList/TreeList.vala',
+    'Widgets/TreeList/TreeListItem.vala',
     'Widgets/Utils.vala',
     'Widgets/ValidatedEntry.vala'
 )
