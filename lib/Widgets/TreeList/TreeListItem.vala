@@ -103,7 +103,7 @@ public class Granite.TreeListItem : Object {
         bool inclusive,
         bool recursive,
         uint level = 0
-    ) requires (child_model != null){
+    ) requires (child_model != null) {
         TreeListItem? child = null;
         uint pos = 0;
         do {
@@ -125,7 +125,7 @@ public class Granite.TreeListItem : Object {
     }
 
     public delegate bool IterateChildrenCallback (Object obj);
-    public void iterate_children  (IterateChildrenCallback cb) {
+    public void iterate_children (IterateChildrenCallback cb) {
         uint pos = 0;
         Object? child = null;
         do {

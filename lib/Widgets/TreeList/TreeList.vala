@@ -134,9 +134,9 @@ public sealed class Granite.TreeList : Granite.Bin {
     }
 
     public delegate bool ListIteratorCallback (TreeListItem item);
-    public static bool ITERATE_CONTINUE = true;
-    public static bool ITERATE_STOP = false;
-    public void iterate_children (TreeListItem?  start, ListIteratorCallback cb) {
+    public const bool ITERATE_CONTINUE = true;
+    public const bool ITERATE_STOP = false;
+    public void iterate_children (TreeListItem? start, ListIteratorCallback cb) {
         ListModel model;
         if (start == null) {
             model = root_model;
