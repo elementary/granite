@@ -10,14 +10,18 @@ public class Granite.TreeListItem : Object {
     public signal void child_added (TreeListItem item); // To emulate source list
 
     public string text { get; set; default = ""; } //This can include markup
-    public string sub_text { get; set; default = ""; } //This can include markup?
+    // public string sub_text { get; set; default = ""; } //This can include markup?
     public string tooltip { get; set; default = ""; }
-    public Icon? icon { get; set; default = null;}
-    public Icon? secondary_icon { get; set; default = null;}
+    public string icon_name { get; set; default = null;}
+    // public Icon? icon { get; set; default = null;}
+    public string? secondary_icon_name { get; set; default = null;}
+    // public Icon? secondary_icon { get; set; default = null;}
     public string secondary_icon_tooltip { get; set; default = ""; }
     public string badge = ""; // Use label styled with Granite.STYLE_CLASS_BADGE?
+
     public ListStore? child_model { get; set; }
     public TreeListItem? parent { get; set; default = null; }
+
     public bool is_expandable { get; set construct; }
     public bool is_expanded { get; set; } // gets bound to the ListItem (temporarily)
     public Binding expanded_binding { get; set; } // Need to save bind so we can unbind
@@ -50,12 +54,12 @@ public class Granite.TreeListItem : Object {
         );
     }
 
-    public ListModel create_child_model () {
+    public ListModel create_child_model () requires (is_expandable) {
          child_model = new ListStore (typeof (TreeListItem));
          return child_model;
     }
 
-    public virtual void add_child (TreeListItem child) {
+    public virtual void add_child (TreeListItem child) requires (is_expandable) {
         if (child_model == null) {
             create_child_model ();
         }

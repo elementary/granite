@@ -100,6 +100,81 @@ public class ListsView : DemoPage {
             min_content_height = 128
         };
 
+        var treelist_title = new Granite.HeaderLabel ("Granite.TreeList");
+        var treelist = new Granite.TreeList () {
+            margin_start = 12,
+            margin_end = 12,
+            row_spacing = 12,
+        };
+
+        // We manually create basic treelistitems - normally these would be subclassed
+        // and programmatically created based on app data e.g. directory listing
+        // implementing additional data e.g. filepath
+        var root_item_expandable = treelist.add_root_item (
+            new Granite.TreeListItem.expandable () {
+                text = "Folder 1.1",
+                tooltip = "First expandable item",
+                icon_name = "folder"
+            }
+        );
+
+        root_item_expandable.add_child (
+            new Granite.TreeListItem () {
+                text = "Item 2.1 - image",
+                tooltip = "Non-expandable image item",
+                icon_name = "image-x-generic",
+            }
+        );
+        root_item_expandable.add_child (
+            new Granite.TreeListItem () {
+                text = "Item 2.2 - Vala",
+                tooltip = "Second non-expandable item",
+                icon_name = "text-x-vala",
+            }
+        );
+        root_item_expandable.add_child (
+            new Granite.TreeListItem.expandable () {
+                text = "Folder 2.3",
+                tooltip = "Expandable child - empty",
+                icon_name = "folder"
+            }
+        );
+
+        treelist.add_root_item (
+            new Granite.TreeListItem () {
+                text = "Item 1.1 - generic text",
+                tooltip = "First non-expandable item",
+                icon_name = "text-x-generic",
+                badge = "1",
+                secondary_icon_name = "emblem-enabled",
+                secondary_icon_tooltip = "enabled"
+
+            }
+        );
+        treelist.add_root_item (
+            new Granite.TreeListItem () {
+                text = "Item 1.2 - PDF",
+                tooltip = "First non-expandable item",
+                icon_name = "application-pdf",
+                badge = "2",
+                secondary_icon_name = "emblem-error"
+            }
+        );
+
+        var treelist_scrolled = new Gtk.ScrolledWindow () {
+            child = treelist,
+            has_frame = true,
+            hscrollbar_policy = NEVER,
+            min_content_height = 128
+        };
+
+        var treelist_paned = new Gtk.Paned (HORIZONTAL) {
+            start_child = treelist_scrolled,
+            end_child = new Granite.Placeholder (""),
+            position = 250
+        };
+
+
         var grid_title = new Granite.HeaderLabel ("Gtk.GridView");
 
         var grid_store = new GLib.ListStore (typeof (GridObject));
@@ -172,6 +247,8 @@ public class ListsView : DemoPage {
         vbox.append (list_box);
         vbox.append (list_title);
         vbox.append (list_scrolled);
+        vbox.append (treelist_title);
+        vbox.append (treelist_paned);
         vbox.append (grid_title);
         vbox.append (grid_scrolled);
 

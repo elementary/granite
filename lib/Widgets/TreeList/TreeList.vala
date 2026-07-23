@@ -32,6 +32,7 @@ public sealed class Granite.TreeList : Granite.Bin {
     public signal void popup_context_menu (Graphene.Point view_point, Granite.TreeListItem treelistitem);
 
     public bool activate_on_single_click { get; set; default = true;}
+    public int row_spacing { get; set; default = 0;}
 
     private Gtk.ListView list_view;
     private GLib.ListStore root_model;
@@ -177,8 +178,11 @@ public sealed class Granite.TreeList : Granite.Bin {
         var secondary_image = new Gtk.Image.from_icon_name (null);
         var badge_label = new Gtk.Label ("");
         badge_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
+        var half_spacing = row_spacing / 2;
         var box = new Gtk.Box (HORIZONTAL, 6) {
-            hexpand = true
+            hexpand = true,
+            margin_top = half_spacing,
+            margin_bottom = row_spacing - half_spacing
         };
         box.append (primary_image);
         box.append (label);
@@ -232,10 +236,11 @@ public sealed class Granite.TreeList : Granite.Bin {
         var badge_label = (Gtk.Label) secondary_image.get_next_sibling ();
 
         name_label.label = data.text;
-        //TODO The following assignments are placeholders - need to be bound to item
-        primary_image.icon_name = data.is_expandable ? "folder" : "text-x-vala";
-        secondary_image.icon_name = "emblem-default";
-        badge_label.label = "32";
+        name_label.tooltip_text = data.tooltip;
+        primary_image.icon_name = data.icon_name;
+        secondary_image.icon_name = data.secondary_icon_name;
+        secondary_image.tooltip_text = data.secondary_icon_tooltip;
+        badge_label.label = data.badge;
 
         //TODO Should we expose a public virtual method to allow users to modify
         // the ListItem?
@@ -247,5 +252,12 @@ public sealed class Granite.TreeList : Granite.Bin {
         Gtk.ListItem item
     ) {
         data.expanded_binding.unbind ();
+        // //TODO Is this needed? Not all reset on binding another object
+        // name_label.label = "";
+        // name_label.tooltip = "";
+        // primary_image.icon_name = "";
+        // secondary_image.icon_name = "";
+        // secondary_image_tooltip = "";
+        // badge_label.label = "";
     }
  }
