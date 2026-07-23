@@ -10,12 +10,9 @@ public class Granite.TreeListItem : Object {
     public signal void child_added (TreeListItem item); // To emulate source list
 
     public string text { get; set; default = ""; } //This can include markup
-    // public string sub_text { get; set; default = ""; } //This can include markup?
     public string tooltip { get; set; default = ""; }
     public string icon_name { get; set; default = null;}
-    // public Icon? icon { get; set; default = null;}
     public string? secondary_icon_name { get; set; default = null;}
-    // public Icon? secondary_icon { get; set; default = null;}
     public string secondary_icon_tooltip { get; set; default = ""; }
     public string badge = ""; // Use label styled with Granite.STYLE_CLASS_BADGE?
 
@@ -124,6 +121,8 @@ public class Granite.TreeListItem : Object {
         }
     }
 
+    // Calls supplied callback for each child (not recursive)
+    // It is up to the user to implement recursion if required (see collapse all for example)
     public delegate bool IterateChildrenCallback (Object obj);
     public void iterate_children (IterateChildrenCallback cb) {
         uint pos = 0;

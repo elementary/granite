@@ -29,7 +29,10 @@
 //TODO Should we allow subclassing?
 public sealed class Granite.TreeList : Granite.Bin {
     public signal void item_activated (TreeListItem item);
-    public signal void popup_context_menu (Graphene.Point view_point, Granite.TreeListItem treelistitem);
+    public signal void popup_context_menu (
+        Graphene.Point view_point,
+        Granite.TreeListItem treelistitem
+    );
 
     public bool activate_on_single_click { get; set; default = true;}
     public int row_spacing { get; set; default = 0;}
@@ -202,15 +205,15 @@ public sealed class Granite.TreeList : Granite.Bin {
 
         box.add_controller (button_controller);
         button_controller.pressed.connect ((n_press, bx, by) => {
-            var event = button_controller.get_last_event (null);
-            if (event.triggers_context_menu ()) { // Only true for press events
-                var treelistrow = (Gtk.TreeListRow) (listitem.get_item ());
-                var data = (Granite.TreeListItem) (treelistrow.get_item ());
-                var button_point = Graphene.Point () {x = (float) bx, y = (float) by};
-                var view_point = Graphene.Point ();
-                listitem.get_child ().compute_point (list_view, button_point, out view_point);
-                popup_context_menu (view_point, data);
-            }
+            if (!button_controller.get_last_event (null).triggers_context_menu ()) {
+                return;
+            } // Only true for press events
+            var treelistrow = (Gtk.TreeListRow) (listitem.get_item ());
+            var data = (Granite.TreeListItem) (treelistrow.get_item ());
+            var button_point = Graphene.Point () {x = (float) bx, y = (float) by};
+            var view_point = Graphene.Point ();
+            listitem.get_child ().compute_point (list_view, button_point, out view_point);
+            popup_context_menu (view_point, data);
         });
     }
 
@@ -252,12 +255,5 @@ public sealed class Granite.TreeList : Granite.Bin {
         Gtk.ListItem item
     ) {
         data.expanded_binding.unbind ();
-        // //TODO Is this needed? Not all reset on binding another object
-        // name_label.label = "";
-        // name_label.tooltip = "";
-        // primary_image.icon_name = "";
-        // secondary_image.icon_name = "";
-        // secondary_image_tooltip = "";
-        // badge_label.label = "";
     }
  }
