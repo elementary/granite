@@ -131,6 +131,19 @@ public class CSSView : DemoPage {
         dimmed_box.append (new Gtk.Label ("Granite.CssClass.DIM"));
         dimmed_box.add_css_class (Granite.CssClass.DIM);
 
+        var devel_label = new Granite.HeaderLabel ("Miscellaneous");
+
+        var devel_switchmodel = new Granite.SwitchModelButton ("This is a development build!") {
+            description = "Granite.CssClass.DEVEL"
+        };
+        devel_switchmodel.clicked.connect (() => {
+            if (devel_switchmodel.active) {
+                this.get_root ().add_css_class (Granite.CssClass.DEVEL);
+                return;
+            }
+            this.get_root ().remove_css_class (Granite.CssClass.DEVEL);
+        });
+
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 12) {
             margin_top = 24,
             margin_bottom = 24,
@@ -147,6 +160,8 @@ public class CSSView : DemoPage {
         box.append (warning_color_box);
         box.append (error_color_box);
         box.append (dimmed_box);
+        box.append (devel_label);
+        box.append (devel_switchmodel);
 
         child = box;
     }
