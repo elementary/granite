@@ -76,13 +76,13 @@ public class Granite.ListItem : Gtk.Widget {
         var label = new Gtk.Label ("") {
             hexpand = true,
             vexpand = true,
-            wrap = true,
+            ellipsize = END,
             xalign = 0,
             mnemonic_widget = this
         };
 
         description_label = new Gtk.Label ("") {
-            wrap = true,
+            ellipsize = END,
             xalign = 0
         };
         description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
