@@ -32,28 +32,6 @@ public class ListsView : DemoPage {
             secondary_text = "ScrolledWindow with \"has-frame = true\" has a view level background color"
         };
 
-        var reply_menuitem = new GLib.MenuItem ("Reply", null);
-        reply_menuitem.set_attribute_value ("verb-icon", "mail-reply-sender-symbolic");
-
-        var reply_all_menuitem = new GLib.MenuItem ("Reply All", null);
-        reply_all_menuitem.set_attribute_value ("verb-icon", "mail-reply-all-symbolic");
-
-        var forward_menuitem = new GLib.MenuItem ("Forward", null);
-        forward_menuitem.set_attribute_value ("verb-icon", "mail-forward-symbolic");
-
-        var button_menu = new GLib.Menu ();
-        button_menu.append_item (reply_menuitem);
-        button_menu.append_item (reply_all_menuitem);
-        button_menu.append_item (forward_menuitem);
-
-        var button_section = new GLib.MenuItem.section (null, button_menu);
-        button_section.set_attribute_value ("display-hint", "circular-buttons");
-
-        var menu_model = new GLib.Menu ();
-        menu_model.append_item (button_section);
-        menu_model.append ("Move", null);
-        menu_model.append ("Delete", null);
-
         var list_store = new GLib.ListStore (typeof (ListObject));
         list_store.append (new ListObject () {
             text = "Row 1"
@@ -76,9 +54,35 @@ public class ListsView : DemoPage {
         var list_factory = new Gtk.SignalListItemFactory ();
         list_factory.setup.connect ((obj) => {
             var list_item = (Gtk.ListItem) obj;
+
+            var reply_menuitem = new GLib.MenuItem ("Reply", null);
+            reply_menuitem.set_attribute_value ("verb-icon", "mail-reply-sender-symbolic");
+
+            var reply_all_menuitem = new GLib.MenuItem ("Reply All", null);
+            reply_all_menuitem.set_attribute_value ("verb-icon", "mail-reply-all-symbolic");
+
+            var forward_menuitem = new GLib.MenuItem ("Forward", null);
+            forward_menuitem.set_attribute_value ("verb-icon", "mail-forward-symbolic");
+
+            var button_menu = new GLib.Menu ();
+            button_menu.append_item (reply_menuitem);
+            button_menu.append_item (reply_all_menuitem);
+            button_menu.append_item (forward_menuitem);
+
+            var button_section = new GLib.MenuItem.section (null, button_menu);
+            button_section.set_attribute_value ("display-hint", "circular-buttons");
+
+            var share_menu = new Granite.ShareMenuModel ();
+
+            var menu_model = new GLib.Menu ();
+            menu_model.append_item (button_section);
+            menu_model.append_item (share_menu.get_section_for_files ());
+
             list_item.child = new Granite.ListItem () {
                 menu_model = menu_model
             };
+
+            share_menu.popovermenu = ((Granite.ListItem) list_item.child).context_menu;
         });
 
         list_factory.bind.connect ((obj) => {

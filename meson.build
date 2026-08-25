@@ -58,6 +58,8 @@ libgranite_deps = [
     dependency('glib-2.0', version: '>=' + glib_min_version),
     dependency('gobject-2.0', version: '>=' + glib_min_version),
     dependency('gtk4', version: '>=4.12'),
+    dependency('libportal'),
+    dependency('libportal-gtk4')
 ]
 
 pkgconfig = import('pkgconfig')

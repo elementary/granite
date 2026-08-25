@@ -65,7 +65,7 @@ public class Granite.ListItem : Gtk.Widget {
     private Gtk.GestureClick? click_controller;
     private Gtk.GestureLongPress? long_press_controller;
     private Gtk.EventControllerKey menu_key_controller;
-    private Gtk.PopoverMenu? context_menu;
+    public Gtk.PopoverMenu? context_menu { get; private set; }
 
     class construct {
         set_css_name ("granite-listitem");
