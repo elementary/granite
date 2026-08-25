@@ -76,12 +76,12 @@ public class Granite.ListItem : Gtk.Widget {
         var label = new Gtk.Label ("") {
             hexpand = true,
             vexpand = true,
-            /* Use ellipsize instead of wrap to make sure we get a consistent height. This is for one
-               aesthetically better instead of having list items with different heights. But more
-               importantly it provides a big performance improvement since we don't need to layout text
-               when measuring this widget. Also ListViews need a consistent height because they need to
-               guess the size of the scrollable viewport and if height changes drastically between items
-               there will be jumps in the scroll position. */
+            /* Use ellipsize instead of wrap to make sure we get a consistent height.
+             * Gtk.ListView needs a homogeneous item height to estimate the height of the Scrollable's Viewport.
+             * If height changes between ListItems there will be jumps in the scroll position.
+             * Also provides a performance improvement since we don't need to layout text when measuring this.
+             * Also aesthetically better instead of having list items with different heights.
+             */
             ellipsize = END,
             xalign = 0,
             mnemonic_widget = this
