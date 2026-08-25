@@ -76,13 +76,19 @@ public class Granite.ListItem : Gtk.Widget {
         var label = new Gtk.Label ("") {
             hexpand = true,
             vexpand = true,
-            wrap = true,
+            /* Use ellipsize instead of wrap to make sure we get a consistent height.
+             * Gtk.ListView needs a homogeneous item height to estimate the height of the Scrollable's Viewport.
+             * If height changes between ListItems there will be jumps in the scroll position.
+             * Also provides a performance improvement since we don't need to layout text when measuring this.
+             * Also aesthetically better instead of having list items with different heights.
+             */
+            ellipsize = END,
             xalign = 0,
             mnemonic_widget = this
         };
 
         description_label = new Gtk.Label ("") {
-            wrap = true,
+            ellipsize = END,
             xalign = 0
         };
         description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
