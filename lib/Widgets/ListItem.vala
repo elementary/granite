@@ -59,6 +59,9 @@ public class Granite.ListItem : Gtk.Widget {
     [Version (since = "7.8.0")]
     public GLib.MenuModel? menu_model { get; set; }
 
+    private Granite.Box text_box;
+    private Gtk.Label description_label;
+
     private Gtk.GestureClick? click_controller;
     private Gtk.GestureLongPress? long_press_controller;
     private Gtk.EventControllerKey menu_key_controller;
@@ -73,19 +76,25 @@ public class Granite.ListItem : Gtk.Widget {
         var label = new Gtk.Label ("") {
             hexpand = true,
             vexpand = true,
-            wrap = true,
+            /* Use ellipsize instead of wrap to make sure we get a consistent height.
+             * Gtk.ListView needs a homogeneous item height to estimate the height of the Scrollable's Viewport.
+             * If height changes between ListItems there will be jumps in the scroll position.
+             * Also provides a performance improvement since we don't need to layout text when measuring this.
+             * Also aesthetically better instead of having list items with different heights.
+             */
+            ellipsize = END,
             xalign = 0,
             mnemonic_widget = this
         };
 
-        var description_label = new Gtk.Label ("") {
-            wrap = true,
+        description_label = new Gtk.Label ("") {
+            ellipsize = END,
             xalign = 0
         };
         description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
         description_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
-        var text_box = new Granite.Box (VERTICAL, NONE);
+        text_box = new Granite.Box (VERTICAL, NONE);
         text_box.append (label);
         text_box.add_css_class ("text-box");
 
@@ -96,17 +105,19 @@ public class Granite.ListItem : Gtk.Widget {
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
 
-        notify["description"].connect (() => {
-            update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
-
-            if (description == null || description == "") {
-                text_box.remove (description_label);
-            } else {
-                text_box.append (description_label);
-            }
-        });
+        notify["description"].connect (on_description_changed);
 
         notify["menu-model"].connect (construct_menu);
+    }
+
+    private void on_description_changed () {
+        update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
+
+        if (description == null || description == "") {
+            text_box.remove (description_label);
+        } else {
+            text_box.append (description_label);
+        }
     }
 
     private void construct_menu () {
