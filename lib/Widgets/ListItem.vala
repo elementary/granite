@@ -18,6 +18,7 @@ public class Granite.ListItem : Gtk.Widget {
      * It can be used to set up menu actions before showing the menu,
      * for example disable actions not applicable to page.
      */
+    [Version (since = "9.0.0")]
     public signal void setup_menu ();
 
     /**
