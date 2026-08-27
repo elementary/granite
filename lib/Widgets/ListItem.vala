@@ -14,6 +14,13 @@ public class Granite.ListItem : Gtk.Widget {
     private const int TOUCH_TARGET_WIDTH = 44;
 
     /**
+     * Emitted when the context menu is about to be shown.
+     * It can be used to set up menu actions before showing the menu,
+     * for example disable actions not applicable to page.
+     */
+    public signal void setup_menu ();
+
+    /**
      * The main label for #this
      */
     public string text { get; set; }
@@ -180,7 +187,7 @@ public class Granite.ListItem : Gtk.Widget {
 
         if (event.triggers_context_menu ()) {
             context_menu.halign = START;
-            menu_popup_at_pointer (context_menu, x, y);
+            menu_popup_at_position (context_menu, (int) x, (int) y);
 
             gesture.set_state (CLAIMED);
             gesture.reset ();
@@ -197,7 +204,7 @@ public class Granite.ListItem : Gtk.Widget {
             x += TOUCH_TARGET_WIDTH;
         }
 
-        menu_popup_at_pointer (context_menu, x, y - (TOUCH_TARGET_WIDTH * 0.75));
+        menu_popup_at_position (context_menu, (int) x, (int) (y - (TOUCH_TARGET_WIDTH * 0.75)));
     }
 
     private void on_key_released (uint keyval, uint keycode, Gdk.ModifierType state) {
@@ -219,19 +226,16 @@ public class Granite.ListItem : Gtk.Widget {
 
     private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
         popover.halign = END;
-        popover.set_pointing_to (Gdk.Rectangle () {
-            x = (int) get_width (),
-            y = (int) get_height () / 2
-        });
-        popover.popup ();
+        menu_popup_at_position (popover, get_width (), get_height () / 2);
     }
 
-    private void menu_popup_at_pointer (Gtk.PopoverMenu popover, double x, double y) {
-        var rect = Gdk.Rectangle () {
-            x = (int) x,
-            y = (int) y
+    private void menu_popup_at_position (Gtk.PopoverMenu popover, int x, int y) {
+        popover.pointing_to = Gdk.Rectangle () {
+            x = x,
+            y = y
         };
-        popover.pointing_to = rect;
+
+        setup_menu ();
         popover.popup ();
     }
 
