@@ -48,7 +48,7 @@ paper {
     font-family: monospace;
 }
 
-window.devel {
+window.devel toolbox windowhandle > .top {
     background-image:
         repeating-linear-gradient(
             scale-color($SILVER_100, $alpha: -90%) rem(0px),
