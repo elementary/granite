@@ -14,6 +14,14 @@ public class Granite.ListItem : Gtk.Widget {
     private const int TOUCH_TARGET_WIDTH = 44;
 
     /**
+     * Emitted when the context menu is about to be shown.
+     * It can be used to set up menu actions before showing the menu,
+     * for example disable actions not applicable to page.
+     */
+    [Version (since = "9.0.0")]
+    public signal void setup_menu ();
+
+    /**
      * The main label for #this
      */
     public string text { get; set; }
@@ -59,6 +67,9 @@ public class Granite.ListItem : Gtk.Widget {
     [Version (since = "7.8.0")]
     public GLib.MenuModel? menu_model { get; set; }
 
+    private Granite.Box text_box;
+    private Gtk.Label description_label;
+
     private Gtk.GestureClick? click_controller;
     private Gtk.GestureLongPress? long_press_controller;
     private Gtk.EventControllerKey menu_key_controller;
@@ -73,19 +84,25 @@ public class Granite.ListItem : Gtk.Widget {
         var label = new Gtk.Label ("") {
             hexpand = true,
             vexpand = true,
-            wrap = true,
+            /* Use ellipsize instead of wrap to make sure we get a consistent height.
+             * Gtk.ListView needs a homogeneous item height to estimate the height of the Scrollable's Viewport.
+             * If height changes between ListItems there will be jumps in the scroll position.
+             * Also provides a performance improvement since we don't need to layout text when measuring this.
+             * Also aesthetically better instead of having list items with different heights.
+             */
+            ellipsize = END,
             xalign = 0,
             mnemonic_widget = this
         };
 
-        var description_label = new Gtk.Label ("") {
-            wrap = true,
+        description_label = new Gtk.Label ("") {
+            ellipsize = END,
             xalign = 0
         };
         description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
         description_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
 
-        var text_box = new Granite.Box (VERTICAL, NONE);
+        text_box = new Granite.Box (VERTICAL, NONE);
         text_box.append (label);
         text_box.add_css_class ("text-box");
 
@@ -96,17 +113,19 @@ public class Granite.ListItem : Gtk.Widget {
         bind_property ("text", label, "label");
         bind_property ("description", description_label, "label");
 
-        notify["description"].connect (() => {
-            update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
-
-            if (description == null || description == "") {
-                text_box.remove (description_label);
-            } else {
-                text_box.append (description_label);
-            }
-        });
+        notify["description"].connect (on_description_changed);
 
         notify["menu-model"].connect (construct_menu);
+    }
+
+    private void on_description_changed () {
+        update_property (Gtk.AccessibleProperty.DESCRIPTION, description, -1);
+
+        if (description == null || description == "") {
+            text_box.remove (description_label);
+        } else {
+            text_box.append (description_label);
+        }
     }
 
     private void construct_menu () {
@@ -169,7 +188,7 @@ public class Granite.ListItem : Gtk.Widget {
 
         if (event.triggers_context_menu ()) {
             context_menu.halign = START;
-            menu_popup_at_pointer (context_menu, x, y);
+            menu_popup_at_position (context_menu, (int) x, (int) y);
 
             gesture.set_state (CLAIMED);
             gesture.reset ();
@@ -186,7 +205,7 @@ public class Granite.ListItem : Gtk.Widget {
             x += TOUCH_TARGET_WIDTH;
         }
 
-        menu_popup_at_pointer (context_menu, x, y - (TOUCH_TARGET_WIDTH * 0.75));
+        menu_popup_at_position (context_menu, (int) x, (int) (y - (TOUCH_TARGET_WIDTH * 0.75)));
     }
 
     private void on_key_released (uint keyval, uint keycode, Gdk.ModifierType state) {
@@ -208,19 +227,16 @@ public class Granite.ListItem : Gtk.Widget {
 
     private void menu_popup_on_keypress (Gtk.PopoverMenu popover) {
         popover.halign = END;
-        popover.set_pointing_to (Gdk.Rectangle () {
-            x = (int) get_width (),
-            y = (int) get_height () / 2
-        });
-        popover.popup ();
+        menu_popup_at_position (popover, get_width (), get_height () / 2);
     }
 
-    private void menu_popup_at_pointer (Gtk.PopoverMenu popover, double x, double y) {
-        var rect = Gdk.Rectangle () {
-            x = (int) x,
-            y = (int) y
+    private void menu_popup_at_position (Gtk.PopoverMenu popover, int x, int y) {
+        popover.pointing_to = Gdk.Rectangle () {
+            x = x,
+            y = y
         };
-        popover.pointing_to = rect;
+
+        setup_menu ();
         popover.popup ();
     }
 
