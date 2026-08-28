@@ -1,5 +1,5 @@
 $separator-highlight-color: rgba(white, 1);
-@if $color-scheme == "dark" {
+@media (prefers-color-scheme: dark) {
     $separator-highlight-color: rgba(white, 0.10);
 }
 

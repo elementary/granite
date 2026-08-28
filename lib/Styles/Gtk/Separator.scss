@@ -1,5 +1,5 @@
 $separator-color: rgba(black, 0.15);
-@if $color-scheme == "dark" {
+@media (prefers-color-scheme: dark) {
     $separator-color: rgba(black, 0.35);
 }
 
@@ -8,4 +8,4 @@ separator {
     min-height: 1px;
     min-width: 1px;
 }
-    
+

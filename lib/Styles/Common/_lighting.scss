@@ -2,7 +2,7 @@
 // simplified
 
 @function shadow($level) {
-    @if $color-scheme == "light" {
+    // @if $color-scheme == "light" {
         @if $level == 1 {
             @return
                 0 1px 3px rgba(black, 0.12),
@@ -22,27 +22,27 @@
                 0 15px 12px -10px rgba(black, 0.4),
                 0 8px 14px 4px rgba(black, 0.15);
         }
-    } @else if $color-scheme == "dark" {
-        @if $level == 1 {
-            @return
-                0 1px 3px rgba(black, 0.42),
-                0 1px 2px rgba(black, 0.44);
-        } @else if $level == 2 {
-            @return
-                0 3px 4px rgba(black, 0.25),
-                0 3px 3px -3px rgba(black, 0.45);
-        } @else if $level == 3 {
-            @return
-                0 3px 8px 2px rgba(black, 0.2),
-                0 5px 5px -3px rgba(black, 0.5),
-                0 8px 5px 1px rgba(black, 0.2);
-        } @else if $level == 4 {
-            @return
-                0 2px 4px 2px rgba(black, 0.2),
-                0 15px 12px -10px rgba(black, 0.5),
-                0 8px 14px 4px rgba(black, 0.25);
-        }
-    }
+    // } @else if $color-scheme == "dark" {
+    //     @if $level == 1 {
+    //         @return
+    //             0 1px 3px rgba(black, 0.42),
+    //             0 1px 2px rgba(black, 0.44);
+    //     } @else if $level == 2 {
+    //         @return
+    //             0 3px 4px rgba(black, 0.25),
+    //             0 3px 3px -3px rgba(black, 0.45);
+    //     } @else if $level == 3 {
+    //         @return
+    //             0 3px 8px 2px rgba(black, 0.2),
+    //             0 5px 5px -3px rgba(black, 0.5),
+    //             0 8px 5px 1px rgba(black, 0.2);
+    //     } @else if $level == 4 {
+    //         @return
+    //             0 2px 4px 2px rgba(black, 0.2),
+    //             0 15px 12px -10px rgba(black, 0.5),
+    //             0 8px 14px 4px rgba(black, 0.25);
+    //     }
+    // }
 }
 
 @function highlight($sides: "full") {

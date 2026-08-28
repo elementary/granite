@@ -5,7 +5,9 @@ button {
         color: white;
         text-shadow: none;
 
-        @if $color-scheme == "dark" {background-clip: padding-box;}
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
 
         &:backdrop {
             background-color: inherit;
@@ -50,7 +52,7 @@ button {
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
         $shadow-border-color: scale-color($border-color, $alpha: -50%);
-        @if $color-scheme == "dark" {
+        @media (prefers-color-scheme: dark) {
             $shadow-border-color: transparent
         }
 

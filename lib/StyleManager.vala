@@ -11,11 +11,9 @@
 public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? accent_provider = null;
     private static Gtk.CssProvider? base_provider = null;
-    private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
 #if INCLUDE_GTK_STYLESHEETS
     private static Gtk.CssProvider? gtk_base_provider = null;
-    private static Gtk.CssProvider? gtk_dark_provider = null;
 #endif
     private static HashTable<Gdk.Display, StyleManager>? style_managers_by_displays;
 
@@ -95,57 +93,20 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (Gtk.Settings.get_for_display (display).gtk_application_prefer_dark_theme) {
-            if (base_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, base_provider);
-            }
-
-#if INCLUDE_GTK_STYLESHEETS
-            if (gtk_base_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, gtk_base_provider);
-            }
-#endif
-
-            if (dark_provider == null) {
-                dark_provider = new Gtk.CssProvider ();
-                dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
-            }
-
-#if INCLUDE_GTK_STYLESHEETS
-            if (gtk_dark_provider == null) {
-                gtk_dark_provider = new Gtk.CssProvider ();
-                gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
-            }
-
-            Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
-#endif
-            Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
-        } else {
-            if (dark_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, dark_provider);
-            }
-
-#if INCLUDE_GTK_STYLESHEETS
-            if (gtk_dark_provider != null) {
-                Gtk.StyleContext.remove_provider_for_display (display, gtk_dark_provider);
-            }
-#endif
-
-            if (base_provider == null) {
-                base_provider = new Gtk.CssProvider ();
-                base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
-            }
-
-#if INCLUDE_GTK_STYLESHEETS
-            if (gtk_base_provider == null) {
-                gtk_base_provider = new Gtk.CssProvider ();
-                gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
-            }
-
-            Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
-#endif
-            Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+        if (base_provider == null) {
+            base_provider = new Gtk.CssProvider ();
+            base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
         }
+
+#if INCLUDE_GTK_STYLESHEETS
+        if (gtk_base_provider == null) {
+            gtk_base_provider = new Gtk.CssProvider ();
+            gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
+        }
+
+        Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
+#endif
+        Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
     }
 
     private Gtk.CssProvider? init_provider_from_file (File file) {
