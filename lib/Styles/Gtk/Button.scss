@@ -8,7 +8,7 @@ button {
     &.image-button {
         @extend .circular;
 
-        padding: rem(4px);
+        padding: $button-spacing;
         min-height: 16px;
         min-width: 16px;
         transition:
@@ -16,7 +16,7 @@ button {
             transform duration("expand") easing("ease-out-back");
 
         &:active {
-            background: rgba($fg-color, 0.15);
+            background-color: rgba($fg-color, 0.15);
             transform: scale(0.8);
             transition:
                 background duration("collapse") easing(),
@@ -43,7 +43,7 @@ button {
     &.text-button {
         @extend %raised;
 
-        padding: rem(2px) rem(4px);
+        padding: $button-spacing $button-spacing * 2;
     }
 
     // Almost certainly a button with text and image

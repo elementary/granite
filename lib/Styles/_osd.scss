@@ -22,6 +22,7 @@
     text-shadow: 0 1px 1px scale-color(bg_color(3), $alpha: -80%);
     -gtk-icon-shadow: 0 1px 1px scale-color(bg_color(3), $alpha: -80%);
 
+    &.image-button:not(.toggle),
     &.circular {
         background-image:
             linear-gradient(
@@ -34,8 +35,6 @@
                 transparent calc(100% - 0.5rem),
                 scale-color($highlight_color, $alpha: -75%),
             );
-        border-radius: 100%;
-
     }
 }
 

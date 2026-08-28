@@ -17,18 +17,21 @@ public class OverlayBarView : DemoPage {
         var toast = new Granite.Toast (_("Button was pressed!"));
         toast.set_default_action (_("Do Things"));
 
-        var toast_button = new Gtk.Button.with_label (_("Send Toast"));
+        var toast_button = new Gtk.Button.from_icon_name ("list-add-symbolic") {
+            halign = CENTER,
+            tooltip_text = "Send Toast"
+        };
         toast_button.add_css_class (Granite.CssClass.OSD);
 
         var spinner_button = new Gtk.ToggleButton.with_label ("Show Spinner");
         spinner_button.add_css_class (Granite.CssClass.OSD);
 
-        var box = new Granite.Box (VERTICAL) {
+        var box = new Granite.Box (HORIZONTAL) {
             halign = CENTER,
             valign = CENTER
         };
-        box.append (toast_button);
         box.append (spinner_button);
+        box.append (toast_button);
 
         var overlay = new Gtk.Overlay () {
             child = picture,

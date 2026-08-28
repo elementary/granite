@@ -44,26 +44,29 @@ button {
     }
 
     &.osd {
-        @include control;
-        @include border-interactive-roundrect;
-
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
         $shadow-border-color: scale-color($border-color, $alpha: -50%);
-        @if $color-scheme == "dark" {
-            $shadow-border-color: transparent
-        }
 
-        background-image: none;
-        border: none;
-        box-shadow:
-            highlight(),
-            // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
-            shadow(2);
-        color: $fg-color;
         margin: 0;
         padding: $button-spacing;
+
+        &.text-button {
+            @include control;
+            @include border-interactive-roundrect;
+            @if $color-scheme == "dark" {
+                $shadow-border-color: transparent
+            }
+
+            background-image: none;
+            border: none;
+            box-shadow:
+                highlight(),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px $shadow-border-color,
+                shadow(2);
+            color: $fg-color;
+        }
 
         transition:
             background duration("expand") easing(),
@@ -71,8 +74,12 @@ button {
 
         &:active {
             transition:
-            background duration("collapse") easing(),
-            transform duration("collapse") easing();
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+
+            &.image-button {
+                background-color: scale-color(bg-color(2), $alpha: -40%);
+            }
         }
 
         &:disabled {
