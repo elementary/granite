@@ -297,6 +297,12 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string MONOSPACE = "monospace";
+
+        /**
+         * Style class for windows from development builds to visually separate them from stable releases.
+         */
+        [Version (since = "9.0.0")]
+        public const string DEVEL = "devel";
     }
 
     /**
