@@ -2,4 +2,22 @@ scrolledwindow {
     &.frame {
         border: 1px solid $border-color;
     }
+
+    & > undershoot {
+        &.left {
+            background: undershoot-gradient(to right);
+        }
+
+        &.right {
+            background: undershoot-gradient(to left);
+        }
+
+        &.top {
+            background: undershoot-gradient(to bottom);
+        }
+
+        &.bottom {
+            background: undershoot-gradient(to top);
+        }
+    }
 }
