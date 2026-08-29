@@ -26,6 +26,8 @@ executable(
     'Views/VideoView.vala',
     'Views/WelcomeView.vala',
 
+    libgranite.vala_header(),
+
     dependencies: [
         libgranite_dep,
         dependency('shumate-1.0')
