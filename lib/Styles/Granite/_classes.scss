@@ -49,36 +49,71 @@ paper {
 }
 
 window.devel toolbox windowhandle > .top {
-    background-image:
-        repeating-linear-gradient(
-            scale-color($SILVER_100, $alpha: -90%) rem(0px),
-            scale-color($SILVER_100, $alpha: -90%) rem(1px),
-            transparent rem(1px),
-            transparent rem(4px) 
-            ),
-        repeating-linear-gradient(
-            to right,
-            scale-color($SILVER_100, $alpha: -90%) rem(0px),
-            scale-color($SILVER_100, $alpha: -90%) rem(1px),
-            transparent rem(1px),
-            transparent rem(4px) 
-            ),
-        repeating-linear-gradient(
-            scale-color($SILVER_100, $alpha: -70%) rem(0px),
-            scale-color($SILVER_100, $alpha: -70%) rem(1px),
-            transparent rem(1px),
-            transparent rem(16px) 
-            ),
-        repeating-linear-gradient(
-            to right,
-            scale-color($SILVER_100, $alpha: -70%) rem(0px),
-            scale-color($SILVER_100, $alpha: -70%) rem(1px),
-            transparent rem(1px),
-            transparent rem(16px) 
-            ),
+    background:
         linear-gradient(
             to bottom,
-            scale-color($GRAPE_700, $alpha: -40%),
-            scale-color($GRAPE_300, $alpha: -100%) rem(48px),
-        );
+            scale-color(bg_color(2), $alpha: -100%),
+            bg_color(2) rem(32px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem(7px), 
+            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
+            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem(7px), 
+            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
+            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem(15px), 
+            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
+            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem(15px), 
+            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
+            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            );
 }
+
+window.devel toolbox.sidebar windowhandle > .top {
+    background:
+        linear-gradient(
+            to bottom,
+            scale-color(bg_color(3), $alpha: -100%),
+            bg-color(3) rem(32px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem(7px),
+            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
+            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem(7px), 
+            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
+            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem(15px), 
+            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
+            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem(15px),
+            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
+            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            );
+        }
