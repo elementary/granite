@@ -48,6 +48,13 @@ paper {
     font-family: monospace;
 }
 
+$grid-line-width: 1px;
+$grid-minor-spacing: 8px;
+$grid-minor-opacity: -85%;
+$grid-major-spacing: 24px;
+$grid-major-opacity: -80%;
+
+
 window.devel toolbox windowhandle > .top {
     background:
         linear-gradient(
@@ -57,30 +64,31 @@ window.devel toolbox windowhandle > .top {
             ),
         repeating-linear-gradient(
             transparent rem(0px),
-            transparent rem(7px), 
-            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
-            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            transparent rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
             ),
         repeating-linear-gradient(
             to right,
             transparent rem(0px),
-            transparent rem(7px), 
-            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
-            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            transparent rem($grid-minor-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
             ),
         repeating-linear-gradient(
             transparent rem(0px),
-            transparent rem(15px), 
-            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
-            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            transparent rem($grid-major-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
             ),
         repeating-linear-gradient(
             to right,
             transparent rem(0px),
-            transparent rem(15px), 
-            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
-            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            transparent rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
             );
+
 }
 
 window.devel toolbox.sidebar windowhandle > .top {
@@ -92,28 +100,28 @@ window.devel toolbox.sidebar windowhandle > .top {
             ),
         repeating-linear-gradient(
             transparent rem(0px),
-            transparent rem(7px),
-            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
-            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            transparent rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
             ),
         repeating-linear-gradient(
             to right,
             transparent rem(0px),
-            transparent rem(7px), 
-            scale-color($GRAPE_500, $alpha: -85%) rem(7px),
-            scale-color($GRAPE_500, $alpha: -85%) rem(8px)
+            transparent rem($grid-minor-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
             ),
         repeating-linear-gradient(
             transparent rem(0px),
-            transparent rem(15px), 
-            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
-            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            transparent rem($grid-major-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
             ),
         repeating-linear-gradient(
             to right,
             transparent rem(0px),
-            transparent rem(15px),
-            scale-color($GRAPE_500, $alpha: -70%) rem(15px),
-            scale-color($GRAPE_500, $alpha: -70%) rem(16px)
+            transparent rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
             );
         }
