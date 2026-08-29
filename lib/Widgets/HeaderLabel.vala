@@ -57,10 +57,11 @@ public class Granite.HeaderLabel : Gtk.Widget {
     public Pango.EllipsizeMode ellipsize { get; set; default = NONE; }
 
     /**
-     * The horizontal alignment of the label text, forwarded to the underlying {@link Gtk.Label}.
+     * How the lines of the label are aligned with respect to each other, forwarded to the
+     * underlying {@link Gtk.Label}. Useful for centering a wrapped, multi-line label.
      */
     [Version (since = "9.0.0")]
-    public float xalign { get; set; default = 0; }
+    public Gtk.Justification justify { get; set; default = LEFT; }
 
     private Gtk.Label? secondary_label = null;
     /**
@@ -87,7 +88,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 secondary_label.add_css_class ("subtitle");
 
                 bind_property ("ellipsize", secondary_label, "ellipsize", SYNC_CREATE);
-                bind_property ("xalign", secondary_label, "xalign", SYNC_CREATE);
+                bind_property ("justify", secondary_label, "justify", SYNC_CREATE);
 
                 secondary_label.set_parent (this);
             }
@@ -123,7 +124,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
         bind_property ("ellipsize", label_widget, "ellipsize", SYNC_CREATE);
-        bind_property ("xalign", label_widget, "xalign", SYNC_CREATE);
+        bind_property ("justify", label_widget, "justify", SYNC_CREATE);
 
         notify["mnemonic-widget"].connect (() => {
             update_accessible_description (secondary_text);
