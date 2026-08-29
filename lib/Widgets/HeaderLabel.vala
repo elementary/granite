@@ -57,8 +57,17 @@ public class Granite.HeaderLabel : Gtk.Widget {
     public Pango.EllipsizeMode ellipsize { get; set; default = NONE; }
 
     /**
-     * How the lines of the label are aligned with respect to each other, forwarded to the
-     * underlying {@link Gtk.Label}. Useful for centering a wrapped, multi-line label.
+     * The horizontal alignment of the label text as a whole within its allocation, forwarded
+     * to the underlying {@link Gtk.Label}.
+     */
+    [Version (since = "9.0.0")]
+    public float xalign { get; set; default = 0; }
+
+    /**
+     * How the lines of a wrapped, multi-line label are aligned with respect to each other,
+     * forwarded to the underlying {@link Gtk.Label}. {@link xalign} positions the label as a
+     * block; this controls the alignment of its wrapped lines relative to one another, e.g. to
+     * fully center a wrapped, multi-line label both properties need to be set together.
      */
     [Version (since = "9.0.0")]
     public Gtk.Justification justify { get; set; default = LEFT; }
@@ -88,6 +97,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
                 secondary_label.add_css_class ("subtitle");
 
                 bind_property ("ellipsize", secondary_label, "ellipsize", SYNC_CREATE);
+                bind_property ("xalign", secondary_label, "xalign", SYNC_CREATE);
                 bind_property ("justify", secondary_label, "justify", SYNC_CREATE);
 
                 secondary_label.set_parent (this);
@@ -124,6 +134,7 @@ public class Granite.HeaderLabel : Gtk.Widget {
         bind_property ("label", label_widget, "label");
         bind_property ("mnemonic-widget", label_widget, "mnemonic-widget");
         bind_property ("ellipsize", label_widget, "ellipsize", SYNC_CREATE);
+        bind_property ("xalign", label_widget, "xalign", SYNC_CREATE);
         bind_property ("justify", label_widget, "justify", SYNC_CREATE);
 
         notify["mnemonic-widget"].connect (() => {
