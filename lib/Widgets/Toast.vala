@@ -28,12 +28,6 @@ public class Granite.Toast : Gtk.Widget {
     }
 
     /**
-     * Emitted when the Toast is closed by activating the close button
-     */
-    [Version (deprecated = true, deprecated_since = "7.5.0", replacement = "dismissed")]
-    public signal void closed ();
-
-    /**
      * Emitted when the Toast has been dismissed
      */
     public signal void dismissed (DismissReason reason);
