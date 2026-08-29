@@ -2,6 +2,7 @@ subdir('Icons')
 subdir('Styles')
 
 libgranite_sources = files(
+    'Animation.vala',
     'DateTime.vala',
     'Constants.vala',
     'Init.vala',
