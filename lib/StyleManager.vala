@@ -43,11 +43,11 @@ public class Granite.StyleManager : Object {
     }
 
     /**
-     * The {@link Granite.Settings.ColorScheme} requested by the application
-     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
-     * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE}
+     * The {@link Gtk.InterfaceColorScheme} requested by the application
+     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Gtk.InterfaceColorScheme.DEFAULT}.
+     * Default value is {@link Gtk.InterfaceColorScheme.DEFAULT}
      */
-    public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
+    public Gtk.InterfaceColorScheme color_scheme { get; set; default = DEFAULT; }
 
     /**
      * The {@link Gdk.Display} handled by #this.
@@ -164,7 +164,7 @@ public class Granite.StyleManager : Object {
 
         // Set App preference first
         switch (color_scheme) {
-            case NO_PREFERENCE:
+            case DEFAULT:
                 break;
             case DARK:
                 gtk_settings.gtk_interface_color_scheme = DARK;
@@ -176,7 +176,7 @@ public class Granite.StyleManager : Object {
 
         var granite_settings = Granite.Settings.get_default ();
         switch (granite_settings.prefers_color_scheme) {
-            case NO_PREFERENCE:
+            case DEFAULT:
                 gtk_settings.gtk_interface_color_scheme = DEFAULT;
                 break;
             case DARK:
