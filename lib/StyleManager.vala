@@ -63,7 +63,7 @@ public class Granite.StyleManager : Object {
 #if INCLUDE_GTK_STYLESHEETS
         gtk_settings.gtk_theme_name = "Granite-empty";
 #endif
-        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (set_provider_for_display);
+        gtk_settings.notify["gtk-interface-color-scheme"].connect (set_provider_for_display);
         set_provider_for_display ();
 
         var granite_settings = Granite.Settings.get_default ();
@@ -95,7 +95,7 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (Gtk.Settings.get_for_display (display).gtk_application_prefer_dark_theme) {
+        if (Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK) {
             if (base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
@@ -161,11 +161,30 @@ public class Granite.StyleManager : Object {
 
     private void update_color_scheme () {
         var gtk_settings = Gtk.Settings.get_for_display (display);
-        if (color_scheme == NO_PREFERENCE) {
-            var granite_settings = Granite.Settings.get_default ();
-            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
-        } else {
-            gtk_settings.gtk_application_prefer_dark_theme = color_scheme == DARK;
+
+        // Set App preference first
+        switch (color_scheme) {
+            case NO_PREFERENCE:
+                break;
+            case DARK:
+                gtk_settings.gtk_interface_color_scheme = DARK;
+                return;
+            case LIGHT:
+                gtk_settings.gtk_interface_color_scheme = LIGHT;
+                return;
+        }
+
+        var granite_settings = Granite.Settings.get_default ();
+        switch (granite_settings.prefers_color_scheme) {
+            case NO_PREFERENCE:
+                gtk_settings.gtk_interface_color_scheme = DEFAULT;
+                break;
+            case DARK:
+                gtk_settings.gtk_interface_color_scheme = DARK;
+                break;
+            case LIGHT:
+                gtk_settings.gtk_interface_color_scheme = LIGHT;
+                break;
         }
     }
 
