@@ -2,17 +2,33 @@
 // inside of apps. While internal sass variables are considered private API,
 // these exported GtkCSS variables should be considered public API.
 
-@define-color fg_color #{"" + $fg-color};
-@define-color bg_color #{"" + bg-color(2)};
+:root {
+    --fg-color: var(--BLACK_500);
+    --bg-color: #{"" + bg-color(2)};
 
-@define-color base_color #{"" + bg-color(1)};
-@define-color highlight_color #{"" + $highlight_color};
-@define-color borders #{"" + $border-color};
+    --base-color: #{"" + bg-color(1)};
+    --highlight-color: #{"" + $highlight_color};
+    --border-color: #{"" + rgba(black, 0.2)};
 
-@define-color selected_bg_color #{'alpha(@accent_color, 0.25)'};
-@define-color selected_fg_color #{'shade(@accent_color, 0.5)'};
+    --error-color: var(--STRAWBERRY_500);
+    --success-color: var(--LIME_700);
+    --warning-color: var(--BANANA_900);
+    --warning-icon-color: var(--BANANA_600);
 
-@if $color-scheme == "dark" {
-    @define-color selected_bg_color #{'alpha(shade(@accent_color, 0.85), 0.5)'};
-    @define-color selected_fg_color #{'mix(shade(@accent_color, 1.1), white, 0.75)'};
+    --selected-bg-color: #{'alpha(var(--accent-color), 0.25)'};
+    --selected-fg-color: #{'shade(var(--accent-color), 0.5)'};
+
+    @media (prefers-color-scheme: dark) {
+        --fg_color: white;
+
+        --border-color: #{"" + rgba(black, 0.3)};
+
+        --error-color: var(--STRAWBERRY_300);
+        --success-color: var(--LIME_300);
+        --warning-color: var(--BANANA_100);
+        --warning-icon-color: var(--BANANA_500);
+
+        --selected-bg-color: #{'alpha(shade(var(--accent-color), 0.85), 0.5)'};
+        --selected-fg-color: #{'mix(shade(var(--accent-color), 1.1), white, 0.75)'};
+    }
 }

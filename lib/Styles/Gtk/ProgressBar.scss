@@ -2,7 +2,7 @@ progressbar {
     $trough-width: rem(9px);
 
     progress {
-        background-color: #{'@accent_color'};
+        background-color: var(--accent-color);
         @include border-interactive-roundrect;
 
         &:backdrop {
