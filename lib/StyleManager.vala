@@ -73,9 +73,6 @@ public class Granite.StyleManager : Object {
         update_color_scheme ();
         update_accent_color ();
 
-        granite_settings.bind_property ("contrast", gtk_settings, "gtk-interface-contrast", SYNC_CREATE);
-        granite_settings.bind_property ("reduced-motion", gtk_settings, "gtk-interface-reduced-motion", SYNC_CREATE);
-
         var icon_theme = Gtk.IconTheme.get_for_display (display);
         icon_theme.add_resource_path ("/io/elementary/granite");
     }

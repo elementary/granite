@@ -69,56 +69,6 @@ namespace Granite {
         }
 
         /**
-         * Indicates the preferred level of contrast
-         * @since 9.0.0
-         */
-        [Version (since = "9.0.0")]
-        public Gtk.InterfaceContrast contrast {
-            get {
-                if (_contrast == null) {
-                    try {
-                        setup_appearance ("contrast", (value) => {
-                            contrast = (Gtk.InterfaceContrast) value.get_uint32 ();
-                        });
-                    } catch (Error e) {
-                        warning (e.message);
-                        // Set a default in case we can't get from system
-                        contrast = UNSUPPORTED;
-                    }
-                }
-                return (_contrast);
-            }
-            private set {
-                _contrast = value;
-            }
-        }
-
-        /**
-         * Indicates the preferred level of motion animations
-         * @since 9.0.0
-         */
-        [Version (since = "9.0.0")]
-        public Gtk.ReducedMotion reduced_motion {
-            get {
-                if (_reduced_motion == null) {
-                    try {
-                        setup_appearance ("reduced-motion", (value) => {
-                            reduced_motion = (Gtk.ReducedMotion) value.get_uint32 ();
-                        });
-                    } catch (Error e) {
-                        warning (e.message);
-                        // Set a default in case we can't get from system
-                        reduced_motion = NO_PREFERENCE;
-                    }
-                }
-                return (_reduced_motion);
-            }
-            private set {
-                _reduced_motion = value;
-            }
-        }
-
-        /**
          * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
          */
         public ColorScheme prefers_color_scheme {
