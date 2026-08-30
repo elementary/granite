@@ -13,24 +13,6 @@ namespace Granite {
      * Granite.Settings provides a way to share Pantheon desktop settings with applications.
      */
     public class Settings : Object {
-        /**
-         * Possible color scheme preferences expressed by the user
-         */
-        public enum ColorScheme {
-            /**
-             * The user has not expressed a color scheme preference. Apps should decide on a color scheme on their own.
-             */
-            NO_PREFERENCE,
-            /**
-             * The user prefers apps to use a dark color scheme.
-             */
-            DARK,
-            /**
-             * The user prefers a light color scheme.
-             */
-            LIGHT
-        }
-
         private Gdk.RGBA? _accent_color = null;
 
         /**
