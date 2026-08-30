@@ -4,11 +4,6 @@
  */
 
 namespace Granite {
-    [DBus (name = "io.elementary.pantheon.AccountsService")]
-    private interface Pantheon.AccountsService : Object {
-        public abstract int prefers_color_scheme { get; set; }
-    }
-
     [DBus (name = "org.freedesktop.Accounts")]
     interface FDO.Accounts : Object {
         public abstract string find_user_by_name (string username) throws GLib.Error;
@@ -55,26 +50,6 @@ namespace Granite {
             }
         }
 
-        private ColorScheme? _prefers_color_scheme = null;
-
-        /**
-         * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
-         *
-         * To access this from a Flatpak application, add an entry with the value `'--system-talk-name=org.freedesktop.Accounts'`
-         * in the `finish-args` array of your Flatpak manifest.
-         */
-        public ColorScheme prefers_color_scheme {
-            get {
-                if (_prefers_color_scheme == null) {
-                    setup_prefers_color_scheme ();
-                }
-                return _prefers_color_scheme;
-            }
-            private set {
-                _prefers_color_scheme = value;
-            }
-        }
-
         private string? _user_path = null;
         private string user_path {
             get {
@@ -96,7 +71,6 @@ namespace Granite {
         }
 
         private FDO.Accounts? accounts_service = null;
-        private Pantheon.AccountsService? pantheon_act = null;
         private Portal.Settings? portal = null;
 
         private Settings () {}
@@ -149,52 +123,6 @@ namespace Granite {
             Gdk.RGBA rgba = {(float) red, (float) green, (float) blue, 1};
 
             return rgba;
-        }
-
-        private void setup_prefers_color_scheme () {
-            try {
-                if (portal == null) {
-                    portal = Portal.Settings.get ();
-                }
-
-                prefers_color_scheme = (ColorScheme) portal.read (
-                    "org.freedesktop.appearance",
-                    "color-scheme"
-                ).get_variant ().get_uint32 ();
-
-                portal.setting_changed.connect ((scheme, key, value) => {
-                    if (scheme == "org.freedesktop.appearance" && key == "color-scheme") {
-                        prefers_color_scheme = (ColorScheme) value.get_uint32 ();
-                    }
-                });
-                return;
-            } catch (Error e) {
-                debug ("cannot use the portal, using the AccountsService: %s", e.message);
-            }
-
-            try {
-                pantheon_act = GLib.Bus.get_proxy_sync (
-                    GLib.BusType.SYSTEM,
-                    "org.freedesktop.Accounts",
-                    user_path,
-                    GLib.DBusProxyFlags.GET_INVALIDATED_PROPERTIES
-                );
-
-                prefers_color_scheme = (ColorScheme) pantheon_act.prefers_color_scheme;
-
-                ((GLib.DBusProxy) pantheon_act).g_properties_changed.connect ((changed, invalid) => {
-                    var color_scheme = changed.lookup_value ("PrefersColorScheme", new VariantType ("i"));
-                    if (color_scheme != null) {
-                        prefers_color_scheme = (ColorScheme) color_scheme.get_int32 ();
-                    }
-                });
-                return;
-            } catch (Error e) {
-                critical (e.message);
-            }
-
-            // Set a default in case we can't get from system
-            prefers_color_scheme = ColorScheme.NO_PREFERENCE;
         }
     }
 }

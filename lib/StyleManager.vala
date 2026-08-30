@@ -67,10 +67,9 @@ public class Granite.StyleManager : Object {
         set_provider_for_display ();
 
         var granite_settings = Granite.Settings.get_default ();
-        granite_settings.notify["prefers-color-scheme"].connect (update_color_scheme);
+        granite_settings.notify["prefers-color-scheme"].connect (set_provider_for_display);
         granite_settings.notify["accent-color"].connect (update_accent_color);
-        notify["color-scheme"].connect (update_color_scheme);
-        update_color_scheme ();
+        notify["color-scheme"].connect (set_provider_for_display);
         update_accent_color ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
@@ -95,7 +94,7 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK) {
+        if (color_scheme == DARK || (color_scheme == NO_PREFERENCE && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
             if (base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
@@ -157,35 +156,6 @@ public class Granite.StyleManager : Object {
         }
 
         return null;
-    }
-
-    private void update_color_scheme () {
-        var gtk_settings = Gtk.Settings.get_for_display (display);
-
-        // Set App preference first
-        switch (color_scheme) {
-            case NO_PREFERENCE:
-                break;
-            case DARK:
-                gtk_settings.gtk_interface_color_scheme = DARK;
-                return;
-            case LIGHT:
-                gtk_settings.gtk_interface_color_scheme = LIGHT;
-                return;
-        }
-
-        var granite_settings = Granite.Settings.get_default ();
-        switch (granite_settings.prefers_color_scheme) {
-            case NO_PREFERENCE:
-                gtk_settings.gtk_interface_color_scheme = DEFAULT;
-                break;
-            case DARK:
-                gtk_settings.gtk_interface_color_scheme = DARK;
-                break;
-            case LIGHT:
-                gtk_settings.gtk_interface_color_scheme = LIGHT;
-                break;
-        }
     }
 
     private void update_accent_color () {
