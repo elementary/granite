@@ -36,7 +36,10 @@ namespace Granite {
             LIGHT
         }
 
+        private ColorScheme? _prefers_color_scheme = null;
         private Gdk.RGBA? _accent_color = null;
+        private Gtk.InterfaceContrast? _contrast = null;
+        private Gtk.ReducedMotion? _reduced_motion = null;
 
         /**
          * The theme accent color chosen by the user
@@ -46,7 +49,17 @@ namespace Granite {
         public Gdk.RGBA accent_color {
             get {
                 if (_accent_color == null) {
-                    setup_accent_color ();
+                    try {
+                        setup_appearance ("accent-color", (value) => {
+                            accent_color = parse_color (value);
+                        });
+                    } catch (Error e) {
+                        warning (e.message);
+                        // Set a default in case we can't get from system
+                        accent_color = Gdk.RGBA ();
+                        accent_color.parse ("#3689e6");
+                    }
+
                 }
                 return (_accent_color);
             }
@@ -55,18 +68,70 @@ namespace Granite {
             }
         }
 
-        private ColorScheme? _prefers_color_scheme = null;
+        /**
+         * Indicates the preferred level of contrast
+         * @since 9.0.0
+         */
+        [Version (since = "9.0.0")]
+        public Gtk.InterfaceContrast contrast {
+            get {
+                if (_contrast == null) {
+                    try {
+                        setup_appearance ("contrast", (value) => {
+                            contrast = (Gtk.InterfaceContrast) value.get_uint32 ();
+                        });
+                    } catch (Error e) {
+                        warning (e.message);
+                        // Set a default in case we can't get from system
+                        contrast = UNSUPPORTED;
+                    }
+                }
+                return (_contrast);
+            }
+            private set {
+                _contrast = value;
+            }
+        }
+
+        /**
+         * Indicates the preferred level of motion animations
+         * @since 9.0.0
+         */
+        [Version (since = "9.0.0")]
+        public Gtk.ReducedMotion reduced_motion {
+            get {
+                if (_reduced_motion == null) {
+                    try {
+                        setup_appearance ("reduced-motion", (value) => {
+                            reduced_motion = (Gtk.ReducedMotion) value.get_uint32 ();
+                        });
+                    } catch (Error e) {
+                        warning (e.message);
+                        // Set a default in case we can't get from system
+                        reduced_motion = NO_PREFERENCE;
+                    }
+                }
+                return (_reduced_motion);
+            }
+            private set {
+                _reduced_motion = value;
+            }
+        }
 
         /**
          * Whether the user would prefer if apps use a dark or light color scheme or if the user has expressed no preference.
-         *
-         * To access this from a Flatpak application, add an entry with the value `'--system-talk-name=org.freedesktop.Accounts'`
-         * in the `finish-args` array of your Flatpak manifest.
          */
         public ColorScheme prefers_color_scheme {
             get {
                 if (_prefers_color_scheme == null) {
-                    setup_prefers_color_scheme ();
+                    try {
+                        setup_appearance ("color-scheme", (value) => {
+                            prefers_color_scheme = (ColorScheme) value.get_uint32 ();
+                        });
+                    } catch (Error e) {
+                        debug ("cannot use the portal, using the AccountsService: %s", e.message);
+                        setup_prefers_color_scheme ();
+                    }
                 }
                 return _prefers_color_scheme;
             }
@@ -115,31 +180,24 @@ namespace Granite {
             }
         }
 
-        private void setup_accent_color () {
-            try {
-                if (portal == null) {
-                    portal = Portal.Settings.get ();
-                }
-
-                var variant = portal.read (
-                    "org.freedesktop.appearance",
-                    "accent-color"
-                ).get_variant ();
-
-                accent_color = parse_color (variant);
-
-                portal.setting_changed.connect ((scheme, key, value) => {
-                    if (scheme == "org.freedesktop.appearance" && key == "accent-color") {
-                        accent_color = parse_color (value);
-                    }
-                });
-            } catch (Error e) {
-                warning (e.message);
-
-                // Set a default in case we can't get from system
-                _accent_color = Gdk.RGBA ();
-                _accent_color.parse ("#3689e6");
+        private delegate void SetupAppearanceCallback (Variant value);
+        private void setup_appearance (string portal_key, SetupAppearanceCallback callback_func) throws Error {
+            if (portal == null) {
+                portal = Portal.Settings.get ();
             }
+
+            var variant = portal.read (
+                "org.freedesktop.appearance",
+                portal_key
+            ).get_variant ();
+
+            callback_func (variant);
+
+            portal.setting_changed.connect ((scheme, key, value) => {
+                if (scheme == "org.freedesktop.appearance" && key == portal_key) {
+                    callback_func (value);
+                }
+            });
         }
 
         private Gdk.RGBA parse_color (GLib.Variant color) {
@@ -152,26 +210,6 @@ namespace Granite {
         }
 
         private void setup_prefers_color_scheme () {
-            try {
-                if (portal == null) {
-                    portal = Portal.Settings.get ();
-                }
-
-                prefers_color_scheme = (ColorScheme) portal.read (
-                    "org.freedesktop.appearance",
-                    "color-scheme"
-                ).get_variant ().get_uint32 ();
-
-                portal.setting_changed.connect ((scheme, key, value) => {
-                    if (scheme == "org.freedesktop.appearance" && key == "color-scheme") {
-                        prefers_color_scheme = (ColorScheme) value.get_uint32 ();
-                    }
-                });
-                return;
-            } catch (Error e) {
-                debug ("cannot use the portal, using the AccountsService: %s", e.message);
-            }
-
             try {
                 pantheon_act = GLib.Bus.get_proxy_sync (
                     GLib.BusType.SYSTEM,
