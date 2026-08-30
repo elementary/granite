@@ -67,7 +67,6 @@ public class Granite.StyleManager : Object {
         set_provider_for_display ();
 
         var granite_settings = Granite.Settings.get_default ();
-        granite_settings.notify["prefers-color-scheme"].connect (set_provider_for_display);
         granite_settings.notify["accent-color"].connect (update_accent_color);
         notify["color-scheme"].connect (set_provider_for_display);
         update_accent_color ();
