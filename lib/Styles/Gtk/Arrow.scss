@@ -1,4 +1,6 @@
 arrow {
+    // Use non-arrow icon when no direction specified, assuming use case as a
+    // main menu button
     -gtk-icon-source: -gtk-icontheme("open-menu-symbolic");
     min-height: rem(16px);
     min-width: rem(16px);
