@@ -38,8 +38,6 @@ namespace Granite {
 
         private ColorScheme? _prefers_color_scheme = null;
         private Gdk.RGBA? _accent_color = null;
-        private Gtk.InterfaceContrast? _contrast = null;
-        private Gtk.ReducedMotion? _reduced_motion = null;
 
         /**
          * The theme accent color chosen by the user
