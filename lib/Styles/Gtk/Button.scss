@@ -51,3 +51,11 @@ button {
         border-spacing: $button-spacing / 2;
     }
 }
+
+menubutton {
+    arrow {
+        // Use non-arrow icon when no direction specified, assuming use case as a
+        // main menu button
+        -gtk-icon-source: -gtk-icontheme("open-menu-symbolic");
+    }
+}
