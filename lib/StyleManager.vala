@@ -47,7 +47,7 @@ public class Granite.StyleManager : Object {
      * Uses value from {@link Gtk.Settings.gtk_interface_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
      * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE}
      */
-    public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
+    public Gtk.InterfaceColorScheme color_scheme { get; set; default = DEFAULT; }
 
     /**
      * The {@link Gdk.Display} handled by #this.
@@ -94,7 +94,7 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (color_scheme == DARK || (color_scheme == NO_PREFERENCE && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
+        if (color_scheme == DARK || (color_scheme == DEFAULT && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
             if (base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
