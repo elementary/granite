@@ -44,7 +44,7 @@ public class Granite.StyleManager : Object {
 
     /**
      * The {@link Granite.Settings.ColorScheme} requested by the application
-     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
+     * Uses value from {@link Gtk.Settings.gtk_interface_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
      * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE}
      */
     public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
