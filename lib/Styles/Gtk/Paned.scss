@@ -1,15 +1,17 @@
-$separator-highlight-color: rgba(white, 1);
-@if $color-scheme == "dark" {
-    $separator-highlight-color: rgba(white, 0.10);
-}
+paned {
+    --separator-highlight-color: white;
 
+    @media (prefers-color-scheme: dark) {
+        --separator-highlight-color: #{'alpha(white, 0.1)'};
+    }
 
-paned.horizontal > separator {
-    border-right: solid 1px $separator-highlight-color;
-    margin-right: -1px;
-}
+    &.horiztonal > separator {
+        border-right: solid 1px var(--separator-highlight-color);
+        margin-right: -1px;
+    }
 
-paned.vertical > separator {
-    border-bottom: solid 1px $separator-highlight-color;
-    margin-bottom: -1px;
+    &.vertical > separator {
+        border-bottom: solid 1px var(--separator-highlight-color);
+        margin-bottom: -1px;
+    }
 }

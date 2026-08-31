@@ -105,13 +105,17 @@ public class Granite.StyleManager : Object {
 #endif
 
             if (dark_provider == null) {
-                dark_provider = new Gtk.CssProvider ();
+                dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
             }
 
 #if INCLUDE_GTK_STYLESHEETS
             if (gtk_dark_provider == null) {
-                gtk_dark_provider = new Gtk.CssProvider ();
+                gtk_dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
             }
 
@@ -130,13 +134,17 @@ public class Granite.StyleManager : Object {
 #endif
 
             if (base_provider == null) {
-                base_provider = new Gtk.CssProvider ();
+                base_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = LIGHT
+                };
                 base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
             }
 
 #if INCLUDE_GTK_STYLESHEETS
             if (gtk_base_provider == null) {
-                gtk_base_provider = new Gtk.CssProvider ();
+                gtk_base_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = LIGHT
+                };
                 gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
             }
 

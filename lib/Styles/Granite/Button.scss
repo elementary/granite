@@ -5,7 +5,9 @@ button {
         color: white;
         text-shadow: none;
 
-        @if $color-scheme == "dark" {background-clip: padding-box;}
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
 
         &:backdrop {
             background-color: inherit;
@@ -49,9 +51,9 @@ button {
 
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
-        $shadow-border-color: scale-color($border-color, $alpha: -50%);
-        @if $color-scheme == "dark" {
-            $shadow-border-color: transparent
+        --shadow-border-color: #{'alpha(@borders, 0.5)'};
+        @media (prefers-color-scheme: dark) {
+            --shadow-border-color: transparent
         }
 
         background-image: none;
@@ -59,7 +61,7 @@ button {
         box-shadow:
             highlight(),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(2);
         color: $fg-color;
         margin: 0;
@@ -81,7 +83,7 @@ button {
             box-shadow:
             highlight(),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(1);
         }
 
@@ -94,7 +96,7 @@ button {
             box-shadow:
             highlight("top"),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(2);
         }
     }

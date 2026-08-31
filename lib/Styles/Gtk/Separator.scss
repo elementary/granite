@@ -1,11 +1,12 @@
-$separator-color: rgba(black, 0.15);
-@if $color-scheme == "dark" {
-    $separator-color: rgba(black, 0.35);
-}
-
 separator {
-    background-color: $separator-color;
+    --separator-color: #{'alpha(black, 0.15)'};
+
+    @media (prefers-color-scheme: dark) {
+        --separator-color: #{'alpha(black, 0.35)'};
+    }
+
+    background-color: var(--separator-color);
     min-height: 1px;
     min-width: 1px;
 }
-    
+
