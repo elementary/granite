@@ -144,9 +144,9 @@ public class Granite.Placeholder : Gtk.Widget {
         grid.attach (description_widget, 1, 1);
 
         var button = new Gtk.Button () {
-            child = grid
+            child = grid,
+            has_frame = false
         };
-        button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         buttonbox.append (button);
         buttonbox.show ();

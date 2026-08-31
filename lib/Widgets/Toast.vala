@@ -90,7 +90,7 @@ public class Granite.Toast : Gtk.Widget {
         var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic") {
             valign = Gtk.Align.CENTER
         };
-        close_button.add_css_class (Granite.STYLE_CLASS_CIRCULAR);
+        close_button.add_css_class (Granite.CssClass.CIRCULAR);
 
         notification_label = new Gtk.Label (title) {
             wrap = true,
