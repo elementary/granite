@@ -105,13 +105,17 @@ public class Granite.StyleManager : Object {
 #endif
 
             if (dark_provider == null) {
-                dark_provider = new Gtk.CssProvider ();
+                dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
             }
 
 #if INCLUDE_GTK_STYLESHEETS
             if (gtk_dark_provider == null) {
-                gtk_dark_provider = new Gtk.CssProvider ();
+                gtk_dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
             }
 
