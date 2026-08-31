@@ -5,7 +5,7 @@
 
 public class Granite.Demo : Gtk.Application {
     construct {
-        application_id = "io.elementary.granite.demo";
+        application_id = "io.elementary.granite-9.demo";
         flags = ApplicationFlags.FLAGS_NONE;
     }
 

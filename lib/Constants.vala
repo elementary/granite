@@ -204,16 +204,19 @@ namespace Granite {
     /**
      * Transition duration when a widget closes, hides a portion of its content, or exits the screen
      */
+    [Version (deprecated = true, deprecated_since = "9.0.0", replacement = "Granite.AnimationDuration.CLOSE")]
     public const int TRANSITION_DURATION_CLOSE = 200;
 
     /**
      * Transition duration when a widget transforms in-place, like when filtering content with a view switcher
      */
+    [Version (deprecated = true, deprecated_since = "9.0.0", replacement = "Granite.AnimationDuration.IN_PLACE")]
     public const int TRANSITION_DURATION_IN_PLACE = 100;
 
     /**
      * Transition duration when a widget opens, reveals more content, or enters the screen
      */
+    [Version (deprecated = true, deprecated_since = "9.0.0", replacement = "Granite.AnimationDuration.OPEN")]
     public const int TRANSITION_DURATION_OPEN = 250;
 
     /**
@@ -297,6 +300,12 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string MONOSPACE = "monospace";
+
+        /**
+         * Style class for windows from development builds to visually separate them from stable releases.
+         */
+        [Version (since = "9.0.0")]
+        public const string DEVEL = "devel";
     }
 
     /**
