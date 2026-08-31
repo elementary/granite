@@ -266,7 +266,7 @@ public class Granite.MessageDialog : Granite.Dialog {
             wrap = true,
             xalign = 0
         };
-        primary_label.add_css_class (Granite.STYLE_CLASS_TITLE_LABEL);
+        primary_label.add_css_class ("title");
 
         secondary_label = new Gtk.Label (null) {
             max_width_chars = 50,
@@ -290,7 +290,7 @@ public class Granite.MessageDialog : Granite.Dialog {
 
         get_content_area ().append (message_grid);
 
-        add_css_class (Granite.STYLE_CLASS_MESSAGE_DIALOG);
+        add_css_class ("message");
     }
 
     /**

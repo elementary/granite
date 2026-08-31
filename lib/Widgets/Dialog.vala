@@ -74,7 +74,7 @@ public class Granite.Dialog : Gtk.Dialog {
 
         var content_area = get_content_area ();
         content_area.vexpand = true;
-        content_area.add_css_class (Granite.STYLE_CLASS_DIALOG_CONTENT_AREA);
+        content_area.add_css_class ("dialog-content-area");
     }
 
     public override void constructed () {
