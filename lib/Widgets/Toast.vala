@@ -110,7 +110,6 @@ public class Granite.Toast : Gtk.Widget {
         close_button.clicked.connect (() => {
             revealer.reveal_child = false;
             stop_timeout ();
-            closed ();
             dismissed (DismissReason.CLOSED);
         });
 
