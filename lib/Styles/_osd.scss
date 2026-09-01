@@ -1,8 +1,45 @@
 .osd {
-    background-color: rgba($fg-color, 0.95);
-    border-radius: rem($window_radius / 2);
-    box-shadow: shadow(1);
-    color: bg-color(1);
-    margin: rem(6px);
-    padding: rem(6px);
+    backdrop-filter: blur(6px);
+    background-color: scale-color(bg-color(2), $alpha: -50%);
+    background-clip: padding-box;
+    background-image:
+        linear-gradient(
+            to top,
+                scale-color($highlight_color, $alpha: -97%),
+                transparent calc(100% - 0.5rem),
+        );
+    border: 1px solid $border-color;
+    border-radius: rem($window_radius);
+    box-shadow:
+        inset 0 1px 0 0 scale-color($highlight_color, $alpha: -80%),
+        inset 1px 0 0 0 scale-color($highlight_color, $alpha: -93%),
+        inset -1px 0 0 0 scale-color($highlight_color, $alpha: -93%),
+        inset 0 -1px 0 0 scale-color($highlight_color, $alpha: -70%),
+        0 2px 4px rgba(black, 0.1),
+        0 1px 2px rgba(black, 0.1);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-shadow: 0 1px 1px scale-color(bg_color(3), $alpha: -80%);
+    -gtk-icon-shadow: 0 1px 1px scale-color(bg_color(3), $alpha: -80%);
+
+    &.image-button:not(.toggle),
+    &.circular {
+        background-image:
+            linear-gradient(
+                to top,
+                    scale-color($highlight_color, $alpha: -97%),
+                    transparent calc(100% - 0.5rem),
+            ),
+            radial-gradient(
+                ellipse 65% 50%,
+                transparent calc(100% - 0.5rem),
+                scale-color($highlight_color, $alpha: -75%),
+            );
+    }
 }
+
+@media (#{'prefers-contrast: more'}) {
+    .osd {
+        background-color: bg-color(2);
+    }
+};

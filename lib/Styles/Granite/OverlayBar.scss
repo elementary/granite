@@ -1,10 +1,6 @@
 overlaybar .osd {
+    border-radius: rem($window_radius / 2);
     padding: rem(6px) rem(12px);
-    text-shadow: 0 rem(1px) rem(2px) rgba($fg_color, 0.6);
-
-    spinner {
-        -gtk-icon-shadow: 0 rem(1px) rem(2px) rgba($fg_color, 0.6);
-    }
 
     revealer:dir(ltr) > spinner {
         margin-left: $button-spacing;

@@ -29,6 +29,7 @@ namespace Granite {
     /**
      * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
      */
+    [Version (deprecated = true, deprecated_since = "9.0.0", replacement = "Granite.CssClass.OSD")]
     public const string STYLE_CLASS_OSD = "osd";
     /**
      * Style class defining a sidebar, such as the left side in a file chooser
@@ -86,6 +87,12 @@ namespace Granite {
          */
         [Version (since = "7.7.0")]
         public const string CARD = "card";
+
+        /**
+         * Style class for "on-screen display" widgets such as {@link Granite.Toast} and {@link Granite.OverlayBar}
+         */
+        [Version (since = "9.0.0")]
+        public const string OSD = "osd";
 
         /**
          * Style class for checkered backgrounds to represent transparency in images
