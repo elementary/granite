@@ -49,17 +49,21 @@ libgranite-9.so.9 libgranite9 #MINVER#
  granite_fdo_accounts_proxy_get_type@Base 7.0.0
  granite_header_label_construct@Base 7.0.0
  granite_header_label_get_ellipsize@Base 7.8.0
+ granite_header_label_get_justify@Base 9.0.0
  granite_header_label_get_label@Base 7.0.0
  granite_header_label_get_mnemonic_widget@Base 7.4.0
  granite_header_label_get_secondary_text@Base 7.1.0
  granite_header_label_get_size@Base 7.7.0
  granite_header_label_get_type@Base 7.0.0
+ granite_header_label_get_xalign@Base 9.0.0
  granite_header_label_new@Base 7.0.0
  granite_header_label_set_ellipsize@Base 7.8.0
+ granite_header_label_set_justify@Base 9.0.0
  granite_header_label_set_label@Base 7.0.0
  granite_header_label_set_mnemonic_widget@Base 7.8.0
  granite_header_label_set_secondary_text@Base 7.8.0
  granite_header_label_set_size@Base 7.7.0
+ granite_header_label_set_xalign@Base 9.0.0
  granite_header_label_size_get_type@Base 7.7.0
  granite_header_label_size_to_string@Base 7.7.0
  granite_hyper_text_view_construct@Base 7.0.0
@@ -123,7 +127,6 @@ libgranite-9.so.9 libgranite9 #MINVER#
  granite_overlay_bar_new@Base 7.0.0
  granite_overlay_bar_set_active@Base 7.0.0
  granite_overlay_bar_set_label@Base 7.0.0
- granite_pantheon_accounts_service_proxy_get_type@Base 7.0.0
  granite_placeholder_append_button@Base 7.0.0
  granite_placeholder_construct@Base 7.0.0
  granite_placeholder_get_description@Base 7.0.0
@@ -166,10 +169,8 @@ libgranite-9.so.9 libgranite9 #MINVER#
  granite_services_system_get_type@Base 7.0.0
  granite_services_system_history_is_enabled@Base 7.0.0
  granite_services_system_new@Base 7.0.0
- granite_settings_color_scheme_get_type@Base 7.0.0
  granite_settings_get_accent_color@Base 7.7.0
  granite_settings_get_default@Base 7.0.0
- granite_settings_get_prefers_color_scheme@Base 7.0.0
  granite_settings_get_type@Base 7.0.0
  granite_settings_page_construct@Base 7.0.0
  granite_settings_page_get_child@Base 7.0.0
