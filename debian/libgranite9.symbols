@@ -172,35 +172,6 @@ libgranite-9.so.9 libgranite9 #MINVER#
  granite_settings_get_accent_color@Base 7.7.0
  granite_settings_get_default@Base 7.0.0
  granite_settings_get_type@Base 7.0.0
- granite_settings_page_construct@Base 7.0.0
- granite_settings_page_get_child@Base 7.0.0
- granite_settings_page_get_display_widget@Base 7.0.0
- granite_settings_page_get_header@Base 7.0.0
- granite_settings_page_get_icon_name@Base 7.0.0
- granite_settings_page_get_status@Base 7.0.0
- granite_settings_page_get_status_type@Base 7.0.0
- granite_settings_page_get_title@Base 7.0.0
- granite_settings_page_get_type@Base 7.0.0
- granite_settings_page_set_child@Base 7.0.0
- granite_settings_page_set_icon_name@Base 7.0.0
- granite_settings_page_set_status@Base 7.0.0
- granite_settings_page_set_status_type@Base 7.0.0
- granite_settings_page_set_title@Base 7.0.0
- granite_settings_page_status_type_get_type@Base 7.0.0
- granite_settings_sidebar_construct@Base 7.0.0
- granite_settings_sidebar_get_stack@Base 7.0.0
- granite_settings_sidebar_get_type@Base 7.0.0
- granite_settings_sidebar_get_visible_child_name@Base 7.0.0
- granite_settings_sidebar_new@Base 7.0.0
- granite_settings_sidebar_set_visible_child_name@Base 7.0.0
- granite_simple_settings_page_construct@Base 7.0.0
- granite_simple_settings_page_get_action_area@Base 7.0.0
- granite_simple_settings_page_get_activatable@Base 7.0.0
- granite_simple_settings_page_get_content_area@Base 7.0.0
- granite_simple_settings_page_get_description@Base 7.0.0
- granite_simple_settings_page_get_status_switch@Base 7.0.0
- granite_simple_settings_page_get_type@Base 7.0.0
- granite_simple_settings_page_set_description@Base 7.0.0
  granite_style_manager_get_color_scheme@Base 7.7.0
  granite_style_manager_get_default@Base 7.7.0
  granite_style_manager_get_display@Base 7.7.0
@@ -251,4 +222,3 @@ libgranite-9.so.9 libgranite9 #MINVER#
  granite_validated_entry_set_is_valid@Base 7.0.0
  granite_validated_entry_set_min_length@Base 7.0.0
  granite_validated_entry_set_regex@Base 7.0.0
- granite_widgets_utils_set_color_primary@Base 7.0.0
