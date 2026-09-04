@@ -42,8 +42,8 @@ video {
                     0 0 1em rgba(black, 0.25);
 
                 &:checked {
-                    background: #{'alpha(shade(@accent_color, 0.85), 0.5)'};
-                    color: #{'mix(shade(@accent_color, 1.1), white, 0.75)'};
+                    background: #{'alpha(shade(var(--accent-color), 0.85), 0.5)'};
+                    color: #{'mix(shade(var(--accent-color), 1.1), white, 0.75)'};
                 }
             }
 

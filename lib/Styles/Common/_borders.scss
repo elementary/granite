@@ -4,7 +4,7 @@
         outset-shadow(1);
 
     border-style: solid;
-    border-color: $border-color;
+    border-color: var(--border-color);
     border-width: 1px;
 }
 

@@ -1,9 +1,9 @@
 selection {
-    background-color: #{'@selected_bg_color'};
-    color: #{'@selected_fg_color'};
+    background-color: var(--selected-bg-color);
+    color: var(--selected-fg-color);
 
     &:backdrop {
-        background-color: scale-color($fg-color, $alpha: -90%);
+        background-color: #{'alpha(var(--fg-color), 0.1)'};
         color: inherit;
     }
 }

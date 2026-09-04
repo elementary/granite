@@ -105,13 +105,17 @@ public class Granite.StyleManager : Object {
 #endif
 
             if (dark_provider == null) {
-                dark_provider = new Gtk.CssProvider ();
+                dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
             }
 
 #if INCLUDE_GTK_STYLESHEETS
             if (gtk_dark_provider == null) {
-                gtk_dark_provider = new Gtk.CssProvider ();
+                gtk_dark_provider = new Gtk.CssProvider () {
+                    prefers_color_scheme = DARK
+                };
                 gtk_dark_provider.load_from_resource ("/io/elementary/granite/Gtk-dark.css");
             }
 
@@ -165,7 +169,7 @@ public class Granite.StyleManager : Object {
         var accent_color = Granite.Settings.get_default ().accent_color.to_string ();
 
         Gtk.StyleContext.remove_provider_for_display (display, accent_provider);
-        accent_provider.load_from_string ("@define-color accent_color %s;".printf (accent_color));
+        accent_provider.load_from_string (":root { --accent-color: %s; }".printf (accent_color));
         Gtk.StyleContext.add_provider_for_display (display, accent_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 2);
     }
 }

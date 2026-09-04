@@ -1,7 +1,7 @@
 button {
 
     &.text-button.destructive {
-        background-color: $error_color;
+        background-color: var(--error-color);
         color: white;
         text-shadow: none;
 
@@ -13,13 +13,13 @@ button {
         }
 
         &:active {
-            background-color: mix($error_color, $STRAWBERRY_900, 90%);
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
         }
     }
 
     &.text-button.suggested {
-        background-color: #{'@selected_bg_color'};
-        color: #{'@selected_fg_color'};
+        background-color: var(--selected-bg-color);
+        color: var(--selected-fg-color);
         text-shadow: none;
 
         &:backdrop {

@@ -1,6 +1,6 @@
 .accent {
     // FIXME: use oklch colorspace once we're Gtk 4.16
-    color: #{'mix(@accent_color, @fg_color, 0.27)'};
+    color: #{'mix(var(--accent-color), var(--fg-color), 0.27)'};
 
     &:backdrop {
         color: inherit;
@@ -44,15 +44,15 @@
 }
 
 .error {
-    color: $error_color;
+    color: var(--error-color);
 }
 
 .success {
-    color: $success_color;
+    color: var(--success-color);
 }
 
 .warning {
-    color: $warning_color;
+    color: var(--warning-color);
 }
 
 .accent:backdrop,
