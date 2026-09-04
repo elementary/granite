@@ -48,8 +48,80 @@ paper {
     font-family: monospace;
 }
 
-window.devel {
-	border-style: solid;
-	border-width: 2px;
-	border-color: $warning_color;
+$grid-line-width: 1px;
+$grid-minor-spacing: 8px;
+$grid-minor-opacity: -85%;
+$grid-major-spacing: 24px;
+$grid-major-opacity: -80%;
+
+
+window.devel toolbox windowhandle > .top {
+    background:
+        linear-gradient(
+            to bottom,
+            scale-color(bg_color(2), $alpha: -100%),
+            bg_color(2) rem(32px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem($grid-minor-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem($grid-major-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
+            );
+
 }
+
+window.devel toolbox.sidebar windowhandle > .top {
+    background:
+        linear-gradient(
+            to bottom,
+            scale-color(bg_color(3), $alpha: -100%),
+            bg-color(3) rem(32px)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem($grid-minor-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-minor-opacity) rem($grid-minor-spacing)
+            ),
+        repeating-linear-gradient(
+            transparent rem(0px),
+            transparent rem($grid-major-spacing - $grid-line-width), 
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
+            ),
+        repeating-linear-gradient(
+            to right,
+            transparent rem(0px),
+            transparent rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing - $grid-line-width),
+            scale-color($GRAPE_500, $alpha: $grid-major-opacity) rem($grid-major-spacing)
+            );
+        }
