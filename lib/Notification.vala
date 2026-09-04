@@ -4,6 +4,37 @@
  */
 
 [Version (since = "9.0.0")]
+public enum Granite.NotificationButtonPurpose {
+    /**
+     * Accept the incoming call
+     */
+    CALL_ACCEPT,
+
+    /**
+     * Decline the incoming call
+     */
+    CALL_DECLINE,
+
+    /**
+     * Hang up the ongoing call
+     */
+    CALL_HANG_UP;
+
+    public string to_string () {
+        switch (this) {
+            case CALL_ACCEPT:
+                return "call.accept";
+            case CALL_DECLINE:
+                return "call.accept";
+            case CALL_HANG_UP:
+                return "call.accept";
+            default:
+                return "";
+        }
+    }
+}
+
+[Version (since = "9.0.0")]
 public enum Granite.NotificationCategory {
     /**
      * A received instant message notification
@@ -62,97 +93,20 @@ public enum Granite.NotificationCategory {
     }
 }
 
-[Version (since = "9.0.0")]
-public enum Granite.NotificationPriority {
-    /**
-     * Used for contextual background information or confirmations such as contact birthdays or started background tasks
-     *
-     * Are automatically cleared from Notifications menu after 24 hours
-     */
-    LOW,
-
-    /**
-     * The default priority used for the majority of notications. For example, new messages or completed background tasks
-     */
-    NORMAL,
-
-    /**
-     * For events that require immediate action. For example, accepting phone calls or silencing alarms
-     *
-     * Bubbles do not automatically expire, but are automatically cleared from Notifications menu after 24 hours
-     */
-    TIME_SENSITIVE,
-
-    /**
-     * For events that require immediate attention such as imminent danger to this device, or threats to public safety
-     *
-     * Ignore Do Not Disturb.
-     * Play a louder sound and have an exaggerated visual effect.
-     * Bubbles do not automatically expire, but are automatically cleared from Notifications menu after 24 hours
-     */
-     EMERGENCY;
-
-    public string to_string () {
-        switch (this) {
-            case LOW:
-                return "low";
-            case NORMAL:
-                return "normal";
-            case TIME_SENSITIVE:
-                return "high";
-            case EMERGENCY:
-                return "urgent";
-            default:
-                return "";
-        }
-    }
-}
-
-[Version (since = "9.0.0")]
-public enum Granite.NotificationButtonPurpose {
-    /**
-     * Accept the incoming call
-     */
-    CALL_ACCEPT,
-
-    /**
-     * Decline the incoming call
-     */
-    CALL_DECLINE,
-
-    /**
-     * Hang up the ongoing call
-     */
-    CALL_HANG_UP;
-
-    public string to_string () {
-        switch (this) {
-            case CALL_ACCEPT:
-                return "call.accept";
-            case CALL_DECLINE:
-                return "call.accept";
-            case CALL_HANG_UP:
-                return "call.accept";
-            default:
-                return "";
-        }
-    }
-}
-
 [Flags]
 [Version (since = "9.0.0")]
 public enum Granite.NotificationDisplayFlags {
     /**
      * The notification is displayed only as a bubble and won’t be kept in the Notifications menu.
      *
-     * It’s a programmer error to specify tray at the same time.
+     * It’s a programmer error to specify SILENT at the same time.
      */
     TRANSIENT,
 
     /**
      * No bubble for the notification will be displayed and the notification is placed directly in the Notifications menu
      *
-     * It’s a programmer error to specify transient at the same time
+     * It’s a programmer error to specify TRANSIENT at the same time
      */
     SILENT,
 
@@ -207,5 +161,51 @@ public enum Granite.NotificationDisplayFlags {
         }
 
         return array;
+    }
+}
+
+[Version (since = "9.0.0")]
+public enum Granite.NotificationPriority {
+    /**
+     * Used for contextual background information or confirmations such as contact birthdays or started background tasks
+     *
+     * Are automatically cleared from Notifications menu after 24 hours
+     */
+    LOW,
+
+    /**
+     * The default priority used for the majority of notications. For example, new messages or completed background tasks
+     */
+    NORMAL,
+
+    /**
+     * For events that require immediate action. For example, accepting phone calls or silencing alarms
+     *
+     * Bubbles do not automatically expire, but are automatically cleared from Notifications menu after 24 hours
+     */
+    TIME_SENSITIVE,
+
+    /**
+     * For events that require immediate attention such as imminent danger to this device, or threats to public safety
+     *
+     * Ignore Do Not Disturb.
+     * Play a louder sound and have an exaggerated visual effect.
+     * Bubbles do not automatically expire, but are automatically cleared from Notifications menu after 24 hours
+     */
+     EMERGENCY;
+
+    public string to_string () {
+        switch (this) {
+            case LOW:
+                return "low";
+            case NORMAL:
+                return "normal";
+            case TIME_SENSITIVE:
+                return "high";
+            case EMERGENCY:
+                return "urgent";
+            default:
+                return "";
+        }
     }
 }
