@@ -63,7 +63,7 @@ public class Granite.Placeholder : Gtk.Widget {
             wrap = true,
             xalign = 0
         };
-        title_label.add_css_class (Granite.STYLE_CLASS_H1_LABEL);
+        title_label.add_css_class (Granite.HeaderLabel.Size.H1.to_string ());
 
         var description_label = new Gtk.Label ("") {
             max_width_chars = 45,
@@ -71,7 +71,7 @@ public class Granite.Placeholder : Gtk.Widget {
             use_markup = true,
             xalign = 0
         };
-        description_label.add_css_class (Granite.STYLE_CLASS_H2_LABEL);
+        description_label.add_css_class (Granite.HeaderLabel.Size.H2.to_string ());
 
         buttonbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) {
             visible = false
@@ -131,7 +131,7 @@ public class Granite.Placeholder : Gtk.Widget {
             wrap = true,
             xalign = 0
         };
-        label_widget.add_css_class (Granite.STYLE_CLASS_H3_LABEL);
+        label_widget.add_css_class (Granite.HeaderLabel.Size.H3.to_string ());
 
         var description_widget = new Gtk.Label (description) {
             wrap = true,
@@ -144,9 +144,9 @@ public class Granite.Placeholder : Gtk.Widget {
         grid.attach (description_widget, 1, 1);
 
         var button = new Gtk.Button () {
-            child = grid
+            child = grid,
+            has_frame = false
         };
-        button.add_css_class (Granite.STYLE_CLASS_FLAT);
 
         buttonbox.append (button);
         buttonbox.show ();

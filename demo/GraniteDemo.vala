@@ -70,14 +70,14 @@ public class Granite.Demo : Gtk.Application {
 
         var dont_button = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
-            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.NO_PREFERENCE),
+            action_target = new Variant.uint32 (Gtk.InterfaceColorScheme.DEFAULT),
             icon_name = "preferences-system-symbolic",
             tooltip_text = "Follow system setting"
         };
 
         var force_light = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
-            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.LIGHT),
+            action_target = new Variant.uint32 (Gtk.InterfaceColorScheme.LIGHT),
             group = dont_button,
             icon_name = "display-brightness-symbolic",
             tooltip_text = "Light"
@@ -85,7 +85,7 @@ public class Granite.Demo : Gtk.Application {
 
         var force_dark = new Gtk.ToggleButton () {
             action_name = "app.color-scheme",
-            action_target = new Variant.uint32 (Granite.Settings.ColorScheme.DARK),
+            action_target = new Variant.uint32 (Gtk.InterfaceColorScheme.DARK),
             group = force_light,
             icon_name = "weather-clear-night-symbolic",
             tooltip_text = "Dark"
@@ -130,7 +130,7 @@ public class Granite.Demo : Gtk.Application {
 
         var style_action = new SimpleAction.stateful ("color-scheme", VariantType.UINT32, new Variant.uint32 (style_manager.color_scheme));
         style_action.activate.connect ((parameter) => {
-            style_manager.color_scheme = (Granite.Settings.ColorScheme) parameter.get_uint32 ();
+            style_manager.color_scheme = (Gtk.InterfaceColorScheme) parameter.get_uint32 ();
         });
 
         style_manager.notify ["color-scheme"].connect (() => {

@@ -43,11 +43,11 @@ public class Granite.StyleManager : Object {
     }
 
     /**
-     * The {@link Granite.Settings.ColorScheme} requested by the application
-     * Uses value from {@link Granite.Settings.prefers_color_scheme} when set to {@link Granite.Settings.ColorScheme.NO_PREFERENCE}.
+     * The {@link Gtk.InterfaceColorScheme} requested by the application
+     * Uses value from {@link Gtk.Settings.gtk_interface_color_scheme} when set to {@link Gtk.InterfaceColorScheme.DEFAULT}.
      * Default value is {@link Granite.Settings.ColorScheme.NO_PREFERENCE}
      */
-    public Settings.ColorScheme color_scheme { get; set; default = NO_PREFERENCE; }
+    public Gtk.InterfaceColorScheme color_scheme { get; set; default = DEFAULT; }
 
     /**
      * The {@link Gdk.Display} handled by #this.
@@ -63,14 +63,12 @@ public class Granite.StyleManager : Object {
 #if INCLUDE_GTK_STYLESHEETS
         gtk_settings.gtk_theme_name = "Granite-empty";
 #endif
-        gtk_settings.notify["gtk-application-prefer-dark-theme"].connect (set_provider_for_display);
+        gtk_settings.notify["gtk-interface-color-scheme"].connect (set_provider_for_display);
         set_provider_for_display ();
 
         var granite_settings = Granite.Settings.get_default ();
-        granite_settings.notify["prefers-color-scheme"].connect (update_color_scheme);
         granite_settings.notify["accent-color"].connect (update_accent_color);
-        notify["color-scheme"].connect (update_color_scheme);
-        update_color_scheme ();
+        notify["color-scheme"].connect (set_provider_for_display);
         update_accent_color ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
@@ -95,7 +93,7 @@ public class Granite.StyleManager : Object {
             }
         }
 
-        if (Gtk.Settings.get_for_display (display).gtk_application_prefer_dark_theme) {
+        if (color_scheme == DARK || (color_scheme == DEFAULT && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
             if (base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
@@ -157,16 +155,6 @@ public class Granite.StyleManager : Object {
         }
 
         return null;
-    }
-
-    private void update_color_scheme () {
-        var gtk_settings = Gtk.Settings.get_for_display (display);
-        if (color_scheme == NO_PREFERENCE) {
-            var granite_settings = Granite.Settings.get_default ();
-            gtk_settings.gtk_application_prefer_dark_theme = granite_settings.prefers_color_scheme == DARK;
-        } else {
-            gtk_settings.gtk_application_prefer_dark_theme = color_scheme == DARK;
-        }
     }
 
     private void update_accent_color () {
