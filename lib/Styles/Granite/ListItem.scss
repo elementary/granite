@@ -8,6 +8,6 @@ granite-listitem {
     }
 
     &:focus-visible .text-box {
-        background: #{'alpha(var(--fg-color), 0.1)'};
+        background: color-mix(in srgb, var(--fg-color) 10%, transparent);
     }
 }

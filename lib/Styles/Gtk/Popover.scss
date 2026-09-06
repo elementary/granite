@@ -79,18 +79,18 @@ popover {
         transform duration("expand") easing("ease-out-back");
 
     &.circular {
-        background: #{'alpha(var(--fg-color), 0.05)'};
+        background: color-mix(in srgb, var(--fg-color) 5%, transparent);
         padding: rem(9px);
     }
 
     // Focus and hover are synonymous in Popovers
     &:hover,
     &:focus-visible {
-        background: #{'alpha(var(--fg-color), 0.1)'};
+        background: color-mix(in srgb, var(--fg-color) 10%, transparent);
     }
 
     &:active {
-        background: #{'alpha(var(--fg-color), 0.15)'};
+        background: color-mix(in srgb, var(--fg-color) 15%, transparent);
         transform: scale(0.95);
         transition:
             background duration("collapse") easing(),

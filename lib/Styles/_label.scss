@@ -1,6 +1,5 @@
 .accent {
-    // FIXME: use oklch colorspace once we're Gtk 4.16
-    color: #{'mix(var(--accent-color), var(--fg-color), 0.27)'};
+    color: color-mix(in oklab, var(--accent-color), var(--fg-color) 27%);
 
     &:backdrop {
         color: inherit;

@@ -3,7 +3,7 @@ selection {
     color: var(--selected-fg-color);
 
     &:backdrop {
-        background-color: #{'alpha(var(--fg-color), 0.1)'};
+        background-color: color-mix(in srgb, var(--fg-color) 10%, transparent);
         color: inherit;
     }
 }

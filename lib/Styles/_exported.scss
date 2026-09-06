@@ -15,7 +15,7 @@
     --warning-color: var(--BANANA_900);
     --warning-icon-color: var(--BANANA_600);
 
-    --selected-bg-color: #{'alpha(var(--accent-color), 0.25)'};
+    --selected-bg-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
     --selected-fg-color: #{'shade(var(--accent-color), 0.5)'};
 
     @media (prefers-color-scheme: dark) {
