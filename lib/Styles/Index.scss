@@ -1,13 +1,8 @@
-$color-scheme: "light";
-
 // Constants and functions
 @import 'Common/Variables.scss';
 
 // Outset box shadow or border color on toplevel elements like windows, menus, popovers
 $toplevel-border-color: rgba(black, 0.2);
-
-// Inset box shadows
-$highlight_color: white;
 
 // Common styles
 @import 'Common/Mixins.scss';

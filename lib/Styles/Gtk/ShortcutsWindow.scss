@@ -8,14 +8,14 @@ accelerator,
     background-image: 
         linear-gradient(
             to top,
-            scale-color($highlight_color, $alpha: -80%), 
+            color-mix(in srgb, var(--highlight-color) 20%, transparent), 
             rgba(white, 0)
         ),
         linear-gradient(
             to right,
-            scale-color($highlight_color, $alpha: -85%),
+            color-mix(in srgb, var(--highlight-color) 15%, transparent),
             rgba(white, 0),
-            scale-color($highlight_color, $alpha: -85%)
+            color-mix(in srgb, var(--highlight-color) 15%, transparent)
         );
     // Intentionally not in ems since it's used as a stroke
     border-radius: rem($window_radius / 2);

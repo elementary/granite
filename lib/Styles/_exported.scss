@@ -8,7 +8,9 @@
     --bg-color: #{"" + bg-color(2)};
 
     --base-color: #{"" + bg-color(1)};
-    --highlight-color: #{"" + $highlight_color};
+
+    // Inset box shadows
+    --highlight-color: white;
 
     // Outset box shadow or border color on inputs like buttons, entries, checkboxes
     --border-color: color-mix(in srgb, black 20%, transparent);
@@ -23,6 +25,8 @@
 
     @media (prefers-color-scheme: dark) {
         --fg-color: white;
+
+        --highlight-color: color-mix(in srgb, white 20%, transparent);
 
         --border-color: color-mix(in srgb, black 30%, transparent);
 

@@ -6,7 +6,7 @@
     background-image:
         linear-gradient(
             to bottom,
-            scale-color($highlight_color, $alpha: -80%),
+            color-mix(in srgb, var(--highlight-color) 20%, transparent),
             rgba(white, 0)
         );
     transition: all duration("in-place") easing("default");

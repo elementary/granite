@@ -1,7 +1,7 @@
 listview {
     &.separators > row + row {
         border-top: 1px solid var(--border-color);
-        box-shadow: inset 0 1px 0 0 scale-color($highlight_color, $alpha: -93%);
+        box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent);
     }
 
     &.view {
