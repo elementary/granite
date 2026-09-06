@@ -51,7 +51,7 @@ button {
 
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
-        --shadow-border-color: #{'alpha(@borders, 0.5)'};
+        --shadow-border-color: color-mix(in srgb, var(--border-color) 50%, transparent);
         @media (prefers-color-scheme: dark) {
             --shadow-border-color: transparent
         }
