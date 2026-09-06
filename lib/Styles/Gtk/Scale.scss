@@ -5,7 +5,7 @@ scale {
 
     // `has_origin = true`
     highlight {
-        background-color: #{'@accent_color'};
+        background-color: var(--accent-color);
 
         &:backdrop {
             background-color: scale-color($fg-color, $alpha: -50%);
