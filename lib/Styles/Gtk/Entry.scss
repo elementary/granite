@@ -2,7 +2,7 @@ entry {
     @include border-interactive-roundrect;
 
     background-color: bg-color(1);
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     border-spacing: $button-spacing;
     padding: $button-spacing;
 

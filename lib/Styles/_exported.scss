@@ -8,6 +8,8 @@
 
     --base-color: #{"" + bg-color(1)};
     --highlight-color: #{"" + $highlight_color};
+
+    // Outset box shadow or border color on inputs like buttons, entries, checkboxes
     --border-color: color-mix(in srgb, black 20%, transparent);
 
     --error-color: var(--STRAWBERRY_500);
