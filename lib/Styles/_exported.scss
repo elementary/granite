@@ -8,7 +8,7 @@
 
     --base-color: #{"" + bg-color(1)};
     --highlight-color: #{"" + $highlight_color};
-    --border-color: #{"" + rgba(black, 0.2)};
+    --border-color: color-mix(in srgb, black 20%, transparent);
 
     --error-color: var(--STRAWBERRY_500);
     --success-color: var(--LIME_700);
@@ -16,19 +16,18 @@
     --warning-icon-color: var(--BANANA_600);
 
     --selected-bg-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
-    --selected-fg-color: #{'shade(var(--accent-color), 0.5)'};
+    --selected-fg-color: color-mix(in oklab, var(--accent-color) 50%, var(--fg-color));
 
     @media (prefers-color-scheme: dark) {
-        --fg_color: white;
+        --fg-color: white;
 
-        --border-color: #{"" + rgba(black, 0.3)};
+        --border-color: color-mix(in srgb, black 30%, transparent);
 
         --error-color: var(--STRAWBERRY_300);
         --success-color: var(--LIME_300);
         --warning-color: var(--BANANA_100);
         --warning-icon-color: var(--BANANA_500);
 
-        --selected-bg-color: #{'alpha(shade(var(--accent-color), 0.85), 0.5)'};
-        --selected-fg-color: #{'mix(shade(var(--accent-color), 1.1), white, 0.75)'};
+        --selected-bg-color: color-mix(in oklab, var(--accent-color) 50%, var(--bg-color));
     }
 }
