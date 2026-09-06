@@ -40,7 +40,7 @@ button {
         &:active,
         &:checked {
             @include control-active;
-            color: $fg-color;
+            color: var(--fg-color);
             transform: none;
         }
     }
@@ -63,7 +63,7 @@ button {
             // Intentionally not in ems since it's used as a stroke
             0 0 0 1px var(--shadow-border-color),
             shadow(2);
-        color: $fg-color;
+        color: var(--fg-color);
         margin: 0;
         padding: $button-spacing;
 

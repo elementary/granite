@@ -8,7 +8,7 @@ scale {
         background-color: var(--accent-color);
 
         &:backdrop {
-            background-color: scale-color($fg-color, $alpha: -50%);
+            background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
         }
     }
 

@@ -1,6 +1,6 @@
 window {
     background-color: bg_color(2);
-    color: $fg-color;
+    color: var(--fg-color);
 
     &.csd {
         border-radius: rem($window_radius);
