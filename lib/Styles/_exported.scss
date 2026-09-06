@@ -29,5 +29,6 @@
         --warning-icon-color: var(--BANANA_500);
 
         --selected-bg-color: color-mix(in oklab, var(--accent-color) 50%, var(--bg-color));
+        --selected-fg-color: color-mix(in oklab, var(--accent-color) 40%, var(--fg-color));
     }
 }
