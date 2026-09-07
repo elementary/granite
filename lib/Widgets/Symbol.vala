@@ -36,6 +36,11 @@ public class Granite.Symbol : Granite.Bin {
         set { image.pixel_size = value; }
     }
 
+    public double weight {
+        get { return svg.weight; }
+        set { svg.weight = value; }
+    }
+
     public uint states_length {
         get {
             uint length = -1;
