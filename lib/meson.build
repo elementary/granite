@@ -1,5 +1,6 @@
 subdir('Icons')
 subdir('Styles')
+subdir('Symbols')
 
 libgranite_sources = files(
     'DateTime.vala',
@@ -71,6 +72,7 @@ libgranite = library(
     libgranite_sources,
     icons_resource,
     stylesheet_resource,
+    symbols_resource,
     config_vala,
 
     dependencies: [
