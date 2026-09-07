@@ -15,6 +15,9 @@
     // Outset box shadow or border color on inputs like buttons, entries, checkboxes
     --border-color: color-mix(in srgb, black 20%, transparent);
 
+    // Outset box shadow or border color on toplevel elements like windows, menus, popovers
+    --toplevel-border-color: color-mix(in srgb, black 20%, transparent);
+
     --error-color: var(--STRAWBERRY_500);
     --success-color: var(--LIME_700);
     --warning-color: var(--BANANA_900);
@@ -29,6 +32,7 @@
         --highlight-color: color-mix(in srgb, white 20%, transparent);
 
         --border-color: color-mix(in srgb, black 30%, transparent);
+        --toplevel-border-color: color-mix(in srgb, black 75%, transparent);
 
         --error-color: var(--STRAWBERRY_300);
         --success-color: var(--LIME_300);

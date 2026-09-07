@@ -6,13 +6,13 @@ window {
         border-radius: rem($window_radius);
         box-shadow:
             highlight(),
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px var(--toplevel-border-color),
             shadow(4);
 
         &:backdrop {
             box-shadow:
                 highlight(),
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
@@ -24,7 +24,7 @@ window {
         &.tiled-right:not(.maximized),
         &.tiled-left:not(.maximized) {
             box-shadow:
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
@@ -55,6 +55,6 @@ window {
 
     &.ssd {
         border-radius: $window_radius $window_radius 0 0;
-        box-shadow: 0 0 0 1px $toplevel-border-color;
+        box-shadow: 0 0 0 1px var(--toplevel-border-color);
     }
 }

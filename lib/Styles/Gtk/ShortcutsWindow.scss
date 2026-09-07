@@ -8,7 +8,7 @@ accelerator,
     background-image: 
         linear-gradient(
             to top,
-            color-mix(in srgb, var(--highlight-color) 20%, transparent), 
+            color-mix(in srgb, var(--highlight-color) 20%, transparent),
             rgba(white, 0)
         ),
         linear-gradient(
@@ -19,7 +19,7 @@ accelerator,
         );
     // Intentionally not in ems since it's used as a stroke
     border-radius: rem($window_radius / 2);
-    box-shadow: inset 0 -1px 0 0 scale-color($toplevel-border-color, $alpha: -50%);
+    box-shadow: inset 0 -1px 0 0 color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
     color: color-mix(in srgb, var(--fg-color) 90%, transparent);
     font-size: 85%;
     min-width: rem(12px);
