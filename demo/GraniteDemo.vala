@@ -43,6 +43,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (lists_view, "lists", "Lists & Grids");
         main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
         main_stack.add_titled (css_view, "css", "Style Classes");
+        main_stack.add_titled (new SymbolView (), "symbols", "Symbols");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");

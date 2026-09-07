@@ -15,21 +15,21 @@
             id='animation-group'>
       <animate
               attributeName='opacity'
-              begin='StateChange(low normal high disabled-blocking, disabled)'
+              begin='gpa:states(low normal high disabled-blocking, disabled)'
               dur='200ms'
               fill='freeze'
               to='0.5'
               keyTimes='0; 1'/>
       <animate
               attributeName='opacity'
-              begin='StateChange(disabled, low normal high disabled-blocking)'
+              begin='gpa:states(disabled, low normal high disabled-blocking)'
               dur='200ms'
               fill='freeze'
               to='1'
               keyTimes='0; 1'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(low, normal)'
+              begin='gpa:states(low, normal)'
               dur='200ms'
               fill='freeze'
               from='2 0'
@@ -38,7 +38,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(low, high)'
+              begin='gpa:states(low, high)'
               dur='200ms'
               fill='freeze'
               from='2 0'
@@ -47,7 +47,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(low, disabled disabled-blocking)'
+              begin='gpa:states(low, disabled disabled-blocking)'
               dur='200ms'
               fill='freeze'
               from='2 0'
@@ -56,7 +56,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(normal, low)'
+              begin='gpa:states(normal, low)'
               dur='200ms'
               fill='freeze'
               from='1 0'
@@ -65,7 +65,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(normal, high)'
+              begin='gpa:states(normal, high)'
               dur='200ms'
               fill='freeze'
               from='1 0'
@@ -74,7 +74,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(normal, disabled disabled-blocking)'
+              begin='gpa:states(normal, disabled disabled-blocking)'
               dur='200ms'
               fill='freeze'
               from='1 0'
@@ -83,7 +83,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(high, low)'
+              begin='gpa:states(high, low)'
               dur='200ms'
               fill='freeze'
               from='0 0'
@@ -92,7 +92,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(high, normal)'
+              begin='gpa:states(high, normal)'
               dur='200ms'
               fill='freeze'
               from='0 0'
@@ -101,7 +101,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(high, disabled disabled-blocking)'
+              begin='gpa:states(high, disabled disabled-blocking)'
               dur='200ms'
               fill='freeze'
               from='0 0'
@@ -110,7 +110,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(disabled disabled-blocking, low)'
+              begin='gpa:states(disabled disabled-blocking, low)'
               dur='200ms'
               fill='freeze'
               from='3 0'
@@ -119,7 +119,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(disabled disabled-blocking, normal)'
+              begin='gpa:states(disabled disabled-blocking, normal)'
               dur='200ms'
               fill='freeze'
               from='3 0'
@@ -128,7 +128,7 @@
               type='translate'/>
       <animateTransform
               attributeName='transform'
-              begin='StateChange(disabled disabled-blocking, high)'
+              begin='gpa:states(disabled disabled-blocking, high)'
               dur='200ms'
               fill='freeze'
               from='3 0'
@@ -152,28 +152,28 @@
               gpa:stroke-maxwidth='150%'>
         <animate
                 attributeName='fill'
-                begin='StateChange(low normal high disabled, disabled-blocking)'
+                begin='gpa:states(low normal high disabled, disabled-blocking)'
                 dur='200ms'
                 fill='freeze'
                 to='url(#gpa:warning) rgb(249,196,64)'
                 keyTimes='0; 1'/>
         <animate
                 attributeName='fill'
-                begin='StateChange(disabled-blocking, low normal high disabled)'
+                begin='gpa:states(disabled-blocking, low normal high disabled)'
                 dur='200ms'
                 fill='freeze'
                 to='url(#gpa:foreground) rgb(0,0,0)'
                 keyTimes='0; 1'/>
         <animate
                 attributeName='stroke'
-                begin='StateChange(low normal high disabled, disabled-blocking)'
+                begin='gpa:states(low normal high disabled, disabled-blocking)'
                 dur='200ms'
                 fill='freeze'
                 to='url(#gpa:warning) rgb(249,196,64)'
                 keyTimes='0; 1'/>
         <animate
                 attributeName='stroke'
-                begin='StateChange(disabled-blocking, low normal high disabled)'
+                begin='gpa:states(disabled-blocking, low normal high disabled)'
                 dur='200ms'
                 fill='freeze'
                 to='url(#gpa:foreground) rgb(0,0,0)'

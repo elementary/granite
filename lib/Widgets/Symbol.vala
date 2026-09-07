@@ -12,6 +12,22 @@ namespace Granite.SymbolState {
     public const string ACTIVE = "active";
 }
 
+public enum Granite.SymbolName {
+    // Audio volume level
+    AUDIO_VOLUME;
+
+    public string to_path () {
+        var resource_base_path = "/io/elementary/granite/";
+        switch (this) {
+            case AUDIO_VOLUME:
+                return resource_base_path + "audio-volume.svg";
+        }
+
+        // FIXME: image-missing
+        return "";
+    }
+}
+
 public class Granite.Symbol : Granite.Bin {
     public string resource_path { get; construct; }
 
@@ -20,13 +36,19 @@ public class Granite.Symbol : Granite.Bin {
         set { image.pixel_size = value; }
     }
 
-    public uint state_index {
-        get { return svg.state; }
-        set {
+    public uint states_length {
+        get {
             uint length = -1;
             svg.get_state_names (out length);
 
-            if (value > length - 1) {
+            return length;
+        }
+    }
+
+    public uint state_index {
+        get { return svg.state; }
+        set {
+            if (value > states_length - 1) {
                 warning ("Granite.Symbol set to undefined state. Ignoring.");
                 return;
             }
@@ -59,7 +81,11 @@ public class Granite.Symbol : Granite.Bin {
     private Gtk.Image image;
     private Gtk.Svg svg;
 
-    public Symbol (string resource_path) {
+    public Symbol (SymbolName name) {
+        Object (resource_path: name.to_path ());
+    }
+
+    public Symbol.from_resource (string resource_path) {
         Object (resource_path: resource_path);
     }
 

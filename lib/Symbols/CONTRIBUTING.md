@@ -14,3 +14,9 @@ Main stroke width is 1px
 
 outside corners 0.5px
 inside corners 0.25px
+
+## States
+
+All symbols must have `normal` and `disabled` states
+
+symbols can have additional custom states
