@@ -11,7 +11,7 @@ scrollbar {
     }
 
     trough {
-        background-color: rgba($fg-color, 0.2);
+        background-color: color-mix(in srgb, var(--fg-color) 20%, transparent);
         border-radius: 99px;
         margin: rem(3px);
     }
@@ -47,13 +47,13 @@ scrollbar {
 
     &.overlay-indicator {
         slider {
-            background-color: rgba($fg-color, 0.7);
+            background-color: color-mix(in srgb, var(--fg-color) 70%, transparent);
             box-shadow: 0 0 0 1px rgba(bg-color(2), 0.25);
             border: none;
         }
 
         &:active slider {
-            background-color: $fg-color;
+            background-color: var(--fg-color);
         }
 
         trough {
@@ -65,11 +65,11 @@ scrollbar {
         &:hover,
         &.hovering {
             & slider {
-                background-color: rgba($fg-color, 0.7);
+                background-color: color-mix(in srgb, var(--fg-color) 70%, transparent);
             }
 
             & trough {
-                background-color: rgba($fg-color, 0.2);
+                background-color: color-mix(in srgb, var(--fg-color) 20%, transparent);
                 transition:
                     background duration("expand") easing();
             }
