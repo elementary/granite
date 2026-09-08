@@ -1,4 +1,9 @@
 button {
+    &.flat {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 
     &.image-button {
         @extend .circular;
@@ -11,7 +16,7 @@ button {
             transform duration("expand") easing("ease-out-back");
 
         &:active {
-            background: rgba($fg-color, 0.15);
+            background: rgba(var(--fg-color), 0.15);
             transform: scale(0.8);
             transition:
                 background duration("collapse") easing(),
@@ -27,12 +32,19 @@ button {
         }
     }
 
+    &.link {
+        @extend .accent;
+
+        label {
+            text-decoration: underline;
+        }
+    }
+
     &.text-button {
         @extend %raised;
 
         padding: rem(2px) rem(4px);
     }
-
 
     // Almost certainly a button with text and image
     > box.horizontal {

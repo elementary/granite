@@ -6,7 +6,7 @@
         // Intentionally not in ems since it's used as a stroke
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
-        0 0 0 1px scale-color($border-color, $alpha: -36%),
+        0 0 0 1px color-mix(in srgb, var(--border-color) 36%, transparent),
         shadow(1);
 }
 
@@ -48,3 +48,8 @@ paper {
     font-family: monospace;
 }
 
+window.devel {
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--warning-color);
+}

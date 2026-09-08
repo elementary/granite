@@ -2,9 +2,10 @@ image {
     color: inherit;
 
     -gtk-icon-palette:
-        error $error_color,
-        success $success_color,
-        warning $warning-icon-color;
+        accent var(--accent-color),
+        error var(--error-color),
+        success var(--success-color),
+        warning var(--warning-icon-color);
 
     &:disabled {
         filter: opacity($disabled-opacity);

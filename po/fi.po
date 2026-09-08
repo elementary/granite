@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 16:55+0000\n"
-"PO-Revision-Date: 2024-12-01 13:02+0000\n"
+"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"PO-Revision-Date: 2026-03-22 09:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://l10n.elementary.io/projects/desktop/granite/"
-"fi/>\n"
+"Language-Team: Finnish <https://l10n.elementaryos.org/projects/desktop/"
+"granite/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -101,6 +101,8 @@ msgstr "%Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date
 #: lib/DateTime.vala:160
+#, fuzzy, c-format
+#| msgid "%b %e"
 msgid "%b %e"
 msgstr "%e. %Bta"
 
@@ -117,11 +119,14 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
+#, fuzzy, c-format
+#| msgid "%a, %b %e"
 msgid "%a, %b %e"
 msgstr "%a, %e. %b"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
+#, c-format
 msgid "%b"
 msgstr "%b"
 
@@ -155,7 +160,7 @@ msgstr ":"
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"

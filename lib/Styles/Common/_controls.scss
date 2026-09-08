@@ -6,7 +6,7 @@
     background-image:
         linear-gradient(
             to bottom,
-            scale-color($highlight_color, $alpha: -80%),
+            color-mix(in srgb, var(--highlight-color) 20%, transparent),
             rgba(white, 0)
         );
     transition: all duration("in-place") easing("default");
@@ -38,7 +38,7 @@
 // used to show a check or radio button is "active"
 @mixin control-checked {
     color: $SILVER_100;
-    background-color: #{'@accent_color'};
+    background-color: var(--accent-color);
 
     &:backdrop,
     &:disabled {
@@ -51,13 +51,13 @@
 }
 
 @mixin trough {
-    $trough-color: scale-color($toplevel-border-color, $alpha: -50%);
+    --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
 
-    background-color: $trough-color;
+    background-color: var(--trough-color);
     border-radius: 99px;
 
     &:disabled {
-        background-color: scale-color($trough-color, $alpha: -10%);
+        background-color: color-mix(in srgb, var(--trough-color) 90%, transparent);
     }
 }
 

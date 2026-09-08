@@ -116,7 +116,7 @@ public class WelcomeView : DemoPage {
         });
 
         alert_action.clicked.connect (() => {
-            alert_action.hide ();
+            alert_action.visible = false;
         });
     }
 }

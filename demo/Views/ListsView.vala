@@ -4,6 +4,8 @@
  */
 
 public class ListsView : DemoPage {
+    private int menu_opened_count = 0;
+
     construct {
         title = "Lists & Grids";
 
@@ -53,6 +55,7 @@ public class ListsView : DemoPage {
         menu_model.append_item (button_section);
         menu_model.append ("Move", null);
         menu_model.append ("Delete", null);
+        menu_model.append ("Opened 0 times", null);
 
         var list_store = new GLib.ListStore (typeof (ListObject));
         list_store.append (new ListObject () {
@@ -76,9 +79,18 @@ public class ListsView : DemoPage {
         var list_factory = new Gtk.SignalListItemFactory ();
         list_factory.setup.connect ((obj) => {
             var list_item = (Gtk.ListItem) obj;
-            list_item.child = new Granite.ListItem () {
+
+            var granite_list_item = new Granite.ListItem () {
                 menu_model = menu_model
             };
+
+            granite_list_item.setup_menu.connect (() => {
+                menu_opened_count++;
+                menu_model.remove (menu_model.get_n_items () - 1);
+                menu_model.append ("Opened %d times".printf (menu_opened_count), null);
+            });
+
+            list_item.child = granite_list_item;
         });
 
         list_factory.bind.connect ((obj) => {

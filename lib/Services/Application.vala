@@ -17,7 +17,6 @@
  *  Boston, MA 02110-1301 USA.
  */
 
-[CCode (gir_namespace = "GraniteServices", gir_version = "1.0")]
 namespace Granite.Services {
     /**
      * Utilities for Applications
