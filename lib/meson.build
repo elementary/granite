@@ -15,8 +15,6 @@ libgranite_sources = files(
     'Services/Settings.vala',
     'Services/System.vala',
 
-    'Widgets/AbstractSettingsPage.vala',
-    'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
     'Widgets/BackButton.vala',
     'Widgets/Bin.vala',
@@ -30,8 +28,6 @@ libgranite_sources = files(
     'Widgets/ModeSwitch.vala',
     'Widgets/OverlayBar.vala',
     'Widgets/Placeholder.vala',
-    'Widgets/SettingsSidebarRow.vala',
-    'Widgets/SettingsSidebar.vala',
     'Widgets/Settings.vala',
     'Widgets/SwitchModelButton.vala',
     'Widgets/TimePicker.vala',

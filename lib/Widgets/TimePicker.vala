@@ -101,8 +101,7 @@ public class Granite.TimePicker : Gtk.Entry {
             vexpand = true
         };
 
-        am_pm_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        am_pm_box.add_css_class (Granite.STYLE_CLASS_LINKED);
+        am_pm_box = new Granite.Box (VERTICAL, LINKED);
         am_pm_box.append (am_togglebutton);
         am_pm_box.append (pm_togglebutton);
 

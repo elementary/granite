@@ -64,13 +64,13 @@ public class Granite.ValidatedEntry : Gtk.Entry {
         changed.connect_after (() => {
             if (text == "") {
                 secondary_icon_name = null;
-                remove_css_class (Granite.STYLE_CLASS_ERROR);
+                remove_css_class (Granite.CssClass.ERROR);
             } else if (is_valid) {
                 secondary_icon_name = "process-completed-symbolic";
-                remove_css_class (Granite.STYLE_CLASS_ERROR);
+                remove_css_class (Granite.CssClass.ERROR);
             } else {
                 secondary_icon_name = "process-error-symbolic";
-                add_css_class (Granite.STYLE_CLASS_ERROR);
+                add_css_class (Granite.CssClass.ERROR);
             }
 
             update_state (Gtk.AccessibleState.INVALID, !is_valid, -1);
