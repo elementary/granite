@@ -1,7 +1,7 @@
 entry {
     @include border-interactive-roundrect;
 
-    background-color: var(--bg-color-1);
+    background-color: var(--bg-level-1);
     border: 1px solid var(--border-color);
     border-spacing: $button-spacing;
     padding: $button-spacing;

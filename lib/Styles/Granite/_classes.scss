@@ -1,5 +1,5 @@
 .card {
-    background-color: var(--bg-color-1);
+    background-color: var(--bg-level-1);
     border-radius: rem($window_radius / 2);
     box-shadow:
         highlight(),
@@ -17,7 +17,7 @@ paper {
 }
 
 .checkerboard {
-    background-color: var(--bg-color-3);
+    background-color: var(--bg-level-3);
     background-image:
         linear-gradient(
             45deg,

@@ -2,7 +2,7 @@
     background-color: color-mix(in srgb, var(--fg-color) 95%, transparent);
     border-radius: rem($window_radius / 2);
     box-shadow: shadow(1);
-    color: var(--bg-color-1);
+    color: var(--bg-level-1);
     margin: rem(6px);
     padding: rem(6px);
 }

@@ -7,7 +7,7 @@
     // Views
     --bg-level-1: white;
     // Background
-    --bg-level-1: var(--SILVER_100);
+    --bg-level-2: var(--SILVER_100);
     // Sidebars and inline toolbars
     --bg-level-3: color-mix(in oklab, var(--SILVER_100) 75%, var(--SILVER_300));
     // Titlebars and toolbars
@@ -16,10 +16,13 @@
     @media (prefers-color-scheme: dark) {
         --bg-level-0: var(--BLACK_500);
         --bg-level-1: color-mix(in oklab, var(--BLACK_500) 50%, var(--BLACK_600));
-        --bg-level-1: var(--BLACK_600);
+        --bg-level-2: var(--BLACK_600);
         --bg-level-3: color-mix(in oklab, var(--BLACK_600) 50%, var(--BLACK_700));
         --bg-level-4: var(--BLACK_700);
     }
+
+    --base-color: var(--bg-level-1);
+    --bg-color: var(--bg-level-2);
 }
 
 @function shadow($level) {
