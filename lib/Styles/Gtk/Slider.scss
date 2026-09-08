@@ -7,7 +7,7 @@ slider {
     border-radius: 999px;
     box-shadow:
         highlight(),
-        0 0 0 1px $border-color,
+        0 0 0 1px var(--border-color),
         shadow(2);
 
     // 16px - border
@@ -17,13 +17,13 @@ slider {
     &:backdrop {
         box-shadow:
             highlight(),
-            0 0 0 1px $border-color,
+            0 0 0 1px var(--border-color),
             shadow(1);
     }
 
     &:disabled {
         box-shadow:
-            0 0 0 1px $border-color,
+            0 0 0 1px var(--border-color),
             shadow(1);
     }
 }
