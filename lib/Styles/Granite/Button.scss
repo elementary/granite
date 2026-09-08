@@ -1,4 +1,20 @@
 button {
+    &.image-button {
+        &.destructive {
+            background-color: color-mix(in srgb, var(--error-color) 10%, transparent);
+        }
+
+        &.suggested {
+            background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+            color: color-mix(in oklab, var(--accent-color) 80%, black);
+        }
+
+        &.suggested:backdrop,
+        &.destructive:backdrop {
+            background-color: color-mix(in srgb, var(--fg-color) 10%, transparent);
+            color: inherit;
+        }
+    }
 
     &.text-button.destructive {
         background-color: var(--error-color);
