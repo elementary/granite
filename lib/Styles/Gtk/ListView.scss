@@ -5,6 +5,6 @@ listview {
     }
 
     &.view {
-        background-color: bg-color(1);
+        background-color: var(--bg-color-1);
     }
 }

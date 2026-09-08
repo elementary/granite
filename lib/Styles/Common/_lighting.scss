@@ -1,41 +1,24 @@
 // FIXME: Theres most likely an absolute ton in here that can be cleaned up and
 // simplified
 
-@function bg-color($level) {
-    @if $color-scheme == "light" {
-        // Inputs
-        @if $level == 0 {
-            @return $SILVER_100;
-        // Views
-        } @else if $level == 1 {
-            @return white;
-        // Background
-        } @else if $level == 2 {
-            @return $SILVER_100;
-        // Sidebars and inline toolbars
-        } @else if $level == 3 {
-            @return mix($SILVER_100, $SILVER_300, $weight: 75%);
-        // Titlebars and toolbars
-        } @else if $level == 4 {
-            @return mix($SILVER_100, $SILVER_300, $weight: 30%);
-        }
-    } @else if $color-scheme == "dark" {
-        // Inputs
-        @if $level == 0 {
-            @return $BLACK_500;
-        // Views
-        } @else if $level == 1 {
-            @return mix($BLACK_500, $BLACK_600, $weight: 50%);
-        // Background
-        } @else if $level == 2 {
-            @return $BLACK_600;
-        // Sidebars and inline toolbars
-        } @else if $level == 3 {
-            @return mix($BLACK_600, $BLACK_700, $weight: 50%);
-        // Titlebars and toolbars
-        } @else if $level == 4 {
-            @return $BLACK_700;
-        }
+:root {
+    // Inputs
+    --bg-level-0: var(--SILVER_100);
+    // Views
+    --bg-level-1: white;
+    // Background
+    --bg-level-1: var(--SILVER_100);
+    // Sidebars and inline toolbars
+    --bg-level-3: color-mix(in oklab, var(--SILVER_100) 75%, var(--SILVER_300));
+    // Titlebars and toolbars
+    --bg-level-4: color-mix(in oklab, var(--SILVER_100) 30%, var(--SILVER_300));
+
+    @media (prefers-color-scheme: dark) {
+        --bg-level-0: var(--BLACK_500);
+        --bg-level-1: color-mix(in oklab, var(--BLACK_500) 50%, var(--BLACK_600));
+        --bg-level-1: var(--BLACK_600);
+        --bg-level-3: color-mix(in oklab, var(--BLACK_600) 50%, var(--BLACK_700));
+        --bg-level-4: var(--BLACK_700);
     }
 }
 

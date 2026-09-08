@@ -1,5 +1,5 @@
 window {
-    background-color: bg_color(2);
+    background-color: var(--bg-color-2);
     color: var(--fg-color);
 
     &.csd {
