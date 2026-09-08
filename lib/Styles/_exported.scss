@@ -3,12 +3,20 @@
 // these exported GtkCSS variables should be considered public API.
 
 :root {
+    // Text, images, and other foreground elements
     --fg-color: var(--BLACK_500);
     --bg-color: #{"" + bg-color(2)};
 
     --base-color: #{"" + bg-color(1)};
-    --highlight-color: #{"" + $highlight_color};
+
+    // Inset box shadows
+    --highlight-color: white;
+
+    // Outset box shadow or border color on inputs like buttons, entries, checkboxes
     --border-color: color-mix(in srgb, black 20%, transparent);
+
+    // Outset box shadow or border color on toplevel elements like windows, menus, popovers
+    --toplevel-border-color: color-mix(in srgb, black 20%, transparent);
 
     --error-color: var(--STRAWBERRY_500);
     --success-color: var(--LIME_700);
@@ -21,7 +29,10 @@
     @media (prefers-color-scheme: dark) {
         --fg-color: white;
 
+        --highlight-color: color-mix(in srgb, white 20%, transparent);
+
         --border-color: color-mix(in srgb, black 30%, transparent);
+        --toplevel-border-color: color-mix(in srgb, black 75%, transparent);
 
         --error-color: var(--STRAWBERRY_300);
         --success-color: var(--LIME_300);
