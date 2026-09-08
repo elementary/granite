@@ -1,17 +1,26 @@
 button {
     &.image-button {
+        --bg-transparency: 10%;
+        @media (prefers-color-scheme: dark) {
+            --bg-transparency: 20%;
+        }
+
         &.destructive {
-            background-color: color-mix(in srgb, var(--error-color) 10%, transparent);
+            background-color: color-mix(in srgb, var(--error-color) var(--bg-transparency), transparent);
         }
 
         &.suggested {
-            background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
             color: color-mix(in oklab, var(--accent-color) 80%, black);
+
+            @media (prefers-color-scheme: dark) {
+                color: color-mix(in oklab, var(--accent-color) 70%, white);
+            }
         }
 
         &.suggested:backdrop,
         &.destructive:backdrop {
-            background-color: color-mix(in srgb, var(--fg-color) 10%, transparent);
+            background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
             color: inherit;
         }
     }
