@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2019–2023 elementary, Inc. <contact@elementary.io> -->
 <component>
-  <id>io.elementary.granite-7</id>
-  <translation type="gettext">granite-7</translation>
+  <id>io.elementary.granite-9</id>
+  <translation type="gettext">granite-9</translation>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>LGPL-3.0</project_license>
   <compulsory_for_desktop>Pantheon</compulsory_for_desktop>
 
-  <icon type="stock">io.elementary.granite-7</icon>
-  <name>Granite 7</name>
+  <icon type="stock">io.elementary.granite-9</icon>
+  <name>Granite 9</name>
   <summary>Build consistent and usable apps more quickly and easily</summary>
   <description>
     <p>A companion library for GTK and GLib that provides complex widgets and convenience methods designed for use in apps built for elementary OS.</p>
@@ -27,6 +27,33 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.8.1" date="2026-03-17" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>ListItem uses the context menu cursor when menu_model is set</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/granite/issues/961">Gtk stylesheets are always installed regardless of the build option "gtk-stylesheets"</issue>
+      </issues>
+    </release>
+
+    <release version="7.8.0" date="2026-02-09" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>HeaderLabel now has ellipsize property</li>
+          <li>ListItem now has a menu_model property</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/settings-system/issues/372">"Last checked Tomorrow" appears after running updates</issue>
+      </issues>
+    </release>
+
     <release version="7.7.0" date="2025-09-30" urgency="medium">
       <description>
         <p>New Icons:</p>

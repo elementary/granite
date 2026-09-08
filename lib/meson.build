@@ -2,6 +2,7 @@ subdir('Icons')
 subdir('Styles')
 
 libgranite_sources = files(
+    'Animation.vala',
     'DateTime.vala',
     'Constants.vala',
     'Init.vala',
@@ -14,8 +15,6 @@ libgranite_sources = files(
     'Services/Settings.vala',
     'Services/System.vala',
 
-    'Widgets/AbstractSettingsPage.vala',
-    'Widgets/AbstractSimpleSettingsPage.vala',
     'Widgets/AccelLabel.vala',
     'Widgets/BackButton.vala',
     'Widgets/Bin.vala',
@@ -29,8 +28,6 @@ libgranite_sources = files(
     'Widgets/ModeSwitch.vala',
     'Widgets/OverlayBar.vala',
     'Widgets/Placeholder.vala',
-    'Widgets/SettingsSidebarRow.vala',
-    'Widgets/SettingsSidebar.vala',
     'Widgets/Settings.vala',
     'Widgets/SwitchModelButton.vala',
     'Widgets/TimePicker.vala',
@@ -42,7 +39,7 @@ libgranite_sources = files(
 
 # define all the names and versions
 granite_gi_name = 'Granite'
-granite_gi_version = '7.0'
+granite_gi_version = '9.0'
 
 granite_gi = granite_gi_name + '-' + granite_gi_version
 granite_gir = granite_gi + '.gir'
@@ -78,8 +75,8 @@ libgranite = library(
         meson.get_compiler('vala').find_library('posix')
     ],
 
-    vala_header: 'granite-7.h',
-    vala_vapi: 'granite-7.vapi',
+    vala_header: meson.project_name() + '.h',
+    vala_vapi: meson.project_name() + '.vapi',
     vala_gir: granite_gir,
 
     version: meson.project_version(),
@@ -88,7 +85,7 @@ libgranite = library(
 )
 
 install_data(
-    'granite-7.deps',
+    meson.project_name() + '.deps',
     install_dir: join_paths(get_option('datadir'), 'vala', 'vapi')
 )
 
@@ -124,7 +121,7 @@ granite_pc = pkgconfig.generate(
     libgranite,
     name: meson.project_name(),
     requires: libgranite_deps,
-    subdirs: ['granite-7'],
+    subdirs: [meson.project_name()],
     description: 'elementary\'s Application Framework',
     version: meson.project_version(),
     url: 'https://github.com/elementary/granite',

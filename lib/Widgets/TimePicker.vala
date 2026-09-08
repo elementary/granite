@@ -101,8 +101,7 @@ public class Granite.TimePicker : Gtk.Entry {
             vexpand = true
         };
 
-        am_pm_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        am_pm_box.add_css_class (Granite.STYLE_CLASS_LINKED);
+        am_pm_box = new Granite.Box (VERTICAL, LINKED);
         am_pm_box.append (am_togglebutton);
         am_pm_box.append (pm_togglebutton);
 
@@ -246,7 +245,7 @@ public class Granite.TimePicker : Gtk.Entry {
         }
 
         if (Granite.DateTime.is_clock_format_12h ()) {
-            am_pm_box.show ();
+            am_pm_box.visible = true;
 
             if (time.get_hour () > 12) {
                 hours_spinbutton.set_value (time.get_hour () - 12);
@@ -259,7 +258,7 @@ public class Granite.TimePicker : Gtk.Entry {
             // Make sure that bounds are set correctly
             hours_spinbutton.set_range (1, 12);
         } else {
-            am_pm_box.hide ();
+            am_pm_box.visible = false;
             hours_spinbutton.set_value (time.get_hour ());
 
             hours_spinbutton.set_range (0, 23);

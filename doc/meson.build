@@ -1,7 +1,7 @@
 valadoc = find_program('valadoc')
 gd_scan = find_program('gtkdoc-scan')
 
-valadoc_vala_dir = 'granite-7-vala'
+valadoc_vala_dir = meson.project_name() + '-vala'
 valadoc_target = custom_target(
     'valadoc',
     command: [
@@ -29,7 +29,7 @@ valadoc_target = custom_target(
     depends: libgranite,
 )
 
-valadoc_c_dir = 'granite-7'
+valadoc_c_dir = meson.project_name()
 cdoc_target = custom_target(
     'cdocs',
     command: [
@@ -50,7 +50,7 @@ cdoc_target = custom_target(
         '--force',
         '--use-svg-images',
         '-o', join_paths(meson.current_build_dir(), valadoc_c_dir),
-        '--doclet-arg=' + 'lib/granite-7.h',
+        '--doclet-arg=' + 'lib/' + meson.project_name() + '.h',
         '--doclet=gtkdoc'
     ],
 

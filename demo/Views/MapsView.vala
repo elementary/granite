@@ -6,17 +6,17 @@
 public class MapsView : DemoPage {
     private string styles = "
         map-marker.self {
-            background-color: @base_color;
+            background-color: var(--base-color);
             border-radius: 50%;
             box-shadow:
-                0 0 0 1px @borders,
+                0 0 0 1px var(--border-color),
                 0 3px 4px alpha(black, 0.15),
                 0 3px 3px -3px alpha(black, 0.35);
             padding: 0.25rem;
         }
 
         map-marker.self grid {
-            background: @accent_color;
+            background: var(--accent-color);
             color: white;
             border-radius: 50%;
             min-height: 1rem;
