@@ -49,7 +49,10 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised; 
+        @extend %raised;
+
+        // reset padding since image buttons have no frame by default
+        padding: calc(0.5rem - 2px);
 
         // I don't know why this needs to be reiterated, but it doesn't work
         // properly without it
