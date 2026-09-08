@@ -37,7 +37,7 @@
 
 // used to show a check or radio button is "active"
 @mixin control-checked {
-    color: $SILVER_100;
+    color: var(--SILVER_100);
     background-color: var(--accent-color);
 
     &:backdrop,
