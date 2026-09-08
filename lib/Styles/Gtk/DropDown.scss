@@ -1,0 +1,24 @@
+dropdown {
+    > button {
+        @extend .text-button;
+    }
+
+    popover {
+        contents > box.vertical {
+            @extend .border-spacing-half;
+        }
+
+        listview row {
+            @extend .menuitem;
+
+            &.activatable > box.horizontal {
+                @extend .border-spacing-half;
+
+                image:last-child {
+                    @extend selection;
+                    @extend .circular;
+                }
+            }
+        }
+    }
+}
