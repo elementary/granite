@@ -2,5 +2,5 @@ tooltip {
     @extend .osd;
 
     margin: rem(3px);
-    text-shadow: 0 rem(1px) rem(2px) rgba($fg_color, 0.6);
+    text-shadow: 0 rem(1px) rem(2px) color-mix(in srgb, var(--fg-color) 60%, transparent);
 }

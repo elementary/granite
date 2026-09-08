@@ -7,13 +7,13 @@ popover {
     }
 
     > arrow {
-        border: 1px solid $toplevel-border-color;
+        border: 1px solid var(--toplevel-border-color);
     }
 
     > contents {
         box-shadow:
             // No highlight because of the arrow
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px var(--toplevel-border-color),
             shadow(2);
         border-radius: rem($window_radius);
 
@@ -31,7 +31,7 @@ popover {
     &.menu > contents {
         box-shadow:
             highlight(),
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px var(--toplevel-border-color),
             shadow(2);
         padding: $button-spacing;
     }

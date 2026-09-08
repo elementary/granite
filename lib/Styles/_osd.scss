@@ -1,5 +1,5 @@
 .osd {
-    background-color: rgba($fg-color, 0.95);
+    background-color: color-mix(in srgb, var(--fg-color) 95%, transparent);
     border-radius: rem($window_radius / 2);
     box-shadow: shadow(1);
     color: bg-color(1);
