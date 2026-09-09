@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-09-07 10:01+0000\n"
+"PO-Revision-Date: 2026-09-09 02:01+0000\n"
 "Last-Translator: Chairul Akmal <chairulakmal@protonmail.com>\n"
 "Language-Team: Indonesian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/id/>\n"
@@ -21,17 +21,22 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 9"
-msgstr ""
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
 msgstr ""
+"Bangun aplikasi yang konsisten dan mudah digunakan dengan lebih cepat dan "
+"mudah"
 
 #: data/granite.metainfo.xml.in:14
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Pustaka pendamping untuk GTK dan GLib yang menyediakan widget kompleks dan "
+"metode praktis yang dirancang untuk aplikasi yang dibangun bagi elementary "
+"OS."
 
 #: data/granite.metainfo.xml.in:24
 msgid "elementary, Inc."
@@ -47,7 +52,7 @@ msgstr "Peningkatan:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
-msgstr ""
+msgstr "ListItem menggunakan kursor menu konteks saat menu_model diatur"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:80 data/granite.metainfo.xml.in:113
@@ -59,33 +64,35 @@ msgstr "Terjemahan diperbarui"
 
 #: data/granite.metainfo.xml.in:47
 msgid "HeaderLabel now has ellipsize property"
-msgstr ""
+msgstr "HeaderLabel kini memiliki properti ellipsize"
 
 #: data/granite.metainfo.xml.in:48
 msgid "ListItem now has a menu_model property"
-msgstr ""
+msgstr "ListItem kini memiliki properti menu_model"
 
 #: data/granite.metainfo.xml.in:59
 msgid "New Icons:"
-msgstr ""
+msgstr "Ikon Baru:"
 
 #: data/granite.metainfo.xml.in:61
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"Ikon tampilan untuk kolom, kisi, daftar, dan mode pembaca. Ditambah ikon "
+"elipsis horizontal dan vertikal"
 
 #: data/granite.metainfo.xml.in:62
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "Ikon tampilkan/sembunyikan bilah sisi awal dan akhir"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Emoji category icons used by GTK's emoji picker"
-msgstr ""
+msgstr "Ikon kategori emoji yang dipakai pemilih emoji GTK"
 
 #: data/granite.metainfo.xml.in:64
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Ikon mata yang diperlukan Gtk.PasswordEntry"
 
 #: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:103
 #: data/granite.metainfo.xml.in:120 data/granite.metainfo.xml.in:184
@@ -98,204 +105,226 @@ msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
+"Box adalah widget yang dapat diorientasikan dengan jarak standar dan gaya "
+"tertaut"
 
 #: data/granite.metainfo.xml.in:69
 msgid "ListItem is a standard list widget that includes styles and spacing"
-msgstr ""
+msgstr "ListItem adalah widget daftar standar yang mencakup gaya dan jarak"
 
 #: data/granite.metainfo.xml.in:70
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"ToolBox adalah widget tata letak vertikal untuk bilah alat atas dan bawah"
 
 #: data/granite.metainfo.xml.in:71
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
+"konstanta kelas gaya baru untuk label: CssClass.NUMERIC dan "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:72
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"StyleManager menangani pengaturan otomatis mode gelap dan terang serta warna "
+"aksen sistem menggunakan Portals"
 
 #: data/granite.metainfo.xml.in:73
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"BackButton adalah tombol navigasi standar yang mengaktifkan "
+"\"navigation.pop\" dan memiliki tooltip pintasan"
 
 #: data/granite.metainfo.xml.in:77
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string kini menggunakan kata \"Super\" alih-alih simbol \"⌘\""
 
 #: data/granite.metainfo.xml.in:78
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"HeaderLabel memiliki properti baru untuk ukuran H1-H4 dan gaya H2 kini lebih "
+"tebal"
 
 #: data/granite.metainfo.xml.in:79
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD kini membulat secara bawaan"
 
 #: data/granite.metainfo.xml.in:82 data/granite.metainfo.xml.in:136
 msgid "Deprecations:"
-msgstr ""
+msgstr "Penghentian Penggunaan:"
 
 #: data/granite.metainfo.xml.in:84
 msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary. Aplikasi modern telah beralih ke desain panel "
+"terbelah dan gaya ini tidak lagi populer"
 
 #: data/granite.metainfo.xml.in:85
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"Hampir semua konstanta `STYLE_CLASS` lama telah dihentikan penggunaannya. "
+"Sebagian digantikan konstanta `CssClass`, sebagian lagi oleh widget."
 
 #: data/granite.metainfo.xml.in:87
-#, fuzzy
-#| msgid "Improvements:"
 msgid "Demo Improvements:"
-msgstr "Peningkatan:"
+msgstr "Peningkatan Demo:"
 
 #: data/granite.metainfo.xml.in:89
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "Lebih banyak halaman demo dengan lebih banyak widget"
 
 #: data/granite.metainfo.xml.in:90
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "Pengalih skema warna di bilah sisi"
 
 #: data/granite.metainfo.xml.in:105
 msgid "Granite.Bin"
-msgstr ""
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:109
 msgid "Improve screen reader support for SwitchModelButton"
-msgstr ""
+msgstr "Tingkatkan dukungan pembaca layar untuk SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:110
 msgid "Wrap long labels for SwitchModelButton"
-msgstr ""
+msgstr "Bungkus label panjang untuk SwitchModelButton"
 
 #: data/granite.metainfo.xml.in:111
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel: setel deskripsi aksesibel"
 
 #: data/granite.metainfo.xml.in:112
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry: setel AccessibleState untuk validitas"
 
 #: data/granite.metainfo.xml.in:122
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
-msgstr ""
+msgstr "Toast: tambah sinyal dismissed baru yang menyertakan alasan penutupan"
 
 #: data/granite.metainfo.xml.in:123
 msgid "Add STYLE_CLASS_SUCCESS"
-msgstr ""
+msgstr "Tambah STYLE_CLASS_SUCCESS"
 
 #: data/granite.metainfo.xml.in:124
 msgid "HeaderLabel: allow secondary text to use markup"
-msgstr ""
+msgstr "HeaderLabel: izinkan teks sekunder menggunakan markah"
 
 #: data/granite.metainfo.xml.in:128
 msgid "Make building Demo optional"
-msgstr ""
+msgstr "Jadikan pembangunan Demo opsional"
 
 #: data/granite.metainfo.xml.in:129
 msgid "Demo now uses a modern split-pane design"
-msgstr ""
+msgstr "Demo kini menggunakan desain panel terbelah modern"
 
 #: data/granite.metainfo.xml.in:130
 msgid "DateTime: handle relative datetime when epoch"
-msgstr ""
+msgstr "DateTime: tangani datetime relatif saat epoch"
 
 #: data/granite.metainfo.xml.in:131
 msgid "MessageDialog: Set last button as focus widget"
-msgstr ""
+msgstr "MessageDialog: Setel tombol terakhir sebagai widget fokus"
 
 #: data/granite.metainfo.xml.in:132
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
-msgstr ""
+msgstr "SwitchModelButton: Hapus pemfokusan papan ketik sakelar yang berlebih"
 
 #: data/granite.metainfo.xml.in:133
 msgid "Load fallback styles for widgets when using Granite.init"
-msgstr ""
+msgstr "Muat gaya cadangan untuk widget saat menggunakan Granite.init"
 
 #: data/granite.metainfo.xml.in:138
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr ""
+"SettingsPage dan SettingsSidebar: widget ini telah pindah ke LibSwitchboard"
 
 #: data/granite.metainfo.xml.in:150
 msgid "Add a withdraw method for Granite.Toast"
-msgstr ""
+msgstr "Tambah metode withdraw untuk Granite.Toast"
 
 #: data/granite.metainfo.xml.in:164
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr ""
+msgstr "Jangan bergantung pada lembar gaya elementary untuk gaya cadangan"
 
 #: data/granite.metainfo.xml.in:165
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
+"Muat otomatis lembar gaya gresource bernama \"Application.css\" pada "
+"\"Granite.init ()\""
 
 #: data/granite.metainfo.xml.in:166
 msgid "Add SettingsUri constants for launching System Settings"
-msgstr ""
+msgstr "Tambah konstanta SettingsUri untuk meluncurkan Pengaturan Sistem"
 
 #: data/granite.metainfo.xml.in:176
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr ""
+msgstr "Jadikan \"Granite.init ()\" tersedia untuk umum"
 
 #: data/granite.metainfo.xml.in:186
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_RICH_LIST untuk padding baris Gtk.ListBox standar"
 
 #: data/granite.metainfo.xml.in:187
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
+"Granite.STYLE_CLASS_FRAME untuk menambahkan batas pada Gtk.LisBox, "
+"Gtk.InfoBar, dan lainnya"
 
 #: data/granite.metainfo.xml.in:188
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_SIDEBAR untuk menata bilah sisi aplikasi"
 
 #: data/granite.metainfo.xml.in:189
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
+"Granite.STYLE_CLASS_BACKGROUND untuk menggunakan warna latar bawaan pada "
+"widget"
 
 #: data/granite.metainfo.xml.in:190
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "Tambah teks sekunder opsional pada Granite.HeaderLabel"
 
 #: data/granite.metainfo.xml.in:194
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "Izinkan teks di Granite.Toast membungkus"
 
 #: data/granite.metainfo.xml.in:195
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage: Bungkus judul dan izinkan teks deskripsi berada di bawah "
+"sakelar"
 
 #: data/granite.metainfo.xml.in:209
 msgid "Ported to GTK4! 🎉️"
-msgstr ""
+msgstr "Dialihkan ke GTK4! 🎉️"
 
 #: data/granite.metainfo.xml.in:210
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
-msgstr ""
+msgstr "Granite.Placeholder: menggantikan AlertView dan Welcome"
 
 #: data/granite.metainfo.xml.in:211
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage: Izinkan markah dalam deskripsi"
 
 #: data/granite.metainfo.xml.in:213
 msgid "Removals:"
@@ -303,57 +332,62 @@ msgstr "Penghapusan:"
 
 #: data/granite.metainfo.xml.in:215
 msgid "Application: use Gtk.Application instead"
-msgstr ""
+msgstr "Application: gunakan Gtk.Application sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:216
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Drawing: Gunakan Gtk.CSS"
 
 #: data/granite.metainfo.xml.in:217
 msgid "DynamicNotebook: use Adw.TabBar instead"
-msgstr ""
+msgstr "DynamicNotebook: gunakan Adw.TabBar sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:218
 msgid "Logger: use GLib.log instead"
-msgstr ""
+msgstr "Logger: gunakan GLib.log sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:219
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
+"ModeButton: Gunakan Gtk.ToggleButton dengan properti \"group\" dan kelas "
+"gaya \"linked\" sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:220
 msgid "Paths: use GLib.Environment instead"
-msgstr ""
+msgstr "Paths: gunakan GLib.Environment sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:221
 msgid "Seekbar"
-msgstr ""
+msgstr "Seekbar"
 
 #: data/granite.metainfo.xml.in:222
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr ""
+msgstr "Services.Settings: gunakan GLib.Settings sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:223
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
 msgstr ""
+"SimpleCommand: gunakan GLib.AppInfo.create_from_commandline sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:224
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
 msgstr ""
+"SourceList: gunakan Gtk.ListBox dengan kelas gaya \"sidebar\" sebagai "
+"gantinya"
 
 #: data/granite.metainfo.xml.in:225
 msgid "StorageBar"
-msgstr ""
+msgstr "StorageBar"
 
 #: data/granite.metainfo.xml.in:226
 msgid "TextStyle: use style class constants instead"
-msgstr ""
+msgstr "TextStyle: gunakan konstanta kelas gaya sebagai gantinya"
 
 #: data/granite.metainfo.xml.in:227
 msgid "Several functions in System were replaced by GLib.AppInfo"
-msgstr ""
+msgstr "Beberapa fungsi di System digantikan oleh GLib.AppInfo"
 
 #~ msgid "Fixes:"
 #~ msgstr "Perbaikan:"
