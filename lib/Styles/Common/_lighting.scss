@@ -130,27 +130,4 @@
         0 0 0 1px var(--toplevel-border-color),
         0 var(--shadow-offset) var(--shadow-radius) var(--shadow-spread) var(--shadow-color),
         0 var(--bloom-shadow-offset) var(--bloom-shadow-radius) var(--bloom-shadow-spread) var(--bloom-shadow-color);
-
-    //popover
-    &.shadow-2 {
-        --shadow-level: 1;
-    }
-
-    //window.dialog
-    &.shadow-3 {
-        --shadow-level: 2;
-
-        &:backdrop {
-            --shadow-level: 1;
-        }
-    }
-
-    // window
-    &.shadow-4 {
-        --shadow-level: 3;
-
-        &:backdrop {
-            --shadow-level: 1;
-        }
-    }
 }

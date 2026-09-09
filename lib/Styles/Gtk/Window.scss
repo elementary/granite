@@ -3,7 +3,13 @@ window {
     color: var(--fg-color);
 
     &.csd {
-        @extend .toplevel, .shadow-4;
+        @extend .toplevel;
+
+        --shadow-level: 3;
+
+        &:backdrop {
+            --shadow-level: 1;
+        }
 
         // black behind corners
         &.maximized {

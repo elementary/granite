@@ -1,5 +1,11 @@
 window.csd.dialog {
-    @extend .toplevel, .shadow-3;
+    @extend .toplevel;
+
+    --shadow-level: 2;
+
+    &:backdrop {
+        --shadow-level: 1;
+    }
 
     .dialog-content-area {
         margin: rem(12px);

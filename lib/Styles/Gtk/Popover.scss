@@ -30,7 +30,9 @@ popover {
     }
 
     &.menu > contents {
-        @extend .toplevel, .shadow-2;
+        @extend .toplevel;
+
+        --shadow-level: 1;
 
         padding: $button-spacing;
     }
