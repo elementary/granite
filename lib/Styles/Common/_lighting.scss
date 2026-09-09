@@ -132,21 +132,18 @@
 
     // window
     .shadow-4 {
+        --shadow-multiplier: 0%;
+
+        @media (prefers-color-scheme: dark) {
+            --shadow-multiplier: 10%;
+        }
+
         box-shadow:
             highlight(),
             0 0 0 1px var(--toplevel-border-color),
-            0 2px 4px 2px color-mix(in srgb black 10%, transparent),
-            0 15px 12px -10px color-mix(in srgb black 40%, transparent),
-            0 8px 14px 4px color-mix(in srgb black 15%, transparent);
-
-        @media (prefers-color-scheme: dark) {
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--toplevel-border-color),
-                0 2px 4px 2px color-mix(in srgb black 20%, transparent),
-                0 15px 12px -10px color-mix(in srgb black 50%, transparent),
-                0 8px 14px 4px color-mix(in srgb black 25%, transparent);
-        }
+            0 2px 4px 2px color-mix(in srgb, black calc(10% + var(--shadow-multiplier)), transparent),
+            0 15px 12px -10px color-mix(in srgb, black calc(40% + var(--shadow-multiplier)), transparent),
+            0 8px 14px 4px color-mix(in srgb, black calc(15% + var(--shadow-multiplier)), transparent);
 
         &:backdrop {
             box-shadow:
