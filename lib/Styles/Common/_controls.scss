@@ -2,7 +2,7 @@
     @include border-interactive;
 
     background-clip: border-box;
-    background-color: bg-color(0);
+    background-color: var(--bg-level-0);
     background-image:
         linear-gradient(
             to bottom,
@@ -16,14 +16,14 @@
     }
 
     &:disabled {
-        background-color: bg-color(3);
+        background-color: var(--bg-level-3);
         background-image: none;
     }
 }
 
 // used to show a button is being clicked or is in an "active" state
 @mixin control-active {
-    background: bg-color(3);
+    background: var(--bg-level-3);
     box-shadow:
         highlight("bottom"),
         inset-shadow("");
