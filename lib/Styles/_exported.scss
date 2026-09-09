@@ -5,9 +5,6 @@
 :root {
     // Text, images, and other foreground elements
     --fg-color: var(--BLACK_500);
-    --bg-color: #{"" + bg-color(2)};
-
-    --base-color: #{"" + bg-color(1)};
 
     // Inset box shadows
     --highlight-color: white;
