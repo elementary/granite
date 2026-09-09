@@ -8,7 +8,6 @@ executable(
     'GraniteDemo.vala',
     'DemoPage.vala',
 
-    'Views/AccelLabelView.vala',
     'Views/ApplicationView.vala',
     'Views/BoxView.vala',
     'Views/ControlsView.vala',
@@ -17,6 +16,7 @@ executable(
     'Views/DialogsView.vala',
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',
+    'Views/LabelView.vala',
     'Views/ListsView.vala',
     'Views/MapsView.vala',
     'Views/OverlayBarView.vala',
