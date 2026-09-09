@@ -31,6 +31,8 @@ popover {
 
     &.menu > contents {
         @extend .toplevel, .shadow-2;
+
+        padding: $button-spacing;
     }
 
     &.emoji-picker {
