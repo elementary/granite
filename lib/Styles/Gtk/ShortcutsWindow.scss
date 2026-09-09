@@ -14,7 +14,7 @@ accelerator,
         linear-gradient(
             to right,
             color-mix(in srgb, var(--highlight-color) 15%, transparent),
-            color-mix(in srgb, white 0%, transparent)
+            color-mix(in srgb, white 0%, transparent),
             color-mix(in srgb, var(--highlight-color) 15%, transparent)
         );
     // Intentionally not in ems since it's used as a stroke
