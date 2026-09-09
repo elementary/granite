@@ -125,8 +125,8 @@
     box-shadow:
         inset 0 2px 0 -1px color-mix(in srgb, var(--highlight-color) 30%, transparent),
         inset 0 -2px 0 -1px color-mix(in srgb, var(--highlight-color) 20%, transparent),
-        inset 1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent),
-        inset -1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent),
+        inset 1px 0 0 0 color-mix(in srgb, var(--highlight-color) 5%, transparent),
+        inset -1px 0 0 0 color-mix(in srgb, var(--highlight-color) 5%, transparent),
         0 0 0 1px var(--toplevel-border-color),
         0 var(--shadow-offset) var(--shadow-radius) var(--shadow-spread) var(--shadow-color),
         0 var(--bloom-shadow-offset) var(--bloom-shadow-radius) var(--bloom-shadow-spread) var(--bloom-shadow-color);
