@@ -35,17 +35,13 @@ scale {
         @extend .numeric;
     }
 
-    &.dragging {
-        slider {
-            transform: scale(1.1);
-            transition:
-                box-shadow duration("collapse") easing(),
-                transform duration("collapse") easing();
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--border-color),
-                shadow(3);
-        }
+    &.dragging slider {
+        @extend .control, .highlight, .shadow-3;
+
+        transform: scale(1.1);
+        transition:
+            box-shadow duration("collapse") easing(),
+            transform duration("collapse") easing();
     }
 
     &.horizontal {

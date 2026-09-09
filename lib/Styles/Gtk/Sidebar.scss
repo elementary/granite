@@ -1,6 +1,6 @@
 .sidebar {
+    @extend .highlight;
     background-color: var(--bg-level-3);
-    box-shadow: highlight();
 }
 
 stacksidebar.sidebar {

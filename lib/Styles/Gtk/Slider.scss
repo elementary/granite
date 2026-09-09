@@ -1,29 +1,13 @@
 slider {
     $diameter: rem(16px);
     @include control;
+    @extend .control, .highlight, .shadow-2;
 
     border: none;
 
     border-radius: 999px;
-    box-shadow:
-        highlight(),
-        0 0 0 1px var(--border-color),
-        shadow(2);
 
     // 16px - border
     min-height: calc(#{$diameter} - 1px);
     min-width: calc(#{$diameter} - 1px);
-
-    &:backdrop {
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--border-color),
-            shadow(1);
-    }
-
-    &:disabled {
-        box-shadow:
-            0 0 0 1px var(--border-color),
-            shadow(1);
-    }
 }

@@ -116,19 +116,89 @@
         inset 0 0 1px 1px rgba(black, 0.05);
 }
 
-.highlight-bottom.inset-shadow {
-    box-shadow:
-        highlight("bottom"),
-        inset-shadow("");
 
-    &:disabled {
-        box-shadow:
-            highlight("bottom"),
-            inset-shadow("disabled");
+// window, popover
+.toplevel {
+    //popover contents
+    box-shadow:
+        // No highlight because of the arrow
+        0 0 0 1px var(--toplevel-border-color),
+        shadow(2);
+
+    .highlight {
+        //popover.menu
+        .shadow-2 {
+            box-shadow:
+                highlight(),
+                0 0 0 1px var(--toplevel-border-color),
+                shadow(2);
+        }
+
+        //.dialog
+        .shadow-3 {
+            box-shadow:
+            highlight(),
+            0 0 0 1px var(--toplevel-border-color),
+            shadow(3);
+
+            //.dialog:backdrop
+            &:backdrop {
+                box-shadow:
+                    highlight(),
+                    0 0 0 1px var(--toplevel-border-color),
+                    shadow(2);
+            }
+        }
+
+        // window
+        .shadow-4 {
+            box-shadow:
+                highlight(),
+                0 0 0 1px var(--toplevel-border-color),
+                shadow(4);
+
+            //.window:backdrop
+            &:backdrop {
+                box-shadow:
+                    highlight(),
+                    0 0 0 1px var(--toplevel-border-color),
+                    shadow(2);
+            }
+        }
     }
 }
 
 .highlight {
+    // Sidebar
+    box-shadow: highlight();
+
+    // Scale
+    .control {
+        //slider
+        .shadow-2 {
+            box-shadow:
+                highlight(),
+                0 0 0 1px var(--border-color),
+                shadow(2);
+
+            &:dragging {
+                box-shadow:
+                    highlight(),
+                    0 0 0 1px var(--border-color),
+                    shadow(3);
+            }
+
+            &:backdrop,
+            &:disabled {
+                box-shadow:
+                    highlight(),
+                    0 0 0 1px var(--border-color),
+                    shadow(1);
+            }
+        }
+
+    }
+
     // mixin: border-interactive
     .outset-shadow-1 {
         box-shadow:
@@ -148,5 +218,17 @@
             0 0 0 1px color-mix(in srgb, var(--border-color) 36%, transparent),
             0 1px 3px color-mix(in srgb, black 12%, transparent),
             0 1px 2px color-mix(in srgb, black 24%, transparent);
+    }
+}
+
+.highlight-bottom.inset-shadow {
+    box-shadow:
+        highlight("bottom"),
+        inset-shadow("");
+
+    &:disabled {
+        box-shadow:
+            highlight("bottom"),
+            inset-shadow("disabled");
     }
 }
