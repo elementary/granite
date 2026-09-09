@@ -23,16 +23,9 @@
 
 // used to show a button is being clicked or is in an "active" state
 @mixin control-active {
-    background: var(--bg-level-3);
-    box-shadow:
-        highlight("bottom"),
-        inset-shadow("");
+    @extend .highlight-bottom, .inset-shadow;
 
-    &:disabled {
-        box-shadow:
-            highlight("bottom"),
-            inset-shadow("disabled");
-    }
+    background: var(--bg-level-3);
 }
 
 // used to show a check or radio button is "active"

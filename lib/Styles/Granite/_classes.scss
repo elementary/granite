@@ -1,13 +1,8 @@
 .card {
+    @extend .highlight, .shadow-1;
+
     background-color: var(--bg-level-1);
     border-radius: rem($window_radius / 2);
-    box-shadow:
-        highlight(),
-        // Intentionally not in ems since it's used as a stroke
-        // This stacks with the other shadows,
-        // so reduce it's alpha by the sum of other shadows
-        0 0 0 1px color-mix(in srgb, var(--border-color) 36%, transparent),
-        shadow(1);
 }
 
 // Used on Page Setup of gtk print portal
