@@ -28,13 +28,13 @@ public class FormView : DemoPage {
         };
         success_entry.add_css_class (Granite.CssClass.SUCCESS);
 
-        var warning_entry = new Gtk.Entry (){
+        var warning_entry = new Gtk.Entry () {
             placeholder_text = "Granite.CssClass.WARNING",
             text = "Warning"
         };
         warning_entry.add_css_class (Granite.CssClass.WARNING);
 
-        var error_entry = new Gtk.Entry (){
+        var error_entry = new Gtk.Entry () {
             placeholder_text = "Granite.CssClass.ERROR",
             text = "Error"
         };
