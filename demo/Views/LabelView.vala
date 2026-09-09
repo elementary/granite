@@ -14,12 +14,12 @@ public class LabelView : DemoPage {
         };
         numeric.add_css_class (Granite.CssClass.NUMERIC);
 
-        var mono = new Gtk.Label ("Granite.CssClass.MONOSPACE"){
+        var mono = new Gtk.Label ("Granite.CssClass.MONOSPACE") {
             halign = START
         };
         mono.add_css_class (Granite.CssClass.MONOSPACE);
 
-        var small = new Gtk.Label ("Granite.CssClass.SMALL"){
+        var small = new Gtk.Label ("Granite.CssClass.SMALL") {
             halign = START
         };
         small.add_css_class (Granite.CssClass.SMALL);
