@@ -1,15 +1,5 @@
 window.csd.dialog {
-    box-shadow:
-        highlight(),
-        0 0 0 1px var(--toplevel-border-color),
-        shadow(3);
-
-    &:backdrop {
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(2);
-    }
+    @extend .toplevel, .shadow-3;
 
     .dialog-content-area {
         margin: rem(12px);

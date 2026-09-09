@@ -11,3 +11,7 @@
 @mixin border-interactive-roundrect {
     border-radius: rem($window_radius / 2);
 }
+
+.toplevel {
+    border-radius: rem($window_radius);
+}

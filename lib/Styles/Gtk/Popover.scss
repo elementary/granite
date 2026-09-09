@@ -11,11 +11,12 @@ popover {
     }
 
     > contents {
+        @extend .toplevel;
+
         box-shadow:
             // No highlight because of the arrow
             0 0 0 1px var(--toplevel-border-color),
             shadow(2);
-        border-radius: rem($window_radius);
 
         undershoot {
             &.top {
@@ -29,11 +30,7 @@ popover {
     }
 
     &.menu > contents {
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(2);
-        padding: $button-spacing;
+        @extend .toplevel, .shadow-2;
     }
 
     &.emoji-picker {

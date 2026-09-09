@@ -3,18 +3,7 @@ window {
     color: var(--fg-color);
 
     &.csd {
-        border-radius: rem($window_radius);
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(4);
-
-        &:backdrop {
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--toplevel-border-color),
-                shadow(2);
-        }
+        @extend .toplevel, .shadow-4;
 
         // black behind corners
         &.maximized {
