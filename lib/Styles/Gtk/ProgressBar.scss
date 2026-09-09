@@ -27,9 +27,9 @@ progressbar {
                 background-image:
                     linear-gradient(
                         to right,
-                        rgba(white, 0),
-                        rgba(white, 0.25) 60%,
-                        rgba(white, 0)
+                        color-mix(in srgb, white 0%, transparent)
+                        color-mix(in srgb, white 25%, transparent) 60%,
+                        color-mix(in srgb, white 0%, transparent)
                     );
                 background-repeat: no-repeat;
                 background-size: 48px 100%;
