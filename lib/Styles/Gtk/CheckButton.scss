@@ -32,7 +32,7 @@ checkbutton {
     }
 
     check {
-        border-radius: rem($window_radius / 3);
+        border-radius: calc(var(--window-radius) / 3);
     }
 
     radio {
