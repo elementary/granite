@@ -10,5 +10,22 @@ entry {
 
     placeholder {
         @extend .dim-label;
+        color: var(--fg-color);
+    }
+
+    &.success {
+        border-color: color-mix(in oklab, var(--border-color), var(--success-color));
+    }
+
+    &.warning {
+        border-color: color-mix(in oklab, var(--border-color), var(--warning-color));
+    }
+
+    &.error {
+        border-color: color-mix(in oklab, var(--border-color), var(--error-color));
+    }
+
+    &:backdrop {
+        border-color: var(--border-color);
     }
 }
