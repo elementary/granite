@@ -45,29 +45,30 @@
     <file compressed="true" preprocess="xml-stripblanks">appointment-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">office-calendar-symbolic.svg</file>
 
-    <file alias="emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-activities.svg</file>
-    <file alias="emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-body.svg</file>
-    <file alias="emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-flag.svg</file>
-    <file alias="emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-food.svg</file>
-    <file alias="emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-nature.svg</file>
-    <file alias="emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-objects.svg</file>
-    <file alias="emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-people.svg</file>
-    <file alias="emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-recent.svg</file>
-    <file alias="emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-symbols.svg</file>
-    <file alias="emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-travel.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-activities-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-body-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-flag-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-food-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-nature-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-objects-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-people-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-recent-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-symbols-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">emoji-travel-symbolic.svg</file>
 
-    <file alias="poi-airport-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-airport.svg</file>
-    <file alias="poi-bar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-bar.svg</file>
-    <file alias="poi-building-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-building.svg</file>
-    <file alias="poi-bus-stop-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-bus.svg</file>
-    <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-street.svg</file>
-    <file alias="poi-light-rail-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-light-rail.svg</file>
-    <file alias="poi-marker-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-marker.svg</file>
-    <file alias="poi-place-of-worship-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-place-of-worship.svg</file>
-    <file alias="poi-railway-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-train.svg</file>
-    <file alias="poi-restaurant-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-restaurant.svg</file>
-    <file alias="poi-school-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-school.svg</file>
-    <file alias="poi-town-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-town.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-airport-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-bar-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-building-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-bus-stop-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-light-rail-station-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-marker-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-place-of-worship-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-railway-station-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-restaurant-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-school-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">poi-town-symbolic.svg</file>
+
+    <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-street-symbolic.svg</file>
   </gresource>
 
   <gresource prefix="/io/elementary/granite/scalable/status">
