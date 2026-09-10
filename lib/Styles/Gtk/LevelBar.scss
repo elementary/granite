@@ -1,0 +1,101 @@
+levelbar {
+    --trough-width: 2rem;
+    --trough-height: 1rem;
+
+    block {
+        @include trough;
+        transition: background-color duration("in-place") easing();
+
+        &.filled {
+            background-color: var(--accent-color);
+
+            &.low {
+                background-color: var(--error-color);
+            }
+
+            &.middle,
+            &.high {
+                background-color: var(--warning-color);
+            }
+
+            &.full {
+                background-color: var(--success-color);
+            }
+
+            &:backdrop {
+                background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
+            }
+        }
+    }
+
+    &.inverted {
+        block.filled {
+            &.low {
+                background-color: var(--success-color);
+            }
+
+            &.middle,
+            &.high {
+                background-color: var(--warning-color);
+            }
+
+            &.full {
+                background-color: var(--error-color);
+            }
+        }
+    }
+
+    &.horizontal block {
+        min-height: var(--trough-height);
+        min-width: var(--trough-width);
+    }
+
+    &.vertical block {
+        min-height: var(--trough-width);
+        min-width: var(--trough-height);
+    }
+}
+
+levelbar.discrete {
+    --trough-width: 0.25rem;
+
+    block {
+        border-radius: 0;
+    }
+
+    &.horizontal {
+        block {
+            margin-right: 1px;
+            min-width: var(--trough-width);
+        }
+
+        block:last-child {
+            border-top-right-radius: var(--trough-width);
+            border-bottom-right-radius: var(--trough-width);
+            margin-right: 0;
+        }
+
+        block:first-child {
+            border-top-left-radius: var(--trough-width);
+            border-bottom-left-radius: var(--trough-width);
+        }
+    }
+
+    &.vertical {
+        block {
+            margin-top: 1px;
+            min-height: var(--trough-width);
+        }
+
+        block:last-child {
+            border-bottom-right-radius: var(--trough-width);
+            border-bottom-left-radius: var(--trough-width);
+        }
+
+        block:first-child {
+            border-top-right-radius: var(--trough-width);
+            border-top-left-radius: var(--trough-width);
+            margin-top: 0;
+        }
+    }
+}
