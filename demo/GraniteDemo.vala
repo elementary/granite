@@ -19,7 +19,7 @@ public class Granite.Demo : Gtk.Application {
 
         var box_view = new BoxView ();
         var lists_view = new ListsView ();
-        var accel_label_view = new AccelLabelView ();
+        var label_view = new LabelView ();
         var css_view = new CSSView (window);
         var date_time_picker_view = new DateTimePickerView ();
         var form_view = new FormView ();
@@ -41,7 +41,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (placeholder, "placeholder", "Placeholder");
         main_stack.add_titled (box_view, "box", "Box");
         main_stack.add_titled (lists_view, "lists", "Lists & Grids");
-        main_stack.add_titled (accel_label_view, "accel_label", "AccelLabel");
+        main_stack.add_titled (label_view, "labels", "Labels & Text");
         main_stack.add_titled (css_view, "css", "Style Classes");
         main_stack.add_titled (date_time_picker_view, "pickers", "Date & Time");
         main_stack.add_titled (form_view, "formview", "Forms");
