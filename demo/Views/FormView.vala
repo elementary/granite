@@ -12,15 +12,33 @@ public class FormView : DemoPage {
             critical (e.message);
         }
 
-        var username_entry = new Granite.ValidatedEntry () {
+        var validated_entry = new Granite.ValidatedEntry () {
             min_length = 8,
             regex = username_regex
         };
 
-        var username_label = new Granite.HeaderLabel ("Username") {
-            mnemonic_widget = username_entry,
+        var validated_header = new Granite.HeaderLabel ("Granite.ValidatedEntry") {
+            mnemonic_widget = validated_entry,
             secondary_text = "Must be at least 8 characters long"
         };
+
+        var success_entry = new Gtk.Entry () {
+            placeholder_text = "Granite.CssClass.SUCCESS",
+            text = "Success"
+        };
+        success_entry.add_css_class (Granite.CssClass.SUCCESS);
+
+        var warning_entry = new Gtk.Entry () {
+            placeholder_text = "Granite.CssClass.WARNING",
+            text = "Warning"
+        };
+        warning_entry.add_css_class (Granite.CssClass.WARNING);
+
+        var error_entry = new Gtk.Entry () {
+            placeholder_text = "Granite.CssClass.ERROR",
+            text = "Error"
+        };
+        error_entry.add_css_class (Granite.CssClass.ERROR);
 
         var button = new Gtk.Button.with_label ("Submit");
 
@@ -29,12 +47,17 @@ public class FormView : DemoPage {
             valign = CENTER,
             margin_start = margin_end = margin_top = margin_bottom = 12
         };
-        box.append (username_label);
-        box.append (username_entry);
+        box.append (validated_header);
+        box.append (validated_entry);
         box.append (button);
+        box.append (new Granite.HeaderLabel ("Gtk.Entry"));
+        box.append (success_entry);
+        box.append (warning_entry);
+        box.append (error_entry);
+
 
         child = box;
 
-        username_entry.bind_property ("is-valid", button, "sensitive", SYNC_CREATE);
+        validated_entry.bind_property ("is-valid", button, "sensitive", SYNC_CREATE);
     }
 }
