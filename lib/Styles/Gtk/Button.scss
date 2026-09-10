@@ -20,7 +20,7 @@ button {
             transform duration("expand") easing("ease-out-back");
 
         &:active {
-            background: rgba(var(--fg-color), 0.15);
+            background: color-mix(in srgb, var(--fg-color) 15%, transparent);
             transform: scale(0.8);
             transition:
                 background duration("collapse") easing(),

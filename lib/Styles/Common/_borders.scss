@@ -1,3 +1,7 @@
+:root {
+    --window-radius: 1em;
+}
+
 @mixin border-interactive {
     box-shadow:
         highlight("full"),
@@ -9,5 +13,5 @@
 }
 
 @mixin border-interactive-roundrect {
-    border-radius: rem($window_radius / 2);
+    border-radius: calc(var(--window-radius) / 2);
 }
