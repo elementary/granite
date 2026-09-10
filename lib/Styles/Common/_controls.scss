@@ -7,7 +7,7 @@
         linear-gradient(
             to bottom,
             color-mix(in srgb, var(--highlight-color) 20%, transparent),
-            rgba(white, 0)
+            color-mix(in srgb, var(--highlight-color) 0%, transparent)
         );
     transition: all duration("in-place") easing("default");
 
@@ -37,7 +37,7 @@
 
 // used to show a check or radio button is "active"
 @mixin control-checked {
-    color: $SILVER_100;
+    color: var(--SILVER_100);
     background-color: var(--accent-color);
 
     &:backdrop,
