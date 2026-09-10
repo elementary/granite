@@ -57,7 +57,7 @@ public class FormView : DemoPage {
         box.append (success_entry);
         box.append (warning_entry);
         box.append (error_entry);
-        box.append (new Granite.HeaderLabel ("Password"));
+        box.append (new Granite.HeaderLabel ("Gtk.PasswordEntry"));
         box.append (password_entry);
 
         child = box;
