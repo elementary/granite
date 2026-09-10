@@ -6,11 +6,11 @@ video {
 
     // Play/Repeat indicator
     image.circular.large-icons.osd {
-    	background:
-    	    rgba($SILVER_300, 0.65);
-           -gtk-icon-shadow:
-                0 1px 2px rgba(black, 0.2),
-                0 0.3rem 1rem rgba(black, 0.3);
+        background:
+            color-mix(in srgb, var(--SILVER-300) 65%, transparent);
+            -gtk-icon-shadow:
+                0 1px 2px color-mix(in srgb, black 20%, transparent),
+                0 0.3rem 1rem color-mix(in srgb, black 30%, transparent);
         color: white;
         padding: 1rem;
     }
@@ -19,7 +19,7 @@ video {
         background: linear-gradient(
             to bottom,
             transparent,
-            rgba(black, 0.1) 1.5rem
+            color-mix(in srgb, black 10%, transparent) 1.5rem
         );
         color: white;
         margin: 0;
@@ -38,8 +38,8 @@ video {
             // Volume controls
             > scalebutton > button.toggle {
                 -gtk-icon-shadow:
-                    0 1px 3px rgba(black, 0.4),
-                    0 0 1em rgba(black, 0.25);
+                    0 1px 3px color-mix(in srgb, black 40%, transparent),
+                    0 0 1em color-mix(in srgb, black 25%, transparent);
 
                 &:checked {
                     background: color-mix(in srgb, color-mix(in oklab, var(--accent-color) 85%, black), transparent 50%);
@@ -55,23 +55,23 @@ video {
                     @extend .numeric;
                     font-weight: bold;
                     text-shadow:
-                        0 1px 3px rgba(black, 0.4),
-                        0 0 1rem rgba(black, 0.25);
+                        0 1px 3px color-mix(in srgb, black 40%, transparent),
+                        0 0 1rem color-mix(in srgb, black 25%, transparent);
                 }
 
                 // Playback control
                 > scale.horizontal {
                     fill {
                         animation: progress 1.5s easing() infinite;
-                        background-color: rgba(white, 0.15);
+                        background-color: color-mix(in srgb, white 15%, transparent);
                         background-repeat: no-repeat;
                         background-size: 48px 100%;
                         background-image:
                             linear-gradient(
                                 to right,
-                                rgba(white, 0),
-                                rgba(white, 0.25) 60%,
-                                rgba(white, 0)
+                                color-mix(in srgb, white 0%, transparent),
+                                color-mix(in srgb, white 25%, transparent) 60%,
+                                color-mix(in srgb, white 0%, transparent)
                             );
 
                         &:backdrop {
@@ -82,14 +82,14 @@ video {
 
                     highlight {
                         background-color: white;
-                        box-shadow: 0 1px 3px rgba(black, 0.1);
+                        box-shadow: 0 1px 3px color-mix(in srgb, black 10%, transparent);
                     }
 
                     trough {
-                        background-color: rgba(white, 0.25);
+                        background-color: color-mix(in srgb, white 25%, transparent);
                         box-shadow:
-                            0 1px 1px rgba(black, 0.075),
-                            0 0.2rem 1rem -0.15rem rgba(black, 0.1);
+                            0 1px 1px color-mix(in srgb, black 7.5%, transparent),
+                            0 0.2rem 1rem -0.15rem color-mix(in srgb, black 10%, transparent);
                     }
 
                     slider {

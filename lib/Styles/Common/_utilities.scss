@@ -20,7 +20,7 @@
     @return linear-gradient(
         $direction,
         var(--border-color),
-        rgba(black, 0.05) 1px,
-        rgba(black, 0.0) rem(3px)
+        color-mix(in srgb, black 5%, transparent) 1px,
+        color-mix(in srgb, black 0%, transparent) rem(3px)
     );
 }
