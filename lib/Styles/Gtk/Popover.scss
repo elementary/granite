@@ -73,7 +73,7 @@ popover {
 
 // Gtk.PopoverMenu sometimes uses button.model for e.g. circular buttons
 .model {
-    border-radius: rem($window_radius / 2);
+    border-radius: calc(var(--window-radius) / 2);
     padding: $button-spacing;
     transition:
         background duration("expand") easing(),

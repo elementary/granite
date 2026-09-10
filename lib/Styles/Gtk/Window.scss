@@ -13,7 +13,7 @@ window {
 
         // black behind corners
         &.maximized {
-            box-shadow: 0 0 0 rem($window_radius / 2) black;
+            box-shadow: 0 0 0 calc(var(--window-radius) / 2) black;
         }
 
         &.tiled-right:not(.maximized),
@@ -49,7 +49,7 @@ window {
     }
 
     &.ssd {
-        border-radius: $window_radius $window_radius 0 0;
+        border-radius: var(--window-radius) var(--window-radius) 0 0;
         box-shadow: 0 0 0 1px var(--toplevel-border-color);
     }
 }
