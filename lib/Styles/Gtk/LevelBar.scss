@@ -1,6 +1,6 @@
 levelbar {
     --trough-width: 2rem;
-    --trough-height: 1rem;
+    --trough-height: 0.5rem;
 
     block {
         @include trough;
@@ -82,6 +82,8 @@ levelbar.discrete {
     }
 
     &.vertical {
+        --trough-height: 0.75rem;
+
         block {
             margin-top: 1px;
             min-height: var(--trough-width);
