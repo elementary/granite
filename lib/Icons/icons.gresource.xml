@@ -24,9 +24,9 @@
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic-rtl.svg</file>
 
-    <file alias="document-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
 
-    <file alias="selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">view-column-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-grid-symbolic.svg</file>
