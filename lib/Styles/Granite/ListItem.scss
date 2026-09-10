@@ -3,7 +3,7 @@ granite-listitem {
     min-height: rem(32px); //Try to force homogeneous row height
 
     .text-box {
-        border-radius: rem($window_radius / 2);
+        border-radius: calc(var(--window-radius) / 2);
         padding: $button-spacing;
     }
 
