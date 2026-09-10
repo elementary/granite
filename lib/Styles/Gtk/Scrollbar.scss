@@ -2,7 +2,7 @@ scrollbar {
     // Can't be taller than menuitem or popover is too big
     $slider-length: rem(20px);
     $slider-width: rem(3px);
-    $slider-width-full: rem($window_radius);
+    $slider-width-full: var(--window-radius);
 
     slider {
         transition:
