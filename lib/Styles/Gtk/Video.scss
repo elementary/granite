@@ -7,7 +7,7 @@ video {
     // Play/Repeat indicator
     image.circular.large-icons.osd {
         background:
-            color-mix(in srgb, var(--SILVER-300) 65%, transparent);
+            color-mix(in srgb, var(--SILVER_300) 65%, transparent);
             -gtk-icon-shadow:
                 0 1px 2px color-mix(in srgb, black 20%, transparent),
                 0 0.3rem 1rem color-mix(in srgb, black 30%, transparent);
