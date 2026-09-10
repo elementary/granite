@@ -18,7 +18,7 @@ accelerator,
             color-mix(in srgb, var(--highlight-color) 15%, transparent)
         );
     // Intentionally not in ems since it's used as a stroke
-    border-radius: rem($window_radius / 2);
+    border-radius: calc(var(--window-radius) / 2);
     box-shadow: inset 0 -1px 0 0 color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
     color: color-mix(in srgb, var(--fg-color) 90%, transparent);
     font-size: 85%;
