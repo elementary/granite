@@ -1,6 +1,6 @@
 .card {
     background-color: var(--bg-level-1);
-    border-radius: rem($window_radius / 2);
+    border-radius: calc(var(--window-radius) / 2);
     box-shadow:
         highlight(),
         // Intentionally not in ems since it's used as a stroke

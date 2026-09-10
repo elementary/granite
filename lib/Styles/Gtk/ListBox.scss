@@ -1,14 +1,14 @@
 list {
     &.card {
-        border-radius: rem($window_radius / 2);
+        border-radius: calc(var(--window-radius) / 2);
 
         > row {
             // Rounded top
             &:first-child {
                 &,
                 &.expander row.header {
-                    border-top-left-radius: rem($window_radius / 2);
-                    border-top-right-radius: rem($window_radius / 2);
+                    border-top-left-radius: calc(var(--window-radius) / 2);
+                    border-top-right-radius: calc(var(--window-radius) / 2);
                 }
             }
 
@@ -19,8 +19,8 @@ list {
                 &.expander:not(:checked) row.header,
                 &.expander:checked list.nested,
                 &.expander:checked list.nested > row:last-child {
-                    border-bottom-left-radius: rem($window_radius / 2);
-                    border-bottom-right-radius: rem($window_radius / 2);
+                    border-bottom-left-radius: calc(var(--window-radius) / 2);
+                    border-bottom-right-radius: calc(var(--window-radius) / 2);
                     border-bottom-width: 0;
                 }
             }
