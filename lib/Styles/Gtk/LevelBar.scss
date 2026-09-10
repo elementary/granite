@@ -9,15 +9,18 @@ levelbar {
         &.filled {
             background-color: var(--accent-color);
 
+            &.error,
             &.low {
                 background-color: var(--error-color);
             }
 
+            &.warning,
             &.middle,
             &.high {
                 background-color: var(--warning-color);
             }
 
+            &.success,
             &.full {
                 background-color: var(--success-color);
             }

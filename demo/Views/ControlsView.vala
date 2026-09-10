@@ -169,10 +169,9 @@ public class ControlsView : DemoPage {
         var hdiscrete_levelbar = new Gtk.LevelBar.for_interval (0, 4) {
             mode = DISCRETE
         };
-        hdiscrete_levelbar.add_offset_value ("low", 1);
-        hdiscrete_levelbar.add_offset_value ("middle", 2);
-        hdiscrete_levelbar.add_offset_value ("high", 3);
-        hdiscrete_levelbar.add_offset_value ("full", 4);
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.ERROR, 1);
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.WARNING, 3);
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.SUCCESS, 4);
         hscale.adjustment.bind_property ("value", hdiscrete_levelbar, "value", SYNC_CREATE,
             (binding, from_value, ref to_value) => {
             to_value.set_double ((double) from_value * 4);
@@ -212,10 +211,9 @@ public class ControlsView : DemoPage {
             mode = DISCRETE,
             orientation = VERTICAL
         };
-        vdiscrete_levelbar.add_offset_value ("low", 5);
-        vdiscrete_levelbar.add_offset_value ("middle", 10);
-        vdiscrete_levelbar.add_offset_value ("high", 23);
-        vdiscrete_levelbar.add_offset_value ("full", 25);
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.ERROR, 25);
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.WARNING, 23);
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.SUCCESS, 20);
         vscale.adjustment.bind_property ("value", vdiscrete_levelbar, "value", SYNC_CREATE,
             (binding, from_value, ref to_value) => {
             to_value.set_double ((double) from_value * 25);
