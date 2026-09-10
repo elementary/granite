@@ -1,95 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/elementary/granite">
-    <file alias="scalable/actions/adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
-    <file alias="scalable/actions/adw-entry-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/document-edit-symbolic.svg</file>
-    <file alias="scalable/actions/adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
-    <file alias="scalable/actions/adw-external-link-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic.svg</file>
-    <file alias="scalable/actions/adw-external-link-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-external-link-symbolic-rtl.svg</file>
-    <file alias="scalable/actions/adw-tab-unpin-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-unpin-symbolic.svg</file>
-    <file alias="scalable/actions/adw-tab-unpin-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-unpin-symbolic-rtl.svg</file>
+  <gresource prefix="/io/elementary/granite16x16/status">
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+  </gresource>
 
-    <file alias="scalable/actions/document-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/document-edit-symbolic.svg</file>
+  <gresource prefix="/io/elementary/granite/16x16@2/status">
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+  </gresource>
 
-    <file alias="scalable/actions/list-drag-handle-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/list-drag-handle-symbolic.svg</file>
+  <gresource prefix="/io/elementary/granite/scalable/actions">
+    <file alias="adw-entry-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
 
-    <file alias="scalable/actions/pan-down-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-down-symbolic.svg</file>
-    <file alias="scalable/actions/pan-end-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
-    <file alias="scalable/actions/pan-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
-    <file alias="scalable/actions/pan-start-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-end-symbolic.svg</file>
-    <file alias="scalable/actions/pan-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-start-symbolic.svg</file>
-    <file alias="scalable/actions/pan-up-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pan-up-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-external-link-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-external-link-symbolic-rtl.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic-rtl.svg</file>
 
-    <file alias="scalable/actions/selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/selection-mode-symbolic.svg</file>
+    <file alias="document-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
 
-    <file alias="scalable/actions/view-column-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-column-symbolic.svg</file>
-    <file alias="scalable/actions/view-grid-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-grid-symbolic.svg</file>
-    <file alias="scalable/actions/view-list-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-list-symbolic.svg</file>
-    <file alias="scalable/actions/view-more-horizontal-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-more-horizontal-symbolic.svg</file>
-    <file alias="scalable/actions/view-more-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-more-symbolic.svg</file>
-    <file alias="scalable/actions/view-reader-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-reader-symbolic.svg</file>
+    <file alias="selection-mode-symbolic.svg" compressed="true" preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
 
-    <file alias="scalable/actions/view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
-    <file alias="scalable/actions/view-sidebar-end-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
-    <file alias="scalable/actions/view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-end-symbolic.svg</file>
-    <file alias="scalable/actions/view-sidebar-start-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/view-sidebar-start-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-column-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-grid-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-list-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-more-horizontal-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-more-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-reader-symbolic.svg</file>
 
-    <file alias="scalable/status/adw-tab-counter-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-counter-symbolic.svg</file>
-    <file alias="scalable/status/adw-tab-icon-missing-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-icon-missing-symbolic.svg</file>
-    <file alias="scalable/status/adw-tab-overflow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/adw-tab-overflow-symbolic.svg</file>
-
-    <file alias="scalable/status/check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
-    <file alias="scalable/status/check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-checked.svg</file>
-    <file alias="scalable/status/check-indeterminate-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
-    <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
-
-    <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
-    <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
-
-    <file alias="scalable/status/pager-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/pager-checked-symbolic.svg</file>
-
-    <file alias="scalable/status/process-completed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-completed-symbolic.svg</file>
-    <file alias="scalable/status/process-error-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/process-error-symbolic.svg</file>
-
-    <file alias="16x16/status/emblem-disabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
-    <file alias="16x16/status/emblem-enabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
-    <file alias="16x16/status/emblem-error.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
-    <file alias="16x16/status/emblem-mixed.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
-    <file alias="16x16/status/emblem-warning.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
-
-    <file alias="16x16@2/status/emblem-disabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
-    <file alias="16x16@2/status/emblem-enabled.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
-    <file alias="16x16@2/status/emblem-error.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
-    <file alias="16x16@2/status/emblem-mixed.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-mixed.svg</file>
-    <file alias="16x16@2/status/emblem-warning.svg" compressed="true" preprocess="xml-stripblanks">16/emblem-warning.svg</file>
+    <file alias="view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
+    <file alias="view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
   </gresource>
 
   <gresource prefix="/io/elementary/granite/scalable/categories">
-    <file alias="appointment-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/appointment-symbolic.svg</file>
-    <file alias="office-calendar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/office-calendar-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">appointment-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">office-calendar-symbolic.svg</file>
 
-    <file alias="emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-activities.svg</file>
-    <file alias="emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-body.svg</file>
-    <file alias="emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-flag.svg</file>
-    <file alias="emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-food.svg</file>
-    <file alias="emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-nature.svg</file>
-    <file alias="emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-objects.svg</file>
-    <file alias="emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-people.svg</file>
-    <file alias="emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-recent.svg</file>
-    <file alias="emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-symbols.svg</file>
-    <file alias="emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/emoji-travel.svg</file>
+    <file alias="emoji-activities-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-activities.svg</file>
+    <file alias="emoji-body-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-body.svg</file>
+    <file alias="emoji-flag-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-flag.svg</file>
+    <file alias="emoji-food-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-food.svg</file>
+    <file alias="emoji-nature-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-nature.svg</file>
+    <file alias="emoji-objects-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-objects.svg</file>
+    <file alias="emoji-people-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-people.svg</file>
+    <file alias="emoji-recent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-recent.svg</file>
+    <file alias="emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-symbols.svg</file>
+    <file alias="emoji-travel-symbolic.svg" compressed="true" preprocess="xml-stripblanks">emoji-travel.svg</file>
 
-    <file alias="poi-airport-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-airport.svg</file>
-    <file alias="poi-bar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-bar.svg</file>
-    <file alias="poi-building-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-building.svg</file>
-    <file alias="poi-bus-stop-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-bus.svg</file>
-    <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-street.svg</file>
-    <file alias="poi-light-rail-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-light-rail.svg</file>
-    <file alias="poi-marker-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >scalable/poi-marker.svg</file>
-    <file alias="poi-place-of-worship-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-place-of-worship.svg</file>
-    <file alias="poi-railway-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-train.svg</file>
-    <file alias="poi-restaurant-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-restaurant.svg</file>
-    <file alias="poi-school-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-school.svg</file>
-    <file alias="poi-town-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/poi-town.svg</file>
+    <file alias="poi-airport-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-airport.svg</file>
+    <file alias="poi-bar-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-bar.svg</file>
+    <file alias="poi-building-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-building.svg</file>
+    <file alias="poi-bus-stop-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-bus.svg</file>
+    <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-street.svg</file>
+    <file alias="poi-light-rail-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-light-rail.svg</file>
+    <file alias="poi-marker-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-marker.svg</file>
+    <file alias="poi-place-of-worship-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-place-of-worship.svg</file>
+    <file alias="poi-railway-station-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-train.svg</file>
+    <file alias="poi-restaurant-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-restaurant.svg</file>
+    <file alias="poi-school-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-school.svg</file>
+    <file alias="poi-town-symbolic.svg" compressed="true" preprocess="xml-stripblanks">poi-town.svg</file>
+  </gresource>
+
+  <gresource prefix="/io/elementary/granite/scalable/status">
+    <file compressed="true" preprocess="xml-stripblanks">process-completed-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">process-error-symbolic.svg</file>
+  </gresource>
+
+  <gresource prefix="/io/elementary/granite/scalable/ui">
+    <file compressed="true" preprocess="xml-stripblanks">adw-tab-counter-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-tab-icon-missing-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">adw-tab-overflow-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">check-indeterminate.svg</file>
+
+    <file alias="adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
+    <file alias="check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
+    <file alias="check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
+    <file alias="check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-indeterminate.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">eye-not-looking-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">eye-open-negative-filled-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">list-drag-handle-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">pan-down-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">pan-end-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">pan-start-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">pan-up-symbolic.svg</file>
+
+    <file alias="pan-end-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">pan-start-symbolic.svg</file>
+    <file alias="pan-start-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">pan-end-symbolic.svg</file>
+    <file alias="adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">pan-up-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">pager-checked-symbolic.svg</file>
   </gresource>
 </gresources>
