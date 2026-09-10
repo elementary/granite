@@ -34,7 +34,7 @@ Granite uses a base grid unit of 2px.
 To align visually with this grid, some widgets with borders will be "off-by-one".
 
 Where reasonable, border radii should increase as they nest. For instance, button radii are 4px so they nest neatly into 8px radii windows, popovers, and OSDs.
-To facilitate this, `$window_radius` has been defined as a variable, and all other radii should be derived from it (e.g. `$button_radius = $window_radius / 2`).
+To facilitate this, `--window-radius` has been defined as a variable, and all other radii should be derived from it (e.g. `--button_radius: calc(var(--window-radius) / 2)`).
 
 ## States & Pseudo Classes
 
