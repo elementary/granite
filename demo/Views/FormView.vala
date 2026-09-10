@@ -24,6 +24,10 @@ public class FormView : DemoPage {
 
         var button = new Gtk.Button.with_label ("Submit");
 
+        var spinbutton_header = new Granite.HeaderLabel ("Gtk.SpinButton");
+
+        var spinbutton = new Gtk.SpinButton.with_range (0, 100, 10);
+
         var box = new Granite.Box (VERTICAL) {
             halign = CENTER,
             valign = CENTER,
@@ -32,6 +36,8 @@ public class FormView : DemoPage {
         box.append (username_label);
         box.append (username_entry);
         box.append (button);
+        box.append (spinbutton_header);
+        box.append (spinbutton);
 
         child = box;
 
