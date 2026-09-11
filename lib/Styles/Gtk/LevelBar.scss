@@ -25,8 +25,9 @@ levelbar {
                 background-color: var(--success-color);
             }
 
-            &:backdrop {
-                background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
+            &:backdrop,
+            &:disabled {
+                filter: grayscale(100%);
             }
         }
     }
