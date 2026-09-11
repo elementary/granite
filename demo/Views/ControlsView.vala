@@ -23,6 +23,11 @@ public class ControlsView : DemoPage {
             tooltip_text = "Gtk.ToggleButton.icon_name"
         };
 
+        var scale_button = new Gtk.ScaleButton () {
+            icons = {"view-more-symbolic"},
+            tooltip_text = "Gtk.ScaleButton"
+        };
+
         var back_button = new Granite.BackButton ("Granite.BackButton") {
             halign = START
         };
@@ -59,6 +64,7 @@ public class ControlsView : DemoPage {
         var image_button_box = new Granite.Box (VERTICAL, HALF);
         image_button_box.append (imagebutton);
         image_button_box.append (toggle_imagebutton);
+        image_button_box.append (scale_button);
         image_button_box.append (destructive_imagebutton);
         image_button_box.append (suggested_imagebutton);
 
