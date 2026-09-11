@@ -86,6 +86,11 @@ public class ControlsView : DemoPage {
         menu_button_popover.add_child (switchmodelbutton, "switch");
         menu_button_popover.add_child (description_switchmodelbutton, "description-switch");
 
+        var scale_button = new Gtk.ScaleButton () {
+            icons = {"view-more-symbolic"},
+            tooltip_text = "Gtk.ScaleButton"
+        };
+
         var back_button = new Granite.BackButton ("Granite.BackButton") {
             halign = START
         };
@@ -123,6 +128,7 @@ public class ControlsView : DemoPage {
         image_button_box.append (imagebutton);
         image_button_box.append (toggle_imagebutton);
         image_button_box.append (menu_button);
+        image_button_box.append (scale_button);
         image_button_box.append (destructive_imagebutton);
         image_button_box.append (suggested_imagebutton);
 
