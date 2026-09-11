@@ -7,6 +7,12 @@ public class ControlsView : DemoPage {
     construct {
         var button_header = new Granite.HeaderLabel ("Buttons");
 
+        var dropdown = new Gtk.DropDown.from_strings (
+            {"Jupiter", "Luna", "Freya", "Loki", "Juno", "Hera", "Odin", "Jólnir", "Horus", "Circe"}
+        ) {
+            enable_search = true
+        };
+
         var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
 
         var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()") {
@@ -22,6 +28,8 @@ public class ControlsView : DemoPage {
             icon_name = "eye-open-negative-filled-symbolic",
             tooltip_text = "Gtk.ToggleButton.icon_name"
         };
+
+        var menu_button = new Gtk.MenuButton ();
 
         var scale_button = new Gtk.ScaleButton () {
             icons = {"view-more-symbolic"},
@@ -56,6 +64,7 @@ public class ControlsView : DemoPage {
         var text_button_box = new Granite.Box (VERTICAL, HALF);
         text_button_box.append (textbutton);
         text_button_box.append (toggle_button);
+        text_button_box.append (dropdown);
         text_button_box.append (destructive_button);
         text_button_box.append (suggested_button);
         text_button_box.append (back_button);
@@ -64,6 +73,7 @@ public class ControlsView : DemoPage {
         var image_button_box = new Granite.Box (VERTICAL, HALF);
         image_button_box.append (imagebutton);
         image_button_box.append (toggle_imagebutton);
+        image_button_box.append (menu_button);
         image_button_box.append (scale_button);
         image_button_box.append (destructive_imagebutton);
         image_button_box.append (suggested_imagebutton);
