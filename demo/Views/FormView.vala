@@ -12,15 +12,16 @@ public class FormView : DemoPage {
             critical (e.message);
         }
 
+        var validated_header = new Granite.HeaderLabel ("Granite.ValidatedEntry") {
+            secondary_text = "Must be at least 8 characters long"
+        };
+
         var validated_entry = new Granite.ValidatedEntry () {
             min_length = 8,
             regex = username_regex
         };
 
-        var validated_header = new Granite.HeaderLabel ("Granite.ValidatedEntry") {
-            mnemonic_widget = validated_entry,
-            secondary_text = "Must be at least 8 characters long"
-        };
+        var button = new Gtk.Button.with_label ("Submit");
 
         var success_entry = new Gtk.Entry () {
             placeholder_text = "Granite.CssClass.SUCCESS",
@@ -40,9 +41,11 @@ public class FormView : DemoPage {
         };
         error_entry.add_css_class (Granite.CssClass.ERROR);
 
-        var button = new Gtk.Button.with_label ("Submit");
+        var password_entry = new Gtk.PasswordEntry () {
+            show_peek_icon = true
+        };
 
-        var box = new Granite.Box (VERTICAL) {
+        var box = new Granite.Box (VERTICAL, HALF) {
             halign = CENTER,
             valign = CENTER,
             margin_start = margin_end = margin_top = margin_bottom = 12
@@ -54,7 +57,8 @@ public class FormView : DemoPage {
         box.append (success_entry);
         box.append (warning_entry);
         box.append (error_entry);
-
+        box.append (new Granite.HeaderLabel ("Gtk.PasswordEntry"));
+        box.append (password_entry);
 
         child = box;
 
