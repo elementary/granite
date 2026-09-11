@@ -14,14 +14,14 @@ levelbar {
                 background-color: var(--error-color);
             }
 
-            &.warning,
+            &.high
             &.middle,
-            &.high {
-                background-color: var(--warning-color);
+            &.warning{
+                background-color: var(--warning-icon-color);
             }
 
-            &.success,
-            &.full {
+            &.full,
+            &.success {
                 background-color: var(--success-color);
             }
 
@@ -33,15 +33,18 @@ levelbar {
 
     &.inverted {
         block.filled {
-            &.low {
+            &.low,
+            &.success {
                 background-color: var(--success-color);
             }
 
+            &.high,
             &.middle,
-            &.high {
-                background-color: var(--warning-color);
+            &.warning {
+                background-color: var(--warning-icon-color);
             }
 
+            &.error,
             &.full {
                 background-color: var(--error-color);
             }
