@@ -44,9 +44,8 @@ public class Granite.DatePicker : Gtk.Entry, Gtk.Buildable {
             has_arrow = false,
             position = Gtk.PositionType.BOTTOM
         };
+        popover.add_css_class ("menu");
         popover.set_parent (this);
-
-        date = new GLib.DateTime.now_local ();
 
         // Entry properties
         editable = false; // user can't edit the entry directly
@@ -60,12 +59,14 @@ public class Granite.DatePicker : Gtk.Entry, Gtk.Buildable {
         });
 
         calendar.day_selected.connect (() => {
-            date = new GLib.DateTime.local (calendar.year, calendar.month + 1, calendar.day, 0, 0, 0);
+            date = calendar.date;
         });
 
         notify["date"].connect (() => {
             text = _date.format (format);
             calendar.select_day (date);
         });
+
+        date = new GLib.DateTime.now_local ();
     }
 }
