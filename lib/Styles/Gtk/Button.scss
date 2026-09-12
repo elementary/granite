@@ -1,4 +1,7 @@
 button {
+    min-height: 16px;
+    min-width: 16px;
+
     &.flat {
         background: transparent;
         border: none;
@@ -8,9 +11,9 @@ button {
     &.image-button {
         @extend .circular;
 
-        padding: calc(0.5rem - 2px);
-        min-height: 16px;
-        min-width: 16px;
+        // Circles extend for visual balance
+        margin: -1px;
+        padding: calc(0.5rem);
 
         transition:
             background duration("expand") easing(),
@@ -27,6 +30,9 @@ button {
         &.toggle {
             @include border-interactive-roundrect;
 
+            margin: 0;
+            padding: calc(0.5rem - 1px);
+
             &:checked {
                 @extend selection;
             }
@@ -40,6 +46,9 @@ button {
     &.link {
         @extend .accent;
 
+        min-height: 0;
+        min-width: 0;
+
         label {
             text-decoration: underline;
         }
@@ -48,8 +57,6 @@ button {
     &.text-button {
         @extend %raised;
 
-        min-height: 16px;
-        min-width: 16px;
         padding: calc(0.5rem - 2px);
     }
 

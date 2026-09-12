@@ -1,4 +1,29 @@
 button {
+    &.image-button {
+        --bg-transparency: 10%;
+        @media (prefers-color-scheme: dark) {
+            --bg-transparency: 20%;
+        }
+
+        &.destructive {
+            background-color: color-mix(in srgb, var(--error-color) var(--bg-transparency), transparent);
+        }
+
+        &.suggested {
+            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
+            color: color-mix(in oklab, var(--accent-color) 80%, black);
+
+            @media (prefers-color-scheme: dark) {
+                color: color-mix(in oklab, var(--accent-color) 70%, white);
+            }
+        }
+
+        &.suggested:backdrop,
+        &.destructive:backdrop {
+            background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
+            color: inherit;
+        }
+    }
 
     &.text-button.destructive {
         background-color: var(--error-color);
@@ -33,7 +58,11 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised; 
+        @extend %raised;
+
+        // reset padding since image buttons have no frame by default
+        margin: 0;
+        padding: calc(0.5rem - 2px);
 
         // I don't know why this needs to be reiterated, but it doesn't work
         // properly without it
