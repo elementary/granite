@@ -23,6 +23,69 @@ public class ControlsView : DemoPage {
             tooltip_text = "Gtk.ToggleButton.icon_name"
         };
 
+        var reply_menuitem = new GLib.MenuItem ("Reply", null);
+        reply_menuitem.set_attribute_value ("verb-icon", "mail-reply-sender-symbolic");
+
+        var reply_all_menuitem = new GLib.MenuItem ("Reply All", null);
+        reply_all_menuitem.set_attribute_value ("verb-icon", "mail-reply-all-symbolic");
+
+        var forward_menuitem = new GLib.MenuItem ("Forward", null);
+        forward_menuitem.set_attribute_value ("verb-icon", "mail-forward-symbolic");
+
+        var switchbutton_header = new Granite.HeaderLabel ("SwitchModelButton") {
+            margin_top = 12
+        };
+
+        var header_switchmodelbutton = new Granite.SwitchModelButton ("As a Header");
+        header_switchmodelbutton.add_css_class (Granite.HeaderLabel.Size.H4.to_string ());
+
+        var switchmodelbutton = new Granite.SwitchModelButton ("Default");
+
+        var description_switchmodelbutton = new Granite.SwitchModelButton ("With A Description") {
+            active = true,
+            description = "A description of additional affects related to the activation state of this switch"
+        };
+
+        var header_item = new GLib.MenuItem (null, null);
+        header_item.set_attribute_value ("custom", "header");
+
+        var switch_item = new GLib.MenuItem (null, null);
+        switch_item.set_attribute_value ("custom", "switch");
+
+        var description_switch_item = new GLib.MenuItem (null, null);
+        description_switch_item.set_attribute_value ("custom", "description-switch");
+
+        var switch_section = new GLib.Menu ();
+        switch_section.append_item (switch_item);
+        switch_section.append_item (description_switch_item);
+        switch_section.append_item (header_item);
+
+        var button_menu = new GLib.Menu ();
+        button_menu.append_item (reply_menuitem);
+        button_menu.append_item (reply_all_menuitem);
+        button_menu.append_item (forward_menuitem);
+
+        var button_section = new GLib.MenuItem.section (null, button_menu);
+        button_section.set_attribute_value ("display-hint", "circular-buttons");
+
+        var menuitem_section = new GLib.Menu ();
+        menuitem_section.append ("Move", null);
+        menuitem_section.append ("Delete", null);
+
+        var menu_model = new GLib.Menu ();
+        menu_model.append_item (button_section);
+        menu_model.append_section ("SwitchModelButton", switch_section);
+        menu_model.append_section ( null, menuitem_section);
+
+        var menu_button = new Gtk.MenuButton () {
+            menu_model = menu_model
+        };
+
+        var menu_button_popover = (Gtk.PopoverMenu) menu_button.popover;
+        menu_button_popover.add_child (header_switchmodelbutton, "header");
+        menu_button_popover.add_child (switchmodelbutton, "switch");
+        menu_button_popover.add_child (description_switchmodelbutton, "description-switch");
+
         var scale_button = new Gtk.ScaleButton () {
             icons = {"view-more-symbolic"},
             tooltip_text = "Gtk.ScaleButton"
@@ -64,6 +127,7 @@ public class ControlsView : DemoPage {
         var image_button_box = new Granite.Box (VERTICAL, HALF);
         image_button_box.append (imagebutton);
         image_button_box.append (toggle_imagebutton);
+        image_button_box.append (menu_button);
         image_button_box.append (scale_button);
         image_button_box.append (destructive_imagebutton);
         image_button_box.append (suggested_imagebutton);
@@ -118,46 +182,6 @@ public class ControlsView : DemoPage {
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
 
-        var switchbutton_header = new Granite.HeaderLabel ("SwitchModelButton") {
-            margin_top = 12
-        };
-
-        var header_switchmodelbutton = new Granite.SwitchModelButton ("Header");
-        header_switchmodelbutton.add_css_class (Granite.HeaderLabel.Size.H4.to_string ());
-
-        var switchmodelbutton = new Granite.SwitchModelButton ("Default");
-
-        var description_switchmodelbutton = new Granite.SwitchModelButton ("A SwitchModelButton With A Description") {
-            active = true,
-            description = "A description of additional affects related to the activation state of this switch"
-        };
-
-        var header_item = new GLib.MenuItem (null, null);
-        header_item.set_attribute_value ("custom", "header");
-
-        var switch_item = new GLib.MenuItem (null, null);
-        switch_item.set_attribute_value ("custom", "switch");
-
-        var description_switch_item = new GLib.MenuItem (null, null);
-        description_switch_item.set_attribute_value ("custom", "description-switch");
-
-        var menu_model = new GLib.Menu ();
-        menu_model.append_item (header_item);
-        menu_model.append_item (switch_item);
-        menu_model.append_item (description_switch_item);
-
-        var switchbutton_popover = new Gtk.PopoverMenu.from_model (menu_model) {
-            has_arrow = false
-        };
-        switchbutton_popover.add_child (header_switchmodelbutton, "header");
-        switchbutton_popover.add_child (switchmodelbutton, "switch");
-        switchbutton_popover.add_child (description_switchmodelbutton, "description-switch");
-
-        var popover_button = new Gtk.MenuButton () {
-            direction = Gtk.ArrowType.UP
-        };
-        popover_button.popover = switchbutton_popover;
-
         var scale_header = new Granite.HeaderLabel ("Scale");
 
         var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 1, 0.01) {
@@ -205,8 +229,6 @@ public class ControlsView : DemoPage {
         box.append (checkradio_box);
         box.append (mode_switch_label);
         box.append (mode_switch);
-        box.append (switchbutton_header);
-        box.append (popover_button);
         box.append (scale_header);
         box.append (scale_box);
 
