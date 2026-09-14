@@ -18,7 +18,8 @@ install_data(
 
 install_subdir(
     '16',
-    install_dir: icon_dir / '16x16/emblems'
+    install_dir: icon_dir / '16x16/emblems',
+    strip_directory : true
 )
 
 install_symlink(
