@@ -1,39 +1,73 @@
 button {
-
-    &.text-button.destructive {
-        background-color: var(--error-color);
-        color: white;
+    &.destructive,
+    &.suggested {
         text-shadow: none;
 
-        @media (prefers-color-scheme: dark) {
-            background-clip: padding-box;
+        image {
+            -gtk-icon-palette: default;
         }
+    }
 
-        &:backdrop {
-            background-color: inherit;
-            color: inherit;
-        }
+    &.destructive {
+        background-color: var(--error-color);
+        color: white;
 
         &:active {
             background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
         }
     }
 
-    &.text-button.suggested {
-        background-color: var(--selected-bg-color);
-        color: var(--selected-fg-color);
-        text-shadow: none;
+    &.image-button {
+        --bg-transparency: 10%;
+        @media (prefers-color-scheme: dark) {
+            --bg-transparency: 20%;
+        }
 
-        &:backdrop {
-            background-color: inherit;
+        &.suggested:backdrop,
+        &.destructive:backdrop {
+            background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
             color: inherit;
+        }
+
+        &.suggested {
+            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
+
+            color: color-mix(in oklab, var(--accent-color) 80%, black);
+
+            @media (prefers-color-scheme: dark) {
+                color: color-mix(in oklab, var(--accent-color) 70%, white);
+
+            }
+        }
+    }
+
+    &.text-button {
+        &.destructive,
+        &.suggested {
+            @media (prefers-color-scheme: dark) {
+                background-clip: padding-box;
+            }
+
+            &:backdrop {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        &.suggested {
+            background-color: var(--selected-bg-color);
+            color: var(--selected-fg-color);
         }
     }
 
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised; 
+        @extend %raised;
+
+        // reset padding since image buttons have no frame by default
+        margin: 0;
+        padding: calc(0.5rem - 2px);
 
         // I don't know why this needs to be reiterated, but it doesn't work
         // properly without it
