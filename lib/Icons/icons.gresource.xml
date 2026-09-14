@@ -43,6 +43,9 @@
     <file alias="scalable/status/check-indeterminate-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
     <file alias="scalable/status/check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/check-indeterminate.svg</file>
 
+    <!--Gtk.DropDown-->
+    <file alias="scalable/status/object-select-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/object-select.svg</file>
+
     <file alias="scalable/status/eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-not-looking-symbolic.svg</file>
     <file alias="scalable/status/eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">scalable/eye-open-negative-filled-symbolic.svg</file>
 
