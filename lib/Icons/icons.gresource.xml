@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/io/elementary/granite16x16/status">
+  <gresource prefix="/io/elementary/granite/16x16/status">
     <file compressed="true" preprocess="xml-stripblanks">16/emblem-disabled.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">16/emblem-enabled.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">16/emblem-error.svg</file>
