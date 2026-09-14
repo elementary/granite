@@ -1,21 +1,26 @@
 button {
+    &.destructive,
+    &.suggested {
+        text-shadow: none;
+
+        image {
+            -gtk-icon-palette: default;
+        }
+    }
+
+    &.destructive {
+        background-color: var(--error-color);
+        color: white;
+
+        &:active {
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
+        }
+    }
+
     &.image-button {
         --bg-transparency: 10%;
         @media (prefers-color-scheme: dark) {
             --bg-transparency: 20%;
-        }
-
-        &.destructive {
-            background-color: color-mix(in srgb, var(--error-color) var(--bg-transparency), transparent);
-        }
-
-        &.suggested {
-            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
-            color: color-mix(in oklab, var(--accent-color) 80%, black);
-
-            @media (prefers-color-scheme: dark) {
-                color: color-mix(in oklab, var(--accent-color) 70%, white);
-            }
         }
 
         &.suggested:backdrop,
@@ -23,35 +28,35 @@ button {
             background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
             color: inherit;
         }
-    }
 
-    &.text-button.destructive {
-        background-color: var(--error-color);
-        color: white;
-        text-shadow: none;
+        &.suggested {
+            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
 
-        @media (prefers-color-scheme: dark) {
-            background-clip: padding-box;
-        }
+            color: color-mix(in oklab, var(--accent-color) 80%, black);
 
-        &:backdrop {
-            background-color: inherit;
-            color: inherit;
-        }
+            @media (prefers-color-scheme: dark) {
+                color: color-mix(in oklab, var(--accent-color) 70%, white);
 
-        &:active {
-            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
+            }
         }
     }
 
-    &.text-button.suggested {
-        background-color: var(--selected-bg-color);
-        color: var(--selected-fg-color);
-        text-shadow: none;
+    &.text-button {
+        &.destructive,
+        &.suggested {
+            @media (prefers-color-scheme: dark) {
+                background-clip: padding-box;
+            }
 
-        &:backdrop {
-            background-color: inherit;
-            color: inherit;
+            &:backdrop {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        &.suggested {
+            background-color: var(--selected-bg-color);
+            color: var(--selected-fg-color);
         }
     }
 
