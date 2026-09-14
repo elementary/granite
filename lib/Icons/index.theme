@@ -1,0 +1,13 @@
+[Icon Theme]
+Name=Granite
+Hidden=true
+
+Example=folder
+Directories=scalable
+
+[scalable]
+Context=UI
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
