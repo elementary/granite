@@ -45,7 +45,9 @@ public class FormView : DemoPage {
             show_peek_icon = true
         };
 
-        var box = new Granite.Box (VERTICAL, HALF) {
+        var spinbutton = new Gtk.SpinButton.with_range (0, 100, 10);
+
+        var box = new Granite.Box (VERTICAL) {
             halign = CENTER,
             valign = CENTER,
             margin_start = margin_end = margin_top = margin_bottom = 12
@@ -59,6 +61,8 @@ public class FormView : DemoPage {
         box.append (error_entry);
         box.append (new Granite.HeaderLabel ("Gtk.PasswordEntry"));
         box.append (password_entry);
+        box.append (new Granite.HeaderLabel ("Gtk.SpinButton"));
+        box.append (spinbutton);
 
         child = box;
 
