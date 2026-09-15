@@ -15,6 +15,10 @@ public class DialogsView : DemoPage {
     construct {
         var dialog_button = new Gtk.Button.with_label ("Show Dialog");
 
+        var alert_button = new Gtk.Button.with_label ("AlertDialog");
+
+        var alert_button_pro = new Gtk.Button.with_label ("AlertDialog+ Pro Ultra Max");
+
         var message_button = new Gtk.Button.with_label ("Show MessageDialog");
 
         toast = new Granite.Toast ("Did something");
@@ -25,8 +29,10 @@ public class DialogsView : DemoPage {
             valign = Gtk.Align.CENTER,
             row_spacing = 12
         };
-        grid.attach (dialog_button, 0, 1);
-        grid.attach (message_button, 0, 2);
+        grid.attach (dialog_button, 0, 0);
+        grid.attach (alert_button, 0, 1);
+        grid.attach (alert_button_pro, 0, 2);
+        grid.attach (message_button, 0, 3);
 
         var overlay = new Gtk.Overlay () {
             child = grid
@@ -36,6 +42,8 @@ public class DialogsView : DemoPage {
         child = overlay;
 
         dialog_button.clicked.connect (show_dialog);
+        alert_button.clicked.connect (show_alert_dialog);
+        alert_button_pro.clicked.connect (show_alert_dialog_pro);
         message_button.clicked.connect (show_message_dialog);
     }
 
@@ -74,6 +82,54 @@ public class DialogsView : DemoPage {
         });
 
         dialog.show ();
+    }
+
+    private void show_alert_dialog () {
+        var dialog = new Granite.AlertDialog (
+            "Say what happened",
+            "Provide reassurance. Explain why it happened. Provide a suggestion. Additional help info or links."
+        ) {
+            transient_for = (Gtk.Window) get_root ()
+        };
+
+        dialog.add_button ("_Cancel", "cancel");
+
+        dialog.response.connect (() => {
+            dialog.destroy ();
+        });
+
+        dialog.present ();
+    }
+
+    private void show_alert_dialog_pro () {
+        var dialog = new Granite.AlertDialog (
+            "Say what happened",
+            "Provide reassurance. Explain why it happened. Provide a suggestion. Additional help info or links."
+        ) {
+            primary_icon = new ThemedIcon ("applications-development"),
+            secondary_icon = new ThemedIcon ("dialog-information"),
+            content = new Gtk.CheckButton.with_label ("Optional choices or content"),
+            transient_for = (Gtk.Window) get_root ()
+        };
+
+        dialog.add_button ("_Cancel", "cancel");
+        dialog.add_button ("_Take Action", "accept", SUGGESTED);
+
+        dialog.set_response_enabled ("accept", false);
+
+        dialog.response.connect ((response_id) => {
+           if (response_id == "accept") {
+               toast.send_notification ();
+           }
+
+            dialog.destroy ();
+        });
+
+        dialog.present ();
+
+        Timeout.add_once (3000, () => {
+            dialog.set_response_enabled ("accept", true);
+        });
     }
 
     private void show_message_dialog () {
