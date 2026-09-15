@@ -65,6 +65,8 @@ public class FormView : DemoPage {
         datetime_grid.attach (current_date, 1, 0);
         datetime_grid.attach (relative_datetime, 1, 1);
 
+        var spinbutton = new Gtk.SpinButton.with_range (0, 100, 10);
+
         var box = new Granite.Box (VERTICAL) {
             halign = CENTER,
             valign = CENTER,
@@ -79,6 +81,8 @@ public class FormView : DemoPage {
         box.append (error_entry);
         box.append (new Granite.HeaderLabel ("Date & Time"));
         box.append (datetime_grid);
+        box.append (new Granite.HeaderLabel ("Gtk.SpinButton"));
+        box.append (spinbutton);
 
         child = box;
 
