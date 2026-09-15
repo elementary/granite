@@ -1,5 +1,6 @@
 subdir('Icons')
 subdir('Styles')
+subdir('Symbols')
 
 libgranite_sources = files(
     'Animation.vala',
@@ -30,6 +31,7 @@ libgranite_sources = files(
     'Widgets/Placeholder.vala',
     'Widgets/Settings.vala',
     'Widgets/SwitchModelButton.vala',
+    'Widgets/Symbol.vala',
     'Widgets/TimePicker.vala',
     'Widgets/ToolBox.vala',
     'Widgets/Toast.vala',
@@ -67,6 +69,7 @@ libgranite = library(
     libgranite_sources,
     icons_resource,
     stylesheet_resource,
+    symbols_resource,
     config_vala,
 
     dependencies: [
