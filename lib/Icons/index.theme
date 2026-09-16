@@ -3,9 +3,41 @@ Name=Granite
 Hidden=true
 
 Example=folder
-Directories=scalable
+Directories=16x16/emblems, 16x16@2/emblems, scalable/actions, scalable/categories, scalable/status, scalable/ui
 
-[scalable]
+[16x16/emblems]
+Context=Emblems
+Size=16
+Type=Fixed
+
+[16x16@2/emblems]
+Context=Emblems
+Size=16
+Scale=2
+Type=Fixed
+
+[scalable/actions]
+Context=Actions
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[scalable/categories]
+Context=Categories
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[scalable/status]
+Context=Status
+Size=16
+MinSize=8
+MaxSize=512
+Type=Scalable
+
+[scalable/ui]
 Context=UI
 Size=16
 MinSize=8
