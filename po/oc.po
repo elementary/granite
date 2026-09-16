@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
 "PO-Revision-Date: 2020-08-29 20:13+0000\n"
 "Last-Translator: Mejans <farga@mejans.fr>\n"
 "Language-Team: Occitan <https://l10n.elementary.io/projects/desktop/granite/"
@@ -121,6 +121,14 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr ""
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr ""
+
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "_Tampar"
@@ -144,7 +152,7 @@ msgid "PM"
 msgstr "aprèpmiègjorn"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr ""
 
