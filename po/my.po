@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
 "PO-Revision-Date: 2015-12-04 01:36+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Burmese <my@li.org>\n"
@@ -126,6 +126,14 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr ""
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr ""
+
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr ""
@@ -149,7 +157,7 @@ msgid "PM"
 msgstr ""
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr ""
 

@@ -12,7 +12,6 @@ executable(
     'Views/BoxView.vala',
     'Views/ControlsView.vala',
     'Views/CSSView.vala',
-    'Views/DateTimePickerView.vala',
     'Views/DialogsView.vala',
     'Views/FormView.vala',
     'Views/HyperTextViewGrid.vala',

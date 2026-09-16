@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
 "PO-Revision-Date: 2025-08-15 17:55+0000\n"
 "Last-Translator: JieXu <xujie0739@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://"
@@ -127,6 +127,14 @@ msgstr "%m月%d日 星期%a"
 msgid "%b"
 msgstr "%m月"
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr ""
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr ""
+
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "关闭"
@@ -150,7 +158,7 @@ msgid "PM"
 msgstr "下午"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr "："
 
