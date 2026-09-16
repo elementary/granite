@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
 "PO-Revision-Date: 2019-04-12 13:25+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Hindi <https://l10n.elementary.io/projects/desktop/granite/hi/"
@@ -130,6 +130,14 @@ msgstr ""
 msgid "%b"
 msgstr ""
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr ""
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr ""
+
 #: lib/Widgets/MessageDialog.vala:126
 #, fuzzy
 msgid "_Close"
@@ -154,7 +162,7 @@ msgid "PM"
 msgstr "अपराह्न"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr ":"
 
