@@ -75,7 +75,7 @@ public class ControlsView : DemoPage {
         var menu_model = new GLib.Menu ();
         menu_model.append_item (button_section);
         menu_model.append_section ("SwitchModelButton", switch_section);
-        menu_model.append_section ( null, menuitem_section);
+        menu_model.append_section (null, menuitem_section);
 
         var menu_button = new Gtk.MenuButton () {
             menu_model = menu_model
