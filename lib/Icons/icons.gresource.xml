@@ -88,6 +88,9 @@
     <file alias="check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
     <file alias="check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-indeterminate.svg</file>
 
+    <!--Gtk.DropDown-->
+    <file compressed="true" preprocess="xml-stripblanks">object-select-symbolic.svg</file>
+
     <file compressed="true" preprocess="xml-stripblanks">eye-not-looking-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">eye-open-negative-filled-symbolic.svg</file>
 
