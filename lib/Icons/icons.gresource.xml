@@ -26,7 +26,16 @@
 
     <file compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
 
+    <file compressed="true" preprocess="xml-stripblanks">list-add-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">list-remove-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">open-menu-symbolic.svg</file>
+
     <file compressed="true" preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
+
+    <!--Gtk.SpinButton-->
+    <file alias="value-decrease-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-remove-symbolic.svg</file>
+    <file alias="value-increase-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-add-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">view-column-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-grid-symbolic.svg</file>
@@ -81,12 +90,15 @@
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-icon-missing-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-overflow-symbolic.svg</file>
 
-    <file compressed="true" preprocess="xml-stripblanks">check-indeterminate.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">check-indeterminate-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">check-checked-symbolic.svg</file>
 
-    <file alias="adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
-    <file alias="check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
-    <file alias="check-checked-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked.svg</file>
-    <file alias="check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-indeterminate.svg</file>
+    <file alias="adw-entry-apply-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked-symbolic.svg</file>
+    <file alias="check-active-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-checked-symbolic.svg</file>
+    <file alias="check-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">check-indeterminate-symbolic.svg</file>
+
+    <!--Gtk.DropDown-->
+    <file compressed="true" preprocess="xml-stripblanks">object-select-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">eye-not-looking-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">eye-open-negative-filled-symbolic.svg</file>
@@ -103,5 +115,11 @@
     <file alias="adw-expander-arrow-symbolic.svg" compressed="true" preprocess="xml-stripblanks">pan-up-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">pager-checked-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">window-close-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">window-maximize-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">window-maximize-symbolic-rtl.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">window-restore-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">window-restore-symbolic-rtl.svg</file>
   </gresource>
 </gresources>
