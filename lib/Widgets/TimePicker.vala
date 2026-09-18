@@ -141,12 +141,13 @@ public class Granite.TimePicker : Gtk.Entry {
         pop_grid.append (am_pm_box);
 
         popover = new Gtk.Popover () {
-            halign = Gtk.Align.END,
+            halign = END,
             autohide = true,
             child = pop_grid,
             has_arrow = false,
-            position = Gtk.PositionType.BOTTOM
+            position = BOTTOM
         };
+        popover.add_css_class ("menu");
         popover.set_parent (this);
 
         add_css_class ("time-picker");
