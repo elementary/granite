@@ -7,6 +7,12 @@ public class ControlsView : DemoPage {
     construct {
         var button_header = new Granite.HeaderLabel ("Buttons");
 
+        var dropdown = new Gtk.DropDown.from_strings (
+            {"Jupiter", "Luna", "Freya", "Loki", "Juno", "Hera", "Odin", "Jólnir", "Horus", "Circe"}
+        ) {
+            enable_search = true
+        };
+
         var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
 
         var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()") {
@@ -119,6 +125,7 @@ public class ControlsView : DemoPage {
         var text_button_box = new Granite.Box (VERTICAL, HALF);
         text_button_box.append (textbutton);
         text_button_box.append (toggle_button);
+        text_button_box.append (dropdown);
         text_button_box.append (destructive_button);
         text_button_box.append (suggested_button);
         text_button_box.append (back_button);

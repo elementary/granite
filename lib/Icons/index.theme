@@ -3,7 +3,7 @@ Name=Granite
 Hidden=true
 
 Example=folder
-Directories=16x16/emblems, 16x16@2/emblems, scalable/actions, scalable/categories, scalable/status, scalable/ui
+Directories=16x16/emblems,16x16@2/emblems,scalable/actions,scalable/categories,scalable/status,scalable/ui
 
 [16x16/emblems]
 Context=Emblems
