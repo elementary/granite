@@ -45,6 +45,7 @@ public class Granite.Bin : Gtk.Widget {
     /**
      * Whether #this has a frame
      */
+    [Version (since = "9.0.0")]
     public bool has_frame {
         get {
             return has_css_class (Granite.CssClass.CARD);
