@@ -1,30 +1,30 @@
 window {
-    background-color: bg_color(2);
-    color: $fg-color;
+    background-color: var(--bg-level-2);
+    color: var(--fg-color);
 
     &.csd {
-        border-radius: rem($window_radius);
+        border-radius: var(--window-radius);
         box-shadow:
             highlight(),
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px var(--toplevel-border-color),
             shadow(4);
 
         &:backdrop {
             box-shadow:
                 highlight(),
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
         // black behind corners
         &.maximized {
-            box-shadow: 0 0 0 rem($window_radius / 2) black;
+            box-shadow: 0 0 0 calc(var(--window-radius) / 2) black;
         }
 
         &.tiled-right:not(.maximized),
         &.tiled-left:not(.maximized) {
             box-shadow:
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
@@ -54,7 +54,86 @@ window {
     }
 
     &.ssd {
-        border-radius: $window_radius $window_radius 0 0;
-        box-shadow: 0 0 0 1px $toplevel-border-color;
+        border-radius: var(--window-radius) var(--window-radius) 0 0;
+        box-shadow: 0 0 0 1px var(--toplevel-border-color);
+    }
+}
+
+window.devel {
+    $grid-line-width: 1px;
+    $grid-minor-spacing: 8px;
+    $grid-major-spacing: 24px;
+
+    --grid-minor-color: color-mix(in srgb, var(--GRAPE_500) 15%, transparent);
+    --grid-major-color: color-mix(in srgb, var(--GRAPE_500) 20%, transparent);
+
+    toolbox.sidebar windowhandle > .top {
+        background:
+            linear-gradient(
+                to bottom,
+                scale-color(bg_color(3), $alpha: -100%),
+                bg-color(3) rem(32px)
+            ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent rem($grid-minor-spacing - $grid-line-width),
+                    var(--grid-minor-color) rem($grid-minor-spacing) - $grid-line-width,
+                    var(--grid-minor-color) rem($grid-minor-spacing)
+                ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent rem($grid-minor-spacing - $grid-line-width),
+                    var(--grid-minor-color) rem($grid-minor-spacing) - $grid-line-width,
+                    var(--grid-minor-color) rem($grid-minor-spacing)
+                ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent rem($grid-major-spacing - $grid-line-width), 
+                    var(--grid-major-color) rem($grid-major-spacing) - $grid-line-width,
+                    var(--grid-major-color) rem($grid-major-spacing)
+                ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent rem($grid-major-spacing - $grid-line-width),
+                    var(--grid-major-color) rem($grid-major-spacing) - $grid-line-width,
+                    var(--grid-major-color) rem($grid-major-spacing)
+                );
+    }
+
+    toolbox windowhandle > .top {
+        background:
+            linear-gradient(
+                to bottom,
+                scale-color(bg_color(2), $alpha: -100%),
+                bg_color(2) rem(32px)
+            ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent rem($grid-minor-spacing) - $grid-line-width,
+                    var(--grid-minor-color) rem($grid-minor-spacing) - $grid-line-width,
+                    var(--grid-minor-color) rem($grid-minor-spacing)
+                ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent rem($grid-minor-spacing - $grid-line-width),
+                    var(--grid-minor-color) rem($grid-minor-spacing) - $grid-line-width,
+                    var(--grid-minor-color) rem($grid-minor-spacing)
+                ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent rem($grid-major-spacing - $grid-line-width),
+                    var(--grid-major-color) rem($grid-major-spacing) - $grid-line-width,
+                    var(--grid-major-color) rem($grid-major-spacing)
+                ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent rem($grid-major-spacing - $grid-line-width),
+                    var(--grid-major-color) rem($grid-major-spacing) - $grid-line-width,
+                    var(--grid-major-color) rem($grid-major-spacing)
+                );
     }
 }

@@ -1,4 +1,7 @@
 button {
+    min-height: 16px;
+    min-width: 16px;
+
     &.flat {
         background: transparent;
         border: none;
@@ -8,15 +11,16 @@ button {
     &.image-button {
         @extend .circular;
 
-        padding: rem(4px);
-        min-height: 16px;
-        min-width: 16px;
+        // Circles extend for visual balance
+        margin: -1px;
+        padding: calc(0.5rem);
+
         transition:
             background duration("expand") easing(),
             transform duration("expand") easing("ease-out-back");
 
         &:active {
-            background: rgba($fg-color, 0.15);
+            background: color-mix(in srgb, var(--fg-color) 15%, transparent);
             transform: scale(0.8);
             transition:
                 background duration("collapse") easing(),
@@ -26,14 +30,24 @@ button {
         &.toggle {
             @include border-interactive-roundrect;
 
+            margin: 0;
+            padding: calc(0.5rem - 1px);
+
             &:checked {
                 @extend selection;
             }
         }
     }
 
+    &.large-icons {
+        -gtk-icon-size: 24px;
+    }
+
     &.link {
         @extend .accent;
+
+        min-height: 0;
+        min-width: 0;
 
         label {
             text-decoration: underline;
@@ -43,7 +57,7 @@ button {
     &.text-button {
         @extend %raised;
 
-        padding: rem(2px) rem(4px);
+        padding: calc(0.5rem - 2px);
     }
 
     // Almost certainly a button with text and image

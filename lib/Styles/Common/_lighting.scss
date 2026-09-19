@@ -1,6 +1,30 @@
 // FIXME: Theres most likely an absolute ton in here that can be cleaned up and
 // simplified
 
+:root {
+    // Inputs
+    --bg-level-0: var(--SILVER_100);
+    // Views
+    --bg-level-1: white;
+    // Background
+    --bg-level-2: var(--SILVER_100);
+    // Sidebars and inline toolbars
+    --bg-level-3: color-mix(in oklab, var(--SILVER_100) 75%, var(--SILVER_300));
+    // Titlebars and toolbars
+    --bg-level-4: color-mix(in oklab, var(--SILVER_100) 30%, var(--SILVER_300));
+
+    @media (prefers-color-scheme: dark) {
+        --bg-level-0: var(--BLACK_500);
+        --bg-level-1: color-mix(in oklab, var(--BLACK_500) 50%, var(--BLACK_600));
+        --bg-level-2: var(--BLACK_600);
+        --bg-level-3: color-mix(in oklab, var(--BLACK_600) 50%, var(--BLACK_700));
+        --bg-level-4: var(--BLACK_700);
+    }
+
+    --base-color: var(--bg-level-1);
+    --bg-color: var(--bg-level-2);
+}
+
 @function shadow($level) {
     @if $color-scheme == "light" {
         @if $level == 1 {
@@ -47,18 +71,18 @@
 
 @function highlight($sides: "full") {
     $highlight:
-        inset 1px 0 0 0 scale-color($highlight_color, $alpha: -93%),
-        inset -1px 0 0 0 scale-color($highlight_color, $alpha: -93%);
+        inset 1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent),
+        inset -1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent);
 
     @if $sides == "top" or $sides == "full" {
         $highlight:
-            inset 0 1px 0 0 scale-color($highlight_color, $alpha: -70%),
+            inset 0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
             $highlight;
     }
 
     @if $sides == "bottom" or $sides == "full" {
         $highlight:
-            inset 0 -1px 0 0 scale-color($highlight_color, $alpha: -80%),
+            inset 0 -1px 0 0 color-mix(in srgb, var(--highlight-color) 20%, transparent),
             $highlight;
     }
 
@@ -82,12 +106,12 @@
 @function inset-shadow($state: "") {
     @if $state == "disabled" {
         @return
-            0 1px 0 0 scale-color($highlight_color, $alpha: -70%),
+            0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
             inset 0 1px 1px rgba(black, 0.05);
     }
 
     @return
-        0 1px 0 0 scale-color($highlight_color, $alpha: -70%),
+        0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
         inset 0 1px 1px rgba(black, 0.05),
         inset 0 0 1px 1px rgba(black, 0.05);
 }

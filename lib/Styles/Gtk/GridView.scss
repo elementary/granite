@@ -3,7 +3,7 @@ gridview {
     padding: 1rem;
 
     &.view {
-        background-color: bg-color(1);
+        background-color: var(--bg-level-1);
     }
 
     child.activatable {

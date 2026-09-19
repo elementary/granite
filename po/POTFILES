@@ -1,18 +1,7 @@
 lib/DateTime.vala
 
-lib/Services/ContractorProxy.vala
-lib/Services/Settings.vala
-lib/Services/System.vala
-
-lib/Widgets/AbstractSettingsPage.vala
-lib/Widgets/AbstractSimpleSettingsPage.vala
-lib/Widgets/DatePicker.vala
-lib/Widgets/HeaderLabel.vala
+lib/Widgets/HyperTextView.vala
 lib/Widgets/MessageDialog.vala
 lib/Widgets/ModeSwitch.vala
-lib/Widgets/OverlayBar.vala
-lib/Widgets/SettingsSidebarRow.vala
-lib/Widgets/SettingsSidebar.vala
 lib/Widgets/TimePicker.vala
-lib/Widgets/Toast.vala
 lib/Widgets/Utils.vala
