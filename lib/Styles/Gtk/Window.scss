@@ -67,12 +67,13 @@ window.devel {
     --grid-minor-color: color-mix(in srgb, var(--GRAPE_500) 15%, transparent);
     --grid-major-color: color-mix(in srgb, var(--GRAPE_500) 20%, transparent);
 
+    .sidebar revealer.top-bar,
     .sidebar windowhandle > box.top {
         --grid-bg-color: var(--bg-level-3);
     }
 
     toolbarview revealer.top-bar,
-    toolbox > box.top {
+    toolbox windowhandle > box.top {
         background:
             linear-gradient(
                 to bottom,
