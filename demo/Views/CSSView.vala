@@ -15,20 +15,20 @@ public class CSSView : DemoPage {
             secondary_text = "\"Granite.CssClass.CARD\" and \"Granite.CssClass.CHECKERBOARD\""
         };
 
-        var card = new Gtk.Box (VERTICAL, 0) {
+        var card = new Granite.Box (VERTICAL, NONE) {
+            has_frame = true,
             height_request = 128,
             hexpand = true
         };
-        card.add_css_class (Granite.CssClass.CARD);
 
         var card_checkered = new Granite.Bin () {
             child = new Gtk.Image.from_icon_name ("battery-low") {
                 halign = CENTER,
                 icon_size = LARGE
             },
+            has_frame = true,
             hexpand = true
         };
-        card_checkered.add_css_class (Granite.CssClass.CARD);
         card_checkered.add_css_class (Granite.CssClass.CHECKERBOARD);
 
         var card_box = new Gtk.Box (HORIZONTAL, 24);
