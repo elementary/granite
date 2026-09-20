@@ -14,7 +14,7 @@ levelbar {
                 background-color: var(--error-color);
             }
 
-            &.high
+            &.high,
             &.middle,
             &.warning{
                 background-color: var(--warning-icon-color);
