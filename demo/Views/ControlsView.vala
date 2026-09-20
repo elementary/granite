@@ -122,26 +122,26 @@ public class ControlsView : DemoPage {
         };
         suggested_imagebutton.add_css_class (Granite.CssClass.SUGGESTED);
 
-        var text_button_box = new Granite.Box (VERTICAL, HALF);
-        text_button_box.append (textbutton);
-        text_button_box.append (toggle_button);
-        text_button_box.append (dropdown);
-        text_button_box.append (destructive_button);
-        text_button_box.append (suggested_button);
-        text_button_box.append (back_button);
-        text_button_box.append (link_button);
+        var button_grid = new Gtk.Grid ();
+        button_grid.add_css_class ("border-spacing-half");
+        button_grid.attach (textbutton, 0, 0);
+        button_grid.attach (imagebutton, 1, 0, 2);
 
-        var image_button_box = new Granite.Box (VERTICAL, HALF);
-        image_button_box.append (imagebutton);
-        image_button_box.append (toggle_imagebutton);
-        image_button_box.append (menu_button);
-        image_button_box.append (scale_button);
-        image_button_box.append (destructive_imagebutton);
-        image_button_box.append (suggested_imagebutton);
+        button_grid.attach (toggle_button, 0, 1);
+        button_grid.attach (toggle_imagebutton, 1, 1, 2);
 
-        var button_box = new Granite.Box (HORIZONTAL, SINGLE);
-        button_box.append (text_button_box);
-        button_box.append (image_button_box);
+        button_grid.attach (dropdown, 0, 2);
+        button_grid.attach (menu_button, 1, 2);
+        button_grid.attach (scale_button, 2, 2);
+
+        button_grid.attach (destructive_button, 0, 3);
+        button_grid.attach (destructive_imagebutton, 1, 3, 2);
+
+        button_grid.attach (suggested_button, 0, 4);
+        button_grid.attach (suggested_imagebutton, 1, 4, 2);
+
+        button_grid.attach (back_button, 0, 5);
+        button_grid.attach (link_button, 0, 6);
 
         var checkradio_header = new Granite.HeaderLabel ("Check & Radio Buttons");
 
@@ -231,7 +231,7 @@ public class ControlsView : DemoPage {
         };
 
         box.append (button_header);
-        box.append (button_box);
+        box.append (button_grid);
         box.append (checkradio_header);
         box.append (checkradio_box);
         box.append (mode_switch_label);
