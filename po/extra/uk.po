@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-06-30 22:56+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
+"PO-Revision-Date: 2026-09-18 04:08+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/uk/>\n"
@@ -53,6 +53,8 @@ msgstr "Удосконалення:"
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
 msgstr ""
+"ListItem використовує курсор контекстного меню, якщо встановлено значення "
+"для параметра menu_model"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:80 data/granite.metainfo.xml.in:113
@@ -68,7 +70,7 @@ msgstr "HeaderLabel тепер має властивість ellipsize"
 
 #: data/granite.metainfo.xml.in:48
 msgid "ListItem now has a menu_model property"
-msgstr ""
+msgstr "Відтепер ListItem має властивість menu_model"
 
 #: data/granite.metainfo.xml.in:59
 msgid "New Icons:"

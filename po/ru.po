@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
-"PO-Revision-Date: 2026-03-02 01:51+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
+"PO-Revision-Date: 2026-09-17 17:02+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
@@ -133,6 +133,14 @@ msgstr "%a, %e %b"
 msgid "%b"
 msgstr "%b"
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr "Перейти по ссылке"
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr "Control + Щелчок"
+
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "_Закрыть"
@@ -156,7 +164,7 @@ msgid "PM"
 msgstr "PM"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr ":"
 
