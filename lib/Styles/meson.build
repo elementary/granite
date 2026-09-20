@@ -13,7 +13,8 @@ gtk_stylesheet_deps = custom_target(
         '@OUTPUT@',
     ],
     install: get_option('gtk-stylesheets'),
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
+    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
+    build_always_stale: true
 )
 
 gtk_stylesheet_dark_deps = custom_target(
@@ -27,7 +28,8 @@ gtk_stylesheet_dark_deps = custom_target(
         '@OUTPUT@',
     ],
     install: get_option('gtk-stylesheets'),
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
+    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
+    build_always_stale: true
 )
 
 granite_stylesheet_deps = custom_target(
@@ -41,7 +43,8 @@ granite_stylesheet_deps = custom_target(
         '@OUTPUT@',
     ],
     install: false,
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
+    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
+    build_always_stale: true
 )
 
 granite_stylesheet_dark_deps = custom_target(
@@ -55,7 +58,8 @@ granite_stylesheet_dark_deps = custom_target(
         '@OUTPUT@',
     ],
     install: false,
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0'
+    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
+    build_always_stale: true
 )
 
 stylesheet_resource = gnome.compile_resources(

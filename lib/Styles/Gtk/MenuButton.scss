@@ -1,7 +1,6 @@
 menubutton {
-    arrow {
-        // Use non-arrow icon when no direction specified, assuming use case as a
-        // main menu button
+    // Assuming use case as a main menu button
+    > button.image-button arrow.down {
         -gtk-icon-source: -gtk-icontheme("open-menu-symbolic");
     }
 }
