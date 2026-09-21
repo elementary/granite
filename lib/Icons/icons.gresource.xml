@@ -45,7 +45,7 @@
     <file alias="value-increase-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-add-symbolic.svg</file>
 
     <file alias="adw-entry-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
-    <file alias="adw-tab-unpin-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">iew-pin-symbolic-rtl.svg</file>
+    <file alias="adw-tab-unpin-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">view-pin-symbolic-rtl.svg</file>
     <file alias="adw-tab-unpin-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-pin-symbolic.svg</file>
     <file alias="view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
     <file alias="view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
