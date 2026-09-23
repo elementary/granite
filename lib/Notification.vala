@@ -111,7 +111,10 @@ public enum Granite.NotificationDisplayFlags {
     SILENT,
 
     /**
-     * Make the notification persistent in the Notifications menu. It cannot be dismissed with a gesture or close button.
+     * Make the notification persistent in the Notifications menu.
+    **
+     * It cannot be dismissed with a gesture or close button.
+     * Apps are expected to withdraw activities when they complete or replace them with plain notificafions.
      *
      * Will be automatically cleared when the app is no longer running
      */
