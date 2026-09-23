@@ -5,13 +5,14 @@
 
 public class Granite.Demo : Gtk.Application {
     construct {
-        application_id = "io.elementary.granite-9.demo";
+        application_id = "io.elementary.granite.demo";
         flags = ApplicationFlags.FLAGS_NONE;
     }
 
     public override void startup () {
-        Granite.init ();
         base.startup ();
+        // Parent classes need to be initialized before the child.
+        Granite.init ();
     }
 
     public override void activate () {
