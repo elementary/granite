@@ -1,6 +1,24 @@
-<svg height='16' width='16' xmlns='http://www.w3.org/2000/svg'>
-    <g color='#bebebe' transform='translate(-553 111)'>
-        <path d='M561-107c-2.207 0-4 1.793-4 4s1.793 4 4 4c2.208 0 4-1.793 4-4s-1.792-4-4-4z' fill='#666' font-family='Andale Mono' font-weight='400' overflow='visible' style='line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-transform:none;marker:none'/>
-        
-    </g>
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        id='svg1'
+        fill='url(#gpa:foreground) rgb(0,0,0)'
+        fill-opacity='1'
+        fill-rule='nonzero'
+        width='16'
+        height='16'>
+  <path
+          id='path1'
+          class='foreground foreground-fill'
+          fill='url(#gpa:foreground) rgb(0,0,0)'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          overflow='visible'
+          d='M 8 4 C 5.793 4, 4 5.793, 4 8 C 4 10.207, 5.793 12, 8 12 C 10.208 12, 12 10.207, 12 8 C 12 5.793, 10.208 4, 8 4 Z'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
+  </path>
 </svg>
