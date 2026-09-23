@@ -1,30 +1,30 @@
 window {
-    background-color: bg_color(2);
-    color: $fg-color;
+    background-color: var(--bg-level-2);
+    color: var(--fg-color);
 
     &.csd {
-        border-radius: rem($window_radius);
+        border-radius: var(--window-radius);
         box-shadow:
             highlight(),
-            0 0 0 1px $toplevel-border-color,
+            0 0 0 1px var(--toplevel-border-color),
             shadow(4);
 
         &:backdrop {
             box-shadow:
                 highlight(),
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
         // black behind corners
         &.maximized {
-            box-shadow: 0 0 0 rem($window_radius / 2) black;
+            box-shadow: 0 0 0 calc(var(--window-radius) / 2) black;
         }
 
         &.tiled-right:not(.maximized),
         &.tiled-left:not(.maximized) {
             box-shadow:
-                0 0 0 1px $toplevel-border-color,
+                0 0 0 1px var(--toplevel-border-color),
                 shadow(2);
         }
 
@@ -54,7 +54,7 @@ window {
     }
 
     &.ssd {
-        border-radius: $window_radius $window_radius 0 0;
-        box-shadow: 0 0 0 1px $toplevel-border-color;
+        border-radius: var(--window-radius) var(--window-radius) 0 0;
+        box-shadow: 0 0 0 1px var(--toplevel-border-color);
     }
 }

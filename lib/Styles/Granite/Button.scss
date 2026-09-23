@@ -1,44 +1,80 @@
 button {
-
-    &.text-button.destructive {
-        background-color: $error_color;
-        color: white;
+    &.destructive,
+    &.suggested {
         text-shadow: none;
 
-        @if $color-scheme == "dark" {background-clip: padding-box;}
-
-        &:backdrop {
-            background-color: inherit;
-            color: inherit;
-        }
-
-        &:active {
-            background-color: mix($error_color, $STRAWBERRY_900, 90%);
+        image {
+            -gtk-icon-palette: default;
         }
     }
 
-    &.text-button.suggested {
-        background-color: #{'@selected_bg_color'};
-        color: #{'@selected_fg_color'};
-        text-shadow: none;
+    &.destructive {
+        background-color: var(--error-color);
+        color: white;
 
-        &:backdrop {
-            background-color: inherit;
+        &:active {
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
+        }
+    }
+
+    &.image-button {
+        --bg-transparency: 10%;
+        @media (prefers-color-scheme: dark) {
+            --bg-transparency: 20%;
+        }
+
+        &.suggested:backdrop,
+        &.destructive:backdrop {
+            background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
             color: inherit;
+        }
+
+        &.suggested {
+            background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
+
+            color: color-mix(in oklab, var(--accent-color) 80%, black);
+
+            @media (prefers-color-scheme: dark) {
+                color: color-mix(in oklab, var(--accent-color) 70%, white);
+
+            }
+        }
+    }
+
+    &.text-button {
+        &.destructive,
+        &.suggested {
+            @media (prefers-color-scheme: dark) {
+                background-clip: padding-box;
+            }
+
+            &:backdrop {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        &.suggested {
+            background-color: var(--selected-bg-color);
+            color: var(--selected-fg-color);
         }
     }
 
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised; 
+        @extend %raised;
+
+        // reset padding since image buttons have no frame by default
+        margin: 0;
+        padding: calc(0.5rem - 2px);
 
         // I don't know why this needs to be reiterated, but it doesn't work
         // properly without it
         &:active,
         &:checked {
             @include control-active;
-            color: $fg-color;
+            color: var(--fg-color);
             transform: none;
         }
     }
@@ -49,9 +85,9 @@ button {
 
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
-        $shadow-border-color: scale-color($border-color, $alpha: -50%);
-        @if $color-scheme == "dark" {
-            $shadow-border-color: transparent
+        --shadow-border-color: color-mix(in srgb, var(--border-color) 50%, transparent);
+        @media (prefers-color-scheme: dark) {
+            --shadow-border-color: transparent
         }
 
         background-image: none;
@@ -59,9 +95,9 @@ button {
         box-shadow:
             highlight(),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(2);
-        color: $fg-color;
+        color: var(--fg-color);
         margin: 0;
         padding: $button-spacing;
 
@@ -81,7 +117,7 @@ button {
             box-shadow:
             highlight(),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(1);
         }
 
@@ -94,7 +130,7 @@ button {
             box-shadow:
             highlight("top"),
             // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px $shadow-border-color,
+            0 0 0 1px var(--shadow-border-color),
             shadow(2);
         }
     }

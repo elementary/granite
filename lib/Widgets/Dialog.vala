@@ -43,7 +43,7 @@
 *   dialog.add_button ("Cancel", Gtk.ResponseType.CANCEL);
 *
 *   var suggested_button = dialog.add_button ("Suggested Action", Gtk.ResponseType.ACCEPT);
-*   suggested_button.add_css_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+*   suggested_button.add_css_class (Gtk.CssClass.SUGGESTED);
 *
 *   dialog.show_all ();
 *   dialog.response.connect ((response_id) => {
@@ -74,7 +74,7 @@ public class Granite.Dialog : Gtk.Dialog {
 
         var content_area = get_content_area ();
         content_area.vexpand = true;
-        content_area.add_css_class (Granite.STYLE_CLASS_DIALOG_CONTENT_AREA);
+        content_area.add_css_class ("dialog-content-area");
     }
 
     public override void constructed () {

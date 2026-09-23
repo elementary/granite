@@ -12,7 +12,7 @@ windowcontrols {
     button {
         @extend .image-button;
 
-        border-radius: rem($window_radius / 2);
+        border-radius: calc(var(--window-radius) / 2);
         padding: rem(4px);
     }
 }

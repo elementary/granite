@@ -28,12 +28,6 @@ public class Granite.Toast : Gtk.Widget {
     }
 
     /**
-     * Emitted when the Toast is closed by activating the close button
-     */
-    [Version (deprecated = true, deprecated_since = "7.5.0", replacement = "dismissed")]
-    public signal void closed ();
-
-    /**
      * Emitted when the Toast has been dismissed
      */
     public signal void dismissed (DismissReason reason);
@@ -90,7 +84,7 @@ public class Granite.Toast : Gtk.Widget {
         var close_button = new Gtk.Button.from_icon_name ("window-close-symbolic") {
             valign = Gtk.Align.CENTER
         };
-        close_button.add_css_class (Granite.STYLE_CLASS_CIRCULAR);
+        close_button.add_css_class (Granite.CssClass.CIRCULAR);
 
         notification_label = new Gtk.Label (title) {
             wrap = true,
@@ -116,7 +110,6 @@ public class Granite.Toast : Gtk.Widget {
         close_button.clicked.connect (() => {
             revealer.reveal_child = false;
             stop_timeout ();
-            closed ();
             dismissed (DismissReason.CLOSED);
         });
 

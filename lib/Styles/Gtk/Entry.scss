@@ -1,12 +1,31 @@
 entry {
     @include border-interactive-roundrect;
 
-    background-color: bg-color(1);
-    border: 1px solid $border-color;
+    background-color: var(--bg-level-1);
+    border: 1px solid var(--border-color);
     border-spacing: $button-spacing;
-    padding: $button-spacing;
+    padding: calc(0.5rem - 2px);
+    min-height: 16px;
+    min-width: 16px;
 
     placeholder {
         @extend .dim-label;
+        color: var(--fg-color);
+    }
+
+    &.success {
+        border-color: color-mix(in oklab, var(--border-color), var(--success-color));
+    }
+
+    &.warning {
+        border-color: color-mix(in oklab, var(--border-color), var(--warning-color));
+    }
+
+    &.error {
+        border-color: color-mix(in oklab, var(--border-color), var(--error-color));
+    }
+
+    &:backdrop {
+        border-color: var(--border-color);
     }
 }

@@ -101,8 +101,7 @@ public class Granite.TimePicker : Gtk.Entry {
             vexpand = true
         };
 
-        am_pm_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        am_pm_box.add_css_class (Granite.STYLE_CLASS_LINKED);
+        am_pm_box = new Granite.Box (VERTICAL, LINKED);
         am_pm_box.append (am_togglebutton);
         am_pm_box.append (pm_togglebutton);
 
@@ -142,12 +141,13 @@ public class Granite.TimePicker : Gtk.Entry {
         pop_grid.append (am_pm_box);
 
         popover = new Gtk.Popover () {
-            halign = Gtk.Align.END,
+            halign = END,
             autohide = true,
             child = pop_grid,
             has_arrow = false,
-            position = Gtk.PositionType.BOTTOM
+            position = BOTTOM
         };
+        popover.add_css_class ("menu");
         popover.set_parent (this);
 
         add_css_class ("time-picker");

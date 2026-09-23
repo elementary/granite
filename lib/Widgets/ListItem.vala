@@ -99,8 +99,8 @@ public class Granite.ListItem : Gtk.Widget {
             ellipsize = END,
             xalign = 0
         };
-        description_label.add_css_class (Granite.STYLE_CLASS_SMALL_LABEL);
-        description_label.add_css_class (Granite.STYLE_CLASS_DIM_LABEL);
+        description_label.add_css_class (Granite.CssClass.SMALL);
+        description_label.add_css_class (Granite.CssClass.DIM);
 
         text_box = new Granite.Box (VERTICAL, NONE);
         text_box.append (label);

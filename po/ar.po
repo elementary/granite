@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 19:22+0000\n"
+"POT-Creation-Date: 2026-09-16 13:54+0000\n"
 "PO-Revision-Date: 2021-08-30 15:00+0000\n"
 "Last-Translator: Muhammad Al-Jayyousi <m7md.j99@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/desktop/granite/"
@@ -147,6 +147,14 @@ msgstr "%a، %e %b"
 msgid "%b"
 msgstr "%b"
 
+#: lib/Widgets/HyperTextView.vala:266
+msgid "Follow Link"
+msgstr ""
+
+#: lib/Widgets/HyperTextView.vala:267
+msgid "Control + Click"
+msgstr ""
+
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
 msgstr "أغلق"
@@ -170,7 +178,7 @@ msgid "PM"
 msgstr "مساءً"
 
 #. / TRANSLATORS: separates hours from minutes.
-#: lib/Widgets/TimePicker.vala:136
+#: lib/Widgets/TimePicker.vala:135
 msgid ":"
 msgstr ":"
 
