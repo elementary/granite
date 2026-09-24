@@ -100,8 +100,10 @@
     <!--Gtk.DropDown-->
     <file compressed="true" preprocess="xml-stripblanks">object-select-symbolic.svg</file>
 
-    <file compressed="true" preprocess="xml-stripblanks">eye-not-looking-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">eye-open-negative-filled-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-conceal-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-reveal-symbolic.svg</file>
+    <file alias="eye-not-looking-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-conceal-symbolic.svg</file>
+    <file alias="eye-open-negative-filled-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-reveal-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">list-drag-handle-symbolic.svg</file>
 
