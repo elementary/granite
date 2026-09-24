@@ -39,3 +39,83 @@ checkbutton {
         border-radius: 50%;
     }
 }
+
+checkbutton.accent {
+    radio,
+    radio:checked, {
+        // Circles extend for visual balance
+        margin: -1px;
+        padding: calc(0.5rem - 2px);
+
+        @media(prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+
+        &:backdrop {
+            filter: grayscale(100%);
+        }
+    }
+
+    &.red radio {
+        background-color: var(--STRAWBERRY_300);
+        -gtk-icon-shadow: 0 1px 1px var(--STRAWBERRY_500);
+    }
+
+    &.orange radio {
+        background-color: var(--ORANGE_300);
+        -gtk-icon-shadow: 0 1px 1px var(--ORANGE_500);
+    }
+
+    &.yellow radio {
+        background-color: var(--BANANA_500);
+        -gtk-icon-shadow: 0 1px 1px var(--BANANA_700);
+    }
+
+    &.green radio {
+        background-color: var(--LIME_500);
+        -gtk-icon-shadow: 0 1px 1px var(--LIME_700);
+    }
+
+    &.blue radio {
+        background-color: var(--BLUEBERRY_500);
+        -gtk-icon-shadow: 0 1px 1px var(--BLUEBERRY_700);
+    }
+
+    &.purple radio {
+        background-color: var(--GRAPE_500);
+        -gtk-icon-shadow: 0 1px 1px var(--GRAPE_700);
+    }
+
+    &.brown radio {
+        background-color: var(--COCOA_300);
+        -gtk-icon-shadow: 0 1px 1px var(--COCOA_500);
+    }
+
+    &.teal radio  {
+        background-color: var(--MINT_500);
+        -gtk-icon-shadow: 0 1px 1px var(--MINT_700);
+    }
+
+    &.pink radio  {
+        background-color: var(--BUBBLEGUM_500);
+        -gtk-icon-shadow: 0 1px 1px var(--BUBBLEGUM_700);
+    }
+
+    &.gray radio {
+        background-color: var(--SLATE_300);
+        -gtk-icon-shadow: 0 1px 1px var(--SLATE_500);
+    }
+
+    &.latte radio {
+        background-color: var(--LATTE_300);
+        -gtk-icon-shadow: 0 1px 1px var(--LATTE_500);
+    }
+
+    &.automatic radio,
+    &.auto radio {
+        background-image: url("resource:///io/elementary/granite/Assets/color-wheel.png");
+        background-position: -1px -1px;
+        background-repeat: no-repeat;
+        background-size: calc(100% + 2px);
+    }
+}

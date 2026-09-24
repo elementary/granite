@@ -16,6 +16,7 @@ namespace Granite {
     /**
      * Style class for color chooser buttons to be applied to {@link Gtk.CheckButton} or {@link Gtk.RadioButton}
      */
+   [Version (deprecated = true, deprecated_since = "9.0.0", replacement = "Granite.CssClass.ACCENT")]
     public const string STYLE_CLASS_COLOR_BUTTON = "color-button";
     /**
      * Style class for slim headerbars, like in Terminal
@@ -158,6 +159,146 @@ namespace Granite {
          */
         [Version (since = "9.0.0")]
         public const string DEVEL = "devel";
+    }
+
+    /**
+     * Describes the available system accent colors.
+     */
+    public enum AccentColor {
+        /**
+         * Style class for accent colored strings, icons, and radio buttons
+         */
+        [Version (since = "9.0.0")]
+        AUTOMATIC,
+
+        /**
+         * Red accent color
+         */
+        [Version (since = "9.0.0")]
+        RED,
+
+        /**
+         * Orange accent color
+         */
+        [Version (since = "9.0.0")]
+        ORANGE,
+
+        /**
+         * Yellow accent color
+         */
+        [Version (since = "9.0.0")]
+        YELLOW,
+
+        /**
+         * Green accent color
+         */
+        [Version (since = "9.0.0")]
+        GREEN,
+
+        /**
+         * Teal accent color
+         */
+        [Version (since = "9.0.0")]
+        TEAL,
+
+        /**
+         * Blue accent color
+         */
+        [Version (since = "9.0.0")]
+        BLUE,
+
+        /**
+         *
+         */
+        [Version (since = "9.0.0")]
+        PURPLE,
+
+        /**
+         * Pink accent color
+         */
+        [Version (since = "9.0.0")]
+        PINK,
+
+        /**
+         * Brown accent color
+         */
+        [Version (since = "9.0.0")]
+        BROWN,
+
+        /**
+         * Gray accent color
+         */
+        [Version (since = "9.0.0")]
+        GRAY,
+
+        /**
+         * Light brown accent color
+         */
+        [Version (since = "9.0.0")]
+        LATTE;
+
+        /**
+         * A user-facing color name
+         */
+        [Version (since = "9.0.0")]
+        public string to_name () {
+            switch (this) {
+                case RED: return _("Strawberry");
+                case ORANGE: return _("Orange");
+                case YELLOW: return _("Banana");
+                case GREEN: return _("Lime");
+                case TEAL: return _("Mint");
+                case BLUE: return _("Blueberry");
+                case PURPLE: return _("Grape");
+                case PINK: return _("Bubblegum");
+                case BROWN: return _("Cocoa");
+                case GRAY: return _("Slate");
+                case LATTE: return _("Latte");
+                default: return _("Automatic");
+            }
+        }
+
+        /**
+         * For use as a CSS style class
+         */
+        [Version (since = "9.0.0")]
+        public string to_css_class () {
+            switch (this) {
+                case RED: return "red";
+                case ORANGE: return "orange";
+                case YELLOW: return "yellow";
+                case GREEN: return "green";
+                case TEAL: return "teal";
+                case BLUE: return "blue";
+                case PURPLE: return "purple";
+                case PINK: return "pink";
+                case BROWN: return "brown";
+                case GRAY: return "gray";
+                case LATTE: return "latte";
+                default: return "automatic";
+            }
+        }
+
+        /**
+         * A Hexidecimal representation of the color
+         */
+        [Version (since = "9.0.0")]
+        public string to_hex () {
+            switch (this) {
+                case RED: return "#c6262e";
+                case ORANGE: return "#f37329";
+                case YELLOW: return "#e6a92a";
+                case GREEN: return "#68b723";
+                case TEAL: return "#0e9a83";
+                case BLUE: return "#3689e6";
+                case PURPLE: return "#a56de2";
+                case PINK: return "#de3e80";
+                case BROWN: return "#8a715e";
+                case GRAY: return "#667885";
+                case LATTE: return "#";
+                default: return "";
+            }
+        }
     }
 
     /**

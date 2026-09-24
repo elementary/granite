@@ -178,6 +178,33 @@ public class ControlsView : DemoPage {
         checkradio_box.append (checkbutton_box);
         checkradio_box.append (radiobutton_box);
 
+        var colorbutton_box = new Granite.Box (HORIZONTAL);
+
+        Granite.AccentColor[] colors = {
+            Granite.AccentColor.BLUE,
+            Granite.AccentColor.TEAL,
+            Granite.AccentColor.GREEN,
+            Granite.AccentColor.YELLOW,
+            Granite.AccentColor.ORANGE,
+            Granite.AccentColor.RED,
+            Granite.AccentColor.PINK,
+            Granite.AccentColor.PURPLE,
+            Granite.AccentColor.BROWN,
+            Granite.AccentColor.GRAY,
+            Granite.AccentColor.LATTE,
+            Granite.AccentColor.AUTOMATIC
+        };
+        foreach (unowned var color in colors) {
+            var color_button = new Gtk.CheckButton () {
+                group = (Gtk.CheckButton) colorbutton_box.get_first_child (),
+                tooltip_markup = color.to_name () + "\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (color.to_hex ())
+            };
+            color_button.add_css_class (Granite.CssClass.ACCENT);
+            color_button.add_css_class (color.to_css_class ());
+
+            colorbutton_box.append (color_button);
+        }
+
         var mode_switch_label = new Granite.HeaderLabel ("ModeSwitch");
         mode_switch_label.margin_top = 12;
 
@@ -234,6 +261,8 @@ public class ControlsView : DemoPage {
         box.append (button_box);
         box.append (checkradio_header);
         box.append (checkradio_box);
+        box.append (new Granite.HeaderLabel (_("Color RadioButtons")));
+        box.append (colorbutton_box);
         box.append (mode_switch_label);
         box.append (mode_switch);
         box.append (scale_header);
