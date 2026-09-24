@@ -58,3 +58,53 @@ window {
         box-shadow: 0 0 0 1px var(--toplevel-border-color);
     }
 }
+
+window.devel {
+    --grid-bg-color: var(--bg-level-2);
+    --grid-minor-spacing: 0.666em;
+    --grid-major-spacing: 2em;
+
+    --grid-minor-color: color-mix(in srgb, var(--GRAPE_500) 15%, transparent);
+    --grid-major-color: color-mix(in srgb, var(--GRAPE_500) 20%, transparent);
+
+    .sidebar revealer.top-bar,
+    .sidebar windowhandle > box.top {
+        --grid-bg-color: var(--bg-level-3);
+    }
+
+    toolbarview revealer.top-bar,
+    toolbox windowhandle > box.top {
+        background:
+            linear-gradient(
+                to bottom,
+                color-mix(in srgb, var(--grid-bg-color) 0%, transparent),
+                var(--grid-bg-color) 3em
+            ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent calc(var(--grid-minor-spacing) - 1px),
+                var(--grid-minor-color) calc(var(--grid-minor-spacing) - 1px),
+                var(--grid-minor-color) var(--grid-minor-spacing)
+            ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent calc(var(--grid-minor-spacing) - 1px),
+                var(--grid-minor-color) calc(var(--grid-minor-spacing) - 1px),
+                var(--grid-minor-color) var(--grid-minor-spacing)
+            ),
+            repeating-linear-gradient(
+                transparent 0,
+                transparent calc(var(--grid-major-spacing) - 1px),
+                var(--grid-major-color) calc(var(--grid-major-spacing) - 1px),
+                var(--grid-major-color) var(--grid-major-spacing)
+            ),
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent calc(var(--grid-major-spacing) - 1px),
+                var(--grid-major-color) calc(var(--grid-major-spacing) - 1px),
+                var(--grid-major-color) var(--grid-major-spacing)
+            );
+    }
+}
