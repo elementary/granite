@@ -1,14 +1,10 @@
 window.csd.dialog {
-    box-shadow:
-        highlight(),
-        0 0 0 1px var(--toplevel-border-color),
-        shadow(3);
+    @extend .toplevel;
+
+    --shadow-level: 2;
 
     &:backdrop {
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(2);
+        --shadow-level: 1;
     }
 
     .dialog-content-area {
