@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-16 13:54+0000\n"
-"PO-Revision-Date: 2026-09-18 04:08+0000\n"
+"PO-Revision-Date: 2026-09-22 00:03+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/uk/>\n"
@@ -135,11 +135,11 @@ msgstr "%b"
 
 #: lib/Widgets/HyperTextView.vala:266
 msgid "Follow Link"
-msgstr ""
+msgstr "Перехід за посиланням"
 
 #: lib/Widgets/HyperTextView.vala:267
 msgid "Control + Click"
-msgstr ""
+msgstr "Control + Клацнути кнопкою миші"
 
 #: lib/Widgets/MessageDialog.vala:126
 msgid "_Close"
