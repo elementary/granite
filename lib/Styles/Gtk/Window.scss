@@ -3,17 +3,12 @@ window {
     color: var(--fg-color);
 
     &.csd {
-        border-radius: var(--window-radius);
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(4);
+        @extend .toplevel;
+
+        --shadow-level: 3;
 
         &:backdrop {
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--toplevel-border-color),
-                shadow(2);
+            --shadow-level: 1;
         }
 
         // black behind corners
