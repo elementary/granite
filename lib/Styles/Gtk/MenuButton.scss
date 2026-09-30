@@ -1,6 +1,6 @@
 menubutton {
     // Assuming use case as a main menu button
-    > button.image-button arrow.down {
+    > button.image-button arrow.none, arrow.down {
         -gtk-icon-source: -gtk-icontheme("open-menu-symbolic");
     }
 }
