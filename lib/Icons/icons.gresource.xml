@@ -17,12 +17,8 @@
   </gresource>
 
   <gresource prefix="/io/elementary/granite/scalable/actions">
-    <file alias="adw-entry-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
-
     <file compressed="true" preprocess="xml-stripblanks">adw-external-link-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-external-link-symbolic-rtl.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">adw-tab-unpin-symbolic-rtl.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
 
@@ -33,21 +29,26 @@
 
     <file compressed="true" preprocess="xml-stripblanks">selection-mode-symbolic.svg</file>
 
-    <!--Gtk.SpinButton-->
-    <file alias="value-decrease-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-remove-symbolic.svg</file>
-    <file alias="value-increase-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-add-symbolic.svg</file>
-
     <file compressed="true" preprocess="xml-stripblanks">view-column-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-grid-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-list-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-more-horizontal-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-more-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-pin-symbolic-rtl.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">view-pin-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-reader-symbolic.svg</file>
-
-    <file alias="view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
-    <file alias="view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
+
+    <!--Gtk.SpinButton-->
+    <file alias="value-decrease-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-remove-symbolic.svg</file>
+    <file alias="value-increase-symbolic.svg" compressed="true" preprocess="xml-stripblanks">list-add-symbolic.svg</file>
+
+    <file alias="adw-entry-edit-symbolic.svg" compressed="true" preprocess="xml-stripblanks">document-edit-symbolic.svg</file>
+    <file alias="adw-tab-unpin-symbolic-rtl.svg" compressed="true" preprocess="xml-stripblanks">view-pin-symbolic-rtl.svg</file>
+    <file alias="adw-tab-unpin-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-pin-symbolic.svg</file>
+    <file alias="view-sidebar-end-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-start-symbolic.svg</file>
+    <file alias="view-sidebar-start-rtl-symbolic.svg" compressed="true" preprocess="xml-stripblanks">view-sidebar-end-symbolic.svg</file>
   </gresource>
 
   <gresource prefix="/io/elementary/granite/scalable/categories">
