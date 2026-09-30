@@ -44,6 +44,23 @@ public class Granite.Box : Gtk.Box {
     public Spacing child_spacing { get; construct set; }
 
     /**
+     * Whether #this has a frame
+     */
+    [Version (since = "9.0.0")]
+    public bool has_frame {
+        get {
+            return has_css_class (Granite.CssClass.CARD);
+        }
+        set {
+            if (value && !has_css_class (Granite.CssClass.CARD)) {
+                add_css_class (Granite.CssClass.CARD);
+            } else if (has_css_class (Granite.CssClass.CARD)) {
+                remove_css_class (Granite.CssClass.CARD);
+            }
+        }
+    }
+
+    /**
      * Constructs a new {@link Granite.Box}
      */
     public Box (Gtk.Orientation orientation, Spacing child_spacing = SINGLE) {
