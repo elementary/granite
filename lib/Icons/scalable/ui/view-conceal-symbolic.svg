@@ -1,35 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   height="16"
-   width="16"
-   version="1.1"
-   id="svg8"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs12" />
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        id='svg8'
+        width='16'
+        height='16'>
   <path
-     id="rect1405-1-3"
-     style="font-variation-settings:normal;opacity:0.5;vector-effect:none;fill:#555761;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker:none;stop-color:#000000;stop-opacity:1"
-     d="M 8 2 C 6.0821358 2 4.326348 2.6735194 2.9511719 3.6328125 L 3.6660156 4.3496094 L 3.6679688 4.3496094 C 4.8534619 3.5619811 6.2635716 3.0890565 7.6640625 3.0078125 C 9.3506502 2.9312143 11.040262 3.461105 12.421875 4.421875 C 13.629983 5.3076894 14.949933 6.5384981 14.992188 8.1386719 C 14.642335 9.9790739 13.044432 11.298509 11.466797 12.148438 L 12.207031 12.890625 C 14.486548 11.635524 16 9.562929 16 8 C 16 5.6 12.432 2 8 2 z M 1.9726562 4.4199219 C 0.74319048 5.5589066 0 6.9045925 0 8 C 0 10.399999 3.5680001 14 8 14 C 9.0615791 14 10.072767 13.794386 10.998047 13.447266 L 10.222656 12.669922 C 7.6939544 13.448512 4.7877383 12.781095 2.8222656 10.990234 C 1.8458886 10.082992 0.66022553 8.7714118 1.1230469 7.3300781 C 1.480647 6.4882052 2.0194251 5.7486197 2.6796875 5.1289062 L 1.9726562 4.4199219 z M 8 5 A 2.9999999 2.9999999 0 0 0 5.5644531 6.2480469 L 6.2871094 6.96875 A 2 2 0 0 1 8 6 A 2 2 0 0 1 10 8 A 2 2 0 0 1 9.03125 9.7128906 L 9.7519531 10.435547 A 2.9999999 2.9999999 0 0 0 11 8 A 2.9999999 2.9999999 0 0 0 8 5 z M 5.0429688 7.4902344 A 2.9999999 2.9999999 0 0 0 5 8 A 2.9999999 2.9999999 0 0 0 8 11 A 2.9999999 2.9999999 0 0 0 8.5097656 10.957031 L 7.484375 9.9316406 A 2 2 0 0 1 6.0683594 8.515625 L 5.0429688 7.4902344 z " />
+          id='rect1405-1-3'
+          class='foreground foreground-fill'
+          fill='url(#gpa:foreground) rgb(0,0,0)'
+          fill-opacity='0.5'
+          fill-rule='nonzero'
+          d='M 8 2 C 6.08214 2, 4.32635 2.67352, 2.95117 3.63281 L 3.66602 4.34961 L 3.66797 4.34961 C 4.85346 3.56198, 6.26357 3.08906, 7.66406 3.00781 C 9.35065 2.93121, 11.0403 3.46111, 12.4219 4.42188 C 13.63 5.30769, 14.9499 6.5385, 14.9922 8.13867 C 14.6423 9.97907, 13.0444 11.2985, 11.4668 12.1484 L 12.207 12.8906 C 14.4865 11.6355, 16 9.56293, 16 8 C 16 5.6, 12.432 2, 8 2 Z M 1.97266 4.41992 C 0.74319 5.55891, 0 6.90459, 0 8 C 0 10.4, 3.568 14, 8 14 C 9.06158 14, 10.0728 13.7944, 10.998 13.4473 L 10.2227 12.6699 C 7.69395 13.4485, 4.78774 12.7811, 2.82227 10.9902 C 1.84589 10.083, 0.660226 8.77141, 1.12305 7.33008 C 1.48065 6.48821, 2.01943 5.74862, 2.67969 5.12891 L 1.97266 4.41992 Z M 8 5 A 3 3 0 0 0 5.56445 6.24805 L 6.28711 6.96875 A 2 2 0 0 1 8 6 A 2 2 0 0 1 10 8 A 2 2 0 0 1 9.03125 9.71289 L 9.75195 10.4355 A 3 3 0 0 0 11 8 A 3 3 0 0 0 8 5 Z M 5.04297 7.49023 A 3 3 0 0 0 5 8 A 3 3 0 0 0 8 11 A 3 3 0 0 0 8.50977 10.957 L 7.48438 9.93164 A 2 2 0 0 1 6.06836 8.51562 L 5.04297 7.49023 Z'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
+  </path>
   <rect
-     style="font-variation-settings:normal;vector-effect:none;fill:#555761;fill-opacity:1;stroke:none;stroke-width:0.992001;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker:none;stop-color:#000000"
-     id="rect2480"
-     width="1.248"
-     height="19.799999"
-     x="-0.62576789"
-     y="1.4161836"
-     rx="0.5"
-     ry="0.5"
-     transform="rotate(-45)" />
-  <rect
-     style="font-variation-settings:normal;vector-effect:none;fill:#555761;fill-opacity:1;stroke:none;stroke-width:0.992001;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;marker:none;stop-color:#000000"
-     id="rect2480-5"
-     width="1.248"
-     height="19.799999"
-     x="-0.62576789"
-     y="1.4161836"
-     rx="0.5"
-     ry="0.5"
-     transform="rotate(-45)" />
+          id='rect2480'
+          class=''
+          transform='rotate(-45, 0, 0)'
+          fill='url(#gpa:foreground) rgb(0,0,0)'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          x='-0.625768'
+          y='1.41618'
+          width='1.248'
+          height='19.8'
+          rx='0.5'
+          ry='0.5'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
+  </rect>
 </svg>

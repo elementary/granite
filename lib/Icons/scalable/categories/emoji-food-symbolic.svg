@@ -1,13 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
- <path d="m2 0v6l1 0.75v0.95312 0.29688 6.5c0 0.831 0.669 1.5 1.5 1.5s1.5-0.669 1.5-1.5v-6.5-0.29688-0.95312l1-0.75v-6h-1v5.5l-1 0.5v-6h-1v6l-1-0.5v-5.5h-1zm2 7.1094h0.5 0.5v0.5 0.39062 6.5c0 0.277-0.223 0.5-0.5 0.5s-0.5-0.223-0.5-0.5v-6.5-0.39062-0.5z" fill="#555761" style="font-variation-settings:normal"/>
- <path d="m13 0c-1.4293-3.3149e-4 -2.7502 0.95271-3.4648 2.5-0.71453 1.547-0.71453 3.453 0 5 0.13356 0.28412 0.28927 0.55105 0.46484 0.79688v6.2031c0 0.831 0.669 1.5 1.5 1.5s1.5-0.669 1.5-1.5v-7zm-1 1.2807v13.219c0 0.277-0.223 0.5-0.5 0.5s-0.5-0.223-0.5-0.5v-6.6094c-0.2846-0.28487-0.52122-0.68685-0.6875-1.168-0.34774-1.0117-0.43411-2.2509-0.086374-3.2626 0.34789-1.0125 0.9508-1.9983 1.7739-2.1794z" fill="#555761" style="font-variation-settings:normal"/>
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='rect838'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke-width='1'
+          d='M 2 0 L 2 6 L 3 6.75 L 3 7.70312 L 3 8 L 3 14.5 C 3 15.331, 3.669 16, 4.5 16 C 5.331 16, 6 15.331, 6 14.5 L 6 8 L 6 7.70312 L 6 6.75 L 7 6 L 7 0 L 6 0 L 6 5.5 L 5 6 L 5 0 L 4 0 L 4 6 L 3 5.5 L 3 0 L 2 0 Z M 4 7.10938 L 4.5 7.10938 L 5 7.10938 L 5 7.60938 L 5 8 L 5 14.5 C 5 14.777, 4.777 15, 4.5 15 C 4.223 15, 4 14.777, 4 14.5 L 4 8 L 4 7.60938 L 4 7.10938 Z'
+          class='foreground foreground-fill'>
+  </path>
+  <path
+          id='rect838-3'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke-width='1'
+          d='M 13 0 C 11.5707 -0.00033149, 10.2498 0.952708, 9.53516 2.5 C 8.82063 4.04701, 8.82063 5.95299, 9.53516 7.5 C 9.66872 7.78412, 9.82442 8.05105, 10 8.29688 L 10 14.5 C 10 15.331, 10.669 16, 11.5 16 C 12.331 16, 13 15.331, 13 14.5 L 13 10 L 13 7.5 Z M 12 1.28068 L 12 6.39648 L 12 8.35938 L 12 14.5 C 12 14.777, 11.777 15, 11.5 15 C 11.223 15, 11 14.777, 11 14.5 L 11 7.89062 C 10.7154 7.60576, 10.4788 7.20377, 10.3125 6.72266 C 9.96476 5.71098, 9.87839 4.47174, 10.2261 3.46006 C 10.574 2.44754, 11.1769 1.46179, 12 1.28068 Z'
+          class='foreground foreground-fill'>
+  </path>
 </svg>

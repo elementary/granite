@@ -109,9 +109,9 @@ public class LabelView : DemoPage {
         var copy_label_card = new Granite.Bin () {
             child = copy_label,
             halign = START,
+            has_frame = true,
             width_request = 128
         };
-        copy_label_card.add_css_class (Granite.CssClass.CARD);
 
         var accellabel_box = new Granite.Box (VERTICAL, NONE);
         accellabel_box.append (accellabel_header);

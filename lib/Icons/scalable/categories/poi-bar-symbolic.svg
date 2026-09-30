@@ -1,12 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
- <path d="m1.9395 2a0.65748 0.6489 0 0 0-0.48242 1.0918l5.543 5.8789v5.0293h-2.4922c-0.66667 0-0.66667 1 0 1h6c0.66667 0 0.66667-1 0-1h-2.5078v-5.0273l5.582-5.8848a0.6548 0.64625 0 0 0-0.47852-1.0879h-11.164zm0.8125 1h9.5469l-1.8848 2h-5.7891l-1.873-2z" color="#000000" fill="#555761" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        id='svg1'
+        width='16'
+        height='16'>
+  <path
+          id='path1'
+          class='foreground foreground-fill'
+          style='font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal'
+          color='rgb(0,0,0)'
+          fill='url(#gpa:foreground) rgb(0,0,0)'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          d='M 1.9395 2 A 0.65748 0.6489 0 0 0 1.45708 3.0918 L 7.00008 8.9707 L 7.00008 14 L 4.50788 14 C 3.84121 14, 3.84121 15, 4.50788 15 L 10.5079 15 C 11.1746 15, 11.1746 14, 10.5079 14 L 8.00008 14 L 8.00008 8.9727 L 13.5821 3.0879 A 0.6548 0.64625 0 0 0 13.1036 2 L 1.93956 2 Z M 2.752 3 L 12.2989 3 L 10.4141 5 L 4.625 5 L 2.752 3 Z'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
+  </path>
 </svg>
