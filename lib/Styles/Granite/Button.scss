@@ -13,7 +13,7 @@ button {
         color: white;
 
         &:active {
-            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY-900) 10%);
         }
     }
 
