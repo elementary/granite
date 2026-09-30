@@ -15,3 +15,7 @@
 @mixin border-interactive-roundrect {
     border-radius: calc(var(--window-radius) / 2);
 }
+
+.toplevel {
+    border-radius: var(--window-radius);
+}
