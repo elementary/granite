@@ -295,7 +295,7 @@ namespace Granite {
                 case PINK: return "#de3e80";
                 case BROWN: return "#8a715e";
                 case GRAY: return "#667885";
-                case LATTE: return "#";
+                case LATTE: return "#cfa25e";
                 default: return "";
             }
         }
