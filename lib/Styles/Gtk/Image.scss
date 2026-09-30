@@ -26,79 +26,79 @@ image {
     }
 
     &.red {
-        color: var(--STRAWBERRY_400);
+        color: var(--STRAWBERRY-400);
         @media (prefers-color-scheme: dark) {
-            color:  var(--STRAWBERRY_300);
+            color:  var(--STRAWBERRY-300);
         }
     }
 
     &.orange {
-        color:  var(--ORANGE_600);
+        color:  var(--ORANGE-600);
         @media (prefers-color-scheme: dark) {
-            color:  var(--ORANGE_300);
+            color:  var(--ORANGE-300);
         }
     }
 
     &.yellow {
-        color:  var(--BANANA_600);
+        color:  var(--BANANA-600);
         @media (prefers-color-scheme: dark) {
-            color:  var(--BANANA_400);
+            color:  var(--BANANA-400);
         }
     }
 
     &.green {
-        color:  var(--LIME_600);
+        color:  var(--LIME-600);
         @media (prefers-color-scheme: dark) {
-            color:  var(--LIME_400);
+            color:  var(--LIME-400);
         }
     }
 
     &.blue {
-        color:  var(--BLUEBERRY_500);
+        color:  var(--BLUEBERRY-500);
         @media (prefers-color-scheme: dark) {
-            color:  var(--BLUEBERRY_400);
+            color:  var(--BLUEBERRY-400);
         }
     }
 
     &.purple {
-        color:  var(--GRAPE_500);
+        color:  var(--GRAPE-500);
         @media (prefers-color-scheme: dark) {
-            color:  var(--GRAPE_300);
+            color:  var(--GRAPE-300);
         }
     }
 
     &.brown {
-        color:  var(--COCOA_500);
+        color:  var(--COCOA-500);
         @media (prefers-color-scheme: dark) {
-            color:  var(--COCOA_200);
+            color:  var(--COCOA-200);
         }
     }
 
     &.teal  {
-        color:  var(--MINT_700);
+        color:  var(--MINT-700);
         @media (prefers-color-scheme: dark) {
-            color:  var(--MINT_400);
+            color:  var(--MINT-400);
         }
     }
 
     &.pink  {
-        color:  var(--BUBBLEGUM_400);
+        color:  var(--BUBBLEGUM-400);
         @media (prefers-color-scheme: dark) {
-            color:  var(--BUBBLEGUM_200);
+            color:  var(--BUBBLEGUM-200);
         }
     }
 
     &.gray {
-        color:  var(--SLATE_400);
+        color:  var(--SLATE-400);
         @media (prefers-color-scheme: dark) {
-            color:  var(--SLATE_200);
+            color:  var(--SLATE-200);
         }
     }
 
     &.latte {
-        color:  var(--LATTE_700);
+        color:  var(--LATTE-700);
         @media (prefers-color-scheme: dark) {
-            color:  var(--LATTE_400);
+            color:  var(--LATTE-400);
         }
     }
 
