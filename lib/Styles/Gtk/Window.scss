@@ -59,8 +59,8 @@ window.devel {
     --grid-minor-spacing: 0.666em;
     --grid-major-spacing: 2em;
 
-    --grid-minor-color: color-mix(in srgb, var(--GRAPE_500) 15%, transparent);
-    --grid-major-color: color-mix(in srgb, var(--GRAPE_500) 20%, transparent);
+    --grid-minor-color: color-mix(in srgb, var(--GRAPE-500) 15%, transparent);
+    --grid-major-color: color-mix(in srgb, var(--GRAPE-500) 20%, transparent);
 
     .sidebar revealer.top-bar,
     .sidebar windowhandle > box.top {
