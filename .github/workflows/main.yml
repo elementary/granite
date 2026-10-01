@@ -32,10 +32,3 @@ jobs:
           meson setup build -Ddocumentation=true
           ninja -C build
           ninja -C build install
-
-      - name: Build and Test (Gtk Stylesheets)
-        env:
-          DESTDIR: out
-          PKG_CONFIG_PATH: ${{ github.workspace }}/build/meson-uninstalled
-        run: |
-          ninja -C build install
