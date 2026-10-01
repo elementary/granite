@@ -63,7 +63,8 @@
 
 %raised {
     @include control;
-    @include border-interactive-roundrect;
+
+    border-radius: var(--control-radius);
 
     &:active,
     &:checked {
