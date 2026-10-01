@@ -32,36 +32,6 @@ gtk_stylesheet_dark_deps = custom_target(
     build_always_stale: true
 )
 
-granite_stylesheet_deps = custom_target(
-    'Granite.scss',
-    input: 'Granite.scss',
-    output: 'granite.css',
-    command: [
-        sassc,
-        sassc_opts,
-        '@INPUT@',
-        '@OUTPUT@',
-    ],
-    install: false,
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
-    build_always_stale: true
-)
-
-granite_stylesheet_dark_deps = custom_target(
-    'Granite-dark.scss',
-    input: 'Granite-dark.scss',
-    output: 'granite-dark.css',
-    command: [
-        sassc,
-        sassc_opts,
-        '@INPUT@',
-        '@OUTPUT@',
-    ],
-    install: false,
-    install_dir: get_option('datadir') / 'themes' / 'Granite' / 'gtk-4.0',
-    build_always_stale: true
-)
-
 stylesheet_resource = gnome.compile_resources(
     'styles-resource',
     'styles.gresource.xml',
@@ -71,8 +41,6 @@ stylesheet_resource = gnome.compile_resources(
     ],
     dependencies: [
         gtk_stylesheet_deps,
-        gtk_stylesheet_dark_deps,
-        granite_stylesheet_deps,
-        granite_stylesheet_dark_deps
+        gtk_stylesheet_dark_deps
     ]
 )
