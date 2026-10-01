@@ -30,7 +30,6 @@ list {
     // In ListBoxUpdateHeaderFunc ()
     > header {
         margin: $button-spacing;
-        padding: 0;
     }
 
     &.separators > row + row {
