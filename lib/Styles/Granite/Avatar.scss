@@ -1,0 +1,73 @@
+avatar {
+    @extend .circular;
+
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+
+    &.frame {
+        border: 1px solid var(--border-color);
+        box-shadow:
+            highlight(),
+            shadow(1);
+
+        @media(prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+    }
+
+    &.red {
+        background-color: var(--STRAWBERRY-300);
+        -gtk-icon-shadow: 0 1px 1px var(--STRAWBERRY-500);
+    }
+
+    &.orange {
+        background-color: var(--ORANGE-300);
+        -gtk-icon-shadow: 0 1px 1px var(--ORANGE-500);
+    }
+
+    &.yellow {
+        background-color: var(--BANANA-500);
+        -gtk-icon-shadow: 0 1px 1px var(--BANANA-700);
+    }
+
+    &.green {
+        background-color: var(--LIME-500);
+        -gtk-icon-shadow: 0 1px 1px var(--LIME-700);
+    }
+
+    &.blue {
+        background-color: var(--BLUEBERRY-500);
+        -gtk-icon-shadow: 0 1px 1px var(--BLUEBERRY-700);
+    }
+
+    &.purple {
+        background-color: var(--GRAPE-500);
+        -gtk-icon-shadow: 0 1px 1px var(--GRAPE-700);
+    }
+
+    &.brown {
+        background-color: var(--COCOA-300);
+        -gtk-icon-shadow: 0 1px 1px var(--COCOA-500);
+    }
+
+    &.teal  {
+        background-color: var(--MINT-500);
+        -gtk-icon-shadow: 0 1px 1px var(--MINT-700);
+    }
+
+    &.pink  {
+        background-color: var(--BUBBLEGUM-500);
+        -gtk-icon-shadow: 0 1px 1px var(--BUBBLEGUM-700);
+    }
+
+    &.gray {
+        background-color: var(--SLATE-300);
+        -gtk-icon-shadow: 0 1px 1px var(--SLATE-500);
+    }
+
+    &.latte {
+        background-color: var(--LATTE-300);
+        -gtk-icon-shadow: 0 1px 1px var(--LATTE-500);
+    }
+}
