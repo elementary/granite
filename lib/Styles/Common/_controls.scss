@@ -1,6 +1,4 @@
 @mixin control {
-    @include border-interactive;
-
     background-clip: border-box;
     background-color: var(--bg-level-0);
     background-image:
@@ -9,6 +7,13 @@
             color-mix(in srgb, var(--highlight-color) 20%, transparent),
             color-mix(in srgb, var(--highlight-color) 0%, transparent)
         );
+
+    border: 1px solid var(--border-color);
+
+    box-shadow:
+        highlight("full"),
+        0 1px 1px color-mix(in srgb, black 5%, transparent);
+
     transition: all duration("in-place") easing("default");
 
     &:backdrop {

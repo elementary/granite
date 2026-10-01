@@ -2,16 +2,6 @@
     --window-radius: 1em;
 }
 
-@mixin border-interactive {
-    box-shadow:
-        highlight("full"),
-        outset-shadow(1);
-
-    border-style: solid;
-    border-color: var(--border-color);
-    border-width: 1px;
-}
-
 @mixin border-interactive-roundrect {
     border-radius: calc(var(--window-radius) / 2);
 }
