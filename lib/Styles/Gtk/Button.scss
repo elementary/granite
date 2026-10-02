@@ -22,7 +22,21 @@ button {
         color: white;
 
         &:active {
-            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY-900) 10%);
+            background: color-mix(in srgb, var(--fg-color) 15%, transparent);
+            transform: scale(0.8);
+            transition:
+                background duration("collapse") easing(),
+                transform duration("collapse") easing();
+        }
+
+        &.toggle {
+            border-radius: var(--control-radius);
+            margin: 0;
+            padding: calc(0.5rem - 1px);
+
+            &:checked {
+                @extend selection;
+            }
         }
     }
 
@@ -75,8 +89,7 @@ button.image-button {
     }
 
     &.toggle {
-        @include border-interactive-roundrect;
-
+        border-radius: var(--control-radius);
         margin: 0;
         padding: calc(0.5rem - 1px);
 
@@ -144,7 +157,6 @@ button.link {
 
 button.osd {
     @include control;
-    @include border-interactive-roundrect;
 
     // This stacks with the other shadows,
     // so reduce it's alpha by the sum of other shadows
@@ -155,6 +167,7 @@ button.osd {
 
     background-image: none;
     border: none;
+    border-radius: var(--control-radius);
     box-shadow:
         highlight(),
         // Intentionally not in ems since it's used as a stroke
