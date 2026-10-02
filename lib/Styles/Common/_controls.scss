@@ -26,12 +26,15 @@
     background: var(--bg-level-3);
     box-shadow:
         highlight("bottom"),
-        inset-shadow("");
+        0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+        inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
+        inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
 
     &:disabled {
         box-shadow:
             highlight("bottom"),
-            inset-shadow("disabled");
+            0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+            inset 0 1px 1px color-mix(in srgb, black 5%, transparent);
     }
 }
 
@@ -63,7 +66,8 @@
 
 %raised {
     @include control;
-    @include border-interactive-roundrect;
+
+    border-radius: var(--control-radius);
 
     &:active,
     &:checked {
