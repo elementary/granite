@@ -13,10 +13,8 @@ public class Granite.StyleManager : Object {
     private static Gtk.CssProvider? base_provider = null;
     private static Gtk.CssProvider? dark_provider = null;
     private static Gtk.CssProvider? app_provider = null;
-#if INCLUDE_GTK_STYLESHEETS
     private static Gtk.CssProvider? gtk_base_provider = null;
     private static Gtk.CssProvider? gtk_dark_provider = null;
-#endif
     private static HashTable<Gdk.Display, StyleManager>? style_managers_by_displays;
 
     /**
@@ -60,9 +58,7 @@ public class Granite.StyleManager : Object {
 
     construct {
         var gtk_settings = Gtk.Settings.get_for_display (display);
-#if INCLUDE_GTK_STYLESHEETS
         gtk_settings.gtk_theme_name = "Granite-empty";
-#endif
         gtk_settings.notify["gtk-interface-color-scheme"].connect (set_provider_for_display);
         set_provider_for_display ();
 
@@ -100,11 +96,9 @@ public class Granite.StyleManager : Object {
                 Gtk.StyleContext.remove_provider_for_display (display, base_provider);
             }
 
-#if INCLUDE_GTK_STYLESHEETS
             if (gtk_base_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, gtk_base_provider);
             }
-#endif
 
             if (dark_provider == null) {
                 dark_provider = new Gtk.CssProvider () {
@@ -113,7 +107,6 @@ public class Granite.StyleManager : Object {
                 dark_provider.load_from_resource ("/io/elementary/granite/Granite-dark.css");
             }
 
-#if INCLUDE_GTK_STYLESHEETS
             if (gtk_dark_provider == null) {
                 gtk_dark_provider = new Gtk.CssProvider () {
                     prefers_color_scheme = DARK
@@ -122,7 +115,6 @@ public class Granite.StyleManager : Object {
             }
 
             Gtk.StyleContext.add_provider_for_display (display, gtk_dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
-#endif
             Gtk.StyleContext.add_provider_for_display (display, dark_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         } else {
             app_provider.prefers_color_scheme = DEFAULT;
@@ -131,25 +123,21 @@ public class Granite.StyleManager : Object {
                 Gtk.StyleContext.remove_provider_for_display (display, dark_provider);
             }
 
-#if INCLUDE_GTK_STYLESHEETS
             if (gtk_dark_provider != null) {
                 Gtk.StyleContext.remove_provider_for_display (display, gtk_dark_provider);
             }
-#endif
 
             if (base_provider == null) {
                 base_provider = new Gtk.CssProvider ();
                 base_provider.load_from_resource ("/io/elementary/granite/Granite.css");
             }
 
-#if INCLUDE_GTK_STYLESHEETS
             if (gtk_base_provider == null) {
                 gtk_base_provider = new Gtk.CssProvider ();
                 gtk_base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
             }
 
             Gtk.StyleContext.add_provider_for_display (display, gtk_base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME + 1);
-#endif
             Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
         }
     }
