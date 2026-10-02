@@ -1,9 +1,6 @@
 :root {
     --window-radius: 1em;
-}
-
-@mixin border-interactive-roundrect {
-    border-radius: calc(var(--window-radius) / 2);
+    --control-radius: calc(var(--window-radius) / 2);
 }
 
 .toplevel {
