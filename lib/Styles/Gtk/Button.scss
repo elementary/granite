@@ -28,8 +28,7 @@ button {
         }
 
         &.toggle {
-            @include border-interactive-roundrect;
-
+            border-radius: var(--control-radius);
             margin: 0;
             padding: calc(0.5rem - 1px);
 
