@@ -3,15 +3,15 @@ spinner {
     opacity: 0;
     transform: scale(0.8);
     transition:
-        opacity duration("collapse") easing(),
-        transform duration("collapse") easing();
+        opacity duration("collapse") var(--ease-in-out),
+        transform duration("collapse") var(--ease-in-out);
 
     &:checked {
         animation: spin 600ms steps(12) infinite;
         opacity: 1;
         transform: scale(1);
         transition:
-            opacity duration("expand") easing(),
+            opacity duration("expand") var(--ease-in-out),
             transform duration("expand") easing("ease-out-back");
 
         &:backdrop {

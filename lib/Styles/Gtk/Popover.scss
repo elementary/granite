@@ -76,7 +76,7 @@ popover {
     border-radius: calc(var(--window-radius) / 2);
     padding: $button-spacing;
     transition:
-        background duration("expand") easing(),
+        background duration("expand") var(--ease-in-out),
         transform duration("expand") easing("ease-out-back");
 
     &.circular {
@@ -94,8 +94,8 @@ popover {
         background: color-mix(in srgb, var(--fg-color) 15%, transparent);
         transform: scale(0.95);
         transition:
-            background duration("collapse") easing(),
-            transform duration("collapse") easing();
+            background duration("collapse") var(--ease-in-out),
+            transform duration("collapse") var(--ease-in-out);
     }
 }
 

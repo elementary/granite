@@ -4,7 +4,7 @@ levelbar {
 
     block {
         @include trough;
-        transition: background-color duration("in-place") easing();
+        transition: background-color duration("in-place") var(--ease-in-out);
 
         &.filled {
             background-color: var(--accent-color);
