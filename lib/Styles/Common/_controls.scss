@@ -1,6 +1,4 @@
 @mixin control {
-    @include border-interactive;
-
     background-clip: border-box;
     background-color: var(--bg-level-0);
     background-image:
@@ -9,6 +7,13 @@
             color-mix(in srgb, var(--highlight-color) 20%, transparent),
             color-mix(in srgb, var(--highlight-color) 0%, transparent)
         );
+
+    border: 1px solid var(--border-color);
+
+    box-shadow:
+        highlight("full"),
+        0 1px 1px color-mix(in srgb, black 5%, transparent);
+
     transition: all duration("in-place") easing("default");
 
     &:backdrop {
@@ -26,18 +31,21 @@
     background: var(--bg-level-3);
     box-shadow:
         highlight("bottom"),
-        inset-shadow("");
+        0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+        inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
+        inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
 
     &:disabled {
         box-shadow:
             highlight("bottom"),
-            inset-shadow("disabled");
+            0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+            inset 0 1px 1px color-mix(in srgb, black 5%, transparent);
     }
 }
 
 // used to show a check or radio button is "active"
 @mixin control-checked {
-    color: var(--SILVER_100);
+    color: var(--SILVER-100);
     background-color: var(--accent-color);
 
     &:backdrop,
@@ -63,7 +71,8 @@
 
 %raised {
     @include control;
-    @include border-interactive-roundrect;
+
+    border-radius: var(--control-radius);
 
     &:active,
     &:checked {

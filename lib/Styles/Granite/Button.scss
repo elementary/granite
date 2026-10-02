@@ -13,7 +13,7 @@ button {
         color: white;
 
         &:active {
-            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY_900) 10%);
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY-900) 10%);
         }
     }
 
@@ -81,7 +81,6 @@ button {
 
     &.osd {
         @include control;
-        @include border-interactive-roundrect;
 
         // This stacks with the other shadows,
         // so reduce it's alpha by the sum of other shadows
@@ -92,6 +91,7 @@ button {
 
         background-image: none;
         border: none;
+        border-radius: var(--control-radius);
         box-shadow:
             highlight(),
             // Intentionally not in ems since it's used as a stroke
