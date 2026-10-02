@@ -29,8 +29,6 @@
     --bg-color: var(--bg-level-2);
 }
 
-
-
 @function shadow($level) {
     @if $level == 1 {
         @return
