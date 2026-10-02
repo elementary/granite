@@ -12,6 +12,16 @@ scale {
         }
     }
 
+    mark {
+        indicator {
+            background: color-mix(in srgb, var(--fg-color) 75%, var(--bg-level-4));
+        }
+
+        label {
+            @extend .dim-label, .small-label;
+        }
+    }
+
     slider {
         // 16px - border
         min-height: calc(#{$slider-width} - 1px);
@@ -57,6 +67,22 @@ scale {
             border-radius: 0 rem(12px) rem(12px) 0;
         }
 
+        marks {
+            &.bottom {
+                margin-top: 0.5rem;
+            }
+
+            &.top {
+                margin-top: 0.5rem;
+            }
+
+            mark indicator {
+                min-height: 0.5rem;
+                // Intentionally not in ems since it's a stroke
+                min-width: 1px;
+            }
+        }
+
         slider {
             margin: $slider-margin -1px;
         }
@@ -98,6 +124,22 @@ scale {
     }
 
     &.vertical {
+        marks {
+            &.bottom {
+                margin-left: 0.5rem;
+            }
+
+            &.top {
+                margin-right: 0.5rem;
+            }
+
+            mark indicator {
+                // Intentionally not in ems since it's a stroke
+                min-height: 1px;
+                min-width: 0.5rem;
+            }
+        }
+
         slider {
             margin: -1px $slider-margin;
         }
