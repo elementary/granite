@@ -14,7 +14,7 @@
         highlight("full"),
         0 1px 1px color-mix(in srgb, black 5%, transparent);
 
-    transition: all var(--duration-in-place) var(--easing-in-out);
+    transition: all var(--duration-in-place) var(--ease-in-out);
 
     &:backdrop {
         background-image: none;

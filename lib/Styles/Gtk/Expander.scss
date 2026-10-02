@@ -1,7 +1,7 @@
 expander {
     min-height: rem(16px);
     min-width: rem(16px);
-    transition: all duration("in-place") var(--ease-in-out);
+    transition: all var(--duration-in-place) var(--ease-in-out);
     -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 
     &:dir(rtl) {
