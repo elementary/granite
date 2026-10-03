@@ -1,0 +1,77 @@
+columnview {
+    &.column-separators cell {
+        border-right: 1px solid var(--border-color);
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    header button {
+        @extend .title-4;
+        padding: 0.5em;
+
+        label {
+
+        }
+
+        sort-indicator {
+            min-height: 16px;
+            min-width: 16px;
+
+            &.ascending {
+                -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+            }
+
+            &.descending {
+                -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+            }
+        }
+    }
+
+    listview {
+        &.separators > row + row {
+            border: none;
+            box-shadow: none;
+        }
+    }
+
+    row.activatable {
+        transition:
+            background duration("expand") easing();
+
+        &:active cell {
+            background: color-mix(in srgb, var(--fg-color) 15%, transparent);
+            transition:
+                background duration("collapse") easing();
+        }
+
+        &:hover cell,
+        &:focus-visible cell {
+            background: color-mix(in srgb, var(--fg-color) 10%, transparent);
+        }
+
+        &:selected cell {
+            @extend selection;
+        }
+
+        cell {
+            padding: 0.5em 0.25em;
+
+            &:first-child {
+                border-radius: calc(var(--window-radius) / 2) 0 0 calc(var(--window-radius) / 2);
+                margin-left: 0.25em;
+            }
+
+            &:last-child {
+                margin-right: 0.25em;
+                border-radius: 0 calc(var(--window-radius) / 2) calc(var(--window-radius) / 2) 0;
+            }
+        }
+    }
+
+    rubberband {
+        @extend selection;
+        border-radius: var(--control-radius);
+    }
+}
