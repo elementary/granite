@@ -62,7 +62,7 @@ video {
                 // Playback control
                 > scale.horizontal {
                     fill {
-                        animation: progress 1.5s easing() infinite;
+                        animation: progress 1.5s var(--ease-in-out) infinite;
                         background-color: color-mix(in srgb, white 15%, transparent);
                         background-repeat: no-repeat;
                         background-size: 48px 100%;
