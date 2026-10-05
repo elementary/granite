@@ -177,9 +177,7 @@ public class ControlsView : DemoPage {
         var image_check_label = new Gtk.Label (_("Area"));
 
         var image_check_box = new Granite.Box (VERTICAL);
-        image_check_box.append (new Gtk.Image.from_icon_name ("view-reader-symbolic") {
-            icon_size = LARGE
-        });
+        image_check_box.append (new Gtk.Image.from_icon_name ("view-reader-symbolic"));
         image_check_box.append (image_check_label);
 
         var image_check = new Gtk.CheckButton () {
