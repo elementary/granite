@@ -40,7 +40,6 @@ stylesheet_resource = gnome.compile_resources(
         meson.current_source_dir(),
     ],
     dependencies: [
-        gtk_stylesheet_deps,
-        gtk_stylesheet_dark_deps
+        gtk_stylesheet_deps
     ]
 )
