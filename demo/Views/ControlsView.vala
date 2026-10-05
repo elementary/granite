@@ -221,6 +221,9 @@ public class ControlsView : DemoPage {
             hexpand = true
         };
         hscale.adjustment.value = 0.8;
+        hscale.add_mark (-1, BOTTOM, "Less");
+        hscale.add_mark (0.8, BOTTOM, null);
+        hscale.add_mark (1, BOTTOM, "More");
 
         var hprogressbar = new Gtk.ProgressBar ();
         hscale.adjustment.bind_property ("value", hprogressbar, "fraction", SYNC_CREATE);
@@ -256,6 +259,9 @@ public class ControlsView : DemoPage {
             has_origin = false
         };
         vscale.adjustment.value = 0.1;
+        vscale.add_mark (-1, BOTTOM, "Less");
+        vscale.add_mark (0.1, BOTTOM, null);
+        vscale.add_mark (1, BOTTOM, "More");
 
         var vprogressbar = new Gtk.ProgressBar () {
             inverted = true,
