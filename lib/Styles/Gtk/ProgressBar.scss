@@ -23,7 +23,7 @@ progressbar {
             min-height: $trough-width;
 
             &:not(.pulse) {
-                animation: progress 1.5s easing() infinite;
+                animation: progress 1.5s var(--ease-in-out) infinite;
                 background-image:
                     linear-gradient(
                         to right,

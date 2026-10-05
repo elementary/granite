@@ -18,9 +18,9 @@ scale {
         min-width: calc(#{$slider-width} - 1px);
 
         transition:
-            box-shadow duration("expand") easing(),
-            opacity duration("expand") easing(),
-            transform duration("expand") easing("ease-out-back");
+            box-shadow var(--duration-expand) var(--ease-in-out),
+            opacity var(--duration-expand) var(--ease-in-out),
+            transform var(--duration-expand) var(--ease-out-back);
     }
 
     trough {
@@ -39,8 +39,8 @@ scale {
         slider {
             transform: scale(1.1);
             transition:
-                box-shadow duration("collapse") easing(),
-                transform duration("collapse") easing();
+                box-shadow var(--duration-collapse) var(--ease-in-out),
+                transform var(--duration-collapse) var(--ease-in-out);
             box-shadow:
                 highlight(),
                 0 0 0 1px var(--border-color),
@@ -72,8 +72,8 @@ scale {
                 opacity: 0;
                 transform: scale(0.9);
                 transition:
-                    opacity duration("in-place") easing(),
-                    transform duration("collapse") easing();
+                    opacity var(--duration-in-place) var(--ease-in-out),
+                    transform var(--duration-collapse) var(--ease-in-out);
             }
 
             &.bottom {
@@ -92,7 +92,7 @@ scale {
             &.top {
                 opacity: 1;
                 transform: scale(1);
-                transition: transform duration("expand") easing("ease-out-back");
+                transition: transform var(--duration-expand) var(--ease-out-back);
             }
         }
     }
