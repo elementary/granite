@@ -6,8 +6,8 @@ scrollbar {
 
     slider {
         transition:
-            background duration("collapse") easing(),
-            min-width duration("collapse") easing();
+            background var(--duration-collapse) var(--ease-in-out),
+            min-width var(--duration-collapse) var(--ease-in-out);
     }
 
     trough {
@@ -20,14 +20,14 @@ scrollbar {
     &.hovering {
         slider {
             transition:
-                background duration("expand") easing(),
-                min-width duration("expand") easing();
+                background var(--duration-expand) var(--ease-in-out),
+                min-width var(--duration-expand) var(--ease-in-out);
         }
     }
 
     &:active {
         slider {
-            transition: background duration("expand") easing();
+            transition: background var(--duration-expand) var(--ease-in-out);
         }
     }
 
@@ -59,7 +59,7 @@ scrollbar {
         trough {
             background-color: transparent;
             transition:
-                background duration("expand") easing();
+                background var(--duration-expand) var(--ease-in-out);
         }
 
         &:hover,
@@ -71,7 +71,7 @@ scrollbar {
             & trough {
                 background-color: color-mix(in srgb, var(--fg-color) 20%, transparent);
                 transition:
-                    background duration("expand") easing();
+                    background var(--duration-expand) var(--ease-in-out);
             }
         }
 
