@@ -1,7 +1,7 @@
 project(
     'granite-9',
     'vala', 'c',
-    meson_version: '>= 0.57.0',
+    meson_version: '>= 0.61.0',
     version: '9.0.0'
 )
 
@@ -52,6 +52,7 @@ libgranite_deps = [
     dependency('gtk4', version: '>=4.22'),
 ]
 
+fs = import('fs')
 pkgconfig = import('pkgconfig')
 gnome = import('gnome')
 i18n = import('i18n')
