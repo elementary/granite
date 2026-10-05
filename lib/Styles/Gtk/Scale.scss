@@ -12,15 +12,25 @@ scale {
         }
     }
 
+    mark {
+        indicator {
+            background: color-mix(in srgb, var(--fg-color) 75%, var(--bg-level-4));
+        }
+
+        label {
+            @extend .dim-label, .small-label;
+        }
+    }
+
     slider {
         // 16px - border
         min-height: calc(#{$slider-width} - 1px);
         min-width: calc(#{$slider-width} - 1px);
 
         transition:
-            box-shadow duration("expand") easing(),
-            opacity duration("expand") easing(),
-            transform duration("expand") easing("ease-out-back");
+            box-shadow var(--duration-expand) var(--ease-in-out),
+            opacity var(--duration-expand) var(--ease-in-out),
+            transform var(--duration-expand) var(--ease-out-back);
     }
 
     trough {
@@ -39,8 +49,8 @@ scale {
         slider {
             transform: scale(1.1);
             transition:
-                box-shadow duration("collapse") easing(),
-                transform duration("collapse") easing();
+                box-shadow var(--duration-collapse) var(--ease-in-out),
+                transform var(--duration-collapse) var(--ease-in-out);
             box-shadow:
                 highlight(),
                 0 0 0 1px var(--border-color),
@@ -55,6 +65,22 @@ scale {
 
         fill.bottom {
             border-radius: 0 rem(12px) rem(12px) 0;
+        }
+
+        marks {
+            &.bottom {
+                margin-top: 0.5rem;
+            }
+
+            &.top {
+                margin-top: 0.5rem;
+            }
+
+            mark indicator {
+                min-height: 0.5rem;
+                // Intentionally not in ems since it's a stroke
+                min-width: 1px;
+            }
         }
 
         slider {
@@ -72,8 +98,8 @@ scale {
                 opacity: 0;
                 transform: scale(0.9);
                 transition:
-                    opacity duration("in-place") easing(),
-                    transform duration("collapse") easing();
+                    opacity var(--duration-in-place) var(--ease-in-out),
+                    transform var(--duration-collapse) var(--ease-in-out);
             }
 
             &.bottom {
@@ -92,12 +118,28 @@ scale {
             &.top {
                 opacity: 1;
                 transform: scale(1);
-                transition: transform duration("expand") easing("ease-out-back");
+                transition: transform var(--duration-expand) var(--ease-out-back);
             }
         }
     }
 
     &.vertical {
+        marks {
+            &.bottom {
+                margin-left: 0.5rem;
+            }
+
+            &.top {
+                margin-right: 0.5rem;
+            }
+
+            mark indicator {
+                // Intentionally not in ems since it's a stroke
+                min-height: 1px;
+                min-width: 0.5rem;
+            }
+        }
+
         slider {
             margin: -1px $slider-margin;
         }

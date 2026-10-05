@@ -16,15 +16,15 @@ button {
         padding: calc(0.5rem);
 
         transition:
-            background duration("expand") easing(),
-            transform duration("expand") easing("ease-out-back");
+            background var(--duration-expand) var(--ease-in-out),
+            transform var(--duration-expand) var(--ease-out-back);
 
         &:active {
             background: color-mix(in srgb, var(--fg-color) 15%, transparent);
             transform: scale(0.8);
             transition:
-                background duration("collapse") easing(),
-                transform duration("collapse") easing();
+                background var(--duration-collapse) var(--ease-in-out),
+                transform var(--duration-collapse) var(--ease-in-out);
         }
 
         &.toggle {
