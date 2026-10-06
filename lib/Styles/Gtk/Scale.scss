@@ -1,7 +1,7 @@
 scale {
-    $slider-width: rem(16px);
-    $trough-width: 0.5rem;
-    $slider-margin: ($slider-width - $trough-width) / 2 * -1;
+    --slider-width: 1.333rem;
+    --trough-width: 0.5rem;
+    --slider-margin: calc((var(--slider-width) - var(--trough-width)) / 2 * -1);
 
     // `has_origin = true`
     highlight {
@@ -24,8 +24,8 @@ scale {
 
     slider {
         // 16px - border
-        min-height: calc(#{$slider-width} - 1px);
-        min-width: calc(#{$slider-width} - 1px);
+        min-height: calc(var(--slider-width) - 1px);
+        min-width: calc(var(--slider-width) - 1px);
 
         transition:
             box-shadow var(--duration-expand) var(--ease-in-out),
@@ -36,8 +36,8 @@ scale {
     trough {
         @include trough;
 
-        min-height: $trough-width;
-        min-width: $trough-width;
+        min-height: var(--trough-width);
+        min-width: var(--trough-width);
     }
 
     value {
@@ -84,12 +84,12 @@ scale {
         }
 
         slider {
-            margin: $slider-margin -1px;
+            margin: var(--slider-margin) -1px;
         }
 
         value {
             // Padding + text height + margin
-            $value-osd-height: (rem(6px) * 2) + 0.85rem + rem(6px);
+            --value-osd-height: calc((var(--button-spacing) * 2) + 0.85rem + 0.5rem);
 
             &.bottom,
             &.top {
@@ -103,13 +103,13 @@ scale {
             }
 
             &.bottom {
-                margin-bottom: $value-osd-height * -1;
+                margin-bottom: calc(var(--value-osd-height) * -1);
                 margin-top: rem(3px);
             }
 
             &.top {
                 margin-bottom: rem(3px);
-                margin-top: $value-osd-height * -1;
+                margin-top: calc(var(--value-osd-height) * -1);
             }
         }
 
@@ -141,7 +141,7 @@ scale {
         }
 
         slider {
-            margin: -1px $slider-margin;
+            margin: -1px var(--slider-margin);
         }
     }
 }
