@@ -8,7 +8,8 @@ image {
         warning var(--warning-icon-color);
 
     &:disabled {
-        filter: opacity(var(--disabled-opacity));
+        // Quoted to prevent conversion to alpha()
+        filter: #{'opacity(calc(var(--disabled-opacity) * 100%))'};
     }
 
     &.red,
