@@ -61,6 +61,6 @@ button {
 
     // Almost certainly a button with text and image
     > box.horizontal {
-        border-spacing: var(--button-spacing) / 2;
+        border-spacing: calc(var(--button-spacing) / 2);
     }
 }
