@@ -2,7 +2,7 @@ entry {
     background-color: var(--bg-level-1);
     border: 1px solid var(--border-color);
     border-radius: var(--control-radius);
-    border-spacing: $button-spacing;
+    border-spacing: var(--button-spacing);
     padding: calc(0.5rem - 2px);
     min-height: 16px;
     min-width: 16px;

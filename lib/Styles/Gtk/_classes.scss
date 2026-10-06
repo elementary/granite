@@ -1,6 +1,6 @@
 // Used in Gtk.Inspector
 .toolbar {
-    border-spacing: $button-spacing;
-    padding: $button-spacing;
+    border-spacing: var(--button-spacing);
+    padding: var(--button-spacing);
 }
 
