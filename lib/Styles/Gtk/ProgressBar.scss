@@ -1,6 +1,4 @@
 progressbar {
-    $trough-width: rem(9px);
-
     progress {
         background-color: var(--accent-color);
         border-radius: var(--control-radius);
@@ -10,17 +8,9 @@ progressbar {
         }
     }
 
-    trough {
-        @include trough;
-
-        border-radius: var(--control-radius);
-        min-height: $trough-width;
-        min-width: $trough-width;
-    }
-
     &.horizontal {
         progress {
-            min-height: $trough-width;
+            min-height: var(--trough-height);
 
             &:not(.pulse) {
                 animation: progress 1.5s var(--ease-in-out) infinite;
@@ -48,7 +38,7 @@ progressbar {
 
     &.vertical {
         progress {
-            min-width: $trough-width;
+            min-width: var(--trough-width);
         }
     }
 
