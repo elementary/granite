@@ -9,6 +9,7 @@ executable(
     'DemoPage.vala',
 
     'Views/ApplicationView.vala',
+    'Views/AvatarView.vala',
     'Views/BoxView.vala',
     'Views/ControlsView.vala',
     'Views/CSSView.vala',
