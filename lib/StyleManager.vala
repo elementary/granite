@@ -61,7 +61,9 @@ public class Granite.StyleManager : Object {
         if (app != null) {
             var app_path = app.resource_base_path;
             if (app_path != null) {
-                var file = File.new_for_uri ("resource://" + app_path);
+                var resource_uri = "resource://" + app_path;
+                var file = File.new_for_uri (resource_uri).get_child ("Application.css");
+
                 if (file.query_exists ()) {
                     app_provider = new Gtk.CssProvider ();
                     app_provider.load_from_file (file);
