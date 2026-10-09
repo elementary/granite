@@ -53,45 +53,48 @@ public class Granite.StyleManager : Object {
         Object (display: display);
     }
 
+    static construct {
+        base_provider = new Gtk.CssProvider ();
+        base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
+
+        unowned GLib.Application? app = Application.get_default ();
+        if (app != null) {
+            var app_path = app.resource_base_path;
+            if (app_path != null) {
+                var resource_uri = "resource://" + app_path;
+                var file = File.new_for_uri (resource_uri).get_child ("Application.css");
+
+                if (file.query_exists ()) {
+                    app_provider = new Gtk.CssProvider ();
+                    app_provider.load_from_file (file);
+                }
+            }
+        }
+    }
+
     construct {
+        Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
+
+        if (app_provider != null) {
+            Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        }
+
         var gtk_settings = Gtk.Settings.get_for_display (display);
         gtk_settings.gtk_theme_name = "Granite-empty";
-        gtk_settings.notify["gtk-interface-color-scheme"].connect (set_provider_for_display);
-        set_provider_for_display ();
+        gtk_settings.notify["gtk-interface-color-scheme"].connect (update_color_scheme);
 
         var granite_settings = Granite.Settings.get_default ();
         granite_settings.notify["accent-color"].connect (update_accent_color);
-        notify["color-scheme"].connect (set_provider_for_display);
+        notify["color-scheme"].connect (update_color_scheme);
+
         update_accent_color ();
+        update_color_scheme ();
 
         var icon_theme = Gtk.IconTheme.get_for_display (display);
         icon_theme.add_resource_path ("/io/elementary/granite");
     }
 
-    private void set_provider_for_display () {
-        if (app_provider == null) {
-            unowned GLib.Application? app = Application.get_default ();
-            if (app != null) {
-                var base_path = app.resource_base_path;
-                if (base_path != null) {
-                    var base_uri = "resource://" + base_path;
-                    var base_file = File.new_for_uri (base_uri);
-
-                    app_provider = init_provider_from_file (base_file.get_child ("Application.css"));
-                }
-            }
-
-            if (app_provider != null) {
-                Gtk.StyleContext.add_provider_for_display (display, app_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            }
-        }
-
-        if (base_provider == null) {
-            base_provider = new Gtk.CssProvider ();
-            base_provider.load_from_resource ("/io/elementary/granite/Gtk.css");
-            Gtk.StyleContext.add_provider_for_display (display, base_provider, Gtk.STYLE_PROVIDER_PRIORITY_THEME);
-        }
-
+    private void update_color_scheme () {
         if (color_scheme == DARK || (color_scheme == DEFAULT && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
             app_provider.prefers_color_scheme = DARK;
             base_provider.prefers_color_scheme = DARK;
@@ -99,17 +102,6 @@ public class Granite.StyleManager : Object {
             app_provider.prefers_color_scheme = DEFAULT;
             base_provider.prefers_color_scheme = DEFAULT;
         }
-    }
-
-    private Gtk.CssProvider? init_provider_from_file (File file) {
-        if (file.query_exists ()) {
-            var provider = new Gtk.CssProvider ();
-            provider.load_from_file (file);
-
-            return provider;
-        }
-
-        return null;
     }
 
     private void update_accent_color () {
