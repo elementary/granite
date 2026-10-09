@@ -95,12 +95,14 @@ public class Granite.StyleManager : Object {
     }
 
     private void update_color_scheme () {
+        Gtk.InterfaceColorScheme provider_color_scheme = LIGHT;
         if (color_scheme == DARK || (color_scheme == DEFAULT && Gtk.Settings.get_for_display (display).gtk_interface_color_scheme == DARK)) {
-            app_provider.prefers_color_scheme = DARK;
-            base_provider.prefers_color_scheme = DARK;
-        } else {
-            app_provider.prefers_color_scheme = DEFAULT;
-            base_provider.prefers_color_scheme = DEFAULT;
+            provider_color_scheme = DARK;
+        }
+
+        base_provider.prefers_color_scheme = provider_color_scheme;
+        if (app_provider != null) {
+            app_provider.prefers_color_scheme = provider_color_scheme;
         }
     }
 
