@@ -99,7 +99,7 @@ button {
             shadow(2);
         color: var(--fg-color);
         margin: 0;
-        padding: $button-spacing;
+        padding: var(--button-spacing);
 
         transition:
             background var(--duration-expand) var(--ease-in-out),
@@ -112,13 +112,12 @@ button {
         }
 
         &:disabled {
-            @include control-disabled;
-
             box-shadow:
-            highlight(),
-            // Intentionally not in ems since it's used as a stroke
-            0 0 0 1px var(--shadow-border-color),
-            shadow(1);
+                highlight(),
+                // Intentionally not in ems since it's used as a stroke
+                0 0 0 1px var(--shadow-border-color),
+                shadow(1);
+            opacity: var(--disabled-opacity);
         }
 
         .linked & {

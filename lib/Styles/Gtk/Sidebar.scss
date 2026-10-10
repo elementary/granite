@@ -8,12 +8,12 @@ stacksidebar.sidebar {
     box-shadow: none;
 
     .navigation-sidebar {
-        margin: $button-spacing;
+        margin: var(--button-spacing);
 
         row {
             @extend .model;
 
-            border-spacing: $button-spacing;
+            border-spacing: var(--button-spacing);
             min-width: rem(150px);
 
             &:active {

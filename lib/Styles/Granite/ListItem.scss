@@ -1,10 +1,10 @@
 granite-listitem {
-    padding: $button-spacing;
+    padding: var(--button-spacing);
     min-height: rem(32px); //Try to force homogeneous row height
 
     .text-box {
         border-radius: calc(var(--window-radius) / 2);
-        padding: $button-spacing;
+        padding: var(--button-spacing);
     }
 
     &:focus-visible .text-box {

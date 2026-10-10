@@ -1,5 +1,5 @@
 checkbutton {
-    border-spacing: $button-spacing;
+    border-spacing: var(--button-spacing);
 
     check,
     radio {
@@ -27,7 +27,7 @@ checkbutton {
         }
 
         &:disabled {
-            @include control-disabled;
+            opacity: var(--disabled-opacity);
         }
     }
 
