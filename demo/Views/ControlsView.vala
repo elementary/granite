@@ -174,9 +174,21 @@ public class ControlsView : DemoPage {
         radiobutton_box.append (radiobutton);
         radiobutton_box.append (inconsistent_radiobutton);
 
+        var image_check_label = new Gtk.Label (_("Area"));
+
+        var image_check_box = new Granite.Box (VERTICAL);
+        image_check_box.append (new Gtk.Image.from_icon_name ("view-reader-symbolic"));
+        image_check_box.append (image_check_label);
+
+        var image_check = new Gtk.CheckButton () {
+            child = image_check_box
+        };
+        image_check.add_css_class ("frame");
+
         var checkradio_box = new Granite.Box (HORIZONTAL);
         checkradio_box.append (checkbutton_box);
         checkradio_box.append (radiobutton_box);
+        checkradio_box.append (image_check);
 
         var colorbutton_box = new Granite.Box (HORIZONTAL);
 

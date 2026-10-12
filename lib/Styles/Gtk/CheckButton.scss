@@ -119,3 +119,35 @@ checkbutton.accent {
         background-size: calc(100% + 2px);
     }
 }
+
+checkbutton.frame {
+    // Invisible stroke to prevent things from moving when :checked
+    border: 1px solid transparent;
+    padding: $button-spacing;
+
+    > box.vertical {
+        border-spacing: $button-spacing;
+
+        image {
+            -gtk-icon-style: symbolic;
+            // 32px@1x
+            -gtk-icon-size: 2.7em;
+            -gtk-icon-weight: 100;
+        }
+
+        image + label {
+            @extend .small-label;
+        }
+    }
+
+    &:checked {
+        background: color-mix(in srgb, var(--selected-bg-color) 40%, transparent);
+        border-color: var(--selected-bg-color);
+        border-radius: var(--control-radius);
+        color: var(--selected-fg-color);
+
+        &:backdrop {
+            filter: grayscale(100%);
+        }
+    }
+}
