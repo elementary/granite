@@ -1,7 +1,6 @@
 scale {
-    $slider-width: rem(16px);
-    $trough-width: 0.5rem;
-    $slider-margin: ($slider-width - $trough-width) / 2 * -1;
+    --slider-width: 1.5rem;
+    --slider-margin: calc((var(--slider-width) - var(--trough-width)) / 2 * -1);
 
     // `has_origin = true`
     highlight {
@@ -24,20 +23,13 @@ scale {
 
     slider {
         // 16px - border
-        min-height: calc(#{$slider-width} - 1px);
-        min-width: calc(#{$slider-width} - 1px);
+        min-height: calc(var(--slider-width) - 1px);
+        min-width: calc(var(--slider-width) - 1px);
 
         transition:
             box-shadow var(--duration-expand) var(--ease-in-out),
             opacity var(--duration-expand) var(--ease-in-out),
             transform var(--duration-expand) var(--ease-out-back);
-    }
-
-    trough {
-        @include trough;
-
-        min-height: $trough-width;
-        min-width: $trough-width;
     }
 
     value {
@@ -84,7 +76,7 @@ scale {
         }
 
         slider {
-            margin: $slider-margin -1px;
+            margin: var(--slider-margin) -1px;
         }
 
         value {
@@ -141,7 +133,7 @@ scale {
         }
 
         slider {
-            margin: -1px $slider-margin;
+            margin: -1px var(--slider-margin);
         }
     }
 }

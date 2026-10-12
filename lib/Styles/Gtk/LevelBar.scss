@@ -1,9 +1,5 @@
 levelbar {
-    --trough-width: 2rem;
-    --trough-height: 0.5rem;
-
     block {
-        @include trough;
         transition: background-color var(--duration-in-place) var(--ease-in-out);
 
         &.filled {
@@ -51,24 +47,16 @@ levelbar {
             }
         }
     }
+}
 
-    &.horizontal block {
-        min-height: var(--trough-height);
-        min-width: var(--trough-width);
-    }
-
-    &.vertical block {
-        min-height: var(--trough-width);
-        min-width: var(--trough-height);
+levelbar.continuous {
+    block {
+        border-radius: var(--control-radius);
     }
 }
 
 levelbar.discrete {
     --trough-width: 0.25rem;
-
-    block {
-        border-radius: 0;
-    }
 
     &.horizontal {
         block {
