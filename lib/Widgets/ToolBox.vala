@@ -29,6 +29,8 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
         }
     }
 
+    private static Gtk.SizeGroup top_sizegroup;
+
     private Gtk.Box bottom_box;
     private Gtk.Box top_box;
     private Gtk.WindowHandle top_handle;
@@ -37,6 +39,10 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
         set_css_name ("toolbox");
         set_accessible_role (GROUP);
         set_layout_manager_type (typeof (Gtk.BoxLayout));
+    }
+
+    static construct {
+        top_sizegroup = new Gtk.SizeGroup (VERTICAL);
     }
 
     construct {
@@ -49,6 +55,8 @@ public class Granite.ToolBox : Gtk.Widget, Gtk.Accessible {
         top_handle = new Gtk.WindowHandle () {
             child = top_box
         };
+
+        top_sizegroup.add_widget (top_handle);
 
         bottom_box = new Gtk.Box (VERTICAL, 0);
         bottom_box.add_css_class ("bottom");
