@@ -22,11 +22,7 @@ button {
         color: white;
 
         &:active {
-            background: color-mix(in srgb, var(--fg-color) 15%, transparent);
-            transform: scale(0.8);
-            transition:
-                background var(--duration-collapse) var(--ease-in-out),
-                transform var(--duration-collapse) var(--ease-in-out);
+            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY-900) 10%);
         }
 
         &.toggle {
