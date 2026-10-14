@@ -28,22 +28,4 @@ install_symlink(
     pointing_to: '16x16'
 )
 
-install_subdir(
-    'scalable/actions',
-    install_dir: icon_dir / 'scalable'
-)
-
-install_subdir(
-    'scalable/categories',
-    install_dir: icon_dir / 'scalable'
-)
-
-install_subdir(
-    'scalable/status',
-    install_dir: icon_dir / 'scalable'
-)
-
-install_subdir(
-    'scalable/ui',
-    install_dir: icon_dir / 'scalable'
-)
+subdir('scalable')

@@ -1,27 +1,14 @@
-@function duration($transition) {
-    @if $transition == "open" {
-        @return 250ms;
-    } @else if $transition == "close" {
-        @return 200ms;
-    }
+:root {
+    --ease-out-back: cubic-bezier(0.66, 3, 0.64, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-    @if $transition == "expand" {
-        @return 300ms;
-    } @else if $transition == "collapse" {
-        @return 250ms;
-    }
+    --duration-open: 250ms;
+    --duration-close: 200ms;
 
-    @if $transition == "in-place" {
-        @return 100ms;
-    }
-}
+    --duration-expand: 300ms;
+    --duration-collapse: 250ms;
 
-@function easing($easing: "default") {
-    @if $easing == "ease-out-back" {
-        @return cubic-bezier(0.66, 3, 0.64, 1);
-    }
-
-    @return cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-in-place: 100ms;
 }
 
 @keyframes spin {
