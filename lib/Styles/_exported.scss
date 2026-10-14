@@ -4,7 +4,7 @@
 
 :root {
     // Text, images, and other foreground elements
-    --fg-color: var(--BLACK_500);
+    --fg-color: var(--BLACK-500);
 
     // Inset box shadows
     --highlight-color: white;
@@ -15,10 +15,10 @@
     // Outset box shadow or border color on toplevel elements like windows, menus, popovers
     --toplevel-border-color: color-mix(in srgb, black 20%, transparent);
 
-    --error-color: var(--STRAWBERRY_500);
-    --success-color: var(--LIME_700);
-    --warning-color: var(--BANANA_900);
-    --warning-icon-color: var(--BANANA_600);
+    --error-color: var(--STRAWBERRY-500);
+    --success-color: var(--LIME-700);
+    --warning-color: var(--BANANA-900);
+    --warning-icon-color: var(--BANANA-600);
 
     --selected-bg-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
     --selected-fg-color: color-mix(in oklab, var(--accent-color) 50%, var(--fg-color));
@@ -31,10 +31,10 @@
         --border-color: color-mix(in srgb, black 30%, transparent);
         --toplevel-border-color: color-mix(in srgb, black 75%, transparent);
 
-        --error-color: var(--STRAWBERRY_300);
-        --success-color: var(--LIME_300);
-        --warning-color: var(--BANANA_100);
-        --warning-icon-color: var(--BANANA_500);
+        --error-color: var(--STRAWBERRY-300);
+        --success-color: var(--LIME-300);
+        --warning-color: var(--BANANA-100);
+        --warning-icon-color: var(--BANANA-500);
 
         --selected-bg-color: color-mix(in oklab, var(--accent-color) 50%, var(--bg-color));
         --selected-fg-color: color-mix(in oklab, var(--accent-color) 40%, var(--fg-color));

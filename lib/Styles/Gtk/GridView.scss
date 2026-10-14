@@ -16,6 +16,6 @@ gridview {
 
     rubberband {
         @extend selection;
-        @include border-interactive-roundrect;
+        border-radius: var(--control-radius);
     }
 }

@@ -1,0 +1,20 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='path829'
+          class='warning warning-fill'
+          fill='url(#gpa:warning) #f9c440'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          d='M 7.96094 0 C 7.42545 0.0146792, 6.93849 0.314, 6.68359 0.785156 L 0.183594 12.7832 C -0.358406 13.7832, 0.364 15, 1.5 15 L 14.5 15 C 15.636 15, 16.3584 13.7842, 15.8164 12.7832 L 9.31641 0.785156 C 9.04866 0.288899, 8.52462 -0.0146507, 7.96094 0 Z M 8 3 A 1 1 0 0 1 9 4 L 9 7 L 8.58203 9.50586 A 0.59023 0.59023 0 0 1 8 10 A 0.59023 0.59023 0 0 1 7.41797 9.50586 L 7 7 L 7 4 A 1 1 0 0 1 8 3 Z M 8 11 A 1 1 0 0 1 8 13 A 1 1 0 0 1 8 11 Z'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
+  </path>
+</svg>

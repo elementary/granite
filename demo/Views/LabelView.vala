@@ -97,6 +97,32 @@ public class LabelView : DemoPage {
         color_box.append (error_color_box);
         color_box.append (dimmed_box);
 
+        var color_image_box = new Granite.Box (HORIZONTAL);
+
+        Granite.AccentColor[] colors = {
+            BLUE,
+            TEAL,
+            GREEN,
+            YELLOW,
+            ORANGE,
+            RED,
+            PINK,
+            PURPLE,
+            BROWN,
+            GRAY,
+            LATTE,
+            AUTOMATIC
+        };
+        foreach (unowned var color in colors) {
+            var color_image = new Gtk.Image.from_icon_name ("emblem-favorite-symbolic") {
+                icon_size = LARGE,
+                tooltip_markup = color.to_string ()
+            };
+            color_image.add_css_class (color.to_css_class ());
+
+            color_image_box.append (color_image);
+        }
+
         var accellabel_header = new Granite.HeaderLabel ("Granite.AccelLabel");
 
         var copy_label = new Granite.AccelLabel ("Copy", "<Ctrl>C") {
@@ -109,9 +135,9 @@ public class LabelView : DemoPage {
         var copy_label_card = new Granite.Bin () {
             child = copy_label,
             halign = START,
+            has_frame = true,
             width_request = 128
         };
-        copy_label_card.add_css_class (Granite.CssClass.CARD);
 
         var accellabel_box = new Granite.Box (VERTICAL, NONE);
         accellabel_box.append (accellabel_header);
@@ -126,6 +152,7 @@ public class LabelView : DemoPage {
         vbox.append (style_box);
         vbox.append (header_box);
         vbox.append (color_box);
+        vbox.append (color_image_box);
         vbox.append (accellabel_box);
 
         child = vbox;

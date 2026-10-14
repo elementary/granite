@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-16 13:54+0000\n"
-"PO-Revision-Date: 2026-09-15 13:03+0000\n"
+"PO-Revision-Date: 2026-10-03 18:03+0000\n"
 "Last-Translator: Flynn <flynn@users.noreply.l10n.elementaryos.org>\n"
 "Language-Team: Cornish <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/kw/>\n"
@@ -38,10 +38,12 @@ msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"Lyverva goweth rag GTK ha GLib neb a brovi wijets komplek ha methodys es "
+"desinys rag devnydh yn appys gwrys rag elementary OS."
 
 #: data/granite.metainfo.xml.in:24
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/granite.metainfo.xml.in:32 data/granite.metainfo.xml.in:45
 #: data/granite.metainfo.xml.in:75 data/granite.metainfo.xml.in:107
@@ -49,7 +51,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:162 data/granite.metainfo.xml.in:174
 #: data/granite.metainfo.xml.in:192 data/granite.metainfo.xml.in:229
 msgid "Improvements:"
-msgstr ""
+msgstr "Gwellheansow:"
 
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
@@ -61,7 +63,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:167 data/granite.metainfo.xml.in:177
 #: data/granite.metainfo.xml.in:196 data/granite.metainfo.xml.in:232
 msgid "Updated translations"
-msgstr ""
+msgstr "Treylyansow nowedhys"
 
 #: data/granite.metainfo.xml.in:47
 msgid "HeaderLabel now has ellipsize property"

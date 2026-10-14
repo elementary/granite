@@ -11,7 +11,103 @@ image {
         filter: opacity($disabled-opacity);
     }
 
+    &.red,
+    &.orange,
+    &.yellow,
+    &.green,
+    &.blue,
+    &.purple,
+    &.brown,
+    &.teal,
+    &.pink,
+    &.gray,
+    &.latte {
+        -gtk-icon-palette: default;
+    }
+
+    &.red {
+        color: var(--STRAWBERRY-400);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--STRAWBERRY-300);
+        }
+    }
+
+    &.orange {
+        color:  var(--ORANGE-600);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--ORANGE-300);
+        }
+    }
+
+    &.yellow {
+        color:  var(--BANANA-600);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--BANANA-400);
+        }
+    }
+
+    &.green {
+        color:  var(--LIME-600);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--LIME-400);
+        }
+    }
+
+    &.blue {
+        color:  var(--BLUEBERRY-500);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--BLUEBERRY-400);
+        }
+    }
+
+    &.purple {
+        color:  var(--GRAPE-500);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--GRAPE-300);
+        }
+    }
+
+    &.brown {
+        color:  var(--COCOA-500);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--COCOA-200);
+        }
+    }
+
+    &.teal  {
+        color:  var(--MINT-700);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--MINT-400);
+        }
+    }
+
+    &.pink  {
+        color:  var(--BUBBLEGUM-400);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--BUBBLEGUM-200);
+        }
+    }
+
+    &.gray {
+        color:  var(--SLATE-400);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--SLATE-200);
+        }
+    }
+
+    &.latte {
+        color:  var(--LATTE-700);
+        @media (prefers-color-scheme: dark) {
+            color:  var(--LATTE-400);
+        }
+    }
+
+    &.automatic {
+        color:  var(--accent-color);
+    }
+
     &:backdrop {
+        color: inherit;
         -gtk-icon-palette: default;
     }
 }

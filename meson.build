@@ -1,7 +1,7 @@
 project(
     'granite-9',
     'vala', 'c',
-    meson_version: '>= 0.57.0',
+    meson_version: '>= 0.61.0',
     version: '9.0.0'
 )
 
@@ -43,14 +43,6 @@ add_project_arguments(
     language: ['vala']
 )
 
-if get_option('gtk-stylesheets')
-    add_project_arguments(
-        '-D',
-        'INCLUDE_GTK_STYLESHEETS',
-        language: ['vala']
-    )
-endif
-
 libgranite_deps = [
     dependency('gee-0.8'),
     dependency('gio-2.0', version: '>=' + glib_min_version),
@@ -60,6 +52,7 @@ libgranite_deps = [
     dependency('gtk4', version: '>=4.22'),
 ]
 
+fs = import('fs')
 pkgconfig = import('pkgconfig')
 gnome = import('gnome')
 i18n = import('i18n')

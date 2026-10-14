@@ -42,6 +42,23 @@ public class Granite.Bin : Gtk.Widget {
         }
     }
 
+    /**
+     * Whether #this has a frame
+     */
+    [Version (since = "9.0.0")]
+    public bool has_frame {
+        get {
+            return has_css_class (Granite.CssClass.CARD);
+        }
+        set {
+            if (value && !has_css_class (Granite.CssClass.CARD)) {
+                add_css_class (Granite.CssClass.CARD);
+            } else if (has_css_class (Granite.CssClass.CARD)) {
+                remove_css_class (Granite.CssClass.CARD);
+            }
+        }
+    }
+
     ~Bin () {
         if (child != null) {
             child.unparent ();

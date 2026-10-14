@@ -178,6 +178,33 @@ public class ControlsView : DemoPage {
         checkradio_box.append (checkbutton_box);
         checkradio_box.append (radiobutton_box);
 
+        var colorbutton_box = new Granite.Box (HORIZONTAL);
+
+        Granite.AccentColor[] colors = {
+            Granite.AccentColor.BLUE,
+            Granite.AccentColor.TEAL,
+            Granite.AccentColor.GREEN,
+            Granite.AccentColor.YELLOW,
+            Granite.AccentColor.ORANGE,
+            Granite.AccentColor.RED,
+            Granite.AccentColor.PINK,
+            Granite.AccentColor.PURPLE,
+            Granite.AccentColor.BROWN,
+            Granite.AccentColor.GRAY,
+            Granite.AccentColor.LATTE,
+            Granite.AccentColor.AUTOMATIC
+        };
+        foreach (unowned var color in colors) {
+            var color_button = new Gtk.CheckButton () {
+                group = (Gtk.CheckButton) colorbutton_box.get_first_child (),
+                tooltip_markup = color.to_name () + "\n" + Granite.TOOLTIP_SECONDARY_TEXT_MARKUP.printf (color.to_hex ())
+            };
+            color_button.add_css_class (Granite.CssClass.ACCENT);
+            color_button.add_css_class (color.to_css_class ());
+
+            colorbutton_box.append (color_button);
+        }
+
         var mode_switch_label = new Granite.HeaderLabel ("ModeSwitch");
         mode_switch_label.margin_top = 12;
 
@@ -189,26 +216,52 @@ public class ControlsView : DemoPage {
         mode_switch.secondary_icon_tooltip_text = ("Dark background");
         mode_switch.valign = Gtk.Align.CENTER;
 
-        var scale_header = new Granite.HeaderLabel ("Scale");
-
         var hscale = new Gtk.Scale.with_range (HORIZONTAL, 0, 1, 0.01) {
             draw_value = true,
             hexpand = true
         };
-        hscale.adjustment.value = 0.5;
+        hscale.adjustment.value = 0.8;
+        hscale.add_mark (-1, BOTTOM, "Less");
+        hscale.add_mark (0.8, BOTTOM, null);
+        hscale.add_mark (1, BOTTOM, "More");
 
         var hprogressbar = new Gtk.ProgressBar ();
         hscale.adjustment.bind_property ("value", hprogressbar, "fraction", SYNC_CREATE);
 
-        var hcontrol_box = new Granite.Box (VERTICAL, DOUBLE);
+        var hcontinuous_levelbar = new Gtk.LevelBar () {
+            mode = CONTINUOUS
+        };
+        hscale.adjustment.bind_property ("value", hcontinuous_levelbar, "value", SYNC_CREATE);
+
+        var hdiscrete_levelbar = new Gtk.LevelBar.for_interval (0, 4) {
+            mode = DISCRETE
+        };
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.ERROR, 1);
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.WARNING, 3);
+        hdiscrete_levelbar.add_offset_value (Granite.CssClass.SUCCESS, 4);
+        hscale.adjustment.bind_property ("value", hdiscrete_levelbar, "value", SYNC_CREATE,
+            (binding, from_value, ref to_value) => {
+            to_value.set_double ((double) from_value * 4);
+            return true;
+        });
+
+        var hcontrol_box = new Granite.Box (VERTICAL, HALF);
+        hcontrol_box.append (new Granite.HeaderLabel ("Scale"));
         hcontrol_box.append (hscale);
+        hcontrol_box.append (new Granite.HeaderLabel ("ProgressBar"));
         hcontrol_box.append (hprogressbar);
+        hcontrol_box.append (new Granite.HeaderLabel ("LevelBar"));
+        hcontrol_box.append (hcontinuous_levelbar);
+        hcontrol_box.append (hdiscrete_levelbar);
 
         var vscale = new Gtk.Scale.with_range (VERTICAL, 0, 1, 0.01) {
             height_request = 128,
             has_origin = false
         };
-        vscale.adjustment.value = 0.5;
+        vscale.adjustment.value = 0.1;
+        vscale.add_mark (-1, BOTTOM, "Less");
+        vscale.add_mark (0.1, BOTTOM, null);
+        vscale.add_mark (1, BOTTOM, "More");
 
         var vprogressbar = new Gtk.ProgressBar () {
             inverted = true,
@@ -216,11 +269,36 @@ public class ControlsView : DemoPage {
         };
         vscale.adjustment.bind_property ("value", vprogressbar, "fraction", SYNC_CREATE);
 
+        var vcontinuous_levelbar = new Gtk.LevelBar () {
+            inverted = true,
+            mode = CONTINUOUS,
+            orientation = VERTICAL
+        };
+        vscale.adjustment.bind_property ("value", vcontinuous_levelbar, "value", SYNC_CREATE);
+
+        var vdiscrete_levelbar = new Gtk.LevelBar.for_interval (0, 25) {
+            inverted = true,
+            mode = DISCRETE,
+            orientation = VERTICAL
+        };
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.ERROR, 25);
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.WARNING, 23);
+        vdiscrete_levelbar.add_offset_value (Granite.CssClass.SUCCESS, 20);
+        vscale.adjustment.bind_property ("value", vdiscrete_levelbar, "value", SYNC_CREATE,
+            (binding, from_value, ref to_value) => {
+            to_value.set_double ((double) from_value * 25);
+            return true;
+        });
+
         var vcontrol_box = new Granite.Box (HORIZONTAL, DOUBLE);
         vcontrol_box.append (vscale);
         vcontrol_box.append (vprogressbar);
+        vcontrol_box.append (vcontinuous_levelbar);
+        vcontrol_box.append (vdiscrete_levelbar);
 
-        var scale_box = new Granite.Box (HORIZONTAL, DOUBLE);
+        var scale_box = new Granite.Box (HORIZONTAL, DOUBLE) {
+            margin_top = 24
+        };
         scale_box.append (hcontrol_box);
         scale_box.append (vcontrol_box);
 
@@ -234,9 +312,10 @@ public class ControlsView : DemoPage {
         box.append (button_box);
         box.append (checkradio_header);
         box.append (checkradio_box);
+        box.append (new Granite.HeaderLabel (_("Color RadioButtons")));
+        box.append (colorbutton_box);
         box.append (mode_switch_label);
         box.append (mode_switch);
-        box.append (scale_header);
         box.append (scale_box);
 
         child = box;

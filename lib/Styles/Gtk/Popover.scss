@@ -11,11 +11,12 @@ popover {
     }
 
     > contents {
+        @extend .toplevel;
+
         box-shadow:
             // No highlight because of the arrow
             0 0 0 1px var(--toplevel-border-color),
             shadow(2);
-        border-radius: var(--window-radius);
 
         undershoot {
             &.top {
@@ -29,10 +30,10 @@ popover {
     }
 
     &.menu > contents {
-        box-shadow:
-            highlight(),
-            0 0 0 1px var(--toplevel-border-color),
-            shadow(2);
+        @extend .toplevel;
+
+        --shadow-level: 1;
+
         padding: $button-spacing;
     }
 
@@ -75,8 +76,8 @@ popover {
     border-radius: calc(var(--window-radius) / 2);
     padding: $button-spacing;
     transition:
-        background duration("expand") easing(),
-        transform duration("expand") easing("ease-out-back");
+        background var(--duration-expand) var(--ease-in-out),
+        transform var(--duration-expand) var(--ease-out-back);
 
     &.circular {
         background: color-mix(in srgb, var(--fg-color) 5%, transparent);
@@ -93,8 +94,8 @@ popover {
         background: color-mix(in srgb, var(--fg-color) 15%, transparent);
         transform: scale(0.95);
         transition:
-            background duration("collapse") easing(),
-            transform duration("collapse") easing();
+            background var(--duration-collapse) var(--ease-in-out),
+            transform var(--duration-collapse) var(--ease-in-out);
     }
 }
 
