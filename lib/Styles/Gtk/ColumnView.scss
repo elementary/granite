@@ -38,12 +38,12 @@ columnview {
 
     row.activatable {
         transition:
-            background duration("expand") easing();
+            background var(--duration-expand) var(--ease-in-out);
 
         &:active cell {
             background: color-mix(in srgb, var(--fg-color) 15%, transparent);
             transition:
-                background duration("collapse") easing();
+                background var(--duration-collapse) var(--ease-in-out);
         }
 
         &:hover cell,
