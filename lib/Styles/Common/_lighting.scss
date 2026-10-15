@@ -40,9 +40,9 @@
             0 3px 3px -3px color-mix(in srgb, black calc(35% + var(--shadow-multiplier)), transparent);
     } @else if $level == 3 {
         @return
-            0 3px 8px 2px color-mix(in srgb, black calc(10% + var(--shadow-multiplier)) transparent),
-            0 5px 5px -3px color-mix(in srgb, black calc(40% + var(--shadow-multiplier)) , transparent),
-            0 8px 5px 1px color-mix(in srgb, black calc(10% + var(--shadow-multiplier)) , transparent);
+            0 3px 8px 2px color-mix(in srgb, black calc(10% + var(--shadow-multiplier)), transparent),
+            0 5px 5px -3px color-mix(in srgb, black calc(40% + var(--shadow-multiplier)), transparent),
+            0 8px 5px 1px color-mix(in srgb, black calc(10% + var(--shadow-multiplier)), transparent);
     }
 }
 
