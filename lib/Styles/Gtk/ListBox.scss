@@ -47,4 +47,16 @@ list {
         padding: rem(6px);
         min-height: rem(32px); //Try to force homogeneous row height
     }
+
+    // Not a Granite.ListItem
+    row > box {
+        border-radius: calc(var(--window-radius) / 2);
+        padding: $button-spacing;
+        transition: background var(--duration-expand) var(--ease-in-out);
+    }
+
+    row:focus-visible > box {
+        background: color-mix(in srgb, var(--fg-color) 10%, transparent);
+        transition: background var(--duration-in-place) var(--ease-in-out);
+    }
 }

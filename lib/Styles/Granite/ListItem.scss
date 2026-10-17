@@ -5,9 +5,11 @@ granite-listitem {
     .text-box {
         border-radius: calc(var(--window-radius) / 2);
         padding: $button-spacing;
+        transition: background var(--duration-expand) var(--ease-in-out);
     }
 
     &:focus-visible .text-box {
         background: color-mix(in srgb, var(--fg-color) 10%, transparent);
+        transition: background var(--duration-in-place) var(--ease-in-out);
     }
 }
