@@ -51,7 +51,7 @@ list {
     // Not a Granite.ListItem
     row > box {
         border-radius: calc(var(--window-radius) / 2);
-        padding: $button-spacing;
+        padding: var(--button-spacing);
         transition: background var(--duration-expand) var(--ease-in-out);
     }
 
