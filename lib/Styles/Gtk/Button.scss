@@ -45,7 +45,6 @@ button {
     .linked &.image-button.toggle {
         @include control;
 
-        border-radius: var(--control-radius);
         // reset padding since image buttons have no frame by default
         margin: 0;
         padding: calc(0.5rem - 2px);
@@ -126,7 +125,6 @@ button.image-button {
 button.text-button {
     @include control;
 
-    border-radius: var(--control-radius);
     padding: calc(0.5rem - 2px);
 
     &:active,

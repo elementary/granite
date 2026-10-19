@@ -16,6 +16,7 @@
         );
 
     border: 1px solid var(--border-color);
+    border-radius: var(--control-radius);
 
     box-shadow:
         highlight("full"),
