@@ -71,20 +71,3 @@
         background-color: color-mix(in srgb, var(--trough-color) 90%, transparent);
     }
 }
-
-%raised {
-    @include control;
-
-    border-radius: var(--control-radius);
-
-    &:active,
-    &:checked {
-        @include control-active;
-        filter: brightness(95%);
-        transform: none;
-    }
-
-    &:disabled {
-        opacity: var(--disabled-opacity);
-    }
-}

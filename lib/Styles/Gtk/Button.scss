@@ -43,8 +43,9 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised;
+        @include control;
 
+        border-radius: var(--control-radius);
         // reset padding since image buttons have no frame by default
         margin: 0;
         padding: calc(0.5rem - 2px);
@@ -54,8 +55,13 @@ button {
         &:active,
         &:checked {
             @include control-active;
+
             color: var(--fg-color);
             transform: none;
+        }
+
+        &:disabled {
+            opacity: var(--disabled-opacity);
         }
     }
 
@@ -118,9 +124,20 @@ button.image-button {
 }
 
 button.text-button {
-    @extend %raised;
+    @include control;
 
+    border-radius: var(--control-radius);
     padding: calc(0.5rem - 2px);
+
+    &:active,
+    &:checked {
+        @include control-active;
+        transform: none;
+    }
+
+    &:disabled {
+        opacity: var(--disabled-opacity);
+    }
 
     &.destructive,
     &.suggested {
