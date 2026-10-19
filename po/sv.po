@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-16 13:54+0000\n"
-"PO-Revision-Date: 2026-10-18 20:03+0000\n"
+"PO-Revision-Date: 2026-10-19 08:17+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/desktop/"
 "granite/sv/>\n"
@@ -23,12 +23,12 @@ msgstr ""
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
 msgid "%-l:%M:%S %p"
-msgstr "%-l:%M:%S"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
 msgid "%-l:%M %p"
-msgstr "%-l:%M"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
@@ -103,7 +103,7 @@ msgstr "%Y"
 #: lib/DateTime.vala:160
 #, c-format
 msgid "%b %e"
-msgstr "%e %b"
+msgstr "%b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and year.
 #: lib/DateTime.vala:163
@@ -120,7 +120,7 @@ msgstr "%a"
 #: lib/DateTime.vala:169
 #, c-format
 msgid "%a, %b %e"
-msgstr "%a %e %b"
+msgstr "%a, %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
