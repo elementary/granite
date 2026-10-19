@@ -1,3 +1,10 @@
+:root {
+    --disabled-opacity: 0.5;
+
+    // Spacing between children of buttons, menu items etc
+    --button-spacing: 0.5rem;
+}
+
 @mixin control {
     background-clip: border-box;
     background-color: var(--bg-level-0);
@@ -54,10 +61,6 @@
     }
 }
 
-@mixin control-disabled {
-    opacity: $disabled-opacity;
-}
-
 @mixin trough {
     --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
 
@@ -82,7 +85,6 @@
     }
 
     &:disabled {
-        @include control-disabled;
+        opacity: var(--disabled-opacity);
     }
-
 }

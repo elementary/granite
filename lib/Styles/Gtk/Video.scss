@@ -26,7 +26,7 @@ video {
         padding: 1em;
 
         > box {
-            border-spacing: $button-spacing;
+            border-spacing: var(--button-spacing);
 
             // Play/pause button
             > button.flat.image-button {
@@ -48,7 +48,7 @@ video {
             }
 
             box.horizontal {
-                border-spacing: $button-spacing;
+                border-spacing: var(--button-spacing);
 
                 // Time labels
                 > label {
