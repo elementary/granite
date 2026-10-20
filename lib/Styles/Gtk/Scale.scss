@@ -2,11 +2,6 @@ scale {
     --slider-width: 1.333rem; // ~16px @ 9pt
     --slider-margin: calc((var(--slider-width) - var(--trough-width)) / 2 * -1);
 
-    // `has_origin = true`
-    highlight {
-        background-color: var(--accent-color);
-    }
-
     mark {
         indicator {
             background: color-mix(in srgb, var(--fg-color) 75%, var(--bg-level-4));
@@ -26,11 +21,6 @@ scale {
             box-shadow var(--duration-expand) var(--ease-in-out),
             opacity var(--duration-expand) var(--ease-in-out),
             transform var(--duration-expand) var(--ease-out-back);
-    }
-
-    trough {
-        min-height: var(--trough-width);
-        min-width: var(--trough-width);
     }
 
     value {

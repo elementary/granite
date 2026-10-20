@@ -3,8 +3,6 @@ levelbar {
 
     block {
         @extend trough;
-        // Quoted to use CSS min not SASS min, which doesn't take units
-        border-radius: #{'min(var(--trough-height), var(--trough-width))'};
 
         &.filled {
             background-color: var(--accent-color);

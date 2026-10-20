@@ -70,10 +70,18 @@ trough {
     background-color: var(--trough-color);
     // Quoted to use CSS min not SASS min, which doesn't take units
     border-radius: #{'min(var(--trough-height), var(--trough-width))'};
-    transition: background-color var(--duration-in-place) var(--ease-in-out);
+    transition:
+        background-color var(--duration-in-place) var(--ease-in-out),
+        filter var(--duration-in-place) var(--ease-in-out);
 
+    // Gtk.ProgressBar
+    progress,
+    // Gtk.Scale `has_origin = true`
+    highlight,
+    // Gtk.Switch
     &:checked {
         background-color: var(--accent-color);
+        border-radius: #{'min(var(--trough-height), var(--trough-width))'};
     }
 
     &:backdrop,
