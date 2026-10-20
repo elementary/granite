@@ -8,34 +8,6 @@ button {
         box-shadow: none;
     }
 
-    &.destructive,
-    &.suggested {
-        text-shadow: none;
-
-        image {
-            -gtk-icon-palette: default;
-        }
-    }
-
-    &.destructive {
-        background-color: var(--error-color);
-        color: white;
-
-        &:active {
-            background-color: color-mix(in oklab, var(--error-color) 90%, var(--STRAWBERRY-900) 10%);
-        }
-
-        &.toggle {
-            border-radius: var(--control-radius);
-            margin: 0;
-            padding: calc(0.5rem - 1px);
-
-            &:checked {
-                @extend selection;
-            }
-        }
-    }
-
     &.large-icons {
         -gtk-icon-size: 24px;
     }
@@ -43,7 +15,7 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised;
+        @include control;
 
         // reset padding since image buttons have no frame by default
         margin: 0;
@@ -54,14 +26,62 @@ button {
         &:active,
         &:checked {
             @include control-active;
+
             color: var(--fg-color);
             transform: none;
+        }
+
+        &:disabled {
+            opacity: var(--disabled-opacity);
         }
     }
 
     // Almost certainly a button with text and image
     > box.horizontal {
-        border-spacing: $button-spacing / 2;
+        border-spacing: calc(var(--button-spacing) / 2);
+    }
+}
+
+button {
+    &.suggested,
+    &.destructive {
+        &,
+        &:active {
+            @media (prefers-color-scheme: dark) {
+                background-clip: padding-box;
+            }
+        }
+
+        image {
+            -gtk-icon-palette: default;
+        }
+
+        &:backdrop {
+            background-color: inherit;
+            border-color: var(--border-color);
+            color: inherit;
+            text-shadow: none;
+            -gtk-icon-shadow: none;
+        }
+    }
+
+    &.suggested,
+    &.suggested:active,
+    &.suggested.image-button:active {
+        // quoted because SASS hates minmaxxing
+        background-color: #{'hsl(from var(--accent-color) h min(s, 45) max(l, 90))'};
+        color: #{'hsl(from var(--accent-color) h max(s, 50) min(l, 25))'};
+
+        @media (prefers-color-scheme: light) {
+            border-color: #{'hsl(from var(--accent-color) h min(s, 20) max(l, 70))'};
+        }
+    }
+
+    &.destructive,
+    &.destructive:active,
+    &.destructive.image-button:active {
+        background-color: var(--error-color);
+        color: white;
     }
 }
 
@@ -104,23 +124,24 @@ button.image-button {
         background-color: color-mix(in srgb, var(--fg-color) var(--bg-transparency), transparent);
         color: inherit;
     }
-
-    &.suggested {
-        background-color: color-mix(in srgb, var(--accent-color) var(--bg-transparency), transparent);
-
-        color: color-mix(in oklab, var(--accent-color) 80%, black);
-
-        @media (prefers-color-scheme: dark) {
-            color: color-mix(in oklab, var(--accent-color) 70%, white);
-
-        }
-    }
 }
 
 button.text-button {
-    @extend %raised;
+    @include control;
 
-    padding: calc(0.5rem - 2px);
+    padding: calc(0.5rem - 2px) calc(1rem - 2px);
+    font-weight: 500;
+    font-size: 0.95em;
+
+    &:active,
+    &:checked {
+        @include control-active;
+        transform: none;
+    }
+
+    &:disabled {
+        opacity: var(--disabled-opacity);
+    }
 
     &.destructive,
     &.suggested {
@@ -138,6 +159,11 @@ button.text-button {
         background-color: var(--selected-bg-color);
         color: var(--selected-fg-color);
     }
+}
+
+button.text-button.link {
+    font-weight: inherit;
+    font-size: inherit;
 }
 
 button.link {
@@ -171,7 +197,7 @@ button.osd {
         shadow(2);
     color: var(--fg-color);
     margin: 0;
-    padding: $button-spacing;
+    padding: var(--button-spacing);
 
     transition:
         background var(--duration-expand) var(--ease-in-out),
@@ -184,13 +210,12 @@ button.osd {
     }
 
     &:disabled {
-        @include control-disabled;
-
         box-shadow:
-        highlight(),
-        // Intentionally not in ems since it's used as a stroke
-        0 0 0 1px var(--shadow-border-color),
-        shadow(1);
+            highlight(),
+            // Intentionally not in ems since it's used as a stroke
+            0 0 0 1px var(--shadow-border-color),
+            shadow(1);
+        opacity: var(--disabled-opacity);
     }
 
     .linked & {
