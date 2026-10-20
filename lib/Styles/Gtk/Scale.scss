@@ -33,8 +33,6 @@ scale {
     }
 
     trough {
-        @include trough;
-
         min-height: var(--trough-width);
         min-width: var(--trough-width);
     }

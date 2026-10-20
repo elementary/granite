@@ -66,15 +66,19 @@
     }
 }
 
-@mixin trough {
-    background-color: var(--trough-color);
-
-    &:disabled {
-        background-color: color-mix(in srgb, var(--trough-color) 90%, transparent);
-    }
-}
-
 trough {
+    background-color: var(--trough-color);
     // Quoted to use CSS min not SASS min, which doesn't take units
     border-radius: #{'min(var(--trough-height), var(--trough-width))'};
+    transition: background-color var(--duration-in-place) var(--ease-in-out);
+
+    &:checked {
+        background-color: var(--accent-color);
+    }
+
+    &:backdrop,
+    &:disabled {
+        background-color: color-mix(in srgb, var(--trough-color) 50%, transparent);
+        filter: grayscale(100%);
+    }
 }

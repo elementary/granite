@@ -2,10 +2,9 @@ levelbar {
     --trough-width: 2rem;
 
     block {
-        @include trough;
+        @extend trough;
         // Quoted to use CSS min not SASS min, which doesn't take units
         border-radius: #{'min(var(--trough-height), var(--trough-width))'};
-        transition: background-color var(--duration-in-place) var(--ease-in-out);
 
         &.filled {
             background-color: var(--accent-color);
@@ -25,11 +24,11 @@ levelbar {
             &.success {
                 background-color: var(--success-color);
             }
+        }
 
-            &:backdrop,
-            &:disabled {
-                filter: grayscale(100%);
-            }
+        &.empty {
+            // Avoid duplicate background with trough
+            background: transparent;
         }
     }
 

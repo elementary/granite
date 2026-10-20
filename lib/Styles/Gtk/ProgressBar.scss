@@ -4,15 +4,9 @@ progressbar {
     progress {
         background-color: var(--accent-color);
         border-radius: var(--control-radius);
-
-        &:backdrop {
-            filter: grayscale(100%);
-        }
     }
 
     trough {
-        @include trough;
-
         min-height: var(--trough-width);
         min-width: var(--trough-width);
     }

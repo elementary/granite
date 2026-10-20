@@ -1,9 +1,8 @@
 switch {
     @extend trough;
     @extend .circular;
-    @include trough;
 
-    &:checked:not(:backdrop):not(.mode-switch) {
-        background-color: var(--accent-color);
+    &.mode-switch:checked {
+        background-color: var(--trough-color);
     }
 }
