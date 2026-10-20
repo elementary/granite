@@ -1,9 +1,10 @@
 levelbar {
     --trough-width: 2rem;
-    --trough-height: 0.5rem;
 
     block {
         @include trough;
+        // Quoted to use CSS min not SASS min, which doesn't take units
+        border-radius: #{'min(var(--trough-height), var(--trough-width))'};
         transition: background-color var(--duration-in-place) var(--ease-in-out);
 
         &.filled {

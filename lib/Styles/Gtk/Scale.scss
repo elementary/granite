@@ -1,6 +1,5 @@
 scale {
     --slider-width: 1.333rem; // ~16px @ 9pt
-    --trough-width: 0.5rem;
     --slider-margin: calc((var(--slider-width) - var(--trough-width)) / 2 * -1);
 
     // `has_origin = true`

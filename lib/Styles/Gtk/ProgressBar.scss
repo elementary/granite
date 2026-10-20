@@ -13,7 +13,6 @@ progressbar {
     trough {
         @include trough;
 
-        border-radius: var(--control-radius);
         min-height: var(--trough-width);
         min-width: var(--trough-width);
     }

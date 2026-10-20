@@ -1,4 +1,6 @@
 switch {
+    @extend trough;
+    @extend .circular;
     @include trough;
 
     &:checked:not(:backdrop):not(.mode-switch) {

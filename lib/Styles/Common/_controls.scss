@@ -3,6 +3,10 @@
 
     // Spacing between children of buttons, menu items etc
     --button-spacing: 0.5rem;
+
+    --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
+    --trough-width: 0.5rem;
+    --trough-height: 0.5rem;
 }
 
 @mixin control {
@@ -63,12 +67,14 @@
 }
 
 @mixin trough {
-    --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
-
     background-color: var(--trough-color);
-    border-radius: 99px;
 
     &:disabled {
         background-color: color-mix(in srgb, var(--trough-color) 90%, transparent);
     }
+}
+
+trough {
+    // Quoted to use CSS min not SASS min, which doesn't take units
+    border-radius: #{'min(var(--trough-height), var(--trough-width))'};
 }

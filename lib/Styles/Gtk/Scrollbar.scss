@@ -11,8 +11,9 @@ scrollbar {
     }
 
     trough {
+        @extend .circular;
+
         background-color: color-mix(in srgb, var(--fg-color) 20%, transparent);
-        border-radius: 99px;
         margin: rem(3px);
     }
 
