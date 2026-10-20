@@ -15,7 +15,7 @@ button {
     .linked &,
     .linked &.image-button,
     .linked &.image-button.toggle {
-        @extend %raised;
+        @include control;
 
         // reset padding since image buttons have no frame by default
         margin: 0;
@@ -26,8 +26,13 @@ button {
         &:active,
         &:checked {
             @include control-active;
+
             color: var(--fg-color);
             transform: none;
+        }
+
+        &:disabled {
+            opacity: var(--disabled-opacity);
         }
     }
 
@@ -122,11 +127,38 @@ button.image-button {
 }
 
 button.text-button {
-    @extend %raised;
+    @include control;
 
     padding: calc(0.5rem - 2px) calc(1rem - 2px);
     font-weight: 500;
     font-size: 0.95em;
+
+    &:active,
+    &:checked {
+        @include control-active;
+        transform: none;
+    }
+
+    &:disabled {
+        opacity: var(--disabled-opacity);
+    }
+
+    &.destructive,
+    &.suggested {
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+
+        &:backdrop {
+            background-color: inherit;
+            color: inherit;
+        }
+    }
+
+    &.suggested {
+        background-color: var(--selected-bg-color);
+        color: var(--selected-fg-color);
+    }
 }
 
 button.text-button.link {
