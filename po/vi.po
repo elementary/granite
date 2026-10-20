@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-16 13:54+0000\n"
+"POT-Creation-Date: 2026-10-20 01:11+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/desktop/"
@@ -19,6 +19,54 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
+
+#: lib/Constants.vala:246
+msgid "Strawberry"
+msgstr ""
+
+#: lib/Constants.vala:247
+msgid "Orange"
+msgstr ""
+
+#: lib/Constants.vala:248
+msgid "Banana"
+msgstr ""
+
+#: lib/Constants.vala:249
+msgid "Lime"
+msgstr ""
+
+#: lib/Constants.vala:250
+msgid "Mint"
+msgstr ""
+
+#: lib/Constants.vala:251
+msgid "Blueberry"
+msgstr ""
+
+#: lib/Constants.vala:252
+msgid "Grape"
+msgstr ""
+
+#: lib/Constants.vala:253
+msgid "Bubblegum"
+msgstr ""
+
+#: lib/Constants.vala:254
+msgid "Cocoa"
+msgstr ""
+
+#: lib/Constants.vala:255
+msgid "Slate"
+msgstr ""
+
+#: lib/Constants.vala:256
+msgid "Latte"
+msgstr ""
+
+#: lib/Constants.vala:257
+msgid "Automatic"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
