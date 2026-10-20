@@ -79,7 +79,9 @@ button {
 
     &.destructive,
     &.destructive:active,
-    &.destructive.image-button:active {
+    &.destructive.image-button:active,
+    &.destructive.text-button,
+    &.destructive.text-button:active {
         background-color: var(--error-color);
         color: white;
     }
