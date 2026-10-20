@@ -1,14 +1,10 @@
 progressbar {
+    --trough-height: 0.75rem;
     --trough-width: 0.75rem;
 
     progress {
         background-color: var(--accent-color);
         border-radius: var(--control-radius);
-    }
-
-    trough {
-        min-height: var(--trough-width);
-        min-width: var(--trough-width);
     }
 
     &.horizontal {

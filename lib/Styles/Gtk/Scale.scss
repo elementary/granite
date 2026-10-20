@@ -5,10 +5,6 @@ scale {
     // `has_origin = true`
     highlight {
         background-color: var(--accent-color);
-
-        &:backdrop {
-            background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
-        }
     }
 
     mark {

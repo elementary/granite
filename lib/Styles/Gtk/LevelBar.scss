@@ -52,14 +52,8 @@ levelbar {
         }
     }
 
-    &.horizontal block {
+    &.horizontal trough {
         min-height: var(--trough-height);
-        min-width: var(--trough-width);
-    }
-
-    &.vertical block {
-        min-height: var(--trough-width);
-        min-width: var(--trough-height);
     }
 }
 
