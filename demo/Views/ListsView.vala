@@ -59,18 +59,23 @@ public class ListsView : DemoPage {
 
         var list_store = new GLib.ListStore (typeof (ListObject));
         list_store.append (new ListObject () {
+            icon_name = "dialog-information-symbolic",
             text = "Row 1"
         });
         list_store.append (new ListObject () {
+            icon_name = "dialog-question-symbolic",
             text = "Row 2"
         });
         list_store.append (new ListObject () {
+            icon_name = "dialog-password-symbolic",
             text = "Row 3"
         });
         list_store.append (new ListObject () {
+            icon_name = "dialog-warning-symbolic",
             text = "Row 4"
         });
         list_store.append (new ListObject () {
+            icon_name = "dialog-error-symbolic",
             text = "Row 5"
         });
 
@@ -110,6 +115,34 @@ public class ListsView : DemoPage {
             has_frame = true,
             hscrollbar_policy = NEVER,
             min_content_height = 128
+        };
+
+        var icon_factory = new Gtk.SignalListItemFactory ();
+        icon_factory.setup.connect (setup_icon_column);
+        icon_factory.bind.connect (bind_icon_column);
+
+        var icon_column = new Gtk.ColumnViewColumn ("Icon", icon_factory);
+
+        var label_factory = new Gtk.SignalListItemFactory ();
+        label_factory.setup.connect (setup_label_column);
+        label_factory.bind.connect (bind_label_column);
+
+        var label_column = new Gtk.ColumnViewColumn ("Label", label_factory) {
+            expand = true
+        };
+
+        var column_view = new Gtk.ColumnView (new Gtk.MultiSelection (list_store)) {
+            enable_rubberband = true
+        };
+        column_view.append_column (icon_column);
+        column_view.append_column (label_column);
+
+        var column_scrolled = new Gtk.ScrolledWindow () {
+            child = column_view,
+            has_frame = true,
+            hscrollbar_policy = NEVER,
+            min_content_height = 128,
+            propagate_natural_height = true
         };
 
         var grid_title = new Granite.HeaderLabel ("Gtk.GridView");
@@ -184,15 +217,20 @@ public class ListsView : DemoPage {
         vbox.append (list_box);
         vbox.append (list_title);
         vbox.append (list_scrolled);
+        vbox.append (new Granite.HeaderLabel ("Column View"));
+        vbox.append (column_scrolled);
         vbox.append (grid_title);
         vbox.append (grid_scrolled);
 
         child = vbox;
 
         separators_modelbutton.bind_property ("active", list_box, "show-separators", SYNC_CREATE | DEFAULT);
+        separators_modelbutton.bind_property ("active", column_view, "show-column-separators", SYNC_CREATE | DEFAULT);
+        separators_modelbutton.bind_property ("active", column_view, "show-row-separators", SYNC_CREATE | DEFAULT);
     }
 
     private class ListObject : Object {
+        public string icon_name { get; set; }
         public string text { get; set; }
     }
 
@@ -225,5 +263,33 @@ public class ListsView : DemoPage {
             bind_property ("text", label, "label");
             bind_property ("icon-name", image, "icon-name");
         }
+    }
+
+    private void setup_icon_column (Object obj) {
+        var item = (Gtk.ListItem) obj;
+        item.child = new Gtk.Image ();
+    }
+
+    private void setup_label_column (Object obj) {
+        var item = (Gtk.ListItem) obj;
+        item.child = new Gtk.Label ("") {
+            halign = START
+        };
+    }
+
+    private void bind_icon_column (Object obj) {
+        var list_item = (Gtk.ListItem) obj;
+        var list_object = (ListObject) list_item.item;
+
+        var image = (Gtk.Image) list_item.child;
+        image.icon_name = list_object.icon_name;
+    }
+
+    private void bind_label_column (Object obj) {
+        var list_item = (Gtk.ListItem) obj;
+        var list_object = (ListObject) list_item.item;
+
+        var label = (Gtk.Label) list_item.child;
+        label.label = list_object.text;
     }
 }
