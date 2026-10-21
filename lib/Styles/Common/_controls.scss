@@ -16,6 +16,7 @@
         );
 
     border: 1px solid var(--border-color);
+    border-radius: var(--control-radius);
 
     box-shadow:
         highlight("full"),
@@ -50,17 +51,6 @@
     }
 }
 
-// used to show a check or radio button is "active"
-@mixin control-checked {
-    color: var(--SILVER-100);
-    background-color: var(--accent-color);
-
-    &:backdrop,
-    &:disabled {
-        filter: grayscale(100%);
-    }
-}
-
 @mixin trough {
     --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
 
@@ -69,22 +59,5 @@
 
     &:disabled {
         background-color: color-mix(in srgb, var(--trough-color) 90%, transparent);
-    }
-}
-
-%raised {
-    @include control;
-
-    border-radius: var(--control-radius);
-
-    &:active,
-    &:checked {
-        @include control-active;
-        filter: brightness(95%);
-        transform: none;
-    }
-
-    &:disabled {
-        opacity: var(--disabled-opacity);
     }
 }

@@ -30,6 +30,7 @@ public class Granite.HyperTextView : Gtk.TextView {
 
     private GLib.HashTable<string, Gtk.TextTag> uri_text_tags;
     private Regex uri_regex;
+    private Gtk.EventControllerKey keypress_controller;
 
     private bool is_control_key_pressed = false;
 
@@ -58,16 +59,13 @@ public class Granite.HyperTextView : Gtk.TextView {
         }
 
         buffer_connect (buffer);
-        notify["buffer"].connect (() => {
-            buffer_connect (buffer);
-            buffer.changed ();
-        });
+        notify["buffer"].connect (on_buffer_changed);
 
         var motion_controller = new Gtk.EventControllerMotion ();
         motion_controller.motion.connect (on_motion_notify_event);
         add_controller (motion_controller);
 
-        var keypress_controller = new Gtk.EventControllerKey ();
+        keypress_controller = new Gtk.EventControllerKey ();
         keypress_controller.key_pressed.connect (on_key_press_event);
         keypress_controller.key_released.connect (on_key_release_event);
 
@@ -76,17 +74,10 @@ public class Granite.HyperTextView : Gtk.TextView {
         add_controller (click_controller);
 
         var focus_controller = new Gtk.EventControllerFocus ();
-        focus_controller.leave.connect (() => {
-            set_cursor (new Gdk.Cursor.from_name ("text", null));
-            is_control_key_pressed = false;
-        });
+        focus_controller.leave.connect (on_focus_leave);
         add_controller (focus_controller);
 
-        realize.connect (() => {
-            // Attach the keypress controller to the root so we can see Ctrl key presses
-            // even when the widget isn't focused
-            get_root ().add_controller (keypress_controller);
-        });
+        realize.connect (on_realize);
     }
 
     private void buffer_connect (Gtk.TextBuffer buffer) {
@@ -112,26 +103,7 @@ public class Granite.HyperTextView : Gtk.TextView {
             buffer_changed_debounce_timeout_id = 0;
         }
 
-        buffer_changed_debounce_timeout_id = GLib.Timeout.add (300, () => {
-            buffer_changed_debounce_timeout_id = 0;
-
-            var change_start_offset = buffer_cursor_position_when_change_started;
-            var change_end_offset = buffer.cursor_position;
-
-            buffer_cursor_position_when_change_started = 0;
-
-            if (change_start_offset == FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET || change_start_offset == change_end_offset) {
-                change_start_offset = 0;
-                change_end_offset = buffer.text.length;
-            }
-
-            update_tags_in_buffer_for_range.begin (
-                int.min (change_start_offset, change_end_offset),
-                int.max (change_start_offset, change_end_offset)
-            );
-
-            return GLib.Source.REMOVE;
-        });
+        buffer_changed_debounce_timeout_id = GLib.Timeout.add (300, debouncer);
     }
 
     private async void update_tags_in_buffer_for_range (int buffer_start_offset, int buffer_end_offset) {
@@ -291,5 +263,42 @@ public class Granite.HyperTextView : Gtk.TextView {
         }
 
         return uri;
+    }
+
+    private void on_buffer_changed () {
+        buffer_connect (buffer);
+        buffer.changed ();
+    }
+
+    private void on_realize () {
+        // Attach the keypress controller to the root so we can see Ctrl key presses
+        // even when the widget isn't focused
+        get_root ().add_controller (keypress_controller);
+    }
+
+    private void on_focus_leave () {
+        set_cursor (new Gdk.Cursor.from_name ("text", null));
+        is_control_key_pressed = false;
+    }
+
+    private bool debouncer () {
+        buffer_changed_debounce_timeout_id = 0;
+
+        var change_start_offset = buffer_cursor_position_when_change_started;
+        var change_end_offset = buffer.cursor_position;
+
+        buffer_cursor_position_when_change_started = 0;
+
+        if (change_start_offset == FORCE_FULL_BUFFER_RESCAN_CHANGE_START_OFFSET || change_start_offset == change_end_offset) {
+            change_start_offset = 0;
+            change_end_offset = buffer.text.length;
+        }
+
+        update_tags_in_buffer_for_range.begin (
+            int.min (change_start_offset, change_end_offset),
+            int.max (change_start_offset, change_end_offset)
+        );
+
+        return GLib.Source.REMOVE;
     }
 }

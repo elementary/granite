@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-16 13:54+0000\n"
-"PO-Revision-Date: 2026-09-17 17:02+0000\n"
+"POT-Creation-Date: 2026-10-20 01:11+0000\n"
+"PO-Revision-Date: 2026-10-21 10:03+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ru/>\n"
@@ -20,6 +20,54 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
+
+#: lib/Constants.vala:246
+msgid "Strawberry"
+msgstr ""
+
+#: lib/Constants.vala:247
+msgid "Orange"
+msgstr ""
+
+#: lib/Constants.vala:248
+msgid "Banana"
+msgstr ""
+
+#: lib/Constants.vala:249
+msgid "Lime"
+msgstr ""
+
+#: lib/Constants.vala:250
+msgid "Mint"
+msgstr ""
+
+#: lib/Constants.vala:251
+msgid "Blueberry"
+msgstr ""
+
+#: lib/Constants.vala:252
+msgid "Grape"
+msgstr ""
+
+#: lib/Constants.vala:253
+msgid "Bubblegum"
+msgstr ""
+
+#: lib/Constants.vala:254
+msgid "Cocoa"
+msgstr ""
+
+#: lib/Constants.vala:255
+msgid "Slate"
+msgstr ""
+
+#: lib/Constants.vala:256
+msgid "Latte"
+msgstr ""
+
+#: lib/Constants.vala:257
+msgid "Automatic"
+msgstr ""
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -53,9 +101,9 @@ msgstr "Сейчас"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%d м назад"
-msgstr[1] "%d м назад"
-msgstr[2] "%d м назад"
+msgstr[0] "%d мин назад"
+msgstr[1] "%d мин назад"
+msgstr[2] "%d мин назад"
 
 #: lib/DateTime.vala:70
 #, c-format

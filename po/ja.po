@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-16 13:54+0000\n"
-"PO-Revision-Date: 2026-09-20 09:02+0000\n"
+"POT-Creation-Date: 2026-10-20 01:11+0000\n"
+"PO-Revision-Date: 2026-10-21 10:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ja/>\n"
@@ -19,6 +19,54 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
+
+#: lib/Constants.vala:246
+msgid "Strawberry"
+msgstr "ストロベリー"
+
+#: lib/Constants.vala:247
+msgid "Orange"
+msgstr "オレンジ"
+
+#: lib/Constants.vala:248
+msgid "Banana"
+msgstr "バナナ"
+
+#: lib/Constants.vala:249
+msgid "Lime"
+msgstr "ライム"
+
+#: lib/Constants.vala:250
+msgid "Mint"
+msgstr "ミント"
+
+#: lib/Constants.vala:251
+msgid "Blueberry"
+msgstr "ブルーベリー"
+
+#: lib/Constants.vala:252
+msgid "Grape"
+msgstr "グレープ"
+
+#: lib/Constants.vala:253
+msgid "Bubblegum"
+msgstr "ピンク"
+
+#: lib/Constants.vala:254
+msgid "Cocoa"
+msgstr "ココア"
+
+#: lib/Constants.vala:255
+msgid "Slate"
+msgstr "スレート"
+
+#: lib/Constants.vala:256
+msgid "Latte"
+msgstr "ラテ"
+
+#: lib/Constants.vala:257
+msgid "Automatic"
+msgstr "自動"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
