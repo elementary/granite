@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-09-17 17:02+0000\n"
+"PO-Revision-Date: 2026-10-21 10:03+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ru/>\n"
@@ -101,9 +101,9 @@ msgstr "Сейчас"
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "%d м назад"
-msgstr[1] "%d м назад"
-msgstr[2] "%d м назад"
+msgstr[0] "%d мин назад"
+msgstr[1] "%d мин назад"
+msgstr[2] "%d мин назад"
 
 #: lib/DateTime.vala:70
 #, c-format
