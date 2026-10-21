@@ -1,10 +1,8 @@
 levelbar {
     --trough-width: 2rem;
-    --trough-height: 0.5rem;
 
     block {
-        @include trough;
-        transition: background-color var(--duration-in-place) var(--ease-in-out);
+        @extend trough;
 
         &.filled {
             background-color: var(--accent-color);
@@ -24,11 +22,11 @@ levelbar {
             &.success {
                 background-color: var(--success-color);
             }
+        }
 
-            &:backdrop,
-            &:disabled {
-                filter: grayscale(100%);
-            }
+        &.empty {
+            // Avoid duplicate background with trough
+            background: transparent;
         }
     }
 
@@ -52,14 +50,8 @@ levelbar {
         }
     }
 
-    &.horizontal block {
+    &.horizontal trough {
         min-height: var(--trough-height);
-        min-width: var(--trough-width);
-    }
-
-    &.vertical block {
-        min-height: var(--trough-width);
-        min-width: var(--trough-height);
     }
 }
 
