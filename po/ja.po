@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-09-20 09:02+0000\n"
+"PO-Revision-Date: 2026-10-21 10:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ja/>\n"
@@ -22,51 +22,51 @@ msgstr ""
 
 #: lib/Constants.vala:246
 msgid "Strawberry"
-msgstr ""
+msgstr "ストロベリー"
 
 #: lib/Constants.vala:247
 msgid "Orange"
-msgstr ""
+msgstr "オレンジ"
 
 #: lib/Constants.vala:248
 msgid "Banana"
-msgstr ""
+msgstr "バナナ"
 
 #: lib/Constants.vala:249
 msgid "Lime"
-msgstr ""
+msgstr "ライム"
 
 #: lib/Constants.vala:250
 msgid "Mint"
-msgstr ""
+msgstr "ミント"
 
 #: lib/Constants.vala:251
 msgid "Blueberry"
-msgstr ""
+msgstr "ブルーベリー"
 
 #: lib/Constants.vala:252
 msgid "Grape"
-msgstr ""
+msgstr "グレープ"
 
 #: lib/Constants.vala:253
 msgid "Bubblegum"
-msgstr ""
+msgstr "ピンク"
 
 #: lib/Constants.vala:254
 msgid "Cocoa"
-msgstr ""
+msgstr "ココア"
 
 #: lib/Constants.vala:255
 msgid "Slate"
-msgstr ""
+msgstr "スレート"
 
 #: lib/Constants.vala:256
 msgid "Latte"
-msgstr ""
+msgstr "ラテ"
 
 #: lib/Constants.vala:257
 msgid "Automatic"
-msgstr ""
+msgstr "自動"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
