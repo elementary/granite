@@ -11,12 +11,6 @@ scale {
         }
     }
 
-    slider {
-        // 16px - border
-        min-height: calc(var(--slider-width) - 1px);
-        min-width: calc(var(--slider-width) - 1px);
-    }
-
     value {
         @extend .small-label;
         @extend .numeric;
