@@ -127,6 +127,11 @@ popover.menu {
         }
     }
 
+    modelbutton {
+        // Reset so we don't inherit monospace, destructive, etc
+        font: initial;
+    }
+
     separator.horizontal {
         margin: var(--button-spacing) calc(var(--button-spacing) * -1);
         // Fix GTK warning about negative min-width
