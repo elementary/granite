@@ -38,10 +38,6 @@ public class ControlsView : DemoPage {
         var forward_menuitem = new GLib.MenuItem ("Forward", null);
         forward_menuitem.set_attribute_value ("verb-icon", "mail-forward-symbolic");
 
-        var switchbutton_header = new Granite.HeaderLabel ("SwitchModelButton") {
-            margin_top = 12
-        };
-
         var header_switchmodelbutton = new Granite.SwitchModelButton ("As a Header");
         header_switchmodelbutton.add_css_class (Granite.HeaderLabel.Size.H4.to_string ());
 

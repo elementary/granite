@@ -29,14 +29,6 @@ popover {
         }
     }
 
-    &.menu > contents {
-        @extend .toplevel;
-
-        --shadow-level: 1;
-
-        padding: var(--button-spacing);
-    }
-
     &.emoji-picker {
         .emoji-searchbar {
             margin: var(--button-spacing);
@@ -115,7 +107,16 @@ modelbutton {
 }
 
 // Gtk.PopoverMenu
-.menu {
+popover.menu {
+    > contents {
+        --shadow-level: 1;
+    }
+
+    // Gtk.PopoverMenu has a stack for submenus
+    > contents > scrolledwindow > viewport > stack {
+        padding: var(--button-spacing);
+    }
+
     .circular-buttons,
     .inline-buttons {
         border-spacing: var(--button-spacing);
@@ -124,6 +125,12 @@ modelbutton {
         > box {
             border-spacing: var(--button-spacing);
         }
+    }
+
+    separator.horizontal {
+        margin: var(--button-spacing) calc(var(--button-spacing) * -1);
+        // Fix GTK warning about negative min-width
+        min-width: rem(150px);
     }
 
     .title {
