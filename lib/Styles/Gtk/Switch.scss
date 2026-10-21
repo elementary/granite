@@ -1,9 +1,12 @@
 switch {
     @extend trough;
-    @extend .circular;
+
+    &,
+    &:checked {
+        @extend .circular;
+    }
 
     &.mode-switch:checked {
-        @extend .circular;
         background-color: var(--trough-color);
     }
 }

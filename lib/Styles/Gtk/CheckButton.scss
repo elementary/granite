@@ -18,8 +18,14 @@ checkbutton {
         }
 
         &:checked {
+            background-color: var(--accent-color);
+            color: var(--SILVER-100);
             -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
-            @include control-checked;
+
+            &:backdrop,
+            &:disabled {
+                filter: grayscale(100%);
+            }
         }
 
         &:indeterminate {

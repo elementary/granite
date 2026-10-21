@@ -55,17 +55,6 @@
     }
 }
 
-// used to show a check or radio button is "active"
-@mixin control-checked {
-    color: var(--SILVER-100);
-    background-color: var(--accent-color);
-
-    &:backdrop,
-    &:disabled {
-        filter: grayscale(100%);
-    }
-}
-
 trough {
     background-color: var(--trough-color);
     // Quoted to use CSS min not SASS min, which doesn't take units

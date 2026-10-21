@@ -1,20 +1,28 @@
 <svg
         xmlns='http://www.w3.org/2000/svg'
         xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state='0'
         id='svg1'
         width='16'
         height='16'>
   <path
-          id='path1'
-          fill='url(#gpa:foreground) #555761'
+          id='path2'
+          class='foreground-stroke'
+          fill='url(#gpa:foreground) rgb(0,0,0)'
           fill-opacity='1'
           fill-rule='nonzero'
-          stroke='none'
-          marker-start='none'
-          marker-mid='none'
-          marker-end='none'
-          overflow='visible'
-          d='M 7 3 L 7 7 L 3 7 L 3 9 L 7 9 L 7 13 L 9 13 L 9 9 L 13 9 L 13 7 L 9 7 L 9 3 Z'
-          class="foreground">
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='1'
+          stroke-width='1'
+          stroke-linecap='butt'
+          stroke-linejoin='round'
+          stroke-miterlimit='4'
+          d='M 7.5 3.5 L 7.5 7.5 L 3.5 7.5 L 3.5 8.5 L 7.5 8.5 L 7.5 12.5 L 8.5 12.5 L 8.5 8.5 L 12.5 8.5 L 12.5 7.5 L 8.5 7.5 L 8.5 3.5 Z'
+          gpa:stroke-minwidth='25%'
+          gpa:stroke-maxwidth='150%'
+          gpa:animation-repeat='0'
+          gpa:animation-segment='0'>
   </path>
 </svg>
