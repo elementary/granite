@@ -30,60 +30,11 @@ button {
             color: var(--fg-color);
             transform: none;
         }
-
-        &:disabled {
-            opacity: var(--disabled-opacity);
-        }
     }
 
     // Almost certainly a button with text and image
     > box.horizontal {
         border-spacing: calc(var(--button-spacing) / 2);
-    }
-}
-
-button {
-    &.suggested,
-    &.destructive {
-        &,
-        &:active {
-            @media (prefers-color-scheme: dark) {
-                background-clip: padding-box;
-            }
-        }
-
-        image {
-            -gtk-icon-palette: default;
-        }
-
-        &:backdrop {
-            background-color: inherit;
-            border-color: var(--border-color);
-            color: inherit;
-            text-shadow: none;
-            -gtk-icon-shadow: none;
-        }
-    }
-
-    &.suggested,
-    &.suggested:active,
-    &.suggested.image-button:active {
-        // quoted because SASS hates minmaxxing
-        background-color: #{'hsl(from var(--accent-color) h min(s, 45) max(l, 90))'};
-        color: #{'hsl(from var(--accent-color) h max(s, 50) min(l, 25))'};
-
-        @media (prefers-color-scheme: light) {
-            border-color: #{'hsl(from var(--accent-color) h min(s, 20) max(l, 70))'};
-        }
-    }
-
-    &.destructive,
-    &.destructive:active,
-    &.destructive.image-button:active,
-    &.destructive.text-button,
-    &.destructive.text-button:active {
-        background-color: var(--error-color);
-        color: white;
     }
 }
 
@@ -140,27 +91,6 @@ button.text-button {
         @include control-active;
         transform: none;
     }
-
-    &:disabled {
-        opacity: var(--disabled-opacity);
-    }
-
-    &.destructive,
-    &.suggested {
-        @media (prefers-color-scheme: dark) {
-            background-clip: padding-box;
-        }
-
-        &:backdrop {
-            background-color: inherit;
-            color: inherit;
-        }
-    }
-
-    &.suggested {
-        background-color: var(--selected-bg-color);
-        color: var(--selected-fg-color);
-    }
 }
 
 button.text-button.link {
@@ -176,6 +106,34 @@ button.link {
 
     label {
         text-decoration: underline;
+    }
+}
+
+button {
+    &.suggested,
+    &.destructive {
+        image {
+            -gtk-icon-palette: default;
+        }
+    }
+
+    &.suggested,
+    &.suggested.image-button:active,
+    &.suggested.text-button:active {
+        // quoted because SASS hates minmaxxing
+        background-color: #{'hsl(from var(--accent-color) h min(s, 45) max(l, 90))'};
+        color: #{'hsl(from var(--accent-color) h max(s, 50) min(l, 25))'};
+
+        @media (prefers-color-scheme: light) {
+            border-color: #{'hsl(from var(--accent-color) h min(s, 20) max(l, 70))'};
+        }
+    }
+
+    &.destructive,
+    &.destructive.image-button:active,
+    &.destructive.text-button:active {
+        background-color: var(--error-color);
+        color: white;
     }
 }
 
