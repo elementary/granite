@@ -3,6 +3,8 @@
 // these exported GtkCSS variables should be considered public API.
 
 :root {
+    --accent-color: var(--BLUEBERRY-500);
+
     // Text, images, and other foreground elements
     --fg-color: var(--BLACK-500);
 
