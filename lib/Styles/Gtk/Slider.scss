@@ -1,10 +1,10 @@
 slider {
     $diameter: rem(16px);
     @include control;
+    @extend .circular;
 
     border: none;
 
-    border-radius: 999px;
     box-shadow:
         highlight(),
         0 0 0 1px var(--border-color),
@@ -13,6 +13,18 @@ slider {
     // 16px - border
     min-height: calc(#{$diameter} - 1px);
     min-width: calc(#{$diameter} - 1px);
+
+    &:active {
+        transform: scale(1.1);
+        transition:
+            box-shadow var(--duration-collapse) var(--ease-in-out),
+            transform var(--duration-collapse) var(--ease-in-out);
+        box-shadow:
+            highlight(),
+            0 0 0 1px var(--border-color),
+            shadow(3);
+        filter: none;
+    }
 
     &:backdrop {
         box-shadow:
