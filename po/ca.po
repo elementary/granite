@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-09-19 07:02+0000\n"
+"PO-Revision-Date: 2026-10-21 10:03+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/desktop/"
 "granite/ca/>\n"
@@ -22,51 +22,51 @@ msgstr ""
 
 #: lib/Constants.vala:246
 msgid "Strawberry"
-msgstr ""
+msgstr "Maduixa"
 
 #: lib/Constants.vala:247
 msgid "Orange"
-msgstr ""
+msgstr "Taronja"
 
 #: lib/Constants.vala:248
 msgid "Banana"
-msgstr ""
+msgstr "Banana"
 
 #: lib/Constants.vala:249
 msgid "Lime"
-msgstr ""
+msgstr "Llima"
 
 #: lib/Constants.vala:250
 msgid "Mint"
-msgstr ""
+msgstr "Menta"
 
 #: lib/Constants.vala:251
 msgid "Blueberry"
-msgstr ""
+msgstr "Nabiu"
 
 #: lib/Constants.vala:252
 msgid "Grape"
-msgstr ""
+msgstr "Raïm"
 
 #: lib/Constants.vala:253
 msgid "Bubblegum"
-msgstr ""
+msgstr "Xiclet"
 
 #: lib/Constants.vala:254
 msgid "Cocoa"
-msgstr ""
+msgstr "Cacau"
 
 #: lib/Constants.vala:255
 msgid "Slate"
-msgstr ""
+msgstr "Pissarra"
 
 #: lib/Constants.vala:256
 msgid "Latte"
-msgstr ""
+msgstr "Cafè amb llet"
 
 #: lib/Constants.vala:257
 msgid "Automatic"
-msgstr ""
+msgstr "Automàtic"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28

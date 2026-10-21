@@ -51,17 +51,6 @@
     }
 }
 
-// used to show a check or radio button is "active"
-@mixin control-checked {
-    color: var(--SILVER-100);
-    background-color: var(--accent-color);
-
-    &:backdrop,
-    &:disabled {
-        filter: grayscale(100%);
-    }
-}
-
 @mixin trough {
     --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
 
