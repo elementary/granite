@@ -28,19 +28,6 @@ scale {
         @extend .numeric;
     }
 
-    &.dragging {
-        slider {
-            transform: scale(1.1);
-            transition:
-                box-shadow var(--duration-collapse) var(--ease-in-out),
-                transform var(--duration-collapse) var(--ease-in-out);
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--border-color),
-                shadow(3);
-        }
-    }
-
     &.horizontal {
         fill.top {
             border-radius: rem(12px) 0 0 rem(12px);

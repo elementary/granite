@@ -21,13 +21,7 @@ button {
         margin: 0;
         padding: calc(0.5rem - 2px);
 
-        // I don't know why this needs to be reiterated, but it doesn't work
-        // properly without it
-        &:active,
-        &:checked {
-            @include control-active;
-
-            color: var(--fg-color);
+        &:active {
             transform: none;
         }
 
@@ -55,18 +49,9 @@ button {
         image {
             -gtk-icon-palette: default;
         }
-
-        &:backdrop {
-            background-color: inherit;
-            border-color: var(--border-color);
-            color: inherit;
-            text-shadow: none;
-            -gtk-icon-shadow: none;
-        }
     }
 
     &.suggested,
-    &.suggested:active,
     &.suggested.image-button:active {
         // quoted because SASS hates minmaxxing
         background-color: #{'hsl(from var(--accent-color) h min(s, 45) max(l, 90))'};
@@ -78,7 +63,6 @@ button {
     }
 
     &.destructive,
-    &.destructive:active,
     &.destructive.image-button:active,
     &.destructive.text-button,
     &.destructive.text-button:active {
@@ -135,14 +119,13 @@ button.text-button {
     font-weight: 500;
     font-size: 0.95em;
 
-    &:active,
-    &:checked {
-        @include control-active;
-        transform: none;
+    &:active {
+        padding: calc(0.5rem - 2px) calc(1rem - 2px);
     }
 
-    &:disabled {
-        opacity: var(--disabled-opacity);
+    &:checked {
+        @extend button, .text-button, :active;
+        color: inherit;
     }
 
     &.destructive,
