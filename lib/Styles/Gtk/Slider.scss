@@ -1,5 +1,4 @@
 slider {
-    $diameter: rem(16px);
     @include control;
     @extend .circular;
 
@@ -11,8 +10,13 @@ slider {
         shadow(2);
 
     // 16px - border
-    min-height: calc(#{$diameter} - 1px);
-    min-width: calc(#{$diameter} - 1px);
+    min-height: calc(var(--slider-width) - 1px);
+    min-width: calc(var(--slider-width) - 1px);
+
+    transition:
+        box-shadow var(--duration-expand) var(--ease-in-out),
+        opacity var(--duration-expand) var(--ease-in-out),
+        transform var(--duration-expand) var(--ease-out-back);
 
     .dragging &,
     &:active {
