@@ -80,6 +80,7 @@ popover {
     &:hover,
     &:focus-visible {
         background: color-mix(in srgb, var(--fg-color) 10%, transparent);
+        transition: background var(--duration-in-place) var(--ease-in-out);
     }
 
     &:active {
