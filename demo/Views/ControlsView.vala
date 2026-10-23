@@ -15,7 +15,7 @@ public class ControlsView : DemoPage {
 
         var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
 
-        var colorbutton = new Gtk.ColorDialogButton (null);
+        var colorbutton = new Gtk.ColorDialogButton (new Gtk.ColorDialog ());
 
         var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()") {
             active = true
