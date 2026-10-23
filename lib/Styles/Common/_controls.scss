@@ -28,30 +28,33 @@
 
     transition: all var(--duration-in-place) var(--ease-in-out);
 
-    &:backdrop {
-        background-image: none;
+    -gtk-icon-size: rem(16px);
+
+    &:active {
+        box-shadow:
+            highlight("bottom"),
+            0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+            inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
+            inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
+        filter: brightness(95%);
+
+        &:disabled {
+            box-shadow:
+                highlight("bottom"),
+                0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+                inset 0 1px 1px color-mix(in srgb, black 5%, transparent);
+        }
     }
 
     &:disabled {
         background-color: var(--bg-level-3);
-        background-image: none;
+        opacity: var(--disabled-opacity);
     }
-}
 
-// used to show a button is being clicked or is in an "active" state
-@mixin control-active {
-    background: var(--bg-level-3);
-    box-shadow:
-        highlight("bottom"),
-        0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
-        inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
-        inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
-
+    &:backdrop,
     &:disabled {
-        box-shadow:
-            highlight("bottom"),
-            0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
-            inset 0 1px 1px color-mix(in srgb, black 5%, transparent);
+        background-image: none;
+        filter: grayscale(100%);
     }
 }
 
