@@ -87,6 +87,25 @@ button {
     }
 }
 
+button.color {
+    @include control;
+    border: none;
+
+    colorswatch,
+    overlay {
+        border-radius: var(--control-radius);
+    }
+
+    overlay {
+        border: 1px solid var(--border-color);
+        box-shadow: highlight("full");
+
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+    }
+}
+
 button.image-button {
     @extend .circular;
 

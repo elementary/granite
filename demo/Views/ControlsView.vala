@@ -15,6 +15,8 @@ public class ControlsView : DemoPage {
 
         var textbutton = new Gtk.Button.with_label ("Gtk.Button.with_label ()");
 
+        var colorbutton = new Gtk.ColorDialogButton (null);
+
         var toggle_button = new Gtk.ToggleButton.with_label ("Gtk.ToggleButton.with_label ()") {
             active = true
         };
@@ -125,7 +127,8 @@ public class ControlsView : DemoPage {
         var button_grid = new Gtk.Grid ();
         button_grid.add_css_class ("border-spacing-half");
         button_grid.attach (textbutton, 0, 0);
-        button_grid.attach (imagebutton, 1, 0, 2);
+        button_grid.attach (colorbutton, 1, 0);
+        button_grid.attach (imagebutton, 2, 0);
 
         button_grid.attach (toggle_button, 0, 1);
         button_grid.attach (toggle_imagebutton, 1, 1, 2);
