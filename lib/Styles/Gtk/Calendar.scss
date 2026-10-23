@@ -1,0 +1,22 @@
+calendar.view {
+    .day-name {
+        @extend .title-4;
+    }
+
+    .day-number {
+        &.today {
+            @extend .accent;
+            font-weight: bold;
+        }
+
+        &.other-month {
+            opacity: var(--disabled-opacity);
+        }
+
+        &:selected{
+            @extend .circular;
+            @extend selection;
+        }
+    }
+}
+
