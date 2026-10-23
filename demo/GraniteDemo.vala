@@ -45,6 +45,7 @@ public class Granite.Demo : Gtk.Application {
         main_stack.add_titled (form_view, "formview", "Forms");
         main_stack.add_titled (hypertext_view, "hypertextview", "HyperTextView");
         main_stack.add_titled (controls_view, "controls", "Controls");
+        main_stack.add_titled (new AvatarView (), "avatars", "Avatar");
         main_stack.add_titled (maps_view, "maps", "Maps");
         main_stack.add_titled (video_view, "video", video_view.title);
         main_stack.add_titled (overlaybar_view, "overlaybar", "OverlayBar");
