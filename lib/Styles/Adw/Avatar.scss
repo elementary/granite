@@ -1,0 +1,100 @@
+avatar {
+    border-radius: 9999px;
+    box-shadow:
+        highlight(),
+        shadow(1);
+
+    background-clip: border-box;
+    background-color: var(--accent-color);
+    border-color: color-mix(in srgb, black 25%, transparent) ;
+    color: color-mix(in srgb, black 50%, transparent ) ;
+
+    &.color1 {
+        background-color: var(--BLUEBERRY-300);
+        border-color: color-mix(in srgb, var(--BLUEBERRY-500), transparent 50%);
+        color: var(--BLUEBERRY-900);
+    }
+
+    &.color2 {
+        background-color: var(--BLUEBERRY-100);
+        border-color: color-mix(in srgb, var(--BLUEBERRY-300), transparent 50%);
+        color: var(--BLUEBERRY-700);
+    }
+
+    &.color3 {
+        background-color: var(--MINT-300);
+        border-color: color-mix(in srgb, var(--MINT-500), transparent 50%);
+        color: var(--MINT-900);
+    }
+
+    &.color4 {
+        background-color: var(--LIME-300);
+        border-color: color-mix(in srgb, var(--LIME-500), transparent 50%);
+        color: var(--LIME-900);
+    }
+
+    &.color5 {
+        background-color: var(--BANANA-500);
+        border-color: color-mix(in srgb, var(--BANANA-700), transparent 50%);
+        color: var(--BANANA-900);
+    }
+
+    &.color6 {
+        background-color: color-mix(in oklch, var(--BANANA-500), var(--ORANGE-300) 50%);
+        border-color: color-mix(in srgb, color-mix(in oklch, var(--BANANA-700), var(--ORANGE-500) 50%), transparent 50%);
+        color: color-mix(in oklch, var(--BANANA-900), var(--ORANGE-900) 50%);
+    }
+
+    &.color7 {
+        background-color: var(--ORANGE-300);
+        border-color: color-mix(in srgb, var(--ORANGE-500), transparent 50%);
+        color: var(--ORANGE-900);
+    }
+
+    &.color8 {
+        background-color: var(--STRAWBERRY-300);
+        border-color: color-mix(in srgb, var(--STRAWBERRY-500), transparent 50%);
+        color: var(--STRAWBERRY-900);
+    }
+
+    &.color9 {
+        background-color: var(--BUBBLEGUM-300);
+        border-color: color-mix(in srgb, var(--BUBBLEGUM-500), transparent 50%);
+        color: var(--BUBBLEGUM-900);
+    }
+
+    &.color10 {
+        background-color: var(--GRAPE-300);
+        border-color: color-mix(in srgb, var(--GRAPE-500), transparent 50%);
+        color: var(--GRAPE-900);
+    }
+
+    &.color11 {
+        background-color: color-mix(var(--BLUEBERRY-700), var(--GRAPE-300) 50%);
+        border-color: color-mix(in srgb, color-mix(in oklch, var(--BLUEBERRY-700), var(--GRAPE-500) 50%), transparent 50%);
+        color: color-mix(in oklch, var(--BLUEBERRY-900), var(--GRAPE-900) 50%);
+    }
+
+    &.color12 {
+        background-color: color-mix(in oklch, var(--BANANA-100), var(--COCOA-100) 50%);
+        border-color: color-mix(in srgb, color-mix(in oklch, var(--BANANA-500), var(--COCOA-500) 50%), transparent 50%);
+        color: color-mix(in oklch, var(--BANANA-700), var(--COCOA-900) 50%);
+    }
+
+    &.color13 {
+        background-color: var(--COCOA-300);
+        border-color: color-mix(in srgb, var(--COCOA-500), transparent 50%);
+        color: var(--COCOA-900);
+    }
+
+    &.color14 {
+        background-color: var(--SLATE-300);
+        border-color: color-mix(in srgb, var(--SLATE-500), transparent 50%);
+        color: var(--SLATE-900);
+    }
+
+    &.image {
+        border-color: var(--border-color);
+        background: none;
+    }
+}
