@@ -94,6 +94,7 @@
   </gresource>
 
   <gresource prefix="/io/elementary/granite/scalable/ui">
+    <file compressed="true" preprocess="xml-stripblanks">adw-avatar-default-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-counter-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-icon-missing-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">adw-tab-overflow-symbolic.svg</file>
