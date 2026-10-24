@@ -11,7 +11,7 @@ categories = [
         ['view-sidebar-start-symbolic', 'view-sidebar-end-rtl-symbolic']
     ]],
     ['categories', [
-        ['face-heart-symbolic', 'emoji-symbols-symbolic']
+        ['face-heart-symbolic', 'emoji-symbols-symbolic'],
         ['poi-street-symbolic', 'poi-car-symbolic']
     ]],
     ['status',[
