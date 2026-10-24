@@ -11,6 +11,11 @@
 
 @mixin control {
     background-clip: border-box;
+
+    @media (prefers-color-scheme: dark) {
+        background-clip: padding-box;
+    }
+
     background-color: var(--bg-level-0);
     background-image:
         linear-gradient(
@@ -28,13 +33,25 @@
 
     transition: all var(--duration-in-place) var(--ease-in-out);
 
-    &:backdrop {
+    -gtk-icon-size: rem(16px);
+
+    &:hover {
+        filter: brightness(105%);
+    }
+
+    &:backdrop,
+    &:disabled {
         background-image: none;
+        filter: grayscale(100%);
     }
 
     &:disabled {
         background-color: var(--bg-level-3);
         background-image: none;
+
+        label {
+            opacity: var(--disabled-opacity);
+        }
     }
 }
 
@@ -46,6 +63,12 @@
         0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
         inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
         inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
+
+    filter: brightness(95%);
+
+    @media (prefers-color-scheme: dark) {
+        background-clip: padding-box;
+    }
 
     &:disabled {
         box-shadow:

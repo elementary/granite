@@ -4,36 +4,21 @@ checkbutton {
     check,
     radio {
         @include control;
-        -gtk-icon-size: rem(16px);
         min-height: 1rem;
         min-width: 1rem;
 
-        &:hover {
-            filter: brightness(105%);
-        }
-
         &:active {
             @include control-active;
-            filter: brightness(95%);
         }
 
         &:checked {
             background-color: var(--accent-color);
             color: var(--SILVER-100);
             -gtk-icon-source: -gtk-icontheme("check-checked-symbolic");
-
-            &:backdrop,
-            &:disabled {
-                filter: grayscale(100%);
-            }
         }
 
         &:indeterminate {
             -gtk-icon-source: -gtk-icontheme("check-indeterminate-symbolic");
-        }
-
-        &:disabled {
-            opacity: var(--disabled-opacity);
         }
     }
 
@@ -55,10 +40,6 @@ checkbutton.accent {
 
         @media(prefers-color-scheme: dark) {
             background-clip: padding-box;
-        }
-
-        &:backdrop {
-            filter: grayscale(100%);
         }
     }
 
