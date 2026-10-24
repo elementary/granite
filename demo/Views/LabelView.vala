@@ -61,31 +61,26 @@ public class LabelView : DemoPage {
 
         var accent_color_box = new Granite.Box (HORIZONTAL, HALF);
         accent_color_box.append (new Gtk.Image.from_icon_name ("emoji-body-symbolic"));
-        accent_color_box.append (new Gtk.Image.from_icon_name ("face-tired-symbolic"));
         accent_color_box.append (new Gtk.Label ("Granite.CssClass.ACCENT"));
         accent_color_box.add_css_class (Granite.CssClass.ACCENT);
 
         var success_color_box = new Granite.Box (HORIZONTAL, HALF);
         success_color_box.append (new Gtk.Image.from_icon_name ("process-completed-symbolic"));
-        success_color_box.append (new Gtk.Image.from_icon_name ("face-sick-symbolic"));
         success_color_box.append (new Gtk.Label ("Granite.CssClass.SUCCESS"));
         success_color_box.add_css_class (Granite.CssClass.SUCCESS);
 
         var warning_color_box = new Granite.Box (HORIZONTAL, HALF);
         warning_color_box.append (new Gtk.Image.from_icon_name ("dialog-warning-symbolic"));
-        warning_color_box.append (new Gtk.Image.from_icon_name ("face-laugh-symbolic"));
         warning_color_box.append (new Gtk.Label ("Granite.CssClass.WARNING"));
         warning_color_box.add_css_class (Granite.CssClass.WARNING);
 
         var error_color_box = new Granite.Box (HORIZONTAL, HALF);
         error_color_box.append (new Gtk.Image.from_icon_name ("dialog-error-symbolic"));
-        error_color_box.append (new Gtk.Image.from_icon_name ("face-angry-symbolic"));
         error_color_box.append (new Gtk.Label ("Granite.CssClass.ERROR"));
         error_color_box.add_css_class (Granite.CssClass.ERROR);
 
         var dimmed_box = new Granite.Box (HORIZONTAL, HALF);
         dimmed_box.append (new Gtk.Image.from_icon_name ("adw-tab-icon-missing-symbolic"));
-        dimmed_box.append (new Gtk.Image.from_icon_name ("face-plain-symbolic"));
         dimmed_box.append (new Gtk.Label ("Granite.CssClass.DIM"));
         dimmed_box.add_css_class (Granite.CssClass.DIM);
 
