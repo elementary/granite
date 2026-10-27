@@ -1,0 +1,93 @@
+window.colorchooser headerbar {
+    // Padding in GTK is hardcoded pixels
+    padding: 10px;
+}
+
+colorchooser {
+    // Only select linked swatches
+    > box.vertical grid.horizontal colorswatch {
+        margin: -1px 0;
+
+        &.top:not(:active) overlay {
+            box-shadow: highlight("top");
+        }
+
+        &.bottom:not(:active) overlay {
+            box-shadow: highlight("bottom");
+        }
+
+        &:not(.top):not(.bottom),
+        &:not(.top):not(.bottom) overlay {
+            border-radius: 0;
+            border-top-width: 0;
+            border-bottom-width: 0;
+        }
+
+        &:not(.top):not(.bottom):not(:active) overlay {
+            box-shadow:
+                inset 1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent),
+                inset -1px 0 0 0 color-mix(in srgb, var(--highlight-color) 7%, transparent);
+        }
+    }
+
+    > box.vertical > label {
+        @extend .title-4;
+        margin: 0 0.25rem;
+    }
+}
+
+colorswatch {
+    border-radius: var(--control-radius);
+    transition: filter var(--duration-in-place) var(--ease-in-out);
+
+    overlay {
+        border: 1px solid var(--border-color);
+        border-radius: var(--control-radius);
+        box-shadow: highlight("full");
+        transition: box-shadow var(--duration-in-place) var(--ease-in-out);
+
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+    }
+
+    &.top,
+    &.top overlay {
+        border-bottom-width: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.bottom,
+    &.bottom overlay {
+        border-top-width: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    &.bottom {
+        box-shadow: 0 1px 1px color-mix(in srgb, black calc(5% + var(--shadow-multiplier)), transparent);
+    }
+
+    &.dark overlay {
+        color: white;
+        -gtk-icon-shadow: 0 1px 0.25rem color-mix(in srgb, black 30%, transparent);
+    }
+
+    &.light overlay {
+        color: color-mix(in srgb, black 80%, transparent);
+        -gtk-icon-shadow: 0 1px 1px color-mix(in srgb, white 20%, transparent);
+    }
+
+    &:active {
+        filter: brightness(95%);
+
+        overlay {
+            box-shadow:
+                0 1px 0 0 color-mix(in srgb, var(--highlight-color) 30%, transparent),
+                inset 0 1px 1px color-mix(in srgb, black 5%, transparent),
+                inset 0 0 1px 1px color-mix(in srgb, black 5%, transparent);
+
+        }
+    }
+}
