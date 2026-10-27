@@ -38,6 +38,20 @@ button {
     }
 }
 
+button.color {
+    @include control;
+    border: none;
+
+    overlay {
+        background-image:
+            linear-gradient(
+                to bottom,
+                color-mix(in srgb, var(--highlight-color) 10%, transparent),
+                color-mix(in srgb, var(--highlight-color) 0%, transparent)
+            );
+    }
+}
+
 button.image-button {
     @extend .circular;
 
