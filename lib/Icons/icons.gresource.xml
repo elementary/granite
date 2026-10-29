@@ -63,8 +63,9 @@
     <file compressed="true" preprocess="xml-stripblanks">emoji-objects-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">emoji-people-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">emoji-recent-symbolic.svg</file>
-    <file compressed="true" preprocess="xml-stripblanks">emoji-symbols-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">emoji-travel-symbolic.svg</file>
+
+    <file compressed="true" preprocess="xml-stripblanks">face-heart-symbolic.svg</file>
 
     <file compressed="true" preprocess="xml-stripblanks">poi-airport-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">poi-bar-symbolic.svg</file>
@@ -78,6 +79,7 @@
     <file compressed="true" preprocess="xml-stripblanks">poi-school-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">poi-town-symbolic.svg</file>
 
+    <file alias="emoji-symbols-symbolic.svg" compressed="true" preprocess="xml-stripblanks">face-heart-symbolic.svg</file>
     <file alias="poi-car-symbolic.svg" compressed="true" preprocess="xml-stripblanks" >poi-street-symbolic.svg</file>
   </gresource>
 
