@@ -1,0 +1,86 @@
+// DEPRECATED
+infobar {
+    revealer > box {
+        background-color: var(--bg-level-1);
+        background-image: -gtk-icontheme("dialog-information-symbolic");
+        background-repeat: no-repeat;
+        background-size: 16px;
+        border: 1px solid var(--border-color);
+        border-radius: calc(var(--window-radius) / 2);
+        border-spacing: 1rem;
+        box-shadow: highlight("full");
+        padding: 0.5rem;
+        -gtk-icon-palette: default;
+
+        &:dir(ltr) {
+            // Minus half pixel to avoid blurry icons
+            background-position: 0.75rem calc(50% + 0.5px);
+            // Icon size + padding
+            padding-left: calc(16px + 1rem);
+        }
+
+        &:dir(rtl) {
+            // Minus half pixel to avoid blurry icons
+            background-position: calc(100% - 0.75rem) calc(50% + 0.5px);
+            // Icon size + padding
+            padding-right: calc(16px + 1rem);
+        }
+
+        // Extra padding for labels but not buttons
+        & > box:first-child {
+            padding: 0.5rem;
+        }
+
+        button {
+            &.close.image-button {
+                @extend .circular;
+                background: color-mix(in srgb, white 80%, transparent);
+                color: inherit;
+                padding: 0.25rem;
+            }
+
+            &.text-button {
+                background-clip: padding-box;
+                color: var(--fg-color);
+
+                @media (prefers-color-scheme: dark) {
+                    background-clip: border-box;
+                }
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            background-clip: padding-box;
+        }
+    }
+
+    &.error revealer > box {
+        background-color: var(--STRAWBERRY-100);
+        background-image: -gtk-icontheme("process-error-symbolic");
+        color: color-mix(in oklab, var(--STRAWBERRY-900) 90%, black);
+
+        @media (prefers-color-scheme: light) {
+            border-color: var(--STRAWBERRY-200);
+        }
+    }
+
+    &.warning revealer > box {
+        background-color: var(--BANANA-100);
+        background-image: -gtk-icontheme("dialog-warning-symbolic");
+        color: color-mix(in oklab, var(--BANANA-900) 90%, black);
+
+        @media (prefers-color-scheme: light) {
+            border-color: var(--BANANA-200);
+        }
+    }
+
+    &.question revealer > box {
+        background-color: var(--BLUEBERRY-100);
+        background-image: -gtk-icontheme("dialog-question-symbolic");
+        color: color-mix(in oklab, var(--BLUEBERRY-900) 90%, black);
+
+        @media (prefers-color-scheme: light) {
+            border-color: var(--BLUEBERRY-200);
+        }
+    }
+}
