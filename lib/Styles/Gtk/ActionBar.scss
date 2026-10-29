@@ -1,0 +1,21 @@
+actionbar > revealer > box {
+    background-color: color-mix(in srgb, black calc(1% + var(--shadow-multiplier)), transparent);
+    background-image:
+        linear-gradient(
+            to bottom,
+            var(--border-color) 1px,
+            color-mix(in srgb, black calc(7% + var(--shadow-multiplier)), transparent) 1px,
+            transparent 0.25rem
+        );
+    padding: 0.5rem;
+
+    &:backdrop {
+        background-image:
+            linear-gradient(
+                to bottom,
+                var(--border-color) 1px,
+                color-mix(in srgb, black calc(4% + var(--shadow-multiplier)), transparent) 1px,
+                transparent 0.25rem
+            );
+    }
+}
