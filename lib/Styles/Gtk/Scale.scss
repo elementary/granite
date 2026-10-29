@@ -1,5 +1,4 @@
 scale {
-    --slider-width: 1.333rem; // ~16px @ 9pt
     --slider-margin: calc((var(--slider-width) - var(--trough-width)) / 2 * -1);
 
     mark {
@@ -12,33 +11,9 @@ scale {
         }
     }
 
-    slider {
-        // 16px - border
-        min-height: calc(var(--slider-width) - 1px);
-        min-width: calc(var(--slider-width) - 1px);
-
-        transition:
-            box-shadow var(--duration-expand) var(--ease-in-out),
-            opacity var(--duration-expand) var(--ease-in-out),
-            transform var(--duration-expand) var(--ease-out-back);
-    }
-
     value {
         @extend .small-label;
         @extend .numeric;
-    }
-
-    &.dragging {
-        slider {
-            transform: scale(1.1);
-            transition:
-                box-shadow var(--duration-collapse) var(--ease-in-out),
-                transform var(--duration-collapse) var(--ease-in-out);
-            box-shadow:
-                highlight(),
-                0 0 0 1px var(--border-color),
-                shadow(3);
-        }
     }
 
     &.horizontal {
