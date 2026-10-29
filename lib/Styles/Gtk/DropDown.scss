@@ -4,8 +4,9 @@ dropdown {
     }
 
     popover {
-        contents > box.vertical {
-            @extend .border-spacing-half;
+        .dropdown-searchbar,
+        listview {
+            padding: var(--button-spacing);
         }
 
         listview row {
