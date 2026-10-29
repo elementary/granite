@@ -31,7 +31,7 @@ public class ListsView : DemoPage {
         list_box.append (new Granite.ListItem () { child = separators_modelbutton });
 
         var list_title = new Granite.HeaderLabel ("Gtk.ListView") {
-            secondary_text = "ScrolledWindow with \"has-frame = true\" has a view level background color"
+            secondary_text = "Frame children a view level background color"
         };
 
         var reply_menuitem = new GLib.MenuItem ("Reply", null);
@@ -107,9 +107,23 @@ public class ListsView : DemoPage {
 
         var list_scrolled = new Gtk.ScrolledWindow () {
             child = list_view,
-            has_frame = true,
             hscrollbar_policy = NEVER,
             min_content_height = 128
+        };
+
+        var actionbar = new Gtk.ActionBar () {
+            revealed = true
+        };
+        actionbar.pack_start (new Gtk.Button.with_label ("Start"));
+        actionbar.set_center_widget (new Gtk.Button.with_label ("Center"));
+        actionbar.pack_end (new Gtk.Button.with_label ("End"));
+
+        var list_view_box = new Granite.Box (VERTICAL, 0);
+        list_view_box.append (list_scrolled);
+        list_view_box.append (actionbar);
+
+        var list_frame = new Gtk.Frame (null) {
+            child = list_view_box
         };
 
         var grid_title = new Granite.HeaderLabel ("Gtk.GridView");
@@ -183,7 +197,7 @@ public class ListsView : DemoPage {
         vbox.append (card_title);
         vbox.append (list_box);
         vbox.append (list_title);
-        vbox.append (list_scrolled);
+        vbox.append (list_frame);
         vbox.append (grid_title);
         vbox.append (grid_scrolled);
 
