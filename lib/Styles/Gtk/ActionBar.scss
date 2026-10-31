@@ -14,4 +14,9 @@ actionbar > revealer > box {
     &:backdrop {
         --inset-shadow-opacity: 4%;
     }
+
+    > box.end,
+    > box.start {
+        border-spacing: var(--button-spacing);
+    }
 }
