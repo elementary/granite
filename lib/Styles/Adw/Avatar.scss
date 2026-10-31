@@ -6,8 +6,12 @@ avatar {
 
     background-clip: border-box;
     background-color: var(--accent-color);
-    border-color: color-mix(in srgb, black 25%, transparent) ;
-    color: color-mix(in srgb, black 50%, transparent ) ;
+    border-color: color-mix(in srgb, black 25%, transparent);
+    color: color-mix(in srgb, black 50%, transparent);
+
+    image {
+        color: white;
+    }
 
     &.color1 {
         background-color: var(--BLUEBERRY-300);
