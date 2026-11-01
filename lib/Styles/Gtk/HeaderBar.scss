@@ -1,5 +1,7 @@
 headerbar {
-    .title {
+    .title,
+    // Custom title wrapping etc
+    > windowhandle > box > label {
         // Cannot be a number or fonts break in Flatpak
         font-weight: bold;
     }
