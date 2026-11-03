@@ -4,6 +4,8 @@
     // Spacing between children of buttons, menu items etc
     --button-spacing: 0.5rem;
 
+    --slider-width: 1.333rem; // ~16px @ 9pt
+
     --trough-color: color-mix(in srgb, var(--toplevel-border-color) 50%, transparent);
     --trough-width: 0.5rem;
     --trough-height: 0.5rem;
