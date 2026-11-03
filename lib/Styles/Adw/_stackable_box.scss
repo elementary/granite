@@ -1,0 +1,28 @@
+@function background-shadow ($direction) {
+    @return linear-gradient(
+        $direction,
+        color-mix(in srgb, black calc(10% + var(--shadow-multiplier)), transparent),
+        transparent 0.5rem
+    );
+}
+
+navigation-view,
+webkitwebview,
+overlay-split-view {
+    > dimming {
+        background: color-mix(in srgb, black calc(15% + var(--shadow-multiplier)), transparent);
+    }
+
+    > border {
+        min-width: 1px;
+        min-height: 1px;
+        background: color-mix(in srgb, black calc(15% + var(--shadow-multiplier)), transparent);
+    }
+
+    > shadow {
+        &.left  { background: background-shadow(to right); min-width: 0.5rem; }
+        &.right { background: background-shadow(to left);  min-width: 0.5rem;}
+        &.up    { background: background-shadow(to bottom); min-height: 0.5rem; }
+        &.down  { background: background-shadow(to top); min-height: 0.5rem;}
+    }
+}
