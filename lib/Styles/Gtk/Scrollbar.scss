@@ -7,7 +7,10 @@ scrollbar {
     slider {
         transition:
             background var(--duration-collapse) var(--ease-in-out),
-            min-width var(--duration-collapse) var(--ease-in-out);
+            box-shadow var(--duration-expand) var(--ease-in-out),
+            min-width var(--duration-collapse) var(--ease-in-out),
+            opacity var(--duration-expand) var(--ease-in-out),
+            transform var(--duration-expand) var(--ease-out-back);
     }
 
     trough {
@@ -26,10 +29,11 @@ scrollbar {
         }
     }
 
-    &:active {
-        slider {
-            transition: background var(--duration-expand) var(--ease-in-out);
-        }
+    &:active slider {
+        transition:
+            background var(--duration-expand) var(--ease-in-out),
+            box-shadow var(--duration-collapse) var(--ease-in-out),
+            transform var(--duration-collapse) var(--ease-in-out);
     }
 
     &.horizontal {
