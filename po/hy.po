@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2015-12-04 01:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: Armenian <hy@li.org>\n"
+"PO-Revision-Date: 2026-11-05 20:04+0000\n"
+"Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
+"Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
+"granite/hy/>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-03-07 05:44+0000\n"
-"X-Generator: Launchpad (build 18330)\n"
 
 #: lib/Constants.vala:246
 msgid "Strawberry"
@@ -94,13 +96,13 @@ msgstr ""
 
 #: lib/DateTime.vala:64
 msgid "Now"
-msgstr ""
+msgstr "undefined"
 
 #: lib/DateTime.vala:67
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] ""
+msgstr[0] "undefined"
 msgstr[1] ""
 
 #: lib/DateTime.vala:70
