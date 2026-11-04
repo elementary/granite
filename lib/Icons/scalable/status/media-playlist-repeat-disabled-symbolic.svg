@@ -1,0 +1,52 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='rect955-6-0'
+          opacity='0.5'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='1'
+          stroke-linecap='butt'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          d='M 10.5156 1 C 10.2281 1, 9.99566 1.20176, 9.99609 1.45117 L 9.99609 3 L 5 3 C 4.23551 3, 3.51194 3.17042, 2.86523 3.47461 L 4.44336 5.05273 C 4.62404 5.01902, 4.80925 5, 5 5 L 9.99609 5 L 9.99609 6.54883 C 9.99609 6.79824, 10.2281 7, 10.5156 7 C 10.6706 7, 10.8094 6.94243, 10.9043 6.84961 L 13.8574 4.30273 C 13.9452 4.22211, 14 4.11378, 14 3.99414 C 14 3.8745, 13.9452 3.76618, 13.8574 3.68555 L 10.9043 1.15039 C 10.8094 1.05757, 10.6706 1, 10.5156 1 Z M 1.72656 4.2168 C 0.668507 5.13225, 0 6.48466, 0 8 L 0 9.44727 C 0 9.73474, 0.313878 10, 0.558594 10 L 1.44141 10 C 1.68612 10, 2.00024 9.77381, 2 9.48633 L 2 8 C 2 7.03845, 2.44909 6.18696, 3.14844 5.63867 Z M 14.5586 6 C 14.3139 6, 13.9998 6.22619, 14 6.51367 L 14 8 C 14 9.662, 12.662 11, 11 11 L 10.3906 11 L 12.2383 12.8477 C 14.4053 12.2993, 16 10.3421, 16 8 L 16 6.55273 C 16 6.26526, 15.6861 6, 15.4414 6 Z M 5.48438 9 C 5.32944 9, 5.19063 9.05757, 5.0957 9.15039 L 2.14258 11.6973 C 2.05484 11.7779, 2 11.8862, 2 12.0059 C 2 12.1255, 2.05484 12.2338, 2.14258 12.3145 L 5.0957 14.8496 C 5.19063 14.9424, 5.32944 15, 5.48438 15 C 5.77185 15, 6.00434 14.7982, 6.00391 14.5488 L 6.00391 13 L 10.5098 13 L 8.50977 11 L 6.00391 11 L 6.00391 9.45117 C 6.00391 9.20176, 5.77185 9, 5.48438 9 Z'
+          class="foreground">
+  </path>
+  <rect
+          id='rect2480-1-6'
+          transform='rotate(-45, 0, 0)'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='0.992001'
+          stroke-linecap='square'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          x='-0.625765'
+          y='1.41619'
+          width='1.248'
+          height='19.8'
+          rx='0.5'
+          ry='0.5'
+          class="foreground">
+  </rect>
+</svg>

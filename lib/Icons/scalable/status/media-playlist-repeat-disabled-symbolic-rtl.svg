@@ -1,0 +1,52 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg6'
+        width='16'
+        height='16'>
+  <path
+          id='rect955-6-0'
+          opacity='0.5'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='1'
+          stroke-linecap='butt'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          d='M 5.48438 1 C 5.77185 1, 6.00434 1.20176, 6.00391 1.45117 L 6.00391 3 L 11 3 C 11.7645 3, 12.4881 3.17042, 13.1348 3.47461 L 11.5566 5.05273 C 11.376 5.01902, 11.1908 5, 11 5 L 6.00391 5 L 6.00391 6.54883 C 6.00391 6.79824, 5.77185 7, 5.48438 7 C 5.32944 7, 5.19063 6.94243, 5.0957 6.84961 L 2.14258 4.30273 C 2.05484 4.22211, 2 4.11378, 2 3.99414 C 2 3.8745, 2.05484 3.76618, 2.14258 3.68555 L 5.0957 1.15039 C 5.19063 1.05757, 5.32944 1, 5.48438 1 Z M 14.2734 4.2168 C 15.3315 5.13225, 16 6.48466, 16 8 L 16 9.44727 C 16 9.73474, 15.6861 10, 15.4414 10 L 14.5586 10 C 14.3139 10, 13.9998 9.77381, 14 9.48633 L 14 8 C 14 7.03845, 13.5509 6.18696, 12.8516 5.63867 Z M 1.44141 6 C 1.68612 6, 2.00024 6.22619, 2 6.51367 L 2 8 C 2 9.662, 3.338 11, 5 11 L 5.60938 11 L 3.76172 12.8477 C 1.59473 12.2993, 0 10.3421, 0 8 L 0 6.55273 C 0 6.26526, 0.313878 6, 0.558594 6 Z M 10.5156 9 C 10.6706 9, 10.8094 9.05757, 10.9043 9.15039 L 13.8574 11.6973 C 13.9452 11.7779, 14 11.8862, 14 12.0059 C 14 12.1255, 13.9452 12.2338, 13.8574 12.3145 L 10.9043 14.8496 C 10.8094 14.9424, 10.6706 15, 10.5156 15 C 10.2281 15, 9.99566 14.7982, 9.99609 14.5488 L 9.99609 13 L 5.49023 13 L 7.49023 11 L 9.99609 11 L 9.99609 9.45117 C 9.99609 9.20176, 10.2281 9, 10.5156 9 Z'
+          class="foreground">
+  </path>
+  <rect
+          id='rect2480-1-6'
+          transform='matrix(-0.707107, -0.707107, -0.707107, 0.707107, 0, 0)'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='none'
+          stroke-opacity='1'
+          stroke-width='0.992001'
+          stroke-linecap='square'
+          stroke-linejoin='miter'
+          stroke-miterlimit='4'
+          stroke-dasharray='none'
+          stroke-dashoffset='0'
+          marker-start='none'
+          marker-mid='none'
+          marker-end='none'
+          x='-11.9395'
+          y='-9.89752'
+          width='1.248'
+          height='19.8'
+          rx='0.5'
+          ry='0.5'
+          class="foreground">
+  </rect>
+</svg>
