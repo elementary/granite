@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   gpa:version="1"
+   gpa:state="0"
+   id="svg6"
+   width="16"
+   height="16"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:gpa="https://www.gtk.org/grappa">
+  <defs
+     id="defs1" />
+  <path
+     id="path3"
+     class="foreground foreground-fill"
+     fill="url(#gpa:foreground) #000000"
+     fill-opacity="0.5"
+     fill-rule="nonzero"
+     d="M 7.25,5.5 C 6.5596,5.5 6,6.05964 6,6.75 6,7.44036 6.5596,8 7.25,8 7.9404,8 8.5,7.44036 8.5,6.75 8.5,6.05964 7.9404,5.5 7.25,5.5 Z m 3.8652,3.39844 A 1.02768,1.02768 0 0 0 10.3594,9.26758 L 9.1406,10.7324 A 0.913215,0.913215 0 0 1 7.793,10.793 L 7.207,10.207 A 0.976149,0.976149 0 0 0 5.8105,10.2246 L 5,11.0742 V 12.75 C 5,12.8885 5.1115,13 5.25,13 h 7.5 C 12.8885,13 13,12.8885 13,12.75 V 10.0762 L 11.7852,9.11914 a 1.02768,1.02768 0 0 0 -0.67,-0.2207 z"
+     gpa:animation-repeat="0"
+     gpa:animation-segment="0" />
+  <path
+     id="rect1-5-9"
+     class="transparent-fill foreground-stroke"
+     fill="none"
+     fill-rule="nonzero"
+     stroke="url(#gpa:foreground) rgb(0,0,0)"
+     stroke-opacity="1"
+     stroke-width="1"
+     stroke-linecap="butt"
+     stroke-linejoin="miter"
+     stroke-miterlimit="4"
+     d="M 11.4425 2.00062 L 11.4171 1.80531 C 11.3154 1.03291, 10.6495 0.477538, 9.88777 0.500619 C 9.83699 0.50216, 9.78692 0.507512, 9.73543 0.51429 L 1.80379 1.55726 C 0.979898 1.66573, 0.404306 2.41696, 0.512773 3.24085 L 1.01535 7.06291 L 1.55574 11.1725 C 1.60187 11.5229, 1.76447 11.8282, 1.9991 12.0553 M 5.00004 3.49994 L 13.0002 3.49994 C 13.8312 3.49994, 14.5002 4.16894, 14.5002 4.99994 L 14.5002 13.0001 C 14.5002 13.8311, 13.8312 14.5001, 13.0002 14.5001 L 5.00004 14.5001 C 4.16904 14.5001, 3.50004 13.8311, 3.50004 13.0001 L 3.50004 4.99994 C 3.50004 4.16894, 4.16904 3.49994, 5.00004 3.49994 Z"
+     gpa:stroke-minwidth="25%"
+     gpa:stroke-maxwidth="150%"
+     gpa:animation-repeat="0"
+     gpa:animation-segment="0" />
+</svg>

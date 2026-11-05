@@ -1,0 +1,15 @@
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        id='svg1'
+        width='16'
+        height='16'>
+  <path
+          id='path1'
+          fill='url(#gpa:foreground) #555761'
+          fill-opacity='1'
+          fill-rule='evenodd'
+          d='M 8 1 L 3 4.143 L 3 8.857 L 8 12 L 13 8.857 L 13 4.143 Z M 8 2.238 L 11.647 4.531 L 8 6.707 L 4.356 4.531 Z M 5 13 L 8 16 L 11 13 Z'
+          class="foreground">
+  </path>
+</svg>
