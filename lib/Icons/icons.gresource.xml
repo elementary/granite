@@ -90,6 +90,9 @@
     <file compressed="true" preprocess="xml-stripblanks">dialog-question-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">dialog-warning-symbolic.svg</file>
 
+    <file compressed="true" preprocess="xml-stripblanks">media-playlist-repeat-disabled-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">media-playlist-repeat-disabled-symbolic-rtl.svg</file>
+
     <file compressed="true" preprocess="xml-stripblanks">process-completed-symbolic.svg</file>
 
     <file alias="process-error-symbolic.svg" compressed="true" preprocess="xml-stripblanks">dialog-error-symbolic.svg</file>
