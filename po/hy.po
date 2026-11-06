@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-11-05 20:04+0000\n"
+"PO-Revision-Date: 2026-11-07 21:04+0000\n"
 "Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
 "Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/hy/>\n"
@@ -22,51 +22,51 @@ msgstr ""
 
 #: lib/Constants.vala:246
 msgid "Strawberry"
-msgstr ""
+msgstr "Ելակ"
 
 #: lib/Constants.vala:247
 msgid "Orange"
-msgstr ""
+msgstr "Նարինջ"
 
 #: lib/Constants.vala:248
 msgid "Banana"
-msgstr ""
+msgstr "Բանան"
 
 #: lib/Constants.vala:249
 msgid "Lime"
-msgstr ""
+msgstr "Լայմ"
 
 #: lib/Constants.vala:250
 msgid "Mint"
-msgstr ""
+msgstr "Անանուխ"
 
 #: lib/Constants.vala:251
 msgid "Blueberry"
-msgstr ""
+msgstr "Հապալաս"
 
 #: lib/Constants.vala:252
 msgid "Grape"
-msgstr ""
+msgstr "Խաղող"
 
 #: lib/Constants.vala:253
 msgid "Bubblegum"
-msgstr ""
+msgstr "Մաստակ"
 
 #: lib/Constants.vala:254
 msgid "Cocoa"
-msgstr ""
+msgstr "Կակաո"
 
 #: lib/Constants.vala:255
 msgid "Slate"
-msgstr ""
+msgstr "Թերթաքար"
 
 #: lib/Constants.vala:256
 msgid "Latte"
-msgstr ""
+msgstr "Լատտե"
 
 #: lib/Constants.vala:257
 msgid "Automatic"
-msgstr ""
+msgstr "Ավտոմատ"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
@@ -92,7 +92,7 @@ msgstr "%H:%M"
 
 #: lib/DateTime.vala:54
 msgid "Never"
-msgstr ""
+msgstr "Երբեք"
 
 #: lib/DateTime.vala:64
 msgid "Now"
@@ -109,30 +109,30 @@ msgstr[1] ""
 #, c-format
 msgid "%dh ago"
 msgid_plural "%dh ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ժ առաջ"
+msgstr[1] "%d ժ առաջ"
 
 #: lib/DateTime.vala:76
 #, c-format
 msgid "in %dm"
 msgid_plural "in %dm"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ր հետո"
+msgstr[1] "%d ր հետո"
 
 #: lib/DateTime.vala:79
 #, c-format
 msgid "in %dh"
 msgid_plural "in %dh"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ժ հետո"
+msgstr[1] "%d ժ հետո"
 
 #: lib/DateTime.vala:85
 msgid "Yesterday"
-msgstr ""
+msgstr "Երեկ"
 
 #: lib/DateTime.vala:87
 msgid "Tomorrow"
-msgstr ""
+msgstr "Վաղը"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:151
@@ -181,11 +181,11 @@ msgstr "%b"
 
 #: lib/Widgets/HyperTextView.vala:266
 msgid "Follow Link"
-msgstr ""
+msgstr "Հետևել հղմանը"
 
 #: lib/Widgets/HyperTextView.vala:267
 msgid "Control + Click"
-msgstr ""
+msgstr "Control + սեղմել"
 
 #: lib/Widgets/MessageDialog.vala:126
 #, fuzzy
@@ -194,16 +194,16 @@ msgstr "Փակել"
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
-msgstr ""
+msgstr "_Չեղարկել"
 
 #: lib/Widgets/MessageDialog.vala:325
 msgid "Details"
-msgstr ""
+msgstr "Մանրամասներ"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:94
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #. / TRANSLATORS: this will only show up when 12-hours clock is in use
 #: lib/Widgets/TimePicker.vala:99
@@ -218,68 +218,68 @@ msgstr ":"
 #. / TRANSLATORS: The "Super", "Windows", or "Command" key on the keyboard
 #: lib/Widgets/Utils.vala:30
 msgid "Super"
-msgstr ""
+msgstr "Super"
 
 #: lib/Widgets/Utils.vala:34
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: lib/Widgets/Utils.vala:38
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: lib/Widgets/Utils.vala:42
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #. /TRANSLATORS: The Alt key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:60
 msgid "Left Alt"
-msgstr ""
+msgstr "Ձախ Alt"
 
 #. /TRANSLATORS: The Alt key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:64
 msgid "Right Alt"
-msgstr ""
+msgstr "Աջ Alt"
 
 #. /TRANSLATORS: The Ctrl key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:71
 msgid "Right Ctrl"
-msgstr ""
+msgstr "Աջ Ctrl"
 
 #. /TRANSLATORS: The Ctrl key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:75
 msgid "Left Ctrl"
-msgstr ""
+msgstr "Ձախ Ctrl"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "-" key
 #: lib/Widgets/Utils.vala:80
 msgid "Minus"
-msgstr ""
+msgstr "Հանած"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "+" key
 #: lib/Widgets/Utils.vala:85
 msgid "Plus"
-msgstr ""
+msgstr "Գումարած"
 
 #. /TRANSLATORS: This is a non-symbol representation of the "=" key
 #: lib/Widgets/Utils.vala:90
 msgid "Equals"
-msgstr ""
+msgstr "Հավասար"
 
 #: lib/Widgets/Utils.vala:93
 msgid "Enter"
-msgstr ""
+msgstr "Enter"
 
 #. /TRANSLATORS: The Shift key on the left side of the keyboard
 #: lib/Widgets/Utils.vala:97
 msgid "Left Shift"
-msgstr ""
+msgstr "Ձախ Shift"
 
 #. /TRANSLATORS: The Shift key on the right side of the keyboard
 #: lib/Widgets/Utils.vala:101
 msgid "Right Shift"
-msgstr ""
+msgstr "Աջ Shift"
 
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:169
