@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-11-07 21:04+0000\n"
+"PO-Revision-Date: 2026-11-09 21:04+0000\n"
 "Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
 "Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/hy/>\n"
@@ -70,15 +70,13 @@ msgstr "Ավտոմատ"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format) with seconds
 #: lib/DateTime.vala:28
-#, fuzzy
 msgid "%-l:%M:%S %p"
-msgstr "%l:%M:%S %p"
+msgstr "%-l:%M:%S %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (12h format)
 #: lib/DateTime.vala:31
-#, fuzzy
 msgid "%-l:%M %p"
-msgstr "%l:%M %p"
+msgstr "%-l:%M %p"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the hour (24h format) with seconds
 #: lib/DateTime.vala:36
@@ -136,9 +134,8 @@ msgstr "Վաղը"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday, date, and year
 #: lib/DateTime.vala:151
-#, fuzzy
 msgid "%a, %b %e, %Y"
-msgstr "%a %b %e %Y"
+msgstr "%a, %b %e, %Y"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the date and year
 #: lib/DateTime.vala:154
@@ -169,9 +166,9 @@ msgstr "%a"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the weekday and date
 #: lib/DateTime.vala:169
-#, fuzzy, c-format
+#, c-format
 msgid "%a, %b %e"
-msgstr "%a %b %e"
+msgstr "%a, %b %e"
 
 #. / TRANSLATORS: a GLib.DateTime format showing the month.
 #: lib/DateTime.vala:172
@@ -188,9 +185,8 @@ msgid "Control + Click"
 msgstr "Control + սեղմել"
 
 #: lib/Widgets/MessageDialog.vala:126
-#, fuzzy
 msgid "_Close"
-msgstr "Փակել"
+msgstr "_Փակել"
 
 #: lib/Widgets/MessageDialog.vala:129
 msgid "_Cancel"
@@ -284,7 +280,7 @@ msgstr "Աջ Shift"
 #. /TRANSLATORS: This is a delimiter that separates two keyboard shortcut labels like "⌘ + →, Control + A"
 #: lib/Widgets/Utils.vala:169
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #~ msgid "Close Tab"
 #~ msgstr "Փակել պիտակը"
