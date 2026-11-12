@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-11-09 21:04+0000\n"
+"PO-Revision-Date: 2026-11-13 20:04+0000\n"
 "Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
 "Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/hy/>\n"
@@ -91,7 +91,7 @@ msgstr ""
 #: data/granite.metainfo.xml.in:120 data/granite.metainfo.xml.in:184
 #: data/granite.metainfo.xml.in:207
 msgid "New Features:"
-msgstr ""
+msgstr "Նոր հնարավորություններ՝"
 
 #: data/granite.metainfo.xml.in:68
 msgid ""
