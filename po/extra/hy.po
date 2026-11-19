@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-11-13 20:04+0000\n"
+"PO-Revision-Date: 2026-11-20 10:04+0000\n"
 "Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
 "Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite-extra/hy/>\n"
@@ -21,17 +21,20 @@ msgstr ""
 
 #: data/granite.metainfo.xml.in:11
 msgid "Granite 9"
-msgstr ""
+msgstr "Granite 9"
 
 #: data/granite.metainfo.xml.in:12
 msgid "Build consistent and usable apps more quickly and easily"
-msgstr ""
+msgstr "Ստեղծեք միատեսակ և հարմարավետ հավելվածներ ավելի արագ և հեշտ"
 
 #: data/granite.metainfo.xml.in:14
 msgid ""
 "A companion library for GTK and GLib that provides complex widgets and "
 "convenience methods designed for use in apps built for elementary OS."
 msgstr ""
+"GTK-ի և GLib-ի համար լրացուցիչ գրադարան, որը տրամադրում է բարդ վիջեթներ և "
+"հարմար մեթոդներ՝ նախատեսված elementary OS-ի համար ստեղծված հավելվածներում "
+"օգտագործելու համար։"
 
 #: data/granite.metainfo.xml.in:24
 msgid "elementary, Inc."
@@ -48,6 +51,8 @@ msgstr "Բարելավումներ՝"
 #: data/granite.metainfo.xml.in:34
 msgid "ListItem uses the context menu cursor when menu_model is set"
 msgstr ""
+"ListItem-ն օգտագործում է համատեքստային ցանկի կուրսորը, երբ menu_model-ը "
+"սահմանված է"
 
 #: data/granite.metainfo.xml.in:35 data/granite.metainfo.xml.in:49
 #: data/granite.metainfo.xml.in:80 data/granite.metainfo.xml.in:113
@@ -59,33 +64,36 @@ msgstr "Թարմացված թարգմանություններ"
 
 #: data/granite.metainfo.xml.in:47
 msgid "HeaderLabel now has ellipsize property"
-msgstr ""
+msgstr "HeaderLabel-ն այժմ ունի ellipsize հատկություն"
 
 #: data/granite.metainfo.xml.in:48
 msgid "ListItem now has a menu_model property"
-msgstr ""
+msgstr "ListItem-ն այժմ ունի menu_model հատկություն"
 
 #: data/granite.metainfo.xml.in:59
 msgid "New Icons:"
-msgstr ""
+msgstr "Նոր պատկերակներ՝"
 
 #: data/granite.metainfo.xml.in:61
 msgid ""
 "View icons for columns, grids, lists, and reader mode. Plus horizontal and "
 "vertical ellipsis icons"
 msgstr ""
+"Պատկերակներ սյունակների, ցանցերի, ցուցակների և ընթերցման ռեժիմի դիտման "
+"համար, ինչպես նաև հորիզոնական և ուղղահայաց բազմակետի պատկերակներ"
 
 #: data/granite.metainfo.xml.in:62
 msgid "Start and End show/hide sidebar icons"
-msgstr ""
+msgstr "Կողագոտու ցուցադրման/թաքցման սկզբի և վերջի պատկերակներ"
 
 #: data/granite.metainfo.xml.in:63
 msgid "Emoji category icons used by GTK's emoji picker"
 msgstr ""
+"Emoji-ի կատեգորիաների պատկերակներ, որոնք օգտագործում է GTK-ի emoji ընտրիչը"
 
 #: data/granite.metainfo.xml.in:64
 msgid "Eye icons required by Gtk.PasswordEntry"
-msgstr ""
+msgstr "Gtk.PasswordEntry-ի համար պահանջվող աչքի պատկերակներ"
 
 #: data/granite.metainfo.xml.in:66 data/granite.metainfo.xml.in:103
 #: data/granite.metainfo.xml.in:120 data/granite.metainfo.xml.in:184
@@ -98,257 +106,291 @@ msgid ""
 "Box is an orientable widget that includes standardized spacing and linked "
 "styles"
 msgstr ""
+"Box-ը կողմնորոշվող վիջեթ է, որը ներառում է ստանդարտացված հեռավորություններ և "
+"կապակցված ոճեր"
 
 #: data/granite.metainfo.xml.in:69
 msgid "ListItem is a standard list widget that includes styles and spacing"
 msgstr ""
+"ListItem-ը ցուցակի ստանդարտ վիջեթ է, որը ներառում է ոճեր և հեռավորություններ"
 
 #: data/granite.metainfo.xml.in:70
 msgid "ToolBox is a vertical layout widget for top and bottom toolbars"
 msgstr ""
+"ToolBox-ը ուղղահայաց դասավորության վիջեթ է վերին և ստորին գործիքագոտիների "
+"համար"
 
 #: data/granite.metainfo.xml.in:71
 msgid ""
 "new style class constants for labels: CssClass.NUMERIC and CssClass.MONOSPACE"
 msgstr ""
+"պիտակների համար նոր ոճի դասերի հաստատուններ՝ CssClass.NUMERIC և "
+"CssClass.MONOSPACE"
 
 #: data/granite.metainfo.xml.in:72
 msgid ""
 "StyleManager handles automatically setting dark and light modes as well as "
 "system accent colors using Portals"
 msgstr ""
+"StyleManager-ը ավտոմատ կառավարում է մուգ և բաց ռեժիմները, ինչպես նաև "
+"համակարգի շեշտադրման գույները՝ օգտագործելով Portals"
 
 #: data/granite.metainfo.xml.in:73
 msgid ""
 "BackButton is a standardized navigation button that activates "
 "\"navigation.pop\" and includes a shortcut tooltip"
 msgstr ""
+"BackButton-ը ստանդարտ նավարկման կոճակ է, որը ակտիվացնում է «navigation.pop»-"
+"ը և ներառում է դյուրանցման հուշում"
 
 #: data/granite.metainfo.xml.in:77
 msgid "accel_to_string now uses the word \"Super\" instead of the \"⌘\" symbol"
-msgstr ""
+msgstr "accel_to_string-ն այժմ օգտագործում է «Super» բառը «⌘» նշանի փոխարեն"
 
 #: data/granite.metainfo.xml.in:78
 msgid ""
 "HeaderLabel has a new property for H1-H4 sizes and H2 styles are now bolder"
 msgstr ""
+"HeaderLabel-ն ունի նոր հատկություն H1-H4 չափերի համար, իսկ H2 ոճերն այժմ "
+"ավելի թավ են"
 
 #: data/granite.metainfo.xml.in:79
 msgid "CssClass.CARD is now rounded by default"
-msgstr ""
+msgstr "CssClass.CARD-ն այժմ լռելյայն կլորացված է"
 
 #: data/granite.metainfo.xml.in:82 data/granite.metainfo.xml.in:136
 msgid "Deprecations:"
-msgstr ""
+msgstr "Հնացած հնարավորություններ՝"
 
 #: data/granite.metainfo.xml.in:84
 msgid ""
 "Utils.set_color_primary. Modern apps have moved to more of a split paned "
 "design and this style is no longer very fashionable"
 msgstr ""
+"Utils.set_color_primary։ Ժամանակակից հավելվածներն անցել են ավելի շատ "
+"բաժանված վահանակների դիզայնի, և այս ոճն այլևս այդքան նորաձև չէ"
 
 #: data/granite.metainfo.xml.in:85
 msgid ""
 "Nearly all of the old `STYLE_CLASS` constants have been deprecated. Some of "
 "them have been replaced by `CssClass` constants, others by widgets."
 msgstr ""
+"Հին `STYLE_CLASS` հաստատունները գրեթե բոլորը հնացվել են։ Դրանցից մի քանիսը "
+"փոխարինվել են `CssClass` հաստատուններով, մյուսները՝ վիջեթներով։"
 
 #: data/granite.metainfo.xml.in:87
 msgid "Demo Improvements:"
-msgstr ""
+msgstr "Դեմոյի բարելավումներ՝"
 
 #: data/granite.metainfo.xml.in:89
 msgid "More demo pages with more widgets"
-msgstr ""
+msgstr "Ավելի շատ դեմո էջեր՝ ավելի շատ վիջեթներով"
 
 #: data/granite.metainfo.xml.in:90
 msgid "Color scheme switcher in the sidebar"
-msgstr ""
+msgstr "Գունային սխեմայի փոխարկիչ կողագոտում"
 
 #: data/granite.metainfo.xml.in:105
 msgid "Granite.Bin"
-msgstr ""
+msgstr "Granite.Bin"
 
 #: data/granite.metainfo.xml.in:109
 msgid "Improve screen reader support for SwitchModelButton"
-msgstr ""
+msgstr "Բարելավվել է SwitchModelButton-ի աջակցությունը էկրանի ընթերցիչի համար"
 
 #: data/granite.metainfo.xml.in:110
 msgid "Wrap long labels for SwitchModelButton"
-msgstr ""
+msgstr "SwitchModelButton՝ երկար պիտակները փոխանցվում են նոր տողի"
 
 #: data/granite.metainfo.xml.in:111
 msgid "HeaderLabel: set accessible description"
-msgstr ""
+msgstr "HeaderLabel՝ սահմանվում է հասանելիության նկարագրություն"
 
 #: data/granite.metainfo.xml.in:112
 msgid "ValidatedEntry: set AccessibleState for validity"
-msgstr ""
+msgstr "ValidatedEntry՝ վավերության համար սահմանվում է AccessibleState"
 
 #: data/granite.metainfo.xml.in:122
 msgid ""
 "Toast: add a new dismissed signal that includes the reason for dismissal"
 msgstr ""
+"Toast՝ ավելացվել է նոր dismissed ազդանշան, որը ներառում է փակման պատճառը"
 
 #: data/granite.metainfo.xml.in:123
 msgid "Add STYLE_CLASS_SUCCESS"
-msgstr ""
+msgstr "Ավելացվել է STYLE_CLASS_SUCCESS"
 
 #: data/granite.metainfo.xml.in:124
 msgid "HeaderLabel: allow secondary text to use markup"
-msgstr ""
+msgstr "HeaderLabel՝ երկրորդային տեքստում թույլատրվում է նշագրում"
 
 #: data/granite.metainfo.xml.in:128
 msgid "Make building Demo optional"
-msgstr ""
+msgstr "Դեմոյի կառուցումը դարձվել է կամընտիր"
 
 #: data/granite.metainfo.xml.in:129
 msgid "Demo now uses a modern split-pane design"
-msgstr ""
+msgstr "Դեմոն այժմ օգտագործում է ժամանակակից բաժանված վահանակների դիզայն"
 
 #: data/granite.metainfo.xml.in:130
 msgid "DateTime: handle relative datetime when epoch"
-msgstr ""
+msgstr "DateTime՝ epoch-ի դեպքում մշակվում է հարաբերական ամսաթիվը և ժամը"
 
 #: data/granite.metainfo.xml.in:131
 msgid "MessageDialog: Set last button as focus widget"
-msgstr ""
+msgstr "MessageDialog՝ վերջին կոճակը սահմանվում է որպես ֆոկուսի վիջեթ"
 
 #: data/granite.metainfo.xml.in:132
 msgid "SwitchModelButton: Remove redundant switch keyboard focusing"
 msgstr ""
+"SwitchModelButton՝ հեռացվել է անջատիչի ավելորդ ստեղնաշարային ֆոկուսավորումը"
 
 #: data/granite.metainfo.xml.in:133
 msgid "Load fallback styles for widgets when using Granite.init"
 msgstr ""
+"Granite.init-ն օգտագործելիս վիջեթների համար բեռնվում են պահուստային ոճերը"
 
 #: data/granite.metainfo.xml.in:138
 msgid ""
 "SettingsPage and SettingsSidebar: these widgets have moved to LibSwitchboard"
 msgstr ""
+"SettingsPage և SettingsSidebar՝ այս վիջեթները տեղափոխվել են LibSwitchboard"
 
 #: data/granite.metainfo.xml.in:150
 msgid "Add a withdraw method for Granite.Toast"
-msgstr ""
+msgstr "Granite.Toast-ի համար ավելացվել է withdraw մեթոդ"
 
 #: data/granite.metainfo.xml.in:164
 msgid "Don't depend on the elementary stylesheet for fallback styles"
-msgstr ""
+msgstr "Պահուստային ոճերի համար այլևս չի կախվում elementary-ի ոճաթերթից"
 
 #: data/granite.metainfo.xml.in:165
 msgid ""
 "Automatically load gresourced stylesheets named \"Application.css\" on "
 "\"Granite.init ()\""
 msgstr ""
+"«Granite.init ()»-ի ժամանակ ավտոմատ բեռնվում են «Application.css» անունով "
+"gresource ոճաթերթերը"
 
 #: data/granite.metainfo.xml.in:166
 msgid "Add SettingsUri constants for launching System Settings"
 msgstr ""
+"Ավելացվել են SettingsUri հաստատուններ Համակարգի կարգավորումները գործարկելու "
+"համար"
 
 #: data/granite.metainfo.xml.in:176
 msgid "Make \"Granite.init ()\" publicly available"
-msgstr ""
+msgstr "«Granite.init ()»-ը դարձվել է հանրության համար հասանելի"
 
 #: data/granite.metainfo.xml.in:186
 msgid "Granite.STYLE_CLASS_RICH_LIST for standard Gtk.ListBox row padding"
 msgstr ""
+"Granite.STYLE_CLASS_RICH_LIST՝ Gtk.ListBox-ի տողերի ստանդարտ լցվածքի համար"
 
 #: data/granite.metainfo.xml.in:187
 msgid ""
 "Granite.STYLE_CLASS_FRAME for adding a border to Gtk.LisBox, Gtk.InfoBar, "
 "and others"
 msgstr ""
+"Granite.STYLE_CLASS_FRAME՝ Gtk.LisBox-ին, Gtk.InfoBar-ին և այլոց եզրագիծ "
+"ավելացնելու համար"
 
 #: data/granite.metainfo.xml.in:188
 msgid "Granite.STYLE_CLASS_SIDEBAR for styling application sidebars"
-msgstr ""
+msgstr "Granite.STYLE_CLASS_SIDEBAR՝ հավելվածների կողագոտիները ոճավորելու համար"
 
 #: data/granite.metainfo.xml.in:189
 msgid ""
 "Granite.STYLE_CLASS_BACKGROUND to use the default background color for a "
 "widget"
 msgstr ""
+"Granite.STYLE_CLASS_BACKGROUND՝ վիջեթի համար լռելյայն ֆոնի գույնն "
+"օգտագործելու համար"
 
 #: data/granite.metainfo.xml.in:190
 msgid "Add optional secondary text to Granite.HeaderLabel"
-msgstr ""
+msgstr "Granite.HeaderLabel-ին ավելացվել է կամընտիր երկրորդային տեքստ"
 
 #: data/granite.metainfo.xml.in:194
 msgid "Allow text in Granite.Toast to wrap"
-msgstr ""
+msgstr "Granite.Toast-ում տեքստը կարող է փոխանցվել նոր տողի"
 
 #: data/granite.metainfo.xml.in:195
 msgid ""
 "SimpleSettingsPage: Wrap titles and allow description text to go under "
 "switches"
 msgstr ""
+"SimpleSettingsPage՝ վերնագրերը փոխանցվում են նոր տողի, իսկ նկարագրության "
+"տեքստը կարող է տեղադրվել անջատիչների տակ"
 
 #: data/granite.metainfo.xml.in:209
 msgid "Ported to GTK4! 🎉️"
-msgstr ""
+msgstr "Տեղափոխվել է GTK4-ի վրա 🎉️"
 
 #: data/granite.metainfo.xml.in:210
 msgid "Granite.Placeholder: replaces AlertView and Welcome"
-msgstr ""
+msgstr "Granite.Placeholder՝ փոխարինում է AlertView-ին և Welcome-ին"
 
 #: data/granite.metainfo.xml.in:211
 msgid "SimpleSettingsPage: Allow markup in description"
-msgstr ""
+msgstr "SimpleSettingsPage՝ նկարագրության մեջ թույլատրվում է նշագրում"
 
 #: data/granite.metainfo.xml.in:213
 msgid "Removals:"
-msgstr ""
+msgstr "Հեռացումներ՝"
 
 #: data/granite.metainfo.xml.in:215
 msgid "Application: use Gtk.Application instead"
-msgstr ""
+msgstr "Application՝ փոխարենը օգտագործեք Gtk.Application"
 
 #: data/granite.metainfo.xml.in:216
 msgid "Drawing: Use Gtk.CSS"
-msgstr ""
+msgstr "Drawing՝ օգտագործվում է Gtk.CSS"
 
 #: data/granite.metainfo.xml.in:217
 msgid "DynamicNotebook: use Adw.TabBar instead"
-msgstr ""
+msgstr "DynamicNotebook՝ փոխարենը օգտագործեք Adw.TabBar"
 
 #: data/granite.metainfo.xml.in:218
 msgid "Logger: use GLib.log instead"
-msgstr ""
+msgstr "Logger՝ փոխարենը օգտագործեք GLib.log"
 
 #: data/granite.metainfo.xml.in:219
 msgid ""
 "ModeButton: Use Gtk.ToggleButton with the \"group\" property and \"linked\" "
 "style class instead"
 msgstr ""
+"ModeButton՝ փոխարենը օգտագործեք Gtk.ToggleButton «group» հատկությամբ և «"
+"linked» ոճի դասով"
 
 #: data/granite.metainfo.xml.in:220
 msgid "Paths: use GLib.Environment instead"
-msgstr ""
+msgstr "Paths՝ փոխարենը օգտագործեք GLib.Environment"
 
 #: data/granite.metainfo.xml.in:221
 msgid "Seekbar"
-msgstr ""
+msgstr "Seekbar"
 
 #: data/granite.metainfo.xml.in:222
 msgid "Services.Settings: use GLib.Settings instead"
-msgstr ""
+msgstr "Services.Settings՝ փոխարենը օգտագործեք GLib.Settings"
 
 #: data/granite.metainfo.xml.in:223
 msgid "SimpleCommand: use GLib.AppInfo.create_from_commandline instead"
-msgstr ""
+msgstr "SimpleCommand՝ փոխարենը օգտագործեք GLib.AppInfo.create_from_commandline"
 
 #: data/granite.metainfo.xml.in:224
 msgid "SourceList: use Gtk.ListBox with the \"sidebar\" style class instead"
-msgstr ""
+msgstr "SourceList՝ փոխարենը օգտագործեք Gtk.ListBox «sidebar» ոճի դասով"
 
 #: data/granite.metainfo.xml.in:225
 msgid "StorageBar"
-msgstr ""
+msgstr "StorageBar"
 
 #: data/granite.metainfo.xml.in:226
 msgid "TextStyle: use style class constants instead"
-msgstr ""
+msgstr "TextStyle՝ փոխարենը օգտագործեք ոճի դասերի հաստատուններ"
 
 #: data/granite.metainfo.xml.in:227
 msgid "Several functions in System were replaced by GLib.AppInfo"
-msgstr ""
+msgstr "System-ի մի շարք ֆունկցիաներ փոխարինվել են GLib.AppInfo-ով"
