@@ -1,6 +1,7 @@
 lib/Constants.vala
 lib/DateTime.vala
 
+lib/Widgets/Alert.vala
 lib/Widgets/HyperTextView.vala
 lib/Widgets/MessageDialog.vala
 lib/Widgets/ModeSwitch.vala

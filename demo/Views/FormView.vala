@@ -70,6 +70,8 @@ public class FormView : DemoPage {
 
         var spinbutton = new Gtk.SpinButton.with_range (0, 100, 10);
 
+        var alert = new Granite.Alert ("This is an alert");
+
         var box = new Granite.Box (VERTICAL) {
             halign = CENTER,
             valign = CENTER,
@@ -88,6 +90,7 @@ public class FormView : DemoPage {
         box.append (datetime_grid);
         box.append (new Granite.HeaderLabel ("Gtk.SpinButton"));
         box.append (spinbutton);
+        box.append (alert);
 
         child = box;
 
@@ -96,6 +99,34 @@ public class FormView : DemoPage {
         set_selected_datetime (datepicker.date, timepicker.time);
         datepicker.changed.connect (() => set_selected_datetime (datepicker.date, timepicker.time));
         timepicker.changed.connect (() => set_selected_datetime (datepicker.date, timepicker.time));
+
+        spinbutton.value_changed.connect (() => {
+            alert.revealed = spinbutton.value > 0;
+
+            if (spinbutton.value >= 40) {
+                alert.message_type = OTHER;
+                alert.css_classes = {((Granite.AccentColor) (spinbutton.value / 10)).to_css_class ()};
+                return;
+            }
+
+            alert.css_classes = {""};
+
+            if (spinbutton.value >= 30) {
+                alert.message_type = ERROR;
+                return;
+            }
+
+            if (spinbutton.value >= 20) {
+                alert.message_type = WARNING;
+                alert.description = "Try changing values for more alert types";
+                return;
+            }
+
+            if (spinbutton.value >= 10) {
+                alert.message_type = INFO;
+                alert.description = null;
+            }
+        });
     }
 
     private void set_selected_datetime (DateTime date, GLib.DateTime time) {
