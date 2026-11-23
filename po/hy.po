@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: granite\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-20 01:11+0000\n"
-"PO-Revision-Date: 2026-11-09 21:04+0000\n"
+"PO-Revision-Date: 2026-11-24 21:04+0000\n"
 "Last-Translator: Davit Yedigaryan <davit.yedigaryan.1993@gmail.com>\n"
 "Language-Team: Armenian <https://l10n.elementaryos.org/projects/desktop/"
 "granite/hy/>\n"
@@ -94,14 +94,14 @@ msgstr "Երբեք"
 
 #: lib/DateTime.vala:64
 msgid "Now"
-msgstr "undefined"
+msgstr "Հիմա"
 
 #: lib/DateTime.vala:67
 #, c-format
 msgid "%dm ago"
 msgid_plural "%dm ago"
-msgstr[0] "undefined"
-msgstr[1] ""
+msgstr[0] "%d ր առաջ"
+msgstr[1] "%d ր առաջ"
 
 #: lib/DateTime.vala:70
 #, c-format
